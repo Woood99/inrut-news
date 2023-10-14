@@ -52,16 +52,9 @@
         font-weight: 500;
     }
 
-    .row {
-        margin-top: 16px;
-        display: grid;
-        grid-column-gap: 24px;
-        grid-row-gap: 24px;
-
-        margin-bottom: 24px;
-    }
-
     &__descr {
+        margin-top: 16px;
+        margin-bottom: 24px;
         align-self: start;
         font-size: var(--default-fz);
         line-height: var(--default-lh);
@@ -105,12 +98,22 @@
     }
 
     &--image {
-        .row {
-            grid-template-columns: calc(70% - 24px) 30%;
+        padding: 0;
+        .news-card{
+            &__wrapper{
+                display: grid;
+                grid-template-columns: 40% calc(60% - 24px);
+                grid-column-gap: 24px;
+                grid-row-gap: 24px;
+            }
+            &__content{
+                padding: 24px 24px 24px 0;
+            }
         }
     }
 
     &__bottom {
+
         width: 100%;
 margin-top: auto;
 

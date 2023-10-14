@@ -762,7 +762,7 @@ function objectSlider() {
     const nav = container.querySelector('.object-slider-nav__wrapper');
     const body = container.querySelector('.object-slider-body__wrapper');
     let navSlider = new Swiper(nav, {
-        slidesPerView: 3,
+        slidesPerView: 2.6,
         spaceBetween: 5,
         observer: true,
         observeParents: true,

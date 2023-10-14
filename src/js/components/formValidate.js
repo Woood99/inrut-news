@@ -17,7 +17,7 @@ export const validateRadioPrimary = (formSelector, textareaSelector, btnSelector
         const textarea = form.querySelector(textareaSelector);
         const btn = form.querySelector(btnSelector);
         const radios = form.querySelectorAll(radiosSelector);
-    
+
         function checkForm() {
             let flag = false;
             for (let radio of radios) {
@@ -26,7 +26,7 @@ export const validateRadioPrimary = (formSelector, textareaSelector, btnSelector
             }
             flag ? btn.removeAttribute('disabled') : btn.setAttribute('disabled', '');
         };
-    
+
         function clearForm() {
             textarea.value = '';
             btn.setAttribute('disabled', '');
@@ -51,7 +51,7 @@ export const validateCheckboxPrimary = (formSelector, textareaSelector, btnSelec
             const textarea = form.querySelector(textareaSelector);
             const btn = form.querySelector(btnSelector);
             const checkboxes = form.querySelectorAll(checkboxesSelector);
-        
+
             function checkForm() {
                 let flag = false;
                 for (let checkbox of checkboxes) {
@@ -60,7 +60,7 @@ export const validateCheckboxPrimary = (formSelector, textareaSelector, btnSelec
                 }
                 flag ? btn.removeAttribute('disabled') : btn.setAttribute('disabled', '');
             };
-        
+
             function clearForm() {
                 textarea.value = '';
                 btn.setAttribute('disabled', '');
@@ -88,7 +88,6 @@ export const bookConsultationValidate = () => {
     const telInput = telLabel.querySelector('input');
     const agentToggle = form.querySelector('.toggle-checkbox input');
     const agents = form.querySelector('.book-consultation__agents');
-    const cardsAgent = agents.querySelectorAll('.card-agent');
 
     [nameLabel, telInput].forEach(el => {
         el.addEventListener('input', () => {
@@ -98,27 +97,33 @@ export const bookConsultationValidate = () => {
     nameInput.addEventListener('input', () => {
         nameInput.value = nameInput.value.replace(/[0-9]/g, '');
     })
-    agentToggle.addEventListener('input', () => {
-        if (!agentToggle.checked) {
-            cardsAgent.forEach(card => {
-                card.classList.remove('_error');
-                card.classList.remove('_active');
-                card.querySelector('input').checked = false;
-            })
-        }
-    })
-    cardsAgent.forEach(card => {
-        card.querySelector('input').addEventListener('input', () => {
-            if (formEventInput) validate();
+    if (agents) {
+        const cardsAgent = agents.querySelectorAll('.card-agent');
+        agentToggle.addEventListener('input', () => {
+            if (!agentToggle.checked) {
+                cardsAgent.forEach(card => {
+                    card.classList.remove('_error');
+                    card.classList.remove('_active');
+                    card.querySelector('input').checked = false;
+                })
+            }
         })
-    })
+        cardsAgent.forEach(card => {
+            card.querySelector('input').addEventListener('input', () => {
+                if (formEventInput) validate();
+            })
+        })
+    }
 
     function validate() {
         let result = true;
         formEventInput = true;
         validateRemoveError(telLabel);
         validateRemoveError(nameLabel);
-        cardsAgent.forEach(card => card.classList.remove('_error'));
+        if (agents) {
+            const cardsAgent = agents.querySelectorAll('.card-agent');
+            cardsAgent.forEach(card => card.classList.remove('_error'));
+        }
 
         if (!validateCreateErrorName(nameLabel, nameInput)) {
             result = false;
@@ -126,7 +131,7 @@ export const bookConsultationValidate = () => {
         if (!validateCreateErrorTel(telLabel, telInput, validateTextMap.tel)) {
             result = false;
         }
-        if (agents.classList.contains('_active') && !agents.querySelector('.card-agent input:checked')) {
+        if (agents && agents.classList.contains('_active') && !agents.querySelector('.card-agent input:checked')) {
             result = false;
             cardsAgent.forEach(agent => agent.classList.add('_error'));
         }

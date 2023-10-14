@@ -1968,7 +1968,34 @@
     &__nav {
         flex-shrink: 0;
         flex: 0 1 percent(289, 996);
-
+        .swiper-slide{
+            @media (min-width:$desktop-min){
+                 &:hover{
+                    .object-gallery-preview{
+                        opacity: 1;
+                        visibility: visible;
+                        &__icon{
+                            transform: translateY(0);
+                        }
+                        span{
+                            transform: translateY(0);
+                        }
+                    }
+                 } 
+            }
+            &.swiper-slide-thumb-active{
+                .object-gallery-preview{
+                    opacity: 1;
+                    visibility: visible;
+                    &__icon{
+                        transform: translateY(0);
+                    }
+                    span{
+                        transform: translateY(0);
+                    }
+                }
+            }
+        }
         @media (max-width:$desktop) {
             display: none;
         }

@@ -509,7 +509,7 @@ function initSliders() {
 
             function sliderMoreItem() {
                 const btn = el.querySelector('.object-construct-progress__btn');
-                if (!btn.hasAttribute('data-popup-path')) {
+                if (btn && !btn.hasAttribute('data-popup-path')) {
                     btn.addEventListener('click', () => {
                         el.classList.toggle('_active');
                         if (el.classList.contains('_active')) {

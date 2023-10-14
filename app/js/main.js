@@ -4317,7 +4317,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_chat__WEBPACK_IMPORTED_MODULE_26__["default"])();
   (0,_components_city__WEBPACK_IMPORTED_MODULE_27__["default"])();
   (0,_components_furnishingSets__WEBPACK_IMPORTED_MODULE_30__["default"])();
-  (0,_components_bookConsultation__WEBPACK_IMPORTED_MODULE_31__["default"])();
+  // bookConsultation();
   (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_28__["default"])('.object-location__infrastructure', 1000, true);
   (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_28__["default"])('.buy-apartment__tags .tags__list', 1000, 1180);
   (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_28__["default"])('.home-services__list', 1000, 1180);
@@ -4550,7 +4550,26 @@ __webpack_require__.r(__webpack_exports__);
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'tariff-bank-popup');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'want-discount');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'proposal-sent');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'object-gallery');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])({
+  isOpen: settingsModal => {
+    const currentBtn = settingsModal.currentBtn;
+    const items = currentBtn.closest('.swiper-wrapper').querySelectorAll('.swiper-slide');
+    const currentSlide = currentBtn.closest('.swiper-slide');
+    let index = 0;
+    items.forEach((item, currentIndex) => {
+      if (item === currentSlide) index = currentIndex;
+    });
+    const container = settingsModal.container;
+    const navItems = container.querySelectorAll('[data-tabs-title]');
+    const imagesItems = container.querySelectorAll('[data-tabs-item]');
+    navItems.forEach((item, currentIndex) => {
+      currentIndex === index ? item.classList.add('_tab-active') : item.classList.remove('_tab-active');
+    });
+    imagesItems.forEach((item, currentIndex) => {
+      currentIndex === index ? item.removeAttribute('hidden') : item.setAttribute('hidden', '');
+    });
+  }
+}, 'object-gallery');
 
 // ========================================================================================
 
@@ -7058,7 +7077,6 @@ const bookConsultationValidate = () => {
   const telInput = telLabel.querySelector('input');
   const agentToggle = form.querySelector('.toggle-checkbox input');
   const agents = form.querySelector('.book-consultation__agents');
-  const cardsAgent = agents.querySelectorAll('.card-agent');
   [nameLabel, telInput].forEach(el => {
     el.addEventListener('input', () => {
       if (formEventInput) validate();
@@ -7067,33 +7085,39 @@ const bookConsultationValidate = () => {
   nameInput.addEventListener('input', () => {
     nameInput.value = nameInput.value.replace(/[0-9]/g, '');
   });
-  agentToggle.addEventListener('input', () => {
-    if (!agentToggle.checked) {
-      cardsAgent.forEach(card => {
-        card.classList.remove('_error');
-        card.classList.remove('_active');
-        card.querySelector('input').checked = false;
-      });
-    }
-  });
-  cardsAgent.forEach(card => {
-    card.querySelector('input').addEventListener('input', () => {
-      if (formEventInput) validate();
+  if (agents) {
+    const cardsAgent = agents.querySelectorAll('.card-agent');
+    agentToggle.addEventListener('input', () => {
+      if (!agentToggle.checked) {
+        cardsAgent.forEach(card => {
+          card.classList.remove('_error');
+          card.classList.remove('_active');
+          card.querySelector('input').checked = false;
+        });
+      }
     });
-  });
+    cardsAgent.forEach(card => {
+      card.querySelector('input').addEventListener('input', () => {
+        if (formEventInput) validate();
+      });
+    });
+  }
   function validate() {
     let result = true;
     formEventInput = true;
     validateRemoveError(telLabel);
     validateRemoveError(nameLabel);
-    cardsAgent.forEach(card => card.classList.remove('_error'));
+    if (agents) {
+      const cardsAgent = agents.querySelectorAll('.card-agent');
+      cardsAgent.forEach(card => card.classList.remove('_error'));
+    }
     if (!validateCreateErrorName(nameLabel, nameInput)) {
       result = false;
     }
     if (!validateCreateErrorTel(telLabel, telInput, validateTextMap.tel)) {
       result = false;
     }
-    if (agents.classList.contains('_active') && !agents.querySelector('.card-agent input:checked')) {
+    if (agents && agents.classList.contains('_active') && !agents.querySelector('.card-agent input:checked')) {
       result = false;
       cardsAgent.forEach(agent => agent.classList.add('_error'));
     }
@@ -11111,7 +11135,7 @@ function initSliders() {
       sliderMoreItem();
       function sliderMoreItem() {
         const btn = el.querySelector('.object-construct-progress__btn');
-        if (!btn.hasAttribute('data-popup-path')) {
+        if (btn && !btn.hasAttribute('data-popup-path')) {
           btn.addEventListener('click', () => {
             el.classList.toggle('_active');
             if (el.classList.contains('_active')) {

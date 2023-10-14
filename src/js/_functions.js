@@ -153,6 +153,25 @@ popup(null, 'tariff-popup');
 popup(null, 'tariff-bank-popup');
 popup(null, 'want-discount');
 popup(null, 'proposal-sent');
-popup(null, 'object-gallery');
+popup({
+    isOpen: (settingsModal) => {
+        const currentBtn = settingsModal.currentBtn;
+        const items = currentBtn.closest('.swiper-wrapper').querySelectorAll('.swiper-slide');
+        const currentSlide = currentBtn.closest('.swiper-slide');
+        let index = 0;
+        items.forEach((item, currentIndex) => {
+            if (item === currentSlide) index = currentIndex;
+        })
+        const container = settingsModal.container;
+        const navItems = container.querySelectorAll('[data-tabs-title]');
+        const imagesItems = container.querySelectorAll('[data-tabs-item]')
+        navItems.forEach((item, currentIndex) => {
+            currentIndex === index ? item.classList.add('_tab-active') : item.classList.remove('_tab-active');
+        })
+        imagesItems.forEach((item, currentIndex) => {
+            currentIndex === index ? item.removeAttribute('hidden') : item.setAttribute('hidden','');
+        })
+    },
+}, 'object-gallery');
 
 // ========================================================================================

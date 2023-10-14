@@ -577,45 +577,10 @@
         }
     }
 
-    &--construct-progress {
-        height: 100%;
-        overflow-y: auto;
-
-        .popup-primary {
-            &__container {
-                margin: 0 auto;
-                border-radius: 12px 12px 0 0;
-                padding: 48px 32px 32px;
-                width: 100%;
-                min-height: auto;
-                margin-top: 50px;
-
-                @media (max-width:$smallTablet-max) {
-                    margin-top: 0;
-                    border-radius: 0;
-                    padding: 65px 0 32px;
-                }
-            }
-
-            &__close {
-                margin-top: -48px;
-                transform: translateX(32px);
-
-                @media (max-width:$desktop) {
-                    margin: 0;
-                    transform: translateX(0);
-                }
-            }
-        }
-
-        @media (max-width:$desktop) {
-            background-color: rgba(34, 41, 102, 0.4);
-        }
-    }
-
     &--furnishing-sets-popup,
     &--object-apart-renov-popup,
     &--object-gallery,
+    &--construct-progress,
     &--object-ecology-parks-popup {
 
         .popup-primary {
@@ -4745,115 +4710,26 @@
             padding: 0 $containerOffset+px;
         }
     }
-
-    &__images {
+    &__container{
         margin-top: 32px;
-        background: rgba(22, 22, 22, 0.7);
+        display: grid;
+    grid-template-columns: 1fr 30%;
+    grid-column-gap: 32px;
+    }
+    &__images{
+        overflow: hidden;
+        height: 100%;
+        max-height: 500px;
         border-radius: 12px;
-
-        @media (max-width:$smallTablet-max) {
-            background: var(--white);
-        }
-    }
-
-    &__image {
-        padding-bottom: percent(565, 1184);
-
-        @media (max-width:$smallTablet-max) {
-            padding-bottom: 100%;
+        width: 100%;
+        img{
+            width: 100%;
             height: 100%;
-
-            img {
-                object-fit: cover;
-                border-radius: 12px;
-            }
+            border-radius: 12px;
+            object-fit: fill;
         }
     }
 
-    .nav-arrow-primary {
-        &--prev {
-            left: 22px;
-        }
-
-        &--next {
-            right: 22px;
-        }
-
-        @media (max-width:$smallTablet-max) {
-            display: none;
-        }
-    }
-
-    &__bottom {
-        margin-top: 32px;
-
-        display: flex;
-        flex-direction: column;
-        align-items: end;
-
-        @media (max-width:$smallTablet-max) {
-            align-items: start;
-            padding: 0 $containerOffset+px;
-        }
-    }
-
-    &__btns {
-        margin-top: 32px;
-
-        display: flex;
-        align-items: center;
-
-        @media (max-width:$smallTablet-max) {
-            flex-direction: column;
-            width: 100%;
-        }
-    }
-
-    &__btn {
-        width: 223px;
-
-        svg {
-            width: 15px;
-            height: 15px;
-            margin-right: 10px;
-            transition: fill $transitionSpeed $transitionFunction;
-        }
-
-        &--call {
-            svg {
-                fill: var(--white);
-            }
-        }
-
-        &--chat {
-            svg {
-                fill: var(--blue);
-            }
-
-            @media (min-width:$desktop-min) {
-                &:hover {
-                    svg {
-                        fill: var(--white);
-                    }
-                }
-            }
-        }
-
-        &:not(:last-child) {
-            margin-right: 16px;
-
-            @media (max-width:$smallTablet-max) {
-                margin-right: 0;
-                margin-bottom: 24px;
-            }
-        }
-
-        @media (max-width:$smallTablet-max) {
-            width: 100%;
-        }
-    }
-
-    @media (max-width:$smallTablet-max) {}
 }
 
 .furnishing-sets-popup {

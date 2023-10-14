@@ -1,0 +1,143 @@
+.simplebar-primary {
+    max-width: 200px;
+    max-height: 300px;
+
+    .simplebar-track.simplebar-vertical {
+        background-color: var(--primary200);
+        width: 2px;
+        border-radius: 2px;
+        overflow: visible;
+        margin-right: 5px;
+        top: 18px;
+        bottom: 18px;
+    }
+
+    .simplebar-content-wrapper {
+        padding-right: 50px;
+        outline: none;
+
+        @media (max-width:$smallTablet-max) {
+            padding-right: 36px;
+        }
+    }
+
+    .simplebar-scrollbar {
+        border-radius: 2px;
+        width: 4px;
+        left: -1px;
+
+        &::before {
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            opacity: 1;
+            background-color: var(--blue);
+            border-radius: 2px;
+            width: 4px;
+        }
+    }
+
+    .simplebar-track.simplebar-vertical .simplebar-scrollbar::before {
+        top: 0;
+        bottom: 0;
+    }
+
+    .simplebar-scrollbar.simplebar-visible::before {
+        opacity: 1;
+    }
+}
+
+.simplebar-secondary {
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin: 0 auto;
+
+    .simplebar-mask {
+        position: static;
+    }
+
+    .simplebar-track {
+        &.simplebar-horizontal {
+            background-color: var(--primary200);
+            height: 7px;
+            border-radius: 5px;
+
+            .simplebar-scrollbar {
+                height: 7px;
+                top: 0;
+
+                &::before {
+                    left: 0px;
+                    right: 0px;
+                    background-color: var(--blue);
+                    border-radius: 5px;
+                    opacity: 1;
+                }
+
+                @media (max-width:$smallTablet-max) {
+                    height: 5px;
+                }
+            }
+
+            @media (max-width:$smallTablet-max) {
+                height: 5px;
+            }
+        }
+
+        &.simplebar-vertical {
+            display: none;
+        }
+    }
+}
+
+
+.simplebar-third {
+
+
+    .simplebar-track.simplebar-vertical {
+        background-color: transparent;
+        width: 4px;
+        border-radius: 2px;
+        overflow: visible;
+        pointer-events: all;
+        margin-right: 5px;
+        top: 0;
+        bottom: 0;
+    }
+
+    .simplebar-content-wrapper {
+        padding-right: 0px;
+        outline: none;
+
+        @media (max-width:$smallTablet-max) {
+            padding-right: 36px;
+        }
+    }
+
+    .simplebar-scrollbar {
+        border-radius: 2px;
+        width: 4px;
+        left: 0;
+
+        &::before {
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            opacity: 1;
+            background-color: #d1d1d1;
+            border-radius: 10px;
+            width: 4px;
+        }
+    }
+
+    .simplebar-track.simplebar-vertical .simplebar-scrollbar::before {
+        top: 0;
+        bottom: 0;
+    }
+
+    .simplebar-scrollbar.simplebar-visible::before {
+        opacity: 1;
+    }
+}

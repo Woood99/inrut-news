@@ -1,0 +1,117 @@
+.btn-reset {
+    border: none;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    user-select: none;
+    &:focus {
+        outline: none;
+    }
+}
+
+.btn {
+    transition: color $transitionSpeed $transitionFunction,
+        background-color $transitionSpeed $transitionFunction,
+        border $transitionSpeed $transitionFunction,
+        box-shadow $transitionSpeed $transitionFunction;
+}
+
+
+.btn-primary {
+    height: 50px;
+    @include fontCofo;
+    border-radius: 12px;
+
+    background-color: var(--blue);
+    color: var(--white);
+
+    font-size: var(--default-fz);
+    line-height: var(--little-small-lh);
+    font-weight: 500;
+
+    padding: 0px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    white-space: nowrap;
+
+    @media (min-width:$desktop-min) {
+        &.focus-visible{
+            background-color: var(--blue-dark);
+        }
+        &:hover {
+            background-color: var(--blue-dark);
+        }
+    }
+    &:active {
+        box-shadow: 0px 15px 20px rgba(35, 125, 233, 0.28);
+        background-color: var(--blue-dark);
+    }
+
+    &:disabled {
+        background-color: var(--primary100);
+        box-shadow: none;
+        pointer-events: none;
+        cursor: default;
+    }
+
+    @media (max-width:$desktop) {
+        height: 46px;
+    }
+}
+
+.btn-secondary {
+    height: 50px;
+    @include fontCofo;
+    border-radius: 12px;
+
+    color: var(--blue);
+    border: 1px solid currentColor;
+    background-color: var(--white);
+
+    font-size: var(--default-fz);
+    line-height: var(--little-small-lh);
+    font-weight: 500;
+
+    padding: 0px 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    white-space: nowrap;
+
+
+    background-color: rgba(0,150,255,.08);
+    border: none;
+
+    @media (min-width:$desktop-min) {
+        &.focus-visible{
+            background-color: rgba(0,150,255,.12);
+            color: var(--blue);
+        }
+        &:hover {
+            background-color: rgba(0,150,255,.12);
+            color: var(--blue);
+            svg{
+                fill: var(--blue) !important;
+            }
+        }
+    }
+
+    &:active {
+        color: var(--white);
+        background-color: var(--blue);
+    }
+    &:disabled {
+        background-color: var(--white);
+        border: 1px solid var(--primary100);
+        color: #F2F2F2;
+        pointer-events: none;
+        cursor: default;
+    }
+    @media (max-width:$desktop) {
+        height: 46px;
+    }
+}

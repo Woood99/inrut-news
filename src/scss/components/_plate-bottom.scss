@@ -1,0 +1,91 @@
+.plate-bottom {
+    transform: translateY(200%);
+    transition: transform $transitionSpeed $transitionFunction;
+    position: fixed;
+    z-index: 10;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--white);
+    box-shadow: 0px -2px 1px rgba(0, 0, 0, 0.1);
+
+    height: 60px;
+
+    @media (max-width:$desktop) {
+        &.active-fixed {
+            transform: translateY(0);
+        }
+    }
+}
+
+.object-plate-bottom {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 16px;
+    align-items: center;
+
+    padding: 0 16px;
+
+    &__btn {
+        height: 44px;
+        padding: 0 20px;
+
+        svg {
+            width: 13px;
+            height: 13px;
+            fill: currentColor;
+            margin-right: 10px;
+        }
+
+        [data-mobile-text] {
+            font-size: 0;
+
+            &::before {
+                content: attr(data-mobile-text);
+                font-size: var(--default-fz);
+            }
+        }
+    }
+}
+
+.purchase-request-plate-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__btn {
+        height: 44px;
+        padding: 0 20px;
+        width: calc(100% - 32px);
+
+        svg {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+            margin-right: 10px;
+        }
+    }
+}
+
+
+
+.agent-plate-bottom {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 16px;
+    align-items: center;
+
+    padding: 0 16px;
+
+    &__btn {
+        height: 44px;
+        padding: 0 20px;
+
+        svg {
+            width: 13px;
+            height: 13px;
+            fill: currentColor;
+            margin-right: 10px;
+        }
+    }
+}

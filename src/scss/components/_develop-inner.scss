@@ -1,0 +1,239 @@
+.develop-inner {
+    .bid-user {
+        &__avatar {
+            --size: 95px;
+
+            @media (max-width:$smallTablet-max) {
+                --size: 57px;
+            }
+        }
+
+        &__btns {
+            margin-top: 0;
+
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        &__quantity {
+            @media (max-width:$desktop) {
+                margin-top: 8px;
+            }
+        }
+        &__btn {
+            width: 100%;
+            margin: 0;
+
+            &--online-display {
+                margin-top: 0;
+                grid-column: 1/-1;
+
+                svg {
+                    fill: none;
+                    stroke: var(--white);
+                    stroke-width: 1.5px;
+                }
+            }
+
+            &--call {
+                padding: 0 11px;
+            }
+
+            &--message {
+                padding: 0 16px;
+            }
+
+            &:not(:last-child) {
+                margin-bottom: 16px;
+            }
+        }
+
+        @media (min-width:$desktop-min) {
+            &._sticky {
+                top: calc(var(--header-fixed-height) + 16px);
+            }
+        }
+
+        @media (max-width:$desktop) {
+            padding: 16px;
+        }
+    }
+    
+    .object-data {
+        margin-top: 0;
+
+        &__name {
+            margin-top: 0;
+
+        }
+
+        .row {
+            &:not(:first-child) {
+                margin-top: 24px;
+            }
+        }
+
+        &__price {
+            margin-top: 0;
+        }
+
+        &__mortgage {
+            margin-top: 8px;
+        }
+    }
+
+    .filter--more {
+        margin-bottom: 0;
+    }
+
+    .object-plate-bottom {
+        &__btn {
+            &.bid-user__btn:not(:last-child) {
+             margin-bottom: 0;
+            }
+            &--call {}
+
+            &--message {
+                svg {
+                    fill: var(--blue);
+                }
+            }
+        }
+    }
+    .object-body__location{
+        margin-top: 0;
+    }
+    .tabs-primary {
+        &__container {
+            @media (max-width:$desktop) {
+                margin-top: 32px;
+            }
+        }
+    }
+
+    .object-filter {
+        @media (max-width:$desktop) {
+            box-shadow: none;
+        }
+        &__layouts{
+            margin-top: 32px;
+        }
+        &__tabs {
+            padding-bottom: 0;
+        }
+    }
+
+    .filter {
+        &__item {
+            animation-name: fade;
+            animation-duration: 0.6s;
+        }
+
+        @media (max-width:$desktop) {
+            &__top {
+                justify-content: end;
+                padding: 24px 16px;
+                box-shadow: none;
+                background-color: transparent;
+            }
+
+            &__inner {
+                padding: 0 16px 32px;
+                height: 80%;
+            }
+
+            &__mask {
+                background: rgba(0, 0, 0, 0.5);
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                z-index: 99;
+                top: 0;
+                left: 0;
+                width: 100%;
+                min-height: var(--vh);
+                height: 100%;
+                pointer-events: none;
+                transition: opacity $transitionSpeed $transitionFunction,
+                    visibility $transitionSpeed $transitionFunction;
+
+                opacity: 0;
+                visibility: hidden;
+
+                &.active {
+                    opacity: 1;
+                    visibility: visible;
+                    pointer-events: all;
+                }
+            }
+
+            &__container {
+                min-height: auto;
+                height: auto;
+                position: static;
+                opacity: inherit;
+                visibility: inherit;
+                pointer-events: inherit;
+
+                margin-top: auto;
+            }
+
+            &__controls {
+                box-shadow: none;
+                padding: 0 16px 16px;
+                flex-direction: column;
+            }
+
+            &__clear {
+                width: 100%;
+            }
+
+            &__go {
+                width: 100%;
+                margin-top: 16px;
+            }
+        }
+    }
+
+    .object-body__sidebar {
+        @media (max-width:$desktop) {
+            display: none;
+        }
+    }
+    .object-body__stock{
+        margin-top: 0;
+    }
+
+    .card-secondary {
+        &__bottom {
+            border-top: 1px solid var(--primary100);
+            display: flex;
+            width: calc(100% + 35px);
+            padding-top: 16px;
+            margin-top: 16px;
+            margin-left: -24px;
+            padding-left: 24px;
+        }
+
+        .card-secondary__info--mobile {
+            display: none;
+        }
+
+        .card-secondary__info--controls {
+            display: none;
+        }
+
+        &__prices--1 {
+            margin-bottom: 10px;
+        }
+
+        &__prices--2 {
+            margin-top: 0;
+            margin-bottom: 24px;
+        }
+    }
+    .object-banner-info{
+      padding-bottom: 16px;
+    }
+}

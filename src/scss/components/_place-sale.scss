@@ -1,0 +1,432 @@
+.place-sale {
+    &__body {
+        margin-top: 8px;
+
+        background-color: var(--stand-bg);
+        padding: 24px 0;
+
+        @media (max-width:$desktop) {
+            margin-top: 0;
+            padding: 78px 0 24px;
+        }
+    }
+
+    &__container {
+        border-radius: 16px;
+
+        @media (max-width:$desktop) {
+            margin-top: 16px;
+
+            &.container {
+                padding: 0;
+            }
+        }
+    }
+
+    &__row {
+        padding: 24px;
+        background-color: var(--white);
+
+        box-shadow: var(--shadow-primary);
+        border-radius: 12px;
+
+        &:not(:last-child) {
+            margin-bottom: 16px;
+        }
+
+        @media (max-width:$desktop) {
+            padding: 24px 16px;
+
+            &:not(:last-child) {
+                margin-bottom: 8px;
+            }
+        }
+    }
+
+    &__row-title {
+        margin-bottom: 24px;
+    }
+
+    &__btn {
+        margin: 24px 0 0 auto;
+        padding: 0 81px;
+
+        @media (max-width:$desktop) {
+            margin-right: 16px;
+        }
+
+        @media (max-width:$smallTablet-max) {
+            width: calc(100% - 32px);
+            margin: 16px auto 0;
+            padding: 0 20px;
+        }
+    }
+
+    @media (max-width:$desktop) {
+        background-color: var(--stand-bg);
+    }
+}
+
+.place-sale-address {
+    display: flex;
+    flex-direction: column;
+
+    &__title {}
+
+    &__row-title {}
+
+    &__city {
+        .search-select{
+            max-width: 450px;
+        }
+    }
+
+    &__select {
+        margin-top: 24px;
+        max-width: 300px;
+    }
+
+    &__text {
+        font-weight: 400;
+        font-size: var(--default-fz);
+        line-height: var(--default-lh);
+        color: var(--gray);
+    }
+
+    &__checkbox {
+        margin-top: 24px;
+        align-self: start;
+
+        @media (max-width:$desktop) {
+            margin-top: 10px;
+        }
+    }
+
+    &__field {
+        margin-top: 24px;
+        height: 48px;
+
+        @media (max-width:$desktop) {
+            margin-top: 16px;
+            height: 54px;
+        }
+    }
+
+    &__map {
+        margin-top: 24px;
+        height: 550px;
+
+        @media (max-width:$desktop) {
+            margin-top: 16px;
+            height: 400px;
+        }
+
+        @media (max-width:$mobile-max) {
+            height: 296px;
+        }
+    }
+}
+
+
+.place-sale-options {
+    padding: 24px 24px 16px;
+
+    &__title {}
+
+    &__row {
+        @media (min-width:$desktop-min) {
+            display: grid;
+            justify-content: space-between;
+            align-items: center;
+            grid-column-gap: 8px;
+            margin-bottom: 16px;
+
+            &--1 {
+                grid-template-columns: percent(325, 1132) percent(325, 1132) 1fr;
+            }
+
+            &--2 {
+                grid-template-columns: percent(278, 1132) percent(276.6, 1132) percent(276.6, 1132) percent(276.6, 1132);
+            }
+
+            &--3 {
+                grid-template-columns: percent(200, 1132) percent(215, 1132) percent(325, 1132) percent(368, 1132);
+            }
+
+            &--4 {
+                grid-template-columns: percent(375, 1132) percent(370.5, 1132) percent(370.5, 1132);
+            }
+
+            &--5 {
+                grid-template-columns: percent(429, 1132) percent(429, 1132) 1fr;
+
+                .place-sale-options__item {
+                    &:first-child {
+                        .choices__list--single {
+                            padding: 0 30px 0 140px;
+                        }
+                    }
+                }
+            }
+
+            &--6 {
+                grid-template-columns: percent(866, 1132) 1fr;
+            }
+        }
+
+        @media (max-width:$desktop) {
+            display: flex;
+            flex-direction: column;
+
+            &:not(:last-child) {
+                margin-bottom: 16px;
+            }
+        }
+
+        &[hidden] {
+            display: none;
+        }
+    }
+
+    &__more {
+        padding: 8px 0;
+        color: var(--blue);
+        font-size: var(--small-fz);
+        line-height: var(--small-lh);
+        font-weight: 400;
+
+        display: flex;
+        align-items: center;
+
+        transition: color $transitionSpeed $transitionFunction;
+
+        svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            margin-left: 5px;
+            transition: transform $transitionSpeed $transitionFunction;
+        }
+
+       @media (min-width:$desktop-min){
+        &:hover {
+            color: var(--blue-dark);
+        } 
+       }
+    }
+
+    &__item {
+        @media (max-width:$desktop) {
+            &:not(:last-child) {
+                margin-bottom: 16px;
+            }
+        }
+    }
+
+    &._active {
+        .place-sale-options {
+            &__more {
+                svg {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+    }
+
+    @media (max-width:$desktop) {
+        padding: 24px 16px 8px 16px;
+    }
+}
+
+.place-sale-descr {
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+        margin-bottom: 0;
+    }
+
+    &__btns {
+        margin-top: -10px;
+        display: flex;
+        align-items: center;
+        align-self: end;
+
+        @media (max-width:$smallTablet-max) {
+            display: none;
+        }
+    }
+
+    &__btn {
+        display: flex;
+        align-items: center;
+        color: var(--blue);
+        transition: color $transitionSpeed $transitionFunction;
+
+        svg {
+            width: 12px;
+            height: 12px;
+            fill: currentColor;
+            margin-right: 8px;
+        }
+
+        &:not(:last-child) {
+            margin-right: 20px;
+        }
+
+       @media (min-width:$desktop-min){
+        &:hover {
+            color: var(--blue-dark);
+        } 
+       }
+    }
+
+    &__textarea {
+        margin-top: 16px;
+        --height: 96px;
+
+        @media (max-width:$desktop) {
+            margin-top: 24px;
+        }
+    }
+}
+
+.place-sale-video {
+
+    &__title {}
+
+    &__descr {
+        font-size: var(--default-fz);
+        line-height: var(--default-lh);
+        color: var(--primaryTwo);
+        font-weight: 400;
+    }
+
+    &__field {
+        margin-top: 16px;
+        height: 48px;
+
+        @media (max-width:$desktop) {
+            margin-top: 10px;
+            height: 54px;
+        }
+    }
+}
+
+.place-sale-price {
+
+    &__top {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+
+        @media (max-width:$desktop) {
+            margin-bottom: 24px;
+        }
+    }
+
+    &__title {
+        margin: 0 5px 0 0;
+    }
+
+    &__tooltip {
+        .secondary-tooltip__content {
+            width: 395px;
+
+            @media (max-width:$smallTablet-max) {
+                width: 210px;
+            }
+        }
+    }
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+
+        @media (max-width:$smallTablet-max) {
+            flex-direction: column;
+            align-items: start;
+        }
+    }
+
+    &__input {
+        width: 265px;
+        height: 48px;
+        margin-right: 8px;
+
+        @media (max-width:$smallTablet-max) {
+            margin-right: 0;
+            margin-bottom: 16px;
+            width: 100%;
+            height: 54px;
+        }
+    }
+
+    &__select {
+        width: 265px;
+        height: 48px;
+
+        @media (max-width:$smallTablet-max) {
+            width: 100%;
+            height: 54px;
+        }
+    }
+}
+
+
+.place-sale-videoshow {
+
+    &__top {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+
+        @media (max-width:$desktop) {
+            margin-bottom: 24px;
+        }
+    }
+
+    &__title {
+        margin: 0 5px 0 0;
+    }
+
+    &__tooltip {
+        .secondary-tooltip__content {
+            width: 395px;
+
+            @media (max-width:$smallTablet-max) {
+                width: 210px;
+            }
+        }
+    }
+
+    &__checkbox {
+        .checkbox-secondary__label {
+            justify-content: start;
+           display: flex;
+        }
+    }
+}
+
+
+
+.place-sale-photo {
+
+    &__title {}
+
+    &__descr {
+        color: var(--primaryTwo);
+        font-size: var(--default-fz);
+        line-height: var(--default-lh);
+        font-weight: 400;
+    }
+
+    &__wrapper {
+        margin-top: 24px;
+        width: 100%;
+
+        @media (max-width:$desktop) {
+            margin-top: 10px;
+        }
+    }
+}

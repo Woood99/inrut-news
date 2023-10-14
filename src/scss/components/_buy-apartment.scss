@@ -1,0 +1,134 @@
+.buy-apartment {
+    margin-bottom: 32px;
+
+    &__body {
+        @media (max-width:$desktop) {
+            padding: calc(var(--header-height) + 24px) 0 16px;
+            background-color: var(--stand-bg);
+            border-radius: 0 0 12px 12px;
+        }
+    }
+
+    &__title {
+        @media (max-width:$desktop) {
+            padding: 0 $containerOffset+px;
+        }
+    }
+
+    &__filter {
+        margin-top: 32px;
+
+        @media (max-width:$desktop) {
+            padding: 0 $containerOffset+px;
+            margin-top: 16px;
+            margin-bottom: 16px;
+        }
+        @media (max-width:$tablet-max){
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__sort {
+        position: relative;
+        z-index: 10;
+
+        @media (max-width:$desktop) {
+            margin-top: 8px;
+            padding: 0 $containerOffset+px;
+            justify-content: start;
+        }
+    }
+
+    &__cards-list {
+        margin-top: 24px;
+    }
+
+    &__banners {
+        margin-top: 40px;
+
+        @media (max-width:$desktop) {
+            margin-top: 16px;
+        }
+    }
+
+    .card-secondary {
+        &__bottom {
+            border-top: 1px solid var(--primary100);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: calc(100% + 35px);
+
+            margin: 0px -24px 0 -24px;
+            padding: 16px 24px 0 24px;
+        }
+
+        .card-secondary__info--controls {
+            display: none;
+        }
+
+        &__prices--1 {
+            margin-bottom: 10px;
+        }
+
+        &__prices--2 {
+            margin-top: 0;
+            margin-bottom: 24px;
+        }
+    }
+
+
+
+    @media (min-width:$smallTablet-min) {
+        .control-cards__content--vertical .card-secondary__bottom {
+            margin: 32px 0 0 -24px;
+            padding: 16px 24px 0 24px;
+            width: calc(100% + 48px);
+            justify-content: start;
+
+            .card-secondary__tooltip {
+                padding: 0 8px;
+                align-self: center;
+            }
+        }
+    }
+
+    &__tags {
+        margin-top: 24px;
+        padding-bottom: 2px;
+    }
+    &__tag{
+        @media (max-width:$desktop){
+             background-color: var(--white);
+             border: none; 
+             box-shadow: var(--shadow-secondary);
+        }
+    }
+    @media (max-width:$smallTablet-max) {
+        margin-bottom: 16px;
+    }
+}
+
+.buy-apartment-filter--building {
+    .buy-apartment-filter__row--1 {
+        grid-template-columns: percent(278, 1180) percent(363, 1180) percent(315, 1180) percent(200, 1180);
+    }
+
+    .buy-apartment-filter__row--2 {
+        grid-template-columns: percent(400, 1180) percent(400, 1180) 1fr;
+    }
+}
+
+.buy-apartment-filter--moskow {
+    .buy-apartment-filter__row--1 {
+        grid-template-columns: percent(278, 1180) percent(363, 1180) percent(315, 1180) percent(200, 1180);
+    }
+
+    .buy-apartment-filter__row--2 {
+        grid-template-columns: percent(400, 1180) percent(400, 1180) 1fr;
+    }
+    .buy-apartment-filter__row--3 {
+        grid-template-columns: percent(400, 1180) percent(400, 1180) 1fr;
+    }
+}

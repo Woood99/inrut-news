@@ -1,0 +1,122 @@
+.selection-estate {
+    &__body {
+        background-color: var(--stand-bg);
+        @media (max-width:$desktop){
+             background-color: transparent; 
+             .container{
+                padding: 0;
+             }
+        }
+    }
+
+    &__title {
+    
+    }
+
+    &__filter {
+        margin-top: 32px;
+
+        .filter {
+            &__btn {
+                height: 38px;
+
+            }
+
+            &__clear {
+                padding: 0 35px;
+                max-width: 224px;
+                width: 100%;
+
+                @media (max-width:$desktop) {
+                    max-width: none;
+                    width: 50%;
+                    padding: 0 22px;
+                }
+            }
+
+            &__go {
+                padding: 0 35px;
+                max-width: 224px;
+                width: 100%;
+
+                @media (max-width:$desktop) {
+                    max-width: none;
+                    padding: 0 22px;
+                }
+            }
+        }
+
+        @media (max-width:$desktop) {
+            margin-top: 24px;
+            margin-bottom: 24px;
+        }
+    }
+
+    &__select {}
+
+    &__input {
+        @media (max-width:$desktop) {
+            width: 100%;
+        }
+    }
+
+    &__controls {
+        margin-top: 16px;
+    }
+
+    &__table {
+        margin-top: 32px;
+
+        .main-table {
+            &__type {
+                grid-template-columns: percent(324, 968) percent(280, 968) percent(280, 968) 1fr;
+
+                span {
+                    &:not(:first-child) {
+                        text-align: center;
+                        margin: 0;
+                    }
+                }
+
+                @media (max-width:$desktop) {
+                    display: grid !important; // need hack :( 
+                }
+
+                @media (max-width:$smallTablet-max) {
+                    display: none !important; // need hack :((( 
+                }
+            }
+
+            &__next {
+                @media (max-width:$desktop) {
+                    margin: 24px 16px 0;
+                    width: calc(100% - 32px);
+                }
+            }
+        }
+
+        @media (max-width:$desktop) {
+            padding: 16px 0 16px 0;
+        }
+
+        @media (max-width:$smallTablet-max) {
+            margin-top: 16px;
+            padding: 0 0 16px 0;
+        }
+    }
+
+    &__banners {
+        margin-top: 40px;
+    }
+
+    @media (max-width:$desktop) {
+        padding: calc(var(--header-height) + 24px) 0 0 0;
+        background-color: var(--stand-bg);
+    }
+}
+
+.selection-estate-filter {
+    &__row--1 {
+        grid-template-columns: percent(300, 1080) 1fr;
+    }
+}

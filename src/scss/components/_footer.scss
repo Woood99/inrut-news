@@ -1,0 +1,104 @@
+.footer {
+    background-color: var(--white);
+
+    &__container {
+        padding-top: 32px;
+        // padding-bottom: 75px;
+        padding-bottom: 24px;
+        border-top: 1px solid #eee;
+
+        @media (max-width:$desktop) {
+            padding-bottom: 24px;
+            padding-top: 24px;
+        }
+
+        @media (max-width:$smallTablet-max) {
+            border-top: none;
+            padding-top: 45px;
+        }
+    }
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+
+        @media (max-width:$smallTablet-max) {
+            flex-direction: column;
+        }
+    }
+
+    &__logo {
+        margin-right: 30px;
+
+        @media (max-width:$smallTablet-max) {
+            margin-right: 0;
+        }
+    }
+
+    &__nav {
+        @media (max-width:$smallTablet-max) {
+            margin-top: 24px;
+
+            .nav__list {}
+
+            .nav__item {
+                padding: 0;
+
+                &:not(:last-child) {
+                    margin-right: 20px;
+                }
+            }
+        }
+
+        @media (max-width:$mobile-max) {
+            .nav__list {
+                flex-direction: column;
+                justify-content: start;
+                align-items: start;
+            }
+
+            .nav__item {
+                padding: 0;
+
+                &:not(:last-child) {
+                    margin-right: 0;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+
+    &__write {
+        max-width: max-content;
+        min-width: 150px;
+        margin-top: 24px;
+
+        p {
+            color: #4E4E4E;
+            font-size: var(--default-fz);
+            line-height: var(--default-lh);
+            font-weight: 500;
+        }
+
+        @media (max-width:$mobile-max) {
+            max-width: 100%;
+            text-align: center;
+        }
+    }
+
+    &__btn {
+        margin-top: 12px;
+        width: 100%;
+    }
+
+    &__descr {
+        margin-top: 24px;
+        font-size: var(--default-fz);
+        line-height: var(--little-small-lh);
+        color: #6D6D6D;
+
+        @media (max-width:$mobile-max) {
+            margin-top: 30px;
+        }
+    }
+}

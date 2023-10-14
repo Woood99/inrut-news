@@ -1,0 +1,83 @@
+.request-catalog {
+    &__body {
+        @media (max-width:$desktop) {
+            padding: calc(var(--header-height) + 24px) 0 16px;
+            background-color: var(--stand-bg);
+        }
+    }
+
+    &__filter {
+        margin-top: 32px;
+
+        @media (max-width:$desktop) {
+            padding: 0 $containerOffset+px;
+            margin-top: 16px;
+            margin-bottom: 16px;
+        }
+    }
+
+    &__select {}
+
+    &__area {}
+
+    &__checkboxes {
+        margin-bottom: 10px;
+        justify-self: end;
+        align-self: end;
+        display: flex;
+        align-items: center;
+
+        >.checkbox-secondary {
+            &:not(:last-child) {
+                margin-right: 20px;
+
+                @media (max-width:$desktop) {
+                    margin-right: 0;
+                    margin-bottom: 14px;
+                }
+            }
+        }
+
+        @media (max-width:$desktop) {
+            margin: 0;
+            align-self: start;
+            flex-direction: column;
+        }
+    }
+
+    &__table {
+        margin-top: 32px;
+        background-color: var(--stand-bg);
+        @media (max-width:$desktop) {
+            padding: 0;
+            margin-top: 16px;
+            background-color: transparent;
+        }
+    }
+
+    &__banners {
+        margin-top: 32px;
+
+        @media (max-width:$desktop) {
+            margin-top: 16px;
+            padding: 0;
+        }
+    }
+
+
+    @media (max-width:$desktop) {
+        padding-top: 0;
+    }
+}
+
+
+
+.request-catalog-filter {
+    &__row--1 {
+        grid-template-columns: percent(300, 1180) percent(278, 1180) percent(260, 1180) percent(318, 1180);
+    }
+
+    &__row--2 {
+        grid-template-columns: percent(450, 1180) percent(390, 1180) percent(324, 1180);
+    }
+}

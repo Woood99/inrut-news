@@ -1,0 +1,125 @@
+.agent-develop {
+    .bid-user {
+        padding: 40px 24px 32px;
+
+        &::before,
+        &::after {
+            content: '';
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: percent(104.5, 367);
+        }
+
+        @media (max-width:$desktop) {
+            padding: 16px;
+        }
+    }
+
+    .agent-object {
+        padding-top: 24px;
+
+        @media (max-width:$desktop) {
+            margin-top: 8px;
+            padding: 16px 0 0;
+            background-color: var(--white);
+        }
+    }
+
+    .filter__btn {
+        @media (max-width:$desktop) {
+            margin: 0 16px;
+            width: calc(100% - 32px);
+        }
+    }
+
+    .card-secondary {
+        &__bottom {
+            border-top: 1px solid var(--primary100);
+            display: flex;
+            width: calc(100% + 35px);
+            padding-top: 16px;
+            margin-top: 16px;
+            margin-left: -24px;
+            padding-left: 24px;
+        }
+
+        .card-secondary__info--mobile {
+            display: none;
+        }
+
+        .card-secondary__info--controls {
+            display: none;
+        }
+
+        &__prices--1 {
+            margin-bottom: 10px;
+        }
+
+        &__prices--2 {
+            margin-top: 0;
+            margin-bottom: 24px;
+        }
+    }
+    @media (min-width:$tablet-min){
+        .control-cards__content--vertical .card-secondary__bottom {
+            margin: 32px 0 0 -24px;
+            padding: 16px 24px 0 24px;
+            width: calc(100% + 48px);
+
+            .card-secondary__info--mobile {
+                display: flex;
+            }
+        } 
+    }
+}
+
+
+
+.agent-object {
+    &__title {
+        span {
+            color: var(--primaryTwo);
+            font-weight: 500;
+            font-size: var(--default-fz);
+            line-height: var(--default-lh);
+        }
+
+        @media (max-width:$desktop) {
+            padding: 0 16px;
+        }
+    }
+
+    &__filter {
+        margin-top: 32px;
+
+        @media (max-width:$desktop) {
+            margin-top: 24px;
+            margin-bottom: 0;
+        }
+    }
+
+    &__sort {
+        @media (max-width:$desktop) {
+            justify-content: center;
+            margin-top: 16px;
+            padding: 0 16px;
+        }
+    }
+
+    &__cards-list {
+        margin-top: 24px;
+    }
+}
+
+.agent-object-filter {
+
+    &__row--1 {
+        grid-template-columns: percent(278, 1180) percent(363, 1180) percent(315, 1180) percent(200, 1180);
+    }
+
+    &__row--2 {
+        grid-template-columns: percent(278, 1180) 1fr;
+    }
+}

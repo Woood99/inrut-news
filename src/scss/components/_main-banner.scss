@@ -1,0 +1,135 @@
+.main-banners {
+    position: relative;
+    &__container {
+        border-radius: 12px;
+    }
+
+    &__item {
+        height: 100% !important; // Hack! need to be redefined swiper
+    }
+    &__nav{
+        position: absolute;
+        right: calc(24px + 16px);
+        bottom: calc(24px + 16px);
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        pointer-events: none;
+        .nav-arrow-secondary {
+            border: 1px solid var(--blue);
+            pointer-events: all;
+
+            svg {
+                fill: var(--blue);
+            }
+
+            &--next {
+                margin-left: 10px;
+            }
+
+            &.swiper-button-disabled {
+                opacity: 0.4;
+            }
+        }
+        @media (max-width:$smallTablet-max){
+             display: none; 
+        }
+    }
+}
+
+.main-banner {
+    background-color: var(--primary100);
+    border-radius: 13px;
+    padding: 54px 32px;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+
+    &--one {}
+
+    &--two {
+        background-color: var(--primary600);
+
+        .main-banner {
+
+            &__title {
+                color: var(--white);
+            }
+
+            &__descr {
+                color: #E7E7E7;
+            }
+
+            &__btn {
+                color: var(--gray);
+                background-color: var(--white);
+            }
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            z-index: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../img/banner-blur.png');
+            background-size: cover;
+        }
+    }
+
+    &__image {
+        background-position: bottom right 20%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        @media (max-width:$desktop){
+            background-position: bottom right 0%;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        z-index: 2;
+        height: 100%;
+    }
+
+    &__title {
+        font-size: var(--big-fz);
+        line-height: var(--big-lh);
+        color: var(--gray);
+        max-width: 220px;
+    }
+
+    &__descr {
+        margin-top: 10px;
+        color: var(--primaryTwo);
+        font-size: var(--default-fz);
+        line-height: var(--little-small-lh);
+        font-weight: 400;
+        max-width: 300px;
+        flex-grow: 1;
+    }
+
+    &__btn {
+        margin-top: 27px;
+        padding: 0 27px;
+        align-self: start;
+
+        @media (max-width:$smallTablet-max) {
+            padding: 0 22px;
+        }
+    }
+    @media (max-width:$smallTablet-max) {
+        padding: 24px 16px;
+    }
+}

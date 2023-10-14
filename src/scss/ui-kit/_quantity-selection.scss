@@ -1,0 +1,51 @@
+.quantity-selection {
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .checkbox {
+            width: 45px;
+
+            &__label {
+                border-radius: 10px;
+                height: 46px;
+            }
+
+            &:first-child {
+                width: 90px;
+            }
+
+            &:not(:last-child) {
+                margin-right: 2px;
+            }
+
+            @media (max-width:$mobile-max) {
+                flex-grow: 1;
+                width: auto;
+
+                &:first-child {
+                    width: auto;
+                    flex-grow: 2;
+                }
+            }
+        }
+
+        @media (max-width:$desktop) {
+            margin-top: 0;
+            justify-content: start;
+        }
+    }
+
+    @media (max-width:$desktop) {
+        border-radius: 0;
+        background-color: transparent;
+        border: none;
+        padding: 0;
+    }
+
+    @media (max-width:$mobile-max) {
+        width: 100%;
+    }
+}

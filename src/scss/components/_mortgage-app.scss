@@ -1,0 +1,103 @@
+.mortgage-app {
+    &__table {
+        margin-top: 32px;
+        background-color: var(--stand-bg);
+        @media (max-width:$desktop) {
+            padding: 0;
+            margin-top: 16px;
+            background-color: transparent;
+        }
+    }
+
+    &__body {
+        @media (max-width:$desktop) {
+            padding: calc(var(--header-height) + 24px) 0 16px;
+            background-color: var(--stand-bg);
+        }
+    }
+
+    .main-table__type {
+        grid-template-columns: percent(215, 1112) percent(165, 1112) percent(207, 1112) percent(197, 1112) percent(200, 1112);
+        margin: 0 24px;
+
+        span {
+            &:first-child {
+                margin: 0;
+            }
+        }
+    }
+
+    .object-info-mortgage {
+        width: 100%;
+        background-color: var(--white);
+        box-shadow: var(--shadow-primary);
+        border-radius: 12px;
+        color: var(--dark);
+        display: grid;
+        align-items: center;
+        grid-column-gap: 20px;
+        justify-content: space-between;
+        grid-template-columns: percent(215, 1112) percent(165, 1112) percent(207, 1112) percent(197, 1112) percent(200, 1112);
+        padding: 24px;
+        -webkit-tap-highlight-color: transparent;
+        transition: box-shadow $transitionSpeed $transitionFunction;
+
+        >div {
+            &:nth-child(1) {
+                font-size: var(--little-big-fz);;
+                line-height: var(--little-big-lh);
+                color: var(--dark);
+                font-weight: 500;
+            }
+
+            &:nth-child(2) {}
+
+            &:nth-child(3) {
+                font-size: var(--little-big-fz);;
+                line-height: var(--little-big-lh);
+                color: var(--dark);
+                font-weight: 500;
+            }
+
+            &:nth-child(4) {
+                background-color: var(--dark);
+                color: var(--dark);
+                padding: 6px;
+
+                font-size: var(--default-fz);
+                line-height: var(--default-lh);
+                font-weight: 400;
+                border-radius: 8px;
+                justify-self: start;
+
+                &.object-info-mortgage__approved {
+                    background-color: rgba(36, 202, 142, 0.2);
+                    color: rgba(36, 202, 142, 1);
+                }
+
+                &.object-info-mortgage__refusal {
+                    background-color: rgba(255, 209, 209, 1);
+                    color: rgba(255, 27, 27, 1);
+                }
+
+                &.object-info-mortgage__sent {
+                    background-color: rgba(148, 61, 189, 0.2);
+                    color: rgba(148, 61, 189, 1);
+                }
+
+                &.object-info-mortgage__under-consider {
+                    background-color: rgba(255, 227, 66, 0.2);
+                    color: rgba(255, 227, 66, 1);
+                }
+            }
+
+            &:nth-child(5) {}
+        }
+
+        @media (min-width:$desktop-min) {
+            &:hover {
+                box-shadow: var(--shadow-secondary);
+            }
+        }
+    }
+}

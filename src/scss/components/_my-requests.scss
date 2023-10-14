@@ -1,0 +1,83 @@
+.my-requests {
+    &__body {
+        @media (max-width:$desktop) {
+            padding: calc(var(--header-height) + 24px) 0 16px;
+            background-color: var(--stand-bg);
+        }
+    }
+    &__table {
+        margin-top: 32px;
+        background-color: var(--stand-bg);
+        .object-info {
+            grid-template-columns: percent(250, 1112) percent(400, 1112) max-content 1fr 24px;
+
+            @media (max-width:$desktop) {
+                grid-template-columns: 1fr max-content 24px;
+                grid-column-gap: 32px;
+            }
+        }
+        .main-table__type{
+            grid-template-columns: percent(250, 1112) percent(400, 1112) 1fr;
+            justify-content: start;
+            margin: 0 24px;
+    
+            span {
+                &:first-child {
+                    margin: 0;
+                }
+            }
+        }
+        .dots-dropdown {
+            &__dropdown {
+                >button {
+                    &:nth-child(1) {
+                        color: var(--red);
+
+                        svg {
+                            fill: currentColor;
+                        }
+                    }
+
+                    &:nth-child(2) {
+                        color: var(--blue);
+
+                        svg {
+                            fill: none;
+                            stroke: currentColor;
+                            stroke-width: 1.5px;
+                        }
+                    }
+                }
+
+                @media (max-width:$desktop) {
+                    right: -12px;
+                }
+            }
+
+            @media (max-width:$desktop) {
+                order: 5;
+                grid-row: 1/2;
+                grid-column: 3/4;
+            }
+        }
+
+        @media (max-width:$desktop) {
+            padding: 0;
+            margin-top: 16px;
+            background-color: transparent;
+        }
+    }
+
+    &__banners {
+        margin-top: 32px;
+
+        @media (max-width:$desktop) {
+            margin-top: 16px;
+        }
+    }
+
+
+    @media (max-width:$desktop) {
+        padding-top: 0;
+    }
+}

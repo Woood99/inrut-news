@@ -1,0 +1,218 @@
+.news {
+    &__container {
+        margin-top: 8px;
+        background-color: var(--stand-bg);
+        padding: 24px 0;
+    }
+
+    &__cols {
+        display: grid;
+        justify-content: space-between;
+        grid-template-columns: 1fr 350px;
+        grid-column-gap: 16px;
+    }
+
+    &__wrapper {
+        background-color: var(--white);
+        box-shadow: var(--shadow-primary);
+        padding: 32px 24px;
+        border-radius: 12px;
+    }
+
+    &__images {
+        margin-top: 24px;
+    }
+
+    &__image {
+        width: 100%;
+        padding-bottom: 45%;
+        border-radius: 16px;
+
+        img {
+            border-radius: 16px;
+        }
+
+        &:not(:first-child) {
+            display: none;
+        }
+    }
+
+    &__info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__tags {
+        display: flex;
+        align-items: center;
+    }
+
+    &__tag {
+        font-size: var(--small-fz);
+        line-height: var(--small-lh);
+        background-color: var(--primary200);
+        padding: 5px 10px;
+        border-radius: 6px;
+
+        &:not(:first-child) {
+            margin-left: 12px;
+        }
+    }
+
+    &__time {
+        margin-left: 16px;
+        color: var(--primaryTwo);
+        font-size: var(--small-fz);
+        line-height: var(--small-fz);
+        font-weight: 400;
+    }
+
+    &__title {
+        margin-top: 32px;
+    }
+
+    &__content {
+        margin-top: 16px;
+
+        :not(:last-child) {
+            margin-bottom: 8px;
+        }
+
+        a:not(.btn) {
+            color: var(--blue);
+            text-decoration: underline;
+
+            @media (min-width:$desktop-min) {
+                &:hover {
+                    color: var(--blue-dark);
+                }
+            }
+        }
+
+        ol {
+            li {
+                position: relative;
+                counter-increment: inst;
+                margin: 0 0 12px 32px;
+
+                &::before {
+                    content: counter(inst) ". ";
+                    position: absolute;
+                  top: 50%;
+                  transform: translateY(-50%);
+                    left: -19px;
+                    font-weight: 500;
+                }
+            }
+        }
+        ul{
+            li{
+                margin: 0 0 12px 28px;
+                position: relative;
+                &::before{
+                    content: "";
+                    position: absolute;
+                    top: 10px;
+                    left: -15px;
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 50%;
+                  background-color: currentColor;
+                }
+            }
+        }
+    }
+
+    &__consultation {
+        &._sticky {
+            position: sticky;
+            top: 16px;
+            width: 100%;
+        }
+    }
+
+    &__also {
+        margin-top: 32px;
+    }
+
+    .bid-user {
+        &__avatar {
+            --size: 95px;
+        }
+
+        &__btns {
+            width: 100%;
+            margin-top: 32px;
+        }
+
+        &__btn {
+            margin: 0;
+
+            &:not(:last-child) {
+                margin-bottom: 16px;
+            }
+        }
+    }
+
+    &__consultation {
+        margin-top: 32px;
+    }
+}
+
+.news-consultation {
+    background-color: var(--white);
+    box-shadow: var(--shadow-primary);
+    padding: 32px 24px;
+    border-radius: 12px;
+
+    &__title {}
+
+    &__descr {
+        margin-top: 16px;
+        max-width: 390px;
+    }
+
+    &__wrapper {
+        margin-top: 24px;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-row-gap: 8px;
+    }
+
+    &__name {}
+
+    &__phone {}
+
+    &__btn {
+        margin-top: 8px;
+    }
+
+    &__caption {
+        margin-top: 16px;
+
+        a {
+            color: var(--blue);
+
+            @media (min-width:$desktop-min) {
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+
+
+.news-also {
+    &__title {}
+
+    &__list {
+        margin-top: 24px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 16px;
+        grid-row-gap: 16px;
+    }
+}

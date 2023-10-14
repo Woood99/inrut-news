@@ -1,0 +1,84 @@
+.radio-primary {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &__item {
+        position: relative;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    &__input {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        position: absolute;
+
+        &:focus+.radio-primary__label:before {}
+
+        @media (min-width:$desktop-min) {
+            &:hover+.radio-primary__label:before {
+                border-color: var(--primary200);
+            }
+
+            &:hover+.radio-primary__label:after {
+                background-color: var(--primary200);
+                transform: scale(0.8);
+            }
+        }
+
+        &:checked+.radio-primary__label:before {
+            background-color: var(--blue);
+            border-color: var(--blue);
+        }
+
+        &:checked+.radio-primary__label:after {
+            transform: scale(1);
+            background-color: var(--white);
+        }
+    }
+
+    &__label {
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+
+        &:before {
+            --size: 16px;
+            content: "";
+            align-self: flex-start;
+            width: var(--size);
+            height: var(--size);
+            flex: 0 0 var(--size);
+            border-radius: 50%;
+
+            background-color: var(--white);
+            border: 2px solid var(--primary200);
+
+            transition: all $transitionSpeed $transitionFunction;
+        }
+
+        &:after {
+            content: "";
+            transition: all $transitionSpeed $transitionFunction;
+            transform: scale(0);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--white);
+            position: absolute;
+            left: 4px;
+            top: 4px;
+        }
+    }
+
+    &__text {
+        margin-left: 8px;
+        color: var(--gray);
+
+        font-size: var(--default-fz);
+        line-height: var(--little-small-lh);
+        font-weight:400;
+    }
+}

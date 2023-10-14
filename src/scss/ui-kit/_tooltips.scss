@@ -1,0 +1,310 @@
+.main-tooltip {
+    position: relative;
+    display: inline-block;
+
+    &__target {
+        cursor: pointer;
+        border-radius: 8px;
+        width: 30px;
+        height: 30px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            width: 17px;
+            height: 17px;
+        }
+    }
+
+    &__content {
+        max-width: 230px;
+        width: max-content;
+        background-color: var(--dark);
+        border: none;
+        box-shadow: var(--shadow-primary);
+        border-radius: 10px;
+        color: var(--white);
+        padding: 16px;
+        font-size: var(--small-fz);
+        line-height: var(--small-lh);
+        position: absolute;
+     bottom: calc(100% + 8px);
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity $transitionSpeed $transitionFunction,
+            visibility $transitionSpeed $transitionFunction;
+
+        @media (max-width:$desktop) {
+            right: 0;
+            left: auto;
+        }
+    }
+
+    &--bank {
+        .main-tooltip {
+            &__target {
+                background: rgba(36, 202, 142, 0.2);
+
+                svg {
+                    fill: #24CA8E;
+                }
+            }
+        }
+    }
+
+    &--budget {
+        .main-tooltip {
+            &__target {
+                background: rgba(255, 227, 66, 0.2);
+
+                svg {
+                    fill: #FFE342;
+                }
+            }
+        }
+    }
+
+    &--dollar {
+        .main-tooltip {
+            &__target {
+                background: rgba(252, 147, 147, 0.2);
+
+                svg {
+                    fill: #FC9393;
+                }
+            }
+        }
+    }
+
+    &--bolt {
+        .main-tooltip {
+            &__target {
+                background: rgba(255, 27, 27, 0.2);
+
+                svg {
+                    fill: #FF1B1B;
+                }
+            }
+        }
+    }
+
+    &--calculator {
+        .main-tooltip {
+            &__target {
+                background: rgba(148, 61, 189, 0.2);
+
+                svg {
+                    fill: #943DBD;
+                }
+            }
+        }
+    }
+
+    @media (min-width:$desktop-min) {
+        &:hover {
+            .main-tooltip__content {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+
+    &.main-tooltip--tablet-visible {
+        @media (max-width:$desktop) {
+            display: flex;
+            align-items: center;
+
+            .main-tooltip {
+                &__target {
+                    cursor: default;
+                }
+
+                &__content {
+                    margin-top: 0;
+                    margin-left: 10px;
+
+                    width: auto;
+                    position: static;
+                    padding: 0;
+                    opacity: 1;
+                    visibility: visible;
+                    border: none;
+                    background-color: transparent;
+                    box-shadow: none;
+                    font-weight: 500;
+                    color: var(--dark);
+
+                    @media (max-width:$desktop) {
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+    }
+
+    &.main-tooltip--mobile-visible {
+        @media (max-width:$smallTablet-max) {
+            display: flex;
+            align-items: center;
+
+            .main-tooltip {
+                &__target {
+                    cursor: default;
+                }
+
+                &__content {
+                    margin-top: 0;
+                    margin-left: 10px;
+
+                    width: auto;
+                    position: static;
+                    padding: 0;
+                    opacity: 1;
+                    transform: translate(0);
+                    visibility: visible;
+                    border: none;
+                    background-color: transparent;
+                    box-shadow: none;
+                    font-weight: 500;
+                    color: var(--dark);
+
+                    @media (max-width:$desktop) {
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+    }
+
+    &.main-tooltip--visible {
+        display: flex;
+        align-items: center;
+
+        .main-tooltip {
+            &__target {
+                cursor: default;
+            }
+
+            &__content {
+                margin-top: 0;
+                margin-left: 10px;
+
+                width: auto;
+                position: static;
+                padding: 0;
+                opacity: 1;
+                transform: translate(0);
+                visibility: visible;
+                border: none;
+                background-color: transparent;
+                box-shadow: none;
+                font-weight: 500;
+                color: var(--dark);
+
+                @media (max-width:$desktop) {
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+}
+
+
+.secondary-tooltip {
+    position: relative;
+    width: 22px;
+    height: 22px;
+
+    &__btn {
+        width: 22px;
+        height: 22px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            width: 13px;
+            height: 13px;
+            stroke: var(--primaryTwo);
+            fill: none;
+        }
+    }
+
+    &__content {
+        background-color: var(--white);
+        border: 1px solid rgba(122, 127, 170, 0.2);
+        border-radius: 10px;
+        color: var(--dark);
+        padding: 16px;
+        font-size: var(--small-fz);
+        line-height: var(--small-lh);
+        position: absolute;
+        bottom: 0;
+        left: calc(13px + 24px); // size btn + gap
+
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity $transitionSpeed $transitionFunction,
+            visibility $transitionSpeed $transitionFunction;
+
+        @media (max-width:$smallTablet-max) {
+            padding: 12px;
+            left: 50%;
+            bottom: 20px;
+            transform: translateX(-50%);
+        }
+    }
+
+    @media (min-width:$desktop-min) {
+        &:hover {
+            .secondary-tooltip__content {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+
+    &--dark {
+        .secondary-tooltip__content {
+            border: none;
+            background-color: var(--dark);
+            color: var(--white);
+        }
+    }
+
+    &.secondary-tooltip--top-center {
+        .secondary-tooltip__content {
+            bottom: 30px;
+            left: auto;
+            right: 50%;
+            transform: translateX(50%);
+        }
+    }
+
+    &--bottom {
+        .secondary-tooltip__content {
+            top: calc(100% + 12px);
+            z-index: 999;
+            left: 0;
+            bottom: auto;
+            padding: 8px 16px;
+        }
+    }
+    &--bottom-center {
+        .secondary-tooltip__content {
+            top: calc(100% + 12px);
+            z-index: 999;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: auto;
+            padding: 8px 16px;
+        }
+    }
+}

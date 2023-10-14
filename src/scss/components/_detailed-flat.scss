@@ -1,0 +1,202 @@
+.detailed-flat {
+    .bid-user {
+        &__avatar {
+            --size: 95px;
+            img{
+                object-fit: fill;
+            }
+            @media (max-width:$smallTablet-max) {
+                --size: 57px;
+            }
+        }
+
+        &__btns {
+            margin-top: 32px;
+
+            display: flex;
+            flex-direction: column;
+             width: 100%;
+        }
+
+        &__quantity {
+            @media (max-width:$desktop) {
+                margin-top: 8px;
+            }
+        }
+
+        &__btn {
+            width: 100%;
+            margin: 0;
+
+            &--online-display {
+                margin-top: 0;
+                grid-column: 1/-1;
+
+                svg {
+                    fill: none;
+                    stroke: var(--white);
+                    stroke-width: 1.5px;
+                }
+            }
+
+            &--call {
+                padding: 0 11px;
+            }
+
+            &--message {
+                padding: 0 16px;
+            }
+
+            &:not(:last-child) {
+                margin-bottom: 16px;
+            }
+        }
+
+        @media (max-width:$desktop) {
+            padding: 16px;
+        }
+    }
+
+    .object-data {
+        &__name {
+            font-size: var(--big-small-fz);
+            line-height: var(--big-small-lh);
+            font-weight: 500;
+            color: var(--dark);
+        }
+        &__purchase-terms{
+            margin-top: 0;
+        }
+        &__price {
+            margin-top: 32px;
+
+            @media (max-width:$smallTablet-max) {
+                margin-top: 24px;
+            }
+        }
+
+        &__characteristics {
+            margin-top: 32px;
+
+            @media (max-width:$smallTablet-max) {
+                margin-top: 24px;
+            }
+        }
+    }
+
+    .object-body {
+        &__container {
+            margin-top: 16px;
+            display: grid;
+            justify-content: space-between;
+            grid-template-columns: 1fr 350px;
+            grid-column-gap: 16px;
+
+            @media (max-width:$desktop) {
+                margin-top: 0;
+                grid-template-columns: 1fr;
+                grid-row-gap: 8px;
+            }
+        }
+
+        &__content {
+            display: grid;
+            grid-template-columns: 100%;
+            grid-row-gap: 24px;
+
+            @media (max-width:$desktop) {
+                grid-row-gap: 8px;
+            }
+        }
+        &__data {
+            margin-top: 0;
+        }
+        &__stock {
+            margin-top: 0;
+        }
+
+        &__location {
+            margin-top: 0;
+            width: 100%;
+            min-width: 100%;
+        }
+    }
+
+    .object-slider-two {
+        max-height: 494px;
+        height: 100%;
+
+        .object-slider-body__navigation {
+            .nav-arrow-primary__wrapper {
+                box-shadow: var(--shadow-secondary);
+            }
+        }
+
+        @media (max-width:$desktop) {
+            justify-content: center;
+            display: flex;
+            max-height: 400px;
+        }
+
+        @media (max-width:$smallTablet-max) {
+            height: 325px;
+        }
+
+        @media (max-width:$mobile-max) {
+            height: 285px;
+        }
+    }
+
+    .object-slider {
+
+
+        &__body {
+            margin-right: 0;
+            width: 100%;
+            height: 100%;
+
+            .swiper-slide {
+                &._fixed-width {
+                    a {
+                        padding: 30px 0;
+                        box-sizing: border-box;
+                        max-width: 395px;
+                        display: flex;
+                        align-items: center;
+                        margin: 0 auto;
+
+                        @media (max-width:$desktop) {
+                            max-width: 325px;
+                        }
+
+                        @media (max-width:$smallTablet-max) {
+                            max-width: 300px;
+                        }
+
+                        @media (max-width:$mobile-max) {
+                            max-width: 250px;
+                        }
+                    }
+
+                    img {
+                        width: auto;
+                        height: auto;
+                        object-fit: contain;
+                    }
+                }
+            }
+
+            @media (max-width:$desktop) {}
+        }
+    }
+
+    .object-apart-renov {
+        margin-top: 0;
+    }
+
+    .object-body__sidebar {
+        @media (max-width:$desktop) {
+            display: none;
+        }
+    }
+}

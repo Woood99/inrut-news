@@ -1,0 +1,272 @@
+.mortgage {
+    .top-page-inner-title {
+        &__container {
+            grid-row-gap: 8px;
+        }
+
+        &__title {
+            grid-row: 1/2;
+        }
+
+        &__descr {
+            grid-row: 2/3;
+        }
+    }
+
+    .bid__container {
+        grid-template-columns: 1fr percent(300, 1112);
+    }
+
+    .object-calc-mort {
+        border-radius: 0;
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0;
+
+        &__list {
+            margin-top: 24px;
+            border-bottom: none;
+            padding: 0;
+        }
+
+        &__info {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(122, 127, 170, 0.2);
+            justify-content: space-between;
+            display: flex;
+            align-items: center;
+
+            >span {
+                margin: 0;
+                color: var(--primaryTwo);
+                font-weight: 400;
+                font-size: var(--default-fz);
+                line-height: var(--default-lh);
+                text-align: left;
+
+                &:not(:last-child) {
+                    margin-right: 16px;
+                }
+
+                >span {
+                    display: block;
+                    margin-top: 10px;
+                    font-weight: 500;
+                    color: var(--dark);
+                    margin: 0;
+                    font-size: var(--default-fz);
+                    line-height: var(--default-lh);
+                }
+            }
+        }
+
+        &__wrapper {
+            &:first-child {
+                margin: 0;
+            }
+        }
+
+        &__bottom {
+            grid-template-columns: max-content;
+            justify-content: end;
+            display: grid;
+        }
+
+        &__app {
+            margin-top: 32px;
+            padding: 0 56px;
+            width: auto;
+
+            svg {
+                stroke: var(--white);
+                stroke-width: 1.5px;
+                fill: none;
+            }
+        }
+
+        &__contribution {
+            position: relative;
+            margin-bottom: 70px;
+
+            .toggle-checkbox {
+                position: absolute;
+                top: calc(100% + 12px);
+                left: 0;
+                width: max-content;
+            }
+
+            .checkbox-secondary {
+                position: absolute;
+                left: 0;
+                top: calc(100% + 50px);
+                width: max-content;
+            }
+        }
+
+        &__capital {}
+
+        &__term {}
+
+        .input-text {
+            &._clear-btn {
+                .input-text__label {
+                    grid-template-columns: max-content 1fr max-content 16px;
+                }
+            }
+        }
+    }
+
+    &__suitable {
+        margin-top: 24px;
+    }
+}
+
+
+.mortgage-suitable {
+    background-color: var(--white);
+    box-shadow: var(--shadow-primary);
+    border-radius: 12px;
+    padding: 24px;
+    min-width: 0;
+
+    &__title {}
+
+    &__list {
+        margin-top: 24px;
+    }
+
+    &__item {
+        &:not(:last-child) {
+            margin-bottom: 16px;
+        }
+    }
+}
+
+.bank-offer {
+    background-color: var(--dark);
+    box-shadow: var(--shadow-primary);
+    border-radius: 12px;
+    padding: 24px;
+    color: var(--white);
+
+    &__top {
+        display: flex;
+        align-items: center;
+    }
+
+    &__name {
+
+        display: flex;
+        align-items: center;
+
+        >span{
+            color: var(--white);
+            margin-left: 16px;
+        }
+    }
+
+    &__icon {
+        background-color: var(--white);
+        border-radius: 50%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 40px;
+        height: 40px;
+    }
+
+    &__price {
+        margin-left: auto;
+        margin-right: 16px;
+
+        display: flex;
+        align-items: center;
+
+        >span{
+            color: var(--white);
+        }
+
+        .secondary-tooltip__content{
+            min-width: 200px;
+        }
+    }
+
+    &__btn {}
+
+    &__info {
+        margin-top: 32px;
+
+        display: grid;
+        grid-auto-columns: min-content;
+        grid-auto-flow: column;
+        grid-column-gap: 32px;
+    }
+
+    &__info-item {
+        white-space: nowrap;
+        >span{
+            opacity: 0.65;
+
+            font-size: var(--default-fz);
+            line-height: var(--default-lh);
+        }
+        >div{
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            >span{
+                font-size: var(--little-big-fz);
+                line-height: var(--little-big-lh);
+            }
+            .secondary-tooltip__content{
+                min-width: 200px;
+                white-space: normal;
+            }
+        }
+    }
+
+    &__selector {
+        margin-top: 32px;
+        display: flex;
+        align-items: center;
+    }
+
+    &__choice {
+        margin-left: 24px;
+        
+        display: grid;
+        grid-auto-columns: min-content;
+        grid-auto-flow: column;
+        grid-column-gap: 8px;
+    }
+
+    &__choice-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border:1px solid var(--primary200);
+        border-radius: 12px;
+        padding: 12px;
+        opacity: 0.7;
+        min-width: 105px;
+        &._active{
+            opacity: 1;
+            font-weight: 500;
+            background-color: rgba(#fff,0.35);
+            border: none;
+        }
+    }
+    &--rosbankdom {
+        background-color: #c60227;
+    }
+    &--alfabank{
+        background-color: #df1414;
+    }
+    &--absolutbank{
+        background-color: #ff6602;
+    }
+}
+

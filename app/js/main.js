@@ -4206,6 +4206,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_advancePayment__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./components/advancePayment */ "./src/js/components/advancePayment.js");
 /* harmony import */ var _components_submitApp__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./components/submitApp */ "./src/js/components/submitApp.js");
 /* harmony import */ var _components_wantDiscount__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./components/wantDiscount */ "./src/js/components/wantDiscount.js");
+/* harmony import */ var _components_onlineDisplay__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./components/onlineDisplay */ "./src/js/components/onlineDisplay.js");
+
 
 
 
@@ -4312,7 +4314,6 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_cardStockPopup__WEBPACK_IMPORTED_MODULE_24__["default"])('.stock-developer__content .cards-list__items');
   (0,_components_cardStockPopup__WEBPACK_IMPORTED_MODULE_24__["default"])('.block-stock .block-stock__slider');
   (0,_components_cardStockPopup__WEBPACK_IMPORTED_MODULE_24__["default"])('.stock-offers-popup__items');
-  (0,_components_cardStockPopup__WEBPACK_IMPORTED_MODULE_24__["default"])('.online-display');
   (0,_components_tag__WEBPACK_IMPORTED_MODULE_25__["default"])();
   (0,_components_chat__WEBPACK_IMPORTED_MODULE_26__["default"])();
   (0,_components_city__WEBPACK_IMPORTED_MODULE_27__["default"])();
@@ -4333,6 +4334,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_advancePayment__WEBPACK_IMPORTED_MODULE_40__["default"])();
   (0,_components_submitApp__WEBPACK_IMPORTED_MODULE_41__["default"])();
   (0,_components_wantDiscount__WEBPACK_IMPORTED_MODULE_42__["default"])();
+  (0,_components_onlineDisplay__WEBPACK_IMPORTED_MODULE_43__["default"])();
   // ==================================================
 
   (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.validateRadioPrimary)('.complaint-popup__form', '.textarea-primary__input', '.complaint-popup__btn', '.radio-primary__input');
@@ -4570,7 +4572,7 @@ __webpack_require__.r(__webpack_exports__);
     });
   }
 }, 'object-gallery');
-
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'object-gallery--two');
 // ========================================================================================
 
 /***/ }),
@@ -7890,6 +7892,7 @@ const headerFixed = () => {
   function showHeader(scrollDistance) {
     const filterBlock = document.querySelector('.object-body__filter');
     const layoutsTitle = document.querySelectorAll('.tabs__title')[1];
+    const main = document.querySelector('.main');
     if (document.querySelector('.client-fixed__btn') && document.querySelector('.client-fixed__btn').classList.contains('_validate')) {
       headerFixed.classList.remove('_active');
       return;
@@ -7900,8 +7903,10 @@ const headerFixed = () => {
     }
     if (scrollDistance >= header.offsetHeight + headerHeight + gap) {
       headerFixed.classList.add('_active');
+      main.classList.add('_header-fixed');
     } else {
       headerFixed.classList.remove('_active');
+      main.classList.remove('_header-fixed');
     }
   }
 };
@@ -9252,6 +9257,49 @@ const navDropdown = () => {
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (navDropdown);
+
+/***/ }),
+
+/***/ "./src/js/components/onlineDisplay.js":
+/*!********************************************!*\
+  !*** ./src/js/components/onlineDisplay.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const onlineDisplay = () => {
+  const container = document.querySelector('.online-display');
+  if (!container) return;
+  const items = container.querySelectorAll('.online-display__item');
+  const btn = container.querySelector('.online-display__btn');
+  const activeNameClass = '_visible-all';
+  const btnTextMap = {
+    more: btn.textContent,
+    none: 'Свернуть'
+  };
+  itemsHidden();
+  btn.addEventListener('click', () => {
+    if (!container.classList.contains(activeNameClass)) {
+      items.forEach(item => item.removeAttribute('hidden'));
+      container.classList.add(activeNameClass);
+      btn.textContent = btnTextMap.none;
+    } else {
+      itemsHidden();
+      container.classList.remove(activeNameClass);
+      btn.textContent = btnTextMap.more;
+    }
+  });
+  function itemsHidden() {
+    items.forEach((item, index) => {
+      if (index > 3) item.setAttribute('hidden', '');
+    });
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (onlineDisplay);
 
 /***/ }),
 

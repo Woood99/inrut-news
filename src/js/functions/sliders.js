@@ -770,14 +770,18 @@ function objectSlider() {
         watchSlidesVisibility: true,
         watchSlidesProgress: true,
         direction: 'vertical',
+        navigation: {
+            prevEl: nav.closest('.object-slider-nav').querySelector('.nav-arrow-primary--prev'),
+            nextEl: nav.closest('.object-slider-nav').querySelector('.nav-arrow-primary--next'),
+        },
     });
     let bodySlider = new Swiper(body, {
         spaceBetween: 15,
         observer: true,
         observeParents: true,
         navigation: {
-            prevEl: container.querySelector('.nav-arrow-primary--prev'),
-            nextEl: container.querySelector('.nav-arrow-primary--next'),
+            prevEl: body.closest('.object-slider-body').querySelector('.nav-arrow-primary--prev'),
+            nextEl: body.closest('.object-slider-body').querySelector('.nav-arrow-primary--next'),
         },
         pagination: {
             el: container.querySelector('.pagination-primary'),

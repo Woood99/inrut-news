@@ -226,8 +226,8 @@ const maps = () => {
             map.controls.remove('fullscreenControl');
             map.controls.get('zoomControl').options.set({
                 position: {
-                    top: 20,
-                    right: 20
+                    top: 212,
+                    right: 15
                 },
                 maxWidth: '44'
             })

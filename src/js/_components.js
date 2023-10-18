@@ -84,6 +84,7 @@ import advancePayment from './components/advancePayment';
 import submitApp from './components/submitApp';
 import wantDiscount from './components/wantDiscount';
 import onlineDisplay from './components/onlineDisplay';
+import bankOffer from './components/bankOffer';
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==================================================
@@ -169,6 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
     submitApp();
     wantDiscount();
     onlineDisplay();
+    bankOffer();
     // ==================================================
 
     validateRadioPrimary('.complaint-popup__form', '.textarea-primary__input', '.complaint-popup__btn', '.radio-primary__input');

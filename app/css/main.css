@@ -34207,6 +34207,7 @@ textarea.input-reset {
 }
 .bank-offer__info-item {
   white-space: nowrap;
+  min-width: 80px;
 }
 .bank-offer__info-item > span {
   opacity: 0.65;
@@ -34235,18 +34236,25 @@ textarea.input-reset {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+}
+.bank-offer__selector > div:nth-child(1) {
+  padding-top: 13px;
 }
 .bank-offer__choice {
   margin-left: 24px;
-  display: -ms-grid;
-  display: grid;
-  grid-auto-columns: -webkit-min-content;
-  grid-auto-columns: min-content;
-  grid-auto-flow: column;
-  grid-column-gap: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  gap: 8px;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 .bank-offer__choice-item {
   display: -webkit-box;
@@ -34263,13 +34271,23 @@ textarea.input-reset {
   border-radius: 12px;
   padding: 12px;
   opacity: 0.7;
-  min-width: 105px;
+  min-width: 125px;
+  font-weight: 500;
+  position: relative;
+  cursor: pointer;
+  -webkit-transition: opacity 0.4s ease-in-out, background-color 0.4s ease-in-out, border 0.4s ease-in-out;
+  -o-transition: opacity 0.4s ease-in-out, background-color 0.4s ease-in-out, border 0.4s ease-in-out;
+  transition: opacity 0.4s ease-in-out, background-color 0.4s ease-in-out, border 0.4s ease-in-out;
 }
 .bank-offer__choice-item._active {
   opacity: 1;
-  font-weight: 500;
   background-color: rgba(255, 255, 255, 0.35);
-  border: none;
+  border: 1px solid transparent;
+}
+.bank-offer__choice-item .radio-primary__item {
+  position: absolute;
+  top: 8px;
+  right: 8px;
 }
 .bank-offer--rosbankdom {
   background-color: #c60227;

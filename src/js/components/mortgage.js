@@ -137,7 +137,7 @@ const mortgage = () => {
 
 
             const contributionInput = meternalCapital.querySelector('input');
-            const checkbox = meternalCapital.querySelector('.toggle-checkbox:nth-child(2) input');
+            const checkbox = meternalCapital.querySelector('.toggle-checkbox input');
             const capital = containerAdd.querySelector('.object-calc-mort__capital');
             const facilities = containerAdd.querySelector('.object-calc-mort__facilities');
 
@@ -150,52 +150,25 @@ const mortgage = () => {
             const meternalCapitalSlider = meternalCapital.querySelector('.filter-range-one__inner').noUiSlider;
 
             const capitalPrc = meternalCapital.querySelector('.filter-range-one__nav > span');
-
-            priceObject.querySelectorAll('.filter-range-one__inner').forEach(item => {
-                item.noUiSlider.on('update', (values) => {
-                    if (item.classList.contains('_init')) {
-                        const value = parseInt(values[0]);
-                        if (priceObject.dataset.name === 'Стоимость недвижимости') {
-                            const valueMax = value * 90 / 100;
-                            meternalCapitalSlider.updateOptions({
-                                start: 0,
-                                range: {
-                                    min: 0,
-                                    max: valueMax
-                                }
-                            })
-                        }
-                        if (priceObject.dataset.name === 'Размер платежа') {
-                            const priceObjectValue = +containerAdd.querySelector('.filter-dropdown--mortgage-calc .filter-dropdown__item.active input').value.replace(/\s/g, '');
-                            const term = +containerAdd.querySelector('.object-calc-mort__term .filter-range-one__nav input').value.trim();
-                            const initialFee = containerAdd.querySelector('.object-calc-mort__contribution .filter-range-one__nav input').value.trim().replace(/\s/g, '');
-                            const prc = containerAdd.querySelector('.field-static .field-static__text').textContent;
-                            const prcValue = (prc.replace('от ', '').replace('%', '').replace(',', '.').trim());
-                            const value = Number(getPayment2(priceObjectValue, initialFee, term, prcValue).replace(/\s/g, ''));
-
-                            const valueMax = value * 90 / 100;
-                            meternalCapitalSlider.updateOptions({
-                                start: 0,
-                                range: {
-                                    min: 0,
-                                    max: valueMax
-                                }
-                            })
-                        }
-                        priceObject.setAttribute('data-value', value);
-                        updateMatCapital();
-                        if (checkbox.checked) {
-                            updateFee();
-                        }
-                        validateObjectPrice();
+            const priceObjectSlider = priceObject.querySelector('.filter-range-one__inner');
+            priceObjectSlider.noUiSlider.on('update', (values) => {
+                const value = parseInt(values[0]);
+                const valueMax = value * 90 / 100;
+                meternalCapitalSlider.updateOptions({
+                    start: 0,
+                    range: {
+                        min: 0,
+                        max: valueMax
                     }
-                });
-                const input = item.closest('.filter-dropdown__item').querySelector('input');
-                setTimeout(() => {
-                    item.classList.add('_init');
-                    validateRemoveError(priceObject);
-                }, 2);
-            })
+                })
+                priceObject.setAttribute('data-value', value);
+                updateMatCapital();
+                if (checkbox.checked) {
+                    updateFee();
+                }
+                validateObjectPrice();
+            });
+
             priceObject.querySelectorAll('.filter-dropdown__checkbox').forEach(item => {
                 item.addEventListener('click', () => {
                     labelClearBtnUpdate(capitalInput.closest('.input-text'));
@@ -208,7 +181,6 @@ const mortgage = () => {
 
 
             meternalCapitalSlider.on('update', (value) => {
-                if (priceObject.classList.contains('_init')) {
                     if (!validateObjectPrice()) {
                         return;
                     };
@@ -218,13 +190,7 @@ const mortgage = () => {
                     labelClearBtnUpdate(capitalInput.closest('.input-text'));
                     labelClearBtnUpdate(facilitiesInput.closest('.input-text'));
                     resultMortgage();
-                }
             })
-
-            meternalCapital.querySelector('.filter-range-one').style.pointerEvents = 'none';
-            setTimeout(() => {
-                priceObject.classList.add('_init');
-            }, 2);
 
             checkbox.addEventListener('change', () => {
                 if (!validateObjectPrice()) {
@@ -295,19 +261,19 @@ const mortgage = () => {
                 validateRemoveError(capital);
                 validateRemoveError(facilities);
                 let contributionValue = Number(contributionInput.value.replace(/\s/g, ''));
+                capitalInput.value = 0;
+                facilitiesInput.value = 0;
                 capital.classList.remove('_active');
                 facilities.classList.remove('_active');
-                if (contributionValue < minCapital) {
+                if (contributionValue > 0) {
                     capitalInput.value = numberReplace(String(minCapital));
-                    capital.classList.add('_active');
-                    return;
-                }
-                if (contributionValue >= minCapital) {
+                    facilitiesInput.value = numberReplace(String(contributionValue))
                     capital.classList.add('_active');
                     facilities.classList.add('_active');
-                    capitalInput.value = numberReplace(String(minCapital));
-                    facilitiesInput.value = numberReplace(String(contributionValue - minCapital));
                     return;
+                } else {
+                    capitalInput.value = numberReplace(String(minCapital));
+                    capital.classList.add('_active');
                 }
             }
 
@@ -333,23 +299,9 @@ const mortgage = () => {
                 }
 
                 const sum = Number(capitalInput.value.replace(/\s/g, '')) + Number(facilitiesInput.value.replace(/\s/g, ''));
-                if (priceObject.dataset.name === 'Стоимость недвижимости') {
-                    if (sum > Number(priceObject.dataset.value) * 90 / 100) {
-                        validateCreateError(facilities, 'Первоначальный взнос не может быть больше 90% от стоимости недвижимости');
-                        result = false;
-                    }
-                }
-                if (priceObject.dataset.name === 'Размер платежа') {
-                    const priceObjectValue = +containerAdd.querySelector('.filter-dropdown--mortgage-calc').dataset.value;
-                    const term = +containerAdd.querySelector('.object-calc-mort__term .filter-range-one__nav input').value.trim();
-                    const initialFee = containerAdd.querySelector('.object-calc-mort__contribution .filter-range-one__nav input').value.trim().replace(/\s/g, '');
-                    const prc = containerAdd.querySelector('.field-static .field-static__text').textContent;
-                    const prcValue = (prc.replace('от ', '').replace('%', '').replace(',', '.').trim());
-                    const value = Number(getPayment2(priceObjectValue, initialFee, term, prcValue).replace(/\s/g, ''));
-                    if (sum > value * 90 / 100) {
-                        validateCreateError(facilities, 'Первоначальный взнос не может быть больше 90% от стоимости недвижимости');
-                        result = false;
-                    }
+                if (sum > Number(priceObject.dataset.value) * 90 / 100) {
+                    validateCreateError(facilities, 'Первоначальный взнос не может быть больше 90% от стоимости недвижимости');
+                    result = false;
                 }
 
                 return result;
@@ -357,25 +309,11 @@ const mortgage = () => {
 
             function validateObjectPrice() {
                 validateRemoveError(priceObject);
-                if (priceObject.dataset.name === 'Стоимость недвижимости') {
-                    if (priceObject.dataset.value < 200000) {
-                        validateCreateError(priceObject, 'Стоимость не может быть меньше 200 000 ₽');
-                        meternalCapital.querySelector('.filter-range-one').style.pointerEvents = 'none';
-                        return false;
-                    } else {
-                        meternalCapital.querySelector('.filter-range-one').style.pointerEvents = 'all';
-                        return true;
-                    }
-                }
-                if (priceObject.dataset.name === 'Размер платежа') {
-                    if (priceObject.dataset.value < 15000) {
-                        validateCreateError(priceObject, 'Размер платежа не может быть меньше 15 000 ₽');
-                        meternalCapital.querySelector('.filter-range-one').style.pointerEvents = 'none';
-                        return false;
-                    } else {
-                        meternalCapital.querySelector('.filter-range-one').style.pointerEvents = 'all';
-                        return true;
-                    }
+                if (priceObject.dataset.value < 200000) {
+                    validateCreateError(priceObject, 'Стоимость не может быть меньше 200 000 ₽');
+                    return false;
+                } else {
+                    return true;
                 }
             }
             const targetCredit = containerAdd.querySelector('.object-calc-mort__target-credit');

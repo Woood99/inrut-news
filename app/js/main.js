@@ -4632,6 +4632,7 @@ const bankOffer = () => {
   const items = document.querySelectorAll('.bank-offer');
   items.forEach(item => {
     const choiceContainer = item.querySelector('.bank-offer__choice');
+    const additionalItems = item.querySelectorAll('.bank-offer__additional-item');
     const infoItems = item.querySelectorAll('.bank-offer__info-item');
     const bid = infoItems[0].querySelector('div > span');
     const monthPayment = infoItems[1].querySelector('div > span');
@@ -4652,7 +4653,7 @@ const bankOffer = () => {
           bid.textContent = currentBid;
         }
 
-        // ПРИМЕР (НУЖНА ФОРМУЛА)
+        // ПРИМЕР (нужна формула ежес. платежа и переплаты)
         if (item.classList.contains('bank-offer--absolutbank')) {
           const choiceItems = choiceContainer.querySelectorAll('.bank-offer__choice-item');
           if (choiceItem === choiceItems[0]) {
@@ -4686,6 +4687,21 @@ const bankOffer = () => {
         }
       });
     }
+    additionalItems.forEach(item => {
+      const btn = item.querySelector('.bank-offer__additional-item__btn');
+      const descr = item.querySelector('.bank-offer__additional-item__descr');
+      btn.addEventListener('click', () => {
+        if (!btn.classList.contains('_active')) {
+          btn.classList.add('_active');
+          btn.textContent = 'Скрыть';
+          descr.removeAttribute('hidden');
+        } else {
+          btn.classList.remove('_active');
+          btn.textContent = 'Подробнее';
+          descr.setAttribute('hidden', '');
+        }
+      });
+    });
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (bankOffer);

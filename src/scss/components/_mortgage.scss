@@ -240,6 +240,7 @@
         display: flex;
         >div:nth-child(1){
             padding-top: 13px;
+            white-space: nowrap;
         }
     }
 
@@ -280,6 +281,41 @@
             right: 8px;
         }
     }
+    &__additional{
+        margin-top: 48px;
+    }
+    &__additional-item{
+        display: flex;
+    align-items: start;
+        justify-content: space-between;
+            &__title{
+                color: var(--white);
+            }
+            &__descr{
+                color: var(--white);
+                margin-top: 8px;
+            }
+            &__btn{
+                margin-top: 8px;
+                color: var(--blue);
+            }
+            .col{
+                &:nth-child(2){
+                    margin-left: 24px;
+                    display: flex;
+                    align-items: center;
+                    >span{
+                        margin-right: 24px;
+                    }
+                }
+            }
+
+            &:not(:last-child){
+                margin-bottom: 24px;
+                padding-bottom: 24px;
+                border-bottom: 1px dotted var(--white);
+            }
+    }
     &--rosbankdom {
         background-color: #c60227;
     }
@@ -288,6 +324,9 @@
     }
     &--absolutbank{
         background-color: #ff6602;
+    }
+    &--sberbank{
+        background-color: #0ea015;
     }
 }
 

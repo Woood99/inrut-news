@@ -22571,8 +22571,8 @@ textarea.input-reset {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -ms-grid-columns: 93px 16.3043478261% 28.2608695652% 1fr;
-  grid-template-columns: 93px 16.3043478261% 28.2608695652% 1fr;
+  -ms-grid-columns: 93px 21.7391304348% 28.2608695652% 1fr;
+  grid-template-columns: 93px 21.7391304348% 28.2608695652% 1fr;
   grid-column-gap: 32px;
   padding: 16px;
 }
@@ -22631,10 +22631,6 @@ textarea.input-reset {
   }
 }
 .room-info-card__title {
-  font-size: var(--default-fz);
-  line-height: var(--default-lh);
-  font-weight: 500;
-  color: var(--dark);
   -webkit-transition: color 0.4s ease-in-out;
   -o-transition: color 0.4s ease-in-out;
   transition: color 0.4s ease-in-out;
@@ -22665,6 +22661,11 @@ textarea.input-reset {
 }
 .room-info-card__price-new {
   margin-top: 2px;
+}
+.room-info-card__price-new span:nth-child(1) {
+  -webkit-transition: color 0.4s ease-in-out;
+  -o-transition: color 0.4s ease-in-out;
+  transition: color 0.4s ease-in-out;
 }
 .room-info-card__price-new span:nth-child(2) {
   color: var(--primaryTwo);
@@ -22825,6 +22826,9 @@ textarea.input-reset {
   }
   .room-info-card:hover .room-info-card__favorite svg {
     fill: var(--blue);
+  }
+  .room-info-card:hover .room-info-card__price-new > span:nth-child(1) {
+    color: var(--blue);
   }
 }
 @media (max-width: 1212px) {
@@ -34158,12 +34162,12 @@ textarea.input-reset {
 }
 
 .bank-offer {
-  background-color: var(--dark);
+  background-color: var(--white);
   -webkit-box-shadow: var(--shadow-primary);
   box-shadow: var(--shadow-primary);
+  border: 1px solid var(--primary100);
   border-radius: 12px;
   padding: 24px;
-  color: var(--white);
 }
 .bank-offer__top {
   display: -webkit-box;
@@ -34182,7 +34186,6 @@ textarea.input-reset {
   align-items: center;
 }
 .bank-offer__name > span {
-  color: var(--white);
   margin-left: 16px;
 }
 .bank-offer__icon {
@@ -34209,9 +34212,6 @@ textarea.input-reset {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-}
-.bank-offer__price > span {
-  color: var(--white);
 }
 .bank-offer__price .secondary-tooltip__content {
   min-width: 200px;
@@ -34331,7 +34331,7 @@ textarea.input-reset {
 }
 .bank-offer__choice-item._active {
   opacity: 1;
-  background-color: rgba(255, 255, 255, 0.35);
+  background-color: rgba(0, 150, 255, 0.08);
   border: 1px solid transparent;
 }
 .bank-offer__choice-item .radio-primary__item {
@@ -34380,18 +34380,6 @@ textarea.input-reset {
   margin-bottom: 24px;
   padding-bottom: 24px;
   border-bottom: 1px dotted var(--white);
-}
-.bank-offer--rosbankdom {
-  background-color: #c60227;
-}
-.bank-offer--alfabank {
-  background-color: #df1414;
-}
-.bank-offer--absolutbank {
-  background-color: #ff6602;
-}
-.bank-offer--sberbank {
-  background-color: #0ea015;
 }
 
 .bank-offer-disabled {

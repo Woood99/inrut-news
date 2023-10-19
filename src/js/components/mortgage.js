@@ -12,8 +12,6 @@ const mortgage = () => {
     const popupContainerAdd = document.querySelector('.popup-primary--interest-rate-2 .interest-rate--add');
 
     const siteContainer = document.querySelector('.site-container--mortgage');
-    const mortgageSuitableYes = siteContainer.querySelector('[data-mortgage-suitable="yes"]');
-    const mortgageSuitableNo = siteContainer.querySelector('[data-mortgage-suitable="no"]');
     if (containerAdd && popupContainerAdd) {
         const list = containerAdd.querySelector('.object-calc-mort__list');
         const listPopup = popupContainerAdd.querySelector('.interest-rate__wrapper');
@@ -46,6 +44,8 @@ const mortgage = () => {
             })
 
             // ПРИМЕР
+            const mortgageSuitableYes = siteContainer.querySelector('[data-mortgage-suitable="yes"]');
+            const mortgageSuitableNo = siteContainer.querySelector('[data-mortgage-suitable="no"]');
             if (item.dataset.mortgageCard == 4) {
                 mortgageSuitableYes.querySelectorAll('.mortgage-suitable__item').forEach((item, index) => {
                     if (index !== 0) item.setAttribute('hidden', '');

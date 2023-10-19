@@ -4694,9 +4694,21 @@ const bankOffer = () => {
         }
       });
     }
+    const selector = item.querySelector('.bank-offer__selector');
+    if (selector) {
+      moreDescr(selector.querySelector('.bank-offer__selector-btn'), selector.querySelector('.bank-offer__selector-descr'));
+      const toggleInput = selector.querySelector('.bank-offer__selector-toggle input');
+      const selectorContent = selector.querySelector('.bank-offer__selector-content');
+      toggleInput.addEventListener('change', () => {
+        toggleInput.checked ? selectorContent.removeAttribute('hidden') : selectorContent.setAttribute('hidden', '');
+      });
+    }
     additionalItems.forEach(item => {
       const btn = item.querySelector('.bank-offer__additional-item__btn');
       const descr = item.querySelector('.bank-offer__additional-item__descr');
+      moreDescr(btn, descr);
+    });
+    function moreDescr(btn, descr) {
       btn.addEventListener('click', () => {
         if (!btn.classList.contains('_active')) {
           btn.classList.add('_active');
@@ -4708,7 +4720,7 @@ const bankOffer = () => {
           descr.setAttribute('hidden', '');
         }
       });
-    });
+    }
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (bankOffer);

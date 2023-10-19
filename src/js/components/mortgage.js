@@ -5,12 +5,15 @@ import {
 import numberReplace from "../modules/numberReplace";
 
 const mortgage = () => {
-    let resultMortgage;
     const containerOne = document.querySelector('.object-calc-mort--one');
     const popupContainerOne = document.querySelector('.popup-primary--interest-rate-1 .interest-rate');
 
     const containerAdd = document.querySelector('.object-calc-mort--add');
     const popupContainerAdd = document.querySelector('.popup-primary--interest-rate-2 .interest-rate--add');
+
+    const siteContainer = document.querySelector('.site-container--mortgage');
+    const mortgageSuitableYes = siteContainer.querySelector('[data-mortgage-suitable="yes"]');
+    const mortgageSuitableNo = siteContainer.querySelector('[data-mortgage-suitable="no"]');
     if (containerAdd && popupContainerAdd) {
         const list = containerAdd.querySelector('.object-calc-mort__list');
         const listPopup = popupContainerAdd.querySelector('.interest-rate__wrapper');
@@ -35,7 +38,6 @@ const mortgage = () => {
             containerTwo.forEach(el => {
                 +item.dataset.mortgageCard === +el.dataset.mortgageCard ? el.classList.add('_active') : el.classList.remove('_active');
             });
-
             container.forEach(el => {
                 if (+item.dataset.mortgageCard === +el.dataset.mortgageCard) {
                     const prc = el.querySelector('span:nth-child(2)').textContent;
@@ -43,8 +45,20 @@ const mortgage = () => {
                 }
             })
 
-            if (containerAdd.querySelector('.object-calc-mort__contribution')) {
-                resultMortgage();
+            // ПРИМЕР
+            if (item.dataset.mortgageCard == 4) {
+                mortgageSuitableYes.querySelectorAll('.mortgage-suitable__item').forEach((item, index) => {
+                    if (index !== 0) item.setAttribute('hidden', '');
+                })
+                mortgageSuitableNo.removeAttribute('hidden');
+                mortgageSuitableNo.querySelectorAll('.mortgage-suitable__item').forEach(item => {
+                    item.removeAttribute('hidden');
+                })
+            } else {
+                mortgageSuitableNo.setAttribute('hidden','');
+                mortgageSuitableYes.querySelectorAll('.mortgage-suitable__item').forEach(item => {
+                    item.removeAttribute('hidden');
+                })
             }
         }
     }
@@ -66,75 +80,6 @@ const mortgage = () => {
     if (containerAdd) {
         const meternalCapital = containerAdd.querySelector('.object-calc-mort__contribution');
         if (meternalCapital) {
-
-            resultMortgage = () => {
-                setTimeout(() => {
-                    const priceObjectValue = +containerAdd.querySelector('.filter-dropdown--mortgage-calc').dataset.value;
-                    const priceObjectName = containerAdd.querySelector('.filter-dropdown--mortgage-calc').dataset.name;
-                    const term = +containerAdd.querySelector('.object-calc-mort__term .filter-range-one__nav input').value.trim();
-                    const initialFee = containerAdd.querySelector('.object-calc-mort__contribution .filter-range-one__nav input').value.trim().replace(/\s/g, '');
-                    const prc = containerAdd.querySelector('.field-static .field-static__text').textContent;
-                    const bottom = containerAdd.querySelector('.object-calc-mort__info');
-                    const bottomSum = bottom.querySelector('span:nth-child(1)');
-                    const bottomPrc = bottom.querySelector('span:nth-child(2)');
-                    const bottomMonth = bottom.querySelector('span:nth-child(3)');
-
-                    if (priceObjectName === 'Стоимость недвижимости') {
-                        bottomSum.innerHTML = `
-                            Сумма кредита
-                            <span>${numberReplace(String(priceObjectValue - initialFee))} ₽</span>
-                        `;
-                        bottomPrc.innerHTML = `
-                            Процентная ставка
-                            <span>${prc.replace('от ', '')}</span>
-                        `;
-                        const prcValue = (prc.replace('от ', '').replace('%', '').replace(',', '.').trim());
-                        bottomMonth.innerHTML = `
-                            Ежемесячный платеж
-                            <span>${getPayment(priceObjectValue,initialFee, term, prcValue)} ₽/мес.</span>
-                        `;
-                    }
-                    if (priceObjectName === 'Размер платежа') {
-                        const prcValue = (prc.replace('от ', '').replace('%', '').replace(',', '.').trim());
-                        bottomSum.innerHTML = `
-                            Ежемесячный платеж
-                            <span>${numberReplace(String(priceObjectValue))} ₽</span>
-                        `;
-                        bottomPrc.innerHTML = `
-                            Процентная ставка
-                            <span>${prc.replace('от ', '')}</span>
-                        `;
-                        bottomMonth.innerHTML = `
-                        Стоимость недвижимости
-                            <span>${getPayment2(priceObjectValue,initialFee,term,prcValue)} ₽</span>
-                    `;
-                    }
-                }, 1000);
-            }
-
-            function getPayment(priceObject, initialFee, period, rate) {
-                const month = (rate / 12) / 100;
-                const koef = (month * (Math.pow(1 + month, period * 12))) / (Math.pow(1 + month, period * 12) - 1);
-                const result = (priceObject - initialFee) * koef;
-
-                return numberReplace(result.toFixed());
-            };
-
-
-            function getPayment2(priceMonth, initialFee, period, rate) {
-                var MonthlyPaymentAmount = priceMonth;
-                var APR = rate / 100;
-                var InterestRate = (APR / 12);
-                let result = 0;
-                for (var nMonths = 12; nMonths <= (period * 12); nMonths += 12) {
-                    const TotalAmountOfCredit = (MonthlyPaymentAmount / InterestRate) * (1 - Math.pow((1 + InterestRate), (-nMonths)));
-                    result = TotalAmountOfCredit;
-                }
-                result += +initialFee;
-                return numberReplace(String(parseInt(result)));
-            }
-
-
 
             const contributionInput = meternalCapital.querySelector('input');
             const checkbox = meternalCapital.querySelector('.toggle-checkbox input');
@@ -175,7 +120,6 @@ const mortgage = () => {
                     labelClearBtnUpdate(facilitiesInput.closest('.input-text'));
                     priceObject.setAttribute('data-value', item.closest('.filter-dropdown__item').querySelector('input').value.replace(/\s/g, ''));
                     validate();
-                    resultMortgage();
                 })
             })
 
@@ -189,7 +133,6 @@ const mortgage = () => {
                 capitalPrc.textContent = `${Math.floor(result)}%`;
                 labelClearBtnUpdate(capitalInput.closest('.input-text'));
                 labelClearBtnUpdate(facilitiesInput.closest('.input-text'));
-                resultMortgage();
             })
 
             checkbox.addEventListener('change', () => {
@@ -216,7 +159,6 @@ const mortgage = () => {
                     meternalCapital.querySelector('.filter-range-one__inner').noUiSlider.set(0);
                 }
                 validate();
-                resultMortgage();
             });
 
             [capitalInput, facilitiesInput].forEach(input => {
@@ -225,7 +167,6 @@ const mortgage = () => {
                     labelClearBtnUpdate(input.closest('.input-text'));
                     updateFee();
                     validate();
-                    resultMortgage();
                 })
 
                 const clearBtn = input.closest('.input-text__label').querySelector('.input-text__clear')
@@ -237,7 +178,6 @@ const mortgage = () => {
                             labelClearBtnUpdate(input.closest('.input-text'));
                             updateFee();
                             validate();
-                            resultMortgage();
                         }
                     })
                 }
@@ -319,8 +259,8 @@ const mortgage = () => {
             const targetCredit = containerAdd.querySelector('.object-calc-mort__target-credit');
             const targetCreditMap = {
                 'Квартира в новостройке': [
-                    [1, 2, 3, 4, 5],
-                    [5]
+                    [1, 2, 3, 4, 5, 6],
+                    [1]
                 ],
                 'Квартира на вторичном рынке': [
                     [1, 4],
@@ -383,42 +323,12 @@ const mortgage = () => {
                         textPrc.textContent = card.querySelector('span:nth-child(2)').textContent.trim();
                     }
                 })
-
-                resultMortgage();
             })
 
             const term = containerAdd.querySelector('.object-calc-mort__term');
             term.querySelector('.filter-range-one__inner').noUiSlider.on('update', (value) => {
                 if (!priceObject.classList.contains('_init')) {
                     return;
-                }
-
-                if (priceObject.dataset.name === 'Стоимость недвижимости') {
-                    const valueMax = priceObject.dataset.value * 90 / 100;
-                    meternalCapitalSlider.updateOptions({
-                        start: 0,
-                        range: {
-                            min: 0,
-                            max: valueMax
-                        }
-                    })
-                }
-                if (priceObject.dataset.name === 'Размер платежа') {
-                    const priceObjectValue = +containerAdd.querySelector('.filter-dropdown--mortgage-calc .filter-dropdown__item.active input').value.replace(/\s/g, '');
-                    const term = +containerAdd.querySelector('.object-calc-mort__term .filter-range-one__nav input').value.trim();
-                    const initialFee = containerAdd.querySelector('.object-calc-mort__contribution .filter-range-one__nav input').value.trim().replace(/\s/g, '');
-                    const prc = containerAdd.querySelector('.field-static .field-static__text').textContent;
-                    const prcValue = (prc.replace('от ', '').replace('%', '').replace(',', '.').trim());
-                    const value = Number(getPayment2(priceObjectValue, initialFee, term, prcValue).replace(/\s/g, ''));
-
-                    const valueMax = value * 90 / 100;
-                    meternalCapitalSlider.updateOptions({
-                        start: 0,
-                        range: {
-                            min: 0,
-                            max: valueMax
-                        }
-                    })
                 }
             })
 
@@ -452,7 +362,6 @@ const mortgage = () => {
                             }
 
                             const itemsActive = container.querySelectorAll('.bank-offer._active');
-                            const siteContainer = document.querySelector('.site-container--mortgage');
                             const mortgageBottom = siteContainer.querySelector('.mortgage-bottom');
                             siteContainer.style.paddingBottom = 'none'
                             const maxActiveItems = 4;

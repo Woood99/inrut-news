@@ -25,8 +25,10 @@
 
         &__list {
             margin-top: 24px;
+            padding-top: 24px;
+            padding-bottom: 0;
             border-bottom: none;
-            padding: 0;
+            border-top: 1px solid rgba(122, 127, 170, 0.2);
         }
 
         &__wrapper {
@@ -95,7 +97,7 @@
 
         &__contribution {
             position: relative;
-            margin-bottom: 86px;
+            margin-bottom: 56px;
 
             .toggle-checkbox {
                 position: absolute;
@@ -137,8 +139,11 @@
     border-radius: 12px;
     padding: 24px;
     min-width: 0;
-
-    &__title {}
+    &__container{
+        &:not(:first-child){
+            margin-top: 32px;
+        }
+    }
 
     &__list {
         margin-top: 24px;
@@ -388,6 +393,45 @@
         background-color: #0ea015;
     }
 }
+
+.bank-offer-disabled {
+    background-color: rgba(#242629,0.12);
+    box-shadow: var(--shadow-primary);
+    border-radius: 12px;
+    padding: 24px;
+    color: var(--dark);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__name {
+
+        display: flex;
+        align-items: center;
+        opacity: 0.6;
+        >span {
+            margin-left: 16px;
+        }
+    }
+
+    &__icon {
+        background-color: var(--white);
+        border-radius: 50%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 40px;
+        height: 40px;
+    }
+
+    &__descr {
+        max-width: 66%;
+        opacity: 0.6;
+    }
+}
+
 
 
 .mortgage-bottom {

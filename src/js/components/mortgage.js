@@ -3,7 +3,6 @@ import {
     validateCreateError
 } from './formValidate';
 import numberReplace from "../modules/numberReplace";
-
 const mortgage = () => {
     const containerOne = document.querySelector('.object-calc-mort--one');
     const popupContainerOne = document.querySelector('.popup-primary--interest-rate-1 .interest-rate');

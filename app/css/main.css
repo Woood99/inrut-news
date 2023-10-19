@@ -1105,6 +1105,7 @@ textarea.input-reset {
   transition: 0.4s ease;
   height: 25px;
   width: 45px;
+  background-color: #a7a8a9;
   border: 1px solid #e4e4e4;
   border-radius: 60px;
 }
@@ -1133,7 +1134,7 @@ textarea.input-reset {
   background: whitesmoke;
   height: 23px;
   width: 23px;
-  top: 1px;
+  top: 0;
   left: 0;
   border-radius: 50%;
 }
@@ -29428,8 +29429,7 @@ textarea.input-reset {
   grid-column: 1/-1;
 }
 .object-calc-mort__list {
-  margin-top: 24px;
-  padding-bottom: 24px;
+  margin-top: 16px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -29439,7 +29439,6 @@ textarea.input-reset {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   gap: 16px;
-  border-bottom: 1px solid rgba(122, 127, 170, 0.2);
 }
 @media (max-width: 1212px) {
   .object-calc-mort__list {
@@ -29452,6 +29451,13 @@ textarea.input-reset {
   -ms-flex-positive: 1;
   flex-grow: 1;
   height: 42px;
+  border-radius: 12px;
+  border: none;
+  background-color: var(--white);
+  border: 1px solid var(--primary200);
+  position: relative;
+}
+.object-calc-mort__btn:not(.secondary-tooltip) {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -29462,11 +29468,6 @@ textarea.input-reset {
   -ms-flex-pack: start;
   justify-content: start;
   padding: 0 20px 0 16px;
-  border-radius: 12px;
-  border: none;
-  background-color: var(--white);
-  border: 1px solid var(--primary200);
-  position: relative;
 }
 .object-calc-mort__btn span {
   font-size: var(--default-fz);
@@ -29558,11 +29559,45 @@ textarea.input-reset {
   .object-calc-mort__btn:hover div svg {
     fill: none !important;
   }
+  .object-calc-mort__btn.secondary-tooltip:hover .secondary-tooltip__content {
+    -webkit-transform: translateX(-50%) translateY(0);
+    -ms-transform: translateX(-50%) translateY(0);
+    transform: translateX(-50%) translateY(0);
+  }
 }
 @media (max-width: 768px) {
   .object-calc-mort__btn {
     max-width: none;
   }
+}
+.object-calc-mort__btn.secondary-tooltip {
+  width: auto;
+}
+.object-calc-mort__btn .secondary-tooltip__btn {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border-radius: none;
+  position: static;
+  padding: 0 20px 0 16px;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+}
+.object-calc-mort__btn .secondary-tooltip__content {
+  width: auto;
+  height: auto;
+  top: calc(100% + 2px);
+  left: 50%;
+  right: auto;
+  border-radius: 10px;
+  bottom: auto;
+  width: 125%;
+  -webkit-transform: translateX(-50%) translateY(5px);
+  -ms-transform: translateX(-50%) translateY(5px);
+  transform: translateX(-50%) translateY(5px);
 }
 .object-calc-mort__info {
   color: var(--primaryTwo);
@@ -34041,13 +34076,6 @@ textarea.input-reset {
   box-shadow: none;
   padding: 0;
 }
-.mortgage .object-calc-mort__list {
-  margin-top: 24px;
-  padding-top: 24px;
-  padding-bottom: 0;
-  border-bottom: none;
-  border-top: 1px solid rgba(122, 127, 170, 0.2);
-}
 .mortgage .object-calc-mort__wrapper {
   margin-top: 24px;
   padding-top: 24px;
@@ -34232,12 +34260,21 @@ textarea.input-reset {
   fill: var(--white);
   display: none;
 }
+.bank-offer__btn._active {
+  background-color: var(--blue);
+  color: var(--white);
+}
 @media (min-width: 1213px) {
+  .bank-offer__btn._active:hover {
+    background-color: var(--blue-dark);
+  }
   .bank-offer__btn._active:hover svg:nth-child(1) {
     display: none;
+    stroke: var(--white) !important;
   }
   .bank-offer__btn._active:hover svg:nth-child(2) {
     display: block;
+    fill: var(--white) !important;
   }
 }
 .bank-offer__btn._disabled {
@@ -34245,7 +34282,7 @@ textarea.input-reset {
   cursor: default;
 }
 .bank-offer__info {
-  margin-top: 32px;
+  margin-top: 48px;
   display: -ms-grid;
   display: grid;
   grid-auto-columns: -webkit-min-content;
@@ -34281,11 +34318,6 @@ textarea.input-reset {
 .bank-offer__selector {
   margin-top: 32px;
 }
-.bank-offer__selector:not(:last-child) {
-  margin-bottom: 24px;
-  padding-bottom: 24px;
-  border-bottom: 1px dotted var(--primary200);
-}
 .bank-offer__selector-content {
   margin-top: 16px;
   display: -webkit-box;
@@ -34318,7 +34350,31 @@ textarea.input-reset {
 }
 .bank-offer__selector-btn {
   margin-top: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   color: var(--blue);
+  font-size: var(--small-fz);
+  line-height: 1;
+}
+.bank-offer__selector-btn svg {
+  margin-left: 5px;
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  transition: -webkit-transform 0.2s ease-in-out;
+  -o-transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+}
+.bank-offer__selector-btn._active svg {
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
 }
 .bank-offer__choice {
   margin-left: 24px;
@@ -34345,7 +34401,6 @@ textarea.input-reset {
   padding: 12px;
   opacity: 0.7;
   min-width: 140px;
-  font-weight: 500;
   position: relative;
   cursor: pointer;
   -webkit-transition: opacity 0.4s ease-in-out, background-color 0.4s ease-in-out, border 0.4s ease-in-out;
@@ -34386,11 +34441,15 @@ textarea.input-reset {
   opacity: 0.7;
   min-width: 140px;
   height: 100%;
-  font-weight: 500;
   position: relative;
   cursor: pointer;
   font-size: var(--little-big-fz);
   line-height: var(--little-big-lh);
+}
+.bank-offer__additional {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px dotted var(--primary200);
 }
 .bank-offer__additional-item {
   display: -webkit-box;
@@ -34408,7 +34467,31 @@ textarea.input-reset {
 }
 .bank-offer__additional-item__btn {
   margin-top: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   color: var(--blue);
+  font-size: var(--small-fz);
+  line-height: 1;
+}
+.bank-offer__additional-item__btn svg {
+  margin-left: 5px;
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  transition: -webkit-transform 0.2s ease-in-out;
+  -o-transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+}
+.bank-offer__additional-item__btn._active svg {
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
 }
 .bank-offer__additional-item .col:nth-child(2) {
   margin-left: 24px;
@@ -34421,6 +34504,12 @@ textarea.input-reset {
 }
 .bank-offer__additional-item .col:nth-child(2) > span {
   margin-right: 24px;
+  -webkit-transition: color 0.4s ease-in-out;
+  -o-transition: color 0.4s ease-in-out;
+  transition: color 0.4s ease-in-out;
+}
+.bank-offer__additional-item .col:nth-child(2) > span._active {
+  color: var(--blue);
 }
 .bank-offer__additional-item:not(:last-child) {
   margin-bottom: 24px;

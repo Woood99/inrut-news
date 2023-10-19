@@ -189,8 +189,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==================================================
 
     dropdown('.dots-dropdown', '.dots-dropdown__target');
-    dropdownItems('.your-app-bid__item--dropdown', 'button', 'Меньше');
-    dropdownItems('.object-characteristics__container', '.object-characteristics__more', 'Меньше');
+    dropdownItems('.your-app-bid__item--dropdown', 'button', 'Скрыть');
+    dropdownItems('.object-characteristics__container', '.object-characteristics__more', 'Скрыть');
     dropdownDown('.object-data__text', '.object-data__more');
 
     // ==================================================

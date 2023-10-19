@@ -1,7 +1,10 @@
+// import numberToAnim from "../modules/numberToAnim";
+
 const bankOffer = () => {
     const items = document.querySelectorAll('.bank-offer');
     items.forEach(item => {
         const choiceContainer = item.querySelector('.bank-offer__choice');
+        const additional = item.querySelector('.bank-offer__additional');
         const additionalItems = item.querySelectorAll('.bank-offer__additional-item');
 
         const infoItems = item.querySelectorAll('.bank-offer__info-item');
@@ -76,7 +79,13 @@ const bankOffer = () => {
             const toggleInput = selector.querySelector('.bank-offer__selector-toggle input');
             const selectorContent = selector.querySelector('.bank-offer__selector-content');
             toggleInput.addEventListener('change', () => {
-                toggleInput.checked ? selectorContent.removeAttribute('hidden') : selectorContent.setAttribute('hidden', '');
+                if (toggleInput.checked) {
+                    selectorContent.removeAttribute('hidden');
+                    if (additional) additional.removeAttribute('hidden');
+                } else {
+                    selectorContent.setAttribute('hidden', '');
+                    if (additional) additional.setAttribute('hidden', '');
+                }
             })
         }
 
@@ -84,18 +93,28 @@ const bankOffer = () => {
             const btn = item.querySelector('.bank-offer__additional-item__btn');
             const descr = item.querySelector('.bank-offer__additional-item__descr');
             moreDescr(btn, descr);
+            const toggle = item.querySelector('.toggle-checkbox');
+            const toggleInput = toggle.querySelector('input');
+            const span = toggle.previousElementSibling;
+            toggleInput.addEventListener('change',() => {
+                if (toggleInput.checked) {
+                    span.classList.add('_active');
+                } else {
+                    span.classList.remove('_active');
+                }
+            })
         })
 
         function moreDescr(btn, descr) {
             btn.addEventListener('click', () => {
                 if (!btn.classList.contains('_active')) {
                     btn.classList.add('_active');
-                    btn.textContent = 'Скрыть';
+                    btn.querySelector('span').textContent = 'Скрыть';
 
                     descr.removeAttribute('hidden');
                 } else {
                     btn.classList.remove('_active');
-                    btn.textContent = 'Подробнее';
+                    btn.querySelector('span').textContent = 'Подробнее';
 
                     descr.setAttribute('hidden', '');
                 }

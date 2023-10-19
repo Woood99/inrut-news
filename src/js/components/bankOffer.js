@@ -14,6 +14,7 @@ const bankOffer = () => {
         if (choiceContainer) {
             choiceContainer.addEventListener('click', (e) => {
                 const choiceItem = e.target.closest('.bank-offer__choice-item');
+                const choiceBtn = e.target.closest('.bank-offer__choice-btn');
                 if (choiceItem) {
                     choiceContainer.querySelectorAll('.bank-offer__choice-item').forEach(item => {
                         item.classList.remove('_active');
@@ -25,7 +26,12 @@ const bankOffer = () => {
                     const currentBid = choiceItem.querySelector('span:nth-child(1)').textContent;
                     bid.textContent = currentBid;
                 }
-
+                if (choiceBtn) {
+                    choiceContainer.querySelectorAll('.bank-offer__choice-item').forEach(item => {
+                        item.removeAttribute('hidden');
+                    })
+                    choiceBtn.remove();
+                }
 
                 // ПРИМЕР (нужна формула ежес. платежа и переплаты)
                 if (item.classList.contains('bank-offer--absolutbank')) {

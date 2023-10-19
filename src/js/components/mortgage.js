@@ -44,21 +44,28 @@ const mortgage = () => {
             })
 
             // ПРИМЕР
-            const mortgageSuitableYes = siteContainer.querySelector('[data-mortgage-suitable="yes"]');
-            const mortgageSuitableNo = siteContainer.querySelector('[data-mortgage-suitable="no"]');
-            if (item.dataset.mortgageCard == 4) {
-                mortgageSuitableYes.querySelectorAll('.mortgage-suitable__item').forEach((item, index) => {
-                    if (index !== 0) item.setAttribute('hidden', '');
-                })
-                mortgageSuitableNo.removeAttribute('hidden');
-                mortgageSuitableNo.querySelectorAll('.mortgage-suitable__item').forEach(item => {
-                    item.removeAttribute('hidden');
-                })
-            } else {
-                mortgageSuitableNo.setAttribute('hidden','');
-                mortgageSuitableYes.querySelectorAll('.mortgage-suitable__item').forEach(item => {
-                    item.removeAttribute('hidden');
-                })
+            if (siteContainer) {
+                const mortgageSuitable = siteContainer.querySelector('.mortgage-suitable');
+                const mortgageSuitableYes = siteContainer.querySelector('[data-mortgage-suitable="yes"]');
+                const mortgageSuitableNo = siteContainer.querySelector('[data-mortgage-suitable="no"]');
+                if (item.dataset.mortgageCard == 4) {
+                    mortgageSuitableYes.querySelectorAll('.mortgage-suitable__item').forEach((item, index) => {
+                        if (index !== 0) item.setAttribute('hidden', '');
+                    })
+                    mortgageSuitableNo.removeAttribute('hidden');
+                    mortgageSuitableNo.querySelectorAll('.mortgage-suitable__item').forEach(item => {
+                        item.removeAttribute('hidden');
+                    })
+                } else {
+                    mortgageSuitableNo.setAttribute('hidden','');
+                    mortgageSuitableYes.querySelectorAll('.mortgage-suitable__item').forEach(item => {
+                        item.removeAttribute('hidden');
+                    })
+                }
+                // mortgageSuitable.classList.add('_load');
+                // setTimeout(() => {
+                //         mortgageSuitable.classList.remove('_load');
+                // }, 2000);
             }
         }
     }

@@ -154,6 +154,9 @@
             margin-bottom: 16px;
         }
     }
+    &._load{
+
+    }
 }
 
 .bank-offer {
@@ -192,7 +195,7 @@
 
     &__price {
         margin-left: auto;
-        margin-right: 16px;
+        margin-right: 24px;
 
         display: flex;
         align-items: center;
@@ -290,17 +293,20 @@
         >div:nth-child(1) {
             padding-top: 13px;
             white-space: nowrap;
+            p{
+                &:not(:last-child){
+                    margin-bottom: 4px;
+                }
+            }
         }
     }
 
     &__choice {
         margin-left: 24px;
-
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        gap: 8px;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-gap: 8px;
+        width: 100%;
     }
 
     &__choice-item {
@@ -311,11 +317,10 @@
         border-radius: 12px;
         padding: 12px;
         opacity: 0.7;
-        min-width: 125px;
+        min-width: 140px;
         font-weight: 500;
         position: relative;
         cursor: pointer;
-
         transition: opacity $transitionSpeed $transitionFunction,
             background-color $transitionSpeed $transitionFunction,
             border $transitionSpeed $transitionFunction;
@@ -331,8 +336,31 @@
             top: 8px;
             right: 8px;
         }
+        span{
+            font-size: var(--little-big-fz);
+            line-height: var(--little-big-lh);
+            &:not(:last-child){
+                margin-bottom: 4px;
+            }
+        }
     }
-
+    &__choice-btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border: 1px solid var(--primary200);
+        border-radius: 12px;
+        padding: 12px;
+        opacity: 0.7;
+        min-width: 140px;
+       height: 100%;
+        font-weight: 500;
+        position: relative;
+        cursor: pointer;
+        font-size: var(--little-big-fz);
+        line-height: var(--little-big-lh);
+    }
     &__additional {
         margin-top: 48px;
     }
@@ -343,11 +371,9 @@
         justify-content: space-between;
 
         &__title {
-            color: var(--white);
         }
 
         &__descr {
-            color: var(--white);
             margin-top: 8px;
         }
 

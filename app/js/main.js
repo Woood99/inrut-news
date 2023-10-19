@@ -4642,6 +4642,7 @@ const bankOffer = () => {
     if (choiceContainer) {
       choiceContainer.addEventListener('click', e => {
         const choiceItem = e.target.closest('.bank-offer__choice-item');
+        const choiceBtn = e.target.closest('.bank-offer__choice-btn');
         if (choiceItem) {
           choiceContainer.querySelectorAll('.bank-offer__choice-item').forEach(item => {
             item.classList.remove('_active');
@@ -4651,6 +4652,12 @@ const bankOffer = () => {
           choiceItem.querySelector('.radio-primary__input').checked = true;
           const currentBid = choiceItem.querySelector('span:nth-child(1)').textContent;
           bid.textContent = currentBid;
+        }
+        if (choiceBtn) {
+          choiceContainer.querySelectorAll('.bank-offer__choice-item').forEach(item => {
+            item.removeAttribute('hidden');
+          });
+          choiceBtn.remove();
         }
 
         // ПРИМЕР (нужна формула ежес. платежа и переплаты)
@@ -8918,24 +8925,32 @@ const mortgage = () => {
       });
 
       // ПРИМЕР
-      const mortgageSuitableYes = siteContainer.querySelector('[data-mortgage-suitable="yes"]');
-      const mortgageSuitableNo = siteContainer.querySelector('[data-mortgage-suitable="no"]');
-      if (item.dataset.mortgageCard == 4) {
-        mortgageSuitableYes.querySelectorAll('.mortgage-suitable__item').forEach((item, index) => {
-          if (index !== 0) item.setAttribute('hidden', '');
-        });
-        mortgageSuitableNo.removeAttribute('hidden');
-        mortgageSuitableNo.querySelectorAll('.mortgage-suitable__item').forEach(item => {
-          item.removeAttribute('hidden');
-        });
-      } else {
-        mortgageSuitableNo.setAttribute('hidden', '');
-        mortgageSuitableYes.querySelectorAll('.mortgage-suitable__item').forEach(item => {
-          item.removeAttribute('hidden');
-        });
+      if (siteContainer) {
+        const mortgageSuitable = siteContainer.querySelector('.mortgage-suitable');
+        const mortgageSuitableYes = siteContainer.querySelector('[data-mortgage-suitable="yes"]');
+        const mortgageSuitableNo = siteContainer.querySelector('[data-mortgage-suitable="no"]');
+        if (item.dataset.mortgageCard == 4) {
+          mortgageSuitableYes.querySelectorAll('.mortgage-suitable__item').forEach((item, index) => {
+            if (index !== 0) item.setAttribute('hidden', '');
+          });
+          mortgageSuitableNo.removeAttribute('hidden');
+          mortgageSuitableNo.querySelectorAll('.mortgage-suitable__item').forEach(item => {
+            item.removeAttribute('hidden');
+          });
+        } else {
+          mortgageSuitableNo.setAttribute('hidden', '');
+          mortgageSuitableYes.querySelectorAll('.mortgage-suitable__item').forEach(item => {
+            item.removeAttribute('hidden');
+          });
+        }
+        // mortgageSuitable.classList.add('_load');
+        // setTimeout(() => {
+        //         mortgageSuitable.classList.remove('_load');
+        // }, 2000);
       }
     }
   }
+
   if (containerOne && popupContainerOne) {
     const items = popupContainerOne.querySelectorAll('.interest-rate-card');
     items.forEach(item => {

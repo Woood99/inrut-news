@@ -3,6 +3,13 @@
         margin-top: 8px;
         background-color: var(--stand-bg);
         padding: 24px 0;
+        @media (max-width:$desktop){
+            padding: 62px 0 16px;
+            margin: 0; 
+        }
+        .container{
+            padding: 0;
+        }
     }
 
     &__cols {
@@ -10,6 +17,9 @@
         justify-content: space-between;
         grid-template-columns: 1fr 350px;
         grid-column-gap: 16px;
+        @media (max-width:$desktop){
+             grid-template-columns: 1fr; 
+        }
     }
 
     &__wrapper {
@@ -17,6 +27,9 @@
         box-shadow: var(--shadow-primary);
         padding: 32px 24px;
         border-radius: 12px;
+        @media (max-width:$desktop){
+             padding: 16px; 
+        }
     }
 
     &__images {
@@ -70,6 +83,9 @@
 
     &__title {
         margin-top: 32px;
+        @media (max-width:$smallTablet-max){
+             margin-top: 24px; 
+        }
     }
 
     &__content {
@@ -139,13 +155,20 @@
     .bid-user {
         &__avatar {
             --size: 95px;
+            @media (max-width:$smallTablet-max) {
+                --size: 57px;
+            }
         }
 
         &__btns {
             margin-top: 8px;
             width: 100%;
         }
-
+        &__btns{
+            @media (max-width:$smallTablet-max){
+                 margin-top: 16px; 
+            }
+        }
         &__btn {
             margin: 0;
 
@@ -153,10 +176,31 @@
                 margin-bottom: 16px;
             }
         }
+        &__name{
+            @media (max-width:$smallTablet-max){
+                 margin-top: 0; 
+            }
+        }
+        &__time{
+           @media (max-width:$smallTablet-max){
+            margin-bottom: 0; 
+           }
+        }
+        &__content{
+            @media (max-width:$smallTablet-max){
+                 margin: 0 0 0 16px; 
+                 align-self: center;
+            }
+        }
     }
 
     &__consultation {
         margin-top: 32px;
+    }
+    &__sidebar{
+        @media (max-width:$desktop){
+             margin-top: 16px; 
+        }
     }
 }
 

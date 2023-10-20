@@ -169,6 +169,7 @@
 
         display: flex;
         align-items: center;
+
         >span {
             margin-left: 16px;
             color: var(--white);
@@ -194,7 +195,9 @@
         display: flex;
         align-items: center;
 
-        >span {        color: var(--white);}
+        >span {
+            color: var(--white);
+        }
 
         .secondary-tooltip__content {
             min-width: 200px;
@@ -204,6 +207,7 @@
     &__btn {
         min-width: 100px;
         color: var(--white);
+
         svg {
             width: 20px;
             height: 20px;
@@ -289,9 +293,11 @@
     &__selector {
         margin-top: 32px;
     }
-    &__selector-title{
+
+    &__selector-title {
         color: var(--white);
     }
+
     &__selector-content {
         margin-top: 16px;
         display: flex;
@@ -494,6 +500,118 @@
 
     &--sberbank {
         background-color: #106d15;
+    }
+}
+
+.bank-offer-selector-list {
+
+    &__items {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 8px;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+
+        font-size: var(--default-fz);
+        line-height: var(--default-lh);
+
+        &:nth-child(1) {
+            margin-bottom: 8px;
+            opacity: 0.65;
+        }
+
+        >div,
+        span {
+            width: 140px;
+        }
+    }
+
+    &__btn {
+        height: auto;
+        padding: 8px 16px;
+        display: flex;
+        align-items: center;
+
+        height: 42px;
+        max-width: 100px;
+        border-radius: 12px;
+        background-color: var(--white);
+        border: 1px solid var(--primary200);
+        position: relative;
+
+        span {
+            font-size: var(--default-fz);
+            line-height: var(--default-lh);
+            font-weight: 400;
+            transition: color $transitionSpeed $transitionFunction;
+        }
+
+        div {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            --size: 20px;
+            width: var(--size);
+            height: var(--size);
+            flex: 0 0 var(--size);
+            border-radius: 50%;
+            background-color: var(--white);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-secondary);
+
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(2px);
+
+
+            transition: opacity $transitionSpeed $transitionFunction,
+                visibility $transitionSpeed $transitionFunction,
+                transform $transitionSpeed $transitionFunction;
+
+            svg {
+                width: 10px;
+                height: 10px;
+                stroke: var(--blue);
+                stroke-width: 1.5px;
+                fill: none;
+            }
+        }
+        @media (min-width:$desktop-min){
+             &:hover{
+                background-color: var(--blue);
+
+                span {
+                    color: var(--white);
+                }
+    
+                div {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateY(0);
+                }
+             } 
+        }
+        &._active {
+            background-color: var(--blue);
+
+            span {
+                color: var(--white);
+            }
+
+            div {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+        }
     }
 }
 

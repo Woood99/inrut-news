@@ -1,12 +1,25 @@
-const numberToAnim = (element,from,to,duration) => {
-    const start = new Date().getTime();
-    setTimeout(function () {
-        var now = (new Date().getTime()) - start;
-        var progress = now / duration;
-        var result = Math.floor((to - from) * progress + from);
-        element.textContent = progress < 1 ? result : to;
-        if (progress < 1) setTimeout(arguments.callee, 10);
-    }, 10);
-};
+import numberReplace from './numberReplace';
 
- export default numberToAnim;
+const numberToAnim = (element, from, to, stap, duration, prefix = undefined) => {
+    let result = from;
+    if (to) {
+        let interval = setInterval(() => {
+            if (result >= to) {
+                result = to;
+                element.textContent = finalReturn(result);
+                clearInterval(interval);
+            } else {
+                result += stap;
+                element.textContent = finalReturn(result);
+            }
+        }, duration);
+
+        function finalReturn(result) {
+            return prefix ? `${numberReplace(String(result))} ${prefix}` : numberReplace(String(result));
+        }
+    }
+
+}
+
+
+export default numberToAnim;

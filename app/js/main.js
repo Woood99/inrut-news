@@ -4628,7 +4628,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-// import numberToAnim from "../modules/numberToAnim";
+/* harmony import */ var _modules_numberToAnim__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modules/numberToAnim */ "./src/js/modules/numberToAnim.js");
 
 const bankOffer = () => {
   const items = document.querySelectorAll('.bank-offer');
@@ -4663,32 +4663,34 @@ const bankOffer = () => {
         }
 
         // ПРИМЕР (нужна формула ежес. платежа и переплаты)
-        if (item.classList.contains('bank-offer--absolutbank')) {
-          const choiceItems = choiceContainer.querySelectorAll('.bank-offer__choice-item');
-          if (choiceItem === choiceItems[0]) {
-            monthPayment.textContent = '33 932 ₽';
-          }
-          if (choiceItem === choiceItems[1]) {
-            monthPayment.textContent = '32 873 ₽';
-          }
-          if (choiceItem === choiceItems[2]) {
-            monthPayment.textContent = '31 819 ₽';
-          }
-          if (choiceItem === choiceItems[3]) {
-            monthPayment.textContent = '30 771 ₽';
-          }
-          if (choiceItem === choiceItems[4]) {
-            monthPayment.textContent = '29 729 ₽';
-          }
-          if (choiceItem === choiceItems[5]) {
-            monthPayment.textContent = '28 694 ₽';
-          }
-          if (choiceItem === choiceItems[6]) {
-            monthPayment.textContent = '27 667 ₽';
-          }
-        }
+        // if (item.classList.contains('bank-offer--absolutbank')) {
+
+        //     const choiceItems = choiceContainer.querySelectorAll('.bank-offer__choice-item');
+        //     if (choiceItem === choiceItems[0]) {
+        //         monthPayment.textContent = '33 932 ₽';
+        //     }
+        //     if (choiceItem === choiceItems[1]) {
+        //         monthPayment.textContent = '32 873 ₽';
+        //     }
+        //     if (choiceItem === choiceItems[2]) {
+        //         monthPayment.textContent = '31 819 ₽';
+        //     }
+        //     if (choiceItem === choiceItems[3]) {
+        //         monthPayment.textContent = '30 771 ₽';
+        //     }
+        //     if (choiceItem === choiceItems[4]) {
+        //         monthPayment.textContent = '29 729 ₽';
+        //     }
+        //     if (choiceItem === choiceItems[5]) {
+        //         monthPayment.textContent = '28 694 ₽';
+        //     }
+        //     if (choiceItem === choiceItems[6]) {
+        //         monthPayment.textContent = '27 667 ₽';
+        //     }
+        // }
       });
     }
+
     const selector = item.querySelector('.bank-offer__selector');
     if (selector) {
       moreDescr(selector.querySelector('.bank-offer__selector-btn'), selector.querySelector('.bank-offer__selector-descr'));
@@ -4729,6 +4731,28 @@ const bankOffer = () => {
           btn.classList.remove('_active');
           btn.querySelector('span').textContent = 'Подробнее';
           descr.setAttribute('hidden', '');
+        }
+      });
+    }
+    const selectorList = item.querySelector('.bank-offer-selector-list');
+    if (selectorList) {
+      const items = selectorList.querySelectorAll('.bank-offer-selector-list__item');
+      items.forEach(item => {
+        const btn = item.querySelector('.bank-offer-selector-list__btn');
+        const monthPayment = item.querySelector('[data-bank-offer-item-m-payment]');
+        const priceBid = item.querySelector('[data-bank-offer-item-b-price]');
+        const benefit = item.querySelector('[data-bank-offer-item-benefit]');
+        if (btn) {
+          btn.addEventListener('click', () => {
+            selectorList.querySelectorAll('.bank-offer-selector-list__btn').forEach(btn => btn.classList.remove('_active'));
+            btn.classList.add('_active');
+            if (!item.classList.contains('_init')) {
+              item.classList.add('_init');
+              (0,_modules_numberToAnim__WEBPACK_IMPORTED_MODULE_0__["default"])(monthPayment, 0, Number(monthPayment.dataset.bankOfferItemMPayment), 750, 2, '₽');
+              (0,_modules_numberToAnim__WEBPACK_IMPORTED_MODULE_0__["default"])(priceBid, 0, Number(priceBid.dataset.bankOfferItemBPrice), 1500, 1, '₽');
+              (0,_modules_numberToAnim__WEBPACK_IMPORTED_MODULE_0__["default"])(benefit, 0, Number(benefit.dataset.bankOfferItemBenefit), 2200, 1, '₽');
+            }
+          });
         }
       });
     }
@@ -12329,6 +12353,42 @@ const numberReplace = number => {
   return result === ' ' ? '' : result;
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (numberReplace);
+
+/***/ }),
+
+/***/ "./src/js/modules/numberToAnim.js":
+/*!****************************************!*\
+  !*** ./src/js/modules/numberToAnim.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _numberReplace__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./numberReplace */ "./src/js/modules/numberReplace.js");
+
+const numberToAnim = function (element, from, to, stap, duration) {
+  let prefix = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : undefined;
+  let result = from;
+  if (to) {
+    let interval = setInterval(() => {
+      if (result >= to) {
+        result = to;
+        element.textContent = finalReturn(result);
+        clearInterval(interval);
+      } else {
+        result += stap;
+        element.textContent = finalReturn(result);
+      }
+    }, duration);
+    function finalReturn(result) {
+      return prefix ? `${(0,_numberReplace__WEBPACK_IMPORTED_MODULE_0__["default"])(String(result))} ${prefix}` : (0,_numberReplace__WEBPACK_IMPORTED_MODULE_0__["default"])(String(result));
+    }
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (numberToAnim);
 
 /***/ }),
 

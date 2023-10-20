@@ -11689,16 +11689,21 @@ textarea.input-reset {
     transform: translateX(-50%);
   }
 }
+.secondary-tooltip__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+.secondary-tooltip__close svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--blue);
+}
 @media (min-width: 1213px) {
-  .secondary-tooltip:hover .secondary-tooltip__content {
+  .secondary-tooltip:not(.secondary-tooltip--click):hover .secondary-tooltip__content {
     opacity: 1;
     visibility: visible;
   }
-}
-.secondary-tooltip--dark .secondary-tooltip__content {
-  border: none;
-  background-color: var(--dark);
-  color: var(--white);
 }
 .secondary-tooltip.secondary-tooltip--top-center .secondary-tooltip__content {
   bottom: 30px;
@@ -11724,6 +11729,18 @@ textarea.input-reset {
   transform: translateX(-50%);
   bottom: auto;
   padding: 8px 16px;
+}
+.secondary-tooltip--dark .secondary-tooltip__content {
+  border: none;
+  background-color: var(--dark);
+  color: var(--white);
+}
+.secondary-tooltip--dark .secondary-tooltip__close svg {
+  fill: var(--white);
+}
+.secondary-tooltip--click._active .secondary-tooltip__content {
+  opacity: 1;
+  visibility: visible;
 }
 
 .object-info {
@@ -34195,10 +34212,9 @@ textarea.input-reset {
   margin-bottom: 16px;
 }
 .bank-offer {
-  background-color: var(--dark);
+  background-color: var(--white);
   -webkit-box-shadow: var(--shadow-primary);
   box-shadow: var(--shadow-primary);
-  color: var(--white);
   border-radius: 12px;
   padding: 24px;
 }
@@ -34220,7 +34236,6 @@ textarea.input-reset {
 }
 .bank-offer__name > span {
   margin-left: 16px;
-  color: var(--white);
 }
 .bank-offer__icon {
   background-color: var(--white);
@@ -34247,15 +34262,11 @@ textarea.input-reset {
   -ms-flex-align: center;
   align-items: center;
 }
-.bank-offer__price > span {
-  color: var(--white);
-}
 .bank-offer__price .secondary-tooltip__content {
   min-width: 200px;
 }
 .bank-offer__btn {
   min-width: 100px;
-  color: var(--white);
 }
 .bank-offer__btn svg {
   width: 20px;
@@ -34318,9 +34329,25 @@ textarea.input-reset {
   -ms-flex-align: center;
   align-items: center;
 }
-.bank-offer__info-item > div > span {
-  font-size: var(--little-big-fz);
-  line-height: var(--little-big-lh);
+.bank-offer__info-item > div > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.bank-offer__info-item > div > div > span:nth-child(1) {
+  color: var(--blue);
+  font-size: var(--default-fz);
+  line-height: var(--default-lh);
+}
+.bank-offer__info-item > div > div > span:nth-child(2) {
+  text-decoration: line-through;
+  color: var(--primaryTwo);
+  font-size: var(--small-fz);
+  line-height: var(--small-lh);
+  margin-left: 4px;
 }
 .bank-offer__info-item > div .secondary-tooltip__content {
   min-width: 200px;
@@ -34328,9 +34355,6 @@ textarea.input-reset {
 }
 .bank-offer__selector {
   margin-top: 32px;
-}
-.bank-offer__selector-title {
-  color: var(--white);
 }
 .bank-offer__selector-content {
   margin-top: 16px;
@@ -34530,17 +34554,36 @@ textarea.input-reset {
   padding-bottom: 24px;
   border-bottom: 1px dotted var(--primary200);
 }
-.bank-offer--rosbankdom {
-  background-color: #8a0820;
+
+.bank-offer-bid-tooltip {
+  bottom: auto;
+  top: calc(100% + 2px);
+  left: -50px;
+  padding: 24px;
+  min-width: 275px !important;
 }
-.bank-offer--alfabank {
-  background-color: #941313;
+.bank-offer-bid-tooltip__title {
+  color: var(--white);
 }
-.bank-offer--absolutbank {
-  background-color: #ad5215;
+.bank-offer-bid-tooltip__main {
+  margin-top: 16px;
 }
-.bank-offer--sberbank {
-  background-color: #106d15;
+.bank-offer-bid-tooltip__info {
+  margin-top: 16px;
+}
+.bank-offer-bid-tooltip .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.bank-offer-bid-tooltip .row span:nth-child(2) {
+  white-space: nowrap;
+}
+.bank-offer-bid-tooltip .row:not(:last-child) {
+  margin-bottom: 8px;
 }
 
 .bank-offer-selector-list__items {

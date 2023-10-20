@@ -154,9 +154,8 @@
 }
 
 .bank-offer {
-    background-color: var(--dark);
+    background-color: var(--white);
     box-shadow: var(--shadow-primary);
-    color: var(--white);
     border-radius: 12px;
     padding: 24px;
 
@@ -172,7 +171,6 @@
 
         >span {
             margin-left: 16px;
-            color: var(--white);
         }
     }
 
@@ -196,7 +194,6 @@
         align-items: center;
 
         >span {
-            color: var(--white);
         }
 
         .secondary-tooltip__content {
@@ -206,7 +203,6 @@
 
     &__btn {
         min-width: 100px;
-        color: var(--white);
 
         svg {
             width: 20px;
@@ -277,10 +273,23 @@
             margin-top: 4px;
             display: flex;
             align-items: center;
-
-            >span {
-                font-size: var(--little-big-fz);
-                line-height: var(--little-big-lh);
+            >div{
+                display: flex;
+                align-items: center;
+                >span {
+                    &:nth-child(1){
+                        color: var(--blue);
+                        font-size: var(--default-fz);
+                        line-height: var(--default-lh);
+                    }
+                    &:nth-child(2){
+                        text-decoration: line-through;
+                        color: var(--primaryTwo);
+                      font-size: var(--small-fz);
+                      line-height: var(--small-lh);
+                      margin-left: 4px;
+                    }
+                }
             }
 
             .secondary-tooltip__content {
@@ -295,7 +304,7 @@
     }
 
     &__selector-title {
-        color: var(--white);
+ 
     }
 
     &__selector-content {
@@ -486,22 +495,57 @@
         }
     }
 
-    &--rosbankdom {
-        background-color: #8a0820;
+    // &--rosbankdom {
+    //     background-color: #8a0820;
+    // }
+
+    // &--alfabank {
+    //     background-color: #941313;
+    // }
+
+    // &--absolutbank {
+    //     background-color: #ad5215;
+    // }
+
+    // &--sberbank {
+    //     background-color: #106d15;
+    // }
+}
+
+.bank-offer-bid-tooltip {
+    bottom: auto;
+    top: calc(100% + 2px);
+    left: -50px;
+
+    padding: 24px;
+
+    min-width: 275px !important;
+    &__title {
+        color: var(--white);
     }
 
-    &--alfabank {
-        background-color: #941313;
+    &__main {
+        margin-top: 16px;
+
     }
 
-    &--absolutbank {
-        background-color: #ad5215;
+    &__info {
+        margin-top: 16px;
     }
-
-    &--sberbank {
-        background-color: #106d15;
+    .row{
+        display: flex;
+        justify-content: space-between;
+        span{
+            &:nth-child(2){
+                white-space: nowrap;
+            }
+        }
+        &:not(:last-child){
+            margin-bottom: 8px;
+        }
     }
 }
+
 
 .bank-offer-selector-list {
 

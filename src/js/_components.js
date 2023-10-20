@@ -85,6 +85,9 @@ import submitApp from './components/submitApp';
 import wantDiscount from './components/wantDiscount';
 import onlineDisplay from './components/onlineDisplay';
 import bankOffer from './components/bankOffer';
+import {
+    tooltipSecondary
+} from './components/tooltips';
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==================================================
@@ -171,6 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
     wantDiscount();
     onlineDisplay();
     bankOffer();
+    tooltipSecondary();
     // ==================================================
 
     validateRadioPrimary('.complaint-popup__form', '.textarea-primary__input', '.complaint-popup__btn', '.radio-primary__input');

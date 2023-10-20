@@ -4208,6 +4208,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_wantDiscount__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./components/wantDiscount */ "./src/js/components/wantDiscount.js");
 /* harmony import */ var _components_onlineDisplay__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./components/onlineDisplay */ "./src/js/components/onlineDisplay.js");
 /* harmony import */ var _components_bankOffer__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./components/bankOffer */ "./src/js/components/bankOffer.js");
+/* harmony import */ var _components_tooltips__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./components/tooltips */ "./src/js/components/tooltips.js");
+
 
 
 
@@ -4338,6 +4340,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_wantDiscount__WEBPACK_IMPORTED_MODULE_42__["default"])();
   (0,_components_onlineDisplay__WEBPACK_IMPORTED_MODULE_43__["default"])();
   (0,_components_bankOffer__WEBPACK_IMPORTED_MODULE_44__["default"])();
+  (0,_components_tooltips__WEBPACK_IMPORTED_MODULE_45__.tooltipSecondary)();
   // ==================================================
 
   (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.validateRadioPrimary)('.complaint-popup__form', '.textarea-primary__input', '.complaint-popup__btn', '.radio-primary__input');
@@ -10117,6 +10120,43 @@ const tag = () => {
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (tag);
+
+/***/ }),
+
+/***/ "./src/js/components/tooltips.js":
+/*!***************************************!*\
+  !*** ./src/js/components/tooltips.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "tooltipSecondary": () => (/* binding */ tooltipSecondary)
+/* harmony export */ });
+const tooltipSecondary = () => {
+  const items = document.querySelectorAll('.secondary-tooltip--click');
+  items.forEach(item => {
+    const btn = item.querySelector('.secondary-tooltip__btn');
+    const btnClose = item.querySelector('.secondary-tooltip__close');
+    btn.addEventListener('click', () => {
+      if (!item.classList.contains('_active')) {
+        item.classList.add('_active');
+      } else {
+        item.classList.remove('_active');
+      }
+    });
+    btnClose.addEventListener('click', () => {
+      item.classList.remove('_active');
+    });
+  });
+  document.addEventListener('click', e => {
+    const target = e.target;
+    if (!target.closest('.secondary-tooltip')) {
+      items.forEach(item => item.classList.remove('_active'));
+    }
+  });
+};
 
 /***/ }),
 

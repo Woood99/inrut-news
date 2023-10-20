@@ -4751,9 +4751,9 @@ const bankOffer = () => {
             btn.classList.add('_active');
             if (!item.classList.contains('_init')) {
               item.classList.add('_init');
-              (0,_modules_numberToAnim__WEBPACK_IMPORTED_MODULE_0__["default"])(monthPayment, 0, Number(monthPayment.dataset.bankOfferItemMPayment), 750, 2, '₽');
-              (0,_modules_numberToAnim__WEBPACK_IMPORTED_MODULE_0__["default"])(priceBid, 0, Number(priceBid.dataset.bankOfferItemBPrice), 1500, 1, '₽');
-              (0,_modules_numberToAnim__WEBPACK_IMPORTED_MODULE_0__["default"])(benefit, 0, Number(benefit.dataset.bankOfferItemBenefit), 2200, 1, '₽');
+              (0,_modules_numberToAnim__WEBPACK_IMPORTED_MODULE_0__["default"])(monthPayment, 0, Number(monthPayment.dataset.bankOfferItemMPayment), '₽');
+              (0,_modules_numberToAnim__WEBPACK_IMPORTED_MODULE_0__["default"])(priceBid, 0, Number(priceBid.dataset.bankOfferItemBPrice), '₽');
+              (0,_modules_numberToAnim__WEBPACK_IMPORTED_MODULE_0__["default"])(benefit, 0, Number(benefit.dataset.bankOfferItemBenefit), '₽');
             }
           });
         }
@@ -12409,9 +12409,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _numberReplace__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./numberReplace */ "./src/js/modules/numberReplace.js");
 
-const numberToAnim = function (element, from, to, stap, duration) {
-  let prefix = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : undefined;
+const numberToAnim = function (element, from, to) {
+  let prefix = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : undefined;
   let result = from;
+  let stap = (to - from) / 80;
   if (to) {
     let interval = setInterval(() => {
       if (result >= to) {
@@ -12422,7 +12423,7 @@ const numberToAnim = function (element, from, to, stap, duration) {
         result += stap;
         element.textContent = finalReturn(result);
       }
-    }, duration);
+    }, 3);
     function finalReturn(result) {
       return prefix ? `${(0,_numberReplace__WEBPACK_IMPORTED_MODULE_0__["default"])(String(result))} ${prefix}` : (0,_numberReplace__WEBPACK_IMPORTED_MODULE_0__["default"])(String(result));
     }

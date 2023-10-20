@@ -127,9 +127,9 @@ const bankOffer = () => {
                         btn.classList.add('_active')
                         if (!item.classList.contains('_init')) {
                             item.classList.add('_init');
-                            numberToAnim(monthPayment, 0, Number(monthPayment.dataset.bankOfferItemMPayment), 750, 2, '₽')
-                            numberToAnim(priceBid, 0, Number(priceBid.dataset.bankOfferItemBPrice), 1500, 1, '₽')
-                            numberToAnim(benefit, 0, Number(benefit.dataset.bankOfferItemBenefit), 2200, 1, '₽')
+                            numberToAnim(monthPayment, 0, Number(monthPayment.dataset.bankOfferItemMPayment), '₽')
+                            numberToAnim(priceBid, 0, Number(priceBid.dataset.bankOfferItemBPrice), '₽')
+                            numberToAnim(benefit, 0, Number(benefit.dataset.bankOfferItemBenefit), '₽')
                         }
                     })
                 }

@@ -1,7 +1,8 @@
 import numberReplace from './numberReplace';
 
-const numberToAnim = (element, from, to, stap, duration, prefix = undefined) => {
+const numberToAnim = (element, from, to, prefix = undefined) => {
     let result = from;
+    let stap = (to - from) / 80;
     if (to) {
         let interval = setInterval(() => {
             if (result >= to) {
@@ -12,7 +13,7 @@ const numberToAnim = (element, from, to, stap, duration, prefix = undefined) => 
                 result += stap;
                 element.textContent = finalReturn(result);
             }
-        }, duration);
+        }, 3);
 
         function finalReturn(result) {
             return prefix ? `${numberReplace(String(result))} ${prefix}` : numberReplace(String(result));

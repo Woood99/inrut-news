@@ -442,7 +442,9 @@ function initSliders() {
                     nextEl: el.parentElement.querySelector('.nav-arrow-primary--next'),
                 },
                 pagination: {
-                    el: el.closest('.object-apart-renov__item').querySelector('.pagination-primary'),
+                    el: el.closest('.furnishing-sets__tab') ? 
+                    el.closest('.furnishing-sets__tab').querySelector('.pagination-primary') : 
+                    el.closest('.object-apart-renov__item').querySelector('.pagination-primary'),
                     type: 'fraction',
                     renderFraction: function (currentClass, totalClass) {
                         return `

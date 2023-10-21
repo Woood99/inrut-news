@@ -1,6 +1,8 @@
 const emergingBlockScroll = (targetThemSelector, emergingBlockSelector, screenSize, beforeContainer = false) => {
     const target = document.querySelector(targetThemSelector);
     const block = document.querySelector(emergingBlockSelector);
+    console.log(target);
+    console.log(block);
     if (!(target && block)) return;
     window.addEventListener('scroll', () => {
         targetScroll();

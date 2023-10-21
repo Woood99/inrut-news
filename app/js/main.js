@@ -4368,7 +4368,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__["default"])('.object-body__user .bid-user__btn--message', '.object-plate-bottom', 1212, true);
   (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__["default"])('.purchase-request .bid-user__btn', '.purchase-request-plate-bottom', 1212, true);
   (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__["default"])('.agent .bid-user__btn', '.agent-plate-bottom', 1212, true);
-  (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__["default"])('.develop-inner .object-body__user .bid-user__btn', '.object-plate-bottom', 1212, true);
+  (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__["default"])('.develop-inner .object-body__wrapper .bid-user__btn', '.object-plate-bottom', 1212, true);
   (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__["default"])('.detailed-flat .object-body__user .bid-user__btn', '.object-plate-bottom', 1212, true);
   (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__["default"])('.object-base-inner .object-body__user .card-user__btn', '.object-plate-bottom', 1212, true);
 
@@ -11204,7 +11204,7 @@ function initSliders() {
           nextEl: el.parentElement.querySelector('.nav-arrow-primary--next')
         },
         pagination: {
-          el: el.closest('.object-apart-renov__item').querySelector('.pagination-primary'),
+          el: el.closest('.furnishing-sets__tab') ? el.closest('.furnishing-sets__tab').querySelector('.pagination-primary') : el.closest('.object-apart-renov__item').querySelector('.pagination-primary'),
           type: 'fraction',
           renderFraction: function (currentClass, totalClass) {
             return `
@@ -12067,6 +12067,8 @@ const emergingBlockScroll = function (targetThemSelector, emergingBlockSelector,
   let beforeContainer = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
   const target = document.querySelector(targetThemSelector);
   const block = document.querySelector(emergingBlockSelector);
+  console.log(target);
+  console.log(block);
   if (!(target && block)) return;
   window.addEventListener('scroll', () => {
     targetScroll();

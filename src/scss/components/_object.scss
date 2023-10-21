@@ -550,8 +550,9 @@
         &:not([hidden]) {
             display: grid;
         }
-        @media (max-width:$desktop){
-             grid-template-columns: 1fr; 
+
+        @media (max-width:$desktop) {
+            grid-template-columns: 1fr;
         }
     }
 
@@ -942,6 +943,11 @@
 
         &._active {
             display: block;
+            +.object-data__more{
+                svg{
+                    transform: rotate(-180deg);
+                }
+            }
         }
 
         @media (max-width:$desktop) {
@@ -970,6 +976,7 @@
             width: 20px;
             height: 20px;
             fill: currentColor;
+            transition: transform $transitionSpeedFast $transitionFunction;
         }
 
         @media (max-width:$desktop) {
@@ -1510,10 +1517,6 @@
             @media (max-width:$desktop) {
                 height: 350px;
             }
-
-            @media (max-width:$smallTablet-max) {
-                height: 227px;
-            }
         }
     }
 
@@ -1688,6 +1691,7 @@
         grid-template-columns: repeat(2, 1fr);
         grid-column-gap: 24px;
         grid-row-gap: 24px;
+        align-items: center;
 
         @media (max-width:$smallTablet-max) {
             grid-template-columns: 1fr;
@@ -1727,12 +1731,13 @@
     &__btn {
         max-width: 320px;
         flex-grow: 1;
-        height: 42px;
+        height: 46px;
         border-radius: 12px;
         border: none;
         background-color: var(--white);
         border: 1px solid var(--primary200);
         position: relative;
+        transition: border $transitionSpeed $transitionFunction;
 
         &:not(.secondary-tooltip) {
             display: flex;
@@ -1769,6 +1774,7 @@
             flex: 0 0 var(--size);
             border-radius: 50%;
             background-color: var(--white);
+            border: 3px solid var(--blue);
 
             display: flex;
             align-items: center;
@@ -1794,11 +1800,7 @@
         }
 
         &._active {
-            background-color: var(--blue);
-
-            span {
-                color: var(--white);
-            }
+            border: 3px solid var(--blue);
 
             div {
                 opacity: 1;
@@ -1809,11 +1811,8 @@
 
         @media (min-width:$desktop-min) {
             &:hover {
-                background-color: var(--blue);
-
-                span {
-                    color: var(--white);
-                }
+                border: 3px solid var(--blue);
+                background-color: var(--white);
 
                 div {
                     opacity: 1;
@@ -1881,8 +1880,8 @@
             color: var(--dark);
             font-weight: 500;
 
-            font-size: var(--big-small-fz);
-            line-height: var(--big-small-fz);
+            font-size: var(--big-fz);
+            line-height: var(--big-lh);
 
             margin-bottom: 6px;
         }
@@ -1964,9 +1963,9 @@
             margin-right: 0;
         }
 
-      @media (max-width:$smallTablet-max){
-        flex: auto; 
-      }
+        @media (max-width:$smallTablet-max) {
+            flex: auto;
+        }
     }
 
     &__nav {
@@ -2467,9 +2466,11 @@
                 transition: stroke $transitionSpeed $transitionFunction;
             }
         }
-        @media (max-width:$desktop){
-             display: none; 
+
+        @media (max-width:$desktop) {
+            display: none;
         }
+
         @media (min-width:$desktop-min) {
             &:hover {
                 box-shadow: 0 7px 14px rgba(11, 31, 53, 0.15);
@@ -2483,12 +2484,13 @@
             }
         }
     }
-    &__more{
+
+    &__more {
         display: flex;
         align-items: center;
         justify-content: center;
 
-        background-color: rgba(#000,0.5);
+        background-color: rgba(#000, 0.5);
         border-radius: 8px;
 
         width: 40px;
@@ -2501,15 +2503,18 @@
         color: var(--white);
         box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.1);
         cursor: pointer;
-        svg{
+
+        svg {
             width: 18px;
             height: 18px;
             fill: var(--white);
         }
-        @media (min-width:$desktop-min){
-             display: none; 
+
+        @media (min-width:$desktop-min) {
+            display: none;
         }
     }
+
     @media (max-width:$desktop) {
         height: 450px;
     }

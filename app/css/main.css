@@ -15462,6 +15462,11 @@ textarea.input-reset {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-transition: -webkit-box-shadow 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+  transition: -webkit-box-shadow 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+  -o-transition: box-shadow 0.4s ease-in-out, transform 0.4s ease-in-out;
+  transition: box-shadow 0.4s ease-in-out, transform 0.4s ease-in-out;
+  transition: box-shadow 0.4s ease-in-out, transform 0.4s ease-in-out, -webkit-box-shadow 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
 }
 .card-scheme__image {
   min-height: 308px;
@@ -15651,14 +15656,13 @@ textarea.input-reset {
   font-weight: 500;
 }
 .card-scheme__btn {
-  height: 31px;
-  padding: 0 10px;
-  border: 1px solid #CBE2FF;
-  -webkit-transition: border 0.4s ease-in-out, color 0.4s ease-in-out;
-  -o-transition: border 0.4s ease-in-out, color 0.4s ease-in-out;
-  transition: border 0.4s ease-in-out, color 0.4s ease-in-out;
-  color: var(--primaryTwo);
-  border-radius: 8px;
+  color: var(--blue);
+  background-color: rgba(0, 150, 255, 0.08);
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: var(--small-fz);
+  line-height: var(--small-lh);
+  font-weight: 500;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -15668,9 +15672,6 @@ textarea.input-reset {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  font-size: var(--small-fz);
-  line-height: var(--small-lh);
-  font-weight: 500;
 }
 .card-scheme__btn svg {
   margin-left: 10px;
@@ -15680,33 +15681,26 @@ textarea.input-reset {
 }
 .card-scheme.card-scheme--improved .card-scheme__container {
   border: 1px solid var(--primary100);
-  -webkit-transition: border 0.4s ease-in-out;
-  -o-transition: border 0.4s ease-in-out;
-  transition: border 0.4s ease-in-out;
   -webkit-box-shadow: none;
   box-shadow: none;
   padding-bottom: 24px;
   text-align: left;
-  transition: border 0.4s ease-in-out;
 }
 .card-scheme.card-scheme--improved .card-scheme__price {
   margin-top: 10px;
 }
 @media (min-width: 1213px) {
   .card-scheme.card-scheme--improved:hover:not(._active) .card-scheme__container {
-    border: 3px solid var(--blue);
-  }
-  .card-scheme.card-scheme--improved:hover:not(._active) .card-scheme__btn {
-    border: 3px solid var(--blue);
-    color: var(--blue);
+    -webkit-box-shadow: var(--shadow-primary);
+    box-shadow: var(--shadow-primary);
+    -webkit-transform: translateY(-3px);
+    -ms-transform: translateY(-3px);
+    transform: translateY(-3px);
   }
 }
 .card-scheme.card-scheme--improved._active .card-scheme__container {
-  border: 3px solid var(--blue);
-}
-.card-scheme.card-scheme--improved._active .card-scheme__btn {
-  border: 3px solid var(--blue);
-  color: var(--blue);
+  -webkit-box-shadow: var(--shadow-primary);
+  box-shadow: var(--shadow-primary);
 }
 
 .advantages-card__container {
@@ -22543,6 +22537,9 @@ textarea.input-reset {
 .room-body__list .room-info-card:first-child {
   border-top: 1px solid var(--primary100);
 }
+.room-body__nav {
+  --size: 40px;
+}
 .room-body__nav.nav-arrow-primary--next {
   right: 3px;
 }
@@ -24920,7 +24917,7 @@ textarea.input-reset {
 }
 @media (max-width: 768px) {
   .furnishing-sets__fullscreen {
-    top: 104px !important;
+    top: 112px !important;
   }
 }
 .furnishing-sets__item {
@@ -29124,6 +29121,11 @@ textarea.input-reset {
 .object-location__btn:not(:last-child) {
   margin-right: 24px;
 }
+@media (max-width: 1212px) {
+  .object-location__btn:not(:last-child) {
+    margin-right: 8px;
+  }
+}
 .object-location__btn::before {
   content: "";
   position: absolute;
@@ -29173,11 +29175,6 @@ textarea.input-reset {
 }
 .object-location__infrastructure::-webkit-scrollbar {
   display: none;
-}
-@media (max-width: 1212px) {
-  .object-location__infrastructure {
-    padding: 0 16px;
-  }
 }
 .object-location__infrastructure._active {
   display: -webkit-box;
@@ -29476,9 +29473,6 @@ textarea.input-reset {
   background-color: var(--white);
   border: 1px solid var(--primary200);
   position: relative;
-  -webkit-transition: border 0.4s ease-in-out;
-  -o-transition: border 0.4s ease-in-out;
-  transition: border 0.4s ease-in-out;
 }
 .object-calc-mort__btn:not(.secondary-tooltip) {
   display: -webkit-box;
@@ -29495,7 +29489,7 @@ textarea.input-reset {
 .object-calc-mort__btn span {
   font-size: var(--default-fz);
   line-height: var(--default-lh);
-  font-weight: 400;
+  font-weight: 500;
   -webkit-transition: color 0.4s ease-in-out;
   -o-transition: color 0.4s ease-in-out;
   transition: color 0.4s ease-in-out;
@@ -29523,7 +29517,6 @@ textarea.input-reset {
   flex: 0 0 var(--size);
   border-radius: 50%;
   background-color: var(--white);
-  border: 3px solid var(--blue);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -29554,7 +29547,7 @@ textarea.input-reset {
   fill: none;
 }
 .object-calc-mort__btn._active {
-  border: 3px solid var(--blue);
+  background-color: var(--blue);
 }
 .object-calc-mort__btn._active div {
   opacity: 1;
@@ -29563,10 +29556,12 @@ textarea.input-reset {
   -ms-transform: translateY(0);
   transform: translateY(0);
 }
+.object-calc-mort__btn._active span {
+  color: var(--white);
+}
 @media (min-width: 1213px) {
   .object-calc-mort__btn:hover {
-    border: 3px solid var(--blue);
-    background-color: var(--white);
+    background-color: var(--blue);
   }
   .object-calc-mort__btn:hover div {
     opacity: 1;
@@ -29577,6 +29572,9 @@ textarea.input-reset {
   }
   .object-calc-mort__btn:hover div svg {
     fill: none !important;
+  }
+  .object-calc-mort__btn:hover span {
+    color: var(--white);
   }
   .object-calc-mort__btn.secondary-tooltip:hover .secondary-tooltip__content {
     -webkit-transform: translateX(-50%) translateY(0);
@@ -29854,11 +29852,6 @@ textarea.input-reset {
   }
   .object-apart-renov__fullscreen:hover svg path {
     stroke: rgb(22, 22, 22);
-  }
-}
-@media (max-width: 1212px) {
-  .object-apart-renov__fullscreen {
-    right: 32px;
   }
 }
 .object-apart-renov__item {
@@ -32965,7 +32958,7 @@ textarea.input-reset {
   margin: 0;
 }
 .clients .main-table .client-info {
-  min-height: 104px;
+  min-height: 97px;
 }
 
 .wallet__item {
@@ -34166,6 +34159,9 @@ textarea.input-reset {
   margin-top: 24px;
   padding-top: 24px;
   border-top: 1px solid rgba(122, 127, 170, 0.2);
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
 }
 .mortgage .object-calc-mort__info {
   margin-top: 24px;

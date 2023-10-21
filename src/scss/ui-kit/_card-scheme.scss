@@ -11,6 +11,9 @@
 
         display: flex;
         flex-direction: column;
+
+        transition: box-shadow $transitionSpeed $transitionFunction,
+            transform $transitionSpeed $transitionFunction;
     }
 
     &__image {
@@ -24,8 +27,9 @@
         img {
             border-radius: 12px;
         }
-        @media (max-width:$smallTablet-max){
-             min-height: auto; 
+
+        @media (max-width:$smallTablet-max) {
+            min-height: auto;
         }
     }
 
@@ -205,23 +209,17 @@
     }
 
     &__btn {
-        height: 31px;
-        padding: 0 10px;
-
-        border: 1px solid #CBE2FF;
-        transition: border $transitionSpeed $transitionFunction,
-            color $transitionSpeed $transitionFunction;
-        color: var(--primaryTwo);
-        border-radius: 8px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
+        color: var(--blue);
+        background-color: rgba(0, 150, 255, 0.08);
+        padding: 8px 16px;
+        border-radius: 12px;
         font-size: var(--small-fz);
         line-height: var(--small-lh);
         font-weight: 500;
 
+        display: flex;
+        align-items: center;
+        justify-content: center;
         svg {
             margin-left: 10px;
             width: 20px;
@@ -234,11 +232,9 @@
         .card-scheme {
             &__container {
                 border: 1px solid var(--primary100);
-                transition: border $transitionSpeed $transitionFunction;
                 box-shadow: none;
                 padding-bottom: 24px;
                 text-align: left;
-                transition: border $transitionSpeed $transitionFunction;
             }
 
             &__price {
@@ -251,12 +247,8 @@
                 &:not(._active) {
                     .card-scheme {
                         &__container {
-                            border: 3px solid var(--blue);
-                        }
-
-                        &__btn {
-                            border: 3px solid var(--blue);
-                            color: var(--blue);
+                            box-shadow: var(--shadow-primary);
+                            transform: translateY(-3px);
                         }
                     }
                 }
@@ -267,12 +259,7 @@
         &._active {
             .card-scheme {
                 &__container {
-                    border: 3px solid var(--blue);
-                }
-
-                &__btn {
-                    border: 3px solid var(--blue);
-                    color: var(--blue);
+                    box-shadow: var(--shadow-primary);
                 }
             }
         }

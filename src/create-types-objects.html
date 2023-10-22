@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Настройка системы</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script defer src="js/main.js"></script>
+
+
+
+</head>
+
+<body class="page__body">
+    <div class="site-container site-container--place-sale">
+        @include('partials/header--menu.html')
+        <main class="main main-page-gap place-sale create-types-objects">
+            <div class="place-sale__top top-page-inner-title">
+                <div class="top-page-inner-title__container container">
+                    <a href="#" class="place-sale__back top-page-inner-title__back back-link">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#arrow-left"></use>
+                        </svg>
+                        <span>Назад</span>
+                    </a>
+                    <h1 class="create-types-objects__title top-page-inner-title__title title-1" data-da=".place-sale__body,1212,first">
+                        Создать <span>типы объектов</span>
+                    </h1>
+                </div>
+            </div>
+            <div class="place-sale__body">
+                <div class="container">
+                    <div class="place-sale__row place-sale-options">
+                        <h2 class="place-sale__row-title place-sale-options__title title-2">
+                            Параметры
+                        </h2>
+                        <div class="place-sale-options__row place-sale-options__row--1">
+                            <div class="place-sale-options__item input-text">
+                                <label class="input-text__label">
+                                    <span>Заголовок</span>
+                                    <input type="text" name="Имя" class="input-reset input-text__input" placeholder="">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="place-sale-options__row place-sale-options__row--2">
+                            <div class="checkbox-secondary">
+                                <input id="test-id_1" name="test-id-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                <label for="test-id_1" class="checkbox-secondary__label">
+                                    <span class="checkbox-secondary__text">Жилая</span>
+                                </label>
+                            </div>
+                            <div class="checkbox-secondary">
+                                <input id="test-id_2" name="test-id-name_2" class="checkbox-secondary__input" type="checkbox" value="true">
+                                <label for="test-id_2" class="checkbox-secondary__label">
+                                    <span class="checkbox-secondary__text">Новостройки</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="place-sale-photo">
+                            <h2 class="place-sale__row-title place-sale-photo__title title-2">
+                                Изображение
+                            </h2>
+                            <p class="place-sale-photo__descr">
+                                Покажите все важные детали и особенности: все комнаты с разных ракурсов, вид из окна, фото
+                                подъезда, вид здания.
+                            </p>
+                            <div class="place-sale-photo__wrapper photo-load">
+                                <button type="button" class="btn btn-reset photo-load__wrapper">
+                                    <p>
+                                        Добавить фото (Размер до 10 Мб)
+                                    </p>
+                                    <p>
+                                        Выберите фото <span>или перетащите в эту область</span>
+                                    </p>
+                                </button>
+                                <input type="file" data-upload-drop="" name="upload" multiple="" accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-reset btn-secondary" style="width: 100%; margin-top: 24px;">
+                            Сохранить
+                        </button>
+                    </div>
+                    <div class="place-sale__row main-table">
+                        <h2 class="place-sale__row-title place-sale-options__title title-2">
+                        Характеристики объекта
+                        </h2>
+                        <div class="main-table__inner container">
+                            <div class="main-table__table">
+                                <div class="main-table__type" style="grid-template-columns: 16% 16% 16% 16% 16% 16%; justify-content: start;">
+                                    <span>Порядок</span>
+                                    <span>Название</span>
+                                    <span>Тип</span>
+                                    <span>Значение</span>
+                                    <span>Обязательное</span>
+                                    <span>Действие</span>
+                                </div>
+                                <div class="main-table__list">
+
+                                </div>
+                            </div>
+                            <div class="main-table__next">
+                                <a href="create-types-objects.html" class="btn btn-reset btn-secondary">
+                                    Создать
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="place-sale__row main-table">
+                        <h2 class="place-sale__row-title place-sale-options__title title-2">
+                            Характеристики планировок
+                            </h2>
+                        <div class="main-table__inner container">
+                            <div class="main-table__table">
+                                <div class="main-table__type" style="grid-template-columns: 10% 10% 10% 10% 10% 17% 12% 12%; justify-content: start;">
+                                    <span>Порядок</span>
+                                    <span>Поле</span>
+                                    <span>Тип поля</span>
+                                    <span>Значение</span>
+                                    <span>Постфикс</span>
+                                    <span>Показывать в фильтре</span>
+                                    <span>Обязательное</span>
+                                    <span>Действие</span>
+                                </div>
+                                <div class="main-table__list">
+                                   
+                                </div>
+                            </div>
+                            <div class="main-table__next">
+                                <a href="create-types-objects.html" class="btn btn-reset btn-secondary">
+                                    Создать
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        @include('partials/footer.html')
+    </div>
+    @include('partials/popup.html')
+</body>
+
+
+</html>

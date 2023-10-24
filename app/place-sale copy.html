@@ -6,16 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#111111">
-    <title>Настройка системы</title>
+    <title>Разместить заявку на покупку</title>
     <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     <script defer src="js/main.js"></script>
-
-
-
 </head>
 
 <body class="page__body">
@@ -75,27 +72,1361 @@
                         <span>Назад</span>
                     </a>
                     <h1 class="place-sale__title top-page-inner-title__title title-1" data-da=".place-sale__body,1212,first">
-                        Настройка системы
+                        Разместить объявление о продаже
                     </h1>
                 </div>
             </div>
             <div class="place-sale__body">
-                <div class="place-sale__container container">
-                    <div class="place-sale__row place-sale-address system-setup">
-                        <a href="types-objects.html" class="system-setup__item system-setup-item">
-                           Типы объектов
-                        </a>
-                        <a href="tags-stickers.html" class="system-setup__item system-setup-item">
-                            Теги/стикеры
-                        </a>
-                        <a href="#" class="system-setup__item system-setup-item">
-                            Акции-новости
-                        </a>
-                        <a href="place-sale.html" class="system-setup__item system-setup-item">
-                            Новостройки
-                        </a>
+                <form action="#" class="place-sale__container container">
+                    <div class="place-sale__row place-sale-address">
+                        <h2 class="place-sale__row-title place-sale-address__title title-2">
+                            Адрес
+                        </h2>
+                        <div class="place-sale-address__city">
+                            <div class="place-sale-address__text">
+                                <p>
+                                    Укажите кликом нужное место на карте или переместите маркер чтобы изменить
+                                    местоположение объекта.
+                                </p>
+                                <p>
+                                    Или добавьте адрес в ручную.
+                                </p>
+                            </div>
+                            <div class="place-sale-address__select select-secondary select-secondary--city _selected" >
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Город
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="city">
+                                        <option value="apartments">Санкт-Петербург</option>
+                                        <option value="apartments2">Волгоград</option>
+                                        <option value="apartments3">Москва</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="place-sale-address__select filter__item search-select" data-search-select-subtitle="Любой">
+                                <button type="button" class="btn btn-reset search-select__button">
+                                    <div class="search-select__button-wrapper">
+                                        <div>Станция метро</div>
+                                        <div>Любая</div>
+                                    </div>
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#check"></use>
+                                    </svg>
+                                </button>
+                                <div class="search-select__dropdown search-select__dropdown--left">
+                                    <button type="button" class="btn btn-reset search-select__close">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#x"></use>
+                                        </svg>
+                                    </button>
+                                    <label class="input-primary search-select__input">
+                                        <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по названию">
+                                    </label>
+                                    <div class="search-select__control">
+                                        <button type="button" class="btn btn-reset btn-secondary search-select__all">Выбрать всё</button>
+                                        <button type="button" class="btn btn-reset btn-secondary search-select__clear">Очистить всё</button>
+                                    </div>
+                                    <div class="search-select__wrapper simplebar-third">
+                                        <div class="search-select__item checkbox-secondary">
+                                            <input id="developer_1" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                            <label for="developer_1" class="checkbox-secondary__label">
+                                                <span class="checkbox-secondary__text">
+                                                    <span>Станция метро 1</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="search-select__item checkbox-secondary">
+                                            <input id="developer_2" name="developer-name_2" class="checkbox-secondary__input" type="checkbox" value="true">
+                                            <label for="developer_2" class="checkbox-secondary__label">
+                                                <span class="checkbox-secondary__text">
+                                                    <span>Станция метро 2</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="search-select__item checkbox-secondary">
+                                            <input id="developer_3" name="developer-name_3" class="checkbox-secondary__input" type="checkbox" value="true">
+                                            <label for="developer_3" class="checkbox-secondary__label">
+                                                <span class="checkbox-secondary__text">
+                                                    <span>Станция метро 3</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="place-sale-address-map" class="place-sale-address__map map-primary remove-copyrights-pane">
+                        </div>
+                        <div class="place-sale-address__checkbox checkbox-secondary">
+                            <input id="test-id_1" name="test-id-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                            <label for="test-id_1" class="checkbox-secondary__label">
+                                <span class="checkbox-secondary__text">Добавьте адрес в ручную</span>
+                            </label>
+                        </div>
+                        <div class="place-sale-address__field">
+                            <label class="input-primary">
+                                <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Город, улица, дом, корпус">
+                            </label>
+                        </div>
                     </div>
-                </div>
+                    <div class="place-sale__row place-sale-options">
+                        <h2 class="place-sale__row-title place-sale-options__title title-2">
+                            Параметры
+                        </h2>
+                        <div class="place-sale-options__row place-sale-options__row--1">
+                            <div class="place-sale-options__item select-secondary" >
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Тип объекта
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="complex">
+                                        <option placeholder value="all-room">Любой</option>
+                                        <option value="room-1">Выбор1</option>
+                                        <option value="room-2">Выбор2</option>
+                                        <option value="room-3">Выбор3</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="place-sale-options__item search-select" data-search-select-subtitle="Любой">
+                                <button type="button" class="btn btn-reset search-select__button">
+                                    <div class="search-select__button-wrapper">
+                                        <div>Комплекс</div>
+                                        <div>Любой</div>
+                                    </div>
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#check"></use>
+                                    </svg>
+                                </button>
+                                <div class="search-select__dropdown">
+                                    <button type="button" class="btn btn-reset search-select__close">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#x"></use>
+                                        </svg>
+                                    </button>
+                                    <label class="input-primary search-select__input">
+                                        <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по названию">
+                                    </label>
+                                    <div class="search-select__control">
+                                        <button type="button" class="btn btn-reset btn-secondary search-select__all">Выбрать всё</button>
+                                        <button type="button" class="btn btn-reset btn-secondary search-select__clear">Очистить всё</button>
+                                    </div>
+                                    <div class="search-select__wrapper simplebar-third">
+                                        <div class="search-select__item checkbox-secondary">
+                                            <input id="developer_11" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                            <label for="developer_11" class="checkbox-secondary__label">
+                                                <span class="checkbox-secondary__text">
+                                                    <span>ПИК</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="search-select__item checkbox-secondary">
+                                            <input id="developer_12" name="developer-name_2" class="checkbox-secondary__input" type="checkbox" value="true">
+                                            <label for="developer_12" class="checkbox-secondary__label">
+                                                <span class="checkbox-secondary__text">
+                                                    <span>ГК Самолет</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="search-select__item checkbox-secondary">
+                                            <input id="developer_13" name="developer-name_3" class="checkbox-secondary__input" type="checkbox" value="true">
+                                            <label for="developer_13" class="checkbox-secondary__label">
+                                                <span class="checkbox-secondary__text">
+                                                    <span>ГК "А101"</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="search-select__item checkbox-secondary">
+                                            <input id="developer_14" name="developer-name_4" class="checkbox-secondary__input" type="checkbox" value="true">
+                                            <label for="developer_14" class="checkbox-secondary__label">
+                                                <span class="checkbox-secondary__text">
+                                                    <span>ГК МИЦ</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="search-select__item checkbox-secondary">
+                                            <input id="developer_15" name="developer-name_5" class="checkbox-secondary__input" type="checkbox" value="true">
+                                            <label for="developer_15" class="checkbox-secondary__label">
+                                                <span class="checkbox-secondary__text">
+                                                    <span>ЛСР</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="search-select__item checkbox-secondary">
+                                            <input id="developer_16" name="developer-name_6" class="checkbox-secondary__input" type="checkbox" value="true">
+                                            <label for="developer_16" class="checkbox-secondary__label">
+                                                <span class="checkbox-secondary__text">
+                                                    <span>MR GROUP</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="search-select__item checkbox-secondary">
+                                            <input id="developer_17" name="developer-name_7" class="checkbox-secondary__input" type="checkbox" value="true">
+                                            <label for="developer_17" class="checkbox-secondary__label">
+                                                <span class="checkbox-secondary__text">
+                                                    <span>ГК ДОНСТРОЙ</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="search-select__item checkbox-secondary">
+                                            <input id="developer_18" name="developer-name_8" class="checkbox-secondary__input" type="checkbox" value="true">
+                                            <label for="developer_18" class="checkbox-secondary__label">
+                                                <span class="checkbox-secondary__text">
+                                                    <span>ГК Эталон</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="place-sale-options__row place-sale-options__row--2">
+                            <div class="place-sale-options__item quantity-selection">
+                                <div class="quantity-selection__inner">
+                                    <div class="checkbox">
+                                        <input id="filter-quantity_studios" name="filter-quantity-studios" class="checkbox__input" type="checkbox" value="true">
+                                        <label for="filter-quantity_studios" class="checkbox__label">
+                                            <span class="checkbox__text checkbox__text-studios">Студия</span>
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <input id="filter-quantity_1" name="filter-quantity-1" class="checkbox__input" type="checkbox" value="true">
+                                        <label for="filter-quantity_1" class="checkbox__label">
+                                            <span class="checkbox__text">1</span>
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <input id="filter-quantity_2" name="filter-quantity-2" class="checkbox__input" type="checkbox" value="true">
+                                        <label for="filter-quantity_2" class="checkbox__label">
+                                            <span class="checkbox__text">2</span>
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <input id="filter-quantity_3" name="filter-quantity-3" class="checkbox__input" type="checkbox" value="true">
+                                        <label for="filter-quantity_3" class="checkbox__label">
+                                            <span class="checkbox__text">3</span>
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <input id="filter-quantity_4" name="filter-quantity-4" class="checkbox__input" type="checkbox" value="true">
+                                        <label for="filter-quantity_4" class="checkbox__label">
+                                            <span class="checkbox__text">4+</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="place-sale-options__item input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Площадь</span>
+                                    <input type="text" name="Имя" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                    <span class="input-text__name">м²</span>
+                                </label>
+                            </div>
+                            <div class="place-sale-options__item input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Общая площадь</span>
+                                    <input type="text" name="Имя" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                    <span class="input-text__name">м²</span>
+                                </label>
+                            </div>
+                            <div class="place-sale-options__item input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Площадь кухни</span>
+                                    <input type="text" name="Имя" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                    <span class="input-text__name">м²</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="place-sale-options__row place-sale-options__row--3">
+                            <div class="place-sale-options__item input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Этаж</span>
+                                    <input type="text" name="Имя" maxlength="2" class="input-reset input-text__input" placeholder="">
+                                    <span class="input-text__name">эт.</span>
+                                </label>
+                            </div>
+                            <div class="place-sale-options__item input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Этажей в доме</span>
+                                    <input type="text" name="Имя" maxlength="2" class="input-reset input-text__input" placeholder="">
+                                    <span class="input-text__name">эт.</span>
+                                </label>
+                            </div>
+                            <div class="place-sale-options__item select-secondary" >
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Наличие мебели
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="availability-of-furniture">
+                                        <option placeholder>Неважно</option>
+                                        <option value="yes">Да</option>
+                                        <option value="no">Нет</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="place-sale-options__item select-secondary" >
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Ремонт
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="repair">
+                                        <option placeholder>Неважно</option>
+                                        <option value="repair1">Косметический</option>
+                                        <option value="repair2">Косметический2</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="place-sale-options__row place-sale-options__row--4" hidden>
+                            <div class="place-sale-options__item select-secondary" >
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Вид из окна
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="window">
+                                        <option placeholder>Неважно</option>
+                                        <option value="window1">Во двор и на улицу</option>
+                                        <option value="window2">Во двор и на улицу2</option>
+                                        <option value="window2">Во двор и на улицу3</option>
+                                        <option value="window2">Во двор и на улицу4</option>
+                                        <option value="window2">Во двор и на улицу5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="place-sale-options__item select-secondary" >
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Санузел
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="bathroom">
+                                        <option placeholder>Неважно</option>
+                                        <option value="Separated">Раздельный</option>
+                                        <option value="more-than-one">Более одного</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="place-sale-options__item select-secondary" >
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Тип дома
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="bathroom">
+                                        <option placeholder>Неважно</option>
+                                        <option value="brick">Кирпичный</option>
+                                        <option value="monolithic">Монолитный</option>
+                                        <option value="panel">Панельный</option>
+                                        <option value="block">Блочный</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="place-sale-options__row place-sale-options__row--5" hidden>
+                            <div class="place-sale-options__item select-secondary" >
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Лет в собственности
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="years-of-ownership">
+                                        <option placeholder>Неважно</option>
+                                        <option value="one-two-three">1,2,3+</option>
+                                        <option value="true">Есть несовершеннолетние</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="place-sale-options__item select-secondary" >
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Прописано
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="spelled-out">
+                                        <option placeholder>Неважно</option>
+                                        <option value="one-two-three">1,2,3+</option>
+                                        <option value="true">Есть несовершеннолетние</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="place-sale-options__row place-sale-options__row--6" hidden>
+                            <div class="place-sale-options__item select-multiple">
+                                <span class="select-multiple__main-placeholder">
+                                    Теги
+                                </span>
+                                <select class="select-multiple__body" multiple name="tags">
+                                    <option placeholder>Неважно</option>
+                                    <option value="tags1">
+                                        Семейная ипотека
+                                    </option>
+                                    <option value="tags2">Ипотека с гос.поддержкой</option>
+                                    <option value="tags3">Комплекс1</option>
+                                    <option value="tags4">Комплекс2</option>
+                                    <option value="tags5">Комплекс3</option>
+                                    <option value="tags6">Комплекс4</option>
+                                    <option value="tags7">Ипотека другая</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-reset place-sale-options__more">
+                            <span>Все параметры</span>
+                            <svg>
+                                <use xlink:href="img/sprite.svg#check"></use>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="place-sale__row place-sale-descr">
+                        <h2 class="place-sale__row-title place-sale-descr__title title-2">
+                            Описание
+                        </h2>
+                        <div class="place-sale-descr__btns">
+                            <button type="button" class="btn btn-reset place-sale-descr__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#plus"></use>
+                                </svg>
+                                <span>Сгенерировать описание</span>
+                            </button>
+                            <button type="button" class="btn btn-reset place-sale-descr__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#plus"></use>
+                                </svg>
+                                <span>Визуальный редактор</span>
+                            </button>
+                        </div>
+                        <label class="place-sale-descr__textarea textarea-primary">
+                            <textarea class="input-reset textarea-primary__input"
+                                placeholder="Расскажите о недвижимости, собственниках, соседях, транспортной доступности и инфраструктуре"></textarea>
+                        </label>
+                    </div>
+                    <div class="place-sale__row place-sale-photo">
+                        <h2 class="place-sale__row-title place-sale-photo__title title-2">
+                            Фото
+                        </h2>
+                        <p class="place-sale-photo__descr">
+                            Покажите все важные детали и особенности: все комнаты с разных ракурсов, вид из окна, фото
+                            подъезда, вид здания.
+                        </p>
+                        <div class="place-sale-photo__wrapper photo-load">
+                            <button type="button" class="btn btn-reset photo-load__wrapper">
+                                <p>
+                                    Добавить фото (Размер до 10 Мб)
+                                </p>
+                                <p>
+                                    Выберите фото <span>или перетащите в эту область</span>
+                                </p>
+                            </button>
+                            <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                        </div>
+                    </div>
+                    <div class="place-sale__row place-sale-video">
+                        <h2 class="place-sale__row-title place-sale-video__title title-2">
+                            Видео
+                        </h2>
+                        <p class="place-sale-video__descr">
+                            Добавте видео вашей недвижимости
+                        </p>
+                        <label class="place-sale-video__field input-primary">
+                            <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Ссылка на видео с YouTube">
+                        </label>
+                    </div>
+                    <div class="place-sale__row place-sale-viewing">
+                        <h2 class="place-sale__row-title place-sale-viewing__title title-2">
+                            Укажите даты удобные для показа
+                        </h2>
+                        <button type="button" class="btn btn-reset btn-primary" data-popup-path="record-viewing">Поставить дату</button>
+                    </div>
+                    <div class="submit-app__row place-sale-price">
+                        <div class="place-sale-price__top">
+                            <h2 class="place-sale__row-title place-sale-price__title title-2">
+                                Цена и тип сделки
+                            </h2>
+                            <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark">
+                                <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#info"></use>
+                                    </svg>
+                                </button>
+                                <div class="secondary-tooltip__content">
+                                    Какой-то текст!! Какой-то текст!! Какой-то текст!! Какой-то текст!!
+                                    Какой-то текст!! Какой-то текст!!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="place-sale-price__wrapper">
+                            <div class="place-sale-price__input input-text input-text--only-number input-text--no-subtitle">
+                                <label class="input-text__label">
+                                    <input type="text" name="Имя" maxlength="12" class="input-reset input-text__input" placeholder="Цена">
+                                </label>
+                            </div>
+                            <div class="place-sale-price__select select-secondary" >
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Тип сделки
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="deal-type">
+                                        <option placeholder>Неважно</option>
+                                        <option value="deal-type1">Выбор1</option>
+                                        <option value="deal-type2">Выбор2</option>
+                                        <option value="deal-type3">Выбор3</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="submit-app__row place-sale-videoshow">
+                        <div class="place-sale-videoshow__top">
+                            <h2 class="place-sale__row-title place-sale-videoshow__title title-2">
+                                Видеопоказ
+                            </h2>
+                            <div class="place-sale-videoshow__tooltip secondary-tooltip secondary-tooltip--dark">
+                                <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#info"></use>
+                                    </svg>
+                                </button>
+                                <div class="secondary-tooltip__content">
+                                    Выберите, если готовы показать объект с помощью видео-звонка.
+                                    В объявлении появится значок «Онлайн-показ»
+                                </div>
+                            </div>
+                        </div>
+                        <div class="place-sale-videoshow__checkbox checkbox-secondary">
+                            <input id="video-show-check_1" name="video-show-check" class="checkbox-secondary__input" type="checkbox" value="true">
+                            <label for="video-show-check_1" class="checkbox-secondary__label">
+                                <span class="checkbox-secondary__text">Готов показать по видеосвязи</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="place-sale__row communic-method-radios radio-primary">
+                        <h2 class="communic-method-radios__title place-sale__row-title title-2">
+                            Способ связи
+                        </h2>
+                        <div class="communic-method-radios__wrapper">
+                            <div class="radio-primary__item">
+                                <input hidden id="communic-method_1" class="radio-primary__input" type="radio" value="По телефону и в сообщениях" name="communic-method">
+                                <label for="communic-method_1" class="radio-primary__label">
+                                    <span class="radio-primary__text">По телефону и в сообщениях</span>
+                                </label>
+                            </div>
+                            <div class="radio-primary__item">
+                                <input hidden id="communic-method_2" class="radio-primary__input" type="radio" value="Только переписка в сообщениях" name="communic-method">
+                                <label for="communic-method_2" class="radio-primary__label">
+                                    <span class="radio-primary__text">Только переписка в сообщениях</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="place-sale__row your-contacts-field">
+                        <h2 class="your-contacts-field__title place-sale__row-title title-2">
+                            Ваши контакты
+                        </h2>
+                        <div class="your-contacts-field__wrapper">
+                            <div class="input-text input-text--no-exp input-text--disabled">
+                                <label class="input-text__label">
+                                    <span>Номер телефона</span>
+                                    <input type="text" name="Застройщик" class="input-reset input-text__input" value="8 921 645 45 45" disabled placeholder="Номер телефона">
+                                </label>
+                            </div>
+                            <div class="input-text input-text--no-exp input-text--disabled">
+                                <label class="input-text__label">
+                                    <span>Имя, фамилия</span>
+                                    <input type="text" name="Имя, фамилия" class="input-reset input-text__input" value="Алексей Г." disabled placeholder="Имя, фамилия">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="place-sale__row place-sale-layouts">
+                        <div class="row">
+                            <h2 class="place-sale__row-title title-2">
+                             1000 квартир.
+                             </h2>
+                             <a href="#" class="btn btn-reset btn-secondary">Добавить квартиру</a>
+                        </div>
+                        <div class="filter filter--more">
+                            <button type="button" class="btn btn-reset btn-secondary filter__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#filter"></use>
+                                </svg>
+                                <span>Фильтр</span>
+                            </button>
+                            <div class="filter__mask">
+                                <div class="filter__container">
+                                    <div class="filter__top">
+                                        <button type="button" class="btn btn-reset filter__close">Закрыть</button>
+                                    </div>
+                                    <div class="filter__inner">
+                                        <div class="filter__row object-filter__row--1">
+                                            <div class="filter__item select-secondary">
+                                                <div class="select-secondary__wrapper">
+                                                    <span class="select-secondary__placeholder">
+                                                        Корпус
+                                                    </span>
+                                                    <select class="select-secondary__body" hidden name="complex">
+                                                        <option placeholder>Любой</option>
+                                                        <option value="complex">Дом1</option>
+                                                        <option value="complex2">Дом2</option>
+                                                        <option value="complex3">Дом3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="filter__item filter__item--quantity-selection quantity-selection">
+                                                <div class="quantity-selection__inner">
+                                                    <div class="checkbox">
+                                                        <input id="filter-quantity_studios" name="filter-quantity-studios" class="checkbox__input" type="checkbox" value="true">
+                                                        <label for="filter-quantity_studios" class="checkbox__label">
+                                                            <span class="checkbox__text checkbox__text-studios">Студия</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input id="filter-quantity_1" name="filter-quantity-1" class="checkbox__input" type="checkbox" value="true">
+                                                        <label for="filter-quantity_1" class="checkbox__label">
+                                                            <span class="checkbox__text">1</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input id="filter-quantity_2" name="filter-quantity-2" class="checkbox__input" type="checkbox" value="true">
+                                                        <label for="filter-quantity_2" class="checkbox__label">
+                                                            <span class="checkbox__text">2</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input id="filter-quantity_3" name="filter-quantity-3" class="checkbox__input" type="checkbox" value="true">
+                                                        <label for="filter-quantity_3" class="checkbox__label">
+                                                            <span class="checkbox__text">3</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input id="filter-quantity_4" name="filter-quantity-4" class="checkbox__input" type="checkbox" value="true">
+                                                        <label for="filter-quantity_4" class="checkbox__label">
+                                                            <span class="checkbox__text">4+</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="filter__item filter-dropdown filter-dropdown--improved" data-filter-dropdown-name="Цена"
+                                                data-filter-dropdown-subtitle="Любая">
+                                                <button type="button" class="btn btn-reset filter-dropdown__button">
+                                                    <div class="filter-dropdown__button-wrapper">
+                                                        <div>
+                                                            Цена
+                                                        </div>
+                                                        <div>
+                                                            Любая
+                                                        </div>
+                                                    </div>
+                                                    <svg>
+                                                        <use xlink:href="img/sprite.svg#check"></use>
+                                                    </svg>
+                                                </button>
+                                                <div class="filter-dropdown__dropdown filter-dropdown--improved__dropdown">
+                                                    <button type="button" class="btn btn-reset filter-dropdown__close">
+                                                        <svg>
+                                                            <use xlink:href="img/sprite.svg#x"></use>
+                                                        </svg>
+                                                    </button>
+                                                    <label class="filter-dropdown__item active">
+                                                        <span class="filter-dropdown__subtitle">Стоимость объекта, ₽</span>
+                                                        <div class="filter-dropdown__range filter-range">
+                                                            <div class="filter-range__nav">
+                                                                <div class="input-text input-text--only-number">
+                                                                    <label class="input-text__label">
+                                                                        <span>Цена от</span>
+                                                                        <input type="text" maxlength="11" class="input-reset input-text__input" placeholder="Цена от">
+                                                                    </label>
+                                                                </div>
+                                                                <div>–</div>
+                                                                <div class="input-text input-text--only-number">
+                                                                    <label class="input-text__label">
+                                                                        <span>До</span>
+                                                                        <input type="text" maxlength="11" class="input-reset input-text__input" placeholder="До">
+                                                                    </label>
+                                                                </div>
+                                                                <div>
+                                                                    ₽
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="filter__row object-filter__row--2" hidden>
+                                            <div class="filter__item filter-dropdown filter-dropdown--improved" data-filter-dropdown-name="Площадь"
+                                                data-filter-dropdown-subtitle="Любая">
+                                                <button type="button" class="btn btn-reset filter-dropdown__button">
+                                                    <div class="filter-dropdown__button-wrapper">
+                                                        <div>
+                                                            Площадь
+                                                        </div>
+                                                        <div>
+                                                            Любая
+                                                        </div>
+                                                    </div>
+                                                    <svg>
+                                                        <use xlink:href="img/sprite.svg#check"></use>
+                                                    </svg>
+                                                </button>
+                                                <div class="filter-dropdown__dropdown filter-dropdown__dropdown--left filter-dropdown--improved__dropdown">
+                                                    <button type="button" class="btn btn-reset filter-dropdown__close">
+                                                        <svg>
+                                                            <use xlink:href="img/sprite.svg#x"></use>
+                                                        </svg>
+                                                    </button>
+                                                    <label class="filter-dropdown__item active">
+                                                        <span class="filter-dropdown__subtitle">Площадь объекта, м²</span>
+                                                        <div class="filter-dropdown__range filter-range">
+                                                            <div class="filter-range__nav">
+                                                                <div class="input-text input-text--only-number">
+                                                                    <label class="input-text__label">
+                                                                        <span>Площадь от</span>
+                                                                        <input type="text" maxlength="3" class="input-reset input-text__input" placeholder="Площадь от">
+                                                                    </label>
+                                                                </div>
+                                                                <div>–</div>
+                                                                <div class="input-text input-text--only-number">
+                                                                    <label class="input-text__label">
+                                                                        <span>До</span>
+                                                                        <input type="text" maxlength="3" class="input-reset input-text__input" placeholder="До">
+                                                                    </label>
+                                                                </div>
+                                                                <div>
+                                                                    м²
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="filter__item search-select search-select--no-search" data-search-select-subtitle="Любой">
+                                                <button type="button" class="btn btn-reset search-select__button">
+                                                    <div class="search-select__button-wrapper">
+                                                        <div>Уникальные предложения</div>
+                                                        <div>Любые</div>
+                                                    </div>
+                                                    <svg>
+                                                        <use xlink:href="img/sprite.svg#check"></use>
+                                                    </svg>
+                                                </button>
+                                                <div class="search-select__dropdown search-select__dropdown--left">
+                                                    <button type="button" class="btn btn-reset search-select__close">
+                                                        <svg>
+                                                            <use xlink:href="img/sprite.svg#x"></use>
+                                                        </svg>
+                                                    </button>
+                                                    <div class="search-select__control">
+                                                        <button type="button" class="btn btn-reset btn-secondary search-select__all">Выбрать всё</button>
+                                                        <button type="button" class="btn btn-reset btn-secondary search-select__clear">Очистить всё</button>
+                                                    </div>
+                                                    <div class="search-select__wrapper simplebar-third">
+                                                        <div class="search-select__item checkbox-secondary">
+                                                            <input id="unique-offers_1" name="unique-offers-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                            <label for="unique-offers_1" class="checkbox-secondary__label">
+                                                                <span class="checkbox-secondary__text">
+                                                                    <span>Кухня-столовая</span>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="search-select__item checkbox-secondary">
+                                                            <input id="unique-offers_2" name="unique-offers-name_2" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                            <label for="unique-offers_2" class="checkbox-secondary__label">
+                                                                <span class="checkbox-secondary__text">
+                                                                    <span>Готовая отделка</span>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="search-select__item checkbox-secondary">
+                                                            <input id="developer_3" name="developer-name_3" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                            <label for="developer_3" class="checkbox-secondary__label">
+                                                                <span class="checkbox-secondary__text">
+                                                                    <span>ГК "А101"</span>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="search-select__item checkbox-secondary">
+                                                            <input id="unique-offers_4" name="unique-offers-name_4" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                            <label for="unique-offers_4" class="checkbox-secondary__label">
+                                                                <span class="checkbox-secondary__text">
+                                                                    <span>ГК МИЦ</span>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="search-select__item checkbox-secondary">
+                                                            <input id="unique-offers_5" name="unique-offers-name_5" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                            <label for="unique-offers_5" class="checkbox-secondary__label">
+                                                                <span class="checkbox-secondary__text">
+                                                                    <span>ЛСР</span>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="search-select__item checkbox-secondary">
+                                                            <input id="unique-offers_6" name="unique-offers-name_6" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                            <label for="unique-offers_6" class="checkbox-secondary__label">
+                                                                <span class="checkbox-secondary__text">
+                                                                    <span>MR GROUP</span>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="search-select__item checkbox-secondary">
+                                                            <input id="unique-offers_7" name="unique-offers-name_7" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                            <label for="unique-offers_7" class="checkbox-secondary__label">
+                                                                <span class="checkbox-secondary__text">
+                                                                    <span>ГК ДОНСТРОЙ</span>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="search-select__item checkbox-secondary">
+                                                            <input id="unique-offers_8" name="unique-offers-name_8" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                            <label for="unique-offers_8" class="checkbox-secondary__label">
+                                                                <span class="checkbox-secondary__text">
+                                                                    <span>ГК ДОНСТРОЙ</span>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="filter__controls more">
+                                        <button type="button" class="btn btn-reset filter__btn-control">
+                                            <span>Еще фильтры</span>
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#check"></use>
+                                            </svg>
+                                        </button>
+                                        <button type="reset" class="btn btn-reset btn-secondary filter__clear">Очистить</button>
+                                        <button type="button" class="btn btn-reset btn-primary filter__go">
+                                            Показать 1567 объявлений
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="room-body">
+                            <div class="room-body__container">
+                                <div class="place-sale-layouts__name">
+                                    <span>Изображение</span>
+                                    <span>Заголовок</span>
+                                    <span>Цена</span>
+                                    <span>№ квартиры</span>
+                                    <span>Действие</span>
+                                </div>
+                                <div class="room-body__list">
+                                    <a href="./detailed-flat.html" class="room-info-card">
+                                        <div class="room-info-card__image">
+                                            <picture>
+                                                <source srcset="./img/card-small.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-small.jpg" class="image" width="70" height="70" alt="1-комн. квартира, 53 м², 4/12 эт.">
+                                            </picture>
+                                        </div>
+                                        <div class="room-info-card__name-term">
+                                            <h3 class="room-info-card__title title-3">
+                                                Студия 53 м², 4/12 эт.
+                                            </h3>
+                                            <span class="room-info-card__term">
+                                                Срок сдачи 4 кв. 2024
+                                            </span>
+                                        </div>
+                                        <div class="col">
+                                            <div class="room-info-card__price">
+                                                <span class="room-info-card__price-new">
+                                                    <span class="title-3">3 250 000
+                                                        ₽</span>
+                                                    <span>(94 742 ₽/м²)</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="room-info-card__number">
+                                            № 1
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" class="btn btn-reset" title="Смотреть">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#eye"></use>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-reset" title="Редактировать">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#pencil">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-reset" title="Удалить">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#trash">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </a>
+                                    <a href="./detailed-flat.html" class="room-info-card">
+                                        <div class="room-info-card__image">
+                                            <picture>
+                                                <source srcset="./img/card-small.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-small.jpg" class="image" width="70" height="70" alt="1-комн. квартира, 53 м², 4/12 эт.">
+                                            </picture>
+                                        </div>
+                                        <div class="room-info-card__name-term">
+                                            <h3 class="room-info-card__title title-3">
+                                                Студия 53 м², 4/12 эт.
+                                            </h3>
+                                            <span class="room-info-card__term">
+                                                Срок сдачи 4 кв. 2024
+                                            </span>
+                                        </div>
+                                        <div class="col">
+                                            <div class="room-info-card__price">
+                                                <span class="room-info-card__price-new">
+                                                    <span class="title-3">3 250 000
+                                                        ₽</span>
+                                                    <span>(94 742 ₽/м²)</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="room-info-card__number">
+                                            № 1
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" class="btn btn-reset" title="Смотреть">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#eye"></use>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-reset" title="Редактировать">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#pencil">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-reset" title="Удалить">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#trash">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </a>
+                                    <a href="./detailed-flat.html" class="room-info-card">
+                                        <div class="room-info-card__image">
+                                            <picture>
+                                                <source srcset="./img/card-small.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-small.jpg" class="image" width="70" height="70" alt="1-комн. квартира, 53 м², 4/12 эт.">
+                                            </picture>
+                                        </div>
+                                        <div class="room-info-card__name-term">
+                                            <h3 class="room-info-card__title title-3">
+                                                Студия 53 м², 4/12 эт.
+                                            </h3>
+                                            <span class="room-info-card__term">
+                                                Срок сдачи 4 кв. 2024
+                                            </span>
+                                        </div>
+                                        <div class="col">
+                                            <div class="room-info-card__price">
+                                                <span class="room-info-card__price-new">
+                                                    <span class="title-3">3 250 000
+                                                        ₽</span>
+                                                    <span>(94 742 ₽/м²)</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="room-info-card__number">
+                                            № 1
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" class="btn btn-reset" title="Смотреть">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#eye"></use>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-reset" title="Редактировать">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#pencil">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-reset" title="Удалить">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#trash">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </a>
+                                    <a href="./detailed-flat.html" class="room-info-card">
+                                        <div class="room-info-card__image">
+                                            <picture>
+                                                <source srcset="./img/card-small.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-small.jpg" class="image" width="70" height="70" alt="1-комн. квартира, 53 м², 4/12 эт.">
+                                            </picture>
+                                        </div>
+                                        <div class="room-info-card__name-term">
+                                            <h3 class="room-info-card__title title-3">
+                                                Студия 53 м², 4/12 эт.
+                                            </h3>
+                                            <span class="room-info-card__term">
+                                                Срок сдачи 4 кв. 2024
+                                            </span>
+                                        </div>
+                                        <div class="col">
+                                            <div class="room-info-card__price">
+                                                <span class="room-info-card__price-new">
+                                                    <span class="title-3">3 250 000
+                                                        ₽</span>
+                                                    <span>(94 742 ₽/м²)</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="room-info-card__number">
+                                            № 1
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" class="btn btn-reset" title="Смотреть">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#eye"></use>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-reset" title="Редактировать">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#pencil">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-reset" title="Удалить">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#trash">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </a>
+                                    <a href="./detailed-flat.html" class="room-info-card">
+                                        <div class="room-info-card__image">
+                                            <picture>
+                                                <source srcset="./img/card-small.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-small.jpg" class="image" width="70" height="70" alt="1-комн. квартира, 53 м², 4/12 эт.">
+                                            </picture>
+                                        </div>
+                                        <div class="room-info-card__name-term">
+                                            <h3 class="room-info-card__title title-3">
+                                                Студия 53 м², 4/12 эт.
+                                            </h3>
+                                            <span class="room-info-card__term">
+                                                Срок сдачи 4 кв. 2024
+                                            </span>
+                                        </div>
+                                        <div class="col">
+                                            <div class="room-info-card__price">
+                                                <span class="room-info-card__price-new">
+                                                    <span class="title-3">3 250 000
+                                                        ₽</span>
+                                                    <span>(94 742 ₽/м²)</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="room-info-card__number">
+                                            № 1
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" class="btn btn-reset" title="Смотреть">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#eye"></use>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-reset" title="Редактировать">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#pencil">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-reset" title="Удалить">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#trash">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </a>
+                                    <a href="./detailed-flat.html" class="room-info-card">
+                                        <div class="room-info-card__image">
+                                            <picture>
+                                                <source srcset="./img/card-small.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-small.jpg" class="image" width="70" height="70" alt="1-комн. квартира, 53 м², 4/12 эт.">
+                                            </picture>
+                                        </div>
+                                        <div class="room-info-card__name-term">
+                                            <h3 class="room-info-card__title title-3">
+                                                Студия 53 м², 4/12 эт.
+                                            </h3>
+                                            <span class="room-info-card__term">
+                                                Срок сдачи 4 кв. 2024
+                                            </span>
+                                        </div>
+                                        <div class="col">
+                                            <div class="room-info-card__price">
+                                                <span class="room-info-card__price-new">
+                                                    <span class="title-3">3 250 000
+                                                        ₽</span>
+                                                    <span>(94 742 ₽/м²)</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="room-info-card__number">
+                                            № 1
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" class="btn btn-reset" title="Смотреть">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#eye"></use>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-reset" title="Редактировать">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#pencil">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-reset" title="Удалить">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#trash">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </a>
+                                    <a href="./detailed-flat.html" class="room-info-card">
+                                        <div class="room-info-card__image">
+                                            <picture>
+                                                <source srcset="./img/card-small.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-small.jpg" class="image" width="70" height="70" alt="1-комн. квартира, 53 м², 4/12 эт.">
+                                            </picture>
+                                        </div>
+                                        <div class="room-info-card__name-term">
+                                            <h3 class="room-info-card__title title-3">
+                                                Студия 53 м², 4/12 эт.
+                                            </h3>
+                                            <span class="room-info-card__term">
+                                                Срок сдачи 4 кв. 2024
+                                            </span>
+                                        </div>
+                                        <div class="col">
+                                            <div class="room-info-card__price">
+                                                <span class="room-info-card__price-new">
+                                                    <span class="title-3">3 250 000
+                                                        ₽</span>
+                                                    <span>(94 742 ₽/м²)</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="room-info-card__number">
+                                            № 1
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" class="btn btn-reset" title="Смотреть">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#eye"></use>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-reset" title="Редактировать">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#pencil">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-reset" title="Удалить">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#trash">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </a>
+                                    <a href="./detailed-flat.html" class="room-info-card">
+                                        <div class="room-info-card__image">
+                                            <picture>
+                                                <source srcset="./img/card-small.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-small.jpg" class="image" width="70" height="70" alt="1-комн. квартира, 53 м², 4/12 эт.">
+                                            </picture>
+                                        </div>
+                                        <div class="room-info-card__name-term">
+                                            <h3 class="room-info-card__title title-3">
+                                                Студия 53 м², 4/12 эт.
+                                            </h3>
+                                            <span class="room-info-card__term">
+                                                Срок сдачи 4 кв. 2024
+                                            </span>
+                                        </div>
+                                        <div class="col">
+                                            <div class="room-info-card__price">
+                                                <span class="room-info-card__price-new">
+                                                    <span class="title-3">3 250 000
+                                                        ₽</span>
+                                                    <span>(94 742 ₽/м²)</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="room-info-card__number">
+                                            № 1
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" class="btn btn-reset" title="Смотреть">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#eye"></use>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-reset" title="Редактировать">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#pencil">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-reset" title="Удалить">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#trash">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </a>
+                                    <a href="./detailed-flat.html" class="room-info-card">
+                                        <div class="room-info-card__image">
+                                            <picture>
+                                                <source srcset="./img/card-small.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-small.jpg" class="image" width="70" height="70" alt="1-комн. квартира, 53 м², 4/12 эт.">
+                                            </picture>
+                                        </div>
+                                        <div class="room-info-card__name-term">
+                                            <h3 class="room-info-card__title title-3">
+                                                Студия 53 м², 4/12 эт.
+                                            </h3>
+                                            <span class="room-info-card__term">
+                                                Срок сдачи 4 кв. 2024
+                                            </span>
+                                        </div>
+                                        <div class="col">
+                                            <div class="room-info-card__price">
+                                                <span class="room-info-card__price-new">
+                                                    <span class="title-3">3 250 000
+                                                        ₽</span>
+                                                    <span>(94 742 ₽/м²)</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="room-info-card__number">
+                                            № 1
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" class="btn btn-reset" title="Смотреть">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#eye"></use>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-reset" title="Редактировать">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#pencil">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-reset" title="Удалить">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#trash">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </a>
+                                    <a href="./detailed-flat.html" class="room-info-card">
+                                        <div class="room-info-card__image">
+                                            <picture>
+                                                <source srcset="./img/card-small.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-small.jpg" class="image" width="70" height="70" alt="1-комн. квартира, 53 м², 4/12 эт.">
+                                            </picture>
+                                        </div>
+                                        <div class="room-info-card__name-term">
+                                            <h3 class="room-info-card__title title-3">
+                                                Студия 53 м², 4/12 эт.
+                                            </h3>
+                                            <span class="room-info-card__term">
+                                                Срок сдачи 4 кв. 2024
+                                            </span>
+                                        </div>
+                                        <div class="col">
+                                            <div class="room-info-card__price">
+                                                <span class="room-info-card__price-new">
+                                                    <span class="title-3">3 250 000
+                                                        ₽</span>
+                                                    <span>(94 742 ₽/м²)</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="room-info-card__number">
+                                            № 1
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" class="btn btn-reset" title="Смотреть">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#eye"></use>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-reset" title="Редактировать">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#pencil">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-reset" title="Удалить">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#trash">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </a>
+                                </div>
+                                <button type="button" class="btn btn-reset btn-secondary room-body__next">
+                                    Следующая страница
+                                </button>
+                                <div class="room-body__pagination-bottom pagination">
+                                    <ul class="pagination__list list-reset">
+                                        <li class="pagination__item" disabled>
+                                            <a href="#">
+                                                1
+                                            </a>
+                                        </li>
+                                        <li class="pagination__item">
+                                            <a href="#">
+                                                2
+                                            </a>
+                                        </li>
+                                        <li class="pagination__item">
+                                            <a href="#">
+                                                3
+                                            </a>
+                                        </li>
+                                        <li class="pagination__item">
+                                            <a href="#">
+                                                4
+                                            </a>
+                                        </li>
+                                        <li class="pagination__item">
+                                            <a href="#">
+                                                5
+                                            </a>
+                                        </li>
+                                        <li class="pagination__item dots" tabindex="-1">
+                                            ...
+                                        </li>
+                                        <li class="pagination__item">
+                                            <a href="#">
+                                                199
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-reset btn-primary place-sale__btn">
+                        Разместить
+                    </button>
+                </form>
             </div>
         </main>
         <footer class="footer">

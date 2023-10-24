@@ -18,7 +18,7 @@
 <body class="page__body">
     <div class="site-container site-container--place-sale">
         @include('partials/header--menu.html')
-        <main class="main main-page-gap place-sale">
+        <main class="main main-page-gap add-apartment">
             <div class="place-sale__top top-page-inner-title">
                 <div class="top-page-inner-title__container container">
                     <a href="#" class="place-sale__back top-page-inner-title__back back-link">
@@ -27,8 +27,8 @@
                         </svg>
                         <span>Назад</span>
                     </a>
-                    <h1 class="place-sale__title top-page-inner-title__title title-1" data-da=".place-sale__body,1212,first">
-                        Разместить объявление о продаже
+                    <h1 class="add-apartment__title top-page-inner-title__title title-1" data-da=".place-sale__body,1212,first">
+                       Добавить комплекс
                     </h1>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                 <form action="#" class="place-sale__container container">
                     <div class="place-sale__row place-sale-address">
                         <h2 class="place-sale__row-title place-sale-address__title title-2">
-                            Адрес
+                            Адрес ЖК "NOVELLA"
                         </h2>
                         <div class="place-sale-address__city">
                             <div class="place-sale-address__text">
@@ -48,65 +48,88 @@
                                     Или добавьте адрес в ручную.
                                 </p>
                             </div>
-                            <div class="place-sale-address__select select-secondary select-secondary--city _selected" >
-                                <div class="select-secondary__wrapper">
-                                    <span class="select-secondary__placeholder">
-                                        Город
-                                    </span>
-                                    <select class="select-secondary__body" hidden name="city">
-                                        <option value="apartments">Санкт-Петербург</option>
-                                        <option value="apartments2">Волгоград</option>
-                                        <option value="apartments3">Москва</option>
-                                    </select>
+                            <div class="row" style="display: grid;grid-template-columns: 30% 30%;grid-gap: 8px; margin-top: 24px;">
+                                <div class="place-sale-address__select select-secondary select-secondary--city _selected" style="margin: 0; max-width: none;">
+                                    <div class="select-secondary__wrapper">
+                                        <span class="select-secondary__placeholder">
+                                            Город
+                                        </span>
+                                        <select class="select-secondary__body" hidden name="city">
+                                            <option value="apartments">Санкт-Петербург</option>
+                                            <option value="apartments2">Волгоград</option>
+                                            <option value="apartments3">Москва</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="place-sale-options__item select-secondary _selected" style="max-width: none;">
+                                    <div class="select-secondary__wrapper">
+                                        <span class="select-secondary__placeholder">
+                                            Комплекс
+                                        </span>
+                                        <select class="select-secondary__body" hidden name="complex">
+                                            <option value="all-room">ГК Самолёт</option>
+                                            <option value="room-1">Выбор1</option>
+                                            <option value="room-2">Выбор2</option>
+                                            <option value="room-3">Выбор3</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="place-sale-address__select filter__item search-select" data-search-select-subtitle="Любой">
-                                <button type="button" class="btn btn-reset search-select__button">
-                                    <div class="search-select__button-wrapper">
-                                        <div>Станция метро</div>
-                                        <div>Любая</div>
-                                    </div>
-                                    <svg>
-                                        <use xlink:href="img/sprite.svg#check"></use>
-                                    </svg>
-                                </button>
-                                <div class="search-select__dropdown search-select__dropdown--left">
-                                    <button type="button" class="btn btn-reset search-select__close">
+                            <div class="row" style="display: grid;grid-template-columns: 40% 35%;grid-gap: 8px;margin-top: 16px; max-width: none;">
+                                <div class="place-sale-address__field input-text input-text--no-exp _active" style="margin: 0;">
+                                    <label class="input-text__label">
+                                        <span>Город, улица, дом, корпус</span>
+                                        <input type="text" name="Заголовок" class="input-reset input-text__input" value="Улица Питерская д.40" placeholder="Город, улица, дом, корпус">
+                                    </label>
+                                </div>
+                                <div class="place-sale-address__select filter__item search-select" data-search-select-subtitle="Любой" style="margin: 0; max-width: none;">
+                                    <button type="button" class="btn btn-reset search-select__button">
+                                        <div class="search-select__button-wrapper">
+                                            <div>Станция метро</div>
+                                            <div>Любая</div>
+                                        </div>
                                         <svg>
-                                            <use xlink:href="img/sprite.svg#x"></use>
+                                            <use xlink:href="img/sprite.svg#check"></use>
                                         </svg>
                                     </button>
-                                    <label class="input-primary search-select__input">
-                                        <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по названию">
-                                    </label>
-                                    <div class="search-select__control">
-                                        <button type="button" class="btn btn-reset btn-secondary search-select__all">Выбрать всё</button>
-                                        <button type="button" class="btn btn-reset btn-secondary search-select__clear">Очистить всё</button>
-                                    </div>
-                                    <div class="search-select__wrapper simplebar-third">
-                                        <div class="search-select__item checkbox-secondary">
-                                            <input id="developer_1" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
-                                            <label for="developer_1" class="checkbox-secondary__label">
-                                                <span class="checkbox-secondary__text">
-                                                    <span>Станция метро 1</span>
-                                                </span>
-                                            </label>
+                                    <div class="search-select__dropdown search-select__dropdown--left">
+                                        <button type="button" class="btn btn-reset search-select__close">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#x"></use>
+                                            </svg>
+                                        </button>
+                                        <label class="input-primary search-select__input">
+                                            <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по названию">
+                                        </label>
+                                        <div class="search-select__control">
+                                            <button type="button" class="btn btn-reset btn-secondary search-select__all">Выбрать всё</button>
+                                            <button type="button" class="btn btn-reset btn-secondary search-select__clear">Очистить всё</button>
                                         </div>
-                                        <div class="search-select__item checkbox-secondary">
-                                            <input id="developer_2" name="developer-name_2" class="checkbox-secondary__input" type="checkbox" value="true">
-                                            <label for="developer_2" class="checkbox-secondary__label">
-                                                <span class="checkbox-secondary__text">
-                                                    <span>Станция метро 2</span>
-                                                </span>
-                                            </label>
-                                        </div>
-                                        <div class="search-select__item checkbox-secondary">
-                                            <input id="developer_3" name="developer-name_3" class="checkbox-secondary__input" type="checkbox" value="true">
-                                            <label for="developer_3" class="checkbox-secondary__label">
-                                                <span class="checkbox-secondary__text">
-                                                    <span>Станция метро 3</span>
-                                                </span>
-                                            </label>
+                                        <div class="search-select__wrapper simplebar-third">
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_1" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_1" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>Станция метро 1</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_2" name="developer-name_2" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_2" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>Станция метро 2</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_3" name="developer-name_3" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_3" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>Станция метро 3</span>
+                                                    </span>
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -120,9 +143,10 @@
                                 <span class="checkbox-secondary__text">Добавьте адрес в ручную</span>
                             </label>
                         </div>
-                        <div class="place-sale-address__field">
-                            <label class="input-primary">
-                                <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Город, улица, дом, корпус">
+                        <div class="place-sale-address__field input-text input-text--no-exp">
+                            <label class="input-text__label">
+                                <span>Город, улица, дом, корпус</span>
+                                <input type="text" name="Заголовок" class="input-reset input-text__input" placeholder="">
                             </label>
                         </div>
                     </div>
@@ -131,10 +155,10 @@
                             Параметры
                         </h2>
                         <div class="place-sale-options__row place-sale-options__row--1">
-                            <div class="place-sale-options__item select-secondary" >
+                            <div class="place-sale-options__item select-secondary">
                                 <div class="select-secondary__wrapper">
                                     <span class="select-secondary__placeholder">
-                                        Тип объекта
+                                        Корпус
                                     </span>
                                     <select class="select-secondary__body" hidden name="complex">
                                         <option placeholder value="all-room">Любой</option>
@@ -142,97 +166,6 @@
                                         <option value="room-2">Выбор2</option>
                                         <option value="room-3">Выбор3</option>
                                     </select>
-                                </div>
-                            </div>
-                            <div class="place-sale-options__item search-select" data-search-select-subtitle="Любой">
-                                <button type="button" class="btn btn-reset search-select__button">
-                                    <div class="search-select__button-wrapper">
-                                        <div>Комплекс</div>
-                                        <div>Любой</div>
-                                    </div>
-                                    <svg>
-                                        <use xlink:href="img/sprite.svg#check"></use>
-                                    </svg>
-                                </button>
-                                <div class="search-select__dropdown">
-                                    <button type="button" class="btn btn-reset search-select__close">
-                                        <svg>
-                                            <use xlink:href="img/sprite.svg#x"></use>
-                                        </svg>
-                                    </button>
-                                    <label class="input-primary search-select__input">
-                                        <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по названию">
-                                    </label>
-                                    <div class="search-select__control">
-                                        <button type="button" class="btn btn-reset btn-secondary search-select__all">Выбрать всё</button>
-                                        <button type="button" class="btn btn-reset btn-secondary search-select__clear">Очистить всё</button>
-                                    </div>
-                                    <div class="search-select__wrapper simplebar-third">
-                                        <div class="search-select__item checkbox-secondary">
-                                            <input id="developer_11" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
-                                            <label for="developer_11" class="checkbox-secondary__label">
-                                                <span class="checkbox-secondary__text">
-                                                    <span>ПИК</span>
-                                                </span>
-                                            </label>
-                                        </div>
-                                        <div class="search-select__item checkbox-secondary">
-                                            <input id="developer_12" name="developer-name_2" class="checkbox-secondary__input" type="checkbox" value="true">
-                                            <label for="developer_12" class="checkbox-secondary__label">
-                                                <span class="checkbox-secondary__text">
-                                                    <span>ГК Самолет</span>
-                                                </span>
-                                            </label>
-                                        </div>
-                                        <div class="search-select__item checkbox-secondary">
-                                            <input id="developer_13" name="developer-name_3" class="checkbox-secondary__input" type="checkbox" value="true">
-                                            <label for="developer_13" class="checkbox-secondary__label">
-                                                <span class="checkbox-secondary__text">
-                                                    <span>ГК "А101"</span>
-                                                </span>
-                                            </label>
-                                        </div>
-                                        <div class="search-select__item checkbox-secondary">
-                                            <input id="developer_14" name="developer-name_4" class="checkbox-secondary__input" type="checkbox" value="true">
-                                            <label for="developer_14" class="checkbox-secondary__label">
-                                                <span class="checkbox-secondary__text">
-                                                    <span>ГК МИЦ</span>
-                                                </span>
-                                            </label>
-                                        </div>
-                                        <div class="search-select__item checkbox-secondary">
-                                            <input id="developer_15" name="developer-name_5" class="checkbox-secondary__input" type="checkbox" value="true">
-                                            <label for="developer_15" class="checkbox-secondary__label">
-                                                <span class="checkbox-secondary__text">
-                                                    <span>ЛСР</span>
-                                                </span>
-                                            </label>
-                                        </div>
-                                        <div class="search-select__item checkbox-secondary">
-                                            <input id="developer_16" name="developer-name_6" class="checkbox-secondary__input" type="checkbox" value="true">
-                                            <label for="developer_16" class="checkbox-secondary__label">
-                                                <span class="checkbox-secondary__text">
-                                                    <span>MR GROUP</span>
-                                                </span>
-                                            </label>
-                                        </div>
-                                        <div class="search-select__item checkbox-secondary">
-                                            <input id="developer_17" name="developer-name_7" class="checkbox-secondary__input" type="checkbox" value="true">
-                                            <label for="developer_17" class="checkbox-secondary__label">
-                                                <span class="checkbox-secondary__text">
-                                                    <span>ГК ДОНСТРОЙ</span>
-                                                </span>
-                                            </label>
-                                        </div>
-                                        <div class="search-select__item checkbox-secondary">
-                                            <input id="developer_18" name="developer-name_8" class="checkbox-secondary__input" type="checkbox" value="true">
-                                            <label for="developer_18" class="checkbox-secondary__label">
-                                                <span class="checkbox-secondary__text">
-                                                    <span>ГК Эталон</span>
-                                                </span>
-                                            </label>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -273,14 +206,28 @@
                             </div>
                             <div class="place-sale-options__item input-text input-text--only-number">
                                 <label class="input-text__label">
-                                    <span>Площадь</span>
+                                    <span>Этаж</span>
+                                    <input type="text" name="Имя" maxlength="2" class="input-reset input-text__input" placeholder="">
+                                    <span class="input-text__name">эт.</span>
+                                </label>
+                            </div>
+                            <div class="place-sale-options__item input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Жилая площадь</span>
                                     <input type="text" name="Имя" maxlength="3" class="input-reset input-text__input" placeholder="">
                                     <span class="input-text__name">м²</span>
                                 </label>
                             </div>
                             <div class="place-sale-options__item input-text input-text--only-number">
                                 <label class="input-text__label">
-                                    <span>Общая площадь</span>
+                                    <span>Этажей в доме</span>
+                                    <input type="text" name="Имя" maxlength="2" class="input-reset input-text__input" placeholder="">
+                                    <span class="input-text__name">эт.</span>
+                                </label>
+                            </div>
+                            <div class="place-sale-options__item input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Площадь</span>
                                     <input type="text" name="Имя" maxlength="3" class="input-reset input-text__input" placeholder="">
                                     <span class="input-text__name">м²</span>
                                 </label>
@@ -291,63 +238,6 @@
                                     <input type="text" name="Имя" maxlength="3" class="input-reset input-text__input" placeholder="">
                                     <span class="input-text__name">м²</span>
                                 </label>
-                            </div>
-                        </div>
-                        <div class="place-sale-options__row place-sale-options__row--3">
-                            <div class="place-sale-options__item input-text input-text--only-number">
-                                <label class="input-text__label">
-                                    <span>Этаж</span>
-                                    <input type="text" name="Имя" maxlength="2" class="input-reset input-text__input" placeholder="">
-                                    <span class="input-text__name">эт.</span>
-                                </label>
-                            </div>
-                            <div class="place-sale-options__item input-text input-text--only-number">
-                                <label class="input-text__label">
-                                    <span>Этажей в доме</span>
-                                    <input type="text" name="Имя" maxlength="2" class="input-reset input-text__input" placeholder="">
-                                    <span class="input-text__name">эт.</span>
-                                </label>
-                            </div>
-                            <div class="place-sale-options__item select-secondary" >
-                                <div class="select-secondary__wrapper">
-                                    <span class="select-secondary__placeholder">
-                                        Наличие мебели
-                                    </span>
-                                    <select class="select-secondary__body" hidden name="availability-of-furniture">
-                                        <option placeholder>Неважно</option>
-                                        <option value="yes">Да</option>
-                                        <option value="no">Нет</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="place-sale-options__item select-secondary" >
-                                <div class="select-secondary__wrapper">
-                                    <span class="select-secondary__placeholder">
-                                        Ремонт
-                                    </span>
-                                    <select class="select-secondary__body" hidden name="repair">
-                                        <option placeholder>Неважно</option>
-                                        <option value="repair1">Косметический</option>
-                                        <option value="repair2">Косметический2</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="place-sale-options__row place-sale-options__row--4" hidden>
-                            <div class="place-sale-options__item select-secondary" >
-                                <div class="select-secondary__wrapper">
-                                    <span class="select-secondary__placeholder">
-                                        Вид из окна
-                                    </span>
-                                    <select class="select-secondary__body" hidden name="window">
-                                        <option placeholder>Неважно</option>
-                                        <option value="window1">Во двор и на улицу</option>
-                                        <option value="window2">Во двор и на улицу2</option>
-                                        <option value="window2">Во двор и на улицу3</option>
-                                        <option value="window2">Во двор и на улицу4</option>
-                                        <option value="window2">Во двор и на улицу5</option>
-                                    </select>
-                                </div>
                             </div>
                             <div class="place-sale-options__item select-secondary" >
                                 <div class="select-secondary__wrapper">
@@ -361,46 +251,63 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="place-sale-options__item select-secondary" >
+                            <div class="place-sale-options__item select-secondary">
                                 <div class="select-secondary__wrapper">
                                     <span class="select-secondary__placeholder">
-                                        Тип дома
+                                        Отделка
                                     </span>
-                                    <select class="select-secondary__body" hidden name="bathroom">
-                                        <option placeholder>Неважно</option>
-                                        <option value="brick">Кирпичный</option>
-                                        <option value="monolithic">Монолитный</option>
-                                        <option value="panel">Панельный</option>
-                                        <option value="block">Блочный</option>
+                                    <select class="select-secondary__body" hidden name="complex">
+                                        <option placeholder value="all-room">Любая</option>
+                                        <option value="room-1">С отделкой</option>
+                                        <option value="room-2">Без отделки</option>
+                                        <option value="room-3">Ремонт</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="place-sale-options__item select-secondary">
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Балкон/лоджия
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="complex">
+                                        <option placeholder value="all-room">Любая</option>
+                                        <option value="room-1">Балкон</option>
+                                        <option value="room-2">Лоджия</option>
+                                        <option value="room-2">Балкон/Лоджия</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="place-sale-options__item select-secondary">
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Высота потолков
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="complex">
+                                        <option placeholder value="all-room">Любая</option>
+                                        <option value="room-1">от 3 м²</option>
+                                        <option value="room-2">2.7 м²</option>
+                                        <option value="room-2">2.5 м²</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="place-sale-options__item select-secondary">
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Тип
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="complex">
+                                        <option placeholder value="all-room">Любой</option>
+                                        <option value="room-1">Квартира</option>
+                                        <option value="room-2">Апартаменты</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="place-sale-options__row place-sale-options__row--5" hidden>
-                            <div class="place-sale-options__item select-secondary" >
-                                <div class="select-secondary__wrapper">
-                                    <span class="select-secondary__placeholder">
-                                        Лет в собственности
-                                    </span>
-                                    <select class="select-secondary__body" hidden name="years-of-ownership">
-                                        <option placeholder>Неважно</option>
-                                        <option value="one-two-three">1,2,3+</option>
-                                        <option value="true">Есть несовершеннолетние</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="place-sale-options__item select-secondary" >
-                                <div class="select-secondary__wrapper">
-                                    <span class="select-secondary__placeholder">
-                                        Прописано
-                                    </span>
-                                    <select class="select-secondary__body" hidden name="spelled-out">
-                                        <option placeholder>Неважно</option>
-                                        <option value="one-two-three">1,2,3+</option>
-                                        <option value="true">Есть несовершеннолетние</option>
-                                    </select>
-                                </div>
-                            </div>
+                        <div class="place-sale-options__row place-sale-options__row--3">
+                     
+                        </div>
+                        <div class="place-sale-options__row place-sale-options__row--4" hidden>
+                           
                         </div>
                         <div class="place-sale-options__row place-sale-options__row--6" hidden>
                             <div class="place-sale-options__item select-multiple">
@@ -593,7 +500,7 @@
                             <h2 class="place-sale__row-title title-2">
                              1000 квартир.
                              </h2>
-                             <a href="add-apartment.html" class="btn btn-reset btn-secondary">Добавить квартиру</a>
+                             <a href="#" class="btn btn-reset btn-secondary">Добавить квартиру</a>
                         </div>
                         <div class="filter filter--more">
                             <button type="button" class="btn btn-reset btn-secondary filter__btn">

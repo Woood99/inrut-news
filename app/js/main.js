@@ -9422,6 +9422,7 @@ function placeSaleOptionMore() {
   if (!container) return;
   const itemsHidden = container.querySelectorAll('.place-sale-options__row[hidden]');
   const moreBtn = container.querySelector('.place-sale-options__more');
+  if (!moreBtn) return;
   const btnTextMap = {
     more: moreBtn.querySelector('span').textContent,
     none: 'Меньше параметров'
@@ -12067,8 +12068,6 @@ const emergingBlockScroll = function (targetThemSelector, emergingBlockSelector,
   let beforeContainer = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
   const target = document.querySelector(targetThemSelector);
   const block = document.querySelector(emergingBlockSelector);
-  console.log(target);
-  console.log(block);
   if (!(target && block)) return;
   window.addEventListener('scroll', () => {
     targetScroll();

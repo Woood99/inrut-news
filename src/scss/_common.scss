@@ -876,17 +876,19 @@
 }
 
 .place-sale-layouts {
-    >.row{
-        &:nth-child(1){
+    >.row {
+        &:nth-child(1) {
             margin-bottom: 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
     }
-    .place-sale__row-title{
+
+    .place-sale__row-title {
         margin-bottom: 0;
     }
+
     .room-info-card {
         grid-template-columns: calc(85px + 50px) 25% 30% 12% 1fr;
 
@@ -957,7 +959,7 @@
 }
 
 
-.add-apartment{
+.add-apartment {
     &__title {
         span {
             color: var(--primaryTwo);
@@ -965,5 +967,50 @@
             font-size: var(--default-fz);
             line-height: var(--default-lh);
         }
+    }
+}
+
+.place-sale-sale {
+    &__wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 8px;
+    }
+}
+
+.system-setup-action {
+    display: flex;
+    align-items: center;
+
+    button,
+    a {
+        &:not(:last-child) {
+            margin-right: 16px;
+        }
+
+        &:nth-child(1) {
+            svg {
+                fill: var(--blue);
+            }
+        }
+
+        &:nth-child(2) {
+            svg {
+                stroke: var(--blue);
+                fill: none;
+                stroke-width: 1.5px;
+            }
+        }
+
+        &:nth-child(3) {
+            svg {
+                fill: var(--red);
+            }
+        }
+    }
+
+    svg {
+        width: 20px;
+        height: 20px;
     }
 }

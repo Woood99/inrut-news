@@ -7,6 +7,7 @@ function placeSaleOptionMore() {
     if (!container) return;
     const itemsHidden = container.querySelectorAll('.place-sale-options__row[hidden]');
     const moreBtn = container.querySelector('.place-sale-options__more');
+    if (!moreBtn) return;
     const btnTextMap = {
         more: moreBtn.querySelector('span').textContent,
         none: 'Меньше параметров',

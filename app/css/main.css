@@ -31866,19 +31866,110 @@ textarea.input-reset {
 }
 .place-sale-photo__images {
   margin-top: 16px;
+  display: -ms-grid;
+  display: grid;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  grid-template-columns: repeat(auto-fill, 265px);
+}
+.place-sale-photo__image {
+  border-radius: 12px;
+  overflow: hidden;
+  padding-bottom: 60.3773584906%;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.place-sale-photo__image::before {
+  content: "";
+  position: absolute;
+  background-color: rgba(36, 38, 41, 0.5);
+  z-index: 1;
+  inset: 0;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+@media (min-width: 1213px) {
+  .place-sale-photo__image:hover::before {
+    opacity: 1;
+  }
+  .place-sale-photo__image:hover .place-sale-photo__remove {
+    opacity: 1;
+    visibility: visible;
+  }
+  .place-sale-photo__image:hover .place-sale-photo__rotate {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+.place-sale-photo__remove {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  z-index: 2;
+  background-color: var(--white);
+  border-radius: 8px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
 }
-.place-sale-photo__image {
-  border-radius: 12px;
-  overflow: hidden;
+.place-sale-photo__remove svg {
+  width: 17px;
+  height: 17px;
+  fill: var(--red);
 }
-.place-sale-photo__image:not(:last-child) {
-  margin-right: 24px;
+.place-sale-photo__rotate {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  z-index: 2;
+  background-color: var(--white);
+  border-radius: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+}
+.place-sale-photo__rotate svg {
+  width: 17px;
+  height: 17px;
+  fill: var(--dark);
+}
+.place-sale-photo__rotate--1 {
+  bottom: 10px;
+  left: 10px;
+}
+.place-sale-photo__rotate--2 {
+  bottom: 10px;
+  right: 10px;
 }
 
 .buy-apartment {

@@ -4209,6 +4209,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_onlineDisplay__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./components/onlineDisplay */ "./src/js/components/onlineDisplay.js");
 /* harmony import */ var _components_bankOffer__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./components/bankOffer */ "./src/js/components/bankOffer.js");
 /* harmony import */ var _components_tooltips__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./components/tooltips */ "./src/js/components/tooltips.js");
+/* harmony import */ var _components_dragDrop__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./components/dragDrop */ "./src/js/components/dragDrop.js");
+
 
 
 
@@ -4341,6 +4343,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_onlineDisplay__WEBPACK_IMPORTED_MODULE_43__["default"])();
   (0,_components_bankOffer__WEBPACK_IMPORTED_MODULE_44__["default"])();
   (0,_components_tooltips__WEBPACK_IMPORTED_MODULE_45__.tooltipSecondary)();
+  (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_46__["default"])();
   // ==================================================
 
   (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.validateRadioPrimary)('.complaint-popup__form', '.textarea-primary__input', '.complaint-popup__btn', '.radio-primary__input');
@@ -6194,6 +6197,59 @@ function controlCards() {
   });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (controlCards);
+
+/***/ }),
+
+/***/ "./src/js/components/dragDrop.js":
+/*!***************************************!*\
+  !*** ./src/js/components/dragDrop.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const dragDrop = () => {
+  const containers = document.querySelectorAll('.drag-drop');
+  if (!containers.length) return;
+  containers.forEach(tasksListElement => {
+    const taskElements = tasksListElement.querySelectorAll(`.drag-drop__item`);
+    for (const task of taskElements) {
+      task.draggable = true;
+    }
+    tasksListElement.addEventListener(`dragstart`, evt => {
+      const item = evt.target.closest('.drag-drop__item');
+      if (item) item.classList.add(`selected`);
+    });
+    tasksListElement.addEventListener(`dragend`, evt => {
+      const item = evt.target.closest('.drag-drop__item');
+      if (item) item.classList.remove(`selected`);
+    });
+    const getNextElement = (cursorPosition, currentElement) => {
+      const currentElementCoord = currentElement.getBoundingClientRect();
+      const currentElementCenter = currentElementCoord.y + currentElementCoord.height / 2;
+      const nextElement = cursorPosition < currentElementCenter ? currentElement : currentElement.nextElementSibling;
+      return nextElement;
+    };
+    tasksListElement.addEventListener(`dragover`, evt => {
+      evt.preventDefault();
+      const activeElement = tasksListElement.querySelector(`.selected`);
+      const currentElement = evt.target;
+      const isMoveable = activeElement !== currentElement && currentElement.classList.contains(`drag-drop__item`);
+      if (!isMoveable) {
+        return;
+      }
+      const nextElement = getNextElement(evt.clientY, currentElement);
+      if (nextElement && activeElement === nextElement.previousElementSibling || activeElement === nextElement) {
+        return;
+      }
+      tasksListElement.insertBefore(activeElement, nextElement);
+    });
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (dragDrop);
 
 /***/ }),
 

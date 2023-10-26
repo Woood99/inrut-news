@@ -444,33 +444,61 @@
         padding-bottom: percent(160, 265);
         position: relative;
         cursor: pointer;
-        user-select: none;
-        &::before{
+        transition: opacity $transitionSpeedFast $transitionFunction,
+            transform $transitionSpeedFast $transitionFunction;
+
+        &::before {
             content: '';
             position: absolute;
-            background-color: rgba(36,38,41,.5);
+            background-color: rgba(36, 38, 41, .5);
             z-index: 1;
             inset: 0;
             opacity: 0;
             transition: opacity $transitionSpeedFast $transitionFunction;
         }
-        @media (min-width:$desktop-min){
-             &:hover{
-                &::before{
-                    opacity: 1;
+
+        @media (min-width:$desktop-min) {
+            &:not(._dragg) {
+                &:hover {
+                    &::before {
+                        opacity: 1;
+                    }
+
+                    .place-sale-photo__remove {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+
+                    .place-sale-photo__rotate {
+                        opacity: 1;
+                        visibility: visible;
+                    }
                 }
-                .place-sale-photo__remove{
-                    opacity: 1;
-                    visibility: visible;
-                 }
-                .place-sale-photo__rotate{
-                    opacity: 1;
-                    visibility: visible;
-                 }
-             } 
+            }
+        }
+
+        &._dragg {
+            opacity: 0.4;
+
+            &::before {
+                display: none;
+            }
+
+            .place-sale-photo__remove {
+                display: none;
+            }
+
+            .place-sale-photo__rotate {
+                display: none;
+            }
+        }
+
+        &._over {
+            transform: scale(1.075, 1.075);
         }
     }
-    &__remove{
+
+    &__remove {
         position: absolute;
         top: 10px;
         right: 10px;
@@ -489,14 +517,16 @@
         visibility: hidden;
 
         transition: opacity $transitionSpeedFast $transitionFunction,
-        visibility $transitionSpeedFast $transitionFunction;
-        svg{
+            visibility $transitionSpeedFast $transitionFunction;
+
+        svg {
             width: 17px;
             height: 17px;
             fill: var(--red);
         }
     }
-    &__rotate{
+
+    &__rotate {
         position: absolute;
 
         width: 32px;
@@ -513,17 +543,20 @@
         visibility: hidden;
 
         transition: opacity $transitionSpeedFast $transitionFunction,
-        visibility $transitionSpeedFast $transitionFunction;
-        svg{
+            visibility $transitionSpeedFast $transitionFunction;
+
+        svg {
             width: 17px;
             height: 17px;
             fill: var(--dark);
         }
-        &--1{
+
+        &--1 {
             bottom: 10px;
             left: 10px;
         }
-        &--2{
+
+        &--2 {
             bottom: 10px;
             right: 10px;
         }

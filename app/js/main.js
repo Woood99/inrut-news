@@ -6211,45 +6211,61 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-const dragDrop = () => {
+
+
+const dragDrops = () => {
   const containers = document.querySelectorAll('.drag-drop');
   if (!containers.length) return;
-  containers.forEach(tasksListElement => {
-    const taskElements = tasksListElement.querySelectorAll(`.drag-drop__item`);
-    for (const task of taskElements) {
-      task.draggable = true;
+  containers.forEach(container => {
+    let dragSrcEl;
+    function dragStart(e) {
+      this.classList.add('_dragg');
+      dragSrcEl = this;
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/html', this.innerHTML);
     }
-    tasksListElement.addEventListener(`dragstart`, evt => {
-      const item = evt.target.closest('.drag-drop__item');
-      if (item) item.classList.add(`selected`);
-    });
-    tasksListElement.addEventListener(`dragend`, evt => {
-      const item = evt.target.closest('.drag-drop__item');
-      if (item) item.classList.remove(`selected`);
-    });
-    const getNextElement = (cursorPosition, currentElement) => {
-      const currentElementCoord = currentElement.getBoundingClientRect();
-      const currentElementCenter = currentElementCoord.y + currentElementCoord.height / 2;
-      const nextElement = cursorPosition < currentElementCenter ? currentElement : currentElement.nextElementSibling;
-      return nextElement;
-    };
-    tasksListElement.addEventListener(`dragover`, evt => {
-      evt.preventDefault();
-      const activeElement = tasksListElement.querySelector(`.selected`);
-      const currentElement = evt.target;
-      const isMoveable = activeElement !== currentElement && currentElement.classList.contains(`drag-drop__item`);
-      if (!isMoveable) {
-        return;
+    ;
+    function dragEnter(e) {
+      this.classList.add('_over');
+    }
+    function dragLeave(e) {
+      e.stopPropagation();
+      this.classList.remove('_over');
+    }
+    function dragOver(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      return false;
+    }
+    function dragDrop(e) {
+      if (dragSrcEl != this) {
+        dragSrcEl.innerHTML = this.innerHTML;
+        this.innerHTML = e.dataTransfer.getData('text/html');
+        dragEnd();
       }
-      const nextElement = getNextElement(evt.clientY, currentElement);
-      if (nextElement && activeElement === nextElement.previousElementSibling || activeElement === nextElement) {
-        return;
-      }
-      tasksListElement.insertBefore(activeElement, nextElement);
+      return false;
+    }
+    function dragEnd() {
+      container.querySelectorAll('.drag-drop__item').forEach(item => {
+        item.classList.remove('_over');
+        item.classList.remove('_dragg');
+      });
+    }
+    function addEventsDragAndDrop(el) {
+      el.addEventListener('dragstart', dragStart, false);
+      el.addEventListener('dragenter', dragEnter, false);
+      el.addEventListener('dragover', dragOver, false);
+      el.addEventListener('dragleave', dragLeave, false);
+      el.addEventListener('drop', dragDrop, false);
+      el.addEventListener('dragend', dragEnd, false);
+    }
+    const listItens = container.querySelectorAll('.drag-drop__item');
+    [].forEach.call(listItens, function (item) {
+      addEventsDragAndDrop(item);
     });
   });
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (dragDrop);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (dragDrops);
 
 /***/ }),
 

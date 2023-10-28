@@ -159,6 +159,8 @@
                                     <span class="input-text__name">эт.</span>
                                 </label>
                             </div>
+                        </div>
+                        <div class="place-sale-options__row place-sale-options__row--2">
                             <div class="place-sale-options__item input-text input-text--only-number">
                                 <label class="input-text__label">
                                     <span>Площадь</span>
@@ -198,6 +200,8 @@
                                     </select>
                                 </div>
                             </div>
+                        </div>
+                        <div class="place-sale-options__row place-sale-options__row--1" style="grid-template-columns:repeat(3,1fr);" hidden>
                             <div class="place-sale-options__item select-secondary">
                                 <div class="select-secondary__wrapper">
                                     <span class="select-secondary__placeholder">
@@ -237,14 +241,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="place-sale-options__row place-sale-options__row--3">
-                     
-                        </div>
-                        <div class="place-sale-options__row place-sale-options__row--4" hidden>
-                           
-                        </div>
-                        <div class="place-sale-options__row place-sale-options__row--6" hidden>
-                            <div class="place-sale-options__item select-multiple">
+                        <div class="place-sale-options__row place-sale-options__row--1" style="grid-template-columns: repeat(3,1fr);" hidden>
+                            <div class="place-sale-options__item select-multiple" style="grid-column: 1/3;">
                                 <span class="select-multiple__main-placeholder">
                                     Теги
                                 </span>
@@ -321,22 +319,13 @@
                             <h2 class="place-sale__row-title place-sale-price__title title-2">
                                 Цена
                             </h2>
-                            <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark">
-                                <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                                    <svg>
-                                        <use xlink:href="img/sprite.svg#info"></use>
-                                    </svg>
-                                </button>
-                                <div class="secondary-tooltip__content">
-                                    Какой-то текст!! Какой-то текст!! Какой-то текст!! Какой-то текст!!
-                                    Какой-то текст!! Какой-то текст!!
-                                </div>
-                            </div>
                         </div>
                         <div class="place-sale-price__wrapper">
-                            <div class="place-sale-price__input input-text input-text--only-number input-text--no-subtitle">
+                            <div class="place-sale-price__input input-text input-text--only-number">
                                 <label class="input-text__label">
-                                    <input type="text" name="Имя" maxlength="12" class="input-reset input-text__input" placeholder="Цена">
+                                    <span>Цена от</span>
+                                    <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                    <span>₽</span>
                                 </label>
                             </div>
                         </div>
@@ -345,29 +334,61 @@
                         <h2 class="your-contacts-field__title place-sale__row-title title-2">
                             Контакт
                         </h2>
-                        <div class="your-contacts-field__wrapper">
-                            <div class="place-sale-options__item select-secondary" style="width: 300px;">
-                                <div class="select-secondary__wrapper">
-                                    <span class="select-secondary__placeholder">
-                                       Имя, фамилия
-                                    </span>
-                                    <select class="select-secondary__body" hidden name="bathroom">
-                                        <option placeholder>Неважно</option>
-                                        <option value="Separated">Раздельный</option>
-                                        <option value="more-than-one">Более одного</option>
-                                    </select>
+                        <div class="your-contacts-field__wrapper" style="display: grid; grid-template-columns: repeat(3,1fr); grid-column-gap: 8px;">
+                            <div class="place-sale-options__item search-select-one search-select-one--img-left">
+                                <button type="button" class="btn btn-reset search-select-one__button">
+                                    <div class="search-select-one__button-wrapper">
+                                        <div>Имя, фамилия</div>
+                                        <div>Не выбрано</div>
+                                    </div>
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#check"></use>
+                                    </svg>
+                                </button>
+                                <div class="search-select-one__dropdown">
+                                    <button type="button" class="btn btn-reset search-select-one__close">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#x"></use>
+                                        </svg>
+                                    </button>
+                                    <label class="input-primary search-select-one__input">
+                                        <input type="search" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по имени">
+                                    </label>
+                                    <div class="search-select-one__wrapper simplebar-third">
+                                        <div class="search-select-one__item" data-value="object-1">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
+                                            <span>Владимир А.</span>
+                                        </div>
+                                        <div class="search-select-one__item" data-value="object-2">
+                                            <img loading="lazy" src="./img/avatar-2.jpg" alt="ПИК">
+                                            <span>Сергей С.</span>
+                                        </div>
+                                        <div class="search-select-one__item" data-value="object-3">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
+                                            <span>Анастасия Г.</span>
+                                        </div>
+                                        <div class="search-select-one__item" data-value="object-1">
+                                            <img loading="lazy" src="./img/avatar-2.jpg" alt="ПИК">
+                                            <span>Иван В.</span>
+                                        </div>
+                                        <div class="search-select-one__item" data-value="object-2">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
+                                           <span>Алексей Г.</span>
+                                        </div>
+                                    </div>
                                 </div>
+                                <input type="text" name="object" value="Волгоград" class="search-select-one__input-hidden" hidden>
                             </div>
-                            <div class="input-text input-text--no-exp input-text--number">
+                            <div class="input-text input-text--no-exp" style="width:auto">
                                 <label class="input-text__label">
                                     <span>Номер телефона</span>
-                                    <input type="text" name="Застройщик" class="input-reset input-text__input"  placeholder="">
+                                    <input type="text" name="Застройщик" class="input-reset input-text__input input-phone-mask" placeholder="">
                                 </label>
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-reset btn-primary place-sale__btn">
-                        Разместить
+                    <button type="submit" class="btn btn-reset btn-primary place-sale__btn" style="width: 100%;">
+                        Сохранить
                     </button>
                 </form>
             </div>

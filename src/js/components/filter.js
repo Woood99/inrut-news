@@ -438,6 +438,13 @@ export const searchSelectOne = () => {
                         favoriteTwo.querySelector('[data-favorite-selection-select]').removeAttribute('hidden');
                     }
                 }
+
+                // ПРИМЕР!!
+                if (container.closest('.your-contacts-field__wrapper')) {
+                     const tel = container.nextElementSibling;
+                    tel.classList.add('_active');
+                     tel.querySelector('input').value = '+7 999 999-99-99';
+                }
             })
         })
     });

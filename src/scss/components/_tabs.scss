@@ -72,6 +72,9 @@
             &._tab-active {
                 color: var(--blue);
 
+                input {
+                    color: var(--blue);
+                }
 
                 &::before {
                     width: 100%;
@@ -86,9 +89,48 @@
                 color: var(--blue);
             }
 
+            &.tabs__title--edit {
+                position: relative;
+            }
+
+            input {
+                border: none;
+                text-align: center;
+                color: currentColor;
+                max-width: 85%;
+                width: 100%;
+                &:disabled{
+                    cursor: pointer;
+                    pointer-events: none;
+                }
+            }
+
             @media (max-width:$desktop) {
                 padding: 5px 24px 4px;
                 white-space: nowrap;
+            }
+        }
+
+        .tabs__title-edit {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 0;
+            width: 18px;
+            height: 18px;
+            svg {
+                stroke: var(--blue);
+                fill: none;
+                stroke-width: 1.5px;
+                width: 18px;
+                height: 18px;
+
+                transition: stroke $transitionSpeed $transitionFunction;
+            }
+            &._active{
+                svg{
+                    stroke: var(--red);
+                }
             }
         }
 
@@ -148,9 +190,7 @@
 
         &--horizontal {}
 
-        &--vertical {
-
-        }
+        &--vertical {}
 
         &--maps {
             margin-left: auto;

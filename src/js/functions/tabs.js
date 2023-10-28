@@ -1,7 +1,6 @@
 import getHash from '../support-modules/getHash';
 import dataMediaQueries from '../support-modules/dataMediaQueries';
 
-
 const tabs = () => {
     const metroContainer = document.querySelector('.popup-primary--search-area');
     const metroInnerMoscow = document.querySelector('#map-metro_moscow');
@@ -115,8 +114,8 @@ const tabs = () => {
                             if (!headerFixed.classList.contains('_active')) headerFixed.classList.add('_active');
                         }
                     }
-                   
-    
+
+
                 } else {
                     tabsContentItem.hidden = true;
                 }
@@ -124,14 +123,14 @@ const tabs = () => {
 
                 if (tabsBlock.querySelector('.favorites__tabs')) {
                     const favoritesTabs = tabsBlock.querySelectorAll('.favorites__tab');
-                  
+
                     if (tabsTitles[index].classList.contains('_tab-active')) {
                         favoritesTabs[index].hidden = false;
                     } else {
                         favoritesTabs[index].hidden = true;
                     }
                 }
-         
+
             });
         }
     }
@@ -141,7 +140,23 @@ const tabs = () => {
         if (el.closest('[data-tabs-title]')) {
             const tabTitle = el.closest('[data-tabs-title]');
             const tabsBlock = tabTitle.closest('[data-tabs]');
-            if (!tabTitle.classList.contains('_tab-active') && !tabsBlock.querySelector('._slide')) {
+            const editBtn = el.closest('.tabs__title-edit');
+            if (editBtn) {
+                const input = tabTitle.querySelector('input');
+                if (!editBtn.classList.contains('_active')) {
+                    input.removeAttribute('disabled');
+                    editBtn.classList.add('_active');
+                    tabTitle.classList.add('_edit');
+                    input.focus();
+                    input.setSelectionRange(input.value.length,input.value.length);
+                } else {
+                    input.setAttribute('disabled', '');
+                    editBtn.classList.remove('_active');
+                    tabTitle.classList.remove('_edit');
+                }
+
+            }
+            if (!tabTitle.classList.contains('_tab-active') && !tabsBlock.querySelector('._slide') && !tabTitle.classList.contains('_edit')) {
                 let tabActiveTitle = tabsBlock.querySelectorAll('[data-tabs-title]._tab-active');
                 tabActiveTitle.length ? tabActiveTitle = Array.from(tabActiveTitle).filter(item => item.closest('[data-tabs]') === tabsBlock) : null;
                 tabActiveTitle.length ? tabActiveTitle[0].classList.remove('_tab-active') : null;
@@ -155,7 +170,7 @@ const tabs = () => {
                     });
                     metroBooleanStatus = true;
                 }
-                if (el.closest('.block-stock')){
+                if (el.closest('.block-stock')) {
                     const topGap = window.pageYOffset + el.closest('.block-stock').getBoundingClientRect().top;
                     const headerFixed = document.querySelector('.header-fixed');
                     const topHeaderMobile = document.querySelector('.top-page-inner');
@@ -175,6 +190,22 @@ const tabs = () => {
             e.preventDefault();
         }
     }
+
+
+    document.addEventListener('click',(e) => {
+        const target = e.target;
+        if (!target.closest('.tabs__navigation') && document.querySelector('.tabs__title.tabs__title--edit._edit')) {
+            const items = document.querySelectorAll('.tabs__title.tabs__title--edit._edit');
+            items.forEach(item => {
+                const input = item.querySelector('input');
+                const editBtn = item.querySelector('.tabs__title-edit');
+
+                input.setAttribute('disabled', '');
+                editBtn.classList.remove('_active');
+                item.classList.remove('_edit');
+            })
+        }
+    })
 }
 
 export default tabs;

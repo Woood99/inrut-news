@@ -20445,6 +20445,9 @@ textarea.input-reset {
 .tabs-primary__btns .tabs__title._tab-active {
   color: var(--blue);
 }
+.tabs-primary__btns .tabs__title._tab-active input {
+  color: var(--blue);
+}
 .tabs-primary__btns .tabs__title._tab-active::before {
   width: 100%;
 }
@@ -20454,11 +20457,48 @@ textarea.input-reset {
 .tabs-primary__btns .tabs__title.focus-visible {
   color: var(--blue);
 }
+.tabs-primary__btns .tabs__title.tabs__title--edit {
+  position: relative;
+}
+.tabs-primary__btns .tabs__title input {
+  border: none;
+  text-align: center;
+  color: currentColor;
+  max-width: 85%;
+  width: 100%;
+}
+.tabs-primary__btns .tabs__title input:disabled {
+  cursor: pointer;
+  pointer-events: none;
+}
 @media (max-width: 1212px) {
   .tabs-primary__btns .tabs__title {
     padding: 5px 24px 4px;
     white-space: nowrap;
   }
+}
+.tabs-primary__btns .tabs__title-edit {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 0;
+  width: 18px;
+  height: 18px;
+}
+.tabs-primary__btns .tabs__title-edit svg {
+  stroke: var(--blue);
+  fill: none;
+  stroke-width: 1.5px;
+  width: 18px;
+  height: 18px;
+  -webkit-transition: stroke 0.4s ease-in-out;
+  -o-transition: stroke 0.4s ease-in-out;
+  transition: stroke 0.4s ease-in-out;
+}
+.tabs-primary__btns .tabs__title-edit._active svg {
+  stroke: var(--red);
 }
 @media (max-width: 1212px) {
   .tabs-primary__btns {

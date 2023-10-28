@@ -6242,6 +6242,7 @@ const dragDrops = () => {
         dragSrcEl.innerHTML = this.innerHTML;
         this.innerHTML = e.dataTransfer.getData('text/html');
         dragEnd();
+        dragDropOder(container);
       }
       return false;
     }
@@ -6250,6 +6251,14 @@ const dragDrops = () => {
         item.classList.remove('_over');
         item.classList.remove('_dragg');
       });
+    }
+    function dragDropOder(container) {
+      if (container.classList.contains('drag-drop--order')) {
+        container.querySelectorAll('.drag-drop__item').forEach((item, index) => {
+          const number = item.querySelector('[data-drag-drop-order-number]');
+          number.textContent = index + 1;
+        });
+      }
     }
     function addEventsDragAndDrop(el) {
       el.addEventListener('dragstart', dragStart, false);

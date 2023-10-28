@@ -418,7 +418,7 @@ export const searchSelectOne = () => {
 
                 input.value = item.dataset.value;
                 item.classList.add('_active');
-                placeholder.textContent = item.textContent;
+                placeholder.innerHTML = item.innerHTML;
 
                 container.classList.remove('_active');
 

@@ -89,6 +89,7 @@ import {
     tooltipSecondary
 } from './components/tooltips';
 import dragDrops from './components/dragDrop';
+import AirDatepicker from 'air-datepicker';
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==================================================
@@ -228,4 +229,17 @@ document.addEventListener('DOMContentLoaded', () => {
         </p>
     </div>
     `);
+
+
+    const datePickers = document.querySelectorAll('.date-picker');
+    datePickers.forEach(datePicker => {
+        const input = datePicker.querySelector('.date-picker__input');
+        new AirDatepicker(input, {
+            autoClose: true,
+            isMobile: true,
+            onSelect: (fd) => {
+                fd.date ? datePicker.classList.add('_active') : datePicker.classList.remove('_active');
+            }
+        })
+    })
 })

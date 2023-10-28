@@ -148,7 +148,7 @@ const tabs = () => {
                     editBtn.classList.add('_active');
                     tabTitle.classList.add('_edit');
                     input.focus();
-                    input.setSelectionRange(input.value.length,input.value.length);
+                    input.setSelectionRange(input.value.length, input.value.length);
                 } else {
                     input.setAttribute('disabled', '');
                     editBtn.classList.remove('_active');
@@ -186,13 +186,27 @@ const tabs = () => {
                         })
                     }
                 }
+
+                const nav = tabTitle.closest('.tabs__navigation');
+                if (nav.querySelector('._edit')) {
+                    const tabs = nav.querySelectorAll('.tabs__title--edit._edit');
+                    tabs.forEach(item => {
+                        const input = item.querySelector('input');
+                        const editBtn = item.querySelector('.tabs__title-edit');
+
+                        input.setAttribute('disabled', '');
+                        editBtn.classList.remove('_active');
+                        item.classList.remove('_edit');
+                    })
+
+                }
             }
             e.preventDefault();
         }
     }
 
 
-    document.addEventListener('click',(e) => {
+    document.addEventListener('click', (e) => {
         const target = e.target;
         if (!target.closest('.tabs__navigation') && document.querySelector('.tabs__title.tabs__title--edit._edit')) {
             const items = document.querySelectorAll('.tabs__title.tabs__title--edit._edit');

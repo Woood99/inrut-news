@@ -4210,6 +4210,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_bankOffer__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./components/bankOffer */ "./src/js/components/bankOffer.js");
 /* harmony import */ var _components_tooltips__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./components/tooltips */ "./src/js/components/tooltips.js");
 /* harmony import */ var _components_dragDrop__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./components/dragDrop */ "./src/js/components/dragDrop.js");
+/* harmony import */ var air_datepicker__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! air-datepicker */ "./node_modules/air-datepicker/index.es.js");
+
 
 
 
@@ -4394,6 +4396,17 @@ document.addEventListener('DOMContentLoaded', () => {
         </p>
     </div>
     `);
+  const datePickers = document.querySelectorAll('.date-picker');
+  datePickers.forEach(datePicker => {
+    const input = datePicker.querySelector('.date-picker__input');
+    new air_datepicker__WEBPACK_IMPORTED_MODULE_47__["default"](input, {
+      autoClose: true,
+      isMobile: true,
+      onSelect: fd => {
+        fd.date ? datePicker.classList.add('_active') : datePicker.classList.remove('_active');
+      }
+    });
+  });
 });
 
 /***/ }),
@@ -6848,7 +6861,7 @@ const searchSelectOne = () => {
         list.forEach(item => item.classList.remove('_active'));
         input.value = item.dataset.value;
         item.classList.add('_active');
-        placeholder.textContent = item.textContent;
+        placeholder.innerHTML = item.innerHTML;
         container.classList.remove('_active');
         container.classList.add('_selected');
         if (container.classList.contains('create-meeting-show__form--object')) {
@@ -11943,6 +11956,17 @@ const tabs = () => {
               behavior: 'smooth'
             });
           }
+        }
+        const nav = tabTitle.closest('.tabs__navigation');
+        if (nav.querySelector('._edit')) {
+          const tabs = nav.querySelectorAll('.tabs__title--edit._edit');
+          tabs.forEach(item => {
+            const input = item.querySelector('input');
+            const editBtn = item.querySelector('.tabs__title-edit');
+            input.setAttribute('disabled', '');
+            editBtn.classList.remove('_active');
+            item.classList.remove('_edit');
+          });
         }
       }
       e.preventDefault();

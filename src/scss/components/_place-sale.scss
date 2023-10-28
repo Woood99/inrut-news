@@ -435,66 +435,90 @@
         display: grid;
         grid-column-gap: 16px;
         grid-row-gap: 16px;
-        grid-template-columns: repeat(auto-fill, 265px);
+        grid-template-columns: repeat(auto-fill, 271px);
     }
 
     &__image {
         border-radius: 12px;
+        padding-bottom: percent(190, 271);
         overflow: hidden;
-        padding-bottom: percent(160, 265);
-        position: relative;
-        cursor: pointer;
-        transition: opacity $transitionSpeedFast $transitionFunction,
-            transform $transitionSpeedFast $transitionFunction;
+        &.drag-drop__item {
+            position: relative;
+            cursor: pointer;
+            transition: opacity $transitionSpeedFast $transitionFunction,
+                transform $transitionSpeedFast $transitionFunction;
 
-        &::before {
-            content: '';
-            position: absolute;
-            background-color: rgba(36, 38, 41, .5);
-            z-index: 1;
-            inset: 0;
-            opacity: 0;
-            transition: opacity $transitionSpeedFast $transitionFunction;
-        }
+            &::before {
+                content: '';
+                position: absolute;
+                background-color: rgba(36, 38, 41, .5);
+                z-index: 1;
+                inset: 0;
+                opacity: 0;
+                transition: opacity $transitionSpeedFast $transitionFunction;
+            }
 
-        @media (min-width:$desktop-min) {
-            &:not(._dragg) {
-                &:hover {
-                    &::before {
-                        opacity: 1;
-                    }
+            @media (min-width:$desktop-min) {
+                &:not(._dragg) {
+                    &:hover {
+                        &::before {
+                            opacity: 1;
+                        }
 
-                    .place-sale-photo__remove {
-                        opacity: 1;
-                        visibility: visible;
-                    }
-
-                    .place-sale-photo__rotate {
-                        opacity: 1;
-                        visibility: visible;
+                        .place-sale-photo__remove,
+                        .place-sale-photo__rotate,
+                        .place-sale-photo__icon {
+                            opacity: 1;
+                            visibility: visible;
+                        }
                     }
                 }
             }
+
+            &._dragg {
+                opacity: 0.4;
+
+                &::before {
+                    display: none;
+                }
+
+                .place-sale-photo__icon,
+                .place-sale-photo__rotate,
+                .place-sale-photo__remove {
+                    display: none;
+                }
+            }
+
+            &._over {
+                transform: scale(1.075, 1.075);
+            }
         }
+    }
 
-        &._dragg {
-            opacity: 0.4;
+    &__icon {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 32px;
+        height: 32px;
+        z-index: 2;
+        background-color: var(--white);
+        border-radius: 8px;
 
-            &::before {
-                display: none;
-            }
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-            .place-sale-photo__remove {
-                display: none;
-            }
+        opacity: 0;
+        visibility: hidden;
 
-            .place-sale-photo__rotate {
-                display: none;
-            }
-        }
+        transition: opacity $transitionSpeedFast $transitionFunction,
+            visibility $transitionSpeedFast $transitionFunction;
 
-        &._over {
-            transform: scale(1.075, 1.075);
+        svg {
+            width: 17px;
+            height: 17px;
+            fill: var(--blue);
         }
     }
 

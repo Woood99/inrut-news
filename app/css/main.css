@@ -8562,6 +8562,10 @@ textarea.input-reset {
   height: 20px;
 }
 
+.drag-drop__item {
+  cursor: pointer;
+}
+
 .back-link {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -31870,12 +31874,14 @@ textarea.input-reset {
   display: grid;
   grid-column-gap: 16px;
   grid-row-gap: 16px;
-  grid-template-columns: repeat(auto-fill, 265px);
+  grid-template-columns: repeat(auto-fill, 271px);
 }
 .place-sale-photo__image {
   border-radius: 12px;
+  padding-bottom: 70.110701107%;
   overflow: hidden;
-  padding-bottom: 60.3773584906%;
+}
+.place-sale-photo__image.drag-drop__item {
   position: relative;
   cursor: pointer;
   -webkit-transition: opacity 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
@@ -31884,7 +31890,7 @@ textarea.input-reset {
   transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
   transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
 }
-.place-sale-photo__image::before {
+.place-sale-photo__image.drag-drop__item::before {
   content: "";
   position: absolute;
   background-color: rgba(36, 38, 41, 0.5);
@@ -31896,34 +31902,60 @@ textarea.input-reset {
   transition: opacity 0.2s ease-in-out;
 }
 @media (min-width: 1213px) {
-  .place-sale-photo__image:not(._dragg):hover::before {
+  .place-sale-photo__image.drag-drop__item:not(._dragg):hover::before {
     opacity: 1;
   }
-  .place-sale-photo__image:not(._dragg):hover .place-sale-photo__remove {
-    opacity: 1;
-    visibility: visible;
-  }
-  .place-sale-photo__image:not(._dragg):hover .place-sale-photo__rotate {
+  .place-sale-photo__image.drag-drop__item:not(._dragg):hover .place-sale-photo__remove,
+  .place-sale-photo__image.drag-drop__item:not(._dragg):hover .place-sale-photo__rotate,
+  .place-sale-photo__image.drag-drop__item:not(._dragg):hover .place-sale-photo__icon {
     opacity: 1;
     visibility: visible;
   }
 }
-.place-sale-photo__image._dragg {
+.place-sale-photo__image.drag-drop__item._dragg {
   opacity: 0.4;
 }
-.place-sale-photo__image._dragg::before {
+.place-sale-photo__image.drag-drop__item._dragg::before {
   display: none;
 }
-.place-sale-photo__image._dragg .place-sale-photo__remove {
+.place-sale-photo__image.drag-drop__item._dragg .place-sale-photo__icon,
+.place-sale-photo__image.drag-drop__item._dragg .place-sale-photo__rotate,
+.place-sale-photo__image.drag-drop__item._dragg .place-sale-photo__remove {
   display: none;
 }
-.place-sale-photo__image._dragg .place-sale-photo__rotate {
-  display: none;
-}
-.place-sale-photo__image._over {
+.place-sale-photo__image.drag-drop__item._over {
   -webkit-transform: scale(1.075, 1.075);
   -ms-transform: scale(1.075, 1.075);
   transform: scale(1.075, 1.075);
+}
+.place-sale-photo__icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 32px;
+  height: 32px;
+  z-index: 2;
+  background-color: var(--white);
+  border-radius: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+}
+.place-sale-photo__icon svg {
+  width: 17px;
+  height: 17px;
+  fill: var(--blue);
 }
 .place-sale-photo__remove {
   position: absolute;

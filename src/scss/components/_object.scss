@@ -723,8 +723,33 @@
     box-shadow: var(--shadow-primary);
     padding: 32px 24px 24px;
     border-radius: 12px;
+    position: relative;
 
-    &__statistics {}
+    &__right {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+    }
+
+    &__time {
+        width: 280px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        margin-bottom: 8px;
+
+        span {
+            &:not(:last-child) {
+                margin-right: 16px;
+            }
+        }
+    }
+
+    &__statistics {
+        margin-top: 16px;
+    }
+
 
     &__statistics-item {
         display: flex;
@@ -943,8 +968,9 @@
 
         &._active {
             display: block;
-            +.object-data__more{
-                svg{
+
+            +.object-data__more {
+                svg {
                     transform: rotate(-180deg);
                 }
             }
@@ -1315,9 +1341,7 @@
     border-radius: 12px;
     padding: 32px 24px;
 
-    &__title {
-
-    }
+    &__title {}
 
     &__descr {
         margin-top: 8px;
@@ -1353,8 +1377,9 @@
 
         &:not(:last-child) {
             margin-right: 24px;
-            @media (max-width:$desktop){
-                 margin-right: 8px; 
+
+            @media (max-width:$desktop) {
+                margin-right: 8px;
             }
         }
 
@@ -1744,6 +1769,7 @@
             line-height: var(--default-lh);
             font-weight: 500;
             transition: color $transitionSpeed $transitionFunction;
+
             &:nth-child(1) {
                 color: var(--dark);
                 flex-grow: 1;
@@ -1791,13 +1817,15 @@
         }
 
         &._active {
-           background-color: var(--blue);
+            background-color: var(--blue);
+
             div {
                 opacity: 1;
                 visibility: visible;
                 transform: translateY(0);
             }
-            span{
+
+            span {
                 color: var(--white);
             }
         }
@@ -1815,7 +1843,8 @@
                         fill: none !important;
                     }
                 }
-                span{
+
+                span {
                     color: var(--white);
                 }
             }

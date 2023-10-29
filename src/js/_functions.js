@@ -174,4 +174,5 @@ popup({
     },
 }, 'object-gallery');
 popup(null, 'object-gallery--two');
+popup(null, 'warning-remove');
 // ========================================================================================

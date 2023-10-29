@@ -4595,6 +4595,7 @@ __webpack_require__.r(__webpack_exports__);
   }
 }, 'object-gallery');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'object-gallery--two');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'warning-remove');
 // ========================================================================================
 
 /***/ }),

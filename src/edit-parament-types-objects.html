@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Настройка системы</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script defer src="js/main.js"></script>
+
+
+
+</head>
+
+<body class="page__body">
+    <div class="site-container site-container--place-sale">
+        @include('partials/header--menu.html')
+        <main class="main main-page-gap place-sale view-types-objects">
+            <div class="place-sale__top top-page-inner-title">
+                <div class="top-page-inner-title__container container">
+                    <a href="#" class="place-sale__back top-page-inner-title__back back-link">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#arrow-left"></use>
+                        </svg>
+                        <span>Назад</span>
+                    </a>
+                    <h1 class="view-types-objects__title top-page-inner-title__title title-1" data-da=".place-sale__body,1212,first">
+                        Редактировать параметры <span>типы объектов</span>
+                    </h1>
+                </div>
+            </div>
+            <div class="place-sale__body">
+                <div class="container">
+                    <div class="place-sale__row place-sale-options">
+                        <h2 class="place-sale__row-title place-sale-options__title title-2">
+                            Параметры
+                        </h2>
+                        <div class="place-sale-options__row place-sale-options__row--1" style="margin-bottom: 24px;">
+                            <div class="input-text input-text--no-exp _active">
+                                <label class="input-text__label">
+                                    <span>Название</span>
+                                    <input type="text" name="Название" class="input-reset input-text__input" value="Новостройки">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="place-sale-options__row place-sale-options__row--2">
+                            <div class="checkbox-secondary">
+                                <input id="test-id_2" name="test-id-name_2" class="checkbox-secondary__input" type="checkbox" value="true">
+                                <label for="test-id_2" class="checkbox-secondary__label">
+                                    <span class="checkbox-secondary__text">Жилая</span>
+                                </label>
+                            </div>
+                            <div class="checkbox-secondary">
+                                <input id="test-id_3" name="test-id-name_2" class="checkbox-secondary__input" checked type="checkbox" value="true">
+                                <label for="test-id_3" class="checkbox-secondary__label">
+                                    <span class="checkbox-secondary__text">Новостройки</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="place-sale-photo">
+                            <h2 class="place-sale__row-title place-sale-photo__title title-2">
+                                Изображение
+                            </h2>
+                            <div class="place-sale-photo__images drag-drop">
+                                <div class="place-sale-photo__image ibg drag-drop__item" draggable="true">
+                                    <picture>
+                                        <source srcset="./img/card-8.webp" type="image/webp">
+                                        <img loading="lazy" src="./img/card-8.jpg" width="200" height="200" alt="">
+                                    </picture>
+                                    <button type="button" class="btn btn-reset place-sale-photo__remove" title="Удалить фото">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#trash"></use>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="place-sale-photo__image ibg drag-drop__item" draggable="true">
+                                    <picture>
+                                        <source srcset="./img/card-5.webp" type="image/webp">
+                                        <img loading="lazy" src="./img/card-5.jpg" width="200" height="200" alt="">
+                                    </picture>
+                                    <button type="button" class="btn btn-reset place-sale-photo__remove" title="Удалить фото">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#trash"></use>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="place-sale-photo__wrapper photo-load">
+                                <button type="button" class="btn btn-reset photo-load__wrapper">
+                                    <p>
+                                        <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                    </p>
+                                </button>
+                                <input type="file" data-upload-drop="" name="upload" multiple="" accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-reset btn-primary" style="width: 100%; margin-top: 24px;">
+                            Сохраниить
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        @include('partials/footer.html')
+    </div>
+    @include('partials/popup.html')
+</body>
+
+
+</html>

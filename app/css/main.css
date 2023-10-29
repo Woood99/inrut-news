@@ -2247,6 +2247,52 @@ textarea.input-reset {
     background-color: rgba(34, 41, 102, 0.4);
   }
 }
+.popup-primary--warning-remove {
+  text-align: center;
+}
+.popup-primary--warning-remove .popup-primary__container {
+  min-height: auto;
+  margin: 50px auto;
+  text-align: left;
+  border-radius: 24px;
+  padding: 65px 48px 48px;
+  max-width: 600px;
+}
+@media (max-width: 768px) {
+  .popup-primary--warning-remove .popup-primary__container {
+    max-width: 100%;
+    width: calc(100% - 4px);
+    margin: 50px auto 0;
+    vertical-align: bottom;
+    padding: 75px 16px 32px;
+    border-radius: 12px 12px 0 0;
+  }
+}
+.popup-primary--warning-remove::before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+@media (max-width: 1212px) {
+  .popup-primary--warning-remove {
+    background-color: rgba(34, 41, 102, 0.4);
+  }
+}
+
+.warning-remove__btns {
+  margin-top: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.warning-remove__btn:not(:last-child) {
+  margin-bottom: 16px;
+}
 
 .tariff-popup > div p:not(:last-child) {
   margin-bottom: 16px;
@@ -8339,12 +8385,6 @@ textarea.input-reset {
 }
 .types-objects__item > div:last-child button:nth-child(2) svg,
 .types-objects__item > div:last-child a:nth-child(2) svg {
-  stroke: var(--blue);
-  fill: none;
-  stroke-width: 1.5px;
-}
-.types-objects__item > div:last-child button:nth-child(3) svg,
-.types-objects__item > div:last-child a:nth-child(3) svg {
   fill: var(--red);
 }
 .types-objects__item svg {
@@ -8425,6 +8465,33 @@ textarea.input-reset {
 }
 .view-types-objects .main-table__type span {
   margin: 0;
+}
+.view-types-objects .main-table .types-objects__item > div:last-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.view-types-objects .main-table .types-objects__item > div:last-child button:not(:last-child),
+.view-types-objects .main-table .types-objects__item > div:last-child a:not(:last-child) {
+  margin-right: 16px;
+}
+.view-types-objects .main-table .types-objects__item > div:last-child button:nth-child(1) svg,
+.view-types-objects .main-table .types-objects__item > div:last-child a:nth-child(1) svg {
+  stroke: none;
+  fill: var(--blue);
+}
+.view-types-objects .main-table .types-objects__item > div:last-child button:nth-child(2) svg,
+.view-types-objects .main-table .types-objects__item > div:last-child a:nth-child(2) svg {
+  fill: none;
+  stroke-width: 1.5px;
+  stroke: var(--blue);
+}
+.view-types-objects .main-table .types-objects__item > div:last-child button:nth-child(3) svg,
+.view-types-objects .main-table .types-objects__item > div:last-child a:nth-child(3) svg {
+  fill: var(--red);
 }
 
 .edit-types-objects__title span {
@@ -29038,6 +29105,31 @@ textarea.input-reset {
   box-shadow: var(--shadow-primary);
   padding: 32px 24px 24px;
   border-radius: 12px;
+  position: relative;
+}
+.object-data__right {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+.object-data__time {
+  width: 280px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+.object-data__time span:not(:last-child) {
+  margin-right: 16px;
+}
+.object-data__statistics {
+  margin-top: 16px;
 }
 .object-data__statistics-item {
   display: -webkit-box;
@@ -33504,33 +33596,6 @@ textarea.input-reset {
   .object-base-inner--extended .object-body ._sticky {
     top: -16px;
   }
-}
-.object-base-inner--extended .object-data {
-  position: relative;
-}
-.object-base-inner--extended .object-data__right {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-}
-.object-base-inner--extended .object-data__time {
-  width: 280px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  margin-bottom: 8px;
-}
-.object-base-inner--extended .object-data__time span:not(:last-child) {
-  margin-right: 16px;
-}
-.object-base-inner--extended .object-data__statistics {
-  margin-top: 16px;
 }
 .object-base-inner__controls {
   -webkit-box-shadow: var(--shadow-primary);

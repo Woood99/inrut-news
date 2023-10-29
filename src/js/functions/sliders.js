@@ -18,13 +18,29 @@ import {
     _slideUp,
     _slideToggle,
 } from '../support-modules/slide';
-import scrollDrag from '../components/scrollDrag';
 // =========================================================================================
 
 
 
 
 function initSliders() {
+    if (document.querySelector('.place-sale-sale__cards .swiper')) {
+        const slider = document.querySelector('.place-sale-sale__cards .swiper');
+        new Swiper(slider, {
+            observer: true,
+            observeParents: true,
+            autoHeight: true,
+            slidesPerView: 3,
+            spaceBetween: 16,
+            speed: 800,
+            allowTouchMove: false,
+            navigation: {
+                prevEl: slider.closest('.place-sale-sale__cards').querySelector('.nav-arrow-primary--prev'),
+                nextEl: slider.closest('.place-sale-sale__cards').querySelector('.nav-arrow-primary--next'),
+                lockClass: '_hidden',
+            },
+        });
+    }
     if (document.querySelector('.book-consultation__agents')) {
         const slider = document.querySelector('.book-consultation__agents');
         new Swiper(slider, {

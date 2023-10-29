@@ -10881,19 +10881,34 @@ const popup = (options, modalName) => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
 /* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/modal */ "./src/js/modules/modal.js");
-/* harmony import */ var _popperjs_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @popperjs/core */ "./node_modules/@popperjs/core/lib/popper.js");
+/* harmony import */ var _popperjs_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @popperjs/core */ "./node_modules/@popperjs/core/lib/popper.js");
 /* harmony import */ var _support_modules_slide__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../support-modules/slide */ "./src/js/support-modules/slide.js");
-/* harmony import */ var _components_scrollDrag__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/scrollDrag */ "./src/js/components/scrollDrag.js");
 // =========================================================================================
 
 swiper__WEBPACK_IMPORTED_MODULE_0__["default"].use([swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_0__.Pagination, swiper__WEBPACK_IMPORTED_MODULE_0__.Thumbs, swiper__WEBPACK_IMPORTED_MODULE_0__.EffectFade, swiper__WEBPACK_IMPORTED_MODULE_0__.EffectCreative, swiper__WEBPACK_IMPORTED_MODULE_0__.Autoplay]);
 
 
 
-
 // =========================================================================================
 
 function initSliders() {
+  if (document.querySelector('.place-sale-sale__cards .swiper')) {
+    const slider = document.querySelector('.place-sale-sale__cards .swiper');
+    new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](slider, {
+      observer: true,
+      observeParents: true,
+      autoHeight: true,
+      slidesPerView: 3,
+      spaceBetween: 16,
+      speed: 800,
+      allowTouchMove: false,
+      navigation: {
+        prevEl: slider.closest('.place-sale-sale__cards').querySelector('.nav-arrow-primary--prev'),
+        nextEl: slider.closest('.place-sale-sale__cards').querySelector('.nav-arrow-primary--next'),
+        lockClass: '_hidden'
+      }
+    });
+  }
   if (document.querySelector('.book-consultation__agents')) {
     const slider = document.querySelector('.book-consultation__agents');
     new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](slider, {
@@ -11329,7 +11344,7 @@ function initSliders() {
           mark.classList.add('_active');
           const btn = mark.querySelector('button');
           const content = mark.querySelector('div');
-          popper = (0,_popperjs_core__WEBPACK_IMPORTED_MODULE_4__.createPopper)(btn, content, {
+          popper = (0,_popperjs_core__WEBPACK_IMPORTED_MODULE_3__.createPopper)(btn, content, {
             placement: 'bottom-start',
             modifiers: [{
               name: 'offset',

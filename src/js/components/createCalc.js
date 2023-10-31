@@ -4,15 +4,21 @@ const createCalc = () => {
     const createCalc = document.querySelector('.create-calc');
     if (!createCalc) return;
     const typeProperty = createCalc.querySelector('.create-calc-mort__type-property');
+    const mort = createCalc.querySelector('.create-calc-mort');
+    const info = createCalc.querySelector('.create-calc-info');
     typeProperty.addEventListener('change', () => {
         const name = typeProperty.querySelector('.choices__item.choices__item--selectable').textContent.trim();
         if (name === 'Новостройка') {
             mort.removeAttribute('hidden');
+            info.setAttribute('hidden', '');
+        } else if (name === 'Вторичка') {
+            info.removeAttribute('hidden');
+            mort.setAttribute('hidden', '');
         } else {
             mort.setAttribute('hidden', '');
+            info.setAttribute('hidden', '');
         }
     })
-    const mort = createCalc.querySelector('.create-calc-mort');
     if (mort) {
         const items = mort.querySelectorAll('.create-calc-mort__item');
         items.forEach(item => {
@@ -39,22 +45,32 @@ const createCalc = () => {
                 }
             })
             inputPrc.addEventListener('input', () => {
-                ;
                 inputResize(inputPrc);
             })
 
 
             const createTextarea = item.querySelector('.create-calc-mort__create');
             const textareas = item.querySelector('.create-calc-mort__textareas');
-            const textareaHTML = `
-            <label class="textarea-primary">
-                <textarea class="input-reset textarea-primary__input" placeholder=""></textarea>
-            </label>
-            `;
             createTextarea.addEventListener('click', () => {
-                createTextarea.insertAdjacentHTML('beforebegin', textareaHTML);
+                blockAdded(createTextarea);
             });
         })
+    }
+    if (info) {
+        const createTextarea = info.querySelector('.create-calc-mort__create');
+        createTextarea.addEventListener('click', () => {
+            blockAdded(createTextarea);
+        });
+    }
+
+
+    function blockAdded(block) {
+        const textareaHTML = `
+        <label class="textarea-primary">
+            <textarea class="input-reset textarea-primary__input" placeholder=""></textarea>
+        </label>
+        `;
+        block.insertAdjacentHTML('beforebegin', textareaHTML);
     }
 };
 

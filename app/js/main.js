@@ -4211,6 +4211,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_tooltips__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./components/tooltips */ "./src/js/components/tooltips.js");
 /* harmony import */ var _components_dragDrop__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./components/dragDrop */ "./src/js/components/dragDrop.js");
 /* harmony import */ var air_datepicker__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! air-datepicker */ "./node_modules/air-datepicker/index.es.js");
+/* harmony import */ var _components_createCalc__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./components/createCalc */ "./src/js/components/createCalc.js");
+
 
 
 
@@ -4346,6 +4348,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_bankOffer__WEBPACK_IMPORTED_MODULE_44__["default"])();
   (0,_components_tooltips__WEBPACK_IMPORTED_MODULE_45__.tooltipSecondary)();
   (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_46__["default"])();
+  (0,_components_createCalc__WEBPACK_IMPORTED_MODULE_48__["default"])();
   // ==================================================
 
   (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.validateRadioPrimary)('.complaint-popup__form', '.textarea-primary__input', '.complaint-popup__btn', '.radio-primary__input');
@@ -6211,6 +6214,78 @@ function controlCards() {
   });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (controlCards);
+
+/***/ }),
+
+/***/ "./src/js/components/createCalc.js":
+/*!*****************************************!*\
+  !*** ./src/js/components/createCalc.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _modules_inputResize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modules/inputResize */ "./src/js/modules/inputResize.js");
+
+const createCalc = () => {
+  const createCalc = document.querySelector('.create-calc');
+  if (!createCalc) return;
+  const typeProperty = createCalc.querySelector('.create-calc-mort__type-property');
+  typeProperty.addEventListener('change', () => {
+    const name = typeProperty.querySelector('.choices__item.choices__item--selectable').textContent.trim();
+    if (name === 'Новостройка') {
+      mort.removeAttribute('hidden');
+    } else {
+      mort.setAttribute('hidden', '');
+    }
+  });
+  const mort = createCalc.querySelector('.create-calc-mort');
+  if (mort) {
+    const items = mort.querySelectorAll('.create-calc-mort__item');
+    items.forEach(item => {
+      const input = item.querySelector('.create-calc-mort__checkbox input');
+      const info = item.querySelector('.create-calc-mort__info');
+      const edit = item.querySelector('.create-calc-mort__edit');
+      const inputPrc = item.querySelector('.checkbox-secondary__text input');
+      input.addEventListener('change', () => {
+        if (!input.checked) {
+          info.setAttribute('hidden', '');
+        } else {
+          info.removeAttribute('hidden');
+        }
+      });
+      edit.addEventListener('click', () => {
+        if (!edit.classList.contains('_active')) {
+          edit.classList.add('_active');
+          inputPrc.removeAttribute('disabled');
+          inputPrc.focus();
+          inputPrc.setSelectionRange(inputPrc.value.length, inputPrc.value.length);
+        } else {
+          edit.classList.remove('_active');
+          inputPrc.setAttribute('disabled', '');
+        }
+      });
+      inputPrc.addEventListener('input', () => {
+        ;
+        (0,_modules_inputResize__WEBPACK_IMPORTED_MODULE_0__["default"])(inputPrc);
+      });
+      const createTextarea = item.querySelector('.create-calc-mort__create');
+      const textareas = item.querySelector('.create-calc-mort__textareas');
+      const textareaHTML = `
+            <label class="textarea-primary">
+                <textarea class="input-reset textarea-primary__input" placeholder=""></textarea>
+            </label>
+            `;
+      createTextarea.addEventListener('click', () => {
+        createTextarea.insertAdjacentHTML('beforebegin', textareaHTML);
+      });
+    });
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createCalc);
 
 /***/ }),
 
@@ -12346,7 +12421,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 const inputResize = input => {
-  if (input.classList.contains('filter-range-one__input--w-auto')) {
+  if (input.classList.contains('_width-auto')) {
     input.style.width = 0;
     input.style.width = input.scrollWidth + 'px';
   }

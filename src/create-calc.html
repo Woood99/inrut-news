@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Настройка системы</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script defer src="js/main.js"></script>
+
+
+
+</head>
+
+<body class="page__body">
+    <div class="site-container site-container--place-sale">
+        @include('partials/header--menu.html')
+        <main class="main main-page-gap place-sale create-calc">
+            <div class="place-sale__top top-page-inner-title">
+                <div class="top-page-inner-title__container container">
+                    <a href="#" class="place-sale__back top-page-inner-title__back back-link">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#arrow-left"></use>
+                        </svg>
+                        <span>Назад</span>
+                    </a>
+                    <h1 class="create-types-objects__title top-page-inner-title__title title-1" data-da=".place-sale__body,1212,first">
+                        Создание <span>Калькулятор</span>
+                    </h1>
+                </div>
+            </div>
+            <div class="place-sale__body">
+                <div class="container">
+                    <div class="place-sale__row place-sale-options">
+                        <h2 class="place-sale__row-title place-sale-options__title title-2">
+                            Параметры
+                        </h2>
+                        <div class="place-sale-options__row place-sale-options__row--1" style="grid-template-columns: repeat(3,1fr);">
+                            <div class="place-sale-options__item input-text _active">
+                                <label class="input-text__label">
+                                    <span>Название банка</span>
+                                    <input type="text" name="Имя" class="input-reset input-text__input" value="Срок сдачи" placeholder="">
+                                </label>
+                            </div>
+                            <div class="search-select-one _selected">
+                                <button type="button" class="btn btn-reset search-select-one__button">
+                                    <div class="search-select-one__button-wrapper">
+                                        <div>Город</div>
+                                        <div>Волгоград</div>
+                                    </div>
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#check"></use>
+                                    </svg>
+                                </button>
+                                <div class="search-select-one__dropdown">
+                                    <button type="button" class="btn btn-reset search-select-one__close">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#x"></use>
+                                        </svg>
+                                    </button>
+                                    <label class="input-primary search-select-one__input">
+                                        <input type="search" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по названию">
+                                    </label>
+                                    <div class="search-select-one__wrapper simplebar-third">
+                                        <div class="search-select-one__item _active" data-value="object-1">
+                                            Волгоград
+                                        </div>
+                                        <div class="search-select-one__item" data-value="object-2">
+                                            Санкт-Петербург
+                                        </div>
+                                        <div class="search-select-one__item" data-value="object-3">
+                                            Москва
+                                        </div>
+                                        <div class="search-select-one__item" data-value="object-1">
+                                            Волгоград
+                                        </div>
+                                        <div class="search-select-one__item" data-value="object-2">
+                                            Санкт-Петербург
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="text" name="object" value="Волгоград" class="search-select-one__input-hidden" hidden>
+                            </div>
+                            <div class="create-calc-mort__type-property select-secondary">
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Тип недвижимости
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="complex">
+                                        <option placeholder>Не выбрано</option>
+                                        <option value="apartments">Новостройка</option>
+                                        <option value="apartments2">Вторичка</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="place-sale-options__row place-sale-options__row--2" style="grid-template-columns: 0.8fr 1fr;">
+                            <div class="object-calc-mort__target-credit select-secondary _selected">
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Тип объекта
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="complex">
+                                        <option value="apartments">Квартира в новостройке</option>
+                                        <option value="apartments2">Квартира на вторичном рынке</option>
+                                        <option value="apartments3">Дом или пенхаус</option>
+                                        <option value="apartments4">Земельный участок</option>
+                                        <option value="apartments5">Комната</option>
+                                        <option value="apartments6">Коммерческая недвижимость</option>
+                                        <option value="apartments7">Гараж,машино-место или кладовая</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="filter-dropdown__range filter-range">
+                                <div class="filter-range__nav">
+                                    <div class="input-text input-text--only-number">
+                                        <label class="input-text__label">
+                                            <span>Срок кредита от</span>
+                                            <input type="text" maxlength="3" class="input-reset input-text__input" placeholder="Площадь от">
+                                        </label>
+                                    </div>
+                                    <div>–</div>
+                                    <div class="input-text input-text--only-number">
+                                        <label class="input-text__label">
+                                            <span>До</span>
+                                            <input type="text" maxlength="3" class="input-reset input-text__input" placeholder="До">
+                                        </label>
+                                    </div>
+                                    <div>
+                                        лет
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="place-sale-options__row place-sale-options__row--3" style="grid-template-columns: 2fr 1fr; margin-bottom: 24px;">
+                            <div class="filter-dropdown__range filter-range">
+                                <div class="filter-range__nav">
+                                    <div class="input-text input-text--only-number">
+                                        <label class="input-text__label">
+                                            <span>Первоначальный взнос от</span>
+                                            <input type="text" maxlength="12" class="input-reset input-text__input" placeholder="Площадь от">
+                                        </label>
+                                    </div>
+                                    <div>–</div>
+                                    <div class="input-text input-text--only-number">
+                                        <label class="input-text__label">
+                                            <span>До</span>
+                                            <input type="text" maxlength="12" class="input-reset input-text__input" placeholder="До">
+                                        </label>
+                                    </div>
+                                    <div>
+                                        ₽
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="create-calc__mort create-calc-mort" hidden>
+                            <h3 class="title-2" style="margin-bottom: 24px;">
+                                Программы
+                            </h3>
+                            <div class="create-calc-mort__item">
+                                <div class="create-calc-mort__checkbox checkbox-secondary">
+                                    <input id="test-id_4" name="test-id-name_4" class="checkbox-secondary__input" type="checkbox" value="true">
+                                    <label for="test-id_4" class="checkbox-secondary__label">
+                                        <div class="checkbox-secondary__text">
+                                            Военная ипотека
+                                            <span>
+                                                <input type="text" name="Имя" maxlength="4" class="input-reset _width-auto" value="5.7" disabled="">%
+                                            </span>
+                                        </div>
+                                    </label>
+                                    <button type="button" class="btn btn-reset create-calc-mort__edit">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#pencil">
+                                            </use>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="create-calc-mort__info" hidden>
+                                    <h3 class="create-calc-mort__title title-3">Дополнительная информация</h3>
+                                    <div class="create-calc-mort__textareas">
+                                        <label class="textarea-primary">
+                                            <textarea class="input-reset textarea-primary__input" placeholder=""></textarea>
+                                        </label>
+                                        <button type="button" class="btn btn-reset create-calc-mort__create" title="Создать новый блок">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#plus"></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="create-calc-mort__item">
+                                <div class="create-calc-mort__checkbox checkbox-secondary">
+                                    <input id="test-id_5" name="test-id-name_5" class="checkbox-secondary__input" type="checkbox" value="true">
+                                    <label for="test-id_5" class="checkbox-secondary__label">
+                                        <div class="checkbox-secondary__text">
+                                            Семейная ипотека
+                                            <span>
+                                                <input type="text" name="Имя" maxlength="4" class="input-reset _width-auto" value="8.1" disabled="">%
+                                            </span>
+                                        </div>
+                                    </label>
+                                    <button type="button" class="btn btn-reset create-calc-mort__edit">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#pencil">
+                                            </use>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="create-calc-mort__info" hidden>
+                                    <h3 class="create-calc-mort__title title-3">Дополнительная информация</h3>
+                                    <div class="create-calc-mort__textareas">
+                                        <label class="textarea-primary">
+                                            <textarea class="input-reset textarea-primary__input" placeholder=""></textarea>
+                                        </label>
+                                        <button type="button" class="btn btn-reset create-calc-mort__create" title="Создать новый блок">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#plus"></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="create-calc-mort__item">
+                                <div class="create-calc-mort__checkbox checkbox-secondary">
+                                    <input id="test-id_6" name="test-id-name_6" class="checkbox-secondary__input" type="checkbox" value="true">
+                                    <label for="test-id_6" class="checkbox-secondary__label">
+                                        <div class="checkbox-secondary__text">
+                                            Господдержка 7.4
+                                            <span>
+                                                <input type="text" name="Имя" maxlength="4" class="input-reset _width-auto" value="5.7" disabled="">%
+                                            </span>
+                                        </div>
+                                    </label>
+                                    <button type="button" class="btn btn-reset create-calc-mort__edit">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#pencil">
+                                            </use>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="create-calc-mort__info" hidden>
+                                    <h3 class="create-calc-mort__title title-3">Дополнительная информация</h3>
+                                    <div class="create-calc-mort__textareas">
+                                        <label class="textarea-primary">
+                                            <textarea class="input-reset textarea-primary__input" placeholder=""></textarea>
+                                        </label>
+                                        <button type="button" class="btn btn-reset create-calc-mort__create" title="Создать новый блок">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#plus"></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="create-calc-mort__item">
+                                <div class="create-calc-mort__checkbox checkbox-secondary">
+                                    <input id="test-id_7" name="test-id-name_7" class="checkbox-secondary__input" type="checkbox" value="true">
+                                    <label for="test-id_7" class="checkbox-secondary__label">
+                                        <div class="checkbox-secondary__text">
+                                            IT-ипотека
+                                            <span>
+                                                <input type="text" name="Имя" maxlength="4" class="input-reset _width-auto" value="5.7" disabled="">%
+                                            </span>
+                                        </div>
+                                    </label>
+                                    <button type="button" class="btn btn-reset create-calc-mort__edit">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#pencil">
+                                            </use>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="create-calc-mort__info" hidden>
+                                    <h3 class="create-calc-mort__title title-3">Дополнительная информация</h3>
+                                    <div class="create-calc-mort__textareas">
+                                        <label class="textarea-primary">
+                                            <textarea class="input-reset textarea-primary__input" placeholder=""></textarea>
+                                        </label>
+                                        <button type="button" class="btn btn-reset create-calc-mort__create" title="Создать новый блок">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#plus"></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-reset btn-primary" style="width: 100%; margin-top: 32px;">
+                            Сохранить
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        @include('partials/footer.html')
+    </div>
+    @include('partials/popup.html')
+</body>
+
+
+</html>

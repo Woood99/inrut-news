@@ -822,32 +822,34 @@
                 margin: 0;
             }
         }
-        .types-objects__item{
-            >div{
+
+        .types-objects__item {
+            >div {
                 &:last-child {
                     display: flex;
                     align-items: center;
-    
+
                     button,
                     a {
                         &:not(:last-child) {
                             margin-right: 16px;
                         }
-    
+
                         &:nth-child(1) {
                             svg {
                                 stroke: none;
                                 fill: var(--blue);
                             }
                         }
+
                         &:nth-child(2) {
                             svg {
-                               fill: none;
-                               stroke-width: 1.5px;
-                               stroke: var(--blue);
+                                fill: none;
+                                stroke-width: 1.5px;
+                                stroke: var(--blue);
                             }
                         }
-    
+
                         &:nth-child(3) {
                             svg {
                                 fill: var(--red);
@@ -858,7 +860,7 @@
             }
         }
     }
-    
+
 }
 
 
@@ -971,6 +973,7 @@
     .room-info-card {
         grid-template-columns: calc(85px + 50px) 25% 30% 16.7% 8.55%;
         grid-column-gap: 20px;
+
         &:first-child {
             border-top: none !important;
         }
@@ -1027,6 +1030,7 @@
         grid-column-gap: 20px;
         justify-content: start;
         margin: 0 24px 8px;
+
         >span {
             color: var(--primaryTwo);
             font-size: var(--default-fz);
@@ -1064,41 +1068,48 @@
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 8px;
     }
-    &__cards{
-       position: relative;
-       margin-bottom: 24px;
-       .swiper{
-        padding: 16px 12px;
-        margin: -16px -12px;
-       }
-       .card-stock-secondary {
-            @media (min-width:$desktop-min){
-                 &:hover{
-                    .card-stock-secondary__remove{
+
+    &__cards {
+        position: relative;
+        margin-bottom: 24px;
+
+        .swiper {
+            padding: 16px 12px;
+            margin: -16px -12px;
+        }
+
+        .card-stock-secondary {
+            @media (min-width:$desktop-min) {
+                &:hover {
+                    .card-stock-secondary__remove {
                         opacity: 1;
                         visibility: visible;
                     }
-                 } 
+                }
             }
-       }
-       .card-stock-third {
-            @media (min-width:$desktop-min){
-                 &:hover{
-                    .card-stock-third__remove{
+        }
+
+        .card-stock-third {
+            @media (min-width:$desktop-min) {
+                &:hover {
+                    .card-stock-third__remove {
                         opacity: 1;
                         visibility: visible;
                     }
-                 } 
+                }
             }
-       }
+        }
     }
-    &__navigation{
-        top: calc(percent(234,455)/2);
+
+    &__navigation {
+        top: calc(percent(234, 455)/2);
         transform: translateY(-33%);
-        &._hidden{
+
+        &._hidden {
             display: none;
         }
-        &:disabled{
+
+        &:disabled {
             transform: translateY(-33%) scale(0.75);
         }
     }
@@ -1145,5 +1156,120 @@
 .drag-drop {
     &__item {
         cursor: pointer;
+    }
+}
+
+
+.create-calc {
+    &__mort {
+        align-items: start;
+        justify-content: start;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+}
+
+.create-calc-mort {
+    &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        width: 100%;
+        &:not(:last-child){
+            margin-bottom: 16px;
+        }
+    }
+
+    &__checkbox {
+        position: relative;
+
+        .checkbox-secondary__text {
+            span {
+                color: var(--blue);
+                margin-left: 8px;
+            }
+
+            input {
+                border: none;
+                width: 23px;
+                color: var(--blue);
+                margin-right: 4px;
+            }
+        }
+
+
+
+        &:not(:last-child) {
+            margin-bottom: 16px;
+        }
+    }
+
+    &__edit {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: -30px;
+
+        svg {
+            stroke: var(--blue);
+            fill: none;
+            stroke-width: 1.5px;
+            width: 16px;
+            height: 16px;
+
+            transition: stroke $transitionSpeed $transitionFunction;
+        }
+        &._active{
+            svg{
+                stroke: var(--red);
+            }
+        }
+    }
+
+    &__checkbox {
+        margin-bottom: 0px !important;
+    }
+
+    &__info {
+        margin-top: 16px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    &__title {
+        margin-bottom: 16px;
+        width: 100%;
+    }
+
+    &__textareas {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+
+        .textarea-primary {
+            max-width: 366px;
+            --height: 175px;
+        }
+    }
+
+    &__create {
+        height: 175px;
+        width: 175px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--primary200);
+        border-radius: 12px;
+
+        svg {
+            width: 35px;
+            height: 35px;
+            fill: var(--blue);
+        }
     }
 }

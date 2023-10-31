@@ -90,6 +90,7 @@ import {
 } from './components/tooltips';
 import dragDrops from './components/dragDrop';
 import AirDatepicker from 'air-datepicker';
+import createCalc from './components/createCalc';
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==================================================
@@ -178,6 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
     bankOffer();
     tooltipSecondary();
     dragDrops();
+    createCalc();
     // ==================================================
 
     validateRadioPrimary('.complaint-popup__form', '.textarea-primary__input', '.complaint-popup__btn', '.radio-primary__input');

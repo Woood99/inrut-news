@@ -29,7 +29,6 @@ function initSliders() {
         new Swiper(slider, {
             observer: true,
             observeParents: true,
-            autoHeight: true,
             slidesPerView: 3,
             spaceBetween: 16,
             speed: 800,

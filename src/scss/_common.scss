@@ -1071,14 +1071,18 @@
 
     &__cards {
         position: relative;
-        margin-bottom: 24px;
 
         .swiper {
-            padding: 16px 12px;
-            margin: -16px -12px;
+            .swiper-wrapper{
+                align-items: stretch;
+            }
+            .swiper-slide{
+                height: auto;
+            }
         }
 
         .card-stock-secondary {
+            height: 100%;
             @media (min-width:$desktop-min) {
                 &:hover {
                     .card-stock-secondary__remove {
@@ -1087,22 +1091,50 @@
                     }
                 }
             }
-        }
 
-        .card-stock-third {
-            @media (min-width:$desktop-min) {
-                &:hover {
-                    .card-stock-third__remove {
-                        opacity: 1;
-                        visibility: visible;
+            &__times {
+               position: absolute;
+               top: 16px;
+               left: 16px;
+
+                display: flex;
+                flex-direction: column;
+
+                >div {
+                    color: var(--gray);
+                    font-size: var(--small-fz);
+                    line-height: var(--small-lh);
+                    padding: 4px 8px;
+                    font-weight: 500;
+                    display: flex;
+                    align-items: center;
+                   justify-content: start;
+                    height: 30px;
+                    border-radius: 8px;
+                    background-color: var(--white);
+                    backdrop-filter: blur(2px);
+                    span{
+                        &:nth-child(2){
+                            margin-left: 6px;
+                        }
+                    }
+                    &:not(:last-child) {
+                        margin-bottom: 8px;
                     }
                 }
+            }
+        }
+        &._active{
+            margin-bottom: 24px;
+            .swiper{
+                padding: 16px 12px;
+                margin: -16px -12px;
             }
         }
     }
 
     &__navigation {
-        top: calc(percent(234, 455)/2);
+        top: calc(percent(235, 366)/2);
         transform: translateY(-33%);
 
         &._hidden {
@@ -1112,6 +1144,10 @@
         &:disabled {
             transform: translateY(-33%) scale(0.75);
         }
+    }
+    &__save{
+        width: 100%;
+        margin-top: 24px;
     }
 }
 
@@ -1289,50 +1325,61 @@
     &__title {
         margin-bottom: 16px;
     }
-    &__create{
-        &:not(:last-child){
+
+    &__create {
+        &:not(:last-child) {
             margin-bottom: 32px;
         }
     }
+
     &__create-body {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 8px;
-        &:not(:last-child){
+
+        &:not(:last-child) {
             margin-bottom: 32px;
         }
     }
-    &__item{
+
+    &__item {
         display: flex;
         align-items: center;
-        .col{
+
+        .col {
             margin-left: auto;
             display: flex;
             align-items: center;
-            >span{
+
+            >span {
                 margin-right: 24px;
             }
         }
-        &:not(:last-child){
+
+        &:not(:last-child) {
             margin-bottom: 24px;
             padding-bottom: 24px;
             border-bottom: 1px dotted var(--primary200);
         }
-        &._edit{
-            .create-calc-conditions__item-name{
+
+        &._edit {
+            .create-calc-conditions__item-name {
                 color: var(--blue);
             }
-            .create-calc-conditions__item-prc{
+
+            .create-calc-conditions__item-prc {
                 color: var(--blue);
             }
-            .create-calc-conditions__item-edit{
-                svg{
+
+            .create-calc-conditions__item-edit {
+                svg {
                     stroke: var(--red);
                 }
             }
         }
     }
-    &__item-name{
+
+    &__item-name {
         flex-grow: 1;
         margin-right: 32px;
 
@@ -1343,20 +1390,23 @@
         line-height: var(--default-lh);
         color: var(--dark);
     }
-    &__item-prc{
+
+    &__item-prc {
         margin-right: 24px;
         border: none;
     }
-    &__item-edit{
+
+    &__item-edit {
         margin-left: 32px;
         width: 20px;
         height: 20px;
+
         svg {
             stroke: var(--blue);
             fill: none;
             stroke-width: 1.5px;
             width: 20px;
-        height: 20px;
+            height: 20px;
 
             transition: stroke $transitionSpeed $transitionFunction;
         }

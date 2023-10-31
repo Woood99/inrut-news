@@ -4212,6 +4212,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_dragDrop__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./components/dragDrop */ "./src/js/components/dragDrop.js");
 /* harmony import */ var air_datepicker__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! air-datepicker */ "./node_modules/air-datepicker/index.es.js");
 /* harmony import */ var _components_createCalc__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./components/createCalc */ "./src/js/components/createCalc.js");
+/* harmony import */ var _components_createSale__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./components/createSale */ "./src/js/components/createSale.js");
+
 
 
 
@@ -4349,6 +4351,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_tooltips__WEBPACK_IMPORTED_MODULE_45__.tooltipSecondary)();
   (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_46__["default"])();
   (0,_components_createCalc__WEBPACK_IMPORTED_MODULE_48__["default"])();
+  (0,_components_createSale__WEBPACK_IMPORTED_MODULE_49__["default"])();
   // ==================================================
 
   (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.validateRadioPrimary)('.complaint-popup__form', '.textarea-primary__input', '.complaint-popup__btn', '.radio-primary__input');
@@ -4402,7 +4405,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const datePickers = document.querySelectorAll('.date-picker');
   datePickers.forEach(datePicker => {
     const input = datePicker.querySelector('.date-picker__input');
-    new air_datepicker__WEBPACK_IMPORTED_MODULE_47__["default"](input, {
+    const wrapper = new air_datepicker__WEBPACK_IMPORTED_MODULE_47__["default"](input, {
       autoClose: true,
       isMobile: true,
       onSelect: fd => {
@@ -6398,6 +6401,124 @@ const createCalc = () => {
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createCalc);
+
+/***/ }),
+
+/***/ "./src/js/components/createSale.js":
+/*!*****************************************!*\
+  !*** ./src/js/components/createSale.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const createSale = () => {
+  const container = document.querySelector('.place-sale-sale');
+  if (!container) return;
+  const cards = container.querySelector('.place-sale-sale__cards');
+  const wrapper = cards.querySelector('.swiper-wrapper');
+  wrapper.addEventListener('click', e => {
+    const target = e.target;
+    const remove = target.closest('.card-stock-secondary__remove');
+    if (remove) {
+      e.preventDefault();
+      const item = remove.closest('.swiper-slide');
+      item.remove();
+      checkLengthCards();
+    }
+  });
+  checkLengthCards();
+  const title = document.querySelector('.add-complex .add-complex--complex .search-select-one__button-wrapper div:nth-child(2) span').textContent;
+  const name = container.querySelector('.place-sale-sale__field--name');
+  const nameInput = name.querySelector('input');
+  const start = container.querySelector('.place-sale-sale__field--start');
+  const startInput = start.querySelector('input');
+  const ending = container.querySelector('.place-sale-sale__field--ending');
+  const endingInput = ending.querySelector('input');
+  const descr = container.querySelector('.place-sale-sale__field--descr');
+  const descrInput = container.querySelector('.textarea-primary__input');
+  const photo = container.querySelector('.photo-load');
+  const photoInput = photo.querySelector('input');
+  const photoText = photo.querySelector('.photo-load__wrapper');
+  const photoTextCopy = photoText.innerHTML;
+  const btn = container.querySelector('.place-sale-sale__save');
+  btn.addEventListener('click', () => {
+    create();
+    clearAllField();
+    checkLengthCards();
+  });
+  function create() {
+    const file = photoInput.files[0];
+    const image = file ? window.URL.createObjectURL(file) : '';
+    const saleHTML = `
+        <div class="swiper-slide drag-drop__item" draggable="true">
+        <article class="card-stock-secondary">
+            <a href="./develop-inner-2.html" class="card-stock-secondary__container">
+                <button type="button" class="btn btn-reset card-stock-secondary__remove">
+                    <svg>
+                      <use xlink:href="img/sprite.svg#trash"></use>
+                    </svg>
+                </button>
+                <div class="card-stock-secondary__image ibg">
+                    <picture>
+                        <source srcset="${image}" type="image/webp">
+                        <img loading="lazy" src="${image}" width="323" height="207" alt="${title}">
+                    </picture>
+                </div>
+                <div class="card-stock-secondary__content">
+                    <div class="row">
+                        <h3 class="card-stock-secondary__title title-4">
+                            ${title}
+                        </h3>
+                    </div>
+                    <div class="card-stock-secondary__name">
+                        ${nameInput.value}
+                    </div>
+                    <p class="card-stock-secondary__descr">
+                        ${descrInput.value}
+                    </p>
+                </div>
+                <div class="card-stock-secondary__times">
+                    <div>
+                        <span>Начало:</span>
+                        <span>${startInput.value}</span>
+                    </div>
+                    <div>
+                        <span>Окончание:</span>
+                        <span>${endingInput.value}</span>
+                    </div>
+                </div>
+            </a>
+        </article>
+        </div>
+        `;
+    wrapper.insertAdjacentHTML('beforeend', saleHTML);
+  }
+  function clearAllField() {
+    name.classList.remove('_active');
+    nameInput.value = '';
+    start.classList.remove('_active');
+    startInput.value = '';
+    ending.classList.remove('_active');
+    endingInput.value = '';
+    descr.classList.remove('_active');
+    descrInput.value = '';
+    photoInput.value = '';
+    photoText.innerHTML = photoTextCopy;
+  }
+  function checkLengthCards() {
+    const cardsLength = wrapper.querySelectorAll('.swiper-slide').length;
+    if (cardsLength >= 1) {
+      cards.classList.add('_active');
+    } else {
+      cards.classList.remove('_active');
+    }
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createSale);
 
 /***/ }),
 
@@ -11085,7 +11206,6 @@ function initSliders() {
     new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](slider, {
       observer: true,
       observeParents: true,
-      autoHeight: true,
       slidesPerView: 3,
       spaceBetween: 16,
       speed: 800,

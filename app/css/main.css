@@ -8648,11 +8648,17 @@ textarea.input-reset {
 }
 .place-sale-sale__cards {
   position: relative;
-  margin-bottom: 24px;
 }
-.place-sale-sale__cards .swiper {
-  padding: 16px 12px;
-  margin: -16px -12px;
+.place-sale-sale__cards .swiper .swiper-wrapper {
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+.place-sale-sale__cards .swiper .swiper-slide {
+  height: auto;
+}
+.place-sale-sale__cards .card-stock-secondary {
+  height: 100%;
 }
 @media (min-width: 1213px) {
   .place-sale-sale__cards .card-stock-secondary:hover .card-stock-secondary__remove {
@@ -8660,14 +8666,54 @@ textarea.input-reset {
     visibility: visible;
   }
 }
-@media (min-width: 1213px) {
-  .place-sale-sale__cards .card-stock-third:hover .card-stock-third__remove {
-    opacity: 1;
-    visibility: visible;
-  }
+.place-sale-sale__cards .card-stock-secondary__times {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.place-sale-sale__cards .card-stock-secondary__times > div {
+  color: var(--gray);
+  font-size: var(--small-fz);
+  line-height: var(--small-lh);
+  padding: 4px 8px;
+  font-weight: 500;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: start;
+  height: 30px;
+  border-radius: 8px;
+  background-color: var(--white);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+.place-sale-sale__cards .card-stock-secondary__times > div span:nth-child(2) {
+  margin-left: 6px;
+}
+.place-sale-sale__cards .card-stock-secondary__times > div:not(:last-child) {
+  margin-bottom: 8px;
+}
+.place-sale-sale__cards._active {
+  margin-bottom: 24px;
+}
+.place-sale-sale__cards._active .swiper {
+  padding: 16px 12px;
+  margin: -16px -12px;
 }
 .place-sale-sale__navigation {
-  top: 25.7142857143%;
+  top: 32.1038251366%;
   -webkit-transform: translateY(-33%);
   -ms-transform: translateY(-33%);
   transform: translateY(-33%);
@@ -8679,6 +8725,10 @@ textarea.input-reset {
   -webkit-transform: translateY(-33%) scale(0.75);
   -ms-transform: translateY(-33%) scale(0.75);
   transform: translateY(-33%) scale(0.75);
+}
+.place-sale-sale__save {
+  width: 100%;
+  margin-top: 24px;
 }
 
 .system-setup-action {

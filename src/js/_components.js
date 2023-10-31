@@ -91,6 +91,7 @@ import {
 import dragDrops from './components/dragDrop';
 import AirDatepicker from 'air-datepicker';
 import createCalc from './components/createCalc';
+import createSale from './components/createSale';
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==================================================
@@ -180,6 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
     tooltipSecondary();
     dragDrops();
     createCalc();
+    createSale();
     // ==================================================
 
     validateRadioPrimary('.complaint-popup__form', '.textarea-primary__input', '.complaint-popup__btn', '.radio-primary__input');
@@ -236,12 +238,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const datePickers = document.querySelectorAll('.date-picker');
     datePickers.forEach(datePicker => {
         const input = datePicker.querySelector('.date-picker__input');
-        new AirDatepicker(input, {
+        const wrapper = new AirDatepicker(input, {
             autoClose: true,
             isMobile: true,
             onSelect: (fd) => {
                 fd.date ? datePicker.classList.add('_active') : datePicker.classList.remove('_active');
-            }
+            },
         })
     })
 })

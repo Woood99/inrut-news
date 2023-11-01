@@ -1,11 +1,10 @@
 import getHash from '../support-modules/getHash';
 import dataMediaQueries from '../support-modules/dataMediaQueries';
-
+import scrollDrag from '../components/scrollDrag';
 const tabs = () => {
     const metroContainer = document.querySelector('.popup-primary--search-area');
     const metroInnerMoscow = document.querySelector('#map-metro_moscow');
     let metroBooleanStatus = false;
-
 
 
     const tabs = document.querySelectorAll('[data-tabs]');
@@ -141,6 +140,14 @@ const tabs = () => {
             const tabTitle = el.closest('[data-tabs-title]');
             const tabsBlock = tabTitle.closest('[data-tabs]');
             const editBtn = el.closest('.tabs__title-edit');
+            const removeBtn = el.closest('.tabs__title-remove');
+            if (removeBtn) {
+                const activeTabIndex = Array.prototype.indexOf.call(tabTitle.closest('.tabs__navigation').children,tabTitle);
+                tabTitle.remove();
+                tabsBlock.querySelector('.tabs-primary__content').children[activeTabIndex].remove();
+                setTabsStatus(tabsBlock);
+                return;
+            }
             if (editBtn) {
                 const input = tabTitle.querySelector('input');
                 if (!editBtn.classList.contains('_active')) {
@@ -208,6 +215,7 @@ const tabs = () => {
 
     document.addEventListener('click', (e) => {
         const target = e.target;
+        const createNew = target.closest('.tabs-primary__create-new');
         if (!target.closest('.tabs__navigation') && document.querySelector('.tabs__title.tabs__title--edit._edit')) {
             const items = document.querySelectorAll('.tabs__title.tabs__title--edit._edit');
             items.forEach(item => {
@@ -218,6 +226,49 @@ const tabs = () => {
                 editBtn.classList.remove('_active');
                 item.classList.remove('_edit');
             })
+        }
+        if (createNew) {
+            const currentTabs = createNew.closest('.tabs-primary');
+            const nav = currentTabs.querySelector('.tabs__navigation');
+            const tabs = currentTabs.querySelector('.tabs-primary__content');
+            const tabsBlock = currentTabs.querySelector('[data-tabs]');
+            nav.innerHTML += `
+            <button type="button" class="btn btn-reset tabs__title tabs__title--edit" data-tabs-title>
+                <input type="text" name="Имя" class="input-reset" value="Название" disabled="">
+                <div class="btn btn-reset tabs__title-edit" title="Редактировать">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#pencil">
+                        </use>
+                    </svg>
+                </div>
+                <div class="btn btn-reset tabs__title-remove" title="Удалить">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#trash">
+                        </use>
+                    </svg>
+                </div>
+            </button>
+            `;
+
+            const photoHTML = `
+            <div class="tabs__body" data-tabs-item>
+                <div class="place-sale-photo__wrapper photo-load">
+                    <button type="button" class="btn btn-reset photo-load__wrapper">
+                        <p>
+                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                        </p>
+                    </button>
+                    <input type="file" data-upload-drop="" name="upload" multiple="" accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                </div>
+            </div>
+            `;
+
+            tabs.innerHTML += photoHTML;
+            setTabsStatus(tabsBlock);
+            nav.scrollTo({
+                left: nav.scrollWidth,
+            });
+            scrollDrag(nav, 1000, true);
         }
     })
 }

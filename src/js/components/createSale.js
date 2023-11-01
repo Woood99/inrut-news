@@ -41,7 +41,7 @@ const createSale = () => {
         checkLengthCards();
     })
     function create() {
-        const file = photoInput.files[0];
+        let file = photoInput.files[0];
         const image = file ? window.URL.createObjectURL(file) : '';
         const saleHTML = `
         <div class="swiper-slide drag-drop__item" draggable="true">

@@ -4334,6 +4334,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_28__["default"])('.object-location__infrastructure', 1000, true);
   (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_28__["default"])('.buy-apartment__tags .tags__list', 1000, 1180);
   (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_28__["default"])('.home-services__list', 1000, 1180);
+  (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_28__["default"])('.tabs-primary.tabs-primary--controls .tabs__navigation', 1000, true);
   (0,_components_recordViewing__WEBPACK_IMPORTED_MODULE_32__.recordViewing)();
   (0,_components_recordViewing__WEBPACK_IMPORTED_MODULE_32__.recordViewingTwo)();
   (0,_components_wallet__WEBPACK_IMPORTED_MODULE_33__["default"])();
@@ -6451,7 +6452,7 @@ const createSale = () => {
     checkLengthCards();
   });
   function create() {
-    const file = photoInput.files[0];
+    let file = photoInput.files[0];
     const image = file ? window.URL.createObjectURL(file) : '';
     const saleHTML = `
         <div class="swiper-slide drag-drop__item" draggable="true">
@@ -10368,7 +10369,7 @@ __webpack_require__.r(__webpack_exports__);
 const scrollDrag = (blockSelector, speed, viewportWidth) => {
   let scrollBlock = typeof blockSelector === 'string' ? document.querySelector(blockSelector) : blockSelector;
   if (!scrollBlock) return;
-  let left = 0;
+  let left = scrollBlock.scrollLeft;
   let drag = false;
   let coorX = 0;
   scrollBlock.addEventListener('mousedown', function (e) {
@@ -12118,6 +12119,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _support_modules_getHash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../support-modules/getHash */ "./src/js/support-modules/getHash.js");
 /* harmony import */ var _support_modules_dataMediaQueries__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../support-modules/dataMediaQueries */ "./src/js/support-modules/dataMediaQueries.js");
+/* harmony import */ var _components_scrollDrag__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/scrollDrag */ "./src/js/components/scrollDrag.js");
+
 
 
 const tabs = () => {
@@ -12244,6 +12247,14 @@ const tabs = () => {
       const tabTitle = el.closest('[data-tabs-title]');
       const tabsBlock = tabTitle.closest('[data-tabs]');
       const editBtn = el.closest('.tabs__title-edit');
+      const removeBtn = el.closest('.tabs__title-remove');
+      if (removeBtn) {
+        const activeTabIndex = Array.prototype.indexOf.call(tabTitle.closest('.tabs__navigation').children, tabTitle);
+        tabTitle.remove();
+        tabsBlock.querySelector('.tabs-primary__content').children[activeTabIndex].remove();
+        setTabsStatus(tabsBlock);
+        return;
+      }
       if (editBtn) {
         const input = tabTitle.querySelector('input');
         if (!editBtn.classList.contains('_active')) {
@@ -12304,6 +12315,7 @@ const tabs = () => {
   }
   document.addEventListener('click', e => {
     const target = e.target;
+    const createNew = target.closest('.tabs-primary__create-new');
     if (!target.closest('.tabs__navigation') && document.querySelector('.tabs__title.tabs__title--edit._edit')) {
       const items = document.querySelectorAll('.tabs__title.tabs__title--edit._edit');
       items.forEach(item => {
@@ -12313,6 +12325,47 @@ const tabs = () => {
         editBtn.classList.remove('_active');
         item.classList.remove('_edit');
       });
+    }
+    if (createNew) {
+      const currentTabs = createNew.closest('.tabs-primary');
+      const nav = currentTabs.querySelector('.tabs__navigation');
+      const tabs = currentTabs.querySelector('.tabs-primary__content');
+      const tabsBlock = currentTabs.querySelector('[data-tabs]');
+      nav.innerHTML += `
+            <button type="button" class="btn btn-reset tabs__title tabs__title--edit" data-tabs-title>
+                <input type="text" name="Имя" class="input-reset" value="Название" disabled="">
+                <div class="btn btn-reset tabs__title-edit" title="Редактировать">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#pencil">
+                        </use>
+                    </svg>
+                </div>
+                <div class="btn btn-reset tabs__title-remove" title="Удалить">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#trash">
+                        </use>
+                    </svg>
+                </div>
+            </button>
+            `;
+      const photoHTML = `
+            <div class="tabs__body" data-tabs-item>
+                <div class="place-sale-photo__wrapper photo-load">
+                    <button type="button" class="btn btn-reset photo-load__wrapper">
+                        <p>
+                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                        </p>
+                    </button>
+                    <input type="file" data-upload-drop="" name="upload" multiple="" accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                </div>
+            </div>
+            `;
+      tabs.innerHTML += photoHTML;
+      setTabsStatus(tabsBlock);
+      nav.scrollTo({
+        left: nav.scrollWidth
+      });
+      (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_2__["default"])(nav, 1000, true);
     }
   });
 };

@@ -132,8 +132,26 @@
                     stroke: var(--red);
                 }
             }
+            &:not(:last-child){
+                right: calc(18px + 8px);
+            }
         }
+        .tabs__title-remove {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 0;
+            width: 18px;
+            height: 18px;
+            svg {
+                fill: var(--red);
+                stroke-width: 1.5px;
+                width: 18px;
+                height: 18px;
 
+                transition: stroke $transitionSpeed $transitionFunction;
+            }
+        }
         @media (max-width:$desktop) {
             overflow-x: auto;
 
@@ -292,7 +310,15 @@
         align-items: center;
         justify-content: center;
     }
-
+    &--controls{
+        .tabs__navigation{
+            overflow-x: auto;
+            @include hiddenScroll;
+        }
+        .tabs__title{
+            min-width: max-content;
+        }
+    }
     @media (max-width:$desktop) {
         padding: 16px 0;
         border-radius: 12px;

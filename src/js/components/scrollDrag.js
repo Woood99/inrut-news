@@ -2,7 +2,7 @@ const scrollDrag = (blockSelector, speed, viewportWidth) => {
 
     let scrollBlock = typeof blockSelector === 'string' ? document.querySelector(blockSelector) : blockSelector;
     if (!scrollBlock) return;
-    let left = 0;
+    let left = scrollBlock.scrollLeft;
     let drag = false;
     let coorX = 0;
 

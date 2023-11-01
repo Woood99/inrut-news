@@ -20957,12 +20957,12 @@ textarea.input-reset {
 }
 .tabs-primary__btns .tabs__title.tabs__title--edit {
   position: relative;
+  padding: 9px 60px 9px 50px;
 }
 .tabs-primary__btns .tabs__title input {
   border: none;
   text-align: center;
   color: currentColor;
-  max-width: 85%;
   width: 100%;
 }
 .tabs-primary__btns .tabs__title input:disabled {
@@ -25971,6 +25971,36 @@ textarea.input-reset {
 .furnishing-sets__btn:not(:last-child) {
   margin-right: 2px;
 }
+.furnishing-sets__btn--controls {
+  height: 44px;
+  position: relative;
+  padding: 0 26px;
+}
+.furnishing-sets__btn--controls:first-child {
+  width: auto;
+}
+@media (min-width: 1213px) {
+  .furnishing-sets__btn--controls:hover .furnishing-sets__btn-remove {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+.furnishing-sets__btn-remove {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  opacity: 0;
+  z-index: 2;
+  visibility: hidden;
+  -webkit-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+  -o-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+  transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+}
+.furnishing-sets__btn-remove svg {
+  width: 15px;
+  height: 15px;
+  fill: var(--red);
+}
 @media (min-width: 1212px) {
   .furnishing-sets__btn:hover {
     border: 1px solid var(--blue);
@@ -26007,7 +26037,32 @@ textarea.input-reset {
   font-weight: 400;
   border-radius: 10px;
 }
-
+.furnishing-sets__create {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.furnishing-sets__create--studio, .furnishing-sets__create--room {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: var(--blue);
+}
+.furnishing-sets__create--studio svg, .furnishing-sets__create--room svg {
+  margin-right: 8px;
+  fill: var(--blue);
+  width: 14px;
+  height: 14px;
+}
+.furnishing-sets__create--studio:not(:last-child), .furnishing-sets__create--room:not(:last-child) {
+  margin-right: 16px;
+}
 .documentation__title {
   margin-bottom: 16px;
 }

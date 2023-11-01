@@ -4,15 +4,18 @@ import scrollDrag from '../components/scrollDrag';
 import {
     currentDropImage
 } from "../components/dropImage";
+import {
+    currentDragDrop
+} from '../components/dragDrop';
+import furnishingSets from '../components/furnishingSets';
 const tabs = () => {
     const metroContainer = document.querySelector('.popup-primary--search-area');
     const metroInnerMoscow = document.querySelector('#map-metro_moscow');
     let metroBooleanStatus = false;
 
-
     const tabs = document.querySelectorAll('[data-tabs]');
     let tabsActiveHash = [];
-
+    let editTitle = [];
     if (tabs.length > 0) {
         const hash = getHash();
         if (hash && hash.startsWith('tab-')) {
@@ -24,6 +27,9 @@ const tabs = () => {
             tabsBlock.addEventListener("click", setTabsAction);
             initTabs(tabsBlock);
         });
+        editTitle.forEach(title => {
+            const input = title.querySelector('input');
+        })
 
         // Получение слойлеров с медиа запросами
         let mdQueriesArray = dataMediaQueries(tabs, "tabs");
@@ -81,6 +87,12 @@ const tabs = () => {
                 }
                 tabsContentItem.hidden = !tabsTitles[index].classList.contains('_tab-active');
             });
+        }
+
+        if (tabsTitles) {
+            tabsTitles.forEach(title => {
+                if (title.classList.contains('tabs__title--edit')) editTitle.push(title);
+            })
         }
     }
 
@@ -159,8 +171,8 @@ const tabs = () => {
                     tabTitle.classList.add('_edit');
                     input.focus();
                     input.setSelectionRange(input.value.length, input.value.length);
-                    input.addEventListener('input',(e) => {
-                        input.setAttribute('value',e.target.value);
+                    input.addEventListener('input', (e) => {
+                        input.setAttribute('value', e.target.value);
                     })
                 } else {
                     input.setAttribute('disabled', '');
@@ -274,30 +286,165 @@ const tabs = () => {
                 </label>
                 </div>
             `;
-
-            tabs.innerHTML += photoHTML;
-            setTabsStatus(tabsBlock);
+            const furnishingSetsHTML = `
+            <div class="tabs__body furnishing-sets__item" data-tabs-item>
+            <div class="furnishing-sets__create">
+                <button type="button" class="btn btn-reset furnishing-sets__create--studio">
+                    <svg>
+                      <use xlink:href="img/sprite.svg#plus"></use>
+                    </svg>
+                    Добавить студию
+                </button>
+                <button type="button" class="btn btn-reset furnishing-sets__create--room">
+                    <svg>
+                      <use xlink:href="img/sprite.svg#plus"></use>
+                    </svg>
+                    Добавить комнатность
+                </button>
+            </div>
+            <div class="furnishing-sets__btns">
+                <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--studio furnishing-sets__btn--studio furnishing-sets__btn--controls _active">
+                    <span>Студия</span>
+                    <div class="furnishing-sets__btn-remove">
+                        <svg>
+                          <use xlink:href="img/sprite.svg#trash"></use>
+                        </svg>
+                    </div>
+                </button>
+                <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--room furnishing-sets__btn--controls">
+                    <span>1</span>
+                    <div class="furnishing-sets__btn-remove">
+                        <svg>
+                          <use xlink:href="img/sprite.svg#trash"></use>
+                        </svg>
+                    </div>
+                </button>
+                <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--room furnishing-sets__btn--controls">
+                    <span>2</span>
+                    <div class="furnishing-sets__btn-remove">
+                        <svg>
+                          <use xlink:href="img/sprite.svg#trash"></use>
+                        </svg>
+                    </div>
+                </button>
+            </div>
+            <div class="furnishing-sets__tabs">
+                <div class="furnishing-sets__tab">
+                    <div class="photo-load">
+                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                        </div>
+                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                            <button type="button" class="btn btn-reset">
+                                <p>
+                                    <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                </p>
+                            </button>
+                            <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                        </div>
+                    </div>
+                    <label class="textarea-primary" style="margin-top: 24px;">
+                        <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+                    </label>
+                </div>
+                <div class="furnishing-sets__tab" hidden>
+                    <div class="photo-load">
+                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                        </div>
+                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                            <button type="button" class="btn btn-reset">
+                                <p>
+                                    <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                </p>
+                            </button>
+                            <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                        </div>
+                    </div>
+                    <label class="textarea-primary" style="margin-top: 24px;">
+                        <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+                    </label>
+                </div>
+                <div class="furnishing-sets__tab" hidden>
+                    <div class="photo-load">
+                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                        </div>
+                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                            <button type="button" class="btn btn-reset">
+                                <p>
+                                    <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                </p>
+                            </button>
+                            <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                        </div>
+                    </div>
+                    <label class="textarea-primary" style="margin-top: 24px;">
+                        <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+                    </label>
+                </div>
+                <div class="furnishing-sets__tab" hidden>
+                    <div class="photo-load">
+                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                        </div>
+                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                            <button type="button" class="btn btn-reset">
+                                <p>
+                                    <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                </p>
+                            </button>
+                            <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                        </div>
+                    </div>
+                    <label class="textarea-primary" style="margin-top: 24px;">
+                        <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+                    </label>
+                </div>
+                <div class="furnishing-sets__tab" hidden>
+                    <div class="photo-load">
+                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                        </div>
+                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                            <button type="button" class="btn btn-reset">
+                                <p>
+                                    <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                </p>
+                            </button>
+                            <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                        </div>
+                    </div>
+                    <label class="textarea-primary" style="margin-top: 24px;">
+                        <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+                    </label>
+                </div>
+            </div>
+        </div>
+            `;
+            if (currentTabs.closest('.furnishing-sets')) {
+                tabs.innerHTML += furnishingSetsHTML;
+                setTabsStatus(tabsBlock);
+                furnishingSets();
+            } else {
+                tabs.innerHTML += photoHTML;
+                setTabsStatus(tabsBlock);
+                const content = tabsBlock.querySelectorAll('.tabs__body');
+                content.forEach(content => {
+                    currentDropImage(content.querySelector('.photo-load'));
+                    currentDragDrop(content.querySelector('.drag-drop'));
+                })
+            }
             nav.scrollTo({
                 left: nav.scrollWidth,
             });
             scrollDrag(nav, 1000, true);
-
             const currentTitle = nav.querySelectorAll('.tabs__title')[nav.querySelectorAll('.tabs__title').length - 1];
-            const currentTab = tabs.querySelectorAll('.tabs__body')[tabs.querySelectorAll('.tabs__body').length - 1];
-            if (currentTitle && currentTab) {
-                const input = currentTitle.querySelector('input');
-                const editBtn = currentTitle.querySelector('.tabs__title-edit');
-                input.removeAttribute('disabled');
-                editBtn.classList.add('_active');
-                currentTitle.classList.add('_edit');
-                input.focus();
-                input.setSelectionRange(input.value.length, input.value.length);
-                input.addEventListener('input',(e) => {
-                    input.setAttribute('value',e.target.value);
-                })
-                const photoLoad = currentTab.querySelector('.photo-load');
-                currentDropImage(photoLoad);
-            }
+            const input = currentTitle.querySelector('input');
+            const editBtn = currentTitle.querySelector('.tabs__title-edit');
+            input.removeAttribute('disabled');
+            editBtn.classList.add('_active');
+            currentTitle.classList.add('_edit');
+            input.focus();
+            input.setSelectionRange(input.value.length, input.value.length);
+            input.addEventListener('input', (e) => {
+                input.setAttribute('value', e.target.value);
+            })
         }
     })
 }

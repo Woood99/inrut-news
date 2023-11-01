@@ -91,15 +91,15 @@
 
             &.tabs__title--edit {
                 position: relative;
+                padding: 9px 60px 9px 50px;
             }
 
             input {
                 border: none;
                 text-align: center;
                 color: currentColor;
-                max-width: 85%;
                 width: 100%;
-                &:disabled{
+                &:disabled {
                     cursor: pointer;
                     pointer-events: none;
                 }
@@ -118,6 +118,7 @@
             right: 0;
             width: 18px;
             height: 18px;
+
             svg {
                 stroke: var(--blue);
                 fill: none;
@@ -127,15 +128,18 @@
 
                 transition: stroke $transitionSpeed $transitionFunction;
             }
-            &._active{
-                svg{
+
+            &._active {
+                svg {
                     stroke: var(--red);
                 }
             }
-            &:not(:last-child){
+
+            &:not(:last-child) {
                 right: calc(18px + 8px);
             }
         }
+
         .tabs__title-remove {
             position: absolute;
             top: 50%;
@@ -143,6 +147,7 @@
             right: 0;
             width: 18px;
             height: 18px;
+
             svg {
                 fill: var(--red);
                 stroke-width: 1.5px;
@@ -152,6 +157,7 @@
                 transition: stroke $transitionSpeed $transitionFunction;
             }
         }
+
         @media (max-width:$desktop) {
             overflow-x: auto;
 
@@ -310,26 +316,31 @@
         align-items: center;
         justify-content: center;
     }
-    &--controls{
-        .tabs__navigation{
+
+    &--controls {
+        .tabs__navigation {
             overflow-x: auto;
             @include hiddenScroll;
         }
-        .tabs__title{
+
+        .tabs__title {
             min-width: max-content;
         }
     }
-    &__create-new{
+
+    &__create-new {
         display: flex;
         align-items: center;
         color: var(--blue);
-        svg{
+
+        svg {
             margin-right: 8px;
             fill: var(--blue);
             width: 14px;
             height: 14px;
         }
     }
+
     @media (max-width:$desktop) {
         padding: 16px 0;
         border-radius: 12px;

@@ -46,7 +46,9 @@ import controlCards from './components/controlCards';
 import videoBlock from './components/videoBlock';
 import reviewModal from './components/reviewModal';
 import placeSaleOptionMore from './components/placeSaleOptionMore';
-import dropImage from './components/dropImage';
+import {
+    dropImage
+} from './components/dropImage';
 import checkboard from './components/checkboard';
 import headerFixed from './components/headerFixed';
 import mortgage from './components/mortgage';
@@ -88,7 +90,9 @@ import bankOffer from './components/bankOffer';
 import {
     tooltipSecondary
 } from './components/tooltips';
-import dragDrops from './components/dragDrop';
+import {
+    dragDrops
+} from './components/dragDrop';
 import AirDatepicker from 'air-datepicker';
 import createCalc from './components/createCalc';
 import createSale from './components/createSale';

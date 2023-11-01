@@ -4316,7 +4316,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_videoBlock__WEBPACK_IMPORTED_MODULE_14__["default"])();
   (0,_components_reviewModal__WEBPACK_IMPORTED_MODULE_15__["default"])();
   (0,_components_placeSaleOptionMore__WEBPACK_IMPORTED_MODULE_16__["default"])();
-  (0,_components_dropImage__WEBPACK_IMPORTED_MODULE_17__["default"])();
+  (0,_components_dropImage__WEBPACK_IMPORTED_MODULE_17__.dropImage)();
   (0,_components_checkboard__WEBPACK_IMPORTED_MODULE_18__["default"])();
   (0,_components_headerFixed__WEBPACK_IMPORTED_MODULE_19__["default"])();
   (0,_components_mortgage__WEBPACK_IMPORTED_MODULE_20__["default"])();
@@ -4350,7 +4350,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_onlineDisplay__WEBPACK_IMPORTED_MODULE_43__["default"])();
   (0,_components_bankOffer__WEBPACK_IMPORTED_MODULE_44__["default"])();
   (0,_components_tooltips__WEBPACK_IMPORTED_MODULE_45__.tooltipSecondary)();
-  (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_46__["default"])();
+  (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_46__.dragDrops)();
   (0,_components_createCalc__WEBPACK_IMPORTED_MODULE_48__["default"])();
   (0,_components_createSale__WEBPACK_IMPORTED_MODULE_49__["default"])();
   // ==================================================
@@ -6532,7 +6532,8 @@ const createSale = () => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "currentDragDrop": () => (/* binding */ currentDragDrop),
+/* harmony export */   "dragDrops": () => (/* binding */ dragDrops)
 /* harmony export */ });
 
 
@@ -6591,13 +6592,69 @@ const dragDrops = () => {
       el.addEventListener('drop', dragDrop, false);
       el.addEventListener('dragend', dragEnd, false);
     }
-    const listItens = container.querySelectorAll('.drag-drop__item');
-    [].forEach.call(listItens, function (item) {
+    const listItems = container.querySelectorAll('.drag-drop__item');
+    [].forEach.call(listItems, function (item) {
       addEventsDragAndDrop(item);
     });
   });
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (dragDrops);
+const currentDragDrop = container => {
+  let dragSrcEl;
+  function dragStart(e) {
+    this.classList.add('_dragg');
+    dragSrcEl = this;
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/html', this.innerHTML);
+  }
+  ;
+  function dragEnter(e) {
+    this.classList.add('_over');
+  }
+  function dragLeave(e) {
+    e.stopPropagation();
+    this.classList.remove('_over');
+  }
+  function dragOver(e) {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    return false;
+  }
+  function dragDrop(e) {
+    if (dragSrcEl != this) {
+      dragSrcEl.innerHTML = this.innerHTML;
+      this.innerHTML = e.dataTransfer.getData('text/html');
+      dragEnd();
+      dragDropOder(container);
+    }
+    return false;
+  }
+  function dragEnd() {
+    container.querySelectorAll('.drag-drop__item').forEach(item => {
+      item.classList.remove('_over');
+      item.classList.remove('_dragg');
+    });
+  }
+  function dragDropOder(container) {
+    if (container.classList.contains('drag-drop--order')) {
+      container.querySelectorAll('.drag-drop__item').forEach((item, index) => {
+        const number = item.querySelector('[data-drag-drop-order-number]');
+        number.textContent = index + 1;
+      });
+    }
+  }
+  function addEventsDragAndDrop(el) {
+    el.addEventListener('dragstart', dragStart, false);
+    el.addEventListener('dragenter', dragEnter, false);
+    el.addEventListener('dragover', dragOver, false);
+    el.addEventListener('dragleave', dragLeave, false);
+    el.addEventListener('drop', dragDrop, false);
+    el.addEventListener('dragend', dragEnd, false);
+  }
+  const listItems = container.querySelectorAll('.drag-drop__item');
+  [].forEach.call(listItems, function (item) {
+    addEventsDragAndDrop(item);
+  });
+};
 
 /***/ }),
 
@@ -6610,13 +6667,17 @@ const dragDrops = () => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "currentDropImage": () => (/* binding */ currentDropImage),
+/* harmony export */   "dropImage": () => (/* binding */ dropImage)
 /* harmony export */ });
+/* harmony import */ var _dragDrop__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dragDrop */ "./src/js/components/dragDrop.js");
+
 const dropImage = () => {
-  const fileInputs = document.querySelectorAll('[data-upload-drop]');
-  if (fileInputs.length === 0) return;
+  const photoLoad = document.querySelectorAll('.photo-load');
+  if (photoLoad.length === 0) return;
   ['dragenter', 'dragleave', 'dragover', 'drop'].forEach(eventName => {
-    fileInputs.forEach(input => {
+    photoLoad.forEach(photo => {
+      const input = photo.querySelector('[data-upload-drop]');
       input.addEventListener(eventName, e => {
         e.preventDefault();
         e.stopPropagation();
@@ -6624,21 +6685,29 @@ const dropImage = () => {
     });
   });
   ['dragenter', 'dragover'].forEach(eventName => {
-    fileInputs.forEach(input => {
+    photoLoad.forEach(photo => {
+      const input = photo.querySelector('[data-upload-drop]');
       input.addEventListener(eventName, () => {
-        input.closest('.photo-load').classList.add('_active');
+        photo.classList.add('_active');
       });
     });
   });
   ['dragleave', 'drop'].forEach(eventName => {
-    fileInputs.forEach(input => {
+    photoLoad.forEach(photo => {
+      const input = photo.querySelector('[data-upload-drop]');
       input.addEventListener(eventName, () => {
-        input.closest('.photo-load').classList.remove('_active');
+        photo.classList.remove('_active');
       });
     });
   });
-  fileInputs.forEach(input => input.addEventListener('change', e => inputChange(input, e)));
-  fileInputs.forEach(input => input.addEventListener('drop', e => inputChange(input, e)));
+  photoLoad.forEach(photo => {
+    const input = photo.querySelector('[data-upload-drop]');
+    input.addEventListener('change', e => inputChange(input, e));
+  });
+  photoLoad.forEach(photo => {
+    const input = photo.querySelector('[data-upload-drop]');
+    input.addEventListener('drop', e => inputChange(input, e));
+  });
   function subtitleFile(input) {
     let dots;
     const target = input.files[0].name.split('.');
@@ -6646,17 +6715,149 @@ const dropImage = () => {
     const name = target[0].substring(0, 20) + dots + target[1];
     input.previousElementSibling.textContent = name;
   }
+  function showImage(input) {
+    const container = input.closest('.photo-load');
+    const placeSaleImages = container.querySelector('.place-sale-photo__images');
+    if (placeSaleImages) {
+      let files = input.files;
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const imageURL = window.URL.createObjectURL(file);
+        placeSaleImages.innerHTML += placeSalePhotoGenerate(imageURL);
+      }
+      if (placeSaleImages.classList.contains('drag-drop')) {
+        (0,_dragDrop__WEBPACK_IMPORTED_MODULE_0__.currentDragDrop)(placeSaleImages);
+      }
+    }
+  }
   function inputChange(input, e) {
     if (e.type === 'change') {
-      subtitleFile(input);
+      showImage(input);
     }
     if (e.type === 'drop') {
       input.files = e.dataTransfer.files;
-      subtitleFile(input);
+      showImage(input);
     }
   }
+  function placeSalePhotoGenerate(url) {
+    const placeSalePhotoHTML = `
+        <div class="place-sale-photo__image ibg drag-drop__item" draggable="true">
+            <picture>
+                <source srcset="${url}" type="image/webp">
+                <img loading="lazy" src="${url}" width="271" height="190" alt="">
+            </picture>
+            <div class="place-sale-photo__icon">
+                <svg>
+                    <use xlink:href="img/sprite.svg#right-left"></use>
+                </svg>
+            </div>
+            <button type="button" class="btn btn-reset place-sale-photo__remove" title="Удалить фото">
+                <svg>
+                    <use xlink:href="img/sprite.svg#trash"></use>
+                </svg>
+            </button>
+            <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--1">
+                <svg>
+                    <use xlink:href="img/sprite.svg#rotate-1"></use>
+                </svg>
+            </button>
+            <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--2">
+                <svg>
+                    <use xlink:href="img/sprite.svg#rotate-2"></use>
+                </svg>
+            </button>
+        </div>
+        `;
+    return placeSalePhotoHTML;
+  }
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (dropImage);
+const currentDropImage = container => {
+  if (!container) return;
+  ['dragenter', 'dragleave', 'dragover', 'drop'].forEach(eventName => {
+    const input = container.querySelector('[data-upload-drop]');
+    input.addEventListener(eventName, e => {
+      e.preventDefault();
+      e.stopPropagation();
+    });
+  });
+  ['dragenter', 'dragover'].forEach(eventName => {
+    const input = container.querySelector('[data-upload-drop]');
+    input.addEventListener(eventName, () => {
+      container.classList.add('_active');
+    });
+  });
+  ['dragleave', 'drop'].forEach(eventName => {
+    const input = container.querySelector('[data-upload-drop]');
+    input.addEventListener(eventName, () => {
+      container.classList.remove('_active');
+    });
+  });
+  const input = container.querySelector('[data-upload-drop]');
+  input.addEventListener('change', e => inputChange(input, e));
+  input.addEventListener('drop', e => inputChange(input, e));
+  function subtitleFile(input) {
+    let dots;
+    const target = input.files[0].name.split('.');
+    target[0].length >= 20 ? dots = '...' : dots = '.';
+    const name = target[0].substring(0, 20) + dots + target[1];
+    input.previousElementSibling.textContent = name;
+  }
+  function showImage(input) {
+    const container = input.closest('.photo-load');
+    const placeSaleImages = container.querySelector('.place-sale-photo__images');
+    if (placeSaleImages) {
+      let files = input.files;
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const imageURL = window.URL.createObjectURL(file);
+        placeSaleImages.innerHTML += placeSalePhotoGenerate(imageURL);
+      }
+      if (placeSaleImages.classList.contains('drag-drop')) {
+        (0,_dragDrop__WEBPACK_IMPORTED_MODULE_0__.currentDragDrop)(placeSaleImages);
+      }
+    }
+  }
+  function inputChange(input, e) {
+    if (e.type === 'change') {
+      showImage(input);
+    }
+    if (e.type === 'drop') {
+      input.files = e.dataTransfer.files;
+      showImage(input);
+    }
+  }
+  function placeSalePhotoGenerate(url) {
+    const placeSalePhotoHTML = `
+        <div class="place-sale-photo__image ibg drag-drop__item" draggable="true">
+            <picture>
+                <source srcset="${url}" type="image/webp">
+                <img loading="lazy" src="${url}" width="271" height="190" alt="">
+            </picture>
+            <div class="place-sale-photo__icon">
+                <svg>
+                    <use xlink:href="img/sprite.svg#right-left"></use>
+                </svg>
+            </div>
+            <button type="button" class="btn btn-reset place-sale-photo__remove" title="Удалить фото">
+                <svg>
+                    <use xlink:href="img/sprite.svg#trash"></use>
+                </svg>
+            </button>
+            <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--1">
+                <svg>
+                    <use xlink:href="img/sprite.svg#rotate-1"></use>
+                </svg>
+            </button>
+            <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--2">
+                <svg>
+                    <use xlink:href="img/sprite.svg#rotate-2"></use>
+                </svg>
+            </button>
+        </div>
+        `;
+    return placeSalePhotoHTML;
+  }
+};
 
 /***/ }),
 
@@ -12120,6 +12321,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _support_modules_getHash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../support-modules/getHash */ "./src/js/support-modules/getHash.js");
 /* harmony import */ var _support_modules_dataMediaQueries__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../support-modules/dataMediaQueries */ "./src/js/support-modules/dataMediaQueries.js");
 /* harmony import */ var _components_scrollDrag__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/scrollDrag */ "./src/js/components/scrollDrag.js");
+/* harmony import */ var _components_dropImage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/dropImage */ "./src/js/components/dropImage.js");
+
 
 
 
@@ -12263,6 +12466,9 @@ const tabs = () => {
           tabTitle.classList.add('_edit');
           input.focus();
           input.setSelectionRange(input.value.length, input.value.length);
+          input.addEventListener('input', e => {
+            input.setAttribute('value', e.target.value);
+          });
         } else {
           input.setAttribute('disabled', '');
           editBtn.classList.remove('_active');
@@ -12333,7 +12539,7 @@ const tabs = () => {
       const tabsBlock = currentTabs.querySelector('[data-tabs]');
       nav.innerHTML += `
             <button type="button" class="btn btn-reset tabs__title tabs__title--edit" data-tabs-title>
-                <input type="text" name="Имя" class="input-reset" value="Название" disabled="">
+                <input type="text" name="Имя" class="input-reset" value="" disabled="">
                 <div class="btn btn-reset tabs__title-edit" title="Редактировать">
                     <svg>
                         <use xlink:href="img/sprite.svg#pencil">
@@ -12350,15 +12556,21 @@ const tabs = () => {
             `;
       const photoHTML = `
             <div class="tabs__body" data-tabs-item>
-                <div class="place-sale-photo__wrapper photo-load">
-                    <button type="button" class="btn btn-reset photo-load__wrapper">
-                        <p>
-                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
-                        </p>
-                    </button>
-                    <input type="file" data-upload-drop="" name="upload" multiple="" accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                <div class="photo-load">
+                    <div class="place-sale-photo__images drag-drop photo-load__images"></div>
+                    <div class="place-sale-photo__wrapper photo-load__wrapper">
+                        <button type="button" class="btn btn-reset">
+                            <p>
+                                <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                            </p>
+                        </button>
+                        <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                    </div>
                 </div>
-            </div>
+                <label class="textarea-primary" style="margin-top: 24px;">
+                    <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+                </label>
+                </div>
             `;
       tabs.innerHTML += photoHTML;
       setTabsStatus(tabsBlock);
@@ -12366,6 +12578,22 @@ const tabs = () => {
         left: nav.scrollWidth
       });
       (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_2__["default"])(nav, 1000, true);
+      const currentTitle = nav.querySelectorAll('.tabs__title')[nav.querySelectorAll('.tabs__title').length - 1];
+      const currentTab = tabs.querySelectorAll('.tabs__body')[tabs.querySelectorAll('.tabs__body').length - 1];
+      if (currentTitle && currentTab) {
+        const input = currentTitle.querySelector('input');
+        const editBtn = currentTitle.querySelector('.tabs__title-edit');
+        input.removeAttribute('disabled');
+        editBtn.classList.add('_active');
+        currentTitle.classList.add('_edit');
+        input.focus();
+        input.setSelectionRange(input.value.length, input.value.length);
+        input.addEventListener('input', e => {
+          input.setAttribute('value', e.target.value);
+        });
+        const photoLoad = currentTab.querySelector('.photo-load');
+        (0,_components_dropImage__WEBPACK_IMPORTED_MODULE_3__.currentDropImage)(photoLoad);
+      }
     }
   });
 };

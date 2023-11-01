@@ -1,6 +1,9 @@
 import getHash from '../support-modules/getHash';
 import dataMediaQueries from '../support-modules/dataMediaQueries';
 import scrollDrag from '../components/scrollDrag';
+import {
+    currentDropImage
+} from "../components/dropImage";
 const tabs = () => {
     const metroContainer = document.querySelector('.popup-primary--search-area');
     const metroInnerMoscow = document.querySelector('#map-metro_moscow');
@@ -142,7 +145,7 @@ const tabs = () => {
             const editBtn = el.closest('.tabs__title-edit');
             const removeBtn = el.closest('.tabs__title-remove');
             if (removeBtn) {
-                const activeTabIndex = Array.prototype.indexOf.call(tabTitle.closest('.tabs__navigation').children,tabTitle);
+                const activeTabIndex = Array.prototype.indexOf.call(tabTitle.closest('.tabs__navigation').children, tabTitle);
                 tabTitle.remove();
                 tabsBlock.querySelector('.tabs-primary__content').children[activeTabIndex].remove();
                 setTabsStatus(tabsBlock);
@@ -156,6 +159,9 @@ const tabs = () => {
                     tabTitle.classList.add('_edit');
                     input.focus();
                     input.setSelectionRange(input.value.length, input.value.length);
+                    input.addEventListener('input',(e) => {
+                        input.setAttribute('value',e.target.value);
+                    })
                 } else {
                     input.setAttribute('disabled', '');
                     editBtn.classList.remove('_active');
@@ -234,7 +240,7 @@ const tabs = () => {
             const tabsBlock = currentTabs.querySelector('[data-tabs]');
             nav.innerHTML += `
             <button type="button" class="btn btn-reset tabs__title tabs__title--edit" data-tabs-title>
-                <input type="text" name="Имя" class="input-reset" value="Название" disabled="">
+                <input type="text" name="Имя" class="input-reset" value="" disabled="">
                 <div class="btn btn-reset tabs__title-edit" title="Редактировать">
                     <svg>
                         <use xlink:href="img/sprite.svg#pencil">
@@ -252,15 +258,21 @@ const tabs = () => {
 
             const photoHTML = `
             <div class="tabs__body" data-tabs-item>
-                <div class="place-sale-photo__wrapper photo-load">
-                    <button type="button" class="btn btn-reset photo-load__wrapper">
-                        <p>
-                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
-                        </p>
-                    </button>
-                    <input type="file" data-upload-drop="" name="upload" multiple="" accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                <div class="photo-load">
+                    <div class="place-sale-photo__images drag-drop photo-load__images"></div>
+                    <div class="place-sale-photo__wrapper photo-load__wrapper">
+                        <button type="button" class="btn btn-reset">
+                            <p>
+                                <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                            </p>
+                        </button>
+                        <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                    </div>
                 </div>
-            </div>
+                <label class="textarea-primary" style="margin-top: 24px;">
+                    <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+                </label>
+                </div>
             `;
 
             tabs.innerHTML += photoHTML;
@@ -269,6 +281,23 @@ const tabs = () => {
                 left: nav.scrollWidth,
             });
             scrollDrag(nav, 1000, true);
+
+            const currentTitle = nav.querySelectorAll('.tabs__title')[nav.querySelectorAll('.tabs__title').length - 1];
+            const currentTab = tabs.querySelectorAll('.tabs__body')[tabs.querySelectorAll('.tabs__body').length - 1];
+            if (currentTitle && currentTab) {
+                const input = currentTitle.querySelector('input');
+                const editBtn = currentTitle.querySelector('.tabs__title-edit');
+                input.removeAttribute('disabled');
+                editBtn.classList.add('_active');
+                currentTitle.classList.add('_edit');
+                input.focus();
+                input.setSelectionRange(input.value.length, input.value.length);
+                input.addEventListener('input',(e) => {
+                    input.setAttribute('value',e.target.value);
+                })
+                const photoLoad = currentTab.querySelector('.photo-load');
+                currentDropImage(photoLoad);
+            }
         }
     })
 }

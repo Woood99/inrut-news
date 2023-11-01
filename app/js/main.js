@@ -8333,7 +8333,7 @@ const furnishingSets = () => {
                 const createStudio = item.querySelector('.furnishing-sets__create--studio');
                 createStudio.removeAttribute('hidden');
               }
-              if (item.querySelectorAll('.furnishing-sets__btn--room').length <= 8) {
+              if (item.querySelectorAll('.furnishing-sets__btn--room').length < 8) {
                 const createRoom = item.querySelector('.furnishing-sets__create--room');
                 createRoom.removeAttribute('hidden');
               }

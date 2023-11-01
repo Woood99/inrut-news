@@ -12785,40 +12785,6 @@ const tabs = () => {
                         <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
                     </label>
                 </div>
-                <div class="furnishing-sets__tab" hidden>
-                    <div class="photo-load">
-                        <div class="place-sale-photo__images drag-drop photo-load__images">
-                        </div>
-                        <div class="place-sale-photo__wrapper photo-load__wrapper">
-                            <button type="button" class="btn btn-reset">
-                                <p>
-                                    <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
-                                </p>
-                            </button>
-                            <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
-                        </div>
-                    </div>
-                    <label class="textarea-primary" style="margin-top: 24px;">
-                        <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
-                    </label>
-                </div>
-                <div class="furnishing-sets__tab" hidden>
-                    <div class="photo-load">
-                        <div class="place-sale-photo__images drag-drop photo-load__images">
-                        </div>
-                        <div class="place-sale-photo__wrapper photo-load__wrapper">
-                            <button type="button" class="btn btn-reset">
-                                <p>
-                                    <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
-                                </p>
-                            </button>
-                            <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
-                        </div>
-                    </div>
-                    <label class="textarea-primary" style="margin-top: 24px;">
-                        <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
-                    </label>
-                </div>
             </div>
         </div>
             `;
@@ -12826,6 +12792,11 @@ const tabs = () => {
         tabs.innerHTML += furnishingSetsHTML;
         setTabsStatus(tabsBlock);
         (0,_components_furnishingSets__WEBPACK_IMPORTED_MODULE_5__["default"])();
+        const content = tabsBlock.querySelectorAll('.tabs__body .furnishing-sets__tab');
+        content.forEach(content => {
+          (0,_components_dropImage__WEBPACK_IMPORTED_MODULE_3__.currentDropImage)(content.querySelector('.photo-load'));
+          (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_4__.currentDragDrop)(content.querySelector('.drag-drop'));
+        });
       } else {
         tabs.innerHTML += photoHTML;
         setTabsStatus(tabsBlock);

@@ -387,19 +387,11 @@ const tabs = () => {
                 tabs.innerHTML += furnishingSetsHTML;
                 setTabsStatus(tabsBlock);
                 furnishingSets();
-                const content = tabsBlock.querySelectorAll('.tabs__body .furnishing-sets__tab');
-                 content.forEach(content => {
-                     currentDropImage(content.querySelector('.photo-load'));
-                    currentDragDrop(content.querySelector('.drag-drop'));
-                 })
+                photoLoadAndDragDropUpdate(tabsBlock.querySelectorAll('.tabs__body .furnishing-sets__tab'));
             } else {
                 tabs.innerHTML += photoHTML;
                 setTabsStatus(tabsBlock);
-                const content = tabsBlock.querySelectorAll('.tabs__body');
-                content.forEach(content => {
-                    currentDropImage(content.querySelector('.photo-load'));
-                    currentDragDrop(content.querySelector('.drag-drop'));
-                })
+                photoLoadAndDragDropUpdate(tabsBlock.querySelectorAll('.tabs__body'));
             }
             nav.scrollTo({
                 left: nav.scrollWidth,
@@ -415,6 +407,14 @@ const tabs = () => {
             input.setSelectionRange(input.value.length, input.value.length);
             input.addEventListener('input', (e) => {
                 input.setAttribute('value', e.target.value);
+            })
+        }
+
+
+        function photoLoadAndDragDropUpdate(content) {
+            content.forEach(content => {
+                currentDropImage(content.querySelector('.photo-load'));
+                currentDragDrop(content.querySelector('.drag-drop'));
             })
         }
     })

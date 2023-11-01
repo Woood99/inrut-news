@@ -8273,6 +8273,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _components_dropImage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/dropImage */ "./src/js/components/dropImage.js");
+/* harmony import */ var _components_dragDrop__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/dragDrop */ "./src/js/components/dragDrop.js");
+
+
 const furnishingSets = () => {
   const containers = document.querySelectorAll('.furnishing-sets');
   if (!containers) return;
@@ -8286,7 +8290,6 @@ const furnishingSets = () => {
       if (container.classList.contains('furnishing-sets--controls')) {
         const createStudio = item.querySelector('.furnishing-sets__create--studio');
         const createRoom = item.querySelector('.furnishing-sets__create--room');
-        console.log(createStudio);
         if (item.querySelector('.furnishing-sets__btn--studio') && createStudio) {
           createStudio.setAttribute('hidden', '');
         }
@@ -8300,6 +8303,7 @@ const furnishingSets = () => {
             const quantityRoom = item.querySelectorAll('.furnishing-sets__btn--room');
             btnAction(item.querySelectorAll('.furnishing-sets__btn'), item.querySelectorAll('.furnishing-sets__tab'));
             renamingTitle(item.querySelectorAll('.furnishing-sets__btn'));
+            photoLoadAndDragDropUpdate(item.querySelectorAll('.furnishing-sets__tab'));
             if (quantityRoom.length === 8) {
               createRoom.setAttribute('hidden', '');
             }
@@ -8310,6 +8314,7 @@ const furnishingSets = () => {
             createStudio.setAttribute('hidden', '');
             btnAction(item.querySelectorAll('.furnishing-sets__btn'), item.querySelectorAll('.furnishing-sets__tab'));
             renamingTitle(item.querySelectorAll('.furnishing-sets__btn'));
+            photoLoadAndDragDropUpdate(item.querySelectorAll('.furnishing-sets__tab'));
           });
         }
       }
@@ -8323,6 +8328,7 @@ const furnishingSets = () => {
               btn.remove();
               currentContent.remove();
               renamingTitle(item.querySelectorAll('.furnishing-sets__btn'));
+              photoLoadAndDragDropUpdate(item.querySelectorAll('.furnishing-sets__tab'));
               if (!item.querySelector('.furnishing-sets__btn--studio')) {
                 const createStudio = item.querySelector('.furnishing-sets__create--studio');
                 createStudio.removeAttribute('hidden');
@@ -8397,6 +8403,12 @@ const furnishingSets = () => {
         const newTitles = Array.prototype.slice.call(titles, 0).filter(title => title.classList.contains('furnishing-sets__btn--room'));
         newTitles.forEach((title, index) => {
           title.querySelector('span').textContent = index + 1;
+        });
+      }
+      function photoLoadAndDragDropUpdate(content) {
+        content.forEach(content => {
+          (0,_components_dropImage__WEBPACK_IMPORTED_MODULE_0__.currentDropImage)(content.querySelector('.photo-load'));
+          (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_1__.currentDragDrop)(content.querySelector('.drag-drop'));
         });
       }
     });
@@ -12792,19 +12804,11 @@ const tabs = () => {
         tabs.innerHTML += furnishingSetsHTML;
         setTabsStatus(tabsBlock);
         (0,_components_furnishingSets__WEBPACK_IMPORTED_MODULE_5__["default"])();
-        const content = tabsBlock.querySelectorAll('.tabs__body .furnishing-sets__tab');
-        content.forEach(content => {
-          (0,_components_dropImage__WEBPACK_IMPORTED_MODULE_3__.currentDropImage)(content.querySelector('.photo-load'));
-          (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_4__.currentDragDrop)(content.querySelector('.drag-drop'));
-        });
+        photoLoadAndDragDropUpdate(tabsBlock.querySelectorAll('.tabs__body .furnishing-sets__tab'));
       } else {
         tabs.innerHTML += photoHTML;
         setTabsStatus(tabsBlock);
-        const content = tabsBlock.querySelectorAll('.tabs__body');
-        content.forEach(content => {
-          (0,_components_dropImage__WEBPACK_IMPORTED_MODULE_3__.currentDropImage)(content.querySelector('.photo-load'));
-          (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_4__.currentDragDrop)(content.querySelector('.drag-drop'));
-        });
+        photoLoadAndDragDropUpdate(tabsBlock.querySelectorAll('.tabs__body'));
       }
       nav.scrollTo({
         left: nav.scrollWidth
@@ -12820,6 +12824,12 @@ const tabs = () => {
       input.setSelectionRange(input.value.length, input.value.length);
       input.addEventListener('input', e => {
         input.setAttribute('value', e.target.value);
+      });
+    }
+    function photoLoadAndDragDropUpdate(content) {
+      content.forEach(content => {
+        (0,_components_dropImage__WEBPACK_IMPORTED_MODULE_3__.currentDropImage)(content.querySelector('.photo-load'));
+        (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_4__.currentDragDrop)(content.querySelector('.drag-drop'));
       });
     }
   });

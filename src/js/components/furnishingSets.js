@@ -1,3 +1,10 @@
+import {
+    currentDropImage
+} from "../components/dropImage";
+import {
+    currentDragDrop
+} from '../components/dragDrop';
+
 const furnishingSets = () => {
     const containers = document.querySelectorAll('.furnishing-sets');
     if (!containers) return;
@@ -12,7 +19,6 @@ const furnishingSets = () => {
             if (container.classList.contains('furnishing-sets--controls')) {
                 const createStudio = item.querySelector('.furnishing-sets__create--studio');
                 const createRoom = item.querySelector('.furnishing-sets__create--room');
-                console.log(createStudio);
                 if (item.querySelector('.furnishing-sets__btn--studio') && createStudio) {
                     createStudio.setAttribute('hidden', '');
                 }
@@ -26,6 +32,7 @@ const furnishingSets = () => {
                         const quantityRoom = item.querySelectorAll('.furnishing-sets__btn--room');
                         btnAction(item.querySelectorAll('.furnishing-sets__btn'), item.querySelectorAll('.furnishing-sets__tab'));
                         renamingTitle(item.querySelectorAll('.furnishing-sets__btn'));
+                        photoLoadAndDragDropUpdate(item.querySelectorAll('.furnishing-sets__tab'));
                         if (quantityRoom.length === 8) {
                             createRoom.setAttribute('hidden', '');
                         }
@@ -36,6 +43,7 @@ const furnishingSets = () => {
                         createStudio.setAttribute('hidden', '');
                         btnAction(item.querySelectorAll('.furnishing-sets__btn'), item.querySelectorAll('.furnishing-sets__tab'));
                         renamingTitle(item.querySelectorAll('.furnishing-sets__btn'));
+                        photoLoadAndDragDropUpdate(item.querySelectorAll('.furnishing-sets__tab'));
                     })
                 }
             }
@@ -52,6 +60,7 @@ const furnishingSets = () => {
                             btn.remove();
                             currentContent.remove();
                             renamingTitle(item.querySelectorAll('.furnishing-sets__btn'));
+                            photoLoadAndDragDropUpdate(item.querySelectorAll('.furnishing-sets__tab'));
                             if (!item.querySelector('.furnishing-sets__btn--studio')) {
                                 const createStudio = item.querySelector('.furnishing-sets__create--studio');
                                 createStudio.removeAttribute('hidden');
@@ -130,6 +139,12 @@ const furnishingSets = () => {
                 const newTitles = Array.prototype.slice.call(titles, 0).filter(title => title.classList.contains('furnishing-sets__btn--room'));
                 newTitles.forEach((title, index) => {
                     title.querySelector('span').textContent = index + 1;
+                })
+            }
+            function photoLoadAndDragDropUpdate(content) {
+                content.forEach(content => {
+                    currentDropImage(content.querySelector('.photo-load'));
+                    currentDragDrop(content.querySelector('.drag-drop'));
                 })
             }
         })

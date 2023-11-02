@@ -109,6 +109,45 @@ const choicesSelect = () => {
     if (selectSecondary.length >= 1) {
         const mobileWidth = 1212;
         selectSecondary.forEach(el => {
+            const wrapper = el.closest('.select-secondary');
+            if (wrapper.classList.contains('select-secondary--quarter')) {
+                const currentQuarter =  Math.ceil((new Date()).getMonth() / 3);
+                const body = wrapper.querySelector('.select-secondary__body');
+                let optionsHtml = '';
+                if (currentQuarter === 1){
+                    optionsHtml = `
+                    <option value="quarter1">1 квартал</option>
+                    <option value="quarter2">2 квартал</option>
+                    <option value="quarter3">3 квартал</option>
+                    <option value="quarter4">4 квартал</option>
+                `;
+                }
+                if (currentQuarter === 2){
+                    optionsHtml = `
+                    <option value="quarter2">2 квартал</option>
+                    <option value="quarter1">1 квартал</option>
+                    <option value="quarter3">3 квартал</option>
+                    <option value="quarter4">4 квартал</option>
+                `;
+                }
+                if (currentQuarter === 3){
+                    optionsHtml = `
+                        <option value="quarter3">3 квартал</option>
+                        <option value="quarter1">1 квартал</option>
+                        <option value="quarter2">2 квартал</option>
+                        <option value="quarter4">4 квартал</option>
+                    `;
+                }
+                if (currentQuarter === 4){
+                    optionsHtml = `
+                        <option value="quarter4">4 квартал</option>
+                        <option value="quarter1">1 квартал</option>
+                        <option value="quarter2">2 квартал</option>
+                        <option value="quarter3">3 квартал</option>
+                    `;
+                }
+                body.innerHTML = optionsHtml;
+            }
             const choices = new Choices(el, {
                 searchEnabled: false,
                 shouldSort: false,
@@ -116,7 +155,6 @@ const choicesSelect = () => {
                 position: 'bottom',
                 placeholder: true,
             })
-            const wrapper = el.closest('.select-secondary');
             el.addEventListener('change', () => {
                 checkCloseSelected();
             });

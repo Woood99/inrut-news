@@ -6678,42 +6678,55 @@ const dropImage = () => {
   ['dragenter', 'dragleave', 'dragover', 'drop'].forEach(eventName => {
     photoLoad.forEach(photo => {
       const input = photo.querySelector('[data-upload-drop]');
-      input.addEventListener(eventName, e => {
-        e.preventDefault();
-        e.stopPropagation();
-      });
+      if (input) {
+        input.addEventListener(eventName, e => {
+          e.preventDefault();
+          e.stopPropagation();
+        });
+      }
     });
   });
   ['dragenter', 'dragover'].forEach(eventName => {
     photoLoad.forEach(photo => {
       const input = photo.querySelector('[data-upload-drop]');
-      input.addEventListener(eventName, () => {
-        photo.classList.add('_active');
-      });
+      if (input) {
+        input.addEventListener(eventName, () => {
+          photo.classList.add('_active');
+        });
+      }
     });
   });
   ['dragleave', 'drop'].forEach(eventName => {
     photoLoad.forEach(photo => {
       const input = photo.querySelector('[data-upload-drop]');
-      input.addEventListener(eventName, () => {
-        photo.classList.remove('_active');
-      });
+      if (input) {
+        input.addEventListener(eventName, () => {
+          photo.classList.remove('_active');
+        });
+      }
     });
   });
   photoLoad.forEach(photo => {
     const input = photo.querySelector('[data-upload-drop]');
-    input.addEventListener('change', e => inputChange(input, e));
+    if (input) {
+      input.addEventListener('change', e => inputChange(input, e));
+    }
   });
   photoLoad.forEach(photo => {
     const input = photo.querySelector('[data-upload-drop]');
-    input.addEventListener('drop', e => inputChange(input, e));
+    if (input) {
+      input.addEventListener('drop', e => inputChange(input, e));
+    }
   });
   function subtitleFile(input) {
     let dots;
-    const target = input.files[0].name.split('.');
-    target[0].length >= 20 ? dots = '...' : dots = '.';
-    const name = target[0].substring(0, 20) + dots + target[1];
-    input.previousElementSibling.textContent = name;
+    const file = input.files[0];
+    if (file) {
+      const target = file.name.split('.');
+      target[0].length >= 20 ? dots = '...' : dots = '.';
+      const name = target[0].substring(0, 20) + dots + target[1];
+      input.previousElementSibling.textContent = name;
+    }
   }
   function showImage(input) {
     const container = input.closest('.photo-load');
@@ -6731,12 +6744,22 @@ const dropImage = () => {
     }
   }
   function inputChange(input, e) {
-    if (e.type === 'change') {
-      showImage(input);
-    }
-    if (e.type === 'drop') {
-      input.files = e.dataTransfer.files;
-      showImage(input);
+    if (input.hasAttribute('data-upload-drop-text')) {
+      if (e.type === 'change') {
+        subtitleFile(input);
+      }
+      if (e.type === 'drop') {
+        input.files = e.dataTransfer.files;
+        subtitleFile(input);
+      }
+    } else {
+      if (e.type === 'change') {
+        showImage(input);
+      }
+      if (e.type === 'drop') {
+        input.files = e.dataTransfer.files;
+        showImage(input);
+      }
     }
   }
   function placeSalePhotoGenerate(url) {
@@ -6775,26 +6798,34 @@ const currentDropImage = container => {
   if (!container) return;
   ['dragenter', 'dragleave', 'dragover', 'drop'].forEach(eventName => {
     const input = container.querySelector('[data-upload-drop]');
-    input.addEventListener(eventName, e => {
-      e.preventDefault();
-      e.stopPropagation();
-    });
+    if (input) {
+      input.addEventListener(eventName, e => {
+        e.preventDefault();
+        e.stopPropagation();
+      });
+    }
   });
   ['dragenter', 'dragover'].forEach(eventName => {
     const input = container.querySelector('[data-upload-drop]');
-    input.addEventListener(eventName, () => {
-      container.classList.add('_active');
-    });
+    if (input) {
+      input.addEventListener(eventName, () => {
+        container.classList.add('_active');
+      });
+    }
   });
   ['dragleave', 'drop'].forEach(eventName => {
     const input = container.querySelector('[data-upload-drop]');
-    input.addEventListener(eventName, () => {
-      container.classList.remove('_active');
-    });
+    if (input) {
+      input.addEventListener(eventName, () => {
+        container.classList.remove('_active');
+      });
+    }
   });
   const input = container.querySelector('[data-upload-drop]');
-  input.addEventListener('change', e => inputChange(input, e));
-  input.addEventListener('drop', e => inputChange(input, e));
+  if (input) {
+    input.addEventListener('change', e => inputChange(input, e));
+    input.addEventListener('drop', e => inputChange(input, e));
+  }
   function subtitleFile(input) {
     let dots;
     const target = input.files[0].name.split('.');
@@ -6818,12 +6849,22 @@ const currentDropImage = container => {
     }
   }
   function inputChange(input, e) {
-    if (e.type === 'change') {
-      showImage(input);
-    }
-    if (e.type === 'drop') {
-      input.files = e.dataTransfer.files;
-      showImage(input);
+    if (input.hasAttribute('data-upload-drop-text')) {
+      if (e.type === 'change') {
+        subtitleFile(input);
+      }
+      if (e.type === 'drop') {
+        input.files = e.dataTransfer.files;
+        subtitleFile(input);
+      }
+    } else {
+      if (e.type === 'change') {
+        showImage(input);
+      }
+      if (e.type === 'drop') {
+        input.files = e.dataTransfer.files;
+        showImage(input);
+      }
     }
   }
   function placeSalePhotoGenerate(url) {

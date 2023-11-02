@@ -17,33 +17,30 @@ const furnishingSets = () => {
             btnAction(btns, tabs);
 
             if (container.classList.contains('furnishing-sets--controls')) {
-                const createStudio = item.querySelector('.furnishing-sets__create--studio');
                 const createRoom = item.querySelector('.furnishing-sets__create--room');
-                if (item.querySelector('.furnishing-sets__btn--studio') && createStudio) {
-                    createStudio.setAttribute('hidden', '');
-                }
                 if (createRoom) {
                     createRoom.addEventListener('click', () => {
                         const btns = item.querySelectorAll('.furnishing-sets__btn--room');
-                        const lastBtn = btns[btns.length - 1];
-                        const lastNumber = lastBtn ? lastBtn.querySelector('span').textContent : 1;
-                        btnsContainer.innerHTML += generateRoom(Number(lastNumber) + 1);
-                        contentContainer.innerHTML += generateTabContent();
-                        const quantityRoom = item.querySelectorAll('.furnishing-sets__btn--room');
-                        btnAction(item.querySelectorAll('.furnishing-sets__btn'), item.querySelectorAll('.furnishing-sets__tab'));
-                        renamingTitle(item.querySelectorAll('.furnishing-sets__btn'));
-                        photoLoadAndDragDropUpdate(item.querySelectorAll('.furnishing-sets__tab'));
-                        if (quantityRoom.length === 8) {
+                        const quantity = item.querySelectorAll('.furnishing-sets__btn');
+                        if (quantity.length === 0) {
+                            btnsContainer.innerHTML = generateStudio() + btnsContainer.innerHTML;
+                            contentContainer.innerHTML = generateTabContent() + contentContainer.innerHTML;
+                            btnAction(item.querySelectorAll('.furnishing-sets__btn'), item.querySelectorAll('.furnishing-sets__tab'));
+                            renamingTitle(item.querySelectorAll('.furnishing-sets__btn'));
+                            photoLoadAndDragDropUpdate(item.querySelectorAll('.furnishing-sets__tab'));
+                        } else {
+                            const lastBtn = btns[btns.length - 1];
+                            const lastNumber = lastBtn ? lastBtn.querySelector('span').textContent : 1;
+                            btnsContainer.innerHTML += generateRoom(Number(lastNumber) + 1);
+                            contentContainer.innerHTML += generateTabContent();
+                            btnAction(item.querySelectorAll('.furnishing-sets__btn'), item.querySelectorAll('.furnishing-sets__tab'));
+                            renamingTitle(item.querySelectorAll('.furnishing-sets__btn'));
+                            photoLoadAndDragDropUpdate(item.querySelectorAll('.furnishing-sets__tab'));
+                        }
+                        if (quantity.length === 8) {
                             createRoom.setAttribute('hidden', '');
                         }
-                    })
-                    createStudio.addEventListener('click', () => {
-                        btnsContainer.innerHTML = generateStudio() + btnsContainer.innerHTML;
-                        contentContainer.innerHTML = generateTabContent() + contentContainer.innerHTML;
-                        createStudio.setAttribute('hidden', '');
-                        btnAction(item.querySelectorAll('.furnishing-sets__btn'), item.querySelectorAll('.furnishing-sets__tab'));
-                        renamingTitle(item.querySelectorAll('.furnishing-sets__btn'));
-                        photoLoadAndDragDropUpdate(item.querySelectorAll('.furnishing-sets__tab'));
+                        updateActiveTab(item);
                     })
                 }
             }
@@ -61,14 +58,11 @@ const furnishingSets = () => {
                             currentContent.remove();
                             renamingTitle(item.querySelectorAll('.furnishing-sets__btn'));
                             photoLoadAndDragDropUpdate(item.querySelectorAll('.furnishing-sets__tab'));
-                            if (!item.querySelector('.furnishing-sets__btn--studio')) {
-                                const createStudio = item.querySelector('.furnishing-sets__create--studio');
-                                createStudio.removeAttribute('hidden');
-                            }
-                            if (item.querySelectorAll('.furnishing-sets__btn--room').length < 8) {
+                            if (item.querySelectorAll('.furnishing-sets__btn').length < 9) {
                                 const createRoom = item.querySelector('.furnishing-sets__create--room');
                                 createRoom.removeAttribute('hidden');
                             }
+                            updateActiveTab(item);
                         } else {
                             btns.forEach(btn => btn.classList.remove('_active'));
                             btn.classList.add('_active');
@@ -146,6 +140,15 @@ const furnishingSets = () => {
                     currentDropImage(content.querySelector('.photo-load'));
                     currentDragDrop(content.querySelector('.drag-drop'));
                 })
+            }
+            function updateActiveTab(container) {
+                const navActive = container.querySelector('.furnishing-sets__btns .furnishing-sets__btn._active');
+                if (!navActive && container.querySelector('.furnishing-sets__btns .furnishing-sets__btn')) {
+                    const firstTitle = container.querySelectorAll('.furnishing-sets__btns .furnishing-sets__btn')[0];
+                    const firstTab = container.querySelectorAll('.furnishing-sets__tabs .furnishing-sets__tab')[0];
+                    firstTitle.classList.add('_active');
+                    firstTab.removeAttribute('hidden');
+                }
             }
         })
     })

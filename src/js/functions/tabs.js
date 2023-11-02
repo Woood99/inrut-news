@@ -8,6 +8,7 @@ import {
     currentDragDrop
 } from '../components/dragDrop';
 import furnishingSets from '../components/furnishingSets';
+import inputResize from '../modules/inputResize';
 const tabs = () => {
     const metroContainer = document.querySelector('.popup-primary--search-area');
     const metroInnerMoscow = document.querySelector('#map-metro_moscow');
@@ -15,7 +16,6 @@ const tabs = () => {
 
     const tabs = document.querySelectorAll('[data-tabs]');
     let tabsActiveHash = [];
-    let editTitle = [];
     if (tabs.length > 0) {
         const hash = getHash();
         if (hash && hash.startsWith('tab-')) {
@@ -27,9 +27,6 @@ const tabs = () => {
             tabsBlock.addEventListener("click", setTabsAction);
             initTabs(tabsBlock);
         });
-        editTitle.forEach(title => {
-            const input = title.querySelector('input');
-        })
 
         // Получение слойлеров с медиа запросами
         let mdQueriesArray = dataMediaQueries(tabs, "tabs");
@@ -89,9 +86,20 @@ const tabs = () => {
             });
         }
 
-        if (tabsTitles) {
-            tabsTitles.forEach(title => {
-                if (title.classList.contains('tabs__title--edit')) editTitle.push(title);
+        updateTitleEdit(tabsBlock);
+    }
+
+    function updateTitleEdit(container) {
+        if (container) {
+            const items = container.querySelectorAll('.tabs__title--edit');
+            items.forEach(item => {
+                const input = item.querySelector('._width-auto');
+                if (input) {
+                    inputResize(input);
+                    input.addEventListener('input', () => {
+                        inputResize(input);
+                    })
+                }
             })
         }
     }
@@ -161,6 +169,7 @@ const tabs = () => {
                 tabTitle.remove();
                 tabsBlock.querySelector('.tabs-primary__content').children[activeTabIndex].remove();
                 setTabsStatus(tabsBlock);
+
                 return;
             }
             if (editBtn) {
@@ -252,7 +261,7 @@ const tabs = () => {
             const tabsBlock = currentTabs.querySelector('[data-tabs]');
             nav.innerHTML += `
             <button type="button" class="btn btn-reset tabs__title tabs__title--edit" data-tabs-title>
-                <input type="text" name="Имя" class="input-reset" value="" disabled="">
+                <input type="text" name="Имя" class="input-reset _width-auto" value="" disabled="">
                 <div class="btn btn-reset tabs__title-edit" title="Редактировать">
                     <svg>
                         <use xlink:href="img/sprite.svg#pencil">
@@ -289,12 +298,6 @@ const tabs = () => {
             const furnishingSetsHTML = `
             <div class="tabs__body furnishing-sets__item" data-tabs-item>
             <div class="furnishing-sets__create">
-                <button type="button" class="btn btn-reset furnishing-sets__create--studio">
-                    <svg>
-                      <use xlink:href="img/sprite.svg#plus"></use>
-                    </svg>
-                    Добавить студию
-                </button>
                 <button type="button" class="btn btn-reset furnishing-sets__create--room">
                     <svg>
                       <use xlink:href="img/sprite.svg#plus"></use>
@@ -403,6 +406,7 @@ const tabs = () => {
             input.removeAttribute('disabled');
             editBtn.classList.add('_active');
             currentTitle.classList.add('_edit');
+            updateTitleEdit(currentTabs);
             input.focus();
             input.setSelectionRange(input.value.length, input.value.length);
             input.addEventListener('input', (e) => {

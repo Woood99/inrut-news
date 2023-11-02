@@ -8288,33 +8288,30 @@ const furnishingSets = () => {
       const tabs = item.querySelectorAll('.furnishing-sets__tab');
       btnAction(btns, tabs);
       if (container.classList.contains('furnishing-sets--controls')) {
-        const createStudio = item.querySelector('.furnishing-sets__create--studio');
         const createRoom = item.querySelector('.furnishing-sets__create--room');
-        if (item.querySelector('.furnishing-sets__btn--studio') && createStudio) {
-          createStudio.setAttribute('hidden', '');
-        }
         if (createRoom) {
           createRoom.addEventListener('click', () => {
             const btns = item.querySelectorAll('.furnishing-sets__btn--room');
-            const lastBtn = btns[btns.length - 1];
-            const lastNumber = lastBtn ? lastBtn.querySelector('span').textContent : 1;
-            btnsContainer.innerHTML += generateRoom(Number(lastNumber) + 1);
-            contentContainer.innerHTML += generateTabContent();
-            const quantityRoom = item.querySelectorAll('.furnishing-sets__btn--room');
-            btnAction(item.querySelectorAll('.furnishing-sets__btn'), item.querySelectorAll('.furnishing-sets__tab'));
-            renamingTitle(item.querySelectorAll('.furnishing-sets__btn'));
-            photoLoadAndDragDropUpdate(item.querySelectorAll('.furnishing-sets__tab'));
-            if (quantityRoom.length === 8) {
+            const quantity = item.querySelectorAll('.furnishing-sets__btn');
+            if (quantity.length === 0) {
+              btnsContainer.innerHTML = generateStudio() + btnsContainer.innerHTML;
+              contentContainer.innerHTML = generateTabContent() + contentContainer.innerHTML;
+              btnAction(item.querySelectorAll('.furnishing-sets__btn'), item.querySelectorAll('.furnishing-sets__tab'));
+              renamingTitle(item.querySelectorAll('.furnishing-sets__btn'));
+              photoLoadAndDragDropUpdate(item.querySelectorAll('.furnishing-sets__tab'));
+            } else {
+              const lastBtn = btns[btns.length - 1];
+              const lastNumber = lastBtn ? lastBtn.querySelector('span').textContent : 1;
+              btnsContainer.innerHTML += generateRoom(Number(lastNumber) + 1);
+              contentContainer.innerHTML += generateTabContent();
+              btnAction(item.querySelectorAll('.furnishing-sets__btn'), item.querySelectorAll('.furnishing-sets__tab'));
+              renamingTitle(item.querySelectorAll('.furnishing-sets__btn'));
+              photoLoadAndDragDropUpdate(item.querySelectorAll('.furnishing-sets__tab'));
+            }
+            if (quantity.length === 8) {
               createRoom.setAttribute('hidden', '');
             }
-          });
-          createStudio.addEventListener('click', () => {
-            btnsContainer.innerHTML = generateStudio() + btnsContainer.innerHTML;
-            contentContainer.innerHTML = generateTabContent() + contentContainer.innerHTML;
-            createStudio.setAttribute('hidden', '');
-            btnAction(item.querySelectorAll('.furnishing-sets__btn'), item.querySelectorAll('.furnishing-sets__tab'));
-            renamingTitle(item.querySelectorAll('.furnishing-sets__btn'));
-            photoLoadAndDragDropUpdate(item.querySelectorAll('.furnishing-sets__tab'));
+            updateActiveTab(item);
           });
         }
       }
@@ -8329,14 +8326,11 @@ const furnishingSets = () => {
               currentContent.remove();
               renamingTitle(item.querySelectorAll('.furnishing-sets__btn'));
               photoLoadAndDragDropUpdate(item.querySelectorAll('.furnishing-sets__tab'));
-              if (!item.querySelector('.furnishing-sets__btn--studio')) {
-                const createStudio = item.querySelector('.furnishing-sets__create--studio');
-                createStudio.removeAttribute('hidden');
-              }
-              if (item.querySelectorAll('.furnishing-sets__btn--room').length < 8) {
+              if (item.querySelectorAll('.furnishing-sets__btn').length < 9) {
                 const createRoom = item.querySelector('.furnishing-sets__create--room');
                 createRoom.removeAttribute('hidden');
               }
+              updateActiveTab(item);
             } else {
               btns.forEach(btn => btn.classList.remove('_active'));
               btn.classList.add('_active');
@@ -8410,6 +8404,15 @@ const furnishingSets = () => {
           (0,_components_dropImage__WEBPACK_IMPORTED_MODULE_0__.currentDropImage)(content.querySelector('.photo-load'));
           (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_1__.currentDragDrop)(content.querySelector('.drag-drop'));
         });
+      }
+      function updateActiveTab(container) {
+        const navActive = container.querySelector('.furnishing-sets__btns .furnishing-sets__btn._active');
+        if (!navActive && container.querySelector('.furnishing-sets__btns .furnishing-sets__btn')) {
+          const firstTitle = container.querySelectorAll('.furnishing-sets__btns .furnishing-sets__btn')[0];
+          const firstTab = container.querySelectorAll('.furnishing-sets__tabs .furnishing-sets__tab')[0];
+          firstTitle.classList.add('_active');
+          firstTab.removeAttribute('hidden');
+        }
       }
     });
   });
@@ -12442,6 +12445,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_dropImage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/dropImage */ "./src/js/components/dropImage.js");
 /* harmony import */ var _components_dragDrop__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/dragDrop */ "./src/js/components/dragDrop.js");
 /* harmony import */ var _components_furnishingSets__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/furnishingSets */ "./src/js/components/furnishingSets.js");
+/* harmony import */ var _modules_inputResize__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../modules/inputResize */ "./src/js/modules/inputResize.js");
+
 
 
 
@@ -12454,7 +12459,6 @@ const tabs = () => {
   let metroBooleanStatus = false;
   const tabs = document.querySelectorAll('[data-tabs]');
   let tabsActiveHash = [];
-  let editTitle = [];
   if (tabs.length > 0) {
     const hash = (0,_support_modules_getHash__WEBPACK_IMPORTED_MODULE_0__["default"])();
     if (hash && hash.startsWith('tab-')) {
@@ -12465,9 +12469,6 @@ const tabs = () => {
       tabsBlock.setAttribute('data-tabs-index', index);
       tabsBlock.addEventListener("click", setTabsAction);
       initTabs(tabsBlock);
-    });
-    editTitle.forEach(title => {
-      const input = title.querySelector('input');
     });
 
     // Получение слойлеров с медиа запросами
@@ -12526,9 +12527,19 @@ const tabs = () => {
         tabsContentItem.hidden = !tabsTitles[index].classList.contains('_tab-active');
       });
     }
-    if (tabsTitles) {
-      tabsTitles.forEach(title => {
-        if (title.classList.contains('tabs__title--edit')) editTitle.push(title);
+    updateTitleEdit(tabsBlock);
+  }
+  function updateTitleEdit(container) {
+    if (container) {
+      const items = container.querySelectorAll('.tabs__title--edit');
+      items.forEach(item => {
+        const input = item.querySelector('._width-auto');
+        if (input) {
+          (0,_modules_inputResize__WEBPACK_IMPORTED_MODULE_6__["default"])(input);
+          input.addEventListener('input', () => {
+            (0,_modules_inputResize__WEBPACK_IMPORTED_MODULE_6__["default"])(input);
+          });
+        }
       });
     }
   }
@@ -12670,7 +12681,7 @@ const tabs = () => {
       const tabsBlock = currentTabs.querySelector('[data-tabs]');
       nav.innerHTML += `
             <button type="button" class="btn btn-reset tabs__title tabs__title--edit" data-tabs-title>
-                <input type="text" name="Имя" class="input-reset" value="" disabled="">
+                <input type="text" name="Имя" class="input-reset _width-auto" value="" disabled="">
                 <div class="btn btn-reset tabs__title-edit" title="Редактировать">
                     <svg>
                         <use xlink:href="img/sprite.svg#pencil">
@@ -12706,12 +12717,6 @@ const tabs = () => {
       const furnishingSetsHTML = `
             <div class="tabs__body furnishing-sets__item" data-tabs-item>
             <div class="furnishing-sets__create">
-                <button type="button" class="btn btn-reset furnishing-sets__create--studio">
-                    <svg>
-                      <use xlink:href="img/sprite.svg#plus"></use>
-                    </svg>
-                    Добавить студию
-                </button>
                 <button type="button" class="btn btn-reset furnishing-sets__create--room">
                     <svg>
                       <use xlink:href="img/sprite.svg#plus"></use>
@@ -12820,6 +12825,7 @@ const tabs = () => {
       input.removeAttribute('disabled');
       editBtn.classList.add('_active');
       currentTitle.classList.add('_edit');
+      updateTitleEdit(currentTabs);
       input.focus();
       input.setSelectionRange(input.value.length, input.value.length);
       input.addEventListener('input', e => {

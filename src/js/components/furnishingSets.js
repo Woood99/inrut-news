@@ -26,7 +26,6 @@ const furnishingSets = () => {
                             btnsContainer.innerHTML = generateStudio() + btnsContainer.innerHTML;
                             contentContainer.innerHTML = generateTabContent() + contentContainer.innerHTML;
                             btnAction(item.querySelectorAll('.furnishing-sets__btn'), item.querySelectorAll('.furnishing-sets__tab'));
-                            renamingTitle(item.querySelectorAll('.furnishing-sets__btn'));
                             photoLoadAndDragDropUpdate(item.querySelectorAll('.furnishing-sets__tab'));
                         } else {
                             const lastBtn = btns[btns.length - 1];
@@ -34,7 +33,6 @@ const furnishingSets = () => {
                             btnsContainer.innerHTML += generateRoom(Number(lastNumber) + 1);
                             contentContainer.innerHTML += generateTabContent();
                             btnAction(item.querySelectorAll('.furnishing-sets__btn'), item.querySelectorAll('.furnishing-sets__tab'));
-                            renamingTitle(item.querySelectorAll('.furnishing-sets__btn'));
                             photoLoadAndDragDropUpdate(item.querySelectorAll('.furnishing-sets__tab'));
                         }
                         if (quantity.length === 8) {
@@ -56,7 +54,6 @@ const furnishingSets = () => {
 
                             btn.remove();
                             currentContent.remove();
-                            renamingTitle(item.querySelectorAll('.furnishing-sets__btn'));
                             photoLoadAndDragDropUpdate(item.querySelectorAll('.furnishing-sets__tab'));
                             if (item.querySelectorAll('.furnishing-sets__btn').length < 9) {
                                 const createRoom = item.querySelector('.furnishing-sets__create--room');

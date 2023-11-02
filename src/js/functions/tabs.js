@@ -296,45 +296,98 @@ const tabs = () => {
                 </div>
             `;
             const furnishingSetsHTML = `
-            <div class="tabs__body furnishing-sets__item" data-tabs-item>
-            <div class="furnishing-sets__create">
-                <button type="button" class="btn btn-reset furnishing-sets__create--room">
-                    <svg>
-                      <use xlink:href="img/sprite.svg#plus"></use>
-                    </svg>
-                    Добавить комнатность
-                </button>
-            </div>
-            <div class="furnishing-sets__btns">
-                <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--studio furnishing-sets__btn--studio furnishing-sets__btn--controls _active">
-                    <span>Студия</span>
-                    <div class="furnishing-sets__btn-remove">
+                <div class="tabs__body furnishing-sets__item" data-tabs-item>
+                <div class="row">
+                <div class="furnishing-sets__btns">
+                    <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--studio furnishing-sets__btn--controls _active">
+                        <span>Студия</span>
+                        <div class="furnishing-sets__btn-remove">
+                            <svg>
+                              <use xlink:href="img/sprite.svg#trash"></use>
+                            </svg>
+                        </div>
+                    </button>
+                    <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--room furnishing-sets__btn--controls">
+                        <span>1</span>
+                        <div class="furnishing-sets__btn-remove">
+                            <svg>
+                              <use xlink:href="img/sprite.svg#trash"></use>
+                            </svg>
+                        </div>
+                    </button>
+                    <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--room furnishing-sets__btn--controls">
+                        <span>2</span>
+                        <div class="furnishing-sets__btn-remove">
+                            <svg>
+                              <use xlink:href="img/sprite.svg#trash"></use>
+                            </svg>
+                        </div>
+                    </button>
+                    <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--room furnishing-sets__btn--controls">
+                        <span>3</span>
+                        <div class="furnishing-sets__btn-remove">
+                            <svg>
+                              <use xlink:href="img/sprite.svg#trash"></use>
+                            </svg>
+                        </div>
+                    </button>
+                    <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--room furnishing-sets__btn--controls">
+                        <span>4</span>
+                        <div class="furnishing-sets__btn-remove">
+                            <svg>
+                              <use xlink:href="img/sprite.svg#trash"></use>
+                            </svg>
+                        </div>
+                    </button>
+                </div>
+                <div class="furnishing-sets__create">
+                    <button type="button" class="btn btn-reset furnishing-sets__create--room">
                         <svg>
-                          <use xlink:href="img/sprite.svg#trash"></use>
+                          <use xlink:href="img/sprite.svg#plus"></use>
                         </svg>
-                    </div>
-                </button>
-                <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--room furnishing-sets__btn--controls">
-                    <span>1</span>
-                    <div class="furnishing-sets__btn-remove">
-                        <svg>
-                          <use xlink:href="img/sprite.svg#trash"></use>
-                        </svg>
-                    </div>
-                </button>
-                <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--room furnishing-sets__btn--controls">
-                    <span>2</span>
-                    <div class="furnishing-sets__btn-remove">
-                        <svg>
-                          <use xlink:href="img/sprite.svg#trash"></use>
-                        </svg>
-                    </div>
-                </button>
+                        Добавить комнатность
+                    </button>
+                </div>
             </div>
             <div class="furnishing-sets__tabs">
                 <div class="furnishing-sets__tab">
                     <div class="photo-load">
                         <div class="place-sale-photo__images drag-drop photo-load__images">
+                           
+                        </div>
+                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                            <button type="button" class="btn btn-reset">
+                                <p>
+                                    <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                </p>
+                            </button>
+                            <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                        </div>
+                    </div>
+                    <label class="textarea-primary" style="margin-top: 24px;">
+                        <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+                    </label>
+                </div>
+                <div class="furnishing-sets__tab" hidden>
+                    <div class="photo-load">
+                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                        </div>
+                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                            <button type="button" class="btn btn-reset">
+                                <p>
+                                    <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                </p>
+                            </button>
+                            <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                        </div>
+                    </div>
+                    <label class="textarea-primary" style="margin-top: 24px;">
+                        <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+                    </label>
+                </div>
+                <div class="furnishing-sets__tab" hidden>
+                    <div class="photo-load">
+                        <div class="place-sale-photo__images drag-drop photo-load__images">
                         </div>
                         <div class="place-sale-photo__wrapper photo-load__wrapper">
                             <button type="button" class="btn btn-reset">
@@ -384,7 +437,7 @@ const tabs = () => {
                     </label>
                 </div>
             </div>
-        </div>
+                </div>
             `;
             if (currentTabs.closest('.furnishing-sets')) {
                 tabs.innerHTML += furnishingSetsHTML;

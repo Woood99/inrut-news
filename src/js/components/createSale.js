@@ -46,7 +46,7 @@ const createSale = () => {
         const saleHTML = `
         <div class="swiper-slide drag-drop__item" draggable="true">
         <article class="card-stock-secondary">
-            <a href="./develop-inner-2.html" class="card-stock-secondary__container">
+            <a href="./promotion.html" class="card-stock-secondary__container">
                 <button type="button" class="btn btn-reset card-stock-secondary__remove">
                     <svg>
                       <use xlink:href="img/sprite.svg#trash"></use>

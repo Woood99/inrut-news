@@ -107,6 +107,35 @@ const furnishingSets = () => {
                     <label class="textarea-primary" style="margin-top: 24px;">
                         <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
                     </label>
+                    <div class="row" style="margin:16px 0 24px;">
+                    <div class="input-text input-text--only-number" style="max-width: 350px;">
+                        <label class="input-text__label">
+                            <span>Стоимость от</span>
+                            <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                            <span>₽</span>
+                        </label>
+                    </div>
+                    <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
+                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                            <svg>
+                                <use xlink:href="img/sprite.svg#info"></use>
+                            </svg>
+                        </button>
+                        <div class="secondary-tooltip__content">
+                            Стоиомость комплекта меблировки
+                        </div>
+                    </div>
+                </div>
+                <div class="photo-load">
+                    <div class="place-sale-photo__wrapper photo-load__wrapper">
+                        <button type="button" class="btn btn-reset">
+                            <p>
+                                <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
+                            </p>
+                        </button>
+                        <input type="file" data-upload-drop data-upload-drop-text name="upload" accept="application/pdf" class="input-reset">
+                    </div>
+                </div>
                 </div>
                 `;
                 return contenHTML;

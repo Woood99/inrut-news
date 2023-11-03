@@ -7,16 +7,16 @@ const videoLoad = () => {
         const input = inputField.querySelector('input');
         if (btn) {
             btn.addEventListener('click', () => {
-                console.log('da');
                 const value = input.value;
                 if (validateYouTubeUrl(value)) {
                     if (!container.querySelector('video-card')) {
-                        wrapper.style.display = 'none';
-                        container.innerHTML = generateVideoCard(value) + container.innerHTML;
- 
+                        wrapper.setAttribute('hidden', '');
+                        container.insertAdjacentHTML('afterbegin', generateVideoCard(value));
+
                         const remove = container.querySelector('.video-load__remove');
                         remove.addEventListener('click', () => {
-                            container.querySelector('.video-load__wrapper').style.display = "block";
+                            input.value = '';
+                            wrapper.removeAttribute('hidden');
                             container.querySelector('.video-load__content').remove();
                         })
                     }

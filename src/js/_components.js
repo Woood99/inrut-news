@@ -96,6 +96,7 @@ import {
 import AirDatepicker from 'air-datepicker';
 import createCalc from './components/createCalc';
 import createSale from './components/createSale';
+import videoLoad from './components/videoLoad';
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==================================================
@@ -187,6 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dragDrops();
     createCalc();
     createSale();
+    videoLoad();
     // ==================================================
 
     validateRadioPrimary('.complaint-popup__form', '.textarea-primary__input', '.complaint-popup__btn', '.radio-primary__input');

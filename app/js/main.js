@@ -4213,6 +4213,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var air_datepicker__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! air-datepicker */ "./node_modules/air-datepicker/index.es.js");
 /* harmony import */ var _components_createCalc__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./components/createCalc */ "./src/js/components/createCalc.js");
 /* harmony import */ var _components_createSale__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./components/createSale */ "./src/js/components/createSale.js");
+/* harmony import */ var _components_videoLoad__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./components/videoLoad */ "./src/js/components/videoLoad.js");
+
 
 
 
@@ -4353,6 +4355,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_46__.dragDrops)();
   (0,_components_createCalc__WEBPACK_IMPORTED_MODULE_48__["default"])();
   (0,_components_createSale__WEBPACK_IMPORTED_MODULE_49__["default"])();
+  (0,_components_videoLoad__WEBPACK_IMPORTED_MODULE_50__["default"])();
   // ==================================================
 
   (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.validateRadioPrimary)('.complaint-popup__form', '.textarea-primary__input', '.complaint-popup__btn', '.radio-primary__input');
@@ -6688,10 +6691,12 @@ const currentDragDrop = container => {
     el.addEventListener('drop', dragDrop, false);
     el.addEventListener('dragend', dragEnd, false);
   }
-  const listItems = container.querySelectorAll('.drag-drop__item');
-  [].forEach.call(listItems, function (item) {
-    addEventsDragAndDrop(item);
-  });
+  if (container) {
+    const listItems = container.querySelectorAll('.drag-drop__item');
+    [].forEach.call(listItems, function (item) {
+      addEventsDragAndDrop(item);
+    });
+  }
 };
 
 /***/ }),
@@ -6713,6 +6718,12 @@ __webpack_require__.r(__webpack_exports__);
 const dropImage = () => {
   const photoLoad = document.querySelectorAll('.photo-load');
   if (photoLoad.length === 0) return;
+  photoLoad.forEach(container => {
+    const placeSaleImages = container.querySelector('.place-sale-photo__images');
+    if (placeSaleImages) {
+      placeSaleImages.children.length > 0 ? container.classList.add('_loaded') : container.classList.remove('_loaded');
+    }
+  });
   ['dragenter', 'dragleave', 'dragover', 'drop'].forEach(eventName => {
     photoLoad.forEach(photo => {
       const input = photo.querySelector('[data-upload-drop]');
@@ -6766,6 +6777,18 @@ const dropImage = () => {
       input.previousElementSibling.textContent = name;
     }
   }
+  function showPdf(input) {
+    const container = input.closest('.photo-load');
+    const placeSaleImages = container.querySelector('.place-sale-photo__images');
+    if (placeSaleImages) {
+      let file = input.files[0];
+      if (file) {
+        const pdfURL = window.URL.createObjectURL(file);
+        placeSaleImages.innerHTML = pdfGenerate(pdfURL);
+      }
+      placeSaleImages.children.length > 0 ? container.classList.add('_loaded') : container.classList.remove('_loaded');
+    }
+  }
   function showImage(input) {
     const container = input.closest('.photo-load');
     const placeSaleImages = container.querySelector('.place-sale-photo__images');
@@ -6774,21 +6797,22 @@ const dropImage = () => {
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
         const imageURL = window.URL.createObjectURL(file);
-        placeSaleImages.innerHTML += placeSalePhotoGenerate(imageURL);
+        placeSaleImages.innerHTML += photoGenerate(imageURL);
       }
       if (placeSaleImages.classList.contains('drag-drop')) {
         (0,_dragDrop__WEBPACK_IMPORTED_MODULE_0__.currentDragDrop)(placeSaleImages);
       }
+      placeSaleImages.children.length > 0 ? container.classList.add('_loaded') : container.classList.remove('_loaded');
     }
   }
   function inputChange(input, e) {
-    if (input.hasAttribute('data-upload-drop-text')) {
+    if (input.hasAttribute('data-upload-drop-pdf')) {
       if (e.type === 'change') {
-        subtitleFile(input);
+        showPdf(input);
       }
       if (e.type === 'drop') {
         input.files = e.dataTransfer.files;
-        subtitleFile(input);
+        showPdf(input);
       }
     } else {
       if (e.type === 'change') {
@@ -6800,7 +6824,7 @@ const dropImage = () => {
       }
     }
   }
-  function placeSalePhotoGenerate(url) {
+  function photoGenerate(url) {
     const placeSalePhotoHTML = `
         <div class="place-sale-photo__image ibg drag-drop__item" draggable="true">
             <picture>
@@ -6831,9 +6855,29 @@ const dropImage = () => {
         `;
     return placeSalePhotoHTML;
   }
+  function pdfGenerate(url) {
+    const placeSalePhotoHTML = `
+            <a href="${url}" class="place-sale-photo__image drag-drop__item ibg" draggable="true" target="_blank">
+                <picture>
+                    <source srcset="./img/pdf.webp" type="image/webp">
+                    <img loading="lazy" src="./img/pdf.png" width="271" height="190" alt="">
+                </picture>
+                <button type="button" class="btn btn-reset place-sale-photo__remove" title="Удалить PDF">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#trash"></use>
+                    </svg>
+                </button>
+            </a>
+        `;
+    return placeSalePhotoHTML;
+  }
 };
 const currentDropImage = container => {
   if (!container) return;
+  const placeSaleImages = container.querySelector('.place-sale-photo__images');
+  if (placeSaleImages) {
+    placeSaleImages.children.length > 0 ? container.classList.add('_loaded') : container.classList.remove('_loaded');
+  }
   ['dragenter', 'dragleave', 'dragover', 'drop'].forEach(eventName => {
     const input = container.querySelector('[data-upload-drop]');
     if (input) {
@@ -6874,6 +6918,18 @@ const currentDropImage = container => {
       input.previousElementSibling.textContent = name;
     }
   }
+  function showPdf(input) {
+    const container = input.closest('.photo-load');
+    const placeSaleImages = container.querySelector('.place-sale-photo__images');
+    if (placeSaleImages) {
+      let file = input.files[0];
+      if (file) {
+        const pdfURL = window.URL.createObjectURL(file);
+        placeSaleImages.innerHTML = pdfGenerate(pdfURL);
+      }
+      placeSaleImages.children.length > 0 ? container.classList.add('_loaded') : container.classList.remove('_loaded');
+    }
+  }
   function showImage(input) {
     const container = input.closest('.photo-load');
     const placeSaleImages = container.querySelector('.place-sale-photo__images');
@@ -6882,21 +6938,22 @@ const currentDropImage = container => {
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
         const imageURL = window.URL.createObjectURL(file);
-        placeSaleImages.innerHTML += placeSalePhotoGenerate(imageURL);
+        placeSaleImages.innerHTML += photoGenerate(imageURL);
       }
       if (placeSaleImages.classList.contains('drag-drop')) {
         (0,_dragDrop__WEBPACK_IMPORTED_MODULE_0__.currentDragDrop)(placeSaleImages);
       }
+      placeSaleImages.children.length > 0 ? container.classList.add('_loaded') : container.classList.remove('_loaded');
     }
   }
   function inputChange(input, e) {
-    if (input.hasAttribute('data-upload-drop-text')) {
+    if (input.hasAttribute('data-upload-drop-pdf')) {
       if (e.type === 'change') {
-        subtitleFile(input);
+        showPdf(input);
       }
       if (e.type === 'drop') {
         input.files = e.dataTransfer.files;
-        subtitleFile(input);
+        showPdf(input);
       }
     } else {
       if (e.type === 'change') {
@@ -6908,7 +6965,7 @@ const currentDropImage = container => {
       }
     }
   }
-  function placeSalePhotoGenerate(url) {
+  function photoGenerate(url) {
     const placeSalePhotoHTML = `
         <div class="place-sale-photo__image ibg drag-drop__item" draggable="true">
             <picture>
@@ -6936,6 +6993,22 @@ const currentDropImage = container => {
                 </svg>
             </button>
         </div>
+        `;
+    return placeSalePhotoHTML;
+  }
+  function pdfGenerate(url) {
+    const placeSalePhotoHTML = `
+            <a href="${url}" class="place-sale-photo__image drag-drop__item ibg" draggable="true" target="_blank">
+                <picture>
+                    <source srcset="./img/pdf.webp" type="image/webp">
+                    <img loading="lazy" src="./img/pdf.png" width="271" height="190" alt="">
+                </picture>
+                <button type="button" class="btn btn-reset place-sale-photo__remove" title="Удалить PDF">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#trash"></use>
+                    </svg>
+                </button>
+            </a>
         `;
     return placeSalePhotoHTML;
   }
@@ -8481,7 +8554,7 @@ const furnishingSets = () => {
                                 <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
                             </p>
                         </button>
-                        <input type="file" data-upload-drop data-upload-drop-text name="upload" accept="application/pdf" class="input-reset">
+                        <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
                     </div>
                 </div>
                 </div>
@@ -11046,6 +11119,75 @@ const videoBlock = currentVideoBlock => {
 
 /***/ }),
 
+/***/ "./src/js/components/videoLoad.js":
+/*!****************************************!*\
+  !*** ./src/js/components/videoLoad.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const videoLoad = () => {
+  const containers = document.querySelectorAll('.video-load');
+  containers.forEach(container => {
+    const wrapper = container.querySelector('.video-load__wrapper');
+    const btn = container.querySelector('.video-load__btn');
+    const inputField = container.querySelector('.video-load__input');
+    const input = inputField.querySelector('input');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        console.log('da');
+        const value = input.value;
+        if (validateYouTubeUrl(value)) {
+          if (!container.querySelector('video-card')) {
+            wrapper.style.display = 'none';
+            container.innerHTML = generateVideoCard(value) + container.innerHTML;
+            const remove = container.querySelector('.video-load__remove');
+            remove.addEventListener('click', () => {
+              container.querySelector('.video-load__wrapper').style.display = "block";
+              container.querySelector('.video-load__content').remove();
+            });
+          }
+        }
+      });
+    }
+  });
+  function generateVideoCard(url) {
+    const videoCardHTML = `
+        <div class="video-load__content">
+            <article class="video-card">
+                <div class="video-card__image ibg">
+                    <picture>
+                        <source srcset="./img/video-card-1.webp" type="image/webp">
+                        <img loading="lazy" src="./img/video-card-1.jpg" width="323" height="207" alt="1-комн. квартира, 54 м², 12/12 эт.">
+                    </picture>
+                </div>
+                <div class="video-card__content">
+                    <h3 class="video-card__title">
+                        Старт продаж в литере 35 в «Нового Губернского»
+                    </h3>
+                </div>
+            </article>
+            <button type="button" class="btn btn-reset btn-primary video-load__remove">Удалить</button>
+        </div>
+        `;
+    return videoCardHTML;
+  }
+  function validateYouTubeUrl(url) {
+    if (url) {
+      var regExp = /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+      if (url.match(regExp)) return true;
+    }
+    return false;
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (videoLoad);
+
+/***/ }),
+
 /***/ "./src/js/components/videoModal.js":
 /*!*****************************************!*\
   !*** ./src/js/components/videoModal.js ***!
@@ -12921,7 +13063,7 @@ const tabs = () => {
                                 <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
                             </p>
                         </button>
-                        <input type="file" data-upload-drop data-upload-drop-text name="upload" accept="application/pdf" class="input-reset">
+                        <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
                     </div>
                 </div>
                 </div>
@@ -12967,7 +13109,7 @@ const tabs = () => {
                                 <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
                             </p>
                         </button>
-                        <input type="file" data-upload-drop data-upload-drop-text name="upload" accept="application/pdf" class="input-reset">
+                        <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
                     </div>
                 </div>
                 </div>
@@ -13013,7 +13155,7 @@ const tabs = () => {
                                 <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
                             </p>
                         </button>
-                        <input type="file" data-upload-drop data-upload-drop-text name="upload" accept="application/pdf" class="input-reset">
+                        <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
                     </div>
                 </div>
                 </div>
@@ -13059,7 +13201,7 @@ const tabs = () => {
                                 <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
                             </p>
                         </button>
-                        <input type="file" data-upload-drop data-upload-drop-text name="upload" accept="application/pdf" class="input-reset">
+                        <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
                     </div>
                 </div>
                 </div>
@@ -13105,7 +13247,7 @@ const tabs = () => {
                                 <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
                             </p>
                         </button>
-                        <input type="file" data-upload-drop data-upload-drop-text name="upload" accept="application/pdf" class="input-reset">
+                        <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
                     </div>
                 </div>
                 </div>

@@ -132,9 +132,10 @@ export const currentDragDrop = (container) => {
         el.addEventListener('drop', dragDrop, false);
         el.addEventListener('dragend', dragEnd, false);
     }
-
-    const listItems = container.querySelectorAll('.drag-drop__item');
-    [].forEach.call(listItems, function (item) {
-        addEventsDragAndDrop(item);
-    });
+    if (container) {
+        const listItems = container.querySelectorAll('.drag-drop__item');
+        [].forEach.call(listItems, function (item) {
+            addEventsDragAndDrop(item);
+        });
+    }
 }

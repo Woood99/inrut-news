@@ -4,7 +4,6 @@ import {
 import {
     currentDragDrop
 } from '../components/dragDrop';
-
 const furnishingSets = () => {
     const containers = document.querySelectorAll('.furnishing-sets');
     if (!containers) return;
@@ -133,7 +132,7 @@ const furnishingSets = () => {
                                 <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
                             </p>
                         </button>
-                        <input type="file" data-upload-drop data-upload-drop-text name="upload" accept="application/pdf" class="input-reset">
+                        <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
                     </div>
                 </div>
                 </div>

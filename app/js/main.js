@@ -4331,7 +4331,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_tag__WEBPACK_IMPORTED_MODULE_25__["default"])();
   (0,_components_chat__WEBPACK_IMPORTED_MODULE_26__["default"])();
   (0,_components_city__WEBPACK_IMPORTED_MODULE_27__["default"])();
-  (0,_components_furnishingSets__WEBPACK_IMPORTED_MODULE_30__["default"])();
+  (0,_components_furnishingSets__WEBPACK_IMPORTED_MODULE_30__.furnishingSets)();
   // bookConsultation();
   (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_28__["default"])('.object-location__infrastructure', 1000, true);
   (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_28__["default"])('.buy-apartment__tags .tags__list', 1000, 1180);
@@ -8426,11 +8426,14 @@ const changeDate = date => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "currentFurnishingSets": () => (/* binding */ currentFurnishingSets),
+/* harmony export */   "furnishingSets": () => (/* binding */ furnishingSets)
 /* harmony export */ });
 /* harmony import */ var _components_dropImage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/dropImage */ "./src/js/components/dropImage.js");
 /* harmony import */ var _components_dragDrop__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/dragDrop */ "./src/js/components/dragDrop.js");
 /* harmony import */ var _videoLoad__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./videoLoad */ "./src/js/components/videoLoad.js");
+/* harmony import */ var _inputs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./inputs */ "./src/js/components/inputs.js");
+
 
 
 
@@ -8439,169 +8442,180 @@ const furnishingSets = () => {
   if (!containers) return;
   containers.forEach(container => {
     container.querySelectorAll('.furnishing-sets__item').forEach(item => {
-      const btnsContainer = item.querySelector('.furnishing-sets__btns');
-      const contentContainer = item.querySelector('.furnishing-sets__tabs');
-      const btns = item.querySelectorAll('.furnishing-sets__btn');
-      const tabs = item.querySelectorAll('.furnishing-sets__tab');
-      btnAction(btns, tabs);
-      if (container.classList.contains('furnishing-sets--controls')) {
-        const createRoom = item.querySelector('.furnishing-sets__create--room');
-        if (createRoom) {
-          createRoom.addEventListener('click', () => {
-            const btns = item.querySelectorAll('.furnishing-sets__btn--room');
-            const quantity = item.querySelectorAll('.furnishing-sets__btn');
-            if (quantity.length === 0) {
-              btnsContainer.innerHTML = generateStudio() + btnsContainer.innerHTML;
-              contentContainer.innerHTML = generateTabContent() + contentContainer.innerHTML;
-              btnAction(item.querySelectorAll('.furnishing-sets__btn'), item.querySelectorAll('.furnishing-sets__tab'));
-              update(item.querySelectorAll('.furnishing-sets__tab'));
-            } else {
-              const lastBtn = btns[btns.length - 1];
-              const lastNumber = lastBtn ? lastBtn.querySelector('span').textContent : 1;
-              btnsContainer.innerHTML += generateRoom(Number(lastNumber) + 1);
-              contentContainer.innerHTML += generateTabContent();
-              btnAction(item.querySelectorAll('.furnishing-sets__btn'), item.querySelectorAll('.furnishing-sets__tab'));
-              update(item.querySelectorAll('.furnishing-sets__tab'));
-            }
-            if (quantity.length === 8) {
-              createRoom.setAttribute('hidden', '');
-            }
-            updateActiveTab(item);
-          });
-        }
-      }
-      function btnAction(btns, tabs) {
-        btns.forEach((btn, indexBtn) => {
-          btn.addEventListener('click', e => {
-            const remove = e.target.closest('.furnishing-sets__btn-remove');
-            if (remove) {
-              const activeBtnIndex = Array.prototype.indexOf.call(btns, btn);
-              const currentContent = tabs[activeBtnIndex];
-              btn.remove();
-              currentContent.remove();
-              update(item.querySelectorAll('.furnishing-sets__tab'));
-              if (item.querySelectorAll('.furnishing-sets__btn').length < 9) {
-                const createRoom = item.querySelector('.furnishing-sets__create--room');
-                createRoom.removeAttribute('hidden');
-              }
-              updateActiveTab(item);
-            } else {
-              btns.forEach(btn => btn.classList.remove('_active'));
-              btn.classList.add('_active');
-              tabs.forEach((tab, indexTab) => {
-                if (indexBtn !== indexTab) {
-                  tab.setAttribute('hidden', '');
-                } else {
-                  tab.removeAttribute('hidden');
-                }
-              });
-            }
-          });
-        });
-      }
-      function generateRoom(number) {
-        const roomHTML = `
-                <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--room furnishing-sets__btn--controls">
-                    <span>${number}</span>
-                    <div class="furnishing-sets__btn-remove">
-                        <svg>
-                          <use xlink:href="img/sprite.svg#trash"></use>
-                        </svg>
-                    </div>
-                </button>
-                `;
-        return roomHTML;
-      }
-      function generateTabContent() {
-        const contenHTML = `
-                <div class="furnishing-sets__tab" hidden>
-                    <div class="photo-load">
-                        <div class="place-sale-photo__images drag-drop photo-load__images">
-                        </div>
-                        <div class="place-sale-photo__wrapper photo-load__wrapper">
-                            <button type="button" class="btn btn-reset">
-                                <p>
-                                    <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
-                                </p>
-                            </button>
-                            <input type="file" data-upload-drop="" name="upload" multiple="" accept=".jpg, .png, .jpeg, .heic" class="input-reset">
-                        </div>
-                    </div>
-                    <label class="textarea-primary" style="margin-top: 24px;">
-                        <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
-                    </label>
-                    <div class="row" style="margin:16px 0 24px;">
-                    <div class="input-text input-text--only-number" style="max-width: 350px;">
-                        <label class="input-text__label">
-                            <span>Стоимость от</span>
-                            <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
-                            <span>₽</span>
-                        </label>
-                    </div>
-                    <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
-                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                            <svg>
-                                <use xlink:href="img/sprite.svg#info"></use>
-                            </svg>
-                        </button>
-                        <div class="secondary-tooltip__content">
-                            Стоиомость комплекта меблировки
-                        </div>
-                    </div>
-                </div>
-                <div class="photo-load">
-                    <div class="place-sale-photo__wrapper photo-load__wrapper">
-                        <button type="button" class="btn btn-reset">
-                            <p>
-                                <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
-                            </p>
-                        </button>
-                        <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
-                    </div>
-                </div>
-                </div>
-                `;
-        return contenHTML;
-      }
-      function generateStudio() {
-        const studioHTML = `
-                    <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--studio furnishing-sets__btn--controls">
-                        <span>Студия</span>
-                        <div class="furnishing-sets__btn-remove">
-                            <svg>
-                              <use xlink:href="img/sprite.svg#trash"></use>
-                            </svg>
-                        </div>
-                    </button>
-                    `;
-        return studioHTML;
-      }
-      function renamingTitle(titles) {
-        const newTitles = Array.prototype.slice.call(titles, 0).filter(title => title.classList.contains('furnishing-sets__btn--room'));
-        newTitles.forEach((title, index) => {
-          title.querySelector('span').textContent = index + 1;
-        });
-      }
-      function update(content) {
-        content.forEach(content => {
-          (0,_videoLoad__WEBPACK_IMPORTED_MODULE_2__.currentVideoLoad)(content.querySelector('.video-load'));
-          (0,_components_dropImage__WEBPACK_IMPORTED_MODULE_0__.currentDropImage)(content.querySelector('.photo-load'));
-          (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_1__.currentDragDrop)(content.querySelector('.drag-drop'));
-        });
-      }
-      function updateActiveTab(container) {
-        const navActive = container.querySelector('.furnishing-sets__btns .furnishing-sets__btn._active');
-        if (!navActive && container.querySelector('.furnishing-sets__btns .furnishing-sets__btn')) {
-          const firstTitle = container.querySelectorAll('.furnishing-sets__btns .furnishing-sets__btn')[0];
-          const firstTab = container.querySelectorAll('.furnishing-sets__tabs .furnishing-sets__tab')[0];
-          firstTitle.classList.add('_active');
-          firstTab.removeAttribute('hidden');
-        }
-      }
+      furnishingSetsBody(item);
     });
   });
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (furnishingSets);
+const currentFurnishingSets = item => {
+  furnishingSetsBody(item);
+};
+function furnishingSetsBody(item) {
+  if (!item) return;
+  const btnsContainer = item.querySelector('.furnishing-sets__btns');
+  const contentContainer = item.querySelector('.furnishing-sets__tabs');
+  const btns = item.querySelectorAll('.furnishing-sets__btn');
+  const tabs = item.querySelectorAll('.furnishing-sets__tab');
+  btnAction(item, btns, tabs);
+  const createRoom = item.querySelector('.furnishing-sets__create--room');
+  if (createRoom) {
+    createRoom.addEventListener('click', () => {
+      const btns = item.querySelectorAll('.furnishing-sets__btn--room');
+      const quantity = item.querySelectorAll('.furnishing-sets__btn');
+      if (quantity.length === 0) {
+        btnsContainer.insertAdjacentHTML('afterbegin', generateStudio());
+      } else {
+        const lastBtn = btns[btns.length - 1];
+        const lastNumber = lastBtn ? lastBtn.querySelector('span').textContent : 0;
+        console.log(lastNumber);
+        btnsContainer.insertAdjacentHTML('beforeend', generateRoom(Number(lastNumber) + 1));
+      }
+      contentContainer.insertAdjacentHTML('beforeend', generateTabContent());
+      btnAction(item, item.querySelectorAll('.furnishing-sets__btn'), item.querySelectorAll('.furnishing-sets__tab'));
+      update(item.querySelector('.furnishing-sets__tab:last-child'));
+      if (quantity.length === 8) {
+        createRoom.setAttribute('hidden', '');
+      }
+      updateActiveTab(item);
+    });
+  }
+}
+function btnAction(item, btns, tabs) {
+  btns.forEach((btn, indexBtn) => {
+    btn.addEventListener('click', e => {
+      const remove = e.target.closest('.furnishing-sets__btn-remove');
+      if (remove) {
+        const activeBtnIndex = Array.prototype.indexOf.call(btns, btn);
+        const currentContent = tabs[activeBtnIndex];
+        btn.remove();
+        currentContent.remove();
+        if (item.querySelectorAll('.furnishing-sets__btn').length < 9) {
+          const createRoom = item.querySelector('.furnishing-sets__create--room');
+          createRoom.removeAttribute('hidden');
+        }
+        updateActiveTab(item);
+      } else {
+        btns.forEach(btn => btn.classList.remove('_active'));
+        btn.classList.add('_active');
+        tabs.forEach((tab, indexTab) => {
+          if (indexBtn !== indexTab) {
+            tab.setAttribute('hidden', '');
+          } else {
+            tab.removeAttribute('hidden');
+          }
+        });
+      }
+    });
+  });
+}
+function generateRoom(number) {
+  const roomHTML = `
+        <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--room furnishing-sets__btn--controls">
+            <span>${number}</span>
+            <div class="furnishing-sets__btn-remove">
+                <svg>
+                  <use xlink:href="img/sprite.svg#trash"></use>
+                </svg>
+            </div>
+        </button>
+        `;
+  return roomHTML;
+}
+function generateTabContent() {
+  const contenHTML = `
+        <div class="furnishing-sets__tab" hidden>
+            <div class="photo-load">
+                <div class="place-sale-photo__images drag-drop photo-load__images">
+                </div>
+                <div class="place-sale-photo__wrapper photo-load__wrapper">
+                    <button type="button" class="btn btn-reset">
+                        <p>
+                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                        </p>
+                    </button>
+                    <input type="file" data-upload-drop="" name="upload" multiple="" accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                </div>
+            </div>
+            <label class="textarea-primary" style="margin-top: 24px;">
+                <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+            </label>
+            <div class="row" style="margin:16px 0 24px;">
+            <div class="input-text input-text--only-number" style="max-width: 350px;">
+                <label class="input-text__label">
+                    <span>Стоимость от</span>
+                    <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                    <span>₽</span>
+                </label>
+            </div>
+            <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
+                <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#info"></use>
+                    </svg>
+                </button>
+                <div class="secondary-tooltip__content">
+                    Стоиомость комплекта меблировки
+                </div>
+            </div>
+        </div>
+        <div class="photo-load">
+        <div class="place-sale-photo__images drag-drop photo-load__images">
+        </div>
+        <div class="place-sale-photo__wrapper photo-load__wrapper">
+            <button type="button" class="btn btn-reset">
+                <p>
+                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                        эту область</span>
+                </p>
+            </button>
+            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+        </div>
+        </div>
+        </div>
+        `;
+  return contenHTML;
+}
+function generateStudio() {
+  const studioHTML = `
+            <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--studio furnishing-sets__btn--controls">
+                <span>Студия</span>
+                <div class="furnishing-sets__btn-remove">
+                    <svg>
+                      <use xlink:href="img/sprite.svg#trash"></use>
+                    </svg>
+                </div>
+            </button>
+            `;
+  return studioHTML;
+}
+function renamingTitle(titles) {
+  const newTitles = Array.prototype.slice.call(titles, 0).filter(title => title.classList.contains('furnishing-sets__btn--room'));
+  newTitles.forEach((title, index) => {
+    title.querySelector('span').textContent = index + 1;
+  });
+}
+function update(content) {
+  if (content) {
+    const inputs = content.querySelectorAll('.input-text');
+    const photoLoads = content.querySelectorAll('.video-load');
+    const dropImages = content.querySelectorAll('.photo-load');
+    const dragDrops = content.querySelectorAll('.drag-drop');
+    photoLoads.forEach(item => (0,_videoLoad__WEBPACK_IMPORTED_MODULE_2__.currentVideoLoad)(item));
+    dropImages.forEach(item => (0,_components_dropImage__WEBPACK_IMPORTED_MODULE_0__.currentDropImage)(item));
+    dragDrops.forEach(item => (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_1__.currentDragDrop)(item));
+    inputs.forEach(item => (0,_inputs__WEBPACK_IMPORTED_MODULE_3__.currentInputText)(item));
+  }
+}
+function updateActiveTab(container) {
+  if (container) {
+    const navActive = container.querySelector('.furnishing-sets__btns .furnishing-sets__btn._active');
+    if (!navActive && container.querySelector('.furnishing-sets__btns .furnishing-sets__btn')) {
+      const firstTitle = container.querySelectorAll('.furnishing-sets__btns .furnishing-sets__btn')[0];
+      const firstTab = container.querySelectorAll('.furnishing-sets__tabs .furnishing-sets__tab')[0];
+      firstTitle.classList.add('_active');
+      firstTab.removeAttribute('hidden');
+    }
+  }
+}
 
 /***/ }),
 
@@ -8991,6 +9005,7 @@ const headerFixed = () => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "currentInputText": () => (/* binding */ currentInputText),
 /* harmony export */   "inputClue": () => (/* binding */ inputClue),
 /* harmony export */   "inputOnlyNumber": () => (/* binding */ inputOnlyNumber),
 /* harmony export */   "inputText": () => (/* binding */ inputText),
@@ -9006,25 +9021,32 @@ const inputText = () => {
   const inputs = document.querySelectorAll('.input-text');
   if (inputs.length >= 1) {
     inputs.forEach(el => {
-      const input = el.querySelector('.input-text__input');
-      input.addEventListener('input', () => {
-        if (el.classList.contains('input-text--only-number')) {
-          input.value = input.value.replace(/\D/g, '');
-          input.value = (0,_modules_numberReplace__WEBPACK_IMPORTED_MODULE_2__["default"])(input.value);
-        }
-        if (el.classList.contains('input-text--only-number-default')) {
-          input.value = input.value.replace(/\D/g, '');
-        }
-        if (input.value.length >= 1) {
-          el.classList.add('_active');
-        } else {
-          el.classList.remove('_active');
-        }
-      });
-      (0,_modules_inputCursorEnd__WEBPACK_IMPORTED_MODULE_1__["default"])(input, 'focus');
+      inputTextBody(el);
     });
   }
 };
+const currentInputText = input => {
+  if (!input) return;
+  inputTextBody(input);
+};
+function inputTextBody(el) {
+  const input = el.querySelector('.input-text__input');
+  input.addEventListener('input', () => {
+    if (el.classList.contains('input-text--only-number')) {
+      input.value = input.value.replace(/\D/g, '');
+      input.value = (0,_modules_numberReplace__WEBPACK_IMPORTED_MODULE_2__["default"])(input.value);
+    }
+    if (el.classList.contains('input-text--only-number-default')) {
+      input.value = input.value.replace(/\D/g, '');
+    }
+    if (input.value.length >= 1) {
+      el.classList.add('_active');
+    } else {
+      el.classList.remove('_active');
+    }
+  });
+  (0,_modules_inputCursorEnd__WEBPACK_IMPORTED_MODULE_1__["default"])(input, 'focus');
+}
 const inputOnlyNumber = () => {
   const inputs = document.querySelectorAll('[data-input-only-number]');
   if (inputs.length === 0) return;
@@ -11148,16 +11170,18 @@ const videoLoad = () => {
           if (!container.querySelector('video-card')) {
             wrapper.setAttribute('hidden', '');
             container.insertAdjacentHTML('afterbegin', generateVideoCard(value));
-            const remove = container.querySelector('.video-load__remove');
-            remove.addEventListener('click', () => {
-              input.value = '';
-              wrapper.removeAttribute('hidden');
-              container.querySelector('.video-load__content').remove();
-            });
           }
         }
       });
     }
+    container.addEventListener('click', e => {
+      const target = e.target;
+      if (target.closest('.video-load__remove')) {
+        input.value = '';
+        wrapper.removeAttribute('hidden');
+        container.querySelector('.video-load__content').remove();
+      }
+    });
   });
 };
 const currentVideoLoad = container => {
@@ -12727,6 +12751,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_videoLoad__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/videoLoad */ "./src/js/components/videoLoad.js");
 /* harmony import */ var _components_furnishingSets__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/furnishingSets */ "./src/js/components/furnishingSets.js");
 /* harmony import */ var _modules_inputResize__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../modules/inputResize */ "./src/js/modules/inputResize.js");
+/* harmony import */ var _modules_numberReplace__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../modules/numberReplace */ "./src/js/modules/numberReplace.js");
+/* harmony import */ var _components_inputs__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/inputs */ "./src/js/components/inputs.js");
+
+
 
 
 
@@ -12961,23 +12989,23 @@ const tabs = () => {
       const nav = currentTabs.querySelector('.tabs__navigation');
       const tabs = currentTabs.querySelector('.tabs-primary__content');
       const tabsBlock = currentTabs.querySelector('[data-tabs]');
-      nav.innerHTML += `
+      nav.insertAdjacentHTML('beforeend', `
             <button type="button" class="btn btn-reset tabs__title tabs__title--edit" data-tabs-title>
-                <input type="text" name="Имя" class="input-reset _width-auto" value="" disabled="">
-                <div class="btn btn-reset tabs__title-edit" title="Редактировать">
-                    <svg>
-                        <use xlink:href="img/sprite.svg#pencil">
-                        </use>
-                    </svg>
-                </div>
-                <div class="btn btn-reset tabs__title-remove" title="Удалить">
-                    <svg>
-                        <use xlink:href="img/sprite.svg#trash">
-                        </use>
-                    </svg>
-                </div>
-            </button>
-            `;
+            <input type="text" name="Имя" class="input-reset _width-auto" value="" disabled="">
+            <div class="btn btn-reset tabs__title-edit" title="Редактировать">
+                <svg>
+                    <use xlink:href="img/sprite.svg#pencil">
+                    </use>
+                </svg>
+            </div>
+            <div class="btn btn-reset tabs__title-remove" title="Удалить">
+                <svg>
+                    <use xlink:href="img/sprite.svg#trash">
+                    </use>
+                </svg>
+            </div>
+        </button>
+            `);
       const photoHTML = `
             <div class="tabs__body" data-tabs-item>
                 <div class="photo-load">
@@ -12997,14 +13025,15 @@ const tabs = () => {
                 </div>
             `;
       const furnishingSetsHTML = `
-                <div class="tabs__body furnishing-sets__item" data-tabs-item>
-                <div class="row">
+            <div class="tabs__body furnishing-sets__item" data-tabs-item hidden>
+            <div class="row">
                 <div class="furnishing-sets__btns">
-                    <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--studio furnishing-sets__btn--controls _active">
+                    <button type="button"
+                        class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--studio furnishing-sets__btn--controls _active">
                         <span>Студия</span>
                         <div class="furnishing-sets__btn-remove">
                             <svg>
-                              <use xlink:href="img/sprite.svg#trash"></use>
+                                <use xlink:href="img/sprite.svg#trash"></use>
                             </svg>
                         </div>
                     </button>
@@ -13012,7 +13041,7 @@ const tabs = () => {
                         <span>1</span>
                         <div class="furnishing-sets__btn-remove">
                             <svg>
-                              <use xlink:href="img/sprite.svg#trash"></use>
+                                <use xlink:href="img/sprite.svg#trash"></use>
                             </svg>
                         </div>
                     </button>
@@ -13020,7 +13049,7 @@ const tabs = () => {
                         <span>2</span>
                         <div class="furnishing-sets__btn-remove">
                             <svg>
-                              <use xlink:href="img/sprite.svg#trash"></use>
+                                <use xlink:href="img/sprite.svg#trash"></use>
                             </svg>
                         </div>
                     </button>
@@ -13028,7 +13057,7 @@ const tabs = () => {
                         <span>3</span>
                         <div class="furnishing-sets__btn-remove">
                             <svg>
-                              <use xlink:href="img/sprite.svg#trash"></use>
+                                <use xlink:href="img/sprite.svg#trash"></use>
                             </svg>
                         </div>
                     </button>
@@ -13036,7 +13065,7 @@ const tabs = () => {
                         <span>4</span>
                         <div class="furnishing-sets__btn-remove">
                             <svg>
-                              <use xlink:href="img/sprite.svg#trash"></use>
+                                <use xlink:href="img/sprite.svg#trash"></use>
                             </svg>
                         </div>
                     </button>
@@ -13044,7 +13073,7 @@ const tabs = () => {
                 <div class="furnishing-sets__create">
                     <button type="button" class="btn btn-reset furnishing-sets__create--room">
                         <svg>
-                          <use xlink:href="img/sprite.svg#plus"></use>
+                            <use xlink:href="img/sprite.svg#plus"></use>
                         </svg>
                         Добавить комнатность
                     </button>
@@ -13054,7 +13083,7 @@ const tabs = () => {
                 <div class="furnishing-sets__tab">
                     <div class="photo-load">
                         <div class="place-sale-photo__images drag-drop photo-load__images">
-                           
+
                         </div>
                         <div class="place-sale-photo__wrapper photo-load__wrapper">
                             <button type="button" class="btn btn-reset">
@@ -13069,34 +13098,37 @@ const tabs = () => {
                         <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
                     </label>
                     <div class="row" style="margin:16px 0 24px;">
-                    <div class="input-text input-text--only-number" style="max-width: 350px;">
-                        <label class="input-text__label">
-                            <span>Стоимость от</span>
-                            <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
-                            <span>₽</span>
-                        </label>
-                    </div>
-                    <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
-                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                            <svg>
-                                <use xlink:href="img/sprite.svg#info"></use>
-                            </svg>
-                        </button>
-                        <div class="secondary-tooltip__content">
-                            Стоиомость комплекта меблировки
+                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                            <label class="input-text__label">
+                                <span>Стоимость от</span>
+                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                <span>₽</span>
+                            </label>
+                        </div>
+                        <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
+                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#info"></use>
+                                </svg>
+                            </button>
+                            <div class="secondary-tooltip__content">
+                                Стоиомость комплекта меблировки
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="photo-load">
-                    <div class="place-sale-photo__wrapper photo-load__wrapper">
-                        <button type="button" class="btn btn-reset">
-                            <p>
-                                <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
-                            </p>
-                        </button>
-                        <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                    <div class="photo-load">
+                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                        </div>
+                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                            <button type="button" class="btn btn-reset">
+                                <p>
+                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                        эту область</span>
+                                </p>
+                            </button>
+                            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                        </div>
                     </div>
-                </div>
                 </div>
                 <div class="furnishing-sets__tab" hidden>
                     <div class="photo-load">
@@ -13115,34 +13147,37 @@ const tabs = () => {
                         <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
                     </label>
                     <div class="row" style="margin:16px 0 24px;">
-                    <div class="input-text input-text--only-number" style="max-width: 350px;">
-                        <label class="input-text__label">
-                            <span>Стоимость от</span>
-                            <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
-                            <span>₽</span>
-                        </label>
-                    </div>
-                    <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
-                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                            <svg>
-                                <use xlink:href="img/sprite.svg#info"></use>
-                            </svg>
-                        </button>
-                        <div class="secondary-tooltip__content">
-                            Стоиомость комплекта меблировки
+                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                            <label class="input-text__label">
+                                <span>Стоимость от</span>
+                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                <span>₽</span>
+                            </label>
+                        </div>
+                        <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
+                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#info"></use>
+                                </svg>
+                            </button>
+                            <div class="secondary-tooltip__content">
+                                Стоиомость комплекта меблировки
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="photo-load">
-                    <div class="place-sale-photo__wrapper photo-load__wrapper">
-                        <button type="button" class="btn btn-reset">
-                            <p>
-                                <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
-                            </p>
-                        </button>
-                        <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                    <div class="photo-load">
+                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                        </div>
+                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                            <button type="button" class="btn btn-reset">
+                                <p>
+                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                        эту область</span>
+                                </p>
+                            </button>
+                            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                        </div>
                     </div>
-                </div>
                 </div>
                 <div class="furnishing-sets__tab" hidden>
                     <div class="photo-load">
@@ -13161,34 +13196,37 @@ const tabs = () => {
                         <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
                     </label>
                     <div class="row" style="margin:16px 0 24px;">
-                    <div class="input-text input-text--only-number" style="max-width: 350px;">
-                        <label class="input-text__label">
-                            <span>Стоимость от</span>
-                            <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
-                            <span>₽</span>
-                        </label>
-                    </div>
-                    <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
-                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                            <svg>
-                                <use xlink:href="img/sprite.svg#info"></use>
-                            </svg>
-                        </button>
-                        <div class="secondary-tooltip__content">
-                            Стоиомость комплекта меблировки
+                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                            <label class="input-text__label">
+                                <span>Стоимость от</span>
+                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                <span>₽</span>
+                            </label>
+                        </div>
+                        <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
+                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#info"></use>
+                                </svg>
+                            </button>
+                            <div class="secondary-tooltip__content">
+                                Стоиомость комплекта меблировки
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="photo-load">
-                    <div class="place-sale-photo__wrapper photo-load__wrapper">
-                        <button type="button" class="btn btn-reset">
-                            <p>
-                                <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
-                            </p>
-                        </button>
-                        <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                    <div class="photo-load">
+                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                        </div>
+                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                            <button type="button" class="btn btn-reset">
+                                <p>
+                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                        эту область</span>
+                                </p>
+                            </button>
+                            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                        </div>
                     </div>
-                </div>
                 </div>
                 <div class="furnishing-sets__tab" hidden>
                     <div class="photo-load">
@@ -13207,34 +13245,37 @@ const tabs = () => {
                         <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
                     </label>
                     <div class="row" style="margin:16px 0 24px;">
-                    <div class="input-text input-text--only-number" style="max-width: 350px;">
-                        <label class="input-text__label">
-                            <span>Стоимость от</span>
-                            <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
-                            <span>₽</span>
-                        </label>
-                    </div>
-                    <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
-                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                            <svg>
-                                <use xlink:href="img/sprite.svg#info"></use>
-                            </svg>
-                        </button>
-                        <div class="secondary-tooltip__content">
-                            Стоиомость комплекта меблировки
+                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                            <label class="input-text__label">
+                                <span>Стоимость от</span>
+                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                <span>₽</span>
+                            </label>
+                        </div>
+                        <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
+                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#info"></use>
+                                </svg>
+                            </button>
+                            <div class="secondary-tooltip__content">
+                                Стоиомость комплекта меблировки
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="photo-load">
-                    <div class="place-sale-photo__wrapper photo-load__wrapper">
-                        <button type="button" class="btn btn-reset">
-                            <p>
-                                <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
-                            </p>
-                        </button>
-                        <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                    <div class="photo-load">
+                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                        </div>
+                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                            <button type="button" class="btn btn-reset">
+                                <p>
+                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                        эту область</span>
+                                </p>
+                            </button>
+                            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                        </div>
                     </div>
-                </div>
                 </div>
                 <div class="furnishing-sets__tab" hidden>
                     <div class="photo-load">
@@ -13253,47 +13294,50 @@ const tabs = () => {
                         <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
                     </label>
                     <div class="row" style="margin:16px 0 24px;">
-                    <div class="input-text input-text--only-number" style="max-width: 350px;">
-                        <label class="input-text__label">
-                            <span>Стоимость от</span>
-                            <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
-                            <span>₽</span>
-                        </label>
-                    </div>
-                    <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
-                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                            <svg>
-                                <use xlink:href="img/sprite.svg#info"></use>
-                            </svg>
-                        </button>
-                        <div class="secondary-tooltip__content">
-                            Стоиомость комплекта меблировки
+                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                            <label class="input-text__label">
+                                <span>Стоимость от</span>
+                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                <span>₽</span>
+                            </label>
+                        </div>
+                        <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
+                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#info"></use>
+                                </svg>
+                            </button>
+                            <div class="secondary-tooltip__content">
+                                Стоиомость комплекта меблировки
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="photo-load">
-                    <div class="place-sale-photo__wrapper photo-load__wrapper">
-                        <button type="button" class="btn btn-reset">
-                            <p>
-                                <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
-                            </p>
-                        </button>
-                        <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                    <div class="photo-load">
+                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                        </div>
+                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                            <button type="button" class="btn btn-reset">
+                                <p>
+                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                        эту область</span>
+                                </p>
+                            </button>
+                            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
-                </div>
+        </div>
             `;
       if (currentTabs.closest('.furnishing-sets')) {
-        tabs.innerHTML += furnishingSetsHTML;
+        tabs.insertAdjacentHTML('beforeend', furnishingSetsHTML);
         setTabsStatus(tabsBlock);
-        (0,_components_furnishingSets__WEBPACK_IMPORTED_MODULE_6__["default"])();
-        update(tabsBlock.querySelectorAll('.tabs__body .furnishing-sets__tab'));
+        (0,_components_furnishingSets__WEBPACK_IMPORTED_MODULE_6__.currentFurnishingSets)(tabs.querySelector('.furnishing-sets__item:last-child'));
+        update(tabs.querySelector('.furnishing-sets__item:last-child'));
       } else {
-        tabs.innerHTML += photoHTML;
+        tabs.insertAdjacentHTML('beforeend', photoHTML);
         setTabsStatus(tabsBlock);
-        update(tabsBlock.querySelectorAll('.tabs__body'));
+        update(tabsBlock.querySelector('.tabs__body:last-child'));
       }
       nav.scrollTo({
         left: nav.scrollWidth
@@ -13313,11 +13357,16 @@ const tabs = () => {
       });
     }
     function update(content) {
-      content.forEach(content => {
-        (0,_components_videoLoad__WEBPACK_IMPORTED_MODULE_5__.currentVideoLoad)(content.querySelector('.video-load'));
-        (0,_components_dropImage__WEBPACK_IMPORTED_MODULE_3__.currentDropImage)(content.querySelector('.photo-load'));
-        (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_4__.currentDragDrop)(content.querySelector('.drag-drop'));
-      });
+      if (content) {
+        const inputs = content.querySelectorAll('.input-text');
+        const photoLoads = content.querySelectorAll('.video-load');
+        const dropImages = content.querySelectorAll('.photo-load');
+        const dragDrops = content.querySelectorAll('.drag-drop');
+        photoLoads.forEach(item => (0,_components_videoLoad__WEBPACK_IMPORTED_MODULE_5__.currentVideoLoad)(item));
+        dropImages.forEach(item => (0,_components_dropImage__WEBPACK_IMPORTED_MODULE_3__.currentDropImage)(item));
+        dragDrops.forEach(item => (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_4__.currentDragDrop)(item));
+        inputs.forEach(item => (0,_components_inputs__WEBPACK_IMPORTED_MODULE_9__.currentInputText)(item));
+      }
     }
   });
 };

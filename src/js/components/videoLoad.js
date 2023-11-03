@@ -12,17 +12,18 @@ export const videoLoad = () => {
                     if (!container.querySelector('video-card')) {
                         wrapper.setAttribute('hidden', '');
                         container.insertAdjacentHTML('afterbegin', generateVideoCard(value));
-
-                        const remove = container.querySelector('.video-load__remove');
-                        remove.addEventListener('click', () => {
-                            input.value = '';
-                            wrapper.removeAttribute('hidden');
-                            container.querySelector('.video-load__content').remove();
-                        })
                     }
                 }
             })
         }
+        container.addEventListener('click', (e) => {
+            const target = e.target;
+            if (target.closest('.video-load__remove')) {
+                input.value = '';
+                wrapper.removeAttribute('hidden');
+                container.querySelector('.video-load__content').remove();
+            }
+        })
     })
 };
 
@@ -43,7 +44,7 @@ export const currentVideoLoad = (container) => {
             }
         })
     }
-    container.addEventListener('click',(e) => {
+    container.addEventListener('click', (e) => {
         const target = e.target;
         if (target.closest('.video-load__remove')) {
             input.value = '';

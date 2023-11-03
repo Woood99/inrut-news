@@ -6,24 +6,32 @@ export const inputText = () => {
     const inputs = document.querySelectorAll('.input-text');
     if (inputs.length >= 1) {
         inputs.forEach(el => {
-            const input = el.querySelector('.input-text__input');
-            input.addEventListener('input', () => {
-                if (el.classList.contains('input-text--only-number')) {
-                    input.value = input.value.replace(/\D/g, '');
-                    input.value = numberReplace(input.value);
-                }
-                if (el.classList.contains('input-text--only-number-default')) {
-                    input.value = input.value.replace(/\D/g, '');
-                }
-                if (input.value.length >= 1) {
-                    el.classList.add('_active')
-                } else {
-                    el.classList.remove('_active')
-                }
-            });
-            inputCursorEnd(input, 'focus');
+            inputTextBody(el);
         })
     }
+}
+export const currentInputText = (input) => {
+    if (!input) return;
+    inputTextBody(input);
+}
+
+function inputTextBody(el) {
+    const input = el.querySelector('.input-text__input');
+    input.addEventListener('input', () => {
+        if (el.classList.contains('input-text--only-number')) {
+            input.value = input.value.replace(/\D/g, '');
+            input.value = numberReplace(input.value);
+        }
+        if (el.classList.contains('input-text--only-number-default')) {
+            input.value = input.value.replace(/\D/g, '');
+        }
+        if (input.value.length >= 1) {
+            el.classList.add('_active')
+        } else {
+            el.classList.remove('_active')
+        }
+    });
+    inputCursorEnd(input, 'focus');
 }
 
 export const inputOnlyNumber = () => {

@@ -7,9 +7,15 @@ import {
 import {
     currentDragDrop
 } from '../components/dragDrop';
-import { currentVideoLoad } from '../components/videoLoad';
-import furnishingSets from '../components/furnishingSets';
+import {
+    currentVideoLoad
+} from '../components/videoLoad';
+import {
+    currentFurnishingSets
+} from '../components/furnishingSets';
 import inputResize from '../modules/inputResize';
+import numberReplace from '../modules/numberReplace';
+import { currentInputText } from "../components/inputs";
 const tabs = () => {
     const metroContainer = document.querySelector('.popup-primary--search-area');
     const metroInnerMoscow = document.querySelector('#map-metro_moscow');
@@ -260,24 +266,23 @@ const tabs = () => {
             const nav = currentTabs.querySelector('.tabs__navigation');
             const tabs = currentTabs.querySelector('.tabs-primary__content');
             const tabsBlock = currentTabs.querySelector('[data-tabs]');
-            nav.innerHTML += `
+            nav.insertAdjacentHTML('beforeend', `
             <button type="button" class="btn btn-reset tabs__title tabs__title--edit" data-tabs-title>
-                <input type="text" name="Имя" class="input-reset _width-auto" value="" disabled="">
-                <div class="btn btn-reset tabs__title-edit" title="Редактировать">
-                    <svg>
-                        <use xlink:href="img/sprite.svg#pencil">
-                        </use>
-                    </svg>
-                </div>
-                <div class="btn btn-reset tabs__title-remove" title="Удалить">
-                    <svg>
-                        <use xlink:href="img/sprite.svg#trash">
-                        </use>
-                    </svg>
-                </div>
-            </button>
-            `;
-
+            <input type="text" name="Имя" class="input-reset _width-auto" value="" disabled="">
+            <div class="btn btn-reset tabs__title-edit" title="Редактировать">
+                <svg>
+                    <use xlink:href="img/sprite.svg#pencil">
+                    </use>
+                </svg>
+            </div>
+            <div class="btn btn-reset tabs__title-remove" title="Удалить">
+                <svg>
+                    <use xlink:href="img/sprite.svg#trash">
+                    </use>
+                </svg>
+            </div>
+        </button>
+            `);
             const photoHTML = `
             <div class="tabs__body" data-tabs-item>
                 <div class="photo-load">
@@ -297,14 +302,15 @@ const tabs = () => {
                 </div>
             `;
             const furnishingSetsHTML = `
-                <div class="tabs__body furnishing-sets__item" data-tabs-item>
-                <div class="row">
+            <div class="tabs__body furnishing-sets__item" data-tabs-item hidden>
+            <div class="row">
                 <div class="furnishing-sets__btns">
-                    <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--studio furnishing-sets__btn--controls _active">
+                    <button type="button"
+                        class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--studio furnishing-sets__btn--controls _active">
                         <span>Студия</span>
                         <div class="furnishing-sets__btn-remove">
                             <svg>
-                              <use xlink:href="img/sprite.svg#trash"></use>
+                                <use xlink:href="img/sprite.svg#trash"></use>
                             </svg>
                         </div>
                     </button>
@@ -312,7 +318,7 @@ const tabs = () => {
                         <span>1</span>
                         <div class="furnishing-sets__btn-remove">
                             <svg>
-                              <use xlink:href="img/sprite.svg#trash"></use>
+                                <use xlink:href="img/sprite.svg#trash"></use>
                             </svg>
                         </div>
                     </button>
@@ -320,7 +326,7 @@ const tabs = () => {
                         <span>2</span>
                         <div class="furnishing-sets__btn-remove">
                             <svg>
-                              <use xlink:href="img/sprite.svg#trash"></use>
+                                <use xlink:href="img/sprite.svg#trash"></use>
                             </svg>
                         </div>
                     </button>
@@ -328,7 +334,7 @@ const tabs = () => {
                         <span>3</span>
                         <div class="furnishing-sets__btn-remove">
                             <svg>
-                              <use xlink:href="img/sprite.svg#trash"></use>
+                                <use xlink:href="img/sprite.svg#trash"></use>
                             </svg>
                         </div>
                     </button>
@@ -336,7 +342,7 @@ const tabs = () => {
                         <span>4</span>
                         <div class="furnishing-sets__btn-remove">
                             <svg>
-                              <use xlink:href="img/sprite.svg#trash"></use>
+                                <use xlink:href="img/sprite.svg#trash"></use>
                             </svg>
                         </div>
                     </button>
@@ -344,7 +350,7 @@ const tabs = () => {
                 <div class="furnishing-sets__create">
                     <button type="button" class="btn btn-reset furnishing-sets__create--room">
                         <svg>
-                          <use xlink:href="img/sprite.svg#plus"></use>
+                            <use xlink:href="img/sprite.svg#plus"></use>
                         </svg>
                         Добавить комнатность
                     </button>
@@ -354,7 +360,7 @@ const tabs = () => {
                 <div class="furnishing-sets__tab">
                     <div class="photo-load">
                         <div class="place-sale-photo__images drag-drop photo-load__images">
-                           
+
                         </div>
                         <div class="place-sale-photo__wrapper photo-load__wrapper">
                             <button type="button" class="btn btn-reset">
@@ -369,34 +375,37 @@ const tabs = () => {
                         <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
                     </label>
                     <div class="row" style="margin:16px 0 24px;">
-                    <div class="input-text input-text--only-number" style="max-width: 350px;">
-                        <label class="input-text__label">
-                            <span>Стоимость от</span>
-                            <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
-                            <span>₽</span>
-                        </label>
-                    </div>
-                    <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
-                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                            <svg>
-                                <use xlink:href="img/sprite.svg#info"></use>
-                            </svg>
-                        </button>
-                        <div class="secondary-tooltip__content">
-                            Стоиомость комплекта меблировки
+                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                            <label class="input-text__label">
+                                <span>Стоимость от</span>
+                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                <span>₽</span>
+                            </label>
+                        </div>
+                        <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
+                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#info"></use>
+                                </svg>
+                            </button>
+                            <div class="secondary-tooltip__content">
+                                Стоиомость комплекта меблировки
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="photo-load">
-                    <div class="place-sale-photo__wrapper photo-load__wrapper">
-                        <button type="button" class="btn btn-reset">
-                            <p>
-                                <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
-                            </p>
-                        </button>
-                        <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                    <div class="photo-load">
+                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                        </div>
+                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                            <button type="button" class="btn btn-reset">
+                                <p>
+                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                        эту область</span>
+                                </p>
+                            </button>
+                            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                        </div>
                     </div>
-                </div>
                 </div>
                 <div class="furnishing-sets__tab" hidden>
                     <div class="photo-load">
@@ -415,34 +424,37 @@ const tabs = () => {
                         <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
                     </label>
                     <div class="row" style="margin:16px 0 24px;">
-                    <div class="input-text input-text--only-number" style="max-width: 350px;">
-                        <label class="input-text__label">
-                            <span>Стоимость от</span>
-                            <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
-                            <span>₽</span>
-                        </label>
-                    </div>
-                    <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
-                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                            <svg>
-                                <use xlink:href="img/sprite.svg#info"></use>
-                            </svg>
-                        </button>
-                        <div class="secondary-tooltip__content">
-                            Стоиомость комплекта меблировки
+                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                            <label class="input-text__label">
+                                <span>Стоимость от</span>
+                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                <span>₽</span>
+                            </label>
+                        </div>
+                        <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
+                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#info"></use>
+                                </svg>
+                            </button>
+                            <div class="secondary-tooltip__content">
+                                Стоиомость комплекта меблировки
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="photo-load">
-                    <div class="place-sale-photo__wrapper photo-load__wrapper">
-                        <button type="button" class="btn btn-reset">
-                            <p>
-                                <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
-                            </p>
-                        </button>
-                        <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                    <div class="photo-load">
+                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                        </div>
+                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                            <button type="button" class="btn btn-reset">
+                                <p>
+                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                        эту область</span>
+                                </p>
+                            </button>
+                            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                        </div>
                     </div>
-                </div>
                 </div>
                 <div class="furnishing-sets__tab" hidden>
                     <div class="photo-load">
@@ -461,34 +473,37 @@ const tabs = () => {
                         <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
                     </label>
                     <div class="row" style="margin:16px 0 24px;">
-                    <div class="input-text input-text--only-number" style="max-width: 350px;">
-                        <label class="input-text__label">
-                            <span>Стоимость от</span>
-                            <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
-                            <span>₽</span>
-                        </label>
-                    </div>
-                    <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
-                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                            <svg>
-                                <use xlink:href="img/sprite.svg#info"></use>
-                            </svg>
-                        </button>
-                        <div class="secondary-tooltip__content">
-                            Стоиомость комплекта меблировки
+                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                            <label class="input-text__label">
+                                <span>Стоимость от</span>
+                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                <span>₽</span>
+                            </label>
+                        </div>
+                        <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
+                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#info"></use>
+                                </svg>
+                            </button>
+                            <div class="secondary-tooltip__content">
+                                Стоиомость комплекта меблировки
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="photo-load">
-                    <div class="place-sale-photo__wrapper photo-load__wrapper">
-                        <button type="button" class="btn btn-reset">
-                            <p>
-                                <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
-                            </p>
-                        </button>
-                        <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                    <div class="photo-load">
+                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                        </div>
+                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                            <button type="button" class="btn btn-reset">
+                                <p>
+                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                        эту область</span>
+                                </p>
+                            </button>
+                            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                        </div>
                     </div>
-                </div>
                 </div>
                 <div class="furnishing-sets__tab" hidden>
                     <div class="photo-load">
@@ -507,34 +522,37 @@ const tabs = () => {
                         <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
                     </label>
                     <div class="row" style="margin:16px 0 24px;">
-                    <div class="input-text input-text--only-number" style="max-width: 350px;">
-                        <label class="input-text__label">
-                            <span>Стоимость от</span>
-                            <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
-                            <span>₽</span>
-                        </label>
-                    </div>
-                    <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
-                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                            <svg>
-                                <use xlink:href="img/sprite.svg#info"></use>
-                            </svg>
-                        </button>
-                        <div class="secondary-tooltip__content">
-                            Стоиомость комплекта меблировки
+                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                            <label class="input-text__label">
+                                <span>Стоимость от</span>
+                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                <span>₽</span>
+                            </label>
+                        </div>
+                        <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
+                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#info"></use>
+                                </svg>
+                            </button>
+                            <div class="secondary-tooltip__content">
+                                Стоиомость комплекта меблировки
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="photo-load">
-                    <div class="place-sale-photo__wrapper photo-load__wrapper">
-                        <button type="button" class="btn btn-reset">
-                            <p>
-                                <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
-                            </p>
-                        </button>
-                        <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                    <div class="photo-load">
+                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                        </div>
+                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                            <button type="button" class="btn btn-reset">
+                                <p>
+                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                        эту область</span>
+                                </p>
+                            </button>
+                            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                        </div>
                     </div>
-                </div>
                 </div>
                 <div class="furnishing-sets__tab" hidden>
                     <div class="photo-load">
@@ -553,47 +571,50 @@ const tabs = () => {
                         <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
                     </label>
                     <div class="row" style="margin:16px 0 24px;">
-                    <div class="input-text input-text--only-number" style="max-width: 350px;">
-                        <label class="input-text__label">
-                            <span>Стоимость от</span>
-                            <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
-                            <span>₽</span>
-                        </label>
-                    </div>
-                    <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
-                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                            <svg>
-                                <use xlink:href="img/sprite.svg#info"></use>
-                            </svg>
-                        </button>
-                        <div class="secondary-tooltip__content">
-                            Стоиомость комплекта меблировки
+                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                            <label class="input-text__label">
+                                <span>Стоимость от</span>
+                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                <span>₽</span>
+                            </label>
+                        </div>
+                        <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
+                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#info"></use>
+                                </svg>
+                            </button>
+                            <div class="secondary-tooltip__content">
+                                Стоиомость комплекта меблировки
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="photo-load">
-                    <div class="place-sale-photo__wrapper photo-load__wrapper">
-                        <button type="button" class="btn btn-reset">
-                            <p>
-                                <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
-                            </p>
-                        </button>
-                        <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                    <div class="photo-load">
+                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                        </div>
+                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                            <button type="button" class="btn btn-reset">
+                                <p>
+                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                        эту область</span>
+                                </p>
+                            </button>
+                            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
-                </div>
+        </div>
             `;
             if (currentTabs.closest('.furnishing-sets')) {
-                tabs.innerHTML += furnishingSetsHTML;
+                tabs.insertAdjacentHTML('beforeend', furnishingSetsHTML);
                 setTabsStatus(tabsBlock);
-                furnishingSets();
-                update(tabsBlock.querySelectorAll('.tabs__body .furnishing-sets__tab'));
+                currentFurnishingSets(tabs.querySelector('.furnishing-sets__item:last-child'));
+                update(tabs.querySelector('.furnishing-sets__item:last-child'));
             } else {
-                tabs.innerHTML += photoHTML;
+                tabs.insertAdjacentHTML('beforeend', photoHTML);
                 setTabsStatus(tabsBlock);
-                update(tabsBlock.querySelectorAll('.tabs__body'));
+                update(tabsBlock.querySelector('.tabs__body:last-child'));
             }
             nav.scrollTo({
                 left: nav.scrollWidth,
@@ -615,11 +636,17 @@ const tabs = () => {
 
 
         function update(content) {
-            content.forEach(content => {
-                currentVideoLoad(content.querySelector('.video-load'));
-                currentDropImage(content.querySelector('.photo-load'));
-                currentDragDrop(content.querySelector('.drag-drop'));
-            })
+            if (content){
+                const inputs = content.querySelectorAll('.input-text');
+                const photoLoads = content.querySelectorAll('.video-load');
+                const dropImages = content.querySelectorAll('.photo-load');
+                const dragDrops = content.querySelectorAll('.drag-drop');
+            
+                photoLoads.forEach(item => currentVideoLoad(item));
+                dropImages.forEach(item => currentDropImage(item));
+                dragDrops.forEach(item => currentDragDrop(item));
+                inputs.forEach(item => currentInputText(item));
+            }
         }
     })
 }

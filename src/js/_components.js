@@ -64,7 +64,7 @@ import {
     cardSecondaryActions,
     cardPrimaryActions
 } from './components/cardActions';
-import furnishingSets from './components/furnishingSets';
+import {furnishingSets} from './components/furnishingSets';
 import bookConsultation from './components/bookConsultation';
 import {
     recordViewing,

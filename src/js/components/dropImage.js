@@ -177,7 +177,7 @@ export const dropImage = () => {
 export const currentDropImage = (container) => {
     if (!container) return;
     const placeSaleImages = container.querySelector('.place-sale-photo__images');
-    
+
     if (placeSaleImages) {
         placeSaleImages.children.length > 0 ? container.classList.add('_loaded') : container.classList.remove('_loaded');
     }

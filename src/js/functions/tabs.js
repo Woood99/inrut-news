@@ -7,6 +7,7 @@ import {
 import {
     currentDragDrop
 } from '../components/dragDrop';
+import { currentVideoLoad } from '../components/videoLoad';
 import furnishingSets from '../components/furnishingSets';
 import inputResize from '../modules/inputResize';
 const tabs = () => {
@@ -588,11 +589,11 @@ const tabs = () => {
                 tabs.innerHTML += furnishingSetsHTML;
                 setTabsStatus(tabsBlock);
                 furnishingSets();
-                photoLoadAndDragDropUpdate(tabsBlock.querySelectorAll('.tabs__body .furnishing-sets__tab'));
+                update(tabsBlock.querySelectorAll('.tabs__body .furnishing-sets__tab'));
             } else {
                 tabs.innerHTML += photoHTML;
                 setTabsStatus(tabsBlock);
-                photoLoadAndDragDropUpdate(tabsBlock.querySelectorAll('.tabs__body'));
+                update(tabsBlock.querySelectorAll('.tabs__body'));
             }
             nav.scrollTo({
                 left: nav.scrollWidth,
@@ -613,8 +614,9 @@ const tabs = () => {
         }
 
 
-        function photoLoadAndDragDropUpdate(content) {
+        function update(content) {
             content.forEach(content => {
+                currentVideoLoad(content.querySelector('.video-load'));
                 currentDropImage(content.querySelector('.photo-load'));
                 currentDragDrop(content.querySelector('.drag-drop'));
             })

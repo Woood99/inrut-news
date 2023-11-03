@@ -4,6 +4,7 @@ import {
 import {
     currentDragDrop
 } from '../components/dragDrop';
+import { currentVideoLoad } from "./videoLoad";
 const furnishingSets = () => {
     const containers = document.querySelectorAll('.furnishing-sets');
     if (!containers) return;
@@ -25,14 +26,14 @@ const furnishingSets = () => {
                             btnsContainer.innerHTML = generateStudio() + btnsContainer.innerHTML;
                             contentContainer.innerHTML = generateTabContent() + contentContainer.innerHTML;
                             btnAction(item.querySelectorAll('.furnishing-sets__btn'), item.querySelectorAll('.furnishing-sets__tab'));
-                            photoLoadAndDragDropUpdate(item.querySelectorAll('.furnishing-sets__tab'));
+                            update(item.querySelectorAll('.furnishing-sets__tab'));
                         } else {
                             const lastBtn = btns[btns.length - 1];
                             const lastNumber = lastBtn ? lastBtn.querySelector('span').textContent : 1;
                             btnsContainer.innerHTML += generateRoom(Number(lastNumber) + 1);
                             contentContainer.innerHTML += generateTabContent();
                             btnAction(item.querySelectorAll('.furnishing-sets__btn'), item.querySelectorAll('.furnishing-sets__tab'));
-                            photoLoadAndDragDropUpdate(item.querySelectorAll('.furnishing-sets__tab'));
+                            update(item.querySelectorAll('.furnishing-sets__tab'));
                         }
                         if (quantity.length === 8) {
                             createRoom.setAttribute('hidden', '');
@@ -53,7 +54,7 @@ const furnishingSets = () => {
 
                             btn.remove();
                             currentContent.remove();
-                            photoLoadAndDragDropUpdate(item.querySelectorAll('.furnishing-sets__tab'));
+                            update(item.querySelectorAll('.furnishing-sets__tab'));
                             if (item.querySelectorAll('.furnishing-sets__btn').length < 9) {
                                 const createRoom = item.querySelector('.furnishing-sets__create--room');
                                 createRoom.removeAttribute('hidden');
@@ -160,8 +161,9 @@ const furnishingSets = () => {
                     title.querySelector('span').textContent = index + 1;
                 })
             }
-            function photoLoadAndDragDropUpdate(content) {
+            function update(content) {
                 content.forEach(content => {
+                    currentVideoLoad(content.querySelector('.video-load'));
                     currentDropImage(content.querySelector('.photo-load'));
                     currentDragDrop(content.querySelector('.drag-drop'));
                 })

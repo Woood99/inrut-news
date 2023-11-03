@@ -4355,7 +4355,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_46__.dragDrops)();
   (0,_components_createCalc__WEBPACK_IMPORTED_MODULE_48__["default"])();
   (0,_components_createSale__WEBPACK_IMPORTED_MODULE_49__["default"])();
-  (0,_components_videoLoad__WEBPACK_IMPORTED_MODULE_50__["default"])();
+  (0,_components_videoLoad__WEBPACK_IMPORTED_MODULE_50__.videoLoad)();
   // ==================================================
 
   (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.validateRadioPrimary)('.complaint-popup__form', '.textarea-primary__input', '.complaint-popup__btn', '.radio-primary__input');
@@ -8430,6 +8430,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _components_dropImage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/dropImage */ "./src/js/components/dropImage.js");
 /* harmony import */ var _components_dragDrop__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/dragDrop */ "./src/js/components/dragDrop.js");
+/* harmony import */ var _videoLoad__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./videoLoad */ "./src/js/components/videoLoad.js");
+
 
 
 const furnishingSets = () => {
@@ -8452,14 +8454,14 @@ const furnishingSets = () => {
               btnsContainer.innerHTML = generateStudio() + btnsContainer.innerHTML;
               contentContainer.innerHTML = generateTabContent() + contentContainer.innerHTML;
               btnAction(item.querySelectorAll('.furnishing-sets__btn'), item.querySelectorAll('.furnishing-sets__tab'));
-              photoLoadAndDragDropUpdate(item.querySelectorAll('.furnishing-sets__tab'));
+              update(item.querySelectorAll('.furnishing-sets__tab'));
             } else {
               const lastBtn = btns[btns.length - 1];
               const lastNumber = lastBtn ? lastBtn.querySelector('span').textContent : 1;
               btnsContainer.innerHTML += generateRoom(Number(lastNumber) + 1);
               contentContainer.innerHTML += generateTabContent();
               btnAction(item.querySelectorAll('.furnishing-sets__btn'), item.querySelectorAll('.furnishing-sets__tab'));
-              photoLoadAndDragDropUpdate(item.querySelectorAll('.furnishing-sets__tab'));
+              update(item.querySelectorAll('.furnishing-sets__tab'));
             }
             if (quantity.length === 8) {
               createRoom.setAttribute('hidden', '');
@@ -8477,7 +8479,7 @@ const furnishingSets = () => {
               const currentContent = tabs[activeBtnIndex];
               btn.remove();
               currentContent.remove();
-              photoLoadAndDragDropUpdate(item.querySelectorAll('.furnishing-sets__tab'));
+              update(item.querySelectorAll('.furnishing-sets__tab'));
               if (item.querySelectorAll('.furnishing-sets__btn').length < 9) {
                 const createRoom = item.querySelector('.furnishing-sets__create--room');
                 createRoom.removeAttribute('hidden');
@@ -8580,8 +8582,9 @@ const furnishingSets = () => {
           title.querySelector('span').textContent = index + 1;
         });
       }
-      function photoLoadAndDragDropUpdate(content) {
+      function update(content) {
         content.forEach(content => {
+          (0,_videoLoad__WEBPACK_IMPORTED_MODULE_2__.currentVideoLoad)(content.querySelector('.video-load'));
           (0,_components_dropImage__WEBPACK_IMPORTED_MODULE_0__.currentDropImage)(content.querySelector('.photo-load'));
           (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_1__.currentDragDrop)(content.querySelector('.drag-drop'));
         });
@@ -11128,7 +11131,8 @@ const videoBlock = currentVideoBlock => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "currentVideoLoad": () => (/* binding */ currentVideoLoad),
+/* harmony export */   "videoLoad": () => (/* binding */ videoLoad)
 /* harmony export */ });
 const videoLoad = () => {
   const containers = document.querySelectorAll('.video-load');
@@ -11155,36 +11159,61 @@ const videoLoad = () => {
       });
     }
   });
-  function generateVideoCard(url) {
-    const videoCardHTML = `
-        <div class="video-load__content">
-            <article class="video-card">
-                <div class="video-card__image ibg">
-                    <picture>
-                        <source srcset="./img/video-card-1.webp" type="image/webp">
-                        <img loading="lazy" src="./img/video-card-1.jpg" width="323" height="207" alt="1-комн. квартира, 54 м², 12/12 эт.">
-                    </picture>
-                </div>
-                <div class="video-card__content">
-                    <h3 class="video-card__title">
-                        Старт продаж в литере 35 в «Нового Губернского»
-                    </h3>
-                </div>
-            </article>
-            <button type="button" class="btn btn-reset btn-primary video-load__remove">Удалить</button>
-        </div>
-        `;
-    return videoCardHTML;
-  }
-  function validateYouTubeUrl(url) {
-    if (url) {
-      var regExp = /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
-      if (url.match(regExp)) return true;
-    }
-    return false;
-  }
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (videoLoad);
+const currentVideoLoad = container => {
+  if (!container) return;
+  const wrapper = container.querySelector('.video-load__wrapper');
+  const btn = container.querySelector('.video-load__btn');
+  const inputField = container.querySelector('.video-load__input');
+  const input = inputField.querySelector('input');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      const value = input.value;
+      if (validateYouTubeUrl(value)) {
+        if (!container.querySelector('video-card')) {
+          wrapper.setAttribute('hidden', '');
+          container.insertAdjacentHTML('afterbegin', generateVideoCard(value));
+        }
+      }
+    });
+  }
+  container.addEventListener('click', e => {
+    const target = e.target;
+    if (target.closest('.video-load__remove')) {
+      input.value = '';
+      wrapper.removeAttribute('hidden');
+      container.querySelector('.video-load__content').remove();
+    }
+  });
+};
+function generateVideoCard(url) {
+  const videoCardHTML = `
+    <div class="video-load__content">
+        <article class="video-card">
+            <div class="video-card__image ibg">
+                <picture>
+                    <source srcset="./img/video-card-1.webp" type="image/webp">
+                    <img loading="lazy" src="./img/video-card-1.jpg" width="323" height="207" alt="1-комн. квартира, 54 м², 12/12 эт.">
+                </picture>
+            </div>
+            <div class="video-card__content">
+                <h3 class="video-card__title">
+                    Старт продаж в литере 35 в «Нового Губернского»
+                </h3>
+            </div>
+        </article>
+        <button type="button" class="btn btn-reset btn-primary video-load__remove">Удалить</button>
+    </div>
+    `;
+  return videoCardHTML;
+}
+function validateYouTubeUrl(url) {
+  if (url) {
+    var regExp = /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+    if (url.match(regExp)) return true;
+  }
+  return false;
+}
 
 /***/ }),
 
@@ -12695,8 +12724,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_scrollDrag__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/scrollDrag */ "./src/js/components/scrollDrag.js");
 /* harmony import */ var _components_dropImage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/dropImage */ "./src/js/components/dropImage.js");
 /* harmony import */ var _components_dragDrop__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/dragDrop */ "./src/js/components/dragDrop.js");
-/* harmony import */ var _components_furnishingSets__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/furnishingSets */ "./src/js/components/furnishingSets.js");
-/* harmony import */ var _modules_inputResize__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../modules/inputResize */ "./src/js/modules/inputResize.js");
+/* harmony import */ var _components_videoLoad__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/videoLoad */ "./src/js/components/videoLoad.js");
+/* harmony import */ var _components_furnishingSets__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/furnishingSets */ "./src/js/components/furnishingSets.js");
+/* harmony import */ var _modules_inputResize__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../modules/inputResize */ "./src/js/modules/inputResize.js");
+
 
 
 
@@ -12786,9 +12817,9 @@ const tabs = () => {
       items.forEach(item => {
         const input = item.querySelector('._width-auto');
         if (input) {
-          (0,_modules_inputResize__WEBPACK_IMPORTED_MODULE_6__["default"])(input);
+          (0,_modules_inputResize__WEBPACK_IMPORTED_MODULE_7__["default"])(input);
           input.addEventListener('input', () => {
-            (0,_modules_inputResize__WEBPACK_IMPORTED_MODULE_6__["default"])(input);
+            (0,_modules_inputResize__WEBPACK_IMPORTED_MODULE_7__["default"])(input);
           });
         }
       });
@@ -13257,12 +13288,12 @@ const tabs = () => {
       if (currentTabs.closest('.furnishing-sets')) {
         tabs.innerHTML += furnishingSetsHTML;
         setTabsStatus(tabsBlock);
-        (0,_components_furnishingSets__WEBPACK_IMPORTED_MODULE_5__["default"])();
-        photoLoadAndDragDropUpdate(tabsBlock.querySelectorAll('.tabs__body .furnishing-sets__tab'));
+        (0,_components_furnishingSets__WEBPACK_IMPORTED_MODULE_6__["default"])();
+        update(tabsBlock.querySelectorAll('.tabs__body .furnishing-sets__tab'));
       } else {
         tabs.innerHTML += photoHTML;
         setTabsStatus(tabsBlock);
-        photoLoadAndDragDropUpdate(tabsBlock.querySelectorAll('.tabs__body'));
+        update(tabsBlock.querySelectorAll('.tabs__body'));
       }
       nav.scrollTo({
         left: nav.scrollWidth
@@ -13281,8 +13312,9 @@ const tabs = () => {
         input.setAttribute('value', e.target.value);
       });
     }
-    function photoLoadAndDragDropUpdate(content) {
+    function update(content) {
       content.forEach(content => {
+        (0,_components_videoLoad__WEBPACK_IMPORTED_MODULE_5__.currentVideoLoad)(content.querySelector('.video-load'));
         (0,_components_dropImage__WEBPACK_IMPORTED_MODULE_3__.currentDropImage)(content.querySelector('.photo-load'));
         (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_4__.currentDragDrop)(content.querySelector('.drag-drop'));
       });

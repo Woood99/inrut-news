@@ -238,12 +238,17 @@
 
     &__term {
         display: block;
-        margin-top: 2px;
         font-size: var(--default-fz);
         line-height: var(--little-small-lh);
         color: var(--primary600);
     }
-
+    &__frame{
+        display: block;
+        margin-top: 2px;
+        font-size: var(--default-fz);
+        line-height: var(--little-small-lh);
+        color: var(--primary600);  
+    }
     &__price {
         display: flex;
         flex-direction: column;
@@ -259,10 +264,9 @@
 
         span {
             &:nth-child(1){
-                transition: color $transitionSpeed $transitionFunction;
             }
             &:nth-child(2) {
-                color: var(--primaryTwo);
+                color: var(--dark);
                 font-size: var(--default-fz);
                 line-height: var(--little-small-lh);
                 font-weight: 400;
@@ -315,12 +319,10 @@
         font-size: var(--default-fz);
         line-height: var(--little-small-lh);
         font-weight: 400;
-
-        span {
+        color: var(--primary600);
+        span{
             color: var(--blue);
-            font-weight: 500;
         }
-
         @media (max-width:$desktop) {
             margin-top: 2px;
             grid-column: 2/3;
@@ -389,16 +391,6 @@
         &:hover {
             .room-info-card__title {
                 color: var(--blue);
-            }
-            .room-info-card__favorite{
-                svg{
-                    fill: var(--blue);
-                }
-            }
-            .room-info-card__price-new{
-                >span:nth-child(1){
-                    color: var(--blue);
-                }
             }
         }
     }

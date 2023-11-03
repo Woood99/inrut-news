@@ -12508,8 +12508,9 @@ const spollers = () => {
               const headerFixed = document.querySelector('.header-fixed');
               const topHeaderMobile = document.querySelector('.top-page-inner');
               const topGap = spollerTitle.offsetTop;
+              const heightTitle = spollerTitle.offsetHeight;
               window.scrollTo({
-                top: topGap - (window.innerWidth > 1212 ? headerFixed.offsetHeight : topHeaderMobile.offsetHeight) - 16,
+                top: topGap - (window.innerWidth > 1212 ? headerFixed.offsetHeight : topHeaderMobile.offsetHeight) + heightTitle - 16,
                 behavior: 'smooth'
               });
             }, speed);

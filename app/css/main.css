@@ -1725,30 +1725,31 @@ textarea.input-reset {
   }
 }
 .popup-primary--furnishing-sets-popup .popup-primary__close, .popup-primary--object-apart-renov-popup .popup-primary__close, .popup-primary--object-gallery .popup-primary__close, .popup-primary--construct-progress .popup-primary__close, .popup-primary--object-ecology-parks-popup .popup-primary__close {
+  position: sticky;
   margin-top: -48px;
   -webkit-transform: translateX(32px);
   -ms-transform: translateX(32px);
   transform: translateX(32px);
-  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 5;
-  height: 45px;
-  -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.12);
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.12);
-  background-color: var(--white);
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: end;
-  padding: 24px;
 }
 @media (max-width: 1212px) {
   .popup-primary--furnishing-sets-popup .popup-primary__close, .popup-primary--object-apart-renov-popup .popup-primary__close, .popup-primary--object-gallery .popup-primary__close, .popup-primary--construct-progress .popup-primary__close, .popup-primary--object-ecology-parks-popup .popup-primary__close {
+    position: fixed;
     margin: 0;
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);
     transform: translateX(0);
+    height: 45px;
+    -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.12);
+    background-color: var(--white);
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: end;
+    padding: 24px;
   }
 }
 .popup-primary--search-area .popup-primary__container {
@@ -16452,6 +16453,13 @@ textarea.input-reset {
   line-height: var(--default-lh);
   font-weight: 500;
 }
+.card-scheme__frame {
+  margin-top: 10px;
+  display: block;
+  color: var(--primary600);
+  font-size: var(--default-fz);
+  line-height: var(--little-small-lh);
+}
 .card-scheme__btn {
   color: var(--blue);
   background-color: rgba(0, 150, 255, 0.08);
@@ -19357,7 +19365,7 @@ textarea.input-reset {
 }
 .filter-range .filter-range__nav > div:nth-child(4),
 .filter-range .filter-range__nav label:nth-child(4) {
-  font-weight: 500;
+  font-weight: 400;
 }
 .filter-range .input-text__label {
   border: none;
@@ -23685,6 +23693,12 @@ textarea.input-reset {
 }
 .room-info-card__term {
   display: block;
+  font-size: var(--default-fz);
+  line-height: var(--little-small-lh);
+  color: var(--primary600);
+}
+.room-info-card__frame {
+  display: block;
   margin-top: 2px;
   font-size: var(--default-fz);
   line-height: var(--little-small-lh);
@@ -23710,13 +23724,8 @@ textarea.input-reset {
 .room-info-card__price-new {
   margin-top: 2px;
 }
-.room-info-card__price-new span:nth-child(1) {
-  -webkit-transition: color 0.4s ease-in-out;
-  -o-transition: color 0.4s ease-in-out;
-  transition: color 0.4s ease-in-out;
-}
 .room-info-card__price-new span:nth-child(2) {
-  color: var(--primaryTwo);
+  color: var(--dark);
   font-size: var(--default-fz);
   line-height: var(--little-small-lh);
   font-weight: 400;
@@ -23765,10 +23774,10 @@ textarea.input-reset {
   font-size: var(--default-fz);
   line-height: var(--little-small-lh);
   font-weight: 400;
+  color: var(--primary600);
 }
 .room-info-card__mortgage span {
   color: var(--blue);
-  font-weight: 500;
 }
 @media (max-width: 1212px) {
   .room-info-card__mortgage {
@@ -23870,12 +23879,6 @@ textarea.input-reset {
 }
 @media (min-width: 1213px) {
   .room-info-card:hover .room-info-card__title {
-    color: var(--blue);
-  }
-  .room-info-card:hover .room-info-card__favorite svg {
-    fill: var(--blue);
-  }
-  .room-info-card:hover .room-info-card__price-new > span:nth-child(1) {
     color: var(--blue);
   }
 }
@@ -26792,13 +26795,26 @@ textarea.input-reset {
   }
 }
 .header-fixed__btns {
-  margin-left: auto;
+  margin-left: 32px;
+  margin-bottom: 6px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+.header-fixed__btns .edit-btn,
+.header-fixed__btns .delete-btn {
+  padding: 0;
+}
+.header-fixed__btns .edit-btn svg,
+.header-fixed__btns .delete-btn svg {
+  margin: 0;
+}
+.header-fixed__btns .edit-btn:not(:last-child),
+.header-fixed__btns .delete-btn:not(:last-child) {
+  margin-right: 16px;
 }
 .header-fixed__btn {
   height: 36px;
@@ -29616,9 +29632,10 @@ textarea.input-reset {
   position: absolute;
   top: 16px;
   right: 16px;
+  max-width: 255px;
 }
 .object-data__time {
-  width: 280px;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

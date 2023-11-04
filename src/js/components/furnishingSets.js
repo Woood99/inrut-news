@@ -40,7 +40,6 @@ function furnishingSetsBody(item) {
             } else {
                 const lastBtn = btns[btns.length - 1];
                 const lastNumber = lastBtn ? lastBtn.querySelector('span').textContent : 0;
-                console.log(lastNumber);
                 btnsContainer.insertAdjacentHTML('beforeend', generateRoom(Number(lastNumber) + 1));
             }
             contentContainer.insertAdjacentHTML('beforeend', generateTabContent());

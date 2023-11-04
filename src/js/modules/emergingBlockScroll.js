@@ -12,7 +12,7 @@ const emergingBlockScroll = (targetThemSelector, emergingBlockSelector, screenSi
         if (window.innerWidth >= screenSize) return;
         const pageOffsetTop = window.pageYOffset;
         const targetOffsetTop = target.getBoundingClientRect().top;
-
+        console.log(block);
         if (beforeContainer) {
             if (targetOffsetTop > innerHeight || pageOffsetTop >= targetOffsetTop + pageOffsetTop) {
                 block.classList.add('active-fixed');

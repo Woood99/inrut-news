@@ -64,7 +64,9 @@ import {
     cardSecondaryActions,
     cardPrimaryActions
 } from './components/cardActions';
-import {furnishingSets} from './components/furnishingSets';
+import {
+    furnishingSets
+} from './components/furnishingSets';
 import bookConsultation from './components/bookConsultation';
 import {
     recordViewing,
@@ -96,7 +98,9 @@ import {
 import AirDatepicker from 'air-datepicker';
 import createCalc from './components/createCalc';
 import createSale from './components/createSale';
-import {videoLoad} from './components/videoLoad';
+import {
+    videoLoad
+} from './components/videoLoad';
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==================================================
@@ -219,6 +223,8 @@ document.addEventListener('DOMContentLoaded', () => {
     emergingBlockScroll('.develop-inner .object-body__wrapper .bid-user__btn', '.object-plate-bottom', 1212, true);
     emergingBlockScroll('.detailed-flat .object-body__user .bid-user__btn', '.object-plate-bottom', 1212, true);
     emergingBlockScroll('.object-base-inner .object-body__user .card-user__btn', '.object-plate-bottom', 1212, true);
+
+    emergingBlockScroll('.add-complex .place-sale__btn', '.footer-fixed.complex-fixed', 99999999, true);
 
 
     // ==================================================

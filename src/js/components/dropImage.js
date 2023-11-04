@@ -7,12 +7,7 @@ export const dropImage = () => {
     const photoLoad = document.querySelectorAll('.photo-load');
     if (photoLoad.length === 0) return;
 
-    photoLoad.forEach(container => {
-        const placeSaleImages = container.querySelector('.place-sale-photo__images');
-        if (placeSaleImages) {
-            placeSaleImages.children.length > 0 ? container.classList.add('_loaded') : container.classList.remove('_loaded');
-        }
-    });
+    photoLoad.forEach(container => toggleLoadedClass(container));
 
     ['dragenter', 'dragleave', 'dragover', 'drop'].forEach(eventName => {
         photoLoad.forEach(photo => {
@@ -58,129 +53,11 @@ export const dropImage = () => {
             input.addEventListener('drop', (e) => inputChange(input, e))
         }
     });
-
-
-
-
-    function subtitleFile(input) {
-        let dots;
-        const file = input.files[0];
-        if (file) {
-            const target = file.name.split('.');
-            target[0].length >= 20 ? dots = '...' : dots = '.';
-            const name = target[0].substring(0, 20) + dots + target[1]
-            input.previousElementSibling.textContent = name;
-        }
-    }
-
-    function showPdf(input) {
-        const container = input.closest('.photo-load');
-        const placeSaleImages = container.querySelector('.place-sale-photo__images');
-        if (placeSaleImages) {
-            let file = input.files[0];
-            if (file) {
-                const pdfURL = window.URL.createObjectURL(file);
-                placeSaleImages.innerHTML = pdfGenerate(pdfURL);
-            }
-            placeSaleImages.children.length > 0 ? container.classList.add('_loaded') : container.classList.remove('_loaded');
-        }
-    }
-
-    function showImage(input) {
-        const container = input.closest('.photo-load');
-        const placeSaleImages = container.querySelector('.place-sale-photo__images');
-        if (placeSaleImages) {
-            let files = input.files;
-            for (let i = 0; i < files.length; i++) {
-                const file = files[i];
-                const imageURL = window.URL.createObjectURL(file);
-                placeSaleImages.innerHTML += photoGenerate(imageURL);
-            }
-            if (placeSaleImages.classList.contains('drag-drop')) {
-                currentDragDrop(placeSaleImages)
-            }
-
-            placeSaleImages.children.length > 0 ? container.classList.add('_loaded') : container.classList.remove('_loaded');
-        }
-    }
-
-    function inputChange(input, e) {
-        if (input.hasAttribute('data-upload-drop-pdf')) {
-            if (e.type === 'change') {
-                showPdf(input);
-            }
-            if (e.type === 'drop') {
-                input.files = e.dataTransfer.files;
-                showPdf(input);
-            }
-        } else {
-            if (e.type === 'change') {
-                showImage(input);
-            }
-            if (e.type === 'drop') {
-                input.files = e.dataTransfer.files;
-                showImage(input);
-            }
-        }
-    }
-
-    function photoGenerate(url) {
-        const placeSalePhotoHTML = `
-        <div class="place-sale-photo__image ibg drag-drop__item" draggable="true">
-            <picture>
-                <source srcset="${url}" type="image/webp">
-                <img loading="lazy" src="${url}" width="271" height="190" alt="">
-            </picture>
-            <div class="place-sale-photo__icon">
-                <svg>
-                    <use xlink:href="img/sprite.svg#right-left"></use>
-                </svg>
-            </div>
-            <button type="button" class="btn btn-reset place-sale-photo__remove" title="Удалить фото">
-                <svg>
-                    <use xlink:href="img/sprite.svg#trash"></use>
-                </svg>
-            </button>
-            <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--1">
-                <svg>
-                    <use xlink:href="img/sprite.svg#rotate-1"></use>
-                </svg>
-            </button>
-            <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--2">
-                <svg>
-                    <use xlink:href="img/sprite.svg#rotate-2"></use>
-                </svg>
-            </button>
-        </div>
-        `;
-        return placeSalePhotoHTML;
-    }
-
-    function pdfGenerate(url) {
-        const placeSalePhotoHTML = `
-            <a href="${url}" class="place-sale-photo__image drag-drop__item ibg" draggable="true" target="_blank">
-                <picture>
-                    <source srcset="./img/pdf.webp" type="image/webp">
-                    <img loading="lazy" src="./img/pdf.png" width="271" height="190" alt="">
-                </picture>
-                <button type="button" class="btn btn-reset place-sale-photo__remove" title="Удалить PDF">
-                    <svg>
-                        <use xlink:href="img/sprite.svg#trash"></use>
-                    </svg>
-                </button>
-            </a>
-        `;
-        return placeSalePhotoHTML;
-    }
 };
 
 export const currentDropImage = (container) => {
     if (!container) return;
-    const placeSaleImages = container.querySelector('.place-sale-photo__images');
-
-    if (placeSaleImages) {
-        placeSaleImages.children.length > 0 ? container.classList.add('_loaded') : container.classList.remove('_loaded');
-    }
+    toggleLoadedClass(container);
 
     ['dragenter', 'dragleave', 'dragover', 'drop'].forEach(eventName => {
         const input = container.querySelector('[data-upload-drop]');
@@ -214,75 +91,100 @@ export const currentDropImage = (container) => {
         input.addEventListener('change', (e) => inputChange(input, e))
         input.addEventListener('drop', (e) => inputChange(input, e))
     }
+};
 
 
+document.addEventListener('click', (e) => {
+    const target = e.target;
+    if (target.closest('.place-sale-photo__remove')) {
+        e.preventDefault();
+        deleteTarget(target);
+    }
+})
 
+function deleteTarget(target) {
+    const currentImg = target.closest('.place-sale-photo__image');
+    const container = target.closest('.photo-load');
+    const input = container.querySelector('[data-upload-drop]');
+    currentImg.remove();
 
-    function subtitleFile(input) {
-        let dots;
-        const file = input.files[0];
+    // тестовое удаление файла из input
+    input.value = '';
+
+    toggleLoadedClass(container);
+}
+
+function subtitleFile(input) {
+    let dots;
+    const file = input.files[0];
+    if (file) {
+        const target = file.name.split('.');
+        target[0].length >= 20 ? dots = '...' : dots = '.';
+        const name = target[0].substring(0, 20) + dots + target[1]
+        input.previousElementSibling.textContent = name;
+    }
+}
+
+function showPdf(input) {
+    const container = input.closest('.photo-load');
+    const placeSaleImages = container.querySelector('.place-sale-photo__images');
+    if (placeSaleImages) {
+        let file = input.files[0];
         if (file) {
-            const target = file.name.split('.');
-            target[0].length >= 20 ? dots = '...' : dots = '.';
-            const name = target[0].substring(0, 20) + dots + target[1]
-            input.previousElementSibling.textContent = name;
+            const pdfURL = window.URL.createObjectURL(file);
+            placeSaleImages.innerHTML = pdfGenerate(pdfURL);
+        }
+        toggleLoadedClass(container);
+    }
+}
+
+function toggleLoadedClass(container) {
+    const images = container.querySelector('.photo-load__images');
+    if (images) {
+        images.children.length > 0 ? container.classList.add('_loaded') : container.classList.remove('_loaded');
+    }
+}
+
+function showImage(input) {
+    const container = input.closest('.photo-load');
+    const placeSaleImages = container.querySelector('.place-sale-photo__images');
+    if (placeSaleImages) {
+        let files = input.files;
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const imageURL = window.URL.createObjectURL(file);
+            placeSaleImages.innerHTML += photoGenerate(imageURL, file.name);
+        }
+        if (placeSaleImages.classList.contains('drag-drop')) {
+            currentDragDrop(placeSaleImages)
+        }
+        toggleLoadedClass(container);
+    }
+}
+
+function inputChange(input, e) {
+    if (input.hasAttribute('data-upload-drop-pdf')) {
+        if (e.type === 'change') {
+            showPdf(input);
+        }
+        if (e.type === 'drop') {
+            input.files = e.dataTransfer.files;
+            showPdf(input);
+        }
+    } else {
+        if (e.type === 'change') {
+            showImage(input);
+        }
+        if (e.type === 'drop') {
+            input.files = e.dataTransfer.files;
+            showImage(input);
         }
     }
+}
 
-    function showPdf(input) {
-        const container = input.closest('.photo-load');
-        const placeSaleImages = container.querySelector('.place-sale-photo__images');
-        if (placeSaleImages) {
-            let file = input.files[0];
-            if (file) {
-                const pdfURL = window.URL.createObjectURL(file);
-                placeSaleImages.innerHTML = pdfGenerate(pdfURL);
-            }
-            placeSaleImages.children.length > 0 ? container.classList.add('_loaded') : container.classList.remove('_loaded');
-        }
-    }
-
-    function showImage(input) {
-        const container = input.closest('.photo-load');
-        const placeSaleImages = container.querySelector('.place-sale-photo__images');
-        if (placeSaleImages) {
-            let files = input.files;
-            for (let i = 0; i < files.length; i++) {
-                const file = files[i];
-                const imageURL = window.URL.createObjectURL(file);
-                placeSaleImages.innerHTML += photoGenerate(imageURL);
-            }
-            if (placeSaleImages.classList.contains('drag-drop')) {
-                currentDragDrop(placeSaleImages)
-            }
-
-            placeSaleImages.children.length > 0 ? container.classList.add('_loaded') : container.classList.remove('_loaded');
-        }
-    }
-
-    function inputChange(input, e) {
-        if (input.hasAttribute('data-upload-drop-pdf')) {
-            if (e.type === 'change') {
-                showPdf(input);
-            }
-            if (e.type === 'drop') {
-                input.files = e.dataTransfer.files;
-                showPdf(input);
-            }
-        } else {
-            if (e.type === 'change') {
-                showImage(input);
-            }
-            if (e.type === 'drop') {
-                input.files = e.dataTransfer.files;
-                showImage(input);
-            }
-        }
-    }
-
-    function photoGenerate(url) {
-        const placeSalePhotoHTML = `
-        <div class="place-sale-photo__image ibg drag-drop__item" draggable="true">
+function photoGenerate(url, name) {
+    const placeSalePhotoHTML = `
+        <div class="place-sale-photo__image ibg drag-drop__item" draggable="true" title="${name}">
             <picture>
                 <source srcset="${url}" type="image/webp">
                 <img loading="lazy" src="${url}" width="271" height="190" alt="">
@@ -309,12 +211,12 @@ export const currentDropImage = (container) => {
             </button>
         </div>
         `;
-        return placeSalePhotoHTML;
-    }
+    return placeSalePhotoHTML;
+}
 
-    function pdfGenerate(url) {
-        const placeSalePhotoHTML = `
-            <a href="${url}" class="place-sale-photo__image drag-drop__item ibg" draggable="true" target="_blank">
+function pdfGenerate(url, name) {
+    const placeSalePhotoHTML = `
+            <a href="${url}" class="place-sale-photo__image drag-drop__item ibg" draggable="true" target="_blank" title="${name}">
                 <picture>
                     <source srcset="./img/pdf.webp" type="image/webp">
                     <img loading="lazy" src="./img/pdf.png" width="271" height="190" alt="">
@@ -326,6 +228,5 @@ export const currentDropImage = (container) => {
                 </button>
             </a>
         `;
-        return placeSalePhotoHTML;
-    }
-};
+    return placeSalePhotoHTML;
+}

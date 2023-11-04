@@ -1427,13 +1427,14 @@
 }
 
 
-.place-sale-сonstruction-progress{
-    &__history{
-        .spollers{
-            &__title{
+.place-sale-сonstruction-progress {
+    &__history {
+        .spollers {
+            &__title {
                 width: 100%;
                 display: flex;
                 align-items: center;
+
                 svg {
                     margin-left: 24px;
                     width: 14px;
@@ -1441,18 +1442,55 @@
                     fill: var(--gray);
                     transition: transform $transitionSpeedFast $transitionFunction;
                 }
+
                 &._spoller-active {
                     svg {
                         transform: rotate(-180deg);
                     }
                 }
             }
-            &__body{
+
+            &__body {
                 margin-top: 24px;
             }
         }
-        .tabs-primary__container{
+
+        .tabs-primary__container {
             padding: 0;
         }
+    }
+}
+
+
+.footer-fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: var(--white);
+    box-shadow: 0px -2px 1px rgba(0, 0, 0, 0.1);
+    height: 68px;
+
+    transform: translateY(110%);
+    transition: transform $transitionSpeedFast $transitionFunction;
+
+    &__container {
+        max-width: 1212px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 16px;
+
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+    button{
+        height: 44px;
+        padding: 0 20px;
+    }
+    &.active-fixed{
+        transform: translateY(0);
     }
 }

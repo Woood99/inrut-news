@@ -11,7 +11,7 @@ export const videoLoad = () => {
                 if (validateYouTubeUrl(value)) {
                     if (!container.querySelector('video-card')) {
                         wrapper.setAttribute('hidden', '');
-                        container.insertAdjacentHTML('afterbegin', generateVideoCard(value));
+                        container.insertAdjacentHTML('beforeend', generateVideoCard(value));
                     }
                 }
             })
@@ -63,11 +63,6 @@ function generateVideoCard(url) {
                     <source srcset="./img/video-card-1.webp" type="image/webp">
                     <img loading="lazy" src="./img/video-card-1.jpg" width="323" height="207" alt="1-комн. квартира, 54 м², 12/12 эт.">
                 </picture>
-            </div>
-            <div class="video-card__content">
-                <h3 class="video-card__title">
-                    Старт продаж в литере 35 в «Нового Губернского»
-                </h3>
             </div>
         </article>
         <button type="button" class="btn btn-reset btn-primary video-load__remove">Удалить</button>

@@ -15,7 +15,9 @@ import {
 } from '../components/furnishingSets';
 import inputResize from '../modules/inputResize';
 import numberReplace from '../modules/numberReplace';
-import { currentInputText } from "../components/inputs";
+import {
+    currentInputText
+} from "../components/inputs";
 const tabs = () => {
     const metroContainer = document.querySelector('.popup-primary--search-area');
     const metroInnerMoscow = document.querySelector('#map-metro_moscow');
@@ -176,7 +178,6 @@ const tabs = () => {
                 tabTitle.remove();
                 tabsBlock.querySelector('.tabs-primary__content').children[activeTabIndex].remove();
                 setTabsStatus(tabsBlock);
-
                 return;
             }
             if (editBtn) {
@@ -245,8 +246,6 @@ const tabs = () => {
             e.preventDefault();
         }
     }
-
-
     document.addEventListener('click', (e) => {
         const target = e.target;
         const createNew = target.closest('.tabs-primary__create-new');
@@ -636,12 +635,12 @@ const tabs = () => {
 
 
         function update(content) {
-            if (content){
+            if (content) {
                 const inputs = content.querySelectorAll('.input-text');
                 const photoLoads = content.querySelectorAll('.video-load');
                 const dropImages = content.querySelectorAll('.photo-load');
                 const dragDrops = content.querySelectorAll('.drag-drop');
-            
+
                 photoLoads.forEach(item => currentVideoLoad(item));
                 dropImages.forEach(item => currentDropImage(item));
                 dragDrops.forEach(item => currentDragDrop(item));

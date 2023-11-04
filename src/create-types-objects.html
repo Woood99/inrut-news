@@ -51,50 +51,24 @@
                         </div>
                         <div class="place-sale-options__row place-sale-options__row--2">
                             <div class="checkbox-secondary">
-                                <input id="test-id_1" name="test-id-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                <input id="test-id_1" name="test-id-name_1" class="checkbox-secondary__input" data-сharacteristics-block-checkbox="Жилая" type="checkbox" value="true">
                                 <label for="test-id_1" class="checkbox-secondary__label">
                                     <span class="checkbox-secondary__text">Жилая</span>
                                 </label>
                             </div>
                             <div class="checkbox-secondary">
-                                <input id="test-id_2" name="test-id-name_2" class="checkbox-secondary__input" type="checkbox" value="true">
+                                <input id="test-id_2" name="test-id-name_2" class="checkbox-secondary__input" data-сharacteristics-block-checkbox="Новостройки" type="checkbox" value="true">
                                 <label for="test-id_2" class="checkbox-secondary__label">
                                     <span class="checkbox-secondary__text">Новостройки</span>
                                 </label>
                             </div>
                         </div>
                         <div class="place-sale-photo">
-                            <h2 class="place-sale-photo__title title-2">
+                            <h2 class="place-sale-photo__title title-2" style="margin-bottom: 24px;">
                                 Изображение
                             </h2>
                             <div class="photo-load">
                                 <div class="place-sale-photo__images drag-drop photo-load__images">
-                                    <div class="place-sale-photo__image ibg drag-drop__item" draggable="true">
-                                        <picture>
-                                            <source srcset="./img/card-12.webp" type="image/webp">
-                                            <img loading="lazy" src="./img/card-12.jpg" width="271" height="190" alt="">
-                                        </picture>
-                                        <div class="place-sale-photo__icon">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#right-left"></use>
-                                            </svg>
-                                        </div>
-                                        <button type="button" class="btn btn-reset place-sale-photo__remove" title="Удалить фото">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#trash"></use>
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--1">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#rotate-1"></use>
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--2">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#rotate-2"></use>
-                                            </svg>
-                                        </button>
-                                    </div>
                                 </div>
                                 <div class="place-sale-photo__wrapper photo-load__wrapper">
                                     <button type="button" class="btn btn-reset">
@@ -106,36 +80,101 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-reset btn-primary" style="width: 100%; margin-top: 32px;">
-                            Сохранить
-                        </button>
                     </div>
-                    <div class="place-sale__row main-table">
+                    <div class="place-sale__row main-table" data-сharacteristics-block-target="Новостройки" hidden>
                         <h2 class="place-sale__row-title place-sale-options__title title-2">
                             Характеристики жилого комплекса
                         </h2>
-                        <div class="main-table__inner container">
-                            <div class="main-table__table">
-                                <div class="main-table__type" style="grid-template-columns: 9% 17% 18% 20% 18% 10%; justify-content: start;">
-                                    <span>Порядок</span>
-                                    <span>Название</span>
-                                    <span>Тип</span>
-                                    <span>Показывать в фильтре</span>
-                                    <span>Обязательное</span>
-                                    <span>Действие</span>
+                        <div class="object-apart-renov__tabs tabs-primary">
+                            <div data-tabs class="tabs-primary__inner">
+                                <nav data-tabs-titles class="tabs-primary__btns tabs__navigation" style="max-width: none;">
+                                    <button type="button" class="btn btn-reset tabs__title _tab-active">
+                                        Общая
+                                    </button>
+                                    <button type="button" class="btn btn-reset tabs__title tabs__title--edit">
+                                        <input type="text" name="Имя" class="input-reset" value="На территории комплекса" disabled>
+                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#pencil">
+                                                </use>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tabs__title tabs__title--edit">
+                                        <input type="text" name="Имя" class="input-reset" value="Парковка" disabled>
+                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#pencil">
+                                                </use>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tabs__title tabs__title--edit">
+                                        <input type="text" name="Имя" class="input-reset" value="Безопасность" disabled>
+                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#pencil">
+                                                </use>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                </nav>
+                                <div class="tabs-primary__container">
+                                    <div data-tabs-body class="tabs__content tabs-primary__content">
+                                        <div class="tabs__body">
+                                            <div class="main-table__inner container">
+                                                <div class="main-table__table">
+                                                    <div class="main-table__type" style="grid-template-columns: 9% 17% 18% 20% 21% 8%; justify-content: start;">
+                                                        <span>Порядок</span>
+                                                        <span>Название</span>
+                                                        <span style="justify-self: center;">Тип</span>
+                                                        <span style="justify-self: center;">Показывать в фильтре</span>
+                                                        <span style="justify-self: center;">Обязательное</span>
+                                                        <span>Действие</span>
+                                                    </div>
+                                                    <div class="main-table__list drag-drop drag-drop--order">
+                                                    </div>
+                                                </div>
+                                                <div class="main-table__next">
+                                                    <a href="create-char-object.html" class="btn btn-reset btn-primary">
+                                                        Создать характеристику жилого комплекса
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tabs__body" hidden>
+                                            <div class="main-table__inner container">
+                                                <div class="main-table__table">
+                                                    <div class="main-table__type" style="grid-template-columns: 9% 17% 18% 20% 21% 5.5%; justify-content: start;">
+                                                        <span>Порядок</span>
+                                                        <span>Название</span>
+                                                        <span style="justify-self: center;">Тип</span>
+                                                        <span style="justify-self: center;">Показывать в фильтре</span>
+                                                        <span style="justify-self: center;">Обязательное</span>
+                                                        <span>Действие</span>
+                                                    </div>
+                                                    <div class="main-table__list drag-drop drag-drop--order">
+                                                    </div>
+                                                </div>
+                                                <div class="main-table__next">
+                                                    <a href="create-char-object.html" class="btn btn-reset btn-primary">
+                                                        Создать характеристику жилого комплекса
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tabs__body" hidden>
+                                           
+                                        </div>
+                                        <div class="tabs__body" hidden>
+                                           
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="main-table__list">
-
-                                </div>
-                            </div>
-                            <div class="main-table__next">
-                                <a href="create-char-object.html" class="btn btn-reset btn-primary">
-                                    Создать характеристику жилого комплекса
-                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="place-sale__row main-table">
+                    <div class="place-sale__row main-table" data-сharacteristics-block-target="Новостройки" hidden>
                         <h2 class="place-sale__row-title place-sale-options__title title-2">
                             Характеристики квартир жилого комплекса
                         </h2>
@@ -160,6 +199,34 @@
                             </div>
                         </div>
                     </div>
+                    <div class="place-sale__row main-table" data-сharacteristics-block-target="Жилая" hidden>
+                        <h2 class="place-sale__row-title place-sale-options__title title-2">
+                            Характеристики объекта
+                        </h2>
+                        <div class="main-table__inner container">
+                            <div class="main-table__table">
+                                <div class="main-table__type" style="grid-template-columns: 13% 14% 16% 20% 18% 16%; justify-content: start;">
+                                    <span>Порядок</span>
+                                    <span>Поле</span>
+                                    <span>Тип поля</span>
+                                    <span>Показывать в фильтре</span>
+                                    <span>Обязательное</span>
+                                    <span>Действие</span>
+                                </div>
+                                <div class="main-table__list">
+                                   
+                                </div>
+                            </div>
+                            <div class="main-table__next">
+                                <a href="#" class="btn btn-reset btn-primary">
+                                    Создать характеристику объекта
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-reset btn-primary place-sale__btn" style="width: 100%;">
+                        Сохранить
+                    </button>
                 </div>
             </div>
         </main>

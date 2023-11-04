@@ -151,11 +151,11 @@
                             <h2 class="place-sale__row-title place-sale-address__title title-2" style="margin-bottom: 0;">
                                 Адрес
                             </h2>
-                            <div class="row" style="color: var(--primaryTwo); display: flex;flex-direction: column;">
+                            <div class="row" style="color: var(--primaryTwo); display: flex;flex-direction: column; font-size: var(--small-fz);">
                                 <div>
                                     Создано: <span>18.06.2023</span>
                                 </div>
-                                <div style="margin-top: 16px;">
+                                <div style="margin-top: 8px;">
                                     Изменено: <span>22.06.2023</span>
                                 </div>
                             </div>
@@ -237,7 +237,7 @@
                                     <label class="input-text__label">
                                         <span>Улица, дом, корпус</span>
                                         <input type="text" name="Заголовок" class="input-reset input-text__input" value="Улица Питерская д.40"
-                                            placeholder="Город, улица, дом, корпус">
+                                            placeholder="">
                                     </label>
                                 </div>
                                 <div class="place-sale-address__select filter__item search-select" data-search-select-subtitle="Любой" style="margin: 0; max-width: none;">
@@ -753,7 +753,7 @@
                         <label class="textarea-primary place-sale-sale__field--descr">
                             <textarea class="input-reset textarea-primary__input" placeholder="Расскажите об акциях и спецпредложениях"></textarea>
                         </label>
-                        <h3 class="title-3" style="margin: 24px 0 16px;">Изображение</h3>
+                        <h3 class="title-3" style="margin: 24px 0;">Изображение</h3>
                         <div class="photo-load">
                             <div class="place-sale-photo__images drag-drop photo-load__images">
                             </div>
@@ -845,20 +845,8 @@
                                             </svg>
                                         </div>
                                     </button>
-                                    <button type="button" class="btn btn-reset tabs__title tabs__title--edit">
+                                    <button type="button" class="btn btn-reset tabs__title tabs__title--edit" style="padding: 9px 32px;">
                                         <input type="text" name="Имя" class="input-reset _width-auto" value="Видео" disabled>
-                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#pencil">
-                                                </use>
-                                            </svg>
-                                        </div>
-                                        <div class="btn btn-reset tabs__title-remove" title="Удалить">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#trash">
-                                                </use>
-                                            </svg>
-                                        </div>
                                     </button>
                                 </nav>
                                 <div class="tabs-primary__container">
@@ -1340,7 +1328,7 @@
                                                     <label class="textarea-primary" style="margin-top: 24px;">
                                                         <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem adipisci repellendus cum obcaecati minus laboriosam?</textarea>
                                                     </label>
-                                                    <div class="row" style="margin:16px 0 24px;">
+                                                    <div class="row" style="margin:24px 0 24px;padding-top: 24px;border-top: 1px solid var(--primary200);">
                                                         <div class="input-text _active input-text--only-number" style="max-width: 350px;">
                                                             <label class="input-text__label">
                                                                 <span>Стоимость от</span>
@@ -1939,27 +1927,38 @@
                                             </svg>
                                         </div>
                                     </button>
-                                    <button type="button" class="btn btn-reset tabs__title tabs__title--edit">
-                                        <input type="text" name="Имя" class="input-reset _width-auto" value="Парк Сокольники" disabled>
-                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#pencil">
-                                                </use>
-                                            </svg>
-                                        </div>
-                                        <div class="btn btn-reset tabs__title-remove" title="Удалить">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#trash">
-                                                </use>
-                                            </svg>
-                                        </div>
-                                    </button>
                                 </nav>
                                 <div class="tabs-primary__container">
                                     <div data-tabs-body class="tabs__content tabs-primary__content">
                                         <div class="tabs__body">
                                             <div class="photo-load">
                                                 <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                    <div class="place-sale-photo__image ibg drag-drop__item" draggable="true">
+                                                        <picture>
+                                                            <source srcset="./img/card-8.webp" type="image/webp">
+                                                            <img loading="lazy" src="./img/card-8.jpg" width="271" height="190" alt="">
+                                                        </picture>
+                                                        <div class="place-sale-photo__icon">
+                                                            <svg>
+                                                                <use xlink:href="img/sprite.svg#right-left"></use>
+                                                            </svg>
+                                                        </div>
+                                                        <button type="button" class="btn btn-reset place-sale-photo__remove" title="Удалить фото">
+                                                            <svg>
+                                                                <use xlink:href="img/sprite.svg#trash"></use>
+                                                            </svg>
+                                                        </button>
+                                                        <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--1">
+                                                            <svg>
+                                                                <use xlink:href="img/sprite.svg#rotate-1"></use>
+                                                            </svg>
+                                                        </button>
+                                                        <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--2">
+                                                            <svg>
+                                                                <use xlink:href="img/sprite.svg#rotate-2"></use>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                                 <div class="place-sale-photo__wrapper photo-load__wrapper">
                                                     <button type="button" class="btn btn-reset">
@@ -1977,6 +1976,32 @@
                                         <div class="tabs__body" hidden>
                                             <div class="photo-load">
                                                 <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                    <div class="place-sale-photo__image ibg drag-drop__item" draggable="true">
+                                                        <picture>
+                                                            <source srcset="./img/card-6.webp" type="image/webp">
+                                                            <img loading="lazy" src="./img/card-6.jpg" width="271" height="190" alt="">
+                                                        </picture>
+                                                        <div class="place-sale-photo__icon">
+                                                            <svg>
+                                                                <use xlink:href="img/sprite.svg#right-left"></use>
+                                                            </svg>
+                                                        </div>
+                                                        <button type="button" class="btn btn-reset place-sale-photo__remove" title="Удалить фото">
+                                                            <svg>
+                                                                <use xlink:href="img/sprite.svg#trash"></use>
+                                                            </svg>
+                                                        </button>
+                                                        <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--1">
+                                                            <svg>
+                                                                <use xlink:href="img/sprite.svg#rotate-1"></use>
+                                                            </svg>
+                                                        </button>
+                                                        <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--2">
+                                                            <svg>
+                                                                <use xlink:href="img/sprite.svg#rotate-2"></use>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                                 <div class="place-sale-photo__wrapper photo-load__wrapper">
                                                     <button type="button" class="btn btn-reset">
@@ -1994,23 +2019,32 @@
                                         <div class="tabs__body" hidden>
                                             <div class="photo-load">
                                                 <div class="place-sale-photo__images drag-drop photo-load__images">
-                                                </div>
-                                                <div class="place-sale-photo__wrapper photo-load__wrapper">
-                                                    <button type="button" class="btn btn-reset">
-                                                        <p>
-                                                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
-                                                        </p>
-                                                    </button>
-                                                    <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
-                                                </div>
-                                            </div>
-                                            <label class="textarea-primary" style="margin-top: 24px;">
-                                                <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
-                                            </label>
-                                        </div>
-                                        <div class="tabs__body" hidden>
-                                            <div class="photo-load">
-                                                <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                    <div class="place-sale-photo__image ibg drag-drop__item" draggable="true">
+                                                        <picture>
+                                                            <source srcset="./img/card-7.webp" type="image/webp">
+                                                            <img loading="lazy" src="./img/card-7.jpg" width="271" height="190" alt="">
+                                                        </picture>
+                                                        <div class="place-sale-photo__icon">
+                                                            <svg>
+                                                                <use xlink:href="img/sprite.svg#right-left"></use>
+                                                            </svg>
+                                                        </div>
+                                                        <button type="button" class="btn btn-reset place-sale-photo__remove" title="Удалить фото">
+                                                            <svg>
+                                                                <use xlink:href="img/sprite.svg#trash"></use>
+                                                            </svg>
+                                                        </button>
+                                                        <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--1">
+                                                            <svg>
+                                                                <use xlink:href="img/sprite.svg#rotate-1"></use>
+                                                            </svg>
+                                                        </button>
+                                                        <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--2">
+                                                            <svg>
+                                                                <use xlink:href="img/sprite.svg#rotate-2"></use>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                                 <div class="place-sale-photo__wrapper photo-load__wrapper">
                                                     <button type="button" class="btn btn-reset">
@@ -2104,9 +2138,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <label class="textarea-primary" style="margin-top: 16px;">
-                                                <textarea class="input-reset textarea-primary__input" placeholder="Описание"></textarea>
-                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -2173,58 +2204,18 @@
                                         <div class="tabs-primary__container">
                                             <div data-tabs-body class="tabs__content tabs-primary__content">
                                                 <div class="tabs__body">
-                                                    <div class="place-sale-photo__images drag-drop photo-load__images">
-                                                        <div class="place-sale-photo__image ibg drag-drop__item" draggable="true">
+                                                    <div class="place-sale-photo__images photo-load__images">
+                                                        <div class="place-sale-photo__image ibg">
                                                             <picture>
                                                                 <source srcset="./img/card-13.webp" type="image/webp">
                                                                 <img loading="lazy" src="./img/card-3.jpg" width="271" height="190" alt="">
                                                             </picture>
-                                                            <div class="place-sale-photo__icon">
-                                                                <svg>
-                                                                    <use xlink:href="img/sprite.svg#right-left"></use>
-                                                                </svg>
-                                                            </div>
-                                                            <button type="button" class="btn btn-reset place-sale-photo__remove" title="Удалить фото">
-                                                                <svg>
-                                                                    <use xlink:href="img/sprite.svg#trash"></use>
-                                                                </svg>
-                                                            </button>
-                                                            <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--1">
-                                                                <svg>
-                                                                    <use xlink:href="img/sprite.svg#rotate-1"></use>
-                                                                </svg>
-                                                            </button>
-                                                            <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--2">
-                                                                <svg>
-                                                                    <use xlink:href="img/sprite.svg#rotate-2"></use>
-                                                                </svg>
-                                                            </button>
                                                         </div>
-                                                        <div class="place-sale-photo__image ibg drag-drop__item" draggable="true">
+                                                        <div class="place-sale-photo__image ibg">
                                                             <picture>
                                                                 <source srcset="./img/card-14.webp" type="image/webp">
                                                                 <img loading="lazy" src="./img/card-14.jpg" width="271" height="190" alt="">
                                                             </picture>
-                                                            <div class="place-sale-photo__icon">
-                                                                <svg>
-                                                                    <use xlink:href="img/sprite.svg#right-left"></use>
-                                                                </svg>
-                                                            </div>
-                                                            <button type="button" class="btn btn-reset place-sale-photo__remove" title="Удалить фото">
-                                                                <svg>
-                                                                    <use xlink:href="img/sprite.svg#trash"></use>
-                                                                </svg>
-                                                            </button>
-                                                            <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--1">
-                                                                <svg>
-                                                                    <use xlink:href="img/sprite.svg#rotate-1"></use>
-                                                                </svg>
-                                                            </button>
-                                                            <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--2">
-                                                                <svg>
-                                                                    <use xlink:href="img/sprite.svg#rotate-2"></use>
-                                                                </svg>
-                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2538,52 +2529,8 @@
                                                     <span>(94 742 ₽/м²)</span>
                                                 </span>
                                             </div>
-                                        </div>
-                                        <div class="room-info-card__number">
-                                            № 1
-                                        </div>
-                                        <div class="col">
-                                            <a href="./detailed-flat-2.html" title="Смотреть">
-                                                <svg>
-                                                    <use xlink:href="img/sprite.svg#eye"></use>
-                                                </svg>
-                                            </a>
-                                            <a href="./edit-apartment.html" title="Редактировать">
-                                                <svg>
-                                                    <use xlink:href="img/sprite.svg#pencil">
-                                                    </use>
-                                                </svg>
-                                            </a>
-                                            <button type="button" class="btn btn-reset" data-popup-path="warning-remove" title="Удалить">
-                                                <svg>
-                                                    <use xlink:href="img/sprite.svg#trash">
-                                                    </use>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="room-info-card">
-                                        <div class="room-info-card__image">
-                                            <picture>
-                                                <source srcset="./img/card-small.webp" type="image/webp">
-                                                <img loading="lazy" src="./img/card-small.jpg" class="image" width="70" height="70" alt="1-комн. квартира, 53 м², 4/12 эт.">
-                                            </picture>
-                                        </div>
-                                        <div class="room-info-card__name-term">
-                                            <h3 class="room-info-card__title title-3">
-                                                Студия 53 м², 4/12 эт.
-                                            </h3>
-                                            <span class="room-info-card__term">
-                                                Срок сдачи 4 кв. 2024
-                                            </span>
-                                        </div>
-                                        <div class="col">
-                                            <div class="room-info-card__price">
-                                                <span class="room-info-card__price-new">
-                                                    <span class="title-3">3 250 000
-                                                        ₽</span>
-                                                    <span>(94 742 ₽/м²)</span>
-                                                </span>
+                                            <div class="room-info-card__frame">
+                                                Корпус: Литер 3
                                             </div>
                                         </div>
                                         <div class="room-info-card__number">
@@ -2632,52 +2579,8 @@
                                                     <span>(94 742 ₽/м²)</span>
                                                 </span>
                                             </div>
-                                        </div>
-                                        <div class="room-info-card__number">
-                                            № 1
-                                        </div>
-                                        <div class="col">
-                                            <a href="./detailed-flat-2.html" title="Смотреть">
-                                                <svg>
-                                                    <use xlink:href="img/sprite.svg#eye"></use>
-                                                </svg>
-                                            </a>
-                                            <a href="./edit-apartment.html" title="Редактировать">
-                                                <svg>
-                                                    <use xlink:href="img/sprite.svg#pencil">
-                                                    </use>
-                                                </svg>
-                                            </a>
-                                            <button type="button" class="btn btn-reset" data-popup-path="warning-remove" title="Удалить">
-                                                <svg>
-                                                    <use xlink:href="img/sprite.svg#trash">
-                                                    </use>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="room-info-card">
-                                        <div class="room-info-card__image">
-                                            <picture>
-                                                <source srcset="./img/card-small.webp" type="image/webp">
-                                                <img loading="lazy" src="./img/card-small.jpg" class="image" width="70" height="70" alt="1-комн. квартира, 53 м², 4/12 эт.">
-                                            </picture>
-                                        </div>
-                                        <div class="room-info-card__name-term">
-                                            <h3 class="room-info-card__title title-3">
-                                                Студия 53 м², 4/12 эт.
-                                            </h3>
-                                            <span class="room-info-card__term">
-                                                Срок сдачи 4 кв. 2024
-                                            </span>
-                                        </div>
-                                        <div class="col">
-                                            <div class="room-info-card__price">
-                                                <span class="room-info-card__price-new">
-                                                    <span class="title-3">3 250 000
-                                                        ₽</span>
-                                                    <span>(94 742 ₽/м²)</span>
-                                                </span>
+                                            <div class="room-info-card__frame">
+                                                Корпус: Литер 3
                                             </div>
                                         </div>
                                         <div class="room-info-card__number">
@@ -2726,52 +2629,8 @@
                                                     <span>(94 742 ₽/м²)</span>
                                                 </span>
                                             </div>
-                                        </div>
-                                        <div class="room-info-card__number">
-                                            № 1
-                                        </div>
-                                        <div class="col">
-                                            <a href="./detailed-flat-2.html" title="Смотреть">
-                                                <svg>
-                                                    <use xlink:href="img/sprite.svg#eye"></use>
-                                                </svg>
-                                            </a>
-                                            <a href="./edit-apartment.html" title="Редактировать">
-                                                <svg>
-                                                    <use xlink:href="img/sprite.svg#pencil">
-                                                    </use>
-                                                </svg>
-                                            </a>
-                                            <button type="button" class="btn btn-reset" data-popup-path="warning-remove" title="Удалить">
-                                                <svg>
-                                                    <use xlink:href="img/sprite.svg#trash">
-                                                    </use>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="room-info-card">
-                                        <div class="room-info-card__image">
-                                            <picture>
-                                                <source srcset="./img/card-small.webp" type="image/webp">
-                                                <img loading="lazy" src="./img/card-small.jpg" class="image" width="70" height="70" alt="1-комн. квартира, 53 м², 4/12 эт.">
-                                            </picture>
-                                        </div>
-                                        <div class="room-info-card__name-term">
-                                            <h3 class="room-info-card__title title-3">
-                                                Студия 53 м², 4/12 эт.
-                                            </h3>
-                                            <span class="room-info-card__term">
-                                                Срок сдачи 4 кв. 2024
-                                            </span>
-                                        </div>
-                                        <div class="col">
-                                            <div class="room-info-card__price">
-                                                <span class="room-info-card__price-new">
-                                                    <span class="title-3">3 250 000
-                                                        ₽</span>
-                                                    <span>(94 742 ₽/м²)</span>
-                                                </span>
+                                            <div class="room-info-card__frame">
+                                                Корпус: Литер 3
                                             </div>
                                         </div>
                                         <div class="room-info-card__number">
@@ -2820,52 +2679,8 @@
                                                     <span>(94 742 ₽/м²)</span>
                                                 </span>
                                             </div>
-                                        </div>
-                                        <div class="room-info-card__number">
-                                            № 1
-                                        </div>
-                                        <div class="col">
-                                            <a href="./detailed-flat-2.html" title="Смотреть">
-                                                <svg>
-                                                    <use xlink:href="img/sprite.svg#eye"></use>
-                                                </svg>
-                                            </a>
-                                            <a href="./edit-apartment.html" title="Редактировать">
-                                                <svg>
-                                                    <use xlink:href="img/sprite.svg#pencil">
-                                                    </use>
-                                                </svg>
-                                            </a>
-                                            <button type="button" class="btn btn-reset" data-popup-path="warning-remove" title="Удалить">
-                                                <svg>
-                                                    <use xlink:href="img/sprite.svg#trash">
-                                                    </use>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="room-info-card">
-                                        <div class="room-info-card__image">
-                                            <picture>
-                                                <source srcset="./img/card-small.webp" type="image/webp">
-                                                <img loading="lazy" src="./img/card-small.jpg" class="image" width="70" height="70" alt="1-комн. квартира, 53 м², 4/12 эт.">
-                                            </picture>
-                                        </div>
-                                        <div class="room-info-card__name-term">
-                                            <h3 class="room-info-card__title title-3">
-                                                Студия 53 м², 4/12 эт.
-                                            </h3>
-                                            <span class="room-info-card__term">
-                                                Срок сдачи 4 кв. 2024
-                                            </span>
-                                        </div>
-                                        <div class="col">
-                                            <div class="room-info-card__price">
-                                                <span class="room-info-card__price-new">
-                                                    <span class="title-3">3 250 000
-                                                        ₽</span>
-                                                    <span>(94 742 ₽/м²)</span>
-                                                </span>
+                                            <div class="room-info-card__frame">
+                                                Корпус: Литер 3
                                             </div>
                                         </div>
                                         <div class="room-info-card__number">
@@ -2914,6 +2729,9 @@
                                                     <span>(94 742 ₽/м²)</span>
                                                 </span>
                                             </div>
+                                            <div class="room-info-card__frame">
+                                                Корпус: Литер 3
+                                            </div>
                                         </div>
                                         <div class="room-info-card__number">
                                             № 1
@@ -2960,6 +2778,209 @@
                                                         ₽</span>
                                                     <span>(94 742 ₽/м²)</span>
                                                 </span>
+                                            </div>
+                                            <div class="room-info-card__frame">
+                                                Корпус: Литер 3
+                                            </div>
+                                        </div>
+                                        <div class="room-info-card__number">
+                                            № 1
+                                        </div>
+                                        <div class="col">
+                                            <a href="./detailed-flat-2.html" title="Смотреть">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#eye"></use>
+                                                </svg>
+                                            </a>
+                                            <a href="./edit-apartment.html" title="Редактировать">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#pencil">
+                                                    </use>
+                                                </svg>
+                                            </a>
+                                            <button type="button" class="btn btn-reset" data-popup-path="warning-remove" title="Удалить">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#trash">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="room-info-card">
+                                        <div class="room-info-card__image">
+                                            <picture>
+                                                <source srcset="./img/card-small.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-small.jpg" class="image" width="70" height="70" alt="1-комн. квартира, 53 м², 4/12 эт.">
+                                            </picture>
+                                        </div>
+                                        <div class="room-info-card__name-term">
+                                            <h3 class="room-info-card__title title-3">
+                                                Студия 53 м², 4/12 эт.
+                                            </h3>
+                                            <span class="room-info-card__term">
+                                                Срок сдачи 4 кв. 2024
+                                            </span>
+                                        </div>
+                                        <div class="col">
+                                            <div class="room-info-card__price">
+                                                <span class="room-info-card__price-new">
+                                                    <span class="title-3">3 250 000
+                                                        ₽</span>
+                                                    <span>(94 742 ₽/м²)</span>
+                                                </span>
+                                            </div>
+                                            <div class="room-info-card__frame">
+                                                Корпус: Литер 3
+                                            </div>
+                                        </div>
+                                        <div class="room-info-card__number">
+                                            № 1
+                                        </div>
+                                        <div class="col">
+                                            <a href="./detailed-flat-2.html" title="Смотреть">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#eye"></use>
+                                                </svg>
+                                            </a>
+                                            <a href="./edit-apartment.html" title="Редактировать">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#pencil">
+                                                    </use>
+                                                </svg>
+                                            </a>
+                                            <button type="button" class="btn btn-reset" data-popup-path="warning-remove" title="Удалить">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#trash">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="room-info-card">
+                                        <div class="room-info-card__image">
+                                            <picture>
+                                                <source srcset="./img/card-small.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-small.jpg" class="image" width="70" height="70" alt="1-комн. квартира, 53 м², 4/12 эт.">
+                                            </picture>
+                                        </div>
+                                        <div class="room-info-card__name-term">
+                                            <h3 class="room-info-card__title title-3">
+                                                Студия 53 м², 4/12 эт.
+                                            </h3>
+                                            <span class="room-info-card__term">
+                                                Срок сдачи 4 кв. 2024
+                                            </span>
+                                        </div>
+                                        <div class="col">
+                                            <div class="room-info-card__price">
+                                                <span class="room-info-card__price-new">
+                                                    <span class="title-3">3 250 000
+                                                        ₽</span>
+                                                    <span>(94 742 ₽/м²)</span>
+                                                </span>
+                                            </div>
+                                            <div class="room-info-card__frame">
+                                                Корпус: Литер 3
+                                            </div>
+                                        </div>
+                                        <div class="room-info-card__number">
+                                            № 1
+                                        </div>
+                                        <div class="col">
+                                            <a href="./detailed-flat-2.html" title="Смотреть">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#eye"></use>
+                                                </svg>
+                                            </a>
+                                            <a href="./edit-apartment.html" title="Редактировать">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#pencil">
+                                                    </use>
+                                                </svg>
+                                            </a>
+                                            <button type="button" class="btn btn-reset" data-popup-path="warning-remove" title="Удалить">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#trash">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="room-info-card">
+                                        <div class="room-info-card__image">
+                                            <picture>
+                                                <source srcset="./img/card-small.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-small.jpg" class="image" width="70" height="70" alt="1-комн. квартира, 53 м², 4/12 эт.">
+                                            </picture>
+                                        </div>
+                                        <div class="room-info-card__name-term">
+                                            <h3 class="room-info-card__title title-3">
+                                                Студия 53 м², 4/12 эт.
+                                            </h3>
+                                            <span class="room-info-card__term">
+                                                Срок сдачи 4 кв. 2024
+                                            </span>
+                                        </div>
+                                        <div class="col">
+                                            <div class="room-info-card__price">
+                                                <span class="room-info-card__price-new">
+                                                    <span class="title-3">3 250 000
+                                                        ₽</span>
+                                                    <span>(94 742 ₽/м²)</span>
+                                                </span>
+                                            </div>
+                                            <div class="room-info-card__frame">
+                                                Корпус: Литер 3
+                                            </div>
+                                        </div>
+                                        <div class="room-info-card__number">
+                                            № 1
+                                        </div>
+                                        <div class="col">
+                                            <a href="./detailed-flat-2.html" title="Смотреть">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#eye"></use>
+                                                </svg>
+                                            </a>
+                                            <a href="./edit-apartment.html" title="Редактировать">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#pencil">
+                                                    </use>
+                                                </svg>
+                                            </a>
+                                            <button type="button" class="btn btn-reset" data-popup-path="warning-remove" title="Удалить">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#trash">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="room-info-card">
+                                        <div class="room-info-card__image">
+                                            <picture>
+                                                <source srcset="./img/card-small.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-small.jpg" class="image" width="70" height="70" alt="1-комн. квартира, 53 м², 4/12 эт.">
+                                            </picture>
+                                        </div>
+                                        <div class="room-info-card__name-term">
+                                            <h3 class="room-info-card__title title-3">
+                                                Студия 53 м², 4/12 эт.
+                                            </h3>
+                                            <span class="room-info-card__term">
+                                                Срок сдачи 4 кв. 2024
+                                            </span>
+                                        </div>
+                                        <div class="col">
+                                            <div class="room-info-card__price">
+                                                <span class="room-info-card__price-new">
+                                                    <span class="title-3">3 250 000
+                                                        ₽</span>
+                                                    <span>(94 742 ₽/м²)</span>
+                                                </span>
+                                            </div>
+                                            <div class="room-info-card__frame">
+                                                Корпус: Литер 3
                                             </div>
                                         </div>
                                         <div class="room-info-card__number">

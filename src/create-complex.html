@@ -18,14 +18,9 @@
 <body class="page__body">
     <div class="site-container site-container--place-sale">
         @include('partials/header--menu.html')
-        <div class="header-fixed fix-block" style="height:114px;">
+        <div class="header-fixed fix-block" style="height:52px;">
             <div class="header-fixed__container" style="max-width:1500px;">
-                <div class="header-fixed__top">
-                    <button type="submit" class="btn btn-reset btn-primary" style="width: 100%;">
-                        Сохранить
-                    </button>
-                </div>
-                <nav class="header-fixed__nav">
+                <nav class="header-fixed__nav" style="margin-top:0;">
                     <ul class="header-fixed__list list-reset">
                         <li class="header-fixed__item">
                             <a href="#section-address" class="header-fixed__item-link">
@@ -40,6 +35,16 @@
                         <li class="header-fixed__item">
                             <a href="#section-descr" class="header-fixed__item-link">
                                 Описание
+                            </a>
+                        </li>
+                        <li class="header-fixed__item">
+                            <a href="#section-price" class="header-fixed__item-link">
+                                Цена
+                            </a>
+                        </li>
+                        <li class="header-fixed__item">
+                            <a href="#section-contacts" class="header-fixed__item-link">
+                                Контакт
                             </a>
                         </li>
                         <li class="header-fixed__item">
@@ -75,16 +80,6 @@
                         <li class="header-fixed__item">
                             <a href="#section-apart-complex" class="header-fixed__item-link">
                                 Квартиры комплекса
-                            </a>
-                        </li>
-                        <li class="header-fixed__item">
-                            <a href="#section-price" class="header-fixed__item-link">
-                                Цена
-                            </a>
-                        </li>
-                        <li class="header-fixed__item">
-                            <a href="#section-contacts" class="header-fixed__item-link">
-                                Контакт
                             </a>
                         </li>
                     </ul>
@@ -455,6 +450,79 @@
                             <textarea class="input-reset textarea-primary__input" placeholder="Расскажите о недвижимости, транспортной доступности и инфраструктуре"></textarea>
                         </label>
                     </div>
+                    <div class="submit-app__row place-sale-price section-observ" id="section-price">
+                        <div class="place-sale-price__top">
+                            <h2 class="place-sale__row-title place-sale-price__title title-2">
+                                Цена
+                            </h2>
+                        </div>
+                        <div class="place-sale-price__wrapper">
+                            <div class="place-sale-price__input input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Цена от</span>
+                                    <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                    <span>₽</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="place-sale__row your-contacts-field section-observ" id="section-contacts">
+                        <h2 class="your-contacts-field__title place-sale__row-title title-2">
+                            Контакт
+                        </h2>
+                        <div class="your-contacts-field__wrapper" style="display: grid; grid-template-columns: repeat(3,1fr); grid-column-gap: 8px;">
+                            <div class="search-select-one search-select-one--img-left">
+                                <button type="button" class="btn btn-reset search-select-one__button">
+                                    <div class="search-select-one__button-wrapper">
+                                        <div>Имя, фамилия</div>
+                                        <div>Не выбрано</div>
+                                    </div>
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#check"></use>
+                                    </svg>
+                                </button>
+                                <div class="search-select-one__dropdown">
+                                    <button type="button" class="btn btn-reset search-select-one__close">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#x"></use>
+                                        </svg>
+                                    </button>
+                                    <label class="input-primary search-select-one__input">
+                                        <input type="search" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по имени">
+                                    </label>
+                                    <div class="search-select-one__wrapper simplebar-third">
+                                        <div class="search-select-one__item" data-value="object-1">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
+                                            <span>Владимир А.</span>
+                                        </div>
+                                        <div class="search-select-one__item" data-value="object-2">
+                                            <img loading="lazy" src="./img/avatar-2.jpg" alt="ПИК">
+                                            <span>Сергей С.</span>
+                                        </div>
+                                        <div class="search-select-one__item" data-value="object-3">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
+                                            <span>Анастасия Г.</span>
+                                        </div>
+                                        <div class="search-select-one__item" data-value="object-1">
+                                            <img loading="lazy" src="./img/avatar-2.jpg" alt="ПИК">
+                                            <span>Иван В.</span>
+                                        </div>
+                                        <div class="search-select-one__item" data-value="object-2">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
+                                            <span>Алексей Г.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="text" name="object" value="Волгоград" class="search-select-one__input-hidden" hidden>
+                            </div>
+                            <div class="your-contacts-field__tel input-text input-text--no-exp" style="width:auto">
+                                <label class="input-text__label">
+                                    <span>Номер телефона</span>
+                                    <input type="text" name="Застройщик" class="input-reset input-text__input input-phone-mask" placeholder="">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="place-sale__row place-sale-sale section-observ" id="section-promo-news">
                         <h2 class="place-sale__row-title place-sale-sale__title title-2">
                             Акции-новости
@@ -462,7 +530,6 @@
                         <div class="place-sale-sale__cards">
                             <div class="swiper">
                                 <div class="swiper-wrapper">
-                                 
                                 </div>
                             </div>
                             <button type="button" class="btn btn-reset place-sale-sale__navigation nav-arrow-primary nav-arrow-primary--prev" disabled>
@@ -480,7 +547,7 @@
                                 </div>
                             </button>
                         </div>
-                        <h3 class="place-sale-sale__title title-3" style="margin-bottom: 16px;">
+                        <h3 class="place-sale-sale__title title-3" style="margin-bottom: 24px;">
                             Создать акцию-новость
                         </h3>
                         <div class="place-sale-sale__wrapper">
@@ -547,11 +614,11 @@
                                 </label>
                             </div>
                         </div>
-                        <h3 class="title-3" style="margin: 16px 0 16px 0;">Описание</h3>
+                        <h3 class="title-3" style="margin: 24px 0;">Описание</h3>
                         <label class="textarea-primary place-sale-sale__field--descr">
                             <textarea class="input-reset textarea-primary__input" placeholder="Расскажите об акциях и спецпредложениях"></textarea>
                         </label>
-                        <h3 class="title-3" style="margin: 16px 0 16px 0;">Изображение</h3>
+                        <h3 class="title-3" style="margin: 24px 0;">Изображение</h3>
                         <div class="photo-load">
                             <div class="place-sale-photo__images drag-drop photo-load__images">
                             </div>
@@ -643,20 +710,8 @@
                                             </svg>
                                         </div>
                                     </button>
-                                    <button type="button" class="btn btn-reset tabs__title tabs__title--edit">
+                                    <button type="button" class="btn btn-reset tabs__title tabs__title--edit" style="padding: 9px 32px;">
                                         <input type="text" name="Имя" class="input-reset _width-auto" value="Видео" disabled>
-                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#pencil">
-                                                </use>
-                                            </svg>
-                                        </div>
-                                        <div class="btn btn-reset tabs__title-remove" title="Удалить">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#trash">
-                                                </use>
-                                            </svg>
-                                        </div>
                                     </button>
                                 </nav>
                                 <div class="tabs-primary__container">
@@ -664,22 +719,6 @@
                                         <div class="tabs__body">
                                             <div class="photo-load">
                                                 <div class="place-sale-photo__images drag-drop photo-load__images">
-                                                
-                                                </div>
-                                                <div class="place-sale-photo__wrapper photo-load__wrapper">
-                                                    <button type="button" class="btn btn-reset">
-                                                        <p>
-                                                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
-                                                        </p>
-                                                    </button>
-                                                    <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tabs__body" hidden>
-                                            <div class="photo-load">
-                                                <div class="place-sale-photo__images drag-drop photo-load__images">
-                                                  
                                                 </div>
                                                 <div class="place-sale-photo__wrapper photo-load__wrapper">
                                                     <button type="button" class="btn btn-reset">
@@ -720,13 +759,32 @@
                                             </div>
                                         </div>
                                         <div class="tabs__body" hidden>
-                                            <div class="place-sale-video">
-                                                <p class="place-sale-video__descr">
-                                                    Добавьте видео вашей недвижимости
-                                                </p>
-                                                <label class="place-sale-video__field input-primary">
-                                                    <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Ссылка на видео с YouTube">
-                                                </label>
+                                            <div class="photo-load">
+                                                <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                </div>
+                                                <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                    <button type="button" class="btn btn-reset">
+                                                        <p>
+                                                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                                        </p>
+                                                    </button>
+                                                    <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tabs__body" hidden>
+                                            <div class="video-load">
+                                                <div class="video-load__wrapper">
+                                                    <p class="video-load__descr">
+                                                        Добавьте видео вашей недвижимости
+                                                    </p>
+                                                    <div class="row">
+                                                        <label class="video-load__input input-primary">
+                                                            <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Ссылка на видео с YouTube">
+                                                        </label>
+                                                        <button type="button" class="btn btn-reset btn-primary video-load__btn">Добавить</button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -815,7 +873,6 @@
                                         <div class="tabs__body">
                                             <div class="photo-load">
                                                 <div class="place-sale-photo__images drag-drop photo-load__images">
-                                             
                                                 </div>
                                                 <div class="place-sale-photo__wrapper photo-load__wrapper">
                                                     <button type="button" class="btn btn-reset">
@@ -938,11 +995,12 @@
                                         <div class="tabs__body furnishing-sets__item">
                                             <div class="row">
                                                 <div class="furnishing-sets__btns">
-                                                    <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--studio furnishing-sets__btn--controls _active">
+                                                    <button type="button"
+                                                        class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--studio furnishing-sets__btn--controls _active">
                                                         <span>Студия</span>
                                                         <div class="furnishing-sets__btn-remove">
                                                             <svg>
-                                                              <use xlink:href="img/sprite.svg#trash"></use>
+                                                                <use xlink:href="img/sprite.svg#trash"></use>
                                                             </svg>
                                                         </div>
                                                     </button>
@@ -950,7 +1008,7 @@
                                                         <span>1</span>
                                                         <div class="furnishing-sets__btn-remove">
                                                             <svg>
-                                                              <use xlink:href="img/sprite.svg#trash"></use>
+                                                                <use xlink:href="img/sprite.svg#trash"></use>
                                                             </svg>
                                                         </div>
                                                     </button>
@@ -958,7 +1016,7 @@
                                                         <span>2</span>
                                                         <div class="furnishing-sets__btn-remove">
                                                             <svg>
-                                                              <use xlink:href="img/sprite.svg#trash"></use>
+                                                                <use xlink:href="img/sprite.svg#trash"></use>
                                                             </svg>
                                                         </div>
                                                     </button>
@@ -966,7 +1024,7 @@
                                                         <span>3</span>
                                                         <div class="furnishing-sets__btn-remove">
                                                             <svg>
-                                                              <use xlink:href="img/sprite.svg#trash"></use>
+                                                                <use xlink:href="img/sprite.svg#trash"></use>
                                                             </svg>
                                                         </div>
                                                     </button>
@@ -974,7 +1032,7 @@
                                                         <span>4</span>
                                                         <div class="furnishing-sets__btn-remove">
                                                             <svg>
-                                                              <use xlink:href="img/sprite.svg#trash"></use>
+                                                                <use xlink:href="img/sprite.svg#trash"></use>
                                                             </svg>
                                                         </div>
                                                     </button>
@@ -982,7 +1040,7 @@
                                                 <div class="furnishing-sets__create">
                                                     <button type="button" class="btn btn-reset furnishing-sets__create--room">
                                                         <svg>
-                                                          <use xlink:href="img/sprite.svg#plus"></use>
+                                                            <use xlink:href="img/sprite.svg#plus"></use>
                                                         </svg>
                                                         Добавить комнатность
                                                     </button>
@@ -1005,11 +1063,11 @@
                                                     <label class="textarea-primary" style="margin-top: 24px;">
                                                         <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
                                                     </label>
-                                                    <div class="row" style="margin:16px 0 24px;">
-                                                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                                                    <div class="row" style="margin:24px 0 24px;padding-top: 24px;border-top: 1px solid var(--primary200);">
+                                                        <div class="input-text _active input-text--only-number" style="max-width: 350px;">
                                                             <label class="input-text__label">
                                                                 <span>Стоимость от</span>
-                                                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" value="600 000" placeholder="">
                                                                 <span>₽</span>
                                                             </label>
                                                         </div>
@@ -1025,10 +1083,13 @@
                                                         </div>
                                                     </div>
                                                     <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
                                                         <div class="place-sale-photo__wrapper photo-load__wrapper">
                                                             <button type="button" class="btn btn-reset">
                                                                 <p>
-                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
+                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                                                        эту область</span>
                                                                 </p>
                                                             </button>
                                                             <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
@@ -1071,10 +1132,62 @@
                                                         </div>
                                                     </div>
                                                     <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
                                                         <div class="place-sale-photo__wrapper photo-load__wrapper">
                                                             <button type="button" class="btn btn-reset">
                                                                 <p>
-                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
+                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                                                        эту область</span>
+                                                                </p>
+                                                            </button>
+                                                            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="furnishing-sets__tab" hidden>
+                                                    <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
+                                                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                            <button type="button" class="btn btn-reset">
+                                                                <p>
+                                                                    <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                                                </p>
+                                                            </button>
+                                                            <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                                        </div>
+                                                    </div>
+                                                    <label class="textarea-primary" style="margin-top: 24px;">
+                                                        <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+                                                    </label>
+                                                    <div class="row" style="margin:16px 0 24px;">
+                                                        <div class="input-text _active input-text--only-number" style="max-width: 350px;">
+                                                            <label class="input-text__label">
+                                                                <span>Стоимость от</span>
+                                                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" value="600 000" placeholder="">
+                                                                <span>₽</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
+                                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                                <svg>
+                                                                    <use xlink:href="img/sprite.svg#info"></use>
+                                                                </svg>
+                                                            </button>
+                                                            <div class="secondary-tooltip__content">
+                                                                Стоиомость комплекта меблировки
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
+                                                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                            <button type="button" class="btn btn-reset">
+                                                                <p>
+                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                                                        эту область</span>
                                                                 </p>
                                                             </button>
                                                             <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
@@ -1117,10 +1230,13 @@
                                                         </div>
                                                     </div>
                                                     <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
                                                         <div class="place-sale-photo__wrapper photo-load__wrapper">
                                                             <button type="button" class="btn btn-reset">
                                                                 <p>
-                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
+                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                                                        эту область</span>
                                                                 </p>
                                                             </button>
                                                             <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
@@ -1163,56 +1279,13 @@
                                                         </div>
                                                     </div>
                                                     <div class="photo-load">
-                                                        <div class="place-sale-photo__wrapper photo-load__wrapper">
-                                                            <button type="button" class="btn btn-reset">
-                                                                <p>
-                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
-                                                                </p>
-                                                            </button>
-                                                            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="furnishing-sets__tab" hidden>
-                                                    <div class="photo-load">
                                                         <div class="place-sale-photo__images drag-drop photo-load__images">
                                                         </div>
                                                         <div class="place-sale-photo__wrapper photo-load__wrapper">
                                                             <button type="button" class="btn btn-reset">
                                                                 <p>
-                                                                    <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
-                                                                </p>
-                                                            </button>
-                                                            <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
-                                                        </div>
-                                                    </div>
-                                                    <label class="textarea-primary" style="margin-top: 24px;">
-                                                        <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
-                                                    </label>
-                                                    <div class="row" style="margin:16px 0 24px;">
-                                                        <div class="input-text input-text--only-number" style="max-width: 350px;">
-                                                            <label class="input-text__label">
-                                                                <span>Стоимость от</span>
-                                                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
-                                                                <span>₽</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
-                                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                                                                <svg>
-                                                                    <use xlink:href="img/sprite.svg#info"></use>
-                                                                </svg>
-                                                            </button>
-                                                            <div class="secondary-tooltip__content">
-                                                                Стоиомость комплекта меблировки
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="photo-load">
-                                                        <div class="place-sale-photo__wrapper photo-load__wrapper">
-                                                            <button type="button" class="btn btn-reset">
-                                                                <p>
-                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
+                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                                                        эту область</span>
                                                                 </p>
                                                             </button>
                                                             <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
@@ -1224,11 +1297,12 @@
                                         <div class="tabs__body furnishing-sets__item" hidden>
                                             <div class="row">
                                                 <div class="furnishing-sets__btns">
-                                                    <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--studio furnishing-sets__btn--controls _active">
+                                                    <button type="button"
+                                                        class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--studio furnishing-sets__btn--controls _active">
                                                         <span>Студия</span>
                                                         <div class="furnishing-sets__btn-remove">
                                                             <svg>
-                                                              <use xlink:href="img/sprite.svg#trash"></use>
+                                                                <use xlink:href="img/sprite.svg#trash"></use>
                                                             </svg>
                                                         </div>
                                                     </button>
@@ -1236,7 +1310,7 @@
                                                         <span>1</span>
                                                         <div class="furnishing-sets__btn-remove">
                                                             <svg>
-                                                              <use xlink:href="img/sprite.svg#trash"></use>
+                                                                <use xlink:href="img/sprite.svg#trash"></use>
                                                             </svg>
                                                         </div>
                                                     </button>
@@ -1244,7 +1318,7 @@
                                                         <span>2</span>
                                                         <div class="furnishing-sets__btn-remove">
                                                             <svg>
-                                                              <use xlink:href="img/sprite.svg#trash"></use>
+                                                                <use xlink:href="img/sprite.svg#trash"></use>
                                                             </svg>
                                                         </div>
                                                     </button>
@@ -1252,7 +1326,7 @@
                                                         <span>3</span>
                                                         <div class="furnishing-sets__btn-remove">
                                                             <svg>
-                                                              <use xlink:href="img/sprite.svg#trash"></use>
+                                                                <use xlink:href="img/sprite.svg#trash"></use>
                                                             </svg>
                                                         </div>
                                                     </button>
@@ -1260,7 +1334,7 @@
                                                         <span>4</span>
                                                         <div class="furnishing-sets__btn-remove">
                                                             <svg>
-                                                              <use xlink:href="img/sprite.svg#trash"></use>
+                                                                <use xlink:href="img/sprite.svg#trash"></use>
                                                             </svg>
                                                         </div>
                                                     </button>
@@ -1268,7 +1342,7 @@
                                                 <div class="furnishing-sets__create">
                                                     <button type="button" class="btn btn-reset furnishing-sets__create--room">
                                                         <svg>
-                                                          <use xlink:href="img/sprite.svg#plus"></use>
+                                                            <use xlink:href="img/sprite.svg#plus"></use>
                                                         </svg>
                                                         Добавить комнатность
                                                     </button>
@@ -1278,7 +1352,7 @@
                                                 <div class="furnishing-sets__tab">
                                                     <div class="photo-load">
                                                         <div class="place-sale-photo__images drag-drop photo-load__images">
-                                                           
+
                                                         </div>
                                                         <div class="place-sale-photo__wrapper photo-load__wrapper">
                                                             <button type="button" class="btn btn-reset">
@@ -1293,10 +1367,10 @@
                                                         <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
                                                     </label>
                                                     <div class="row" style="margin:16px 0 24px;">
-                                                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                                                        <div class="input-text _active input-text--only-number" style="max-width: 350px;">
                                                             <label class="input-text__label">
                                                                 <span>Стоимость от</span>
-                                                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" value="600 000" placeholder="">
                                                                 <span>₽</span>
                                                             </label>
                                                         </div>
@@ -1312,10 +1386,13 @@
                                                         </div>
                                                     </div>
                                                     <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
                                                         <div class="place-sale-photo__wrapper photo-load__wrapper">
                                                             <button type="button" class="btn btn-reset">
                                                                 <p>
-                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
+                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                                                        эту область</span>
                                                                 </p>
                                                             </button>
                                                             <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
@@ -1358,10 +1435,13 @@
                                                         </div>
                                                     </div>
                                                     <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
                                                         <div class="place-sale-photo__wrapper photo-load__wrapper">
                                                             <button type="button" class="btn btn-reset">
                                                                 <p>
-                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
+                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                                                        эту область</span>
                                                                 </p>
                                                             </button>
                                                             <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
@@ -1404,10 +1484,13 @@
                                                         </div>
                                                     </div>
                                                     <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
                                                         <div class="place-sale-photo__wrapper photo-load__wrapper">
                                                             <button type="button" class="btn btn-reset">
                                                                 <p>
-                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
+                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                                                        эту область</span>
                                                                 </p>
                                                             </button>
                                                             <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
@@ -1450,10 +1533,13 @@
                                                         </div>
                                                     </div>
                                                     <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
                                                         <div class="place-sale-photo__wrapper photo-load__wrapper">
                                                             <button type="button" class="btn btn-reset">
                                                                 <p>
-                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
+                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                                                        эту область</span>
                                                                 </p>
                                                             </button>
                                                             <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
@@ -1496,10 +1582,13 @@
                                                         </div>
                                                     </div>
                                                     <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
                                                         <div class="place-sale-photo__wrapper photo-load__wrapper">
                                                             <button type="button" class="btn btn-reset">
                                                                 <p>
-                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в эту область</span>
+                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                                                        эту область</span>
                                                                 </p>
                                                             </button>
                                                             <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
@@ -1528,137 +1617,9 @@
                             </div>
                             <div data-tabs class="tabs-primary__inner">
                                 <nav data-tabs-titles class="tabs-primary__btns tabs__navigation" style="max-width: none;">
-                                    <button type="button" class="btn btn-reset tabs__title _tab-active tabs__title--edit">
-                                        <input type="text" name="Имя" class="input-reset _width-auto" value="Фестивальный парк" disabled>
-                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#pencil">
-                                                </use>
-                                            </svg>
-                                        </div>
-                                        <div class="btn btn-reset tabs__title-remove" title="Удалить">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#trash">
-                                                </use>
-                                            </svg>
-                                        </div>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tabs__title tabs__title--edit">
-                                        <input type="text" name="Имя" class="input-reset _width-auto" value="Парк Дубовая роща" disabled>
-                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#pencil">
-                                                </use>
-                                            </svg>
-                                        </div>
-                                        <div class="btn btn-reset tabs__title-remove" title="Удалить">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#trash">
-                                                </use>
-                                            </svg>
-                                        </div>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tabs__title tabs__title--edit">
-                                        <input type="text" name="Имя" class="input-reset _width-auto" value="Екатерининский парк" disabled>
-                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#pencil">
-                                                </use>
-                                            </svg>
-                                        </div>
-                                        <div class="btn btn-reset tabs__title-remove" title="Удалить">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#trash">
-                                                </use>
-                                            </svg>
-                                        </div>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tabs__title tabs__title--edit">
-                                        <input type="text" name="Имя" class="input-reset _width-auto" value="Парк Сокольники" disabled>
-                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#pencil">
-                                                </use>
-                                            </svg>
-                                        </div>
-                                        <div class="btn btn-reset tabs__title-remove" title="Удалить">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#trash">
-                                                </use>
-                                            </svg>
-                                        </div>
-                                    </button>
                                 </nav>
                                 <div class="tabs-primary__container">
                                     <div data-tabs-body class="tabs__content tabs-primary__content">
-                                        <div class="tabs__body">
-                                            <div class="photo-load">
-                                                <div class="place-sale-photo__images drag-drop photo-load__images">
-                                                </div>
-                                                <div class="place-sale-photo__wrapper photo-load__wrapper">
-                                                    <button type="button" class="btn btn-reset">
-                                                        <p>
-                                                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
-                                                        </p>
-                                                    </button>
-                                                    <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
-                                                </div>
-                                            </div>
-                                            <label class="textarea-primary" style="margin-top: 24px;">
-                                                <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
-                                            </label>
-                                        </div>
-                                        <div class="tabs__body" hidden>
-                                            <div class="photo-load">
-                                                <div class="place-sale-photo__images drag-drop photo-load__images">
-                                                </div>
-                                                <div class="place-sale-photo__wrapper photo-load__wrapper">
-                                                    <button type="button" class="btn btn-reset">
-                                                        <p>
-                                                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
-                                                        </p>
-                                                    </button>
-                                                    <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
-                                                </div>
-                                            </div>
-                                            <label class="textarea-primary" style="margin-top: 24px;">
-                                                <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
-                                            </label>
-                                        </div>
-                                        <div class="tabs__body" hidden>
-                                            <div class="photo-load">
-                                                <div class="place-sale-photo__images drag-drop photo-load__images">
-                                                </div>
-                                                <div class="place-sale-photo__wrapper photo-load__wrapper">
-                                                    <button type="button" class="btn btn-reset">
-                                                        <p>
-                                                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
-                                                        </p>
-                                                    </button>
-                                                    <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
-                                                </div>
-                                            </div>
-                                            <label class="textarea-primary" style="margin-top: 24px;">
-                                                <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
-                                            </label>
-                                        </div>
-                                        <div class="tabs__body" hidden>
-                                            <div class="photo-load">
-                                                <div class="place-sale-photo__images drag-drop photo-load__images">
-                                                </div>
-                                                <div class="place-sale-photo__wrapper photo-load__wrapper">
-                                                    <button type="button" class="btn btn-reset">
-                                                        <p>
-                                                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
-                                                        </p>
-                                                    </button>
-                                                    <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
-                                                </div>
-                                            </div>
-                                            <label class="textarea-primary" style="margin-top: 24px;">
-                                                <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
-                                            </label>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1681,11 +1642,18 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="input-text input-text--no-exp date-picker">
-                                <label class="input-text__label">
-                                    <span>Дата</span>
-                                    <input type="text" name="Имя" class="input-reset input-text__input date-picker__input" value="" placeholder="">
-                                </label>
+                            <div class="select-secondary _selected select-secondary--quarter">
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Квартал
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="complex">
+                                        <option value="quarter1">1 квартал</option>
+                                        <option value="quarter2">2 квартал</option>
+                                        <option value="quarter3">3 квартал</option>
+                                        <option value="quarter4">4 квартал</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <div class="object-apart-renov__tabs tabs-primary">
@@ -1718,17 +1686,19 @@
                                             </label>
                                         </div>
                                         <div class="tabs__body" hidden>
-                                            <div class="place-sale-video">
-                                                <p class="place-sale-video__descr">
-                                                    Добавьте видео вашей недвижимости
-                                                </p>
-                                                <label class="place-sale-video__field input-primary">
-                                                    <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Ссылка на видео с YouTube">
-                                                </label>
+                                            <div class="video-load">
+                                                <div class="video-load__wrapper">
+                                                    <p class="video-load__descr">
+                                                        Добавьте видео вашей недвижимости
+                                                    </p>
+                                                    <div class="row">
+                                                        <label class="video-load__input input-primary">
+                                                            <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Ссылка на видео с YouTube">
+                                                        </label>
+                                                        <button type="button" class="btn btn-reset btn-primary video-load__btn">Добавить</button>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <label class="textarea-primary" style="margin-top: 16px;">
-                                                <textarea class="input-reset textarea-primary__input" placeholder="Описание"></textarea>
-                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -1737,9 +1707,9 @@
                         <div data-spollers class="place-sale-сonstruction-progress__history spollers" style="margin-top: 32px;">
                             <div class="spollers__item">
                                 <button type="button" data-spoller="" class="btn btn-reset spollers__title">
-                                    <h2 class="title-2">
+                                    <h3 class="title-3">
                                         История хода строительства
-                                    </h2>
+                                    </h3>
                                     <svg>
                                         <use xlink:href="img/sprite.svg#arrow-small"></use>
                                     </svg>
@@ -1769,15 +1739,16 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="select-secondary _selected">
+                                        <div class="select-secondary _selected select-secondary--quarter">
                                             <div class="select-secondary__wrapper">
                                                 <span class="select-secondary__placeholder">
                                                     Квартал
                                                 </span>
                                                 <select class="select-secondary__body" hidden name="complex">
-                                                    <option value="complex">1 квартал</option>
-                                                    <option value="complex2">2 квартал</option>
-                                                    <option value="complex2">3 квартал</option>
+                                                    <option value="quarter1">1 квартал</option>
+                                                    <option value="quarter2">2 квартал</option>
+                                                    <option value="quarter3">3 квартал</option>
+                                                    <option value="quarter4">4 квартал</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -1794,8 +1765,11 @@
                                         <div class="tabs-primary__container">
                                             <div data-tabs-body class="tabs__content tabs-primary__content">
                                                 <div class="tabs__body">
+                                                    <div class="place-sale-photo__images photo-load__images">
+                                                    </div>
                                                 </div>
                                                 <div class="tabs__body" hidden>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -2072,85 +2046,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="submit-app__row place-sale-price section-observ" id="section-price">
-                        <div class="place-sale-price__top">
-                            <h2 class="place-sale__row-title place-sale-price__title title-2">
-                                Цена
-                            </h2>
-                        </div>
-                        <div class="place-sale-price__wrapper">
-                            <div class="place-sale-price__input input-text input-text--only-number">
-                                <label class="input-text__label">
-                                    <span>Цена от</span>
-                                    <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
-                                    <span>₽</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="place-sale__row your-contacts-field section-observ" id="section-contacts">
-                        <h2 class="your-contacts-field__title place-sale__row-title title-2">
-                            Контакт
-                        </h2>
-                        <div class="your-contacts-field__wrapper" style="display: grid; grid-template-columns: repeat(3,1fr); grid-column-gap: 8px;">
-                            <div class="search-select-one search-select-one--img-left">
-                                <button type="button" class="btn btn-reset search-select-one__button">
-                                    <div class="search-select-one__button-wrapper">
-                                        <div>Имя, фамилия</div>
-                                        <div>Не выбрано</div>
-                                    </div>
-                                    <svg>
-                                        <use xlink:href="img/sprite.svg#check"></use>
-                                    </svg>
-                                </button>
-                                <div class="search-select-one__dropdown">
-                                    <button type="button" class="btn btn-reset search-select-one__close">
-                                        <svg>
-                                            <use xlink:href="img/sprite.svg#x"></use>
-                                        </svg>
-                                    </button>
-                                    <label class="input-primary search-select-one__input">
-                                        <input type="search" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по имени">
-                                    </label>
-                                    <div class="search-select-one__wrapper simplebar-third">
-                                        <div class="search-select-one__item" data-value="object-1">
-                                            <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
-                                            <span>Владимир А.</span>
-                                        </div>
-                                        <div class="search-select-one__item" data-value="object-2">
-                                            <img loading="lazy" src="./img/avatar-2.jpg" alt="ПИК">
-                                            <span>Сергей С.</span>
-                                        </div>
-                                        <div class="search-select-one__item" data-value="object-3">
-                                            <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
-                                            <span>Анастасия Г.</span>
-                                        </div>
-                                        <div class="search-select-one__item" data-value="object-1">
-                                            <img loading="lazy" src="./img/avatar-2.jpg" alt="ПИК">
-                                            <span>Иван В.</span>
-                                        </div>
-                                        <div class="search-select-one__item" data-value="object-2">
-                                            <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
-                                            <span>Алексей Г.</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <input type="text" name="object" value="Волгоград" class="search-select-one__input-hidden" hidden>
-                            </div>
-                            <div class="your-contacts-field__tel input-text input-text--no-exp" style="width:auto">
-                                <label class="input-text__label">
-                                    <span>Номер телефона</span>
-                                    <input type="text" name="Застройщик" class="input-reset input-text__input input-phone-mask" placeholder="">
-                                </label>
-                            </div>
-                        </div>
-                    </div>
                     <button type="submit" class="btn btn-reset btn-primary place-sale__btn" style="width: 100%;">
                         Сохранить
                     </button>
                 </form>
             </div>
         </main>
+        <div class="footer-fixed complex-fixed">
+            <div class="footer-fixed__container">
+                <button type="submit" class="btn btn-reset btn-primary" style="width: 100%;">
+                    Сохранить
+                </button>
+            </div>
+        </div>
         @include('partials/footer.html')
     </div>
     @include('partials/popup.html')

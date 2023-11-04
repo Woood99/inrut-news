@@ -4214,6 +4214,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_createCalc__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./components/createCalc */ "./src/js/components/createCalc.js");
 /* harmony import */ var _components_createSale__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./components/createSale */ "./src/js/components/createSale.js");
 /* harmony import */ var _components_videoLoad__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./components/videoLoad */ "./src/js/components/videoLoad.js");
+/* harmony import */ var _components_haracteristicsBlock__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./components/сharacteristicsBlock */ "./src/js/components/сharacteristicsBlock.js");
+
 
 
 
@@ -4356,6 +4358,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_createCalc__WEBPACK_IMPORTED_MODULE_48__["default"])();
   (0,_components_createSale__WEBPACK_IMPORTED_MODULE_49__["default"])();
   (0,_components_videoLoad__WEBPACK_IMPORTED_MODULE_50__.videoLoad)();
+  (0,_components_haracteristicsBlock__WEBPACK_IMPORTED_MODULE_51__["default"])();
   // ==================================================
 
   (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.validateRadioPrimary)('.complaint-popup__form', '.textarea-primary__input', '.complaint-popup__btn', '.radio-primary__input');
@@ -11080,7 +11083,7 @@ const videoLoad = () => {
         if (validateYouTubeUrl(value)) {
           if (!container.querySelector('video-card')) {
             wrapper.setAttribute('hidden', '');
-            container.insertAdjacentHTML('afterbegin', generateVideoCard(value));
+            container.insertAdjacentHTML('beforeend', generateVideoCard(value));
           }
         }
       });
@@ -11130,11 +11133,6 @@ function generateVideoCard(url) {
                     <source srcset="./img/video-card-1.webp" type="image/webp">
                     <img loading="lazy" src="./img/video-card-1.jpg" width="323" height="207" alt="1-комн. квартира, 54 м², 12/12 эт.">
                 </picture>
-            </div>
-            <div class="video-card__content">
-                <h3 class="video-card__title">
-                    Старт продаж в литере 35 в «Нового Губернского»
-                </h3>
             </div>
         </article>
         <button type="button" class="btn btn-reset btn-primary video-load__remove">Удалить</button>
@@ -11283,6 +11281,40 @@ const wantDiscount = () => {
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (wantDiscount);
+
+/***/ }),
+
+/***/ "./src/js/components/сharacteristicsBlock.js":
+/*!***************************************************!*\
+  !*** ./src/js/components/сharacteristicsBlock.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const сharacteristicsBlock = () => {
+  const checkboxes = document.querySelectorAll('[data-сharacteristics-block-checkbox]');
+  const targets = document.querySelectorAll('[data-сharacteristics-block-target]');
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+      const nameCheckbox = checkbox.dataset.сharacteristicsBlockCheckbox;
+      checkboxes.forEach(item => {
+        if (item !== checkbox) item.checked = false;
+      });
+      targets.forEach(target => {
+        if (target.dataset.сharacteristicsBlockTarget === nameCheckbox && checkbox.checked) {
+          target.removeAttribute('hidden');
+        } else {
+          target.setAttribute('hidden', '');
+        }
+      });
+    });
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (сharacteristicsBlock);
 
 /***/ }),
 
@@ -13505,7 +13537,6 @@ const emergingBlockScroll = function (targetThemSelector, emergingBlockSelector,
     if (window.innerWidth >= screenSize) return;
     const pageOffsetTop = window.pageYOffset;
     const targetOffsetTop = target.getBoundingClientRect().top;
-    console.log(block);
     if (beforeContainer) {
       if (targetOffsetTop > innerHeight || pageOffsetTop >= targetOffsetTop + pageOffsetTop) {
         block.classList.add('active-fixed');

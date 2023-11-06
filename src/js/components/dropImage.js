@@ -132,7 +132,7 @@ function showPdf(input) {
         let file = input.files[0];
         if (file) {
             const pdfURL = window.URL.createObjectURL(file);
-            placeSaleImages.innerHTML = pdfGenerate(pdfURL);
+            placeSaleImages.innerHTML = pdfGenerate(pdfURL,file.name);
         }
         toggleLoadedClass(container);
     }

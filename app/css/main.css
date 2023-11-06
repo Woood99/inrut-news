@@ -10007,11 +10007,33 @@ textarea.input-reset {
   height: 50px;
 }
 .video-load__content {
-  max-width: 271px;
+  display: -ms-grid;
+  display: grid;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  grid-template-columns: repeat(auto-fill, 271px);
 }
-.video-load__remove {
-  margin-top: 16px;
-  width: 100%;
+.video-load .video-card {
+  overflow: hidden;
+}
+.video-load .video-card::before {
+  content: "";
+  position: absolute;
+  background-color: rgba(36, 38, 41, 0.5);
+  z-index: 1;
+  inset: 0;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+.video-load .video-card__image {
+  padding-bottom: 70.110701107%;
+}
+@media (min-width: 1213px) {
+  .video-load .video-card:hover::before {
+    opacity: 1;
+  }
 }
 
 .select-map-btn {
@@ -17720,6 +17742,7 @@ textarea.input-reset {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  position: relative;
 }
 .video-card__image {
   border-radius: 12px;
@@ -17782,6 +17805,41 @@ textarea.input-reset {
 .video-card .user-info__name {
   font-size: var(--small-fz);
   line-height: var(--small-lh);
+}
+.video-card__remove {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  z-index: 2;
+  background-color: var(--white);
+  border-radius: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+}
+.video-card__remove svg {
+  width: 17px;
+  height: 17px;
+  fill: var(--red);
+}
+@media (min-width: 1213px) {
+  .video-card:hover .video-card__remove {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 .tariff-info {

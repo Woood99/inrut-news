@@ -895,11 +895,32 @@
        }
     }
     &__content{
-        max-width: 271px;
+        display: grid;
+        grid-column-gap: 16px;
+        grid-row-gap: 16px;
+        grid-template-columns: repeat(auto-fill, 271px);
     }
-    &__remove{
-        margin-top: 16px;
-        width: 100%;
+    .video-card{
+        overflow: hidden;
+        &::before {
+            content: '';
+            position: absolute;
+            background-color: rgba(36, 38, 41, .5);
+            z-index: 1;
+            inset: 0;
+            opacity: 0;
+            transition: opacity $transitionSpeedFast $transitionFunction;
+        }
+        &__image{
+            padding-bottom: percent(190, 271);
+        }
+        @media (min-width:$desktop-min){
+             &:hover{
+                &::before{
+                    opacity: 1;
+                }
+             } 
+        }
     }
 }
 .select-map-btn {

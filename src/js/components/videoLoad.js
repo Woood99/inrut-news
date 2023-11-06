@@ -18,7 +18,8 @@ export const videoLoad = () => {
         }
         container.addEventListener('click', (e) => {
             const target = e.target;
-            if (target.closest('.video-load__remove')) {
+            if (target.closest('.video-card__remove')) {
+                e.preventDefault();
                 input.value = '';
                 wrapper.removeAttribute('hidden');
                 container.querySelector('.video-load__content').remove();
@@ -46,7 +47,8 @@ export const currentVideoLoad = (container) => {
     }
     container.addEventListener('click', (e) => {
         const target = e.target;
-        if (target.closest('.video-load__remove')) {
+        if (target.closest('.video-card__remove')) {
+            e.preventDefault();
             input.value = '';
             wrapper.removeAttribute('hidden');
             container.querySelector('.video-load__content').remove();
@@ -64,8 +66,12 @@ function generateVideoCard(url) {
                     <img loading="lazy" src="./img/video-card-1.jpg" width="323" height="207" alt="1-комн. квартира, 54 м², 12/12 эт.">
                 </picture>
             </div>
+            <button type="button" class="btn btn-reset video-card__remove" title="Удалить видео">
+                <svg>
+                    <use xlink:href="img/sprite.svg#trash"></use>
+                </svg>
+            </button>
         </article>
-        <button type="button" class="btn btn-reset btn-primary video-load__remove">Удалить</button>
     </div>
     `;
     return videoCardHTML;

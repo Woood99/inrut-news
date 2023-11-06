@@ -6,20 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#111111">
-    <title>Настройка системы</title>
+    <title>Агент</title>
     <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     <script defer src="js/main.js"></script>
-
-
-
 </head>
 
 <body class="page__body">
-    <div class="site-container site-container--place-sale">
+    <div class="site-container site-container--agent">
         <header class="header header--menu">
     <div class="header__main header-main">
         <div class="header-main__container container">
@@ -65,71 +62,121 @@
     </div>
 </header>
 
-        <main class="main main-page-gap place-sale edit-types-objects">
-            <div class="place-sale__top top-page-inner-title">
+        <main class="main main-page-gap agent">
+            <div class="agent__top top-page-inner-title">
                 <div class="top-page-inner-title__container container">
-                    <a href="#" class="place-sale__back top-page-inner-title__back back-link">
+                    <a href="#" class="agent__back top-page-inner-title__back back-link">
                         <svg>
                             <use xlink:href="img/sprite.svg#arrow-left"></use>
                         </svg>
-                        <span>Назад</span>
+                        <span>К списку агентов</span>
                     </a>
-                    <h1 class="create-types-objects__title top-page-inner-title__title title-1" data-da=".place-sale__body,1212,first">
-                        Просмотр <span>группы сотрудников</span>
+                    <h1 class="agent__title top-page-inner-title__title title-1" data-da=".agent__body,1212,first">
+                       Банк ПИК
                     </h1>
-                </div>
-            </div>
-            <div class="place-sale__body">
-                <div class="container">
-                    <div class="place-sale__row place-sale-options">
-                        <h2 class="place-sale__row-title place-sale-options__title title-2">
-                            Параметры
-                        </h2>
-                        <div class="place-sale-options__row place-sale-options__row--1" style="grid-template-columns: repeat(3,1fr); margin-bottom: 24px;">
-                            <div class="place-sale-options__item input-text _active">
-                                <label class="input-text__label">
-                                    <span>Название</span>
-                                    <input type="text" name="Имя" class="input-reset input-text__input" value="Администратор" placeholder="">
-                                </label>
-                            </div>
-                        </div>
-                        <div class="place-sale-options__row place-sale-options__row--2" style="grid-template-columns: repeat(5,max-content);">
-                            <div class="checkbox-secondary">
-                                <input id="test-id_1" name="test-id-name_1" class="checkbox-secondary__input" checked type="checkbox" value="true">
-                                <label for="test-id_1" class="checkbox-secondary__label">
-                                    <span class="checkbox-secondary__text">Администратор</span>
-                                </label>
-                            </div>
-                            <div class="checkbox-secondary">
-                                <input id="test-id_2" name="test-id-name_2" class="checkbox-secondary__input" type="checkbox" value="true">
-                                <label for="test-id_2" class="checkbox-secondary__label">
-                                    <span class="checkbox-secondary__text">Агент</span>
-                                </label>
-                            </div>
-                            <div class="checkbox-secondary">
-                                <input id="test-id_3" name="test-id-name_3" class="checkbox-secondary__input" type="checkbox" value="true">
-                                <label for="test-id_3" class="checkbox-secondary__label">
-                                    <span class="checkbox-secondary__text">Юрист</span>
-                                </label>
-                            </div>
-                            <div class="checkbox-secondary">
-                                <input id="test-id_4" name="test-id-name_4" class="checkbox-secondary__input" type="checkbox" value="true">
-                                <label for="test-id_4" class="checkbox-secondary__label">
-                                    <span class="checkbox-secondary__text">Ипотечный брокер</span>
-                                </label>
-                            </div>
-                            <div class="checkbox-secondary">
-                                <input id="test-id_5" name="test-id-name_5" class="checkbox-secondary__input" type="checkbox" value="true">
-                                <label for="test-id_5" class="checkbox-secondary__label">
-                                    <span class="checkbox-secondary__text">Суперпользователь</span>
-                                </label>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-reset btn-primary" style="width: 100%; margin-top: 32px;">
-                            Сохранить
+                    <div class="agent__btns top-page-inner-title__btns">
+                        <button type="button" class="btn btn-reset top-page-inner__btn delete-btn" data-popup-path="warning-remove" title="Удалить">
+                            <svg>
+                                <use xlink:href="img/sprite.svg#trash"></use>
+                            </svg>
+                            <span>Удалить</span>
+                        </button>
+                        <button type="button" class="btn btn-reset top-page-inner__btn edit-btn" title="Редактировать">
+                            <svg>
+                                <use xlink:href="img/sprite.svg#pencil"></use>
+                            </svg>
+                            <span>Редактировать</span>
                         </button>
                     </div>
                 </div>
+            </div>
+            <div class="agent__body bid container">
+                <div class="bid__container">
+                    <div class="bid__body">
+                        <div class="agent__info agent__row">
+                            <div class="bid__start">
+                                <h2 class="bid__title title-2">
+                                    Об банке
+                                </h2>
+                            </div>
+                            <ul class="bid__list list-reset">
+                                <li class="bid__item">
+                                    <span>Название банка</span>
+                                    <span>ПИК</span>
+                                </li>
+                                <li class="bid__item">
+                                    <span>Тип недвижимости</span>
+                                    <span>Новостройка, вторичка</span>
+                                </li>
+                                <li class="bid__item">
+                                    <span>Срок кредита</span>
+                                    <span>от 0 до 30 лет</span>
+                                </li>
+                                <li class="bid__item">
+                                    <span>Первоначальный взнос</span>
+                                    <span>от 10% до 95%</span>
+                                </li>
+                                <li class="bid__item">
+                                    <span>Программы</span>
+                                    <span>
+                                        Военная ипотека, <br>
+                                        Семейная ипотека, <br>
+                                        Господдержка
+                                    </span>
+                                </li>
+                            </ul>
+                            <h2 class="title-2">Особые условия</h2>
+
+                            <div class="bid__video video-block">
+                                <!-- в data-src указываем путь к видео по примеру (embed обязательно) -->
+                                <button type="button" class="btn btn-reset video-block__button" data-src="https://www.youtube.com/embed/OaFmmd2Ium8">
+                                    <picture>
+                                        <source srcset="./img/poster-1.webp" type="image/webp">
+                                        <img loading="lazy" src="./img/poster-1.jpg" class="video-block__poster" alt="">
+                                    </picture>
+                                    <div class="video-block__video">
+
+                                    </div>
+                                    <div class="video-block__play">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#play"></use>
+                                        </svg>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="bid__sidebar">
+                        <div class="bid__user bid-user _sticky">
+                            <div class="bid-user__avatar avatar">
+                                <img loading="lazy" src="./img/avatar-1.jpg" width="129" height="129" alt="Алексей Г.">
+                            </div>
+                            <div class="bid-user__content">
+                                <a href="#" class="bid-user__name">
+                                    ПИК
+                                </a>
+                            </div>
+                            <div class="bid-user__btns">
+                                <button type="button" class="btn btn-reset btn-primary bid-user__btn bid-user__btn--call">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#phone"></use>
+                                    </svg>
+                                    Позвонить
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="plate-bottom agent-plate-bottom">
+                        <button type="button" class="btn btn-reset btn-primary agent-plate-bottom__btn">
+                            <svg>
+                                <use xlink:href="img/sprite.svg#phone"></use>
+                            </svg>
+                            Позвонить
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </main>
         <footer class="footer">

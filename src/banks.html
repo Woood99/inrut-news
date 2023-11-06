@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Банки</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script defer src="js/main.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container site-container--place-sale">
+        @include('partials/header--menu.html')
+        <main class="main main-page-gap place-sale banks">
+            <div class="place-sale__top top-page-inner-title">
+                <div class="top-page-inner-title__container container">
+                    <a href="#" class="place-sale__back top-page-inner-title__back back-link">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#arrow-left"></use>
+                        </svg>
+                        <span>Назад</span>
+                    </a>
+                    <h1 class="place-sale__title top-page-inner-title__title title-1" data-da=".place-sale__body,1212,first">
+                        Банки
+                    </h1>
+                </div>
+            </div>
+            <form class="filter container">
+                <button type="button" class="btn btn-reset btn-secondary filter__btn">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#filter"></use>
+                    </svg>
+                    <span>Фильтр</span>
+                </button>
+                <div class="filter__container">
+                    <div class="filter__top">
+                        <span>Фильтры</span>
+                        <button type="button" class="btn btn-reset filter__close">Закрыть</button>
+                    </div>
+                    <div class="filter__inner">
+                        <div class="filter__row tariff-card-filter__row--1" style="grid-template-columns: 25% 25%;justify-content: start;">
+                            <div class="filter__item search-select-one search-select-one--img-right">
+                                <button type="button" class="btn btn-reset search-select-one__button">
+                                    <div class="search-select-one__button-wrapper">
+                                        <div>Город</div>
+                                        <div>
+                                            <span>Москва</span>
+                                        </div>
+                                    </div>
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#check"></use>
+                                    </svg>
+                                </button>
+                                <div class="search-select-one__dropdown">
+                                    <button type="button" class="btn btn-reset search-select-one__close">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#x"></use>
+                                        </svg>
+                                    </button>
+                                    <label class="input-primary search-select-one__input">
+                                        <input type="search" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по имени">
+                                    </label>
+                                    <div class="search-select-one__wrapper simplebar-third">
+                                        <div class="search-select-one__item _active" data-value="object-1">
+                                            Москва
+                                        </div>
+                                        <div class="search-select-one__item" data-value="object-2">
+                                            Нижний новгород
+                                        </div>
+                                        <div class="search-select-one__item" data-value="object-3">
+                                            Волгоград
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="text" name="object" value="Волгоград" class="search-select-one__input-hidden" hidden>
+                            </div>
+                            <label class="filter__item filter__item--input selection-estate__input input-primary">
+                                <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="ФИО или телефон">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="filter__controls selection-estate__controls">
+                        <button type="reset" class="btn btn-reset btn-secondary filter__clear">Очистить</button>
+                        <button type="button" class="btn btn-reset btn-primary filter__go">
+                            Показать
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="main-table">
+                <div class="main-table__inner container">
+                    <a href="./create-calc.html" class="btn btn-reset btn-primary" style="width: 100%;margin-bottom: 32px;">
+                        Создать банк
+                    </a>
+                    <div class="main-table__table">
+                        <div class="main-table__type">
+                            <span>Банк</span>
+                            <span>Комиссия</span>
+                            <span>Программы</span>
+                        </div>
+                        <div class="main-table__list">
+                            <a href="./bank.html" class="btn btn-reset main-table__item bank-info">
+                                <div>
+                                    <span>
+                                        <div class="avatar">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                        </div>
+                                    </span>
+                                    <span>ПИК</span>
+                                </div>
+                                <div>
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#percent"></use>
+                                    </svg>
+                                    <span>До 0.65%</span>
+                                </div>
+                                <div>
+                                    "Вторичка", "Залоговый кредит целевой", "Новый дом", "Готовый дом", "Апартаменты. "Дальневосточная ипотека", ИТ- ипотека",
+                                    "Апартаменты","Новостройка", "Семейная ипотека", "Госпрограмма-2020"
+                                </div>
+                            </a>
+                            <a href="./bank.html" class="btn btn-reset main-table__item bank-info" data-popup-path="tariff-bank-popup">
+                                <div>
+                                    <span>
+                                        <div class="avatar">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                        </div>
+                                    </span>
+                                    <span>Райффайзенбанк</span>
+                                </div>
+                                <div>
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#percent"></use>
+                                    </svg>
+                                    <span>До 0.65%</span>
+                                </div>
+                                <div>
+                                    "Вторичка", "Залоговый кредит целевой", "Новый дом", "Готовый дом", "Апартаменты. "Дальневосточная ипотека", ИТ- ипотека",
+                                    "Апартаменты","Новостройка", "Семейная ипотека", "Госпрограмма-2020"
+                                </div>
+                            </a>
+                            <a href="./bank.html" class="btn btn-reset main-table__item bank-info" data-popup-path="tariff-bank-popup">
+                                <div>
+                                    <span>
+                                        <div class="avatar">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                        </div>
+                                    </span>
+                                    <span>Ткб банк</span>
+                                </div>
+                                <div>
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#percent"></use>
+                                    </svg>
+                                    <span>До 0.65%</span>
+                                </div>
+                                <div>
+                                    "Вторичка", "Залоговый кредит целевой", "Новый дом", "Готовый дом", "Апартаменты. "Дальневосточная ипотека", ИТ- ипотека",
+                                    "Апартаменты","Новостройка", "Семейная ипотека", "Госпрограмма-2020"
+                                </div>
+                            </a>
+                            <a href="./bank.html" class="btn btn-reset main-table__item bank-info" data-popup-path="tariff-bank-popup">
+                                <div>
+                                    <span>
+                                        <div class="avatar">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                        </div>
+                                    </span>
+                                    <span>Транскапиталбанк</span>
+                                </div>
+                                <div>
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#percent"></use>
+                                    </svg>
+                                    <span>До 0.65%</span>
+                                </div>
+                                <div>
+                                    "Вторичка", "Залоговый кредит целевой", "Новый дом"
+                                </div>
+                            </a>
+                            <a href="./bank.html" class="btn btn-reset main-table__item bank-info" data-popup-path="tariff-bank-popup">
+                                <div>
+                                    <span>
+                                        <div class="avatar">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                        </div>
+                                    </span>
+                                    <span>Абсолют-банк</span>
+                                </div>
+                                <div>
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#percent"></use>
+                                    </svg>
+                                    <span>До 0.65%</span>
+                                </div>
+                                <div>
+                                    "Вторичка", "Залоговый кредит целевой", "Новый дом", "Готовый дом", "Апартаменты. "Дальневосточная ипотека", ИТ- ипотека",
+                                    "Апартаменты","Новостройка", "Семейная ипотека", "Госпрограмма-2020"
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-reset btn-secondary main-table__next">
+                        Следующая страница
+                    </button>
+                    <div class="main-table__pagination pagination">
+                        <ul class="pagination__list list-reset">
+                            <li class="pagination__item" disabled="">
+                                <a href="#">
+                                    1
+                                </a>
+                            </li>
+                            <li class="pagination__item">
+                                <a href="#">
+                                    2
+                                </a>
+                            </li>
+                            <li class="pagination__item">
+                                <a href="#">
+                                    3
+                                </a>
+                            </li>
+                            <li class="pagination__item">
+                                <a href="#">
+                                    4
+                                </a>
+                            </li>
+                            <li class="pagination__item">
+                                <a href="#">
+                                    5
+                                </a>
+                            </li>
+                            <li class="pagination__item dots" tabindex="-1">
+                                ...
+                            </li>
+                            <li class="pagination__item">
+                                <a href="#">
+                                    199
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+        @include('partials/footer.html')
+    </div>
+    @include('partials/popup.html')
+</body>
+
+
+</html>

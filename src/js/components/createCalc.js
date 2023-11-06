@@ -116,14 +116,16 @@ const createCalc = () => {
                         <div class="col">
                             <input type="text" name="Ставка" class="input-reset create-calc-conditions__item-prc _width-auto" 
                             value="${Array.from(conditionsPrcValue)[0] === '-' ? conditionsPrcValue : '-' + conditionsPrcValue}%" disabled>
-                            <label class="toggle-checkbox" title="Использовать по умолчанию">
-                                <input type="checkbox" name="toggle-2">
-                                <div aria-hidden="true"></div>
-                            </label>
                         </div>
                         <button type="button" class="btn btn-reset create-calc-conditions__item-edit" title="Редактировать">
                             <svg>
                                 <use xlink:href="img/sprite.svg#pencil">
+                                </use>
+                            </svg>
+                        </button>
+                        <button type="button" class="btn btn-reset create-calc-conditions__item-remove" title="Удалить">
+                            <svg>
+                                <use xlink:href="img/sprite.svg#trash">
                                 </use>
                             </svg>
                         </button>

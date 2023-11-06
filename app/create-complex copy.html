@@ -6,16 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#111111">
-    <title>Настройка системы</title>
+    <title>Создать комплекс</title>
     <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     <script defer src="js/main.js"></script>
-
-
-
 </head>
 
 <body class="page__body">
@@ -65,7 +62,75 @@
     </div>
 </header>
 
-        <main class="main main-page-gap place-sale edit-types-objects">
+        <div class="header-fixed fix-block" style="height:52px;">
+            <div class="header-fixed__container" style="max-width:1500px;">
+                <nav class="header-fixed__nav" style="margin-top:0;">
+                    <ul class="header-fixed__list list-reset">
+                        <li class="header-fixed__item">
+                            <a href="#section-address" class="header-fixed__item-link">
+                                Адрес
+                            </a>
+                        </li>
+                        <li class="header-fixed__item">
+                            <a href="#section-options" class="header-fixed__item-link">
+                                Параметры
+                            </a>
+                        </li>
+                        <li class="header-fixed__item">
+                            <a href="#section-descr" class="header-fixed__item-link">
+                                Описание
+                            </a>
+                        </li>
+                        <li class="header-fixed__item">
+                            <a href="#section-price" class="header-fixed__item-link">
+                                Цена
+                            </a>
+                        </li>
+                        <li class="header-fixed__item">
+                            <a href="#section-contacts" class="header-fixed__item-link">
+                                Контакт
+                            </a>
+                        </li>
+                        <li class="header-fixed__item">
+                            <a href="#section-promo-news" class="header-fixed__item-link">
+                                Акции-новости
+                            </a>
+                        </li>
+                        <li class="header-fixed__item">
+                            <a href="#section-photo" class="header-fixed__item-link">
+                                Фото
+                            </a>
+                        </li>
+                        <li class="header-fixed__item">
+                            <a href="#section-apart-renov" class="header-fixed__item-link">
+                                Отделка квартир
+                            </a>
+                        </li>
+                        <li class="header-fixed__item">
+                            <a href="#section-furnit-sets" class="header-fixed__item-link">
+                                Комплекты меблировки
+                            </a>
+                        </li>
+                        <li class="header-fixed__item">
+                            <a href="#section-ecology-parks" class="header-fixed__item-link">
+                                Экология и парки
+                            </a>
+                        </li>
+                        <li class="header-fixed__item">
+                            <a href="#section-сonstruction-progress" class="header-fixed__item-link">
+                                Ход строительства
+                            </a>
+                        </li>
+                        <li class="header-fixed__item">
+                            <a href="#section-apart-complex" class="header-fixed__item-link">
+                                Квартиры комплекса
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <main class="main main-page-gap add-complex">
             <div class="place-sale__top top-page-inner-title">
                 <div class="top-page-inner-title__container container">
                     <a href="#" class="place-sale__back top-page-inner-title__back back-link">
@@ -74,64 +139,1970 @@
                         </svg>
                         <span>Назад</span>
                     </a>
-                    <h1 class="create-types-objects__title top-page-inner-title__title title-1" data-da=".place-sale__body,1212,first">
-                        Просмотр <span>группы сотрудников</span>
+                    <h1 class="add-apartment__title top-page-inner-title__title title-1" data-da=".place-sale__body,1212,first">
+                        Создать комплекс
                     </h1>
                 </div>
             </div>
             <div class="place-sale__body">
-                <div class="container">
-                    <div class="place-sale__row place-sale-options">
+                <form action="#" class="place-sale__container container">
+                    <div class="place-sale__row place-sale-address section-observ" id="section-address">
+                        <div class="row" style="margin-bottom: 24px; display: flex;align-items: center;justify-content: space-between;">
+                            <h2 class="place-sale__row-title place-sale-address__title title-2" style="margin-bottom: 0;">
+                                Адрес
+                            </h2>
+                        </div>
+                        <div class="place-sale-address__city">
+                            <div class="place-sale-address__text">
+                                <p>
+                                    Укажите кликом нужное место на карте или переместите маркер чтобы изменить
+                                    местоположение объекта.
+                                </p>
+                                <p>
+                                    Или добавьте адрес в ручную.
+                                </p>
+                            </div>
+                            <div class="row" style="display: grid;grid-template-columns: 30% 30%;grid-gap: 8px; margin-top: 24px;">
+                                <div class="place-sale-address__select select-secondary select-secondary--city _selected" style="margin: 0; max-width: none;">
+                                    <div class="select-secondary__wrapper">
+                                        <span class="select-secondary__placeholder">
+                                            Город
+                                        </span>
+                                        <select class="select-secondary__body" hidden name="city">
+                                            <option value="apartments">Санкт-Петербург</option>
+                                            <option value="apartments2">Волгоград</option>
+                                            <option value="apartments3">Москва</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="add-complex--complex search-select-one search-select-one--img-right">
+                                    <button type="button" class="btn btn-reset search-select-one__button">
+                                        <div class="search-select-one__button-wrapper">
+                                            <div>Комплекс</div>
+                                            <div>
+                                                <span>Не выбрано</span>
+                                            </div>
+                                        </div>
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#check"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="search-select-one__dropdown">
+                                        <button type="button" class="btn btn-reset search-select-one__close">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#x"></use>
+                                            </svg>
+                                        </button>
+                                        <label class="input-primary search-select-one__input">
+                                            <input type="search" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по имени">
+                                        </label>
+                                        <div class="search-select-one__wrapper simplebar-third">
+                                            <div class="search-select-one__item" data-value="object-1">
+                                                <span>ПИК</span>
+                                                <img loading="lazy" src="./img/pic.png" alt="ПИК">
+                                            </div>
+                                            <div class="search-select-one__item" data-value="object-2">
+                                                <span>ГК Самолёт</span>
+                                                <img loading="lazy" src="./img/pic.png" alt="ПИК">
+                                            </div>
+                                            <div class="search-select-one__item" data-value="object-3">
+                                                <span>ГК "А101"</span>
+                                                <img loading="lazy" src="./img/pic.png" alt="ПИК">
+                                            </div>
+                                            <div class="search-select-one__item" data-value="object-1">
+                                                <span>ГК МИЦ</span>
+                                                <img loading="lazy" src="./img/pic.png" alt="ПИК">
+                                            </div>
+                                            <div class="search-select-one__item" data-value="object-2">
+                                                <span>MR GROUP</span>
+                                                <img loading="lazy" src="./img/pic.png" alt="ПИК">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="text" name="object" value="Волгоград" class="search-select-one__input-hidden" hidden>
+                                </div>
+                            </div>
+                            <div class="row" style="display: grid;grid-template-columns: 40% 35%;grid-gap: 8px;margin-top: 16px; max-width: none;">
+                                <div class="place-sale-address__field input-text input-text--no-exp" style="margin: 0;">
+                                    <label class="input-text__label">
+                                        <span>Улица, дом, корпус</span>
+                                        <input type="text" name="Заголовок" class="input-reset input-text__input" value=""
+                                            placeholder="">
+                                    </label>
+                                </div>
+                                <div class="place-sale-address__select filter__item search-select" data-search-select-subtitle="Любой" style="margin: 0; max-width: none;">
+                                    <button type="button" class="btn btn-reset search-select__button">
+                                        <div class="search-select__button-wrapper">
+                                            <div>Станция метро</div>
+                                            <div>Любая</div>
+                                        </div>
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#check"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="search-select__dropdown search-select__dropdown--left">
+                                        <button type="button" class="btn btn-reset search-select__close">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#x"></use>
+                                            </svg>
+                                        </button>
+                                        <label class="input-primary search-select__input">
+                                            <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по названию">
+                                        </label>
+                                        <div class="search-select__control">
+                                            <button type="button" class="btn btn-reset btn-secondary search-select__all">Выбрать всё</button>
+                                            <button type="button" class="btn btn-reset btn-secondary search-select__clear">Очистить всё</button>
+                                        </div>
+                                        <div class="search-select__wrapper simplebar-third">
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_1" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_1" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>Станция метро 1</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_2" name="developer-name_2" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_2" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>Станция метро 2</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_3" name="developer-name_3" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_3" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>Станция метро 3</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="place-sale-address-map" class="place-sale-address__map map-primary remove-copyrights-pane">
+                        </div>
+                        <div class="place-sale-address__checkbox checkbox-secondary">
+                            <input id="test-id_1" name="test-id-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                            <label for="test-id_1" class="checkbox-secondary__label">
+                                <span class="checkbox-secondary__text">Добавьте адрес в ручную</span>
+                            </label>
+                        </div>
+                        <div class="place-sale-address__field input-text input-text--no-exp">
+                            <label class="input-text__label">
+                                <span>Город, улица, дом, корпус</span>
+                                <input type="text" name="Заголовок" class="input-reset input-text__input" placeholder="">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="place-sale__row place-sale-options section-observ" id="section-options">
                         <h2 class="place-sale__row-title place-sale-options__title title-2">
                             Параметры
                         </h2>
-                        <div class="place-sale-options__row place-sale-options__row--1" style="grid-template-columns: repeat(3,1fr); margin-bottom: 24px;">
-                            <div class="place-sale-options__item input-text _active">
+                        <div class="place-sale-options__row place-sale-options__row--1" style="grid-template-columns: repeat(3,1fr);">
+                            <div class="input-text input-text--no-exp">
+                                <label class="input-text__label">
+                                    <span>Срок сдачи</span>
+                                    <input type="text" name="Заголовок" class="input-reset input-text__input" placeholder="">
+                                </label>
+                            </div>
+                            <div class="place-sale-options__item select-secondary">
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Класс жилья
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="complex">
+                                        <option placeholder value="all-room">Любой</option>
+                                        <option value="room-1">С отделкой</option>
+                                        <option value="room-2">Без отделки</option>
+                                        <option value="room-3">Ремонт</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="place-sale-options__item select-secondary">
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Тип жилья
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="complex">
+                                        <option placeholder value="all-room">Любой</option>
+                                        <option value="room-1">С отделкой</option>
+                                        <option value="room-2">Без отделки</option>
+                                        <option value="room-3">Ремонт</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="place-sale-options__row place-sale-options__row--2" style="grid-template-columns: repeat(3,1fr);">
+                            <div class="place-sale-options__item input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Этажей в доме</span>
+                                    <input type="text" name="Имя" maxlength="2" class="input-reset input-text__input" placeholder="">
+                                    <span class="input-text__name">эт.</span>
+                                </label>
+                            </div>
+                        </div>
+                        <h3 class="place-sale__row-title place-sale-options__title title-3" style="margin-top: 24px;">
+                            На территории жилого комплекса
+                        </h3>
+                        <div class="place-sale-options__row place-sale-options__row--3" style="grid-template-columns: repeat(3,1fr);">
+                            <div class="place-sale-options__item select-secondary">
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Школа
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="complex">
+                                        <option placeholder>Не выбрано</option>
+                                        <option value="room-2">Есть</option>
+                                        <option value="room-3">Строится</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="place-sale-options__item select-secondary">
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Детский сад
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="complex">
+                                        <option placeholder>Не выбрано</option>
+                                        <option value="room-2">Есть</option>
+                                        <option value="room-3">Строится</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="place-sale-options__item select-secondary">
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Поликлиника
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="complex">
+                                        <option placeholder>Не выбрано</option>
+                                        <option value="room-2">Есть</option>
+                                        <option value="room-3">Строится</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="place-sale__row-title place-sale-options__title title-3" style="margin-top: 24px;">
+                            Парковка
+                        </h3>
+                        <div class="place-sale-options__row place-sale-options__row--4" style="grid-template-columns: repeat(3,1fr);">
+                            <div class="input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Подземная</span>
+                                    <input type="text" name="Заголовок" class="input-reset input-text__input" placeholder="">
+                                    <span class="input-text__name">места</span>
+                                </label>
+                            </div>
+                            <div class="input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Гостевая</span>
+                                    <input type="text" name="Заголовок" class="input-reset input-text__input" placeholder="">
+                                    <span class="input-text__name">места</span>
+                                </label>
+                            </div>
+                        </div>
+                        <h3 class="place-sale__row-title place-sale-options__title title-3" style="margin-top: 24px;">
+                            Безопасность
+                        </h3>
+                        <div class="place-sale-options__row place-sale-options__row--5" style="grid-template-columns: repeat(3,1fr); grid-row-gap: 16px;">
+                            <div class="place-sale-options__item select-secondary">
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Огороженный периметр
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="complex">
+                                        <option placeholder>Не выбрано</option>
+                                        <option value="room-1">Да</option>
+                                        <option value="room-2">Нет</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="place-sale-options__item select-secondary">
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Видеонаблюдение
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="complex">
+                                        <option placeholder>Не выбрано</option>
+                                        <option value="room-1">Да</option>
+                                        <option value="room-2">Нет</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="place-sale-options__item select-secondary">
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Пропускная система
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="complex">
+                                        <option placeholder>Не выбрано</option>
+                                        <option value="room-1">Да</option>
+                                        <option value="room-2">Нет</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="place-sale-options__item select-secondary">
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Противопожарная система
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="complex">
+                                        <option placeholder>Не выбрано</option>
+                                        <option value="room-1">Да</option>
+                                        <option value="room-2">Нет</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="place-sale-options__item select-secondary">
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Консьерж
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="complex">
+                                        <option placeholder>Не выбрано</option>
+                                        <option value="room-1">Да</option>
+                                        <option value="room-2">Нет</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="place-sale__row place-sale-descr section-observ" id="section-descr">
+                        <h2 class="place-sale__row-title place-sale-descr__title title-2">
+                            Описание
+                        </h2>
+                        <div class="place-sale-descr__btns">
+                            <button type="button" class="btn btn-reset place-sale-descr__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#plus"></use>
+                                </svg>
+                                <span>Сгенерировать описание</span>
+                            </button>
+                            <button type="button" class="btn btn-reset place-sale-descr__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#plus"></use>
+                                </svg>
+                                <span>Визуальный редактор</span>
+                            </button>
+                        </div>
+                        <label class="place-sale-descr__textarea textarea-primary">
+                            <textarea class="input-reset textarea-primary__input" placeholder="Расскажите о недвижимости, транспортной доступности и инфраструктуре"></textarea>
+                        </label>
+                    </div>
+                    <div class="submit-app__row place-sale-price section-observ" id="section-price">
+                        <div class="place-sale-price__top">
+                            <h2 class="place-sale__row-title place-sale-price__title title-2">
+                                Цена
+                            </h2>
+                        </div>
+                        <div class="place-sale-price__wrapper">
+                            <div class="place-sale-price__input input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Цена от</span>
+                                    <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                    <span>₽</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="place-sale__row your-contacts-field section-observ" id="section-contacts">
+                        <h2 class="your-contacts-field__title place-sale__row-title title-2">
+                            Контакт
+                        </h2>
+                        <div class="your-contacts-field__wrapper" style="display: grid; grid-template-columns: repeat(3,1fr); grid-column-gap: 8px;">
+                            <div class="search-select-one search-select-one--img-left">
+                                <button type="button" class="btn btn-reset search-select-one__button">
+                                    <div class="search-select-one__button-wrapper">
+                                        <div>Имя, фамилия</div>
+                                        <div>Не выбрано</div>
+                                    </div>
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#check"></use>
+                                    </svg>
+                                </button>
+                                <div class="search-select-one__dropdown">
+                                    <button type="button" class="btn btn-reset search-select-one__close">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#x"></use>
+                                        </svg>
+                                    </button>
+                                    <label class="input-primary search-select-one__input">
+                                        <input type="search" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по имени">
+                                    </label>
+                                    <div class="search-select-one__wrapper simplebar-third">
+                                        <div class="search-select-one__item" data-value="object-1">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
+                                            <span>Владимир А.</span>
+                                        </div>
+                                        <div class="search-select-one__item" data-value="object-2">
+                                            <img loading="lazy" src="./img/avatar-2.jpg" alt="ПИК">
+                                            <span>Сергей С.</span>
+                                        </div>
+                                        <div class="search-select-one__item" data-value="object-3">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
+                                            <span>Анастасия Г.</span>
+                                        </div>
+                                        <div class="search-select-one__item" data-value="object-1">
+                                            <img loading="lazy" src="./img/avatar-2.jpg" alt="ПИК">
+                                            <span>Иван В.</span>
+                                        </div>
+                                        <div class="search-select-one__item" data-value="object-2">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
+                                            <span>Алексей Г.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="text" name="object" value="Волгоград" class="search-select-one__input-hidden" hidden>
+                            </div>
+                            <div class="your-contacts-field__tel input-text input-text--no-exp" style="width:auto">
+                                <label class="input-text__label">
+                                    <span>Номер телефона</span>
+                                    <input type="text" name="Застройщик" class="input-reset input-text__input input-phone-mask" placeholder="">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="place-sale__row place-sale-sale section-observ" id="section-promo-news">
+                        <h2 class="place-sale__row-title place-sale-sale__title title-2">
+                            Акции-новости
+                        </h2>
+                        <div class="place-sale-sale__cards">
+                            <div class="swiper">
+                                <div class="swiper-wrapper">
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-reset place-sale-sale__navigation nav-arrow-primary nav-arrow-primary--prev" disabled>
+                                <div class="nav-arrow-primary__wrapper">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#arrow-right"></use>
+                                    </svg>
+                                </div>
+                            </button>
+                            <button type="button" class="btn btn-reset place-sale-sale__navigation nav-arrow-primary nav-arrow-primary--next">
+                                <div class="nav-arrow-primary__wrapper">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#arrow-right"></use>
+                                    </svg>
+                                </div>
+                            </button>
+                        </div>
+                        <h3 class="place-sale-sale__title title-3" style="margin-bottom: 24px;">
+                            Создать акцию-новость
+                        </h3>
+                        <div class="place-sale-sale__wrapper">
+                            <div class="input-text input-text--no-exp place-sale-sale__field--name">
                                 <label class="input-text__label">
                                     <span>Название</span>
-                                    <input type="text" name="Имя" class="input-reset input-text__input" value="Администратор" placeholder="">
+                                    <input type="text" name="Название" class="input-reset input-text__input" placeholder="">
+                                </label>
+                            </div>
+                            <div class="search-select-one search-select-one--img-left">
+                                <button type="button" class="btn btn-reset search-select-one__button">
+                                    <div class="search-select-one__button-wrapper">
+                                        <div>Автор</div>
+                                        <div>Не выбрано</div>
+                                    </div>
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#check"></use>
+                                    </svg>
+                                </button>
+                                <div class="search-select-one__dropdown">
+                                    <button type="button" class="btn btn-reset search-select-one__close">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#x"></use>
+                                        </svg>
+                                    </button>
+                                    <label class="input-primary search-select-one__input">
+                                        <input type="search" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по имени">
+                                    </label>
+                                    <div class="search-select-one__wrapper simplebar-third">
+                                        <div class="search-select-one__item" data-value="object-1">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
+                                            <span>Владимир А.</span>
+                                        </div>
+                                        <div class="search-select-one__item" data-value="object-2">
+                                            <img loading="lazy" src="./img/avatar-2.jpg" alt="ПИК">
+                                            <span>Сергей С.</span>
+                                        </div>
+                                        <div class="search-select-one__item" data-value="object-3">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
+                                            <span>Анастасия Г.</span>
+                                        </div>
+                                        <div class="search-select-one__item" data-value="object-1">
+                                            <img loading="lazy" src="./img/avatar-2.jpg" alt="ПИК">
+                                            <span>Иван В.</span>
+                                        </div>
+                                        <div class="search-select-one__item" data-value="object-2">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
+                                            <span>Алексей Г.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="text" name="object" value="Волгоград" class="search-select-one__input-hidden" hidden>
+                            </div>
+                            <div class="input-text input-text--no-exp date-picker place-sale-sale__field--start">
+                                <label class="input-text__label">
+                                    <span>Начало</span>
+                                    <input type="text" name="Имя" class="input-reset input-text__input date-picker__input" value="" placeholder="">
+                                </label>
+                            </div>
+                            <div class="input-text input-text--no-exp date-picker place-sale-sale__field--ending">
+                                <label class="input-text__label">
+                                    <span>Окончание</span>
+                                    <input type="text" name="Имя" class="input-reset input-text__input date-picker__input" value="" placeholder="">
                                 </label>
                             </div>
                         </div>
-                        <div class="place-sale-options__row place-sale-options__row--2" style="grid-template-columns: repeat(5,max-content);">
-                            <div class="checkbox-secondary">
-                                <input id="test-id_1" name="test-id-name_1" class="checkbox-secondary__input" checked type="checkbox" value="true">
-                                <label for="test-id_1" class="checkbox-secondary__label">
-                                    <span class="checkbox-secondary__text">Администратор</span>
-                                </label>
+                        <h3 class="title-3" style="margin: 24px 0;">Описание</h3>
+                        <label class="textarea-primary place-sale-sale__field--descr">
+                            <textarea class="input-reset textarea-primary__input" placeholder="Расскажите об акциях и спецпредложениях"></textarea>
+                        </label>
+                        <h3 class="title-3" style="margin: 24px 0;">Изображение</h3>
+                        <div class="photo-load">
+                            <div class="place-sale-photo__images drag-drop photo-load__images">
                             </div>
-                            <div class="checkbox-secondary">
-                                <input id="test-id_2" name="test-id-name_2" class="checkbox-secondary__input" type="checkbox" value="true">
-                                <label for="test-id_2" class="checkbox-secondary__label">
-                                    <span class="checkbox-secondary__text">Агент</span>
-                                </label>
-                            </div>
-                            <div class="checkbox-secondary">
-                                <input id="test-id_3" name="test-id-name_3" class="checkbox-secondary__input" type="checkbox" value="true">
-                                <label for="test-id_3" class="checkbox-secondary__label">
-                                    <span class="checkbox-secondary__text">Юрист</span>
-                                </label>
-                            </div>
-                            <div class="checkbox-secondary">
-                                <input id="test-id_4" name="test-id-name_4" class="checkbox-secondary__input" type="checkbox" value="true">
-                                <label for="test-id_4" class="checkbox-secondary__label">
-                                    <span class="checkbox-secondary__text">Ипотечный брокер</span>
-                                </label>
-                            </div>
-                            <div class="checkbox-secondary">
-                                <input id="test-id_5" name="test-id-name_5" class="checkbox-secondary__input" type="checkbox" value="true">
-                                <label for="test-id_5" class="checkbox-secondary__label">
-                                    <span class="checkbox-secondary__text">Суперпользователь</span>
-                                </label>
+                            <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                <button type="button" class="btn btn-reset">
+                                    <p>
+                                        <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                    </p>
+                                </button>
+                                <input type="file" data-upload-drop name="upload" accept=".jpg, .png, .jpeg, .heic" class="input-reset">
                             </div>
                         </div>
-                        <button type="button" class="btn btn-reset btn-primary" style="width: 100%; margin-top: 32px;">
-                            Сохранить
+                        <button type="button" class="btn btn-reset btn-secondary place-sale-sale__save">
+                            Добавить
                         </button>
                     </div>
-                </div>
+                    <div class="place-sale__row place-sale-photo section-observ" id="section-photo">
+                        <div class="object-apart-renov__tabs tabs-primary tabs-primary--controls">
+                            <div class="place-sale__row-title row" style="display: flex;align-items: flex-start;justify-content: space-between;">
+                                <h2 class="place-sale-photo__title title-2">
+                                    Фото
+                                </h2>
+                                <button type="button" class="btn btn-reset tabs-primary__create-new">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#plus"></use>
+                                    </svg>
+                                    Добавить новое поле
+                                </button>
+                            </div>
+                            <div data-tabs class="tabs-primary__inner">
+                                <nav data-tabs-titles class="tabs-primary__btns tabs__navigation" style="max-width: none;">
+                                    <button type="button" class="btn btn-reset tabs__title _tab-active tabs__title--edit">
+                                        <input type="text" name="Имя" class="input-reset _width-auto" value="Дом" disabled>
+                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#pencil">
+                                                </use>
+                                            </svg>
+                                        </div>
+                                        <div class="btn btn-reset tabs__title-remove" title="Удалить">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#trash">
+                                                </use>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tabs__title tabs__title--edit">
+                                        <input type="text" name="Имя" class="input-reset _width-auto" value="Территория" disabled>
+                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#pencil">
+                                                </use>
+                                            </svg>
+                                        </div>
+                                        <div class="btn btn-reset tabs__title-remove" title="Удалить">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#trash">
+                                                </use>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tabs__title tabs__title--edit">
+                                        <input type="text" name="Имя" class="input-reset _width-auto" value="Входная группа" disabled>
+                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#pencil">
+                                                </use>
+                                            </svg>
+                                        </div>
+                                        <div class="btn btn-reset tabs__title-remove" title="Удалить">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#trash">
+                                                </use>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tabs__title tabs__title--edit">
+                                        <input type="text" name="Имя" class="input-reset _width-auto" value="Паркинг" disabled>
+                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#pencil">
+                                                </use>
+                                            </svg>
+                                        </div>
+                                        <div class="btn btn-reset tabs__title-remove" title="Удалить">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#trash">
+                                                </use>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tabs__title tabs__title--edit" style="padding: 9px 32px;">
+                                        <input type="text" name="Имя" class="input-reset _width-auto" value="Видео" disabled>
+                                    </button>
+                                </nav>
+                                <div class="tabs-primary__container">
+                                    <div data-tabs-body class="tabs__content tabs-primary__content">
+                                        <div class="tabs__body">
+                                            <div class="photo-load">
+                                                <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                </div>
+                                                <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                    <button type="button" class="btn btn-reset">
+                                                        <p>
+                                                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                                        </p>
+                                                    </button>
+                                                    <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tabs__body" hidden>
+                                            <div class="photo-load">
+                                                <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                </div>
+                                                <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                    <button type="button" class="btn btn-reset">
+                                                        <p>
+                                                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                                        </p>
+                                                    </button>
+                                                    <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tabs__body" hidden>
+                                            <div class="photo-load">
+                                                <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                </div>
+                                                <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                    <button type="button" class="btn btn-reset">
+                                                        <p>
+                                                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                                        </p>
+                                                    </button>
+                                                    <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tabs__body" hidden>
+                                            <div class="photo-load">
+                                                <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                </div>
+                                                <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                    <button type="button" class="btn btn-reset">
+                                                        <p>
+                                                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                                        </p>
+                                                    </button>
+                                                    <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tabs__body" hidden>
+                                            <div class="video-load">
+                                                <div class="video-load__wrapper">
+                                                    <p class="video-load__descr">
+                                                        Добавьте видео вашей недвижимости
+                                                    </p>
+                                                    <div class="row">
+                                                        <label class="video-load__input input-primary">
+                                                            <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Ссылка на видео с YouTube">
+                                                        </label>
+                                                        <button type="button" class="btn btn-reset btn-primary video-load__btn">Добавить</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="place-sale__row place-sale-photo section-observ" id="section-apart-renov">
+                        <div class="object-apart-renov__tabs tabs-primary tabs-primary--controls">
+                            <div class="place-sale__row-title row" style="display: flex;align-items: flex-start;justify-content: space-between;">
+                                <h2 class="place-sale-photo__title title-2">
+                                    Отделка квартир
+                                </h2>
+                                <button type="button" class="btn btn-reset tabs-primary__create-new">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#plus"></use>
+                                    </svg>
+                                    Добавить новое поле
+                                </button>
+                            </div>
+                            <div data-tabs class="tabs-primary__inner">
+                                <nav data-tabs-titles class="tabs-primary__btns tabs__navigation" style="max-width: none;">
+                                    <button type="button" class="btn btn-reset tabs__title _tab-active tabs__title--edit">
+                                        <input type="text" name="Имя" class="input-reset _width-auto" value="White box" disabled>
+                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#pencil">
+                                                </use>
+                                            </svg>
+                                        </div>
+                                        <div class="btn btn-reset tabs__title-remove" title="Удалить">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#trash">
+                                                </use>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tabs__title tabs__title--edit">
+                                        <input type="text" name="Имя" class="input-reset _width-auto" value="Без стен" disabled>
+                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#pencil">
+                                                </use>
+                                            </svg>
+                                        </div>
+                                        <div class="btn btn-reset tabs__title-remove" title="Удалить">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#trash">
+                                                </use>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tabs__title tabs__title--edit">
+                                        <input type="text" name="Имя" class="input-reset _width-auto" value="Дизайнерская отделка" disabled>
+                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#pencil">
+                                                </use>
+                                            </svg>
+                                        </div>
+                                        <div class="btn btn-reset tabs__title-remove" title="Удалить">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#trash">
+                                                </use>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tabs__title tabs__title--edit">
+                                        <input type="text" name="Имя" class="input-reset _width-auto" value="Черновая отделка" disabled>
+                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#pencil">
+                                                </use>
+                                            </svg>
+                                        </div>
+                                        <div class="btn btn-reset tabs__title-remove" title="Удалить">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#trash">
+                                                </use>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                </nav>
+                                <div class="tabs-primary__container">
+                                    <div data-tabs-body class="tabs__content tabs-primary__content">
+                                        <div class="tabs__body">
+                                            <div class="photo-load">
+                                                <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                </div>
+                                                <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                    <button type="button" class="btn btn-reset">
+                                                        <p>
+                                                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                                        </p>
+                                                    </button>
+                                                    <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                                </div>
+                                            </div>
+                                            <label class="textarea-primary" style="margin-top: 24px;">
+                                                <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+                                            </label>
+                                        </div>
+                                        <div class="tabs__body" hidden>
+                                            <div class="photo-load">
+                                                <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                </div>
+                                                <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                    <button type="button" class="btn btn-reset">
+                                                        <p>
+                                                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                                        </p>
+                                                    </button>
+                                                    <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                                </div>
+                                            </div>
+                                            <label class="textarea-primary" style="margin-top: 24px;">
+                                                <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+                                            </label>
+                                        </div>
+                                        <div class="tabs__body" hidden>
+                                            <div class="photo-load">
+                                                <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                </div>
+                                                <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                    <button type="button" class="btn btn-reset">
+                                                        <p>
+                                                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                                        </p>
+                                                    </button>
+                                                    <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                                </div>
+                                            </div>
+                                            <label class="textarea-primary" style="margin-top: 24px;">
+                                                <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+                                            </label>
+                                        </div>
+                                        <div class="tabs__body" hidden>
+                                            <div class="photo-load">
+                                                <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                </div>
+                                                <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                    <button type="button" class="btn btn-reset">
+                                                        <p>
+                                                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                                        </p>
+                                                    </button>
+                                                    <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                                </div>
+                                            </div>
+                                            <label class="textarea-primary" style="margin-top: 24px;">
+                                                <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="place-sale__row place-sale-photo furnishing-sets furnishing-sets--controls section-observ" id="section-furnit-sets">
+                        <div class="object-apart-renov__tabs tabs-primary">
+                            <div class="place-sale__row-title row" style="display: flex;align-items: flex-start;justify-content: space-between;">
+                                <h2 class="place-sale-photo__title title-2">
+                                    Комплекты меблировки
+                                </h2>
+                                <button type="button" class="btn btn-reset tabs-primary__create-new">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#plus"></use>
+                                    </svg>
+                                    Добавить новое поле
+                                </button>
+                            </div>
+                            <div data-tabs class="tabs-primary__inner">
+                                <nav data-tabs-titles class="tabs-primary__btns tabs__navigation">
+                                    <button type="button" class="btn btn-reset tabs__title _tab-active tabs__title--edit">
+                                        <input type="text" name="Имя" class="input-reset _width-auto" value="Для новосёла" disabled>
+                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#pencil">
+                                                </use>
+                                            </svg>
+                                        </div>
+                                        <div class="btn btn-reset tabs__title-remove" title="Удалить">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#trash">
+                                                </use>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tabs__title tabs__title--edit">
+                                        <input type="text" name="Имя" class="input-reset _width-auto" value="Для арендатора" disabled>
+                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#pencil">
+                                                </use>
+                                            </svg>
+                                        </div>
+                                        <div class="btn btn-reset tabs__title-remove" title="Удалить">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#trash">
+                                                </use>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                </nav>
+                                <div class="tabs-primary__container">
+
+                                    <div data-tabs-body class="tabs__content tabs-primary__content">
+                                        <div class="tabs__body furnishing-sets__item">
+                                            <div class="row">
+                                                <div class="furnishing-sets__btns">
+                                                    <button type="button"
+                                                        class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--studio furnishing-sets__btn--controls _active">
+                                                        <span>Студия</span>
+                                                        <div class="furnishing-sets__btn-remove">
+                                                            <svg>
+                                                                <use xlink:href="img/sprite.svg#trash"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </button>
+                                                    <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--room furnishing-sets__btn--controls">
+                                                        <span>1</span>
+                                                        <div class="furnishing-sets__btn-remove">
+                                                            <svg>
+                                                                <use xlink:href="img/sprite.svg#trash"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </button>
+                                                    <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--room furnishing-sets__btn--controls">
+                                                        <span>2</span>
+                                                        <div class="furnishing-sets__btn-remove">
+                                                            <svg>
+                                                                <use xlink:href="img/sprite.svg#trash"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </button>
+                                                    <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--room furnishing-sets__btn--controls">
+                                                        <span>3</span>
+                                                        <div class="furnishing-sets__btn-remove">
+                                                            <svg>
+                                                                <use xlink:href="img/sprite.svg#trash"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </button>
+                                                    <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--room furnishing-sets__btn--controls">
+                                                        <span>4</span>
+                                                        <div class="furnishing-sets__btn-remove">
+                                                            <svg>
+                                                                <use xlink:href="img/sprite.svg#trash"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                                <div class="furnishing-sets__create">
+                                                    <button type="button" class="btn btn-reset furnishing-sets__create--room">
+                                                        <svg>
+                                                            <use xlink:href="img/sprite.svg#plus"></use>
+                                                        </svg>
+                                                        Добавить комнатность
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="furnishing-sets__tabs">
+                                                <div class="furnishing-sets__tab">
+                                                    <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
+                                                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                            <button type="button" class="btn btn-reset">
+                                                                <p>
+                                                                    <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                                                </p>
+                                                            </button>
+                                                            <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                                        </div>
+                                                    </div>
+                                                    <label class="textarea-primary" style="margin-top: 24px;">
+                                                        <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+                                                    </label>
+                                                    <div class="row" style="margin:24px 0 24px;padding-top: 24px;border-top: 1px solid var(--primary200);">
+                                                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                                                            <label class="input-text__label">
+                                                                <span>Стоимость от</span>
+                                                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                                <span>₽</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
+                                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                                <svg>
+                                                                    <use xlink:href="img/sprite.svg#info"></use>
+                                                                </svg>
+                                                            </button>
+                                                            <div class="secondary-tooltip__content">
+                                                                Стоиомость комплекта меблировки
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
+                                                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                            <button type="button" class="btn btn-reset">
+                                                                <p>
+                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                                                        эту область</span>
+                                                                </p>
+                                                            </button>
+                                                            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="furnishing-sets__tab" hidden>
+                                                    <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
+                                                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                            <button type="button" class="btn btn-reset">
+                                                                <p>
+                                                                    <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                                                </p>
+                                                            </button>
+                                                            <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                                        </div>
+                                                    </div>
+                                                    <label class="textarea-primary" style="margin-top: 24px;">
+                                                        <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+                                                    </label>
+                                                    <div class="row" style="margin:16px 0 24px;">
+                                                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                                                            <label class="input-text__label">
+                                                                <span>Стоимость от</span>
+                                                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                                <span>₽</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
+                                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                                <svg>
+                                                                    <use xlink:href="img/sprite.svg#info"></use>
+                                                                </svg>
+                                                            </button>
+                                                            <div class="secondary-tooltip__content">
+                                                                Стоиомость комплекта меблировки
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
+                                                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                            <button type="button" class="btn btn-reset">
+                                                                <p>
+                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                                                        эту область</span>
+                                                                </p>
+                                                            </button>
+                                                            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="furnishing-sets__tab" hidden>
+                                                    <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
+                                                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                            <button type="button" class="btn btn-reset">
+                                                                <p>
+                                                                    <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                                                </p>
+                                                            </button>
+                                                            <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                                        </div>
+                                                    </div>
+                                                    <label class="textarea-primary" style="margin-top: 24px;">
+                                                        <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+                                                    </label>
+                                                    <div class="row" style="margin:16px 0 24px;">
+                                                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                                                            <label class="input-text__label">
+                                                                <span>Стоимость от</span>
+                                                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                                <span>₽</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
+                                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                                <svg>
+                                                                    <use xlink:href="img/sprite.svg#info"></use>
+                                                                </svg>
+                                                            </button>
+                                                            <div class="secondary-tooltip__content">
+                                                                Стоиомость комплекта меблировки
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
+                                                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                            <button type="button" class="btn btn-reset">
+                                                                <p>
+                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                                                        эту область</span>
+                                                                </p>
+                                                            </button>
+                                                            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="furnishing-sets__tab" hidden>
+                                                    <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
+                                                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                            <button type="button" class="btn btn-reset">
+                                                                <p>
+                                                                    <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                                                </p>
+                                                            </button>
+                                                            <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                                        </div>
+                                                    </div>
+                                                    <label class="textarea-primary" style="margin-top: 24px;">
+                                                        <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+                                                    </label>
+                                                    <div class="row" style="margin:16px 0 24px;">
+                                                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                                                            <label class="input-text__label">
+                                                                <span>Стоимость от</span>
+                                                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                                <span>₽</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
+                                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                                <svg>
+                                                                    <use xlink:href="img/sprite.svg#info"></use>
+                                                                </svg>
+                                                            </button>
+                                                            <div class="secondary-tooltip__content">
+                                                                Стоиомость комплекта меблировки
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
+                                                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                            <button type="button" class="btn btn-reset">
+                                                                <p>
+                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                                                        эту область</span>
+                                                                </p>
+                                                            </button>
+                                                            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="furnishing-sets__tab" hidden>
+                                                    <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
+                                                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                            <button type="button" class="btn btn-reset">
+                                                                <p>
+                                                                    <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                                                </p>
+                                                            </button>
+                                                            <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                                        </div>
+                                                    </div>
+                                                    <label class="textarea-primary" style="margin-top: 24px;">
+                                                        <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+                                                    </label>
+                                                    <div class="row" style="margin:16px 0 24px;">
+                                                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                                                            <label class="input-text__label">
+                                                                <span>Стоимость от</span>
+                                                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                                <span>₽</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
+                                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                                <svg>
+                                                                    <use xlink:href="img/sprite.svg#info"></use>
+                                                                </svg>
+                                                            </button>
+                                                            <div class="secondary-tooltip__content">
+                                                                Стоиомость комплекта меблировки
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
+                                                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                            <button type="button" class="btn btn-reset">
+                                                                <p>
+                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                                                        эту область</span>
+                                                                </p>
+                                                            </button>
+                                                            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tabs__body furnishing-sets__item" hidden>
+                                            <div class="row">
+                                                <div class="furnishing-sets__btns">
+                                                    <button type="button"
+                                                        class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--studio furnishing-sets__btn--controls _active">
+                                                        <span>Студия</span>
+                                                        <div class="furnishing-sets__btn-remove">
+                                                            <svg>
+                                                                <use xlink:href="img/sprite.svg#trash"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </button>
+                                                    <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--room furnishing-sets__btn--controls">
+                                                        <span>1</span>
+                                                        <div class="furnishing-sets__btn-remove">
+                                                            <svg>
+                                                                <use xlink:href="img/sprite.svg#trash"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </button>
+                                                    <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--room furnishing-sets__btn--controls">
+                                                        <span>2</span>
+                                                        <div class="furnishing-sets__btn-remove">
+                                                            <svg>
+                                                                <use xlink:href="img/sprite.svg#trash"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </button>
+                                                    <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--room furnishing-sets__btn--controls">
+                                                        <span>3</span>
+                                                        <div class="furnishing-sets__btn-remove">
+                                                            <svg>
+                                                                <use xlink:href="img/sprite.svg#trash"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </button>
+                                                    <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--room furnishing-sets__btn--controls">
+                                                        <span>4</span>
+                                                        <div class="furnishing-sets__btn-remove">
+                                                            <svg>
+                                                                <use xlink:href="img/sprite.svg#trash"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                                <div class="furnishing-sets__create">
+                                                    <button type="button" class="btn btn-reset furnishing-sets__create--room">
+                                                        <svg>
+                                                            <use xlink:href="img/sprite.svg#plus"></use>
+                                                        </svg>
+                                                        Добавить комнатность
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="furnishing-sets__tabs">
+                                                <div class="furnishing-sets__tab">
+                                                    <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+
+                                                        </div>
+                                                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                            <button type="button" class="btn btn-reset">
+                                                                <p>
+                                                                    <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                                                </p>
+                                                            </button>
+                                                            <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                                        </div>
+                                                    </div>
+                                                    <label class="textarea-primary" style="margin-top: 24px;">
+                                                        <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+                                                    </label>
+                                                    <div class="row" style="margin:16px 0 24px;">
+                                                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                                                            <label class="input-text__label">
+                                                                <span>Стоимость от</span>
+                                                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                                <span>₽</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
+                                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                                <svg>
+                                                                    <use xlink:href="img/sprite.svg#info"></use>
+                                                                </svg>
+                                                            </button>
+                                                            <div class="secondary-tooltip__content">
+                                                                Стоиомость комплекта меблировки
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
+                                                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                            <button type="button" class="btn btn-reset">
+                                                                <p>
+                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                                                        эту область</span>
+                                                                </p>
+                                                            </button>
+                                                            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="furnishing-sets__tab" hidden>
+                                                    <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
+                                                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                            <button type="button" class="btn btn-reset">
+                                                                <p>
+                                                                    <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                                                </p>
+                                                            </button>
+                                                            <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                                        </div>
+                                                    </div>
+                                                    <label class="textarea-primary" style="margin-top: 24px;">
+                                                        <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+                                                    </label>
+                                                    <div class="row" style="margin:16px 0 24px;">
+                                                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                                                            <label class="input-text__label">
+                                                                <span>Стоимость от</span>
+                                                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                                <span>₽</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
+                                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                                <svg>
+                                                                    <use xlink:href="img/sprite.svg#info"></use>
+                                                                </svg>
+                                                            </button>
+                                                            <div class="secondary-tooltip__content">
+                                                                Стоиомость комплекта меблировки
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
+                                                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                            <button type="button" class="btn btn-reset">
+                                                                <p>
+                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                                                        эту область</span>
+                                                                </p>
+                                                            </button>
+                                                            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="furnishing-sets__tab" hidden>
+                                                    <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
+                                                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                            <button type="button" class="btn btn-reset">
+                                                                <p>
+                                                                    <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                                                </p>
+                                                            </button>
+                                                            <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                                        </div>
+                                                    </div>
+                                                    <label class="textarea-primary" style="margin-top: 24px;">
+                                                        <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+                                                    </label>
+                                                    <div class="row" style="margin:16px 0 24px;">
+                                                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                                                            <label class="input-text__label">
+                                                                <span>Стоимость от</span>
+                                                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                                <span>₽</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
+                                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                                <svg>
+                                                                    <use xlink:href="img/sprite.svg#info"></use>
+                                                                </svg>
+                                                            </button>
+                                                            <div class="secondary-tooltip__content">
+                                                                Стоиомость комплекта меблировки
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
+                                                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                            <button type="button" class="btn btn-reset">
+                                                                <p>
+                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                                                        эту область</span>
+                                                                </p>
+                                                            </button>
+                                                            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="furnishing-sets__tab" hidden>
+                                                    <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
+                                                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                            <button type="button" class="btn btn-reset">
+                                                                <p>
+                                                                    <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                                                </p>
+                                                            </button>
+                                                            <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                                        </div>
+                                                    </div>
+                                                    <label class="textarea-primary" style="margin-top: 24px;">
+                                                        <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+                                                    </label>
+                                                    <div class="row" style="margin:16px 0 24px;">
+                                                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                                                            <label class="input-text__label">
+                                                                <span>Стоимость от</span>
+                                                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                                <span>₽</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
+                                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                                <svg>
+                                                                    <use xlink:href="img/sprite.svg#info"></use>
+                                                                </svg>
+                                                            </button>
+                                                            <div class="secondary-tooltip__content">
+                                                                Стоиомость комплекта меблировки
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
+                                                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                            <button type="button" class="btn btn-reset">
+                                                                <p>
+                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                                                        эту область</span>
+                                                                </p>
+                                                            </button>
+                                                            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="furnishing-sets__tab" hidden>
+                                                    <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
+                                                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                            <button type="button" class="btn btn-reset">
+                                                                <p>
+                                                                    <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                                                </p>
+                                                            </button>
+                                                            <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                                        </div>
+                                                    </div>
+                                                    <label class="textarea-primary" style="margin-top: 24px;">
+                                                        <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+                                                    </label>
+                                                    <div class="row" style="margin:16px 0 24px;">
+                                                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                                                            <label class="input-text__label">
+                                                                <span>Стоимость от</span>
+                                                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                                <span>₽</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
+                                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                                <svg>
+                                                                    <use xlink:href="img/sprite.svg#info"></use>
+                                                                </svg>
+                                                            </button>
+                                                            <div class="secondary-tooltip__content">
+                                                                Стоиомость комплекта меблировки
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="photo-load">
+                                                        <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                        </div>
+                                                        <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                            <button type="button" class="btn btn-reset">
+                                                                <p>
+                                                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
+                                                                        эту область</span>
+                                                                </p>
+                                                            </button>
+                                                            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="place-sale__row place-sale-photo section-observ ecology-parks" id="section-ecology-parks">
+                        <div class="object-apart-renov__tabs tabs-primary tabs-primary--controls">
+                            <div class="place-sale__row-title row" style="display: flex;align-items: flex-start;justify-content: space-between;">
+                                <h2 class="place-sale-photo__title title-2">
+                                    Экология и парки
+                                </h2>
+                                <button type="button" class="btn btn-reset tabs-primary__create-new">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#plus"></use>
+                                    </svg>
+                                    Добавить новое поле
+                                </button>
+                            </div>
+                            <div data-tabs class="tabs-primary__inner">
+                                <nav data-tabs-titles class="tabs-primary__btns tabs__navigation" style="max-width: none;">
+                                </nav>
+                                <div class="tabs-primary__container">
+                                    <div data-tabs-body class="tabs__content tabs-primary__content">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="place-sale__row place-sale-photo place-sale-сonstruction-progress section-observ" id="section-сonstruction-progress">
+                        <h2 class="place-sale__row-title place-sale-photo__title title-2">
+                            Ход строительства
+                        </h2>
+                        <div class="row" style="display: grid;grid-template-columns: 350px 350px;grid-gap: 16px 8px;;margin-bottom: 24px;">
+                            <div class="select-secondary _selected">
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Корпус
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="complex">
+                                        <option value="complex">Литер 1</option>
+                                        <option value="complex2">Литер 2</option>
+                                        <option value="complex3">Литер 3</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="select-secondary _selected select-secondary--quarter">
+                                <div class="select-secondary__wrapper">
+                                    <span class="select-secondary__placeholder">
+                                        Квартал
+                                    </span>
+                                    <select class="select-secondary__body" hidden name="complex">
+                                        <option value="quarter1">1 квартал</option>
+                                        <option value="quarter2">2 квартал</option>
+                                        <option value="quarter3">3 квартал</option>
+                                        <option value="quarter4">4 квартал</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="object-apart-renov__tabs tabs-primary">
+                            <div data-tabs class="tabs-primary__inner">
+                                <nav data-tabs-titles class="tabs-primary__btns tabs__navigation" style="max-width: none;">
+                                    <button type="button" class="btn btn-reset tabs__title  _tab-active">
+                                        Фото
+                                    </button>
+                                    <button type="button" class="btn btn-reset tabs__title">
+                                        Видео
+                                    </button>
+                                </nav>
+                                <div class="tabs-primary__container">
+                                    <div data-tabs-body class="tabs__content tabs-primary__content">
+                                        <div class="tabs__body">
+                                            <div class="photo-load">
+                                                <div class="place-sale-photo__images drag-drop photo-load__images">
+                                                </div>
+                                                <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                                    <button type="button" class="btn btn-reset">
+                                                        <p>
+                                                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                                        </p>
+                                                    </button>
+                                                    <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                                </div>
+                                            </div>
+                                            <label class="textarea-primary" style="margin-top: 24px;">
+                                                <textarea class="input-reset textarea-primary__input" placeholder="Описание"></textarea>
+                                            </label>
+                                        </div>
+                                        <div class="tabs__body" hidden>
+                                            <div class="video-load">
+                                                <div class="video-load__wrapper">
+                                                    <p class="video-load__descr">
+                                                        Добавьте видео вашей недвижимости
+                                                    </p>
+                                                    <div class="row">
+                                                        <label class="video-load__input input-primary">
+                                                            <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Ссылка на видео с YouTube">
+                                                        </label>
+                                                        <button type="button" class="btn btn-reset btn-primary video-load__btn">Добавить</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-spollers class="place-sale-сonstruction-progress__history spollers" style="margin-top: 32px;">
+                            <div class="spollers__item">
+                                <button type="button" data-spoller="" class="btn btn-reset spollers__title">
+                                    <h3 class="title-3">
+                                        История хода строительства
+                                    </h3>
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#arrow-small"></use>
+                                    </svg>
+                                </button>
+                                <div class="spollers__body" hidden>
+                                    <div class="row" style="display: grid;grid-template-columns: repeat(3,1fr);grid-gap: 16px 8px;;margin-bottom:24px;">
+                                        <div class="select-secondary _selected">
+                                            <div class="select-secondary__wrapper">
+                                                <span class="select-secondary__placeholder">
+                                                    Весь ЖК
+                                                </span>
+                                                <select class="select-secondary__body" hidden name="complex">
+                                                    <option value="complex">Литер 1</option>
+                                                    <option value="complex2">Литер 2</option>
+                                                    <option value="complex3">Литер 3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="select-secondary _selected">
+                                            <div class="select-secondary__wrapper">
+                                                <span class="select-secondary__placeholder">
+                                                    Год
+                                                </span>
+                                                <select class="select-secondary__body" hidden name="complex">
+                                                    <option value="complex">2022</option>
+                                                    <option value="complex2">2023</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="select-secondary _selected select-secondary--quarter">
+                                            <div class="select-secondary__wrapper">
+                                                <span class="select-secondary__placeholder">
+                                                    Квартал
+                                                </span>
+                                                <select class="select-secondary__body" hidden name="complex">
+                                                    <option value="quarter1">1 квартал</option>
+                                                    <option value="quarter2">2 квартал</option>
+                                                    <option value="quarter3">3 квартал</option>
+                                                    <option value="quarter4">4 квартал</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-tabs class="tabs-primary__inner">
+                                        <nav data-tabs-titles class="tabs-primary__btns tabs__navigation" style="max-width: none;">
+                                            <button type="button" class="btn btn-reset tabs__title _tab-active">
+                                                Фото
+                                            </button>
+                                            <button type="button" class="btn btn-reset tabs__title">
+                                                Видео
+                                            </button>
+                                        </nav>
+                                        <div class="tabs-primary__container">
+                                            <div data-tabs-body class="tabs__content tabs-primary__content">
+                                                <div class="tabs__body">
+                                                    <div class="place-sale-photo__images photo-load__images">
+                                                    </div>
+                                                </div>
+                                                <div class="tabs__body" hidden>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="place-sale__row place-sale-layouts section-observ" id="section-apart-complex">
+                        <div class="row">
+                            <h2 class="place-sale__row-title title-2">
+                                Квартиры комплекса <span style="color: var(--primaryTwo); font-size: var(--default-fz); margin-left: 8px;"></span>
+                            </h2>
+                            <a href="add-apartment.html" class="btn btn-reset btn-primary" style="min-width: 278px;">Добавить квартиру</a>
+                        </div>
+                        <div class="filter filter--more">
+                            <button type="button" class="btn btn-reset btn-secondary filter__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#filter"></use>
+                                </svg>
+                                <span>Фильтр</span>
+                            </button>
+                            <div class="filter__mask">
+                                <div class="filter__container">
+                                    <div class="filter__top">
+                                        <button type="button" class="btn btn-reset filter__close">Закрыть</button>
+                                    </div>
+                                    <div class="filter__inner">
+                                        <div class="filter__row object-filter__row--1">
+                                            <div class="filter__item select-secondary">
+                                                <div class="select-secondary__wrapper">
+                                                    <span class="select-secondary__placeholder">
+                                                        Корпус
+                                                    </span>
+                                                    <select class="select-secondary__body" hidden name="complex">
+                                                        <option placeholder>Любой</option>
+                                                        <option value="complex">Дом1</option>
+                                                        <option value="complex2">Дом2</option>
+                                                        <option value="complex3">Дом3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="filter__item filter__item--quantity-selection quantity-selection">
+                                                <div class="quantity-selection__inner">
+                                                    <div class="checkbox">
+                                                        <input id="filter-quantity_studios" name="filter-quantity-studios" class="checkbox__input" type="checkbox" value="true">
+                                                        <label for="filter-quantity_studios" class="checkbox__label">
+                                                            <span class="checkbox__text checkbox__text-studios">Студия</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input id="filter-quantity_1" name="filter-quantity-1" class="checkbox__input" type="checkbox" value="true">
+                                                        <label for="filter-quantity_1" class="checkbox__label">
+                                                            <span class="checkbox__text">1</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input id="filter-quantity_2" name="filter-quantity-2" class="checkbox__input" type="checkbox" value="true">
+                                                        <label for="filter-quantity_2" class="checkbox__label">
+                                                            <span class="checkbox__text">2</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input id="filter-quantity_3" name="filter-quantity-3" class="checkbox__input" type="checkbox" value="true">
+                                                        <label for="filter-quantity_3" class="checkbox__label">
+                                                            <span class="checkbox__text">3</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input id="filter-quantity_4" name="filter-quantity-4" class="checkbox__input" type="checkbox" value="true">
+                                                        <label for="filter-quantity_4" class="checkbox__label">
+                                                            <span class="checkbox__text">4+</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="filter__item filter-dropdown filter-dropdown--improved" data-filter-dropdown-name="Цена"
+                                                data-filter-dropdown-subtitle="Любая">
+                                                <button type="button" class="btn btn-reset filter-dropdown__button">
+                                                    <div class="filter-dropdown__button-wrapper">
+                                                        <div>
+                                                            Цена
+                                                        </div>
+                                                        <div>
+                                                            Любая
+                                                        </div>
+                                                    </div>
+                                                    <svg>
+                                                        <use xlink:href="img/sprite.svg#check"></use>
+                                                    </svg>
+                                                </button>
+                                                <div class="filter-dropdown__dropdown filter-dropdown--improved__dropdown">
+                                                    <button type="button" class="btn btn-reset filter-dropdown__close">
+                                                        <svg>
+                                                            <use xlink:href="img/sprite.svg#x"></use>
+                                                        </svg>
+                                                    </button>
+                                                    <label class="filter-dropdown__item active">
+                                                        <span class="filter-dropdown__subtitle">Стоимость объекта, ₽</span>
+                                                        <div class="filter-dropdown__range filter-range">
+                                                            <div class="filter-range__nav">
+                                                                <div class="input-text input-text--only-number">
+                                                                    <label class="input-text__label">
+                                                                        <span>Цена от</span>
+                                                                        <input type="text" maxlength="11" class="input-reset input-text__input" placeholder="Цена от">
+                                                                    </label>
+                                                                </div>
+                                                                <div>–</div>
+                                                                <div class="input-text input-text--only-number">
+                                                                    <label class="input-text__label">
+                                                                        <span>До</span>
+                                                                        <input type="text" maxlength="11" class="input-reset input-text__input" placeholder="До">
+                                                                    </label>
+                                                                </div>
+                                                                <div>
+                                                                    ₽
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="filter__row object-filter__row--2" hidden>
+                                            <div class="filter__item filter-dropdown filter-dropdown--improved" data-filter-dropdown-name="Площадь"
+                                                data-filter-dropdown-subtitle="Любая">
+                                                <button type="button" class="btn btn-reset filter-dropdown__button">
+                                                    <div class="filter-dropdown__button-wrapper">
+                                                        <div>
+                                                            Площадь
+                                                        </div>
+                                                        <div>
+                                                            Любая
+                                                        </div>
+                                                    </div>
+                                                    <svg>
+                                                        <use xlink:href="img/sprite.svg#check"></use>
+                                                    </svg>
+                                                </button>
+                                                <div class="filter-dropdown__dropdown filter-dropdown__dropdown--left filter-dropdown--improved__dropdown">
+                                                    <button type="button" class="btn btn-reset filter-dropdown__close">
+                                                        <svg>
+                                                            <use xlink:href="img/sprite.svg#x"></use>
+                                                        </svg>
+                                                    </button>
+                                                    <label class="filter-dropdown__item active">
+                                                        <span class="filter-dropdown__subtitle">Площадь объекта, м²</span>
+                                                        <div class="filter-dropdown__range filter-range">
+                                                            <div class="filter-range__nav">
+                                                                <div class="input-text input-text--only-number">
+                                                                    <label class="input-text__label">
+                                                                        <span>Площадь от</span>
+                                                                        <input type="text" maxlength="3" class="input-reset input-text__input" placeholder="Площадь от">
+                                                                    </label>
+                                                                </div>
+                                                                <div>–</div>
+                                                                <div class="input-text input-text--only-number">
+                                                                    <label class="input-text__label">
+                                                                        <span>До</span>
+                                                                        <input type="text" maxlength="3" class="input-reset input-text__input" placeholder="До">
+                                                                    </label>
+                                                                </div>
+                                                                <div>
+                                                                    м²
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="filter__item search-select search-select--no-search" data-search-select-subtitle="Любой">
+                                                <button type="button" class="btn btn-reset search-select__button">
+                                                    <div class="search-select__button-wrapper">
+                                                        <div>Уникальные предложения</div>
+                                                        <div>Любые</div>
+                                                    </div>
+                                                    <svg>
+                                                        <use xlink:href="img/sprite.svg#check"></use>
+                                                    </svg>
+                                                </button>
+                                                <div class="search-select__dropdown search-select__dropdown--left">
+                                                    <button type="button" class="btn btn-reset search-select__close">
+                                                        <svg>
+                                                            <use xlink:href="img/sprite.svg#x"></use>
+                                                        </svg>
+                                                    </button>
+                                                    <div class="search-select__control">
+                                                        <button type="button" class="btn btn-reset btn-secondary search-select__all">Выбрать всё</button>
+                                                        <button type="button" class="btn btn-reset btn-secondary search-select__clear">Очистить всё</button>
+                                                    </div>
+                                                    <div class="search-select__wrapper simplebar-third">
+                                                        <div class="search-select__item checkbox-secondary">
+                                                            <input id="unique-offers_1" name="unique-offers-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                            <label for="unique-offers_1" class="checkbox-secondary__label">
+                                                                <span class="checkbox-secondary__text">
+                                                                    <span>Кухня-столовая</span>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="search-select__item checkbox-secondary">
+                                                            <input id="unique-offers_2" name="unique-offers-name_2" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                            <label for="unique-offers_2" class="checkbox-secondary__label">
+                                                                <span class="checkbox-secondary__text">
+                                                                    <span>Готовая отделка</span>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="search-select__item checkbox-secondary">
+                                                            <input id="developer_3" name="developer-name_3" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                            <label for="developer_3" class="checkbox-secondary__label">
+                                                                <span class="checkbox-secondary__text">
+                                                                    <span>ГК "А101"</span>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="search-select__item checkbox-secondary">
+                                                            <input id="unique-offers_4" name="unique-offers-name_4" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                            <label for="unique-offers_4" class="checkbox-secondary__label">
+                                                                <span class="checkbox-secondary__text">
+                                                                    <span>ГК МИЦ</span>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="search-select__item checkbox-secondary">
+                                                            <input id="unique-offers_5" name="unique-offers-name_5" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                            <label for="unique-offers_5" class="checkbox-secondary__label">
+                                                                <span class="checkbox-secondary__text">
+                                                                    <span>ЛСР</span>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="search-select__item checkbox-secondary">
+                                                            <input id="unique-offers_6" name="unique-offers-name_6" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                            <label for="unique-offers_6" class="checkbox-secondary__label">
+                                                                <span class="checkbox-secondary__text">
+                                                                    <span>MR GROUP</span>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="search-select__item checkbox-secondary">
+                                                            <input id="unique-offers_7" name="unique-offers-name_7" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                            <label for="unique-offers_7" class="checkbox-secondary__label">
+                                                                <span class="checkbox-secondary__text">
+                                                                    <span>ГК ДОНСТРОЙ</span>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="search-select__item checkbox-secondary">
+                                                            <input id="unique-offers_8" name="unique-offers-name_8" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                            <label for="unique-offers_8" class="checkbox-secondary__label">
+                                                                <span class="checkbox-secondary__text">
+                                                                    <span>ГК ДОНСТРОЙ</span>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="filter__controls more">
+                                        <button type="button" class="btn btn-reset filter__btn-control">
+                                            <span>Еще фильтры</span>
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#check"></use>
+                                            </svg>
+                                        </button>
+                                        <button type="reset" class="btn btn-reset btn-secondary filter__clear">Очистить</button>
+                                        <button type="button" class="btn btn-reset btn-primary filter__go">
+                                            Показать 1567 объявлений
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-reset btn-primary place-sale__btn" style="width: 100%;">
+                        Сохранить
+                    </button>
+                </form>
             </div>
         </main>
+        <div class="footer-fixed complex-fixed">
+            <div class="footer-fixed__container">
+                <button type="submit" class="btn btn-reset btn-primary" style="width: 100%;">
+                    Сохранить
+                </button>
+            </div>
+        </div>
         <footer class="footer">
     <div class="footer__container container">
         <div class="footer__top">

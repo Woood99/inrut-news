@@ -12950,7 +12950,7 @@ const tabs = () => {
         </button>
             `);
       const photoHTML = `
-            <div class="tabs__body" data-tabs-item>
+                <div class="tabs__body" data-tabs-item>
                 <div class="photo-load">
                     <div class="place-sale-photo__images drag-drop photo-load__images"></div>
                     <div class="place-sale-photo__wrapper photo-load__wrapper">
@@ -13272,11 +13272,40 @@ const tabs = () => {
             </div>
         </div>
             `;
+      const ecologyParksHTML = `
+            <div class="tabs__body" data-tabs-item>
+            <div class="photo-load">
+                <div class="place-sale-photo__images drag-drop photo-load__images"></div>
+                <div class="place-sale-photo__wrapper photo-load__wrapper">
+                    <button type="button" class="btn btn-reset">
+                        <p>
+                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                        </p>
+                    </button>
+                    <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                </div>
+            </div>
+            <label class="textarea-primary" style="margin-top: 24px;">
+                <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+            </label>
+            <div class="input-text input-text--only-number" style="max-width: 350px; margin-top:24px;">
+                <label class="input-text__label">
+                    <span>Расстояние от комплекса</span>
+                    <input type="text" name="Расстояние от комплекса" maxlength="4" class="input-reset input-text__input" placeholder="">
+                    <span>мин</span>
+                </label>
+            </div>
+            </div>
+            `;
       if (currentTabs.closest('.furnishing-sets')) {
         tabs.insertAdjacentHTML('beforeend', furnishingSetsHTML);
         setTabsStatus(tabsBlock);
         (0,_components_furnishingSets__WEBPACK_IMPORTED_MODULE_6__.currentFurnishingSets)(tabs.querySelector('.furnishing-sets__item:last-child'));
         update(tabs.querySelector('.furnishing-sets__item:last-child'));
+      } else if (currentTabs.closest('.ecology-parks')) {
+        tabs.insertAdjacentHTML('beforeend', ecologyParksHTML);
+        setTabsStatus(tabsBlock);
+        update(tabsBlock.querySelector('.tabs__body:last-child'));
       } else {
         tabs.insertAdjacentHTML('beforeend', photoHTML);
         setTabsStatus(tabsBlock);
@@ -13298,6 +13327,10 @@ const tabs = () => {
       input.addEventListener('input', e => {
         input.setAttribute('value', e.target.value);
       });
+      if (!nav.querySelector('.tabs__title._tab-active')) {
+        currentTitle.classList.add('_tab-active');
+        tabsBlock.querySelector('.tabs__body').removeAttribute('hidden');
+      }
     }
     function update(content) {
       if (content) {

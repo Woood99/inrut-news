@@ -6,20 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#111111">
-    <title>Настройка системы</title>
+    <title>База агентов каталог</title>
     <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     <script defer src="js/main.js"></script>
-
-
-
 </head>
 
 <body class="page__body">
-    <div class="site-container site-container--place-sale">
+    <div class="site-container site-container--base-agent-catalog">
         <header class="header header--menu">
     <div class="header__main header-main">
         <div class="header-main__container container">
@@ -65,213 +62,171 @@
     </div>
 </header>
 
-        <main class="main main-page-gap place-sale create-types-objects">
-            <div class="place-sale__top top-page-inner-title">
-                <div class="top-page-inner-title__container container">
-                    <a href="#" class="place-sale__back top-page-inner-title__back back-link">
+        <main class="main main-page-gap base-agent-catalog employees">
+            <div class="base-agent-catalog__body container">
+                <h1 class="base-agent-catalog__title title-1">
+                    В базе 1 567 агентов
+                </h1>
+                <form class="base-agent-catalog__filter base-agent-catalog-filter filter">
+                    <button type="button" class="btn btn-reset btn-secondary filter__btn">
                         <svg>
-                            <use xlink:href="img/sprite.svg#arrow-left"></use>
+                            <use xlink:href="img/sprite.svg#filter"></use>
                         </svg>
-                        <span>Назад</span>
-                    </a>
-                    <h1 class="create-types-objects__title top-page-inner-title__title title-1" data-da=".place-sale__body,1212,first">
-                        Создать <span>типы объектов</span>
-                    </h1>
-                </div>
-            </div>
-            <div class="place-sale__body">
-                <div class="container">
-                    <div class="place-sale__row place-sale-options">
-                        <h2 class="place-sale__row-title place-sale-options__title title-2">
-                            Параметры
-                        </h2>
-                        <div class="place-sale-options__row place-sale-options__row--1" style="margin-bottom: 24px;">
-                            <div class="place-sale-options__item input-text">
-                                <label class="input-text__label">
-                                    <span>Название</span>
-                                    <input type="text" name="Название" class="input-reset input-text__input" placeholder="">
-                                </label>
-                            </div>
+                        <span>Фильтр</span>
+                    </button>
+                    <div class="filter__container">
+                        <div class="filter__top">
+                            <span>Фильтры</span>
+                            <button type="button" class="btn btn-reset filter__close">Закрыть</button>
                         </div>
-                        <div class="place-sale-options__row place-sale-options__row--2">
-                            <div class="checkbox-secondary">
-                                <input id="test-id_2" name="test-id-name_2" class="checkbox-secondary__input" data-сharacteristics-block-checkbox="Новостройки" type="checkbox" value="true">
-                                <label for="test-id_2" class="checkbox-secondary__label">
-                                    <span class="checkbox-secondary__text">Новостройки</span>
-                                </label>
-                            </div>
-                            <div class="checkbox-secondary">
-                                <input id="test-id_1" name="test-id-name_1" class="checkbox-secondary__input" data-сharacteristics-block-checkbox="Жилая" type="checkbox" value="true">
-                                <label for="test-id_1" class="checkbox-secondary__label">
-                                    <span class="checkbox-secondary__text">Жилая</span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="place-sale-photo">
-                            <h2 class="place-sale-photo__title title-2" style="margin-bottom: 24px;">
-                                Изображение
-                            </h2>
-                            <div class="photo-load">
-                                <div class="place-sale-photo__images drag-drop photo-load__images">
+                        <div class="filter__inner">
+                            <div class="filter__row base-agent-catalog-filter__row--1">
+                                <div class="filter__item base-agent-catalog__select select-secondary select-secondary--city _selected" >
+                                    <div class="select-secondary__wrapper">
+                                        <span class="select-secondary__placeholder">
+                                            Город
+                                        </span>
+                                        <select class="select-secondary__body" name="complex">
+                                            <option value="apartments">Санкт-Петербург</option>
+                                            <option value="apartments2">Волгоград</option>
+                                            <option value="apartments3">Москва</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="place-sale-photo__wrapper photo-load__wrapper">
-                                    <button type="button" class="btn btn-reset">
-                                        <p>
-                                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
-                                        </p>
-                                    </button>
-                                    <input type="file" data-upload-drop name="upload" accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                <label class="filter__item filter__item--input base-agent-catalog__input input-primary">
+                                    <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="ФИО агента">
+                                </label>
+                                <div class="filter__item base-agent-catalog__select select-secondary" >
+                                    <div class="select-secondary__wrapper">
+                                        <span class="select-secondary__placeholder">
+                                            Специализация
+                                        </span>
+                                        <select class="select-secondary__body" name="complex">
+                                            <option value="apartments" placeholder>Любая</option>
+                                            <option value="apartments">Ипотечный брокер</option>
+                                            <option value="apartments2">Ипотечный брокер2</option>
+                                            <option value="apartments3">Ипотечный брокер3</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="place-sale__row main-table" data-сharacteristics-block-target="Новостройки" hidden>
-                        <h2 class="place-sale__row-title place-sale-options__title title-2">
-                            Характеристики жилого комплекса
-                        </h2>
-                        <div class="object-apart-renov__tabs tabs-primary">
-                            <div data-tabs class="tabs-primary__inner">
-                                <nav data-tabs-titles class="tabs-primary__btns tabs__navigation" style="max-width: none;">
-                                    <button type="button" class="btn btn-reset tabs__title _tab-active">
-                                        Общая
-                                    </button>
-                                    <button type="button" class="btn btn-reset tabs__title tabs__title--edit">
-                                        <input type="text" name="Имя" class="input-reset" value="На территории комплекса" disabled>
-                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#pencil">
-                                                </use>
-                                            </svg>
-                                        </div>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tabs__title tabs__title--edit">
-                                        <input type="text" name="Имя" class="input-reset" value="Парковка" disabled>
-                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#pencil">
-                                                </use>
-                                            </svg>
-                                        </div>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tabs__title tabs__title--edit">
-                                        <input type="text" name="Имя" class="input-reset" value="Безопасность" disabled>
-                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#pencil">
-                                                </use>
-                                            </svg>
-                                        </div>
-                                    </button>
-                                </nav>
-                                <div class="tabs-primary__container">
-                                    <div data-tabs-body class="tabs__content tabs-primary__content">
-                                        <div class="tabs__body">
-                                            <div class="main-table__inner container">
-                                                <div class="main-table__table">
-                                                    <div class="main-table__type" style="grid-template-columns: 9% 17% 18% 20% 21% 8%; justify-content: start;">
-                                                        <span>Порядок</span>
-                                                        <span>Название</span>
-                                                        <span style="justify-self: center;">Тип</span>
-                                                        <span style="justify-self: center;">Показывать в фильтре</span>
-                                                        <span style="justify-self: center;">Обязательное</span>
-                                                        <span>Действие</span>
-                                                    </div>
-                                                    <div class="main-table__list drag-drop drag-drop--order">
-                                                    </div>
-                                                </div>
-                                                <div class="main-table__next">
-                                                    <a href="create-char-object.html" class="btn btn-reset btn-primary">
-                                                        Создать характеристику жилого комплекса
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tabs__body" hidden>
-                                            <div class="main-table__inner container">
-                                                <div class="main-table__table">
-                                                    <div class="main-table__type" style="grid-template-columns: 9% 17% 18% 20% 21% 5.5%; justify-content: start;">
-                                                        <span>Порядок</span>
-                                                        <span>Название</span>
-                                                        <span style="justify-self: center;">Тип</span>
-                                                        <span style="justify-self: center;">Показывать в фильтре</span>
-                                                        <span style="justify-self: center;">Обязательное</span>
-                                                        <span>Действие</span>
-                                                    </div>
-                                                    <div class="main-table__list drag-drop drag-drop--order">
-                                                    </div>
-                                                </div>
-                                                <div class="main-table__next">
-                                                    <a href="create-char-object.html" class="btn btn-reset btn-primary">
-                                                        Создать характеристику жилого комплекса
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tabs__body" hidden>
-                                           
-                                        </div>
-                                        <div class="tabs__body" hidden>
-                                           
-                                        </div>
+                                <div class="filter__item base-agent-catalog__select select-secondary" >
+                                    <div class="select-secondary__wrapper">
+                                        <span class="select-secondary__placeholder">
+                                            Новостройки
+                                        </span>
+                                        <select class="select-secondary__body" name="complex">
+                                            <option value="apartments" placeholder>Любые</option>
+                                            <option value="apartments">Новостройки</option>
+                                            <option value="apartments2">Новостройки1</option>
+                                            <option value="apartments3">Новостройки2</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="place-sale__row main-table" data-сharacteristics-block-target="Новостройки" hidden>
-                        <h2 class="place-sale__row-title place-sale-options__title title-2">
-                            Характеристики квартир жилого комплекса
-                        </h2>
-                        <div class="main-table__inner container">
-                            <div class="main-table__table">
-                                <div class="main-table__type" style="grid-template-columns: 13% 14% 16% 20% 18% 16%; justify-content: start;">
-                                    <span>Порядок</span>
-                                    <span>Поле</span>
-                                    <span>Тип поля</span>
-                                    <span>Показывать в фильтре</span>
-                                    <span>Обязательное</span>
-                                    <span>Действие</span>
-                                </div>
-                                <div class="main-table__list">
-                                   
-                                </div>
+                        <div class="filter__controls base-agent-catalog__controls">
+                            <div class="base-agent-catalog__sort select-sort" data-da=".base-agent-catalog__filter,1212,2" >
+                                <span class="select-sort__label">Сортировка по рейтингу:</span>
+                                <select class="select-sort__body" hidden name="filter-sort">
+                                    <option value="default">По-умолчанию</option>
+                                    <option value="high">Сначала высокий</option>
+                                </select>
                             </div>
-                            <div class="main-table__next">
-                                <a href="create-char-layouts.html" class="btn btn-reset btn-primary">
-                                    Создать характеристику квартир жилого комплекса
-                                </a>
+                            <button type="reset" class="btn btn-reset btn-secondary filter__clear">Очистить</button>
+                            <button type="button" class="btn btn-reset btn-primary filter__go">
+                                Показать 1567 агентов
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <div class="base-agent-catalog__table main-table">
+                    <div class="main-table__table">
+                        <div class="main-table__type" style="grid-template-columns: 30.1% 24.8% 30.6% 1fr;">
+                            <span>Имя/роль</span>
+                            <span>Последний вход</span>
+                            <span>Активный</span>
+                            <span>Действие</span>
+                        </div>
+                        <div class="main-table__list">
+                            <div class="main-table__item object-info-grade" style="grid-template-columns: 30.1% 25% 29% 1fr;">
+                                <div class="object-info-grade__from user-info">
+                                    <div class="user-info__avatar avatar online">
+                                        <img loading="lazy" src="./img/avatar-1.jpg" width="45" height="45" alt="Абдурахманраджи Г.">
+                                    </div>
+                                    <span class="user-info__name">
+                                        Абдурахманраджи Г.
+                                    </span>
+                                    <span class="user-info__pos">
+                                        Агент
+                                    </span>
+                                </div>
+                                <span>
+                                    Да
+                                </span>
+                                <time datetime="2023-11-05">
+                                    05:11:2023
+                                </time>
+                                <div style="justify-self: end;">
+                                    <a href="#" title="Смотреть">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#eye"></use>
+                                        </svg>
+                                    </a>
+                                    <a href="#" title="Редактировать">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#pencil"></use>
+                                        </svg>
+                                    </a>
+                                    <button type="button" class="btn btn-reset" data-popup-path="warning-remove" title="Удалить">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#trash">
+                                            </use>
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="place-sale__row main-table" data-сharacteristics-block-target="Жилая" hidden>
-                        <h2 class="place-sale__row-title place-sale-options__title title-2">
-                            Характеристики объекта
-                        </h2>
-                        <div class="main-table__inner container">
-                            <div class="main-table__table">
-                                <div class="main-table__type" style="grid-template-columns: 13% 14% 16% 20% 18% 16%; justify-content: start;">
-                                    <span>Порядок</span>
-                                    <span>Поле</span>
-                                    <span>Тип поля</span>
-                                    <span>Показывать в фильтре</span>
-                                    <span>Обязательное</span>
-                                    <span>Действие</span>
-                                </div>
-                                <div class="main-table__list">
-                                   
-                                </div>
-                            </div>
-                            <div class="main-table__next">
-                                <!-- В будущем тут будет ссылка :)))) -->
-                                <div class="btn btn-reset btn-primary">
-                                    Создать характеристику объекта
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-reset btn-primary place-sale__btn" style="width: 100%;">
-                        Сохранить
+                    <button type="button" class="btn btn-reset btn-secondary main-table__next">
+                        Следующая страница
                     </button>
+                    <div class="main-table__pagination pagination">
+                        <ul class="pagination__list list-reset">
+                            <li class="pagination__item" disabled>
+                                <a href="#">
+                                    1
+                                </a>
+                            </li>
+                            <li class="pagination__item">
+                                <a href="#">
+                                    2
+                                </a>
+                            </li>
+                            <li class="pagination__item">
+                                <a href="#">
+                                    3
+                                </a>
+                            </li>
+                            <li class="pagination__item">
+                                <a href="#">
+                                    4
+                                </a>
+                            </li>
+                            <li class="pagination__item">
+                                <a href="#">
+                                    5
+                                </a>
+                            </li>
+                            <li class="pagination__item dots" tabindex="-1">
+                                ...
+                            </li>
+                            <li class="pagination__item">
+                                <a href="#">
+                                    199
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </main>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Настройка системы</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script defer src="js/main.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container site-container--place-sale">
+        @include('partials/header--menu.html')
+        <main class="main main-page-gap place-sale">
+            <div class="place-sale__top top-page-inner-title">
+                <div class="top-page-inner-title__container container">
+                    <a href="#" class="place-sale__back top-page-inner-title__back back-link">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#arrow-left"></use>
+                        </svg>
+                        <span>Назад</span>
+                    </a>
+                    <h1 class="place-sale__title top-page-inner-title__title title-1" data-da=".place-sale__body,1212,first">
+                        Группы
+                    </h1>
+                </div>
+            </div>
+            <div class="groups main-table">
+                <div class="main-table__inner container">
+                    <div class="main-table__table">
+                        <div class="main-table__type" style="grid-template-columns: 20% 30% 8% 1fr; justify-content: start;">
+                            <span>Порядок</span>
+                            <span>Роль</span>
+                            <span>Количество</span>
+                            <span style="justify-self: end;">Действие</span>
+                        </div>
+                        <div class="main-table__list drag-drop drag-drop--order">
+                            <div class="main-table__item object-info groups__item drag-drop__item"
+                                style="grid-template-columns: 20% 30% 8% 1fr;justify-content: start;" draggable="true">
+                                <div>
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#right-left"></use>
+                                    </svg>
+                                    <span data-drag-drop-order-number>1</span>
+                                </div>
+                                <span>
+                                    Администратор
+                                </span>
+                                <span style="justify-self: center;">
+                                    5
+                                </span>
+                                <div style="justify-self: end;">
+                                    <a href="./view-employee-groups.html" title="Смотреть">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#eye"></use>
+                                        </svg>
+                                    </a>
+                                    <button type="button" class="btn btn-reset" data-popup-path="warning-remove" title="Удалить">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#trash">
+                                            </use>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="main-table__item object-info groups__item drag-drop__item"
+                                style="grid-template-columns: 20% 30% 8% 1fr;justify-content: start;" draggable="true">
+                                <div>
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#right-left"></use>
+                                    </svg>
+                                    <span data-drag-drop-order-number>2</span>
+                                </div>
+                                <span>
+                                    Агент
+                                </span>
+                                <span style="justify-self: center;">
+                                    10
+                                </span>
+                                <div style="justify-self: end;">
+                                    <a href="#" title="Смотреть">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#eye"></use>
+                                        </svg>
+                                    </a>
+                                    <button type="button" class="btn btn-reset" data-popup-path="warning-remove" title="Удалить">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#trash">
+                                            </use>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="main-table__item object-info groups__item drag-drop__item"
+                                style="grid-template-columns: 20% 30% 8% 1fr;justify-content: start;" draggable="true">
+                                <div>
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#right-left"></use>
+                                    </svg>
+                                    <span data-drag-drop-order-number>3</span>
+                                </div>
+                                <span>
+                                   Юрист
+                                </span>
+                                <span style="justify-self: center;">
+                                   2
+                                </span>
+                                <div style="justify-self: end;">
+                                    <a href="#" title="Смотреть">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#eye"></use>
+                                        </svg>
+                                    </a>
+                                    <button type="button" class="btn btn-reset" data-popup-path="warning-remove" title="Удалить">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#trash">
+                                            </use>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="main-table__item object-info groups__item drag-drop__item"
+                                style="grid-template-columns: 20% 30% 8% 1fr;justify-content: start;" draggable="true">
+                                <div>
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#right-left"></use>
+                                    </svg>
+                                    <span data-drag-drop-order-number>4</span>
+                                </div>
+                                <span>
+                                   Ипотечный брокер
+                                </span>
+                                <span style="justify-self: center;">
+                                   1
+                                </span>
+                                <div style="justify-self: end;">
+                                    <a href="#" title="Смотреть">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#eye"></use>
+                                        </svg>
+                                    </a>
+                                    <button type="button" class="btn btn-reset" data-popup-path="warning-remove" title="Удалить">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#trash">
+                                            </use>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-table__next">
+                        <a href="create-role.html" class="btn btn-reset btn-primary">
+                            Создать новую роль
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        @include('partials/footer.html')
+    </div>
+    @include('partials/popup.html')
+</body>
+
+
+</html>

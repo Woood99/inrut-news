@@ -176,9 +176,13 @@ const tabs = () => {
             const removeBtn = el.closest('.tabs__title-remove');
             if (removeBtn) {
                 const activeTabIndex = Array.prototype.indexOf.call(tabTitle.closest('.tabs__navigation').children, tabTitle);
+                const tabActiveBoolean = Boolean(tabTitle.classList.contains('_tab-active'));
                 tabTitle.remove();
                 tabsBlock.querySelector('.tabs-primary__content').children[activeTabIndex].remove();
                 setTabsStatus(tabsBlock);
+                if (tabActiveBoolean) {
+                    activeFirstTab(tabsBlock.closest('.tabs-primary'));
+                }
                 return;
             }
             if (editBtn) {
@@ -681,9 +685,9 @@ const tabs = () => {
                 currentTitle.classList.add('_tab-active');
                 tabsBlock.querySelector('.tabs__body').removeAttribute('hidden');
             }
+            
+            activeCurrentTab(currentTabs,currentTitle,tabsBlock.querySelectorAll('.tabs__body')[tabsBlock.querySelectorAll('.tabs__body').length - 1]);
         }
-
-
         function update(content) {
             if (content) {
                 const inputs = content.querySelectorAll('.input-text');
@@ -698,6 +702,29 @@ const tabs = () => {
             }
         }
     })
+
+    function activeCurrentTab(currentTabs,currentTitle,currentTab) {
+        if (currentTabs && currentTitle && currentTab) {
+            const titles = currentTabs.querySelectorAll('.tabs__navigation .tabs__title');
+            const tabs = currentTabs.querySelectorAll('.tabs__body'); 
+
+            titles.forEach(title => title.classList.remove('_tab-active'));
+            tabs.forEach(tab => tab.setAttribute('hidden',''));
+
+            currentTitle.classList.add('_tab-active');
+            currentTab.removeAttribute('hidden');
+        }
+    }
+    function activeFirstTab(currentTabs) {
+            const titles = currentTabs.querySelectorAll('.tabs__navigation .tabs__title');
+            const tabs = currentTabs.querySelectorAll('.tabs__body'); 
+
+            titles.forEach(title => title.classList.remove('_tab-active'));
+            tabs.forEach(tab => tab.setAttribute('hidden',''));
+
+            titles[0].classList.add('_tab-active');
+            tabs[0].removeAttribute('hidden');
+    }
 }
 
 export default tabs;

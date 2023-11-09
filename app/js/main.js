@@ -6280,6 +6280,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _modules_inputResize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modules/inputResize */ "./src/js/modules/inputResize.js");
 /* harmony import */ var _modules_generateRandomID__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/generateRandomID */ "./src/js/modules/generateRandomID.js");
+/* harmony import */ var _inputs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./inputs */ "./src/js/components/inputs.js");
+
 
 
 const createCalc = () => {
@@ -6292,6 +6294,8 @@ const createCalc = () => {
   const conditions = createCalc.querySelector('.create-calc-conditions');
   if (conditions) {
     const conditionsCreate = conditions.querySelector('.create-calc-conditions__create');
+    const conditionsCreateText = conditionsCreate.querySelector('span');
+    const top = conditions.querySelector('.row:first-child');
     const conditionsCreateMap = {
       default: conditionsCreate.textContent,
       cancel: 'Отменить создание'
@@ -6311,6 +6315,9 @@ const createCalc = () => {
                     <span>%</span>
                 </label>
             </div>
+            <label class="textarea-primary create-calc-conditions__descr">
+                <textarea class="input-reset textarea-primary__input" placeholder="Подробная информация"></textarea>
+             </label>
             <button type="button" class="btn btn-reset btn-primary create-calc-conditions__save">
                 Сохранить
             </button>
@@ -6321,9 +6328,10 @@ const createCalc = () => {
     });
     function conditionsCreateBody() {
       conditionsCreate.classList.add('_active');
-      conditionsCreate.textContent = conditionsCreateMap.cancel;
-      conditionsCreate.insertAdjacentHTML('afterend', bodyHTML);
+      conditionsCreateText.textContent = conditionsCreateMap.cancel;
+      top.insertAdjacentHTML('afterend', bodyHTML);
       const conditionsBody = conditions.querySelector('.create-calc-conditions__create-body');
+      conditionsBody.querySelectorAll('.input-text').forEach(item => (0,_inputs__WEBPACK_IMPORTED_MODULE_2__.currentInputText)(item));
       const conditionsSave = conditionsBody.querySelector('.create-calc-conditions__save');
       conditionsSave.addEventListener('click', () => {
         conditionsCreateItem(conditionsBody);
@@ -6332,16 +6340,30 @@ const createCalc = () => {
     }
     function conditionsCreateCancel() {
       conditionsCreate.classList.remove('_active');
-      conditionsCreate.textContent = conditionsCreateMap.default;
+      conditionsCreateText.textContent = conditionsCreateMap.default;
       conditions.querySelector('.create-calc-conditions__create-body').remove();
     }
     function conditionsCreateItem(conditionsBody) {
       const conditionsNameValue = conditionsBody.querySelector('.create-calc-conditions__name input').value;
       const conditionsPrcValue = conditionsBody.querySelector('.create-calc-conditions__prc input').value;
-      if (conditionsNameValue && conditionsPrcValue) {
+      const conditionsDescrValue = conditionsBody.querySelector('.create-calc-conditions__descr textarea').value;
+      if (conditionsNameValue && conditionsPrcValue && conditionsDescrValue) {
         const itemHtml = `
                 <div class="create-calc-conditions__item">
-                    <input type="text" name="Имя" class="input-reset create-calc-conditions__item-name" value="${conditionsNameValue}" disabled>
+                    <div class="col">
+                        <input type="text" name="Имя" class="input-reset create-calc-conditions__item-name" value="${conditionsNameValue}" disabled>
+                        <div class="create-calc-conditions__item-descr" hidden="">
+                            <p>
+                                ${conditionsDescrValue}
+                            </p>
+                        </div>
+                        <button type="button" class="btn btn-reset create-calc-conditions__item-btn">
+                            <span>Подробнее</span>
+                            <svg>
+                                <use xlink:href="img/sprite.svg#check"></use>
+                            </svg>
+                        </button>
+                    </div>
                     <div class="col">
                         <input type="text" name="Ставка" class="input-reset create-calc-conditions__item-prc _width-auto" 
                         value="${Array.from(conditionsPrcValue)[0] === '-' ? conditionsPrcValue : '-' + conditionsPrcValue}%" disabled>
@@ -6378,6 +6400,8 @@ const createCalc = () => {
     conditions.addEventListener('click', e => {
       const target = e.target;
       const edit = target.closest('.create-calc-conditions__item-edit');
+      const remove = target.closest('.create-calc-conditions__item-remove');
+      const itemBtn = target.closest('.create-calc-conditions__item-btn');
       if (edit) {
         const item = edit.closest('.create-calc-conditions__item');
         const name = item.querySelector('.create-calc-conditions__item-name');
@@ -6392,6 +6416,23 @@ const createCalc = () => {
           item.classList.remove('_edit');
           name.setAttribute('disabled', '');
           prc.setAttribute('disabled', '');
+        }
+      }
+      if (remove) {
+        const item = remove.closest('.create-calc-conditions__item');
+        item.remove();
+      }
+      if (itemBtn) {
+        const item = itemBtn.closest('.create-calc-conditions__item');
+        const descr = item.querySelector('.create-calc-conditions__item-descr');
+        if (!itemBtn.classList.contains('_active')) {
+          itemBtn.classList.add('_active');
+          itemBtn.querySelector('span').textContent = 'Скрыть';
+          descr.removeAttribute('hidden');
+        } else {
+          itemBtn.classList.remove('_active');
+          itemBtn.querySelector('span').textContent = 'Подробнее';
+          descr.setAttribute('hidden', '');
         }
       }
     });
@@ -6460,7 +6501,7 @@ function itemAction(item) {
   const info = item.querySelector('.create-calc-mort__info');
   const edit = item.querySelector('.create-calc-mort__edit');
   const remove = item.querySelector('.create-calc-mort__remove');
-  const inputPrc = item.querySelector('.checkbox-secondary__text input');
+  const inputPrc = item.querySelector('.checkbox-secondary__text span input');
   const inputText = item.querySelector('.checkbox-secondary__text>input');
   input.addEventListener('change', () => {
     if (!input.checked) {
@@ -12930,9 +12971,13 @@ const tabs = () => {
       const removeBtn = el.closest('.tabs__title-remove');
       if (removeBtn) {
         const activeTabIndex = Array.prototype.indexOf.call(tabTitle.closest('.tabs__navigation').children, tabTitle);
+        const tabActiveBoolean = Boolean(tabTitle.classList.contains('_tab-active'));
         tabTitle.remove();
         tabsBlock.querySelector('.tabs-primary__content').children[activeTabIndex].remove();
         setTabsStatus(tabsBlock);
+        if (tabActiveBoolean) {
+          activeFirstTab(tabsBlock.closest('.tabs-primary'));
+        }
         return;
       }
       if (editBtn) {
@@ -13429,6 +13474,7 @@ const tabs = () => {
         currentTitle.classList.add('_tab-active');
         tabsBlock.querySelector('.tabs__body').removeAttribute('hidden');
       }
+      activeCurrentTab(currentTabs, currentTitle, tabsBlock.querySelectorAll('.tabs__body')[tabsBlock.querySelectorAll('.tabs__body').length - 1]);
     }
     function update(content) {
       if (content) {
@@ -13443,6 +13489,24 @@ const tabs = () => {
       }
     }
   });
+  function activeCurrentTab(currentTabs, currentTitle, currentTab) {
+    if (currentTabs && currentTitle && currentTab) {
+      const titles = currentTabs.querySelectorAll('.tabs__navigation .tabs__title');
+      const tabs = currentTabs.querySelectorAll('.tabs__body');
+      titles.forEach(title => title.classList.remove('_tab-active'));
+      tabs.forEach(tab => tab.setAttribute('hidden', ''));
+      currentTitle.classList.add('_tab-active');
+      currentTab.removeAttribute('hidden');
+    }
+  }
+  function activeFirstTab(currentTabs) {
+    const titles = currentTabs.querySelectorAll('.tabs__navigation .tabs__title');
+    const tabs = currentTabs.querySelectorAll('.tabs__body');
+    titles.forEach(title => title.classList.remove('_tab-active'));
+    tabs.forEach(tab => tab.setAttribute('hidden', ''));
+    titles[0].classList.add('_tab-active');
+    tabs[0].removeAttribute('hidden');
+  }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (tabs);
 

@@ -1,5 +1,8 @@
 import inputResize from '../modules/inputResize';
 import generateRandomID from '../modules/generateRandomID';
+import {
+    currentInputText
+} from "./inputs";
 export const createCalc = () => {
     const createCalc = document.querySelector('.create-calc');
     if (!createCalc) return;
@@ -11,6 +14,8 @@ export const createCalc = () => {
     const conditions = createCalc.querySelector('.create-calc-conditions');
     if (conditions) {
         const conditionsCreate = conditions.querySelector('.create-calc-conditions__create');
+        const conditionsCreateText = conditionsCreate.querySelector('span');
+        const top = conditions.querySelector('.row:first-child');
         const conditionsCreateMap = {
             default: conditionsCreate.textContent,
             cancel: 'Отменить создание'
@@ -30,6 +35,9 @@ export const createCalc = () => {
                     <span>%</span>
                 </label>
             </div>
+            <label class="textarea-primary create-calc-conditions__descr">
+                <textarea class="input-reset textarea-primary__input" placeholder="Подробная информация"></textarea>
+             </label>
             <button type="button" class="btn btn-reset btn-primary create-calc-conditions__save">
                 Сохранить
             </button>
@@ -41,10 +49,12 @@ export const createCalc = () => {
 
         function conditionsCreateBody() {
             conditionsCreate.classList.add('_active');
-            conditionsCreate.textContent = conditionsCreateMap.cancel;
-            conditionsCreate.insertAdjacentHTML('afterend', bodyHTML);
+            conditionsCreateText.textContent = conditionsCreateMap.cancel;
+            top.insertAdjacentHTML('afterend', bodyHTML);
 
             const conditionsBody = conditions.querySelector('.create-calc-conditions__create-body');
+            conditionsBody.querySelectorAll('.input-text').forEach(item => currentInputText(item));
+
             const conditionsSave = conditionsBody.querySelector('.create-calc-conditions__save');
 
             conditionsSave.addEventListener('click', () => {
@@ -55,17 +65,31 @@ export const createCalc = () => {
 
         function conditionsCreateCancel() {
             conditionsCreate.classList.remove('_active');
-            conditionsCreate.textContent = conditionsCreateMap.default;
+            conditionsCreateText.textContent = conditionsCreateMap.default;
             conditions.querySelector('.create-calc-conditions__create-body').remove();
         }
 
         function conditionsCreateItem(conditionsBody) {
             const conditionsNameValue = conditionsBody.querySelector('.create-calc-conditions__name input').value;
             const conditionsPrcValue = conditionsBody.querySelector('.create-calc-conditions__prc input').value;
-            if (conditionsNameValue && conditionsPrcValue) {
+            const conditionsDescrValue = conditionsBody.querySelector('.create-calc-conditions__descr textarea').value;
+            if (conditionsNameValue && conditionsPrcValue && conditionsDescrValue) {
                 const itemHtml = `
                 <div class="create-calc-conditions__item">
-                    <input type="text" name="Имя" class="input-reset create-calc-conditions__item-name" value="${conditionsNameValue}" disabled>
+                    <div class="col">
+                        <input type="text" name="Имя" class="input-reset create-calc-conditions__item-name" value="${conditionsNameValue}" disabled>
+                        <div class="create-calc-conditions__item-descr" hidden="">
+                            <p>
+                                ${conditionsDescrValue}
+                            </p>
+                        </div>
+                        <button type="button" class="btn btn-reset create-calc-conditions__item-btn">
+                            <span>Подробнее</span>
+                            <svg>
+                                <use xlink:href="img/sprite.svg#check"></use>
+                            </svg>
+                        </button>
+                    </div>
                     <div class="col">
                         <input type="text" name="Ставка" class="input-reset create-calc-conditions__item-prc _width-auto" 
                         value="${Array.from(conditionsPrcValue)[0] === '-' ? conditionsPrcValue : '-' + conditionsPrcValue}%" disabled>
@@ -91,18 +115,20 @@ export const createCalc = () => {
                 const prc = currentItem.querySelector('.create-calc-conditions__item-prc');
                 inputResize(name);
                 inputResize(prc);
-                name.addEventListener('input',() => {
+                name.addEventListener('input', () => {
                     inputResize(name);
                 })
-                prc.addEventListener('input',() => {
+                prc.addEventListener('input', () => {
                     inputResize(prc);
                 })
             }
         }
 
-        conditions.addEventListener('click',(e) => {
+        conditions.addEventListener('click', (e) => {
             const target = e.target;
             const edit = target.closest('.create-calc-conditions__item-edit');
+            const remove = target.closest('.create-calc-conditions__item-remove');
+            const itemBtn = target.closest('.create-calc-conditions__item-btn');
             if (edit) {
                 const item = edit.closest('.create-calc-conditions__item');
                 const name = item.querySelector('.create-calc-conditions__item-name');
@@ -116,9 +142,29 @@ export const createCalc = () => {
                     name.setSelectionRange(name.value.length, name.value.length);
                 } else {
                     item.classList.remove('_edit');
-                    name.setAttribute('disabled','');
-                    prc.setAttribute('disabled','');
+                    name.setAttribute('disabled', '');
+                    prc.setAttribute('disabled', '');
                 }
+            }
+            if (remove) {
+                const item = remove.closest('.create-calc-conditions__item');
+                item.remove();
+            }
+            if (itemBtn) {
+                const item = itemBtn.closest('.create-calc-conditions__item');
+                const descr = item.querySelector('.create-calc-conditions__item-descr');
+                if (!itemBtn.classList.contains('_active')) {
+                    itemBtn.classList.add('_active');
+                    itemBtn.querySelector('span').textContent = 'Скрыть';
+
+                    descr.removeAttribute('hidden');
+                } else {
+                    itemBtn.classList.remove('_active');
+                    itemBtn.querySelector('span').textContent = 'Подробнее';
+
+                    descr.setAttribute('hidden', '');
+                }
+
             }
         });
     }
@@ -126,16 +172,17 @@ export const createCalc = () => {
 export const currentCreateCalc = (mort) => {
     createCalcBody(mort);
 }
-function createCalcBody(mort){
+
+function createCalcBody(mort) {
     const items = mort.querySelectorAll('.create-calc-mort__item');
     const createItem = mort.querySelector('.create-calc-mort__create-item');
     items.forEach(item => {
         itemAction(item);
     })
     if (createItem) {
-        createItem.addEventListener('click',() => {
+        createItem.addEventListener('click', () => {
             const ID = generateRandomID(15);
-             const itemHTML = `
+            const itemHTML = `
             <div class="create-calc-mort__item">
             <div class="create-calc-mort__checkbox checkbox-secondary">
                 <input id="${ID}" name="${ID}" class="checkbox-secondary__input" type="checkbox">
@@ -189,7 +236,7 @@ function itemAction(item) {
     const info = item.querySelector('.create-calc-mort__info');
     const edit = item.querySelector('.create-calc-mort__edit');
     const remove = item.querySelector('.create-calc-mort__remove')
-    const inputPrc = item.querySelector('.checkbox-secondary__text input');
+    const inputPrc = item.querySelector('.checkbox-secondary__text span input');
     const inputText = item.querySelector('.checkbox-secondary__text>input');
     input.addEventListener('change', () => {
         if (!input.checked) {
@@ -209,7 +256,7 @@ function itemAction(item) {
             inputPrc.setAttribute('disabled', '');
         }
     })
-    remove.addEventListener('click',() => {
+    remove.addEventListener('click', () => {
         item.remove();
     })
     inputResize(inputPrc);
@@ -220,9 +267,9 @@ function itemAction(item) {
         inputText.focus();
         inputText.setSelectionRange(inputText.value.length, inputText.value.length);
 
-        document.addEventListener('click',(e) => {
+        document.addEventListener('click', (e) => {
             if (e.target !== inputText && inputText.value.length >= 1) {
-                inputText.setAttribute('disabled','');
+                inputText.setAttribute('disabled', '');
                 inputText.style.pointerEvents = 'none';
             }
         })
@@ -244,6 +291,7 @@ function blockAdded(block) {
     `;
     block.insertAdjacentHTML('beforebegin', textareaHTML);
 }
+
 function update(content) {
     if (content) {
         const inputs = content.querySelectorAll('input._width-auto');

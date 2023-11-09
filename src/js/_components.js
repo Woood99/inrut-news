@@ -96,7 +96,9 @@ import {
     dragDrops
 } from './components/dragDrop';
 import AirDatepicker from 'air-datepicker';
-import createCalc from './components/createCalc';
+import {
+    createCalc
+} from './components/createCalc';
 import createSale from './components/createSale';
 import {
     videoLoad

@@ -4355,7 +4355,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_bankOffer__WEBPACK_IMPORTED_MODULE_44__["default"])();
   (0,_components_tooltips__WEBPACK_IMPORTED_MODULE_45__.tooltipSecondary)();
   (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_46__.dragDrops)();
-  (0,_components_createCalc__WEBPACK_IMPORTED_MODULE_48__["default"])();
+  (0,_components_createCalc__WEBPACK_IMPORTED_MODULE_48__.createCalc)();
   (0,_components_createSale__WEBPACK_IMPORTED_MODULE_49__["default"])();
   (0,_components_videoLoad__WEBPACK_IMPORTED_MODULE_50__.videoLoad)();
   (0,_components_haracteristicsBlock__WEBPACK_IMPORTED_MODULE_51__["default"])();
@@ -6275,48 +6275,19 @@ function controlCards() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "createCalc": () => (/* binding */ createCalc),
+/* harmony export */   "currentCreateCalc": () => (/* binding */ currentCreateCalc)
 /* harmony export */ });
 /* harmony import */ var _modules_inputResize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modules/inputResize */ "./src/js/modules/inputResize.js");
+/* harmony import */ var _modules_generateRandomID__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/generateRandomID */ "./src/js/modules/generateRandomID.js");
+
 
 const createCalc = () => {
   const createCalc = document.querySelector('.create-calc');
   if (!createCalc) return;
-  const mortOne = createCalc.querySelector('.create-calc-mort--building');
-  const mortTwo = createCalc.querySelector('.create-calc-mort--secondary');
-  [mortOne, mortTwo].forEach(mort => {
-    const items = mort.querySelectorAll('.create-calc-mort__item');
-    items.forEach(item => {
-      const input = item.querySelector('.create-calc-mort__checkbox input');
-      const info = item.querySelector('.create-calc-mort__info');
-      const edit = item.querySelector('.create-calc-mort__edit');
-      const inputPrc = item.querySelector('.checkbox-secondary__text input');
-      input.addEventListener('change', () => {
-        if (!input.checked) {
-          info.setAttribute('hidden', '');
-        } else {
-          info.removeAttribute('hidden');
-        }
-      });
-      edit.addEventListener('click', () => {
-        if (!edit.classList.contains('_active')) {
-          edit.classList.add('_active');
-          inputPrc.removeAttribute('disabled');
-          inputPrc.focus();
-          inputPrc.setSelectionRange(inputPrc.value.length, inputPrc.value.length);
-        } else {
-          edit.classList.remove('_active');
-          inputPrc.setAttribute('disabled', '');
-        }
-      });
-      inputPrc.addEventListener('input', () => {
-        (0,_modules_inputResize__WEBPACK_IMPORTED_MODULE_0__["default"])(inputPrc);
-      });
-      const createTextarea = item.querySelector('.create-calc-mort__create');
-      createTextarea.addEventListener('click', () => {
-        blockAdded(createTextarea);
-      });
-    });
+  const morts = createCalc.querySelectorAll('.create-calc-mort__field');
+  morts.forEach(mort => {
+    createCalcBody(mort);
   });
   const conditions = createCalc.querySelector('.create-calc-conditions');
   if (conditions) {
@@ -6425,16 +6396,131 @@ const createCalc = () => {
       }
     });
   }
-  function blockAdded(block) {
-    const textareaHTML = `
-        <label class="textarea-primary">
-            <textarea class="input-reset textarea-primary__input" placeholder=""></textarea>
-        </label>
-        `;
-    block.insertAdjacentHTML('beforebegin', textareaHTML);
-  }
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createCalc);
+const currentCreateCalc = mort => {
+  createCalcBody(mort);
+};
+function createCalcBody(mort) {
+  const items = mort.querySelectorAll('.create-calc-mort__item');
+  const createItem = mort.querySelector('.create-calc-mort__create-item');
+  items.forEach(item => {
+    itemAction(item);
+  });
+  if (createItem) {
+    createItem.addEventListener('click', () => {
+      const ID = (0,_modules_generateRandomID__WEBPACK_IMPORTED_MODULE_1__["default"])(15);
+      const itemHTML = `
+            <div class="create-calc-mort__item">
+            <div class="create-calc-mort__checkbox checkbox-secondary">
+                <input id="${ID}" name="${ID}" class="checkbox-secondary__input" type="checkbox">
+                <label for="${ID}" class="checkbox-secondary__label">
+                    <div class="checkbox-secondary__text">
+                    <input type="text" name="Имя" class="input-reset _width-auto" value="">
+                        <span>
+                            <input type="text" name="Имя" maxlength="3" class="input-reset _width-auto" value="0" disabled>%
+                        </span>
+                    </div>
+                </label>
+                <button type="button" class="btn btn-reset create-calc-mort__edit">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#pencil">
+                        </use>
+                    </svg>
+                </button>
+                <button type="button" class="btn btn-reset create-calc-mort__remove">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#trash">
+                        </use>
+                    </svg>
+                </button>
+            </div>
+            <div class="create-calc-mort__info" hidden>
+                <h3 class="create-calc-mort__title title-3">Дополнительная информация</h3>
+                <div class="create-calc-mort__textareas">
+                    <label class="textarea-primary">
+                        <textarea class="input-reset textarea-primary__input" placeholder=""></textarea>
+                    </label>
+                    <button type="button" class="btn btn-reset create-calc-mort__create" title="Создать новый блок">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#plus"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+            `;
+      mort.insertAdjacentHTML('beforeend', itemHTML);
+      itemAction(mort.querySelector('.create-calc-mort__item:last-child'));
+      update(mort.querySelector('.create-calc-mort__item:last-child'));
+    });
+  }
+}
+function itemAction(item) {
+  const input = item.querySelector('.create-calc-mort__checkbox input');
+  const info = item.querySelector('.create-calc-mort__info');
+  const edit = item.querySelector('.create-calc-mort__edit');
+  const remove = item.querySelector('.create-calc-mort__remove');
+  const inputPrc = item.querySelector('.checkbox-secondary__text input');
+  const inputText = item.querySelector('.checkbox-secondary__text>input');
+  input.addEventListener('change', () => {
+    if (!input.checked) {
+      info.setAttribute('hidden', '');
+    } else {
+      info.removeAttribute('hidden');
+    }
+  });
+  edit.addEventListener('click', () => {
+    if (!edit.classList.contains('_active')) {
+      edit.classList.add('_active');
+      inputPrc.removeAttribute('disabled');
+      inputPrc.focus();
+      inputPrc.setSelectionRange(inputPrc.value.length, inputPrc.value.length);
+    } else {
+      edit.classList.remove('_active');
+      inputPrc.setAttribute('disabled', '');
+    }
+  });
+  remove.addEventListener('click', () => {
+    item.remove();
+  });
+  (0,_modules_inputResize__WEBPACK_IMPORTED_MODULE_0__["default"])(inputPrc);
+  inputPrc.addEventListener('input', () => {
+    (0,_modules_inputResize__WEBPACK_IMPORTED_MODULE_0__["default"])(inputPrc);
+  });
+  if (inputText) {
+    inputText.focus();
+    inputText.setSelectionRange(inputText.value.length, inputText.value.length);
+    document.addEventListener('click', e => {
+      if (e.target !== inputText && inputText.value.length >= 1) {
+        inputText.setAttribute('disabled', '');
+        inputText.style.pointerEvents = 'none';
+      }
+    });
+  }
+  const createTextarea = item.querySelector('.create-calc-mort__create');
+  createTextarea.addEventListener('click', () => {
+    blockAdded(createTextarea);
+  });
+}
+function blockAdded(block) {
+  const textareaHTML = `
+    <label class="textarea-primary">
+        <textarea class="input-reset textarea-primary__input" placeholder=""></textarea>
+    </label>
+    `;
+  block.insertAdjacentHTML('beforebegin', textareaHTML);
+}
+function update(content) {
+  if (content) {
+    const inputs = content.querySelectorAll('input._width-auto');
+    inputs.forEach(item => {
+      (0,_modules_inputResize__WEBPACK_IMPORTED_MODULE_0__["default"])(item);
+      item.addEventListener('input', () => {
+        (0,_modules_inputResize__WEBPACK_IMPORTED_MODULE_0__["default"])(item);
+      });
+    });
+  }
+}
 
 /***/ }),
 
@@ -12690,6 +12776,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_inputResize__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../modules/inputResize */ "./src/js/modules/inputResize.js");
 /* harmony import */ var _modules_numberReplace__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../modules/numberReplace */ "./src/js/modules/numberReplace.js");
 /* harmony import */ var _components_inputs__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/inputs */ "./src/js/components/inputs.js");
+/* harmony import */ var _components_createCalc__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/createCalc */ "./src/js/components/createCalc.js");
+
 
 
 
@@ -13291,6 +13379,17 @@ const tabs = () => {
             </div>
             </div>
             `;
+      const createCalcMortHTML = `
+            <div class="tabs__body create-calc-mort__field" data-tabs-item>
+                <button type="button" class="btn btn-reset create-calc-mort__create-item">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#plus"></use>
+                    </svg>
+                    Добавить новое поле
+                </button>
+                </div>
+            </div>
+            `;
       if (currentTabs.closest('.furnishing-sets')) {
         tabs.insertAdjacentHTML('beforeend', furnishingSetsHTML);
         setTabsStatus(tabsBlock);
@@ -13299,6 +13398,11 @@ const tabs = () => {
       } else if (currentTabs.closest('.ecology-parks')) {
         tabs.insertAdjacentHTML('beforeend', ecologyParksHTML);
         setTabsStatus(tabsBlock);
+        update(tabsBlock.querySelector('.tabs__body:last-child'));
+      } else if (currentTabs.closest('.create-calc-mort')) {
+        tabs.insertAdjacentHTML('beforeend', createCalcMortHTML);
+        setTabsStatus(tabsBlock);
+        (0,_components_createCalc__WEBPACK_IMPORTED_MODULE_10__.currentCreateCalc)(tabsBlock.querySelector('.tabs__body:last-child'));
         update(tabsBlock.querySelector('.tabs__body:last-child'));
       } else {
         tabs.insertAdjacentHTML('beforeend', photoHTML);
@@ -13612,6 +13716,32 @@ const enableScroll = () => {
   document.documentElement.style.scrollBehavior = 'smooth';
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (enableScroll);
+
+/***/ }),
+
+/***/ "./src/js/modules/generateRandomID.js":
+/*!********************************************!*\
+  !*** ./src/js/modules/generateRandomID.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const generateRandomID = length => {
+  let result = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const charactersLength = characters.length;
+  let counter = 0;
+  while (counter < length) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    counter += 1;
+  }
+  return result;
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (generateRandomID);
 
 /***/ }),
 

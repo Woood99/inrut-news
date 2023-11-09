@@ -18,6 +18,7 @@ import numberReplace from '../modules/numberReplace';
 import {
     currentInputText
 } from "../components/inputs";
+import { currentCreateCalc } from '../components/createCalc';
 const tabs = () => {
     const metroContainer = document.querySelector('.popup-primary--search-area');
     const metroInnerMoscow = document.querySelector('#map-metro_moscow');
@@ -630,6 +631,17 @@ const tabs = () => {
             </div>
             </div>
             `;
+            const createCalcMortHTML = `
+            <div class="tabs__body create-calc-mort__field" data-tabs-item>
+                <button type="button" class="btn btn-reset create-calc-mort__create-item">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#plus"></use>
+                    </svg>
+                    Добавить новое поле
+                </button>
+                </div>
+            </div>
+            `;
             if (currentTabs.closest('.furnishing-sets')) {
                 tabs.insertAdjacentHTML('beforeend', furnishingSetsHTML);
                 setTabsStatus(tabsBlock);
@@ -638,6 +650,11 @@ const tabs = () => {
             } else if (currentTabs.closest('.ecology-parks')) {
                 tabs.insertAdjacentHTML('beforeend', ecologyParksHTML);
                 setTabsStatus(tabsBlock);
+                update(tabsBlock.querySelector('.tabs__body:last-child'));
+            } else if (currentTabs.closest('.create-calc-mort')) {
+                tabs.insertAdjacentHTML('beforeend', createCalcMortHTML);
+                setTabsStatus(tabsBlock);
+                currentCreateCalc(tabsBlock.querySelector('.tabs__body:last-child'));
                 update(tabsBlock.querySelector('.tabs__body:last-child'));
             } else {
                 tabs.insertAdjacentHTML('beforeend', photoHTML);

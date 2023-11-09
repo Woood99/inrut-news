@@ -44,7 +44,6 @@ export const inputOnlyNumber = () => {
         })
     });
 };
-
 export const textareaSecondary = () => {
     const textareas = document.querySelectorAll('.textarea-secondary');
     textareas.forEach(textarea => {
@@ -134,3 +133,15 @@ export const inputClue = (target, name, html) => {
         }, 300);
     }
 };
+
+
+export const valueToValueAttr = (field) => {
+    field.addEventListener('input', () => {
+        field.setAttribute('value', field.value);
+    })
+}
+
+document.querySelectorAll('.textarea-primary').forEach(textarea => {
+    const field = textarea.querySelector('.textarea-primary__input');
+    valueToValueAttr(field);
+})

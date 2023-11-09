@@ -6291,7 +6291,171 @@ const createCalc = () => {
   morts.forEach(mort => {
     createCalcBody(mort);
   });
-  const conditions = createCalc.querySelector('.create-calc-conditions');
+};
+const currentCreateCalc = mort => {
+  createCalcBody(mort);
+};
+function createCalcBody(mort) {
+  const items = mort.querySelectorAll('.create-calc-mort__item');
+  const createItem = mort.querySelector('.create-calc-mort__create-item');
+  items.forEach(item => {
+    itemAction(item);
+  });
+  if (createItem) {
+    createItem.addEventListener('click', () => {
+      const itemFieldHTML = `
+            <div class="create-calc-mort__item create-calc-mort__item--field">
+            <div class="row">
+                <div class="input-text input-text--no-exp create-calc-mort__item-name">
+                    <label class="input-text__label">
+                        <span>Название</span>
+                        <input type="text" name="Название" class="input-reset input-text__input" value="" placeholder="">
+                    </label>
+                </div>
+                <div class="input-text create-calc-mort__item-prc">
+                    <label class="input-text__label">
+                        <span>Ставка</span>
+                        <input type="text" name="Имя" class="input-reset input-text__input" placeholder="">
+                        <span>%</span>
+                    </label>
+                </div>
+                <button type="button" class="btn btn-reset create-calc-mort__item-name__save">Сохранить</button>
+            </div>
+            <div class="create-calc-mort__info">
+                <h3 class="create-calc-mort__title title-4">Дополнительная информация</h3>
+                <div class="create-calc-mort__textareas">
+                    <label class="textarea-primary">
+                        <textarea class="input-reset textarea-primary__input" placeholder=""></textarea>
+                    </label>
+                    <button type="button" class="btn btn-reset create-calc-mort__create" title="Создать новый блок">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#plus"></use>
+                        </svg>
+                    </button>
+                </div>
+                <div class="create-calc-mort__conditions create-calc-conditions" style="margin: 24px 0;">
+                <div class="row">
+                    <h3 class="create-calc-conditions__title title-3">
+                        Особые условия
+                    </h3>
+                    <button type="button" class="btn btn-reset create-calc-conditions__create">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#plus"></use>
+                        </svg>
+                        <span>Создать новое условие</span>
+                    </button>
+                </div>
+            </div>
+            </div>
+        </div>
+            `;
+      createItem.insertAdjacentHTML('afterend', itemFieldHTML);
+      const currentItemField = mort.querySelector('.create-calc-mort__item--field');
+      const createTextarea = currentItemField.querySelector('.create-calc-mort__create');
+      conditions(currentItemField);
+      (0,_inputs__WEBPACK_IMPORTED_MODULE_2__.valueToValueAttr)(currentItemField.querySelector('.textarea-primary__input'));
+      createTextarea.addEventListener('click', () => {
+        blockAdded(createTextarea);
+      });
+      const save = currentItemField.querySelector('.create-calc-mort__item-name__save');
+      save.addEventListener('click', () => {
+        const name = currentItemField.querySelector('.create-calc-mort__item-name input').value;
+        const prc = currentItemField.querySelector('.create-calc-mort__item-prc input').value;
+        const textareas = currentItemField.querySelector('.create-calc-mort__textareas');
+        const conditions = currentItemField.querySelector('.create-calc-conditions');
+        if (name && prc) {
+          const ID = (0,_modules_generateRandomID__WEBPACK_IMPORTED_MODULE_1__["default"])(15);
+          const itemHTML = `
+                <div class="create-calc-mort__item">
+                <div class="create-calc-mort__checkbox checkbox-secondary">
+                    <input id="${ID}" name="${ID}" class="checkbox-secondary__input" type="checkbox">
+                    <label for="${ID}" class="checkbox-secondary__label">
+                        <div class="checkbox-secondary__text">
+                        <input type="text" name="Имя" class="input-reset _width-auto" value="${name}">
+                            <span>
+                                <input type="text" name="Имя" maxlength="3" class="input-reset _width-auto" value="${prc}" disabled>%
+                            </span>
+                        </div>
+                    </label>
+                    <button type="button" class="btn btn-reset create-calc-mort__edit">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#pencil">
+                            </use>
+                        </svg>
+                    </button>
+                    <button type="button" class="btn btn-reset create-calc-mort__remove">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#trash">
+                            </use>
+                        </svg>
+                    </button>
+                </div>
+                <div class="create-calc-mort__info" hidden>
+                    <h3 class="create-calc-mort__title title-3">Дополнительная информация</h3>
+                </div>
+            </div>
+                `;
+          mort.insertAdjacentHTML('beforeend', itemHTML);
+          const currentItem = mort.querySelector('.create-calc-mort__item:last-child');
+          currentItem.querySelector('.create-calc-mort__info').insertAdjacentElement('beforeend', textareas);
+          currentItem.querySelector('.create-calc-mort__info').insertAdjacentElement('beforeend', conditions);
+          itemAction(currentItem);
+          update(currentItem);
+          currentItemField.remove();
+        }
+      });
+    });
+  }
+}
+function itemAction(item) {
+  const input = item.querySelector('.create-calc-mort__checkbox input');
+  const info = item.querySelector('.create-calc-mort__info');
+  const edit = item.querySelector('.create-calc-mort__edit');
+  const remove = item.querySelector('.create-calc-mort__remove');
+  const inputPrc = item.querySelector('.checkbox-secondary__text span input');
+  const inputText = item.querySelector('.checkbox-secondary__text>input');
+  input.addEventListener('change', () => {
+    if (!input.checked) {
+      info.setAttribute('hidden', '');
+    } else {
+      info.removeAttribute('hidden');
+    }
+  });
+  edit.addEventListener('click', () => {
+    if (!edit.classList.contains('_active')) {
+      edit.classList.add('_active');
+      inputPrc.removeAttribute('disabled');
+      inputPrc.select();
+    } else {
+      edit.classList.remove('_active');
+      inputPrc.setAttribute('disabled', '');
+    }
+  });
+  remove.addEventListener('click', () => {
+    item.remove();
+  });
+  (0,_modules_inputResize__WEBPACK_IMPORTED_MODULE_0__["default"])(inputPrc);
+  inputPrc.addEventListener('input', () => {
+    (0,_modules_inputResize__WEBPACK_IMPORTED_MODULE_0__["default"])(inputPrc);
+  });
+  if (inputText) {
+    inputText.focus();
+    inputText.setSelectionRange(inputText.value.length, inputText.value.length);
+    document.addEventListener('click', e => {
+      if (e.target !== inputText && inputText.value.length >= 1) {
+        inputText.setAttribute('disabled', '');
+        inputText.style.pointerEvents = 'none';
+      }
+    });
+  }
+  const createTextarea = item.querySelector('.create-calc-mort__create');
+  createTextarea.addEventListener('click', () => {
+    blockAdded(createTextarea);
+  });
+  conditions(item);
+}
+function conditions(item) {
+  const conditions = item.querySelector('.create-calc-conditions');
   if (conditions) {
     const conditionsCreate = conditions.querySelector('.create-calc-conditions__create');
     const conditionsCreateText = conditionsCreate.querySelector('span');
@@ -6315,6 +6479,7 @@ const createCalc = () => {
                     <span>%</span>
                 </label>
             </div>
+            <h3 class="title-4" style="grid-column:1/-1;margin:16px 0;">Дополнительная информация</h3>
             <label class="textarea-primary create-calc-conditions__descr">
                 <textarea class="input-reset textarea-primary__input" placeholder="Подробная информация"></textarea>
              </label>
@@ -6437,111 +6602,6 @@ const createCalc = () => {
       }
     });
   }
-};
-const currentCreateCalc = mort => {
-  createCalcBody(mort);
-};
-function createCalcBody(mort) {
-  const items = mort.querySelectorAll('.create-calc-mort__item');
-  const createItem = mort.querySelector('.create-calc-mort__create-item');
-  items.forEach(item => {
-    itemAction(item);
-  });
-  if (createItem) {
-    createItem.addEventListener('click', () => {
-      const ID = (0,_modules_generateRandomID__WEBPACK_IMPORTED_MODULE_1__["default"])(15);
-      const itemHTML = `
-            <div class="create-calc-mort__item">
-            <div class="create-calc-mort__checkbox checkbox-secondary">
-                <input id="${ID}" name="${ID}" class="checkbox-secondary__input" type="checkbox">
-                <label for="${ID}" class="checkbox-secondary__label">
-                    <div class="checkbox-secondary__text">
-                    <input type="text" name="Имя" class="input-reset _width-auto" value="">
-                        <span>
-                            <input type="text" name="Имя" maxlength="3" class="input-reset _width-auto" value="0" disabled>%
-                        </span>
-                    </div>
-                </label>
-                <button type="button" class="btn btn-reset create-calc-mort__edit">
-                    <svg>
-                        <use xlink:href="img/sprite.svg#pencil">
-                        </use>
-                    </svg>
-                </button>
-                <button type="button" class="btn btn-reset create-calc-mort__remove">
-                    <svg>
-                        <use xlink:href="img/sprite.svg#trash">
-                        </use>
-                    </svg>
-                </button>
-            </div>
-            <div class="create-calc-mort__info" hidden>
-                <h3 class="create-calc-mort__title title-3">Дополнительная информация</h3>
-                <div class="create-calc-mort__textareas">
-                    <label class="textarea-primary">
-                        <textarea class="input-reset textarea-primary__input" placeholder=""></textarea>
-                    </label>
-                    <button type="button" class="btn btn-reset create-calc-mort__create" title="Создать новый блок">
-                        <svg>
-                            <use xlink:href="img/sprite.svg#plus"></use>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-            `;
-      mort.insertAdjacentHTML('beforeend', itemHTML);
-      itemAction(mort.querySelector('.create-calc-mort__item:last-child'));
-      update(mort.querySelector('.create-calc-mort__item:last-child'));
-    });
-  }
-}
-function itemAction(item) {
-  const input = item.querySelector('.create-calc-mort__checkbox input');
-  const info = item.querySelector('.create-calc-mort__info');
-  const edit = item.querySelector('.create-calc-mort__edit');
-  const remove = item.querySelector('.create-calc-mort__remove');
-  const inputPrc = item.querySelector('.checkbox-secondary__text span input');
-  const inputText = item.querySelector('.checkbox-secondary__text>input');
-  input.addEventListener('change', () => {
-    if (!input.checked) {
-      info.setAttribute('hidden', '');
-    } else {
-      info.removeAttribute('hidden');
-    }
-  });
-  edit.addEventListener('click', () => {
-    if (!edit.classList.contains('_active')) {
-      edit.classList.add('_active');
-      inputPrc.removeAttribute('disabled');
-      inputPrc.focus();
-      inputPrc.setSelectionRange(inputPrc.value.length, inputPrc.value.length);
-    } else {
-      edit.classList.remove('_active');
-      inputPrc.setAttribute('disabled', '');
-    }
-  });
-  remove.addEventListener('click', () => {
-    item.remove();
-  });
-  (0,_modules_inputResize__WEBPACK_IMPORTED_MODULE_0__["default"])(inputPrc);
-  inputPrc.addEventListener('input', () => {
-    (0,_modules_inputResize__WEBPACK_IMPORTED_MODULE_0__["default"])(inputPrc);
-  });
-  if (inputText) {
-    inputText.focus();
-    inputText.setSelectionRange(inputText.value.length, inputText.value.length);
-    document.addEventListener('click', e => {
-      if (e.target !== inputText && inputText.value.length >= 1) {
-        inputText.setAttribute('disabled', '');
-        inputText.style.pointerEvents = 'none';
-      }
-    });
-  }
-  const createTextarea = item.querySelector('.create-calc-mort__create');
-  createTextarea.addEventListener('click', () => {
-    blockAdded(createTextarea);
-  });
 }
 function blockAdded(block) {
   const textareaHTML = `
@@ -6550,6 +6610,8 @@ function blockAdded(block) {
     </label>
     `;
   block.insertAdjacentHTML('beforebegin', textareaHTML);
+  const currentBlock = block.previousElementSibling;
+  (0,_inputs__WEBPACK_IMPORTED_MODULE_2__.valueToValueAttr)(currentBlock.querySelector('.textarea-primary__input'));
 }
 function update(content) {
   if (content) {
@@ -9038,7 +9100,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "inputClue": () => (/* binding */ inputClue),
 /* harmony export */   "inputOnlyNumber": () => (/* binding */ inputOnlyNumber),
 /* harmony export */   "inputText": () => (/* binding */ inputText),
-/* harmony export */   "textareaSecondary": () => (/* binding */ textareaSecondary)
+/* harmony export */   "textareaSecondary": () => (/* binding */ textareaSecondary),
+/* harmony export */   "valueToValueAttr": () => (/* binding */ valueToValueAttr)
 /* harmony export */ });
 /* harmony import */ var _modules_inputResize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modules/inputResize */ "./src/js/modules/inputResize.js");
 /* harmony import */ var _modules_inputCursorEnd__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/inputCursorEnd */ "./src/js/modules/inputCursorEnd.js");
@@ -9168,6 +9231,15 @@ const inputClue = (target, name, html) => {
     }, 300);
   }
 };
+const valueToValueAttr = field => {
+  field.addEventListener('input', () => {
+    field.setAttribute('value', field.value);
+  });
+};
+document.querySelectorAll('.textarea-primary').forEach(textarea => {
+  const field = textarea.querySelector('.textarea-primary__input');
+  valueToValueAttr(field);
+});
 
 /***/ }),
 

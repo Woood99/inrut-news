@@ -160,7 +160,7 @@ function itemAction(item) {
             moreBtn.classList.remove('_active');
             content.setAttribute('hidden','');
 
-            moreBtnText.textContent = 'Подробнее';
+            moreBtnText.textContent = 'Смотреть всё';
         }
     })
 

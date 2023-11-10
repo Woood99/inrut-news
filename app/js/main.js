@@ -6430,7 +6430,7 @@ function itemAction(item) {
     } else {
       moreBtn.classList.remove('_active');
       content.setAttribute('hidden', '');
-      moreBtnText.textContent = 'Подробнее';
+      moreBtnText.textContent = 'Смотреть всё';
     }
   });
   edit.addEventListener('click', () => {

@@ -6497,15 +6497,15 @@ function conditions(item) {
                     <span>%</span>
                 </label>
             </div>
-            <button type="button" class="btn btn-reset create-calc-conditions__save">
-                <svg>
-                <use xlink:href="img/sprite.svg#save"></use>
-                </svg>
-            </button>
-            <h3 class="title-4" style="grid-column:1/-1;margin:16px 0;">Дополнительная информация</h3>
-            <label class="textarea-primary create-calc-conditions__descr">
+            <h3 class="title-4" style="grid-column:1/3;margin:16px 0;">Дополнительная информация</h3>
+            <label class="textarea-primary create-calc-conditions__descr" style="grid-column:1/3;">
                 <textarea class="input-reset textarea-primary__input" placeholder="Подробная информация"></textarea>
              </label>
+             <button type="button" class="btn btn-reset create-calc-conditions__save" style="grid-column:3/4;justify-self: end;align-self: end;">
+             <svg>
+             <use xlink:href="img/sprite.svg#save"></use>
+             </svg>
+         </button>
         </div>
         `;
     conditionsCreate.addEventListener('click', () => {

@@ -1,7 +1,8 @@
 import inputResize from '../modules/inputResize';
 import generateRandomID from '../modules/generateRandomID';
 import {
-    currentInputText,valueToValueAttr
+    currentInputText,
+    valueToValueAttr
 } from "./inputs";
 
 export const createCalc = () => {
@@ -74,7 +75,7 @@ function createCalcBody(mort) {
             createItem.insertAdjacentHTML('afterend', itemFieldHTML);
             const currentItemField = mort.querySelector('.create-calc-mort__item--field');
             const createTextarea = currentItemField.querySelector('.create-calc-mort__create');
-            
+
             conditions(currentItemField);
             valueToValueAttr(currentItemField.querySelector('.textarea-primary__input'));
             createTextarea.addEventListener('click', () => {
@@ -119,8 +120,8 @@ function createCalcBody(mort) {
                 `;
                     mort.insertAdjacentHTML('beforeend', itemHTML);
                     const currentItem = mort.querySelector('.create-calc-mort__item:last-child');
-                    currentItem.querySelector('.create-calc-mort__info').insertAdjacentElement('beforeend',textareas);
-                    currentItem.querySelector('.create-calc-mort__info').insertAdjacentElement('beforeend',conditions);
+                    currentItem.querySelector('.create-calc-mort__info').insertAdjacentElement('beforeend', textareas);
+                    currentItem.querySelector('.create-calc-mort__info').insertAdjacentElement('beforeend', conditions);
                     itemAction(currentItem);
                     update(currentItem);
                     currentItemField.remove();
@@ -150,7 +151,7 @@ function itemAction(item) {
     const moreBtnText = moreBtn.querySelector('span');
     const content = item.querySelector('.create-calc-mort__content');
 
-    moreBtn.addEventListener('click',() => {
+    moreBtn.addEventListener('click', () => {
         if (!moreBtn.classList.contains('_active')) {
             moreBtn.classList.add('_active');
             content.removeAttribute('hidden');
@@ -158,7 +159,7 @@ function itemAction(item) {
             moreBtnText.textContent = 'Скрыть';
         } else {
             moreBtn.classList.remove('_active');
-            content.setAttribute('hidden','');
+            content.setAttribute('hidden', '');
 
             moreBtnText.textContent = 'Смотреть всё';
         }
@@ -170,7 +171,7 @@ function itemAction(item) {
             edit.classList.add('_active');
             inputText.removeAttribute('disabled');
             inputPrc.removeAttribute('disabled');
-          inputPrc.select();
+            inputPrc.select();
         } else {
             edit.classList.remove('_active');
             inputPrc.setAttribute('disabled', '');
@@ -235,15 +236,15 @@ function conditions(item) {
                     <span>%</span>
                 </label>
             </div>
-            <button type="button" class="btn btn-reset create-calc-conditions__save">
-                <svg>
-                <use xlink:href="img/sprite.svg#save"></use>
-                </svg>
-            </button>
-            <h3 class="title-4" style="grid-column:1/-1;margin:16px 0;">Дополнительная информация</h3>
-            <label class="textarea-primary create-calc-conditions__descr">
+            <h3 class="title-4" style="grid-column:1/3;margin:16px 0;">Дополнительная информация</h3>
+            <label class="textarea-primary create-calc-conditions__descr" style="grid-column:1/3;">
                 <textarea class="input-reset textarea-primary__input" placeholder="Подробная информация"></textarea>
              </label>
+             <button type="button" class="btn btn-reset create-calc-conditions__save" style="grid-column:3/4;justify-self: end;align-self: end;">
+             <svg>
+             <use xlink:href="img/sprite.svg#save"></use>
+             </svg>
+         </button>
         </div>
         `;
         conditionsCreate.addEventListener('click', () => {

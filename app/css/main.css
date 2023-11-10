@@ -9086,33 +9086,38 @@ textarea.input-reset {
 }
 .create-calc-mort__checkbox {
   position: relative;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
-.create-calc-mort__checkbox .checkbox-secondary__text span {
+.create-calc-mort__checkbox > span {
   color: var(--blue);
+  margin-top: 0;
   margin-left: 8px;
 }
-.create-calc-mort__checkbox .checkbox-secondary__text input {
+.create-calc-mort__checkbox > span > input {
+  margin-right: 0;
+  min-width: 20px;
+  color: var(--gray);
+  border: none;
+}
+.create-calc-mort__checkbox > span > span {
+  margin-left: 8px;
+}
+.create-calc-mort__checkbox > span > span input {
   border: none;
   width: 12px;
   min-width: 12px;
   color: var(--blue);
   margin-right: 4px;
 }
-.create-calc-mort__checkbox .checkbox-secondary__text > input {
-  margin-right: 0;
-  min-width: 20px;
-  color: var(--gray);
-}
 .create-calc-mort__checkbox:not(:last-child) {
   margin-bottom: 16px;
 }
 .create-calc-mort__edit {
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  right: -30px;
+  margin-left: 16px;
+  width: 16px;
+  height: 16px;
 }
 .create-calc-mort__edit svg {
   stroke: var(--blue);
@@ -9128,12 +9133,9 @@ textarea.input-reset {
   stroke: var(--red);
 }
 .create-calc-mort__remove {
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  right: -54px;
+  margin-left: 8px;
+  width: 16px;
+  height: 16px;
 }
 .create-calc-mort__remove svg {
   fill: var(--red);
@@ -21550,7 +21552,7 @@ textarea.input-reset {
   border: none;
   text-align: center;
   color: currentColor;
-  min-width: 20px;
+  min-width: 35px;
   max-width: 200px;
 }
 .tabs-primary__btns .tabs__title input:disabled {
@@ -21579,12 +21581,18 @@ textarea.input-reset {
   stroke-width: 1.5px;
   width: 18px;
   height: 18px;
-  -webkit-transition: stroke 0.4s ease-in-out;
-  -o-transition: stroke 0.4s ease-in-out;
-  transition: stroke 0.4s ease-in-out;
 }
 .tabs-primary__btns .tabs__title-edit._active svg {
-  stroke: var(--red);
+  fill: var(--blue);
+  stroke: none;
+}
+.tabs-primary__btns .tabs__title-edit._disabled {
+  pointer-events: none;
+}
+.tabs-primary__btns .tabs__title-edit._disabled svg {
+  fill: var(--dark);
+  opacity: 0.5;
+  stroke: none;
 }
 .tabs-primary__btns .tabs__title-edit:not(:last-child) {
   right: 26px;

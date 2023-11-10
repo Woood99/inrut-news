@@ -1500,28 +1500,30 @@
 
     &__checkbox {
         position: relative;
-
-        .checkbox-secondary__text {
-            span {
+        align-items: center;
+            >span {
                 color: var(--blue);
+                margin-top: 0;
                 margin-left: 8px;
+                >input {
+                    margin-right: 0;
+                    min-width: 20px;
+                    color: var(--gray);
+                    border: none;
+                }
+    
+                >span{
+                    margin-left: 8px;
+                    input {
+                        border: none;
+                        width: 12px;
+                        min-width: 12px;
+                        color: var(--blue);
+                        margin-right: 4px;
+                    }
+                }
+    
             }
-
-            input {
-                border: none;
-                width: 12px;
-                min-width: 12px;
-                color: var(--blue);
-                margin-right: 4px;
-            }
-
-            >input {
-                margin-right: 0;
-                min-width: 20px;
-                color: var(--gray);
-            }
-        }
-
 
 
         &:not(:last-child) {
@@ -1530,11 +1532,9 @@
     }
 
     &__edit {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        right: -30px;
-
+        margin-left: 16px;
+        width: 16px;
+        height: 16px;
         svg {
             stroke: var(--blue);
             fill: none;
@@ -1553,11 +1553,9 @@
     }
 
     &__remove {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        right: -54px;
-
+        margin-left: 8px;
+        width: 16px;
+        height: 16px;
         svg {
             fill: var(--red);
             stroke-width: 1.5px;

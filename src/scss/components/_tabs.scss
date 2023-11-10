@@ -100,7 +100,7 @@
                 border: none;
                 text-align: center;
                 color: currentColor;
-                min-width: 20px;
+                min-width: 35px;
                 max-width: 200px;
                 &:disabled {
                     cursor: pointer;
@@ -128,16 +128,22 @@
                 stroke-width: 1.5px;
                 width: 18px;
                 height: 18px;
-
-                transition: stroke $transitionSpeed $transitionFunction;
             }
 
             &._active {
                 svg {
-                    stroke: var(--red);
+                    fill: var(--blue);
+                    stroke: none;
                 }
             }
-
+            &._disabled{
+                pointer-events: none;
+                svg{
+                    fill: var(--dark);
+                    opacity: 0.5;
+                    stroke: none;
+                }
+            }
             &:not(:last-child) {
                 right: calc(18px + 8px);
             }

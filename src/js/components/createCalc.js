@@ -88,32 +88,30 @@ function createCalcBody(mort) {
                 const textareas = currentItemField.querySelector('.create-calc-mort__textareas');
                 const conditions = currentItemField.querySelector('.create-calc-conditions');
                 if (name && prc) {
-                    const ID = generateRandomID(15);
                     const itemHTML = `
                 <div class="create-calc-mort__item">
-                <div class="create-calc-mort__checkbox checkbox-secondary">
-                    <input id="${ID}" name="${ID}" class="checkbox-secondary__input" type="checkbox">
-                    <label for="${ID}" class="checkbox-secondary__label">
-                        <div class="checkbox-secondary__text">
-                        <input type="text" name="Имя" class="input-reset _width-auto" value="${name}">
-                            <span>
-                                <input type="text" name="Имя" maxlength="3" class="input-reset _width-auto" value="${prc}" disabled>%
-                            </span>
-                        </div>
-                    </label>
-                    <button type="button" class="btn btn-reset create-calc-mort__edit">
-                        <svg>
-                            <use xlink:href="img/sprite.svg#pencil">
-                            </use>
-                        </svg>
-                    </button>
-                    <button type="button" class="btn btn-reset create-calc-mort__remove">
-                        <svg>
-                            <use xlink:href="img/sprite.svg#trash">
-                            </use>
-                        </svg>
-                    </button>
-                </div>
+                <label class="create-calc-mort__checkbox toggle-checkbox">
+                <input type="checkbox" name="toggle-1">
+                <div aria-hidden="true"></div>
+                <span>
+                    <input type="text" name="Имя" class="input-reset _width-auto" value="">
+                    <span>
+                        <input type="text" name="Имя" maxlength="3" class="input-reset _width-auto" value="0" disabled="">%
+                    </span>
+                </span>
+                <button type="button" class="btn btn-reset create-calc-mort__edit" title="Редактировать">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#pencil">
+                        </use>
+                    </svg>
+                </button>
+                <button type="button" class="btn btn-reset create-calc-mort__remove" title="Удалить">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#trash">
+                        </use>
+                    </svg>
+                </button>
+            </label>
                 <div class="create-calc-mort__info" hidden>
                     <h3 class="create-calc-mort__title title-3">Дополнительная информация</h3>
                 </div>
@@ -138,8 +136,8 @@ function itemAction(item) {
     const info = item.querySelector('.create-calc-mort__info');
     const edit = item.querySelector('.create-calc-mort__edit');
     const remove = item.querySelector('.create-calc-mort__remove')
-    const inputPrc = item.querySelector('.checkbox-secondary__text span input');
-    const inputText = item.querySelector('.checkbox-secondary__text>input');
+    const inputPrc = item.querySelector('.create-calc-mort__checkbox span span input');
+    const inputText = item.querySelector('.create-calc-mort__checkbox span>input');
     input.addEventListener('change', () => {
         if (!input.checked) {
             info.setAttribute('hidden', '');
@@ -150,19 +148,25 @@ function itemAction(item) {
     edit.addEventListener('click', () => {
         if (!edit.classList.contains('_active')) {
             edit.classList.add('_active');
+            inputText.removeAttribute('disabled');
             inputPrc.removeAttribute('disabled');
           inputPrc.select();
         } else {
             edit.classList.remove('_active');
             inputPrc.setAttribute('disabled', '');
+            inputText.setAttribute('disabled', '');
         }
     })
     remove.addEventListener('click', () => {
         item.remove();
     })
+    inputResize(inputText);
     inputResize(inputPrc);
     inputPrc.addEventListener('input', () => {
         inputResize(inputPrc);
+    })
+    inputText.addEventListener('input', () => {
+        inputResize(inputText);
     })
     if (inputText) {
         inputText.focus();

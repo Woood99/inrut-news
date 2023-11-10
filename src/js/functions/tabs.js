@@ -18,7 +18,9 @@ import numberReplace from '../modules/numberReplace';
 import {
     currentInputText
 } from "../components/inputs";
-import { currentCreateCalc } from '../components/createCalc';
+import {
+    currentCreateCalc
+} from '../components/createCalc';
 const tabs = () => {
     const metroContainer = document.querySelector('.popup-primary--search-area');
     const metroInnerMoscow = document.querySelector('#map-metro_moscow');
@@ -188,17 +190,41 @@ const tabs = () => {
             if (editBtn) {
                 const input = tabTitle.querySelector('input');
                 if (!editBtn.classList.contains('_active')) {
+                    editBtn.innerHTML = `
+                        <svg>
+                            <use xlink:href="img/sprite.svg#save">
+                            </use>
+                        </svg>
+                    `;
                     input.removeAttribute('disabled');
+                    editBtn.setAttribute('title', 'Сохранить');
+                    if (input.value.length >= 1) {
+                        editBtn.classList.remove('_disabled');
+                    } else {
+                        editBtn.classList.add('_disabled');
+                    }
                     editBtn.classList.add('_active');
                     tabTitle.classList.add('_edit');
                     input.focus();
                     input.setSelectionRange(input.value.length, input.value.length);
                     input.addEventListener('input', (e) => {
                         input.setAttribute('value', e.target.value);
+                        if (input.value.length >= 1) {
+                            editBtn.classList.remove('_disabled');
+                        } else {
+                            editBtn.classList.add('_disabled');
+                        }
                     })
                 } else {
+                    editBtn.innerHTML = `
+                    <svg>
+                        <use xlink:href="img/sprite.svg#pencil">
+                        </use>
+                    </svg>
+                    `;
                     input.setAttribute('disabled', '');
                     editBtn.classList.remove('_active');
+                    editBtn.setAttribute('title', 'Редактировать');
                     tabTitle.classList.remove('_edit');
                 }
 
@@ -254,17 +280,6 @@ const tabs = () => {
     document.addEventListener('click', (e) => {
         const target = e.target;
         const createNew = target.closest('.tabs-primary__create-new');
-        if (!target.closest('.tabs__navigation') && document.querySelector('.tabs__title.tabs__title--edit._edit')) {
-            const items = document.querySelectorAll('.tabs__title.tabs__title--edit._edit');
-            items.forEach(item => {
-                const input = item.querySelector('input');
-                const editBtn = item.querySelector('.tabs__title-edit');
-
-                input.setAttribute('disabled', '');
-                editBtn.classList.remove('_active');
-                item.classList.remove('_edit');
-            })
-        }
         if (createNew) {
             const currentTabs = createNew.closest('.tabs-primary');
             const nav = currentTabs.querySelector('.tabs__navigation');
@@ -273,9 +288,9 @@ const tabs = () => {
             nav.insertAdjacentHTML('beforeend', `
             <button type="button" class="btn btn-reset tabs__title tabs__title--edit" data-tabs-title>
             <input type="text" name="Имя" class="input-reset _width-auto" value="" disabled="">
-            <div class="btn btn-reset tabs__title-edit" title="Редактировать">
+            <div class="btn btn-reset tabs__title-edit _disabled" title="Сохранить">
                 <svg>
-                    <use xlink:href="img/sprite.svg#pencil">
+                    <use xlink:href="img/sprite.svg#save">
                     </use>
                 </svg>
             </div>
@@ -680,14 +695,20 @@ const tabs = () => {
             input.setSelectionRange(input.value.length, input.value.length);
             input.addEventListener('input', (e) => {
                 input.setAttribute('value', e.target.value);
+                if (input.value.length >= 1) {
+                    editBtn.classList.remove('_disabled');
+                } else {
+                    editBtn.classList.add('_disabled');
+                }
             })
             if (!nav.querySelector('.tabs__title._tab-active')) {
                 currentTitle.classList.add('_tab-active');
                 tabsBlock.querySelector('.tabs__body').removeAttribute('hidden');
             }
-            
-            activeCurrentTab(currentTabs,currentTitle,tabsBlock.querySelectorAll('.tabs__body')[tabsBlock.querySelectorAll('.tabs__body').length - 1]);
+
+            activeCurrentTab(currentTabs, currentTitle, tabsBlock.querySelectorAll('.tabs__body')[tabsBlock.querySelectorAll('.tabs__body').length - 1]);
         }
+
         function update(content) {
             if (content) {
                 const inputs = content.querySelectorAll('.input-text');
@@ -703,27 +724,28 @@ const tabs = () => {
         }
     })
 
-    function activeCurrentTab(currentTabs,currentTitle,currentTab) {
+    function activeCurrentTab(currentTabs, currentTitle, currentTab) {
         if (currentTabs && currentTitle && currentTab) {
             const titles = currentTabs.querySelectorAll('.tabs__navigation .tabs__title');
-            const tabs = currentTabs.querySelectorAll('.tabs__body'); 
+            const tabs = currentTabs.querySelectorAll('.tabs__body');
 
             titles.forEach(title => title.classList.remove('_tab-active'));
-            tabs.forEach(tab => tab.setAttribute('hidden',''));
+            tabs.forEach(tab => tab.setAttribute('hidden', ''));
 
             currentTitle.classList.add('_tab-active');
             currentTab.removeAttribute('hidden');
         }
     }
+
     function activeFirstTab(currentTabs) {
-            const titles = currentTabs.querySelectorAll('.tabs__navigation .tabs__title');
-            const tabs = currentTabs.querySelectorAll('.tabs__body'); 
+        const titles = currentTabs.querySelectorAll('.tabs__navigation .tabs__title');
+        const tabs = currentTabs.querySelectorAll('.tabs__body');
 
-            titles.forEach(title => title.classList.remove('_tab-active'));
-            tabs.forEach(tab => tab.setAttribute('hidden',''));
+        titles.forEach(title => title.classList.remove('_tab-active'));
+        tabs.forEach(tab => tab.setAttribute('hidden', ''));
 
-            titles[0].classList.add('_tab-active');
-            tabs[0].removeAttribute('hidden');
+        titles[0].classList.add('_tab-active');
+        tabs[0].removeAttribute('hidden');
     }
 }
 

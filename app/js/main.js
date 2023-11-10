@@ -6389,7 +6389,7 @@ function createCalcBody(mort) {
                 </button>
             </label>
                 <div class="create-calc-mort__info" hidden>
-                    <h3 class="create-calc-mort__title title-3">Дополнительная информация</h3>
+                    <h3 class="create-calc-mort__title title-4">Дополнительная информация</h3>
                 </div>
             </div>
                 `;
@@ -6417,6 +6417,20 @@ function itemAction(item) {
       info.setAttribute('hidden', '');
     } else {
       info.removeAttribute('hidden');
+    }
+  });
+  const moreBtn = item.querySelector('.create-calc-mort__more');
+  const moreBtnText = moreBtn.querySelector('span');
+  const content = item.querySelector('.create-calc-mort__content');
+  moreBtn.addEventListener('click', () => {
+    if (!moreBtn.classList.contains('_active')) {
+      moreBtn.classList.add('_active');
+      content.removeAttribute('hidden');
+      moreBtnText.textContent = 'Скрыть';
+    } else {
+      moreBtn.classList.remove('_active');
+      content.setAttribute('hidden', '');
+      moreBtnText.textContent = 'Подробнее';
     }
   });
   edit.addEventListener('click', () => {
@@ -6539,7 +6553,7 @@ function conditions(item) {
                         </svg>
                     </button>
                     <div class="col">
-                    <h3 class="title-3">Дополнительная информация</h3>
+                    <h3 class="title-4">Дополнительная информация</h3>
                     <div class="create-calc-conditions__item-descr">
                         <label class="textarea-primary">
                         <textarea  textarea class="input-reset textarea-primary__input" placeholder=""></textarea>

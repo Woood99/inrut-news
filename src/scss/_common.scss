@@ -1479,7 +1479,31 @@
             height: 14px;
         }
     }
+    &__more{
+        display: flex;
+        align-items: center;
+        color: var(--blue);
+        font-size: var(--default-fz);
+        line-height: 1;
 
+
+        svg {
+            margin-left: 5px;
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+            transition: transform $transitionSpeedFast $transitionFunction;
+        }
+
+        &._active {
+            svg {
+                transform: rotate(-180deg);
+            }
+        }
+    }
+    &__content{
+        margin-top: 24px;
+    }
     &__item {
         display: flex;
         flex-direction: column;
@@ -1505,11 +1529,13 @@
             >span {
                 color: var(--blue);
                 margin-top: 0;
-                margin-left: 8px;
+                margin-left: 16px;
                 >input {
+                    font-size: var(--little-big-fz);
+                font-weight: 500;
                     margin-right: 0;
                     min-width: 20px;
-                    color: var(--gray);
+                    color: var(--dark);
                     border: none;
                 }
     
@@ -1590,7 +1616,7 @@
     }
 
     &__info {
-        margin-top: 16px;
+        margin-top: 24px;
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -1641,14 +1667,14 @@
     .row:nth-child(1) {
         display: flex;
         align-items: flex-start;
-        justify-content: space-between;
-
+        flex-direction: column;
         &:not(:last-child) {
-            margin-bottom: 32px;
+            margin-bottom: 24px;
         }
     }
 
     &__create {
+        margin-top: 8px;
         display: flex;
         align-items: center;
         color: var(--blue);
@@ -1692,9 +1718,10 @@
     &__item {
       display: grid;
       grid-template-columns: max-content max-content max-content 1fr;
+      align-items: center;
         width: 100%;
         .col {
-                margin-top: 16px;
+                margin-top: 24px;
                 grid-column: 1/-1;
                 &:nth-child(2){
                     grid-column: auto;
@@ -1725,7 +1752,7 @@
         }
     }
     &__item-descr{
-        margin-top: 8px;
+        margin-top: 16px;
     }
     &__item-btn{
         margin-top: 8px;
@@ -1753,12 +1780,11 @@
     }
     &__item-name {
         margin-right: 32px;
-
         border: none;
 
         font-weight: 500;
-        font-size: var(--default-fz);
-        line-height: var(--default-lh);
+       font-size: var(--little-big-fz);
+        line-height: var(--little-big-lh);
         color: var(--dark);
     }
 

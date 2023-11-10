@@ -6483,13 +6483,15 @@ function conditions(item) {
                     <span>%</span>
                 </label>
             </div>
+            <button type="button" class="btn btn-reset create-calc-conditions__save">
+                <svg>
+                <use xlink:href="img/sprite.svg#save"></use>
+                </svg>
+            </button>
             <h3 class="title-4" style="grid-column:1/-1;margin:16px 0;">Дополнительная информация</h3>
             <label class="textarea-primary create-calc-conditions__descr">
                 <textarea class="input-reset textarea-primary__input" placeholder="Подробная информация"></textarea>
              </label>
-            <button type="button" class="btn btn-reset btn-primary create-calc-conditions__save">
-                Сохранить
-            </button>
         </div>
         `;
     conditionsCreate.addEventListener('click', () => {
@@ -6521,17 +6523,12 @@ function conditions(item) {
                 <div class="create-calc-conditions__item">
                     <div class="col">
                         <input type="text" name="Имя" class="input-reset create-calc-conditions__item-name" value="${conditionsNameValue}" disabled>
-                        <div class="create-calc-conditions__item-descr" hidden="">
-                            <p>
-                                ${conditionsDescrValue}
-                            </p>
+                        <h3 class="title-3">Дополнительная информация</h3>
+                        <div class="create-calc-conditions__item-descr">
+                            <label class="textarea-primary">
+                            <textarea  textarea class="input-reset textarea-primary__input" placeholder=""></textarea>
+                            </label>
                         </div>
-                        <button type="button" class="btn btn-reset create-calc-conditions__item-btn">
-                            <span>Подробнее</span>
-                            <svg>
-                                <use xlink:href="img/sprite.svg#check"></use>
-                            </svg>
-                        </button>
                     </div>
                     <div class="col">
                         <input type="text" name="Ставка" class="input-reset create-calc-conditions__item-prc _width-auto" 

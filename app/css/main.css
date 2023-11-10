@@ -9085,6 +9085,7 @@ textarea.input-reset {
   grid-gap: 8px;
 }
 .create-calc-mort__checkbox {
+  width: 100%;
   position: relative;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -9103,6 +9104,14 @@ textarea.input-reset {
 }
 .create-calc-mort__checkbox > span > span {
   margin-left: 8px;
+}
+.create-calc-mort__checkbox > span > span._disabled {
+  color: var(--dark);
+  opacity: 0.5;
+}
+.create-calc-mort__checkbox > span > span._disabled input {
+  color: var(--dark);
+  opacity: 0.5;
 }
 .create-calc-mort__checkbox > span > span input {
   border: none;
@@ -9132,8 +9141,12 @@ textarea.input-reset {
 .create-calc-mort__edit._active svg {
   stroke: var(--red);
 }
+.create-calc-mort__edit._disabled svg {
+  stroke: var(--dark);
+  opacity: 0.5;
+}
 .create-calc-mort__remove {
-  margin-left: 8px;
+  margin-left: auto;
   width: 16px;
   height: 16px;
 }
@@ -9253,8 +9266,10 @@ textarea.input-reset {
 .create-calc-conditions__descr {
   grid-column: 1/-1;
 }
-.create-calc-conditions__save {
-  grid-column: 1/-1;
+.create-calc-conditions__save svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--blue);
 }
 .create-calc-conditions__item {
   display: -webkit-box;

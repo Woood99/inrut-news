@@ -1499,6 +1499,7 @@
     }
 
     &__checkbox {
+        width: 100%;
         position: relative;
         align-items: center;
             >span {
@@ -1514,6 +1515,14 @@
     
                 >span{
                     margin-left: 8px;
+                    &._disabled{
+                        color: var(--dark);
+                        opacity: 0.5;
+                        input{
+                            color: var(--dark);
+                            opacity: 0.5;
+                        }
+                    }
                     input {
                         border: none;
                         width: 12px;
@@ -1550,10 +1559,16 @@
                 stroke: var(--red);
             }
         }
+        &._disabled{
+            svg{
+                stroke: var(--dark);
+                opacity: 0.5;
+            }
+        }
     }
 
     &__remove {
-        margin-left: 8px;
+       margin-left: auto;
         width: 16px;
         height: 16px;
         svg {
@@ -1667,7 +1682,11 @@
     }
 
     &__save {
-        grid-column: 1/-1;
+       svg{
+        width: 16px;
+        height: 16px;
+        fill: var(--blue);
+       }
     }
 
     &__item {

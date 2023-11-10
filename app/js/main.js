@@ -6521,15 +6521,7 @@ function conditions(item) {
       if (conditionsNameValue && conditionsPrcValue && conditionsDescrValue) {
         const itemHtml = `
                 <div class="create-calc-conditions__item">
-                    <div class="col">
-                        <input type="text" name="Имя" class="input-reset create-calc-conditions__item-name" value="${conditionsNameValue}" disabled>
-                        <h3 class="title-3">Дополнительная информация</h3>
-                        <div class="create-calc-conditions__item-descr">
-                            <label class="textarea-primary">
-                            <textarea  textarea class="input-reset textarea-primary__input" placeholder=""></textarea>
-                            </label>
-                        </div>
-                    </div>
+                <input type="text" name="Имя" class="input-reset create-calc-conditions__item-name _width-auto" value="${conditionsNameValue}" disabled>
                     <div class="col">
                         <input type="text" name="Ставка" class="input-reset create-calc-conditions__item-prc _width-auto" 
                         value="${Array.from(conditionsPrcValue)[0] === '-' ? conditionsPrcValue : '-' + conditionsPrcValue}%" disabled>
@@ -6546,6 +6538,14 @@ function conditions(item) {
                             </use>
                         </svg>
                     </button>
+                    <div class="col">
+                    <h3 class="title-3">Дополнительная информация</h3>
+                    <div class="create-calc-conditions__item-descr">
+                        <label class="textarea-primary">
+                        <textarea  textarea class="input-reset textarea-primary__input" placeholder=""></textarea>
+                        </label>
+                    </div>
+                    </div>
                 </div>
             `;
         conditions.insertAdjacentHTML('beforeend', itemHtml);

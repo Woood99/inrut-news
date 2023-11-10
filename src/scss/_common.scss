@@ -1690,22 +1690,16 @@
     }
 
     &__item {
-        display: flex;
-        align-items: start;
+      display: grid;
+      grid-template-columns: max-content max-content max-content 1fr;
         width: 100%;
         .col {
-            &:first-child{
-                flex-grow: 1;
-            }
-            &:not(:first-child) {
-                margin-left: 32px;
-                display: flex;
-                align-items: center;
-
-                >span {
-                    margin-right: 24px;
+                margin-top: 16px;
+                grid-column: 1/-1;
+                &:nth-child(2){
+                    grid-column: auto;
+                    margin-top: 0;
                 }
-            }
         }
 
         &:not(:last-child) {
@@ -1735,7 +1729,6 @@
     }
     &__item-btn{
         margin-top: 8px;
-
 
         display: flex;
         align-items: center;
@@ -1775,7 +1768,6 @@
     }
 
     &__item-edit {
-        margin-left: 32px;
         width: 20px;
         height: 20px;
 
@@ -1791,6 +1783,7 @@
     }
 
     &__item-remove {
+        justify-self: end;
         margin-left: 16px;
         width: 20px;
         height: 20px;

@@ -9272,30 +9272,21 @@ textarea.input-reset {
   fill: var(--blue);
 }
 .create-calc-conditions__item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: start;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: -webkit-max-content -webkit-max-content -webkit-max-content 1fr;
+  -ms-grid-columns: max-content max-content max-content 1fr;
+  grid-template-columns: -webkit-max-content -webkit-max-content -webkit-max-content 1fr;
+  grid-template-columns: max-content max-content max-content 1fr;
   width: 100%;
 }
-.create-calc-conditions__item .col:first-child {
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
+.create-calc-conditions__item .col {
+  margin-top: 16px;
+  grid-column: 1/-1;
 }
-.create-calc-conditions__item .col:not(:first-child) {
-  margin-left: 32px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-.create-calc-conditions__item .col:not(:first-child) > span {
-  margin-right: 24px;
+.create-calc-conditions__item .col:nth-child(2) {
+  grid-column: auto;
+  margin-top: 0;
 }
 .create-calc-conditions__item:not(:last-child) {
   margin-bottom: 24px;
@@ -9355,7 +9346,6 @@ textarea.input-reset {
   border: none;
 }
 .create-calc-conditions__item-edit {
-  margin-left: 32px;
   width: 20px;
   height: 20px;
 }
@@ -9370,6 +9360,8 @@ textarea.input-reset {
   transition: stroke 0.4s ease-in-out;
 }
 .create-calc-conditions__item-remove {
+  -ms-grid-column-align: end;
+  justify-self: end;
   margin-left: 16px;
   width: 20px;
   height: 20px;

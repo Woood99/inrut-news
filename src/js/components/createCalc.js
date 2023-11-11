@@ -42,7 +42,7 @@ function createCalcBody(mort) {
                         <span>%</span>
                     </label>
                 </div>
-                <button type="button" class="btn btn-reset create-calc-mort__item-name__save">Сохранить</button>
+                <button type="button" class="btn btn-reset create-calc-mort__item-save">Сохранить</button>
             </div>
             <div class="create-calc-mort__info">
                 <h3 class="create-calc-mort__title title-4">Дополнительная информация</h3>
@@ -54,7 +54,7 @@ function createCalcBody(mort) {
                         </svg>
                     </button>
                 </div>
-                <div class="create-calc-mort__conditions create-calc-conditions" style="margin: 24px 0;">
+                <div class="create-calc-mort__conditions create-calc-conditions" style="margin: 24px 0 0;">
                 <div class="row">
                     <h3 class="create-calc-conditions__title title-2">
                     Услуги, снижающие ставку по кредиту
@@ -77,16 +77,19 @@ function createCalcBody(mort) {
                 const currentItemField = mort.querySelector('.create-calc-mort__item--field');
                 const createTextarea = currentItemField.querySelector('.create-calc-mort__create');
 
+                currentItemField.querySelectorAll('.input-text').forEach(item => currentInputText(item));
                 conditions(currentItemField);
+
+
                 createTextarea.addEventListener('click', () => {
                     blockAdded(createTextarea);
                 });
 
-                const save = currentItemField.querySelector('.create-calc-mort__item-name__save');
+                const save = currentItemField.querySelector('.create-calc-mort__item-save');
                 save.addEventListener('click', () => {
                     const name = currentItemField.querySelector('.create-calc-mort__item-name input').value;
                     const prc = currentItemField.querySelector('.create-calc-mort__item-prc input').value;
-                    const textareas = currentItemField.querySelector('.create-calc-mort__textareas').outerHTML;
+                    const textareas = currentItemField.querySelector('.create-calc-mort__textareas');
                     const conditions = currentItemField.querySelectorAll('.create-calc-conditions__item');
                     let conditionsItems = '';
                     if (conditions.length > 0) {
@@ -128,8 +131,7 @@ function createCalcBody(mort) {
                     </div>
                     <div class="create-calc-mort__info" hidden>
                         <h3 class="create-calc-mort__title title-4">Дополнительная информация</h3>
-                        ${textareas}
-                        <div class="create-calc-mort__conditions create-calc-conditions" style="margin: 24px 0;">
+                        <div class="create-calc-mort__conditions create-calc-conditions" style="margin: 24px 0 0;">
                             <div class="row">
                                 <h3 class="create-calc-conditions__title title-2">
                                     Услуги, снижающие ставку по кредиту
@@ -150,8 +152,19 @@ function createCalcBody(mort) {
                 `;
                         mort.insertAdjacentHTML('beforeend', itemHTML);
                         const currentItem = mort.querySelector('.create-calc-mort__item:last-child');
-                        itemAction(currentItem);
-                        update(currentItem);
+                        currentItem.querySelector('.create-calc-mort__info .create-calc-mort__title').insertAdjacentElement('afterend', textareas);
+                        itemAction(currentItem, false);
+
+                        const itemNameAndPrc = [
+                            currentItem.querySelector('.create-calc-conditions__item-name'),
+                            currentItem.querySelector('.create-calc-conditions__item-prc')
+                        ];
+                        itemNameAndPrc.forEach(itemElement => {
+                            if (itemElement) {
+                                itemElement.addEventListener('input', () => inputResize(itemElement));
+                            }
+                        });;
+
                         currentItemField.remove();
                     }
                 });
@@ -161,7 +174,7 @@ function createCalcBody(mort) {
 }
 
 
-function itemAction(item) {
+function itemAction(item, createTextareaBoolean = true) {
     const btnMore = item.querySelector('.create-calc-mort__btn');
     const info = item.querySelector('.create-calc-mort__info');
     const edit = item.querySelector('.create-calc-mort__edit');
@@ -215,15 +228,16 @@ function itemAction(item) {
         })
     }
 
-
-    const createTextarea = item.querySelector('.create-calc-mort__create');
-    createTextarea.addEventListener('click', () => {
-        blockAdded(createTextarea);
-    });
-
+    if (createTextareaBoolean) {
+        const createTextarea = item.querySelector('.create-calc-mort__create');
+        createTextarea.addEventListener('click', () => {
+            blockAdded(createTextarea);
+        });
+    }
 
     conditions(item);
 }
+
 
 function conditions(item) {
     const conditions = item.querySelector('.create-calc-conditions');
@@ -331,7 +345,7 @@ function conditions(item) {
                     <h3 class="title-4">Дополнительная информация</h3>
                     <div class="create-calc-conditions__item-descr">
                         <label class="textarea-primary">
-                            <textarea textarea class="input-reset textarea-primary__input" value="${conditionsTextareaValue}" placeholder=""></textarea>
+                            <textarea textarea class="input-reset textarea-primary__input" placeholder="">${conditionsTextareaValue}</textarea>
                         </label>
                     </div>
                     </div>
@@ -414,9 +428,7 @@ function blockAdded(block, maxLength = false) {
     if (maxLength) {
         const quantity = block.parentNode.querySelectorAll('.textarea-primary').length + 1;
         body(maxLength);
-        if (maxLength <= quantity) {
-            block.setAttribute('hidden', '');
-        }
+        if (maxLength <= quantity) block.setAttribute('hidden', '');
     } else {
         body();
     }
@@ -435,18 +447,5 @@ function blockAdded(block, maxLength = false) {
                 block.removeAttribute('hidden');
             }
         })
-    }
-}
-
-function update(content) {
-    if (content) {
-        const inputs = content.querySelectorAll('input._width-auto');
-        inputs.forEach(item => {
-            console.log(item);
-            inputResize(item);
-            item.addEventListener('input', () => {
-                inputResize(item);
-            })
-        });
     }
 }

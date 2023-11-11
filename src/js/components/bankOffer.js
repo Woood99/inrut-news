@@ -66,15 +66,15 @@ const bankOffer = () => {
 
         const selector = item.querySelector('.bank-offer__selector');
         if (selector) {
-            moreDescr(selector.querySelector('.bank-offer__selector-btn'), selector.querySelector('.bank-offer__selector-descr'))
-
-            const toggleInput = selector.querySelector('.bank-offer__selector-toggle input');
+            const btn = selector.querySelector('.bank-offer__selector-top');
             const selectorContent = selector.querySelector('.bank-offer__selector-content');
-            toggleInput.addEventListener('change', () => {
-                if (toggleInput.checked) {
+            btn.addEventListener('click', () => {
+                if (!selector.classList.contains('_active')) {
+                    selector.classList.add('_active');
                     selectorContent.removeAttribute('hidden');
                     if (additional) additional.removeAttribute('hidden');
                 } else {
+                    selector.classList.remove('_active');
                     selectorContent.setAttribute('hidden', '');
                     if (additional) additional.setAttribute('hidden', '');
                 }
@@ -84,7 +84,7 @@ const bankOffer = () => {
         additionalItems.forEach(item => {
             const btn = item.querySelector('.bank-offer__additional-item__btn');
             const descr = item.querySelector('.bank-offer__additional-item__descr');
-            moreDescr(btn, descr);
+            moreDescr(btn,descr);
             const toggle = item.querySelector('.toggle-checkbox');
             const toggleInput = toggle.querySelector('input');
             const span = toggle.previousElementSibling;
@@ -96,22 +96,6 @@ const bankOffer = () => {
                 }
             })
         })
-
-        function moreDescr(btn, descr) {
-            btn.addEventListener('click', () => {
-                if (!btn.classList.contains('_active')) {
-                    btn.classList.add('_active');
-                    btn.querySelector('span').textContent = 'Скрыть';
-
-                    descr.removeAttribute('hidden');
-                } else {
-                    btn.classList.remove('_active');
-                    btn.querySelector('span').textContent = 'Подробнее';
-
-                    descr.setAttribute('hidden', '');
-                }
-            })
-        }
 
         const selectorList = item.querySelector('.bank-offer-selector-list');
         if (selectorList) {
@@ -135,6 +119,38 @@ const bankOffer = () => {
                 }
             })
         }
+
+        const addInfo = item.querySelector('.bank-offer__add-info');
+        if (addInfo) {
+            const btn = addInfo.querySelector('.bank-offer__add-info-top');
+            const selectorContent = addInfo.querySelector('.bank-offer__add-info-content');
+            btn.addEventListener('click', () => {
+                if (!addInfo.classList.contains('_active')) {
+                    addInfo.classList.add('_active');
+                    selectorContent.removeAttribute('hidden');
+                } else {
+                    addInfo.classList.remove('_active');
+                    selectorContent.setAttribute('hidden', '');
+                }
+            })
+        }
+
+        function moreDescr(btn, descr) {
+            btn.addEventListener('click', () => {
+                if (!btn.classList.contains('_active')) {
+                    btn.classList.add('_active');
+                    btn.querySelector('span').textContent = 'Скрыть';
+
+                    descr.removeAttribute('hidden');
+                } else {
+                    btn.classList.remove('_active');
+                    btn.querySelector('span').textContent = 'Подробнее';
+
+                    descr.setAttribute('hidden', '');
+                }
+            })
+        }
+
     })
 };
 

@@ -4,7 +4,6 @@ import {
     currentInputText,
     valueToValueAttr
 } from "./inputs";
-import { currentTextareaPrimary } from './inputs';
 export const createCalc = () => {
     const createCalc = document.querySelector('.create-calc');
     if (!createCalc) return;
@@ -26,7 +25,8 @@ function createCalcBody(mort) {
     })
     if (createItem) {
         createItem.addEventListener('click', () => {
-            const itemFieldHTML = `
+            if (!mort.querySelector('.create-calc-mort__item--field')) {
+                const itemFieldHTML = `
             <div class="create-calc-mort__item create-calc-mort__item--field">
             <div class="row">
                 <div class="input-text input-text--no-exp create-calc-mort__item-name">
@@ -47,10 +47,8 @@ function createCalcBody(mort) {
             <div class="create-calc-mort__info">
                 <h3 class="create-calc-mort__title title-4">Дополнительная информация</h3>
                 <div class="create-calc-mort__textareas">
-                    <label class="textarea-primary">
-                        <textarea class="input-reset textarea-primary__input" placeholder=""></textarea>
-                    </label>
                     <button type="button" class="btn btn-reset create-calc-mort__create" title="Создать новый блок">
+                        <span>Создать</span>
                         <svg>
                             <use xlink:href="img/sprite.svg#plus"></use>
                         </svg>
@@ -58,81 +56,112 @@ function createCalcBody(mort) {
                 </div>
                 <div class="create-calc-mort__conditions create-calc-conditions" style="margin: 24px 0;">
                 <div class="row">
-                    <h3 class="create-calc-conditions__title title-3">
-                        Особые условия
+                    <h3 class="create-calc-conditions__title title-2">
+                    Услуги, снижающие ставку по кредиту
                     </h3>
                     <button type="button" class="btn btn-reset create-calc-conditions__create">
                         <svg>
                             <use xlink:href="img/sprite.svg#plus"></use>
                         </svg>
-                        <span>Создать новое условие</span>
+                        <span>Создать новую услугу</span>
                     </button>
+                </div>
+                <div class="create-calc-conditions__items">
+                                                                
                 </div>
             </div>
             </div>
         </div>
             `;
-            createItem.insertAdjacentHTML('afterend', itemFieldHTML);
-            const currentItemField = mort.querySelector('.create-calc-mort__item--field');
-            const createTextarea = currentItemField.querySelector('.create-calc-mort__create');
+                createItem.insertAdjacentHTML('afterend', itemFieldHTML);
+                const currentItemField = mort.querySelector('.create-calc-mort__item--field');
+                const createTextarea = currentItemField.querySelector('.create-calc-mort__create');
 
-            conditions(currentItemField);
-            createTextarea.addEventListener('click', () => {
-                blockAdded(createTextarea);
-            });
+                conditions(currentItemField);
+                createTextarea.addEventListener('click', () => {
+                    blockAdded(createTextarea);
+                });
 
-            const save = currentItemField.querySelector('.create-calc-mort__item-name__save');
-            save.addEventListener('click', () => {
-                const name = currentItemField.querySelector('.create-calc-mort__item-name input').value;
-                const prc = currentItemField.querySelector('.create-calc-mort__item-prc input').value;
-                const textareas = currentItemField.querySelector('.create-calc-mort__textareas');
-                const conditions = currentItemField.querySelector('.create-calc-conditions');
-                if (name && prc) {
-                    const itemHTML = `
-                <div class="create-calc-mort__item">
-                <label class="create-calc-mort__checkbox toggle-checkbox">
-                <input type="checkbox" name="toggle-1">
-                <div aria-hidden="true"></div>
-                <span>
-                    <input type="text" name="Имя" class="input-reset _width-auto" value="">
-                    <span>
-                        <input type="text" name="Имя" maxlength="3" class="input-reset _width-auto" value="0" disabled="">%
-                    </span>
-                </span>
-                <button type="button" class="btn btn-reset create-calc-mort__edit" title="Редактировать">
-                    <svg>
-                        <use xlink:href="img/sprite.svg#pencil">
-                        </use>
-                    </svg>
-                </button>
-                <button type="button" class="btn btn-reset create-calc-mort__remove" title="Удалить">
-                    <svg>
-                        <use xlink:href="img/sprite.svg#trash">
-                        </use>
-                    </svg>
-                </button>
-            </label>
-                <div class="create-calc-mort__info" hidden>
-                    <h3 class="create-calc-mort__title title-4">Дополнительная информация</h3>
+                const save = currentItemField.querySelector('.create-calc-mort__item-name__save');
+                save.addEventListener('click', () => {
+                    const name = currentItemField.querySelector('.create-calc-mort__item-name input').value;
+                    const prc = currentItemField.querySelector('.create-calc-mort__item-prc input').value;
+                    const textareas = currentItemField.querySelector('.create-calc-mort__textareas').outerHTML;
+                    const conditions = currentItemField.querySelectorAll('.create-calc-conditions__item');
+                    let conditionsItems = '';
+                    if (conditions.length > 0) {
+                        conditions.forEach(item => {
+                            conditionsItems += item.outerHTML;
+                        })
+                    }
+                    if (name && prc) {
+                        const itemHTML = `
+                    <div class="create-calc-mort__item">
+                    <div class="create-calc-mort__btn">
+                        <label class="create-calc-mort__checkbox toggle-checkbox">
+                            <input type="checkbox" name="toggle-1">
+                            <div aria-hidden="true"></div>
+                        </label>
+                        <span>
+                            <input type="text" name="Имя" class="input-reset _width-auto" disabled value="${name}">
+                            <span class="_disabled">
+                                <input type="text" name="Имя" maxlength="3" class="input-reset _width-auto" value="${prc}" disabled="">%
+                            </span>
+                        </span>
+                        <button type="button" class="btn btn-reset create-calc-mort__edit _disabled" title="Редактировать">
+                            <svg>
+                                <use xlink:href="img/sprite.svg#pencil">
+                                </use>
+                            </svg>
+                        </button>
+                        <button type="button" class="btn btn-reset create-calc-mort__remove" title="Удалить">
+                            <svg>
+                                <use xlink:href="img/sprite.svg#trash">
+                                </use>
+                            </svg>
+                        </button>
+                        <div class="create-calc-mort__check">
+                            <svg>
+                                <use xlink:href="img/sprite.svg#check"></use>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="create-calc-mort__info" hidden>
+                        <h3 class="create-calc-mort__title title-4">Дополнительная информация</h3>
+                        ${textareas}
+                        <div class="create-calc-mort__conditions create-calc-conditions" style="margin: 24px 0;">
+                            <div class="row">
+                                <h3 class="create-calc-conditions__title title-2">
+                                    Услуги, снижающие ставку по кредиту
+                                </h3>
+                                <button type="button" class="btn btn-reset create-calc-conditions__create">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#plus"></use>
+                                    </svg>
+                                    <span>Создать новую услугу</span>
+                                </button>
+                            </div>
+                            <div class="create-calc-conditions__items">
+                                ${conditionsItems}                           
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
                 `;
-                    mort.insertAdjacentHTML('beforeend', itemHTML);
-                    const currentItem = mort.querySelector('.create-calc-mort__item:last-child');
-                    currentItem.querySelector('.create-calc-mort__info').insertAdjacentElement('beforeend', textareas);
-                    currentItem.querySelector('.create-calc-mort__info').insertAdjacentElement('beforeend', conditions);
-                    itemAction(currentItem);
-                    update(currentItem);
-                    currentItemField.remove();
-                }
-            });
+                        mort.insertAdjacentHTML('beforeend', itemHTML);
+                        const currentItem = mort.querySelector('.create-calc-mort__item:last-child');
+                        itemAction(currentItem);
+                        update(currentItem);
+                        currentItemField.remove();
+                    }
+                });
+            }
         });
     }
 }
 
 
 function itemAction(item) {
-    const input = item.querySelector('.create-calc-mort__checkbox input');
     const btnMore = item.querySelector('.create-calc-mort__btn');
     const info = item.querySelector('.create-calc-mort__info');
     const edit = item.querySelector('.create-calc-mort__edit');
@@ -253,10 +282,9 @@ function conditions(item) {
 
 
             const createTextarea = conditions.querySelector('.create-calc-conditions__create-descr');
-            console.log(createTextarea);
-            if (createTextarea){
+            if (createTextarea) {
                 createTextarea.addEventListener('click', () => {
-                    blockAdded(createTextarea);
+                    blockAdded(createTextarea, 1);
                 });
             }
 
@@ -277,8 +305,9 @@ function conditions(item) {
         function conditionsCreateItem(conditionsBody) {
             const conditionsNameValue = conditionsBody.querySelector('.create-calc-conditions__name input').value;
             const conditionsPrcValue = conditionsBody.querySelector('.create-calc-conditions__prc input').value;
-            const conditionsDescrValue = conditionsBody.querySelector('.create-calc-conditions__descr textarea').value;
-            if (conditionsNameValue && conditionsPrcValue && conditionsDescrValue) {
+            const conditionsTextarea = conditionsBody.querySelector('.create-calc-conditions__textareas .textarea-primary');
+            const conditionsTextareaValue = conditionsTextarea ? conditionsTextarea.querySelector('.textarea-primary__input').value : '';
+            if (conditionsNameValue && conditionsPrcValue) {
                 const itemHtml = `
                 <div class="create-calc-conditions__item">
                 <input type="text" name="Имя" class="input-reset create-calc-conditions__item-name _width-auto" value="${conditionsNameValue}" disabled>
@@ -302,13 +331,13 @@ function conditions(item) {
                     <h3 class="title-4">Дополнительная информация</h3>
                     <div class="create-calc-conditions__item-descr">
                         <label class="textarea-primary">
-                        <textarea  textarea class="input-reset textarea-primary__input" placeholder=""></textarea>
+                            <textarea textarea class="input-reset textarea-primary__input" value="${conditionsTextareaValue}" placeholder=""></textarea>
                         </label>
                     </div>
                     </div>
                 </div>
             `;
-                conditions.insertAdjacentHTML('beforeend', itemHtml);
+                conditions.querySelector('.create-calc-conditions__items').insertAdjacentHTML('beforeend', itemHtml);
                 const items = conditions.querySelectorAll('.create-calc-conditions__item');
                 const currentItem = items[items.length - 1];
                 const name = currentItem.querySelector('.create-calc-conditions__item-name');
@@ -370,7 +399,7 @@ function conditions(item) {
     }
 }
 
-function blockAdded(block) {
+function blockAdded(block, maxLength = false) {
     const textareaHTML = `
     <label class="textarea-primary textarea-primary--remove">
         <textarea class="input-reset textarea-primary__input" placeholder=""></textarea>
@@ -381,16 +410,39 @@ function blockAdded(block) {
         </button>
     </label>
     `;
-    block.insertAdjacentHTML('beforebegin', textareaHTML);
-    const currentBlock = block.previousElementSibling;
-    currentTextareaPrimary(currentBlock);
-    valueToValueAttr(currentBlock.querySelector('.textarea-primary__input'));
+
+    if (maxLength) {
+        const quantity = block.parentNode.querySelectorAll('.textarea-primary').length + 1;
+        body(maxLength);
+        if (maxLength <= quantity) {
+            block.setAttribute('hidden', '');
+        }
+    } else {
+        body();
+    }
+
+
+    function body(maxLength) {
+        block.insertAdjacentHTML('beforebegin', textareaHTML);
+        const currentBlock = block.previousElementSibling;
+        valueToValueAttr(currentBlock.querySelector('.textarea-primary__input'));
+
+        const remove = currentBlock.querySelector('.textarea-primary__remove');
+        remove.addEventListener('click', () => {
+            currentBlock.remove();
+            const quantity = block.parentNode.querySelectorAll('.textarea-primary').length;
+            if (maxLength !== undefined && maxLength > quantity) {
+                block.removeAttribute('hidden');
+            }
+        })
+    }
 }
 
 function update(content) {
     if (content) {
         const inputs = content.querySelectorAll('input._width-auto');
         inputs.forEach(item => {
+            console.log(item);
             inputResize(item);
             item.addEventListener('input', () => {
                 inputResize(item);

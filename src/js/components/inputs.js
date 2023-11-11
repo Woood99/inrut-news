@@ -135,6 +135,17 @@ export const inputClue = (target, name, html) => {
 };
 
 
+export const currentTextareaPrimary = (container) => {
+    if (!container) return;
+    const remove = container.querySelector('.textarea-primary__remove');
+    if (remove){
+        remove.addEventListener('click',() => {
+            container.remove();
+        })
+    }
+}
+
+
 export const valueToValueAttr = (field) => {
     field.addEventListener('input', () => {
         field.setAttribute('value', field.value);

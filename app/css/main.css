@@ -535,6 +535,21 @@ textarea.input-reset {
 .textarea-primary__input:focus {
   border: 1px solid var(--blue);
 }
+.textarea-primary__remove {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  width: 16px;
+  height: 16px;
+}
+.textarea-primary__remove svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--red);
+}
+.textarea-primary--remove .textarea-primary__input {
+  padding-right: 24px;
+}
 @media (max-width: 1212px) {
   .textarea-primary {
     --height: 96px;
@@ -9013,21 +9028,6 @@ textarea.input-reset {
   cursor: pointer;
 }
 
-.create-calc__mort {
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: start;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: start;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
 .create-calc .place-sale-options__row--1 {
   -ms-grid-columns: 28.7102473498% 33.5689045936% 1fr;
   grid-template-columns: 28.7102473498% 33.5689045936% 1fr;
@@ -9104,9 +9104,7 @@ textarea.input-reset {
   width: 100%;
 }
 .create-calc-mort__item:not(:last-child) {
-  margin-bottom: 24px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--primary200);
+  margin-bottom: 16px;
 }
 .create-calc-mort__item .row {
   width: 100%;
@@ -9116,19 +9114,38 @@ textarea.input-reset {
   grid-template-columns: 1fr 1fr 0.65fr;
   grid-gap: 8px;
 }
-.create-calc-mort__checkbox {
-  width: 100%;
-  position: relative;
+.create-calc-mort__item._active .create-calc-mort__check svg {
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}
+.create-calc-mort__btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  width: 100%;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 12px;
+  -webkit-box-shadow: var(--shadow-primary);
+  box-shadow: var(--shadow-primary);
+  border: 1px solid #EBF1FB;
+  padding: 32px 24px;
+  -webkit-transition: background-color 0.4s ease-in-out, -webkit-box-shadow 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+  transition: background-color 0.4s ease-in-out, -webkit-box-shadow 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+  -o-transition: background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out, transform 0.4s ease-in-out;
+  transition: background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out, transform 0.4s ease-in-out;
+  transition: background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out, transform 0.4s ease-in-out, -webkit-box-shadow 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
 }
-.create-calc-mort__checkbox > span {
+.create-calc-mort__btn > span {
   color: var(--blue);
   margin-top: 0;
   margin-left: 16px;
 }
-.create-calc-mort__checkbox > span > input {
+.create-calc-mort__btn > span > input {
   font-size: var(--little-big-fz);
   font-weight: 500;
   margin-right: 0;
@@ -9136,26 +9153,59 @@ textarea.input-reset {
   color: var(--dark);
   border: none;
 }
-.create-calc-mort__checkbox > span > span {
+.create-calc-mort__btn > span > span {
   margin-left: 8px;
 }
-.create-calc-mort__checkbox > span > span._disabled {
+.create-calc-mort__btn > span > span._disabled {
   color: var(--dark);
   opacity: 0.5;
 }
-.create-calc-mort__checkbox > span > span._disabled input {
+.create-calc-mort__btn > span > span._disabled input {
   color: var(--dark);
   opacity: 0.5;
 }
-.create-calc-mort__checkbox > span > span input {
+.create-calc-mort__btn > span > span input {
   border: none;
   width: 12px;
   min-width: 12px;
   color: var(--blue);
   margin-right: 4px;
 }
-.create-calc-mort__checkbox:not(:last-child) {
-  margin-bottom: 16px;
+@media (min-width: 1213px) {
+  .create-calc-mort__btn:hover {
+    background-color: var(--stand-bg);
+    -webkit-box-shadow: var(--shadow-secondary);
+    box-shadow: var(--shadow-secondary);
+    -webkit-transform: translateY(-3px);
+    -ms-transform: translateY(-3px);
+    transform: translateY(-3px);
+  }
+}
+.create-calc-mort__check {
+  margin-left: 32px;
+  width: 30px;
+  height: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-grid-column-align: end;
+  justify-self: end;
+}
+.create-calc-mort__check svg {
+  width: 30px;
+  height: 25px;
+  fill: var(--gray);
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  transition: -webkit-transform 0.2s ease-in-out;
+  -o-transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
 }
 .create-calc-mort__edit {
   margin-left: 16px;
@@ -9297,6 +9347,52 @@ textarea.input-reset {
 }
 .create-calc-conditions__create._active {
   color: var(--red);
+}
+.create-calc-conditions__textareas {
+  grid-column: 1/-1;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.create-calc-conditions__textareas .textarea-primary {
+  max-width: 366px;
+  --height: 175px;
+}
+.create-calc-conditions__create-descr {
+  height: 175px;
+  width: 175px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border: 1px solid var(--primary200);
+  border-radius: 12px;
+}
+.create-calc-conditions__create-descr span {
+  color: var(--blue);
+  font-size: var(--small-fz);
+}
+.create-calc-conditions__create-descr svg {
+  margin-top: 8px;
+  width: 35px;
+  height: 35px;
+  fill: var(--blue);
 }
 .create-calc-conditions__create-body {
   display: -ms-grid;

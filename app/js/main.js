@@ -6284,6 +6284,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 const createCalc = () => {
   const createCalc = document.querySelector('.create-calc');
   if (!createCalc) return;
@@ -6353,7 +6354,6 @@ function createCalcBody(mort) {
       const currentItemField = mort.querySelector('.create-calc-mort__item--field');
       const createTextarea = currentItemField.querySelector('.create-calc-mort__create');
       conditions(currentItemField);
-      (0,_inputs__WEBPACK_IMPORTED_MODULE_2__.valueToValueAttr)(currentItemField.querySelector('.textarea-primary__input'));
       createTextarea.addEventListener('click', () => {
         blockAdded(createTextarea);
       });
@@ -6407,30 +6407,19 @@ function createCalcBody(mort) {
 }
 function itemAction(item) {
   const input = item.querySelector('.create-calc-mort__checkbox input');
+  const btnMore = item.querySelector('.create-calc-mort__btn');
   const info = item.querySelector('.create-calc-mort__info');
   const edit = item.querySelector('.create-calc-mort__edit');
   const remove = item.querySelector('.create-calc-mort__remove');
-  const inputPrc = item.querySelector('.create-calc-mort__checkbox span span input');
-  const inputText = item.querySelector('.create-calc-mort__checkbox span>input');
-  input.addEventListener('change', () => {
-    if (!input.checked) {
-      info.setAttribute('hidden', '');
-    } else {
+  const inputPrc = btnMore.querySelector('span span input');
+  const inputText = btnMore.querySelector('span>input');
+  btnMore.addEventListener('click', () => {
+    if (!item.classList.contains('_active')) {
+      item.classList.add('_active');
       info.removeAttribute('hidden');
-    }
-  });
-  const moreBtn = item.querySelector('.create-calc-mort__more');
-  const moreBtnText = moreBtn.querySelector('span');
-  const content = item.querySelector('.create-calc-mort__content');
-  moreBtn.addEventListener('click', () => {
-    if (!moreBtn.classList.contains('_active')) {
-      moreBtn.classList.add('_active');
-      content.removeAttribute('hidden');
-      moreBtnText.textContent = 'Скрыть';
     } else {
-      moreBtn.classList.remove('_active');
-      content.setAttribute('hidden', '');
-      moreBtnText.textContent = 'Смотреть всё';
+      item.classList.remove('_active');
+      info.setAttribute('hidden', '');
     }
   });
   edit.addEventListener('click', () => {
@@ -6498,14 +6487,19 @@ function conditions(item) {
                 </label>
             </div>
             <h3 class="title-4" style="grid-column:1/3;margin:16px 0;">Дополнительная информация</h3>
-            <label class="textarea-primary create-calc-conditions__descr" style="grid-column:1/3;">
-                <textarea class="input-reset textarea-primary__input" placeholder="Подробная информация"></textarea>
-             </label>
+            <div class="create-calc-conditions__textareas">
+                <button type="button" class="btn btn-reset create-calc-conditions__create-descr" title="Создать новый блок">
+                    <span>Создать</span>
+                    <svg>
+                        <use xlink:href="img/sprite.svg#plus"></use>
+                    </svg>
+                </button>
+            </div>
              <button type="button" class="btn btn-reset create-calc-conditions__save" style="grid-column:3/4;justify-self: end;align-self: end;">
-             <svg>
-             <use xlink:href="img/sprite.svg#save"></use>
-             </svg>
-         </button>
+                <svg>
+                <use xlink:href="img/sprite.svg#save"></use>
+                </svg>
+            </button>
         </div>
         `;
     conditionsCreate.addEventListener('click', () => {
@@ -6517,6 +6511,13 @@ function conditions(item) {
       top.insertAdjacentHTML('afterend', bodyHTML);
       const conditionsBody = conditions.querySelector('.create-calc-conditions__create-body');
       conditionsBody.querySelectorAll('.input-text').forEach(item => (0,_inputs__WEBPACK_IMPORTED_MODULE_2__.currentInputText)(item));
+      const createTextarea = conditions.querySelector('.create-calc-conditions__create-descr');
+      console.log(createTextarea);
+      if (createTextarea) {
+        createTextarea.addEventListener('click', () => {
+          blockAdded(createTextarea);
+        });
+      }
       const conditionsSave = conditionsBody.querySelector('.create-calc-conditions__save');
       conditionsSave.addEventListener('click', () => {
         conditionsCreateItem(conditionsBody);
@@ -6620,12 +6621,18 @@ function conditions(item) {
 }
 function blockAdded(block) {
   const textareaHTML = `
-    <label class="textarea-primary">
+    <label class="textarea-primary textarea-primary--remove">
         <textarea class="input-reset textarea-primary__input" placeholder=""></textarea>
+        <button type="button" class="btn btn-reset textarea-primary__remove" title="Удалить блок">
+            <svg>
+                <use xlink:href="img/sprite.svg#trash"></use>
+            </svg>
+        </button>
     </label>
     `;
   block.insertAdjacentHTML('beforebegin', textareaHTML);
   const currentBlock = block.previousElementSibling;
+  (0,_inputs__WEBPACK_IMPORTED_MODULE_2__.currentTextareaPrimary)(currentBlock);
   (0,_inputs__WEBPACK_IMPORTED_MODULE_2__.valueToValueAttr)(currentBlock.querySelector('.textarea-primary__input'));
 }
 function update(content) {
@@ -9112,6 +9119,7 @@ const headerFixed = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "currentInputText": () => (/* binding */ currentInputText),
+/* harmony export */   "currentTextareaPrimary": () => (/* binding */ currentTextareaPrimary),
 /* harmony export */   "inputClue": () => (/* binding */ inputClue),
 /* harmony export */   "inputOnlyNumber": () => (/* binding */ inputOnlyNumber),
 /* harmony export */   "inputText": () => (/* binding */ inputText),
@@ -9244,6 +9252,15 @@ const inputClue = (target, name, html) => {
     setTimeout(() => {
       document.querySelector(`.${name}`).remove();
     }, 300);
+  }
+};
+const currentTextareaPrimary = container => {
+  if (!container) return;
+  const remove = container.querySelector('.textarea-primary__remove');
+  if (remove) {
+    remove.addEventListener('click', () => {
+      container.remove();
+    });
   }
 };
 const valueToValueAttr = field => {

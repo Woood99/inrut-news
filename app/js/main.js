@@ -12995,6 +12995,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_numberReplace__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../modules/numberReplace */ "./src/js/modules/numberReplace.js");
 /* harmony import */ var _components_inputs__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/inputs */ "./src/js/components/inputs.js");
 /* harmony import */ var _components_createCalc__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/createCalc */ "./src/js/components/createCalc.js");
+/* harmony import */ var _modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../modules/emergingBlockScroll */ "./src/js/modules/emergingBlockScroll.js");
+
 
 
 
@@ -13237,6 +13239,9 @@ const tabs = () => {
             editBtn.classList.remove('_active');
             item.classList.remove('_edit');
           });
+        }
+        if (tabTitle.closest('.create-calc-mort')) {
+          (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_11__.emergingBlockScroll)('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
         }
       }
       e.preventDefault();
@@ -13913,8 +13918,7 @@ const dropdownItems = (containerSelector, btnSelector, hideText) => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "emergingBlockScroll": () => (/* binding */ emergingBlockScroll),
-/* harmony export */   "targetScroll": () => (/* binding */ targetScroll)
+/* harmony export */   "emergingBlockScroll": () => (/* binding */ emergingBlockScroll)
 /* harmony export */ });
 const emergingBlockScroll = function (targetThemSelector, emergingBlockSelector, screenSize) {
   let beforeContainer = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
@@ -13922,16 +13926,18 @@ const emergingBlockScroll = function (targetThemSelector, emergingBlockSelector,
   const target = document.querySelector(targetThemSelector);
   const block = document.querySelector(emergingBlockSelector);
   if (!(target && block)) return;
-  if (onlyCheck) {
+  if (!onlyCheck) {
     window.addEventListener('scroll', () => {
       targetScroll(target, block, screenSize, beforeContainer);
     });
     targetScroll(target, block, screenSize, beforeContainer);
   } else {
-    targetScroll(target, block, screenSize, beforeContainer);
+    setTimeout(() => {
+      targetScroll(target, block, screenSize, beforeContainer);
+    }, 1);
   }
 };
-const targetScroll = (target, block, screenSize, beforeContainer) => {
+function targetScroll(target, block, screenSize, beforeContainer) {
   if (window.innerWidth >= screenSize) return;
   const pageOffsetTop = window.pageYOffset;
   const targetOffsetTop = target.getBoundingClientRect().top;
@@ -13948,7 +13954,7 @@ const targetScroll = (target, block, screenSize, beforeContainer) => {
       block.classList.remove('active-fixed');
     }
   }
-};
+}
 
 /***/ }),
 

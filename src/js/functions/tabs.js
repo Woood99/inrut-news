@@ -21,6 +21,7 @@ import {
 import {
     currentCreateCalc
 } from '../components/createCalc';
+import { emergingBlockScroll } from '../modules/emergingBlockScroll';
 const tabs = () => {
     const metroContainer = document.querySelector('.popup-primary--search-area');
     const metroInnerMoscow = document.querySelector('#map-metro_moscow');
@@ -272,6 +273,9 @@ const tabs = () => {
                         item.classList.remove('_edit');
                     })
 
+                }
+                if (tabTitle.closest('.create-calc-mort')) {
+                    emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true,true);
                 }
             }
             e.preventDefault();

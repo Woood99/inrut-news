@@ -1,18 +1,20 @@
-export const emergingBlockScroll = (targetThemSelector, emergingBlockSelector, screenSize, beforeContainer = false,onlyCheck = false) => {
+export const emergingBlockScroll = (targetThemSelector, emergingBlockSelector, screenSize, beforeContainer = false, onlyCheck = false) => {
     const target = document.querySelector(targetThemSelector);
     const block = document.querySelector(emergingBlockSelector);
     if (!(target && block)) return;
-    if (onlyCheck) {
+    if (!onlyCheck) {
         window.addEventListener('scroll', () => {
             targetScroll(target, block, screenSize, beforeContainer);
         })
         targetScroll(target, block, screenSize, beforeContainer);
     } else {
-        targetScroll(target, block, screenSize, beforeContainer);
+        setTimeout(() => {
+            targetScroll(target, block, screenSize, beforeContainer);
+        }, 1);
     }
 };
 
-export const targetScroll = (target, block, screenSize, beforeContainer) => {
+function targetScroll(target, block, screenSize, beforeContainer) {
     if (window.innerWidth >= screenSize) return;
     const pageOffsetTop = window.pageYOffset;
     const targetOffsetTop = target.getBoundingClientRect().top;

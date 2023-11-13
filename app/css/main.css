@@ -1824,47 +1824,28 @@ textarea.input-reset {
   z-index: 1050;
 }
 .popup-primary--select-bank .popup-primary__container {
-  margin: 0 auto;
-  padding: 48px 32px 32px;
-  width: 100%;
-  min-height: var(--vh);
+  border-radius: 12px 12px 0 0;
+  padding: 65px 16px 130px;
+  min-height: auto;
+  margin: 32px auto 0;
+  width: calc(100% - 4px);
   vertical-align: bottom;
-}
-@media (max-width: 1212px) {
-  .popup-primary--select-bank .popup-primary__container {
-    margin-top: 0;
-    border-radius: 0;
-    width: 100%;
-    min-height: 100vh;
-    padding: 65px 0 32px;
-  }
+  position: relative;
 }
 .popup-primary--select-bank .popup-primary__close {
-  position: sticky;
-  margin-top: -48px;
-  -webkit-transform: translateX(32px);
-  -ms-transform: translateX(32px);
-  transform: translateX(32px);
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 5;
+  -webkit-transform: translateX(16px);
+  -ms-transform: translateX(16px);
+  transform: translateX(16px);
+}
+.popup-primary--select-bank::before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
 }
 @media (max-width: 1212px) {
-  .popup-primary--select-bank .popup-primary__close {
-    position: fixed;
-    margin: 0;
-    -webkit-transform: translateX(0);
-    -ms-transform: translateX(0);
-    transform: translateX(0);
-    height: 45px;
-    -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.12);
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.12);
-    background-color: var(--white);
-    -webkit-box-pack: end;
-    -ms-flex-pack: end;
-    justify-content: end;
-    padding: 24px;
+  .popup-primary--select-bank {
+    background-color: rgba(34, 41, 102, 0.4);
   }
 }
 .popup-primary--popup-map .popup-primary__container {
@@ -7539,6 +7520,7 @@ textarea.input-reset {
 }
 .select-bank__list {
   margin-top: 24px;
+  max-width: 845px;
 }
 .select-bank__item:not(:last-child) {
   margin-bottom: 16px;
@@ -31352,8 +31334,8 @@ textarea.input-reset {
   display: grid;
   -ms-grid-columns: (1fr)[2];
   grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: 24px;
-  grid-row-gap: 24px;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -36934,7 +36916,7 @@ textarea.input-reset {
   left: 0;
   width: 100%;
   z-index: 101;
-  background-color: var(--white);
+  background-color: var(--blue);
   -webkit-box-shadow: 0px -2px 1px rgba(0, 0, 0, 0.1);
   box-shadow: 0px -2px 1px rgba(0, 0, 0, 0.1);
   padding: 12px 0;
@@ -36952,6 +36934,7 @@ textarea.input-reset {
   padding: 0;
 }
 .mortgage-bottom__info {
+  color: var(--white);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -36976,6 +36959,12 @@ textarea.input-reset {
 }
 .mortgage-bottom__images img:not(:last-child) {
   margin-right: 8px;
+}
+.mortgage-bottom__btn {
+  background-color: var(--white);
+  color: var(--blue);
+  width: 270px;
+  margin-right: 16px;
 }
 
 .selection-estate-agent .main-table__type {

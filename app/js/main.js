@@ -4611,6 +4611,7 @@ __webpack_require__.r(__webpack_exports__);
 }, 'object-gallery');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'object-gallery--two');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'warning-remove');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'select-bank');
 // ========================================================================================
 
 /***/ }),
@@ -6561,6 +6562,11 @@ function conditions(item) {
                     <span>%</span>
                 </label>
             </div>
+            <button type="button" class="btn btn-reset create-calc-conditions__save" style="grid-column:3/4;justify-self: end;align-self: end;">
+            <svg>
+            <use xlink:href="img/sprite.svg#save"></use>
+            </svg>
+            </button>
             <h3 class="title-4" style="grid-column:1/3;margin:16px 0;">Дополнительная информация</h3>
             <div class="create-calc-conditions__textareas">
                 <button type="button" class="btn btn-reset create-calc-conditions__create-descr" title="Создать новый блок">
@@ -6570,11 +6576,6 @@ function conditions(item) {
                     </svg>
                 </button>
             </div>
-             <button type="button" class="btn btn-reset create-calc-conditions__save" style="grid-column:3/4;justify-self: end;align-self: end;">
-                <svg>
-                <use xlink:href="img/sprite.svg#save"></use>
-                </svg>
-            </button>
         </div>
         `;
     conditionsCreate.addEventListener('click', () => {
@@ -6632,8 +6633,13 @@ function conditions(item) {
                     <div class="col">
                     <h3 class="title-4">Дополнительная информация</h3>
                     <div class="create-calc-conditions__item-descr">
-                        <label class="textarea-primary">
+                        <label class="textarea-primary textarea-primary--remove">
                             <textarea textarea class="input-reset textarea-primary__input" placeholder="">${conditionsTextareaValue}</textarea>
+                            <button type="button" class="btn btn-reset textarea-primary__remove" title="Удалить блок">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#trash"></use>
+                                </svg>
+                            </button>
                         </label>
                     </div>
                     </div>
@@ -10091,6 +10097,7 @@ const mortgage = () => {
   const containerAdd = document.querySelector('.object-calc-mort--add');
   const popupContainerAdd = document.querySelector('.popup-primary--interest-rate-2 .interest-rate--add');
   const siteContainer = document.querySelector('.site-container--mortgage');
+  const selectBank = document.querySelector('.select-bank');
   if (containerAdd && popupContainerAdd) {
     const list = containerAdd.querySelector('.object-calc-mort__list');
     const listPopup = popupContainerAdd.querySelector('.interest-rate__wrapper');
@@ -10368,88 +10375,94 @@ const mortgage = () => {
           return;
         }
       });
-      bankSelect();
-      function bankSelect() {
-        const container = document.querySelector('.mortgage-suitable__list');
-        if (!container) return;
-        const items = container.querySelectorAll('.bank-offer');
-        items.forEach(item => {
-          const btn = item.querySelector('.bank-offer__btn');
-          btn.addEventListener('click', () => {
-            if (!btn.classList.contains('_disabled')) {
-              if (!item.classList.contains('_active')) {
-                item.classList.add('_active');
-                btn.classList.add('_active');
-                btn.setAttribute('title', 'Удалить');
-                btn.innerHTML = `
-                                <svg>
-                                    <use xlink:href="img/sprite.svg#verif"></use>
-                                </svg>
-                                <svg>
-                                    <use xlink:href="img/sprite.svg#trash"></use>
-                                </svg>
-                                `;
-              } else {
-                item.classList.remove('_active');
-                btn.innerHTML = 'Выбрать';
-                btn.removeAttribute('title');
-                btn.classList.remove('_active');
-              }
-              const itemsActive = container.querySelectorAll('.bank-offer._active');
-              const mortgageBottom = siteContainer.querySelector('.mortgage-bottom');
-              siteContainer.style.paddingBottom = 'none';
-              const maxActiveItems = 4;
-              items.forEach(item => {
-                const btn = item.querySelector('.bank-offer__btn');
-                if (btn.classList.contains('_disabled')) {
-                  btn.classList.remove('_disabled');
-                  btn.removeAttribute('title');
-                }
-              });
-              if (mortgageBottom) mortgageBottom.remove();
-              if (itemsActive.length >= 1) {
-                bankUpdate(items, itemsActive, maxActiveItems, siteContainer);
-                siteContainer.style.paddingBottom = `${siteContainer.querySelector('.mortgage-bottom').offsetHeight}px`;
-              } else {
-                siteContainer.style.paddingBottom = null;
-              }
+      bankSelect('containerAdd');
+    }
+  }
+  if (selectBank) {
+    bankSelect('select-bank');
+  }
+  function bankSelect(mode) {
+    let container;
+    if (mode === 'containerAdd') container = document.querySelector('.mortgage-suitable__list');
+    if (mode === 'select-bank') container = selectBank;
+    if (!container) return;
+    const items = container.querySelectorAll('.bank-offer');
+    items.forEach(item => {
+      const btn = item.querySelector('.bank-offer__btn');
+      btn.addEventListener('click', () => {
+        if (!btn.classList.contains('_disabled')) {
+          if (!item.classList.contains('_active')) {
+            item.classList.add('_active');
+            btn.classList.add('_active');
+            btn.setAttribute('title', 'Удалить');
+            btn.innerHTML = `
+                        <svg>
+                            <use xlink:href="img/sprite.svg#verif"></use>
+                        </svg>
+                        <svg>
+                            <use xlink:href="img/sprite.svg#trash"></use>
+                        </svg>
+                        `;
+          } else {
+            item.classList.remove('_active');
+            btn.innerHTML = 'Выбрать';
+            btn.removeAttribute('title');
+            btn.classList.remove('_active');
+          }
+          const maxActiveItems = 4;
+          const itemsActive = container.querySelectorAll('.bank-offer._active');
+          const currentContainer = siteContainer || selectBank;
+          const mortgageBottom = currentContainer.querySelector('.mortgage-bottom');
+          currentContainer.style.paddingBottom = 'none';
+          if (mortgageBottom) mortgageBottom.remove();
+          if (itemsActive.length >= 1) {
+            bankUpdate(items, itemsActive, maxActiveItems, currentContainer);
+            currentContainer.style.paddingBottom = `${currentContainer.querySelector('.mortgage-bottom').offsetHeight}px`;
+          } else {
+            currentContainer.style.paddingBottom = null;
+          }
+          items.forEach(item => {
+            const btn = item.querySelector('.bank-offer__btn');
+            if (btn.classList.contains('_disabled')) {
+              btn.classList.remove('_disabled');
+              btn.removeAttribute('title');
             }
           });
-        });
-      }
-      function bankUpdate(items, activeItems, maxBanks, siteContainer) {
-        let htmlImage = '';
-        activeItems.forEach(item => {
-          htmlImage += item.querySelector('.bank-offer__icon').innerHTML;
-        });
-        const htmlBottom = `
-                <div class="mortgage__bottom mortgage-bottom">
-                    <div class="mortgage-bottom__container container">
-                        <div class="mortgage-bottom__info">
-                            <div class="mortgage-bottom__images">
-                                ${htmlImage}
-                            </div>
-                            <span>
-                                Вы выбрали ${activeItems.length} из ${maxBanks} возможных банков
-                            </span>
-                        </div>
-                        <button type="button" class="btn btn-reset btn-primary mortgage-bottom__btn">
-                            Создать заявку
-                        </button>
-                    </div>
-                </div>
-                `;
-        if (activeItems.length === maxBanks) {
-          const notActiveItems = Array.prototype.slice.call(items, 0).filter(item => !item.classList.contains('_active'));
-          notActiveItems.forEach(item => {
-            const btn = item.querySelector('.bank-offer__btn');
-            btn.setAttribute('title', `Можно выбрать не больше ${maxBanks}`);
-            btn.classList.add('_disabled');
-          });
         }
-        siteContainer.insertAdjacentHTML('beforeend', htmlBottom);
-      }
+      });
+    });
+  }
+  function bankUpdate(items, activeItems, maxBanks, siteContainer) {
+    let htmlImage = '';
+    activeItems.forEach(item => {
+      htmlImage += item.querySelector('.bank-offer__icon').innerHTML;
+    });
+    const htmlBottom = `
+        <div class="mortgage__bottom mortgage-bottom">
+            <div class="mortgage-bottom__container container">
+                <div class="mortgage-bottom__info">
+                    <div class="mortgage-bottom__images">
+                        ${htmlImage}
+                    </div>
+                    <span>
+                        Вы выбрали ${activeItems.length} из ${maxBanks} возможных банков
+                    </span>
+                </div>
+                <button type="button" class="btn btn-reset btn-primary mortgage-bottom__btn">
+                    Создать заявку
+                </button>
+            </div>
+        </div>
+        `;
+    if (activeItems.length === maxBanks) {
+      const notActiveItems = Array.prototype.slice.call(items, 0).filter(item => !item.classList.contains('_active'));
+      notActiveItems.forEach(item => {
+        const btn = item.querySelector('.bank-offer__btn');
+        btn.setAttribute('title', `Можно выбрать не больше ${maxBanks}`);
+        btn.classList.add('_disabled');
+      });
     }
+    siteContainer.insertAdjacentHTML('beforeend', htmlBottom);
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (mortgage);

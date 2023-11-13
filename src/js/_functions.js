@@ -175,4 +175,5 @@ popup({
 }, 'object-gallery');
 popup(null, 'object-gallery--two');
 popup(null, 'warning-remove');
+popup(null, 'select-bank');
 // ========================================================================================

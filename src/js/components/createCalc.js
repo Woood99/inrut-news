@@ -281,6 +281,11 @@ function conditions(item) {
                     <span>%</span>
                 </label>
             </div>
+            <button type="button" class="btn btn-reset create-calc-conditions__save" style="grid-column:3/4;justify-self: end;align-self: end;">
+            <svg>
+            <use xlink:href="img/sprite.svg#save"></use>
+            </svg>
+            </button>
             <h3 class="title-4" style="grid-column:1/3;margin:16px 0;">Дополнительная информация</h3>
             <div class="create-calc-conditions__textareas">
                 <button type="button" class="btn btn-reset create-calc-conditions__create-descr" title="Создать новый блок">
@@ -290,11 +295,6 @@ function conditions(item) {
                     </svg>
                 </button>
             </div>
-             <button type="button" class="btn btn-reset create-calc-conditions__save" style="grid-column:3/4;justify-self: end;align-self: end;">
-                <svg>
-                <use xlink:href="img/sprite.svg#save"></use>
-                </svg>
-            </button>
         </div>
         `;
         conditionsCreate.addEventListener('click', () => {
@@ -362,8 +362,13 @@ function conditions(item) {
                     <div class="col">
                     <h3 class="title-4">Дополнительная информация</h3>
                     <div class="create-calc-conditions__item-descr">
-                        <label class="textarea-primary">
+                        <label class="textarea-primary textarea-primary--remove">
                             <textarea textarea class="input-reset textarea-primary__input" placeholder="">${conditionsTextareaValue}</textarea>
+                            <button type="button" class="btn btn-reset textarea-primary__remove" title="Удалить блок">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#trash"></use>
+                                </svg>
+                            </button>
                         </label>
                     </div>
                     </div>

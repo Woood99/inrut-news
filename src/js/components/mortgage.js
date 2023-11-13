@@ -11,6 +11,7 @@ const mortgage = () => {
     const popupContainerAdd = document.querySelector('.popup-primary--interest-rate-2 .interest-rate--add');
 
     const siteContainer = document.querySelector('.site-container--mortgage');
+    const selectBank = document.querySelector('.select-bank');
     if (containerAdd && popupContainerAdd) {
         const list = containerAdd.querySelector('.object-calc-mort__list');
         const listPopup = popupContainerAdd.querySelector('.interest-rate__wrapper');
@@ -56,7 +57,7 @@ const mortgage = () => {
                         item.removeAttribute('hidden');
                     })
                 } else {
-                    mortgageSuitableNo.setAttribute('hidden','');
+                    mortgageSuitableNo.setAttribute('hidden', '');
                     mortgageSuitableYes.querySelectorAll('.mortgage-suitable__item').forEach(item => {
                         item.removeAttribute('hidden');
                     })
@@ -82,7 +83,6 @@ const mortgage = () => {
             });
         })
     }
-
     if (containerAdd) {
         const meternalCapital = containerAdd.querySelector('.object-calc-mort__contribution');
         if (meternalCapital) {
@@ -338,93 +338,99 @@ const mortgage = () => {
                 }
             })
 
-            bankSelect();
-
-            function bankSelect() {
-                const container = document.querySelector('.mortgage-suitable__list');
-                if (!container) return;
-                const items = container.querySelectorAll('.bank-offer');
-                items.forEach(item => {
-                    const btn = item.querySelector('.bank-offer__btn');
-                    btn.addEventListener('click', () => {
-                        if (!btn.classList.contains('_disabled')) {
-                            if (!item.classList.contains('_active')) {
-                                item.classList.add('_active');
-                                btn.classList.add('_active');
-                                btn.setAttribute('title', 'Удалить');
-                                btn.innerHTML = `
-                                <svg>
-                                    <use xlink:href="img/sprite.svg#verif"></use>
-                                </svg>
-                                <svg>
-                                    <use xlink:href="img/sprite.svg#trash"></use>
-                                </svg>
-                                `
-                            } else {
-                                item.classList.remove('_active');
-                                btn.innerHTML = 'Выбрать';
-                                btn.removeAttribute('title');
-                                btn.classList.remove('_active');
-                            }
-
-                            const itemsActive = container.querySelectorAll('.bank-offer._active');
-                            const mortgageBottom = siteContainer.querySelector('.mortgage-bottom');
-                            siteContainer.style.paddingBottom = 'none'
-                            const maxActiveItems = 4;
-                            items.forEach(item => {
-                                const btn = item.querySelector('.bank-offer__btn');
-                                if (btn.classList.contains('_disabled')) {
-                                    btn.classList.remove('_disabled');
-                                    btn.removeAttribute('title');
-                                }
-                            })
-                            if (mortgageBottom) mortgageBottom.remove();
-                            if (itemsActive.length >= 1) {
-                                bankUpdate(items, itemsActive, maxActiveItems, siteContainer);
-                                siteContainer.style.paddingBottom = `${siteContainer.querySelector('.mortgage-bottom').offsetHeight}px`;
-                            } else {
-                                siteContainer.style.paddingBottom = null;
-                            }
-                        }
-
-                    })
-                })
-            }
-
-            function bankUpdate(items, activeItems, maxBanks, siteContainer) {
-                let htmlImage = '';
-                activeItems.forEach(item => {
-                    htmlImage += item.querySelector('.bank-offer__icon').innerHTML;
-                })
-                const htmlBottom = `
-                <div class="mortgage__bottom mortgage-bottom">
-                    <div class="mortgage-bottom__container container">
-                        <div class="mortgage-bottom__info">
-                            <div class="mortgage-bottom__images">
-                                ${htmlImage}
-                            </div>
-                            <span>
-                                Вы выбрали ${activeItems.length} из ${maxBanks} возможных банков
-                            </span>
-                        </div>
-                        <button type="button" class="btn btn-reset btn-primary mortgage-bottom__btn">
-                            Создать заявку
-                        </button>
-                    </div>
-                </div>
-                `;
-                if (activeItems.length === maxBanks) {
-                    const notActiveItems = Array.prototype.slice.call(items, 0).filter(item => !item.classList.contains('_active'));
-                    notActiveItems.forEach(item => {
-                        const btn = item.querySelector('.bank-offer__btn');
-                        btn.setAttribute('title', `Можно выбрать не больше ${maxBanks}`);
-                        btn.classList.add('_disabled');
-                    })
-                }
-                siteContainer.insertAdjacentHTML('beforeend', htmlBottom);
-            }
+            bankSelect('containerAdd');
 
         }
+    }
+    if (selectBank) {
+        bankSelect('select-bank');
+    }
+
+    function bankSelect(mode) {
+        let container;
+        if (mode === 'containerAdd') container = document.querySelector('.mortgage-suitable__list');
+        if (mode === 'select-bank') container = selectBank;
+        if (!container) return;
+        const items = container.querySelectorAll('.bank-offer');
+        items.forEach(item => {
+            const btn = item.querySelector('.bank-offer__btn');
+            btn.addEventListener('click', () => {
+                if (!btn.classList.contains('_disabled')) {
+                    if (!item.classList.contains('_active')) {
+                        item.classList.add('_active');
+                        btn.classList.add('_active');
+                        btn.setAttribute('title', 'Удалить');
+                        btn.innerHTML = `
+                        <svg>
+                            <use xlink:href="img/sprite.svg#verif"></use>
+                        </svg>
+                        <svg>
+                            <use xlink:href="img/sprite.svg#trash"></use>
+                        </svg>
+                        `
+                    } else {
+                        item.classList.remove('_active');
+                        btn.innerHTML = 'Выбрать';
+                        btn.removeAttribute('title');
+                        btn.classList.remove('_active');
+                    }
+                    const maxActiveItems = 4;
+                    const itemsActive = container.querySelectorAll('.bank-offer._active');
+
+                    const currentContainer = siteContainer || selectBank;
+                    const mortgageBottom = currentContainer.querySelector('.mortgage-bottom');
+                    currentContainer.style.paddingBottom = 'none'
+                    if (mortgageBottom) mortgageBottom.remove();
+                    if (itemsActive.length >= 1) {
+                        bankUpdate(items, itemsActive, maxActiveItems, currentContainer);
+                        currentContainer.style.paddingBottom = `${currentContainer.querySelector('.mortgage-bottom').offsetHeight}px`;
+                    } else {
+                        currentContainer.style.paddingBottom = null;
+                    }
+                    items.forEach(item => {
+                        const btn = item.querySelector('.bank-offer__btn');
+                        if (btn.classList.contains('_disabled')) {
+                            btn.classList.remove('_disabled');
+                            btn.removeAttribute('title');
+                        }
+                    })
+                }
+
+            })
+        })
+    }
+
+    function bankUpdate(items, activeItems, maxBanks, siteContainer) {
+        let htmlImage = '';
+        activeItems.forEach(item => {
+            htmlImage += item.querySelector('.bank-offer__icon').innerHTML;
+        })
+        const htmlBottom = `
+        <div class="mortgage__bottom mortgage-bottom">
+            <div class="mortgage-bottom__container container">
+                <div class="mortgage-bottom__info">
+                    <div class="mortgage-bottom__images">
+                        ${htmlImage}
+                    </div>
+                    <span>
+                        Вы выбрали ${activeItems.length} из ${maxBanks} возможных банков
+                    </span>
+                </div>
+                <button type="button" class="btn btn-reset btn-primary mortgage-bottom__btn">
+                    Создать заявку
+                </button>
+            </div>
+        </div>
+        `;
+        if (activeItems.length === maxBanks) {
+            const notActiveItems = Array.prototype.slice.call(items, 0).filter(item => !item.classList.contains('_active'));
+            notActiveItems.forEach(item => {
+                const btn = item.querySelector('.bank-offer__btn');
+                btn.setAttribute('title', `Можно выбрать не больше ${maxBanks}`);
+                btn.classList.add('_disabled');
+            })
+        }
+        siteContainer.insertAdjacentHTML('beforeend', htmlBottom);
     }
 };
 

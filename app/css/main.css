@@ -1820,6 +1820,53 @@ textarea.input-reset {
   margin-left: auto;
   z-index: 99;
 }
+.popup-primary--select-bank {
+  z-index: 1050;
+}
+.popup-primary--select-bank .popup-primary__container {
+  margin: 0 auto;
+  padding: 48px 32px 32px;
+  width: 100%;
+  min-height: var(--vh);
+  vertical-align: bottom;
+}
+@media (max-width: 1212px) {
+  .popup-primary--select-bank .popup-primary__container {
+    margin-top: 0;
+    border-radius: 0;
+    width: 100%;
+    min-height: 100vh;
+    padding: 65px 0 32px;
+  }
+}
+.popup-primary--select-bank .popup-primary__close {
+  position: sticky;
+  margin-top: -48px;
+  -webkit-transform: translateX(32px);
+  -ms-transform: translateX(32px);
+  transform: translateX(32px);
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+}
+@media (max-width: 1212px) {
+  .popup-primary--select-bank .popup-primary__close {
+    position: fixed;
+    margin: 0;
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+    height: 45px;
+    -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.12);
+    background-color: var(--white);
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: end;
+    padding: 24px;
+  }
+}
 .popup-primary--popup-map .popup-primary__container {
   border-radius: 0;
   padding: 32px 16px 16px;
@@ -7490,6 +7537,16 @@ textarea.input-reset {
   stroke: var(--white);
   stroke-width: 1.5px;
 }
+.select-bank__list {
+  margin-top: 24px;
+}
+.select-bank__item:not(:last-child) {
+  margin-bottom: 16px;
+}
+.select-bank .mortgage-bottom__container {
+  padding: 0 16px;
+}
+
 .fade {
   opacity: 0;
 }
@@ -31431,6 +31488,8 @@ textarea.input-reset {
   padding: 0 20px 0 16px;
   opacity: 1;
   visibility: visible;
+  -webkit-box-shadow: none;
+  box-shadow: none;
   -webkit-transform: translateY(0);
   -ms-transform: translateY(0);
   transform: translateY(0);
@@ -33915,7 +33974,7 @@ textarea.input-reset {
   }
 }
 .develop-inner .bid-user__content {
-  margin: 0 0 0 16px;
+  margin: 16px 0 0 0;
   -ms-flex-item-align: center;
   -ms-grid-row-align: center;
   align-self: center;
@@ -36155,11 +36214,11 @@ textarea.input-reset {
 }
 .mortgage .object-calc-mort__contribution {
   position: relative;
-  margin-bottom: 56px;
+  margin-bottom: 64px;
 }
 .mortgage .object-calc-mort__contribution .toggle-checkbox {
   position: absolute;
-  top: calc(100% + 24px);
+  top: calc(100% + 32px);
   left: 0;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -36330,8 +36389,8 @@ textarea.input-reset {
 }
 .bank-offer__info-item > span {
   opacity: 0.65;
-  font-size: var(--default-fz);
-  line-height: var(--default-lh);
+  font-size: var(--small-fz);
+  line-height: var(--small-lh);
 }
 .bank-offer__info-item > div {
   margin-top: 4px;
@@ -36373,7 +36432,9 @@ textarea.input-reset {
   white-space: normal;
 }
 .bank-offer__selector {
-  margin-top: 32px;
+  margin-top: 24px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(122, 127, 170, 0.2);
 }
 .bank-offer__selector._active .bank-offer__check svg {
   -webkit-transform: rotate(-180deg);
@@ -36575,6 +36636,11 @@ textarea.input-reset {
   padding-bottom: 24px;
   border-bottom: 1px dotted var(--primary200);
 }
+.bank-offer__add-info {
+  border-top: 1px solid rgba(122, 127, 170, 0.2);
+  padding-top: 8px;
+  margin-top: 8px;
+}
 .bank-offer__add-info._active .bank-offer__check svg {
   -webkit-transform: rotate(-180deg);
   -ms-transform: rotate(-180deg);
@@ -36610,7 +36676,7 @@ textarea.input-reset {
 .bank-offer__bottom {
   border-top: 1px solid rgba(122, 127, 170, 0.2);
   padding-top: 16px;
-  margin-top: 16px;
+  margin-top: 8px;
 }
 
 .bank-offer-bid-tooltip {

@@ -1689,7 +1689,34 @@
     }
 
     &.tariff-card {
-     
+        .create-calc-mort__item--field{
+            border-bottom: 1px solid var(--primary100);
+            padding-bottom: 24px;
+            margin-bottom: 24px;
+        }
+        .create-calc-mort__item{
+            &:not(.create-calc-mort__item--field) {
+                display: grid;
+                grid-template-columns: 1fr max-content;
+                grid-row-gap: 16px;
+                align-items: center;
+                .create-calc-mort__textareas{
+                    grid-column: 1/-1;
+                }
+                .create-calc-mort__remove{
+                    grid-column: 2/3;
+                    grid-row: 1/2;
+                }
+                .create-calc-mort__title{
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .create-calc-mort__item--field .row {
+            grid-template-columns: 33.33% max-content;
+            justify-content: space-between;
+            align-items: end;
+        }
     }
 }
 

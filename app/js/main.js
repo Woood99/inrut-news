@@ -6315,9 +6315,11 @@ const currentCreateCalc = mort => {
 function createCalcBody(mort) {
   const items = mort.querySelectorAll('.create-calc-mort__item');
   const createItem = mort.querySelector('.create-calc-mort__create-item');
-  items.forEach(item => {
-    itemAction(item);
-  });
+  if (mort.closest('.tariff-card')) {
+    items.forEach(item => itemActionTariffCard(item));
+  } else {
+    items.forEach(item => itemActionPrograms(item));
+  }
   if (createItem) {
     createItem.addEventListener('click', () => {
       (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_2__.emergingBlockScroll)('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
@@ -6332,7 +6334,11 @@ function createCalcBody(mort) {
                                 <input type="text" name="Название" class="input-reset input-text__input" value="" placeholder="">
                             </label>
                         </div>
-                        <button type="button" class="btn btn-reset create-calc-mort__item-save" style="grid-column:3/4">Сохранить</button>
+                        <button type="button" class="btn btn-reset create-calc-mort__item-save">
+                            <svg style="width: 16px; height: 16px; fill: var(--blue);">
+                            <use xlink:href="img/sprite.svg#save"></use>
+                            </svg>
+                        </button>
                     </div>
                     <div class="create-calc-mort__info">
                         <h3 class="create-calc-mort__title title-4">Дополнительная информация</h3>
@@ -6360,61 +6366,20 @@ function createCalcBody(mort) {
             const textareas = currentItemField.querySelector('.create-calc-mort__textareas');
             if (name) {
               const itemHTML = `
-                        <div class="create-calc-mort__item">
-                        <div class="create-calc-mort__btn">
-                            <label class="create-calc-mort__checkbox toggle-checkbox">
-                                <input type="checkbox" name="toggle-1">
-                                <div aria-hidden="true"></div>
-                            </label>
-                            <span>
-                                <input type="text" name="Имя" class="input-reset _width-auto" disabled value="${name}">
-                                <span class="_disabled">
-                                    <input type="text" name="Имя" maxlength="3" class="input-reset _width-auto" value="${prc}" disabled="">%
-                                </span>
-                            </span>
-                            <button type="button" class="btn btn-reset create-calc-mort__edit _disabled" title="Редактировать">
-                                <svg>
-                                    <use xlink:href="img/sprite.svg#pencil">
-                                    </use>
-                                </svg>
-                            </button>
-                            <button type="button" class="btn btn-reset create-calc-mort__remove" title="Удалить">
-                                <svg>
-                                    <use xlink:href="img/sprite.svg#trash">
-                                    </use>
-                                </svg>
-                            </button>
-                            <div class="create-calc-mort__check">
-                                <svg>
-                                    <use xlink:href="img/sprite.svg#check"></use>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="create-calc-mort__info" hidden>
-                            <h3 class="create-calc-mort__title title-4">Дополнительная информация</h3>
-                            <div class="create-calc-mort__conditions create-calc-conditions" style="margin: 24px 0 0;">
-                                <div class="row">
-                                    <h3 class="create-calc-conditions__title title-2">
-                                        Услуги, снижающие ставку по кредиту
-                                    </h3>
-                                    <button type="button" class="btn btn-reset create-calc-conditions__create">
-                                        <svg>
-                                            <use xlink:href="img/sprite.svg#plus"></use>
-                                        </svg>
-                                        <span>Создать новую услугу</span>
+                            <div class="create-calc-mort__item">
+                                    <h3 class="create-calc-mort__title title-4">${name}</h3>
+                                    <button type="button" class="btn btn-reset create-calc-mort__remove" title="Удалить">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#trash">
+                                        </use>
+                                    </svg>
                                     </button>
-                                </div>
-                                <div class="create-calc-conditions__items">
-                                    ${conditionsItems}                           
-                                </div>
                             </div>
-                        </div>
-                    </div>
                     `;
               mort.insertAdjacentHTML('beforeend', itemHTML);
               const currentItem = mort.querySelector('.create-calc-mort__item:last-child');
-              currentItem.querySelector('.create-calc-mort__info .create-calc-mort__title').insertAdjacentElement('afterend', textareas);
-              itemAction(currentItem, false);
+              currentItem.querySelector('.create-calc-mort__title').insertAdjacentElement('afterend', textareas);
+              itemActionTariffCard(currentItem, false);
               currentItemField.remove();
             }
             (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_2__.emergingBlockScroll)('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
@@ -6545,7 +6510,7 @@ function createCalcBody(mort) {
               mort.insertAdjacentHTML('beforeend', itemHTML);
               const currentItem = mort.querySelector('.create-calc-mort__item:last-child');
               currentItem.querySelector('.create-calc-mort__info .create-calc-mort__title').insertAdjacentElement('afterend', textareas);
-              itemAction(currentItem, false);
+              itemActionPrograms(currentItem, false);
               const itemNameAndPrc = [currentItem.querySelector('.create-calc-conditions__item-name'), currentItem.querySelector('.create-calc-conditions__item-prc')];
               itemNameAndPrc.forEach(itemElement => {
                 if (itemElement) {
@@ -6562,7 +6527,25 @@ function createCalcBody(mort) {
     });
   }
 }
-function itemAction(item) {
+function itemActionTariffCard(item) {
+  let createTextareaBoolean = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+  const remove = item.querySelector('.create-calc-mort__remove');
+  if (remove) {
+    remove.addEventListener('click', () => {
+      item.remove();
+    });
+  }
+  if (createTextareaBoolean) {
+    ;
+    const createTextarea = item.querySelector('.create-calc-mort__create');
+    if (createTextarea) {
+      createTextarea.addEventListener('click', () => {
+        blockAdded(createTextarea);
+      });
+    }
+  }
+}
+function itemActionPrograms(item) {
   let createTextareaBoolean = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
   const btnMore = item.querySelector('.create-calc-mort__btn');
   const info = item.querySelector('.create-calc-mort__info');

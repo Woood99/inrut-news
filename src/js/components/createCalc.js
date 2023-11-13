@@ -1,6 +1,8 @@
 import inputResize from '../modules/inputResize';
 import generateRandomID from '../modules/generateRandomID';
-import { emergingBlockScroll } from '../modules/emergingBlockScroll';
+import {
+    emergingBlockScroll
+} from '../modules/emergingBlockScroll';
 import {
     currentInputText,
     valueToValueAttr
@@ -9,9 +11,7 @@ export const createCalc = () => {
     const createCalc = document.querySelector('.create-calc');
     if (!createCalc) return;
     const morts = createCalc.querySelectorAll('.create-calc-mort__field');
-    morts.forEach(mort => {
-        createCalcBody(mort);
-    })
+    morts.forEach(mort => createCalcBody(mort));
 
 };
 export const currentCreateCalc = (mort) => {
@@ -26,151 +26,259 @@ function createCalcBody(mort) {
     })
     if (createItem) {
         createItem.addEventListener('click', () => {
-            emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true,true);
-            if (!mort.querySelector('.create-calc-mort__item--field')) {
-                const itemFieldHTML = `
-            <div class="create-calc-mort__item create-calc-mort__item--field">
-            <div class="row">
-                <div class="input-text input-text--no-exp create-calc-mort__item-name">
-                    <label class="input-text__label">
-                        <span>Название</span>
-                        <input type="text" name="Название" class="input-reset input-text__input" value="" placeholder="">
-                    </label>
-                </div>
-                <div class="input-text create-calc-mort__item-prc">
-                    <label class="input-text__label">
-                        <span>Ставка</span>
-                        <input type="text" name="Имя" class="input-reset input-text__input" placeholder="">
-                        <span>%</span>
-                    </label>
-                </div>
-                <button type="button" class="btn btn-reset create-calc-mort__item-save">Сохранить</button>
-            </div>
-            <div class="create-calc-mort__info">
-                <h3 class="create-calc-mort__title title-4">Дополнительная информация</h3>
-                <div class="create-calc-mort__textareas">
-                    <button type="button" class="btn btn-reset create-calc-mort__create" title="Создать новый блок">
-                        <span>Создать</span>
-                        <svg>
-                            <use xlink:href="img/sprite.svg#plus"></use>
-                        </svg>
-                    </button>
-                </div>
-                <div class="create-calc-mort__conditions create-calc-conditions" style="margin: 24px 0 0;">
-                <div class="row">
-                    <h3 class="create-calc-conditions__title title-2">
-                    Услуги, снижающие ставку по кредиту
-                    </h3>
-                    <button type="button" class="btn btn-reset create-calc-conditions__create">
-                        <svg>
-                            <use xlink:href="img/sprite.svg#plus"></use>
-                        </svg>
-                        <span>Создать новую услугу</span>
-                    </button>
-                </div>
-                <div class="create-calc-conditions__items">
-                                                                
-                </div>
-            </div>
-            </div>
-        </div>
-            `;
-                createItem.insertAdjacentHTML('afterend', itemFieldHTML);
-                const currentItemField = mort.querySelector('.create-calc-mort__item--field');
-                const createTextarea = currentItemField.querySelector('.create-calc-mort__create');
+            emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
+            if (mort.closest('.tariff-card')) {
 
-                currentItemField.querySelectorAll('.input-text').forEach(item => currentInputText(item));
-                conditions(currentItemField);
-
-
-                createTextarea.addEventListener('click', () => {
-                    blockAdded(createTextarea);
-                });
-
-                const save = currentItemField.querySelector('.create-calc-mort__item-save');
-                save.addEventListener('click', () => {
-                    const name = currentItemField.querySelector('.create-calc-mort__item-name input').value;
-                    const prc = currentItemField.querySelector('.create-calc-mort__item-prc input').value;
-                    const textareas = currentItemField.querySelector('.create-calc-mort__textareas');
-                    const conditions = currentItemField.querySelectorAll('.create-calc-conditions__item');
-                    let conditionsItems = '';
-                    if (conditions.length > 0) {
-                        conditions.forEach(item => {
-                            conditionsItems += item.outerHTML;
-                        })
-                    }
-                    if (name && prc) {
-                        const itemHTML = `
-                    <div class="create-calc-mort__item">
-                    <div class="create-calc-mort__btn">
-                        <label class="create-calc-mort__checkbox toggle-checkbox">
-                            <input type="checkbox" name="toggle-1">
-                            <div aria-hidden="true"></div>
-                        </label>
-                        <span>
-                            <input type="text" name="Имя" class="input-reset _width-auto" disabled value="${name}">
-                            <span class="_disabled">
-                                <input type="text" name="Имя" maxlength="3" class="input-reset _width-auto" value="${prc}" disabled="">%
-                            </span>
-                        </span>
-                        <button type="button" class="btn btn-reset create-calc-mort__edit _disabled" title="Редактировать">
-                            <svg>
-                                <use xlink:href="img/sprite.svg#pencil">
-                                </use>
-                            </svg>
-                        </button>
-                        <button type="button" class="btn btn-reset create-calc-mort__remove" title="Удалить">
-                            <svg>
-                                <use xlink:href="img/sprite.svg#trash">
-                                </use>
-                            </svg>
-                        </button>
-                        <div class="create-calc-mort__check">
-                            <svg>
-                                <use xlink:href="img/sprite.svg#check"></use>
-                            </svg>
+                if (!mort.querySelector('.create-calc-mort__item--field')) {
+                    const itemFieldHTML = `
+                    <div class="create-calc-mort__item create-calc-mort__item--field">
+                    <div class="row">
+                        <div class="input-text input-text--no-exp create-calc-mort__item-name">
+                            <label class="input-text__label">
+                                <span>Название</span>
+                                <input type="text" name="Название" class="input-reset input-text__input" value="" placeholder="">
+                            </label>
                         </div>
+                        <button type="button" class="btn btn-reset create-calc-mort__item-save" style="grid-column:3/4">Сохранить</button>
                     </div>
-                    <div class="create-calc-mort__info" hidden>
+                    <div class="create-calc-mort__info">
                         <h3 class="create-calc-mort__title title-4">Дополнительная информация</h3>
-                        <div class="create-calc-mort__conditions create-calc-conditions" style="margin: 24px 0 0;">
-                            <div class="row">
-                                <h3 class="create-calc-conditions__title title-2">
-                                    Услуги, снижающие ставку по кредиту
-                                </h3>
-                                <button type="button" class="btn btn-reset create-calc-conditions__create">
-                                    <svg>
-                                        <use xlink:href="img/sprite.svg#plus"></use>
-                                    </svg>
-                                    <span>Создать новую услугу</span>
-                                </button>
-                            </div>
-                            <div class="create-calc-conditions__items">
-                                ${conditionsItems}                           
-                            </div>
+                        <div class="create-calc-mort__textareas">
+                            <button type="button" class="btn btn-reset create-calc-mort__create" title="Создать новый блок">
+                                <span>Создать</span>
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#plus"></use>
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 </div>
+                    `;
+                    createItem.insertAdjacentHTML('afterend', itemFieldHTML);
+                    const currentItemField = mort.querySelector('.create-calc-mort__item--field');
+                    const createTextarea = currentItemField.querySelector('.create-calc-mort__create');
+
+                    currentItemField.querySelectorAll('.input-text').forEach(item => currentInputText(item));
+
+
+                    createTextarea.addEventListener('click', () => {
+                        blockAdded(createTextarea);
+                    });
+
+                    const save = currentItemField.querySelector('.create-calc-mort__item-save');
+                    save.addEventListener('click', () => {
+                        const name = currentItemField.querySelector('.create-calc-mort__item-name input').value;
+                        const textareas = currentItemField.querySelector('.create-calc-mort__textareas');
+                        if (name) {
+                            const itemHTML = `
+                        <div class="create-calc-mort__item">
+                        <div class="create-calc-mort__btn">
+                            <label class="create-calc-mort__checkbox toggle-checkbox">
+                                <input type="checkbox" name="toggle-1">
+                                <div aria-hidden="true"></div>
+                            </label>
+                            <span>
+                                <input type="text" name="Имя" class="input-reset _width-auto" disabled value="${name}">
+                                <span class="_disabled">
+                                    <input type="text" name="Имя" maxlength="3" class="input-reset _width-auto" value="${prc}" disabled="">%
+                                </span>
+                            </span>
+                            <button type="button" class="btn btn-reset create-calc-mort__edit _disabled" title="Редактировать">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#pencil">
+                                    </use>
+                                </svg>
+                            </button>
+                            <button type="button" class="btn btn-reset create-calc-mort__remove" title="Удалить">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#trash">
+                                    </use>
+                                </svg>
+                            </button>
+                            <div class="create-calc-mort__check">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#check"></use>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="create-calc-mort__info" hidden>
+                            <h3 class="create-calc-mort__title title-4">Дополнительная информация</h3>
+                            <div class="create-calc-mort__conditions create-calc-conditions" style="margin: 24px 0 0;">
+                                <div class="row">
+                                    <h3 class="create-calc-conditions__title title-2">
+                                        Услуги, снижающие ставку по кредиту
+                                    </h3>
+                                    <button type="button" class="btn btn-reset create-calc-conditions__create">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#plus"></use>
+                                        </svg>
+                                        <span>Создать новую услугу</span>
+                                    </button>
+                                </div>
+                                <div class="create-calc-conditions__items">
+                                    ${conditionsItems}                           
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                            mort.insertAdjacentHTML('beforeend', itemHTML);
+                            const currentItem = mort.querySelector('.create-calc-mort__item:last-child');
+                            currentItem.querySelector('.create-calc-mort__info .create-calc-mort__title').insertAdjacentElement('afterend', textareas);
+                            itemAction(currentItem, false);
+
+                            currentItemField.remove();
+                        }
+                        emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
+                    });
+                }
+
+            } else {
+                if (!mort.querySelector('.create-calc-mort__item--field')) {
+                    const itemFieldHTML = `
+                <div class="create-calc-mort__item create-calc-mort__item--field">
+                <div class="row">
+                    <div class="input-text input-text--no-exp create-calc-mort__item-name">
+                        <label class="input-text__label">
+                            <span>Название</span>
+                            <input type="text" name="Название" class="input-reset input-text__input" value="" placeholder="">
+                        </label>
+                    </div>
+                    <div class="input-text create-calc-mort__item-prc">
+                        <label class="input-text__label">
+                            <span>Ставка</span>
+                            <input type="text" name="Имя" class="input-reset input-text__input" placeholder="">
+                            <span>%</span>
+                        </label>
+                    </div>
+                    <button type="button" class="btn btn-reset create-calc-mort__item-save">Сохранить</button>
+                </div>
+                <div class="create-calc-mort__info">
+                    <h3 class="create-calc-mort__title title-4">Дополнительная информация</h3>
+                    <div class="create-calc-mort__textareas">
+                        <button type="button" class="btn btn-reset create-calc-mort__create" title="Создать новый блок">
+                            <span>Создать</span>
+                            <svg>
+                                <use xlink:href="img/sprite.svg#plus"></use>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="create-calc-mort__conditions create-calc-conditions" style="margin: 24px 0 0;">
+                    <div class="row">
+                        <h3 class="create-calc-conditions__title title-2">
+                        Услуги, снижающие ставку по кредиту
+                        </h3>
+                        <button type="button" class="btn btn-reset create-calc-conditions__create">
+                            <svg>
+                                <use xlink:href="img/sprite.svg#plus"></use>
+                            </svg>
+                            <span>Создать новую услугу</span>
+                        </button>
+                    </div>
+                    <div class="create-calc-conditions__items">
+                                                                    
+                    </div>
+                </div>
+                </div>
+            </div>
                 `;
-                        mort.insertAdjacentHTML('beforeend', itemHTML);
-                        const currentItem = mort.querySelector('.create-calc-mort__item:last-child');
-                        currentItem.querySelector('.create-calc-mort__info .create-calc-mort__title').insertAdjacentElement('afterend', textareas);
-                        itemAction(currentItem, false);
+                    createItem.insertAdjacentHTML('afterend', itemFieldHTML);
+                    const currentItemField = mort.querySelector('.create-calc-mort__item--field');
+                    const createTextarea = currentItemField.querySelector('.create-calc-mort__create');
 
-                        const itemNameAndPrc = [
-                            currentItem.querySelector('.create-calc-conditions__item-name'),
-                            currentItem.querySelector('.create-calc-conditions__item-prc')
-                        ];
-                        itemNameAndPrc.forEach(itemElement => {
-                            if (itemElement) {
-                                itemElement.addEventListener('input', () => inputResize(itemElement));
-                            }
-                        });;
+                    currentItemField.querySelectorAll('.input-text').forEach(item => currentInputText(item));
+                    conditions(currentItemField);
 
-                        currentItemField.remove();
-                    }
-                    emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true,true);
-                });
+
+                    createTextarea.addEventListener('click', () => {
+                        blockAdded(createTextarea);
+                    });
+
+                    const save = currentItemField.querySelector('.create-calc-mort__item-save');
+                    save.addEventListener('click', () => {
+                        const name = currentItemField.querySelector('.create-calc-mort__item-name input').value;
+                        const prc = currentItemField.querySelector('.create-calc-mort__item-prc input').value;
+                        const textareas = currentItemField.querySelector('.create-calc-mort__textareas');
+                        const conditions = currentItemField.querySelectorAll('.create-calc-conditions__item');
+                        let conditionsItems = '';
+                        if (conditions.length > 0) {
+                            conditions.forEach(item => {
+                                conditionsItems += item.outerHTML;
+                            })
+                        }
+                        if (name && prc) {
+                            const itemHTML = `
+                        <div class="create-calc-mort__item">
+                        <div class="create-calc-mort__btn">
+                            <label class="create-calc-mort__checkbox toggle-checkbox">
+                                <input type="checkbox" name="toggle-1">
+                                <div aria-hidden="true"></div>
+                            </label>
+                            <span>
+                                <input type="text" name="Имя" class="input-reset _width-auto" disabled value="${name}">
+                                <span class="_disabled">
+                                    <input type="text" name="Имя" maxlength="3" class="input-reset _width-auto" value="${prc}" disabled="">%
+                                </span>
+                            </span>
+                            <button type="button" class="btn btn-reset create-calc-mort__edit _disabled" title="Редактировать">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#pencil">
+                                    </use>
+                                </svg>
+                            </button>
+                            <button type="button" class="btn btn-reset create-calc-mort__remove" title="Удалить">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#trash">
+                                    </use>
+                                </svg>
+                            </button>
+                            <div class="create-calc-mort__check">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#check"></use>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="create-calc-mort__info" hidden>
+                            <h3 class="create-calc-mort__title title-4">Дополнительная информация</h3>
+                            <div class="create-calc-mort__conditions create-calc-conditions" style="margin: 24px 0 0;">
+                                <div class="row">
+                                    <h3 class="create-calc-conditions__title title-2">
+                                        Услуги, снижающие ставку по кредиту
+                                    </h3>
+                                    <button type="button" class="btn btn-reset create-calc-conditions__create">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#plus"></use>
+                                        </svg>
+                                        <span>Создать новую услугу</span>
+                                    </button>
+                                </div>
+                                <div class="create-calc-conditions__items">
+                                    ${conditionsItems}                           
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                            mort.insertAdjacentHTML('beforeend', itemHTML);
+                            const currentItem = mort.querySelector('.create-calc-mort__item:last-child');
+                            currentItem.querySelector('.create-calc-mort__info .create-calc-mort__title').insertAdjacentElement('afterend', textareas);
+                            itemAction(currentItem, false);
+
+                            const itemNameAndPrc = [
+                                currentItem.querySelector('.create-calc-conditions__item-name'),
+                                currentItem.querySelector('.create-calc-conditions__item-prc')
+                            ];
+                            itemNameAndPrc.forEach(itemElement => {
+                                if (itemElement) {
+                                    itemElement.addEventListener('input', () => inputResize(itemElement));
+                                }
+                            });;
+
+                            currentItemField.remove();
+                        }
+                        emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
+                    });
+                }
             }
         });
     }
@@ -190,16 +298,16 @@ function itemAction(item, createTextareaBoolean = true) {
             if (!item.classList.contains('_active')) {
                 item.classList.add('_active');
                 info.removeAttribute('hidden');
-                emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true,true);
+                emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
             } else {
                 item.classList.remove('_active');
                 info.setAttribute('hidden', '');
-                emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true,true);
+                emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
             }
         }
     });
 
-    toggleCheckbox.addEventListener('change',() => {
+    toggleCheckbox.addEventListener('change', () => {
         if (!item.classList.contains('_edit')) {
             item.classList.add('_edit');
             edit.classList.remove('_disabled');
@@ -298,7 +406,7 @@ function conditions(item) {
         </div>
         `;
         conditionsCreate.addEventListener('click', () => {
-            emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true,true);
+            emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
             !conditionsCreate.classList.contains('_active') ? conditionsCreateBody() : conditionsCreateCancel();
         });
 
@@ -391,7 +499,7 @@ function conditions(item) {
         }
 
         conditions.addEventListener('click', (e) => {
-            emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true,true);
+            emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
             const target = e.target;
             const edit = target.closest('.create-calc-conditions__item-edit');
             const remove = target.closest('.create-calc-conditions__item-remove');

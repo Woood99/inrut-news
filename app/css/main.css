@@ -9116,10 +9116,12 @@ textarea.input-reset {
 }
 .create-calc-mort__btn > span > span {
   margin-left: 8px;
+  color: var(--dark);
 }
 .create-calc-mort__btn > span > span._disabled {
   color: var(--dark);
   opacity: 0.5;
+  pointer-events: none;
 }
 .create-calc-mort__btn > span > span._disabled input {
   color: var(--dark);
@@ -9129,7 +9131,7 @@ textarea.input-reset {
   border: none;
   width: 12px;
   min-width: 12px;
-  color: var(--blue);
+  color: var(--dark);
   margin-right: 4px;
 }
 @media (min-width: 1213px) {
@@ -9179,12 +9181,15 @@ textarea.input-reset {
   stroke-width: 1.5px;
   width: 16px;
   height: 16px;
-  -webkit-transition: stroke 0.4s ease-in-out;
-  -o-transition: stroke 0.4s ease-in-out;
-  transition: stroke 0.4s ease-in-out;
+  -webkit-transition: stroke 0.4s ease-in-out, opacity 0.4s ease-in-out;
+  -o-transition: stroke 0.4s ease-in-out, opacity 0.4s ease-in-out;
+  transition: stroke 0.4s ease-in-out, opacity 0.4s ease-in-out;
 }
 .create-calc-mort__edit._active svg {
   stroke: var(--red);
+}
+.create-calc-mort__edit._disabled {
+  pointer-events: none;
 }
 .create-calc-mort__edit._disabled svg {
   stroke: var(--dark);

@@ -1,5 +1,6 @@
 import inputResize from '../modules/inputResize';
 import generateRandomID from '../modules/generateRandomID';
+import { emergingBlockScroll } from '../modules/emergingBlockScroll';
 import {
     currentInputText,
     valueToValueAttr
@@ -25,6 +26,7 @@ function createCalcBody(mort) {
     })
     if (createItem) {
         createItem.addEventListener('click', () => {
+            emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true,true);
             if (!mort.querySelector('.create-calc-mort__item--field')) {
                 const itemFieldHTML = `
             <div class="create-calc-mort__item create-calc-mort__item--field">
@@ -167,6 +169,7 @@ function createCalcBody(mort) {
 
                         currentItemField.remove();
                     }
+                    emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true,true);
                 });
             }
         });
@@ -181,17 +184,32 @@ function itemAction(item, createTextareaBoolean = true) {
     const remove = item.querySelector('.create-calc-mort__remove')
     const inputPrc = btnMore.querySelector('span span input');
     const inputText = btnMore.querySelector('span>input');
-
-    btnMore.addEventListener('click', () => {
-        if (!item.classList.contains('_active')) {
-            item.classList.add('_active');
-            info.removeAttribute('hidden');
-        } else {
-            item.classList.remove('_active');
-            info.setAttribute('hidden', '');
+    const toggleCheckbox = item.querySelector('.create-calc-mort__checkbox');
+    btnMore.addEventListener('click', (e) => {
+        if (!e.target.closest('.create-calc-mort__edit')) {
+            if (!item.classList.contains('_active')) {
+                item.classList.add('_active');
+                info.removeAttribute('hidden');
+                emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true,true);
+            } else {
+                item.classList.remove('_active');
+                info.setAttribute('hidden', '');
+                emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true,true);
+            }
         }
     });
 
+    toggleCheckbox.addEventListener('change',() => {
+        if (!item.classList.contains('_edit')) {
+            item.classList.add('_edit');
+            edit.classList.remove('_disabled');
+            inputPrc.parentNode.classList.remove('_disabled');
+        } else {
+            item.classList.remove('_edit');
+            edit.classList.add('_disabled');
+            inputPrc.parentNode.classList.add('_disabled');
+        }
+    });
 
     edit.addEventListener('click', () => {
         if (!edit.classList.contains('_active')) {
@@ -238,7 +256,6 @@ function itemAction(item, createTextareaBoolean = true) {
     conditions(item);
 }
 
-
 function conditions(item) {
     const conditions = item.querySelector('.create-calc-conditions');
     if (conditions) {
@@ -281,6 +298,7 @@ function conditions(item) {
         </div>
         `;
         conditionsCreate.addEventListener('click', () => {
+            emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true,true);
             !conditionsCreate.classList.contains('_active') ? conditionsCreateBody() : conditionsCreateCancel();
         });
 
@@ -368,6 +386,7 @@ function conditions(item) {
         }
 
         conditions.addEventListener('click', (e) => {
+            emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true,true);
             const target = e.target;
             const edit = target.closest('.create-calc-conditions__item-edit');
             const remove = target.closest('.create-calc-conditions__item-remove');

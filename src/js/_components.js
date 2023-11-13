@@ -41,7 +41,7 @@ import {
 import dropdown from './modules/dropdown';
 import dropdownItems from './modules/dropdownItems';
 import dropdownDown from './modules/dropdownDown';
-import emergingBlockScroll from './modules/emergingBlockScroll';
+import { emergingBlockScroll } from './modules/emergingBlockScroll';
 import controlCards from './components/controlCards';
 import videoBlock from './components/videoBlock';
 import reviewModal from './components/reviewModal';
@@ -229,6 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
     emergingBlockScroll('.object-base-inner .object-body__user .card-user__btn', '.object-plate-bottom', 1212, true);
 
     emergingBlockScroll('.add-complex .place-sale__btn', '.footer-fixed.complex-fixed', 99999999, true);
+    emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true);
 
 
     // ==================================================

@@ -4383,13 +4383,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ==================================================
 
-  (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__["default"])('.object-body__user .bid-user__btn--message', '.object-plate-bottom', 1212, true);
-  (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__["default"])('.purchase-request .bid-user__btn', '.purchase-request-plate-bottom', 1212, true);
-  (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__["default"])('.agent .bid-user__btn', '.agent-plate-bottom', 1212, true);
-  (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__["default"])('.develop-inner .object-body__wrapper .bid-user__btn', '.object-plate-bottom', 1212, true);
-  (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__["default"])('.detailed-flat .object-body__user .bid-user__btn', '.object-plate-bottom', 1212, true);
-  (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__["default"])('.object-base-inner .object-body__user .card-user__btn', '.object-plate-bottom', 1212, true);
-  (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__["default"])('.add-complex .place-sale__btn', '.footer-fixed.complex-fixed', 99999999, true);
+  (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__.emergingBlockScroll)('.object-body__user .bid-user__btn--message', '.object-plate-bottom', 1212, true);
+  (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__.emergingBlockScroll)('.purchase-request .bid-user__btn', '.purchase-request-plate-bottom', 1212, true);
+  (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__.emergingBlockScroll)('.agent .bid-user__btn', '.agent-plate-bottom', 1212, true);
+  (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__.emergingBlockScroll)('.develop-inner .object-body__wrapper .bid-user__btn', '.object-plate-bottom', 1212, true);
+  (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__.emergingBlockScroll)('.detailed-flat .object-body__user .bid-user__btn', '.object-plate-bottom', 1212, true);
+  (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__.emergingBlockScroll)('.object-base-inner .object-body__user .card-user__btn', '.object-plate-bottom', 1212, true);
+  (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__.emergingBlockScroll)('.add-complex .place-sale__btn', '.footer-fixed.complex-fixed', 99999999, true);
+  (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__.emergingBlockScroll)('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true);
 
   // ==================================================
   (0,_components_inputs__WEBPACK_IMPORTED_MODULE_6__.inputClue)('.input-clue', 'clue-primary', `
@@ -6295,7 +6296,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _modules_inputResize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modules/inputResize */ "./src/js/modules/inputResize.js");
 /* harmony import */ var _modules_generateRandomID__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/generateRandomID */ "./src/js/modules/generateRandomID.js");
-/* harmony import */ var _inputs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./inputs */ "./src/js/components/inputs.js");
+/* harmony import */ var _modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../modules/emergingBlockScroll */ "./src/js/modules/emergingBlockScroll.js");
+/* harmony import */ var _inputs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./inputs */ "./src/js/components/inputs.js");
+
 
 
 
@@ -6318,6 +6321,7 @@ function createCalcBody(mort) {
   });
   if (createItem) {
     createItem.addEventListener('click', () => {
+      (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_2__.emergingBlockScroll)('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
       if (!mort.querySelector('.create-calc-mort__item--field')) {
         const itemFieldHTML = `
             <div class="create-calc-mort__item create-calc-mort__item--field">
@@ -6369,7 +6373,7 @@ function createCalcBody(mort) {
         createItem.insertAdjacentHTML('afterend', itemFieldHTML);
         const currentItemField = mort.querySelector('.create-calc-mort__item--field');
         const createTextarea = currentItemField.querySelector('.create-calc-mort__create');
-        currentItemField.querySelectorAll('.input-text').forEach(item => (0,_inputs__WEBPACK_IMPORTED_MODULE_2__.currentInputText)(item));
+        currentItemField.querySelectorAll('.input-text').forEach(item => (0,_inputs__WEBPACK_IMPORTED_MODULE_3__.currentInputText)(item));
         conditions(currentItemField);
         createTextarea.addEventListener('click', () => {
           blockAdded(createTextarea);
@@ -6452,6 +6456,7 @@ function createCalcBody(mort) {
             ;
             currentItemField.remove();
           }
+          (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_2__.emergingBlockScroll)('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
         });
       }
     });
@@ -6465,13 +6470,29 @@ function itemAction(item) {
   const remove = item.querySelector('.create-calc-mort__remove');
   const inputPrc = btnMore.querySelector('span span input');
   const inputText = btnMore.querySelector('span>input');
-  btnMore.addEventListener('click', () => {
-    if (!item.classList.contains('_active')) {
-      item.classList.add('_active');
-      info.removeAttribute('hidden');
+  const toggleCheckbox = item.querySelector('.create-calc-mort__checkbox');
+  btnMore.addEventListener('click', e => {
+    if (!e.target.closest('.create-calc-mort__edit')) {
+      if (!item.classList.contains('_active')) {
+        item.classList.add('_active');
+        info.removeAttribute('hidden');
+        (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_2__.emergingBlockScroll)('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
+      } else {
+        item.classList.remove('_active');
+        info.setAttribute('hidden', '');
+        (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_2__.emergingBlockScroll)('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
+      }
+    }
+  });
+  toggleCheckbox.addEventListener('change', () => {
+    if (!item.classList.contains('_edit')) {
+      item.classList.add('_edit');
+      edit.classList.remove('_disabled');
+      inputPrc.parentNode.classList.remove('_disabled');
     } else {
-      item.classList.remove('_active');
-      info.setAttribute('hidden', '');
+      item.classList.remove('_edit');
+      edit.classList.add('_disabled');
+      inputPrc.parentNode.classList.add('_disabled');
     }
   });
   edit.addEventListener('click', () => {
@@ -6557,6 +6578,7 @@ function conditions(item) {
         </div>
         `;
     conditionsCreate.addEventListener('click', () => {
+      (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_2__.emergingBlockScroll)('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
       !conditionsCreate.classList.contains('_active') ? conditionsCreateBody() : conditionsCreateCancel();
     });
     function conditionsCreateBody() {
@@ -6564,7 +6586,7 @@ function conditions(item) {
       conditionsCreateText.textContent = conditionsCreateMap.cancel;
       top.insertAdjacentHTML('afterend', bodyHTML);
       const conditionsBody = conditions.querySelector('.create-calc-conditions__create-body');
-      conditionsBody.querySelectorAll('.input-text').forEach(item => (0,_inputs__WEBPACK_IMPORTED_MODULE_2__.currentInputText)(item));
+      conditionsBody.querySelectorAll('.input-text').forEach(item => (0,_inputs__WEBPACK_IMPORTED_MODULE_3__.currentInputText)(item));
       const createTextarea = conditions.querySelector('.create-calc-conditions__create-descr');
       if (createTextarea) {
         createTextarea.addEventListener('click', () => {
@@ -6633,6 +6655,7 @@ function conditions(item) {
       }
     }
     conditions.addEventListener('click', e => {
+      (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_2__.emergingBlockScroll)('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
       const target = e.target;
       const edit = target.closest('.create-calc-conditions__item-edit');
       const remove = target.closest('.create-calc-conditions__item-remove');
@@ -6695,7 +6718,7 @@ function blockAdded(block) {
   function body(maxLength) {
     block.insertAdjacentHTML('beforebegin', textareaHTML);
     const currentBlock = block.previousElementSibling;
-    (0,_inputs__WEBPACK_IMPORTED_MODULE_2__.valueToValueAttr)(currentBlock.querySelector('.textarea-primary__input'));
+    (0,_inputs__WEBPACK_IMPORTED_MODULE_3__.valueToValueAttr)(currentBlock.querySelector('.textarea-primary__input'));
     const remove = currentBlock.querySelector('.textarea-primary__remove');
     remove.addEventListener('click', () => {
       currentBlock.remove();
@@ -13890,37 +13913,42 @@ const dropdownItems = (containerSelector, btnSelector, hideText) => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "emergingBlockScroll": () => (/* binding */ emergingBlockScroll),
+/* harmony export */   "targetScroll": () => (/* binding */ targetScroll)
 /* harmony export */ });
 const emergingBlockScroll = function (targetThemSelector, emergingBlockSelector, screenSize) {
   let beforeContainer = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+  let onlyCheck = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
   const target = document.querySelector(targetThemSelector);
   const block = document.querySelector(emergingBlockSelector);
   if (!(target && block)) return;
-  window.addEventListener('scroll', () => {
-    targetScroll();
-  });
-  targetScroll();
-  function targetScroll() {
-    if (window.innerWidth >= screenSize) return;
-    const pageOffsetTop = window.pageYOffset;
-    const targetOffsetTop = target.getBoundingClientRect().top;
-    if (beforeContainer) {
-      if (targetOffsetTop > innerHeight || pageOffsetTop >= targetOffsetTop + pageOffsetTop) {
-        block.classList.add('active-fixed');
-      } else {
-        block.classList.remove('active-fixed');
-      }
+  if (onlyCheck) {
+    window.addEventListener('scroll', () => {
+      targetScroll(target, block, screenSize, beforeContainer);
+    });
+    targetScroll(target, block, screenSize, beforeContainer);
+  } else {
+    targetScroll(target, block, screenSize, beforeContainer);
+  }
+};
+const targetScroll = (target, block, screenSize, beforeContainer) => {
+  if (window.innerWidth >= screenSize) return;
+  const pageOffsetTop = window.pageYOffset;
+  const targetOffsetTop = target.getBoundingClientRect().top;
+  if (beforeContainer) {
+    if (targetOffsetTop > innerHeight || pageOffsetTop >= targetOffsetTop + pageOffsetTop) {
+      block.classList.add('active-fixed');
     } else {
-      if (pageOffsetTop >= targetOffsetTop + pageOffsetTop) {
-        block.classList.add('active-fixed');
-      } else {
-        block.classList.remove('active-fixed');
-      }
+      block.classList.remove('active-fixed');
+    }
+  } else {
+    if (pageOffsetTop >= targetOffsetTop + pageOffsetTop) {
+      block.classList.add('active-fixed');
+    } else {
+      block.classList.remove('active-fixed');
     }
   }
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (emergingBlockScroll);
 
 /***/ }),
 

@@ -1521,9 +1521,12 @@
 
             >span{
                 margin-left: 8px;
+                color: var(--dark);
                 &._disabled{
                     color: var(--dark);
                     opacity: 0.5;
+
+                    pointer-events: none;
                     input{
                         color: var(--dark);
                         opacity: 0.5;
@@ -1533,7 +1536,7 @@
                     border: none;
                     width: 12px;
                     min-width: 12px;
-                    color: var(--blue);
+                    color: var(--dark);
                     margin-right: 4px;
                 }
             }
@@ -1578,7 +1581,8 @@
             width: 16px;
             height: 16px;
 
-            transition: stroke $transitionSpeed $transitionFunction;
+            transition: stroke $transitionSpeed $transitionFunction,
+            opacity $transitionSpeed $transitionFunction;
         }
 
         &._active {
@@ -1587,6 +1591,7 @@
             }
         }
         &._disabled{
+            pointer-events: none;
             svg{
                 stroke: var(--dark);
                 opacity: 0.5;

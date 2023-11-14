@@ -109,7 +109,7 @@ const spollers = () => {
                 const activeCard = spollerActiveTitle.nextElementSibling.querySelector('.room-body__items .card-scheme._active');
                 if (activeCard) {
                     activeCard.classList.remove('_active');
-                    spollerActiveTitle.nextElementSibling.querySelector('.room-body__container').setAttribute('hidden', '');
+                    spollerActiveTitle.nextElementSibling.querySelector('.room-body__container:not([hidden])').setAttribute('hidden', '');
                 }
             }
         }

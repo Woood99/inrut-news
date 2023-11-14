@@ -139,7 +139,6 @@ const tabs = () => {
                                 const itemContent = itemBtn.nextElementSibling;
                                 const cardActive = item.querySelector('.card-scheme._active');
                                 const content = item.querySelector('.room-body__container');
-
                                 itemBtn.classList.remove('_spoller-active');
                                 itemContent.setAttribute('hidden', '')
                                 if (cardActive) cardActive.classList.remove('_active');

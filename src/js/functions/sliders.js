@@ -696,9 +696,12 @@ function initSliders() {
 
             function showContainer() {
                 const btns = el.querySelectorAll('.card-scheme');
-                const container = el.closest('.room-body').querySelector('.room-body__container');
+                const containers = el.closest('.room-body').querySelectorAll('.room-body__container');
                 btns.forEach(btn => {
                     btn.addEventListener('click', (e) => {
+                        const currentSlide = btn.closest('.swiper-slide');
+                        const currentSlideIndex = Array.prototype.slice.call(el.querySelector('.swiper-wrapper').children).indexOf(currentSlide);
+                        const currentContainer = containers[currentSlideIndex];
                         btns.forEach(el => {
                             if (e.currentTarget !== el) el.classList.remove('_active');
                         });
@@ -706,11 +709,16 @@ function initSliders() {
 
                         const headerFixed = document.querySelector('.header-fixed');
                         const topHeaderMobile = document.querySelector('.top-page-inner');
-
+                        containers.forEach(container => {
+                          if (container !== currentContainer) {
+                            container.setAttribute('hidden','');
+                          }
+                        })
+                        if (currentContainer) {
                         if (btn.classList.contains('_active')) {
-                            _slideDown(container, 300);
+                            _slideDown(currentContainer, 300);
 
-                            const topGap = window.pageYOffset + container.getBoundingClientRect().top;
+                            const topGap = window.pageYOffset + currentContainer.getBoundingClientRect().top;
                             if (window.innerWidth >= 1212) {
                                 window.scrollTo({
                                     top: headerFixed ? topGap - headerFixed.offsetHeight : topGap,
@@ -724,7 +732,7 @@ function initSliders() {
                             }
 
                         } else {
-                            _slideUp(container, 300);
+                            _slideUp(currentContainer, 300);
                             const topGap = window.pageYOffset + btn.closest('.layouts__item').querySelector('.layouts__item-btn').getBoundingClientRect().top;
                             if (window.innerWidth >= 1212) {
                                 window.scrollTo({
@@ -738,6 +746,7 @@ function initSliders() {
                                 })
                             }
                         }
+                    }
                     });
                 })
             }

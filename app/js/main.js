@@ -12819,42 +12819,52 @@ function initSliders() {
       showContainer();
       function showContainer() {
         const btns = el.querySelectorAll('.card-scheme');
-        const container = el.closest('.room-body').querySelector('.room-body__container');
+        const containers = el.closest('.room-body').querySelectorAll('.room-body__container');
         btns.forEach(btn => {
           btn.addEventListener('click', e => {
+            const currentSlide = btn.closest('.swiper-slide');
+            const currentSlideIndex = Array.prototype.slice.call(el.querySelector('.swiper-wrapper').children).indexOf(currentSlide);
+            const currentContainer = containers[currentSlideIndex];
             btns.forEach(el => {
               if (e.currentTarget !== el) el.classList.remove('_active');
             });
             btn.classList.toggle('_active');
             const headerFixed = document.querySelector('.header-fixed');
             const topHeaderMobile = document.querySelector('.top-page-inner');
-            if (btn.classList.contains('_active')) {
-              (0,_support_modules_slide__WEBPACK_IMPORTED_MODULE_2__._slideDown)(container, 300);
-              const topGap = window.pageYOffset + container.getBoundingClientRect().top;
-              if (window.innerWidth >= 1212) {
-                window.scrollTo({
-                  top: headerFixed ? topGap - headerFixed.offsetHeight : topGap,
-                  behavior: 'smooth'
-                });
-              } else {
-                window.scrollTo({
-                  top: topHeaderMobile ? topGap - topHeaderMobile.offsetHeight : topGap,
-                  behavior: 'smooth'
-                });
+            containers.forEach(container => {
+              if (container !== currentContainer) {
+                container.setAttribute('hidden', '');
               }
-            } else {
-              (0,_support_modules_slide__WEBPACK_IMPORTED_MODULE_2__._slideUp)(container, 300);
-              const topGap = window.pageYOffset + btn.closest('.layouts__item').querySelector('.layouts__item-btn').getBoundingClientRect().top;
-              if (window.innerWidth >= 1212) {
-                window.scrollTo({
-                  top: headerFixed ? topGap - headerFixed.offsetHeight : topGap,
-                  behavior: 'smooth'
-                });
+            });
+            if (currentContainer) {
+              if (btn.classList.contains('_active')) {
+                (0,_support_modules_slide__WEBPACK_IMPORTED_MODULE_2__._slideDown)(currentContainer, 300);
+                const topGap = window.pageYOffset + currentContainer.getBoundingClientRect().top;
+                if (window.innerWidth >= 1212) {
+                  window.scrollTo({
+                    top: headerFixed ? topGap - headerFixed.offsetHeight : topGap,
+                    behavior: 'smooth'
+                  });
+                } else {
+                  window.scrollTo({
+                    top: topHeaderMobile ? topGap - topHeaderMobile.offsetHeight : topGap,
+                    behavior: 'smooth'
+                  });
+                }
               } else {
-                window.scrollTo({
-                  top: topHeaderMobile ? topGap - topHeaderMobile.offsetHeight : topGap,
-                  behavior: 'smooth'
-                });
+                (0,_support_modules_slide__WEBPACK_IMPORTED_MODULE_2__._slideUp)(currentContainer, 300);
+                const topGap = window.pageYOffset + btn.closest('.layouts__item').querySelector('.layouts__item-btn').getBoundingClientRect().top;
+                if (window.innerWidth >= 1212) {
+                  window.scrollTo({
+                    top: headerFixed ? topGap - headerFixed.offsetHeight : topGap,
+                    behavior: 'smooth'
+                  });
+                } else {
+                  window.scrollTo({
+                    top: topHeaderMobile ? topGap - topHeaderMobile.offsetHeight : topGap,
+                    behavior: 'smooth'
+                  });
+                }
               }
             }
           });
@@ -13058,7 +13068,7 @@ const spollers = () => {
         const activeCard = spollerActiveTitle.nextElementSibling.querySelector('.room-body__items .card-scheme._active');
         if (activeCard) {
           activeCard.classList.remove('_active');
-          spollerActiveTitle.nextElementSibling.querySelector('.room-body__container').setAttribute('hidden', '');
+          spollerActiveTitle.nextElementSibling.querySelector('.room-body__container:not([hidden])').setAttribute('hidden', '');
         }
       }
     }

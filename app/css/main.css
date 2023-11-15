@@ -7586,7 +7586,7 @@ textarea.input-reset {
   border: none;
 }
 .select-bank .bank-offer__selector._active {
-  padding: 16px;
+  padding: 16px 16px 24px;
 }
 .select-bank .bank-offer__selector._active .bank-offer__selector-top {
   background-color: var(--stand-bg);
@@ -7603,7 +7603,7 @@ textarea.input-reset {
   padding: 16px 24px;
 }
 .select-bank .bank-offer__selector-content {
-  margin: 0 8px 24px;
+  margin: 0 8px;
 }
 .select-bank .bank-offer__additional {
   border: none;
@@ -7631,7 +7631,7 @@ textarea.input-reset {
   border: none;
 }
 .select-bank .bank-offer__add-info._active {
-  padding: 16px;
+  padding: 16px 16px 24px;
 }
 .select-bank .bank-offer__add-info._active .bank-offer__add-info-top {
   background-color: var(--stand-bg);
@@ -7661,10 +7661,10 @@ textarea.input-reset {
   font-size: var(--small-fz);
   line-height: var(--small-lh);
 }
-.select-bank .bank-offer .bank-offer-selector-list__item > div,
-.select-bank .bank-offer .bank-offer-selector-list__item span {
-  font-size: var(--default-fz);
-  line-height: var(--default-lh);
+.select-bank .bank-offer .bank-offer-selector-list__item:nth-child(1) > div,
+.select-bank .bank-offer .bank-offer-selector-list__item:nth-child(1) span {
+  font-size: var(--small-fz);
+  line-height: var(--small-lh);
 }
 .select-bank .bank-offer .bank-offer-selector-list__item:not(:first-child) {
   font-weight: 500;
@@ -34354,6 +34354,12 @@ textarea.input-reset {
 .develop-inner .object-banner-info {
   padding-bottom: 16px;
 }
+.develop-inner .block-stock .video-card {
+  min-height: 387px;
+}
+.develop-inner .block-stock .video-card__title {
+  max-height: 40px;
+}
 
 .detailed-flat .bid-user {
   -webkit-transition: top 0.4s ease-in-out;
@@ -36806,11 +36812,13 @@ textarea.input-reset {
 }
 .bank-offer__additional-item .col:nth-child(2) > span {
   margin-right: 24px;
-  -webkit-transition: color 0.4s ease-in-out;
-  -o-transition: color 0.4s ease-in-out;
-  transition: color 0.4s ease-in-out;
+  -webkit-transition: color 0.4s ease-in-out, opacity 0.4s ease-in-out;
+  -o-transition: color 0.4s ease-in-out, opacity 0.4s ease-in-out;
+  transition: color 0.4s ease-in-out, opacity 0.4s ease-in-out;
+  opacity: 0.65;
 }
 .bank-offer__additional-item .col:nth-child(2) > span._active {
+  opacity: 1;
   color: var(--blue);
 }
 .bank-offer__additional-item:not(:last-child) {
@@ -36861,6 +36869,8 @@ textarea.input-reset {
   margin-top: 8px;
 }
 .bank-offer__close-item {
+  grid-column: 1/-1;
+  margin-left: auto;
   margin-top: 16px;
   color: var(--blue);
   display: -webkit-box;
@@ -36943,7 +36953,7 @@ textarea.input-reset {
   line-height: var(--default-lh);
 }
 .bank-offer-selector-list__item:nth-child(1) {
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   opacity: 0.65;
 }
 .bank-offer-selector-list__item > div,
@@ -37149,6 +37159,13 @@ textarea.input-reset {
   color: var(--blue);
   width: 270px;
   margin-right: 16px;
+}
+@media (min-width: 1213px) {
+  .mortgage-bottom__btn:hover {
+    background-color: var(--white);
+    -webkit-box-shadow: var(--shadow-primary);
+    box-shadow: var(--shadow-primary);
+  }
 }
 
 .selection-estate-agent .main-table__type {

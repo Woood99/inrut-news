@@ -1822,6 +1822,7 @@ textarea.input-reset {
 }
 .popup-primary--select-bank {
   z-index: 1050;
+  overflow: hidden;
 }
 .popup-primary--select-bank .popup-primary__container {
   border-radius: 16px 16px 0 0;
@@ -1832,11 +1833,15 @@ textarea.input-reset {
   vertical-align: bottom;
   position: relative;
   background-color: #f7f9fd;
+  overflow-y: auto;
+  overflow-x: auto;
+  height: 100%;
 }
 .popup-primary--select-bank .popup-primary__close {
   -webkit-transform: translateX(16px);
   -ms-transform: translateX(16px);
   transform: translateX(16px);
+  top: -65px;
 }
 .popup-primary--select-bank::before {
   content: "";
@@ -7542,6 +7547,9 @@ textarea.input-reset {
   grid-template-columns: 1fr 300px;
   grid-row-gap: 24px;
   grid-column-gap: 16px;
+}
+.select-bank__container .bid-user._sticky {
+  top: -45px;
 }
 .select-bank__container .bid-user__time {
   margin-bottom: 0;

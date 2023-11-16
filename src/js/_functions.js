@@ -1,5 +1,5 @@
 import burgerMenu from './functions/burger';
-import tabs from "./functions/tabs";
+import {tabs} from "./functions/tabs";
 import spollers from "./functions/spollers";
 import {
     galleryPrimary,

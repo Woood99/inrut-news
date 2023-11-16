@@ -8,6 +8,7 @@ import {
     currentVideoLoad
 } from "./videoLoad";
 import { currentInputText } from "./inputs";
+import { tabsControls } from "../functions/tabs";
 export const furnishingSets = () => {
     const containers = document.querySelectorAll('.furnishing-sets');
     if (!containers) return;
@@ -49,6 +50,7 @@ function furnishingSetsBody(item) {
                 createRoom.setAttribute('hidden', '');
             }
             updateActiveTab(item);
+            tabsControls(item.closest('.tabs-primary'));
         })
     }
 }
@@ -67,6 +69,7 @@ function btnAction(item,btns, tabs) {
                     createRoom.removeAttribute('hidden');
                 }
                 updateActiveTab(item);
+                 tabsControls(item.closest('.tabs-primary'));
             } else {
                 btns.forEach(btn => btn.classList.remove('_active'));
                 btn.classList.add('_active');
@@ -111,11 +114,11 @@ function generateTabContent() {
                     <input type="file" data-upload-drop="" name="upload" multiple="" accept=".jpg, .png, .jpeg, .heic" class="input-reset">
                 </div>
             </div>
-            <label class="textarea-primary" style="margin-top: 24px;">
+            <label class="place-sale-textarea textarea-primary" style="margin-top: 24px;">
                 <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
             </label>
-            <div class="row" style="margin:16px 0 24px;">
-            <div class="input-text input-text--only-number" style="max-width: 350px;">
+            <div class="row">
+            <div class="place-sale-field-price input-text input-text--only-number" style="max-width: 350px;">
                 <label class="input-text__label">
                     <span>Стоимость от</span>
                     <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
@@ -133,7 +136,7 @@ function generateTabContent() {
                 </div>
             </div>
         </div>
-        <div class="photo-load">
+        <div class="photo-load pdf-load">
         <div class="place-sale-photo__images drag-drop photo-load__images">
         </div>
         <div class="place-sale-photo__wrapper photo-load__wrapper">

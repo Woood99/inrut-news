@@ -21,8 +21,10 @@ import {
 import {
     currentCreateCalc
 } from '../components/createCalc';
-import { emergingBlockScroll } from '../modules/emergingBlockScroll';
-const tabs = () => {
+import {
+    emergingBlockScroll
+} from '../modules/emergingBlockScroll';
+export const tabs = () => {
     const metroContainer = document.querySelector('.popup-primary--search-area');
     const metroInnerMoscow = document.querySelector('#map-metro_moscow');
     let metroBooleanStatus = false;
@@ -39,6 +41,7 @@ const tabs = () => {
             tabsBlock.setAttribute('data-tabs-index', index);
             tabsBlock.addEventListener("click", setTabsAction);
             initTabs(tabsBlock);
+            tabsControls(tabsBlock);
         });
 
         // Получение слойлеров с медиа запросами
@@ -185,6 +188,7 @@ const tabs = () => {
                 if (tabActiveBoolean) {
                     activeFirstTab(tabsBlock.closest('.tabs-primary'));
                 }
+                tabsControls(tabsBlock);
                 return;
             }
             if (editBtn) {
@@ -274,7 +278,7 @@ const tabs = () => {
 
                 }
                 if (tabTitle.closest('.create-calc-mort')) {
-                    emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true,true);
+                    emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
                 }
             }
             e.preventDefault();
@@ -318,10 +322,25 @@ const tabs = () => {
                         <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
                     </div>
                 </div>
-                <label class="textarea-primary" style="margin-top: 24px;">
-                    <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
-                </label>
                 </div>
+            `;
+            const apartRenovHTML = `
+            <div class="tabs__body" data-tabs-item>
+            <div class="photo-load">
+                <div class="place-sale-photo__images drag-drop photo-load__images"></div>
+                <div class="place-sale-photo__wrapper photo-load__wrapper">
+                    <button type="button" class="btn btn-reset">
+                        <p>
+                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                        </p>
+                    </button>
+                    <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                </div>
+            </div>
+            <label class="place-sale-textarea textarea-primary" style="margin-top: 24px;">
+                <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
+            </label>
+            </div>
             `;
             const furnishingSetsHTML = `
             <div class="tabs__body furnishing-sets__item" data-tabs-item hidden>
@@ -393,11 +412,11 @@ const tabs = () => {
                             <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
                         </div>
                     </div>
-                    <label class="textarea-primary" style="margin-top: 24px;">
+                    <label class="place-sale-textarea textarea-primary" style="margin-top: 24px;">
                         <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
                     </label>
-                    <div class="row" style="margin:16px 0 24px;">
-                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                    <div class="row">
+                        <div class="place-sale-field-price input-text input-text--only-number" style="max-width: 350px;">
                             <label class="input-text__label">
                                 <span>Стоимость от</span>
                                 <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
@@ -415,7 +434,7 @@ const tabs = () => {
                             </div>
                         </div>
                     </div>
-                    <div class="photo-load">
+                    <div class="photo-load pdf-load">
                         <div class="place-sale-photo__images drag-drop photo-load__images">
                         </div>
                         <div class="place-sale-photo__wrapper photo-load__wrapper">
@@ -442,11 +461,11 @@ const tabs = () => {
                             <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
                         </div>
                     </div>
-                    <label class="textarea-primary" style="margin-top: 24px;">
+                    <label class="place-sale-textarea textarea-primary" style="margin-top: 24px;">
                         <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
                     </label>
-                    <div class="row" style="margin:16px 0 24px;">
-                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                    <div class="row">
+                        <div class="place-sale-field-price input-text input-text--only-number" style="max-width: 350px;">
                             <label class="input-text__label">
                                 <span>Стоимость от</span>
                                 <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
@@ -464,7 +483,7 @@ const tabs = () => {
                             </div>
                         </div>
                     </div>
-                    <div class="photo-load">
+                    <div class="photo-load pdf-load">
                         <div class="place-sale-photo__images drag-drop photo-load__images">
                         </div>
                         <div class="place-sale-photo__wrapper photo-load__wrapper">
@@ -491,11 +510,11 @@ const tabs = () => {
                             <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
                         </div>
                     </div>
-                    <label class="textarea-primary" style="margin-top: 24px;">
+                    <label class="place-sale-textarea textarea-primary" style="margin-top: 24px;">
                         <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
                     </label>
-                    <div class="row" style="margin:16px 0 24px;">
-                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                    <div class="row">
+                        <div class="place-sale-field-price input-text input-text--only-number" style="max-width: 350px;">
                             <label class="input-text__label">
                                 <span>Стоимость от</span>
                                 <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
@@ -513,7 +532,7 @@ const tabs = () => {
                             </div>
                         </div>
                     </div>
-                    <div class="photo-load">
+                    <div class="photo-load pdf-load">
                         <div class="place-sale-photo__images drag-drop photo-load__images">
                         </div>
                         <div class="place-sale-photo__wrapper photo-load__wrapper">
@@ -540,11 +559,11 @@ const tabs = () => {
                             <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
                         </div>
                     </div>
-                    <label class="textarea-primary" style="margin-top: 24px;">
+                    <label class="place-sale-textarea textarea-primary" style="margin-top: 24px;">
                         <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
                     </label>
-                    <div class="row" style="margin:16px 0 24px;">
-                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                    <div class="row">
+                        <div class="place-sale-field-price input-text input-text--only-number" style="max-width: 350px;">
                             <label class="input-text__label">
                                 <span>Стоимость от</span>
                                 <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
@@ -562,7 +581,7 @@ const tabs = () => {
                             </div>
                         </div>
                     </div>
-                    <div class="photo-load">
+                    <div class="photo-load pdf-load">
                         <div class="place-sale-photo__images drag-drop photo-load__images">
                         </div>
                         <div class="place-sale-photo__wrapper photo-load__wrapper">
@@ -589,11 +608,11 @@ const tabs = () => {
                             <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
                         </div>
                     </div>
-                    <label class="textarea-primary" style="margin-top: 24px;">
+                    <label class="place-sale-textarea textarea-primary" style="margin-top: 24px;">
                         <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
                     </label>
-                    <div class="row" style="margin:16px 0 24px;">
-                        <div class="input-text input-text--only-number" style="max-width: 350px;">
+                    <div class="row">
+                        <div class="place-sale-field-price input-text input-text--only-number" style="max-width: 350px;">
                             <label class="input-text__label">
                                 <span>Стоимость от</span>
                                 <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
@@ -611,7 +630,7 @@ const tabs = () => {
                             </div>
                         </div>
                     </div>
-                    <div class="photo-load">
+                    <div class="photo-load pdf-load">
                         <div class="place-sale-photo__images drag-drop photo-load__images">
                         </div>
                         <div class="place-sale-photo__wrapper photo-load__wrapper">
@@ -641,10 +660,10 @@ const tabs = () => {
                     <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
                 </div>
             </div>
-            <label class="textarea-primary" style="margin-top: 24px;">
+            <label class="place-sale-textarea textarea-primary" style="margin-top: 24px;">
                 <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
             </label>
-            <div class="input-text input-text--only-number" style="max-width: 350px; margin-top:24px;">
+            <div class="place-sale-distance-complex input-text input-text--only-number" style="max-width: 350px; margin-top:24px;">
                 <label class="input-text__label">
                     <span>Расстояние от комплекса</span>
                     <input type="text" name="Расстояние от комплекса" maxlength="4" class="input-reset input-text__input" placeholder="">
@@ -678,8 +697,12 @@ const tabs = () => {
                 setTabsStatus(tabsBlock);
                 currentCreateCalc(tabsBlock.querySelector('.tabs__body:last-child'));
                 update(tabsBlock.querySelector('.tabs__body:last-child'));
-            } else {
+            } else if (currentTabs.closest('.place-sale--photo')) {
                 tabs.insertAdjacentHTML('beforeend', photoHTML);
+                setTabsStatus(tabsBlock);
+                update(tabsBlock.querySelector('.tabs__body:last-child'));
+            } else if (currentTabs.closest('.place-sale--apart-renov')) {
+                tabs.insertAdjacentHTML('beforeend', apartRenovHTML);
                 setTabsStatus(tabsBlock);
                 update(tabsBlock.querySelector('.tabs__body:last-child'));
             }
@@ -710,6 +733,7 @@ const tabs = () => {
             }
 
             activeCurrentTab(currentTabs, currentTitle, tabsBlock.querySelectorAll('.tabs__body')[tabsBlock.querySelectorAll('.tabs__body').length - 1]);
+            tabsControls(currentTabs);
         }
 
         function update(content) {
@@ -752,4 +776,69 @@ const tabs = () => {
     }
 }
 
-export default tabs;
+
+export const tabsControls = (tabsBlock) => {
+    const container = tabsBlock.closest('.tabs-primary--controls');
+    if (container) {
+        const sectionFields = container.dataset.sectionFields;
+        if (sectionFields) {
+            const titles = container.querySelectorAll('.tabs-primary__btns .tabs__title');
+            const contents = container.querySelectorAll('.tabs-primary__content .tabs__body');
+            titles.forEach((title, index) => {
+                const currentIndex = index + 1;
+                const input = title.querySelector('input');
+                input.setAttribute(`data-section-field-${sectionFields}-title`, currentIndex);
+            });
+            if (sectionFields === 'furnishing-sets') {
+                contents.forEach((content, index) => {
+                    content.setAttribute(`data-section-field-${sectionFields}-content`, index + 1);
+                    const btns = content.querySelectorAll('.furnishing-sets__btns .furnishing-sets__btn');
+                    const tabs = content.querySelectorAll('.furnishing-sets__tabs .furnishing-sets__tab');
+                    btns.forEach((btn, index) => {
+                        btn.setAttribute(`data-section-field-${sectionFields}-btn`, index + 1);
+                    });
+                    tabs.forEach((tab, index) => {
+                        const currentIndex = index + 1;
+                        tab.setAttribute(`data-section-field-${sectionFields}-tab`, currentIndex);
+                        updateFields(tab, sectionFields, currentIndex);
+                    });
+                });
+            } else {
+                contents.forEach((content, index) => {
+                    const currentIndex = index + 1;
+                    content.setAttribute(`data-section-field-${sectionFields}-content`, currentIndex);
+                    updateFields(content, sectionFields, currentIndex);
+                });
+            }
+        }
+    }
+}
+
+
+function updateFields(content, sectionFields, currentIndex) {
+    const photoLoad = content.querySelector('.photo-load:not(.pdf-load)');
+    const pdfLoad = content.querySelector('.pdf-load');
+    const textarea = content.querySelector('.place-sale-textarea');
+    const distanceComplex = content.querySelector('.place-sale-distance-complex');
+    const price = content.querySelector('.place-sale-field-price');
+    if (photoLoad) {
+        const input = photoLoad.querySelector('input');
+        input.setAttribute(`data-section-field-${sectionFields}-loadphoto`, currentIndex);
+    }
+    if (pdfLoad) {
+        const input = pdfLoad.querySelector('input');
+        input.setAttribute(`data-section-field-${sectionFields}-pdfload`, currentIndex);
+    }
+    if (textarea) {
+        const input = textarea.querySelector('textarea');
+        input.setAttribute(`data-section-field-${sectionFields}-textarea`, currentIndex);
+    }
+    if (distanceComplex) {
+        const input = distanceComplex.querySelector('input');
+        input.setAttribute(`data-section-field-${sectionFields}-distancecomplex`, currentIndex);
+    }
+    if (price) {
+        const input = price.querySelector('input');
+        input.setAttribute(`data-section-field-${sectionFields}-price`, currentIndex);
+    }
+}

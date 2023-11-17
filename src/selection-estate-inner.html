@@ -19,67 +19,127 @@
     <div class="site-container site-container--your-app">
         @include('partials/header.html')
         <main class="main main-page-gap your-app">
-            <div class="your-app__container container">
-                <a href="#" class="your-app__back back-link">
-                    <svg>
-                        <use xlink:href="img/sprite.svg#arrow-left"></use>
-                    </svg>
-                    <span>К списку заявок</span>
-                </a>
-                <div class="your-app__user">
-                    <div class="bid-user bid-user--small">
-                        <div class="bid-user__avatar avatar">
-                            <img loading="lazy" src="./img/avatar-1.jpg" width="74" height="74" alt="Алексей Г.">
-                        </div>
-                        <div class="bid-user__content">
-                            <a href="#" class="bid-user__name">
-                                Алексей Г.
-                            </a>
-                            <time class="bid-user__time" datetime="2022-12-12">
-                                Агент покупателя был в сети 12.12.2022
-                            </time>
-                            <div class="bid-user__rating">
-                                <div class="bid-user__rating-stars">
-                                    <svg>
-                                        <use xlink:href="img/sprite.svg#star"></use>
-                                    </svg>
+            <div class="your-app__container">
+                <div class="container">
+                    <a href="#" class="your-app__back back-link container">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#arrow-left"></use>
+                        </svg>
+                        <span>К списку заявок</span>
+                    </a>
+                </div>
+                <div class="your-app__bid your-app-bid">
+                    <div class="container">
+                        <div class="your-app-bid__body">
+                            <div class="your-app-bid__info">
+                                <div class="your-app-bid__top">
+                                    <h2 class="your-app-bid__title title-2">
+                                        Ваша заявка
+                                    </h2>
+                                    <a href="#" class="your-app-bid__show-all">
+                                        <span>
+                                            Показать полностью
+                                        </span>
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#arrow-right"></use>
+                                        </svg>
+                                    </a>
                                 </div>
-                                <span>2.2</span>
-                                <span>(2 отзыва)</span>
-                            </div>
-                            <div class="bid-user__quantity">
-                                <svg>
-                                    <use xlink:href="img/sprite.svg#briefcase"></use>
-                                </svg>
-                                <span>10 объектов</span>,
-                                <span>8 сделок</span>
+                                <div class="your-app-bid__list list-reset">
+                                    <div class="your-app-bid__item your-app-bid__item--1">
+                                        <span>Тип объекта</span>
+                                        <span>Квартира</span>
+                                    </div>
+                                    <div class="your-app-bid__item your-app-bid__item--2">
+                                        <span data-mobile-text="Сумма">Бюджет</span>
+                                        <span>135 500 000 ₽ </span>
+                                    </div>
+                                    <div class="your-app-bid__item your-app-bid__item--3">
+                                        <span>Площадь общая от</span>
+                                        <span>154 м²</span>
+                                    </div>
+                                    <div class="your-app-bid__item your-app-bid__item--4 your-app-bid__item--dropdown">
+                                        <span>Комплекс</span>
+                                        <div>
+                                            <div>
+                                                <span>Европейский квартал,</span>
+                                                <span>Добродом</span>
+                                                <span data-dropdown-items hidden>Сказкаград</span>
+                                                <span data-dropdown-items hidden>Плаза</span>
+                                            </div>
+                                            <button type="button" class="btn btn-reset">
+                                                <span>еще 2</span>
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#check"></use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="your-app-bid__item your-app-bid__item--5">
+                                        <span>Кол-во комнат</span>
+                                        <span>3</span>
+                                    </div>
+                                    <div class="your-app-bid__item your-app-bid__item--6">
+                                        <span>Этаж до</span>
+                                        <span>12</span>
+                                    </div>
+                                    <div class="your-app-bid__item your-app-bid__item--7">
+                                        <span>Площадь кухни от</span>
+                                        <span>54 м²</span>
+                                    </div>
+                                </div>
+                                <div class="your-app-bid__bottom">
+                                    <button type="button" class="btn btn-reset btn-secondary your-app-bid__btn">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#ChatCircleDots"></use>
+                                        </svg>
+                                        Короткое сообщение
+                                    </button>
+                                    <div class="your-app-bid__add secondary-tooltip">
+                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#info"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="secondary-tooltip__content">
+                                            Какой-то текст!!
+                                        </div>
+                                    </div>
+                                    <div class="your-app-bid__tooltips">
+                                        <div class="main-tooltip main-tooltip--visible main-tooltip--bolt">
+                                            <div class="main-tooltip__target">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#bolt"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="main-tooltip__content">
+                                                Срочная заявка
+                                            </div>
+                                        </div>
+                                        <div class="main-tooltip main-tooltip--visible main-tooltip--budget">
+                                            <div class="main-tooltip__target">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#budget"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="main-tooltip__content">
+                                                Наличные
+                                            </div>
+                                        </div>
+                                        <div class="main-tooltip main-tooltip--visible main-tooltip--dollar">
+                                            <div class="main-tooltip__target">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#dollar"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="main-tooltip__content">
+                                                В сделке используется сертификат
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="bid-user__controls dots-dropdown _hover">
-                            <button type="button" class="btn btn-reset dots-dropdown__target">
-                                <svg>
-                                    <use xlink:href="img/sprite.svg#dots-vertical"></use>
-                                </svg>
-                            </button>
-                            <div class="dots-dropdown__dropdown">
-                                <button type="button" class="btn btn-reset">
-                                    <svg>
-                                        <use xlink:href="img/sprite.svg#prohibit"></use>
-                                    </svg>
-                                    Заблокировать
-                                </button>
-                                <button type="button" class="btn btn-reset" data-popup-path="complaint-user">
-                                    <svg>
-                                        <use xlink:href="img/sprite.svg#warning"></use>
-                                    </svg>
-                                    Пожаловаться
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bubble-speech bubble-speech--left-top">
-                        Здравствуйте,Михаил! <br>
-                        Ознакомтесь с моим предложением под ваш запрос и дайте оценку объектам.
                     </div>
                 </div>
             </div>
@@ -2771,120 +2831,6 @@
 
 
 
-            </div>
-            <div class="your-app__bid your-app-bid">
-                <div class="container">
-                    <div class="your-app-bid__body">
-                        <div class="your-app-bid__info">
-                            <div class="your-app-bid__top">
-                                <h2 class="your-app-bid__title title-2">
-                                    Ваша заявка
-                                </h2>
-                                <a href="#" class="your-app-bid__show-all">
-                                    <span>
-                                        Показать полностью
-                                    </span>
-                                    <svg>
-                                        <use xlink:href="img/sprite.svg#arrow-right"></use>
-                                    </svg>
-                                </a>
-                            </div>
-                            <div class="your-app-bid__list list-reset">
-                                <div class="your-app-bid__item your-app-bid__item--1">
-                                    <span>Тип объекта</span>
-                                    <span>Квартира</span>
-                                </div>
-                                <div class="your-app-bid__item your-app-bid__item--2">
-                                    <span data-mobile-text="Сумма">Бюджет</span>
-                                    <span>135 500 000 ₽ </span>
-                                </div>
-                                <div class="your-app-bid__item your-app-bid__item--3">
-                                    <span>Площадь общая от</span>
-                                    <span>154 м²</span>
-                                </div>
-                                <div class="your-app-bid__item your-app-bid__item--4 your-app-bid__item--dropdown">
-                                    <span>Комплекс</span>
-                                    <div>
-                                        <div>
-                                            <span>Европейский квартал,</span>
-                                            <span>Добродом</span>
-                                            <span data-dropdown-items hidden>Сказкаград</span>
-                                            <span data-dropdown-items hidden>Плаза</span>
-                                        </div>
-                                        <button type="button" class="btn btn-reset">
-                                            <span>еще 2</span>
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#check"></use>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="your-app-bid__item your-app-bid__item--5">
-                                    <span>Кол-во комнат</span>
-                                    <span>3</span>
-                                </div>
-                                <div class="your-app-bid__item your-app-bid__item--6">
-                                    <span>Этаж до</span>
-                                    <span>12</span>
-                                </div>
-                                <div class="your-app-bid__item your-app-bid__item--7">
-                                    <span>Площадь кухни от</span>
-                                    <span>54 м²</span>
-                                </div>
-                            </div>
-                            <div class="your-app-bid__bottom">
-                                <button type="button" class="btn btn-reset btn-secondary your-app-bid__btn">
-                                    <svg>
-                                        <use xlink:href="img/sprite.svg#ChatCircleDots"></use>
-                                    </svg>
-                                    Короткое сообщение
-                                </button>
-                                <div class="your-app-bid__add secondary-tooltip">
-                                    <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                                        <svg>
-                                            <use xlink:href="img/sprite.svg#info"></use>
-                                        </svg>
-                                    </button>
-                                    <div class="secondary-tooltip__content">
-                                        Какой-то текст!!
-                                    </div>
-                                </div>
-                                <div class="your-app-bid__tooltips">
-                                    <div class="main-tooltip main-tooltip--visible main-tooltip--bolt">
-                                        <div class="main-tooltip__target">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#bolt"></use>
-                                            </svg>
-                                        </div>
-                                        <div class="main-tooltip__content">
-                                            Срочная заявка
-                                        </div>
-                                    </div>
-                                    <div class="main-tooltip main-tooltip--visible main-tooltip--budget">
-                                        <div class="main-tooltip__target">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#budget"></use>
-                                            </svg>
-                                        </div>
-                                        <div class="main-tooltip__content">
-                                            Наличные
-                                        </div>
-                                    </div>
-                                    <div class="main-tooltip main-tooltip--visible main-tooltip--dollar">
-                                        <div class="main-tooltip__target">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#dollar"></use>
-                                            </svg>
-                                        </div>
-                                        <div class="main-tooltip__content">
-                                            В сделке используется сертификат
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="your-app__banners container main-banners">
                 <div class="swiper main-banners__container">

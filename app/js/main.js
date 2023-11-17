@@ -6178,10 +6178,20 @@ function controlCards() {
       if (checkHorizontal(btn)) {
         content.classList.add('control-cards__content--horizontal');
         container.querySelectorAll('.control-cards__btn--horizontal').forEach(el => el.classList.add('_active'));
+
+        // maps
+        if (container.classList.contains('control-cards--maps')) {
+          container.classList.add('_map-active');
+        }
       }
       if (checkVertical(btn)) {
         content.classList.add('control-cards__content--vertical');
         container.querySelectorAll('.control-cards__btn--vertical').forEach(el => el.classList.add('_active'));
+
+        // maps
+        if (container.classList.contains('control-cards--maps')) {
+          container.classList.remove('_map-active');
+        }
       }
       if (content.querySelectorAll('.card-secondary').length >= 1) {
         const cardsSecondary = content.querySelectorAll('.card-secondary');
@@ -10140,6 +10150,69 @@ const maps = () => {
       function resize(e) {
         const width = e.pageX - container.getBoundingClientRect().left - 20;
         if (!(width <= 706 && width >= 425)) return;
+        container.style.gridTemplateColumns = `${width}px 1fr`;
+        map.container.fitToViewport();
+      }
+      function stopResize() {
+        window.removeEventListener('mousemove', resize);
+      }
+    }
+    const cardFull = container.querySelector('.popup-map__card-full');
+    container.addEventListener('click', e => {
+      const target = e.target;
+      const card = target.closest('[data-card-full-page-src]');
+      if (card) {
+        e.preventDefault();
+        cardFull.classList.add('_active');
+        cardFull.setAttribute('src', card.dataset.cardFullPageSrc);
+        container.querySelector('.popup-map__items').setAttribute('hidden', '');
+        setTimeout(() => {
+          const pageBody = (cardFull.contentDocument || cardFull.contentWindow.document).querySelector('.page__body');
+          cardFull.removeAttribute('scrolling');
+          pageBody.querySelector('.object__back').addEventListener('click', () => {
+            closeCardFull();
+          });
+          pageBody.closest('.page').classList.add('page--scrollY');
+        }, 1500);
+        function closeCardFull() {
+          cardFull.classList.remove('_active');
+          cardFull.setAttribute('src', '');
+          container.querySelector('.popup-map__items').removeAttribute('hidden');
+        }
+      }
+    });
+  }
+  if (document.querySelector('#control-cards__maps')) {
+    const container = document.querySelector('#control-cards__maps').closest('.control-cards__container');
+    if (!container) return;
+    function init() {
+      let map = new ymaps.Map('control-cards__maps', {
+        center: [55.77171185651524, 37.62811179984117],
+        zoom: 10
+      });
+      removeControlsPrimary(map, '#control-cards__maps');
+      map.behaviors.enable(['scrollZoom']);
+      map.controls.remove('fullscreenControl');
+      map.controls.get('zoomControl').options.set({
+        position: {
+          top: 20,
+          right: 20
+        },
+        maxWidth: '44'
+      });
+      if (innerWidth > 1212) reziseContainer(map);
+    }
+    ymaps.ready(init);
+    const btn = container.querySelector('.control-cards__maps-resize');
+    function reziseContainer(map) {
+      btn.addEventListener('mousedown', function (e) {
+        e.preventDefault();
+        window.addEventListener('mousemove', resize);
+        window.addEventListener('mouseup', stopResize);
+      });
+      function resize(e) {
+        const width = e.pageX - container.getBoundingClientRect().left - 20;
+        if (!(width <= 780 && width >= 382)) return;
         container.style.gridTemplateColumns = `${width}px 1fr`;
         map.container.fitToViewport();
       }

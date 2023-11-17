@@ -27,10 +27,20 @@ function controlCards() {
             if (checkHorizontal(btn)) {
                 content.classList.add('control-cards__content--horizontal');
                 container.querySelectorAll('.control-cards__btn--horizontal').forEach(el => el.classList.add('_active'));
+
+                // maps
+                if (container.classList.contains('control-cards--maps')) {
+                    container.classList.add('_map-active');
+                }
             }
             if (checkVertical(btn)) {
                 content.classList.add('control-cards__content--vertical');
                 container.querySelectorAll('.control-cards__btn--vertical').forEach(el => el.classList.add('_active'));
+
+                // maps
+                if (container.classList.contains('control-cards--maps')) {
+                    container.classList.remove('_map-active');
+                }
             }
 
 

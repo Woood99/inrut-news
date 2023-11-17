@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Разместить заявку на покупку</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script defer src="js/main.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container site-container--submit-app">
+        @include('partials/header--personal-mobile.html')
+        <main class="main main-page-gap submit-app">
+            <div class="submit-app__top top-page-inner-title">
+                <div class="top-page-inner-title__container container">
+                    <a href="#" class="submit-app__back top-page-inner-title__back back-link">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#arrow-left"></use>
+                        </svg>
+                        <span>Назад</span>
+                    </a>
+                    <h1 class="submit-app__title top-page-inner-title__title title-1" data-da=".submit-app__body,1212,first">
+                        Разместить заявку на покупку
+                    </h1>
+                </div>
+            </div>
+            <div class="submit-app__body">
+                <form action="#" class="submit-app__container container">
+                    <div class="submit-app__row submit-app-maps">
+                        <h2 class="submit-app-maps__title submit-app__row-title title-2">
+                            Расположение поиска
+                        </h2>
+                        <p class="submit-app-maps__descr">
+                            Укажите желаемый район вашей заявки на карте
+                        </p>
+                        <div class="submit-app-maps__city select-secondary select-secondary--city _selected">
+                            <div class="select-secondary__wrapper" >
+                                <span class="select-secondary__placeholder">
+                                    Город
+                                </span>
+                                <select class="select-secondary__body" hidden name="city">
+                                    <option value="apartments">Санкт-Петербург</option>
+                                    <option value="apartments2">Волгоград</option>
+                                    <option value="apartments3">Москва</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="submit-app-maps__checkbox checkbox-secondary">
+                            <input id="filter-urgent-app_1_2" name="filter-urgent-app-2" class="checkbox-secondary__input" type="checkbox"
+                                value="true">
+                            <label for="filter-urgent-app_1_2" class="checkbox-secondary__label">
+                                <span class="checkbox-secondary__text">Любой район</span>
+                            </label>
+                        </div>
+                        <div class="submit-app-maps__map map-draw">
+                            <div class="map-draw__btns">
+                                <button type="button" class="btn btn-reset map-draw__btn">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#path"></use>
+                                    </svg>
+                                    <span>Нарисовать область </span>
+                                </button>
+                                <button type="button" class="btn btn-reset map-draw__btn">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#plus"></use>
+                                    </svg>
+                                    <span>Добавить ещё область</span>
+                                </button>
+                                <button type="button" class="btn btn-reset map-draw__btn">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#trash"></use>
+                                    </svg>
+                                    <span>Очистить</span>
+                                </button>
+                            </div>
+                            <div id="map-draw" class="map-primary remove-copyrights-pane"></div>
+                        </div>
+                    </div>
+                    <div class="submit-app__row submit-app-options">
+                        <h2 class="submit-app-options__title submit-app__row-title title-2">
+                            Параметры заявки
+                        </h2>
+                        <div class="submit-app-options__choice">
+                            <div class="submit-app-options__row submit-app-options__row--1">
+                                <div class="submit-app-options__item select-secondary" >
+                                    <div class="select-secondary__wrapper">
+                                        <span class="select-secondary__placeholder">
+                                            Тип объекта
+                                        </span>
+                                        <select class="select-secondary__body" hidden name="complex">
+                                            <option placeholder value="apartments">Любой</option>
+                                            <option value="apartments">Квартиры</option>
+                                            <option value="apartments2">Квартиры2</option>
+                                            <option value="apartments3">Квартиры3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="submit-app-options__item quantity-selection">
+                                    <div class="quantity-selection__inner">
+                                        <div class="checkbox">
+                                            <input id="filter-quantity_studios" name="filter-quantity-studios" class="checkbox__input" type="checkbox" value="true">
+                                            <label for="filter-quantity_studios" class="checkbox__label">
+                                                <span class="checkbox__text checkbox__text-studios">Студия</span>
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <input id="filter-quantity_1" name="filter-quantity-1" class="checkbox__input" type="checkbox" value="true">
+                                            <label for="filter-quantity_1" class="checkbox__label">
+                                                <span class="checkbox__text">1</span>
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <input id="filter-quantity_2" name="filter-quantity-2" class="checkbox__input" type="checkbox" value="true">
+                                            <label for="filter-quantity_2" class="checkbox__label">
+                                                <span class="checkbox__text">2</span>
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <input id="filter-quantity_3" name="filter-quantity-3" class="checkbox__input" type="checkbox" value="true">
+                                            <label for="filter-quantity_3" class="checkbox__label">
+                                                <span class="checkbox__text">3</span>
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <input id="filter-quantity_4" name="filter-quantity-4" class="checkbox__input" type="checkbox" value="true">
+                                            <label for="filter-quantity_4" class="checkbox__label">
+                                                <span class="checkbox__text">4+</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="submit-app-options__item search-select" data-search-select-subtitle="Любой">
+                                    <button type="button" class="btn btn-reset search-select__button">
+                                        <div class="search-select__button-wrapper">
+                                            <div>Комплекс</div>
+                                            <div>Любой</div>
+                                        </div>
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#check"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="search-select__dropdown search-select__dropdown--left">
+                                        <button type="button" class="btn btn-reset search-select__close">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#x"></use>
+                                            </svg>
+                                        </button>
+                                        <label class="input-primary search-select__input">
+                                            <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по названию">
+                                        </label>
+                                        <div class="search-select__control">
+                                            <button type="button" class="btn btn-reset btn-secondary search-select__all">Выбрать всё</button>
+                                            <button type="button" class="btn btn-reset btn-secondary search-select__clear">Очистить всё</button>
+                                        </div>
+                                        <div class="search-select__wrapper simplebar-third">
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_1" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_1" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>ПИК</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_2" name="developer-name_2" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_2" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>ГК Самолет</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_3" name="developer-name_3" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_3" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>ГК "А101"</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_4" name="developer-name_4" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_4" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>ГК МИЦ</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_5" name="developer-name_5" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_5" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>ЛСР</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_6" name="developer-name_6" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_6" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>MR GROUP</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_7" name="developer-name_7" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_7" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>ГК ДОНСТРОЙ</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_8" name="developer-name_8" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_8" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>ГК Эталон</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="submit-app-options__row submit-app-options__row--2">
+                                <div class="submit-app-options__item filter-dropdown filter-dropdown--improved" data-filter-dropdown-name="Площадь"
+                                    data-filter-dropdown-subtitle="Любая">
+                                    <button type="button" class="btn btn-reset filter-dropdown__button">
+                                        <div class="filter-dropdown__button-wrapper">
+                                            <div>
+                                                Площадь
+                                            </div>
+                                            <div>
+                                                Любая
+                                            </div>
+                                        </div>
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#check"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="filter-dropdown__dropdown filter-dropdown__dropdown--left" style="min-width: 450px;">
+                                        <button type="button" class="btn btn-reset filter-dropdown__close">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#x"></use>
+                                            </svg>
+                                        </button>
+                                        <label class="filter-dropdown__item active">
+                                            <span class="filter-dropdown__subtitle">Площадь объекта, м²</span>
+                                            <div class="filter-dropdown__range filter-range">
+                                                <div class="filter-range__nav">
+                                                    <div class="input-text input-text--only-number">
+                                                        <label class="input-text__label">
+                                                            <span>Площадь от</span>
+                                                            <input type="text" maxlength="3" class="input-reset input-text__input" placeholder="Площадь от">
+                                                        </label>
+                                                    </div>
+                                                    <div>–</div>
+                                                    <div class="input-text input-text--only-number">
+                                                        <label class="input-text__label">
+                                                            <span>До</span>
+                                                            <input type="text" maxlength="3" class="input-reset input-text__input" placeholder="До">
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        м²
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="submit-app-options__item filter-dropdown filter-dropdown--improved" data-filter-dropdown-name="Площадь кухни"
+                                    data-filter-dropdown-subtitle="Любая">
+                                    <button type="button" class="btn btn-reset filter-dropdown__button">
+                                        <div class="filter-dropdown__button-wrapper">
+                                            <div>
+                                                Площадь кухни
+                                            </div>
+                                            <div>
+                                                Любая
+                                            </div>
+                                        </div>
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#check"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="filter-dropdown__dropdown filter-dropdown__dropdown--left" style="min-width: 450px;">
+                                        <button type="button" class="btn btn-reset filter-dropdown__close">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#x"></use>
+                                            </svg>
+                                        </button>
+                                        <label class="filter-dropdown__item active">
+                                            <span class="filter-dropdown__subtitle">Площадь кухни, м²</span>
+                                            <div class="filter-dropdown__range filter-range">
+                                                <div class="filter-range__nav">
+                                                    <div class="input-text input-text--only-number">
+                                                        <label class="input-text__label">
+                                                            <span>Площадь от</span>
+                                                            <input type="text" maxlength="3" class="input-reset input-text__input" placeholder="Площадь от">
+                                                        </label>
+                                                    </div>
+                                                    <div>–</div>
+                                                    <div class="input-text input-text--only-number">
+                                                        <label class="input-text__label">
+                                                            <span>До</span>
+                                                            <input type="text" maxlength="3" class="input-reset input-text__input" placeholder="До">
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        м²
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="submit-app-options__item filter-dropdown filter-dropdown--improved" data-filter-dropdown-name="Этаж"
+                                    data-filter-dropdown-subtitle="Любой">
+                                    <button type="button" class="btn btn-reset filter-dropdown__button">
+                                        <div class="filter-dropdown__button-wrapper">
+                                            <div>
+                                                Этаж
+                                            </div>
+                                            <div>
+                                                Любой
+                                            </div>
+                                        </div>
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#check"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="filter-dropdown__dropdown" style="min-width: 400px;">
+                                        <button type="button" class="btn btn-reset filter-dropdown__close">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#x"></use>
+                                            </svg>
+                                        </button>
+                                        <label class="filter-dropdown__item active">
+                                            <span class="filter-dropdown__subtitle">Этаж</span>
+                                            <div class="filter-dropdown__range filter-range">
+                                                <div class="filter-range__nav">
+                                                    <div class="input-text input-text--only-number">
+                                                        <label class="input-text__label">
+                                                            <span>Этаж от</span>
+                                                            <input type="text" maxlength="2" class="input-reset input-text__input" placeholder="Этаж от">
+                                                        </label>
+                                                    </div>
+                                                    <div>–</div>
+                                                    <div class="input-text input-text--only-number">
+                                                        <label class="input-text__label">
+                                                            <span>До</span>
+                                                            <input type="text" maxlength="2" class="input-reset input-text__input" placeholder="До">
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        м²
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="submit-app-options__choice">
+                            <h2 class="submit-app-options__title submit-app__row-title  title-2">
+                                Как планируете покупать объект
+                            </h2>
+                            <div class="submit-app-options__row submit-app-options__row--3">
+                                <div class="submit-app-options__item select-dropdown-checkbox" >
+                                    <button type="button" class="btn btn-reset select-dropdown-checkbox__button">
+                                        <span class="select-dropdown-checkbox__placeholder">
+                                            Свойства расчета
+                                        </span>
+                                        <div class="select-dropdown-checkbox__title">
+                                            Неважно
+                                        </div>
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#check"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="select-dropdown-checkbox__dropdown">
+                                        <button type="button" class="btn btn-reset select-dropdown-checkbox__close">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#x"></use>
+                                            </svg>
+                                        </button>
+                                        <div>
+                                            <div class="checkbox-secondary">
+                                                <input id="calculation_1" name="calculation" class="checkbox-secondary__input" data-name="cash" type="checkbox" value="true">
+                                                <label for="calculation_1" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">Наличные</span>
+                                                </label>
+                                            </div>
+                                            <div class="checkbox-secondary">
+                                                <input id="calculation_2" name="calculation" class="checkbox-secondary__input" data-name="mortgage_yes-bank" type="checkbox"
+                                                    value="true">
+                                                <label for="calculation_2" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">Ипотека, есть одобрение от
+                                                        банка</span>
+                                                </label>
+                                            </div>
+                                            <div class="checkbox-secondary">
+                                                <input id="calculation_3" name="calculation" class="checkbox-secondary__input" data-name="mortgage_no-bank" type="checkbox"
+                                                    value="true">
+                                                <label for="calculation_3" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">Ипотека, нет одобрения от
+                                                        банка</span>
+                                                </label>
+                                            </div>
+                                            <div class="checkbox-secondary">
+                                                <input disabled id="calculation_4" name="calculation" class="checkbox-secondary__input" data-name="mortgage_no-fee" type="checkbox"
+                                                    value="true">
+                                                <label for="calculation_4" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        Без первоначального взноса
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="checkbox-secondary">
+                                                <input disabled id="calculation_5" name="calculation" class="checkbox-secondary__input" data-name="certificate" type="checkbox"
+                                                    value="true">
+                                                <label for="calculation_5" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        В сделке будет использоваться сертификат
+                                                    </span>
+                                                    <div class="secondary-tooltip secondary-tooltip--dark">
+                                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                            <svg>
+                                                                <use xlink:href="img/sprite.svg#info"></use>
+                                                            </svg>
+                                                        </button>
+                                                        <div class="secondary-tooltip__content">
+                                                            Какой-то текст!!
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="submit-app-options__item filter-dropdown" data-filter-dropdown-name="Сумма" data-filter-dropdown-subtitle="Любая">
+                                    <button type="button" class="btn btn-reset filter-dropdown__button">
+                                        <div class="filter-dropdown__button-wrapper">
+                                            <div>
+                                                Сумма
+                                            </div>
+                                            <div>
+                                                Любая
+                                            </div>
+                                        </div>
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#check"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="filter-dropdown__dropdown filter-dropdown__dropdown--left">
+                                        <button type="button" class="btn btn-reset filter-dropdown__close">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#x"></use>
+                                            </svg>
+                                        </button>
+                                        <label class="filter-dropdown__item active">
+                                            <span class="filter-dropdown__subtitle">
+                                                Поиск квартиры по стоимости, руб.
+                                            </span>
+                                            <div class="filter-dropdown__checkbox checkbox-secondary">
+                                                <input id="buy-apart-buld-1" name="request-catalog_sum" checked class="checkbox-secondary__input" type="checkbox">
+                                                <label for="buy-apart-buld-1" class="checkbox-secondary__label">
+                                                </label>
+                                            </div>
+                                            <div class="filter-dropdown__range filter-range">
+                                                <div class="filter-range__nav">
+                                                    <div class="input-text input-text--only-number">
+                                                        <label class="input-text__label">
+                                                            <span>Цена от</span>
+                                                            <input type="text" maxlength="11" class="input-reset input-text__input" placeholder="Цена от">
+                                                        </label>
+                                                    </div>
+                                                    <div>–</div>
+                                                    <div class="input-text input-text--only-number">
+                                                        <label class="input-text__label">
+                                                            <span>До</span>
+                                                            <input type="text" maxlength="11" class="input-reset input-text__input" placeholder="До">
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        ₽
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </label>
+                                        <label class="filter-dropdown__item">
+                                            <span class="filter-dropdown__subtitle">
+                                                Поиск квартиры по ежемесячному платежу, руб.
+                                            </span>
+                                            <div class="filter-dropdown__checkbox checkbox-secondary">
+                                                <input id="buy-apart-buld-2" name="request-catalog_sum" class="checkbox-secondary__input" type="checkbox">
+                                                <label for="buy-apart-buld-2" class="checkbox-secondary__label">
+                                                </label>
+                                            </div>
+                                            <div class="filter-dropdown__range filter-range">
+                                                <div class="filter-range__nav">
+                                                    <div class="input-text input-text--only-number">
+                                                        <label class="input-text__label">
+                                                            <span>Цена от</span>
+                                                            <input type="text" maxlength="11" class="input-reset input-text__input" placeholder="Цена от">
+                                                        </label>
+                                                    </div>
+                                                    <div>–</div>
+                                                    <div class="input-text input-text--only-number">
+                                                        <label class="input-text__label">
+                                                            <span>До</span>
+                                                            <input type="text" maxlength="11" class="input-reset input-text__input" placeholder="До">
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        ₽
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="submit-app-options__choice">
+                            <h2 class="submit-app-options__title submit-app__row-title title-2">
+                                Когда планируете начинать просмотр
+                            </h2>
+                            <div class="submit-app-options__row submit-app-options__row--4">
+                                <div class="submit-app-options__item select-secondary" >
+                                    <div class="select-secondary__wrapper">
+                                        <span class="select-secondary__placeholder">
+                                            Дата
+                                        </span>
+                                        <select class="select-secondary__body" hidden name="complex">
+                                            <option placeholder value="apartments">Любая</option>
+                                            <option value="apartments">Сегодня</option>
+                                            <option value="apartments2">В течение недели</option>
+                                            <option value="apartments3">В течение месяца</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h2 class="submit-app-options__title submit-app__row-title  title-2">
+                            Описание
+                        </h2>
+                        <label class="submit-app-options__textarea textarea-primary">
+                            <textarea class="input-reset textarea-primary__input"
+                                placeholder="Расскажите о недвижимости, собственниках, соседях, транспортной доступности иинфраструктуре"></textarea>
+                        </label>
+                        <div class="submit-app-options__import submit-app-import">
+                            <h2 class="submit-app-import__title submit-app__row-title title-2">
+                                Укажите важные детали в поиске объекта
+                            </h2>
+                            <label class="submit-app-import__textarea textarea-primary">
+                                <textarea class="input-reset textarea-primary__input"
+                                    placeholder="Напишите что важно при выборе будующего объекта недвижимости. Например: близость метро, дом с подземным паркингом или минимальный ежемесячный платеж"></textarea>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="submit-app__row communic-method-radios radio-primary">
+                        <h2 class="communic-method-radios__title submit-app__row-title title-2">
+                            Способ связи
+                        </h2>
+                        <div class="communic-method-radios__wrapper">
+                            <div class="radio-primary__item">
+                                <input hidden id="communic-method_1" class="radio-primary__input" type="radio" value="По телефону и в сообщениях" name="communic-method">
+                                <label for="communic-method_1" class="radio-primary__label">
+                                    <span class="radio-primary__text">По телефону и в сообщениях</span>
+                                </label>
+                            </div>
+                            <div class="radio-primary__item">
+                                <input hidden id="communic-method_2" class="radio-primary__input" type="radio" value="Только переписка в сообщениях" name="communic-method">
+                                <label for="communic-method_2" class="radio-primary__label">
+                                    <span class="radio-primary__text">Только переписка в сообщениях</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="submit-app__row your-contacts-field">
+                        <h2 class="your-contacts-field__title submit-app__row-title title-2">
+                            Ваши контакты
+                        </h2>
+                        <div class="your-contacts-field__wrapper">
+                            <div class="input-text input-text--no-exp input-text--disabled">
+                                <label class="input-text__label">
+                                    <span>Номер телефона</span>
+                                    <input type="text" name="Застройщик" class="input-reset input-text__input" value="8 921 645 45 45" disabled placeholder="Номер телефона">
+                                </label>
+                            </div>
+                            <div class="input-text input-text--no-exp input-text--disabled">
+                                <label class="input-text__label">
+                                    <span>Имя, фамилия</span>
+                                    <input type="text" name="Имя, фамилия" class="input-reset input-text__input" value="Алексей Г." disabled placeholder="Имя, фамилия">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-reset btn-primary submit-app__btn">
+                        Разместить
+                    </button>
+                </form>
+            </div>
+        </main>
+        @include('partials/footer.html')
+    </div>
+    @include('partials/popup.html')
+</body>
+
+
+</html>

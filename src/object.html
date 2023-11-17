@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Объект</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script defer src="js/main.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container site-container--object">
+        @include('partials/header.html')
+        <main class="main main-page-gap object">
+            <div class="object__top top-page-inner container">
+                <a href="#" class="object__back top-page-inner__back back-link">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#arrow-left"></use>
+                    </svg>
+                    <span>К списку заявок</span>
+                </a>
+                <div class="object__btns top-page-inner__btns">
+                    <button type="button" class="btn btn-reset top-page-inner__btn share-btn" data-popup-path="share-app" title="Поделиться">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#share"></use>
+                        </svg>
+                        <span>Поделиться</span>
+                    </button>
+                    <button type="button" class="btn btn-reset top-page-inner__btn complain-btn" data-popup-path="complaint-object">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#complain"></use>
+                        </svg>
+                        <span>Пожаловаться</span>
+                    </button>
+                </div>
+            </div>
+            <div class="object__body object-body">
+                <div class="object-body__container container">
+                    <div class="object-body__slider object-slider">
+                        <div class="object-slider__body object-slider-body">
+                            <div class="swiper object-slider-body__wrapper">
+                                <div class="swiper-wrapper object-gallery">
+                                    <div class="swiper-slide">
+                                        <a href="./img/card-8.webp" class="object-gallery__item">
+                                            <picture>
+                                                <source srcset="./img/card-8.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-8.jpg" alt="">
+                                            </picture>
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a href="https://www.youtube.com/watch?v=OaFmmd2Ium8" data-poster="./img/card-2.webp" class="object-gallery__item">
+                                            <div class="video-play">
+                                                <div class="video-play__icon">
+                                                    <svg>
+                                                        <use xlink:href="img/sprite.svg#play"></use>
+                                                    </svg>
+                                                </div>
+                                                <span>Видео</span>
+                                            </div>
+                                            <picture>
+                                                <source srcset="./img/card-2.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-2.jpg" alt="">
+                                            </picture>
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a href="./img/card-6.webp" class="object-gallery__item">
+                                            <picture>
+                                                <source srcset="./img/card-6.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-6.jpg" alt="">
+                                            </picture>
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a href="./img/card-9.webp" class="object-gallery__item">
+                                            <picture>
+                                                <source srcset="./img/card-9.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-9.jpg" alt="">
+                                            </picture>
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a href="./img/card-10.webp" class="object-gallery__item">
+                                            <picture>
+                                                <source srcset="./img/card-10.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-10.jpg" alt="">
+                                            </picture>
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a href="./img/card-14.webp" class="object-gallery__item">
+                                            <picture>
+                                                <source srcset="./img/card-14.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-14.jpg" alt="">
+                                            </picture>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-reset object-slider-body__navigation nav-arrow-primary nav-arrow-primary--prev">
+                                <div class="nav-arrow-primary__wrapper">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#arrow-right"></use>
+                                    </svg>
+                                </div>
+                            </button>
+                            <button type="button" class="btn btn-reset object-slider-body__navigation nav-arrow-primary nav-arrow-primary--next">
+                                <div class="nav-arrow-primary__wrapper">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#arrow-right"></use>
+                                    </svg>
+                                </div>
+                            </button>
+                            <div class="object-slider-body__pagination pagination-primary"></div>
+                        </div>
+                        <div class="object-slider__nav object-slider-nav">
+                            <div class="swiper object-slider-nav__wrapper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <picture>
+                                            <source srcset="./img/card-8.webp" type="image/webp">
+                                            <img loading="lazy" src="./img/card-8.jpg" alt="">
+                                        </picture>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="video-play">
+                                            <div class="video-play__icon">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#play"></use>
+                                                </svg>
+                                            </div>
+                                            <span>Видео</span>
+                                        </div>
+                                        <picture>
+                                            <source srcset="./img/card-1.webp" type="image/webp">
+                                            <img loading="lazy" src="./img/card-1.jpg" alt="">
+                                        </picture>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <picture>
+                                            <source srcset="./img/card-6.webp" type="image/webp">
+                                            <img loading="lazy" src="./img/card-6.jpg" alt="">
+                                        </picture>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <picture>
+                                            <source srcset="./img/card-9.webp" type="image/webp">
+                                            <img loading="lazy" src="./img/card-9.jpg" alt="">
+                                        </picture>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <picture>
+                                            <source srcset="./img/card-10.webp" type="image/webp">
+                                            <img loading="lazy" src="./img/card-10.jpg" alt="">
+                                        </picture>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <picture>
+                                            <source srcset="./img/card-14.webp" type="image/webp">
+                                            <img loading="lazy" src="./img/card-14.jpg" alt="">
+                                        </picture>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="object-body__wrapper">
+                        <div class="object-body__content">
+                            <div class="object-body__data object-data">
+                                <h3 class="object-data__name" data-main-info-title>
+                                    1-ком. квартира, 39 м², 12/12 эт.
+                                </h3>
+                                <div class="object-data__address" data-main-info-address>
+                                    <span class="object-data__address--two">
+                                        Краснодар, ул.Карла-Маркса., 234
+                                    </span>
+                                </div>
+                                <div class="object-data__price" data-main-info-price>
+                                    <span class="object-data__price-old">
+                                        <span>
+                                            <span>3 000 000</span> ₽
+                                        </span>
+                                        <span>-300 000 ₽</span>
+                                    </span>
+                                    <span class="object-data__price-new">
+                                        <span class="title-2">2 897 000 ₽</span>
+                                        <span>(94 742 ₽/м²)</span>
+                                    </span>
+                                </div>
+                                <div class="object-data__text">
+                                    <p>
+                                        Уникальна квартира с ремонтом продается в новом доме по
+                                        улице Тополиная это район Петра Метальникова.
+                                    </p>
+                                    <p>
+                                        В квартире шикарный, современный ремонт панорамные окна, на
+                                        полу ламинат, шикарный вид на город. Из кухни сделана кухня
+                                        гостиная очень актуально в наше время, при этом квартира см.
+                                        Уникальна квартира с ремонтом продается в новом доме по
+                                        улице Тополиная квартира см. Уникальна квартира с ремонтом
+                                        продается в новом доме по улице Тополиная
+                                    </p>
+                                </div>
+                                <button type="button" class="btn btn-reset object-data__more">
+                                    <span>Показать полностью</span>
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#check"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="object-body__comment object-comment">
+                                <h2 class="object-comment__title title-2">
+                                    Комментарий к объекту от Алексея Г.
+                                </h2>
+                                <p class="object-comment__descr">
+                                    В квартире шикарный, современный ремонт панорамные окна, на полу ламинат, шикарный
+                                    вид на город. Из кухни сделана кухня гостиная очень актуально в наше время, при этом
+                                    квартира см
+                                </p>
+                            </div>
+                            <div class="object-plate-bottom plate-bottom">
+                                <button type="button" class="btn btn-reset btn-primary object-plate-bottom__btn">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#dislike"></use>
+                                    </svg>
+                                    <span data-mobile-text="Не подходит">Объект не подходит</span>
+                                </button>
+                                <button type="button" class="btn btn-reset btn-primary object-plate-bottom__btn" data-popup-path="record-viewing">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#like"></use>
+                                    </svg>
+                                    <span data-mobile-text="На просмотр">Хочу на просмотр</span>
+                                </button>
+                            </div>
+                            <div class="object-body__banners object-banners main-banners">
+                                <div class="swiper main-banners__container">
+                                    <div class="swiper-wrapper">
+                                        <a href="#" class="swiper-slide main-banner main-banner--one">
+                                            <div class="main-banner__content">
+                                                <h2 class="main-banner__title">
+                                                    Семейная ипотека от 2,99%
+                                                </h2>
+                                                <p class="main-banner__descr">
+                                                    Купите квартиру в ипотеку
+                                                    по специальной программе для семей с детьми
+                                                </p>
+                                                <div class="btn btn-reset btn-primary main-banner__btn">
+                                                    Смотреть предложения
+                                                </div>
+                                            </div>
+                                            <div class="main-banner__image" style="background-image: url('./img/banner-photo-3.webp')" ;>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="swiper-slide main-banner main-banner--one">
+                                            <div class="main-banner__content">
+                                                <h2 class="main-banner__title">
+                                                    Семейная ипотека от 2,99%
+                                                </h2>
+                                                <p class="main-banner__descr">
+                                                    Купите квартиру в ипотеку
+                                                    по специальной программе для семей с детьми
+                                                </p>
+                                                <div class="btn btn-reset btn-primary main-banner__btn">
+                                                    Смотреть предложения
+                                                </div>
+                                            </div>
+                                            <div class="main-banner__image" style="background-image: url('./img/banner-photo-4.webp')" ;>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="swiper-slide main-banner main-banner--one">
+                                            <div class="main-banner__content">
+                                                <h2 class="main-banner__title">
+                                                    Семейная ипотека от 2,99%
+                                                </h2>
+                                                <p class="main-banner__descr">
+                                                    Купите квартиру в ипотеку
+                                                    по специальной программе для семей с детьми
+                                                </p>
+                                                <div class="btn btn-reset btn-primary main-banner__btn">
+                                                    Смотреть предложения
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="main-banners__nav">
+                                    <div class="nav-arrow-secondary nav-arrow-secondary--prev">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#arrow-right"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="nav-arrow-secondary nav-arrow-secondary--next">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#arrow-right"></use>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="object-body__characteristics object-characteristics">
+                                <h2 class="object-characteristics__title title-2">
+                                    Характеристики
+                                </h2>
+                                <div class="object-characteristics__container">
+                                    <ul class="object-characteristics__list list-reset">
+                                        <li class="object-characteristics__item">
+                                            <span>
+                                                Тип
+                                            </span>
+                                            <span>
+                                                Квартира
+                                            </span>
+                                        </li>
+                                        <li class="object-characteristics__item">
+                                            <span>
+                                                Высота потолков
+                                            </span>
+                                            <span>
+                                                1
+                                            </span>
+                                        </li>
+                                        <li class="object-characteristics__item">
+                                            <span>
+                                                Общая площадь
+                                            </span>
+                                            <span>
+                                                57 м²
+                                            </span>
+                                        </li>
+                                        <li class="object-characteristics__item">
+                                            <span>
+                                                Этаж
+                                            </span>
+                                            <span>
+                                                12/12
+                                            </span>
+                                        </li>
+                                        <li class="object-characteristics__item">
+                                            <span>
+                                                Площадь кухни
+                                            </span>
+                                            <span>
+                                                39 м²
+                                            </span>
+                                        </li>
+                                        <li class="object-characteristics__item">
+                                            <span>
+                                                Площадь кухни
+                                            </span>
+                                            <span>
+                                                39 м²
+                                            </span>
+                                        </li>
+                                    </ul>
+                                    <ul class="object-characteristics__list list-reset" data-dropdown-items hidden>
+                                        <li class="object-characteristics__item">
+                                            <span>
+                                                Тип
+                                            </span>
+                                            <span>
+                                                Квартира
+                                            </span>
+                                        </li>
+                                        <li class="object-characteristics__item">
+                                            <span>
+                                                Высота потолков
+                                            </span>
+                                            <span>
+                                                1
+                                            </span>
+                                        </li>
+                                        <li class="object-characteristics__item">
+                                            <span>
+                                                Общая площадь
+                                            </span>
+                                            <span>
+                                                57 м²
+                                            </span>
+                                        </li>
+                                    </ul>
+                                    <button type="button" class="btn btn-reset object-characteristics__more">
+                                        <span>Показать полностью</span>
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#check"></use>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="object-body__history object-history">
+                                <h2 class="object-history__title title-2">
+                                    История изменения цены
+                                </h2>
+                                <ul class="object-history__list list-reset">
+                                    <li class="object-history__item object-history__item--plus">
+                                        <span class="object-history__date" data-mobile-text="3 августа 2020">
+                                            03.08.2020
+                                        </span>
+                                        <div class="object-history__old-price">
+                                            <span>
+                                                <span>3 000 000</span>
+                                                ₽
+                                            </span>
+                                            <span>+300 000 ₽</span>
+                                        </div>
+                                        <span class="object-history__new-price">3 500 000 ₽</span>
+                                    </li>
+                                    <li class="object-history__item object-history__item--minus">
+                                        <span class="object-history__date" data-mobile-text="3 августа 2020">
+                                            03.08.2020
+                                        </span>
+                                        <div class="object-history__old-price">
+                                            <span>
+                                                <span>3 000 000</span>
+                                                ₽
+                                            </span>
+                                            <span>-300 000 ₽</span>
+                                        </div>
+                                        <span class="object-history__new-price">3 500 000 ₽</span>
+                                    </li>
+                                    <li class="object-history__item object-history__item--plus">
+                                        <span class="object-history__date" data-mobile-text="3 августа 2020">
+                                            03.08.2020
+                                        </span>
+                                        <div class="object-history__old-price">
+                                            <span>
+                                                <span>3 000 000</span>
+                                                ₽
+                                            </span>
+                                            <span>+300 000 ₽</span>
+                                        </div>
+                                        <span class="object-history__new-price">3 500 000 ₽</span>
+                                    </li>
+                                    <li class="object-history__item object-history__item--minus">
+                                        <span class="object-history__date" data-mobile-text="3 августа 2020">
+                                            03.08.2020
+                                        </span>
+                                        <div class="object-history__old-price">
+                                            <span>
+                                                <span>3 000 000</span>
+                                                ₽
+                                            </span>
+                                            <span>-300 000 ₽</span>
+                                        </div>
+                                        <span class="object-history__new-price">3 500 000 ₽</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="object-body__location object-location">
+                                <h2 class="object-location__title title-2">
+                                    Расположение
+                                </h2>
+                                <p class="object-location__descr">
+                                    Краснодар, Тополиная улица, 40/1к1
+                                </p>
+                                <div class="object-location__maps">
+                                    <div class="map-primary remove-copyrights-pane" id="object-maps">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="object-body__sidebar" data-da=".object-body__content,1212,3">
+                            <div class="object-body__user bid-user bid-user--grade _sticky">
+                                <div class="bid-user__container">
+                                    <div class="bid-user__avatar avatar">
+                                        <img loading="lazy" src="./img/avatar-1.jpg" width="95" height="95" alt="Алексей Г.">
+                                    </div>
+                                    <div class="bid-user__content">
+                                        <a href="#" class="bid-user__name">
+                                            Алексей Г.
+                                        </a>
+                                        <time class="bid-user__time" datetime="2022-12-12">
+                                            Агент был в сети 12.12.2022
+                                        </time>
+                                        <div class="bid-user__rating">
+                                            <div class="bid-user__rating-stars">
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                            </div>
+                                            <span>4.8</span>
+                                            <span>(16 отзыва)</span>
+                                        </div>
+                                        <div class="bid-user__quantity">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#briefcase"></use>
+                                            </svg>
+                                            <span>10 объектов</span>,&nbsp;
+                                            <span>8 сделок</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bid-user__grade">
+                                    <h3 class="bid-user__title title-3">
+                                        Ваша оценка объекта
+                                    </h3>
+                                    <button type="button" class="btn btn-reset btn-primary bid-user__btn--like" data-main-info-btn data-popup-path="record-viewing">
+                                        <svg style="margin-right:10px;width:17px;height:17px;fill: currentColor;">
+                                            <use xlink:href="img/sprite.svg#like"></use>
+                                        </svg>
+                                        <span data-mobile-text="На просмотр">Хочу на просмотр</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset btn-primary bid-user__btn--dislike" data-popup-path="object-not" data-main-info-btn>
+                                        <svg style="margin-right:10px;width:17px;height:17px;fill: currentColor;">
+                                            <use xlink:href="img/sprite.svg#dislike"></use>
+                                        </svg>
+                                        <span data-mobile-text="Не подходит">Объект не подходит</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset btn-secondary bid-user__btn--comment" data-popup-path="chat" data-main-info-btn>
+                                        <svg style="margin-right: 10px; width:17px; height:17px; fill: currentColor;">
+                                            <use xlink:href="img/sprite.svg#ChatCircleDots"></use>
+                                        </svg>
+                                        <span>Задать вопрос</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        @include('partials/footer.html')
+    </div>
+    @include('partials/popup.html')
+</body>
+
+
+</html>

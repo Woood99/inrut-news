@@ -13942,17 +13942,18 @@ const tabsControls = tabsBlock => {
         input.setAttribute(`data-section-field-${sectionFields}-title`, currentIndex);
       });
       if (sectionFields === 'furnishing-sets') {
-        contents.forEach((content, index) => {
-          content.setAttribute(`data-section-field-${sectionFields}-content`, index + 1);
+        contents.forEach((content, contentIndex) => {
+          content.setAttribute(`data-section-field-${sectionFields}-content`, contentIndex + 1);
           const btns = content.querySelectorAll('.furnishing-sets__btns .furnishing-sets__btn');
           const tabs = content.querySelectorAll('.furnishing-sets__tabs .furnishing-sets__tab');
           btns.forEach((btn, index) => {
+            btn.setAttribute(`data-section-field-${sectionFields}-btn`, index + 1);
             btn.setAttribute(`data-section-field-${sectionFields}-btn`, index + 1);
           });
           tabs.forEach((tab, index) => {
             const currentIndex = index + 1;
             tab.setAttribute(`data-section-field-${sectionFields}-tab`, currentIndex);
-            updateFields(tab, sectionFields, currentIndex);
+            updateFields(tab, sectionFields, contentIndex + 1, currentIndex);
           });
         });
       } else {
@@ -13966,6 +13967,7 @@ const tabsControls = tabsBlock => {
   }
 };
 function updateFields(content, sectionFields, currentIndex) {
+  let indexRoom = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
   const photoLoad = content.querySelector('.photo-load:not(.pdf-load)');
   const pdfLoad = content.querySelector('.pdf-load');
   const textarea = content.querySelector('.place-sale-textarea');
@@ -13973,23 +13975,48 @@ function updateFields(content, sectionFields, currentIndex) {
   const price = content.querySelector('.place-sale-field-price');
   if (photoLoad) {
     const input = photoLoad.querySelector('input');
-    input.setAttribute(`data-section-field-${sectionFields}-loadphoto`, currentIndex);
+    if (indexRoom === false) {
+      input.setAttribute(`data-section-field-${sectionFields}-loadphoto`, currentIndex);
+    } else {
+      input.setAttribute(`data-section-field-${sectionFields}-tab-loadphoto`, currentIndex);
+      input.setAttribute(`data-section-field-${sectionFields}-room-loadphoto`, indexRoom);
+    }
   }
   if (pdfLoad) {
     const input = pdfLoad.querySelector('input');
-    input.setAttribute(`data-section-field-${sectionFields}-pdfload`, currentIndex);
+    if (indexRoom === false) {
+      input.setAttribute(`data-section-field-${sectionFields}-pdfload`, currentIndex);
+    } else {
+      input.setAttribute(`data-section-field-${sectionFields}-tab-pdfload`, currentIndex);
+      input.setAttribute(`data-section-field-${sectionFields}-room-pdfload`, indexRoom);
+    }
   }
   if (textarea) {
     const input = textarea.querySelector('textarea');
-    input.setAttribute(`data-section-field-${sectionFields}-textarea`, currentIndex);
+    if (indexRoom === false) {
+      input.setAttribute(`data-section-field-${sectionFields}-textarea`, currentIndex);
+    } else {
+      input.setAttribute(`data-section-field-${sectionFields}-tab-textarea`, currentIndex);
+      input.setAttribute(`data-section-field-${sectionFields}-room-textarea`, indexRoom);
+    }
   }
   if (distanceComplex) {
     const input = distanceComplex.querySelector('input');
-    input.setAttribute(`data-section-field-${sectionFields}-distancecomplex`, currentIndex);
+    if (indexRoom === false) {
+      input.setAttribute(`data-section-field-${sectionFields}-distancecomplex`, currentIndex);
+    } else {
+      input.setAttribute(`data-section-field-${sectionFields}-tab-distancecomplex`, currentIndex);
+      input.setAttribute(`data-section-field-${sectionFields}-room-distancecomplex`, indexRoom);
+    }
   }
   if (price) {
     const input = price.querySelector('input');
-    input.setAttribute(`data-section-field-${sectionFields}-price`, currentIndex);
+    if (indexRoom === false) {
+      input.setAttribute(`data-section-field-${sectionFields}-price`, currentIndex);
+    } else {
+      input.setAttribute(`data-section-field-${sectionFields}-tab-price`, currentIndex);
+      input.setAttribute(`data-section-field-${sectionFields}-room-price`, indexRoom);
+    }
   }
 }
 

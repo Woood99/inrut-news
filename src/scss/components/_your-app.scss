@@ -60,10 +60,12 @@
 
 
     }
-    &__btn{
+
+    &__btn {
         margin-top: 24px;
         width: 100%;
     }
+
     &__objects {
         .tabs-primary {
             &__container {
@@ -129,7 +131,7 @@
             }
 
             &__controls {
-              display: flex;
+                display: flex;
             }
 
             &__control {
@@ -152,14 +154,14 @@
 .your-app-bid {
     background-color: var(--stand-bg);
     padding: 32px 0;
-    .container{
-        @media (max-width:$desktop){
-             padding: 0; 
+
+    .container {
+        @media (max-width:$desktop) {
+            padding: 0;
         }
     }
-    &__body {
 
-    }
+    &__body {}
 
     &__info {
         background-color: var(--white);
@@ -169,7 +171,7 @@
         border-radius: 12px;
 
         @media (max-width:$desktop) {
-          padding: 24px;
+            padding: 24px;
         }
     }
 
@@ -186,6 +188,7 @@
         font-size: var(--small-fz);
         line-height: var(--small-lh);
         font-weight: 500;
+
         span {
             margin-top: 1px;
         }
@@ -198,11 +201,11 @@
             fill: currentColor;
         }
 
-      @media (min-width:$desktop-min){
-        &:hover {
-            color: var(--primary500);
-        } 
-      }
+        @media (min-width:$desktop-min) {
+            &:hover {
+                color: var(--primary500);
+            }
+        }
     }
 
     &__title {}
@@ -211,10 +214,9 @@
         margin-top: 24px;
 
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        justify-content: space-between;
-        grid-column-gap: 15px;
-        grid-row-gap: 10px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 68px;
+        grid-row-gap: 16px;
 
         @media (max-width:$desktop) {
             grid-template-columns: 1fr;
@@ -223,30 +225,50 @@
     }
 
     &__item {
-        display: flex;
-        align-items: center;
+        &:not(.your-app-bid__item--dropdown) {
+            display: flex;
+            width: 100%;
 
-        >span {
-            font-size: var(--default-fz);
-            line-height: var(--default-lh);
-
-            &:nth-child(1) {
-                color: var(--primaryTwo);
-                margin-right: 16px;
+            &::after {
+                content: '';
+                flex: 1 1 0%;
+                position: relative;
+                top: 16px;
+                border-bottom: 1px dashed var(--primary200);
+                height: 1px;
+                order: 2;
+                margin: 0 6px;
             }
 
-            &:nth-child(2) {
-                color: var(--dark);
+            >span {
+                font-size: var(--default-fz);
+                line-height: var(--default-lh);
+                font-weight: 400;
+
+                &:nth-child(1) {
+                    order: 1;
+                    color: var(--primaryTwo);
+                    white-space: nowrap;
+                }
+
+                &:nth-child(2) {
+                    order: 3;
+                    max-width: 175px;
+                    text-align: right;
+                }
             }
         }
 
         &--dropdown {
             grid-row: 1/4;
-            grid-column: 4/5;
+            grid-column: 3/4;
             display: grid;
             grid-template-columns: repeat(2, max-content);
             align-items: start;
-
+            >span{
+                margin-right: 16px;
+                color: var(--primaryTwo);
+            }
             span {
                 font-size: var(--default-fz);
                 line-height: var(--default-lh);
@@ -398,12 +420,14 @@
         @media (max-width:$desktop) {
             order: 3;
         }
-        .secondary-tooltip{
-            &__btn{
+
+        .secondary-tooltip {
+            &__btn {
                 width: var(--size);
                 height: var(--size);
             }
-            &__content{
+
+            &__content {
                 width: max-content;
                 left: 30px;
             }
@@ -436,7 +460,8 @@
             align-items: start;
         }
     }
-    @media (max-width:$desktop){
-         padding: 24px 0; 
+
+    @media (max-width:$desktop) {
+        padding: 24px 0;
     }
 }

@@ -160,15 +160,16 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        margin-bottom: 32px;
     }
 
     &__name {
-
         display: flex;
         align-items: center;
-
         >span {
             margin-left: 16px;
+            font-size: var(--big-fz);
+            line-height: var(--big-fz);
         }
     }
 
@@ -180,8 +181,8 @@
         align-items: center;
         justify-content: center;
 
-        width: 40px;
-        height: 40px;
+        width: 60px;
+            height: 60px;
     }
 
     &__check {
@@ -271,9 +272,12 @@
         display: grid;
         grid-auto-columns: min-content;
         grid-auto-flow: column;
-        grid-column-gap: 32px;
+        grid-column-gap: 40px;
     }
-
+    .bank-offer__additional-item__title {
+        font-size: var(--small-fz);
+        line-height: var(--small-lh);
+    }
     &__info-item {
         white-space: nowrap;
 
@@ -327,10 +331,17 @@
     }
 
     &__selector {
-        margin-top: 32px;
-        padding-top: 8px;
-        border-top: 1px solid rgba(122, 127, 170, 0.2);
+        border-radius: 12px;
+        box-shadow: var(--shadow-primary);
         &._active{
+            padding: 16px 16px 24px;
+            .bank-offer__selector-top {
+                background-color: var(--stand-bg);
+                box-shadow: var(--shadow-primary);
+            }
+            .bank-offer__additional{
+                margin: 32px 8px 0;   
+            }
             .bank-offer__check{
                svg{
                 transform: rotate(-180deg);
@@ -342,9 +353,8 @@
     &__selector-title {}
 
     &__selector-content {
-        margin-top: 8px;
+        margin: 0 8px;
         display: flex;
-
         >div:nth-child(1) {
             padding-top: 13px;
             white-space: nowrap;
@@ -359,12 +369,11 @@
 
     &__selector-top {
         display: flex;
-        align-items: start;
+        align-items: center;
         justify-content: space-between;
-
-
+  
         cursor: pointer;
-        padding: 16px 0;
+        padding: 16px 24px;
     }
 
     &__selector-btn {
@@ -456,21 +465,22 @@
     }
 
     &__additional {
-        margin-top: 24px;
-        margin-bottom: 24px;
-        padding-top: 24px;
-        border-top: 1px dotted var(--primary200);
+  
     }
 
     &__additional-item {
         display: flex;
         align-items: start;
         justify-content: space-between;
-
+        border-bottom: 1px dotted var(--primary200);
+        margin-bottom: 24px;
+        padding-bottom: 24px;
         &__title {}
 
         &__descr {
             margin-top: 8px;
+            font-size: var(--small-fz);
+            line-height: var(--small-lh);
         }
 
         &__btn {
@@ -511,6 +521,10 @@
                     transition: color $transitionSpeed $transitionFunction,
                     opacity $transitionSpeed $transitionFunction;
                     opacity: 0.65;
+
+                    font-weight: 500;
+                    font-size: var(--small-fz);
+                    line-height: var(--small-lh);
                     &._active {
                         opacity: 1;
                         color: var(--blue);
@@ -518,48 +532,58 @@
                 }
             }
         }
-
-        &:not(:last-child) {
-            margin-bottom: 24px;
-            padding-bottom: 24px;
-            border-bottom: 1px dotted var(--primary200);
-        }
+        
     }
     &__add-info{
-        border-top: 1px solid rgba(122, 127, 170, 0.2);
-        padding-top: 8px;
+        box-shadow: var(--shadow-primary);
         margin-top: 8px;
+        border-radius: 12px;
         &._active{
+            padding: 16px 16px 24px;
+            .bank-offer__add-info-top {
+                background-color: var(--stand-bg);
+                box-shadow: var(--shadow-primary);
+            }
+            .bank-offer__add-info-content{
+                margin: 24px 8px 0;   
+            }
             .bank-offer__check{
                svg{
                 transform: rotate(-180deg);
                }
             }
         }
+
     }
+
     &__add-info-top{
         display: flex;
-        align-items: start;
+        align-items: center;
         justify-content: space-between;
 
-
         cursor: pointer;
-        padding: 16px 0;
+        padding: 16px 24px;
     }
     &__add-info-content{
         margin-top: 8px;
        display: grid;
        grid-template-columns: repeat(2,1fr);
        grid-gap: 16px;
+       padding: 0;
         >div{
             background-color: var(--primary100);
             color: var(--dark);
             padding: 24px;
             border-radius: 12px;
+            font-size: var(--small-fz);
+            line-height: var(--small-lh);
         }
     }
+
+
+
+
     &__bottom{
-        border-top: 1px solid rgba(122, 127, 170, 0.2);
         padding-top: 16px;
         margin-top: 8px;
     }
@@ -579,7 +603,7 @@
             height: 17px;
             fill: currentColor;
             margin-left: 8px;
-            transition: transform $transitionSpeed $transitionFunction;
+         transform: rotate(-180deg);
         }
 
     }
@@ -644,41 +668,58 @@
     &__items {
         display: flex;
         flex-direction: column;
-        gap: 16px;
-        margin-top: 8px;
+        gap: 8px;
+        margin-top: 16px;
     }
 
     &__item {
         display: flex;
         align-items: center;
-        gap: 24px;
 
-        font-size: var(--default-fz);
-        line-height: var(--default-lh);
 
         &:nth-child(1) {
             margin-bottom: 4px;
             opacity: 0.65;
+            padding: 0 24px;
+            gap: 24px;
+            >div,
+            span {
+                width: 140px;
+                font-size: var(--small-fz);
+                line-height: var(--small-lh);
+            }
         }
-
-        >div,
-        span {
-            width: 140px;
+        &:not(:first-child) {
+            font-weight: 500;
+            border: 1px solid var(--primary200);
+        border-radius: 12px;
         }
     }
 
+
+
     &__btn {
         height: auto;
-        padding: 8px 16px;
+        padding: 0 24px;
         display: flex;
         align-items: center;
 
         height: 42px;
-        max-width: 120px;
+width: 100%;
         border-radius: 12px;
         background-color: var(--white);
         border: 1px solid var(--primary200);
         position: relative;
+
+        gap: 24px;
+
+        font-size: var(--default-fz);
+        line-height: var(--default-lh);
+        >div,
+        span {
+            width: 140px;
+            text-align: left;
+        }
 
         span {
             font-size: var(--default-fz);
@@ -696,7 +737,7 @@
             height: var(--size);
             flex: 0 0 var(--size);
             border-radius: 50%;
-            background-color: var(--white);
+            background-color: var(--blue);
 
             display: flex;
             align-items: center;
@@ -715,7 +756,7 @@
             svg {
                 width: 10px;
                 height: 10px;
-                stroke: var(--blue);
+                stroke: var(--white);
                 stroke-width: 1.5px;
                 fill: none;
             }
@@ -723,12 +764,7 @@
 
         @media (min-width:$desktop-min) {
             &:hover {
-                background-color: var(--blue);
-
-                span {
-                    color: var(--white);
-                }
-
+                border: 1px solid var(--blue);
                 div {
                     opacity: 1;
                     visibility: visible;
@@ -738,12 +774,7 @@
         }
 
         &._active {
-            background-color: var(--blue);
-
-            span {
-                color: var(--white);
-            }
-
+            border: 1px solid var(--blue);
             div {
                 opacity: 1;
                 visibility: visible;

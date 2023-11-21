@@ -34,6 +34,20 @@ const bankOffer = () => {
                     selector.classList.remove('_active');
                     selectorContent.setAttribute('hidden', '');
                     if (additional) additional.setAttribute('hidden', '');
+
+
+                    const popup = container.closest('.popup-primary__container');
+                    const topGap = popup ? popup.scrollY + container.getBoundingClientRect().top : window.pageYOffset + container.getBoundingClientRect().top;
+                    if (popup) {
+                        console.log(popup.scrollHeight);
+                        popup.scrollTo({
+                            top: topGap - 15,
+                        })
+                    } else {
+                        window.scrollTo({
+                            top: topGap - 15
+                        })
+                    }
                 })
             }
 
@@ -56,15 +70,9 @@ const bankOffer = () => {
                     btn.addEventListener('click', () => {
                         selectorList.querySelectorAll('.bank-offer-selector-list__btn').forEach(btn => btn.classList.remove('_active'));
                         btn.classList.add('_active');
-                        bid.textContent = btn.textContent;
+                        bid.textContent = btn.querySelector('[data-bank-offer-item-m-prc]').textContent;
                         numberToAnim(monthPaymentTop, 0, Number(monthPayment.dataset.bankOfferItemMPayment), '₽');
                         updateTopInfo();
-                        if (!item.classList.contains('_init')) {
-                            item.classList.add('_init');
-                            numberToAnim(monthPayment, 0, Number(monthPayment.dataset.bankOfferItemMPayment), '₽')
-                            numberToAnim(priceBid, 0, Number(priceBid.dataset.bankOfferItemBPrice), '₽')
-                            numberToAnim(benefit, 0, Number(benefit.dataset.bankOfferItemBenefit), '₽')
-                        }
                     })
                 }
             })
@@ -136,8 +144,12 @@ const bankOffer = () => {
             })
             if (closeBtn) {
                 closeBtn.addEventListener('click', () => {
+                    const topGap = window.pageYOffset + container.getBoundingClientRect().top;
                     addInfo.classList.remove('_active');
                     selectorContent.setAttribute('hidden', '');
+                    window.scrollTo({
+                        top: topGap - 15,
+                    })
                 })
             }
         }

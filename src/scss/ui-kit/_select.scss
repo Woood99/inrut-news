@@ -471,7 +471,6 @@
 .select-secondary {
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
-
     &__wrapper {
         height: 48px;
         position: relative;
@@ -602,7 +601,17 @@
             &.is-selected {
                 opacity: 0.45;
                 pointer-events: none;
-
+                &::before {
+                    content: url(../img/check-mark--blue.svg);
+                    background-size: 14px 14px;
+                    background-repeat: no-repeat;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 16px;
+                    width: 16px;
+                    height: 20px;
+                }
                 &.choices__item--selectable {
                     cursor: default;
                 }

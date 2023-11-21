@@ -62,20 +62,20 @@
                         <span>К списку заявок</span>
                     </a>
                     <h1 class="purchase-request__title top-page-inner-title__title title-1" data-da=".purchase-request__body,1212,first">
-                        Моя заявка
+                        Заявка на покупку
                     </h1>
                     <div class="purchase-request__btns top-page-inner-title__btns">
-                        <button type="button" class="btn btn-reset delete-btn top-page-inner-title__btn" title="Закрыть заявку">
+                        <button type="button" class="btn btn-reset top-page-inner-title__btn share-btn" data-popup-path="share-app" title="Поделиться">
                             <svg>
-                                <use xlink:href="img/sprite.svg#trash"></use>
+                                <use xlink:href="img/sprite.svg#share"></use>
                             </svg>
-                            <span>Закрыть заявку</span>
+                            <span>Поделиться</span>
                         </button>
-                        <button type="button" class="btn btn-reset edit-btn top-page-inner-title__btn" title="Редактировать">
+                        <button type="button" class="btn btn-reset top-page-inner-title__btn complain-btn" data-popup-path="complaint">
                             <svg>
-                                <use xlink:href="img/sprite.svg#pencil"></use>
+                                <use xlink:href="img/sprite.svg#complain"></use>
                             </svg>
-                            <span>Редактировать</span>
+                            <span>Пожаловаться</span>
                         </button>
                     </div>
                 </div>
@@ -190,80 +190,88 @@
                             <div class="bid-maps__container map-primary remove-copyrights-pane" id="bid-maps"></div>
                         </div>
                     </div>
-                    <div class="bid__sidebar">
-                        <div class="_sticky">
-                            <div class="bid__messages bid-messages bid-messages--textarea">
-                                <h2 class="bid__title title-2">
-                                    Короткое сообщение от Алексея Г.
-                                </h2>
-                                <div class="bid-messages__wrapper">
-                                    <div class="simplebar-primary">
-                                        <div class="bid__message message-item">
-                                            <div class="message-item__user">
-                                                <div class="message-item__avatar avatar">
-                                                    <img loading="lazy" src="./img/avatar-1.jpg" width="30" height="30" alt="Алексей Г.">
-                                                </div>
-                                                <span class="message-item__name">
-                                                    Алексей Г.
-                                                </span>
-                                                <span class="message-item__pos">Агент покупателя</span>
-                                            </div>
-                                            <div class="message-item__text">
-                                                <p>
-                                                    Объект нравится. <br>
-                                                    Готов посмотреть объект 18.01 с 09:00 до 19:00
-                                                </p>
-                                                <span>09:45</span>
-                                            </div>
-                                            <div class="message-item__text">
-                                                <p>
-                                                    Объект нравится.
-                                                </p>
-                                                <span>09:45</span>
-                                            </div>
-                                            <time datetime="2023-06-18" class="message-item__time">19 июня</time>
-                                            <div class="message-item__text">
-                                                <p>
-                                                    :)
-                                                </p>
-                                                <span>09:45</span>
-                                            </div>
-                                            <div class="message-item__text">
-                                                <p>
-                                                    Супер
-                                                </p>
-                                                <span>09:45</span>
-                                            </div>
-                                            <div class="message-item__text">
-                                                <p>
-                                                    asd
-                                                </p>
-                                                <span>09:45</span>
-                                            </div>
-                                            <div class="message-item__text">
-                                                <p>
-                                                    Объект нравится. <br>
-                                                    Готов посмотреть объект 18.01 с 09:00 до 19:00
-                                                </p>
-                                                <span>09:45</span>
-                                            </div>
-                                            <div class="message-item__text">
-                                                <p>
-                                                    Объект нравится.
-                                                </p>
-                                                <span>09:45</span>
-                                            </div>
+                    <div class="bid__messages bid-messages">
+                        <h2 class="bid__title title-2">
+                            Короткое сообщение от Алексея Г.
+                        </h2>
+                        <div class="bid-messages__wrapper">
+                            <div class="simplebar-primary">
+                                <div class="bid__message message-item">
+                                    <div class="message-item__user">
+                                        <div class="message-item__avatar avatar">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" width="30" height="30" alt="Алексей Г.">
                                         </div>
+                                        <span class="message-item__name">
+                                            Алексей Г.
+                                        </span>
+                                        <span class="message-item__pos">Агент покупателя</span>
                                     </div>
-                                    <div class="bid-messages__bottom textarea-secondary" data-textarea-secondary-max-height="83" data-textarea-secondary-min-height="83">
-                                        <textarea class="input-reset textarea-secondary__input" maxlength="225" placeholder="Написать короткое сообщение"></textarea>
-                                        <button type="button" class="btn btn-reset" title="Отправить">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#send"></use>
-                                            </svg>
-                                        </button>
+                                    <div class="message-item__text">
+                                        <p>
+                                            Объект нравится. <br>
+                                            Готов посмотреть объект 18.01 с 09:00 до 19:00
+                                        </p>
+                                        <span>09:45</span>
+                                    </div>
+                                    <div class="message-item__text">
+                                        <p>
+                                            Объект нравится.
+                                        </p>
+                                        <span>09:45</span>
+                                    </div>
+                                    <time datetime="2023-06-18" class="message-item__time">19 июня</time>
+                                    <div class="message-item__text">
+                                        <p>
+                                            :)
+                                        </p>
+                                        <span>09:45</span>
+                                    </div>
+                                    <div class="message-item__text">
+                                        <p>
+                                            Супер
+                                        </p>
+                                        <span>09:45</span>
+                                    </div>
+                                    <div class="message-item__text">
+                                        <p>
+                                            asd
+                                        </p>
+                                        <span>09:45</span>
+                                    </div>
+                                    <div class="message-item__text">
+                                        <p>
+                                            Объект нравится. <br>
+                                            Готов посмотреть объект 18.01 с 09:00 до 19:00
+                                        </p>
+                                        <span>09:45</span>
+                                    </div>
+                                    <div class="message-item__text">
+                                        <p>
+                                            Объект нравится.
+                                        </p>
+                                        <span>09:45</span>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bid__sidebar">
+                        <div class="_sticky">
+                            <div class="bid__user bid-user">
+                                <div class="bid-user__avatar avatar">
+                                    <img loading="lazy" src="./img/avatar-1.jpg" width="129" height="129" alt="Алексей Г.">
+                                </div>
+                                <div class="bid-user__content">
+                                    <a href="#" class="bid-user__name">
+                                        Алексей Г.
+                                    </a>
+                                    <time class="bid-user__time" datetime="2022-12-12">
+                                        Покупатель был в сети 12.12.2022
+                                    </time>
+                                </div>
+                                <button type="button" class="btn btn-reset btn-primary bid-user__btn" data-popup-path="suggest-object">
+                                    Предложить объект
+                                </button>
                             </div>
                             <div class="purchase-request__history" data-da=".purchase-request,1212,2">
                                 <h2 class="title-3 purchase-request__history-title">История изменения заявки</h2>

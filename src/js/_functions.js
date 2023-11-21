@@ -32,6 +32,7 @@ popup(null, 'complaint-object');
 popup(null, 'complaint-object-two');
 popup(null, 'thanks');
 popup(null, 'object-not');
+popup(null, 'object-not-two');
 popup(null, 'interest-rate-modal');
 popup({
     isOpen: (settingsModal) => {

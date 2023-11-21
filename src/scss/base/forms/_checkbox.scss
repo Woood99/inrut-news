@@ -162,18 +162,21 @@
     &__label {
         cursor: pointer;
         display: flex;
-        align-items: center;
         justify-content: center;
 
         &::before {
             content: '';
             width: 16px;
             height: 16px;
+            flex: 0 0 16px;
             background-color: var(--white);
             border: 2px solid #b3bcc5;
             border-radius: 4px;
             transition: background-color $transitionSpeed $transitionFunction,
                 border $transitionSpeed $transitionFunction;
+
+                position: relative;
+                top: 2.5px;
         }
 
         &::after {
@@ -183,9 +186,8 @@
             opacity: 0;
             visibility: hidden;
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
             left: 0;
+            top: 2.5px;
             transition: opacity $transitionSpeed $transitionFunction,
                 visibility $transitionSpeed $transitionFunction,
                 filter $transitionSpeed $transitionFunction;

@@ -162,6 +162,8 @@ export const cardPrimaryActions = () => {
             const favorite = e.target.closest('.card-primary__info--favorite');
             const copiesBtn = e.target.closest('.card-primary__copies-btn');
             const copiesClose = e.target.closest('.card-primary__copies-close');
+            const dislikeBtn = e.target.closest('.card-primary__info--dislike-btn');
+            const likeBtn = e.target.closest('.card-primary__info--like-btn');
             if (favorite && !(favorite.dataset.popupPath && favorite.dataset.popupPath === 'favorite-two')) {
                 e.preventDefault();
                 card.querySelectorAll('.card-primary__info--favorite').forEach(el => {
@@ -179,6 +181,9 @@ export const cardPrimaryActions = () => {
             if (copiesBtn || copiesClose) {
                 e.preventDefault();
                 copiesBlock(card, card.querySelector('.card-primary__copies-btn'), card.querySelector('.card-primary__copies'));
+            }
+            if (dislikeBtn || likeBtn){
+                e.preventDefault();
             }
         })
     })

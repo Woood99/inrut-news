@@ -4476,6 +4476,7 @@ __webpack_require__.r(__webpack_exports__);
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'complaint-object-two');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'thanks');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'object-not');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'object-not-two');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'interest-rate-modal');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])({
   isOpen: settingsModal => {
@@ -5232,6 +5233,8 @@ const cardPrimaryActions = () => {
       const favorite = e.target.closest('.card-primary__info--favorite');
       const copiesBtn = e.target.closest('.card-primary__copies-btn');
       const copiesClose = e.target.closest('.card-primary__copies-close');
+      const dislikeBtn = e.target.closest('.card-primary__info--dislike-btn');
+      const likeBtn = e.target.closest('.card-primary__info--like-btn');
       if (favorite && !(favorite.dataset.popupPath && favorite.dataset.popupPath === 'favorite-two')) {
         e.preventDefault();
         card.querySelectorAll('.card-primary__info--favorite').forEach(el => {
@@ -5249,6 +5252,9 @@ const cardPrimaryActions = () => {
       if (copiesBtn || copiesClose) {
         e.preventDefault();
         copiesBlock(card, card.querySelector('.card-primary__copies-btn'), card.querySelector('.card-primary__copies'));
+      }
+      if (dislikeBtn || likeBtn) {
+        e.preventDefault();
       }
     });
   });

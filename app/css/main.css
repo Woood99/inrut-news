@@ -896,9 +896,6 @@ textarea.input-reset {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
@@ -907,12 +904,17 @@ textarea.input-reset {
   content: "";
   width: 16px;
   height: 16px;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 16px;
+  flex: 0 0 16px;
   background-color: var(--white);
   border: 2px solid #b3bcc5;
   border-radius: 4px;
   -webkit-transition: background-color 0.4s ease-in-out, border 0.4s ease-in-out;
   -o-transition: background-color 0.4s ease-in-out, border 0.4s ease-in-out;
   transition: background-color 0.4s ease-in-out, border 0.4s ease-in-out;
+  position: relative;
+  top: 2.5px;
 }
 .checkbox-secondary__label::after {
   content: "";
@@ -921,11 +923,8 @@ textarea.input-reset {
   opacity: 0;
   visibility: hidden;
   position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
   left: 0;
+  top: 2.5px;
   -webkit-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, -webkit-filter 0.4s ease-in-out;
   transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, -webkit-filter 0.4s ease-in-out;
   -o-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, filter 0.4s ease-in-out;
@@ -5772,16 +5771,6 @@ textarea.input-reset {
   width: 100%;
 }
 
-.object-not-popup__title {
-  padding-top: 16px;
-  margin-top: 24px;
-  border-top: 1px solid var(--primary100);
-}
-@media (max-width: 768px) {
-  .object-not-popup__title {
-    margin-top: 16px;
-  }
-}
 .object-not-popup__descr {
   margin-top: 10px;
   color: var(--primary600);
@@ -15756,7 +15745,7 @@ textarea.input-reset {
   }
 }
 .card-primary__price {
-  margin-top: 24px;
+  margin-bottom: 24px;
 }
 @media (max-width: 1024px) {
   .card-primary__price {
@@ -23157,6 +23146,7 @@ textarea.input-reset {
     display: grid;
     -ms-grid-columns: 31.0039370079% 1fr;
     grid-template-columns: 31.0039370079% 1fr;
+    min-height: 375px;
     height: auto;
   }
   .control-cards__content--vertical .card-primary__top {
@@ -23184,6 +23174,8 @@ textarea.input-reset {
     -ms-grid-columns: 1fr max-content;
     grid-template-columns: 1fr -webkit-max-content;
     grid-template-columns: 1fr max-content;
+    grid-auto-rows: -webkit-max-content;
+    grid-auto-rows: max-content;
     grid-column-gap: 15px;
     width: 100%;
     padding: 24px 24px 0;
@@ -23228,7 +23220,6 @@ textarea.input-reset {
     grid-column: 1/2;
   }
   .control-cards__content--vertical .card-primary__bottom {
-    margin-top: 88px;
     -ms-grid-column: 2;
     -ms-grid-column-span: 1;
     grid-column: 2/3;

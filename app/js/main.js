@@ -4698,13 +4698,9 @@ const bankOffer = () => {
       });
       if (closeBtn) {
         closeBtn.addEventListener('click', () => {
-          selector.classList.remove('_active');
-          selectorContent.setAttribute('hidden', '');
-          if (additional) additional.setAttribute('hidden', '');
           const popup = container.closest('.popup-primary__container');
-          const topGap = popup ? popup.scrollY + container.getBoundingClientRect().top : window.pageYOffset + container.getBoundingClientRect().top;
+          const topGap = popup ? popup.offsetHeight + container.getBoundingClientRect().top : window.pageYOffset + container.getBoundingClientRect().top;
           if (popup) {
-            console.log(popup.scrollHeight);
             popup.scrollTo({
               top: topGap - 15
             });
@@ -4713,6 +4709,9 @@ const bankOffer = () => {
               top: topGap - 15
             });
           }
+          selector.classList.remove('_active');
+          selectorContent.setAttribute('hidden', '');
+          if (additional) additional.setAttribute('hidden', '');
         });
       }
     }
@@ -4803,12 +4802,19 @@ const bankOffer = () => {
       });
       if (closeBtn) {
         closeBtn.addEventListener('click', () => {
-          const topGap = window.pageYOffset + container.getBoundingClientRect().top;
+          const popup = container.closest('.popup-primary__container');
+          const topGap = popup ? popup.offsetHeight + container.getBoundingClientRect().top : window.pageYOffset + container.getBoundingClientRect().top;
+          if (popup) {
+            popup.scrollTo({
+              top: topGap - 15
+            });
+          } else {
+            window.scrollTo({
+              top: topGap - 15
+            });
+          }
           addInfo.classList.remove('_active');
           selectorContent.setAttribute('hidden', '');
-          window.scrollTo({
-            top: topGap - 15
-          });
         });
       }
     }

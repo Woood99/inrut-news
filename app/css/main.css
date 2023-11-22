@@ -36671,7 +36671,7 @@ textarea.input-reset {
   transform: rotate(-180deg);
 }
 .bank-offer__selector-content {
-  margin: 0 8px;
+  margin: 32px 8px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -37013,7 +37013,6 @@ textarea.input-reset {
 }
 .bank-offer-selector-list__item:not(:first-child) {
   font-weight: 500;
-  border: 1px solid var(--primary200);
   border-radius: 12px;
 }
 .bank-offer-selector-list__btn {
@@ -37034,6 +37033,9 @@ textarea.input-reset {
   gap: 24px;
   font-size: var(--default-fz);
   line-height: var(--default-lh);
+  -webkit-transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out, border 0.4s ease-in-out;
+  -o-transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out, border 0.4s ease-in-out;
+  transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out, border 0.4s ease-in-out;
 }
 .bank-offer-selector-list__btn > div,
 .bank-offer-selector-list__btn span {
@@ -37044,9 +37046,6 @@ textarea.input-reset {
   font-size: var(--default-fz);
   line-height: var(--default-lh);
   font-weight: 400;
-  -webkit-transition: color 0.4s ease-in-out;
-  -o-transition: color 0.4s ease-in-out;
-  transition: color 0.4s ease-in-out;
 }
 .bank-offer-selector-list__btn div {
   position: absolute;
@@ -37059,7 +37058,7 @@ textarea.input-reset {
   -ms-flex: 0 0 var(--size);
   flex: 0 0 var(--size);
   border-radius: 50%;
-  background-color: var(--blue);
+  background-color: var(--white);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -37085,13 +37084,15 @@ textarea.input-reset {
 .bank-offer-selector-list__btn div svg {
   width: 10px;
   height: 10px;
-  stroke: var(--white);
+  stroke: var(--blue);
   stroke-width: 1.5px;
   fill: none;
 }
 @media (min-width: 1213px) {
   .bank-offer-selector-list__btn:hover {
     border: 1px solid var(--blue);
+    background-color: var(--blue);
+    color: var(--white);
   }
   .bank-offer-selector-list__btn:hover div {
     opacity: 1;
@@ -37103,6 +37104,8 @@ textarea.input-reset {
 }
 .bank-offer-selector-list__btn._active {
   border: 1px solid var(--blue);
+  background-color: var(--blue);
+  color: var(--white);
 }
 .bank-offer-selector-list__btn._active div {
   opacity: 1;

@@ -290,7 +290,7 @@
             color: var(--white);
             font-weight: 400;
             background-color: var(--blue);
-            padding: 4px 8px;
+            padding: 7px 12px;
 
             backdrop-filter: blur(2px);
             border-radius: 8px;
@@ -302,8 +302,8 @@
 
         &--dislike {
             pointer-events: all;
-            width: 31px;
-            height: 28px;
+            width: 35px;
+            height: 33px;
 
             display: flex;
             align-items: center;
@@ -314,8 +314,8 @@
             border-radius: 8px;
 
             svg {
-                width: 15px;
-                height: 15px;
+                width: 17px;
+                height: 17px;
                 fill: var(--blue);
                 stroke: none;
             }
@@ -331,8 +331,8 @@
 
         &--comment {
             pointer-events: all;
-            width: 31px;
-            height: 28px;
+            width: 35px;
+            height: 33px;
 
             display: flex;
             align-items: center;
@@ -343,8 +343,8 @@
             border-radius: 8px;
 
             svg {
-                width: 15px;
-                height: 15px;
+                width: 17px;
+                height: 17px;
                 fill: var(--blue);
                 stroke: none;
             }
@@ -377,8 +377,8 @@
             border-radius: 8px;
 
             button {
-                width: 31px;
-                height: 28px;
+                width: 35px;
+                height: 33px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -389,8 +389,8 @@
                 transition: border-radius $transitionSpeed $transitionFunction;
 
                 svg {
-                    width: 15px;
-                    height: 15px;
+                    width: 17px;
+                    height: 17px;
                     fill: var(--blue);
                 }
             }
@@ -639,8 +639,6 @@
     }
 
     &__price {
-        margin-bottom: 16px;
-
         @media (max-width:$tablet-max) {
             grid-column: 1/3;
         }
@@ -691,11 +689,14 @@
         align-items: center;
 
         span {
-            &:nth-child(1) {}
+            &:nth-child(1) {
+                font-size: var(--big-small-fz);
+                line-height: var(--big-small-fz);
+            }
 
             &:nth-child(2) {
                 color: var(--primaryTwo);
-                font-size: var(--very-small-fz);
+                font-size: var(--default-fz);
                 line-height: 1;
                 font-weight: 400;
                 margin-left: 8px;
@@ -800,20 +801,21 @@
     }
 
     &__name {
+        margin-top: 4px;
         @media (max-width:$tablet-max) {
             grid-column: 1/2;
         }
     }
 
     &__address {
-        margin-top: 5px;
+        margin-top: 4px;
         font-size: var(--default-fz);
         line-height: var(--little-small-lh);
 
         &--one {
             display: block;
             font-weight: 500;
-            color: var(--dark);
+            color: var(--blue);
         }
 
         &--two {
@@ -831,8 +833,8 @@
     }
 
     &__term {
-        margin-top: 5px;
-        margin-bottom: 16px;
+        margin-top: 4px;
+        margin-bottom: 8px;
         display: block;
         color: var(--primary600);
         font-size: var(--default-fz);

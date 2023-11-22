@@ -33,6 +33,17 @@ const maps = () => {
                 });
                 positionElement(map);
                 removeControlsPrimary(map, '#bid-maps');
+                if (item.closest('.history-changes')) {
+                    map.behaviors.enable(['scrollZoom']);
+                    map.controls.remove('fullscreenControl');
+                    map.controls.get('zoomControl').options.set({
+                        position: {
+                            top: 20,
+                            right: 20
+                        },
+                        maxWidth: '44'
+                    })
+                }
             }
             ymaps.ready(init);
         });

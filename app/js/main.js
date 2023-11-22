@@ -9929,6 +9929,17 @@ const maps = () => {
         });
         positionElement(map);
         removeControlsPrimary(map, '#bid-maps');
+        if (item.closest('.history-changes')) {
+          map.behaviors.enable(['scrollZoom']);
+          map.controls.remove('fullscreenControl');
+          map.controls.get('zoomControl').options.set({
+            position: {
+              top: 20,
+              right: 20
+            },
+            maxWidth: '44'
+          });
+        }
       }
       ymaps.ready(init);
     });
@@ -10524,13 +10535,12 @@ const mortgage = () => {
       }
       const targetCredit = containerAdd.querySelector('.object-calc-mort__target-credit');
       const targetCreditMap = {
-        'Квартира в новостройке': [[1, 2, 3, 4, 5, 6], [1]],
-        'Квартира на вторичном рынке': [[1, 4], [1]],
-        'Дом или пенхаус': [[2, 4, 3, 5, 6], [5]],
-        'Земельный участок': [[2, 4, 3, 5, 6], [5]],
-        'Комната': [[1], [1]],
-        'Коммерческая недвижимость': [[1], [1]],
-        'Гараж,машино-место или кладовая': [[1], [1]]
+        'Не выбрано': [[1, 2, 3, 4, 5, 6], [1]],
+        'Новостройки': [[1, 2, 3, 4, 5], [1]],
+        'Вторичка': [[1, 4], [1]],
+        'Дом, коттеджи, дачи': [[1, 2, 3, 4, 5, 6], [5]],
+        'Земельные участки': [[1, 2, 3, 5, 6], [1]],
+        'Коммерческая недвижимость': [[1], [1]]
       };
       targetCredit.addEventListener('change', () => {
         const name = targetCredit.querySelector('.choices__item.choices__item--selectable').textContent.trim();

@@ -2298,6 +2298,7 @@ textarea.input-reset {
   max-width: 100%;
   vertical-align: bottom;
   position: relative;
+  background-color: #f7f9fd;
 }
 .popup-primary--history-changes .popup-primary__close {
   -webkit-transform: translateX(16px);
@@ -2471,11 +2472,13 @@ textarea.input-reset {
 
 .history-changes {
   position: relative;
+  pointer-events: none;
 }
 .history-changes__title {
   margin-bottom: 24px;
   max-width: 1300px;
   padding: 0;
+  pointer-events: all;
 }
 @media (max-width: 1500px) {
   .history-changes__title {
@@ -2491,7 +2494,7 @@ textarea.input-reset {
   -ms-flex-pack: justify;
   justify-content: space-between;
   padding: 0;
-  max-width: 1322px;
+  max-width: 1372px;
 }
 @media (max-width: 1500px) {
   .history-changes__content {
@@ -2509,6 +2512,7 @@ textarea.input-reset {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+  pointer-events: all;
 }
 @media (max-width: 1212px) {
   .history-changes__nav.nav-arrow-primary {
@@ -2541,14 +2545,12 @@ textarea.input-reset {
   margin: -16px;
   padding: 16px;
 }
+.history-changes .bid {
+  pointer-events: all;
+  overflow: hidden;
+}
 .history-changes .bid__time {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: end;
-  margin-bottom: 16px;
+  margin-left: auto;
 }
 .history-changes .bid__title,
 .history-changes .bid .bid-import__title {
@@ -2558,16 +2560,26 @@ textarea.input-reset {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  line-height: 1;
+  white-space: nowrap;
+  max-width: 95%;
 }
-.history-changes .bid__title span,
-.history-changes .bid .bid-import__title span {
+.history-changes .bid__title > span,
+.history-changes .bid .bid-import__title > span {
   margin-left: 6px;
+  margin-top: 2px;
   color: var(--primaryTwo);
   font-weight: 500;
-  font-size: var(--very-small-fz);
+  font-size: var(--small-fz);
+  line-height: var(--small-lh);
   line-height: 1;
-  margin-top: 2px;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.history-changes .bid__title > span span,
+.history-changes .bid .bid-import__title > span span {
+  color: var(--blue);
 }
 
 .edit-user__form {
@@ -12602,12 +12614,16 @@ textarea.input-reset {
   height: 38px;
 }
 
-.yandex-map-active-fullscreen .ymaps-2-1-79-float-button.ymaps-2-1-79-_hidden-text.ymaps-2-1-79-_checked {
+.page__body > ymaps {
+  bottom: 0;
+  right: 0;
+}
+.page__body > ymaps .ymaps-2-1-79-float-button.ymaps-2-1-79-_hidden-text.ymaps-2-1-79-_checked {
   position: relative;
   z-index: 99;
   background-color: #fff;
 }
-.yandex-map-active-fullscreen .ymaps-2-1-79-float-button .ymaps-2-1-79-float-button-icon_icon_collapse {
+.page__body > ymaps .ymaps-2-1-79-float-button .ymaps-2-1-79-float-button-icon_icon_collapse {
   background-image: url("../img/x-black.svg") !important;
 }
 
@@ -22177,10 +22193,32 @@ textarea.input-reset {
   }
 }
 .bid__time {
-  color: var(--primaryTwo);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: var(--primary600);
   font-size: var(--small-fz);
-  line-height: var(--small-lh);
-  font-weight: 400;
+  line-height: 1;
+  font-weight: 500;
+  padding: 7px 9.5px;
+  background-color: var(--primary100);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 255px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.bid__time:not(:last-child) {
+  margin-bottom: 16px;
+}
+.bid__time span:not(:last-child) {
+  margin-right: 16px;
 }
 @media (max-width: 768px) {
   .bid__time {
@@ -22468,8 +22506,9 @@ textarea.input-reset {
 .bid-maps .bid__title span {
   color: var(--primaryTwo);
   font-weight: 500;
-  font-size: var(--default-fz);
-  line-height: var(--default-lh);
+  font-size: var(--small-fz);
+  line-height: var(--small-lh);
+  line-height: 1;
 }
 .bid-maps .bid__title span span {
   position: relative;

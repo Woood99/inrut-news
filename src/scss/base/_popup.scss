@@ -1256,6 +1256,7 @@
                 max-width: 100%;
                 vertical-align: bottom;
                 position: relative;
+                background-color: #f7f9fd;
             }
 
             &__close {
@@ -1465,12 +1466,14 @@
 
 .history-changes {
     position: relative;
+    pointer-events: none;
 
     &__title {
         margin-bottom: 24px;
 
         max-width: 1300px;
         padding: 0;
+        pointer-events: all;
 
         @media (max-width:1500px) {
             max-width: 1200px;
@@ -1483,7 +1486,7 @@
         justify-content: space-between;
         padding: 0;
 
-        max-width: calc(1250px + (36px*2));
+        max-width: calc(1300px + (36px*2));
 
         @media (max-width:1500px) {
             max-width: calc(1200px + (36px*2));
@@ -1497,6 +1500,7 @@
             position: sticky;
             top: 50%;
             transform: translateY(-50%);
+            pointer-events: all;
 
             @media (max-width:$desktop) {
                 display: none;
@@ -1528,25 +1532,36 @@
     }
 
     .bid {
+        pointer-events: all;
+        overflow: hidden;
+        &__body {
+        }
+
         &__time {
-            display: flex;
-            justify-content: end;
-            margin-bottom: 16px;
+            margin-left: auto;
         }
 
         &__title,
         .bid-import__title {
             display: flex;
             align-items: center;
-            line-height: 1;
-
-            span {
+            white-space: nowrap;
+            max-width: 95%;
+            >span {
                 margin-left: 6px;
+                margin-top: 2px;
                 color: var(--primaryTwo);
                 font-weight: 500;
-                font-size: var(--very-small-fz);
+                font-size: var(--small-fz);
+                line-height: var(--small-lh);
                 line-height: 1;
-                margin-top: 2px;
+
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                span {
+                    color: var(--blue);
+                }
             }
         }
     }

@@ -1,6 +1,6 @@
 function controlCards() {
     const containers = document.querySelectorAll('.control-cards');
-    if (!containers.length) return;
+    if (containers.length === 0) return;
     containers.forEach(container => {
         const btns = container.querySelectorAll('.control-cards__btn');
         const content = container.querySelector('.control-cards__content');

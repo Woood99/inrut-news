@@ -1,5 +1,4 @@
 import inputResize from '../modules/inputResize';
-import generateRandomID from '../modules/generateRandomID';
 import {
     emergingBlockScroll
 } from '../modules/emergingBlockScroll';

@@ -4644,11 +4644,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 const advancePayment = () => {
   const items = document.querySelectorAll('.advance-pay');
-  items.forEach(item => {
-    item.addEventListener('click', () => {
-      item.classList.toggle('_active');
+  if (items.length >= 1) {
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('_active');
+      });
     });
-  });
+  }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (advancePayment);
 
@@ -4666,172 +4668,172 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _modules_numberToAnim__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modules/numberToAnim */ "./src/js/modules/numberToAnim.js");
-/* harmony import */ var _modules_numberReplace__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/numberReplace */ "./src/js/modules/numberReplace.js");
-
 
 const bankOffer = () => {
   const items = document.querySelectorAll('.bank-offer');
-  items.forEach(container => {
-    const choiceContainer = container.querySelector('.bank-offer__choice');
-    const additional = container.querySelector('.bank-offer__additional');
-    const additionalItems = container.querySelectorAll('.bank-offer__additional-item');
-    const infoItems = container.querySelectorAll('.bank-offer__info-item');
-    const bid = infoItems[0].querySelector('[data-bank-offer-default-prc]');
-    const monthPaymentTop = infoItems[1].querySelector('div > span');
-    const term = infoItems[2].querySelector('div > span');
-    const sum = infoItems[3].querySelector('div > span');
-    const selector = container.querySelector('.bank-offer__selector');
-    if (selector) {
-      const btn = selector.querySelector('.bank-offer__selector-top');
-      const selectorContent = selector.querySelector('.bank-offer__selector-content');
-      const closeBtn = selector.querySelector('.bank-offer__close-item');
-      btn.addEventListener('click', () => {
-        if (!selector.classList.contains('_active')) {
-          selector.classList.add('_active');
-          selectorContent.removeAttribute('hidden');
-          if (additional) additional.removeAttribute('hidden');
-        } else {
-          selector.classList.remove('_active');
-          selectorContent.setAttribute('hidden', '');
-          if (additional) additional.setAttribute('hidden', '');
-        }
-      });
-      if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-          selector.classList.remove('_active');
-          selectorContent.setAttribute('hidden', '');
-          if (additional) additional.setAttribute('hidden', '');
-          const popup = container.closest('.popup-primary__container');
-          const topGap = popup ? popup.scrollTop + container.getBoundingClientRect().top : window.pageYOffset + container.getBoundingClientRect().top;
-          if (popup) {
-            popup.scrollTo({
-              top: topGap - 32 - 15
-            });
+  if (items.length >= 1) {
+    items.forEach(container => {
+      const choiceContainer = container.querySelector('.bank-offer__choice');
+      const additional = container.querySelector('.bank-offer__additional');
+      const additionalItems = container.querySelectorAll('.bank-offer__additional-item');
+      const infoItems = container.querySelectorAll('.bank-offer__info-item');
+      const bid = infoItems[0].querySelector('[data-bank-offer-default-prc]');
+      const monthPaymentTop = infoItems[1].querySelector('div > span');
+      const term = infoItems[2].querySelector('div > span');
+      const sum = infoItems[3].querySelector('div > span');
+      const selector = container.querySelector('.bank-offer__selector');
+      if (selector) {
+        const btn = selector.querySelector('.bank-offer__selector-top');
+        const selectorContent = selector.querySelector('.bank-offer__selector-content');
+        const closeBtn = selector.querySelector('.bank-offer__close-item');
+        btn.addEventListener('click', () => {
+          if (!selector.classList.contains('_active')) {
+            selector.classList.add('_active');
+            selectorContent.removeAttribute('hidden');
+            if (additional) additional.removeAttribute('hidden');
           } else {
-            window.scrollTo({
-              top: topGap - 15
-            });
+            selector.classList.remove('_active');
+            selectorContent.setAttribute('hidden', '');
+            if (additional) additional.setAttribute('hidden', '');
           }
         });
-      }
-    }
-    const selectorList = container.querySelector('.bank-offer-selector-list');
-    if (selectorList && additionalItems.length > 0) {
-      const items = selectorList.querySelectorAll('.bank-offer-selector-list__item');
-      let newPrc;
-      let defaultPrc;
-      let defaultPrcNumber;
-      let currentPrc;
-      updateTopInfo();
-      items.forEach(item => {
-        const btn = item.querySelector('.bank-offer-selector-list__btn');
-        const monthPayment = item.querySelector('[data-bank-offer-item-m-payment]');
-        const priceBid = item.querySelector('[data-bank-offer-item-b-price]');
-        const benefit = item.querySelector('[data-bank-offer-item-benefit]');
-        if (btn) {
-          btn.addEventListener('click', () => {
-            selectorList.querySelectorAll('.bank-offer-selector-list__btn').forEach(btn => btn.classList.remove('_active'));
-            btn.classList.add('_active');
-            bid.textContent = btn.querySelector('[data-bank-offer-item-m-prc]').textContent;
-            (0,_modules_numberToAnim__WEBPACK_IMPORTED_MODULE_0__["default"])(monthPaymentTop, 0, Number(monthPayment.dataset.bankOfferItemMPayment), '₽');
-            updateTopInfo();
+        if (closeBtn) {
+          closeBtn.addEventListener('click', () => {
+            selector.classList.remove('_active');
+            selectorContent.setAttribute('hidden', '');
+            if (additional) additional.setAttribute('hidden', '');
+            const popup = container.closest('.popup-primary__container');
+            const topGap = popup ? popup.scrollTop + container.getBoundingClientRect().top : window.pageYOffset + container.getBoundingClientRect().top;
+            if (popup) {
+              popup.scrollTo({
+                top: topGap - 32 - 15
+              });
+            } else {
+              window.scrollTo({
+                top: topGap - 15
+              });
+            }
           });
         }
-      });
-      additionalItems.forEach(item => {
-        const btn = item.querySelector('.bank-offer__additional-item__btn');
-        const descr = item.querySelector('.bank-offer__additional-item__descr');
-        moreDescr(btn, descr);
-        const toggle = item.querySelector('.toggle-checkbox');
-        const toggleInput = toggle.querySelector('input');
-        const span = toggle.previousElementSibling;
-        toggleInput.addEventListener('change', () => {
-          const elPrc = +numberPrcToNumber(span.textContent);
-          currentPrc = Number(currentPrc);
-          if (toggleInput.checked) {
-            span.classList.add('_active');
-            currentPrc = currentPrc + elPrc;
-          } else {
-            span.classList.remove('_active');
-            currentPrc = currentPrc - elPrc;
-          }
-          currentPrc = currentPrc.toFixed(1);
-          if (defaultPrcNumber != currentPrc) {
-            newPrc.removeAttribute('hidden');
-            defaultPrc.classList.add('_old');
-            newPrc.textContent = numberToNumberPrc(currentPrc);
-          } else {
-            newPrc.textContent = numberToNumberPrc(currentPrc);
-            newPrc.setAttribute('hidden', '');
-            defaultPrc.classList.remove('_old');
+      }
+      const selectorList = container.querySelector('.bank-offer-selector-list');
+      if (selectorList && additionalItems.length > 0) {
+        const items = selectorList.querySelectorAll('.bank-offer-selector-list__item');
+        let newPrc;
+        let defaultPrc;
+        let defaultPrcNumber;
+        let currentPrc;
+        updateTopInfo();
+        items.forEach(item => {
+          const btn = item.querySelector('.bank-offer-selector-list__btn');
+          const monthPayment = item.querySelector('[data-bank-offer-item-m-payment]');
+          const priceBid = item.querySelector('[data-bank-offer-item-b-price]');
+          const benefit = item.querySelector('[data-bank-offer-item-benefit]');
+          if (btn) {
+            btn.addEventListener('click', () => {
+              selectorList.querySelectorAll('.bank-offer-selector-list__btn').forEach(btn => btn.classList.remove('_active'));
+              btn.classList.add('_active');
+              bid.textContent = btn.querySelector('[data-bank-offer-item-m-prc]').textContent;
+              (0,_modules_numberToAnim__WEBPACK_IMPORTED_MODULE_0__["default"])(monthPaymentTop, 0, Number(monthPayment.dataset.bankOfferItemMPayment), '₽');
+              updateTopInfo();
+            });
           }
         });
-      });
-      function updateTopInfo() {
-        newPrc = container.querySelector('[data-bank-offer-new-prc]');
-        defaultPrc = container.querySelector('[data-bank-offer-default-prc]');
-        defaultPrcNumber = +Number(defaultPrc.textContent.replace('%', '').replace(',', '.')).toFixed(1);
-        currentPrc = +Number(defaultPrc.textContent.replace('%', '').replace(',', '.')).toFixed(1);
         additionalItems.forEach(item => {
-          const activeEl = item.querySelectorAll('._active');
-          activeEl.forEach(active => {
-            const elPrc = numberPrcToNumber(active.textContent);
-            currentPrc = (Number(currentPrc) + elPrc).toFixed(1);
+          const btn = item.querySelector('.bank-offer__additional-item__btn');
+          const descr = item.querySelector('.bank-offer__additional-item__descr');
+          moreDescr(btn, descr);
+          const toggle = item.querySelector('.toggle-checkbox');
+          const toggleInput = toggle.querySelector('input');
+          const span = toggle.previousElementSibling;
+          toggleInput.addEventListener('change', () => {
+            const elPrc = +numberPrcToNumber(span.textContent);
+            currentPrc = Number(currentPrc);
+            if (toggleInput.checked) {
+              span.classList.add('_active');
+              currentPrc = currentPrc + elPrc;
+            } else {
+              span.classList.remove('_active');
+              currentPrc = currentPrc - elPrc;
+            }
+            currentPrc = currentPrc.toFixed(1);
             if (defaultPrcNumber != currentPrc) {
               newPrc.removeAttribute('hidden');
               defaultPrc.classList.add('_old');
               newPrc.textContent = numberToNumberPrc(currentPrc);
+            } else {
+              newPrc.textContent = numberToNumberPrc(currentPrc);
+              newPrc.setAttribute('hidden', '');
+              defaultPrc.classList.remove('_old');
             }
           });
         });
-      }
-    }
-    const addInfo = container.querySelector('.bank-offer__add-info');
-    if (addInfo) {
-      const btn = addInfo.querySelector('.bank-offer__add-info-top');
-      const selectorContent = addInfo.querySelector('.bank-offer__add-info-content');
-      const closeBtn = addInfo.querySelector('.bank-offer__close-item');
-      btn.addEventListener('click', () => {
-        if (!addInfo.classList.contains('_active')) {
-          addInfo.classList.add('_active');
-          selectorContent.removeAttribute('hidden');
-        } else {
-          addInfo.classList.remove('_active');
-          selectorContent.setAttribute('hidden', '');
+        function updateTopInfo() {
+          newPrc = container.querySelector('[data-bank-offer-new-prc]');
+          defaultPrc = container.querySelector('[data-bank-offer-default-prc]');
+          defaultPrcNumber = +Number(defaultPrc.textContent.replace('%', '').replace(',', '.')).toFixed(1);
+          currentPrc = +Number(defaultPrc.textContent.replace('%', '').replace(',', '.')).toFixed(1);
+          additionalItems.forEach(item => {
+            const activeEl = item.querySelectorAll('._active');
+            activeEl.forEach(active => {
+              const elPrc = numberPrcToNumber(active.textContent);
+              currentPrc = (Number(currentPrc) + elPrc).toFixed(1);
+              if (defaultPrcNumber != currentPrc) {
+                newPrc.removeAttribute('hidden');
+                defaultPrc.classList.add('_old');
+                newPrc.textContent = numberToNumberPrc(currentPrc);
+              }
+            });
+          });
         }
-      });
-      if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-          addInfo.classList.remove('_active');
-          selectorContent.setAttribute('hidden', '');
-          const popup = container.closest('.popup-primary__container');
-          const topGap = popup ? popup.scrollTop + container.getBoundingClientRect().top : window.pageYOffset + container.getBoundingClientRect().top;
-          if (popup) {
-            popup.scrollTo({
-              top: topGap - 32 - 15
-            });
+      }
+      const addInfo = container.querySelector('.bank-offer__add-info');
+      if (addInfo) {
+        const btn = addInfo.querySelector('.bank-offer__add-info-top');
+        const selectorContent = addInfo.querySelector('.bank-offer__add-info-content');
+        const closeBtn = addInfo.querySelector('.bank-offer__close-item');
+        btn.addEventListener('click', () => {
+          if (!addInfo.classList.contains('_active')) {
+            addInfo.classList.add('_active');
+            selectorContent.removeAttribute('hidden');
           } else {
-            window.scrollTo({
-              top: topGap - 15
-            });
+            addInfo.classList.remove('_active');
+            selectorContent.setAttribute('hidden', '');
+          }
+        });
+        if (closeBtn) {
+          closeBtn.addEventListener('click', () => {
+            addInfo.classList.remove('_active');
+            selectorContent.setAttribute('hidden', '');
+            const popup = container.closest('.popup-primary__container');
+            const topGap = popup ? popup.scrollTop + container.getBoundingClientRect().top : window.pageYOffset + container.getBoundingClientRect().top;
+            if (popup) {
+              popup.scrollTo({
+                top: topGap - 32 - 15
+              });
+            } else {
+              window.scrollTo({
+                top: topGap - 15
+              });
+            }
+          });
+        }
+      }
+      function moreDescr(btn, descr) {
+        btn.addEventListener('click', () => {
+          if (!btn.classList.contains('_active')) {
+            btn.classList.add('_active');
+            btn.querySelector('span').textContent = 'Скрыть';
+            descr.removeAttribute('hidden');
+          } else {
+            btn.classList.remove('_active');
+            btn.querySelector('span').textContent = 'Подробнее';
+            descr.setAttribute('hidden', '');
           }
         });
       }
-    }
-    function moreDescr(btn, descr) {
-      btn.addEventListener('click', () => {
-        if (!btn.classList.contains('_active')) {
-          btn.classList.add('_active');
-          btn.querySelector('span').textContent = 'Скрыть';
-          descr.removeAttribute('hidden');
-        } else {
-          btn.classList.remove('_active');
-          btn.querySelector('span').textContent = 'Подробнее';
-          descr.setAttribute('hidden', '');
-        }
-      });
-    }
-  });
+    });
+  }
 };
 function numberToNumberPrc(number) {
   number = number.replace('.', ',');
@@ -6177,7 +6179,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 function controlCards() {
   const containers = document.querySelectorAll('.control-cards');
-  if (!containers.length) return;
+  if (containers.length === 0) return;
   containers.forEach(container => {
     const btns = container.querySelectorAll('.control-cards__btn');
     const content = container.querySelector('.control-cards__content');
@@ -6345,10 +6347,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "currentCreateCalc": () => (/* binding */ currentCreateCalc)
 /* harmony export */ });
 /* harmony import */ var _modules_inputResize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modules/inputResize */ "./src/js/modules/inputResize.js");
-/* harmony import */ var _modules_generateRandomID__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/generateRandomID */ "./src/js/modules/generateRandomID.js");
-/* harmony import */ var _modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../modules/emergingBlockScroll */ "./src/js/modules/emergingBlockScroll.js");
-/* harmony import */ var _inputs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./inputs */ "./src/js/components/inputs.js");
-
+/* harmony import */ var _modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/emergingBlockScroll */ "./src/js/modules/emergingBlockScroll.js");
+/* harmony import */ var _inputs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./inputs */ "./src/js/components/inputs.js");
 
 
 
@@ -6371,7 +6371,7 @@ function createCalcBody(mort) {
   }
   if (createItem) {
     createItem.addEventListener('click', () => {
-      (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_2__.emergingBlockScroll)('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
+      (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_1__.emergingBlockScroll)('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
       if (mort.closest('.tariff-card')) {
         if (!mort.querySelector('.create-calc-mort__item--field')) {
           const itemFieldHTML = `
@@ -6405,7 +6405,7 @@ function createCalcBody(mort) {
           createItem.insertAdjacentHTML('afterend', itemFieldHTML);
           const currentItemField = mort.querySelector('.create-calc-mort__item--field');
           const createTextarea = currentItemField.querySelector('.create-calc-mort__create');
-          currentItemField.querySelectorAll('.input-text').forEach(item => (0,_inputs__WEBPACK_IMPORTED_MODULE_3__.currentInputText)(item));
+          currentItemField.querySelectorAll('.input-text').forEach(item => (0,_inputs__WEBPACK_IMPORTED_MODULE_2__.currentInputText)(item));
           createTextarea.addEventListener('click', () => {
             blockAdded(createTextarea);
           });
@@ -6431,7 +6431,7 @@ function createCalcBody(mort) {
               itemActionTariffCard(currentItem, false);
               currentItemField.remove();
             }
-            (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_2__.emergingBlockScroll)('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
+            (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_1__.emergingBlockScroll)('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
           });
         }
       } else {
@@ -6486,7 +6486,7 @@ function createCalcBody(mort) {
           createItem.insertAdjacentHTML('afterend', itemFieldHTML);
           const currentItemField = mort.querySelector('.create-calc-mort__item--field');
           const createTextarea = currentItemField.querySelector('.create-calc-mort__create');
-          currentItemField.querySelectorAll('.input-text').forEach(item => (0,_inputs__WEBPACK_IMPORTED_MODULE_3__.currentInputText)(item));
+          currentItemField.querySelectorAll('.input-text').forEach(item => (0,_inputs__WEBPACK_IMPORTED_MODULE_2__.currentInputText)(item));
           conditions(currentItemField);
           createTextarea.addEventListener('click', () => {
             blockAdded(createTextarea);
@@ -6569,7 +6569,7 @@ function createCalcBody(mort) {
               ;
               currentItemField.remove();
             }
-            (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_2__.emergingBlockScroll)('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
+            (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_1__.emergingBlockScroll)('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
           });
         }
       }
@@ -6608,11 +6608,11 @@ function itemActionPrograms(item) {
       if (!item.classList.contains('_active')) {
         item.classList.add('_active');
         info.removeAttribute('hidden');
-        (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_2__.emergingBlockScroll)('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
+        (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_1__.emergingBlockScroll)('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
       } else {
         item.classList.remove('_active');
         info.setAttribute('hidden', '');
-        (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_2__.emergingBlockScroll)('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
+        (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_1__.emergingBlockScroll)('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
       }
     }
   });
@@ -6710,7 +6710,7 @@ function conditions(item) {
         </div>
         `;
     conditionsCreate.addEventListener('click', () => {
-      (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_2__.emergingBlockScroll)('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
+      (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_1__.emergingBlockScroll)('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
       !conditionsCreate.classList.contains('_active') ? conditionsCreateBody() : conditionsCreateCancel();
     });
     function conditionsCreateBody() {
@@ -6718,7 +6718,7 @@ function conditions(item) {
       conditionsCreateText.textContent = conditionsCreateMap.cancel;
       top.insertAdjacentHTML('afterend', bodyHTML);
       const conditionsBody = conditions.querySelector('.create-calc-conditions__create-body');
-      conditionsBody.querySelectorAll('.input-text').forEach(item => (0,_inputs__WEBPACK_IMPORTED_MODULE_3__.currentInputText)(item));
+      conditionsBody.querySelectorAll('.input-text').forEach(item => (0,_inputs__WEBPACK_IMPORTED_MODULE_2__.currentInputText)(item));
       const createTextarea = conditions.querySelector('.create-calc-conditions__create-descr');
       if (createTextarea) {
         createTextarea.addEventListener('click', () => {
@@ -6792,7 +6792,7 @@ function conditions(item) {
       }
     }
     conditions.addEventListener('click', e => {
-      (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_2__.emergingBlockScroll)('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
+      (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_1__.emergingBlockScroll)('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true, true);
       const target = e.target;
       const edit = target.closest('.create-calc-conditions__item-edit');
       const remove = target.closest('.create-calc-conditions__item-remove');
@@ -6855,7 +6855,7 @@ function blockAdded(block) {
   function body(maxLength) {
     block.insertAdjacentHTML('beforebegin', textareaHTML);
     const currentBlock = block.previousElementSibling;
-    (0,_inputs__WEBPACK_IMPORTED_MODULE_3__.valueToValueAttr)(currentBlock.querySelector('.textarea-primary__input'));
+    (0,_inputs__WEBPACK_IMPORTED_MODULE_2__.valueToValueAttr)(currentBlock.querySelector('.textarea-primary__input'));
     const remove = currentBlock.querySelector('.textarea-primary__remove');
     remove.addEventListener('click', () => {
       currentBlock.remove();
@@ -11817,21 +11817,23 @@ __webpack_require__.r(__webpack_exports__);
 const сharacteristicsBlock = () => {
   const checkboxes = document.querySelectorAll('[data-сharacteristics-block-checkbox]');
   const targets = document.querySelectorAll('[data-сharacteristics-block-target]');
-  checkboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', () => {
-      const nameCheckbox = checkbox.dataset.сharacteristicsBlockCheckbox;
-      checkboxes.forEach(item => {
-        if (item !== checkbox) item.checked = false;
-      });
-      targets.forEach(target => {
-        if (target.dataset.сharacteristicsBlockTarget === nameCheckbox && checkbox.checked) {
-          target.removeAttribute('hidden');
-        } else {
-          target.setAttribute('hidden', '');
-        }
+  if (checkboxes.length >= 1 && targets.length >= 1) {
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        const nameCheckbox = checkbox.dataset.сharacteristicsBlockCheckbox;
+        checkboxes.forEach(item => {
+          if (item !== checkbox) item.checked = false;
+        });
+        targets.forEach(target => {
+          if (target.dataset.сharacteristicsBlockTarget === nameCheckbox && checkbox.checked) {
+            target.removeAttribute('hidden');
+          } else {
+            target.setAttribute('hidden', '');
+          }
+        });
       });
     });
-  });
+  }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (сharacteristicsBlock);
 
@@ -14330,32 +14332,6 @@ const enableScroll = () => {
   document.documentElement.style.scrollBehavior = 'smooth';
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (enableScroll);
-
-/***/ }),
-
-/***/ "./src/js/modules/generateRandomID.js":
-/*!********************************************!*\
-  !*** ./src/js/modules/generateRandomID.js ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-const generateRandomID = length => {
-  let result = '';
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  const charactersLength = characters.length;
-  let counter = 0;
-  while (counter < length) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    counter += 1;
-  }
-  return result;
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (generateRandomID);
 
 /***/ }),
 

@@ -3,7 +3,6 @@
     box-sizing: border-box;
     box-shadow: var(--shadow-secondary);
     border-radius: 12px;
-    overflow: hidden;
 
     &__container {
         position: relative;
@@ -14,11 +13,11 @@
         display: flex;
         flex-direction: column;
         user-select: none;
+        border-radius: 12px;
     }
 
     &__top {
         position: relative;
-        overflow: hidden;
         display: block;
         padding-bottom: percent(207, 323);
         z-index: 20;
@@ -351,10 +350,51 @@
 
             .secondary-tooltip__content {
                 bottom: auto;
-                top: calc(28px + 8px);
-                left: 0;
+                top: 0;
+                left: calc(35px + 4px);
                 width: max-content;
-                max-width: 230px;
+                max-width: 300px;
+
+
+                .checkbox-secondary{
+                    &__label{
+                        justify-content: start;
+                        &::before{
+                            width: 12px;
+                            height: 12px;
+                            flex: 0 0 12px;
+                            background-color: var(--white) !important;
+                            border: 1px solid var(--white) !important;
+                            border-radius: 3px;
+                        }
+                        &::after{
+                            width: 12px;
+                            height: 12px;
+                            background-size: 8px 6px;
+                            background-image: url('../img/check-mark--blue.svg');
+                        }
+                    }
+                    &__text{
+                        font-size: var(--small-fz);
+
+                    }
+                    margin-bottom: 4px;
+                    &:last-child{
+                        margin-bottom: 16px;
+                    }
+                }
+                >span{
+                    margin-bottom: 8px;
+                    font-weight: 500;
+                    display: block;
+                }
+                >p{
+                    margin-top: 8px;
+                    display: -webkit-box;
+  -webkit-line-clamp: 15;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+                }
             }
         }
 
@@ -409,7 +449,7 @@
                 width: 117px;
                 border-radius: 0 8px 8px 0;
                 position: absolute;
-                left: 29px;
+                left: 33px;
                 transform: translateX(-100%);
                 height: 100%;
                 transition: transform $transitionSpeed $transitionFunction,
@@ -647,11 +687,10 @@
     &__price-old {
         display: flex;
         align-items: center;
-        color: var(--primaryTwo);
 
         span {
             &:nth-child(1) {
-                color: var(--primaryTwo);
+                color: var(--primary600);
                 font-size: var(--default-fz);
                 line-height: var(--default-lh);
                 font-weight: 400;
@@ -695,7 +734,7 @@
             }
 
             &:nth-child(2) {
-                color: var(--primaryTwo);
+                color: var(--primary600);
                 font-size: var(--default-fz);
                 line-height: 1;
                 font-weight: 400;

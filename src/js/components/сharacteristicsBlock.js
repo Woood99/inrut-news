@@ -1,7 +1,7 @@
 const сharacteristicsBlock = () => {
     const checkboxes = document.querySelectorAll('[data-сharacteristics-block-checkbox]');
     const targets = document.querySelectorAll('[data-сharacteristics-block-target]');
-    if (checkboxes.length >= 1 && targets.length >= 1) {
+    if (checkboxes.length > 0 && targets.length > 0) {
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener('change', () => {
                 const nameCheckbox = checkbox.dataset.сharacteristicsBlockCheckbox;

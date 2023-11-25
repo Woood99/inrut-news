@@ -82,19 +82,6 @@ const modal = (modalHTML, container, speed = 300, target = false) => {
             settingsModal.container.classList.remove(settingsModal.animation);
             settingsModal.modal.classList.remove('is-open');
             settingsModal.container.classList.remove('open');
-            // if (!settingsModal.modal.classList.contains('checkboard-popup-card') && !settingsModal.modal.classList.contains('genplan-popup-card')) {
-            //     if (settingsModal.modal.classList.contains('video-modal') && document.querySelector('.popup-primary--videos-popup')) {
-            //         if (!document.querySelector('.popup-primary--videos-popup').classList.contains('is-open')) {
-            //             if (!document.querySelector('.popup-primary--record-viewing-two').classList.contains('is-open')) {
-            //                 enableScrollClose();
-            //             }
-            //         }
-            //     } else {
-            //         if (!(document.querySelector('.popup-primary--record-viewing-two') && document.querySelector('.popup-primary--record-viewing-two').classList.contains('is-open'))) {
-            //             enableScrollClose();
-            //         }
-            //     }
-            // }
 
              if (!settingsModal.scrollValue) {
                 enableScroll();

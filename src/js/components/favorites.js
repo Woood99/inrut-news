@@ -3,10 +3,14 @@ export const favoritesPage = () => {
     if (container) {
         const client = container.querySelector('[data-favorite-client-select]');
         const selection = container.querySelector('[data-favorite-selection-select]');
-
-        client.querySelector('.select-secondary').addEventListener('change', () => {
-            selection.removeAttribute('hidden');
-        })
+        if (client && selection) {
+            const select = client.querySelector('.select-secondary');
+            if (select) {
+                select.addEventListener('change', () => {
+                    selection.removeAttribute('hidden');
+                })
+            }
+        }
     }
 }
 
@@ -38,7 +42,7 @@ export const favoriteChoicePopup = () => {
         clientBtn.classList.add('_active');
 
         announcement.setAttribute('hidden', '');
-        selectionTwo.setAttribute('hidden','');
+        selectionTwo.setAttribute('hidden', '');
         client.removeAttribute('hidden');
         if (client.classList.contains('_selected')) {
             selection.removeAttribute('hidden');

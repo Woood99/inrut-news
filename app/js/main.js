@@ -4644,7 +4644,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 const advancePayment = () => {
   const items = document.querySelectorAll('.advance-pay');
-  if (items.length >= 1) {
+  if (items.length > 0) {
     items.forEach(item => {
       item.addEventListener('click', () => {
         item.classList.toggle('_active');
@@ -6224,7 +6224,7 @@ function controlCards() {
           const bottom = card.querySelector('.card-secondary__bottom');
           const bottomMobile = bottom.querySelector('.card-secondary__info--mobile');
           if (favorite) {
-            if (checkVertical(btn)) {
+            if (checkVertical(btn) && bottomMobile != null) {
               if (!bottomMobile.querySelector('.card-secondary__info--favorite')) {
                 if (!favorite.hasAttribute('data-popup-path')) {
                   const clone = favorite.cloneNode(true);
@@ -6235,7 +6235,7 @@ function controlCards() {
               }
               bottomMobile.querySelector('.card-secondary__info--favorite').removeAttribute('hidden');
             }
-            if (checkHorizontal(btn) && bottomMobile.querySelector('.card-secondary__info--favorite')) {
+            if (checkHorizontal(btn) && bottomMobile.querySelector('.card-secondary__info--favorite') && bottomMobile != null) {
               bottomMobile.querySelector('.card-secondary__info--favorite').setAttribute('hidden', '');
               if (favorite.hasAttribute('data-popup-path')) {
                 card.querySelector('.card-secondary__info--btns-right').insertAdjacentElement('afterbegin', favorite);
@@ -7399,9 +7399,14 @@ const favoritesPage = () => {
   if (container) {
     const client = container.querySelector('[data-favorite-client-select]');
     const selection = container.querySelector('[data-favorite-selection-select]');
-    client.querySelector('.select-secondary').addEventListener('change', () => {
-      selection.removeAttribute('hidden');
-    });
+    if (client && selection) {
+      const select = client.querySelector('.select-secondary');
+      if (select) {
+        select.addEventListener('change', () => {
+          selection.removeAttribute('hidden');
+        });
+      }
+    }
   }
 };
 const favoriteChoicePopup = () => {
@@ -7928,30 +7933,32 @@ const filterControl = () => {
   containers.forEach(container => {
     const itemsHidden = container.querySelectorAll('.filter__row[hidden]');
     const moreBtn = container.querySelector('.filter__btn-control');
-    const btnTextMap = {
-      more: moreBtn.querySelector('span').textContent,
-      none: 'Скрыть фильтры'
-    };
-    if (itemsHidden.length === 0) {
-      moreBtn.remove();
-      return;
-    }
-    ;
-    moreBtn.addEventListener('click', () => {
-      if (container.classList.contains('_active')) {
-        itemsHidden.forEach(item => {
-          (0,_support_modules_slide__WEBPACK_IMPORTED_MODULE_5__._slideToggle)(item, 700);
-        });
-        moreBtn.querySelector('span').textContent = btnTextMap.more;
-        container.classList.remove('_active');
-      } else {
-        itemsHidden.forEach(item => {
-          (0,_support_modules_slide__WEBPACK_IMPORTED_MODULE_5__._slideToggle)(item, 700);
-        });
-        moreBtn.querySelector('span').textContent = btnTextMap.none;
-        container.classList.add('_active');
+    if (moreBtn) {
+      const btnTextMap = {
+        more: moreBtn.querySelector('span').textContent,
+        none: 'Скрыть фильтры'
+      };
+      if (itemsHidden.length === 0) {
+        moreBtn.remove();
+        return;
       }
-    });
+      ;
+      moreBtn.addEventListener('click', () => {
+        if (container.classList.contains('_active')) {
+          itemsHidden.forEach(item => {
+            (0,_support_modules_slide__WEBPACK_IMPORTED_MODULE_5__._slideToggle)(item, 700);
+          });
+          moreBtn.querySelector('span').textContent = btnTextMap.more;
+          container.classList.remove('_active');
+        } else {
+          itemsHidden.forEach(item => {
+            (0,_support_modules_slide__WEBPACK_IMPORTED_MODULE_5__._slideToggle)(item, 700);
+          });
+          moreBtn.querySelector('span').textContent = btnTextMap.none;
+          container.classList.add('_active');
+        }
+      });
+    }
   });
 };
 const filterMobile = () => {
@@ -10744,22 +10751,24 @@ const onlineDisplay = () => {
   const items = container.querySelectorAll('.online-display__item');
   const btn = container.querySelector('.online-display__btn');
   const activeNameClass = '_visible-all';
-  const btnTextMap = {
-    more: btn.textContent,
-    none: 'Свернуть'
-  };
-  itemsHidden();
-  btn.addEventListener('click', () => {
-    if (!container.classList.contains(activeNameClass)) {
-      items.forEach(item => item.removeAttribute('hidden'));
-      container.classList.add(activeNameClass);
-      btn.textContent = btnTextMap.none;
-    } else {
-      itemsHidden();
-      container.classList.remove(activeNameClass);
-      btn.textContent = btnTextMap.more;
-    }
-  });
+  if (btn && items.length > 0) {
+    const btnTextMap = {
+      more: btn.textContent,
+      none: 'Свернуть'
+    };
+    itemsHidden();
+    btn.addEventListener('click', () => {
+      if (!container.classList.contains(activeNameClass)) {
+        items.forEach(item => item.removeAttribute('hidden'));
+        container.classList.add(activeNameClass);
+        btn.textContent = btnTextMap.none;
+      } else {
+        itemsHidden();
+        container.classList.remove(activeNameClass);
+        btn.textContent = btnTextMap.more;
+      }
+    });
+  }
   function itemsHidden() {
     items.forEach((item, index) => {
       if (index > 3) item.setAttribute('hidden', '');
@@ -11817,7 +11826,7 @@ __webpack_require__.r(__webpack_exports__);
 const сharacteristicsBlock = () => {
   const checkboxes = document.querySelectorAll('[data-сharacteristics-block-checkbox]');
   const targets = document.querySelectorAll('[data-сharacteristics-block-target]');
-  if (checkboxes.length >= 1 && targets.length >= 1) {
+  if (checkboxes.length > 0 && targets.length > 0) {
     checkboxes.forEach(checkbox => {
       checkbox.addEventListener('change', () => {
         const nameCheckbox = checkbox.dataset.сharacteristicsBlockCheckbox;
@@ -14527,20 +14536,6 @@ const modal = function (modalHTML, container) {
       settingsModal.container.classList.remove(settingsModal.animation);
       settingsModal.modal.classList.remove('is-open');
       settingsModal.container.classList.remove('open');
-      // if (!settingsModal.modal.classList.contains('checkboard-popup-card') && !settingsModal.modal.classList.contains('genplan-popup-card')) {
-      //     if (settingsModal.modal.classList.contains('video-modal') && document.querySelector('.popup-primary--videos-popup')) {
-      //         if (!document.querySelector('.popup-primary--videos-popup').classList.contains('is-open')) {
-      //             if (!document.querySelector('.popup-primary--record-viewing-two').classList.contains('is-open')) {
-      //                 enableScrollClose();
-      //             }
-      //         }
-      //     } else {
-      //         if (!(document.querySelector('.popup-primary--record-viewing-two') && document.querySelector('.popup-primary--record-viewing-two').classList.contains('is-open'))) {
-      //             enableScrollClose();
-      //         }
-      //     }
-      // }
-
       if (!settingsModal.scrollValue) {
         (0,_modules_enableScroll__WEBPACK_IMPORTED_MODULE_1__["default"])();
         document.body.style.scrollBehavior = 'auto';
@@ -14661,15 +14656,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-// Обработа медиа запросов из атрибутов 
 const dataMediaQueries = (array, dataSetValue) => {
-  // Получение объектов с медиа запросами
   const media = Array.from(array).filter(function (item, index, self) {
     if (item.dataset[dataSetValue]) {
       return item.dataset[dataSetValue].split(",")[0];
     }
   });
-  // Инициализация объектов с медиа запросами
   if (media.length) {
     const breakpointsArray = [];
     media.forEach(item => {
@@ -14681,7 +14673,6 @@ const dataMediaQueries = (array, dataSetValue) => {
       breakpoint.item = item;
       breakpointsArray.push(breakpoint);
     });
-    // Получаем уникальные брейкпоинты
     let mdQueries = breakpointsArray.map(function (item) {
       return '(' + item.type + "-width: " + item.value + "px)," + item.value + ',' + item.type;
     });
@@ -14693,13 +14684,11 @@ const dataMediaQueries = (array, dataSetValue) => {
     mdQueries = uniqArray(mdQueries);
     const mdQueriesArray = [];
     if (mdQueries.length) {
-      // Работаем с каждым брейкпоинтом
       mdQueries.forEach(breakpoint => {
         const paramsArray = breakpoint.split(",");
         const mediaBreakpoint = paramsArray[1];
         const mediaType = paramsArray[2];
         const matchMedia = window.matchMedia(paramsArray[0]);
-        // Объекты с нужными условиями
         const itemsArray = breakpointsArray.filter(function (item) {
           if (item.value === mediaBreakpoint && item.type === mediaType) {
             return true;
@@ -14729,7 +14718,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-// Получение хеша в адресе сайта
 const getHash = () => {
   if (location.hash) {
     return location.hash.replace('#', '');
@@ -14752,7 +14740,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "_slideToggle": () => (/* binding */ _slideToggle),
 /* harmony export */   "_slideUp": () => (/* binding */ _slideUp)
 /* harmony export */ });
-// Вспомогательные модули плавного расскрытия и закрытия объекта ======================================================================================================================================================================
 const _slideUp = function (target) {
   let duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
   let showmore = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
@@ -14781,7 +14768,6 @@ const _slideUp = function (target) {
       target.style.removeProperty('transition-duration');
       target.style.removeProperty('transition-property');
       target.classList.remove('_slide');
-      // Создаем событие 
       document.dispatchEvent(new CustomEvent("slideUpDone", {
         detail: {
           target: target
@@ -14820,7 +14806,6 @@ const _slideDown = function (target) {
       target.style.removeProperty('transition-duration');
       target.style.removeProperty('transition-property');
       target.classList.remove('_slide');
-      // Создаем событие 
       document.dispatchEvent(new CustomEvent("slideDownDone", {
         detail: {
           target: target

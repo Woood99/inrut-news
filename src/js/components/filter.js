@@ -491,29 +491,31 @@ export const filterControl = () => {
     containers.forEach(container => {
         const itemsHidden = container.querySelectorAll('.filter__row[hidden]');
         const moreBtn = container.querySelector('.filter__btn-control');
-        const btnTextMap = {
-            more: moreBtn.querySelector('span').textContent,
-            none: 'Скрыть фильтры'
-        }
-        if (itemsHidden.length === 0) {
-            moreBtn.remove();
-            return;
-        };
-        moreBtn.addEventListener('click', () => {
-            if (container.classList.contains('_active')) {
-                itemsHidden.forEach(item => {
-                    _slideToggle(item, 700);
-                });
-                moreBtn.querySelector('span').textContent = btnTextMap.more;
-                container.classList.remove('_active');
-            } else {
-                itemsHidden.forEach(item => {
-                    _slideToggle(item, 700);
-                });
-                moreBtn.querySelector('span').textContent = btnTextMap.none;
-                container.classList.add('_active');
+        if (moreBtn){
+            const btnTextMap = {
+                more: moreBtn.querySelector('span').textContent,
+                none: 'Скрыть фильтры'
             }
-        });
+            if (itemsHidden.length === 0) {
+                moreBtn.remove();
+                return;
+            };
+            moreBtn.addEventListener('click', () => {
+                if (container.classList.contains('_active')) {
+                    itemsHidden.forEach(item => {
+                        _slideToggle(item, 700);
+                    });
+                    moreBtn.querySelector('span').textContent = btnTextMap.more;
+                    container.classList.remove('_active');
+                } else {
+                    itemsHidden.forEach(item => {
+                        _slideToggle(item, 700);
+                    });
+                    moreBtn.querySelector('span').textContent = btnTextMap.none;
+                    container.classList.add('_active');
+                }
+            });
+        }
     })
 
 

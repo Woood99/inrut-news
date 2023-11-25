@@ -1,4 +1,3 @@
-// Вспомогательные модули плавного расскрытия и закрытия объекта ======================================================================================================================================================================
 export const _slideUp = (target, duration = 500, showmore = 0) => {
     if (!target.classList.contains('_slide')) {
         target.classList.add('_slide');
@@ -25,7 +24,7 @@ export const _slideUp = (target, duration = 500, showmore = 0) => {
             target.style.removeProperty('transition-duration');
             target.style.removeProperty('transition-property');
             target.classList.remove('_slide');
-            // Создаем событие 
+
             document.dispatchEvent(new CustomEvent("slideUpDone", {
                 detail: {
                     target: target
@@ -62,7 +61,7 @@ export const _slideDown = (target, duration = 500, showmore = 0) => {
             target.style.removeProperty('transition-duration');
             target.style.removeProperty('transition-property');
             target.classList.remove('_slide');
-            // Создаем событие 
+
             document.dispatchEvent(new CustomEvent("slideDownDone", {
                 detail: {
                     target: target

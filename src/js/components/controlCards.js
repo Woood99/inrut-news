@@ -52,7 +52,7 @@ function controlCards() {
                     const bottom = card.querySelector('.card-secondary__bottom');
                     const bottomMobile = bottom.querySelector('.card-secondary__info--mobile')
                     if (favorite) {
-                        if (checkVertical(btn)) {
+                        if (checkVertical(btn) && bottomMobile != null) {
                             if (!bottomMobile.querySelector('.card-secondary__info--favorite')) {
                                 if (!favorite.hasAttribute('data-popup-path')) {
                                     const clone = favorite.cloneNode(true);
@@ -63,7 +63,7 @@ function controlCards() {
                             }
                             bottomMobile.querySelector('.card-secondary__info--favorite').removeAttribute('hidden');
                         }
-                        if (checkHorizontal(btn) && bottomMobile.querySelector('.card-secondary__info--favorite')) {
+                        if (checkHorizontal(btn) && bottomMobile.querySelector('.card-secondary__info--favorite') && bottomMobile != null) {
                             bottomMobile.querySelector('.card-secondary__info--favorite').setAttribute('hidden', '');
                             if (favorite.hasAttribute('data-popup-path')) {
                                 card.querySelector('.card-secondary__info--btns-right').insertAdjacentElement('afterbegin', favorite);

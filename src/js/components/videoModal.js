@@ -11,7 +11,7 @@ const videoModal = () => {
                 <div class="video-modal__container">
                     <button class="btn-reset video-modal__close" aria-label="Закрыть модальное окно">
                         <svg>
-                            <use xlink:href="img/sprite.svg#x"></use>
+                            <use xlink:href="./img/sprite.svg#x"></use>
                         </svg>
                         <span>Закрыть</span>
                     </button>
@@ -24,7 +24,7 @@ const videoModal = () => {
                          </div>
                          <div class="video-block__play">
                              <svg>
-                                 <use xlink:href="img/sprite.svg#play"></use>
+                                 <use xlink:href="./img/sprite.svg#play"></use>
                              </svg>
                          </div>
                      </button>

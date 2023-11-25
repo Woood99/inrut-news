@@ -42,7 +42,7 @@ function createCalcBody(mort) {
                         </div>
                         <button type="button" class="btn btn-reset create-calc-mort__item-save">
                             <svg style="width: 16px; height: 16px; fill: var(--blue);">
-                            <use xlink:href="img/sprite.svg#save"></use>
+                            <use xlink:href="./img/sprite.svg#save"></use>
                             </svg>
                         </button>
                     </div>
@@ -52,7 +52,7 @@ function createCalcBody(mort) {
                             <button type="button" class="btn btn-reset create-calc-mort__create" title="Создать новый блок">
                                 <span>Создать</span>
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#plus"></use>
+                                    <use xlink:href="./img/sprite.svg#plus"></use>
                                 </svg>
                             </button>
                         </div>
@@ -79,7 +79,7 @@ function createCalcBody(mort) {
                                     <h3 class="create-calc-mort__title title-4">${name}</h3>
                                     <button type="button" class="btn btn-reset create-calc-mort__remove" title="Удалить">
                                     <svg>
-                                        <use xlink:href="img/sprite.svg#trash">
+                                        <use xlink:href="./img/sprite.svg#trash">
                                         </use>
                                     </svg>
                                     </button>
@@ -122,7 +122,7 @@ function createCalcBody(mort) {
                         <button type="button" class="btn btn-reset create-calc-mort__create" title="Создать новый блок">
                             <span>Создать</span>
                             <svg>
-                                <use xlink:href="img/sprite.svg#plus"></use>
+                                <use xlink:href="./img/sprite.svg#plus"></use>
                             </svg>
                         </button>
                     </div>
@@ -133,7 +133,7 @@ function createCalcBody(mort) {
                         </h3>
                         <button type="button" class="btn btn-reset create-calc-conditions__create">
                             <svg>
-                                <use xlink:href="img/sprite.svg#plus"></use>
+                                <use xlink:href="./img/sprite.svg#plus"></use>
                             </svg>
                             <span>Создать новую услугу</span>
                         </button>
@@ -185,19 +185,19 @@ function createCalcBody(mort) {
                             </span>
                             <button type="button" class="btn btn-reset create-calc-mort__edit _disabled" title="Редактировать">
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#pencil">
+                                    <use xlink:href="./img/sprite.svg#pencil">
                                     </use>
                                 </svg>
                             </button>
                             <button type="button" class="btn btn-reset create-calc-mort__remove" title="Удалить">
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#trash">
+                                    <use xlink:href="./img/sprite.svg#trash">
                                     </use>
                                 </svg>
                             </button>
                             <div class="create-calc-mort__check">
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#check"></use>
+                                    <use xlink:href="./img/sprite.svg#check"></use>
                                 </svg>
                             </div>
                         </div>
@@ -210,7 +210,7 @@ function createCalcBody(mort) {
                                     </h3>
                                     <button type="button" class="btn btn-reset create-calc-conditions__create">
                                         <svg>
-                                            <use xlink:href="img/sprite.svg#plus"></use>
+                                            <use xlink:href="./img/sprite.svg#plus"></use>
                                         </svg>
                                         <span>Создать новую услугу</span>
                                     </button>
@@ -376,7 +376,7 @@ function conditions(item) {
             </div>
             <button type="button" class="btn btn-reset create-calc-conditions__save" style="grid-column:3/4;justify-self: end;align-self: end;">
             <svg>
-            <use xlink:href="img/sprite.svg#save"></use>
+            <use xlink:href="./img/sprite.svg#save"></use>
             </svg>
             </button>
             <h3 class="title-4" style="grid-column:1/3;margin:16px 0;">Дополнительная информация</h3>
@@ -384,7 +384,7 @@ function conditions(item) {
                 <button type="button" class="btn btn-reset create-calc-conditions__create-descr" title="Создать новый блок">
                     <span>Создать</span>
                     <svg>
-                        <use xlink:href="img/sprite.svg#plus"></use>
+                        <use xlink:href="./img/sprite.svg#plus"></use>
                     </svg>
                 </button>
             </div>
@@ -442,13 +442,13 @@ function conditions(item) {
                     </div>
                     <button type="button" class="btn btn-reset create-calc-conditions__item-edit" title="Редактировать">
                         <svg>
-                            <use xlink:href="img/sprite.svg#pencil">
+                            <use xlink:href="./img/sprite.svg#pencil">
                             </use>
                         </svg>
                     </button>
                     <button type="button" class="btn btn-reset create-calc-conditions__item-remove" title="Удалить">
                         <svg>
-                            <use xlink:href="img/sprite.svg#trash">
+                            <use xlink:href="./img/sprite.svg#trash">
                             </use>
                         </svg>
                     </button>
@@ -459,7 +459,7 @@ function conditions(item) {
                             <textarea textarea class="input-reset textarea-primary__input" placeholder="">${conditionsTextareaValue}</textarea>
                             <button type="button" class="btn btn-reset textarea-primary__remove" title="Удалить блок">
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#trash"></use>
+                                    <use xlink:href="./img/sprite.svg#trash"></use>
                                 </svg>
                             </button>
                         </label>
@@ -536,7 +536,7 @@ function blockAdded(block, maxLength = false) {
         <textarea class="input-reset textarea-primary__input" placeholder=""></textarea>
         <button type="button" class="btn btn-reset textarea-primary__remove" title="Удалить блок">
             <svg>
-                <use xlink:href="img/sprite.svg#trash"></use>
+                <use xlink:href="./img/sprite.svg#trash"></use>
             </svg>
         </button>
     </label>

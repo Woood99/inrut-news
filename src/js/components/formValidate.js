@@ -215,7 +215,7 @@ export const clientFixedValidate = () => {
                     <div class="client-fixed-sent__container" role="dialog" aria-modal="true">
                     <button class="btn-reset client-fixed-sent__close" aria-label="Закрыть модальное окно">
                     <svg>
-                        <use xlink:href="img/sprite.svg#x"></use>
+                        <use xlink:href="./img/sprite.svg#x"></use>
                     </svg>
                     <span>Закрыть</span>
                     </button>

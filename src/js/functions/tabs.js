@@ -196,7 +196,7 @@ export const tabs = () => {
                 if (!editBtn.classList.contains('_active')) {
                     editBtn.innerHTML = `
                         <svg>
-                            <use xlink:href="img/sprite.svg#save">
+                            <use xlink:href="./img/sprite.svg#save">
                             </use>
                         </svg>
                     `;
@@ -222,7 +222,7 @@ export const tabs = () => {
                 } else {
                     editBtn.innerHTML = `
                     <svg>
-                        <use xlink:href="img/sprite.svg#pencil">
+                        <use xlink:href="./img/sprite.svg#pencil">
                         </use>
                     </svg>
                     `;
@@ -297,13 +297,13 @@ export const tabs = () => {
             <input type="text" name="Имя" class="input-reset _width-auto" value="" disabled="">
             <div class="btn btn-reset tabs__title-edit _disabled" title="Сохранить">
                 <svg>
-                    <use xlink:href="img/sprite.svg#save">
+                    <use xlink:href="./img/sprite.svg#save">
                     </use>
                 </svg>
             </div>
             <div class="btn btn-reset tabs__title-remove" title="Удалить">
                 <svg>
-                    <use xlink:href="img/sprite.svg#trash">
+                    <use xlink:href="./img/sprite.svg#trash">
                     </use>
                 </svg>
             </div>
@@ -351,7 +351,7 @@ export const tabs = () => {
                         <span>Студия</span>
                         <div class="furnishing-sets__btn-remove">
                             <svg>
-                                <use xlink:href="img/sprite.svg#trash"></use>
+                                <use xlink:href="./img/sprite.svg#trash"></use>
                             </svg>
                         </div>
                     </button>
@@ -359,7 +359,7 @@ export const tabs = () => {
                         <span>1</span>
                         <div class="furnishing-sets__btn-remove">
                             <svg>
-                                <use xlink:href="img/sprite.svg#trash"></use>
+                                <use xlink:href="./img/sprite.svg#trash"></use>
                             </svg>
                         </div>
                     </button>
@@ -367,7 +367,7 @@ export const tabs = () => {
                         <span>2</span>
                         <div class="furnishing-sets__btn-remove">
                             <svg>
-                                <use xlink:href="img/sprite.svg#trash"></use>
+                                <use xlink:href="./img/sprite.svg#trash"></use>
                             </svg>
                         </div>
                     </button>
@@ -375,7 +375,7 @@ export const tabs = () => {
                         <span>3</span>
                         <div class="furnishing-sets__btn-remove">
                             <svg>
-                                <use xlink:href="img/sprite.svg#trash"></use>
+                                <use xlink:href="./img/sprite.svg#trash"></use>
                             </svg>
                         </div>
                     </button>
@@ -383,7 +383,7 @@ export const tabs = () => {
                         <span>4</span>
                         <div class="furnishing-sets__btn-remove">
                             <svg>
-                                <use xlink:href="img/sprite.svg#trash"></use>
+                                <use xlink:href="./img/sprite.svg#trash"></use>
                             </svg>
                         </div>
                     </button>
@@ -391,7 +391,7 @@ export const tabs = () => {
                 <div class="furnishing-sets__create">
                     <button type="button" class="btn btn-reset furnishing-sets__create--room">
                         <svg>
-                            <use xlink:href="img/sprite.svg#plus"></use>
+                            <use xlink:href="./img/sprite.svg#plus"></use>
                         </svg>
                         Добавить комнатность
                     </button>
@@ -426,7 +426,7 @@ export const tabs = () => {
                         <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
                             <button type="button" class="btn btn-reset secondary-tooltip__btn">
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#info"></use>
+                                    <use xlink:href="./img/sprite.svg#info"></use>
                                 </svg>
                             </button>
                             <div class="secondary-tooltip__content">
@@ -475,7 +475,7 @@ export const tabs = () => {
                         <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
                             <button type="button" class="btn btn-reset secondary-tooltip__btn">
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#info"></use>
+                                    <use xlink:href="./img/sprite.svg#info"></use>
                                 </svg>
                             </button>
                             <div class="secondary-tooltip__content">
@@ -524,7 +524,7 @@ export const tabs = () => {
                         <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
                             <button type="button" class="btn btn-reset secondary-tooltip__btn">
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#info"></use>
+                                    <use xlink:href="./img/sprite.svg#info"></use>
                                 </svg>
                             </button>
                             <div class="secondary-tooltip__content">
@@ -573,7 +573,7 @@ export const tabs = () => {
                         <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
                             <button type="button" class="btn btn-reset secondary-tooltip__btn">
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#info"></use>
+                                    <use xlink:href="./img/sprite.svg#info"></use>
                                 </svg>
                             </button>
                             <div class="secondary-tooltip__content">
@@ -622,7 +622,7 @@ export const tabs = () => {
                         <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
                             <button type="button" class="btn btn-reset secondary-tooltip__btn">
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#info"></use>
+                                    <use xlink:href="./img/sprite.svg#info"></use>
                                 </svg>
                             </button>
                             <div class="secondary-tooltip__content">
@@ -676,7 +676,7 @@ export const tabs = () => {
             <div class="tabs__body create-calc-mort__field" data-tabs-item>
                 <button type="button" class="btn btn-reset create-calc-mort__create-item">
                     <svg>
-                        <use xlink:href="img/sprite.svg#plus"></use>
+                        <use xlink:href="./img/sprite.svg#plus"></use>
                     </svg>
                     Добавить новое поле
                 </button>

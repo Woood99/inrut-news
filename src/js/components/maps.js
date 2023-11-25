@@ -151,7 +151,7 @@ const maps = () => {
                             content: `
                             <div class="ymaps__route-close-wrapper">
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#x"></use>
+                                    <use xlink:href="./img/sprite.svg#x"></use>
                                 </svg>
                             </div>
                             `,

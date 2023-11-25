@@ -53,7 +53,7 @@ const tag = () => {
     const svgIconHTML = `
         <div>
             <svg>
-                <use xlink:href="img/sprite.svg#x"></use>
+                <use xlink:href="./img/sprite.svg#x"></use>
             </svg>
         </div>
     `;

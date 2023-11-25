@@ -49,7 +49,7 @@ const createSale = () => {
             <a href="./promotion.html" class="card-stock-secondary__container">
                 <button type="button" class="btn btn-reset card-stock-secondary__remove">
                     <svg>
-                      <use xlink:href="img/sprite.svg#trash"></use>
+                      <use xlink:href="./img/sprite.svg#trash"></use>
                     </svg>
                 </button>
                 <div class="card-stock-secondary__image ibg">

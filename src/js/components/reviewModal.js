@@ -19,7 +19,7 @@ const reviewModal = () => {
             class="btn btn-reset review-slider-body__navigation nav-arrow-primary nav-arrow-primary--prev">
             <div class="nav-arrow-primary__wrapper">
                 <svg>
-                    <use xlink:href="img/sprite.svg#arrow-right"></use>
+                    <use xlink:href="./img/sprite.svg#arrow-right"></use>
                 </svg>
             </div>
         </button>
@@ -27,7 +27,7 @@ const reviewModal = () => {
             class="btn btn-reset review-slider-body__navigation nav-arrow-primary nav-arrow-primary--next">
             <div class="nav-arrow-primary__wrapper">
                 <svg>
-                    <use xlink:href="img/sprite.svg#arrow-right"></use>
+                    <use xlink:href="./img/sprite.svg#arrow-right"></use>
                 </svg>
             </div>
         </button>
@@ -55,7 +55,7 @@ const reviewModal = () => {
             <div class="review-modal__container">
                 <button class="btn-reset review-modal__close" aria-label="Закрыть модальное окно">
                     <svg>
-                        <use xlink:href="img/sprite.svg#x"></use>
+                        <use xlink:href="./img/sprite.svg#x"></use>
                     </svg>
                     <span>Закрыть</span>
                 </button>

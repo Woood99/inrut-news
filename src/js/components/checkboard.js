@@ -40,7 +40,7 @@ const checkboard = () => {
             <div class="checkboard-popup-card__container">
                 <button class="btn-reset checkboard-popup-card__close" aria-label="Закрыть модальное окно">
                     <svg>
-                        <use xlink:href="img/sprite.svg#x"></use>
+                        <use xlink:href="./img/sprite.svg#x"></use>
                     </svg>
                     <span>Закрыть</span>
                 </button>

@@ -14,7 +14,7 @@ const cardStockPopup = (containerSelector) => {
             <div class="stock-popup__container">
                 <button class="btn-reset stock-popup__close" aria-label="Закрыть модальное окно">
                     <svg>
-                        <use xlink:href="img/sprite.svg#x"></use>
+                        <use xlink:href="./img/sprite.svg#x"></use>
                     </svg>
                     <span>Закрыть</span>
                 </button>
@@ -58,7 +58,7 @@ const cardStockPopup = (containerSelector) => {
             <div class="stock-popup__container">
                 <button class="btn-reset stock-popup__close" aria-label="Закрыть модальное окно">
                     <svg>
-                        <use xlink:href="img/sprite.svg#x"></use>
+                        <use xlink:href="./img/sprite.svg#x"></use>
                     </svg>
                     <span>Закрыть</span>
                 </button>
@@ -100,7 +100,7 @@ const cardStockPopup = (containerSelector) => {
              <div class="stock-popup__container">
                  <button class="btn-reset stock-popup__close" aria-label="Закрыть модальное окно">
                      <svg>
-                         <use xlink:href="img/sprite.svg#x"></use>
+                         <use xlink:href="./img/sprite.svg#x"></use>
                      </svg>
                      <span>Закрыть</span>
                  </button>

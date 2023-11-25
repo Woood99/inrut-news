@@ -4397,11 +4397,11 @@ document.addEventListener('DOMContentLoaded', () => {
     <div class="clue-primary">
         <div class="clue-primary__close">
             <svg>
-              <use xlink:href="img/sprite.svg#x"></use>
+              <use xlink:href="./img/sprite.svg#x"></use>
             </svg>
         </div>
         <svg class="clue-primary__icon">
-            <use xlink:href="img/sprite.svg#info"></use>
+            <use xlink:href="./img/sprite.svg#info"></use>
         </svg>
         <h4 class="clue-primary__title title-3">
             Для вашего профиля редактирование данных недоступно.
@@ -4991,7 +4991,7 @@ const calendarPrimary = function (containerSelector, url) {
             <div class="calendar-event__container">
                 <button class="btn-reset calendar-event__close" aria-label="Закрыть модальное окно">
                     <svg>
-                        <use xlink:href="img/sprite.svg#x"></use>
+                        <use xlink:href="./img/sprite.svg#x"></use>
                     </svg>
                     <span>Закрыть</span>
                 </button>
@@ -5011,13 +5011,13 @@ const calendarPrimary = function (containerSelector, url) {
                 <div class="calendar-event-item__bottom">
                     <button type="button" class="btn btn-reset calendar-event-item__cancel">
                         <svg>
-                            <use xlink:href="img/sprite.svg#x"></use>
+                            <use xlink:href="./img/sprite.svg#x"></use>
                         </svg>
                         Отменить
                     </button>
                     <button type="button" class="btn btn-reset calendar-event-item__edit">
                         <svg>
-                            <use xlink:href="img/sprite.svg#pencil"></use>
+                            <use xlink:href="./img/sprite.svg#pencil"></use>
                         </svg>
                         Редактировать
                     </button>
@@ -5030,7 +5030,7 @@ const calendarPrimary = function (containerSelector, url) {
                 <li class="calendar-event__item calendar-event-item">
                     <div class="calendar-event-item__time">
                         <svg>
-                            <use xlink:href="img/sprite.svg#clock"></use>
+                            <use xlink:href="./img/sprite.svg#clock"></use>
                         </svg>
                         <div>
                             <span>${el.time}</span>
@@ -5039,7 +5039,7 @@ const calendarPrimary = function (containerSelector, url) {
                     </div>
                     <div class="calendar-event-item__location">
                         <svg>
-                            <use xlink:href="img/sprite.svg#location"></use>
+                            <use xlink:href="./img/sprite.svg#location"></use>
                         </svg>
                         ${el.location}
                     </div>
@@ -5393,7 +5393,7 @@ const cardStockPopup = containerSelector => {
             <div class="stock-popup__container">
                 <button class="btn-reset stock-popup__close" aria-label="Закрыть модальное окно">
                     <svg>
-                        <use xlink:href="img/sprite.svg#x"></use>
+                        <use xlink:href="./img/sprite.svg#x"></use>
                     </svg>
                     <span>Закрыть</span>
                 </button>
@@ -5437,7 +5437,7 @@ const cardStockPopup = containerSelector => {
             <div class="stock-popup__container">
                 <button class="btn-reset stock-popup__close" aria-label="Закрыть модальное окно">
                     <svg>
-                        <use xlink:href="img/sprite.svg#x"></use>
+                        <use xlink:href="./img/sprite.svg#x"></use>
                     </svg>
                     <span>Закрыть</span>
                 </button>
@@ -5479,7 +5479,7 @@ const cardStockPopup = containerSelector => {
              <div class="stock-popup__container">
                  <button class="btn-reset stock-popup__close" aria-label="Закрыть модальное окно">
                      <svg>
-                         <use xlink:href="img/sprite.svg#x"></use>
+                         <use xlink:href="./img/sprite.svg#x"></use>
                      </svg>
                      <span>Закрыть</span>
                  </button>
@@ -5689,7 +5689,7 @@ const checkboard = () => {
             <div class="checkboard-popup-card__container">
                 <button class="btn-reset checkboard-popup-card__close" aria-label="Закрыть модальное окно">
                     <svg>
-                        <use xlink:href="img/sprite.svg#x"></use>
+                        <use xlink:href="./img/sprite.svg#x"></use>
                     </svg>
                     <span>Закрыть</span>
                 </button>
@@ -5889,7 +5889,7 @@ const choicesSelect = () => {
                         <div class="filter-modal__container">
                             <button class="btn-reset filter-modal__close" aria-label="Закрыть модальное окно">
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#x"></use>
+                                    <use xlink:href="./img/sprite.svg#x"></use>
                                 </svg>
                                 <span>Закрыть</span>
                             </button>
@@ -6019,7 +6019,7 @@ const choicesSelect = () => {
                         <div class="filter-modal__container">
                             <button class="btn-reset filter-modal__close" aria-label="Закрыть модальное окно">
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#x"></use>
+                                    <use xlink:href="./img/sprite.svg#x"></use>
                                 </svg>
                                 <span>Закрыть</span>
                             </button>
@@ -6385,7 +6385,7 @@ function createCalcBody(mort) {
                         </div>
                         <button type="button" class="btn btn-reset create-calc-mort__item-save">
                             <svg style="width: 16px; height: 16px; fill: var(--blue);">
-                            <use xlink:href="img/sprite.svg#save"></use>
+                            <use xlink:href="./img/sprite.svg#save"></use>
                             </svg>
                         </button>
                     </div>
@@ -6395,7 +6395,7 @@ function createCalcBody(mort) {
                             <button type="button" class="btn btn-reset create-calc-mort__create" title="Создать новый блок">
                                 <span>Создать</span>
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#plus"></use>
+                                    <use xlink:href="./img/sprite.svg#plus"></use>
                                 </svg>
                             </button>
                         </div>
@@ -6419,7 +6419,7 @@ function createCalcBody(mort) {
                                     <h3 class="create-calc-mort__title title-4">${name}</h3>
                                     <button type="button" class="btn btn-reset create-calc-mort__remove" title="Удалить">
                                     <svg>
-                                        <use xlink:href="img/sprite.svg#trash">
+                                        <use xlink:href="./img/sprite.svg#trash">
                                         </use>
                                     </svg>
                                     </button>
@@ -6460,7 +6460,7 @@ function createCalcBody(mort) {
                         <button type="button" class="btn btn-reset create-calc-mort__create" title="Создать новый блок">
                             <span>Создать</span>
                             <svg>
-                                <use xlink:href="img/sprite.svg#plus"></use>
+                                <use xlink:href="./img/sprite.svg#plus"></use>
                             </svg>
                         </button>
                     </div>
@@ -6471,7 +6471,7 @@ function createCalcBody(mort) {
                         </h3>
                         <button type="button" class="btn btn-reset create-calc-conditions__create">
                             <svg>
-                                <use xlink:href="img/sprite.svg#plus"></use>
+                                <use xlink:href="./img/sprite.svg#plus"></use>
                             </svg>
                             <span>Создать новую услугу</span>
                         </button>
@@ -6519,19 +6519,19 @@ function createCalcBody(mort) {
                             </span>
                             <button type="button" class="btn btn-reset create-calc-mort__edit _disabled" title="Редактировать">
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#pencil">
+                                    <use xlink:href="./img/sprite.svg#pencil">
                                     </use>
                                 </svg>
                             </button>
                             <button type="button" class="btn btn-reset create-calc-mort__remove" title="Удалить">
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#trash">
+                                    <use xlink:href="./img/sprite.svg#trash">
                                     </use>
                                 </svg>
                             </button>
                             <div class="create-calc-mort__check">
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#check"></use>
+                                    <use xlink:href="./img/sprite.svg#check"></use>
                                 </svg>
                             </div>
                         </div>
@@ -6544,7 +6544,7 @@ function createCalcBody(mort) {
                                     </h3>
                                     <button type="button" class="btn btn-reset create-calc-conditions__create">
                                         <svg>
-                                            <use xlink:href="img/sprite.svg#plus"></use>
+                                            <use xlink:href="./img/sprite.svg#plus"></use>
                                         </svg>
                                         <span>Создать новую услугу</span>
                                     </button>
@@ -6695,7 +6695,7 @@ function conditions(item) {
             </div>
             <button type="button" class="btn btn-reset create-calc-conditions__save" style="grid-column:3/4;justify-self: end;align-self: end;">
             <svg>
-            <use xlink:href="img/sprite.svg#save"></use>
+            <use xlink:href="./img/sprite.svg#save"></use>
             </svg>
             </button>
             <h3 class="title-4" style="grid-column:1/3;margin:16px 0;">Дополнительная информация</h3>
@@ -6703,7 +6703,7 @@ function conditions(item) {
                 <button type="button" class="btn btn-reset create-calc-conditions__create-descr" title="Создать новый блок">
                     <span>Создать</span>
                     <svg>
-                        <use xlink:href="img/sprite.svg#plus"></use>
+                        <use xlink:href="./img/sprite.svg#plus"></use>
                     </svg>
                 </button>
             </div>
@@ -6751,13 +6751,13 @@ function conditions(item) {
                     </div>
                     <button type="button" class="btn btn-reset create-calc-conditions__item-edit" title="Редактировать">
                         <svg>
-                            <use xlink:href="img/sprite.svg#pencil">
+                            <use xlink:href="./img/sprite.svg#pencil">
                             </use>
                         </svg>
                     </button>
                     <button type="button" class="btn btn-reset create-calc-conditions__item-remove" title="Удалить">
                         <svg>
-                            <use xlink:href="img/sprite.svg#trash">
+                            <use xlink:href="./img/sprite.svg#trash">
                             </use>
                         </svg>
                     </button>
@@ -6768,7 +6768,7 @@ function conditions(item) {
                             <textarea textarea class="input-reset textarea-primary__input" placeholder="">${conditionsTextareaValue}</textarea>
                             <button type="button" class="btn btn-reset textarea-primary__remove" title="Удалить блок">
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#trash"></use>
+                                    <use xlink:href="./img/sprite.svg#trash"></use>
                                 </svg>
                             </button>
                         </label>
@@ -6840,7 +6840,7 @@ function blockAdded(block) {
         <textarea class="input-reset textarea-primary__input" placeholder=""></textarea>
         <button type="button" class="btn btn-reset textarea-primary__remove" title="Удалить блок">
             <svg>
-                <use xlink:href="img/sprite.svg#trash"></use>
+                <use xlink:href="./img/sprite.svg#trash"></use>
             </svg>
         </button>
     </label>
@@ -6924,7 +6924,7 @@ const createSale = () => {
             <a href="./promotion.html" class="card-stock-secondary__container">
                 <button type="button" class="btn btn-reset card-stock-secondary__remove">
                     <svg>
-                      <use xlink:href="img/sprite.svg#trash"></use>
+                      <use xlink:href="./img/sprite.svg#trash"></use>
                     </svg>
                 </button>
                 <div class="card-stock-secondary__image ibg">
@@ -7309,22 +7309,22 @@ function photoGenerate(url, name) {
             </picture>
             <div class="place-sale-photo__icon">
                 <svg>
-                    <use xlink:href="img/sprite.svg#right-left"></use>
+                    <use xlink:href="./img/sprite.svg#right-left"></use>
                 </svg>
             </div>
             <button type="button" class="btn btn-reset place-sale-photo__remove" title="Удалить фото">
                 <svg>
-                    <use xlink:href="img/sprite.svg#trash"></use>
+                    <use xlink:href="./img/sprite.svg#trash"></use>
                 </svg>
             </button>
             <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--1">
                 <svg>
-                    <use xlink:href="img/sprite.svg#rotate-1"></use>
+                    <use xlink:href="./img/sprite.svg#rotate-1"></use>
                 </svg>
             </button>
             <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--2">
                 <svg>
-                    <use xlink:href="img/sprite.svg#rotate-2"></use>
+                    <use xlink:href="./img/sprite.svg#rotate-2"></use>
                 </svg>
             </button>
         </div>
@@ -7340,7 +7340,7 @@ function pdfGenerate(url, name) {
                 </picture>
                 <button type="button" class="btn btn-reset place-sale-photo__remove" title="Удалить PDF">
                     <svg>
-                        <use xlink:href="img/sprite.svg#trash"></use>
+                        <use xlink:href="./img/sprite.svg#trash"></use>
                     </svg>
                 </button>
             </a>
@@ -7517,7 +7517,7 @@ const filterSum = () => {
                         <div class="filter-modal__container">
                             <button class="btn-reset filter-modal__close" aria-label="Закрыть модальное окно">
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#x"></use>
+                                    <use xlink:href="./img/sprite.svg#x"></use>
                                 </svg>
                                 <span>Закрыть</span>
                             </button>
@@ -7749,7 +7749,7 @@ const searchSelect = () => {
                     <div class="filter-modal__container">
                         <button class="btn-reset filter-modal__close" aria-label="Закрыть модальное окно">
                             <svg>
-                                <use xlink:href="img/sprite.svg#x"></use>
+                                <use xlink:href="./img/sprite.svg#x"></use>
                             </svg>
                             <span>Закрыть</span>
                         </button>
@@ -7998,7 +7998,7 @@ const filterCustomSelectCheckboxes = () => {
                 <div class="filter-modal__container">
                     <button class="btn-reset filter-modal__close" aria-label="Закрыть модальное окно">
                         <svg>
-                            <use xlink:href="img/sprite.svg#x"></use>
+                            <use xlink:href="./img/sprite.svg#x"></use>
                         </svg>
                         <span>Закрыть</span>
                     </button>
@@ -8395,7 +8395,7 @@ const clientFixedValidate = () => {
                     <div class="client-fixed-sent__container" role="dialog" aria-modal="true">
                     <button class="btn-reset client-fixed-sent__close" aria-label="Закрыть модальное окно">
                     <svg>
-                        <use xlink:href="img/sprite.svg#x"></use>
+                        <use xlink:href="./img/sprite.svg#x"></use>
                     </svg>
                     <span>Закрыть</span>
                     </button>
@@ -8850,7 +8850,7 @@ function generateRoom(number) {
             <span>${number}</span>
             <div class="furnishing-sets__btn-remove">
                 <svg>
-                  <use xlink:href="img/sprite.svg#trash"></use>
+                  <use xlink:href="./img/sprite.svg#trash"></use>
                 </svg>
             </div>
         </button>
@@ -8886,7 +8886,7 @@ function generateTabContent() {
             <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
                 <button type="button" class="btn btn-reset secondary-tooltip__btn">
                     <svg>
-                        <use xlink:href="img/sprite.svg#info"></use>
+                        <use xlink:href="./img/sprite.svg#info"></use>
                     </svg>
                 </button>
                 <div class="secondary-tooltip__content">
@@ -8917,7 +8917,7 @@ function generateStudio() {
                 <span>Студия</span>
                 <div class="furnishing-sets__btn-remove">
                     <svg>
-                      <use xlink:href="img/sprite.svg#trash"></use>
+                      <use xlink:href="./img/sprite.svg#trash"></use>
                     </svg>
                 </div>
             </button>
@@ -9045,7 +9045,7 @@ const galleryPrimary = () => {
     const closeBtnHTML = `
         <button class="btn btn-reset gallery-primary-container__close">
             <svg>
-                <use xlink:href="img/sprite.svg#x"></use>
+                <use xlink:href="./img/sprite.svg#x"></use>
             </svg>
         </button>
         `;
@@ -9053,7 +9053,7 @@ const galleryPrimary = () => {
         <button type="button" class="btn btn-reset nav-arrow-primary nav-arrow-primary--next gallery-primary-container__next">
             <div class="nav-arrow-primary__wrapper">
                 <svg>
-                    <use xlink:href="img/sprite.svg#arrow-right"></use>
+                    <use xlink:href="./img/sprite.svg#arrow-right"></use>
                 </svg>
             </div>
         </button>
@@ -9062,7 +9062,7 @@ const galleryPrimary = () => {
         <button type="button" class="btn btn-reset nav-arrow-primary nav-arrow-primary--prev gallery-primary-container__prev">
             <div class="nav-arrow-primary__wrapper">
                 <svg>
-                    <use xlink:href="img/sprite.svg#arrow-right"></use>
+                    <use xlink:href="./img/sprite.svg#arrow-right"></use>
                 </svg>
             </div>
         </button>
@@ -9109,7 +9109,7 @@ const galleryStories = () => {
         <button type="button" class="btn btn-reset nav-arrow-primary nav-arrow-primary--next gallery-stories-container__next">
             <div class="nav-arrow-primary__wrapper">
                 <svg>
-                    <use xlink:href="img/sprite.svg#arrow-right"></use>
+                    <use xlink:href="./img/sprite.svg#arrow-right"></use>
                 </svg>
             </div>
         </button>
@@ -9118,7 +9118,7 @@ const galleryStories = () => {
         <button type="button" class="btn btn-reset nav-arrow-primary nav-arrow-primary--prev gallery-stories-container__prev">
             <div class="nav-arrow-primary__wrapper">
                 <svg>
-                    <use xlink:href="img/sprite.svg#arrow-right"></use>
+                    <use xlink:href="./img/sprite.svg#arrow-right"></use>
                 </svg>
             </div>
         </button>
@@ -9744,7 +9744,7 @@ const mapMetro = () => {
                     <div data-search-area-metro-item="${item.dataset.metroId}">${item.querySelector('.checkbox-secondary__text').textContent.trim()}
                         <button type="button" class="btn btn-reset search-area__nav-close">
                             <svg>
-                                <use xlink:href="img/sprite.svg#x"></use>
+                                <use xlink:href="./img/sprite.svg#x"></use>
                             </svg>
                         </button>
                     </div>`;
@@ -10043,7 +10043,7 @@ const maps = () => {
               content: `
                             <div class="ymaps__route-close-wrapper">
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#x"></use>
+                                    <use xlink:href="./img/sprite.svg#x"></use>
                                 </svg>
                             </div>
                             `
@@ -10605,10 +10605,10 @@ const mortgage = () => {
             btn.setAttribute('title', 'Удалить');
             btn.innerHTML = `
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                         <svg>
-                            <use xlink:href="img/sprite.svg#trash"></use>
+                            <use xlink:href="./img/sprite.svg#trash"></use>
                         </svg>
                         `;
           } else {
@@ -10893,7 +10893,7 @@ const recordViewing = () => {
             <li class="record-day__item ${i === 0 ? '_active' : ''}">
                 <div class="record-day__check" aria-hidden="true">
                     <svg>
-                        <use xlink:href="img/sprite.svg#verif"></use>
+                        <use xlink:href="./img/sprite.svg#verif"></use>
                     </svg>
                 </div>
                 <input type="radio" name="record-day" value=${stringDate} ${i === 0 ? 'checked' : ''} class="record-day__input input-reset">
@@ -10917,14 +10917,14 @@ const recordViewing = () => {
         <div class="record-time__container">
             <div class="nav-arrow-secondary nav-arrow-secondary--prev record-time__prev _disabled">
                 <svg>
-                    <use xlink:href="img/sprite.svg#arrow-left"></use>
+                    <use xlink:href="./img/sprite.svg#arrow-left"></use>
                 </svg>
             </div>
             <ul class="record-time__list list-reset">
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="08:00" class="record-time__input input-reset">
@@ -10933,7 +10933,7 @@ const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="09:00" class="record-time__input input-reset">
@@ -10942,7 +10942,7 @@ const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="10:00" class="record-time__input input-reset">
@@ -10951,7 +10951,7 @@ const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="11:00" class="record-time__input input-reset">
@@ -10960,7 +10960,7 @@ const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="12:00" class="record-time__input input-reset">
@@ -10969,7 +10969,7 @@ const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="13:00" class="record-time__input input-reset">
@@ -10978,7 +10978,7 @@ const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="14:00" class="record-time__input input-reset">
@@ -10987,7 +10987,7 @@ const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="15:00" class="record-time__input input-reset">
@@ -10996,7 +10996,7 @@ const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="16:00" class="record-time__input input-reset">
@@ -11005,7 +11005,7 @@ const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="17:00" class="record-time__input input-reset">
@@ -11014,7 +11014,7 @@ const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="18:00" class="record-time__input input-reset">
@@ -11023,7 +11023,7 @@ const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="19:00" class="record-time__input input-reset">
@@ -11032,7 +11032,7 @@ const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="20:00" class="record-time__input input-reset">
@@ -11041,7 +11041,7 @@ const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="21:00" class="record-time__input input-reset">
@@ -11050,7 +11050,7 @@ const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="22:00" class="record-time__input input-reset">
@@ -11059,7 +11059,7 @@ const recordViewing = () => {
             </ul>
             <div class="nav-arrow-secondary nav-arrow-secondary--next record-time__next">
                 <svg>
-                    <use xlink:href="img/sprite.svg#arrow-right"></use>
+                    <use xlink:href="./img/sprite.svg#arrow-right"></use>
                 </svg>
             </div>
         </div>
@@ -11134,7 +11134,7 @@ const recordViewingTwo = () => {
         <div class="record-viewing-two-confirm__container">
             <button class="btn-reset record-viewing-two-confirm__close" aria-label="Закрыть модальное окно">
                 <svg>
-                    <use xlink:href="img/sprite.svg#x"></use>
+                    <use xlink:href="./img/sprite.svg#x"></use>
                 </svg>
                 <span>Закрыть</span>
             </button>
@@ -11231,7 +11231,7 @@ const reviewModal = () => {
             class="btn btn-reset review-slider-body__navigation nav-arrow-primary nav-arrow-primary--prev">
             <div class="nav-arrow-primary__wrapper">
                 <svg>
-                    <use xlink:href="img/sprite.svg#arrow-right"></use>
+                    <use xlink:href="./img/sprite.svg#arrow-right"></use>
                 </svg>
             </div>
         </button>
@@ -11239,7 +11239,7 @@ const reviewModal = () => {
             class="btn btn-reset review-slider-body__navigation nav-arrow-primary nav-arrow-primary--next">
             <div class="nav-arrow-primary__wrapper">
                 <svg>
-                    <use xlink:href="img/sprite.svg#arrow-right"></use>
+                    <use xlink:href="./img/sprite.svg#arrow-right"></use>
                 </svg>
             </div>
         </button>
@@ -11267,7 +11267,7 @@ const reviewModal = () => {
             <div class="review-modal__container">
                 <button class="btn-reset review-modal__close" aria-label="Закрыть модальное окно">
                     <svg>
-                        <use xlink:href="img/sprite.svg#x"></use>
+                        <use xlink:href="./img/sprite.svg#x"></use>
                     </svg>
                     <span>Закрыть</span>
                 </button>
@@ -11468,7 +11468,7 @@ const tag = () => {
   const svgIconHTML = `
         <div>
             <svg>
-                <use xlink:href="img/sprite.svg#x"></use>
+                <use xlink:href="./img/sprite.svg#x"></use>
             </svg>
         </div>
     `;
@@ -11651,7 +11651,7 @@ function generateVideoCard(url) {
             </div>
             <button type="button" class="btn btn-reset video-card__remove" title="Удалить видео">
                 <svg>
-                    <use xlink:href="img/sprite.svg#trash"></use>
+                    <use xlink:href="./img/sprite.svg#trash"></use>
                 </svg>
             </button>
         </article>
@@ -11695,7 +11695,7 @@ const videoModal = () => {
                 <div class="video-modal__container">
                     <button class="btn-reset video-modal__close" aria-label="Закрыть модальное окно">
                         <svg>
-                            <use xlink:href="img/sprite.svg#x"></use>
+                            <use xlink:href="./img/sprite.svg#x"></use>
                         </svg>
                         <span>Закрыть</span>
                     </button>
@@ -11708,7 +11708,7 @@ const videoModal = () => {
                          </div>
                          <div class="video-block__play">
                              <svg>
-                                 <use xlink:href="img/sprite.svg#play"></use>
+                                 <use xlink:href="./img/sprite.svg#play"></use>
                              </svg>
                          </div>
                      </button>
@@ -12658,7 +12658,7 @@ function initSliders() {
                     <div class="news-card-popup__container">
                         <button class="btn-reset news-card-popup__close" aria-label="Закрыть модальное окно">
                             <svg>
-                                <use xlink:href="img/sprite.svg#x"></use>
+                                <use xlink:href="./img/sprite.svg#x"></use>
                             </svg>
                             <span>Закрыть</span>
                         </button>
@@ -12897,7 +12897,7 @@ function initSliders() {
                             <div class="advantages-popup__container">
                                 <button class="btn-reset advantages-popup__close" aria-label="Закрыть модальное окно">
                                     <svg>
-                                        <use xlink:href="img/sprite.svg#x"></use>
+                                        <use xlink:href="./img/sprite.svg#x"></use>
                                     </svg>
                                     <span>Закрыть</span>
                                 </button>
@@ -13400,7 +13400,7 @@ const tabs = () => {
         if (!editBtn.classList.contains('_active')) {
           editBtn.innerHTML = `
                         <svg>
-                            <use xlink:href="img/sprite.svg#save">
+                            <use xlink:href="./img/sprite.svg#save">
                             </use>
                         </svg>
                     `;
@@ -13426,7 +13426,7 @@ const tabs = () => {
         } else {
           editBtn.innerHTML = `
                     <svg>
-                        <use xlink:href="img/sprite.svg#pencil">
+                        <use xlink:href="./img/sprite.svg#pencil">
                         </use>
                     </svg>
                     `;
@@ -13496,13 +13496,13 @@ const tabs = () => {
             <input type="text" name="Имя" class="input-reset _width-auto" value="" disabled="">
             <div class="btn btn-reset tabs__title-edit _disabled" title="Сохранить">
                 <svg>
-                    <use xlink:href="img/sprite.svg#save">
+                    <use xlink:href="./img/sprite.svg#save">
                     </use>
                 </svg>
             </div>
             <div class="btn btn-reset tabs__title-remove" title="Удалить">
                 <svg>
-                    <use xlink:href="img/sprite.svg#trash">
+                    <use xlink:href="./img/sprite.svg#trash">
                     </use>
                 </svg>
             </div>
@@ -13550,7 +13550,7 @@ const tabs = () => {
                         <span>Студия</span>
                         <div class="furnishing-sets__btn-remove">
                             <svg>
-                                <use xlink:href="img/sprite.svg#trash"></use>
+                                <use xlink:href="./img/sprite.svg#trash"></use>
                             </svg>
                         </div>
                     </button>
@@ -13558,7 +13558,7 @@ const tabs = () => {
                         <span>1</span>
                         <div class="furnishing-sets__btn-remove">
                             <svg>
-                                <use xlink:href="img/sprite.svg#trash"></use>
+                                <use xlink:href="./img/sprite.svg#trash"></use>
                             </svg>
                         </div>
                     </button>
@@ -13566,7 +13566,7 @@ const tabs = () => {
                         <span>2</span>
                         <div class="furnishing-sets__btn-remove">
                             <svg>
-                                <use xlink:href="img/sprite.svg#trash"></use>
+                                <use xlink:href="./img/sprite.svg#trash"></use>
                             </svg>
                         </div>
                     </button>
@@ -13574,7 +13574,7 @@ const tabs = () => {
                         <span>3</span>
                         <div class="furnishing-sets__btn-remove">
                             <svg>
-                                <use xlink:href="img/sprite.svg#trash"></use>
+                                <use xlink:href="./img/sprite.svg#trash"></use>
                             </svg>
                         </div>
                     </button>
@@ -13582,7 +13582,7 @@ const tabs = () => {
                         <span>4</span>
                         <div class="furnishing-sets__btn-remove">
                             <svg>
-                                <use xlink:href="img/sprite.svg#trash"></use>
+                                <use xlink:href="./img/sprite.svg#trash"></use>
                             </svg>
                         </div>
                     </button>
@@ -13590,7 +13590,7 @@ const tabs = () => {
                 <div class="furnishing-sets__create">
                     <button type="button" class="btn btn-reset furnishing-sets__create--room">
                         <svg>
-                            <use xlink:href="img/sprite.svg#plus"></use>
+                            <use xlink:href="./img/sprite.svg#plus"></use>
                         </svg>
                         Добавить комнатность
                     </button>
@@ -13625,7 +13625,7 @@ const tabs = () => {
                         <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
                             <button type="button" class="btn btn-reset secondary-tooltip__btn">
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#info"></use>
+                                    <use xlink:href="./img/sprite.svg#info"></use>
                                 </svg>
                             </button>
                             <div class="secondary-tooltip__content">
@@ -13674,7 +13674,7 @@ const tabs = () => {
                         <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
                             <button type="button" class="btn btn-reset secondary-tooltip__btn">
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#info"></use>
+                                    <use xlink:href="./img/sprite.svg#info"></use>
                                 </svg>
                             </button>
                             <div class="secondary-tooltip__content">
@@ -13723,7 +13723,7 @@ const tabs = () => {
                         <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
                             <button type="button" class="btn btn-reset secondary-tooltip__btn">
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#info"></use>
+                                    <use xlink:href="./img/sprite.svg#info"></use>
                                 </svg>
                             </button>
                             <div class="secondary-tooltip__content">
@@ -13772,7 +13772,7 @@ const tabs = () => {
                         <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
                             <button type="button" class="btn btn-reset secondary-tooltip__btn">
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#info"></use>
+                                    <use xlink:href="./img/sprite.svg#info"></use>
                                 </svg>
                             </button>
                             <div class="secondary-tooltip__content">
@@ -13821,7 +13821,7 @@ const tabs = () => {
                         <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
                             <button type="button" class="btn btn-reset secondary-tooltip__btn">
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#info"></use>
+                                    <use xlink:href="./img/sprite.svg#info"></use>
                                 </svg>
                             </button>
                             <div class="secondary-tooltip__content">
@@ -13875,7 +13875,7 @@ const tabs = () => {
             <div class="tabs__body create-calc-mort__field" data-tabs-item>
                 <button type="button" class="btn btn-reset create-calc-mort__create-item">
                     <svg>
-                        <use xlink:href="img/sprite.svg#plus"></use>
+                        <use xlink:href="./img/sprite.svg#plus"></use>
                     </svg>
                     Добавить новое поле
                 </button>

@@ -191,22 +191,22 @@ function photoGenerate(url, name) {
             </picture>
             <div class="place-sale-photo__icon">
                 <svg>
-                    <use xlink:href="img/sprite.svg#right-left"></use>
+                    <use xlink:href="./img/sprite.svg#right-left"></use>
                 </svg>
             </div>
             <button type="button" class="btn btn-reset place-sale-photo__remove" title="Удалить фото">
                 <svg>
-                    <use xlink:href="img/sprite.svg#trash"></use>
+                    <use xlink:href="./img/sprite.svg#trash"></use>
                 </svg>
             </button>
             <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--1">
                 <svg>
-                    <use xlink:href="img/sprite.svg#rotate-1"></use>
+                    <use xlink:href="./img/sprite.svg#rotate-1"></use>
                 </svg>
             </button>
             <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--2">
                 <svg>
-                    <use xlink:href="img/sprite.svg#rotate-2"></use>
+                    <use xlink:href="./img/sprite.svg#rotate-2"></use>
                 </svg>
             </button>
         </div>
@@ -223,7 +223,7 @@ function pdfGenerate(url, name) {
                 </picture>
                 <button type="button" class="btn btn-reset place-sale-photo__remove" title="Удалить PDF">
                     <svg>
-                        <use xlink:href="img/sprite.svg#trash"></use>
+                        <use xlink:href="./img/sprite.svg#trash"></use>
                     </svg>
                 </button>
             </a>

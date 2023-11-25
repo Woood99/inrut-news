@@ -271,7 +271,7 @@ const mapMetro = () => {
                     <div data-search-area-metro-item="${item.dataset.metroId}">${item.querySelector('.checkbox-secondary__text').textContent.trim()}
                         <button type="button" class="btn btn-reset search-area__nav-close">
                             <svg>
-                                <use xlink:href="img/sprite.svg#x"></use>
+                                <use xlink:href="./img/sprite.svg#x"></use>
                             </svg>
                         </button>
                     </div>`;

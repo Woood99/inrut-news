@@ -68,7 +68,7 @@ function generateVideoCard(url) {
             </div>
             <button type="button" class="btn btn-reset video-card__remove" title="Удалить видео">
                 <svg>
-                    <use xlink:href="img/sprite.svg#trash"></use>
+                    <use xlink:href="./img/sprite.svg#trash"></use>
                 </svg>
             </button>
         </article>

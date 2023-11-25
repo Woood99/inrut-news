@@ -91,7 +91,7 @@ function generateRoom(number) {
             <span>${number}</span>
             <div class="furnishing-sets__btn-remove">
                 <svg>
-                  <use xlink:href="img/sprite.svg#trash"></use>
+                  <use xlink:href="./img/sprite.svg#trash"></use>
                 </svg>
             </div>
         </button>
@@ -128,7 +128,7 @@ function generateTabContent() {
             <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
                 <button type="button" class="btn btn-reset secondary-tooltip__btn">
                     <svg>
-                        <use xlink:href="img/sprite.svg#info"></use>
+                        <use xlink:href="./img/sprite.svg#info"></use>
                     </svg>
                 </button>
                 <div class="secondary-tooltip__content">
@@ -160,7 +160,7 @@ function generateStudio() {
                 <span>Студия</span>
                 <div class="furnishing-sets__btn-remove">
                     <svg>
-                      <use xlink:href="img/sprite.svg#trash"></use>
+                      <use xlink:href="./img/sprite.svg#trash"></use>
                     </svg>
                 </div>
             </button>

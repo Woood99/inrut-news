@@ -74,7 +74,7 @@ export const recordViewing = () => {
             <li class="record-day__item ${i === 0 ? '_active' : ''}">
                 <div class="record-day__check" aria-hidden="true">
                     <svg>
-                        <use xlink:href="img/sprite.svg#verif"></use>
+                        <use xlink:href="./img/sprite.svg#verif"></use>
                     </svg>
                 </div>
                 <input type="radio" name="record-day" value=${stringDate} ${i === 0 ? 'checked' : ''} class="record-day__input input-reset">
@@ -99,14 +99,14 @@ export const recordViewing = () => {
         <div class="record-time__container">
             <div class="nav-arrow-secondary nav-arrow-secondary--prev record-time__prev _disabled">
                 <svg>
-                    <use xlink:href="img/sprite.svg#arrow-left"></use>
+                    <use xlink:href="./img/sprite.svg#arrow-left"></use>
                 </svg>
             </div>
             <ul class="record-time__list list-reset">
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="08:00" class="record-time__input input-reset">
@@ -115,7 +115,7 @@ export const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="09:00" class="record-time__input input-reset">
@@ -124,7 +124,7 @@ export const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="10:00" class="record-time__input input-reset">
@@ -133,7 +133,7 @@ export const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="11:00" class="record-time__input input-reset">
@@ -142,7 +142,7 @@ export const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="12:00" class="record-time__input input-reset">
@@ -151,7 +151,7 @@ export const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="13:00" class="record-time__input input-reset">
@@ -160,7 +160,7 @@ export const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="14:00" class="record-time__input input-reset">
@@ -169,7 +169,7 @@ export const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="15:00" class="record-time__input input-reset">
@@ -178,7 +178,7 @@ export const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="16:00" class="record-time__input input-reset">
@@ -187,7 +187,7 @@ export const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="17:00" class="record-time__input input-reset">
@@ -196,7 +196,7 @@ export const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="18:00" class="record-time__input input-reset">
@@ -205,7 +205,7 @@ export const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="19:00" class="record-time__input input-reset">
@@ -214,7 +214,7 @@ export const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="20:00" class="record-time__input input-reset">
@@ -223,7 +223,7 @@ export const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="21:00" class="record-time__input input-reset">
@@ -232,7 +232,7 @@ export const recordViewing = () => {
                 <li class="record-time__item">
                     <div class="record-time__check" aria-hidden="true">
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                     </div>
                     <input type="radio" name="record-time" value="22:00" class="record-time__input input-reset">
@@ -241,7 +241,7 @@ export const recordViewing = () => {
             </ul>
             <div class="nav-arrow-secondary nav-arrow-secondary--next record-time__next">
                 <svg>
-                    <use xlink:href="img/sprite.svg#arrow-right"></use>
+                    <use xlink:href="./img/sprite.svg#arrow-right"></use>
                 </svg>
             </div>
         </div>
@@ -324,7 +324,7 @@ export const recordViewingTwo = () => {
         <div class="record-viewing-two-confirm__container">
             <button class="btn-reset record-viewing-two-confirm__close" aria-label="Закрыть модальное окно">
                 <svg>
-                    <use xlink:href="img/sprite.svg#x"></use>
+                    <use xlink:href="./img/sprite.svg#x"></use>
                 </svg>
                 <span>Закрыть</span>
             </button>

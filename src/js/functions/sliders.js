@@ -395,7 +395,7 @@ function initSliders() {
                     <div class="news-card-popup__container">
                         <button class="btn-reset news-card-popup__close" aria-label="Закрыть модальное окно">
                             <svg>
-                                <use xlink:href="img/sprite.svg#x"></use>
+                                <use xlink:href="./img/sprite.svg#x"></use>
                             </svg>
                             <span>Закрыть</span>
                         </button>
@@ -641,7 +641,7 @@ function initSliders() {
                             <div class="advantages-popup__container">
                                 <button class="btn-reset advantages-popup__close" aria-label="Закрыть модальное окно">
                                     <svg>
-                                        <use xlink:href="img/sprite.svg#x"></use>
+                                        <use xlink:href="./img/sprite.svg#x"></use>
                                     </svg>
                                     <span>Закрыть</span>
                                 </button>

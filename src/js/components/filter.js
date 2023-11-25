@@ -52,7 +52,7 @@ export const filterSum = () => {
                         <div class="filter-modal__container">
                             <button class="btn-reset filter-modal__close" aria-label="Закрыть модальное окно">
                                 <svg>
-                                    <use xlink:href="img/sprite.svg#x"></use>
+                                    <use xlink:href="./img/sprite.svg#x"></use>
                                 </svg>
                                 <span>Закрыть</span>
                             </button>
@@ -298,7 +298,7 @@ export const searchSelect = () => {
                     <div class="filter-modal__container">
                         <button class="btn-reset filter-modal__close" aria-label="Закрыть модальное окно">
                             <svg>
-                                <use xlink:href="img/sprite.svg#x"></use>
+                                <use xlink:href="./img/sprite.svg#x"></use>
                             </svg>
                             <span>Закрыть</span>
                         </button>
@@ -566,7 +566,7 @@ export const filterCustomSelectCheckboxes = () => {
                 <div class="filter-modal__container">
                     <button class="btn-reset filter-modal__close" aria-label="Закрыть модальное окно">
                         <svg>
-                            <use xlink:href="img/sprite.svg#x"></use>
+                            <use xlink:href="./img/sprite.svg#x"></use>
                         </svg>
                         <span>Закрыть</span>
                     </button>

@@ -76,7 +76,7 @@ export const galleryPrimary = () => {
         const closeBtnHTML = `
         <button class="btn btn-reset gallery-primary-container__close">
             <svg>
-                <use xlink:href="img/sprite.svg#x"></use>
+                <use xlink:href="./img/sprite.svg#x"></use>
             </svg>
         </button>
         `;
@@ -84,7 +84,7 @@ export const galleryPrimary = () => {
         <button type="button" class="btn btn-reset nav-arrow-primary nav-arrow-primary--next gallery-primary-container__next">
             <div class="nav-arrow-primary__wrapper">
                 <svg>
-                    <use xlink:href="img/sprite.svg#arrow-right"></use>
+                    <use xlink:href="./img/sprite.svg#arrow-right"></use>
                 </svg>
             </div>
         </button>
@@ -93,7 +93,7 @@ export const galleryPrimary = () => {
         <button type="button" class="btn btn-reset nav-arrow-primary nav-arrow-primary--prev gallery-primary-container__prev">
             <div class="nav-arrow-primary__wrapper">
                 <svg>
-                    <use xlink:href="img/sprite.svg#arrow-right"></use>
+                    <use xlink:href="./img/sprite.svg#arrow-right"></use>
                 </svg>
             </div>
         </button>
@@ -142,7 +142,7 @@ export const galleryStories = () => {
         <button type="button" class="btn btn-reset nav-arrow-primary nav-arrow-primary--next gallery-stories-container__next">
             <div class="nav-arrow-primary__wrapper">
                 <svg>
-                    <use xlink:href="img/sprite.svg#arrow-right"></use>
+                    <use xlink:href="./img/sprite.svg#arrow-right"></use>
                 </svg>
             </div>
         </button>
@@ -151,7 +151,7 @@ export const galleryStories = () => {
         <button type="button" class="btn btn-reset nav-arrow-primary nav-arrow-primary--prev gallery-stories-container__prev">
             <div class="nav-arrow-primary__wrapper">
                 <svg>
-                    <use xlink:href="img/sprite.svg#arrow-right"></use>
+                    <use xlink:href="./img/sprite.svg#arrow-right"></use>
                 </svg>
             </div>
         </button>

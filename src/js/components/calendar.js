@@ -75,7 +75,7 @@ export const calendarPrimary = (containerSelector, url, edit = false) => {
             <div class="calendar-event__container">
                 <button class="btn-reset calendar-event__close" aria-label="Закрыть модальное окно">
                     <svg>
-                        <use xlink:href="img/sprite.svg#x"></use>
+                        <use xlink:href="./img/sprite.svg#x"></use>
                     </svg>
                     <span>Закрыть</span>
                 </button>
@@ -95,13 +95,13 @@ export const calendarPrimary = (containerSelector, url, edit = false) => {
                 <div class="calendar-event-item__bottom">
                     <button type="button" class="btn btn-reset calendar-event-item__cancel">
                         <svg>
-                            <use xlink:href="img/sprite.svg#x"></use>
+                            <use xlink:href="./img/sprite.svg#x"></use>
                         </svg>
                         Отменить
                     </button>
                     <button type="button" class="btn btn-reset calendar-event-item__edit">
                         <svg>
-                            <use xlink:href="img/sprite.svg#pencil"></use>
+                            <use xlink:href="./img/sprite.svg#pencil"></use>
                         </svg>
                         Редактировать
                     </button>
@@ -114,7 +114,7 @@ export const calendarPrimary = (containerSelector, url, edit = false) => {
                 <li class="calendar-event__item calendar-event-item">
                     <div class="calendar-event-item__time">
                         <svg>
-                            <use xlink:href="img/sprite.svg#clock"></use>
+                            <use xlink:href="./img/sprite.svg#clock"></use>
                         </svg>
                         <div>
                             <span>${el.time}</span>
@@ -123,7 +123,7 @@ export const calendarPrimary = (containerSelector, url, edit = false) => {
                     </div>
                     <div class="calendar-event-item__location">
                         <svg>
-                            <use xlink:href="img/sprite.svg#location"></use>
+                            <use xlink:href="./img/sprite.svg#location"></use>
                         </svg>
                         ${el.location}
                     </div>

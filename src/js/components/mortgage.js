@@ -358,10 +358,10 @@ const mortgage = () => {
                         btn.setAttribute('title', 'Удалить');
                         btn.innerHTML = `
                         <svg>
-                            <use xlink:href="img/sprite.svg#verif"></use>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
                         </svg>
                         <svg>
-                            <use xlink:href="img/sprite.svg#trash"></use>
+                            <use xlink:href="./img/sprite.svg#trash"></use>
                         </svg>
                         `
                     } else {

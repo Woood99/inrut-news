@@ -3,7 +3,7 @@ const submitAppOffers = () => {
     if (!container) return;
     const items = container.querySelectorAll('.submit-app-offers__item');
     const btn = container.querySelector('.submit-app-offers__btn');
-    const minItem = 3;
+    const minItem = 4;
     hiddenItems(items);
     if (btn) {
         if (items.length <= minItem) {

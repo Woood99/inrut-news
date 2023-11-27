@@ -75,7 +75,9 @@
     &__title {}
 
     &__choice {
-        margin-bottom: 32px;
+        &:not(:last-child){
+            margin-bottom: 24px;
+        }
     }
 
     &__row {
@@ -112,7 +114,7 @@
         }
     }
     &__tags{
-        margin-bottom: 32px;
+        margin-top: 24px;
     }
     &__item {}
 
@@ -141,7 +143,7 @@
 .submit-app-offers{
     &__list{
         display: grid;
-        grid-template-columns: repeat(3,1fr);
+        grid-template-columns: repeat(4,1fr);
         grid-column-gap: 16px;
         grid-row-gap: 16px;
     }
@@ -171,6 +173,14 @@
 
         @media (max-width:$desktop) {
             display: none;
+        }
+    }
+
+    &._active{
+        .submit-app-offers__btn{
+            svg{
+                transform: rotate(180deg);
+            }
         }
     }
 }

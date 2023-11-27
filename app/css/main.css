@@ -18816,6 +18816,86 @@ textarea.input-reset {
   }
 }
 
+.offer-room {
+  position: relative;
+}
+.offer-room > input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  z-index: 2;
+  cursor: pointer;
+}
+.offer-room__check {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 26px;
+  height: 26px;
+  background-color: var(--blue);
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+  -o-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+  transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+  z-index: 3;
+}
+.offer-room__check svg {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: var(--white);
+  stroke-width: 1.5px;
+}
+.offer-room__image {
+  padding-bottom: 67.7595628415%;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+.offer-room__title {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  color: var(--dark);
+  z-index: 1;
+  max-width: 145px;
+}
+.offer-room__title::before {
+  content: "";
+  display: block;
+  width: 191px;
+  height: 431px;
+  background: -o-linear-gradient(28.54deg, #F9F9F9 71.66%, rgba(249, 249, 249, 0) 108.47%);
+  background: linear-gradient(61.46deg, #F9F9F9 71.66%, rgba(249, 249, 249, 0) 108.47%);
+  opacity: 0.75;
+  -webkit-transform: rotate(-56deg);
+  -ms-transform: rotate(-56deg);
+  transform: rotate(-56deg);
+  position: absolute;
+  bottom: -206px;
+  left: 1px;
+  z-index: -1;
+}
+.offer-room__subtitle {
+  margin-top: 16px;
+  color: var(--dark);
+}
+.offer-room._active .offer-room__check {
+  opacity: 1;
+  visibility: visible;
+}
+
 .logo {
   width: 190px;
 }
@@ -33315,15 +33395,64 @@ textarea.input-reset {
     grid-template-columns: 1fr;
   }
 }
+.submit-app-options__tags {
+  margin-bottom: 32px;
+}
 .submit-app-options__textarea {
   --height: 165px;
 }
 .submit-app-options__import {
   margin-top: 24px;
 }
+.submit-app-options__offers {
+  margin-top: 24px;
+}
 
 .submit-app-import__textarea {
   --height: 165px;
+}
+
+.submit-app-offers__list {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+}
+.submit-app-offers__btn {
+  margin-top: 16px;
+  color: var(--blue);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.submit-app-offers__btn span {
+  font-size: var(--small-fz);
+  line-height: var(--small-lh);
+  font-weight: 400;
+}
+.submit-app-offers__btn svg {
+  width: 20px;
+  height: 17px;
+  fill: currentColor;
+  margin-left: 8px;
+  -webkit-transition: -webkit-transform 0.4s ease-in-out;
+  transition: -webkit-transform 0.4s ease-in-out;
+  -o-transition: transform 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+}
+.submit-app-offers__btn.focus-visible {
+  color: var(--primary600);
+}
+@media (max-width: 1212px) {
+  .submit-app-offers__btn {
+    display: none;
+  }
 }
 
 @media (max-width: 1212px) {

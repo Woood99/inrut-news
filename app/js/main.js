@@ -4215,6 +4215,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_createSale__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./components/createSale */ "./src/js/components/createSale.js");
 /* harmony import */ var _components_videoLoad__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./components/videoLoad */ "./src/js/components/videoLoad.js");
 /* harmony import */ var _components_haracteristicsBlock__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./components/сharacteristicsBlock */ "./src/js/components/сharacteristicsBlock.js");
+/* harmony import */ var _components_submitAppOffers__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./components/submitAppOffers */ "./src/js/components/submitAppOffers.js");
+
 
 
 
@@ -4359,6 +4361,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_createSale__WEBPACK_IMPORTED_MODULE_49__["default"])();
   (0,_components_videoLoad__WEBPACK_IMPORTED_MODULE_50__.videoLoad)();
   (0,_components_haracteristicsBlock__WEBPACK_IMPORTED_MODULE_51__["default"])();
+  (0,_components_submitAppOffers__WEBPACK_IMPORTED_MODULE_52__["default"])();
   // ==================================================
 
   (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.validateRadioPrimary)('.complaint-popup__form', '.textarea-primary__input', '.complaint-popup__btn', '.radio-primary__input');
@@ -11416,6 +11419,71 @@ const submitApp = () => {
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (submitApp);
+
+/***/ }),
+
+/***/ "./src/js/components/submitAppOffers.js":
+/*!**********************************************!*\
+  !*** ./src/js/components/submitAppOffers.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const submitAppOffers = () => {
+  const container = document.querySelector('.submit-app-offers');
+  if (!container) return;
+  const items = container.querySelectorAll('.submit-app-offers__item');
+  const btn = container.querySelector('.submit-app-offers__btn');
+  const minItem = 3;
+  hiddenItems(items);
+  if (btn) {
+    if (items.length <= minItem) {
+      btn.remove();
+      return;
+    }
+    ;
+    const btnTextMap = {
+      more: btn.querySelector('span').textContent,
+      none: 'Скрыть квартиры'
+    };
+    btn.addEventListener('click', () => {
+      if (container.classList.contains('_active')) {
+        hiddenItems(items);
+        btn.querySelector('span').textContent = btnTextMap.more;
+        container.classList.remove('_active');
+      } else {
+        visibleAllItem(items);
+        btn.querySelector('span').textContent = btnTextMap.none;
+        container.classList.add('_active');
+      }
+    });
+  }
+  items.forEach(item => {
+    item.addEventListener('input', () => {
+      item.classList.toggle('_active');
+    });
+  });
+  function hiddenItems(items) {
+    items.forEach((item, index) => {
+      if (index >= minItem) {
+        item.setAttribute('hidden', '');
+      } else {
+        item.removeAttribute('hidden');
+      }
+    });
+  }
+  ;
+  function visibleAllItem(items) {
+    items.forEach(item => {
+      item.removeAttribute('hidden');
+    });
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (submitAppOffers);
 
 /***/ }),
 

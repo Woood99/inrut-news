@@ -1,0 +1,85 @@
+.offer-room {
+    position: relative;
+    >input{
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        z-index: 2;
+        cursor: pointer;
+    }
+    &__check {
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        width: 26px;
+        height: 26px;
+        background-color: var(--blue);
+        border-radius: 50%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        opacity: 0;
+        visibility: hidden;
+
+        transition: opacity $transitionSpeed $transitionFunction,
+            visibility $transitionSpeed $transitionFunction;
+
+            z-index: 3;
+        svg {
+            width: 13px;
+            height: 13px;
+            fill: none;
+            stroke: var(--white);
+            stroke-width: 1.5px;
+        }
+    }
+
+    &__container {
+    }
+
+    &__image {
+        padding-bottom: percent(248, 366);
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    &__title {
+        position: absolute;
+        bottom: 16px;
+        left: 16px;
+
+        color: var(--dark);
+        z-index: 1;
+        max-width: 145px;
+        &::before{
+            content: "";
+            display: block;
+            width: 191px;
+            height: 431px;
+            background: linear-gradient(61.46deg, #F9F9F9 71.66%, rgba(249, 249, 249, 0) 108.47%);
+            opacity: 0.75;
+            transform: rotate(-56deg);
+            position: absolute;
+            bottom: -206px;
+            left: 1px;
+            z-index: -1;
+        }
+    }
+
+    &__subtitle {
+        margin-top: 16px;
+        color: var(--dark);
+        
+    }
+
+    &._active {
+        .offer-room__check {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+

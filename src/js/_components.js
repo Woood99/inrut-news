@@ -104,6 +104,7 @@ import {
     videoLoad
 } from './components/videoLoad';
 import сharacteristicsBlock from './components/сharacteristicsBlock';
+import submitAppOffers from './components/submitAppOffers';
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==================================================
@@ -197,6 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
     createSale();
     videoLoad();
     сharacteristicsBlock();
+    submitAppOffers();
     // ==================================================
 
     validateRadioPrimary('.complaint-popup__form', '.textarea-primary__input', '.complaint-popup__btn', '.radio-primary__input');

@@ -111,7 +111,9 @@
             grid-template-columns: 1fr;
         }
     }
-
+    &__tags{
+        margin-bottom: 32px;
+    }
     &__item {}
 
     &__textarea {
@@ -119,6 +121,9 @@
     }
 
     &__import {
+        margin-top: 24px;
+    }
+    &__offers {
         margin-top: 24px;
     }
 }
@@ -130,6 +135,43 @@
 
     &__textarea {
         --height: 165px;
+    }
+}
+
+.submit-app-offers{
+    &__list{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-column-gap: 16px;
+        grid-row-gap: 16px;
+    }
+    &__btn{
+        margin-top: 16px;
+        color: var(--blue);
+        display: flex;
+        align-items: center;
+
+        span {
+            font-size: var(--small-fz);
+            line-height: var(--small-lh);
+            font-weight: 400;
+        }
+
+        svg {
+            width: 20px;
+            height: 17px;
+            fill: currentColor;
+            margin-left: 8px;
+            transition: transform $transitionSpeed $transitionFunction;
+        }
+
+        &.focus-visible {
+            color: var(--primary600);
+        }
+
+        @media (max-width:$desktop) {
+            display: none;
+        }
     }
 }
 

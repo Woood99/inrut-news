@@ -5,22 +5,24 @@ function controlCards() {
         const btns = container.querySelectorAll('.control-cards__btn');
         const content = container.querySelector('.control-cards__content');
         const currentBtn = container.querySelector('.control-cards__btn._active');
-        actionForCards(container, content, currentBtn);
+        if (container && content && currentBtn) actionForCards(container, content, currentBtn);
         btns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                btns.forEach(el => el.classList.remove('_active'));
-                content.classList.remove('control-cards__content--horizontal', 'control-cards__content--vertical');
-                actionForCards(container, content, btn);
-            });
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    btns.forEach(el => el.classList.remove('_active'));
+                    content.classList.remove('control-cards__content--horizontal', 'control-cards__content--vertical');
+                    actionForCards(container, content, btn);
+                });
+            }
         })
 
 
         function checkHorizontal(target) {
-            return target.classList.contains('control-cards__btn--horizontal');
+            if (target) return target.classList.contains('control-cards__btn--horizontal');
         }
 
         function checkVertical(target) {
-            return target.classList.contains('control-cards__btn--vertical');
+            if (target) return target.classList.contains('control-cards__btn--vertical');
         }
 
         function actionForCards(container, content, btn) {

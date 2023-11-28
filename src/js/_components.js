@@ -105,6 +105,7 @@ import {
 } from './components/videoLoad';
 import сharacteristicsBlock from './components/сharacteristicsBlock';
 import submitAppOffers from './components/submitAppOffers';
+import mortgageRequests from './components/mortgageRequests';
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==================================================
@@ -199,6 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     videoLoad();
     сharacteristicsBlock();
     submitAppOffers();
+    mortgageRequests();
     // ==================================================
 
     validateRadioPrimary('.complaint-popup__form', '.textarea-primary__input', '.complaint-popup__btn', '.radio-primary__input');
@@ -232,6 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     emergingBlockScroll('.add-complex .place-sale__btn', '.footer-fixed.complex-fixed', 99999999, true);
     emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true);
+    emergingBlockScroll('.mortgage-requests .mortgage-requests__save', '.footer-fixed.mortgage-requests-fixed', 99999999, true);
 
 
     // ==================================================

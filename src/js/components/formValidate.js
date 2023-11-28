@@ -1,15 +1,7 @@
 import Inputmask from "inputmask";
 import modal from '../modules/modal';
 import AirDatepicker from 'air-datepicker';
-const validateTextMap = {
-    minLength: 'Минимальное кол-во символов:',
-    length: 'Должен содержать',
-    name: 'Укажите имя',
-    surname: 'Укажите фамилию',
-    tel: 'Введите корректный номер телефона',
-    date: 'Укажите дату',
-}
-
+import { validateTextMap } from "../modules/validateTextMap";
 export const validateRadioPrimary = (formSelector, textareaSelector, btnSelector, radiosSelector) => {
     const forms = document.querySelectorAll(formSelector);
     if (forms.length === 0) return;

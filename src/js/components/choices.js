@@ -207,6 +207,7 @@ const choicesSelect = () => {
                     el.closest('.select-secondary').classList.remove('_selected');
                 }
             }
+            checkCloseSelected();
         });
     }
 

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Объект</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script defer src="js/main.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container site-container--object">
+        @include('partials/header.html')
+        <main class="main main-page-gap object mortgage-requests">
+            <h1 class="buy-apartment__title title-1 container">
+                Заявка на ипотеку
+              </h1>
+            <div class="mortgage-requests__body">
+                <div class="mortgage-requests__container container">
+                    <form action="#" class="mortgage-requests__form">
+                        <div data-spollers class="spollers">
+                            <div class="spollers__item">
+                                <button type="button" data-spoller="" class="btn btn-reset spollers__title">
+                                    <h3 class="title-3">
+                                        Паспортные данные
+                                    </h3>
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                    </svg>
+                                </button>
+                                <div class="spollers__body" hidden>
+
+                                    <div class="select-secondary">
+                                        <div class="select-secondary__wrapper">
+                                            <span class="select-secondary__placeholder">
+                                                Пол
+                                            </span>
+                                            <select class="select-secondary__body" hidden name="complex">
+                                                <option value="room-1">Мужской</option>
+                                                <option value="room-2">Женский</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Место рождения</span>
+                                            <input type="text" name="Место рождения" class="input-reset input-text__input" value="" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Серия и номер паспорта</span>
+                                            <input type="text" name="Серия и номер паспорта" class="input-reset input-text__input" value="" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Серия и номер паспорта</span>
+                                            <input type="text" name="Серия и номер паспорта" class="input-reset input-text__input" value="" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Дата выдачи</span>
+                                            <input type="text" name="Имя" class="input-reset input-text__input" value="" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Кем выдан паспорт</span>
+                                            <input type="text" name="Серия и номер паспорта" class="input-reset input-text__input" value="" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Адрес регистрации</span>
+                                            <input type="text" name="Серия и номер паспорта" class="input-reset input-text__input" value="" placeholder="">
+                                        </label>
+                                    </div>
+                                    <br>
+                                    <label class="toggle-checkbox">
+                                        <input type="checkbox" name="toggle-1">
+                                        <div aria-hidden="true"></div>
+                                        <span>Временная регистрация</span>
+                                    </label>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Срок действия регистрации</span>
+                                            <input type="text" name="Имя" class="input-reset input-text__input" value="" placeholder="">
+                                        </label>
+                                    </div>
+                                    <br>
+                                    <label class="toggle-checkbox">
+                                        <input type="checkbox" name="toggle-2">
+                                        <div aria-hidden="true"></div>
+                                        <span>Адрес фактического проживания совпадает с адресом регистрации</span>
+                                    </label>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Адрес фактического проживания</span>
+                                            <input type="text" name="Серия и номер паспорта" class="input-reset input-text__input" value="" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="select-secondary">
+                                        <div class="select-secondary__wrapper">
+                                            <span class="select-secondary__placeholder">
+                                                Основание для проживания
+                                            </span>
+                                            <select class="select-secondary__body" hidden name="complex">
+                                                <option value="room-1">Собственность</option>
+                                                <option value="room-2">Аренда</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Снилс</span>
+                                            <input type="text" name="Снилс" class="input-reset input-text__input" value="" placeholder="">
+                                        </label>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="spollers__item">
+                                <button type="button" data-spoller="" class="btn btn-reset spollers__title">
+                                    <h3 class="title-3">
+                                        Личные данные
+                                    </h3>
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                    </svg>
+                                </button>
+                                <div class="spollers__body" hidden>
+                                    <label class="toggle-checkbox">
+                                        <input type="checkbox" name="toggle-2">
+                                        <div aria-hidden="true"></div>
+                                        <span>Были изменения ФИО</span>
+                                    </label>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Фамилия</span>
+                                            <input type="text" name="Фамилия" class="input-reset input-text__input" value="" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Имя</span>
+                                            <input type="text" name="Имя" class="input-reset input-text__input" value="" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Отчество</span>
+                                            <input type="text" name="Отчество" class="input-reset input-text__input" value="" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Дата выдачи</span>
+                                            <input type="text" name="Имя" class="input-reset input-text__input" value="" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="col">
+                                        <h4 class="title-4">
+                                            Образование
+                                        </h4>
+                                        <div class="select-secondary">
+                                            <div class="select-secondary__wrapper">
+                                                <span class="select-secondary__placeholder">
+                                                    Образование
+                                                </span>
+                                                <select class="select-secondary__body" hidden name="complex">
+                                                    <option value="room-1" placeholder>Не выбрано</option>
+                                                    <option value="room-2">Среднее</option>
+                                                    <option value="room-2">Среднее</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <h4 class="title-4">
+                                            Трудовой стаж
+                                        </h4>
+                                        <div class="select-secondary">
+                                            <div class="select-secondary__wrapper">
+                                                <span class="select-secondary__placeholder">
+                                                    Общий трудовой стаж
+                                                </span>
+                                                <select class="select-secondary__body" hidden name="complex">
+                                                    <option value="room-1" placeholder>Не выбрано</option>
+                                                    <option value="room-2">Менее года</option>
+                                                    <option value="room-2">Менее 3 лет</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <h4 class="title-4">
+                                            Воинская обязанность
+                                        </h4>
+                                        <div class="select-secondary">
+                                            <div class="select-secondary__wrapper">
+                                                <span class="select-secondary__placeholder">
+                                                    Воинская обязанность
+                                                </span>
+                                                <select class="select-secondary__body" hidden name="complex">
+                                                    <option value="room-1" placeholder>Не выбрано</option>
+                                                    <option value="room-2">Нет</option>
+                                                    <option value="room-2">Отсрочка</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="spollers__item">
+                                <button type="button" data-spoller="" class="btn btn-reset spollers__title">
+                                    <h3 class="title-3">
+                                        Семейное положение
+                                    </h3>
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                    </svg>
+                                </button>
+                                <div class="spollers__body" hidden>
+                                    <div>
+                                        <span>Семейное положение</span>
+                                        <span>Не в браке</span>
+                                        <button type="button" class="btn btn-reset">Изменить</button>
+                                    </div>
+                                    <div class="col">
+                                        <div class="radio-primary__item">
+                                            <input hidden id="children_1" class="radio-primary__input" type="radio" value="По телефону и в сообщениях" name="children">
+                                            <label for="children_1" class="radio-primary__label">
+                                                <span class="radio-primary__text">Есть дети младше 18 лет</span>
+                                            </label>
+                                        </div>
+                                        <div class="radio-primary__item">
+                                            <input hidden id="children_2" class="radio-primary__input" type="radio" value="Нет детей младше 18 лет" name="children">
+                                            <label for="children_2" class="radio-primary__label">
+                                                <span class="radio-primary__text">Нет детей младше 18 лет</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <br> // при выборе каждого - появляются новые поля //
+                                </div>
+                            </div>
+                            <div class="spollers__item">
+                                <button type="button" data-spoller="" class="btn btn-reset spollers__title">
+                                    <h3 class="title-3">
+                                        Дополнительные доходы
+                                    </h3>
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                    </svg>
+                                </button>
+                                <div class="spollers__body" hidden>
+                                    <label class="toggle-checkbox">
+                                        <input type="checkbox" name="toggle-1">
+                                        <div aria-hidden="true"></div>
+                                        <span>Доходы от аренды</span>
+                                    </label>
+                                    <label class="toggle-checkbox">
+                                        <input type="checkbox" name="toggle-1">
+                                        <div aria-hidden="true"></div>
+                                        <span>Пенсия</span>
+                                    </label>
+                                    <label class="toggle-checkbox">
+                                        <input type="checkbox" name="toggle-1">
+                                        <div aria-hidden="true"></div>
+                                        <span>Иные доходы</span>
+                                    </label>
+                                    <br> // при выборе каждого - появляются новые поля //
+                                </div>
+                            </div>
+                            <div class="spollers__item">
+                                <button type="button" data-spoller="" class="btn btn-reset spollers__title">
+                                    <h3 class="title-3">
+                                        Расходы
+                                    </h3>
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                    </svg>
+                                </button>
+                                <div class="spollers__body" hidden>
+                                    <label class="toggle-checkbox">
+                                        <input type="checkbox" name="toggle-1">
+                                        <div aria-hidden="true"></div>
+                                        <span>Кредиты</span>
+                                    </label>
+                                    <label class="toggle-checkbox">
+                                        <input type="checkbox" name="toggle-1">
+                                        <div aria-hidden="true"></div>
+                                        <span>Аренда</span>
+                                    </label>
+                                    <label class="toggle-checkbox">
+                                        <input type="checkbox" name="toggle-1">
+                                        <div aria-hidden="true"></div>
+                                        <span>Алименты</span>
+                                    </label>
+                                    <br> // при выборе каждого - появляются новые поля //
+                                </div>
+                            </div>
+                            <div class="spollers__item">
+                                <button type="button" data-spoller="" class="btn btn-reset spollers__title">
+                                    <h3 class="title-3">
+                                        Активы
+                                    </h3>
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                    </svg>
+                                </button>
+                                <div class="spollers__body" hidden>
+                                    <label class="toggle-checkbox">
+                                        <input type="checkbox" name="toggle-1">
+                                        <div aria-hidden="true"></div>
+                                        <span>Автомобиль</span>
+                                    </label>
+                                    <label class="toggle-checkbox">
+                                        <input type="checkbox" name="toggle-1">
+                                        <div aria-hidden="true"></div>
+                                        <span>Недвижимость</span>
+                                    </label>
+                                    <br> // при выборе каждого - появляются новые поля //
+                                </div>
+                            </div>
+                            <div class="spollers__item">
+                                <button type="button" data-spoller="" class="btn btn-reset spollers__title">
+                                    <h3 class="title-3">
+                                        Комментарий к заявке
+                                    </h3>
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                    </svg>
+                                </button>
+                                <div class="spollers__body" hidden>
+                                    <label class="place-sale-descr__textarea textarea-primary">
+                                        <textarea class="input-reset textarea-primary__input"
+                                            placeholder="Комментарий"></textarea>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                    <div class="mortgage-requests__sidebar">
+                        <div class="_sticky">
+                            123
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        @include('partials/footer.html')
+    </div>
+    @include('partials/popup.html')
+</body>
+
+
+</html>

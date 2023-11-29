@@ -1,6 +1,6 @@
 import Choices from 'choices.js';
 import modal from '../modules/modal';
-const choicesSelect = () => {
+export const choicesSelect = () => {
     const selectPrimary = document.querySelectorAll('.select-primary__body');
     if (selectPrimary.length >= 1) {
         selectPrimary.forEach(el => {
@@ -107,110 +107,112 @@ const choicesSelect = () => {
 
     const selectSecondary = document.querySelectorAll('.select-secondary__body');
     if (selectSecondary.length >= 1) {
-        const mobileWidth = 1212;
         selectSecondary.forEach(el => {
-            const wrapper = el.closest('.select-secondary');
-            if (wrapper.classList.contains('select-secondary--quarter')) {
-                const currentQuarter =  Math.ceil((new Date()).getMonth() / 3);
-                const body = wrapper.querySelector('.select-secondary__body');
-                let optionsHtml = '';
-                if (currentQuarter === 1){
-                    optionsHtml = `
-                    <option value="quarter1">1 квартал</option>
-                    <option value="quarter2">2 квартал</option>
-                    <option value="quarter3">3 квартал</option>
-                    <option value="quarter4">4 квартал</option>
-                `;
-                }
-                if (currentQuarter === 2){
-                    optionsHtml = `
-                    <option value="quarter2">2 квартал</option>
-                    <option value="quarter1">1 квартал</option>
-                    <option value="quarter3">3 квартал</option>
-                    <option value="quarter4">4 квартал</option>
-                `;
-                }
-                if (currentQuarter === 3){
-                    optionsHtml = `
-                        <option value="quarter3">3 квартал</option>
-                        <option value="quarter1">1 квартал</option>
-                        <option value="quarter2">2 квартал</option>
-                        <option value="quarter4">4 квартал</option>
-                    `;
-                }
-                if (currentQuarter === 4){
-                    optionsHtml = `
-                        <option value="quarter4">4 квартал</option>
-                        <option value="quarter1">1 квартал</option>
-                        <option value="quarter2">2 квартал</option>
-                        <option value="quarter3">3 квартал</option>
-                    `;
-                }
-                body.innerHTML = optionsHtml;
-            }
-            const choices = new Choices(el, {
-                searchEnabled: false,
-                shouldSort: false,
-                itemSelectText: '',
-                position: 'bottom',
-                placeholder: true,
-            })
-            el.addEventListener('change', () => {
-                checkCloseSelected();
-            });
-            el.addEventListener('showDropdown', () => {
-                if (window.innerWidth <= mobileWidth) {
-                    const modalHTML = `
-                    <div class="filter-modal">
-                        <div class="filter-modal__container">
-                            <button class="btn-reset filter-modal__close" aria-label="Закрыть модальное окно">
-                                <svg>
-                                    <use xlink:href="./img/sprite.svg#x"></use>
-                                </svg>
-                                <span>Закрыть</span>
-                            </button>
-                            <div class="filter-modal__content">
-                                <div class="select-secondary"></div>
-                            </div>
-                        </div>
-                    </div>
-                    `;
-                    modal(modalHTML, '.filter-modal', 300, wrapper,wrapper.dataset.modalScroll);
-                    const filterModal = document.querySelector('.filter-modal');
-                    const dropdown = choices.dropdown.element;
-                    filterModal.querySelector('.select-secondary').insertAdjacentElement('beforeend', dropdown);
-
-                    const items = filterModal.querySelectorAll('.choices__item');
-                    items.forEach(item => {
-                        item.addEventListener('click', () => {
-                            choices.setChoiceByValue(item.dataset.value);
-                            checkCloseSelected();
-                            choices.hideDropdown();
-                        })
-                    })
-                }
-            })
-            wrapper.addEventListener('mouseover', (e) => {
-                if (!e.target.closest('.choices__list.choices__list--dropdown')) {
-                    wrapper.classList.add('_hover');
-                }
-            })
-            wrapper.addEventListener('mouseout', () => {
-                wrapper.classList.remove('_hover');
-            })
-
-            function checkCloseSelected() {
-                if (!el.nextElementSibling.querySelector('.choices__item').classList.contains('choices__placeholder')) {
-                    el.closest('.select-secondary').classList.add('_selected');
-                    wrapper.classList.remove('_hover');
-                } else {
-                    el.closest('.select-secondary').classList.remove('_selected');
-                }
-            }
-            checkCloseSelected();
+            selectSecondaryCreate(el);
         });
     }
 
 };
 
-export default choicesSelect;
+export const selectSecondaryCreate = (el) => {
+    const mobileWidth = 1212;
+    const wrapper = el.closest('.select-secondary');
+    if (wrapper.classList.contains('select-secondary--quarter')) {
+        const currentQuarter = Math.ceil((new Date()).getMonth() / 3);
+        const body = wrapper.querySelector('.select-secondary__body');
+        let optionsHtml = '';
+        if (currentQuarter === 1) {
+            optionsHtml = `
+            <option value="quarter1">1 квартал</option>
+            <option value="quarter2">2 квартал</option>
+            <option value="quarter3">3 квартал</option>
+            <option value="quarter4">4 квартал</option>
+        `;
+        }
+        if (currentQuarter === 2) {
+            optionsHtml = `
+            <option value="quarter2">2 квартал</option>
+            <option value="quarter1">1 квартал</option>
+            <option value="quarter3">3 квартал</option>
+            <option value="quarter4">4 квартал</option>
+        `;
+        }
+        if (currentQuarter === 3) {
+            optionsHtml = `
+                <option value="quarter3">3 квартал</option>
+                <option value="quarter1">1 квартал</option>
+                <option value="quarter2">2 квартал</option>
+                <option value="quarter4">4 квартал</option>
+            `;
+        }
+        if (currentQuarter === 4) {
+            optionsHtml = `
+                <option value="quarter4">4 квартал</option>
+                <option value="quarter1">1 квартал</option>
+                <option value="quarter2">2 квартал</option>
+                <option value="quarter3">3 квартал</option>
+            `;
+        }
+        body.innerHTML = optionsHtml;
+    }
+    const choices = new Choices(el, {
+        searchEnabled: false,
+        shouldSort: false,
+        itemSelectText: '',
+        position: 'bottom',
+        placeholder: true,
+    })
+    el.addEventListener('change', () => {
+        checkCloseSelected();
+    });
+    el.addEventListener('showDropdown', () => {
+        if (window.innerWidth <= mobileWidth) {
+            const modalHTML = `
+            <div class="filter-modal">
+                <div class="filter-modal__container">
+                    <button class="btn-reset filter-modal__close" aria-label="Закрыть модальное окно">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#x"></use>
+                        </svg>
+                        <span>Закрыть</span>
+                    </button>
+                    <div class="filter-modal__content">
+                        <div class="select-secondary"></div>
+                    </div>
+                </div>
+            </div>
+            `;
+            modal(modalHTML, '.filter-modal', 300, wrapper, wrapper.dataset.modalScroll);
+            const filterModal = document.querySelector('.filter-modal');
+            const dropdown = choices.dropdown.element;
+            filterModal.querySelector('.select-secondary').insertAdjacentElement('beforeend', dropdown);
+
+            const items = filterModal.querySelectorAll('.choices__item');
+            items.forEach(item => {
+                item.addEventListener('click', () => {
+                    choices.setChoiceByValue(item.dataset.value);
+                    checkCloseSelected();
+                    choices.hideDropdown();
+                })
+            })
+        }
+    })
+    wrapper.addEventListener('mouseover', (e) => {
+        if (!e.target.closest('.choices__list.choices__list--dropdown')) {
+            wrapper.classList.add('_hover');
+        }
+    })
+    wrapper.addEventListener('mouseout', () => {
+        wrapper.classList.remove('_hover');
+    })
+
+    function checkCloseSelected() {
+        if (!el.nextElementSibling.querySelector('.choices__item').classList.contains('choices__placeholder')) {
+            el.closest('.select-secondary').classList.add('_selected');
+            wrapper.classList.remove('_hover');
+        } else {
+            el.closest('.select-secondary').classList.remove('_selected');
+        }
+    }
+    checkCloseSelected();
+}

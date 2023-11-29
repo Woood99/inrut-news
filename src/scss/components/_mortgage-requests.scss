@@ -61,63 +61,74 @@
 
     &__content {
         display: grid;
-grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
         grid-row-gap: 24px;
-        .checkbox-secondary__label{
+
+        .checkbox-secondary__label {
             justify-content: start;
         }
     }
-    &__fields{
+
+    &__fields {
         display: grid;
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(2, 1fr);
         grid-row-gap: 16px;
         grid-column-gap: 8px;
     }
-    &__field{
-        &--row{
+
+    &__field {
+        &--row {
             grid-column: 1/-1;
-            .radio-primary__item{
-                &:not(:last-child){
-                    margin-bottom: 8px;
+
+            .radio-primary__item {
+                &:not(:first-child) {
+                    margin-top: 8px;
                 }
             }
 
         }
-        &--col{
-   
-        }
-        &-subtitle{
+
+        &--col {}
+
+        &-subtitle {
             margin-bottom: 12px;
         }
-        &-descr{
+
+        &-descr {
             font-size: var(--small-fz);
             line-height: var(--small-lh);
             margin-bottom: 12px;
         }
     }
-    &__save{
+
+    &__save {
         width: 100%;
         margin-top: 24px;
     }
-    &__sidebar{
+
+    &__sidebar {
         ._sticky {
             position: sticky;
             top: 16px;
             width: 100%;
         }
     }
-    &__childrens{
+
+    &__childrens {
         margin-top: 16px;
     }
-    &__children{
+
+    &__children {
         display: grid;
         grid-template-columns: calc(50% - 8px) max-content;
-       align-items: center;
+        align-items: center;
         grid-column-gap: 8px;
-        .checkbox-secondary{
+
+        .checkbox-secondary {
             margin-left: 8px;
         }
-        &-remove{
+
+        &-remove {
             justify-self: end;
             width: 40px;
             height: 48px;
@@ -125,33 +136,39 @@ grid-template-columns: 1fr;
             display: flex;
             align-items: center;
             justify-content: center;
-            >svg{
+
+            >svg {
                 width: 20px;
                 height: 100%;
                 fill: var(--red);
             }
         }
-        .checkbox-secondary__label{
+
+        .checkbox-secondary__label {
             justify-content: start;
         }
-        &:not(:first-child){
+
+        &:not(:first-child) {
             margin-top: 16px;
         }
-        &.mortgage-requests__children--remove{
+
+        &.mortgage-requests__children--remove {
             grid-template-columns: calc(50% - 8px) max-content 1fr;
         }
     }
 
-    &__cars{
+    &__cars {
         grid-column: 1/-1;
     }
-    &__car{
+
+    &__car {
         display: grid;
         grid-template-columns: 1fr 1fr;
-       align-items: center;
+        align-items: center;
         grid-column-gap: 8px;
         grid-row-gap: 16px;
-        &-remove{
+
+        &-remove {
             justify-self: end;
             width: 40px;
             height: 48px;
@@ -159,30 +176,75 @@ grid-template-columns: 1fr;
             display: flex;
             align-items: center;
             justify-content: center;
-            >svg{
+
+            >svg {
                 width: 20px;
                 height: 100%;
                 fill: var(--red);
             }
         }
-        .checkbox-secondary{
+
+        .checkbox-secondary {
             align-self: start;
         }
-        &:not(:first-child){
+
+        &:not(:first-child) {
             margin-top: 24px;
             padding-top: 24px;
             border-top: 1px solid var(--primary100);
         }
-        &.mortgage-requests__children--remove{
-            grid-template-columns: calc(50% - 8px) max-content 1fr;
+    }
+
+    &__estates {
+        grid-column: 1/-1;
+    }
+
+    &__estate {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        grid-column-gap: 8px;
+        grid-row-gap: 16px;
+
+        &-remove {
+            justify-self: end;
+            width: 40px;
+            height: 48px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            >svg {
+                width: 20px;
+                height: 100%;
+                fill: var(--red);
+            }
+        }
+
+        .checkbox-secondary {
+            align-self: start;
+        }
+
+        &:not(:first-child) {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--primary100);
         }
     }
-    &__create-children{
+
+    &__create-children {
         margin-top: 24px;
         width: 100%;
     }
-    &__create-car{
+
+    &__create-car {
         margin-top: 8px;
-        width: 100%;
+        grid-column: 1/-1;
+    }
+
+    &__create-estate {
+        margin-top: 8px;
+        grid-column: 1/-1;
     }
 }

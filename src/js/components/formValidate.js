@@ -1,7 +1,9 @@
 import Inputmask from "inputmask";
 import modal from '../modules/modal';
 import AirDatepicker from 'air-datepicker';
-import { validateTextMap } from "../modules/validateTextMap";
+import {
+    validateTextMap
+} from "../modules/validateTextMap";
 export const validateRadioPrimary = (formSelector, textareaSelector, btnSelector, radiosSelector) => {
     const forms = document.querySelectorAll(formSelector);
     if (forms.length === 0) return;
@@ -120,7 +122,7 @@ export const bookConsultationValidate = () => {
         if (!validateCreateErrorName(nameLabel, nameInput)) {
             result = false;
         }
-        if (!validateCreateErrorTel(telLabel, telInput, validateTextMap.tel)) {
+        if (!validateCreateErrorMask(telLabel, telInput, validateTextMap.tel, 10)) {
             result = false;
         }
         if (agents && agents.classList.contains('_active') && !agents.querySelector('.card-agent input:checked')) {
@@ -190,7 +192,7 @@ export const clientFixedValidate = () => {
             if (!validateCreateErrorName(nameLabel, nameInput)) {
                 result = false;
             }
-            if (!validateCreateErrorTel(telLabel, telInput, validateTextMap.tel)) {
+            if (!validateCreateErrorMask(telLabel, telInput, validateTextMap.tel, 10)) {
                 result = false;
             }
         } else {
@@ -270,7 +272,7 @@ export const addContactValidate = () => {
             if (!validateCreateErrorName(nameLabel, nameInput)) {
                 result = false;
             }
-            if (!validateCreateErrorTel(telLabel, telInput, validateTextMap.tel)) {
+            if (!validateCreateErrorMask(telLabel, telInput, validateTextMap.tel, 10)) {
                 result = false;
             }
             if (!validateCreeateErrorSelect(type, 'Выберите тип контакта')) {
@@ -422,7 +424,7 @@ export const editUserValidate = () => {
         if (!validateCreateErrorName(nameLabel, nameInput)) {
             result = false;
         }
-        if (!validateCreateErrorTel(telLabel, telInput, validateTextMap.tel)) {
+        if (!validateCreateErrorMask(telLabel, telInput, validateTextMap.tel, 10)) {
             result = false;
         }
         if (!validateCreeateErrorSelect(type, 'Выберите тип клиента')) {
@@ -551,17 +553,24 @@ export const requisitesValidate = () => {
 }
 
 
-
-
-export const inputMask = () => {
-    const inputs = document.querySelectorAll('.input-phone-mask');
+export const inputMaskPhone = (input) => {
     const inputMask = new Inputmask('+7 999 999-99-99');
-    inputs.forEach(input => inputMask.mask(input));
+    inputMask.mask(input);
 }
-export const inputTelValidate = (label, input) => {
+export const inputMaskSeriesNumber = (input) => {
+    const inputMask = new Inputmask('99 99 999999');
+    inputMask.mask(input);
+}
+export const inputMaskDepartCode = (input) => {
+    const inputMask = new Inputmask('999-999');
+    inputMask.mask(input);
+}
+
+
+export const inputMaskValidate = (label, input, length) => {
     if (!label || !input) return;
     const inputLength = input.inputmask.unmaskedvalue().length
-    return inputLength === 10 ? true : false;
+    return inputLength === length ? true : false;
 }
 
 
@@ -593,10 +602,22 @@ export const validateCreateErrorName = (label, input) => {
     }
     return result;
 }
-
-export const validateCreateErrorTel = (label, input, text) => {
+export const validateCreateErrorField = (label, input, text) => {
     let result = true;
-    if (!inputTelValidate(label, input)) {
+    if (label.hasAttribute('data-validate-min-length') && input.value.length < label.dataset.validateMinLength) {
+        result = false;
+        validateCreateError(label, `${validateTextMap.minLength} ${label.dataset.validateMinLength}`);
+    }
+    if (label.hasAttribute('data-validate-required') && input.value === '') {
+        result = false;
+        validateCreateError(label, text);
+    }
+    return result;
+}
+
+export const validateCreateErrorMask = (label, input, text, length) => {
+    let result = true;
+    if (!inputMaskValidate(label, input, length)) {
         result = false;
         validateCreateError(label, text);
     }

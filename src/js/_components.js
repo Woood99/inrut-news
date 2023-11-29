@@ -10,7 +10,7 @@ import {
     searchSelectOne
 } from './components/filter';
 import getHeightBlock from './modules/getHeightBlock'
-import choicesSelect from './components/choices';
+import {choicesSelect} from './components/choices';
 import {
     simplebar
 } from './components/simplebar';
@@ -36,7 +36,9 @@ import {
     editUserValidate,
     createMeetingShowValidate,
     requisitesValidate,
-    inputMask
+    inputMaskPhone,
+    inputMaskSeriesNumber,
+    inputMaskDepartCode
 } from './components/formValidate';
 import dropdown from './modules/dropdown';
 import dropdownItems from './modules/dropdownItems';
@@ -215,7 +217,17 @@ document.addEventListener('DOMContentLoaded', () => {
     editUserValidate();
     createMeetingShowValidate();
     requisitesValidate();
-    inputMask();
+
+    // ==================================================
+
+    const inputsMaskPhone = document.querySelectorAll('.input-phone-mask');
+    const inputsMaskSeriesNumber = document.querySelectorAll('.input-series-number-mask');
+    const inputsMaskDepartCode = document.querySelectorAll('.input-depart-code-mask');
+    
+    inputsMaskPhone.forEach(input => inputMaskPhone(input));
+    inputsMaskSeriesNumber.forEach(input => inputMaskSeriesNumber(input));
+    inputsMaskDepartCode.forEach(input => inputMaskDepartCode(input));
+    
     // ==================================================
 
     dropdown('.dots-dropdown', '.dots-dropdown__target');

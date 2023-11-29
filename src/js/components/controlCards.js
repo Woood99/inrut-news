@@ -53,8 +53,8 @@ function controlCards() {
                     const favorite = card.querySelector('.card-secondary__info--favorite');
                     const bottom = card.querySelector('.card-secondary__bottom');
                     const bottomMobile = bottom.querySelector('.card-secondary__info--mobile')
-                    if (favorite) {
-                        if (checkVertical(btn) && bottomMobile) {
+                    if (favorite && bottomMobile) {
+                        if (checkVertical(btn)) {
                             if (!bottomMobile.querySelector('.card-secondary__info--favorite')) {
                                 if (!favorite.hasAttribute('data-popup-path')) {
                                     const clone = favorite.cloneNode(true);
@@ -95,60 +95,62 @@ function controlCards() {
                     const bottom = card.querySelector('.card-primary__bottom');
                     if (bottom) {
                         const bottomMobile = bottom.querySelector('.card-primary__info--mobile');
-                        if (dislike) {
-                            if (checkVertical(btn)) {
-                                if (!bottomMobile.querySelector('.card-primary__info--dislike')) {
-                                    const clone = dislike.cloneNode(true);
-                                    bottomMobile.appendChild(clone);
-                                }
-                                bottomMobile.querySelector('.card-primary__info--dislike').removeAttribute('hidden');
-                            }
-                            if (checkHorizontal(btn) && bottomMobile.querySelector('.card-primary__info--dislike')) {
-                                bottomMobile.querySelector('.card-primary__info--dislike').setAttribute('hidden', '');
-                            }
-                        }
-                        if (comment) {
-                            if (checkVertical(btn)) {
-                                if (!bottomMobile.querySelector('.card-primary__info--comment')) {
-                                    const clone = comment.cloneNode(true);
-                                    bottomMobile.appendChild(clone);
-                                }
-                                bottomMobile.querySelector('.card-primary__info--comment').removeAttribute('hidden');
-                            }
-                            if (checkHorizontal(btn) && bottomMobile.querySelector('.card-primary__info--comment')) {
-                                bottomMobile.querySelector('.card-primary__info--comment').setAttribute('hidden', '');
-                            }
-                        }
-                        if (favorite) {
-                            if (checkVertical(btn)) {
-                                if (!bottomMobile.querySelector('.card-primary__info--favorite')) {
-                                    if (!favorite.hasAttribute('data-popup-path')) {
-                                        const clone = favorite.cloneNode(true);
+                        if (bottomMobile) {
+                            if (dislike) {
+                                if (checkVertical(btn)) {
+                                    if (!bottomMobile.querySelector('.card-primary__info--dislike')) {
+                                        const clone = dislike.cloneNode(true);
                                         bottomMobile.appendChild(clone);
-                                    } else {
-                                        bottomMobile.insertAdjacentElement('afterbegin', favorite);
+                                    }
+                                    bottomMobile.querySelector('.card-primary__info--dislike').removeAttribute('hidden');
+                                }
+                                if (checkHorizontal(btn) && bottomMobile.querySelector('.card-primary__info--dislike')) {
+                                    bottomMobile.querySelector('.card-primary__info--dislike').setAttribute('hidden', '');
+                                }
+                            }
+                            if (comment) {
+                                if (checkVertical(btn)) {
+                                    if (!bottomMobile.querySelector('.card-primary__info--comment')) {
+                                        const clone = comment.cloneNode(true);
+                                        bottomMobile.appendChild(clone);
+                                    }
+                                    bottomMobile.querySelector('.card-primary__info--comment').removeAttribute('hidden');
+                                }
+                                if (checkHorizontal(btn) && bottomMobile.querySelector('.card-primary__info--comment')) {
+                                    bottomMobile.querySelector('.card-primary__info--comment').setAttribute('hidden', '');
+                                }
+                            }
+                            if (favorite) {
+                                if (checkVertical(btn)) {
+                                    if (!bottomMobile.querySelector('.card-primary__info--favorite')) {
+                                        if (!favorite.hasAttribute('data-popup-path')) {
+                                            const clone = favorite.cloneNode(true);
+                                            bottomMobile.appendChild(clone);
+                                        } else {
+                                            bottomMobile.insertAdjacentElement('afterbegin', favorite);
+                                        }
+                                    }
+                                    bottomMobile.querySelector('.card-primary__info--favorite').removeAttribute('hidden');
+                                }
+                                if (checkHorizontal(btn)) {
+                                    bottomMobile.querySelector('.card-primary__info--favorite').setAttribute('hidden', '');
+                                    if (favorite.hasAttribute('data-popup-path')) {
+                                        card.querySelector('.card-primary__info--btns-right').insertAdjacentElement('afterbegin', favorite);
+                                        favorite.removeAttribute('hidden');
                                     }
                                 }
-                                bottomMobile.querySelector('.card-primary__info--favorite').removeAttribute('hidden');
                             }
-                            if (checkHorizontal(btn)) {
-                                bottomMobile.querySelector('.card-primary__info--favorite').setAttribute('hidden', '');
-                                if (favorite.hasAttribute('data-popup-path')) {
-                                    card.querySelector('.card-primary__info--btns-right').insertAdjacentElement('afterbegin', favorite);
-                                    favorite.removeAttribute('hidden');
+                            if (note) {
+                                if (checkVertical(btn)) {
+                                    if (!bottomMobile.querySelector('.card-primary__info--note')) {
+                                        const clone = note.cloneNode(true);
+                                        bottomMobile.appendChild(clone);
+                                    }
+                                    bottomMobile.querySelector('.card-primary__info--note').removeAttribute('hidden');
                                 }
-                            }
-                        }
-                        if (note) {
-                            if (checkVertical(btn)) {
-                                if (!bottomMobile.querySelector('.card-primary__info--note')) {
-                                    const clone = note.cloneNode(true);
-                                    bottomMobile.appendChild(clone);
+                                if (checkHorizontal(btn)) {
+                                    bottomMobile.querySelector('.card-primary__info--note').setAttribute('hidden', '');
                                 }
-                                bottomMobile.querySelector('.card-primary__info--note').removeAttribute('hidden');
-                            }
-                            if (checkHorizontal(btn)) {
-                                bottomMobile.querySelector('.card-primary__info--note').setAttribute('hidden', '');
                             }
                         }
                         if (checkVertical(btn)) {

@@ -1,3 +1,4 @@
+import AirDatepicker from 'air-datepicker';
 import {
     validateTextMap
 } from "../modules/validateTextMap";
@@ -13,10 +14,12 @@ import {
 import {
     validateRemoveError,
     validateCreateErrorField,
-    validateCreateErrorMask
+    validateCreateErrorMask,
+    validateCreateError
 } from './formValidate';
 const mortgageRequests = () => {
     const form = document.querySelector('.mortgage-requests__form');
+    if (!form) return;
     const familyStatus = form.querySelector('[data-mortgage-requests-family-status]');
 
     const spouseDeal = form.querySelector('[data-mortgage-requests-spouse-deal]');
@@ -50,6 +53,7 @@ const mortgageRequests = () => {
         const removeCar = target.closest('.mortgage-requests__car-remove');
         const removeEstate = target.closest('.mortgage-requests__estate-remove');
         if (toggle) {
+            
             const currentId = toggle.dataset.mortgageRequestsToggle;
             const itemsContent = form.querySelectorAll(`[data-mortgage-requests-content='${currentId}']`);
             itemsContent.forEach(item => {
@@ -348,34 +352,132 @@ const mortgageRequests = () => {
     const placeBirth = form.querySelector("[data-mortgage-requests-field='place-birth']");
     const seriesNumber = form.querySelector("[data-mortgage-requests-field='series-number']");
     const departCode = form.querySelector("[data-mortgage-requests-field='depart-code']");
+    const dateIssue = form.querySelector("[data-mortgage-requests-field='date-issue']");
+    const passportIssued = form.querySelector("[data-mortgage-requests-field='passport-issued']");
+    const registrationAddress = form.querySelector("[data-mortgage-requests-field='registration-address']");
+    const registrPeriod = form.querySelector("[data-mortgage-requests-field='registr-period']");
+
     const inputsMap = {
-        placeBirth: placeBirth.querySelector('input'),
-        seriesNumber: seriesNumber.querySelector('input'),
-        departCode: departCode.querySelector('input'),
+        fields: {
+            placeBirth: placeBirth.querySelector('input'),
+            seriesNumber: seriesNumber.querySelector('input'),
+            departCode: departCode.querySelector('input'),
+            passportIssued: passportIssued.querySelector('input'),
+            registrationAddress: registrationAddress.querySelector('input'),
+        },
+        static: {
+            dateIssue: dateIssue.querySelector('input'),
+            registrPeriod: registrPeriod.querySelector('input'),
+        }
     };
-    for (const item in inputsMap) {
-        inputsMap[item].addEventListener('input', () => {
+    [inputsMap.static.dateIssue, inputsMap.static.registrPeriod].forEach(input => {
+        new AirDatepicker(input, {
+            autoClose: true,
+            isMobile: true,
+            onSelect: (fd) => {
+                const inputText = input.closest('.input-text')
+                fd.date ? inputText.classList.add('_active') : inputText.classList.remove('_active');
+                if (formEventInput) validate();
+            }
+        })
+    });
+    for (const input in inputsMap.fields) {
+        inputsMap.fields[input].addEventListener('input', () => {
             if (formEventInput) validate();
         })
     }
 
     function validate() {
+        const errorSectionItems = [];
         let result = true;
         formEventInput = true;
+
         validateRemoveError(placeBirth);
         validateRemoveError(seriesNumber);
         validateRemoveError(departCode);
+        validateRemoveError(dateIssue);
+        validateRemoveError(passportIssued);
+        validateRemoveError(registrationAddress);
+        validateRemoveError(registrPeriod);
 
-        if (!validateCreateErrorField(placeBirth, inputsMap.placeBirth, 'Укажите место рождения как в паспорте')) {
+        if (!validateCreateErrorField(placeBirth, inputsMap.fields.placeBirth, 'Укажите место рождения как в паспорте')) {
             result = false;
+            addSectionError(errorSectionItems, placeBirth);
         }
-        if (!validateCreateErrorMask(seriesNumber, inputsMap.seriesNumber, 'В серии и номере паспорта должно быть 10 цифр', 10)) {
+        if (!validateCreateErrorMask(seriesNumber, inputsMap.fields.seriesNumber, 'В серии и номере паспорта должно быть 10 цифр', 10)) {
             result = false;
+            addSectionError(errorSectionItems, seriesNumber);
         }
-        if (!validateCreateErrorMask(departCode, inputsMap.departCode, 'Введите корректный код подразделения', 6)) {
+        if (!validateCreateErrorMask(departCode, inputsMap.fields.departCode, 'Введите корректный код подразделения', 6)) {
             result = false;
+            addSectionError(errorSectionItems, departCode);
         }
+        if (!validateCreateErrorField(passportIssued, inputsMap.fields.passportIssued, 'Укажите, кем выдан паспорт')) {
+            result = false;
+            addSectionError(errorSectionItems, passportIssued);
+        }
+        if (!validateCreateErrorField(registrationAddress, inputsMap.fields.registrationAddress, 'Введите адрес регистрации')) {
+            result = false;
+            addSectionError(errorSectionItems, registrationAddress);
+        }
+
+        if (!inputsMap.static.dateIssue.value) {
+            result = false;
+            validateCreateError(dateIssue, 'Укажите дату выдачи паспорта');
+            addSectionError(errorSectionItems, dateIssue);
+        }
+        if (!inputsMap.static.registrPeriod.value && !registrPeriod.hasAttribute('hidden')) {
+            result = false;
+            validateCreateError(registrPeriod, 'Укажите срок действия регистрации');
+            addSectionError(errorSectionItems, registrPeriod);
+        }
+
+        if (result === false) {
+            closeAllSection(form);
+            openErrorSection(errorSectionItems);
+            scrollToErrorSection(errorSectionItems);
+        }
+
         return result;
+    }
+
+    function addSectionError(errorSectionItems, item) {
+        const spollerItem = item.closest('.spollers__item');
+        if (!errorSectionItems.includes(spollerItem)) {
+            errorSectionItems.push(spollerItem);
+        }
+    }
+
+    function scrollToErrorSection(errorSectionItems) {
+        const firsErrorSection = errorSectionItems[errorSectionItems.length - 1];
+        const topGap = window.pageYOffset + firsErrorSection.getBoundingClientRect().top;
+        window.scrollTo({
+            top: topGap - 16,
+            behavior: 'smooth'
+        })
+    }
+
+    function closeAllSection(form) {
+        const spollers = form.querySelectorAll('.mortgage-requests__spoller');
+        spollers.forEach(spoller => {
+            const title = spoller.querySelector('.spollers__title');
+            const content = spoller.querySelector('.spollers__body');
+
+            spoller.classList.remove('_active');
+            title.classList.remove('_spoller-active');
+            content.setAttribute('hidden', '');
+        })
+    }
+
+    function openErrorSection(errorSectionItems) {
+        errorSectionItems.forEach(item => {
+            const title = item.querySelector('.spollers__title');
+            const content = item.querySelector('.spollers__body');
+
+            item.classList.add('_active');
+            title.classList.add('_spoller-active');
+            content.removeAttribute('hidden');
+        })
     }
 
 };

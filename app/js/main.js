@@ -6245,8 +6245,8 @@ function controlCards() {
           const favorite = card.querySelector('.card-secondary__info--favorite');
           const bottom = card.querySelector('.card-secondary__bottom');
           const bottomMobile = bottom.querySelector('.card-secondary__info--mobile');
-          if (favorite) {
-            if (checkVertical(btn) && bottomMobile) {
+          if (favorite && bottomMobile) {
+            if (checkVertical(btn)) {
               if (!bottomMobile.querySelector('.card-secondary__info--favorite')) {
                 if (!favorite.hasAttribute('data-popup-path')) {
                   const clone = favorite.cloneNode(true);
@@ -6284,60 +6284,62 @@ function controlCards() {
           const bottom = card.querySelector('.card-primary__bottom');
           if (bottom) {
             const bottomMobile = bottom.querySelector('.card-primary__info--mobile');
-            if (dislike) {
-              if (checkVertical(btn)) {
-                if (!bottomMobile.querySelector('.card-primary__info--dislike')) {
-                  const clone = dislike.cloneNode(true);
-                  bottomMobile.appendChild(clone);
-                }
-                bottomMobile.querySelector('.card-primary__info--dislike').removeAttribute('hidden');
-              }
-              if (checkHorizontal(btn) && bottomMobile.querySelector('.card-primary__info--dislike')) {
-                bottomMobile.querySelector('.card-primary__info--dislike').setAttribute('hidden', '');
-              }
-            }
-            if (comment) {
-              if (checkVertical(btn)) {
-                if (!bottomMobile.querySelector('.card-primary__info--comment')) {
-                  const clone = comment.cloneNode(true);
-                  bottomMobile.appendChild(clone);
-                }
-                bottomMobile.querySelector('.card-primary__info--comment').removeAttribute('hidden');
-              }
-              if (checkHorizontal(btn) && bottomMobile.querySelector('.card-primary__info--comment')) {
-                bottomMobile.querySelector('.card-primary__info--comment').setAttribute('hidden', '');
-              }
-            }
-            if (favorite) {
-              if (checkVertical(btn)) {
-                if (!bottomMobile.querySelector('.card-primary__info--favorite')) {
-                  if (!favorite.hasAttribute('data-popup-path')) {
-                    const clone = favorite.cloneNode(true);
+            if (bottomMobile) {
+              if (dislike) {
+                if (checkVertical(btn)) {
+                  if (!bottomMobile.querySelector('.card-primary__info--dislike')) {
+                    const clone = dislike.cloneNode(true);
                     bottomMobile.appendChild(clone);
-                  } else {
-                    bottomMobile.insertAdjacentElement('afterbegin', favorite);
+                  }
+                  bottomMobile.querySelector('.card-primary__info--dislike').removeAttribute('hidden');
+                }
+                if (checkHorizontal(btn) && bottomMobile.querySelector('.card-primary__info--dislike')) {
+                  bottomMobile.querySelector('.card-primary__info--dislike').setAttribute('hidden', '');
+                }
+              }
+              if (comment) {
+                if (checkVertical(btn)) {
+                  if (!bottomMobile.querySelector('.card-primary__info--comment')) {
+                    const clone = comment.cloneNode(true);
+                    bottomMobile.appendChild(clone);
+                  }
+                  bottomMobile.querySelector('.card-primary__info--comment').removeAttribute('hidden');
+                }
+                if (checkHorizontal(btn) && bottomMobile.querySelector('.card-primary__info--comment')) {
+                  bottomMobile.querySelector('.card-primary__info--comment').setAttribute('hidden', '');
+                }
+              }
+              if (favorite) {
+                if (checkVertical(btn)) {
+                  if (!bottomMobile.querySelector('.card-primary__info--favorite')) {
+                    if (!favorite.hasAttribute('data-popup-path')) {
+                      const clone = favorite.cloneNode(true);
+                      bottomMobile.appendChild(clone);
+                    } else {
+                      bottomMobile.insertAdjacentElement('afterbegin', favorite);
+                    }
+                  }
+                  bottomMobile.querySelector('.card-primary__info--favorite').removeAttribute('hidden');
+                }
+                if (checkHorizontal(btn)) {
+                  bottomMobile.querySelector('.card-primary__info--favorite').setAttribute('hidden', '');
+                  if (favorite.hasAttribute('data-popup-path')) {
+                    card.querySelector('.card-primary__info--btns-right').insertAdjacentElement('afterbegin', favorite);
+                    favorite.removeAttribute('hidden');
                   }
                 }
-                bottomMobile.querySelector('.card-primary__info--favorite').removeAttribute('hidden');
               }
-              if (checkHorizontal(btn)) {
-                bottomMobile.querySelector('.card-primary__info--favorite').setAttribute('hidden', '');
-                if (favorite.hasAttribute('data-popup-path')) {
-                  card.querySelector('.card-primary__info--btns-right').insertAdjacentElement('afterbegin', favorite);
-                  favorite.removeAttribute('hidden');
+              if (note) {
+                if (checkVertical(btn)) {
+                  if (!bottomMobile.querySelector('.card-primary__info--note')) {
+                    const clone = note.cloneNode(true);
+                    bottomMobile.appendChild(clone);
+                  }
+                  bottomMobile.querySelector('.card-primary__info--note').removeAttribute('hidden');
                 }
-              }
-            }
-            if (note) {
-              if (checkVertical(btn)) {
-                if (!bottomMobile.querySelector('.card-primary__info--note')) {
-                  const clone = note.cloneNode(true);
-                  bottomMobile.appendChild(clone);
+                if (checkHorizontal(btn)) {
+                  bottomMobile.querySelector('.card-primary__info--note').setAttribute('hidden', '');
                 }
-                bottomMobile.querySelector('.card-primary__info--note').removeAttribute('hidden');
-              }
-              if (checkHorizontal(btn)) {
-                bottomMobile.querySelector('.card-primary__info--note').setAttribute('hidden', '');
               }
             }
             if (checkVertical(btn)) {
@@ -10733,11 +10735,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _modules_validateTextMap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modules/validateTextMap */ "./src/js/modules/validateTextMap.js");
-/* harmony import */ var _inputs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./inputs */ "./src/js/components/inputs.js");
-/* harmony import */ var _modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../modules/emergingBlockScroll */ "./src/js/modules/emergingBlockScroll.js");
-/* harmony import */ var _choices__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./choices */ "./src/js/components/choices.js");
-/* harmony import */ var _formValidate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./formValidate */ "./src/js/components/formValidate.js");
+/* harmony import */ var air_datepicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! air-datepicker */ "./node_modules/air-datepicker/index.es.js");
+/* harmony import */ var _modules_validateTextMap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/validateTextMap */ "./src/js/modules/validateTextMap.js");
+/* harmony import */ var _inputs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./inputs */ "./src/js/components/inputs.js");
+/* harmony import */ var _modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../modules/emergingBlockScroll */ "./src/js/modules/emergingBlockScroll.js");
+/* harmony import */ var _choices__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./choices */ "./src/js/components/choices.js");
+/* harmony import */ var _formValidate__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./formValidate */ "./src/js/components/formValidate.js");
+
 
 
 
@@ -10745,6 +10749,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const mortgageRequests = () => {
   const form = document.querySelector('.mortgage-requests__form');
+  if (!form) return;
   const familyStatus = form.querySelector('[data-mortgage-requests-family-status]');
   const spouseDeal = form.querySelector('[data-mortgage-requests-spouse-deal]');
   const spouseDealInput = spouseDeal.querySelector('.checkbox-secondary__input');
@@ -10761,7 +10766,7 @@ const mortgageRequests = () => {
   let formEventInput = false;
   form.addEventListener('click', e => {
     setTimeout(() => {
-      (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_2__.emergingBlockScroll)('.mortgage-requests .mortgage-requests__save', '.footer-fixed.mortgage-requests-fixed', 99999999, true, true);
+      (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_3__.emergingBlockScroll)('.mortgage-requests .mortgage-requests__save', '.footer-fixed.mortgage-requests-fixed', 99999999, true, true);
     }, 300);
     const target = e.target;
     const toggle = target.closest('[data-mortgage-requests-toggle]');
@@ -11047,10 +11052,10 @@ const mortgageRequests = () => {
     const inputsText = container.querySelectorAll('.input-text');
     const selectSecondary = container.querySelectorAll('.select-secondary__body');
     inputsText.forEach(input => {
-      (0,_inputs__WEBPACK_IMPORTED_MODULE_1__.currentInputText)(input);
+      (0,_inputs__WEBPACK_IMPORTED_MODULE_2__.currentInputText)(input);
     });
     selectSecondary.forEach(select => {
-      (0,_choices__WEBPACK_IMPORTED_MODULE_3__.selectSecondaryCreate)(select);
+      (0,_choices__WEBPACK_IMPORTED_MODULE_4__.selectSecondaryCreate)(select);
     });
   }
   function updateContainer(container) {
@@ -11059,32 +11064,119 @@ const mortgageRequests = () => {
   const placeBirth = form.querySelector("[data-mortgage-requests-field='place-birth']");
   const seriesNumber = form.querySelector("[data-mortgage-requests-field='series-number']");
   const departCode = form.querySelector("[data-mortgage-requests-field='depart-code']");
+  const dateIssue = form.querySelector("[data-mortgage-requests-field='date-issue']");
+  const passportIssued = form.querySelector("[data-mortgage-requests-field='passport-issued']");
+  const registrationAddress = form.querySelector("[data-mortgage-requests-field='registration-address']");
+  const registrPeriod = form.querySelector("[data-mortgage-requests-field='registr-period']");
   const inputsMap = {
-    placeBirth: placeBirth.querySelector('input'),
-    seriesNumber: seriesNumber.querySelector('input'),
-    departCode: departCode.querySelector('input')
+    fields: {
+      placeBirth: placeBirth.querySelector('input'),
+      seriesNumber: seriesNumber.querySelector('input'),
+      departCode: departCode.querySelector('input'),
+      passportIssued: passportIssued.querySelector('input'),
+      registrationAddress: registrationAddress.querySelector('input')
+    },
+    static: {
+      dateIssue: dateIssue.querySelector('input'),
+      registrPeriod: registrPeriod.querySelector('input')
+    }
   };
-  for (const item in inputsMap) {
-    inputsMap[item].addEventListener('input', () => {
+  [inputsMap.static.dateIssue, inputsMap.static.registrPeriod].forEach(input => {
+    new air_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"](input, {
+      autoClose: true,
+      isMobile: true,
+      onSelect: fd => {
+        const inputText = input.closest('.input-text');
+        fd.date ? inputText.classList.add('_active') : inputText.classList.remove('_active');
+        if (formEventInput) validate();
+      }
+    });
+  });
+  for (const input in inputsMap.fields) {
+    inputsMap.fields[input].addEventListener('input', () => {
       if (formEventInput) validate();
     });
   }
   function validate() {
+    const errorSectionItems = [];
     let result = true;
     formEventInput = true;
-    (0,_formValidate__WEBPACK_IMPORTED_MODULE_4__.validateRemoveError)(placeBirth);
-    (0,_formValidate__WEBPACK_IMPORTED_MODULE_4__.validateRemoveError)(seriesNumber);
-    (0,_formValidate__WEBPACK_IMPORTED_MODULE_4__.validateRemoveError)(departCode);
-    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_4__.validateCreateErrorField)(placeBirth, inputsMap.placeBirth, 'Укажите место рождения как в паспорте')) {
+    (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(placeBirth);
+    (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(seriesNumber);
+    (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(departCode);
+    (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(dateIssue);
+    (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(passportIssued);
+    (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(registrationAddress);
+    (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(registrPeriod);
+    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(placeBirth, inputsMap.fields.placeBirth, 'Укажите место рождения как в паспорте')) {
       result = false;
+      addSectionError(errorSectionItems, placeBirth);
     }
-    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_4__.validateCreateErrorMask)(seriesNumber, inputsMap.seriesNumber, 'В серии и номере паспорта должно быть 10 цифр', 10)) {
+    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(seriesNumber, inputsMap.fields.seriesNumber, 'В серии и номере паспорта должно быть 10 цифр', 10)) {
       result = false;
+      addSectionError(errorSectionItems, seriesNumber);
     }
-    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_4__.validateCreateErrorMask)(departCode, inputsMap.departCode, 'Введите корректный код подразделения', 6)) {
+    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(departCode, inputsMap.fields.departCode, 'Введите корректный код подразделения', 6)) {
       result = false;
+      addSectionError(errorSectionItems, departCode);
+    }
+    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(passportIssued, inputsMap.fields.passportIssued, 'Укажите, кем выдан паспорт')) {
+      result = false;
+      addSectionError(errorSectionItems, passportIssued);
+    }
+    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(registrationAddress, inputsMap.fields.registrationAddress, 'Введите адрес регистрации')) {
+      result = false;
+      addSectionError(errorSectionItems, registrationAddress);
+    }
+    if (!inputsMap.static.dateIssue.value) {
+      result = false;
+      (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateError)(dateIssue, 'Укажите дату выдачи паспорта');
+      addSectionError(errorSectionItems, dateIssue);
+    }
+    if (!inputsMap.static.registrPeriod.value && !registrPeriod.hasAttribute('hidden')) {
+      result = false;
+      (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateError)(registrPeriod, 'Укажите срок действия регистрации');
+      addSectionError(errorSectionItems, registrPeriod);
+    }
+    if (result === false) {
+      closeAllSection(form);
+      openErrorSection(errorSectionItems);
+      scrollToErrorSection(errorSectionItems);
     }
     return result;
+  }
+  function addSectionError(errorSectionItems, item) {
+    const spollerItem = item.closest('.spollers__item');
+    if (!errorSectionItems.includes(spollerItem)) {
+      errorSectionItems.push(spollerItem);
+    }
+  }
+  function scrollToErrorSection(errorSectionItems) {
+    const firsErrorSection = errorSectionItems[errorSectionItems.length - 1];
+    const topGap = window.pageYOffset + firsErrorSection.getBoundingClientRect().top;
+    window.scrollTo({
+      top: topGap - 16,
+      behavior: 'smooth'
+    });
+  }
+  function closeAllSection(form) {
+    const spollers = form.querySelectorAll('.mortgage-requests__spoller');
+    spollers.forEach(spoller => {
+      const title = spoller.querySelector('.spollers__title');
+      const content = spoller.querySelector('.spollers__body');
+      spoller.classList.remove('_active');
+      title.classList.remove('_spoller-active');
+      content.setAttribute('hidden', '');
+    });
+  }
+  function openErrorSection(errorSectionItems) {
+    errorSectionItems.forEach(item => {
+      const title = item.querySelector('.spollers__title');
+      const content = item.querySelector('.spollers__body');
+      item.classList.add('_active');
+      title.classList.add('_spoller-active');
+      content.removeAttribute('hidden');
+    });
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (mortgageRequests);
@@ -14020,6 +14112,13 @@ const tabs = () => {
             <label class="place-sale-textarea textarea-primary" style="margin-top: 24px;">
                 <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
             </label>
+            <div class="place-sale-field-price input-text input-text--only-number" style="max-width: 350px; margin-top: 24px;">
+                <label class="input-text__label">
+                    <span>Цена</span>
+                    <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                    <span>₽</span>
+                </label>
+            </div>
             </div>
             `;
       const furnishingSetsHTML = `

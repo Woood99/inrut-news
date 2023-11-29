@@ -340,6 +340,13 @@ export const tabs = () => {
             <label class="place-sale-textarea textarea-primary" style="margin-top: 24px;">
                 <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
             </label>
+            <div class="place-sale-field-price input-text input-text--only-number" style="max-width: 350px; margin-top: 24px;">
+                <label class="input-text__label">
+                    <span>Цена</span>
+                    <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                    <span>₽</span>
+                </label>
+            </div>
             </div>
             `;
             const furnishingSetsHTML = `

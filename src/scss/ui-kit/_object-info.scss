@@ -60,7 +60,40 @@ padding: 32px 24px;
             max-width: 175px;
         }
     }
+    &__offers {
+        display: flex;
+        align-items: center;
+        color: var(--green);
 
+        svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            margin-right: 10px;
+
+            @media (max-width:$smallTablet-max) {
+                height: 15px;
+                width: 15px;
+            }
+        }
+
+        span {
+            color: inherit;
+            font-size: var(--default-fz);
+            line-height: var(--default-lh);
+            font-weight: 400;
+        }
+
+        &--true {}
+
+        &--false {
+            color: var(--primary200);
+        }
+
+        @media (max-width:$smallTablet-max) {
+            order: 3;
+        }
+    }
     &__price {
         font-size: var(--little-big-fz);;
         line-height: var(--little-big-lh);

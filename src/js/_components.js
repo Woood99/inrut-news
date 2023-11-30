@@ -38,7 +38,8 @@ import {
     requisitesValidate,
     inputMaskPhone,
     inputMaskSeriesNumber,
-    inputMaskDepartCode
+    inputMaskDepartCode,
+    inputMaskSnils
 } from './components/formValidate';
 import dropdown from './modules/dropdown';
 import dropdownItems from './modules/dropdownItems';
@@ -223,10 +224,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputsMaskPhone = document.querySelectorAll('.input-phone-mask');
     const inputsMaskSeriesNumber = document.querySelectorAll('.input-series-number-mask');
     const inputsMaskDepartCode = document.querySelectorAll('.input-depart-code-mask');
+    const inputsMaskSnils = document.querySelectorAll('.input-snils-mask');
     
     inputsMaskPhone.forEach(input => inputMaskPhone(input));
     inputsMaskSeriesNumber.forEach(input => inputMaskSeriesNumber(input));
     inputsMaskDepartCode.forEach(input => inputMaskDepartCode(input));
+    inputsMaskSnils.forEach(input => inputMaskSnils(input));
     
     // ==================================================
 

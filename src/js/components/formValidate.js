@@ -565,6 +565,10 @@ export const inputMaskDepartCode = (input) => {
     const inputMask = new Inputmask('999-999');
     inputMask.mask(input);
 }
+export const inputMaskSnils = (input) => {
+    const inputMask = new Inputmask('999-999-999 99');
+    inputMask.mask(input);
+}
 
 
 export const inputMaskValidate = (label, input, length) => {

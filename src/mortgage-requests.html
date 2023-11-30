@@ -105,28 +105,31 @@
                                             <div aria-hidden="true"></div>
                                             <span>Адрес фактического проживания совпадает с адресом регистрации</span>
                                         </label>
-                                        <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-content="2">
+                                        <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="residence-address" 
+                                        data-validate-required data-mortgage-requests-content="2">
                                             <label class="input-text__label">
                                                 <span>Адрес фактического проживания</span>
                                                 <input type="text" name="Адрес фактического проживания" class="input-reset input-text__input" value="" placeholder="">
                                             </label>
                                         </div>
-                                        <div class="select-secondary mortgage-requests__field--row" data-mortgage-requests-content="2">
+                                        <div class="select-secondary mortgage-requests__field--row" data-mortgage-requests-field="reasons-residence" data-mortgage-requests-content="2">
                                             <div class="select-secondary__wrapper">
                                                 <span class="select-secondary__placeholder">
                                                     Основание для проживания
                                                 </span>
                                                 <select class="select-secondary__body" hidden name="complex">
                                                     <option placeholder>Не выбрано</option>
-                                                    <option value="room-1">Собственность</option>
-                                                    <option value="room-2">Аренда</option>
+                                                    <option value="room-1">Аренда</option>
+                                                    <option value="room-2">Социальный найм</option>
+                                                    <option value="room-2">У родственников</option>
+                                                    <option value="room-2">Другое</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="input-text input-text--no-exp mortgage-requests__field--row">
+                                        <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="snils">
                                             <label class="input-text__label">
                                                 <span>Снилс</span>
-                                                <input type="text" name="Снилс" class="input-reset input-text__input" value="" placeholder="">
+                                                <input type="text" name="Снилс" class="input-reset input-text__input input-snils-mask" value="" placeholder="">
                                             </label>
                                         </div>
                                     </div>
@@ -148,13 +151,13 @@
                                             <div aria-hidden="true"></div>
                                             <span>Были изменения ФИО</span>
                                         </label>
-                                        <div class="input-text input-text--no-exp" data-mortgage-requests-content="3" hidden>
+                                        <div class="input-text input-text--no-exp" data-mortgage-requests-field="surname-old" data-validate-required data-mortgage-requests-content="3" hidden>
                                             <label class="input-text__label">
                                                 <span>Фамилия</span>
                                                 <input type="text" name="Фамилия" class="input-reset input-text__input" value="" placeholder="">
                                             </label>
                                         </div>
-                                        <div class="input-text input-text--no-exp" data-mortgage-requests-content="3" hidden>
+                                        <div class="input-text input-text--no-exp" data-mortgage-requests-field="name-old" data-validate-required data-mortgage-requests-content="3" hidden>
                                             <label class="input-text__label">
                                                 <span>Имя</span>
                                                 <input type="text" name="Имя" class="input-reset input-text__input" value="" placeholder="">
@@ -166,7 +169,7 @@
                                                 <input type="text" name="Отчество" class="input-reset input-text__input" value="" placeholder="">
                                             </label>
                                         </div>
-                                        <div class="input-text input-text--no-exp" data-mortgage-requests-content="3" hidden>
+                                        <div class="input-text input-text--no-exp" data-mortgage-requests-field="shifts-full-name" data-mortgage-requests-content="3" hidden>
                                             <label class="input-text__label">
                                                 <span>Дата смены ФИО</span>
                                                 <input type="text" name="Имя" class="input-reset input-text__input" value="" placeholder="">
@@ -178,7 +181,7 @@
                                             <h4 class="title-4 mortgage-requests__field-subtitle">
                                                 Образование
                                             </h4>
-                                            <div class="select-secondary">
+                                            <div class="select-secondary" data-mortgage-requests-field="education">
                                                 <div class="select-secondary__wrapper">
                                                     <span class="select-secondary__placeholder">
                                                         Образование
@@ -195,7 +198,7 @@
                                             <h4 class="title-4 mortgage-requests__field-subtitle">
                                                 Трудовой стаж
                                             </h4>
-                                            <div class="select-secondary">
+                                            <div class="select-secondary" data-mortgage-requests-field="seniority">
                                                 <div class="select-secondary__wrapper">
                                                     <span class="select-secondary__placeholder">
                                                         Общий трудовой стаж
@@ -212,7 +215,7 @@
                                             <h4 class="title-4 mortgage-requests__field-subtitle">
                                                 Воинская обязанность
                                             </h4>
-                                            <div class="select-secondary">
+                                            <div class="select-secondary" data-mortgage-requests-field="military-duty">
                                                 <div class="select-secondary__wrapper">
                                                     <span class="select-secondary__placeholder">
                                                         Воинская обязанность
@@ -239,7 +242,7 @@
                                 </button>
                                 <div class="spollers__body mortgage-requests__content" hidden>
                                     <div class="mortgage-requests__fields">
-                                        <div class="select-secondary mortgage-requests__field--row" data-mortgage-requests-family-status>
+                                        <div class="select-secondary mortgage-requests__field--row" data-mortgage-requests-field="family-status" data-mortgage-requests-family-status>
                                             <div class="select-secondary__wrapper">
                                                 <span class="select-secondary__placeholder">
                                                     Семейное положение
@@ -259,7 +262,7 @@
                                                 </div>
                                             </label>
                                         </div>
-                                        <div class="select-secondary mortgage-requests__field--row" data-mortgage-requests-spouse-consent hidden>
+                                        <div class="select-secondary mortgage-requests__field--row" data-mortgage-requests-field="spouse-consent" data-mortgage-requests-spouse-consent hidden>
                                             <div class="select-secondary__wrapper">
                                                 <span class="select-secondary__placeholder">
                                                     Согласие супруга

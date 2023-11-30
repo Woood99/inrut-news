@@ -8787,6 +8787,10 @@ const validateCreateErrorField = (label, input, text) => {
     result = false;
     validateCreateError(label, `${_modules_validateTextMap__WEBPACK_IMPORTED_MODULE_3__.validateTextMap.minLength} ${label.dataset.validateMinLength}`);
   }
+  if (label.hasAttribute('data-validate-average-invome-default') && +input.value < 1000) {
+    result = false;
+    validateCreateError(label, `Средний доход в месяц не может быть меньше 1 000 ₽`);
+  }
   if (label.hasAttribute('data-validate-required') && input.value === '') {
     result = false;
     validateCreateError(label, text);
@@ -11109,7 +11113,13 @@ const mortgageRequests = () => {
     seniority: form.querySelector("[data-mortgage-requests-field='seniority']"),
     militaryDuty: form.querySelector("[data-mortgage-requests-field='military-duty']"),
     familyStatus: form.querySelector("[data-mortgage-requests-field='family-status']"),
-    spouseConsent: form.querySelector("[data-mortgage-requests-field='spouse-consent']")
+    spouseConsent: form.querySelector("[data-mortgage-requests-field='spouse-consent']"),
+    rentalIncome: form.querySelector("[data-mortgage-requests-field='rental-income']"),
+    pension: form.querySelector("[data-mortgage-requests-field='pension']"),
+    otherIncome: form.querySelector("[data-mortgage-requests-field='other-income']"),
+    credits: form.querySelector("[data-mortgage-requests-field='credits']"),
+    rent: form.querySelector("[data-mortgage-requests-field='rent']"),
+    alimony: form.querySelector("[data-mortgage-requests-field='alimony']")
   };
   const inputsMap = {
     fields: {
@@ -11121,7 +11131,13 @@ const mortgageRequests = () => {
       residenceAddress: fieldsMap.residenceAddress.querySelector('input'),
       snils: fieldsMap.snils.querySelector('input'),
       surnameOld: fieldsMap.surnameOld.querySelector('input'),
-      nameOld: fieldsMap.nameOld.querySelector('input')
+      nameOld: fieldsMap.nameOld.querySelector('input'),
+      rentalIncome: fieldsMap.rentalIncome.querySelector('input'),
+      pension: fieldsMap.pension.querySelector('input'),
+      otherIncome: fieldsMap.otherIncome.querySelector('input'),
+      credits: fieldsMap.credits.querySelector('input'),
+      rent: fieldsMap.rent.querySelector('input'),
+      alimony: fieldsMap.alimony.querySelector('input')
     },
     dateDefault: {
       dateIssue: fieldsMap.dateIssue.querySelector('input'),
@@ -11170,7 +11186,6 @@ const mortgageRequests = () => {
       inputsMap.select[field].classList.remove('_error');
     }
     childrensContainer.querySelectorAll('.mortgage-requests__children .input-text').forEach(children => {
-      console.log(children);
       (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(children);
     });
     const result = createErrorFields(errorSectionItems);
@@ -11256,6 +11271,30 @@ const mortgageRequests = () => {
           }
         });
       }
+    }
+    if (!fieldsMap.rentalIncome.closest('.mortgage-requests__field--row').hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.rentalIncome, inputsMap.fields.rentalIncome, 'Укажите средний доход в месяц')) {
+      result = false;
+      addSectionError(errorSectionItems, fieldsMap.rentalIncome);
+    }
+    if (!fieldsMap.pension.closest('.mortgage-requests__field--row').hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.pension, inputsMap.fields.pension, 'Укажите средний доход в месяц')) {
+      result = false;
+      addSectionError(errorSectionItems, fieldsMap.pension);
+    }
+    if (!fieldsMap.otherIncome.closest('.mortgage-requests__field--row').hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.otherIncome, inputsMap.fields.otherIncome, 'Укажите средний доход в месяц')) {
+      result = false;
+      addSectionError(errorSectionItems, fieldsMap.otherIncome);
+    }
+    if (!fieldsMap.credits.closest('.mortgage-requests__field--row').hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.credits, inputsMap.fields.credits, 'Укажите сумму ежемесячных платежей')) {
+      result = false;
+      addSectionError(errorSectionItems, fieldsMap.credits);
+    }
+    if (!fieldsMap.rent.closest('.mortgage-requests__field--row').hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.rent, inputsMap.fields.rent, 'Укажите сумму ежемесячных платежей')) {
+      result = false;
+      addSectionError(errorSectionItems, fieldsMap.rent);
+    }
+    if (!fieldsMap.alimony.closest('.mortgage-requests__field--row').hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.alimony, inputsMap.fields.alimony, 'Укажите сумму ежемесячных платежей')) {
+      result = false;
+      addSectionError(errorSectionItems, fieldsMap.alimony);
     }
     if (!inputsMap.dateDefault.dateIssue.value) {
       result = false;

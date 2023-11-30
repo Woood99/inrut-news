@@ -612,6 +612,10 @@ export const validateCreateErrorField = (label, input, text) => {
         result = false;
         validateCreateError(label, `${validateTextMap.minLength} ${label.dataset.validateMinLength}`);
     }
+    if (label.hasAttribute('data-validate-average-invome-default') && +input.value < 1000) {
+        result = false;
+        validateCreateError(label, `Средний доход в месяц не может быть меньше 1 000 ₽`);
+    }
     if (label.hasAttribute('data-validate-required') && input.value === '') {
         result = false;
         validateCreateError(label, text);

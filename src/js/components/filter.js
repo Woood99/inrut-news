@@ -396,6 +396,8 @@ export const searchSelectOne = () => {
         const input = container.querySelector('.search-select-one__input-hidden');
         const placeholder = container.querySelector('.search-select-one__button-wrapper div:nth-child(2)');
         const close = container.querySelector('.search-select-one__close');
+
+        const tags = container.querySelectorAll('.search-select-one__tag');
         btn.addEventListener('click', () => {
             containers.forEach(el => {
                 if (el !== container) el.classList.remove('_active')
@@ -447,6 +449,17 @@ export const searchSelectOne = () => {
                 }
             })
         })
+
+        if (tags.length > 0) {
+            tags.forEach(tag => {
+                tag.addEventListener('click',() => {
+                    if (container.classList.contains('search-select-one--tags-one')) {
+                        tags.forEach(tag => tag.classList.remove('_active'));
+                    }
+                    tag.classList.toggle('_active');
+                })
+            })
+        }
     });
 }
 export const uiSliderOne = () => {

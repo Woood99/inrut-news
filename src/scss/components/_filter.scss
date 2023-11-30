@@ -1639,7 +1639,37 @@
             pointer-events: none;
         }
     }
-
+    &__tags{
+        padding: 0 48px 0 24px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+    }
+    &__tag{
+        height: 36px;
+        padding: 8px 18px;
+        color: var(--dark);
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        border-radius: 12px;
+        border: 1px solid var(--primary200);
+        white-space: nowrap;
+        &:not(:last-child){
+            margin-right: 8px;
+        }
+        @media (min-width:$desktop-min) {
+                &:hover,
+                &.focus-visible {
+                    background-color: var(--blue);
+                    color: var(--white);
+                }
+        }
+        &._active {
+            background-color: var(--blue);
+            color: var(--white);
+        }
+    }
     &._active {
         .search-select-one__button {
             svg {
@@ -1760,6 +1790,12 @@
                     border-radius: 0
                 }
             }
+        }
+    }
+
+    &--no-search {
+        .search-select-one__wrapper {
+            margin-top: 0;
         }
     }
     @media (max-width:$desktop) {

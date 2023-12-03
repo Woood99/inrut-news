@@ -569,14 +569,21 @@ export const inputMaskSnils = (input) => {
     const inputMask = new Inputmask('999-999-999 99');
     inputMask.mask(input);
 }
+export const inputMaskOgrn = (input) => {
+    const inputMask = new Inputmask('9999999999999');
+    inputMask.mask(input);
+}
+export const inputMaskInn = (input) => {
+    const inputMask = new Inputmask('999999999999');
+    inputMask.mask(input);
+}
 
 
 export const inputMaskValidate = (label, input, length) => {
     if (!label || !input) return;
-    const inputLength = input.inputmask.unmaskedvalue().length
-    return inputLength === length ? true : false;
+    const inputLength = input.inputmask.unmaskedvalue().length;
+    return inputLength >= length ? true : false;
 }
-
 
 export const validateCreateError = (label, text) => {
     validateRemoveError(label);
@@ -606,6 +613,37 @@ export const validateCreateErrorName = (label, input) => {
     }
     return result;
 }
+export const validateCreateErrorYear = (label, input) => {
+    let result = true;
+    const currentYear = new Date().getFullYear();
+    const minYear = currentYear - 100;
+    const value = input.value === '' ? input.value : Number(input.value.replace(/\s/g, ""));
+    if (label.hasAttribute('data-mortgage-requests-field') && label.dataset.mortgageRequestsField === 'year-issue'){
+        if (value === '') {
+            result = false;
+            validateCreateError(label, 'Укажите год выпуска');
+        } else {
+            if (value < minYear) {
+                result = false;
+                validateCreateError(label, 'Слишком старый автомобиль');
+            }
+            if (value > currentYear) {
+                result = false;
+                validateCreateError(label, 'Укажите верный год выпуска');
+            }
+        }
+    }
+    if (label.hasAttribute('data-mortgage-requests-field') && label.dataset.mortgageRequestsField === 'estate-year-purchase'){
+        if (value === '') {
+            result = false;
+            validateCreateError(label, 'Укажите год приобретения недвижимости');
+        } else if (value < minYear || value > currentYear) {
+            result = false;
+            validateCreateError(label, 'Укажите корректный год');
+        }
+    }
+    return result;
+}
 export const validateCreateErrorField = (label, input, text) => {
     let result = true;
     if (label.hasAttribute('data-validate-min-length') && input.value.length < label.dataset.validateMinLength) {
@@ -631,7 +669,15 @@ export const validateCreateErrorMask = (label, input, text, length) => {
     }
     return result;
 }
-
+export const validateCreateErrorUrl = (label,input,text) => {
+    let result = true;
+    const objRE = /(^https?:\/\/)?[a-z0-9~_\-\.]+\.[a-z]{2,9}(\/|:|\?[!-~]*)?$/i;
+    if (!objRE.test(input.value)) {
+        result = false;
+        validateCreateError(label, text);
+    }
+    return result;
+};
 export const validateCreeateErrorSelect = (container, text) => {
     let result = true;
     if (!container.classList.contains('_selected')) {

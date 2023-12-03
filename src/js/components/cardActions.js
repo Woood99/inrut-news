@@ -18,7 +18,7 @@ export const cardSecondaryActions = () => {
         const imagePagination = card.querySelector('.card-secondary__pagination');
 
 
-        if (!(window.innerWidth <= 1024 && imageSwitchItems.length <= 1)) {
+        if (window.innerWidth > 1024 && imageSwitchItems.length > 1) {
             imageSwitchItems.forEach((el, index) => {
                 el.setAttribute('data-index', index);
                 if (card.querySelector('.card-secondary__item--limit')) {

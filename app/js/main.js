@@ -4386,10 +4386,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const inputsMaskSeriesNumber = document.querySelectorAll('.input-series-number-mask');
   const inputsMaskDepartCode = document.querySelectorAll('.input-depart-code-mask');
   const inputsMaskSnils = document.querySelectorAll('.input-snils-mask');
+  const inputsMaskOgrn = document.querySelectorAll('.input-ogrn-mask');
+  const inputsInnMask = document.querySelectorAll('.input-inn-mask');
   inputsMaskPhone.forEach(input => (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.inputMaskPhone)(input));
   inputsMaskSeriesNumber.forEach(input => (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.inputMaskSeriesNumber)(input));
   inputsMaskDepartCode.forEach(input => (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.inputMaskDepartCode)(input));
   inputsMaskSnils.forEach(input => (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.inputMaskSnils)(input));
+  inputsMaskOgrn.forEach(input => (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.inputMaskOgrn)(input));
+  inputsInnMask.forEach(input => (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.inputMaskInn)(input));
 
   // ==================================================
 
@@ -5138,7 +5142,7 @@ const cardSecondaryActions = () => {
   cards.forEach(card => {
     const imageSwitchItems = card.querySelectorAll('.card-secondary__item');
     const imagePagination = card.querySelector('.card-secondary__pagination');
-    if (!(window.innerWidth <= 1024 && imageSwitchItems.length <= 1)) {
+    if (window.innerWidth > 1024 && imageSwitchItems.length > 1) {
       imageSwitchItems.forEach((el, index) => {
         el.setAttribute('data-index', index);
         if (card.querySelector('.card-secondary__item--limit')) {
@@ -8223,6 +8227,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "createMeetingShowValidate": () => (/* binding */ createMeetingShowValidate),
 /* harmony export */   "editUserValidate": () => (/* binding */ editUserValidate),
 /* harmony export */   "inputMaskDepartCode": () => (/* binding */ inputMaskDepartCode),
+/* harmony export */   "inputMaskInn": () => (/* binding */ inputMaskInn),
+/* harmony export */   "inputMaskOgrn": () => (/* binding */ inputMaskOgrn),
 /* harmony export */   "inputMaskPhone": () => (/* binding */ inputMaskPhone),
 /* harmony export */   "inputMaskSeriesNumber": () => (/* binding */ inputMaskSeriesNumber),
 /* harmony export */   "inputMaskSnils": () => (/* binding */ inputMaskSnils),
@@ -8233,6 +8239,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "validateCreateErrorField": () => (/* binding */ validateCreateErrorField),
 /* harmony export */   "validateCreateErrorMask": () => (/* binding */ validateCreateErrorMask),
 /* harmony export */   "validateCreateErrorName": () => (/* binding */ validateCreateErrorName),
+/* harmony export */   "validateCreateErrorUrl": () => (/* binding */ validateCreateErrorUrl),
+/* harmony export */   "validateCreateErrorYear": () => (/* binding */ validateCreateErrorYear),
 /* harmony export */   "validateCreeateErrorSelect": () => (/* binding */ validateCreeateErrorSelect),
 /* harmony export */   "validateRadioPrimary": () => (/* binding */ validateRadioPrimary),
 /* harmony export */   "validateRemoveError": () => (/* binding */ validateRemoveError)
@@ -8751,10 +8759,18 @@ const inputMaskSnils = input => {
   const inputMask = new (inputmask__WEBPACK_IMPORTED_MODULE_0___default())('999-999-999 99');
   inputMask.mask(input);
 };
+const inputMaskOgrn = input => {
+  const inputMask = new (inputmask__WEBPACK_IMPORTED_MODULE_0___default())('9999999999999');
+  inputMask.mask(input);
+};
+const inputMaskInn = input => {
+  const inputMask = new (inputmask__WEBPACK_IMPORTED_MODULE_0___default())('999999999999');
+  inputMask.mask(input);
+};
 const inputMaskValidate = (label, input, length) => {
   if (!label || !input) return;
   const inputLength = input.inputmask.unmaskedvalue().length;
-  return inputLength === length ? true : false;
+  return inputLength >= length ? true : false;
 };
 const validateCreateError = (label, text) => {
   validateRemoveError(label);
@@ -8781,6 +8797,37 @@ const validateCreateErrorName = (label, input) => {
   }
   return result;
 };
+const validateCreateErrorYear = (label, input) => {
+  let result = true;
+  const currentYear = new Date().getFullYear();
+  const minYear = currentYear - 100;
+  const value = input.value === '' ? input.value : Number(input.value.replace(/\s/g, ""));
+  if (label.hasAttribute('data-mortgage-requests-field') && label.dataset.mortgageRequestsField === 'year-issue') {
+    if (value === '') {
+      result = false;
+      validateCreateError(label, 'Укажите год выпуска');
+    } else {
+      if (value < minYear) {
+        result = false;
+        validateCreateError(label, 'Слишком старый автомобиль');
+      }
+      if (value > currentYear) {
+        result = false;
+        validateCreateError(label, 'Укажите верный год выпуска');
+      }
+    }
+  }
+  if (label.hasAttribute('data-mortgage-requests-field') && label.dataset.mortgageRequestsField === 'estate-year-purchase') {
+    if (value === '') {
+      result = false;
+      validateCreateError(label, 'Укажите год приобретения недвижимости');
+    } else if (value < minYear || value > currentYear) {
+      result = false;
+      validateCreateError(label, 'Укажите корректный год');
+    }
+  }
+  return result;
+};
 const validateCreateErrorField = (label, input, text) => {
   let result = true;
   if (label.hasAttribute('data-validate-min-length') && input.value.length < label.dataset.validateMinLength) {
@@ -8800,6 +8847,15 @@ const validateCreateErrorField = (label, input, text) => {
 const validateCreateErrorMask = (label, input, text, length) => {
   let result = true;
   if (!inputMaskValidate(label, input, length)) {
+    result = false;
+    validateCreateError(label, text);
+  }
+  return result;
+};
+const validateCreateErrorUrl = (label, input, text) => {
+  let result = true;
+  const objRE = /(^https?:\/\/)?[a-z0-9~_\-\.]+\.[a-z]{2,9}(\/|:|\?[!-~]*)?$/i;
+  if (!objRE.test(input.value)) {
     result = false;
     validateCreateError(label, text);
   }
@@ -10895,7 +10951,7 @@ const mortgageRequests = () => {
       </button>
       `;
     const childrenHTML = `
-      <div class="mortgage-requests__children ${btnRemove ? 'mortgage-requests__children--remove' : ''}" mortgage-requests-children=${length + 1}>
+      <div class="mortgage-requests__children ${btnRemove ? 'mortgage-requests__children--remove' : ''}" data-mortgage-requests-children=${length + 1}>
          <div class="input-text input-text--no-exp">
              <label class="input-text__label">
                  <span>Дата рождения ребёнка</span>
@@ -10915,7 +10971,7 @@ const mortgageRequests = () => {
       `;
     childrensContainer.insertAdjacentHTML('beforeend', childrenHTML);
     const currentChildren = childrensContainer.querySelectorAll('.mortgage-requests__children')[childrensContainer.querySelectorAll('.mortgage-requests__children').length - 1];
-    updateFields(currentChildren);
+    createFields(currentChildren);
   }
   function createCar(btnRemove) {
     const length = carsContainer.querySelectorAll('.mortgage-requests__car').length;
@@ -10927,31 +10983,30 @@ const mortgageRequests = () => {
         </button>
       `;
     const carHTML = `
-        <div class="mortgage-requests__car ${btnRemove ? 'mortgage-requests__car--remove' : ''}" mortgage-requests-car=${length + 1}>
-            <div class="input-text input-text--no-exp">
+        <div class="mortgage-requests__car ${btnRemove ? 'mortgage-requests__car--remove' : ''}" data-mortgage-requests-car=${length + 1}>
+            <div class="input-text input-text--no-exp" data-mortgage-requests-field="make-model" data-validate-required>
                 <label class="input-text__label">
                     <span>Марка и модель</span>
                     <input type="text" name="Марка и модель" class="input-reset input-text__input" value="" placeholder="">
                 </label>
             </div>
-            <div class="input-text input-text--no-exp">
+            <div class="input-text input-text--no-exp" data-mortgage-requests-field="state-number" data-validate-required>
                 <label class="input-text__label">
                     <span>Государственный номер</span>
                     <input type="text" name="Государственный номер" class="input-reset input-text__input" value="" placeholder="">
                 </label>
             </div>
-            <div class="input-text input-text--only-number">
+            <div class="input-text input-text--only-number" data-mortgage-requests-field="car-cost" data-validate-required>
                 <label class="input-text__label">
                     <span>Примерная стоимость</span>
                     <input type="text" name="Примерная стоимость" maxlength="12" class="input-reset input-text__input" placeholder="">
                     <span>₽</span>
                 </label>
             </div>
-            <div class="input-text input-text--only-number">
+            <div class="input-text input-text--only-number input-text--no-exp input-text-year-primary" data-mortgage-requests-field="year-issue">
                 <label class="input-text__label">
                     <span>Год выпуска</span>
                     <input type="text" name="Год выпуска" maxlength="4" class="input-reset input-text__input" placeholder="">
-                    <span>₽</span>
                 </label>
             </div>
             <div class="checkbox-secondary">
@@ -10967,7 +11022,7 @@ const mortgageRequests = () => {
       `;
     carsContainer.insertAdjacentHTML('beforeend', carHTML);
     const currentCar = carsContainer.querySelectorAll('.mortgage-requests__car')[carsContainer.querySelectorAll('.mortgage-requests__car').length - 1];
-    updateFields(currentCar);
+    createFields(currentCar);
   }
   function createEstate(btnRemove) {
     const length = estatesContainer.querySelectorAll('.mortgage-requests__estate').length;
@@ -10979,8 +11034,8 @@ const mortgageRequests = () => {
         </button>
       `;
     const estateHTML = `
-        <div class="mortgage-requests__estate ${btnRemove ? 'mortgage-requests__estate--remove' : ''}" mortgage-requests-estate=${length + 1}>
-            <div class="select-secondary">
+        <div class="mortgage-requests__estate ${btnRemove ? 'mortgage-requests__estate--remove' : ''}" data-mortgage-requests-estate=${length + 1}>
+            <div class="select-secondary" data-mortgage-requests-field="property-type">
                 <div class="select-secondary__wrapper">
                 <span class="select-secondary__placeholder">
                     Тип недвижимости
@@ -10993,7 +11048,7 @@ const mortgageRequests = () => {
                 </select>
                 </div>
             </div>
-            <div class="select-secondary">
+            <div class="select-secondary" data-mortgage-requests-field="type-of-property">
                 <div class="select-secondary__wrapper">
                 <span class="select-secondary__placeholder">
                     Вид собственности
@@ -11006,7 +11061,7 @@ const mortgageRequests = () => {
                 </select>
                 </div>
             </div>
-            <div class="select-secondary">
+            <div class="select-secondary" data-mortgage-requests-field="basis-ownership">
                 <div class="select-secondary__wrapper">
                 <span class="select-secondary__placeholder">
                   Основание собственности
@@ -11019,26 +11074,26 @@ const mortgageRequests = () => {
                 </select>
                 </div>
             </div>
-            <div class="input-text input-text--no-exp input-text--only-number">
+            <div class="input-text input-text--no-exp input-text--only-number" data-mortgage-requests-field="estate-year-purchase">
                 <label class="input-text__label">
                     <span>Год приобретения</span>
                     <input type="text" name="Год приобретения" maxlength="4" class="input-reset input-text__input" placeholder="">
                 </label>
             </div>
-            <div class="input-text input-text--no-exp" style="grid-column:1/-1">
+            <div class="input-text input-text--no-exp" style="grid-column:1/-1" data-mortgage-requests-field="address-object" data-validate-required>
                 <label class="input-text__label">
                     <span>Адрес объекта</span>
                     <input type="text" name="Адрес объекта" class="input-reset input-text__input" value="" placeholder="">
                 </label>
             </div>
-            <div class="input-text input-text--only-number">
+            <div class="input-text input-text--only-number" data-mortgage-requests-field="estate-price" data-validate-required>
                 <label class="input-text__label">
                     <span>Примерная стоимость объекта</span>
-                    <input type="text" name="Примерная стоимость объекта" maxlength="4" class="input-reset input-text__input" placeholder="">
+                    <input type="text" name="Примерная стоимость объекта" maxlength="12" class="input-reset input-text__input" placeholder="">
                     <span>₽</span>
                 </label>
             </div>
-            <div class="input-text input-text--only-number">
+            <div class="input-text input-text--only-number" data-mortgage-requests-field="estate-square" data-validate-required>
                 <label class="input-text__label">
                     <span>Площадь</span>
                     <input type="text" name="Площадь" maxlength="3" class="input-reset input-text__input" placeholder="">
@@ -11058,7 +11113,7 @@ const mortgageRequests = () => {
       `;
     estatesContainer.insertAdjacentHTML('beforeend', estateHTML);
     const currentEtate = estatesContainer.querySelectorAll('.mortgage-requests__estate')[estatesContainer.querySelectorAll('.mortgage-requests__estate').length - 1];
-    updateFields(currentEtate);
+    createFields(currentEtate);
   }
   function removeAllItems(container) {
     const items = Array.from(container.children);
@@ -11070,21 +11125,28 @@ const mortgageRequests = () => {
       item.setAttribute(name, index + 1);
     });
   }
-  function updateFields(container) {
+  function createFields(container) {
     const inputsText = container.querySelectorAll('.input-text');
     const selectSecondary = container.querySelectorAll('.select-secondary__body');
     const inputDate = container.querySelectorAll('.input-text--date');
     inputsText.forEach(input => {
       (0,_inputs__WEBPACK_IMPORTED_MODULE_2__.currentInputText)(input);
+      input.querySelector('input').addEventListener('input', () => {
+        if (formEventInput) validate(false);
+      });
     });
     selectSecondary.forEach(select => {
       (0,_choices__WEBPACK_IMPORTED_MODULE_4__.selectSecondaryCreate)(select);
+      select.addEventListener('change', () => {
+        if (formEventInput) validate(false);
+      });
     });
     inputDate.forEach(input => {
       const inputText = input.closest('.input-text');
       new air_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"](input, {
         autoClose: true,
         isMobile: true,
+        maxDate: new Date(),
         onSelect: fd => {
           fd.date ? inputText.classList.add('_active') : inputText.classList.remove('_active');
           if (formEventInput) validate(false);
@@ -11119,7 +11181,21 @@ const mortgageRequests = () => {
     otherIncome: form.querySelector("[data-mortgage-requests-field='other-income']"),
     credits: form.querySelector("[data-mortgage-requests-field='credits']"),
     rent: form.querySelector("[data-mortgage-requests-field='rent']"),
-    alimony: form.querySelector("[data-mortgage-requests-field='alimony']")
+    alimony: form.querySelector("[data-mortgage-requests-field='alimony']"),
+    employment: form.querySelector("[data-mortgage-requests-field='employment']"),
+    basicIncome: form.querySelector("[data-mortgage-requests-field='basic-income']"),
+    nameOrInnEmployer: form.querySelector("[data-mortgage-requests-field='name-or-inn-employer']"),
+    ogrn: form.querySelector("[data-mortgage-requests-field='ogrn']"),
+    inn: form.querySelector("[data-mortgage-requests-field='inn']"),
+    legalAddress: form.querySelector("[data-mortgage-requests-field='legal-address']"),
+    actualAddress: form.querySelector("[data-mortgage-requests-field='actual-address']"),
+    tel: form.querySelector("[data-mortgage-requests-field='tel']"),
+    employerSite: form.querySelector("[data-mortgage-requests-field='employer-site']"),
+    numberStaff: form.querySelector("[data-mortgage-requests-field='number-staff']"),
+    employerActiv: form.querySelector("[data-mortgage-requests-field='employer-activ']"),
+    nameJob: form.querySelector("[data-mortgage-requests-field='name-job']"),
+    dateEmployment: form.querySelector("[data-mortgage-requests-field='date-employment']"),
+    yourIncome: form.querySelector("[data-mortgage-requests-field='your-income']")
   };
   const inputsMap = {
     fields: {
@@ -11137,11 +11213,19 @@ const mortgageRequests = () => {
       otherIncome: fieldsMap.otherIncome.querySelector('input'),
       credits: fieldsMap.credits.querySelector('input'),
       rent: fieldsMap.rent.querySelector('input'),
-      alimony: fieldsMap.alimony.querySelector('input')
+      alimony: fieldsMap.alimony.querySelector('input'),
+      nameOrInnEmployer: fieldsMap.nameOrInnEmployer.querySelector('input'),
+      ogrn: fieldsMap.ogrn.querySelector('input'),
+      inn: fieldsMap.inn.querySelector('input'),
+      legalAddress: fieldsMap.legalAddress.querySelector('input'),
+      actualAddress: fieldsMap.actualAddress.querySelector('input'),
+      tel: fieldsMap.tel.querySelector('input'),
+      employerSite: fieldsMap.employerSite.querySelector('input'),
+      nameJob: fieldsMap.nameJob.querySelector('input'),
+      yourIncome: fieldsMap.yourIncome.querySelector('input')
     },
     dateDefault: {
       dateIssue: fieldsMap.dateIssue.querySelector('input'),
-      registrPeriod: fieldsMap.registrPeriod.querySelector('input'),
       shiftsFullName: fieldsMap.shiftsFullName.querySelector('input')
     },
     select: {
@@ -11150,14 +11234,21 @@ const mortgageRequests = () => {
       seniority: fieldsMap.seniority,
       militaryDuty: fieldsMap.militaryDuty,
       familyStatus: fieldsMap.familyStatus,
-      spouseConsent: fieldsMap.spouseConsent
-    }
+      spouseConsent: fieldsMap.spouseConsent,
+      employment: fieldsMap.employment,
+      basicIncome: fieldsMap.basicIncome,
+      numberStaff: fieldsMap.numberStaff,
+      employerActiv: fieldsMap.employerActiv
+    },
+    registrPeriod: fieldsMap.registrPeriod.querySelector('input'),
+    dateEmployment: fieldsMap.dateEmployment.querySelector('input')
   };
   for (const field in inputsMap.dateDefault) {
     const input = inputsMap.dateDefault[field];
     new air_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"](input, {
       autoClose: true,
       isMobile: true,
+      maxDate: new Date(),
       onSelect: fd => {
         const inputText = input.closest('.input-text');
         fd.date ? inputText.classList.add('_active') : inputText.classList.remove('_active');
@@ -11185,16 +11276,67 @@ const mortgageRequests = () => {
     for (const field in inputsMap.select) {
       inputsMap.select[field].classList.remove('_error');
     }
-    childrensContainer.querySelectorAll('.mortgage-requests__children .input-text').forEach(children => {
-      (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(children);
-    });
+    childrensRemoveError(controls);
+    carsRemoveError(controls);
+    estateRemoveError(controls);
     const result = createErrorFields(errorSectionItems);
     if (result === false && controls === true) {
-      // closeAllSection(form);
-      // openErrorSection(errorSectionItems);
-      // scrollToErrorSection(errorSectionItems);
+      closeAllSection(form);
+      openErrorSection(errorSectionItems);
+      scrollToErrorSection(errorSectionItems);
     }
     return result;
+  }
+  function childrensRemoveError(controls) {
+    childrensContainer.querySelectorAll('.mortgage-requests__children').forEach(children => {
+      if (controls === true) {
+        children.classList.add('_inputs-event');
+      }
+      if (children.classList.contains('_inputs-event')) {
+        const label = children.querySelector('.input-text');
+        (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(label);
+      }
+    });
+  }
+  function carsRemoveError(controls) {
+    carsContainer.querySelectorAll('.mortgage-requests__car').forEach(car => {
+      if (controls === true) {
+        car.classList.add('_inputs-event');
+      }
+      if (car.classList.contains('_inputs-event')) {
+        const yearIssue = car.querySelector("[data-mortgage-requests-field='year-issue']");
+        const makeModel = car.querySelector("[data-mortgage-requests-field='make-model']");
+        const stateNumber = car.querySelector("[data-mortgage-requests-field='state-number']");
+        const carCost = car.querySelector("[data-mortgage-requests-field='car-cost']");
+        (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(yearIssue);
+        (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(makeModel);
+        (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(stateNumber);
+        (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(carCost);
+      }
+    });
+  }
+  function estateRemoveError(controls) {
+    estatesContainer.querySelectorAll('.mortgage-requests__estate').forEach(estate => {
+      if (controls === true) {
+        estate.classList.add('_inputs-event');
+      }
+      if (estate.classList.contains('_inputs-event')) {
+        const propertyType = estate.querySelector("[data-mortgage-requests-field='property-type']");
+        const typeOfProperty = estate.querySelector("[data-mortgage-requests-field='type-of-property']");
+        const basisOwnership = estate.querySelector("[data-mortgage-requests-field='basis-ownership']");
+        const estateYearPurchase = estate.querySelector("[data-mortgage-requests-field='estate-year-purchase']");
+        const addressObject = estate.querySelector("[data-mortgage-requests-field='address-object']");
+        const price = estate.querySelector("[data-mortgage-requests-field='estate-price']");
+        const square = estate.querySelector("[data-mortgage-requests-field='estate-square']");
+        (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(propertyType);
+        (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(typeOfProperty);
+        (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(basisOwnership);
+        (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(estateYearPurchase);
+        (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(addressObject);
+        (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(price);
+        (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(square);
+      }
+    });
   }
   function createErrorFields(errorSectionItems) {
     let result = true;
@@ -11301,7 +11443,7 @@ const mortgageRequests = () => {
       (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateError)(fieldsMap.dateIssue, 'Укажите дату выдачи паспорта');
       addSectionError(errorSectionItems, fieldsMap.dateIssue);
     }
-    if (!inputsMap.dateDefault.registrPeriod.value && !fieldsMap.registrPeriod.hasAttribute('hidden')) {
+    if (!inputsMap.registrPeriod.value && !fieldsMap.registrPeriod.hasAttribute('hidden')) {
       result = false;
       (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateError)(fieldsMap.registrPeriod, 'Укажите срок действия регистрации');
       addSectionError(errorSectionItems, fieldsMap.registrPeriod);
@@ -11310,6 +11452,128 @@ const mortgageRequests = () => {
       result = false;
       (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateError)(fieldsMap.shiftsFullName, 'Укажите дату смены ФИО');
       addSectionError(errorSectionItems, fieldsMap.shiftsFullName);
+    }
+    carsContainer.querySelectorAll('.mortgage-requests__car').forEach(car => {
+      if (car.classList.contains('_inputs-event')) {
+        const yearIssue = car.querySelector("[data-mortgage-requests-field='year-issue']");
+        const yearIssueInput = yearIssue.querySelector("input");
+        const makeModel = car.querySelector("[data-mortgage-requests-field='make-model']");
+        const makeModelInput = makeModel.querySelector("input");
+        const stateNumber = car.querySelector("[data-mortgage-requests-field='state-number']");
+        const stateNumberInput = stateNumber.querySelector("input");
+        const carCost = car.querySelector("[data-mortgage-requests-field='car-cost']");
+        const carCostInput = carCost.querySelector("input");
+        (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorYear)(yearIssue, yearIssueInput);
+        if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(makeModel, makeModelInput, 'Укажите марку и модель автомобиля')) {
+          result = false;
+          addSectionError(errorSectionItems, makeModel);
+        }
+        if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(stateNumber, stateNumberInput, 'Укажите госномер автомобиля')) {
+          result = false;
+          addSectionError(errorSectionItems, stateNumber);
+        }
+        if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(carCost, carCostInput, 'Укажите примерную стоимость автомобиля')) {
+          result = false;
+          addSectionError(errorSectionItems, carCost);
+        }
+      }
+    });
+    estatesContainer.querySelectorAll('.mortgage-requests__estate').forEach(estate => {
+      if (estate.classList.contains('_inputs-event')) {
+        const propertyType = estate.querySelector("[data-mortgage-requests-field='property-type']");
+        const typeOfProperty = estate.querySelector("[data-mortgage-requests-field='type-of-property']");
+        const basisOwnership = estate.querySelector("[data-mortgage-requests-field='basis-ownership']");
+        const estateYearPurchase = estate.querySelector("[data-mortgage-requests-field='estate-year-purchase']");
+        const estateYearPurchaseInput = estateYearPurchase.querySelector("input");
+        const addressObject = estate.querySelector("[data-mortgage-requests-field='address-object']");
+        const addressObjectInput = addressObject.querySelector("input");
+        const price = estate.querySelector("[data-mortgage-requests-field='estate-price']");
+        const priceInput = price.querySelector('input');
+        const square = estate.querySelector("[data-mortgage-requests-field='estate-square']");
+        const squareInput = square.querySelector('input');
+        (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorYear)(estateYearPurchase, estateYearPurchaseInput);
+        if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreeateErrorSelect)(propertyType, 'Выберите тип недвижимости из списка')) {
+          result = false;
+          addSectionError(errorSectionItems, propertyType);
+        }
+        if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreeateErrorSelect)(typeOfProperty, 'Выберите вид собственности из списка')) {
+          result = false;
+          addSectionError(errorSectionItems, typeOfProperty);
+        }
+        if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreeateErrorSelect)(basisOwnership, 'Выберите основание собственности из списка')) {
+          result = false;
+          addSectionError(errorSectionItems, basisOwnership);
+        }
+        if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(addressObject, addressObjectInput, 'Укажите адрес проживания')) {
+          result = false;
+          addSectionError(errorSectionItems, addressObject);
+        }
+        if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(price, priceInput, 'Укажите примерную стоимость недвижимости')) {
+          result = false;
+          addSectionError(errorSectionItems, price);
+        }
+        if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(square, squareInput, 'Укажите общую площадь')) {
+          result = false;
+          addSectionError(errorSectionItems, square);
+        }
+      }
+    });
+    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreeateErrorSelect)(fieldsMap.employment, 'Укажите форму занятости')) {
+      result = false;
+      addSectionError(errorSectionItems, fieldsMap.employment);
+    }
+    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreeateErrorSelect)(fieldsMap.basicIncome, 'Укажите подтверждение основного дохода')) {
+      result = false;
+      addSectionError(errorSectionItems, fieldsMap.basicIncome);
+    }
+    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.nameOrInnEmployer, inputsMap.fields.nameOrInnEmployer, 'Введите название или ИНН организации')) {
+      result = false;
+      addSectionError(errorSectionItems, fieldsMap.nameOrInnEmployer);
+    }
+    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(fieldsMap.ogrn, inputsMap.fields.ogrn, 'Введите корректный ОГРН', 13)) {
+      result = false;
+      addSectionError(errorSectionItems, fieldsMap.ogrn);
+    }
+    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(fieldsMap.inn, inputsMap.fields.inn, 'Введите корректный ИНН', 10)) {
+      result = false;
+      addSectionError(errorSectionItems, fieldsMap.inn);
+    }
+    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.legalAddress, inputsMap.fields.legalAddress, 'Укажите юридический адрес организации')) {
+      result = false;
+      addSectionError(errorSectionItems, fieldsMap.legalAddress);
+    }
+    if (!fieldsMap.actualAddress.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.actualAddress, inputsMap.fields.actualAddress, 'Укажите фактический адрес организации')) {
+      result = false;
+      addSectionError(errorSectionItems, fieldsMap.actualAddress);
+    }
+    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(fieldsMap.tel, inputsMap.fields.tel, _modules_validateTextMap__WEBPACK_IMPORTED_MODULE_1__.validateTextMap.tel, 10)) {
+      result = false;
+      addSectionError(errorSectionItems, fieldsMap.tel);
+    }
+    if (inputsMap.fields.employerSite.value !== '' && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorUrl)(fieldsMap.employerSite, inputsMap.fields.employerSite, 'Введите адрес сайта в формате example.com')) {
+      result = false;
+      addSectionError(errorSectionItems, fieldsMap.employerSite);
+    }
+    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreeateErrorSelect)(fieldsMap.numberStaff, 'Укажите численность персонала')) {
+      result = false;
+      addSectionError(errorSectionItems, fieldsMap.basicIncome);
+    }
+    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreeateErrorSelect)(fieldsMap.employerActiv, 'Укажите сферу деятельности работодателя')) {
+      result = false;
+      addSectionError(errorSectionItems, fieldsMap.employerActiv);
+    }
+    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.nameJob, inputsMap.fields.nameJob, 'Укажите название должности')) {
+      result = false;
+      addSectionError(errorSectionItems, fieldsMap.nameJob);
+    }
+    if (!inputsMap.dateEmployment.value) {
+      result = false;
+      (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateError)(fieldsMap.dateEmployment, 'Укажите месяц и год трудоустройства');
+      addSectionError(errorSectionItems, fieldsMap.dateEmployment);
+    }
+    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.yourIncome, inputsMap.fields.yourIncome, 'Укажите средний доход в месяц')) {
+      result = false;
+      addSectionError(errorSectionItems, fieldsMap.yourIncome);
     }
     return result;
   }
@@ -11346,6 +11610,27 @@ const mortgageRequests = () => {
       content.removeAttribute('hidden');
     });
   }
+  new air_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"](inputsMap.dateEmployment, {
+    autoClose: true,
+    isMobile: true,
+    view: 'months',
+    minView: 'months',
+    dateFormat: 'MM.yyyy',
+    maxDate: new Date(),
+    onSelect: fd => {
+      fd.date ? fieldsMap.dateEmployment.classList.add('_active') : fieldsMap.dateEmployment.classList.remove('_active');
+      if (formEventInput) validate(false);
+    }
+  });
+  new air_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"](inputsMap.registrPeriod, {
+    autoClose: true,
+    isMobile: true,
+    minDate: new Date(),
+    onSelect: fd => {
+      fd.date ? fieldsMap.registrPeriod.classList.add('_active') : fieldsMap.registrPeriod.classList.remove('_active');
+      if (formEventInput) validate(false);
+    }
+  });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (mortgageRequests);
 

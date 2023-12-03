@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#111111">
-    <title>Объект</title>
+    <title>Заявка на ипотеку</title>
     <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="css/vendor.css">
@@ -347,7 +347,7 @@
                                 </button>
                                 <div class="spollers__body mortgage-requests__content" hidden>
                                     <div class="mortgage-requests__fields">
-                                        <div class="select-secondary">
+                                        <div class="select-secondary" data-mortgage-requests-field="employment">
                                             <div class="select-secondary__wrapper">
                                                 <span class="select-secondary__placeholder">
                                                     Форма занятости
@@ -360,7 +360,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="select-secondary mortgage-requests__field--row">
+                                        <div class="select-secondary mortgage-requests__field--row" data-mortgage-requests-field="basic-income">
                                             <div class="select-secondary__wrapper">
                                                 <span class="select-secondary__placeholder">
                                                     Подтверждение основного дохода
@@ -373,25 +373,25 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="input-text input-text--no-exp mortgage-requests__field--row">
+                                        <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="name-or-inn-employer" data-validate-required>
                                             <label class="input-text__label">
                                                 <span>Название или ИНН работодателя</span>
                                                 <input type="text" name="Название или ИНН работодателя" class="input-reset input-text__input" value="" placeholder="">
                                             </label>
                                         </div>
-                                        <div class="input-text input-text--no-exp">
+                                        <div class="input-text input-text--no-exp" data-mortgage-requests-field="ogrn">
                                             <label class="input-text__label">
-                                                <span>ОГРН/ОГРНИП</span>
-                                                <input type="text" name="ОГРН/ОГРНИП" class="input-reset input-text__input" value="" placeholder="">
+                                                <span>ОГРН</span>
+                                                <input type="text" name="ОГРН" class="input-reset input-text__input input-ogrn-mask" value="" placeholder="">
                                             </label>
                                         </div>
-                                        <div class="input-text input-text--no-exp">
+                                        <div class="input-text input-text--no-exp" data-mortgage-requests-field="inn">
                                             <label class="input-text__label">
                                                 <span>ИНН</span>
-                                                <input type="text" name="ИНН" class="input-reset input-text__input" value="" placeholder="">
+                                                <input type="text" name="ИНН" class="input-reset input-text__input input-inn-mask" value="" placeholder="">
                                             </label>
                                         </div>
-                                        <div class="input-text input-text--no-exp mortgage-requests__field--row">
+                                        <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="legal-address" data-validate-required>
                                             <label class="input-text__label">
                                                 <span>Юридический адрес работодателя</span>
                                                 <input type="text" name="Юридический адрес работодателя" class="input-reset input-text__input" value="" placeholder="">
@@ -404,13 +404,13 @@
                                             <div aria-hidden="true"></div>
                                             <span>Юридический адрес совпадает с фактическим</span>
                                         </label>
-                                        <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-content="4">
+                                        <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="actual-address" data-validate-required data-mortgage-requests-content="4">
                                             <label class="input-text__label">
                                                 <span>Фактический адрес работодателя</span>
                                                 <input type="text" name="Фактический адрес работодателя" class="input-reset input-text__input" value="" placeholder="">
                                             </label>
                                         </div>
-                                        <div class="input-text input-text--no-exp">
+                                        <div class="input-text input-text--no-exp" data-mortgage-requests-field="tel">
                                             <label class="input-text__label">
                                                 <span>Рабочий телефон</span>
                                                 <input type="text" name="Рабочий телефон" class="input-reset input-text__input input-phone-mask" value="" placeholder="">
@@ -422,13 +422,13 @@
                                                 <input type="text" name="Рабочий телефон" class="input-reset input-text__input" value="" placeholder="">
                                             </label>
                                         </div>
-                                        <div class="input-text input-text--no-exp">
+                                        <div class="input-text input-text--no-exp" data-mortgage-requests-field="employer-site">
                                             <label class="input-text__label">
                                                 <span>Сайт работодателя</span>
                                                 <input type="text" name="Рабочий телефон" class="input-reset input-text__input" value="" placeholder="">
                                             </label>
                                         </div>
-                                        <div class="select-secondary">
+                                        <div class="select-secondary" data-mortgage-requests-field="number-staff">
                                             <div class="select-secondary__wrapper">
                                                 <span class="select-secondary__placeholder">
                                                     Численность персонала
@@ -442,7 +442,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="select-secondary mortgage-requests__field--row">
+                                        <div class="select-secondary mortgage-requests__field--row" data-mortgage-requests-field="employer-activ">
                                             <div class="select-secondary__wrapper">
                                                 <span class="select-secondary__placeholder">
                                                     Сфера деятельности работодателя
@@ -456,13 +456,13 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="input-text input-text--no-exp">
+                                        <div class="input-text input-text--no-exp" data-mortgage-requests-field="name-job" data-validate-required>
                                             <label class="input-text__label">
                                                 <span>Название должности</span>
                                                 <input type="text" name="Название должности" class="input-reset input-text__input" value="" placeholder="">
                                             </label>
                                         </div>
-                                        <div class="input-text input-text--no-exp">
+                                        <div class="input-text input-text--no-exp" data-mortgage-requests-field="date-employment">
                                             <label class="input-text__label">
                                                 <span>Месяц и год трудоустройства</span>
                                                 <input type="text" name="Название должности" class="input-reset input-text__input" value="" placeholder="">
@@ -486,7 +486,7 @@
                                                 Укажите средний доход в месяц за последние полгода после
                                                 уплаты налогов (на руки). Учитывается только доход по основному месту работы
                                             </p>
-                                            <div class="input-text input-text--only-number">
+                                            <div class="input-text input-text--only-number" data-mortgage-requests-field="your-income" data-validate-required data-validate-average-invome-default>
                                                 <label class="input-text__label">
                                                     <span>Средний доход в месяц</span>
                                                     <input type="text" name="Средний доход в месяц" maxlength="12" class="input-reset input-text__input" placeholder="">

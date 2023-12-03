@@ -16,7 +16,9 @@ import {
     validateCreateErrorField,
     validateCreateErrorMask,
     validateCreateError,
-    validateCreeateErrorSelect
+    validateCreeateErrorSelect,
+    validateCreateErrorYear,
+    validateCreateErrorUrl
 } from './formValidate';
 const mortgageRequests = () => {
     const form = document.querySelector('.mortgage-requests__form');
@@ -156,7 +158,7 @@ const mortgageRequests = () => {
       </button>
       `;
         const childrenHTML = `
-      <div class="mortgage-requests__children ${btnRemove ? 'mortgage-requests__children--remove' : ''}" mortgage-requests-children=${length + 1}>
+      <div class="mortgage-requests__children ${btnRemove ? 'mortgage-requests__children--remove' : ''}" data-mortgage-requests-children=${length + 1}>
          <div class="input-text input-text--no-exp">
              <label class="input-text__label">
                  <span>Дата рождения ребёнка</span>
@@ -176,7 +178,7 @@ const mortgageRequests = () => {
       `;
         childrensContainer.insertAdjacentHTML('beforeend', childrenHTML);
         const currentChildren = childrensContainer.querySelectorAll('.mortgage-requests__children')[childrensContainer.querySelectorAll('.mortgage-requests__children').length - 1];
-        updateFields(currentChildren);
+        createFields(currentChildren);
     }
 
     function createCar(btnRemove) {
@@ -189,31 +191,30 @@ const mortgageRequests = () => {
         </button>
       `;
         const carHTML = `
-        <div class="mortgage-requests__car ${btnRemove ? 'mortgage-requests__car--remove' : ''}" mortgage-requests-car=${length + 1}>
-            <div class="input-text input-text--no-exp">
+        <div class="mortgage-requests__car ${btnRemove ? 'mortgage-requests__car--remove' : ''}" data-mortgage-requests-car=${length + 1}>
+            <div class="input-text input-text--no-exp" data-mortgage-requests-field="make-model" data-validate-required>
                 <label class="input-text__label">
                     <span>Марка и модель</span>
                     <input type="text" name="Марка и модель" class="input-reset input-text__input" value="" placeholder="">
                 </label>
             </div>
-            <div class="input-text input-text--no-exp">
+            <div class="input-text input-text--no-exp" data-mortgage-requests-field="state-number" data-validate-required>
                 <label class="input-text__label">
                     <span>Государственный номер</span>
                     <input type="text" name="Государственный номер" class="input-reset input-text__input" value="" placeholder="">
                 </label>
             </div>
-            <div class="input-text input-text--only-number">
+            <div class="input-text input-text--only-number" data-mortgage-requests-field="car-cost" data-validate-required>
                 <label class="input-text__label">
                     <span>Примерная стоимость</span>
                     <input type="text" name="Примерная стоимость" maxlength="12" class="input-reset input-text__input" placeholder="">
                     <span>₽</span>
                 </label>
             </div>
-            <div class="input-text input-text--only-number">
+            <div class="input-text input-text--only-number input-text--no-exp input-text-year-primary" data-mortgage-requests-field="year-issue">
                 <label class="input-text__label">
                     <span>Год выпуска</span>
                     <input type="text" name="Год выпуска" maxlength="4" class="input-reset input-text__input" placeholder="">
-                    <span>₽</span>
                 </label>
             </div>
             <div class="checkbox-secondary">
@@ -229,7 +230,7 @@ const mortgageRequests = () => {
       `;
         carsContainer.insertAdjacentHTML('beforeend', carHTML);
         const currentCar = carsContainer.querySelectorAll('.mortgage-requests__car')[carsContainer.querySelectorAll('.mortgage-requests__car').length - 1];
-        updateFields(currentCar);
+        createFields(currentCar);
     }
 
     function createEstate(btnRemove) {
@@ -242,8 +243,8 @@ const mortgageRequests = () => {
         </button>
       `;
         const estateHTML = `
-        <div class="mortgage-requests__estate ${btnRemove ? 'mortgage-requests__estate--remove' : ''}" mortgage-requests-estate=${length + 1}>
-            <div class="select-secondary">
+        <div class="mortgage-requests__estate ${btnRemove ? 'mortgage-requests__estate--remove' : ''}" data-mortgage-requests-estate=${length + 1}>
+            <div class="select-secondary" data-mortgage-requests-field="property-type">
                 <div class="select-secondary__wrapper">
                 <span class="select-secondary__placeholder">
                     Тип недвижимости
@@ -256,7 +257,7 @@ const mortgageRequests = () => {
                 </select>
                 </div>
             </div>
-            <div class="select-secondary">
+            <div class="select-secondary" data-mortgage-requests-field="type-of-property">
                 <div class="select-secondary__wrapper">
                 <span class="select-secondary__placeholder">
                     Вид собственности
@@ -269,7 +270,7 @@ const mortgageRequests = () => {
                 </select>
                 </div>
             </div>
-            <div class="select-secondary">
+            <div class="select-secondary" data-mortgage-requests-field="basis-ownership">
                 <div class="select-secondary__wrapper">
                 <span class="select-secondary__placeholder">
                   Основание собственности
@@ -282,26 +283,26 @@ const mortgageRequests = () => {
                 </select>
                 </div>
             </div>
-            <div class="input-text input-text--no-exp input-text--only-number">
+            <div class="input-text input-text--no-exp input-text--only-number" data-mortgage-requests-field="estate-year-purchase">
                 <label class="input-text__label">
                     <span>Год приобретения</span>
                     <input type="text" name="Год приобретения" maxlength="4" class="input-reset input-text__input" placeholder="">
                 </label>
             </div>
-            <div class="input-text input-text--no-exp" style="grid-column:1/-1">
+            <div class="input-text input-text--no-exp" style="grid-column:1/-1" data-mortgage-requests-field="address-object" data-validate-required>
                 <label class="input-text__label">
                     <span>Адрес объекта</span>
                     <input type="text" name="Адрес объекта" class="input-reset input-text__input" value="" placeholder="">
                 </label>
             </div>
-            <div class="input-text input-text--only-number">
+            <div class="input-text input-text--only-number" data-mortgage-requests-field="estate-price" data-validate-required>
                 <label class="input-text__label">
                     <span>Примерная стоимость объекта</span>
-                    <input type="text" name="Примерная стоимость объекта" maxlength="4" class="input-reset input-text__input" placeholder="">
+                    <input type="text" name="Примерная стоимость объекта" maxlength="12" class="input-reset input-text__input" placeholder="">
                     <span>₽</span>
                 </label>
             </div>
-            <div class="input-text input-text--only-number">
+            <div class="input-text input-text--only-number" data-mortgage-requests-field="estate-square" data-validate-required>
                 <label class="input-text__label">
                     <span>Площадь</span>
                     <input type="text" name="Площадь" maxlength="3" class="input-reset input-text__input" placeholder="">
@@ -321,7 +322,7 @@ const mortgageRequests = () => {
       `;
         estatesContainer.insertAdjacentHTML('beforeend', estateHTML);
         const currentEtate = estatesContainer.querySelectorAll('.mortgage-requests__estate')[estatesContainer.querySelectorAll('.mortgage-requests__estate').length - 1];
-        updateFields(currentEtate);
+        createFields(currentEtate);
     }
 
     function removeAllItems(container) {
@@ -336,15 +337,22 @@ const mortgageRequests = () => {
         });
     }
 
-    function updateFields(container) {
+    function createFields(container) {
         const inputsText = container.querySelectorAll('.input-text');
         const selectSecondary = container.querySelectorAll('.select-secondary__body');
         const inputDate = container.querySelectorAll('.input-text--date');
+
         inputsText.forEach(input => {
             currentInputText(input);
+            input.querySelector('input').addEventListener('input', () => {
+                if (formEventInput) validate(false);
+            })
         })
         selectSecondary.forEach(select => {
             selectSecondaryCreate(select);
+            select.addEventListener('change', () => {
+                if (formEventInput) validate(false);
+            })
         });
 
         inputDate.forEach(input => {
@@ -352,6 +360,7 @@ const mortgageRequests = () => {
             new AirDatepicker(input, {
                 autoClose: true,
                 isMobile: true,
+                maxDate: new Date(),
                 onSelect: (fd) => {
                     fd.date ? inputText.classList.add('_active') : inputText.classList.remove('_active');
                     if (formEventInput) validate(false);
@@ -394,6 +403,22 @@ const mortgageRequests = () => {
         credits: form.querySelector("[data-mortgage-requests-field='credits']"),
         rent: form.querySelector("[data-mortgage-requests-field='rent']"),
         alimony: form.querySelector("[data-mortgage-requests-field='alimony']"),
+
+        employment: form.querySelector("[data-mortgage-requests-field='employment']"),
+        basicIncome: form.querySelector("[data-mortgage-requests-field='basic-income']"),
+
+        nameOrInnEmployer: form.querySelector("[data-mortgage-requests-field='name-or-inn-employer']"),
+        ogrn: form.querySelector("[data-mortgage-requests-field='ogrn']"),
+        inn: form.querySelector("[data-mortgage-requests-field='inn']"),
+        legalAddress: form.querySelector("[data-mortgage-requests-field='legal-address']"),
+        actualAddress: form.querySelector("[data-mortgage-requests-field='actual-address']"),
+        tel: form.querySelector("[data-mortgage-requests-field='tel']"),
+        employerSite: form.querySelector("[data-mortgage-requests-field='employer-site']"),
+        numberStaff: form.querySelector("[data-mortgage-requests-field='number-staff']"),
+        employerActiv: form.querySelector("[data-mortgage-requests-field='employer-activ']"),
+        nameJob: form.querySelector("[data-mortgage-requests-field='name-job']"),
+        dateEmployment: form.querySelector("[data-mortgage-requests-field='date-employment']"),
+        yourIncome: form.querySelector("[data-mortgage-requests-field='your-income']"),
     };
     const inputsMap = {
         fields: {
@@ -412,10 +437,18 @@ const mortgageRequests = () => {
             credits: fieldsMap.credits.querySelector('input'),
             rent: fieldsMap.rent.querySelector('input'),
             alimony: fieldsMap.alimony.querySelector('input'),
+            nameOrInnEmployer: fieldsMap.nameOrInnEmployer.querySelector('input'),
+            ogrn: fieldsMap.ogrn.querySelector('input'),
+            inn: fieldsMap.inn.querySelector('input'),
+            legalAddress: fieldsMap.legalAddress.querySelector('input'),
+            actualAddress: fieldsMap.actualAddress.querySelector('input'),
+            tel: fieldsMap.tel.querySelector('input'),
+            employerSite: fieldsMap.employerSite.querySelector('input'),
+            nameJob: fieldsMap.nameJob.querySelector('input'),
+            yourIncome: fieldsMap.yourIncome.querySelector('input'),
         },
         dateDefault: {
             dateIssue: fieldsMap.dateIssue.querySelector('input'),
-            registrPeriod: fieldsMap.registrPeriod.querySelector('input'),
             shiftsFullName: fieldsMap.shiftsFullName.querySelector('input'),
         },
         select: {
@@ -425,7 +458,13 @@ const mortgageRequests = () => {
             militaryDuty: fieldsMap.militaryDuty,
             familyStatus: fieldsMap.familyStatus,
             spouseConsent: fieldsMap.spouseConsent,
-        }
+            employment: fieldsMap.employment,
+            basicIncome: fieldsMap.basicIncome,
+            numberStaff: fieldsMap.numberStaff,
+            employerActiv: fieldsMap.employerActiv,
+        },
+        registrPeriod: fieldsMap.registrPeriod.querySelector('input'),
+        dateEmployment: fieldsMap.dateEmployment.querySelector('input'),
     };
 
     for (const field in inputsMap.dateDefault) {
@@ -433,6 +472,7 @@ const mortgageRequests = () => {
         new AirDatepicker(input, {
             autoClose: true,
             isMobile: true,
+            maxDate: new Date(),
             onSelect: (fd) => {
                 const inputText = input.closest('.input-text')
                 fd.date ? inputText.classList.add('_active') : inputText.classList.remove('_active');
@@ -455,27 +495,79 @@ const mortgageRequests = () => {
     function validate(controls = true) {
         const errorSectionItems = [];
         formEventInput = true;
-
         for (const field in fieldsMap) {
-             validateRemoveError(fieldsMap[field]);
+            validateRemoveError(fieldsMap[field]);
         }
         for (const field in inputsMap.select) {
             inputsMap.select[field].classList.remove('_error');
         }
-        childrensContainer.querySelectorAll('.mortgage-requests__children .input-text').forEach(children => {
-            validateRemoveError(children);
-        })
+        childrensRemoveError(controls);
+        carsRemoveError(controls);
+        estateRemoveError(controls);
 
         const result = createErrorFields(errorSectionItems);
 
-
         if (result === false && controls === true) {
-            // closeAllSection(form);
-            // openErrorSection(errorSectionItems);
-            // scrollToErrorSection(errorSectionItems);
+             closeAllSection(form);
+            openErrorSection(errorSectionItems);
+              scrollToErrorSection(errorSectionItems);
         }
 
         return result;
+    }
+
+    function childrensRemoveError(controls) {
+        childrensContainer.querySelectorAll('.mortgage-requests__children').forEach(children => {
+            if (controls === true) {
+                children.classList.add('_inputs-event');
+            }
+            if (children.classList.contains('_inputs-event')) {
+                const label = children.querySelector('.input-text');
+                validateRemoveError(label);
+            }
+        })
+    }
+
+    function carsRemoveError(controls) {
+        carsContainer.querySelectorAll('.mortgage-requests__car').forEach(car => {
+            if (controls === true) {
+                car.classList.add('_inputs-event');
+            }
+            if (car.classList.contains('_inputs-event')) {
+                const yearIssue = car.querySelector("[data-mortgage-requests-field='year-issue']");
+                const makeModel = car.querySelector("[data-mortgage-requests-field='make-model']");
+                const stateNumber = car.querySelector("[data-mortgage-requests-field='state-number']");
+                const carCost = car.querySelector("[data-mortgage-requests-field='car-cost']");
+                validateRemoveError(yearIssue);
+                validateRemoveError(makeModel);
+                validateRemoveError(stateNumber);
+                validateRemoveError(carCost);
+            }
+        })
+    }
+
+    function estateRemoveError(controls) {
+        estatesContainer.querySelectorAll('.mortgage-requests__estate').forEach(estate => {
+            if (controls === true) {
+                estate.classList.add('_inputs-event');
+            }
+            if (estate.classList.contains('_inputs-event')) {
+                const propertyType = estate.querySelector("[data-mortgage-requests-field='property-type']");
+                const typeOfProperty = estate.querySelector("[data-mortgage-requests-field='type-of-property']");
+                const basisOwnership = estate.querySelector("[data-mortgage-requests-field='basis-ownership']");
+                const estateYearPurchase = estate.querySelector("[data-mortgage-requests-field='estate-year-purchase']");
+                const addressObject = estate.querySelector("[data-mortgage-requests-field='address-object']");
+                const price = estate.querySelector("[data-mortgage-requests-field='estate-price']");
+                const square = estate.querySelector("[data-mortgage-requests-field='estate-square']");
+                validateRemoveError(propertyType);
+                validateRemoveError(typeOfProperty);
+                validateRemoveError(basisOwnership);
+                validateRemoveError(estateYearPurchase);
+                validateRemoveError(addressObject);
+                validateRemoveError(price);
+                validateRemoveError(square);
+            }
+        })
     }
 
     function createErrorFields(errorSectionItems) {
@@ -557,34 +649,34 @@ const mortgageRequests = () => {
             }
         }
 
-        if (!fieldsMap.rentalIncome.closest('.mortgage-requests__field--row').hasAttribute('hidden') && 
-        !validateCreateErrorField(fieldsMap.rentalIncome, inputsMap.fields.rentalIncome, 'Укажите средний доход в месяц')) {
+        if (!fieldsMap.rentalIncome.closest('.mortgage-requests__field--row').hasAttribute('hidden') &&
+            !validateCreateErrorField(fieldsMap.rentalIncome, inputsMap.fields.rentalIncome, 'Укажите средний доход в месяц')) {
             result = false;
             addSectionError(errorSectionItems, fieldsMap.rentalIncome);
         }
-        if (!fieldsMap.pension.closest('.mortgage-requests__field--row').hasAttribute('hidden') && 
-        !validateCreateErrorField(fieldsMap.pension, inputsMap.fields.pension, 'Укажите средний доход в месяц')) {
+        if (!fieldsMap.pension.closest('.mortgage-requests__field--row').hasAttribute('hidden') &&
+            !validateCreateErrorField(fieldsMap.pension, inputsMap.fields.pension, 'Укажите средний доход в месяц')) {
             result = false;
             addSectionError(errorSectionItems, fieldsMap.pension);
         }
-        if (!fieldsMap.otherIncome.closest('.mortgage-requests__field--row').hasAttribute('hidden') && 
-        !validateCreateErrorField(fieldsMap.otherIncome, inputsMap.fields.otherIncome, 'Укажите средний доход в месяц')) {
+        if (!fieldsMap.otherIncome.closest('.mortgage-requests__field--row').hasAttribute('hidden') &&
+            !validateCreateErrorField(fieldsMap.otherIncome, inputsMap.fields.otherIncome, 'Укажите средний доход в месяц')) {
             result = false;
             addSectionError(errorSectionItems, fieldsMap.otherIncome);
         }
-        
-        if (!fieldsMap.credits.closest('.mortgage-requests__field--row').hasAttribute('hidden') && 
-        !validateCreateErrorField(fieldsMap.credits, inputsMap.fields.credits, 'Укажите сумму ежемесячных платежей')) {
+
+        if (!fieldsMap.credits.closest('.mortgage-requests__field--row').hasAttribute('hidden') &&
+            !validateCreateErrorField(fieldsMap.credits, inputsMap.fields.credits, 'Укажите сумму ежемесячных платежей')) {
             result = false;
             addSectionError(errorSectionItems, fieldsMap.credits);
         }
-        if (!fieldsMap.rent.closest('.mortgage-requests__field--row').hasAttribute('hidden') && 
-        !validateCreateErrorField(fieldsMap.rent, inputsMap.fields.rent, 'Укажите сумму ежемесячных платежей')) {
+        if (!fieldsMap.rent.closest('.mortgage-requests__field--row').hasAttribute('hidden') &&
+            !validateCreateErrorField(fieldsMap.rent, inputsMap.fields.rent, 'Укажите сумму ежемесячных платежей')) {
             result = false;
             addSectionError(errorSectionItems, fieldsMap.rent);
         }
-        if (!fieldsMap.alimony.closest('.mortgage-requests__field--row').hasAttribute('hidden') && 
-        !validateCreateErrorField(fieldsMap.alimony, inputsMap.fields.alimony, 'Укажите сумму ежемесячных платежей')) {
+        if (!fieldsMap.alimony.closest('.mortgage-requests__field--row').hasAttribute('hidden') &&
+            !validateCreateErrorField(fieldsMap.alimony, inputsMap.fields.alimony, 'Укажите сумму ежемесячных платежей')) {
             result = false;
             addSectionError(errorSectionItems, fieldsMap.alimony);
         }
@@ -593,7 +685,7 @@ const mortgageRequests = () => {
             validateCreateError(fieldsMap.dateIssue, 'Укажите дату выдачи паспорта');
             addSectionError(errorSectionItems, fieldsMap.dateIssue);
         }
-        if (!inputsMap.dateDefault.registrPeriod.value && !fieldsMap.registrPeriod.hasAttribute('hidden')) {
+        if (!inputsMap.registrPeriod.value && !fieldsMap.registrPeriod.hasAttribute('hidden')) {
             result = false;
             validateCreateError(fieldsMap.registrPeriod, 'Укажите срок действия регистрации');
             addSectionError(errorSectionItems, fieldsMap.registrPeriod);
@@ -602,6 +694,142 @@ const mortgageRequests = () => {
             result = false;
             validateCreateError(fieldsMap.shiftsFullName, 'Укажите дату смены ФИО');
             addSectionError(errorSectionItems, fieldsMap.shiftsFullName);
+        }
+
+        carsContainer.querySelectorAll('.mortgage-requests__car').forEach(car => {
+            if (car.classList.contains('_inputs-event')) {
+                const yearIssue = car.querySelector("[data-mortgage-requests-field='year-issue']");
+                const yearIssueInput = yearIssue.querySelector("input");
+
+                const makeModel = car.querySelector("[data-mortgage-requests-field='make-model']");
+                const makeModelInput = makeModel.querySelector("input");
+
+                const stateNumber = car.querySelector("[data-mortgage-requests-field='state-number']");
+                const stateNumberInput = stateNumber.querySelector("input");
+
+                const carCost = car.querySelector("[data-mortgage-requests-field='car-cost']");
+                const carCostInput = carCost.querySelector("input");
+
+                validateCreateErrorYear(yearIssue, yearIssueInput);
+
+                if (!validateCreateErrorField(makeModel, makeModelInput, 'Укажите марку и модель автомобиля')) {
+                    result = false;
+                    addSectionError(errorSectionItems, makeModel);
+                }
+                if (!validateCreateErrorField(stateNumber, stateNumberInput, 'Укажите госномер автомобиля')) {
+                    result = false;
+                    addSectionError(errorSectionItems, stateNumber);
+                }
+                if (!validateCreateErrorField(carCost, carCostInput, 'Укажите примерную стоимость автомобиля')) {
+                    result = false;
+                    addSectionError(errorSectionItems, carCost);
+                }
+            }
+
+        })
+        estatesContainer.querySelectorAll('.mortgage-requests__estate').forEach(estate => {
+            if (estate.classList.contains('_inputs-event')) {
+                const propertyType = estate.querySelector("[data-mortgage-requests-field='property-type']");
+                const typeOfProperty = estate.querySelector("[data-mortgage-requests-field='type-of-property']");
+                const basisOwnership = estate.querySelector("[data-mortgage-requests-field='basis-ownership']");
+
+                const estateYearPurchase = estate.querySelector("[data-mortgage-requests-field='estate-year-purchase']");
+                const estateYearPurchaseInput = estateYearPurchase.querySelector("input");
+
+                const addressObject = estate.querySelector("[data-mortgage-requests-field='address-object']");
+                const addressObjectInput = addressObject.querySelector("input");
+
+                const price = estate.querySelector("[data-mortgage-requests-field='estate-price']");
+                const priceInput = price.querySelector('input');
+
+                const square = estate.querySelector("[data-mortgage-requests-field='estate-square']");
+                const squareInput = square.querySelector('input');
+
+                validateCreateErrorYear(estateYearPurchase, estateYearPurchaseInput);
+
+                if (!validateCreeateErrorSelect(propertyType, 'Выберите тип недвижимости из списка')) {
+                    result = false;
+                    addSectionError(errorSectionItems, propertyType);
+                }
+                if (!validateCreeateErrorSelect(typeOfProperty, 'Выберите вид собственности из списка')) {
+                    result = false;
+                    addSectionError(errorSectionItems, typeOfProperty);
+                }
+                if (!validateCreeateErrorSelect(basisOwnership, 'Выберите основание собственности из списка')) {
+                    result = false;
+                    addSectionError(errorSectionItems, basisOwnership);
+                }
+                if (!validateCreateErrorField(addressObject, addressObjectInput, 'Укажите адрес проживания')) {
+                    result = false;
+                    addSectionError(errorSectionItems, addressObject);
+                }
+                if (!validateCreateErrorField(price, priceInput, 'Укажите примерную стоимость недвижимости')) {
+                    result = false;
+                    addSectionError(errorSectionItems, price);
+                }
+                if (!validateCreateErrorField(square, squareInput, 'Укажите общую площадь')) {
+                    result = false;
+                    addSectionError(errorSectionItems, square);
+                }
+
+            }
+        })
+        if (!validateCreeateErrorSelect(fieldsMap.employment, 'Укажите форму занятости')) {
+            result = false;
+            addSectionError(errorSectionItems, fieldsMap.employment);
+        }
+        if (!validateCreeateErrorSelect(fieldsMap.basicIncome, 'Укажите подтверждение основного дохода')) {
+            result = false;
+            addSectionError(errorSectionItems, fieldsMap.basicIncome);
+        }
+        if (!validateCreateErrorField(fieldsMap.nameOrInnEmployer, inputsMap.fields.nameOrInnEmployer, 'Введите название или ИНН организации')) {
+            result = false;
+            addSectionError(errorSectionItems, fieldsMap.nameOrInnEmployer);
+        }
+        if (!validateCreateErrorMask(fieldsMap.ogrn, inputsMap.fields.ogrn, 'Введите корректный ОГРН', 13)) {
+            result = false;
+            addSectionError(errorSectionItems, fieldsMap.ogrn);
+        }
+        if (!validateCreateErrorMask(fieldsMap.inn, inputsMap.fields.inn, 'Введите корректный ИНН', 10)) {
+            result = false;
+            addSectionError(errorSectionItems, fieldsMap.inn);
+        }
+        if (!validateCreateErrorField(fieldsMap.legalAddress, inputsMap.fields.legalAddress, 'Укажите юридический адрес организации')) {
+            result = false;
+            addSectionError(errorSectionItems, fieldsMap.legalAddress);
+        }
+        if (!fieldsMap.actualAddress.hasAttribute('hidden') && !validateCreateErrorField(fieldsMap.actualAddress, inputsMap.fields.actualAddress, 'Укажите фактический адрес организации')) {
+            result = false;
+            addSectionError(errorSectionItems, fieldsMap.actualAddress);
+        }
+        if (!validateCreateErrorMask(fieldsMap.tel, inputsMap.fields.tel, validateTextMap.tel, 10)) {
+            result = false;
+            addSectionError(errorSectionItems, fieldsMap.tel);
+        }
+        if (inputsMap.fields.employerSite.value !== '' && !validateCreateErrorUrl(fieldsMap.employerSite, inputsMap.fields.employerSite, 'Введите адрес сайта в формате example.com')) {
+            result = false;
+            addSectionError(errorSectionItems, fieldsMap.employerSite);
+        }
+        if (!validateCreeateErrorSelect(fieldsMap.numberStaff, 'Укажите численность персонала')) {
+            result = false;
+            addSectionError(errorSectionItems, fieldsMap.basicIncome);
+        }
+        if (!validateCreeateErrorSelect(fieldsMap.employerActiv, 'Укажите сферу деятельности работодателя')) {
+            result = false;
+            addSectionError(errorSectionItems, fieldsMap.employerActiv);
+        }
+        if (!validateCreateErrorField(fieldsMap.nameJob, inputsMap.fields.nameJob, 'Укажите название должности')) {
+            result = false;
+            addSectionError(errorSectionItems, fieldsMap.nameJob);
+        }
+        if (!inputsMap.dateEmployment.value) {
+            result = false;
+            validateCreateError(fieldsMap.dateEmployment, 'Укажите месяц и год трудоустройства');
+            addSectionError(errorSectionItems, fieldsMap.dateEmployment);
+        }
+        if (!validateCreateErrorField(fieldsMap.yourIncome, inputsMap.fields.yourIncome, 'Укажите средний доход в месяц')) {
+            result = false;
+            addSectionError(errorSectionItems, fieldsMap.yourIncome);
         }
         return result;
     }
@@ -644,6 +872,29 @@ const mortgageRequests = () => {
             content.removeAttribute('hidden');
         })
     }
+
+
+    new AirDatepicker(inputsMap.dateEmployment, {
+        autoClose: true,
+        isMobile: true,
+        view: 'months',
+        minView: 'months',
+        dateFormat: 'MM.yyyy',
+        maxDate: new Date(),
+        onSelect: (fd) => {
+            fd.date ? fieldsMap.dateEmployment.classList.add('_active') : fieldsMap.dateEmployment.classList.remove('_active');
+            if (formEventInput) validate(false);
+        }
+    })
+    new AirDatepicker(inputsMap.registrPeriod, {
+        autoClose: true,
+        isMobile: true,
+        minDate: new Date(),
+        onSelect: (fd) => {
+            fd.date ? fieldsMap.registrPeriod.classList.add('_active') : fieldsMap.registrPeriod.classList.remove('_active');
+            if (formEventInput) validate(false);
+        }
+    })
 
 };
 export default mortgageRequests;

@@ -9765,6 +9765,90 @@ textarea.input-reset {
   height: 2.4rem;
 }
 
+.document-item__info {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: -webkit-max-content 1fr;
+  -ms-grid-columns: max-content 1fr;
+  grid-template-columns: -webkit-max-content 1fr;
+  grid-template-columns: max-content 1fr;
+  grid-column-gap: 16px;
+  grid-row-gap: 4px;
+}
+.document-item__image {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1/3;
+}
+.document-item__wrapper {
+  margin-top: 24px;
+}
+.document-item__wrapper .place-sale-photo__images {
+  grid-template-columns: repeat(auto-fill, 244px);
+}
+.document-item__wrapper .place-sale-photo__image {
+  position: relative;
+  -webkit-transition: opacity 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+  background-color: var(--primary100);
+}
+.document-item__wrapper .place-sale-photo__image > div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.document-item__wrapper .place-sale-photo__image > div > svg {
+  width: 60px;
+  height: 60px;
+  fill: var(--dark);
+}
+.document-item__wrapper .place-sale-photo__image > div > span {
+  display: block;
+  margin-top: 16px;
+  font-size: var(--little-big-fz);
+  line-height: var(--little-big-lh);
+  text-align: center;
+}
+.document-item__wrapper .place-sale-photo__image::before {
+  content: "";
+  position: absolute;
+  background-color: rgba(36, 38, 41, 0.5);
+  z-index: 1;
+  inset: 0;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+@media (min-width: 1213px) {
+  .document-item__wrapper .place-sale-photo__image:hover::before {
+    opacity: 1;
+    visibility: visible;
+  }
+  .document-item__wrapper .place-sale-photo__image:hover .place-sale-photo__remove {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
 .back-link {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -27793,6 +27877,22 @@ textarea.input-reset {
 .mortgage-requests__create-estate {
   margin-top: 8px;
   grid-column: 1/-1;
+}
+.mortgage-requests__documents .mortgage-requests__content .spollers {
+  margin-bottom: 8px;
+}
+.mortgage-requests__documents .mortgage-requests__content .spollers__item {
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background-color: transparent;
+}
+.mortgage-requests__documents .mortgage-requests__content .spollers__title {
+  padding: 0;
+  color: var(--blue);
+}
+.mortgage-requests__documents .mortgage-requests__content .spollers__body {
+  padding: 8px 0 0 0;
 }
 
 .header {

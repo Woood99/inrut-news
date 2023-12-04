@@ -114,14 +114,14 @@ function deleteTarget(target) {
     toggleLoadedClass(container);
 }
 
-function subtitleFile(input) {
+function subtitleFile(input,length) {
     let dots;
     const file = input.files[0];
     if (file) {
         const target = file.name.split('.');
-        target[0].length >= 20 ? dots = '...' : dots = '.';
-        const name = target[0].substring(0, 20) + dots + target[1]
-        input.previousElementSibling.textContent = name;
+        target[0].length >= length ? dots = '...' : dots = '.';
+        const name = target[0].substring(0, length) + dots + target[1]
+        return name;
     }
 }
 
@@ -137,7 +137,18 @@ function showPdf(input) {
         toggleLoadedClass(container);
     }
 }
-
+function showDefault(input) {
+    const container = input.closest('.photo-load');
+    const images = container.querySelector('.photo-load__images');
+    if (images) {
+        let files = input.files;
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            images.innerHTML += defaultGenerate(file.name,input);
+        }
+        toggleLoadedClass(container);
+    }
+}
 function toggleLoadedClass(container) {
     const images = container.querySelector('.photo-load__images');
     if (images) {
@@ -170,6 +181,14 @@ function inputChange(input, e) {
         if (e.type === 'drop') {
             input.files = e.dataTransfer.files;
             showPdf(input);
+        }
+    } else if (input.hasAttribute('data-upload-drop-default')){
+        if (e.type === 'change') {
+            showDefault(input);
+        }
+        if (e.type === 'drop') {
+            input.files = e.dataTransfer.files;
+            showDefault(input);
         }
     } else {
         if (e.type === 'change') {
@@ -229,4 +248,24 @@ function pdfGenerate(url, name) {
             </a>
         `;
     return placeSalePhotoHTML;
+}
+
+
+function defaultGenerate(name,input) {
+    const placeSalePhotoHTML = `
+    <div class="place-sale-photo__image ibg" title="${name}">
+        <div>
+            <svg>
+            <use xlink:href="./img/sprite.svg#save"></use>
+            </svg>
+            <span>${subtitleFile(input,18)}</span>
+        </div>
+        <button type="button" class="btn btn-reset place-sale-photo__remove" title="Удалить фото">
+            <svg>
+                <use xlink:href="./img/sprite.svg#trash"></use>
+            </svg>
+        </button>
+    </div>
+    `;
+return placeSalePhotoHTML;
 }

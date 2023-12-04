@@ -10852,7 +10852,7 @@ const mortgageRequests = () => {
   form.addEventListener('click', e => {
     setTimeout(() => {
       (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_3__.emergingBlockScroll)('.mortgage-requests .mortgage-requests__save', '.footer-fixed.mortgage-requests-fixed', 99999999, true, true);
-    }, 300);
+    }, 400);
     const target = e.target;
     const toggle = target.closest('[data-mortgage-requests-toggle]');
     const removeChildren = target.closest('.mortgage-requests__children-remove');
@@ -11195,26 +11195,7 @@ const mortgageRequests = () => {
     credits: form.querySelector("[data-mortgage-requests-field='credits']"),
     rent: form.querySelector("[data-mortgage-requests-field='rent']"),
     alimony: form.querySelector("[data-mortgage-requests-field='alimony']"),
-    employment: form.querySelector("[data-mortgage-requests-field='employment']"),
-    basicIncome: form.querySelector("[data-mortgage-requests-field='basic-income']"),
-    nameOrInnEmployer: form.querySelector("[data-mortgage-requests-field='name-or-inn-employer']"),
-    nameOrInnOrganiz: form.querySelector("[data-mortgage-requests-field='name-or-inn-organiz']"),
-    ogrn: form.querySelector("[data-mortgage-requests-field='ogrn']"),
-    ogrnOgrnip: form.querySelector("[data-mortgage-requests-field='ogrn-ogrnip']"),
-    inn: form.querySelector("[data-mortgage-requests-field='inn']"),
-    legalAddress: form.querySelector("[data-mortgage-requests-field='legal-address']"),
-    actualAddress: form.querySelector("[data-mortgage-requests-field='actual-address']"),
-    tel: form.querySelector("[data-mortgage-requests-field='tel']"),
-    addTel: form.querySelector("[data-mortgage-requests-field='add-tel']"),
-    employerSite: form.querySelector("[data-mortgage-requests-field='employer-site']"),
-    numberStaff: form.querySelector("[data-mortgage-requests-field='number-staff']"),
-    employerActiv: form.querySelector("[data-mortgage-requests-field='employer-activ']"),
-    nameJob: form.querySelector("[data-mortgage-requests-field='name-job']"),
-    dateEmployment: form.querySelector("[data-mortgage-requests-field='date-employment']"),
-    yourIncome: form.querySelector("[data-mortgage-requests-field='your-income']"),
-    legalActualToggle: form.querySelector("[data-mortgage-requests-field='legal-actual-toggle']"),
-    probation: form.querySelector("[data-mortgage-requests-field='probation']"),
-    incomes: form.querySelector("[data-mortgage-requests-field='incomes']")
+    employment: form.querySelector("[data-mortgage-requests-field='employment']")
   };
   const inputsMap = {
     fields: {
@@ -11233,18 +11214,7 @@ const mortgageRequests = () => {
       otherIncome: fieldsMap.otherIncome.querySelector('input'),
       credits: fieldsMap.credits.querySelector('input'),
       rent: fieldsMap.rent.querySelector('input'),
-      alimony: fieldsMap.alimony.querySelector('input'),
-      nameOrInnEmployer: fieldsMap.nameOrInnEmployer.querySelector('input'),
-      nameOrInnOrganiz: fieldsMap.nameOrInnOrganiz.querySelector('input'),
-      ogrn: fieldsMap.ogrn.querySelector('input'),
-      ogrnOgrnip: fieldsMap.ogrnOgrnip.querySelector('input'),
-      inn: fieldsMap.inn.querySelector('input'),
-      legalAddress: fieldsMap.legalAddress.querySelector('input'),
-      actualAddress: fieldsMap.actualAddress.querySelector('input'),
-      tel: fieldsMap.tel.querySelector('input'),
-      employerSite: fieldsMap.employerSite.querySelector('input'),
-      nameJob: fieldsMap.nameJob.querySelector('input'),
-      yourIncome: fieldsMap.yourIncome.querySelector('input')
+      alimony: fieldsMap.alimony.querySelector('input')
     },
     dateDefault: {
       dateIssue: fieldsMap.dateIssue.querySelector('input'),
@@ -11258,16 +11228,13 @@ const mortgageRequests = () => {
       militaryDuty: fieldsMap.militaryDuty,
       familyStatus: fieldsMap.familyStatus,
       spouseConsent: fieldsMap.spouseConsent,
-      employment: fieldsMap.employment,
-      basicIncome: fieldsMap.basicIncome,
-      numberStaff: fieldsMap.numberStaff,
-      employerActiv: fieldsMap.employerActiv
-    },
-    dateEmployment: fieldsMap.dateEmployment.querySelector('input')
+      employment: fieldsMap.employment
+    }
   };
   fieldsMap.employment.addEventListener('change', () => {
     const value = fieldsMap.employment.querySelector('.choices__list.choices__list--single .choices__item.choices__item--selectable').dataset.value;
     employmentValue(value);
+    (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_3__.emergingBlockScroll)('.mortgage-requests .mortgage-requests__save', '.footer-fixed.mortgage-requests-fixed', 99999999, true, true);
   });
   employmentValue('default');
   for (const field in inputsMap.dateDefault) {
@@ -11314,6 +11281,7 @@ const mortgageRequests = () => {
     childrensRemoveError(controls);
     carsRemoveError(controls);
     estateRemoveError(controls);
+    incomeRemoveError(controls);
     const result = createErrorFields(errorSectionItems);
     if (result === false && controls === true) {
       closeAllSection(form);
@@ -11556,66 +11524,15 @@ const mortgageRequests = () => {
       result = false;
       addSectionError(errorSectionItems, fieldsMap.employment);
     }
-    if (!fieldsMap.basicIncome.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreeateErrorSelect)(fieldsMap.basicIncome, 'Укажите подтверждение основного дохода')) {
-      result = false;
-      addSectionError(errorSectionItems, fieldsMap.basicIncome);
+    const incomeName = form.querySelector('[data-mortgage-requests-income-name]');
+    if (incomeName.dataset.mortgageRequestsIncomeName === 'business') {
+      result = createErrorIncomeBusiness(result, errorSectionItems);
     }
-    if (!fieldsMap.nameOrInnEmployer.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.nameOrInnEmployer, inputsMap.fields.nameOrInnEmployer, 'Введите название или ИНН работадателя')) {
-      result = false;
-      addSectionError(errorSectionItems, fieldsMap.nameOrInnEmployer);
+    if (incomeName.dataset.mortgageRequestsIncomeName === 'hiring') {
+      result = createErrorIncomeHiring(result, errorSectionItems);
     }
-    if (!fieldsMap.nameOrInnOrganiz.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.nameOrInnOrganiz, inputsMap.fields.nameOrInnOrganiz, 'Введите название или ИНН организации')) {
-      result = false;
-      addSectionError(errorSectionItems, fieldsMap.nameOrInnOrganiz);
-    }
-    if (!fieldsMap.ogrn.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(fieldsMap.ogrn, inputsMap.fields.ogrn, 'Введите корректный ОГРН', 13)) {
-      result = false;
-      addSectionError(errorSectionItems, fieldsMap.ogrn);
-    }
-    if (!fieldsMap.ogrnOgrnip.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(fieldsMap.ogrnOgrnip, inputsMap.fields.ogrnOgrnip, 'Введите корректный ОГРН/ОГРНИП', 13)) {
-      result = false;
-      addSectionError(errorSectionItems, fieldsMap.ogrnOgrnip);
-    }
-    if (!fieldsMap.inn.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(fieldsMap.inn, inputsMap.fields.inn, 'Введите корректный ИНН', 10)) {
-      result = false;
-      addSectionError(errorSectionItems, fieldsMap.inn);
-    }
-    if (!fieldsMap.legalAddress.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.legalAddress, inputsMap.fields.legalAddress, 'Укажите юридический адрес организации')) {
-      result = false;
-      addSectionError(errorSectionItems, fieldsMap.legalAddress);
-    }
-    if (!fieldsMap.actualAddress.hasAttribute('hidden') && !fieldsMap.actualAddress.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.actualAddress, inputsMap.fields.actualAddress, 'Укажите фактический адрес организации')) {
-      result = false;
-      addSectionError(errorSectionItems, fieldsMap.actualAddress);
-    }
-    if (!fieldsMap.tel.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(fieldsMap.tel, inputsMap.fields.tel, _modules_validateTextMap__WEBPACK_IMPORTED_MODULE_1__.validateTextMap.tel, 10)) {
-      result = false;
-      addSectionError(errorSectionItems, fieldsMap.tel);
-    }
-    if (!fieldsMap.employerSite.hasAttribute('hidden') && inputsMap.fields.employerSite.value !== '' && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorUrl)(fieldsMap.employerSite, inputsMap.fields.employerSite, 'Введите адрес сайта в формате example.com')) {
-      result = false;
-      addSectionError(errorSectionItems, fieldsMap.employerSite);
-    }
-    if (!fieldsMap.numberStaff.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreeateErrorSelect)(fieldsMap.numberStaff, 'Укажите численность персонала')) {
-      result = false;
-      addSectionError(errorSectionItems, fieldsMap.basicIncome);
-    }
-    if (!fieldsMap.employerActiv.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreeateErrorSelect)(fieldsMap.employerActiv, 'Укажите сферу деятельности работодателя')) {
-      result = false;
-      addSectionError(errorSectionItems, fieldsMap.employerActiv);
-    }
-    if (!fieldsMap.nameJob.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.nameJob, inputsMap.fields.nameJob, 'Укажите название должности')) {
-      result = false;
-      addSectionError(errorSectionItems, fieldsMap.nameJob);
-    }
-    if (!fieldsMap.dateEmployment.hasAttribute('hidden') && !inputsMap.dateEmployment.value) {
-      result = false;
-      (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateError)(fieldsMap.dateEmployment, 'Укажите месяц и год трудоустройства');
-      addSectionError(errorSectionItems, fieldsMap.dateEmployment);
-    }
-    if (!fieldsMap.yourIncome.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.yourIncome, inputsMap.fields.yourIncome, 'Укажите средний доход в месяц')) {
-      result = false;
-      addSectionError(errorSectionItems, fieldsMap.yourIncome);
+    if (incomeName.dataset.mortgageRequestsIncomeName === 'individualEnt') {
+      result = createErrorIncomeIndividualEnt(result, errorSectionItems);
     }
     return result;
   }
@@ -11653,84 +11570,717 @@ const mortgageRequests = () => {
     });
   }
   function employmentValue(value) {
-    const income = form.querySelector('.mortgage-requests__income');
+    const incomes = form.querySelectorAll('[data-mortgage-requests-income]');
+    const nameIncome = form.querySelector('[data-mortgage-requests-income-name]');
+    const currentIncome = form.querySelector(`[data-mortgage-requests-income="${value}"]`);
+    nameIncome.setAttribute('data-mortgage-requests-income-name', value);
+    nameIncome.classList.remove('_inputs-event');
     if (value === 'default') {
-      employmentValueDefault();
-      income.setAttribute('data-mortgage-requests-income', 'default');
+      incomes.forEach(income => {
+        income.setAttribute('hidden', '');
+        income.innerHTML = '';
+      });
+    } else {
+      incomes.forEach(income => {
+        income !== currentIncome ? income.setAttribute('hidden', '') : income.removeAttribute('hidden');
+      });
     }
+    let html;
     if (value === 'business') {
-      employmentValueBusiness();
-      income.setAttribute('data-mortgage-requests-income', 'business');
+      html = `
+            <div class="mortgage-requests__fields">
+            <div class="select-secondary mortgage-requests__field--row" data-mortgage-requests-field="basic-income">
+                <div class="select-secondary__wrapper">
+                    <span class="select-secondary__placeholder">
+                        Подтверждение основного дохода
+                    </span>
+                    <select class="select-secondary__body" hidden name="complex">
+                        <option placeholder>Не выбрано</option>
+                        <option value="room-2">Справка по форме банка</option>
+                        <option value="room-1">2-НДФЛ</option>
+                        <option value="room-1">Без подтверждения</option>
+                    </select>
+                </div>
+            </div>
+            <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="name-or-inn"
+                data-validate-required>
+                <label class="input-text__label">
+                    <span>Название или ИНН организации</span>
+                    <input type="text" name="Название или ИНН организации" class="input-reset input-text__input" value="" placeholder="">
+                </label>
+            </div>
+            <div class="input-text input-text--no-exp" data-mortgage-requests-field="ogrn">
+                <label class="input-text__label">
+                    <span>ОГРН</span>
+                    <input type="text" name="ОГРН" class="input-reset input-text__input input-ogrn-mask" value="" placeholder="">
+                </label>
+            </div>
+
+            <div class="input-text input-text--no-exp" data-mortgage-requests-field="inn">
+                <label class="input-text__label">
+                    <span>ИНН</span>
+                    <input type="text" name="ИНН" class="input-reset input-text__input input-inn-mask" value="" placeholder="">
+                </label>
+            </div>
+        </div>
+        <div class="mortgage-requests__fields">
+            <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="legal-address"
+                data-validate-required>
+                <label class="input-text__label">
+                    <span>Юридический адрес организации</span>
+                    <input type="text" name="Юридический адрес организации" class="input-reset input-text__input" value="" placeholder="">
+                </label>
+            </div>
+            <label class="toggle-checkbox mortgage-requests__field--row" data-mortgage-requests-field="legal-actual-toggle">
+                <input type="checkbox" name="toggle-1" data-mortgage-requests-toggle="4">
+                <div aria-hidden="true"></div>
+                <span>Юридический адрес совпадает с фактическим</span>
+            </label>
+            <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="actual-address"
+                data-validate-required data-mortgage-requests-content="4">
+                <label class="input-text__label">
+                    <span>Фактический адрес организации</span>
+                    <input type="text" name="Фактический адрес организации" class="input-reset input-text__input" value="" placeholder="">
+                </label>
+            </div>
+            <div class="input-text input-text--no-exp" data-mortgage-requests-field="tel">
+                <label class="input-text__label">
+                    <span>Рабочий телефон</span>
+                    <input type="text" name="Рабочий телефон" class="input-reset input-text__input input-phone-mask" value="" placeholder="">
+                </label>
+            </div>
+            <div class="input-text input-text--no-exp input-text--only-number" data-mortgage-requests-field="add-tel">
+                <label class="input-text__label">
+                    <span>Добавочный телефон</span>
+                    <input type="text" name="Рабочий телефон" class="input-reset input-text__input" value="" placeholder="">
+                </label>
+            </div>
+            <div class="input-text input-text--no-exp" data-mortgage-requests-field="site">
+                <label class="input-text__label">
+                    <span>Сайт организации</span>
+                    <input type="text" name="Сайт организации" class="input-reset input-text__input" value="" placeholder="">
+                </label>
+            </div>
+            <div class="select-secondary" data-mortgage-requests-field="number-staff">
+                <div class="select-secondary__wrapper">
+                    <span class="select-secondary__placeholder">
+                        Численность персонала
+                    </span>
+                    <select class="select-secondary__body" hidden name="complex">
+                        <option placeholder>Не выбрано</option>
+                        <option value="room-2">До 10</option>
+                        <option value="room-1">11-20</option>
+                        <option value="room-1">21-50</option>
+                        <option value="room-1">51-100</option>
+                    </select>
+                </div>
+            </div>
+            <div class="select-secondary mortgage-requests__field--row" data-mortgage-requests-field="field-activit">
+                <div class="select-secondary__wrapper">
+                    <span class="select-secondary__placeholder">
+                        Сфера деятельности организации
+                    </span>
+                    <select class="select-secondary__body" hidden name="complex">
+                        <option placeholder>Не выбрано</option>
+                        <option value="room-2">Вооружённые силы</option>
+                        <option value="room-2">Медицина</option>
+                        <option value="room-2">Наука</option>
+                        <option value="room-2">Другое</option>
+                    </select>
+                </div>
+            </div>
+            <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="date-registration">
+                <label class="input-text__label">
+                    <span>Месяц и год регистрации организации</span>
+                    <input type="text" name="Месяц и год регистрации организации" class="input-reset input-text__input" value="" placeholder="">
+                </label>
+            </div>
+        </div>
+        <div class="mortgage-requests__fields" data-mortgage-requests-field="incomes">
+            <div class="mortgage-requests__field--row">
+                <h4 class="title-4 mortgage-requests__field-subtitle">
+                    Доходы
+                </h4>
+                <p class="mortgage-requests__field-descr">
+                    Укажите средний доход в месяц за последние полгода после уплаты налогов (на руки). Учитывается только доход от ведения бизнеса в указанной организации.
+                </p>
+                <div class="input-text input-text--only-number" data-mortgage-requests-field="your-income" data-validate-required
+                    data-validate-average-invome-default>
+                    <label class="input-text__label">
+                        <span>Средний доход в месяц</span>
+                        <input type="text" name="Средний доход в месяц" maxlength="12" class="input-reset input-text__input" placeholder="">
+                        <span>₽</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+            `;
     }
     if (value === 'hiring') {
-      employmentValueHiring();
-      income.setAttribute('data-mortgage-requests-income', 'hiring');
+      html = `
+            <div class="mortgage-requests__fields">
+            <div class="select-secondary mortgage-requests__field--row" data-mortgage-requests-field="basic-income">
+                <div class="select-secondary__wrapper">
+                    <span class="select-secondary__placeholder">
+                        Подтверждение основного дохода
+                    </span>
+                    <select class="select-secondary__body" hidden name="complex">
+                        <option placeholder>Не выбрано</option>
+                        <option value="room-2">Справка по форме банка</option>
+                        <option value="room-1">2-НДФЛ</option>
+                        <option value="room-1">Без подтверждения</option>
+                    </select>
+                </div>
+            </div>
+            <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="name-or-inn"
+                data-validate-required>
+                <label class="input-text__label">
+                    <span>Название или ИНН работодателя</span>
+                    <input type="text" name="Название или ИНН работодателя" class="input-reset input-text__input" value="" placeholder="">
+                </label>
+            </div>
+            <div class="input-text input-text--no-exp" data-mortgage-requests-field="ogrn-ogrnip">
+                <label class="input-text__label">
+                    <span>ОГРН/ОГРНИП</span>
+                    <input type="text" name="ОГРН/ОГРНИП" class="input-reset input-text__input input-ogrnip-mask" value="" placeholder="">
+                </label>
+            </div>
+
+            <div class="input-text input-text--no-exp" data-mortgage-requests-field="inn">
+                <label class="input-text__label">
+                    <span>ИНН</span>
+                    <input type="text" name="ИНН" class="input-reset input-text__input input-inn-mask" value="" placeholder="">
+                </label>
+            </div>
+        </div>
+        <div class="mortgage-requests__fields">
+            <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="legal-address"
+                data-validate-required>
+                <label class="input-text__label">
+                    <span>Юридический адрес работодателя</span>
+                    <input type="text" name="Юридический адрес работодателя" class="input-reset input-text__input" value="" placeholder="">
+                </label>
+            </div>
+            <label class="toggle-checkbox mortgage-requests__field--row" data-mortgage-requests-field="legal-actual-toggle">
+                <input type="checkbox" name="toggle-1" data-mortgage-requests-toggle="4">
+                <div aria-hidden="true"></div>
+                <span>Юридический адрес совпадает с фактическим</span>
+            </label>
+            <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="actual-address"
+                data-validate-required data-mortgage-requests-content="4">
+                <label class="input-text__label">
+                    <span>Фактический адрес работодателя</span>
+                    <input type="text" name="Фактический адрес работодателя" class="input-reset input-text__input" value="" placeholder="">
+                </label>
+            </div>
+            <div class="input-text input-text--no-exp" data-mortgage-requests-field="tel">
+                <label class="input-text__label">
+                    <span>Рабочий телефон</span>
+                    <input type="text" name="Рабочий телефон" class="input-reset input-text__input input-phone-mask" value="" placeholder="">
+                </label>
+            </div>
+            <div class="input-text input-text--no-exp input-text--only-number" data-mortgage-requests-field="add-tel">
+                <label class="input-text__label">
+                    <span>Добавочный телефон</span>
+                    <input type="text" name="Рабочий телефон" class="input-reset input-text__input" value="" placeholder="">
+                </label>
+            </div>
+            <div class="input-text input-text--no-exp" data-mortgage-requests-field="site">
+                <label class="input-text__label">
+                    <span>Сайт работодателя</span>
+                    <input type="text" name="Рабочий телефон" class="input-reset input-text__input" value="" placeholder="">
+                </label>
+            </div>
+            <div class="select-secondary" data-mortgage-requests-field="number-staff">
+                <div class="select-secondary__wrapper">
+                    <span class="select-secondary__placeholder">
+                        Численность персонала
+                    </span>
+                    <select class="select-secondary__body" hidden name="complex">
+                        <option placeholder>Не выбрано</option>
+                        <option value="room-2">До 10</option>
+                        <option value="room-1">11-20</option>
+                        <option value="room-1">21-50</option>
+                        <option value="room-1">51-100</option>
+                    </select>
+                </div>
+            </div>
+            <div class="select-secondary mortgage-requests__field--row" data-mortgage-requests-field="field-activit">
+                <div class="select-secondary__wrapper">
+                    <span class="select-secondary__placeholder">
+                        Сфера деятельности работодателя
+                    </span>
+                    <select class="select-secondary__body" hidden name="complex">
+                        <option placeholder>Не выбрано</option>
+                        <option value="room-2">Вооружённые силы</option>
+                        <option value="room-2">Медицина</option>
+                        <option value="room-2">Наука</option>
+                        <option value="room-2">Другое</option>
+                    </select>
+                </div>
+            </div>
+            <div class="input-text input-text--no-exp" data-mortgage-requests-field="name-job" data-validate-required>
+                <label class="input-text__label">
+                    <span>Название должности</span>
+                    <input type="text" name="Название должности" class="input-reset input-text__input" value="" placeholder="">
+                </label>
+            </div>
+            <div class="input-text input-text--no-exp" data-mortgage-requests-field="date-registration">
+                <label class="input-text__label">
+                    <span>Месяц и год трудоустройства</span>
+                    <input type="text" name="Название должности" class="input-reset input-text__input" value="" placeholder="">
+                </label>
+            </div>
+            <div class="checkbox-secondary mortgage-requests__field--row" data-mortgage-requests-field="probation">
+                <input id="developer_2" name="developer-name_2" class="checkbox-secondary__input" type="checkbox" value="true">
+                <label for="developer_2" class="checkbox-secondary__label">
+                    <span class="checkbox-secondary__text">
+                        <span>Испытательный срок завершён</span>
+                    </span>
+                </label>
+            </div>
+        </div>
+        <div class="mortgage-requests__fields" data-mortgage-requests-field="incomes">
+            <div class="mortgage-requests__field--row">
+                <h4 class="title-4 mortgage-requests__field-subtitle">
+                    Доходы
+                </h4>
+                <p class="mortgage-requests__field-descr">
+                    Укажите средний доход в месяц за последние полгода после
+                    уплаты налогов (на руки). Учитывается только доход по основному месту работы
+                </p>
+                <div class="input-text input-text--only-number" data-mortgage-requests-field="your-income" data-validate-required
+                    data-validate-average-invome-default>
+                    <label class="input-text__label">
+                        <span>Средний доход в месяц</span>
+                        <input type="text" name="Средний доход в месяц" maxlength="12" class="input-reset input-text__input" placeholder="">
+                        <span>₽</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+            `;
+    }
+    if (value === 'individualEnt') {
+      html = `
+            <div class="mortgage-requests__fields">
+            <div class="select-secondary mortgage-requests__field--row" data-mortgage-requests-field="basic-income">
+                <div class="select-secondary__wrapper">
+                    <span class="select-secondary__placeholder">
+                        Подтверждение основного дохода
+                    </span>
+                    <select class="select-secondary__body" hidden name="complex">
+                        <option placeholder>Не выбрано</option>
+                        <option value="room-1">Налоговая декларация</option>
+                        <option value="room-2">Без подтверждения</option>
+                    </select>
+                </div>
+            </div>
+            <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="name-or-inn"
+                data-validate-required>
+                <label class="input-text__label">
+                    <span>Название или ИНН ИП</span>
+                    <input type="text" name="Название или ИНН работодателя" class="input-reset input-text__input" value="" placeholder="">
+                </label>
+            </div>
+            <div class="input-text input-text--no-exp" data-mortgage-requests-field="ogrn-ogrnip">
+                <label class="input-text__label">
+                    <span>ОГРНИП</span>
+                    <input type="text" name="ОГРНИП" class="input-reset input-text__input input-ogrnip-mask" value="" placeholder="">
+                </label>
+            </div>
+            <div class="input-text input-text--no-exp" data-mortgage-requests-field="inn">
+                <label class="input-text__label">
+                    <span>ИНН</span>
+                    <input type="text" name="ИНН" class="input-reset input-text__input input-inn-mask" value="" placeholder="">
+                </label>
+            </div>
+            
+        </div>
+        <div class="mortgage-requests__fields">
+            <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="legal-address"
+                data-validate-required>
+                <label class="input-text__label">
+                    <span>Адрес регистрации ИП</span>
+                    <input type="text" name="Адрес регистрации ИП" class="input-reset input-text__input" value="" placeholder="">
+                </label>
+            </div>
+            <label class="toggle-checkbox mortgage-requests__field--row" data-mortgage-requests-field="legal-actual-toggle">
+                <input type="checkbox" name="toggle-1" data-mortgage-requests-toggle="4">
+                <div aria-hidden="true"></div>
+                <span>Юридический адрес совпадает с фактическим</span>
+            </label>
+            <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="actual-address"
+                data-validate-required data-mortgage-requests-content="4">
+                <label class="input-text__label">
+                    <span>Фактический адрес  ИП (склад, магазин, кафе и т.д.)</span>
+                    <input type="text" name="Фактический адрес  ИП (склад, магазин, кафе и т.д.)" class="input-reset input-text__input" value="" placeholder="">
+                </label>
+            </div>
+            <div class="input-text input-text--no-exp" data-mortgage-requests-field="tel">
+                <label class="input-text__label">
+                    <span>Рабочий телефон</span>
+                    <input type="text" name="Рабочий телефон" class="input-reset input-text__input input-phone-mask" value="" placeholder="">
+                </label>
+            </div>
+            <div class="input-text input-text--no-exp input-text--only-number" data-mortgage-requests-field="add-tel">
+                <label class="input-text__label">
+                    <span>Добавочный телефон</span>
+                    <input type="text" name="Рабочий телефон" class="input-reset input-text__input" value="" placeholder="">
+                </label>
+            </div>
+            <div class="input-text input-text--no-exp" data-mortgage-requests-field="site">
+                <label class="input-text__label">
+                    <span>Сайт ИП</span>
+                    <input type="text" name="Сайт ИП" class="input-reset input-text__input" value="" placeholder="">
+                </label>
+            </div>
+            <div class="select-secondary" data-mortgage-requests-field="number-staff">
+                <div class="select-secondary__wrapper">
+                    <span class="select-secondary__placeholder">
+                        Численность персонала
+                    </span>
+                    <select class="select-secondary__body" hidden name="complex">
+                        <option placeholder>Не выбрано</option>
+                        <option value="room-2">До 10</option>
+                        <option value="room-1">11-20</option>
+                        <option value="room-1">21-50</option>
+                        <option value="room-1">51-100</option>
+                    </select>
+                </div>
+            </div>
+            <div class="select-secondary mortgage-requests__field--row" data-mortgage-requests-field="field-activit">
+                <div class="select-secondary__wrapper">
+                    <span class="select-secondary__placeholder">
+                        Сфера деятельности ИП
+                    </span>
+                    <select class="select-secondary__body" hidden name="complex">
+                        <option placeholder>Не выбрано</option>
+                        <option value="room-2">Вооружённые силы</option>
+                        <option value="room-2">Медицина</option>
+                        <option value="room-2">Наука</option>
+                        <option value="room-2">Другое</option>
+                    </select>
+                </div>
+            </div>
+            <div class="input-text input-text--no-exp" data-mortgage-requests-field="date-registration">
+                <label class="input-text__label">
+                    <span>Месяц и год регистрации ИП</span>
+                    <input type="text" name="Название должности" class="input-reset input-text__input" value="" placeholder="">
+                </label>
+            </div>
+        </div>
+        <div class="mortgage-requests__fields" data-mortgage-requests-field="incomes">
+            <div class="mortgage-requests__field--row">
+                <h4 class="title-4 mortgage-requests__field-subtitle">
+                    Доходы
+                </h4>
+                <p class="mortgage-requests__field-descr">
+                    Укажите средний доход в месяц за последние полгода после уплаты налогов (на руки). Учитывается только доход от индивидуального предпринимательства
+                </p>
+                <div class="input-text input-text--only-number" data-mortgage-requests-field="your-income" data-validate-required
+                    data-validate-average-invome-default>
+                    <label class="input-text__label">
+                        <span>Средний доход в месяц</span>
+                        <input type="text" name="Средний доход в месяц" maxlength="12" class="input-reset input-text__input" placeholder="">
+                        <span>₽</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+            `;
+    }
+    if (value !== 'default') {
+      currentIncome.innerHTML = html;
+      updateFieldsIncome(currentIncome);
     }
   }
-  function employmentValueDefault() {
-    fieldsMap.basicIncome.setAttribute('hidden', '');
-    fieldsMap.nameOrInnEmployer.setAttribute('hidden', '');
-    fieldsMap.nameOrInnOrganiz.setAttribute('hidden', '');
-    fieldsMap.ogrn.setAttribute('hidden', '');
-    fieldsMap.ogrnOgrnip.setAttribute('hidden', '');
-    fieldsMap.inn.setAttribute('hidden', '');
-    fieldsMap.legalAddress.setAttribute('hidden', '');
-    fieldsMap.legalActualToggle.setAttribute('hidden', '');
-    fieldsMap.actualAddress.setAttribute('hidden', '');
-    fieldsMap.tel.setAttribute('hidden', '');
-    fieldsMap.addTel.setAttribute('hidden', '');
-    fieldsMap.employerSite.setAttribute('hidden', '');
-    fieldsMap.numberStaff.setAttribute('hidden', '');
-    fieldsMap.employerActiv.setAttribute('hidden', '');
-    fieldsMap.nameJob.setAttribute('hidden', '');
-    fieldsMap.dateEmployment.setAttribute('hidden', '');
-    fieldsMap.probation.setAttribute('hidden', '');
-    fieldsMap.yourIncome.setAttribute('hidden', '');
-    fieldsMap.incomes.setAttribute('hidden', '');
+  function updateFieldsIncome(container) {
+    const inputsText = container.querySelectorAll('.input-text');
+    const selectSecondary = container.querySelectorAll('.select-secondary__body');
+    const inputsPhone = container.querySelectorAll('.input-phone-mask');
+    const inputsOgrn = container.querySelectorAll('.input-ogrn-mask');
+    const inputsOgrnip = container.querySelectorAll('.input-ogrnip-mask');
+    const inputsInn = container.querySelectorAll('.input-inn-mask');
+    const dateRegistration = container.querySelector('[data-mortgage-requests-field="date-registration"]');
+    const dateRegistrationInput = dateRegistration.querySelector('input');
+    inputsPhone.forEach(input => (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.inputMaskPhone)(input));
+    inputsOgrn.forEach(input => (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.inputMaskOgrn)(input));
+    inputsOgrnip.forEach(input => (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.inputMaskOgrnip)(input));
+    inputsInn.forEach(input => (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.inputMaskInn)(input));
+    inputsText.forEach(input => {
+      (0,_inputs__WEBPACK_IMPORTED_MODULE_2__.currentInputText)(input);
+      input.querySelector('input').addEventListener('input', () => {
+        if (formEventInput) validate(false);
+      });
+    });
+    selectSecondary.forEach(select => {
+      (0,_choices__WEBPACK_IMPORTED_MODULE_4__.selectSecondaryCreate)(select);
+      select.addEventListener('change', () => {
+        if (formEventInput) validate(false);
+      });
+    });
+    new air_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"](dateRegistrationInput, {
+      autoClose: true,
+      isMobile: true,
+      view: 'months',
+      minView: 'months',
+      dateFormat: 'MM.yyyy',
+      maxDate: new Date(),
+      onSelect: fd => {
+        fd.date ? dateRegistration.classList.add('_active') : dateRegistration.classList.remove('_active');
+        if (formEventInput) validate(false);
+      }
+    });
   }
-  function employmentValueBusiness() {
-    fieldsMap.basicIncome.removeAttribute('hidden');
-    fieldsMap.nameOrInnOrganiz.removeAttribute('hidden');
-    fieldsMap.ogrn.removeAttribute('hidden');
-    fieldsMap.inn.removeAttribute('hidden');
-    fieldsMap.legalAddress.removeAttribute('hidden');
-    fieldsMap.nameOrInnEmployer.setAttribute('hidden', '');
-    fieldsMap.ogrnOgrnip.setAttribute('hidden', '');
-  }
-  function employmentValueHiring() {
-    fieldsMap.basicIncome.removeAttribute('hidden');
-    fieldsMap.nameOrInnEmployer.removeAttribute('hidden');
-    fieldsMap.ogrnOgrnip.removeAttribute('hidden');
-    fieldsMap.inn.removeAttribute('hidden');
-    fieldsMap.legalAddress.removeAttribute('hidden');
-    fieldsMap.legalActualToggle.removeAttribute('hidden');
-    fieldsMap.actualAddress.removeAttribute('hidden');
-    fieldsMap.tel.removeAttribute('hidden');
-    fieldsMap.addTel.removeAttribute('hidden');
-    fieldsMap.addTel.removeAttribute('hidden');
-    fieldsMap.employerSite.removeAttribute('hidden');
-    fieldsMap.numberStaff.removeAttribute('hidden');
-    fieldsMap.employerActiv.removeAttribute('hidden');
-    fieldsMap.nameJob.removeAttribute('hidden');
-    fieldsMap.dateEmployment.removeAttribute('hidden');
-    fieldsMap.probation.removeAttribute('hidden');
-    fieldsMap.yourIncome.removeAttribute('hidden');
-    fieldsMap.incomes.removeAttribute('hidden');
-    fieldsMap.nameOrInnOrganiz.setAttribute('hidden', '');
-    fieldsMap.ogrn.setAttribute('hidden', '');
-  }
-  new air_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"](inputsMap.dateEmployment, {
-    autoClose: true,
-    isMobile: true,
-    view: 'months',
-    minView: 'months',
-    dateFormat: 'MM.yyyy',
-    maxDate: new Date(),
-    onSelect: fd => {
-      fd.date ? fieldsMap.dateEmployment.classList.add('_active') : fieldsMap.dateEmployment.classList.remove('_active');
-      if (formEventInput) validate(false);
+  function createErrorIncomeBusiness(result, errorSectionItems) {
+    const container = form.querySelector('[data-mortgage-requests-income-name]');
+    if (container.classList.contains('_inputs-event')) {
+      const basicIncome = container.querySelector('[data-mortgage-requests-field="basic-income"]');
+      const nameOrInn = container.querySelector('[data-mortgage-requests-field="name-or-inn"]');
+      const ogrn = container.querySelector('[data-mortgage-requests-field="ogrn"]');
+      const ogrnOgrnip = container.querySelector('[data-mortgage-requests-field="ogrn-ogrnip"]');
+      const inn = container.querySelector('[data-mortgage-requests-field="inn"]');
+      const legalAddress = container.querySelector('[data-mortgage-requests-field="legal-address"]');
+      const actualAddress = container.querySelector('[data-mortgage-requests-field="actual-address"]');
+      const tel = container.querySelector('[data-mortgage-requests-field="tel"]');
+      const site = container.querySelector('[data-mortgage-requests-field="site"]');
+      const numberStaff = container.querySelector('[data-mortgage-requests-field="number-staff"]');
+      const fieldActivit = container.querySelector('[data-mortgage-requests-field="field-activit"]');
+      const dateRegistration = container.querySelector('[data-mortgage-requests-field="date-registration"]');
+      const yourIncome = container.querySelector('[data-mortgage-requests-field="your-income"]');
+      if (basicIncome && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreeateErrorSelect)(basicIncome, 'Укажите подтверждение основного дохода')) {
+        result = false;
+        addSectionError(errorSectionItems, basicIncome);
+      }
+      if (nameOrInn && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(nameOrInn, nameOrInn.querySelector('input'), 'Введите название или ИНН организации')) {
+        result = false;
+        addSectionError(errorSectionItems, nameOrInn);
+      }
+      if (ogrn && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(ogrn, ogrn.querySelector('input'), 'Введите корректный ОГРН', 13)) {
+        result = false;
+        addSectionError(errorSectionItems, ogrn);
+      }
+      if (ogrnOgrnip && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(ogrnOgrnip, ogrnOgrnip.querySelector('input'), 'Введите корректный ОГРН/ОГРНИП', 13)) {
+        result = false;
+        addSectionError(errorSectionItems, ogrnOgrnip);
+      }
+      if (inn && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(inn, inn.querySelector('input'), 'Введите корректный ИНН', 10)) {
+        result = false;
+        addSectionError(errorSectionItems, inn);
+      }
+      if (legalAddress && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(legalAddress, legalAddress.querySelector('input'), 'Укажите юридический адрес организации')) {
+        result = false;
+        addSectionError(errorSectionItems, legalAddress);
+      }
+      if (actualAddress && !actualAddress.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(actualAddress, actualAddress.querySelector('input'), 'Укажите фактический адрес организации')) {
+        result = false;
+        addSectionError(errorSectionItems, actualAddress);
+      }
+      if (tel && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(tel, tel.querySelector('input'), _modules_validateTextMap__WEBPACK_IMPORTED_MODULE_1__.validateTextMap.tel, 10)) {
+        result = false;
+        addSectionError(errorSectionItems, tel);
+      }
+      if (site && site.querySelector('input').value !== '' && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorUrl)(site, site.querySelector('input'), 'Введите адрес сайта в формате example.com')) {
+        result = false;
+        addSectionError(errorSectionItems, site);
+      }
+      if (numberStaff && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreeateErrorSelect)(numberStaff, 'Укажите численность персонала')) {
+        result = false;
+        addSectionError(errorSectionItems, numberStaff);
+      }
+      if (fieldActivit && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreeateErrorSelect)(fieldActivit, 'Укажите сферу деятельности организации')) {
+        result = false;
+        addSectionError(errorSectionItems, fieldActivit);
+      }
+      if (dateRegistration && !dateRegistration.querySelector('input').value) {
+        result = false;
+        (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateError)(dateRegistration, 'Укажите месяц и год регистрации организации');
+        addSectionError(errorSectionItems, dateRegistration);
+      }
+      if (yourIncome && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(yourIncome, yourIncome.querySelector('input'), 'Укажите средний доход в месяц')) {
+        result = false;
+        addSectionError(errorSectionItems, yourIncome);
+      }
+      return result;
     }
-  });
+  }
+  function createErrorIncomeHiring(result, errorSectionItems) {
+    const container = form.querySelector('[data-mortgage-requests-income-name]');
+    if (container.classList.contains('_inputs-event')) {
+      const basicIncome = container.querySelector('[data-mortgage-requests-field="basic-income"]');
+      const nameOrInn = container.querySelector('[data-mortgage-requests-field="name-or-inn"]');
+      const ogrnOgrnip = container.querySelector('[data-mortgage-requests-field="ogrn-ogrnip"]');
+      const inn = container.querySelector('[data-mortgage-requests-field="inn"]');
+      const legalAddress = container.querySelector('[data-mortgage-requests-field="legal-address"]');
+      const actualAddress = container.querySelector('[data-mortgage-requests-field="actual-address"]');
+      const tel = container.querySelector('[data-mortgage-requests-field="tel"]');
+      const site = container.querySelector('[data-mortgage-requests-field="site"]');
+      const numberStaff = container.querySelector('[data-mortgage-requests-field="number-staff"]');
+      const fieldActivit = container.querySelector('[data-mortgage-requests-field="field-activit"]');
+      const dateRegistration = container.querySelector('[data-mortgage-requests-field="date-registration"]');
+      const yourIncome = container.querySelector('[data-mortgage-requests-field="your-income"]');
+      const nameJob = container.querySelector('[data-mortgage-requests-field="name-job"]');
+      if (basicIncome && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreeateErrorSelect)(basicIncome, 'Укажите подтверждение основного дохода')) {
+        result = false;
+        addSectionError(errorSectionItems, basicIncome);
+      }
+      if (nameOrInn && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(nameOrInn, nameOrInn.querySelector('input'), 'Введите название или ИНН работодателя')) {
+        result = false;
+        addSectionError(errorSectionItems, nameOrInn);
+      }
+      if (ogrnOgrnip && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(ogrnOgrnip, ogrnOgrnip.querySelector('input'), 'Введите корректный ОГРН/ОГРНИП', 13)) {
+        result = false;
+        addSectionError(errorSectionItems, ogrnOgrnip);
+      }
+      if (inn && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(inn, inn.querySelector('input'), 'Введите корректный ИНН', 10)) {
+        result = false;
+        addSectionError(errorSectionItems, inn);
+      }
+      if (legalAddress && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(legalAddress, legalAddress.querySelector('input'), 'Укажите юридический адрес работодателя')) {
+        result = false;
+        addSectionError(errorSectionItems, legalAddress);
+      }
+      if (actualAddress && !actualAddress.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(actualAddress, actualAddress.querySelector('input'), 'Укажите фактический адрес работодателя')) {
+        result = false;
+        addSectionError(errorSectionItems, actualAddress);
+      }
+      if (tel && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(tel, tel.querySelector('input'), _modules_validateTextMap__WEBPACK_IMPORTED_MODULE_1__.validateTextMap.tel, 10)) {
+        result = false;
+        addSectionError(errorSectionItems, tel);
+      }
+      if (site && site.querySelector('input').value !== '' && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorUrl)(site, site.querySelector('input'), 'Введите адрес сайта в формате example.com')) {
+        result = false;
+        addSectionError(errorSectionItems, site);
+      }
+      if (numberStaff && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreeateErrorSelect)(numberStaff, 'Укажите численность персонала')) {
+        result = false;
+        addSectionError(errorSectionItems, numberStaff);
+      }
+      if (fieldActivit && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreeateErrorSelect)(fieldActivit, 'Укажите сферу деятельности работодателя')) {
+        result = false;
+        addSectionError(errorSectionItems, fieldActivit);
+      }
+      if (nameJob && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(nameJob, nameJob.querySelector('input'), 'Укажите должность')) {
+        result = false;
+        addSectionError(errorSectionItems, nameJob);
+      }
+      if (dateRegistration && !dateRegistration.querySelector('input').value) {
+        result = false;
+        (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateError)(dateRegistration, 'Укажите месяц и год трудоустройства');
+        addSectionError(errorSectionItems, dateRegistration);
+      }
+      if (yourIncome && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(yourIncome, yourIncome.querySelector('input'), 'Укажите средний доход в месяц')) {
+        result = false;
+        addSectionError(errorSectionItems, yourIncome);
+      }
+      return result;
+    }
+  }
+  function createErrorIncomeIndividualEnt(result, errorSectionItems) {
+    const container = form.querySelector('[data-mortgage-requests-income-name]');
+    if (container.classList.contains('_inputs-event')) {
+      const basicIncome = container.querySelector('[data-mortgage-requests-field="basic-income"]');
+      const nameOrInn = container.querySelector('[data-mortgage-requests-field="name-or-inn"]');
+      const ogrnOgrnip = container.querySelector('[data-mortgage-requests-field="ogrn-ogrnip"]');
+      const inn = container.querySelector('[data-mortgage-requests-field="inn"]');
+      const legalAddress = container.querySelector('[data-mortgage-requests-field="legal-address"]');
+      const actualAddress = container.querySelector('[data-mortgage-requests-field="actual-address"]');
+      const tel = container.querySelector('[data-mortgage-requests-field="tel"]');
+      const site = container.querySelector('[data-mortgage-requests-field="site"]');
+      const numberStaff = container.querySelector('[data-mortgage-requests-field="number-staff"]');
+      const fieldActivit = container.querySelector('[data-mortgage-requests-field="field-activit"]');
+      const dateRegistration = container.querySelector('[data-mortgage-requests-field="date-registration"]');
+      const yourIncome = container.querySelector('[data-mortgage-requests-field="your-income"]');
+      if (basicIncome && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreeateErrorSelect)(basicIncome, 'Укажите подтверждение основного дохода')) {
+        result = false;
+        addSectionError(errorSectionItems, basicIncome);
+      }
+      if (nameOrInn && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(nameOrInn, nameOrInn.querySelector('input'), 'Введите ФИО или ИНН')) {
+        result = false;
+        addSectionError(errorSectionItems, nameOrInn);
+      }
+      if (ogrnOgrnip && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(ogrnOgrnip, ogrnOgrnip.querySelector('input'), 'Введите корректный ОГРНИП', 15)) {
+        result = false;
+        addSectionError(errorSectionItems, ogrnOgrnip);
+      }
+      if (inn && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(inn, inn.querySelector('input'), 'Введите корректный ИНН', 10)) {
+        result = false;
+        addSectionError(errorSectionItems, inn);
+      }
+      if (legalAddress && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(legalAddress, legalAddress.querySelector('input'), 'Укажите адрес регистрации ИП')) {
+        result = false;
+        addSectionError(errorSectionItems, legalAddress);
+      }
+      if (actualAddress && !actualAddress.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(actualAddress, actualAddress.querySelector('input'), 'Укажите фактический адрес ИП')) {
+        result = false;
+        addSectionError(errorSectionItems, actualAddress);
+      }
+      if (tel && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(tel, tel.querySelector('input'), _modules_validateTextMap__WEBPACK_IMPORTED_MODULE_1__.validateTextMap.tel, 10)) {
+        result = false;
+        addSectionError(errorSectionItems, tel);
+      }
+      if (site && site.querySelector('input').value !== '' && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorUrl)(site, site.querySelector('input'), 'Введите адрес сайта в формате example.com')) {
+        result = false;
+        addSectionError(errorSectionItems, site);
+      }
+      if (numberStaff && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreeateErrorSelect)(numberStaff, 'Укажите численность персонала')) {
+        result = false;
+        addSectionError(errorSectionItems, numberStaff);
+      }
+      if (fieldActivit && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreeateErrorSelect)(fieldActivit, 'Выберите сферу деятельности из списка')) {
+        result = false;
+        addSectionError(errorSectionItems, fieldActivit);
+      }
+      if (dateRegistration && !dateRegistration.querySelector('input').value) {
+        result = false;
+        (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateError)(dateRegistration, 'Укажите месяц и год регистрации ИП');
+        addSectionError(errorSectionItems, dateRegistration);
+      }
+      if (yourIncome && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(yourIncome, yourIncome.querySelector('input'), 'Укажите средний доход в месяц')) {
+        result = false;
+        addSectionError(errorSectionItems, yourIncome);
+      }
+      return result;
+    }
+  }
+  function incomeRemoveError(controls) {
+    const container = form.querySelector('[data-mortgage-requests-income-name]');
+    if (container.dataset.mortgageRequestsIncomeName === 'default') return;
+    if (controls === true) {
+      container.classList.add('_inputs-event');
+    }
+    if (container.classList.contains('_inputs-event')) {
+      const basicIncome = container.querySelector("[data-mortgage-requests-field='basic-income']");
+      const nameOrInn = container.querySelector('[data-mortgage-requests-field="name-or-inn"]');
+      const ogrn = container.querySelector('[data-mortgage-requests-field="ogrn"]');
+      const ogrnOgrnip = container.querySelector('[data-mortgage-requests-field="ogrn-ogrnip"]');
+      const inn = container.querySelector('[data-mortgage-requests-field="inn"]');
+      const legalAddress = container.querySelector('[data-mortgage-requests-field="legal-address"]');
+      const actualAddress = container.querySelector('[data-mortgage-requests-field="actual-address"]');
+      const tel = container.querySelector('[data-mortgage-requests-field="tel"]');
+      const site = container.querySelector('[data-mortgage-requests-field="site"]');
+      const numberStaff = container.querySelector('[data-mortgage-requests-field="number-staff"]');
+      const fieldActivit = container.querySelector('[data-mortgage-requests-field="field-activit"]');
+      const dateRegistration = container.querySelector('[data-mortgage-requests-field="date-registration"]');
+      const yourIncome = container.querySelector('[data-mortgage-requests-field="your-income"]');
+      const nameJob = container.querySelector('[data-mortgage-requests-field="name-job"]');
+      if (basicIncome) (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(basicIncome);
+      if (nameOrInn) (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(nameOrInn);
+      if (ogrn) (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(ogrn);
+      if (ogrnOgrnip) (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(ogrnOgrnip);
+      if (inn) (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(inn);
+      if (legalAddress) (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(legalAddress);
+      if (actualAddress) (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(actualAddress);
+      if (tel) (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(tel);
+      if (site) (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(site);
+      if (numberStaff) (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(numberStaff);
+      if (fieldActivit) (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(fieldActivit);
+      if (dateRegistration) (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(dateRegistration);
+      if (yourIncome) (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(yourIncome);
+      if (nameJob) (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(nameJob);
+    }
+  }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (mortgageRequests);
 

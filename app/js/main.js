@@ -10890,7 +10890,7 @@ const mortgageRequests = () => {
   form.addEventListener('click', e => {
     setTimeout(() => {
       (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_3__.emergingBlockScroll)('.mortgage-requests .mortgage-requests__save', '.footer-fixed.mortgage-requests-fixed', 99999999, true, true);
-    }, 400);
+    }, 300);
     const target = e.target;
     const toggle = target.closest('[data-mortgage-requests-toggle]');
     const removeChildren = target.closest('.mortgage-requests__children-remove');
@@ -11233,7 +11233,9 @@ const mortgageRequests = () => {
     credits: form.querySelector("[data-mortgage-requests-field='credits']"),
     rent: form.querySelector("[data-mortgage-requests-field='rent']"),
     alimony: form.querySelector("[data-mortgage-requests-field='alimony']"),
-    employment: form.querySelector("[data-mortgage-requests-field='employment']")
+    employment: form.querySelector("[data-mortgage-requests-field='employment']"),
+    startRegistr: form.querySelector("[data-mortgage-requests-field='start-registr']"),
+    endRegistr: form.querySelector("[data-mortgage-requests-field='end-registr']")
   };
   const inputsMap = {
     fields: {
@@ -11267,7 +11269,9 @@ const mortgageRequests = () => {
       familyStatus: fieldsMap.familyStatus,
       spouseConsent: fieldsMap.spouseConsent,
       employment: fieldsMap.employment
-    }
+    },
+    startRegistr: fieldsMap.startRegistr.querySelector('input'),
+    endRegistr: fieldsMap.endRegistr.querySelector('input')
   };
   fieldsMap.employment.addEventListener('change', () => {
     const value = fieldsMap.employment.querySelector('.choices__list.choices__list--single .choices__item.choices__item--selectable').dataset.value;
@@ -11416,6 +11420,25 @@ const mortgageRequests = () => {
     if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(fieldsMap.snils, inputsMap.fields.snils, 'Введите корректный снилс', 11)) {
       result = false;
       addSectionError(errorSectionItems, fieldsMap.snils);
+    }
+    if (!fieldsMap.startRegistr.hasAttribute('hidden') && !fieldsMap.endRegistr.hasAttribute('hidden')) {
+      if (!inputsMap.startRegistr.value) {
+        result = false;
+        (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateError)(fieldsMap.startRegistr, 'Укажите дату начала регистрации');
+        addSectionError(errorSectionItems, fieldsMap.startRegistr);
+      }
+      if (!inputsMap.endRegistr.value) {
+        result = false;
+        (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateError)(fieldsMap.endRegistr, 'Укажите дату окончания регистрации');
+        addSectionError(errorSectionItems, fieldsMap.endRegistr);
+      }
+      if (inputsMap.startRegistr.value && inputsMap.endRegistr.value) {
+        if (new Date((0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.changeDate)(inputsMap.startRegistr.value)) > new Date((0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.changeDate)(inputsMap.endRegistr.value))) {
+          result = false;
+          (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateError)(fieldsMap.startRegistr, null);
+          (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateError)(fieldsMap.endRegistr, 'Дата окончания не должна быть меньше начала');
+        }
+      }
     }
     if (!fieldsMap.surnameOld.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.surnameOld, inputsMap.fields.surnameOld, 'Введите предыдущую фамилию')) {
       result = false;
@@ -12319,6 +12342,22 @@ const mortgageRequests = () => {
       if (nameJob) (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateRemoveError)(nameJob);
     }
   }
+  new air_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"](inputsMap.startRegistr, {
+    autoClose: true,
+    isMobile: true,
+    onSelect: fd => {
+      fd.date ? fieldsMap.startRegistr.classList.add('_active') : fieldsMap.startRegistr.classList.remove('_active');
+      if (formEventInput) validate(false);
+    }
+  });
+  new air_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"](inputsMap.endRegistr, {
+    autoClose: true,
+    isMobile: true,
+    onSelect: fd => {
+      fd.date ? fieldsMap.endRegistr.classList.add('_active') : fieldsMap.endRegistr.classList.remove('_active');
+      if (formEventInput) validate(false);
+    }
+  });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (mortgageRequests);
 

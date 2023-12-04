@@ -23,7 +23,8 @@ import {
     inputMaskOgrn,
     inputMaskInn,
     inputMaskOgrnip,
-    inputMaskPhone
+    inputMaskPhone,
+    changeDate
 } from './formValidate';
 const mortgageRequests = () => {
     const form = document.querySelector('.mortgage-requests__form');
@@ -53,7 +54,7 @@ const mortgageRequests = () => {
     form.addEventListener('click', (e) => {
         setTimeout(() => {
             emergingBlockScroll('.mortgage-requests .mortgage-requests__save', '.footer-fixed.mortgage-requests-fixed', 99999999, true, true);
-        }, 400);
+        }, 300);
         const target = e.target;
         const toggle = target.closest('[data-mortgage-requests-toggle]');
         const removeChildren = target.closest('.mortgage-requests__children-remove');
@@ -418,6 +419,9 @@ const mortgageRequests = () => {
         alimony: form.querySelector("[data-mortgage-requests-field='alimony']"),
 
         employment: form.querySelector("[data-mortgage-requests-field='employment']"),
+
+        startRegistr: form.querySelector("[data-mortgage-requests-field='start-registr']"),
+        endRegistr: form.querySelector("[data-mortgage-requests-field='end-registr']"),
     };
     const inputsMap = {
         fields: {
@@ -452,6 +456,8 @@ const mortgageRequests = () => {
             spouseConsent: fieldsMap.spouseConsent,
             employment: fieldsMap.employment,
         },
+        startRegistr: fieldsMap.startRegistr.querySelector('input'),
+        endRegistr: fieldsMap.endRegistr.querySelector('input'),
     };
     fieldsMap.employment.addEventListener('change', () => {
         const value = fieldsMap.employment.querySelector('.choices__list.choices__list--single .choices__item.choices__item--selectable').dataset.value;
@@ -608,6 +614,25 @@ const mortgageRequests = () => {
         if (!validateCreateErrorMask(fieldsMap.snils, inputsMap.fields.snils, 'Введите корректный снилс', 11)) {
             result = false;
             addSectionError(errorSectionItems, fieldsMap.snils);
+        }
+        if (!fieldsMap.startRegistr.hasAttribute('hidden') && !fieldsMap.endRegistr.hasAttribute('hidden')) {
+            if (!inputsMap.startRegistr.value) {
+                result = false;
+                validateCreateError(fieldsMap.startRegistr, 'Укажите дату начала регистрации');
+                addSectionError(errorSectionItems, fieldsMap.startRegistr);
+            }
+            if (!inputsMap.endRegistr.value) {
+                result = false;
+                validateCreateError(fieldsMap.endRegistr, 'Укажите дату окончания регистрации');
+                addSectionError(errorSectionItems, fieldsMap.endRegistr);
+            }
+            if (inputsMap.startRegistr.value && inputsMap.endRegistr.value) {
+                if (new Date(changeDate(inputsMap.startRegistr.value)) > new Date(changeDate(inputsMap.endRegistr.value))) {
+                    result = false;
+                    validateCreateError(fieldsMap.startRegistr, null);
+                    validateCreateError(fieldsMap.endRegistr, 'Дата окончания не должна быть меньше начала');
+                }
+            }
         }
 
         if (!fieldsMap.surnameOld.hasAttribute('hidden') && !validateCreateErrorField(fieldsMap.surnameOld, inputsMap.fields.surnameOld, 'Введите предыдущую фамилию')) {
@@ -1524,7 +1549,6 @@ const mortgageRequests = () => {
         }
     }
 
-
     function incomeRemoveError(controls) {
         const container = form.querySelector('[data-mortgage-requests-income-name]');
         if (container.dataset.mortgageRequestsIncomeName === 'default') return;
@@ -1563,5 +1587,21 @@ const mortgageRequests = () => {
         }
     }
 
+    new AirDatepicker(inputsMap.startRegistr, {
+        autoClose: true,
+        isMobile: true,
+        onSelect: (fd) => {
+            fd.date ? fieldsMap.startRegistr.classList.add('_active') : fieldsMap.startRegistr.classList.remove('_active');
+            if (formEventInput) validate(false);
+        }
+    })
+    new AirDatepicker(inputsMap.endRegistr, {
+        autoClose: true,
+        isMobile: true,
+        onSelect: (fd) => {
+            fd.date ? fieldsMap.endRegistr.classList.add('_active') : fieldsMap.endRegistr.classList.remove('_active');
+            if (formEventInput) validate(false);
+        }
+    })
 };
 export default mortgageRequests;

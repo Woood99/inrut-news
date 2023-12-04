@@ -4387,12 +4387,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const inputsMaskDepartCode = document.querySelectorAll('.input-depart-code-mask');
   const inputsMaskSnils = document.querySelectorAll('.input-snils-mask');
   const inputsMaskOgrn = document.querySelectorAll('.input-ogrn-mask');
+  const inputsMaskOgrnip = document.querySelectorAll('.input-ogrnip-mask');
   const inputsInnMask = document.querySelectorAll('.input-inn-mask');
   inputsMaskPhone.forEach(input => (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.inputMaskPhone)(input));
   inputsMaskSeriesNumber.forEach(input => (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.inputMaskSeriesNumber)(input));
   inputsMaskDepartCode.forEach(input => (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.inputMaskDepartCode)(input));
   inputsMaskSnils.forEach(input => (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.inputMaskSnils)(input));
   inputsMaskOgrn.forEach(input => (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.inputMaskOgrn)(input));
+  inputsMaskOgrnip.forEach(input => (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.inputMaskOgrnip)(input));
   inputsInnMask.forEach(input => (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.inputMaskInn)(input));
 
   // ==================================================
@@ -8229,6 +8231,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "inputMaskDepartCode": () => (/* binding */ inputMaskDepartCode),
 /* harmony export */   "inputMaskInn": () => (/* binding */ inputMaskInn),
 /* harmony export */   "inputMaskOgrn": () => (/* binding */ inputMaskOgrn),
+/* harmony export */   "inputMaskOgrnip": () => (/* binding */ inputMaskOgrnip),
 /* harmony export */   "inputMaskPhone": () => (/* binding */ inputMaskPhone),
 /* harmony export */   "inputMaskSeriesNumber": () => (/* binding */ inputMaskSeriesNumber),
 /* harmony export */   "inputMaskSnils": () => (/* binding */ inputMaskSnils),
@@ -8761,6 +8764,10 @@ const inputMaskSnils = input => {
 };
 const inputMaskOgrn = input => {
   const inputMask = new (inputmask__WEBPACK_IMPORTED_MODULE_0___default())('9999999999999');
+  inputMask.mask(input);
+};
+const inputMaskOgrnip = input => {
+  const inputMask = new (inputmask__WEBPACK_IMPORTED_MODULE_0___default())('999999999999999');
   inputMask.mask(input);
 };
 const inputMaskInn = input => {
@@ -10857,6 +10864,10 @@ const mortgageRequests = () => {
       itemsContent.forEach(item => {
         item.toggleAttribute('hidden');
       });
+      const label = toggle.closest('.toggle-checkbox');
+      if (label.hasAttribute('data-mortgage-requests-field') && label.dataset.mortgageRequestsField === 'only-temp-regist') {
+        fieldsMap.registrationAddress.toggleAttribute('hidden');
+      }
     }
     if (removeChildren) {
       const currentItem = removeChildren.closest('.mortgage-requests__children');
@@ -11158,13 +11169,15 @@ const mortgageRequests = () => {
     Array.from(container.children).length > 0 ? container.removeAttribute('hidden') : container.setAttribute('hidden', '');
   }
   const fieldsMap = {
+    citizenship: form.querySelector("[data-mortgage-requests-field='citizenship']"),
+    anotherСountry: form.querySelector("[data-mortgage-requests-field='another-country']"),
     placeBirth: form.querySelector("[data-mortgage-requests-field='place-birth']"),
     seriesNumber: form.querySelector("[data-mortgage-requests-field='series-number']"),
     departCode: form.querySelector("[data-mortgage-requests-field='depart-code']"),
     dateIssue: form.querySelector("[data-mortgage-requests-field='date-issue']"),
     passportIssued: form.querySelector("[data-mortgage-requests-field='passport-issued']"),
     registrationAddress: form.querySelector("[data-mortgage-requests-field='registration-address']"),
-    registrPeriod: form.querySelector("[data-mortgage-requests-field='registr-period']"),
+    registrationAddressAdd: form.querySelector("[data-mortgage-requests-field='registration-address-add']"),
     residenceAddress: form.querySelector("[data-mortgage-requests-field='residence-address']"),
     reasonsResidence: form.querySelector("[data-mortgage-requests-field='reasons-residence']"),
     surnameOld: form.querySelector("[data-mortgage-requests-field='surname-old']"),
@@ -11185,17 +11198,23 @@ const mortgageRequests = () => {
     employment: form.querySelector("[data-mortgage-requests-field='employment']"),
     basicIncome: form.querySelector("[data-mortgage-requests-field='basic-income']"),
     nameOrInnEmployer: form.querySelector("[data-mortgage-requests-field='name-or-inn-employer']"),
+    nameOrInnOrganiz: form.querySelector("[data-mortgage-requests-field='name-or-inn-organiz']"),
     ogrn: form.querySelector("[data-mortgage-requests-field='ogrn']"),
+    ogrnOgrnip: form.querySelector("[data-mortgage-requests-field='ogrn-ogrnip']"),
     inn: form.querySelector("[data-mortgage-requests-field='inn']"),
     legalAddress: form.querySelector("[data-mortgage-requests-field='legal-address']"),
     actualAddress: form.querySelector("[data-mortgage-requests-field='actual-address']"),
     tel: form.querySelector("[data-mortgage-requests-field='tel']"),
+    addTel: form.querySelector("[data-mortgage-requests-field='add-tel']"),
     employerSite: form.querySelector("[data-mortgage-requests-field='employer-site']"),
     numberStaff: form.querySelector("[data-mortgage-requests-field='number-staff']"),
     employerActiv: form.querySelector("[data-mortgage-requests-field='employer-activ']"),
     nameJob: form.querySelector("[data-mortgage-requests-field='name-job']"),
     dateEmployment: form.querySelector("[data-mortgage-requests-field='date-employment']"),
-    yourIncome: form.querySelector("[data-mortgage-requests-field='your-income']")
+    yourIncome: form.querySelector("[data-mortgage-requests-field='your-income']"),
+    legalActualToggle: form.querySelector("[data-mortgage-requests-field='legal-actual-toggle']"),
+    probation: form.querySelector("[data-mortgage-requests-field='probation']"),
+    incomes: form.querySelector("[data-mortgage-requests-field='incomes']")
   };
   const inputsMap = {
     fields: {
@@ -11204,6 +11223,7 @@ const mortgageRequests = () => {
       departCode: fieldsMap.departCode.querySelector('input'),
       passportIssued: fieldsMap.passportIssued.querySelector('input'),
       registrationAddress: fieldsMap.registrationAddress.querySelector('input'),
+      registrationAddressAdd: fieldsMap.registrationAddressAdd.querySelector('input'),
       residenceAddress: fieldsMap.residenceAddress.querySelector('input'),
       snils: fieldsMap.snils.querySelector('input'),
       surnameOld: fieldsMap.surnameOld.querySelector('input'),
@@ -11215,7 +11235,9 @@ const mortgageRequests = () => {
       rent: fieldsMap.rent.querySelector('input'),
       alimony: fieldsMap.alimony.querySelector('input'),
       nameOrInnEmployer: fieldsMap.nameOrInnEmployer.querySelector('input'),
+      nameOrInnOrganiz: fieldsMap.nameOrInnOrganiz.querySelector('input'),
       ogrn: fieldsMap.ogrn.querySelector('input'),
+      ogrnOgrnip: fieldsMap.ogrnOgrnip.querySelector('input'),
       inn: fieldsMap.inn.querySelector('input'),
       legalAddress: fieldsMap.legalAddress.querySelector('input'),
       actualAddress: fieldsMap.actualAddress.querySelector('input'),
@@ -11229,6 +11251,7 @@ const mortgageRequests = () => {
       shiftsFullName: fieldsMap.shiftsFullName.querySelector('input')
     },
     select: {
+      citizenship: fieldsMap.citizenship,
       reasonsResidence: fieldsMap.reasonsResidence,
       education: fieldsMap.education,
       seniority: fieldsMap.seniority,
@@ -11240,9 +11263,13 @@ const mortgageRequests = () => {
       numberStaff: fieldsMap.numberStaff,
       employerActiv: fieldsMap.employerActiv
     },
-    registrPeriod: fieldsMap.registrPeriod.querySelector('input'),
     dateEmployment: fieldsMap.dateEmployment.querySelector('input')
   };
+  fieldsMap.employment.addEventListener('change', () => {
+    const value = fieldsMap.employment.querySelector('.choices__list.choices__list--single .choices__item.choices__item--selectable').dataset.value;
+    employmentValue(value);
+  });
+  employmentValue('default');
   for (const field in inputsMap.dateDefault) {
     const input = inputsMap.dateDefault[field];
     new air_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"](input, {
@@ -11263,6 +11290,14 @@ const mortgageRequests = () => {
   }
   for (const input in inputsMap.select) {
     inputsMap.select[input].addEventListener('change', () => {
+      if (inputsMap.select[input] === inputsMap.select.citizenship) {
+        const value = inputsMap.select.citizenship.querySelector('.choices__list.choices__list--single .choices__item.choices__item--selectable').dataset.value;
+        if (value === 'another') {
+          fieldsMap.anotherСountry.removeAttribute('hidden');
+        } else {
+          fieldsMap.anotherСountry.setAttribute('hidden', '');
+        }
+      }
       if (formEventInput) validate(false);
     });
   }
@@ -11356,9 +11391,13 @@ const mortgageRequests = () => {
       result = false;
       addSectionError(errorSectionItems, fieldsMap.passportIssued);
     }
-    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.registrationAddress, inputsMap.fields.registrationAddress, 'Введите адрес регистрации')) {
+    if (!fieldsMap.registrationAddress.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.registrationAddress, inputsMap.fields.registrationAddress, 'Введите адрес регистрации')) {
       result = false;
       addSectionError(errorSectionItems, fieldsMap.registrationAddress);
+    }
+    if (!fieldsMap.registrationAddressAdd.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.registrationAddressAdd, inputsMap.fields.registrationAddressAdd, 'Введите адрес временной регистрации')) {
+      result = false;
+      addSectionError(errorSectionItems, fieldsMap.registrationAddressAdd);
     }
     if (!fieldsMap.residenceAddress.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.residenceAddress, inputsMap.fields.residenceAddress, 'Укажите адрес проживания')) {
       result = false;
@@ -11443,11 +11482,6 @@ const mortgageRequests = () => {
       (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateError)(fieldsMap.dateIssue, 'Укажите дату выдачи паспорта');
       addSectionError(errorSectionItems, fieldsMap.dateIssue);
     }
-    if (!inputsMap.registrPeriod.value && !fieldsMap.registrPeriod.hasAttribute('hidden')) {
-      result = false;
-      (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateError)(fieldsMap.registrPeriod, 'Укажите срок действия регистрации');
-      addSectionError(errorSectionItems, fieldsMap.registrPeriod);
-    }
     if (!inputsMap.dateDefault.shiftsFullName.value && !fieldsMap.shiftsFullName.hasAttribute('hidden')) {
       result = false;
       (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateError)(fieldsMap.shiftsFullName, 'Укажите дату смены ФИО');
@@ -11522,56 +11556,64 @@ const mortgageRequests = () => {
       result = false;
       addSectionError(errorSectionItems, fieldsMap.employment);
     }
-    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreeateErrorSelect)(fieldsMap.basicIncome, 'Укажите подтверждение основного дохода')) {
+    if (!fieldsMap.basicIncome.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreeateErrorSelect)(fieldsMap.basicIncome, 'Укажите подтверждение основного дохода')) {
       result = false;
       addSectionError(errorSectionItems, fieldsMap.basicIncome);
     }
-    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.nameOrInnEmployer, inputsMap.fields.nameOrInnEmployer, 'Введите название или ИНН организации')) {
+    if (!fieldsMap.nameOrInnEmployer.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.nameOrInnEmployer, inputsMap.fields.nameOrInnEmployer, 'Введите название или ИНН работадателя')) {
       result = false;
       addSectionError(errorSectionItems, fieldsMap.nameOrInnEmployer);
     }
-    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(fieldsMap.ogrn, inputsMap.fields.ogrn, 'Введите корректный ОГРН', 13)) {
+    if (!fieldsMap.nameOrInnOrganiz.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.nameOrInnOrganiz, inputsMap.fields.nameOrInnOrganiz, 'Введите название или ИНН организации')) {
+      result = false;
+      addSectionError(errorSectionItems, fieldsMap.nameOrInnOrganiz);
+    }
+    if (!fieldsMap.ogrn.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(fieldsMap.ogrn, inputsMap.fields.ogrn, 'Введите корректный ОГРН', 13)) {
       result = false;
       addSectionError(errorSectionItems, fieldsMap.ogrn);
     }
-    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(fieldsMap.inn, inputsMap.fields.inn, 'Введите корректный ИНН', 10)) {
+    if (!fieldsMap.ogrnOgrnip.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(fieldsMap.ogrnOgrnip, inputsMap.fields.ogrnOgrnip, 'Введите корректный ОГРН/ОГРНИП', 13)) {
+      result = false;
+      addSectionError(errorSectionItems, fieldsMap.ogrnOgrnip);
+    }
+    if (!fieldsMap.inn.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(fieldsMap.inn, inputsMap.fields.inn, 'Введите корректный ИНН', 10)) {
       result = false;
       addSectionError(errorSectionItems, fieldsMap.inn);
     }
-    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.legalAddress, inputsMap.fields.legalAddress, 'Укажите юридический адрес организации')) {
+    if (!fieldsMap.legalAddress.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.legalAddress, inputsMap.fields.legalAddress, 'Укажите юридический адрес организации')) {
       result = false;
       addSectionError(errorSectionItems, fieldsMap.legalAddress);
     }
-    if (!fieldsMap.actualAddress.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.actualAddress, inputsMap.fields.actualAddress, 'Укажите фактический адрес организации')) {
+    if (!fieldsMap.actualAddress.hasAttribute('hidden') && !fieldsMap.actualAddress.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.actualAddress, inputsMap.fields.actualAddress, 'Укажите фактический адрес организации')) {
       result = false;
       addSectionError(errorSectionItems, fieldsMap.actualAddress);
     }
-    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(fieldsMap.tel, inputsMap.fields.tel, _modules_validateTextMap__WEBPACK_IMPORTED_MODULE_1__.validateTextMap.tel, 10)) {
+    if (!fieldsMap.tel.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorMask)(fieldsMap.tel, inputsMap.fields.tel, _modules_validateTextMap__WEBPACK_IMPORTED_MODULE_1__.validateTextMap.tel, 10)) {
       result = false;
       addSectionError(errorSectionItems, fieldsMap.tel);
     }
-    if (inputsMap.fields.employerSite.value !== '' && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorUrl)(fieldsMap.employerSite, inputsMap.fields.employerSite, 'Введите адрес сайта в формате example.com')) {
+    if (!fieldsMap.employerSite.hasAttribute('hidden') && inputsMap.fields.employerSite.value !== '' && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorUrl)(fieldsMap.employerSite, inputsMap.fields.employerSite, 'Введите адрес сайта в формате example.com')) {
       result = false;
       addSectionError(errorSectionItems, fieldsMap.employerSite);
     }
-    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreeateErrorSelect)(fieldsMap.numberStaff, 'Укажите численность персонала')) {
+    if (!fieldsMap.numberStaff.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreeateErrorSelect)(fieldsMap.numberStaff, 'Укажите численность персонала')) {
       result = false;
       addSectionError(errorSectionItems, fieldsMap.basicIncome);
     }
-    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreeateErrorSelect)(fieldsMap.employerActiv, 'Укажите сферу деятельности работодателя')) {
+    if (!fieldsMap.employerActiv.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreeateErrorSelect)(fieldsMap.employerActiv, 'Укажите сферу деятельности работодателя')) {
       result = false;
       addSectionError(errorSectionItems, fieldsMap.employerActiv);
     }
-    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.nameJob, inputsMap.fields.nameJob, 'Укажите название должности')) {
+    if (!fieldsMap.nameJob.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.nameJob, inputsMap.fields.nameJob, 'Укажите название должности')) {
       result = false;
       addSectionError(errorSectionItems, fieldsMap.nameJob);
     }
-    if (!inputsMap.dateEmployment.value) {
+    if (!fieldsMap.dateEmployment.hasAttribute('hidden') && !inputsMap.dateEmployment.value) {
       result = false;
       (0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateError)(fieldsMap.dateEmployment, 'Укажите месяц и год трудоустройства');
       addSectionError(errorSectionItems, fieldsMap.dateEmployment);
     }
-    if (!(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.yourIncome, inputsMap.fields.yourIncome, 'Укажите средний доход в месяц')) {
+    if (!fieldsMap.yourIncome.hasAttribute('hidden') && !(0,_formValidate__WEBPACK_IMPORTED_MODULE_5__.validateCreateErrorField)(fieldsMap.yourIncome, inputsMap.fields.yourIncome, 'Укажите средний доход в месяц')) {
       result = false;
       addSectionError(errorSectionItems, fieldsMap.yourIncome);
     }
@@ -11610,6 +11652,73 @@ const mortgageRequests = () => {
       content.removeAttribute('hidden');
     });
   }
+  function employmentValue(value) {
+    const income = form.querySelector('.mortgage-requests__income');
+    if (value === 'default') {
+      employmentValueDefault();
+      income.setAttribute('data-mortgage-requests-income', 'default');
+    }
+    if (value === 'business') {
+      employmentValueBusiness();
+      income.setAttribute('data-mortgage-requests-income', 'business');
+    }
+    if (value === 'hiring') {
+      employmentValueHiring();
+      income.setAttribute('data-mortgage-requests-income', 'hiring');
+    }
+  }
+  function employmentValueDefault() {
+    fieldsMap.basicIncome.setAttribute('hidden', '');
+    fieldsMap.nameOrInnEmployer.setAttribute('hidden', '');
+    fieldsMap.nameOrInnOrganiz.setAttribute('hidden', '');
+    fieldsMap.ogrn.setAttribute('hidden', '');
+    fieldsMap.ogrnOgrnip.setAttribute('hidden', '');
+    fieldsMap.inn.setAttribute('hidden', '');
+    fieldsMap.legalAddress.setAttribute('hidden', '');
+    fieldsMap.legalActualToggle.setAttribute('hidden', '');
+    fieldsMap.actualAddress.setAttribute('hidden', '');
+    fieldsMap.tel.setAttribute('hidden', '');
+    fieldsMap.addTel.setAttribute('hidden', '');
+    fieldsMap.employerSite.setAttribute('hidden', '');
+    fieldsMap.numberStaff.setAttribute('hidden', '');
+    fieldsMap.employerActiv.setAttribute('hidden', '');
+    fieldsMap.nameJob.setAttribute('hidden', '');
+    fieldsMap.dateEmployment.setAttribute('hidden', '');
+    fieldsMap.probation.setAttribute('hidden', '');
+    fieldsMap.yourIncome.setAttribute('hidden', '');
+    fieldsMap.incomes.setAttribute('hidden', '');
+  }
+  function employmentValueBusiness() {
+    fieldsMap.basicIncome.removeAttribute('hidden');
+    fieldsMap.nameOrInnOrganiz.removeAttribute('hidden');
+    fieldsMap.ogrn.removeAttribute('hidden');
+    fieldsMap.inn.removeAttribute('hidden');
+    fieldsMap.legalAddress.removeAttribute('hidden');
+    fieldsMap.nameOrInnEmployer.setAttribute('hidden', '');
+    fieldsMap.ogrnOgrnip.setAttribute('hidden', '');
+  }
+  function employmentValueHiring() {
+    fieldsMap.basicIncome.removeAttribute('hidden');
+    fieldsMap.nameOrInnEmployer.removeAttribute('hidden');
+    fieldsMap.ogrnOgrnip.removeAttribute('hidden');
+    fieldsMap.inn.removeAttribute('hidden');
+    fieldsMap.legalAddress.removeAttribute('hidden');
+    fieldsMap.legalActualToggle.removeAttribute('hidden');
+    fieldsMap.actualAddress.removeAttribute('hidden');
+    fieldsMap.tel.removeAttribute('hidden');
+    fieldsMap.addTel.removeAttribute('hidden');
+    fieldsMap.addTel.removeAttribute('hidden');
+    fieldsMap.employerSite.removeAttribute('hidden');
+    fieldsMap.numberStaff.removeAttribute('hidden');
+    fieldsMap.employerActiv.removeAttribute('hidden');
+    fieldsMap.nameJob.removeAttribute('hidden');
+    fieldsMap.dateEmployment.removeAttribute('hidden');
+    fieldsMap.probation.removeAttribute('hidden');
+    fieldsMap.yourIncome.removeAttribute('hidden');
+    fieldsMap.incomes.removeAttribute('hidden');
+    fieldsMap.nameOrInnOrganiz.setAttribute('hidden', '');
+    fieldsMap.ogrn.setAttribute('hidden', '');
+  }
   new air_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"](inputsMap.dateEmployment, {
     autoClose: true,
     isMobile: true,
@@ -11619,15 +11728,6 @@ const mortgageRequests = () => {
     maxDate: new Date(),
     onSelect: fd => {
       fd.date ? fieldsMap.dateEmployment.classList.add('_active') : fieldsMap.dateEmployment.classList.remove('_active');
-      if (formEventInput) validate(false);
-    }
-  });
-  new air_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"](inputsMap.registrPeriod, {
-    autoClose: true,
-    isMobile: true,
-    minDate: new Date(),
-    onSelect: fd => {
-      fd.date ? fieldsMap.registrPeriod.classList.add('_active') : fieldsMap.registrPeriod.classList.remove('_active');
       if (formEventInput) validate(false);
     }
   });

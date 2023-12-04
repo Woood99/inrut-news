@@ -70,6 +70,12 @@
                                     </svg>
                                 </button>
                                 <div class="spollers__body mortgage-requests__content" hidden>
+                                    <div class="record-viewing-two__sent">
+                                        <p>
+                                            Взять ипотеку и забронировать квартиру может только владелец личного кабинета.
+                                            При этом созаёмщиком может быть любой
+                                        </p>
+                                    </div>
                                     <div class="mortgage-requests__fields">
                                         <div class="select-secondary">
                                             <div class="select-secondary__wrapper">
@@ -82,6 +88,23 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="select-secondary" data-mortgage-requests-field="citizenship">
+                                            <div class="select-secondary__wrapper">
+                                                <span class="select-secondary__placeholder">
+                                                    Гражданство
+                                                </span>
+                                                <select class="select-secondary__body" hidden name="complex">
+                                                    <option value="russian">Российская федерация</option>
+                                                    <option value="another">Другая страна</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="input-text input-text--no-exp mortgage-requests__field--row" hidden data-mortgage-requests-field="another-country">
+                                            <label class="input-text__label">
+                                                <span>Страна</span>
+                                                <input type="text" name="Страна" class="input-reset input-text__input" value="" placeholder="">
+                                            </label>
+                                        </div>
                                         <div class="input-text input-text--no-exp" data-mortgage-requests-field="place-birth" data-validate-required>
                                             <label class="input-text__label">
                                                 <span>Место рождения</span>
@@ -91,7 +114,8 @@
                                         <div class="input-text input-text--no-exp" data-mortgage-requests-field="series-number">
                                             <label class="input-text__label">
                                                 <span>Серия и номер паспорта</span>
-                                                <input type="text" name="Серия и номер паспорта" class="input-reset input-text__input input-series-number-mask" value="" placeholder="">
+                                                <input type="text" name="Серия и номер паспорта" class="input-reset input-text__input input-series-number-mask" value=""
+                                                    placeholder="">
                                             </label>
                                         </div>
                                         <div class="input-text input-text--no-exp" data-mortgage-requests-field="depart-code">
@@ -106,29 +130,43 @@
                                                 <input type="text" name="Имя" class="input-reset input-text__input" value="" placeholder="">
                                             </label>
                                         </div>
-                                        <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="passport-issued" data-validate-required>
+                                        <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="passport-issued"
+                                            data-validate-required>
                                             <label class="input-text__label">
                                                 <span>Кем выдан паспорт</span>
                                                 <input type="text" name="Кем выдан паспорт" class="input-reset input-text__input" value="" placeholder="">
                                             </label>
                                         </div>
-                                        <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="registration-address" data-validate-required>
+                                    </div>
+                                    <div class="mortgage-requests__fields">
+                                        <h3 class="title-3 mortgage-requests__field--row">Адрес регистрации</h3>
+                                        <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="registration-address"
+                                            data-validate-required>
                                             <label class="input-text__label">
                                                 <span>Адрес регистрации</span>
                                                 <input type="text" name="Адрес регистрации" class="input-reset input-text__input" value="" placeholder="">
                                             </label>
                                         </div>
-                                    </div>
-                                    <div class="mortgage-requests__fields">
-                                        <label class="toggle-checkbox mortgage-requests__field--row">
+                                        <label class="toggle-checkbox mortgage-requests__field--row" data-mortgage-requests-field="only-temp-regist">
                                             <input type="checkbox" name="toggle-1" data-mortgage-requests-toggle="1">
                                             <div aria-hidden="true"></div>
-                                            <span>Временная регистрация</span>
+                                            <span>У меня только временная регистрация</span>
                                         </label>
-                                        <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-content="1" 
-                                        data-mortgage-requests-field="registr-period" hidden>
+                                        <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="registration-address-add" data-mortgage-requests-content="1" hidden data-validate-required>
                                             <label class="input-text__label">
-                                                <span>Срок действия регистрации</span>
+                                                <span>Адрес регистрации</span>
+                                                <input type="text" name="Имя" class="input-reset input-text__input" value="" placeholder="">
+                                            </label>
+                                        </div>
+                                        <div class="input-text input-text--no-exp" data-mortgage-requests-content="1" hidden>
+                                            <label class="input-text__label">
+                                                <span>Дата начала регистрации</span>
+                                                <input type="text" name="Имя" class="input-reset input-text__input" value="" placeholder="">
+                                            </label>
+                                        </div>
+                                        <div class="input-text input-text--no-exp" data-mortgage-requests-content="1" hidden>
+                                            <label class="input-text__label">
+                                                <span>Дата окончания регистрации</span>
                                                 <input type="text" name="Имя" class="input-reset input-text__input" value="" placeholder="">
                                             </label>
                                         </div>
@@ -139,14 +177,15 @@
                                             <div aria-hidden="true"></div>
                                             <span>Адрес фактического проживания совпадает с адресом регистрации</span>
                                         </label>
-                                        <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="residence-address" 
-                                        data-validate-required data-mortgage-requests-content="2">
+                                        <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="residence-address"
+                                            data-validate-required data-mortgage-requests-content="2">
                                             <label class="input-text__label">
                                                 <span>Адрес фактического проживания</span>
                                                 <input type="text" name="Адрес фактического проживания" class="input-reset input-text__input" value="" placeholder="">
                                             </label>
                                         </div>
-                                        <div class="select-secondary mortgage-requests__field--row" data-mortgage-requests-field="reasons-residence" data-mortgage-requests-content="2">
+                                        <div class="select-secondary mortgage-requests__field--row" data-mortgage-requests-field="reasons-residence"
+                                            data-mortgage-requests-content="2">
                                             <div class="select-secondary__wrapper">
                                                 <span class="select-secondary__placeholder">
                                                     Основание для проживания
@@ -185,13 +224,15 @@
                                             <div aria-hidden="true"></div>
                                             <span>Были изменения ФИО</span>
                                         </label>
-                                        <div class="input-text input-text--no-exp" data-mortgage-requests-field="surname-old" data-validate-required data-mortgage-requests-content="3" hidden>
+                                        <div class="input-text input-text--no-exp" data-mortgage-requests-field="surname-old" data-validate-required
+                                            data-mortgage-requests-content="3" hidden>
                                             <label class="input-text__label">
                                                 <span>Фамилия</span>
                                                 <input type="text" name="Фамилия" class="input-reset input-text__input" value="" placeholder="">
                                             </label>
                                         </div>
-                                        <div class="input-text input-text--no-exp" data-mortgage-requests-field="name-old" data-validate-required data-mortgage-requests-content="3" hidden>
+                                        <div class="input-text input-text--no-exp" data-mortgage-requests-field="name-old" data-validate-required data-mortgage-requests-content="3"
+                                            hidden>
                                             <label class="input-text__label">
                                                 <span>Имя</span>
                                                 <input type="text" name="Имя" class="input-reset input-text__input" value="" placeholder="">
@@ -222,8 +263,11 @@
                                                     </span>
                                                     <select class="select-secondary__body" hidden name="complex">
                                                         <option value="room-1" placeholder>Не выбрано</option>
-                                                        <option value="room-2">Среднее</option>
-                                                        <option value="room-2">Среднее</option>
+                                                        <option value="room-2">Средне-специальное</option>
+                                                        <option value="room-2">Высшее</option>
+                                                        <option value="room-2">Ученая степень</option>
+                                                        <option value="room-2">Несколько высших</option>
+                                                        <option value="room-2">Неоконченное высшее</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -241,6 +285,10 @@
                                                         <option value="room-1" placeholder>Не выбрано</option>
                                                         <option value="room-2">Менее года</option>
                                                         <option value="room-2">Менее 3 лет</option>
+                                                        <option value="room-2">Менее 5 лет</option>
+                                                        <option value="room-2">Менее 6 месяцев</option>
+                                                        <option value="room-2">До 10 лет</option>
+                                                        <option value="room-2">Более 10 лет</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -276,7 +324,8 @@
                                 </button>
                                 <div class="spollers__body mortgage-requests__content" hidden>
                                     <div class="mortgage-requests__fields">
-                                        <div class="select-secondary mortgage-requests__field--row" data-mortgage-requests-field="family-status" data-mortgage-requests-family-status>
+                                        <div class="select-secondary mortgage-requests__field--row" data-mortgage-requests-field="family-status"
+                                            data-mortgage-requests-family-status>
                                             <div class="select-secondary__wrapper">
                                                 <span class="select-secondary__placeholder">
                                                     Семейное положение
@@ -296,7 +345,8 @@
                                                 </div>
                                             </label>
                                         </div>
-                                        <div class="select-secondary mortgage-requests__field--row" data-mortgage-requests-field="spouse-consent" data-mortgage-requests-spouse-consent hidden>
+                                        <div class="select-secondary mortgage-requests__field--row" data-mortgage-requests-field="spouse-consent"
+                                            data-mortgage-requests-spouse-consent hidden>
                                             <div class="select-secondary__wrapper">
                                                 <span class="select-secondary__placeholder">
                                                     Согласие супруга
@@ -310,30 +360,30 @@
                                         </div>
                                     </div>
                                     <div class="mortgage-requests__fields">
-                                    <div class="mortgage-requests__field--row">
-                                        <h4 class="title-4 mortgage-requests__field-subtitle">
-                                            Дети
-                                        </h4>
-                                        <div class="radio-primary__item">
-                                            <input hidden id="children_1" class="radio-primary__input" type="radio" value="По телефону и в сообщениях" name="children"
-                                                data-mortgage-requests-younger-children="true">
-                                            <label for="children_1" class="radio-primary__label">
-                                                <span class="radio-primary__text">Есть дети младше 18 лет</span>
-                                            </label>
+                                        <div class="mortgage-requests__field--row">
+                                            <h4 class="title-4 mortgage-requests__field-subtitle">
+                                                Дети
+                                            </h4>
+                                            <div class="radio-primary__item">
+                                                <input hidden id="children_2" class="radio-primary__input" type="radio" checked value="Нет детей младше 18 лет" name="children"
+                                                    data-mortgage-requests-younger-children="false">
+                                                <label for="children_2" class="radio-primary__label">
+                                                    <span class="radio-primary__text">Нет детей младше 18 лет</span>
+                                                </label>
+                                            </div>
+                                            <div class="radio-primary__item">
+                                                <input hidden id="children_1" class="radio-primary__input" type="radio" value="По телефону и в сообщениях" name="children"
+                                                    data-mortgage-requests-younger-children="true">
+                                                <label for="children_1" class="radio-primary__label">
+                                                    <span class="radio-primary__text">Есть дети младше 18 лет</span>
+                                                </label>
+                                            </div>
+                                            <div class="mortgage-requests__childrens" hidden></div>
+                                            <button type="button" class="btn btn-reset btn-secondary mortgage-requests__create-children" hidden>
+                                                Добавить ребёнка
+                                            </button>
                                         </div>
-                                        <div class="radio-primary__item">
-                                            <input hidden id="children_2" class="radio-primary__input" type="radio" checked value="Нет детей младше 18 лет" name="children"
-                                                data-mortgage-requests-younger-children="false">
-                                            <label for="children_2" class="radio-primary__label">
-                                                <span class="radio-primary__text">Нет детей младше 18 лет</span>
-                                            </label>
-                                        </div>
-                                        <div class="mortgage-requests__childrens" hidden></div>
-                                        <button type="button" class="btn btn-reset btn-secondary mortgage-requests__create-children" hidden>
-                                            Добавить ребёнка
-                                        </button>
                                     </div>
-                                </div>
                                 </div>
                             </div>
                             <div class="spollers__item mortgage-requests__spoller">
@@ -345,7 +395,7 @@
                                         <use xlink:href="./img/sprite.svg#arrow-small"></use>
                                     </svg>
                                 </button>
-                                <div class="spollers__body mortgage-requests__content" hidden>
+                                <div class="spollers__body mortgage-requests__content mortgage-requests__income" hidden>
                                     <div class="mortgage-requests__fields">
                                         <div class="select-secondary" data-mortgage-requests-field="employment">
                                             <div class="select-secondary__wrapper">
@@ -353,10 +403,10 @@
                                                     Форма занятости
                                                 </span>
                                                 <select class="select-secondary__body" hidden name="complex">
-                                                    <option placeholder>Не выбрано</option>
-                                                    <option value="room-2">По найму</option>
-                                                    <option value="room-1">Собственник бизнеса</option>
-                                                    <option value="room-1">ИП</option>
+                                                    <option placeholder value="default">Не выбрано</option>
+                                                    <option value="business">Собственник бизнеса</option>
+                                                    <option value="hiring">По найму</option>
+                                                    <option value="individualEnt">ИП</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -373,10 +423,18 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="name-or-inn-employer" data-validate-required>
+                                        <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="name-or-inn-employer"
+                                            data-validate-required>
                                             <label class="input-text__label">
                                                 <span>Название или ИНН работодателя</span>
                                                 <input type="text" name="Название или ИНН работодателя" class="input-reset input-text__input" value="" placeholder="">
+                                            </label>
+                                        </div>
+                                        <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="name-or-inn-organiz"
+                                            data-validate-required>
+                                            <label class="input-text__label">
+                                                <span>Название или ИНН организации</span>
+                                                <input type="text" name="Название или ИНН организации" class="input-reset input-text__input" value="" placeholder="">
                                             </label>
                                         </div>
                                         <div class="input-text input-text--no-exp" data-mortgage-requests-field="ogrn">
@@ -385,13 +443,21 @@
                                                 <input type="text" name="ОГРН" class="input-reset input-text__input input-ogrn-mask" value="" placeholder="">
                                             </label>
                                         </div>
+                                        <div class="input-text input-text--no-exp" data-mortgage-requests-field="ogrn-ogrnip">
+                                            <label class="input-text__label">
+                                                <span>ОГРН/ОГРНИП</span>
+                                                <input type="text" name="ОГРН/ОГРНИП" class="input-reset input-text__input input-ogrnip-mask" value="" placeholder="">
+                                            </label>
+                                        </div>
+
                                         <div class="input-text input-text--no-exp" data-mortgage-requests-field="inn">
                                             <label class="input-text__label">
                                                 <span>ИНН</span>
                                                 <input type="text" name="ИНН" class="input-reset input-text__input input-inn-mask" value="" placeholder="">
                                             </label>
                                         </div>
-                                        <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="legal-address" data-validate-required>
+                                        <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="legal-address"
+                                            data-validate-required>
                                             <label class="input-text__label">
                                                 <span>Юридический адрес работодателя</span>
                                                 <input type="text" name="Юридический адрес работодателя" class="input-reset input-text__input" value="" placeholder="">
@@ -399,12 +465,13 @@
                                         </div>
                                     </div>
                                     <div class="mortgage-requests__fields">
-                                        <label class="toggle-checkbox mortgage-requests__field--row">
+                                        <label class="toggle-checkbox mortgage-requests__field--row" data-mortgage-requests-field="legal-actual-toggle">
                                             <input type="checkbox" name="toggle-1" data-mortgage-requests-toggle="4">
                                             <div aria-hidden="true"></div>
                                             <span>Юридический адрес совпадает с фактическим</span>
                                         </label>
-                                        <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="actual-address" data-validate-required data-mortgage-requests-content="4">
+                                        <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="actual-address"
+                                            data-validate-required data-mortgage-requests-content="4">
                                             <label class="input-text__label">
                                                 <span>Фактический адрес работодателя</span>
                                                 <input type="text" name="Фактический адрес работодателя" class="input-reset input-text__input" value="" placeholder="">
@@ -416,7 +483,7 @@
                                                 <input type="text" name="Рабочий телефон" class="input-reset input-text__input input-phone-mask" value="" placeholder="">
                                             </label>
                                         </div>
-                                        <div class="input-text input-text--no-exp input-text--only-number">
+                                        <div class="input-text input-text--no-exp input-text--only-number" data-mortgage-requests-field="add-tel">
                                             <label class="input-text__label">
                                                 <span>Добавочный телефон</span>
                                                 <input type="text" name="Рабочий телефон" class="input-reset input-text__input" value="" placeholder="">
@@ -468,7 +535,7 @@
                                                 <input type="text" name="Название должности" class="input-reset input-text__input" value="" placeholder="">
                                             </label>
                                         </div>
-                                        <div class="checkbox-secondary mortgage-requests__field--row">
+                                        <div class="checkbox-secondary mortgage-requests__field--row" data-mortgage-requests-field="probation">
                                             <input id="developer_2" name="developer-name_2" class="checkbox-secondary__input" type="checkbox" value="true">
                                             <label for="developer_2" class="checkbox-secondary__label">
                                                 <span class="checkbox-secondary__text">
@@ -477,7 +544,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="mortgage-requests__fields">
+                                    <div class="mortgage-requests__fields" data-mortgage-requests-field="incomes">
                                         <div class="mortgage-requests__field--row">
                                             <h4 class="title-4 mortgage-requests__field-subtitle">
                                                 Доходы
@@ -486,7 +553,8 @@
                                                 Укажите средний доход в месяц за последние полгода после
                                                 уплаты налогов (на руки). Учитывается только доход по основному месту работы
                                             </p>
-                                            <div class="input-text input-text--only-number" data-mortgage-requests-field="your-income" data-validate-required data-validate-average-invome-default>
+                                            <div class="input-text input-text--only-number" data-mortgage-requests-field="your-income" data-validate-required
+                                                data-validate-average-invome-default>
                                                 <label class="input-text__label">
                                                     <span>Средний доход в месяц</span>
                                                     <input type="text" name="Средний доход в месяц" maxlength="12" class="input-reset input-text__input" placeholder="">
@@ -520,7 +588,8 @@
                                             <p class="mortgage-requests__field-descr">
                                                 Укажите средний доход в месяц за последние полгода после уплаты налогов (на руки)
                                             </p>
-                                            <div class="input-text input-text--only-number" data-mortgage-requests-field="rental-income" data-validate-required data-validate-average-invome-default>
+                                            <div class="input-text input-text--only-number" data-mortgage-requests-field="rental-income" data-validate-required
+                                                data-validate-average-invome-default>
                                                 <label class="input-text__label">
                                                     <span>Средний доход в месяц</span>
                                                     <input type="text" name="Средний доход в месяц" maxlength="12" class="input-reset input-text__input" placeholder="">
@@ -539,7 +608,8 @@
                                             <p class="mortgage-requests__field-descr">
                                                 Укажите средний доход в месяц за последние полгода
                                             </p>
-                                            <div class="input-text input-text--only-number" data-mortgage-requests-field="pension" data-validate-required data-validate-average-invome-default>
+                                            <div class="input-text input-text--only-number" data-mortgage-requests-field="pension" data-validate-required
+                                                data-validate-average-invome-default>
                                                 <label class="input-text__label">
                                                     <span>Средний доход в месяц</span>
                                                     <input type="text" name="Средний доход в месяц" maxlength="12" class="input-reset input-text__input" placeholder="">
@@ -558,7 +628,8 @@
                                             <p class="mortgage-requests__field-descr">
                                                 Укажите средний доход в месяц за последние полгода после уплаты налогов (на руки)
                                             </p>
-                                            <div class="input-text input-text--only-number" data-mortgage-requests-field="other-income" data-validate-required data-validate-average-invome-default>
+                                            <div class="input-text input-text--only-number" data-mortgage-requests-field="other-income" data-validate-required
+                                                data-validate-average-invome-default>
                                                 <label class="input-text__label">
                                                     <span>Средний доход в месяц</span>
                                                     <input type="text" name="Средний доход в месяц" maxlength="12" class="input-reset input-text__input" placeholder="">
@@ -566,6 +637,25 @@
                                                 </label>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="spollers__item mortgage-requests__spoller">
+                                <button type="button" data-spoller="" class="btn btn-reset spollers__title">
+                                    <h3 class="title-3">
+                                      Документы
+                                    </h3>
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                    </svg>
+                                </button>
+                                <div class="spollers__body mortgage-requests__content" hidden>
+                                    <div class="mortgage-requests__fields">
+                                        <h3 class="title-3">Паспорт</h3>
+                                        <h3 class="title-3">Снилс</h3>
+                                        <h3 class="title-3">Военный билет</h3>
+                                        <h3 class="title-3">Копия трудовой книжки</h3>
+                                        <h3 class="title-3">Справа 2-НДФЛ</h3>
                                     </div>
                                 </div>
                             </div>
@@ -643,7 +733,8 @@
                                 </button>
                                 <div class="spollers__body mortgage-requests__content" hidden>
                                     <p>
-                                        Если у вас в собственности есть недвижимость или автомобиль, укажите их, это поможет банку убедиться в вашей платёжеспособности. Собственность необходимо подтвердить документами.
+                                        Если у вас в собственности есть недвижимость или автомобиль, укажите их, это поможет банку убедиться в вашей платёжеспособности.
+                                        Собственность необходимо подтвердить документами.
                                     </p>
                                     <div class="mortgage-requests__fields">
                                         <label class="toggle-checkbox">

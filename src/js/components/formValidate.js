@@ -573,6 +573,10 @@ export const inputMaskOgrn = (input) => {
     const inputMask = new Inputmask('9999999999999');
     inputMask.mask(input);
 }
+export const inputMaskOgrnip = (input) => {
+    const inputMask = new Inputmask('999999999999999');
+    inputMask.mask(input);
+}
 export const inputMaskInn = (input) => {
     const inputMask = new Inputmask('999999999999');
     inputMask.mask(input);

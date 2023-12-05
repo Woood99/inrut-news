@@ -613,6 +613,101 @@ textarea.input-reset {
   fill: var(--primaryTwo);
 }
 
+.textarea-tags {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  border: 1px solid var(--primary200);
+  border-radius: 12px;
+  height: 48px;
+  min-height: 48px;
+  padding: 6px 16px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: -webkit-max-content 1fr;
+  -ms-grid-columns: max-content 1fr;
+  grid-template-columns: -webkit-max-content 1fr;
+  grid-template-columns: max-content 1fr;
+}
+.textarea-tags > span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 7px 0;
+  margin-right: 16px;
+  -webkit-transition: color 0.4s ease-in-out;
+  -o-transition: color 0.4s ease-in-out;
+  transition: color 0.4s ease-in-out;
+}
+.textarea-tags__list {
+  grid-column: 1/-1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  max-width: 100%;
+  padding-top: 12px;
+  padding-bottom: 8px;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+}
+.textarea-tags__tag {
+  margin: 0 16px 7px 0;
+  color: var(--dark);
+  font-weight: 400;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.textarea-tags__tag svg {
+  margin-left: 4px;
+  width: 16px;
+  height: 16px;
+  fill: var(--dark);
+  cursor: pointer;
+}
+.textarea-tags__input {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  min-width: 350px;
+  height: 100%;
+  min-height: 32px;
+  padding: 7px 0 7px 0;
+  color: var(--gray);
+  font-size: var(--default-fz);
+  line-height: var(--default-lh);
+  font-weight: 400;
+  border: none;
+  background-color: transparent;
+  overflow: hidden;
+  -webkit-transition: border 0.4s ease-in-out;
+  -o-transition: border 0.4s ease-in-out;
+  transition: border 0.4s ease-in-out;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  resize: none;
+}
+.textarea-tags._active > span {
+  color: #b6d5f8;
+}
+
 .input-text {
   position: relative;
   display: block;
@@ -8820,7 +8915,8 @@ textarea.input-reset {
   font-size: var(--default-fz);
   line-height: var(--default-lh);
 }
-.edit-types-objects .place-sale-options__row--2 {
+.edit-types-objects .place-sale-options__row--3 {
+  margin-bottom: 0;
   -ms-grid-columns: -webkit-max-content -webkit-max-content;
   -ms-grid-columns: max-content max-content;
   grid-template-columns: -webkit-max-content -webkit-max-content;
@@ -15118,6 +15214,82 @@ textarea.input-reset {
   .select-secondary._hover .select-secondary__placeholder {
     color: var(--blue);
   }
+}
+
+.field-select {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+}
+.field-select__name {
+  font-weight: 500;
+  margin-top: 4px;
+  margin-right: 24px;
+}
+.field-select__name._width-limitation {
+  width: 145px;
+}
+.field-select__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.field-select__item {
+  height: 36px;
+  padding: 8px 18px;
+  color: var(--dark);
+  font-weight: 400;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 12px;
+  border: 1px solid var(--primary200);
+  white-space: nowrap;
+  margin: 0 8px 8px 0;
+}
+
+.field-range {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.field-range__name {
+  font-weight: 500;
+  margin-right: 24px;
+}
+.field-range__name._width-limitation {
+  width: 145px;
+}
+.field-range__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.field-range__nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.field-range__nav .input-text:nth-child(1) .input-text__label {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.field-range__nav .input-text:nth-child(2) .input-text__label {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .card-info {

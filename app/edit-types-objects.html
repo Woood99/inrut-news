@@ -85,23 +85,23 @@
                         <h2 class="place-sale__row-title place-sale-options__title title-2">
                             Параметры
                         </h2>
-                        <div class="place-sale-options__row place-sale-options__row--1" style="grid-template-columns: repeat(3,1fr); margin-bottom: 24px;">
+                        <div class="place-sale-options__row place-sale-options__row--1" style="grid-template-columns: repeat(3,calc(100%/3 - 8px));">
                             <div class="place-sale-options__item input-text _active">
                                 <label class="input-text__label">
                                     <span>Значение</span>
                                     <input type="text" name="Имя" class="input-reset input-text__input" value="Срок сдачи" placeholder="">
                                 </label>
                             </div>
-                            <div class="select-secondary _selected">
+                            <div class="select-secondary _selected" data-type-value-target>
                                 <div class="select-secondary__wrapper">
                                     <span class="select-secondary__placeholder">
-                                        Тип
+                                        Тип фильтра
                                     </span>
                                     <select class="select-secondary__body" hidden name="complex">
                                         <option value="complex">Текстовое поле</option>
                                         <option value="complex">Не выбрано</option>
-                                        <option value="complex2">Список - единичный выбор</option>
-                                        <option value="complex3">Список - множественный выбор</option>
+                                        <option value="list-one">Список - единичный выбор</option>
+                                        <option value="list-multiple">Список - множественный выбор</option>
                                         <option value="complex3">Числовое поле</option>
                                         <option value="complex3">Числовой список</option>
                                         <option value="complex3">Флажок</option>
@@ -115,7 +115,16 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="place-sale-options__row place-sale-options__row--2">
+                        <div class="place-sale-options__row place-sale-options__row--2" style="grid-template-columns: 100%;" data-type-value-field hidden>
+                            <label class="textarea-tags">
+                                <span>Тип значения</span>
+                                <textarea class="input-reset textarea-tags__input" maxlength="80" placeholder=""></textarea>
+                                <div class="textarea-tags__list" hidden>
+
+                                </div>
+                            </label>
+                        </div>
+                        <div class="place-sale-options__row place-sale-options__row--3">
                             <div class="checkbox-secondary">
                                 <input id="test-id_1" name="test-id-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
                                 <label for="test-id_1" class="checkbox-secondary__label">

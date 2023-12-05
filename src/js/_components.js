@@ -10,7 +10,9 @@ import {
     searchSelectOne
 } from './components/filter';
 import getHeightBlock from './modules/getHeightBlock'
-import {choicesSelect} from './components/choices';
+import {
+    choicesSelect
+} from './components/choices';
 import {
     simplebar
 } from './components/simplebar';
@@ -20,6 +22,7 @@ import {
     inputText,
     inputOnlyNumber,
     textareaSecondary,
+    textareaTags,
     inputClue
 } from './components/inputs';
 import {
@@ -47,7 +50,9 @@ import {
 import dropdown from './modules/dropdown';
 import dropdownItems from './modules/dropdownItems';
 import dropdownDown from './modules/dropdownDown';
-import { emergingBlockScroll } from './modules/emergingBlockScroll';
+import {
+    emergingBlockScroll
+} from './modules/emergingBlockScroll';
 import controlCards from './components/controlCards';
 import videoBlock from './components/videoBlock';
 import reviewModal from './components/reviewModal';
@@ -150,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
     inputText();
     inputOnlyNumber();
     textareaSecondary();
-
+    textareaTags();
     // ==================================================
 
     cardSecondaryActions();
@@ -231,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputsMaskOgrn = document.querySelectorAll('.input-ogrn-mask');
     const inputsMaskOgrnip = document.querySelectorAll('.input-ogrnip-mask');
     const inputsInnMask = document.querySelectorAll('.input-inn-mask');
-    
+
     inputsMaskPhone.forEach(input => inputMaskPhone(input));
     inputsMaskSeriesNumber.forEach(input => inputMaskSeriesNumber(input));
     inputsMaskDepartCode.forEach(input => inputMaskDepartCode(input));
@@ -239,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
     inputsMaskOgrn.forEach(input => inputMaskOgrn(input));
     inputsMaskOgrnip.forEach(input => inputMaskOgrnip(input));
     inputsInnMask.forEach(input => inputMaskInn(input));
-    
+
     // ==================================================
 
     dropdown('.dots-dropdown', '.dots-dropdown__target');
@@ -293,4 +298,22 @@ document.addEventListener('DOMContentLoaded', () => {
             },
         })
     })
+    const typeValueTarget = document.querySelector('[data-type-value-target]');
+    const typeValueField = document.querySelector('[data-type-value-field]');
+    if (typeValueTarget && typeValueField) {
+        toggle(typeValueTarget, typeValueField);
+        typeValueTarget.addEventListener('change', () => {
+            toggle(typeValueTarget, typeValueField);
+        });
+
+        function toggle(typeValueTarget, typeValueField) {
+            const value = typeValueTarget.querySelector('.choices__list.choices__list--single .choices__item.choices__item--selectable').dataset.value;
+            if (value === 'list-one' || value === 'list-multiple') {
+                typeValueField.removeAttribute('hidden');
+            } else {
+                typeValueField.setAttribute('hidden', '');
+            }
+        }
+    }
+
 })

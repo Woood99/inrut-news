@@ -17,6 +17,7 @@ export const currentInputText = (input) => {
 
 function inputTextBody(el) {
     const input = el.querySelector('.input-text__input');
+    input.value.length >= 1 ? el.classList.add('_active') : el.classList.remove('_active');
     input.addEventListener('input', () => {
         if (el.classList.contains('input-text--only-number')) {
             input.value = input.value.replace(/\D/g, '');
@@ -25,11 +26,7 @@ function inputTextBody(el) {
         if (el.classList.contains('input-text--only-number-default')) {
             input.value = input.value.replace(/\D/g, '');
         }
-        if (input.value.length >= 1) {
-            el.classList.add('_active')
-        } else {
-            el.classList.remove('_active')
-        }
+        input.value.length >= 1 ? el.classList.add('_active') : el.classList.remove('_active');
     });
     inputCursorEnd(input, 'focus');
 }
@@ -102,7 +99,71 @@ export const textareaSecondary = () => {
         target.value.length >= 1 ? currentTextarea.classList.add('_active') : currentTextarea.classList.remove('_active');
     }
 };
+export const textareaTags = () => {
+    const textareas = document.querySelectorAll('.textarea-tags');
+    textareas.forEach(textarea => {
+        const listTag = textarea.querySelector('.textarea-tags__list');
+        const textareaInput = textarea.querySelector('.textarea-tags__input');
+        textareaInput.addEventListener('input', (e) => {
+            changeHeight();
+        });
+        textareaInput.addEventListener('keydown', (e) => {
+            if ((e.keyCode === 188 || e.keyCode === 13) && textareaInput.value.length >= 2) {
+                if (e.keyCode === 13) {
+                    e.preventDefault();
+                }
+                createTag(textareaInput.value);
+                setTimeout(() => {
+                    textareaInput.value = '';
+                    changeHeight();
+                }, 1);
+            }
+        })
+        listTag.addEventListener('click', (e) => {
+            const target = e.target;
+            if (target.closest('.textarea-tags__tag-remove')) {
+                const currentTag = target.closest('.textarea-tags__tag');
+                currentTag.remove();
+                updateTextarea(textarea);
+                changeHeight();
+            }
+        })
 
+        function changeHeight() {
+            textarea.style.height = `${listTag.clientHeight + textareaInput.scrollHeight}px`;
+        }
+
+        function createTag(value) {
+            const html = `
+            <div class="textarea-tags__tag">
+                <span data-tag-full-name="${value}">${valueDots(value)}</span>
+                <svg class="textarea-tags__tag-remove" title="Удалить">
+                    <use xlink:href="./img/sprite.svg#x"></use>
+                </svg>
+            </div>
+           `;
+            listTag.insertAdjacentHTML('beforeend', html);
+            updateTextarea(textarea);
+        }
+
+        function valueDots(value) {
+            const maxLength = 25;
+            const result = `${value.substring(0, maxLength)}${value.length >= maxLength ? '...' : ''}`;
+            return result;
+        }
+
+        function updateTextarea(textarea) {
+            const items = textarea.querySelectorAll('.textarea-tags__tag');
+            if (items.length > 0) {
+                listTag.removeAttribute('hidden');
+                textarea.classList.add('_active');
+            } else {
+                listTag.setAttribute('hidden', '');
+                textarea.classList.remove('_active');
+            }
+        }
+    });
+};
 export const inputClue = (target, name, html) => {
     const targets = document.querySelectorAll(target);
     let timeout;
@@ -145,3 +206,4 @@ document.querySelectorAll('.textarea-primary').forEach(textarea => {
     const field = textarea.querySelector('.textarea-primary__input');
     valueToValueAttr(field);
 })
+

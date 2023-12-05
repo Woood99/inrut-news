@@ -4308,7 +4308,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_inputs__WEBPACK_IMPORTED_MODULE_6__.inputText)();
   (0,_components_inputs__WEBPACK_IMPORTED_MODULE_6__.inputOnlyNumber)();
   (0,_components_inputs__WEBPACK_IMPORTED_MODULE_6__.textareaSecondary)();
-
+  (0,_components_inputs__WEBPACK_IMPORTED_MODULE_6__.textareaTags)();
   // ==================================================
 
   (0,_components_cardActions__WEBPACK_IMPORTED_MODULE_29__.cardSecondaryActions)();
@@ -4446,6 +4446,22 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+  const typeValueTarget = document.querySelector('[data-type-value-target]');
+  const typeValueField = document.querySelector('[data-type-value-field]');
+  if (typeValueTarget && typeValueField) {
+    toggle(typeValueTarget, typeValueField);
+    typeValueTarget.addEventListener('change', () => {
+      toggle(typeValueTarget, typeValueField);
+    });
+    function toggle(typeValueTarget, typeValueField) {
+      const value = typeValueTarget.querySelector('.choices__list.choices__list--single .choices__item.choices__item--selectable').dataset.value;
+      if (value === 'list-one' || value === 'list-multiple') {
+        typeValueField.removeAttribute('hidden');
+      } else {
+        typeValueField.setAttribute('hidden', '');
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -9517,6 +9533,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "inputOnlyNumber": () => (/* binding */ inputOnlyNumber),
 /* harmony export */   "inputText": () => (/* binding */ inputText),
 /* harmony export */   "textareaSecondary": () => (/* binding */ textareaSecondary),
+/* harmony export */   "textareaTags": () => (/* binding */ textareaTags),
 /* harmony export */   "valueToValueAttr": () => (/* binding */ valueToValueAttr)
 /* harmony export */ });
 /* harmony import */ var _modules_inputResize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modules/inputResize */ "./src/js/modules/inputResize.js");
@@ -9539,6 +9556,7 @@ const currentInputText = input => {
 };
 function inputTextBody(el) {
   const input = el.querySelector('.input-text__input');
+  input.value.length >= 1 ? el.classList.add('_active') : el.classList.remove('_active');
   input.addEventListener('input', () => {
     if (el.classList.contains('input-text--only-number')) {
       input.value = input.value.replace(/\D/g, '');
@@ -9547,11 +9565,7 @@ function inputTextBody(el) {
     if (el.classList.contains('input-text--only-number-default')) {
       input.value = input.value.replace(/\D/g, '');
     }
-    if (input.value.length >= 1) {
-      el.classList.add('_active');
-    } else {
-      el.classList.remove('_active');
-    }
+    input.value.length >= 1 ? el.classList.add('_active') : el.classList.remove('_active');
   });
   (0,_modules_inputCursorEnd__WEBPACK_IMPORTED_MODULE_1__["default"])(input, 'focus');
 }
@@ -9618,6 +9632,67 @@ const textareaSecondary = () => {
   function toggleActive(target, currentTextarea) {
     target.value.length >= 1 ? currentTextarea.classList.add('_active') : currentTextarea.classList.remove('_active');
   }
+};
+const textareaTags = () => {
+  const textareas = document.querySelectorAll('.textarea-tags');
+  textareas.forEach(textarea => {
+    const listTag = textarea.querySelector('.textarea-tags__list');
+    const textareaInput = textarea.querySelector('.textarea-tags__input');
+    textareaInput.addEventListener('input', e => {
+      changeHeight();
+    });
+    textareaInput.addEventListener('keydown', e => {
+      if ((e.keyCode === 188 || e.keyCode === 13) && textareaInput.value.length >= 2) {
+        if (e.keyCode === 13) {
+          e.preventDefault();
+        }
+        createTag(textareaInput.value);
+        setTimeout(() => {
+          textareaInput.value = '';
+          changeHeight();
+        }, 1);
+      }
+    });
+    listTag.addEventListener('click', e => {
+      const target = e.target;
+      if (target.closest('.textarea-tags__tag-remove')) {
+        const currentTag = target.closest('.textarea-tags__tag');
+        currentTag.remove();
+        updateTextarea(textarea);
+        changeHeight();
+      }
+    });
+    function changeHeight() {
+      textarea.style.height = `${listTag.clientHeight + textareaInput.scrollHeight}px`;
+    }
+    function createTag(value) {
+      const html = `
+            <div class="textarea-tags__tag">
+                <span data-tag-full-name="${value}">${valueDots(value)}</span>
+                <svg class="textarea-tags__tag-remove" title="Удалить">
+                    <use xlink:href="./img/sprite.svg#x"></use>
+                </svg>
+            </div>
+           `;
+      listTag.insertAdjacentHTML('beforeend', html);
+      updateTextarea(textarea);
+    }
+    function valueDots(value) {
+      const maxLength = 25;
+      const result = `${value.substring(0, maxLength)}${value.length >= maxLength ? '...' : ''}`;
+      return result;
+    }
+    function updateTextarea(textarea) {
+      const items = textarea.querySelectorAll('.textarea-tags__tag');
+      if (items.length > 0) {
+        listTag.removeAttribute('hidden');
+        textarea.classList.add('_active');
+      } else {
+        listTag.setAttribute('hidden', '');
+        textarea.classList.remove('_active');
+      }
+    }
+  });
 };
 const inputClue = (target, name, html) => {
   const targets = document.querySelectorAll(target);

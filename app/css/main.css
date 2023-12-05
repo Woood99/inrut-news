@@ -15225,7 +15225,7 @@ textarea.input-reset {
   align-items: start;
 }
 .field-select__name {
-  margin-top: 4px;
+  margin-top: 10px;
   margin-right: 24px;
 }
 .field-select__name._width-limitation {
@@ -15252,7 +15252,20 @@ textarea.input-reset {
   border-radius: 12px;
   border: 1px solid var(--primary200);
   white-space: nowrap;
-  margin: 0 8px 8px 0;
+  margin: 0 4px 4px 0;
+}
+.field-select__item._active {
+  background-color: var(--blue);
+  color: var(--white);
+  border: 1px solid var(--blue);
+}
+.field-select__item.focus-visible:not(._active) {
+  background-color: var(--primary200);
+}
+@media (min-width: 1213px) {
+  .field-select__item:hover:not(._active) {
+    background-color: var(--primary200);
+  }
 }
 
 .field-range {
@@ -15281,6 +15294,12 @@ textarea.input-reset {
   display: -ms-flexbox;
   display: flex;
 }
+.field-range__nav .input-text__label {
+  -ms-grid-columns: 1fr -webkit-max-content;
+  -ms-grid-columns: 1fr max-content;
+  grid-template-columns: 1fr -webkit-max-content;
+  grid-template-columns: 1fr max-content;
+}
 .field-range__nav .input-text:nth-child(1) .input-text__label {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -15288,6 +15307,45 @@ textarea.input-reset {
 .field-range__nav .input-text:nth-child(2) .input-text__label {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+.field-quantity-selection {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+}
+.field-quantity-selection__name {
+  margin-top: 10px;
+  margin-right: 24px;
+}
+.field-quantity-selection__name._width-limitation {
+  width: 145px;
+}
+
+.field-dropdown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.field-dropdown__name {
+  margin-right: 24px;
+}
+.field-dropdown__name._width-limitation {
+  width: 145px;
+}
+.field-dropdown__wrapper {
+  width: 100%;
+  max-width: 462px;
+}
+.field-dropdown__wrapper .search-select__button-wrapper > div:nth-child(2) {
+  margin-left: 0;
+  text-align: left;
 }
 
 .card-info {
@@ -34023,6 +34081,9 @@ textarea.input-reset {
     grid-template-columns: 1fr;
   }
 }
+.submit-app-options__item:not(:last-child) {
+  margin-bottom: 24px;
+}
 .submit-app-options__textarea {
   --height: 165px;
 }
@@ -34333,6 +34394,7 @@ textarea.input-reset {
 .place-sale-address__map {
   margin-top: 24px;
   height: 550px;
+  overflow: hidden;
 }
 @media (max-width: 1212px) {
   .place-sale-address__map {

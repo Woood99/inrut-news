@@ -108,10 +108,10 @@ export const textareaTags = () => {
             changeHeight();
         });
         textareaInput.addEventListener('keydown', (e) => {
-            if ((e.keyCode === 188 || e.keyCode === 13) && textareaInput.value.length >= 2) {
-                if (e.keyCode === 13) {
-                    e.preventDefault();
-                }
+            if (e.keyCode === 13) {
+                e.preventDefault();
+            }
+            if ((e.keyCode === 13 || e.key === ',') && textareaInput.value.length >= 2) {
                 createTag(textareaInput.value);
                 setTimeout(() => {
                     textareaInput.value = '';

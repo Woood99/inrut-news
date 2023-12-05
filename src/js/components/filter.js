@@ -443,16 +443,16 @@ export const searchSelectOne = () => {
 
                 // ПРИМЕР!!
                 if (container.closest('.your-contacts-field__wrapper')) {
-                     const tel = container.nextElementSibling;
+                    const tel = container.nextElementSibling;
                     tel.classList.add('_active');
-                     tel.querySelector('input').value = '+7 999 999-99-99';
+                    tel.querySelector('input').value = '+7 999 999-99-99';
                 }
             })
         })
 
         if (tags.length > 0) {
             tags.forEach(tag => {
-                tag.addEventListener('click',() => {
+                tag.addEventListener('click', () => {
                     if (container.classList.contains('search-select-one--tags-one')) {
                         tags.forEach(tag => tag.classList.remove('_active'));
                     }
@@ -504,7 +504,7 @@ export const filterControl = () => {
     containers.forEach(container => {
         const itemsHidden = container.querySelectorAll('.filter__row[hidden]');
         const moreBtn = container.querySelector('.filter__btn-control');
-        if (moreBtn){
+        if (moreBtn) {
             const btnTextMap = {
                 more: moreBtn.querySelector('span').textContent,
                 none: 'Скрыть фильтры'
@@ -775,7 +775,27 @@ export const dropdownDefault = (containerEl, targetEl, dropdownEl) => {
         target.classList.remove('_active');
     }
 }
+export const fieldSelect = () => {
+    const containers = document.querySelectorAll('.field-select');
+    if (containers.length === 0) return;
+    containers.forEach(container => {
+        container.addEventListener('click', (e) => {
+            const target = e.target;
+            const item = target.closest('.field-select__item');
+            if (item) {
+                if (!container.classList.contains('field-select--multiple')) removeAllItems(container);
+                item.classList.toggle('_active');
+            }
+        })
+    })
 
+    function removeAllItems(container) {
+        const items = container.querySelectorAll('.field-select__item');
+        items.forEach(item => {
+            item.classList.remove('_active');
+        })
+    }
+}
 
 function filterModalScreenWidthCheck() {
     return window.innerWidth <= 1212;

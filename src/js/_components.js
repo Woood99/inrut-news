@@ -7,7 +7,8 @@ import {
     filterCustomSelectCheckboxes,
     dropdownDefault,
     searchSelect,
-    searchSelectOne
+    searchSelectOne,
+    fieldSelect
 } from './components/filter';
 import getHeightBlock from './modules/getHeightBlock'
 import {
@@ -139,6 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dropdownDefault('.presentation', '.presentation__btn', '.presentation__dropdown');
     searchSelect();
     searchSelectOne();
+    fieldSelect();
 
     // ==================================================
 

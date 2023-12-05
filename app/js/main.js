@@ -4292,6 +4292,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_filter__WEBPACK_IMPORTED_MODULE_0__.dropdownDefault)('.presentation', '.presentation__btn', '.presentation__dropdown');
   (0,_components_filter__WEBPACK_IMPORTED_MODULE_0__.searchSelect)();
   (0,_components_filter__WEBPACK_IMPORTED_MODULE_0__.searchSelectOne)();
+  (0,_components_filter__WEBPACK_IMPORTED_MODULE_0__.fieldSelect)();
 
   // ==================================================
 
@@ -7543,6 +7544,7 @@ const favoriteChoicePopup = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "dropdownDefault": () => (/* binding */ dropdownDefault),
+/* harmony export */   "fieldSelect": () => (/* binding */ fieldSelect),
 /* harmony export */   "filterControl": () => (/* binding */ filterControl),
 /* harmony export */   "filterCustomSelectCheckboxes": () => (/* binding */ filterCustomSelectCheckboxes),
 /* harmony export */   "filterDropdownChoice": () => (/* binding */ filterDropdownChoice),
@@ -8257,6 +8259,26 @@ const dropdownDefault = (containerEl, targetEl, dropdownEl) => {
   function closeDropdown() {
     dropdown.classList.remove('_active');
     target.classList.remove('_active');
+  }
+};
+const fieldSelect = () => {
+  const containers = document.querySelectorAll('.field-select');
+  if (containers.length === 0) return;
+  containers.forEach(container => {
+    container.addEventListener('click', e => {
+      const target = e.target;
+      const item = target.closest('.field-select__item');
+      if (item) {
+        if (!container.classList.contains('field-select--multiple')) removeAllItems(container);
+        item.classList.toggle('_active');
+      }
+    });
+  });
+  function removeAllItems(container) {
+    const items = container.querySelectorAll('.field-select__item');
+    items.forEach(item => {
+      item.classList.remove('_active');
+    });
   }
 };
 function filterModalScreenWidthCheck() {
@@ -9642,10 +9664,10 @@ const textareaTags = () => {
       changeHeight();
     });
     textareaInput.addEventListener('keydown', e => {
-      if ((e.keyCode === 188 || e.keyCode === 13) && textareaInput.value.length >= 2) {
-        if (e.keyCode === 13) {
-          e.preventDefault();
-        }
+      if (e.keyCode === 13) {
+        e.preventDefault();
+      }
+      if ((e.keyCode === 13 || e.key === ',') && textareaInput.value.length >= 2) {
         createTag(textareaInput.value);
         setTimeout(() => {
           textareaInput.value = '';

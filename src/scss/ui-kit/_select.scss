@@ -715,30 +715,31 @@
     &__item {
         height: 40px;
         padding: 0 16px;
-        color: var(--dark);
         font-weight: 500;
         display: flex;
         align-items: center;
         border-radius: 12px;
-        border: 1px solid var(--primary200);
         white-space: nowrap;
         margin: 0 4px 4px 0;
-        &._active{
-         background-color: var(--blue);
-         color: var(--white);
-         border: 1px solid var(--blue);
+
+        color: var(--dark);
+        background-color: var(--primary200);
+
+        &._active {
+            background-color: var(--blue);
+            color: var(--white);
         }
+
         &.focus-visible {
-            &:not(._active){
+            &:not(._active) {
                 background-color: var(--primary200);
             }
         }
-        @media (min-width:$desktop-min){
-             &:hover{
-                &:not(._active){
-                    background-color: var(--primary200);
-                }
-             } 
+
+        @media (min-width:$desktop-min) {
+            &:hover {
+                &:not(._active) {}
+            }
         }
     }
 }
@@ -758,11 +759,28 @@
     &__wrapper {
         display: flex;
         flex-wrap: wrap;
+
         .input-text {
             &__label {
-                grid-template-columns: 1fr max-content;
+                grid-template-columns: max-content 1fr max-content;
+                @media (max-width:$desktop){
+                    grid-template-columns: 1fr max-content;
+                    >span{
+                        display: none;
+                    }
+                }
             }
+            &__input{
+                &::placeholder {
+                    opacity: 1;
+                }
 
+                @media (min-width:$desktop-min) {
+                    &::placeholder {
+                        opacity: 0;
+                    }
+                }
+            }
             &:nth-child(1) {
                 .input-text__label {
                     border-top-right-radius: 0;
@@ -803,10 +821,12 @@
         width: var(--width);
         flex: 0 0 var(--width);
     }
-    &__wrapper{
+
+    &__wrapper {
         width: 100%;
         max-width: 462px;
-        .search-select__button-wrapper > div:nth-child(2){
+
+        .search-select__button-wrapper>div:nth-child(2) {
             margin-left: 0;
             text-align: left;
         }

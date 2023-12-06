@@ -10987,6 +10987,13 @@ const mortgageRequests = () => {
   const estateToggle = form.querySelector('[data-mortgage-requests-estate]');
   const estatesContainer = form.querySelector('.mortgage-requests__estates');
   const createEstateBtn = form.querySelector('.mortgage-requests__create-estate');
+  const documentsContainer = form.querySelector('.mortgage-requests__documents');
+  const documentTax = documentsContainer.querySelector('[data-mortgage-requests-document="tax"]');
+  const documentNdfl = documentsContainer.querySelector('[data-mortgage-requests-document="ndfl"]');
+  const documentArbeit = documentsContainer.querySelector('[data-mortgage-requests-document="arbeit"]');
+  const documentUmsatz = documentsContainer.querySelector('[data-mortgage-requests-document="umsatz"]');
+  const documentReferenceBank = documentsContainer.querySelector('[data-mortgage-requests-document="reference-bank"]');
+  const documentsIncome = [documentTax, documentNdfl, documentArbeit, documentUmsatz, documentReferenceBank];
   let formEventInput = false;
   form.addEventListener('click', e => {
     setTimeout(() => {
@@ -11427,9 +11434,9 @@ const mortgageRequests = () => {
     incomeRemoveError(controls);
     const result = createErrorFields(errorSectionItems);
     if (result === false && controls === true) {
-      closeAllSection(form);
-      openErrorSection(errorSectionItems);
-      scrollToErrorSection(errorSectionItems);
+      // closeAllSection(form);
+      // openErrorSection(errorSectionItems);
+      // scrollToErrorSection(errorSectionItems);
     }
     return result;
   }
@@ -11737,16 +11744,11 @@ const mortgageRequests = () => {
     const currentIncome = form.querySelector(`[data-mortgage-requests-income="${value}"]`);
     nameIncome.setAttribute('data-mortgage-requests-income-name', value);
     nameIncome.classList.remove('_inputs-event');
-    if (value === 'default') {
-      incomes.forEach(income => {
-        income.setAttribute('hidden', '');
-        income.innerHTML = '';
-      });
-    } else {
-      incomes.forEach(income => {
-        income !== currentIncome ? income.setAttribute('hidden', '') : income.removeAttribute('hidden');
-      });
-    }
+    incomes.forEach(income => {
+      income.setAttribute('hidden', '');
+      income.innerHTML = '';
+      income !== currentIncome ? income.setAttribute('hidden', '') : income.removeAttribute('hidden');
+    });
     let html;
     if (value === 'business') {
       html = `
@@ -11758,9 +11760,8 @@ const mortgageRequests = () => {
                     </span>
                     <select class="select-secondary__body" hidden name="complex">
                         <option placeholder>Не выбрано</option>
-                        <option value="room-2">Справка по форме банка</option>
-                        <option value="room-1">2-НДФЛ</option>
-                        <option value="room-1">Без подтверждения</option>
+                        <option value="tax">Налоговая декларация</option>
+                        <option value="none">Без подтверждения</option>
                     </select>
                 </div>
             </div>
@@ -11888,9 +11889,9 @@ const mortgageRequests = () => {
                     </span>
                     <select class="select-secondary__body" hidden name="complex">
                         <option placeholder>Не выбрано</option>
-                        <option value="room-2">Справка по форме банка</option>
-                        <option value="room-1">2-НДФЛ</option>
-                        <option value="room-1">Без подтверждения</option>
+                        <option value="reference-bank">Справка по форме банка</option>
+                        <option value="ndfl">2-НДФЛ</option>
+                        <option value="none">Без подтверждения</option>
                     </select>
                 </div>
             </div>
@@ -12033,8 +12034,8 @@ const mortgageRequests = () => {
                     </span>
                     <select class="select-secondary__body" hidden name="complex">
                         <option placeholder>Не выбрано</option>
-                        <option value="room-1">Налоговая декларация</option>
-                        <option value="room-2">Без подтверждения</option>
+                        <option value="tax">Налоговая декларация</option>
+                        <option value="none">Без подтверждения</option>
                     </select>
                 </div>
             </div>
@@ -12179,9 +12180,39 @@ const mortgageRequests = () => {
     selectSecondary.forEach(select => {
       (0,_choices__WEBPACK_IMPORTED_MODULE_4__.selectSecondaryCreate)(select);
       select.addEventListener('change', () => {
+        const basicIncome = select.closest('[data-mortgage-requests-field="basic-income"]');
+        if (basicIncome) {
+          const incomeName = basicIncome.closest('[data-mortgage-requests-income]').dataset.mortgageRequestsIncome;
+          const valueSelect = basicIncome.querySelector('.choices__list.choices__list--single .choices__item.choices__item--selectable').dataset.value;
+          console.log(valueSelect);
+          if (incomeName === 'business') {
+            if (valueSelect === 'tax') {
+              hiddenAllDocuments(documentsIncome);
+              documentTax.removeAttribute('hidden');
+              documentUmsatz.removeAttribute('hidden');
+            } else {
+              hiddenAllDocuments(documentsIncome);
+            }
+          }
+          if (incomeName === 'hiring') {
+            if (valueSelect === 'ndfl') {
+              hiddenAllDocuments(documentsIncome);
+              documentArbeit.removeAttribute('hidden');
+              documentNdfl.removeAttribute('hidden');
+            } else if (valueSelect === 'reference-bank') {
+              hiddenAllDocuments(documentsIncome);
+              documentReferenceBank.removeAttribute('hidden');
+            } else {
+              hiddenAllDocuments(documentsIncome);
+            }
+          }
+        }
         if (formEventInput) validate(false);
       });
     });
+    function hiddenAllDocuments(documents) {
+      documents.forEach(document => document.setAttribute('hidden', ''));
+    }
     new air_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"](dateRegistrationInput, {
       autoClose: true,
       isMobile: true,

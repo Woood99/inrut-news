@@ -44,6 +44,7 @@
         border-radius: 12px;
         overflow: hidden;
         position: relative;
+        transition: opacity $transitionSpeed $transitionFunction;
     }
 
     &__title {
@@ -81,6 +82,14 @@
             opacity: 1;
             visibility: visible;
         }
+    }
+
+    @media (min-width:$desktop-min){
+         &:hover{
+            .offer-room__image{
+                opacity: 0.75;
+            }
+         } 
     }
 }
 

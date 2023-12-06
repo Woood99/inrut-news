@@ -1985,49 +1985,32 @@
 .tag {
     height: 40px;
     padding: 0 16px;
-    color: var(--dark);
     font-weight: 500;
     display: flex;
     align-items: center;
     border-radius: 12px;
-   background-color: var(--primary100);
     white-space: nowrap;
 
-    >div {
-        margin-left: 12px;
-        width: 16px;
-        height: 16px;
-        border-radius: 50%;
-        background-color: var(--white);
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    svg {
-        fill: none;
-        stroke: var(--dark);
-        stroke-width: 2px;
-        width: 8px;
-        height: 8px;
-    }
-
-    @media (min-width:$desktop-min) {
-        &:not(._no-select){
-            &:hover,
-            &.focus-visible {
-                background-color: var(--blue);
-                color: var(--white);
-            }
-        }
-    }
-
-    @media (max-width:$desktop) {}
+    color: var(--dark);
+    background-color: var(--primary100);
 
     &._active {
         background-color: var(--blue);
         color: var(--white);
+    }
+
+    &.focus-visible {
+        &:not(._active) {
+            background-color: var(--primary200);
+        }
+    }
+
+    @media (min-width:$desktop-min) {
+        &:hover {
+            &:not(._active) {
+                background-color: var(--primary200);
+            }
+        }
     }
     &._no-select{
         cursor: default;

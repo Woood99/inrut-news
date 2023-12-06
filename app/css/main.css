@@ -12030,7 +12030,6 @@ textarea.input-reset {
 .tag {
   height: 40px;
   padding: 0 16px;
-  color: var(--dark);
   font-weight: 500;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -12039,41 +12038,21 @@ textarea.input-reset {
   -ms-flex-align: center;
   align-items: center;
   border-radius: 12px;
-  background-color: var(--primary100);
   white-space: nowrap;
-}
-.tag > div {
-  margin-left: 12px;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background-color: var(--white);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-.tag svg {
-  fill: none;
-  stroke: var(--dark);
-  stroke-width: 2px;
-  width: 8px;
-  height: 8px;
-}
-@media (min-width: 1213px) {
-  .tag:not(._no-select):hover, .tag:not(._no-select).focus-visible {
-    background-color: var(--blue);
-    color: var(--white);
-  }
+  color: var(--dark);
+  background-color: var(--primary100);
 }
 .tag._active {
   background-color: var(--blue);
   color: var(--white);
+}
+.tag.focus-visible:not(._active) {
+  background-color: var(--primary200);
+}
+@media (min-width: 1213px) {
+  .tag:hover:not(._active) {
+    background-color: var(--primary200);
+  }
 }
 .tag._no-select {
   cursor: default;
@@ -15255,32 +15234,7 @@ textarea.input-reset {
   flex-wrap: wrap;
 }
 .field-select__item {
-  height: 40px;
-  padding: 0 16px;
-  font-weight: 500;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border-radius: 12px;
-  white-space: nowrap;
   margin: 0 4px 4px 0;
-  color: var(--dark);
-  background-color: var(--primary100);
-}
-.field-select__item._active {
-  background-color: var(--blue);
-  color: var(--white);
-}
-.field-select__item.focus-visible:not(._active) {
-  background-color: var(--primary200);
-}
-@media (min-width: 1213px) {
-  .field-select__item:hover:not(._active) {
-    background-color: var(--primary200);
-  }
 }
 
 .field-range {
@@ -19280,6 +19234,8 @@ textarea.input-reset {
   border-radius: 12px;
   overflow: hidden;
   position: relative;
+}
+.offer-room__image img {
   -webkit-transition: opacity 0.4s ease-in-out;
   -o-transition: opacity 0.4s ease-in-out;
   transition: opacity 0.4s ease-in-out;
@@ -19319,8 +19275,8 @@ textarea.input-reset {
   visibility: visible;
 }
 @media (min-width: 1213px) {
-  .offer-room:hover .offer-room__image {
-    opacity: 0.75;
+  .offer-room:hover .offer-room__image img {
+    opacity: 0.8;
   }
 }
 

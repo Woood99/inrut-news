@@ -8274,17 +8274,16 @@ const fieldSelect = () => {
       const target = e.target;
       const item = target.closest('.field-select__item');
       if (item) {
-        if (!container.classList.contains('field-select--multiple')) removeAllItems(container);
+        if (!container.classList.contains('field-select--multiple')) {
+          const items = container.querySelectorAll('.field-select__item');
+          items.forEach(currentItem => {
+            if (item !== currentItem) currentItem.classList.remove('_active');
+          });
+        }
         item.classList.toggle('_active');
       }
     });
   });
-  function removeAllItems(container) {
-    const items = container.querySelectorAll('.field-select__item');
-    items.forEach(item => {
-      item.classList.remove('_active');
-    });
-  }
 };
 function filterModalScreenWidthCheck() {
   return window.innerWidth <= 1212;
@@ -13350,29 +13349,20 @@ const tag = () => {
           });
         }
       }
+      const tags = container.querySelectorAll('.tag');
+      tags.forEach(tag => {
+        tag.addEventListener('click', () => {
+          if (tag.classList.contains('_no-select')) return;
+          if (tag.closest('._drag')) return;
+          if (!tag.classList.contains('_active')) {
+            tag.classList.add('_active');
+          } else {
+            tag.classList.remove('_active');
+          }
+        });
+      });
     });
   }
-  const tags = document.querySelectorAll('.tag');
-  const svgIconHTML = `
-        <div>
-            <svg>
-                <use xlink:href="./img/sprite.svg#x"></use>
-            </svg>
-        </div>
-    `;
-  tags.forEach(tag => {
-    tag.addEventListener('click', () => {
-      if (tag.classList.contains('_no-select')) return;
-      if (tag.closest('._drag')) return;
-      if (!tag.classList.contains('_active')) {
-        tag.classList.add('_active');
-        tag.insertAdjacentHTML('beforeend', svgIconHTML);
-      } else {
-        tag.classList.remove('_active');
-        tag.querySelector('div').remove();
-      }
-    });
-  });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (tag);
 

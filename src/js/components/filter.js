@@ -779,6 +779,10 @@ export const fieldSelect = () => {
     const containers = document.querySelectorAll('.field-select');
     if (containers.length === 0) return;
     containers.forEach(container => {
+        const name = container.dataset.fieldSelectName;
+        container.querySelectorAll('.field-select__item').forEach((item, index) => {
+            item.setAttribute(`data-select-${name}-index`, index + 1);
+        })
         container.addEventListener('click', (e) => {
             const target = e.target;
             const item = target.closest('.field-select__item');
@@ -800,3 +804,4 @@ export const fieldSelect = () => {
 function filterModalScreenWidthCheck() {
     return window.innerWidth <= 1212;
 }
+

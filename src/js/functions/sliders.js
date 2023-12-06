@@ -457,9 +457,8 @@ function initSliders() {
                     nextEl: el.parentElement.querySelector('.nav-arrow-primary--next'),
                 },
                 pagination: {
-                    el: el.closest('.furnishing-sets__tab') ? 
-                    el.closest('.furnishing-sets__tab').querySelector('.pagination-primary') : 
-                    el.closest('.object-apart-renov__item').querySelector('.pagination-primary'),
+                    el: el.closest('.furnishing-sets__tab') ?
+                        el.closest('.furnishing-sets__tab').querySelector('.pagination-primary') : el.closest('.object-apart-renov__item').querySelector('.pagination-primary'),
                     type: 'fraction',
                     renderFraction: function (currentClass, totalClass) {
                         return `
@@ -662,19 +661,24 @@ function initSliders() {
         })
     }
 
-
-    if (document.querySelector('.room-body__items')) {
-        const items = document.querySelectorAll('.room-body__items');
+    const layoutsItems = document.querySelector('.layouts__items');
+    if (layoutsItems) {
+        const items = layoutsItems.querySelectorAll('.layouts__item');
         items.forEach(el => {
-            const slider = new Swiper(el, {
+            const body = el.querySelector('.room-body__items');
+            createSlider(body,el);
+        })
+
+        function createSlider(body,el) {
+            const slider = new Swiper(body, {
                 observer: true,
                 observeParents: true,
                 slidesPerView: 1.08,
                 spaceBetween: 8,
                 speed: 800,
                 navigation: {
-                    prevEl: el.closest('.room-body').querySelector('.nav-arrow-primary--prev'),
-                    nextEl: el.closest('.room-body').querySelector('.nav-arrow-primary--next'),
+                    prevEl: body.closest('.room-body').querySelector('.nav-arrow-primary--prev'),
+                    nextEl: body.closest('.room-body').querySelector('.nav-arrow-primary--next'),
                 },
                 breakpoints: {
                     577: {
@@ -691,30 +695,30 @@ function initSliders() {
                     }
                 }
             });
-            showContainer();
+            showContainer(body);
+            el.classList.add('_init');
+        }
+        function showContainer(el) {
+            const btns = el.querySelectorAll('.card-scheme');
+            const containers = el.closest('.room-body').querySelectorAll('.room-body__container');
+            btns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const currentSlide = btn.closest('.swiper-slide');
+                    const currentSlideIndex = Array.prototype.slice.call(el.querySelector('.swiper-wrapper').children).indexOf(currentSlide);
+                    const currentContainer = containers[currentSlideIndex];
+                    btns.forEach(el => {
+                        if (e.currentTarget !== el) el.classList.remove('_active');
+                    });
+                    btn.classList.toggle('_active');
 
-
-            function showContainer() {
-                const btns = el.querySelectorAll('.card-scheme');
-                const containers = el.closest('.room-body').querySelectorAll('.room-body__container');
-                btns.forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        const currentSlide = btn.closest('.swiper-slide');
-                        const currentSlideIndex = Array.prototype.slice.call(el.querySelector('.swiper-wrapper').children).indexOf(currentSlide);
-                        const currentContainer = containers[currentSlideIndex];
-                        btns.forEach(el => {
-                            if (e.currentTarget !== el) el.classList.remove('_active');
-                        });
-                        btn.classList.toggle('_active');
-
-                        const headerFixed = document.querySelector('.header-fixed');
-                        const topHeaderMobile = document.querySelector('.top-page-inner');
-                        containers.forEach(container => {
-                          if (container !== currentContainer) {
-                            container.setAttribute('hidden','');
-                          }
-                        })
-                        if (currentContainer) {
+                    const headerFixed = document.querySelector('.header-fixed');
+                    const topHeaderMobile = document.querySelector('.top-page-inner');
+                    containers.forEach(container => {
+                        if (container !== currentContainer) {
+                            container.setAttribute('hidden', '');
+                        }
+                    })
+                    if (currentContainer) {
                         if (btn.classList.contains('_active')) {
                             _slideDown(currentContainer, 300);
 
@@ -747,11 +751,35 @@ function initSliders() {
                             }
                         }
                     }
-                    });
-                })
+                });
+            })
+        }
+
+
+        const observerCallback = function (mutationsList, observer) {
+            for (var mutation of mutationsList) {
+                if (mutation.type == 'childList') {
+                    const items = layoutsItems.querySelectorAll('.layouts__item');
+                    items.forEach(item => {
+                        if (!item.classList.contains('_init')) {
+                            const body = item.querySelector('.room-body__items');
+                            createSlider(body,item);
+                        }
+                    })
+                }
             }
-        })
+        };
+
+        const observer = new MutationObserver(observerCallback);
+        observer.observe(layoutsItems, {
+            attributes: true,
+            childList: true,
+            subtree: true
+        });
     }
+
+
+
     if (document.querySelector('.object-slider-two')) {
         const sliders = document.querySelectorAll('.object-slider-two');
         sliders.forEach(el => {

@@ -15227,9 +15227,10 @@ textarea.input-reset {
 .field-select__name {
   margin-top: 10px;
   margin-right: 24px;
-}
-.field-select__name._width-limitation {
-  width: 145px;
+  width: var(--width);
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 var(--width);
+  flex: 0 0 var(--width);
 }
 .field-select__wrapper {
   display: -webkit-box;
@@ -15278,9 +15279,10 @@ textarea.input-reset {
 }
 .field-range__name {
   margin-right: 24px;
-}
-.field-range__name._width-limitation {
-  width: 145px;
+  width: var(--width);
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 var(--width);
+  flex: 0 0 var(--width);
 }
 .field-range__wrapper {
   display: -webkit-box;
@@ -15289,22 +15291,17 @@ textarea.input-reset {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
-.field-range__nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-.field-range__nav .input-text__label {
+.field-range__wrapper .input-text__label {
   -ms-grid-columns: 1fr -webkit-max-content;
   -ms-grid-columns: 1fr max-content;
   grid-template-columns: 1fr -webkit-max-content;
   grid-template-columns: 1fr max-content;
 }
-.field-range__nav .input-text:nth-child(1) .input-text__label {
+.field-range__wrapper .input-text:nth-child(1) .input-text__label {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.field-range__nav .input-text:nth-child(2) .input-text__label {
+.field-range__wrapper .input-text:nth-child(2) .input-text__label {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -15320,9 +15317,10 @@ textarea.input-reset {
 .field-quantity-selection__name {
   margin-top: 10px;
   margin-right: 24px;
-}
-.field-quantity-selection__name._width-limitation {
-  width: 145px;
+  width: var(--width);
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 var(--width);
+  flex: 0 0 var(--width);
 }
 
 .field-dropdown {
@@ -15335,9 +15333,10 @@ textarea.input-reset {
 }
 .field-dropdown__name {
   margin-right: 24px;
-}
-.field-dropdown__name._width-limitation {
-  width: 145px;
+  width: var(--width);
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 var(--width);
+  flex: 0 0 var(--width);
 }
 .field-dropdown__wrapper {
   width: 100%;
@@ -34040,6 +34039,11 @@ textarea.input-reset {
 
 .submit-app-options__choice:not(:last-child) {
   margin-bottom: 24px;
+}
+.submit-app-options__choice .field-select__name,
+.submit-app-options__choice .field-dropdown__name,
+.submit-app-options__choice .field-range__name {
+  --width: 179px;
 }
 .submit-app-options__row {
   display: -ms-grid;

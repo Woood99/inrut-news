@@ -111,7 +111,7 @@ import AirDatepicker from 'air-datepicker';
 import {
     createCalc
 } from './components/createCalc';
-import createSale from './components/createSale';
+// import createSale from './components/createSale';
 import {
     videoLoad
 } from './components/videoLoad';
@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
     tooltipSecondary();
     dragDrops();
     createCalc();
-    createSale();
+    // createSale();
     videoLoad();
     сharacteristicsBlock();
     submitAppOffers();

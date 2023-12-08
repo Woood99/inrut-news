@@ -294,58 +294,21 @@
 .top-page-inner-title {
     padding-bottom: 24px;
 
-    @media (max-width:$desktop) {
-        justify-content: space-between;
-        background-color: var(--white);
-        padding-top: 0;
-        padding-bottom: 0;
-        height: 54px;
-
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 99;
-
-        .top-page-inner-title__title {
-            display: none;
-        }
-    }
-
     &__container {
         display: grid;
         grid-template-columns: max-content 1fr;
         grid-column-gap: 24px;
         grid-row-gap: 16px;
-
-        @media (max-width:$desktop) {
-            height: 100%;
-            align-items: center;
-
-        }
-
     }
 
     &__back {
         grid-column: 1/2;
         grid-row: 1/2;
-
-        @media (max-width:$desktop) {
-            grid-column: auto;
-            grid-row: auto;
-        }
     }
 
     &__title {
         grid-column: 1/2;
         grid-row: 2/3;
-
-        @media (max-width:$desktop) {
-            grid-column: auto;
-            grid-row: auto;
-            padding-left: 16px;
-            padding-right: 16px;
-        }
     }
 
     &__descr {
@@ -360,27 +323,16 @@
         align-items: center;
         grid-column: 2/3;
         grid-row: 2/3;
-
-        @media (max-width:$desktop) {
-            grid-row: auto;
-            grid-column: auto;
-            align-self: auto;
-            justify-self: end;
-        }
     }
 
     &__btn {
         &:not(:last-child) {
             margin-right: 2px;
-
-            @media (max-width:$desktop) {
-                margin-right: 24px;
-            }
         }
     }
 
     @media (max-width:$desktop) {
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        display: none;
     }
 }
 
@@ -403,7 +355,6 @@
     }
 
     @media (max-width:$desktop) {
-        box-shadow: var(--shadow-secondary);
         display: none;
     }
 
@@ -1152,6 +1103,17 @@
 
             span {
                 margin: 0;
+            }
+        }
+    }
+
+    .textarea-secondary{
+        &__input{
+            background-color: transparent;
+            border-radius: 12px;
+            border: 1px solid var(--primary200);
+            &::placeholder{
+                color: var(--gray);
             }
         }
     }

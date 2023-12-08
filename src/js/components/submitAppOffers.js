@@ -3,7 +3,7 @@ const submitAppOffers = () => {
     if (!container) return;
     const items = container.querySelectorAll('.submit-app-offers__item');
     const btn = container.querySelector('.submit-app-offers__btn');
-    const minItem = 4;
+    let minItem = 4;
     hiddenItems(items);
     if (btn) {
         if (items.length <= minItem) {
@@ -27,10 +27,11 @@ const submitAppOffers = () => {
         });
     }
     items.forEach(item => {
-        item.addEventListener('input',() => {
+        item.addEventListener('input', () => {
             item.classList.toggle('_active')
         })
     })
+
     function hiddenItems(items) {
         items.forEach((item, index) => {
             if (index >= minItem) {
@@ -46,6 +47,24 @@ const submitAppOffers = () => {
             item.removeAttribute('hidden');
         })
     }
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 1212) {
+            minItem = 4;
+            hiddenItems(items);
+            console.log('4');
+        }
+        if (window.innerWidth <= 1212 && window.innerWidth > 768) {
+            minItem = 3;
+            hiddenItems(items);
+            console.log('3');
+            return;
+        }
+        if (window.innerWidth <= 768) {
+            minItem = 2;
+            hiddenItems(items);
+            console.log('2');
+        }
+    });
 };
 
 export default submitAppOffers;

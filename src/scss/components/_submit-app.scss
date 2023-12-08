@@ -2,6 +2,12 @@
 
     &__top {}
 
+    &__title {
+        @media (max-width:$desktop) {
+            padding: 0 16px;
+        }
+    }
+
     &__body {
         margin-top: 8px;
         background-color: var(--stand-bg);
@@ -50,9 +56,10 @@
     }
 
     &__btn {
-      margin-top: 24px;
+        margin-top: 24px;
         padding: 0 81px;
         width: 100%;
+
         @media (max-width:$desktop) {
             margin-right: 16px;
         }
@@ -75,14 +82,18 @@
     &__title {}
 
     &__choice {
-        &:not(:last-child){
+        &:not(:last-child) {
             margin-bottom: 24px;
         }
-        .field-select,
-        .field-dropdown,
-        .field-range{
-            &__name{
-                --width: 179px;
+
+        @media (min-width:$desktop-min) {
+
+            .field-select,
+            .field-dropdown,
+            .field-range {
+                &__name {
+                    --width: 179px;
+                }
             }
         }
 
@@ -118,11 +129,16 @@
         @media (max-width:$desktop) {
             grid-row-gap: 16px;
             align-items: center;
+            grid-template-columns: repeat(2, 1fr)
+        }
+
+        @media (max-width:$smallTablet-max) {
             grid-template-columns: 1fr;
         }
     }
+
     &__item {
-        &:not(:last-child){
+        &:not(:last-child) {
             margin-bottom: 24px;
         }
     }
@@ -134,12 +150,14 @@
     &__import {
         margin-top: 24px;
     }
+
     &__offers {
         margin-top: 24px;
         padding-top: 24px;
         border-top: 1px solid var(--primary100);
     }
-    &__tags{
+
+    &__tags {
         margin-top: 24px;
         padding-top: 24px;
         border-top: 1px solid var(--primary100);
@@ -156,14 +174,24 @@
     }
 }
 
-.submit-app-offers{
-    &__list{
+.submit-app-offers {
+    &__list {
         display: grid;
-        grid-template-columns: repeat(4,1fr);
+        grid-template-columns: repeat(4, 1fr);
         grid-column-gap: 16px;
         grid-row-gap: 16px;
+        @media (max-width:$desktop){
+             grid-template-columns: repeat(3,1fr); 
+        }
+        @media (max-width:$smallTablet-max){
+             grid-template-columns: repeat(2,1fr); 
+        }
+        @media (max-width:$mobile-max){
+             grid-template-columns: 1fr; 
+        }
     }
-    &__btn{
+
+    &__btn {
         margin-top: 16px;
         color: var(--blue);
         display: flex;
@@ -188,13 +216,13 @@
         }
 
         @media (max-width:$desktop) {
-            display: none;
+       
         }
     }
 
-    &._active{
-        .submit-app-offers__btn{
-            svg{
+    &._active {
+        .submit-app-offers__btn {
+            svg {
                 transform: rotate(180deg);
             }
         }
@@ -203,27 +231,28 @@
 
 
 .submit-app-maps {
-    &__title {
-        @media (max-width:$desktop) {
-            padding: 0 16px;
-        }
-    }
+    &__title {}
 
-    >.row{
+    >.row {
         margin-top: 24px;
         display: grid;
-        grid-template-columns: repeat(3,1fr);
+        grid-template-columns: repeat(3, 1fr);
         grid-column-gap: 8px;
+
+        @media (max-width:$desktop) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width:$smallTablet-max) {
+            grid-template-columns: 1fr;
+            grid-row-gap: 16px;
+        }
     }
 
     &__descr {
         color: var(--primaryTwo);
         font-size: var(--default-fz);
         line-height: var(--default-lh);
-
-        @media (max-width:$desktop) {
-            padding: 0 16px;
-        }
     }
 
     &__map {
@@ -238,9 +267,7 @@
         }
     }
 
-    @media (max-width:$desktop) {
-        padding: 16px 0;
-    }
+    @media (max-width:$desktop) {}
 }
 
 
@@ -250,13 +277,10 @@
     height: 550px;
     width: 100%;
     position: relative;
+    overflow: hidden;
 
     @media (max-width:$desktop) {
-        height: 450px;
-    }
-
-    @media (max-width:$smallTablet-max) {
-        height: 250px;
+        height: 350px;
     }
 
     &__btns {
@@ -287,7 +311,7 @@
 
         padding: 0 10px 0 17px;
 
-     
+
 
         transition: box-shadow $transitionSpeed $transitionFunction;
 

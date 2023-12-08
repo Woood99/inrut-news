@@ -4212,11 +4212,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_dragDrop__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./components/dragDrop */ "./src/js/components/dragDrop.js");
 /* harmony import */ var air_datepicker__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! air-datepicker */ "./node_modules/air-datepicker/index.es.js");
 /* harmony import */ var _components_createCalc__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./components/createCalc */ "./src/js/components/createCalc.js");
-/* harmony import */ var _components_createSale__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./components/createSale */ "./src/js/components/createSale.js");
-/* harmony import */ var _components_videoLoad__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./components/videoLoad */ "./src/js/components/videoLoad.js");
-/* harmony import */ var _components_haracteristicsBlock__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./components/сharacteristicsBlock */ "./src/js/components/сharacteristicsBlock.js");
-/* harmony import */ var _components_submitAppOffers__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./components/submitAppOffers */ "./src/js/components/submitAppOffers.js");
-/* harmony import */ var _components_mortgageRequests__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ./components/mortgageRequests */ "./src/js/components/mortgageRequests.js");
+/* harmony import */ var _components_videoLoad__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./components/videoLoad */ "./src/js/components/videoLoad.js");
+/* harmony import */ var _components_haracteristicsBlock__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./components/сharacteristicsBlock */ "./src/js/components/сharacteristicsBlock.js");
+/* harmony import */ var _components_submitAppOffers__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./components/submitAppOffers */ "./src/js/components/submitAppOffers.js");
+/* harmony import */ var _components_mortgageRequests__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./components/mortgageRequests */ "./src/js/components/mortgageRequests.js");
 
 
 
@@ -4266,7 +4265,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
+// import createSale from './components/createSale';
 
 
 
@@ -4361,11 +4360,11 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_tooltips__WEBPACK_IMPORTED_MODULE_45__.tooltipSecondary)();
   (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_46__.dragDrops)();
   (0,_components_createCalc__WEBPACK_IMPORTED_MODULE_48__.createCalc)();
-  (0,_components_createSale__WEBPACK_IMPORTED_MODULE_49__["default"])();
-  (0,_components_videoLoad__WEBPACK_IMPORTED_MODULE_50__.videoLoad)();
-  (0,_components_haracteristicsBlock__WEBPACK_IMPORTED_MODULE_51__["default"])();
-  (0,_components_submitAppOffers__WEBPACK_IMPORTED_MODULE_52__["default"])();
-  (0,_components_mortgageRequests__WEBPACK_IMPORTED_MODULE_53__["default"])();
+  // createSale();
+  (0,_components_videoLoad__WEBPACK_IMPORTED_MODULE_49__.videoLoad)();
+  (0,_components_haracteristicsBlock__WEBPACK_IMPORTED_MODULE_50__["default"])();
+  (0,_components_submitAppOffers__WEBPACK_IMPORTED_MODULE_51__["default"])();
+  (0,_components_mortgageRequests__WEBPACK_IMPORTED_MODULE_52__["default"])();
   // ==================================================
 
   (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.validateRadioPrimary)('.complaint-popup__form', '.textarea-primary__input', '.complaint-popup__btn', '.radio-primary__input');
@@ -6916,124 +6915,6 @@ function blockAdded(block) {
     });
   }
 }
-
-/***/ }),
-
-/***/ "./src/js/components/createSale.js":
-/*!*****************************************!*\
-  !*** ./src/js/components/createSale.js ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-const createSale = () => {
-  const container = document.querySelector('.place-sale-sale');
-  if (!container) return;
-  const cards = container.querySelector('.place-sale-sale__cards');
-  const wrapper = cards.querySelector('.swiper-wrapper');
-  wrapper.addEventListener('click', e => {
-    const target = e.target;
-    const remove = target.closest('.card-stock-secondary__remove');
-    if (remove) {
-      e.preventDefault();
-      const item = remove.closest('.swiper-slide');
-      item.remove();
-      checkLengthCards();
-    }
-  });
-  checkLengthCards();
-  const title = document.querySelector('.add-complex .add-complex--complex .search-select-one__button-wrapper div:nth-child(2) span').textContent;
-  const name = container.querySelector('.place-sale-sale__field--name');
-  const nameInput = name.querySelector('input');
-  const start = container.querySelector('.place-sale-sale__field--start');
-  const startInput = start.querySelector('input');
-  const ending = container.querySelector('.place-sale-sale__field--ending');
-  const endingInput = ending.querySelector('input');
-  const descr = container.querySelector('.place-sale-sale__field--descr');
-  const descrInput = container.querySelector('.textarea-primary__input');
-  const photo = container.querySelector('.photo-load');
-  const photoInput = photo.querySelector('input');
-  const photoText = photo.querySelector('.photo-load__wrapper');
-  const photoTextCopy = photoText.innerHTML;
-  const btn = container.querySelector('.place-sale-sale__save');
-  btn.addEventListener('click', () => {
-    create();
-    clearAllField();
-    checkLengthCards();
-  });
-  function create() {
-    let file = photoInput.files[0];
-    const image = file ? window.URL.createObjectURL(file) : '';
-    const saleHTML = `
-        <div class="swiper-slide drag-drop__item" draggable="true">
-        <article class="card-stock-secondary">
-            <a href="./promotion.html" class="card-stock-secondary__container">
-                <button type="button" class="btn btn-reset card-stock-secondary__remove">
-                    <svg>
-                      <use xlink:href="./img/sprite.svg#trash"></use>
-                    </svg>
-                </button>
-                <div class="card-stock-secondary__image ibg">
-                    <picture>
-                        <source srcset="${image}" type="image/webp">
-                        <img loading="lazy" src="${image}" width="323" height="207" alt="${title}">
-                    </picture>
-                </div>
-                <div class="card-stock-secondary__content">
-                    <div class="row">
-                        <h3 class="card-stock-secondary__title title-4">
-                            ${title}
-                        </h3>
-                    </div>
-                    <div class="card-stock-secondary__name">
-                        ${nameInput.value}
-                    </div>
-                    <p class="card-stock-secondary__descr">
-                        ${descrInput.value}
-                    </p>
-                </div>
-                <div class="card-stock-secondary__times">
-                    <div>
-                        <span>Начало:</span>
-                        <span>${startInput.value}</span>
-                    </div>
-                    <div>
-                        <span>Окончание:</span>
-                        <span>${endingInput.value}</span>
-                    </div>
-                </div>
-            </a>
-        </article>
-        </div>
-        `;
-    wrapper.insertAdjacentHTML('beforeend', saleHTML);
-  }
-  function clearAllField() {
-    name.classList.remove('_active');
-    nameInput.value = '';
-    start.classList.remove('_active');
-    startInput.value = '';
-    ending.classList.remove('_active');
-    endingInput.value = '';
-    descr.classList.remove('_active');
-    descrInput.value = '';
-    photoInput.value = '';
-    photoText.innerHTML = photoTextCopy;
-  }
-  function checkLengthCards() {
-    const cardsLength = wrapper.querySelectorAll('.swiper-slide').length;
-    if (cardsLength >= 1) {
-      cards.classList.add('_active');
-    } else {
-      cards.classList.remove('_active');
-    }
-  }
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createSale);
 
 /***/ }),
 
@@ -13246,7 +13127,7 @@ const submitAppOffers = () => {
   if (!container) return;
   const items = container.querySelectorAll('.submit-app-offers__item');
   const btn = container.querySelector('.submit-app-offers__btn');
-  const minItem = 4;
+  let minItem = 4;
   hiddenItems(items);
   if (btn) {
     if (items.length <= minItem) {
@@ -13290,6 +13171,24 @@ const submitAppOffers = () => {
       item.removeAttribute('hidden');
     });
   }
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1212) {
+      minItem = 4;
+      hiddenItems(items);
+      console.log('4');
+    }
+    if (window.innerWidth <= 1212 && window.innerWidth > 768) {
+      minItem = 3;
+      hiddenItems(items);
+      console.log('3');
+      return;
+    }
+    if (window.innerWidth <= 768) {
+      minItem = 2;
+      hiddenItems(items);
+      console.log('2');
+    }
+  });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (submitAppOffers);
 
@@ -15467,38 +15366,6 @@ const tabs = () => {
                             </svg>
                         </div>
                     </button>
-                    <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--room furnishing-sets__btn--controls">
-                        <span>1</span>
-                        <div class="furnishing-sets__btn-remove">
-                            <svg>
-                                <use xlink:href="./img/sprite.svg#trash"></use>
-                            </svg>
-                        </div>
-                    </button>
-                    <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--room furnishing-sets__btn--controls">
-                        <span>2</span>
-                        <div class="furnishing-sets__btn-remove">
-                            <svg>
-                                <use xlink:href="./img/sprite.svg#trash"></use>
-                            </svg>
-                        </div>
-                    </button>
-                    <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--room furnishing-sets__btn--controls">
-                        <span>3</span>
-                        <div class="furnishing-sets__btn-remove">
-                            <svg>
-                                <use xlink:href="./img/sprite.svg#trash"></use>
-                            </svg>
-                        </div>
-                    </button>
-                    <button type="button" class="btn btn-reset furnishing-sets__btn furnishing-sets__btn--room furnishing-sets__btn--controls">
-                        <span>4</span>
-                        <div class="furnishing-sets__btn-remove">
-                            <svg>
-                                <use xlink:href="./img/sprite.svg#trash"></use>
-                            </svg>
-                        </div>
-                    </button>
                 </div>
                 <div class="furnishing-sets__create">
                     <button type="button" class="btn btn-reset furnishing-sets__create--room">
@@ -15514,153 +15381,6 @@ const tabs = () => {
                     <div class="photo-load">
                         <div class="place-sale-photo__images drag-drop photo-load__images">
 
-                        </div>
-                        <div class="place-sale-photo__wrapper photo-load__wrapper">
-                            <button type="button" class="btn btn-reset">
-                                <p>
-                                    <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
-                                </p>
-                            </button>
-                            <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
-                        </div>
-                    </div>
-                    <label class="place-sale-textarea textarea-primary" style="margin-top: 24px;">
-                        <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
-                    </label>
-                    <div class="row">
-                        <div class="place-sale-field-price input-text input-text--only-number" style="max-width: 350px;">
-                            <label class="input-text__label">
-                                <span>Стоимость от</span>
-                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
-                                <span>₽</span>
-                            </label>
-                        </div>
-                        <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
-                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                                <svg>
-                                    <use xlink:href="./img/sprite.svg#info"></use>
-                                </svg>
-                            </button>
-                            <div class="secondary-tooltip__content">
-                                Стоиомость комплекта меблировки
-                            </div>
-                        </div>
-                    </div>
-                    <div class="photo-load pdf-load">
-                        <div class="place-sale-photo__images drag-drop photo-load__images">
-                        </div>
-                        <div class="place-sale-photo__wrapper photo-load__wrapper">
-                            <button type="button" class="btn btn-reset">
-                                <p>
-                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
-                                        эту область</span>
-                                </p>
-                            </button>
-                            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
-                        </div>
-                    </div>
-                </div>
-                <div class="furnishing-sets__tab" hidden>
-                    <div class="photo-load">
-                        <div class="place-sale-photo__images drag-drop photo-load__images">
-                        </div>
-                        <div class="place-sale-photo__wrapper photo-load__wrapper">
-                            <button type="button" class="btn btn-reset">
-                                <p>
-                                    <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
-                                </p>
-                            </button>
-                            <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
-                        </div>
-                    </div>
-                    <label class="place-sale-textarea textarea-primary" style="margin-top: 24px;">
-                        <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
-                    </label>
-                    <div class="row">
-                        <div class="place-sale-field-price input-text input-text--only-number" style="max-width: 350px;">
-                            <label class="input-text__label">
-                                <span>Стоимость от</span>
-                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
-                                <span>₽</span>
-                            </label>
-                        </div>
-                        <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
-                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                                <svg>
-                                    <use xlink:href="./img/sprite.svg#info"></use>
-                                </svg>
-                            </button>
-                            <div class="secondary-tooltip__content">
-                                Стоиомость комплекта меблировки
-                            </div>
-                        </div>
-                    </div>
-                    <div class="photo-load pdf-load">
-                        <div class="place-sale-photo__images drag-drop photo-load__images">
-                        </div>
-                        <div class="place-sale-photo__wrapper photo-load__wrapper">
-                            <button type="button" class="btn btn-reset">
-                                <p>
-                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
-                                        эту область</span>
-                                </p>
-                            </button>
-                            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
-                        </div>
-                    </div>
-                </div>
-                <div class="furnishing-sets__tab" hidden>
-                    <div class="photo-load">
-                        <div class="place-sale-photo__images drag-drop photo-load__images">
-                        </div>
-                        <div class="place-sale-photo__wrapper photo-load__wrapper">
-                            <button type="button" class="btn btn-reset">
-                                <p>
-                                    <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
-                                </p>
-                            </button>
-                            <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
-                        </div>
-                    </div>
-                    <label class="place-sale-textarea textarea-primary" style="margin-top: 24px;">
-                        <textarea class="input-reset textarea-primary__input" placeholder="Описание к фотографии"></textarea>
-                    </label>
-                    <div class="row">
-                        <div class="place-sale-field-price input-text input-text--only-number" style="max-width: 350px;">
-                            <label class="input-text__label">
-                                <span>Стоимость от</span>
-                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
-                                <span>₽</span>
-                            </label>
-                        </div>
-                        <div class="place-sale-price__tooltip secondary-tooltip secondary-tooltip--dark" style="margin-left: 8px;">
-                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                                <svg>
-                                    <use xlink:href="./img/sprite.svg#info"></use>
-                                </svg>
-                            </button>
-                            <div class="secondary-tooltip__content">
-                                Стоиомость комплекта меблировки
-                            </div>
-                        </div>
-                    </div>
-                    <div class="photo-load pdf-load">
-                        <div class="place-sale-photo__images drag-drop photo-load__images">
-                        </div>
-                        <div class="place-sale-photo__wrapper photo-load__wrapper">
-                            <button type="button" class="btn btn-reset">
-                                <p>
-                                    <span class="btn btn-reset btn-primary">Добавьте PDF полного состава комплекта </span> <span>или перетащите в
-                                        эту область</span>
-                                </p>
-                            </button>
-                            <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
-                        </div>
-                    </div>
-                </div>
-                <div class="furnishing-sets__tab" hidden>
-                    <div class="photo-load">
-                        <div class="place-sale-photo__images drag-drop photo-load__images">
                         </div>
                         <div class="place-sale-photo__wrapper photo-load__wrapper">
                             <button type="button" class="btn btn-reset">

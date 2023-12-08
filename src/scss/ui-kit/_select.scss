@@ -715,15 +715,24 @@
                 max-width: 250px;
             }
         }
+        @media (max-width:$desktop){
+             width: 100%;
+             flex: 0 0 100%; 
+             margin: 0 0 10px 0;
+        }
     }
 
     &__wrapper {
         display: flex;
         flex-wrap: wrap;
+        max-width: 100%;
     }
 
     &__item {
         margin: 0 4px 4px 0;
+    }
+    @media (max-width:$desktop){
+         flex-direction: column; 
     }
 }
 
@@ -737,11 +746,15 @@
         margin-right: 24px;
         width: var(--width);
         flex: 0 0 var(--width);
+        @media (max-width:$desktop){
+            width: 100%;
+            flex: 0 0 100%; 
+            margin: 0 0 10px 0;
+       }
     }
 
     &__wrapper {
         display: flex;
-        flex-wrap: wrap;
 
         .input-text {
             &__label {
@@ -777,23 +790,24 @@
                     border-bottom-left-radius: 0;
                 }
             }
+            @media (max-width:$desktop){
+                 flex: 0 1 45%; 
+            }
+            @media (max-width:$smallTablet-max){
+                  flex: auto;
+                  flex-grow: 1;
+            }
+        }
+        @media (max-width:$desktop){
+             width: 100%; 
         }
     }
-
+    @media (max-width:$desktop){
+        flex-direction: column; 
+        align-items: start;
+   }
 }
 
-
-.field-quantity-selection {
-    display: flex;
-    align-items: start;
-
-    &__name {
-        margin-top: 10px;
-        margin-right: 24px;
-        width: var(--width);
-        flex: 0 0 var(--width);
-    }
-}
 
 .field-dropdown {
     display: flex;
@@ -803,6 +817,11 @@
         margin-right: 24px;
         width: var(--width);
         flex: 0 0 var(--width);
+        @media (max-width:$desktop){
+            width: 100%;
+            flex: 0 0 100%; 
+            margin: 0 0 10px 0;
+       }
     }
 
     &__wrapper {
@@ -813,5 +832,15 @@
             margin-left: 0;
             text-align: left;
         }
+        @media (max-width:$desktop){
+             max-width: 85%; 
+        }
+        @media (max-width:$smallTablet-max){
+             max-width: 100%; 
+        }
     }
+    @media (max-width:$desktop){
+        flex-direction: column; 
+        align-items: start;
+   }
 }

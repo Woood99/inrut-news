@@ -2794,6 +2794,124 @@
         }
     }
 }
+.modal-object-gallery {
+    --transition-time: 0.3s;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1051;
+    background-color: rgba(34, 41, 102, 0.4);
+    cursor: pointer;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-time), visibility var(--transition-time);
+
+    &.is-open {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity var(--transition-time), visibility var(--transition-time);
+    }
+
+    &__container {
+        position: relative;
+        min-height: var(--vh);
+        display: inline-block;
+        vertical-align: middle;
+        background-color: #fff;
+        cursor: default;
+        text-align: left;
+        display: none;
+        box-shadow: var(--shadow-primary);
+
+        margin: 0 auto;
+    padding: 48px 32px 32px;
+    width: 100%;
+    min-height: var(--vh);
+    vertical-align: bottom;
+        &.open {
+            display: inline-block !important;
+        }
+
+        @media (max-width:$desktop) {
+            border-radius: 16px 16px 0 0;
+            padding: 65px 10px 0;
+            max-width: 100%;
+            width: calc(100% - 4px);
+            margin: 120px auto 0;
+            vertical-align: bottom;
+            min-height: auto;
+            left: -2px;
+        }
+    }
+
+    &__close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        border: none;
+        padding: 0;
+        width: 60px;
+        height: 60px;
+        background-color: transparent;
+        cursor: pointer;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            width: 25px;
+            height: 25px;
+            fill: var(--blue);
+            transition: fill $transitionSpeed $transitionFunction;
+
+            @media (max-width:$desktop) {
+                display: none;
+            }
+        }
+
+        span {
+            color: var(--blue);
+            font-size: var(--small-fz);
+            line-height: var(--small-lh);
+            font-weight: 500;
+
+            @media (min-width:$desktop) {
+                display: none;
+            }
+        }
+
+        @media (min-width:$desktop-min) {
+            &:hover {
+                svg {
+                    fill: var(--primary500);
+                }
+            }
+        }
+
+        @media (max-width:$desktop) {
+            right: 16px;
+            top: 24px;
+            width: auto;
+            height: auto;
+        }
+    }
+    &__content{
+        .tabs__title{
+            max-width: 50%;
+        }
+        .swiper-slide{
+            img{
+                width: 100%;
+                height: 100%;
+                border-radius: 12px;
+            }
+        }
+    }
+}
 
 .review-modal {
     --transition-time: 0.3s;

@@ -8884,7 +8884,9 @@ function furnishingSetsBody(item) {
   const contentContainer = item.querySelector('.furnishing-sets__tabs');
   const btns = item.querySelectorAll('.furnishing-sets__btn');
   const tabs = item.querySelectorAll('.furnishing-sets__tab');
-  btnAction(item, btns, tabs);
+  const mores = item.querySelectorAll('.furnishing-sets__more');
+  initTabs(btns, tabs, mores);
+  btnAction(item, btns, tabs, mores);
   const createRoom = item.querySelector('.furnishing-sets__create--room');
   if (createRoom) {
     createRoom.addEventListener('click', () => {
@@ -8908,7 +8910,7 @@ function furnishingSetsBody(item) {
     });
   }
 }
-function btnAction(item, btns, tabs) {
+function btnAction(item, btns, tabs, mores) {
   btns.forEach((btn, indexBtn) => {
     btn.addEventListener('click', e => {
       const remove = e.target.closest('.furnishing-sets__btn-remove');
@@ -8933,6 +8935,15 @@ function btnAction(item, btns, tabs) {
             tab.removeAttribute('hidden');
           }
         });
+        if (mores && mores.length > 0) {
+          mores.forEach((more, indexMore) => {
+            if (indexBtn !== indexMore) {
+              more.setAttribute('hidden', '');
+            } else {
+              more.removeAttribute('hidden');
+            }
+          });
+        }
       }
     });
   });
@@ -9044,6 +9055,29 @@ function updateActiveTab(container) {
       firstTitle.classList.add('_active');
       firstTab.removeAttribute('hidden');
     }
+  }
+}
+function initTabs(btns, tabs, mores) {
+  const btnsArray = Array.prototype.slice.call(btns, 0);
+  const activeBtn = btnsArray.find(btn => {
+    return btn.classList.contains('_active');
+  });
+  const activeBtnIndex = btnsArray.indexOf(activeBtn);
+  tabs.forEach((tab, indexTab) => {
+    if (activeBtnIndex !== indexTab) {
+      tab.setAttribute('hidden', '');
+    } else {
+      tab.removeAttribute('hidden');
+    }
+  });
+  if (mores.length > 0) {
+    mores.forEach((more, indexMore) => {
+      if (activeBtnIndex !== indexMore) {
+        more.setAttribute('hidden', '');
+      } else {
+        more.removeAttribute('hidden');
+      }
+    });
   }
 }
 

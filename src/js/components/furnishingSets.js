@@ -7,8 +7,12 @@ import {
 import {
     currentVideoLoad
 } from "./videoLoad";
-import { currentInputText } from "./inputs";
-import { tabsControls } from "../functions/tabs";
+import {
+    currentInputText
+} from "./inputs";
+import {
+    tabsControls
+} from "../functions/tabs";
 export const furnishingSets = () => {
     const containers = document.querySelectorAll('.furnishing-sets');
     if (!containers) return;
@@ -30,7 +34,9 @@ function furnishingSetsBody(item) {
     const contentContainer = item.querySelector('.furnishing-sets__tabs');
     const btns = item.querySelectorAll('.furnishing-sets__btn');
     const tabs = item.querySelectorAll('.furnishing-sets__tab');
-    btnAction(item,btns, tabs);
+    const mores = item.querySelectorAll('.furnishing-sets__more');
+    initTabs(btns, tabs,mores);
+    btnAction(item, btns, tabs, mores);
     const createRoom = item.querySelector('.furnishing-sets__create--room');
     if (createRoom) {
         createRoom.addEventListener('click', () => {
@@ -44,7 +50,7 @@ function furnishingSetsBody(item) {
                 btnsContainer.insertAdjacentHTML('beforeend', generateRoom(Number(lastNumber) + 1));
             }
             contentContainer.insertAdjacentHTML('beforeend', generateTabContent());
-            btnAction(item,item.querySelectorAll('.furnishing-sets__btn'), item.querySelectorAll('.furnishing-sets__tab'));
+            btnAction(item, item.querySelectorAll('.furnishing-sets__btn'), item.querySelectorAll('.furnishing-sets__tab'));
             update(item.querySelector('.furnishing-sets__tab:last-child'));
             if (quantity.length === 8) {
                 createRoom.setAttribute('hidden', '');
@@ -54,7 +60,8 @@ function furnishingSetsBody(item) {
         })
     }
 }
-function btnAction(item,btns, tabs) {
+
+function btnAction(item, btns, tabs, mores) {
     btns.forEach((btn, indexBtn) => {
         btn.addEventListener('click', (e) => {
             const remove = e.target.closest('.furnishing-sets__btn-remove');
@@ -69,7 +76,7 @@ function btnAction(item,btns, tabs) {
                     createRoom.removeAttribute('hidden');
                 }
                 updateActiveTab(item);
-                 tabsControls(item.closest('.tabs-primary'));
+                tabsControls(item.closest('.tabs-primary'));
             } else {
                 btns.forEach(btn => btn.classList.remove('_active'));
                 btn.classList.add('_active');
@@ -80,6 +87,15 @@ function btnAction(item,btns, tabs) {
                         tab.removeAttribute('hidden');
                     }
                 })
+                if (mores && mores.length > 0) {
+                    mores.forEach((more, indexMore) => {
+                        if (indexBtn !== indexMore) {
+                            more.setAttribute('hidden', '')
+                        } else {
+                            more.removeAttribute('hidden');
+                        }
+                    })
+                }
             }
         });
     })
@@ -176,12 +192,12 @@ function renamingTitle(titles) {
 }
 
 function update(content) {
-    if (content){
+    if (content) {
         const inputs = content.querySelectorAll('.input-text');
         const photoLoads = content.querySelectorAll('.video-load');
         const dropImages = content.querySelectorAll('.photo-load');
         const dragDrops = content.querySelectorAll('.drag-drop');
-    
+
         photoLoads.forEach(item => currentVideoLoad(item));
         dropImages.forEach(item => currentDropImage(item));
         dragDrops.forEach(item => currentDragDrop(item));
@@ -190,7 +206,7 @@ function update(content) {
 }
 
 function updateActiveTab(container) {
-    if (container){
+    if (container) {
         const navActive = container.querySelector('.furnishing-sets__btns .furnishing-sets__btn._active');
         if (!navActive && container.querySelector('.furnishing-sets__btns .furnishing-sets__btn')) {
             const firstTitle = container.querySelectorAll('.furnishing-sets__btns .furnishing-sets__btn')[0];
@@ -198,5 +214,31 @@ function updateActiveTab(container) {
             firstTitle.classList.add('_active');
             firstTab.removeAttribute('hidden');
         }
+    }
+}
+
+
+
+function initTabs(btns, tabs,mores) {
+    const btnsArray = Array.prototype.slice.call(btns, 0);
+    const activeBtn = btnsArray.find(btn => {
+        return btn.classList.contains('_active');
+    })
+    const activeBtnIndex = btnsArray.indexOf(activeBtn);
+    tabs.forEach((tab, indexTab) => {
+        if (activeBtnIndex !== indexTab) {
+            tab.setAttribute('hidden', '')
+        } else {
+            tab.removeAttribute('hidden');
+        }
+    })
+    if (mores.length > 0) {
+        mores.forEach((more, indexMore) => {
+            if (activeBtnIndex !== indexMore) {
+                more.setAttribute('hidden', '')
+            } else {
+                more.removeAttribute('hidden');
+            }
+        })
     }
 }

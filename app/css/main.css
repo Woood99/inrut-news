@@ -3867,6 +3867,128 @@ textarea.input-reset {
   margin-bottom: 16px;
 }
 
+.modal-object-gallery {
+  --transition-time: 0.3s;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1051;
+  background-color: rgba(34, 41, 102, 0.4);
+  cursor: pointer;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity var(--transition-time), visibility var(--transition-time);
+  -o-transition: opacity var(--transition-time), visibility var(--transition-time);
+  transition: opacity var(--transition-time), visibility var(--transition-time);
+}
+.modal-object-gallery.is-open {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity var(--transition-time), visibility var(--transition-time);
+  -o-transition: opacity var(--transition-time), visibility var(--transition-time);
+  transition: opacity var(--transition-time), visibility var(--transition-time);
+}
+.modal-object-gallery__container {
+  position: relative;
+  min-height: var(--vh);
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #fff;
+  cursor: default;
+  text-align: left;
+  display: none;
+  -webkit-box-shadow: var(--shadow-primary);
+  box-shadow: var(--shadow-primary);
+  margin: 0 auto;
+  padding: 48px 32px 32px;
+  width: 100%;
+  min-height: var(--vh);
+  vertical-align: bottom;
+}
+.modal-object-gallery__container.open {
+  display: inline-block !important;
+}
+@media (max-width: 1212px) {
+  .modal-object-gallery__container {
+    border-radius: 16px 16px 0 0;
+    padding: 65px 10px 0;
+    max-width: 100%;
+    width: calc(100% - 4px);
+    margin: 120px auto 0;
+    vertical-align: bottom;
+    min-height: auto;
+    left: -2px;
+  }
+}
+.modal-object-gallery__close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: none;
+  padding: 0;
+  width: 60px;
+  height: 60px;
+  background-color: transparent;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.modal-object-gallery__close svg {
+  width: 25px;
+  height: 25px;
+  fill: var(--blue);
+  -webkit-transition: fill 0.4s ease-in-out;
+  -o-transition: fill 0.4s ease-in-out;
+  transition: fill 0.4s ease-in-out;
+}
+@media (max-width: 1212px) {
+  .modal-object-gallery__close svg {
+    display: none;
+  }
+}
+.modal-object-gallery__close span {
+  color: var(--blue);
+  font-size: var(--small-fz);
+  line-height: var(--small-lh);
+  font-weight: 500;
+}
+@media (min-width: 1212px) {
+  .modal-object-gallery__close span {
+    display: none;
+  }
+}
+@media (min-width: 1213px) {
+  .modal-object-gallery__close:hover svg {
+    fill: var(--primary500);
+  }
+}
+@media (max-width: 1212px) {
+  .modal-object-gallery__close {
+    right: 16px;
+    top: 24px;
+    width: auto;
+    height: auto;
+  }
+}
+.modal-object-gallery__content .tabs__title {
+  max-width: 50%;
+}
+.modal-object-gallery__content .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+}
+
 .review-modal {
   --transition-time: 0.3s;
   position: fixed;
@@ -34373,16 +34495,19 @@ textarea.input-reset {
   -ms-flex-align: center;
   align-items: center;
   padding: 0 10px 0 17px;
-  -webkit-transition: -webkit-box-shadow 0.4s ease-in-out;
-  transition: -webkit-box-shadow 0.4s ease-in-out;
-  -o-transition: box-shadow 0.4s ease-in-out;
-  transition: box-shadow 0.4s ease-in-out;
-  transition: box-shadow 0.4s ease-in-out, -webkit-box-shadow 0.4s ease-in-out;
+  -webkit-transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out, -webkit-box-shadow 0.4s ease-in-out;
+  transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out, -webkit-box-shadow 0.4s ease-in-out;
+  -o-transition: box-shadow 0.4s ease-in-out, background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+  transition: box-shadow 0.4s ease-in-out, background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+  transition: box-shadow 0.4s ease-in-out, background-color 0.4s ease-in-out, color 0.4s ease-in-out, -webkit-box-shadow 0.4s ease-in-out;
 }
 .map-draw__btn svg {
   width: 14px;
   height: 14px;
   fill: var(--dark);
+  -webkit-transition: fill 0.4s ease-in-out;
+  -o-transition: fill 0.4s ease-in-out;
+  transition: fill 0.4s ease-in-out;
 }
 .map-draw__btn span {
   margin-left: 10px;
@@ -34404,6 +34529,13 @@ textarea.input-reset {
     height: 44px;
     border-radius: 12px;
   }
+}
+.map-draw__btn.active {
+  background-color: var(--blue);
+  color: var(--white);
+}
+.map-draw__btn.active svg {
+  fill: var(--white);
 }
 .map-draw #map-draw,
 .map-draw #map-draw--2 {

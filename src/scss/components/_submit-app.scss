@@ -311,14 +311,16 @@
 
         padding: 0 10px 0 17px;
 
-
-
-        transition: box-shadow $transitionSpeed $transitionFunction;
+        transition: box-shadow $transitionSpeed $transitionFunction,
+        background-color $transitionSpeed $transitionFunction,
+        color $transitionSpeed $transitionFunction;
 
         svg {
             width: 14px;
             height: 14px;
             fill: var(--dark);
+
+            transition: fill $transitionSpeed $transitionFunction;
         }
 
         span {
@@ -341,6 +343,13 @@
         @media (max-width:$desktop) {
             height: 44px;
             border-radius: 12px;
+        }
+        &.active{
+            background-color: var(--blue);
+            color: var(--white);
+            svg{
+                fill: var(--white);
+            }
         }
     }
 

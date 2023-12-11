@@ -51,18 +51,15 @@ const submitAppOffers = () => {
         if (window.innerWidth > 1212) {
             minItem = 4;
             hiddenItems(items);
-            console.log('4');
         }
         if (window.innerWidth <= 1212 && window.innerWidth > 768) {
             minItem = 3;
             hiddenItems(items);
-            console.log('3');
             return;
         }
         if (window.innerWidth <= 768) {
             minItem = 2;
             hiddenItems(items);
-            console.log('2');
         }
     });
 };

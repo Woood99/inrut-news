@@ -8115,6 +8115,18 @@ const filterCustomSelectCheckboxes = () => {
         mortgageNoFeeBoolean = false;
       }
     });
+    const mortgageField = document.querySelector('[data-mortgage-field]');
+    if (mortgageField) {
+      [mortgageYesBank, mortgageNoBank].forEach(item => {
+        item.addEventListener('change', () => {
+          if (mortgageYesBank.checked || mortgageNoBank.checked) {
+            mortgageField.removeAttribute('hidden');
+          } else {
+            mortgageField.setAttribute('hidden', '');
+          }
+        });
+      });
+    }
     function movingCheckbox(index, element) {
       dropdownContainerList.children[index].insertAdjacentElement('beforebegin', element.closest('.checkbox-secondary'));
     }
@@ -12101,7 +12113,6 @@ const mortgageRequests = () => {
         if (basicIncome) {
           const incomeName = basicIncome.closest('[data-mortgage-requests-income]').dataset.mortgageRequestsIncome;
           const valueSelect = basicIncome.querySelector('.choices__list.choices__list--single .choices__item.choices__item--selectable').dataset.value;
-          console.log(valueSelect);
           if (incomeName === 'business') {
             if (valueSelect === 'tax') {
               hiddenAllDocuments(documentsIncome);
@@ -13209,18 +13220,15 @@ const submitAppOffers = () => {
     if (window.innerWidth > 1212) {
       minItem = 4;
       hiddenItems(items);
-      console.log('4');
     }
     if (window.innerWidth <= 1212 && window.innerWidth > 768) {
       minItem = 3;
       hiddenItems(items);
-      console.log('3');
       return;
     }
     if (window.innerWidth <= 768) {
       minItem = 2;
       hiddenItems(items);
-      console.log('2');
     }
   });
 };

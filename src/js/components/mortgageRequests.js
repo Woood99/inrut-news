@@ -1321,7 +1321,6 @@ const mortgageRequests = () => {
                 if (basicIncome) {
                     const incomeName = basicIncome.closest('[data-mortgage-requests-income]').dataset.mortgageRequestsIncome;
                     const valueSelect = basicIncome.querySelector('.choices__list.choices__list--single .choices__item.choices__item--selectable').dataset.value;
-                    console.log(valueSelect);
                     if (incomeName === 'business') {
                         if (valueSelect === 'tax') {
                             hiddenAllDocuments(documentsIncome);

@@ -1,3 +1,5 @@
+import { controlCardsCardSecondary } from "./controlCards";
+
 const maps = () => {
     function removeControlsPrimary(map, containerSelector) {
         map.controls.remove('geolocationControl'); // удаляем геолокацию
@@ -380,6 +382,19 @@ const maps = () => {
                 if (!(width <= 780 && width >= 382)) return;
                 container.style.gridTemplateColumns = `${width}px 1fr`;
                 map.container.fitToViewport();
+
+
+                const controlCardContent = container.querySelector('.control-cards__content');
+                const controlCardBtnVertical = container.querySelector('.control-cards__btn--vertical');
+                const controlCardBtnHorizontal = container.querySelector('.control-cards__btn--horizontal');
+                console.log(width);
+                if (width <= 770 && width > 600) {
+                    controlCardContent.classList.add('control-cards__content--horizontal-map');
+                    controlCardsCardSecondary(controlCardContent,controlCardBtnVertical);
+                } else {
+                    controlCardContent.classList.remove('control-cards__content--horizontal-map');
+                    controlCardsCardSecondary(controlCardContent,controlCardBtnHorizontal);
+                }
             }
 
             function stopResize() {

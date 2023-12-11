@@ -54,7 +54,7 @@ import dropdownDown from './modules/dropdownDown';
 import {
     emergingBlockScroll
 } from './modules/emergingBlockScroll';
-import controlCards from './components/controlCards';
+import {controlCards} from './components/controlCards';
 import videoBlock from './components/videoBlock';
 import reviewModal from './components/reviewModal';
 import placeSaleOptionMore from './components/placeSaleOptionMore';

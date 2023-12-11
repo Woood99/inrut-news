@@ -4320,7 +4320,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_calendar__WEBPACK_IMPORTED_MODULE_7__.calendarPrimary)('.request-calendar .calendar-primary', 'eventsCalendar.json', false);
   (0,_components_calendar__WEBPACK_IMPORTED_MODULE_7__.calendarPrimary)('.calendar-page .calendar-primary', 'eventsCalendar.json', true);
   (0,_components_calendar__WEBPACK_IMPORTED_MODULE_7__.calendarPrimary)('.home-services__calendar .calendar-primary', 'eventsCalendar.json', false);
-  (0,_components_controlCards__WEBPACK_IMPORTED_MODULE_13__["default"])();
+  (0,_components_controlCards__WEBPACK_IMPORTED_MODULE_13__.controlCards)();
   (0,_components_videoBlock__WEBPACK_IMPORTED_MODULE_14__["default"])();
   (0,_components_reviewModal__WEBPACK_IMPORTED_MODULE_15__["default"])();
   (0,_components_placeSaleOptionMore__WEBPACK_IMPORTED_MODULE_16__["default"])();
@@ -6220,9 +6220,11 @@ const clientPage = () => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "actionForCards": () => (/* binding */ actionForCards),
+/* harmony export */   "controlCards": () => (/* binding */ controlCards),
+/* harmony export */   "controlCardsCardSecondary": () => (/* binding */ controlCardsCardSecondary)
 /* harmony export */ });
-function controlCards() {
+const controlCards = () => {
   const containers = document.querySelectorAll('.control-cards');
   if (containers.length === 0) return;
   containers.forEach(container => {
@@ -6234,45 +6236,72 @@ function controlCards() {
       if (btn) {
         btn.addEventListener('click', () => {
           btns.forEach(el => el.classList.remove('_active'));
-          content.classList.remove('control-cards__content--horizontal', 'control-cards__content--vertical');
+          content.classList.remove('control-cards__content--horizontal', 'control-cards__content--vertical', 'control-cards__content--horizontal-map');
           actionForCards(container, content, btn);
         });
       }
     });
-    function checkHorizontal(target) {
-      if (target) return target.classList.contains('control-cards__btn--horizontal');
-    }
-    function checkVertical(target) {
-      if (target) return target.classList.contains('control-cards__btn--vertical');
-    }
-    function actionForCards(container, content, btn) {
-      if (checkHorizontal(btn)) {
-        content.classList.add('control-cards__content--horizontal');
-        container.querySelectorAll('.control-cards__btn--horizontal').forEach(el => el.classList.add('_active'));
+  });
+};
+const actionForCards = (container, content, btn) => {
+  if (checkHorizontal(btn)) {
+    content.classList.add('control-cards__content--horizontal');
+    container.querySelectorAll('.control-cards__btn--horizontal').forEach(el => el.classList.add('_active'));
 
-        // maps
-        if (container.classList.contains('control-cards--maps')) {
-          container.classList.add('_map-active');
-        }
-      }
-      if (checkVertical(btn)) {
-        content.classList.add('control-cards__content--vertical');
-        container.querySelectorAll('.control-cards__btn--vertical').forEach(el => el.classList.add('_active'));
+    // maps
+    if (container.classList.contains('control-cards--maps')) {
+      container.classList.add('_map-active');
+    }
+  }
+  if (checkVertical(btn)) {
+    content.classList.add('control-cards__content--vertical');
+    container.querySelectorAll('.control-cards__btn--vertical').forEach(el => el.classList.add('_active'));
 
-        // maps
-        if (container.classList.contains('control-cards--maps')) {
-          container.classList.remove('_map-active');
-        }
-      }
-      if (content.querySelectorAll('.card-secondary').length >= 1) {
-        const cardsSecondary = content.querySelectorAll('.card-secondary');
-        cardsSecondary.forEach(card => {
-          const favorite = card.querySelector('.card-secondary__info--favorite');
-          const bottom = card.querySelector('.card-secondary__bottom');
-          const bottomMobile = bottom.querySelector('.card-secondary__info--mobile');
-          if (favorite && bottomMobile) {
+    // maps
+    if (container.classList.contains('control-cards--maps')) {
+      container.classList.remove('_map-active');
+    }
+  }
+  controlCardsCardSecondary(content, btn);
+  if (content.querySelectorAll('.card-primary').length >= 1) {
+    const cardsPrimary = content.querySelectorAll('.card-primary');
+    cardsPrimary.forEach(card => {
+      const dislike = card.querySelector('.card-primary__info--dislike');
+      const comment = card.querySelector('.card-primary__info--comment');
+      const favorite = card.querySelector('.card-primary__info--favorite');
+      const note = card.querySelector('.card-primary__info--note');
+      const tags = card.querySelector('.card-primary__info--tags');
+      const bottom = card.querySelector('.card-primary__bottom');
+      if (bottom) {
+        const bottomMobile = bottom.querySelector('.card-primary__info--mobile');
+        if (bottomMobile) {
+          if (dislike) {
             if (checkVertical(btn)) {
-              if (!bottomMobile.querySelector('.card-secondary__info--favorite')) {
+              if (!bottomMobile.querySelector('.card-primary__info--dislike')) {
+                const clone = dislike.cloneNode(true);
+                bottomMobile.appendChild(clone);
+              }
+              bottomMobile.querySelector('.card-primary__info--dislike').removeAttribute('hidden');
+            }
+            if (checkHorizontal(btn) && bottomMobile.querySelector('.card-primary__info--dislike')) {
+              bottomMobile.querySelector('.card-primary__info--dislike').setAttribute('hidden', '');
+            }
+          }
+          if (comment) {
+            if (checkVertical(btn)) {
+              if (!bottomMobile.querySelector('.card-primary__info--comment')) {
+                const clone = comment.cloneNode(true);
+                bottomMobile.appendChild(clone);
+              }
+              bottomMobile.querySelector('.card-primary__info--comment').removeAttribute('hidden');
+            }
+            if (checkHorizontal(btn) && bottomMobile.querySelector('.card-primary__info--comment')) {
+              bottomMobile.querySelector('.card-primary__info--comment').setAttribute('hidden', '');
+            }
+          }
+          if (favorite) {
+            if (checkVertical(btn)) {
+              if (!bottomMobile.querySelector('.card-primary__info--favorite')) {
                 if (!favorite.hasAttribute('data-popup-path')) {
                   const clone = favorite.cloneNode(true);
                   bottomMobile.appendChild(clone);
@@ -6280,106 +6309,81 @@ function controlCards() {
                   bottomMobile.insertAdjacentElement('afterbegin', favorite);
                 }
               }
-              bottomMobile.querySelector('.card-secondary__info--favorite').removeAttribute('hidden');
+              bottomMobile.querySelector('.card-primary__info--favorite').removeAttribute('hidden');
             }
-            if (checkHorizontal(btn) && bottomMobile.querySelector('.card-secondary__info--favorite')) {
-              bottomMobile.querySelector('.card-secondary__info--favorite').setAttribute('hidden', '');
+            if (checkHorizontal(btn)) {
+              bottomMobile.querySelector('.card-primary__info--favorite').setAttribute('hidden', '');
               if (favorite.hasAttribute('data-popup-path')) {
-                card.querySelector('.card-secondary__info--btns-right').insertAdjacentElement('afterbegin', favorite);
+                card.querySelector('.card-primary__info--btns-right').insertAdjacentElement('afterbegin', favorite);
                 favorite.removeAttribute('hidden');
               }
             }
           }
-          if (checkVertical(btn)) {
-            bottom.classList.add('_vertical-active');
-          }
-          if (checkHorizontal(btn)) {
-            bottom.classList.remove('_vertical-active');
-          }
-        });
-      }
-      if (content.querySelectorAll('.card-primary').length >= 1) {
-        const cardsPrimary = content.querySelectorAll('.card-primary');
-        cardsPrimary.forEach(card => {
-          const dislike = card.querySelector('.card-primary__info--dislike');
-          const comment = card.querySelector('.card-primary__info--comment');
-          const favorite = card.querySelector('.card-primary__info--favorite');
-          const note = card.querySelector('.card-primary__info--note');
-          const tags = card.querySelector('.card-primary__info--tags');
-          const bottom = card.querySelector('.card-primary__bottom');
-          if (bottom) {
-            const bottomMobile = bottom.querySelector('.card-primary__info--mobile');
-            if (bottomMobile) {
-              if (dislike) {
-                if (checkVertical(btn)) {
-                  if (!bottomMobile.querySelector('.card-primary__info--dislike')) {
-                    const clone = dislike.cloneNode(true);
-                    bottomMobile.appendChild(clone);
-                  }
-                  bottomMobile.querySelector('.card-primary__info--dislike').removeAttribute('hidden');
-                }
-                if (checkHorizontal(btn) && bottomMobile.querySelector('.card-primary__info--dislike')) {
-                  bottomMobile.querySelector('.card-primary__info--dislike').setAttribute('hidden', '');
-                }
-              }
-              if (comment) {
-                if (checkVertical(btn)) {
-                  if (!bottomMobile.querySelector('.card-primary__info--comment')) {
-                    const clone = comment.cloneNode(true);
-                    bottomMobile.appendChild(clone);
-                  }
-                  bottomMobile.querySelector('.card-primary__info--comment').removeAttribute('hidden');
-                }
-                if (checkHorizontal(btn) && bottomMobile.querySelector('.card-primary__info--comment')) {
-                  bottomMobile.querySelector('.card-primary__info--comment').setAttribute('hidden', '');
-                }
-              }
-              if (favorite) {
-                if (checkVertical(btn)) {
-                  if (!bottomMobile.querySelector('.card-primary__info--favorite')) {
-                    if (!favorite.hasAttribute('data-popup-path')) {
-                      const clone = favorite.cloneNode(true);
-                      bottomMobile.appendChild(clone);
-                    } else {
-                      bottomMobile.insertAdjacentElement('afterbegin', favorite);
-                    }
-                  }
-                  bottomMobile.querySelector('.card-primary__info--favorite').removeAttribute('hidden');
-                }
-                if (checkHorizontal(btn)) {
-                  bottomMobile.querySelector('.card-primary__info--favorite').setAttribute('hidden', '');
-                  if (favorite.hasAttribute('data-popup-path')) {
-                    card.querySelector('.card-primary__info--btns-right').insertAdjacentElement('afterbegin', favorite);
-                    favorite.removeAttribute('hidden');
-                  }
-                }
-              }
-              if (note) {
-                if (checkVertical(btn)) {
-                  if (!bottomMobile.querySelector('.card-primary__info--note')) {
-                    const clone = note.cloneNode(true);
-                    bottomMobile.appendChild(clone);
-                  }
-                  bottomMobile.querySelector('.card-primary__info--note').removeAttribute('hidden');
-                }
-                if (checkHorizontal(btn)) {
-                  bottomMobile.querySelector('.card-primary__info--note').setAttribute('hidden', '');
-                }
-              }
-            }
+          if (note) {
             if (checkVertical(btn)) {
-              bottom.classList.add('_vertical-active');
+              if (!bottomMobile.querySelector('.card-primary__info--note')) {
+                const clone = note.cloneNode(true);
+                bottomMobile.appendChild(clone);
+              }
+              bottomMobile.querySelector('.card-primary__info--note').removeAttribute('hidden');
             }
             if (checkHorizontal(btn)) {
-              bottom.classList.remove('_vertical-active');
+              bottomMobile.querySelector('.card-primary__info--note').setAttribute('hidden', '');
             }
           }
-        });
+        }
+        if (checkVertical(btn)) {
+          bottom.classList.add('_vertical-active');
+        }
+        if (checkHorizontal(btn)) {
+          bottom.classList.remove('_vertical-active');
+        }
       }
-    }
-  });
+    });
+  }
+};
+const controlCardsCardSecondary = (content, btn) => {
+  if (content.querySelectorAll('.card-secondary').length >= 1) {
+    const cardsSecondary = content.querySelectorAll('.card-secondary');
+    cardsSecondary.forEach(card => {
+      const favorite = card.querySelector('.card-secondary__info--favorite');
+      const bottom = card.querySelector('.card-secondary__bottom');
+      const bottomMobile = bottom.querySelector('.card-secondary__info--mobile');
+      if (favorite && bottomMobile) {
+        if (checkVertical(btn)) {
+          if (!bottomMobile.querySelector('.card-secondary__info--favorite')) {
+            if (!favorite.hasAttribute('data-popup-path')) {
+              const clone = favorite.cloneNode(true);
+              bottomMobile.appendChild(clone);
+            } else {
+              bottomMobile.insertAdjacentElement('afterbegin', favorite);
+            }
+          }
+          bottomMobile.querySelector('.card-secondary__info--favorite').removeAttribute('hidden');
+        }
+        if (checkHorizontal(btn) && bottomMobile.querySelector('.card-secondary__info--favorite')) {
+          bottomMobile.querySelector('.card-secondary__info--favorite').setAttribute('hidden', '');
+          if (favorite.hasAttribute('data-popup-path')) {
+            card.querySelector('.card-secondary__info--btns-right').insertAdjacentElement('afterbegin', favorite);
+            favorite.removeAttribute('hidden');
+          }
+        }
+      }
+      if (checkVertical(btn)) {
+        bottom.classList.add('_vertical-active');
+      }
+      if (checkHorizontal(btn)) {
+        bottom.classList.remove('_vertical-active');
+      }
+    });
+  }
+};
+function checkHorizontal(target) {
+  if (target) return target.classList.contains('control-cards__btn--horizontal');
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (controlCards);
+function checkVertical(target) {
+  if (target) return target.classList.contains('control-cards__btn--vertical');
+}
 
 /***/ }),
 
@@ -10094,6 +10098,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _controlCards__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./controlCards */ "./src/js/components/controlCards.js");
+
 const maps = () => {
   function removeControlsPrimary(map, containerSelector) {
     map.controls.remove('geolocationControl'); // удаляем геолокацию
@@ -10450,6 +10456,17 @@ const maps = () => {
         if (!(width <= 780 && width >= 382)) return;
         container.style.gridTemplateColumns = `${width}px 1fr`;
         map.container.fitToViewport();
+        const controlCardContent = container.querySelector('.control-cards__content');
+        const controlCardBtnVertical = container.querySelector('.control-cards__btn--vertical');
+        const controlCardBtnHorizontal = container.querySelector('.control-cards__btn--horizontal');
+        console.log(width);
+        if (width <= 770 && width > 600) {
+          controlCardContent.classList.add('control-cards__content--horizontal-map');
+          (0,_controlCards__WEBPACK_IMPORTED_MODULE_0__.controlCardsCardSecondary)(controlCardContent, controlCardBtnVertical);
+        } else {
+          controlCardContent.classList.remove('control-cards__content--horizontal-map');
+          (0,_controlCards__WEBPACK_IMPORTED_MODULE_0__.controlCardsCardSecondary)(controlCardContent, controlCardBtnHorizontal);
+        }
       }
       function stopResize() {
         window.removeEventListener('mousemove', resize);

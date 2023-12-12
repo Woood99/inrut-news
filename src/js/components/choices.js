@@ -123,34 +123,34 @@ export const selectSecondaryCreate = (el) => {
         let optionsHtml = '';
         if (currentQuarter === 1) {
             optionsHtml = `
-            <option value="quarter1">1 квартал</option>
-            <option value="quarter2">2 квартал</option>
-            <option value="quarter3">3 квартал</option>
-            <option value="quarter4">4 квартал</option>
+            <option value="quarter-1">1 квартал</option>
+            <option value="quarter-2">2 квартал</option>
+            <option value="quarter-3">3 квартал</option>
+            <option value="quarter-4">4 квартал</option>
         `;
         }
         if (currentQuarter === 2) {
             optionsHtml = `
-            <option value="quarter2">2 квартал</option>
-            <option value="quarter1">1 квартал</option>
-            <option value="quarter3">3 квартал</option>
-            <option value="quarter4">4 квартал</option>
+            <option value="quarter-2">2 квартал</option>
+            <option value="quarter-1">1 квартал</option>
+            <option value="quarter-3">3 квартал</option>
+            <option value="quarter-4">4 квартал</option>
         `;
         }
         if (currentQuarter === 3) {
             optionsHtml = `
-                <option value="quarter3">3 квартал</option>
-                <option value="quarter1">1 квартал</option>
-                <option value="quarter2">2 квартал</option>
-                <option value="quarter4">4 квартал</option>
+                <option value="quarter-3">3 квартал</option>
+                <option value="quarter-1">1 квартал</option>
+                <option value="quarter-2">2 квартал</option>
+                <option value="quarter-4">4 квартал</option>
             `;
         }
         if (currentQuarter === 4) {
             optionsHtml = `
-                <option value="quarter4">4 квартал</option>
-                <option value="quarter1">1 квартал</option>
-                <option value="quarter2">2 квартал</option>
-                <option value="quarter3">3 квартал</option>
+                <option value="quarter-4">4 квартал</option>
+                <option value="quarter-1">1 квартал</option>
+                <option value="quarter-2">2 квартал</option>
+                <option value="quarter-3">3 квартал</option>
             `;
         }
         body.innerHTML = optionsHtml;

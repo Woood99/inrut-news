@@ -2363,7 +2363,9 @@
             display: none;
         }
     }
-
+    >.row{
+        display: grid;grid-template-columns: repeat(3,1fr);grid-gap: 8px;
+    }
     &__title {}
 
     &__select {
@@ -2406,29 +2408,10 @@
         }
     }
 
-    &._active {
-        .object-construct-progress {
-            &__slider {
-                overflow: visible;
-            }
-
-            &__nav {
-                display: none;
-            }
-
-            &__items {
-                .swiper-wrapper {
-                    display: grid;
-                    grid-template-columns: repeat(2, 1fr);
-                    grid-column-gap: 16px;
-                    grid-row-gap: 32px;
-
-                    @media (max-width:$mobile-max) {
-                        grid-template-columns: 1fr;
-                    }
-                }
-            }
-        }
+    &._slider-visible {
+      >.row{
+        margin-bottom: 24px;
+      }
     }
 
     @media (max-width:$desktop) {

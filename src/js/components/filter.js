@@ -520,6 +520,10 @@ export const filterControl = () => {
                     });
                     moreBtn.querySelector('span').textContent = btnTextMap.more;
                     container.classList.remove('_active');
+                    window.scrollTo({
+                        top: 0,
+                        behavior:'smooth'
+                   })
                 } else {
                     itemsHidden.forEach(item => {
                         _slideToggle(item, 700);

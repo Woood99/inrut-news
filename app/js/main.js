@@ -6017,34 +6017,34 @@ const selectSecondaryCreate = el => {
     let optionsHtml = '';
     if (currentQuarter === 1) {
       optionsHtml = `
-            <option value="quarter1">1 квартал</option>
-            <option value="quarter2">2 квартал</option>
-            <option value="quarter3">3 квартал</option>
-            <option value="quarter4">4 квартал</option>
+            <option value="quarter-1">1 квартал</option>
+            <option value="quarter-2">2 квартал</option>
+            <option value="quarter-3">3 квартал</option>
+            <option value="quarter-4">4 квартал</option>
         `;
     }
     if (currentQuarter === 2) {
       optionsHtml = `
-            <option value="quarter2">2 квартал</option>
-            <option value="quarter1">1 квартал</option>
-            <option value="quarter3">3 квартал</option>
-            <option value="quarter4">4 квартал</option>
+            <option value="quarter-2">2 квартал</option>
+            <option value="quarter-1">1 квартал</option>
+            <option value="quarter-3">3 квартал</option>
+            <option value="quarter-4">4 квартал</option>
         `;
     }
     if (currentQuarter === 3) {
       optionsHtml = `
-                <option value="quarter3">3 квартал</option>
-                <option value="quarter1">1 квартал</option>
-                <option value="quarter2">2 квартал</option>
-                <option value="quarter4">4 квартал</option>
+                <option value="quarter-3">3 квартал</option>
+                <option value="quarter-1">1 квартал</option>
+                <option value="quarter-2">2 квартал</option>
+                <option value="quarter-4">4 квартал</option>
             `;
     }
     if (currentQuarter === 4) {
       optionsHtml = `
-                <option value="quarter4">4 квартал</option>
-                <option value="quarter1">1 квартал</option>
-                <option value="quarter2">2 квартал</option>
-                <option value="quarter3">3 квартал</option>
+                <option value="quarter-4">4 квартал</option>
+                <option value="quarter-1">1 квартал</option>
+                <option value="quarter-2">2 квартал</option>
+                <option value="quarter-3">3 квартал</option>
             `;
     }
     body.innerHTML = optionsHtml;
@@ -7935,6 +7935,10 @@ const filterControl = () => {
           });
           moreBtn.querySelector('span').textContent = btnTextMap.more;
           container.classList.remove('_active');
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
         } else {
           itemsHidden.forEach(item => {
             (0,_support_modules_slide__WEBPACK_IMPORTED_MODULE_5__._slideToggle)(item, 700);
@@ -14616,34 +14620,31 @@ function initSliders() {
           }
         }
       };
-      let slider = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](sliderEl, bodySlider);
-      sliderMoreItem();
-      function sliderMoreItem() {
-        const btn = el.querySelector('.object-construct-progress__btn');
-        if (btn && !btn.hasAttribute('data-popup-path')) {
-          btn.addEventListener('click', () => {
-            el.classList.toggle('_active');
-            if (el.classList.contains('_active')) {
-              btn.classList.add('_active');
-              slider.destroy();
-            } else {
-              btn.classList.remove('_active');
-              const topGap = window.pageYOffset + el.getBoundingClientRect().top;
-              const headerFixed = document.querySelector('.header-fixed');
-              const topHeaderMobile = document.querySelector('.top-page-inner');
-              if (window.innerWidth >= 1212) {
-                window.scrollTo({
-                  top: headerFixed ? topGap - headerFixed.offsetHeight - 20 : topGap - 20
-                });
-              } else {
-                window.scrollTo({
-                  top: topHeaderMobile ? topGap - topHeaderMobile.offsetHeight - 20 : topGap - 20
-                });
-              }
-              slider = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](sliderEl, bodySlider);
-            }
+      const complexSelect = el.querySelector('[data-construct-complex-select]');
+      const yearSelect = el.querySelector('[data-construct-year-select]');
+      const quarterSelect = el.querySelector('[data-construct-quarter-select]');
+      let slider;
+      filterCards(false);
+      slider = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](sliderEl, bodySlider);
+      [complexSelect, yearSelect, quarterSelect].forEach(select => {
+        if (select) {
+          select.addEventListener('change', () => {
+            filterCards(true);
           });
         }
+      });
+      function filterCards(updatePermit) {
+        const complexValue = complexSelect.querySelector('.choices__list.choices__list--single .choices__item.choices__item--selectable').dataset.value;
+        const yearValue = yearSelect.querySelector('.choices__list.choices__list--single .choices__item.choices__item--selectable').dataset.value;
+        const quarterValue = quarterSelect.querySelector('.choices__list.choices__list--single .choices__item.choices__item--selectable').dataset.value;
+        const slides = el.querySelectorAll('.swiper-slide');
+        slides.forEach(slide => slide.setAttribute('hidden', ''));
+        const slidesValidate = Array.from(slides).filter(el => {
+          return el.dataset.constructComplex === complexValue && el.dataset.constructYear === yearValue && el.dataset.constructQuarter === quarterValue;
+        });
+        slidesValidate.length > 0 ? el.classList.add('_slider-visible') : el.classList.remove('_slider-visible');
+        slidesValidate.forEach(slide => slide.removeAttribute('hidden'));
+        if (updatePermit) slider.update();
       }
     });
   }

@@ -57,7 +57,7 @@
                 <h1 class="request-catalog__title title-1 container">
                     1 567 заявок на покупку
                 </h1>
-                <form class="request-catalog__filter filter request-catalog-filter filter--more container" data-da=".header,1212,last">
+                <form class="request-catalog__filter filter request-catalog-filter filter--more filter--new-style" data-da=".header,1212,last">
                     <button type="button" class="btn btn-reset btn-secondary filter__btn">
                         <svg>
                             <use xlink:href="./img/sprite.svg#filter"></use>
@@ -70,7 +70,7 @@
                             <button type="button" class="btn btn-reset filter__close">Закрыть</button>
                         </div>
                         <div class="filter__inner">
-                            <div class="filter__row request-catalog-filter__row--1">
+                            <div class="filter__row request-catalog-filter__row--1 container">
                                 <div class="object-calc-mort__target-credit select-secondary">
                                     <div class="select-secondary__wrapper">
                                         <span class="select-secondary__placeholder">
@@ -227,71 +227,160 @@
                                 </div>
                             </div>
                             <div class="filter__row request-catalog-filter__row--2" hidden>
-                                <div class="filter__item request-catalog__dropdown-checkbox select-dropdown-checkbox" >
-                                    <button type="button" class="btn btn-reset select-dropdown-checkbox__button">
-                                        <span class="select-dropdown-checkbox__placeholder">
+                                <div class="container">
+                                    <div class="filter__item field-dropdown" data-field-dropdown-name="developer">
+                                        <div class="field-dropdown__name">
                                             Свойства расчета
-                                        </span>
-                                        <div class="select-dropdown-checkbox__title">
-                                            Неважно
                                         </div>
-                                        <svg>
-                                            <use xlink:href="./img/sprite.svg#check"></use>
-                                        </svg>
-                                    </button>
-                                    <div class="select-dropdown-checkbox__dropdown">
-                                        <button type="button" class="btn btn-reset select-dropdown-checkbox__close">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#x"></use>
-                                            </svg>
-                                        </button>
-                                        <div>
-                                            <div class="checkbox-secondary">
-                                                <input id="calculation_1" name="calculation" class="checkbox-secondary__input" data-name="cash" type="checkbox" value="true">
-                                                <label for="calculation_1" class="checkbox-secondary__label">
-                                                    <span class="checkbox-secondary__text">Наличные</span>
-                                                </label>
+                                        <div class="select-dropdown-checkbox field-dropdown__wrapper">
+                                            <button type="button" class="btn btn-reset select-dropdown-checkbox__button">
+                                                <div class="select-dropdown-checkbox__title">
+                                                    Неважно
+                                                </div>
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#check"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="select-dropdown-checkbox__dropdown">
+                                                <button type="button" class="btn btn-reset select-dropdown-checkbox__close">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#x"></use>
+                                                    </svg>
+                                                </button>
+                                                <div>
+                                                    <div class="checkbox-secondary">
+                                                        <input id="calculation_1" name="calculation" class="checkbox-secondary__input" data-name="cash" type="checkbox" value="true">
+                                                        <label for="calculation_1" class="checkbox-secondary__label">
+                                                            <span class="checkbox-secondary__text">Наличные</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox-secondary">
+                                                        <input id="calculation_2" name="calculation" class="checkbox-secondary__input" data-name="mortgage_yes-bank" type="checkbox"
+                                                            value="true">
+                                                        <label for="calculation_2" class="checkbox-secondary__label">
+                                                            <span class="checkbox-secondary__text">Ипотека, есть одобрение от
+                                                                банка</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox-secondary">
+                                                        <input id="calculation_3" name="calculation" class="checkbox-secondary__input" data-name="mortgage_no-bank" type="checkbox"
+                                                            value="true">
+                                                        <label for="calculation_3" class="checkbox-secondary__label">
+                                                            <span class="checkbox-secondary__text">Ипотека, нет одобрения от
+                                                                банка</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox-secondary">
+                                                        <input disabled id="calculation_4" name="calculation" class="checkbox-secondary__input" data-name="mortgage_no-fee" type="checkbox"
+                                                            value="true">
+                                                        <label for="calculation_4" class="checkbox-secondary__label">
+                                                            <span class="checkbox-secondary__text">
+                                                                Без первоначального взноса
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox-secondary">
+                                                        <input disabled id="calculation_5" name="calculation" class="checkbox-secondary__input" data-name="certificate" type="checkbox"
+                                                            value="true">
+                                                        <label for="calculation_5" class="checkbox-secondary__label">
+                                                            <span class="checkbox-secondary__text">
+                                                                В сделке будет использоваться сертификат
+                                                            </span>
+                                                            <div class="secondary-tooltip">
+                                                                <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                                    <svg>
+                                                                        <use xlink:href="./img/sprite.svg#info"></use>
+                                                                    </svg>
+                                                                </button>
+                                                                <div class="secondary-tooltip__content">
+                                                                    Какой-то текст!!
+                                                                </div>
+                                                            </div>
+                                                        </label>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="checkbox-secondary">
-                                                <input id="calculation_2" name="calculation" class="checkbox-secondary__input" data-name="mortgage_yes-bank" type="checkbox"
-                                                    value="true">
-                                                <label for="calculation_2" class="checkbox-secondary__label">
-                                                    <span class="checkbox-secondary__text">Ипотека, есть одобрение от
-                                                        банка</span>
-                                                </label>
-                                            </div>
-                                            <div class="checkbox-secondary">
-                                                <input id="calculation_3" name="calculation" class="checkbox-secondary__input" data-name="mortgage_no-bank" type="checkbox"
-                                                    value="true">
-                                                <label for="calculation_3" class="checkbox-secondary__label">
-                                                    <span class="checkbox-secondary__text">Ипотека, нет одобрения от
-                                                        банка</span>
-                                                </label>
-                                            </div>
-                                            <div class="checkbox-secondary">
-                                                <input disabled id="calculation_4" name="calculation" class="checkbox-secondary__input" data-name="mortgage_no-fee" type="checkbox"
-                                                    value="true">
-                                                <label for="calculation_4" class="checkbox-secondary__label">
-                                                    <span class="checkbox-secondary__text">
-                                                        Без первоначального взноса
+                                        </div>
+                                    </div>
+                                    <div class="filter__item field-dropdown" data-field-dropdown-name="developer">
+                                        <div class="field-dropdown__name">
+                                    Сумма
+                                        </div>
+                                        <div class="field-dropdown__wrapper filter-dropdown" data-filter-dropdown-no-title data-filter-dropdown-name="Сумма" data-filter-dropdown-subtitle="Любая" >
+                                            <button type="button" class="btn btn-reset filter-dropdown__button">
+                                                <div class="filter-dropdown__button-wrapper">
+                                                    <div></div>
+                                                    <div>
+                                                        Любая
+                                                    </div>
+                                                </div>
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#check"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="filter-dropdown__dropdown filter-dropdown__dropdown--left">
+                                                <button type="button" class="btn btn-reset filter-dropdown__close">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#x"></use>
+                                                    </svg>
+                                                </button>
+                                                <label class="filter-dropdown__item active">
+                                                    <span class="filter-dropdown__subtitle">
+                                                        Поиск квартиры по стоимости, руб.
                                                     </span>
+                                                    <div class="filter-dropdown__checkbox checkbox-secondary">
+                                                        <input id="request-catalog_sum-1" name="request-catalog_sum" checked class="checkbox-secondary__input" type="checkbox">
+                                                        <label for="request-catalog_sum-1" class="checkbox-secondary__label">
+                                                        </label>
+                                                    </div>
+                                                    <div class="filter-dropdown__range filter-range">
+                                                        <div class="filter-range__nav">
+                                                            <div class="input-text input-text--only-number">
+                                                                <label class="input-text__label">
+                                                                    <span>Цена от</span>
+                                                                    <input type="text" maxlength="11" class="input-reset input-text__input" placeholder="Цена от">
+                                                                </label>
+                                                            </div>
+                                                            <div>–</div>
+                                                            <div class="input-text input-text--only-number">
+                                                                <label class="input-text__label">
+                                                                    <span>До</span>
+                                                                    <input type="text" maxlength="11" class="input-reset input-text__input" placeholder="До">
+                                                                </label>
+                                                            </div>
+                                                            <div>
+                                                                ₽
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </label>
-                                            </div>
-                                            <div class="checkbox-secondary">
-                                                <input disabled id="calculation_5" name="calculation" class="checkbox-secondary__input" data-name="certificate" type="checkbox"
-                                                    value="true">
-                                                <label for="calculation_5" class="checkbox-secondary__label">
-                                                    <span class="checkbox-secondary__text">
-                                                        В сделке будет использоваться сертификат
+                                                <label class="filter-dropdown__item">
+                                                    <span class="filter-dropdown__subtitle">
+                                                        Поиск квартиры по ежемесячному платежу, руб.
                                                     </span>
-                                                    <div class="secondary-tooltip">
-                                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                                                            <svg>
-                                                                <use xlink:href="./img/sprite.svg#info"></use>
-                                                            </svg>
-                                                        </button>
-                                                        <div class="secondary-tooltip__content">
-                                                            Какой-то текст!!
+                                                    <div class="filter-dropdown__checkbox checkbox-secondary">
+                                                        <input id="request-catalog_sum-2" name="request-catalog_sum" class="checkbox-secondary__input" type="checkbox">
+                                                        <label for="request-catalog_sum-2" class="checkbox-secondary__label">
+                                                        </label>
+                                                    </div>
+                                                    <div class="filter-dropdown__range filter-range">
+                                                        <div class="filter-range__nav">
+                                                            <div class="input-text input-text--only-number">
+                                                                <label class="input-text__label">
+                                                                    <span>Цена от</span>
+                                                                    <input type="text" maxlength="11" class="input-reset input-text__input" placeholder="Цена от">
+                                                                </label>
+                                                            </div>
+                                                            <div>–</div>
+                                                            <div class="input-text input-text--only-number">
+                                                                <label class="input-text__label">
+                                                                    <span>До</span>
+                                                                    <input type="text" maxlength="11" class="input-reset input-text__input" placeholder="До">
+                                                                </label>
+                                                            </div>
+                                                            <div>
+                                                                ₽
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </label>
@@ -299,91 +388,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="filter__item filter-dropdown" data-filter-dropdown-name="Сумма" data-filter-dropdown-subtitle="Любая" >
-                                    <button type="button" class="btn btn-reset filter-dropdown__button">
-                                        <div class="filter-dropdown__button-wrapper">
-                                            <div>
-                                                Сумма
-                                            </div>
-                                            <div>
-                                                Любая
-                                            </div>
-                                        </div>
-                                        <svg>
-                                            <use xlink:href="./img/sprite.svg#check"></use>
-                                        </svg>
-                                    </button>
-                                    <div class="filter-dropdown__dropdown filter-dropdown__dropdown--left">
-                                        <button type="button" class="btn btn-reset filter-dropdown__close">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#x"></use>
-                                            </svg>
-                                        </button>
-                                        <label class="filter-dropdown__item active">
-                                            <span class="filter-dropdown__subtitle">
-                                                Поиск квартиры по стоимости, руб.
-                                            </span>
-                                            <div class="filter-dropdown__checkbox checkbox-secondary">
-                                                <input id="request-catalog_sum-1" name="request-catalog_sum" checked class="checkbox-secondary__input" type="checkbox">
-                                                <label for="request-catalog_sum-1" class="checkbox-secondary__label">
-                                                </label>
-                                            </div>
-                                            <div class="filter-dropdown__range filter-range">
-                                                <div class="filter-range__nav">
-                                                    <div class="input-text input-text--only-number">
-                                                        <label class="input-text__label">
-                                                            <span>Цена от</span>
-                                                            <input type="text" maxlength="11" class="input-reset input-text__input" placeholder="Цена от">
-                                                        </label>
-                                                    </div>
-                                                    <div>–</div>
-                                                    <div class="input-text input-text--only-number">
-                                                        <label class="input-text__label">
-                                                            <span>До</span>
-                                                            <input type="text" maxlength="11" class="input-reset input-text__input" placeholder="До">
-                                                        </label>
-                                                    </div>
-                                                    <div>
-                                                        ₽
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </label>
-                                        <label class="filter-dropdown__item">
-                                            <span class="filter-dropdown__subtitle">
-                                                Поиск квартиры по ежемесячному платежу, руб.
-                                            </span>
-                                            <div class="filter-dropdown__checkbox checkbox-secondary">
-                                                <input id="request-catalog_sum-2" name="request-catalog_sum" class="checkbox-secondary__input" type="checkbox">
-                                                <label for="request-catalog_sum-2" class="checkbox-secondary__label">
-                                                </label>
-                                            </div>
-                                            <div class="filter-dropdown__range filter-range">
-                                                <div class="filter-range__nav">
-                                                    <div class="input-text input-text--only-number">
-                                                        <label class="input-text__label">
-                                                            <span>Цена от</span>
-                                                            <input type="text" maxlength="11" class="input-reset input-text__input" placeholder="Цена от">
-                                                        </label>
-                                                    </div>
-                                                    <div>–</div>
-                                                    <div class="input-text input-text--only-number">
-                                                        <label class="input-text__label">
-                                                            <span>До</span>
-                                                            <input type="text" maxlength="11" class="input-reset input-text__input" placeholder="До">
-                                                        </label>
-                                                    </div>
-                                                    <div>
-                                                        ₽
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                </div>
                             </div>
                         </div>
-                        <div class="filter__controls more">
+                        <div class="filter__controls more container">
                             <button type="button" class="btn btn-reset filter__btn-control">
                                 <span>Еще фильтры</span>
                                 <svg>
@@ -391,8 +398,6 @@
                                 </svg>
                             </button>
                             <button type="reset" class="btn btn-reset btn-secondary filter__clear">Очистить</button>
-                            <button type="button" class="btn btn-reset btn-primary filter__go">Показать 1567
-                                заявок</button>
                         </div>
                     </div>
                 </form>

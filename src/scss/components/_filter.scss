@@ -229,6 +229,53 @@
             height: 50px;
         }
     }
+
+    &--new-style {
+        .filter__row:nth-child(2) {
+            grid-template-columns: 1fr !important;
+            background-color: var(--stand-bg);
+
+            .container {
+                padding-top: 16px;
+                padding-bottom: 16px;
+                width: 100%;
+            }
+
+            .filter__item {
+                &:not(:last-child) {
+                    margin-bottom: 16px;
+                }
+            }
+        }
+        .filter__clear{
+            margin-right:0;
+        }
+
+        @media (min-width:$desktop-min) {
+
+            .field-select,
+            .field-dropdown,
+            .field-range {
+                &__name {
+                    --width: 179px;
+                }
+            }
+    
+            .field-range {
+                .input-text {
+                    background-color: var(--white);
+                }
+            }
+    
+            .field-dropdown {
+                .search-select__button,
+                .select-dropdown-checkbox__button,
+                .filter-dropdown__button {
+                    background-color: var(--white);
+                }
+            }
+        }
+    }
 }
 
 .filter--more {

@@ -7842,7 +7842,7 @@ textarea.input-reset {
   background-color: transparent;
   cursor: pointer;
 }
-@media (min-width: 1212px) {
+@media (min-width: 1213px) {
   .burger {
     display: none;
   }
@@ -10139,11 +10139,11 @@ textarea.input-reset {
   content: none;
 }
 
-.card-secondary-skeleton-horizontal {
+.card-secondary-skeleton {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.card-secondary-skeleton-horizontal__container {
+.card-secondary-skeleton__container {
   width: 100%;
   background-color: var(--white);
   border-radius: 12px;
@@ -10162,7 +10162,7 @@ textarea.input-reset {
   -ms-user-select: none;
   user-select: none;
 }
-.card-secondary-skeleton-horizontal__top {
+.card-secondary-skeleton__top {
   position: relative;
   overflow: hidden;
   display: block;
@@ -10170,18 +10170,18 @@ textarea.input-reset {
   z-index: 20;
 }
 @media (max-width: 1024px) {
-  .card-secondary-skeleton-horizontal__top {
+  .card-secondary-skeleton__top {
     width: 100%;
     min-height: 275px;
     padding-bottom: 0;
   }
 }
 @media (max-width: 576px) {
-  .card-secondary-skeleton-horizontal__top {
+  .card-secondary-skeleton__top {
     min-height: 240px;
   }
 }
-.card-secondary-skeleton-horizontal__image {
+.card-secondary-skeleton__image {
   border-radius: 12px;
   position: absolute;
   width: 100%;
@@ -10189,7 +10189,7 @@ textarea.input-reset {
   top: 0;
   left: 0;
 }
-.card-secondary-skeleton-horizontal__content {
+.card-secondary-skeleton__content {
   padding: 20px 11px 16px 24px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -10200,7 +10200,17 @@ textarea.input-reset {
   flex-direction: column;
   height: 100%;
 }
-.card-secondary-skeleton-horizontal__bottom {
+.card-secondary-skeleton__content .col-2 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+  grid-template-columns: 1fr;
+  grid-row-gap: 10px;
+}
+.card-secondary-skeleton__content .col-2 .web-skeleton {
+  width: 85%;
+}
+.card-secondary-skeleton__bottom {
   width: 100%;
   margin-top: auto;
   display: -ms-grid;
@@ -24584,6 +24594,15 @@ textarea.input-reset {
     border-radius: 8px;
     height: 28px;
   }
+  .control-cards__content--vertical .card-secondary-skeleton, .control-cards__content--horizontal-map .card-secondary-skeleton {
+    min-height: 350px;
+  }
+  .control-cards__content--vertical .card-secondary-skeleton__container, .control-cards__content--horizontal-map .card-secondary-skeleton__container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 31.0039370079% 1fr;
+    grid-template-columns: 31.0039370079% 1fr;
+  }
   .control-cards__content--horizontal .card-primary,
   .control-cards__content--horizontal .card-secondary {
     -webkit-animation-name: fadeTransformY;
@@ -26882,13 +26901,8 @@ textarea.input-reset {
   border-radius: 50%;
   margin-right: 8px;
 }
-.search-area .tabs-primary {
-  padding: 0;
-}
-.search-area .tabs-primary__inner {
-  margin-top: 0;
-}
-.search-area .tabs-primary__inner > ._sticky .row {
+.search-area .row {
+  margin-bottom: 24px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -26898,33 +26912,6 @@ textarea.input-reset {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-}
-@media (max-width: 1212px) {
-  .search-area .tabs-primary__inner {
-    padding: 0;
-  }
-}
-.search-area .tabs-primary__btns {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[2];
-  grid-template-columns: repeat(2, 1fr);
-}
-.search-area .tabs-primary__content {
-  margin-top: 0;
-}
-.search-area .tabs-primary__container {
-  margin-top: 16px;
-  background-color: transparent;
-  border-radius: 0;
-  padding: 0;
-}
-.search-area .tabs-primary .tabs__title {
-  width: auto;
-  padding: 5px 12px;
-}
-.search-area .tabs-primary .tabs__title:first-child {
-  padding-left: 0;
 }
 .search-area__form {
   position: relative;
@@ -27222,7 +27209,7 @@ textarea.input-reset {
   width: 100%;
 }
 .search-area__map.map-draw {
-  height: calc(var(--vh) - 113px);
+  height: calc(var(--vh) - 89px);
 }
 .search-area__map-btn {
   position: absolute;

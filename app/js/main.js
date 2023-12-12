@@ -10459,7 +10459,6 @@ const maps = () => {
         const controlCardContent = container.querySelector('.control-cards__content');
         const controlCardBtnVertical = container.querySelector('.control-cards__btn--vertical');
         const controlCardBtnHorizontal = container.querySelector('.control-cards__btn--horizontal');
-        console.log(width);
         if (width <= 770 && width > 600) {
           controlCardContent.classList.add('control-cards__content--horizontal-map');
           (0,_controlCards__WEBPACK_IMPORTED_MODULE_0__.controlCardsCardSecondary)(controlCardContent, controlCardBtnVertical);

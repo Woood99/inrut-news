@@ -9,7 +9,8 @@
         margin-top: 32px;
         background-color: var(--stand-bg);
         .object-info {
-            grid-template-columns: percent(115, 1180) percent(250, 1180) percent(325, 1180) max-content 1fr 24px;
+            position: relative;
+            grid-template-columns: percent(180, 1180)  percent(350, 1180) max-content 1fr 24px;
             >div{
                 &:nth-child(3){
                     display: flex;
@@ -20,9 +21,32 @@
                 grid-template-columns: 1fr max-content 24px;
                 grid-column-gap: 32px;
             }
+
+            .object-info__offers{
+                flex-direction: row-reverse;
+                justify-content: start;
+                span{
+                  font-size: 9px;
+                }
+                svg{
+                    margin-right: 0;
+                    margin-left: 10px;
+                    width: 14px;
+                    height: 14px;
+                }
+            }
+            &:nth-child(2),
+            &:nth-child(3){
+                .object-info__offers{
+                    position: absolute;
+                    top: -8px;
+                    left: 16px;
+
+                }
+            }
         }
         .main-table__type{
-            grid-template-columns: percent(115, 1180) percent(250, 1180) percent(325, 1180) 1fr;
+            grid-template-columns: percent(180, 1180) percent(350, 1180) 1fr;
             justify-content: start;
             margin: 0 24px;
             grid-column-gap: 20px;

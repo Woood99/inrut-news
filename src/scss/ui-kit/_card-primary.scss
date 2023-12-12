@@ -15,7 +15,15 @@
         user-select: none;
         border-radius: 12px;
     }
-
+    &__link{
+        cursor: pointer;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 20;
+    }
     &__top {
         position: relative;
         display: block;
@@ -138,7 +146,14 @@
             height: 100%;
             width: 100%;
         }
-
+        &._fixed-width{
+            width: 90%;
+            height: 90%;
+            top: 5%;
+            img{
+                object-fit: contain;
+            }
+        }
         @media (max-width:$tablet-max) {
             position: static;
             opacity: 1;
@@ -845,7 +860,7 @@
     }
 
     &__name {
-        margin-top: 4px;
+        margin-top: 8px;
         @media (max-width:$tablet-max) {
             grid-column: 1/2;
         }
@@ -884,7 +899,14 @@
         font-size: var(--default-fz);
         line-height: var(--little-small-lh);
     }
-
+    &__meter{
+        color: var(--primary600);
+        font-size: var(--default-fz);
+        line-height: 1;
+        font-weight: 400;
+margin-top: 4px;
+margin-bottom: 16px;
+    }
     &__mortgage {
         margin-top: 8px;
 

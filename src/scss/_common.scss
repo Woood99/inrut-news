@@ -2359,3 +2359,115 @@
         align-items: end;
     }
 }
+
+
+.card-price {
+    display: flex;
+    align-items: center;
+    &__price {
+        font-size: var(--big-small-fz);
+    line-height: var(--big-small-fz);
+    font-weight: 500;
+    color: var(--dark);
+    }
+    .secondary-tooltip {
+        margin-left: 8px;
+        width: 22px;
+        height: 22px;
+        z-index: 20;
+        &__btn {
+            width: 100%;
+            width: 100%;
+
+            display: flex;  
+            align-items: center;
+            justify-content: center;
+            svg{
+                width: 16px;
+                height: 16px;
+                stroke: none;
+            }
+        }
+    
+        &__content {
+            z-index: 21;
+            width: max-content;
+            max-width: 350px;
+
+            bottom: auto;
+            top: calc(22px + 4px);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+    
+    
+    &--up{
+        .secondary-tooltip {
+            &__btn {
+               svg{
+                fill: var(--red);
+               }
+            }
+        }
+        .price-history__more{
+            color: var(--red);
+        }
+        
+    }
+    &--down{
+        .secondary-tooltip {
+            &__btn {
+               svg{
+                fill: var(--green);
+               }
+            }
+        }
+        .price-history__more{
+            color: var(--green);
+        }
+        
+    }
+}
+
+
+
+
+.price-history {
+
+    &__title {
+        font-size: var(--little-big-fz);
+        line-height: var(--little-big-lh);
+        font-weight: 500;
+        margin-bottom: 16px;
+    }
+
+    &__wrapper {
+    }
+
+    &__row {
+        display: flex;
+        align-items: center;
+        &:not(:last-child){
+            padding-bottom: 16px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--primary200);
+        }
+    }
+    &__col{
+
+    }
+    &__date {
+        width: 100px;
+        color: var(--primaryTwo);
+    }
+
+    &__price {
+        width: 120px;
+    }
+
+    &__more {
+        display: flex;
+        align-items: center;
+    }
+}

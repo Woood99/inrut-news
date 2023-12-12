@@ -10318,6 +10318,105 @@ textarea.input-reset {
   align-items: end;
 }
 
+.card-price {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.card-price__price {
+  font-size: var(--big-small-fz);
+  line-height: var(--big-small-fz);
+  font-weight: 500;
+  color: var(--dark);
+}
+.card-price .secondary-tooltip {
+  margin-left: 8px;
+  width: 22px;
+  height: 22px;
+  z-index: 20;
+}
+.card-price .secondary-tooltip__btn {
+  width: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.card-price .secondary-tooltip__btn svg {
+  width: 16px;
+  height: 16px;
+  stroke: none;
+}
+.card-price .secondary-tooltip__content {
+  z-index: 21;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  max-width: 350px;
+  bottom: auto;
+  top: 26px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.card-price--up .secondary-tooltip__btn svg {
+  fill: var(--red);
+}
+.card-price--up .price-history__more {
+  color: var(--red);
+}
+.card-price--down .secondary-tooltip__btn svg {
+  fill: var(--green);
+}
+.card-price--down .price-history__more {
+  color: var(--green);
+}
+
+.price-history__title {
+  font-size: var(--little-big-fz);
+  line-height: var(--little-big-lh);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+.price-history__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.price-history__row:not(:last-child) {
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--primary200);
+}
+.price-history__date {
+  width: 100px;
+  color: var(--primaryTwo);
+}
+.price-history__price {
+  width: 120px;
+}
+.price-history__more {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 .back-link {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -13870,6 +13969,14 @@ textarea.input-reset {
   transition: box-shadow 0.4s ease-in-out, transform 0.4s ease-in-out;
   transition: box-shadow 0.4s ease-in-out, transform 0.4s ease-in-out, -webkit-box-shadow 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
 }
+.object-info__link {
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
 .object-info__type {
   font-size: var(--little-big-fz);
   line-height: var(--little-big-lh);
@@ -15892,6 +15999,15 @@ textarea.input-reset {
   user-select: none;
   border-radius: 12px;
 }
+.card-primary__link {
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+}
 .card-primary__top {
   position: relative;
   display: block;
@@ -16016,6 +16132,15 @@ textarea.input-reset {
   left: 0;
   height: 100%;
   width: 100%;
+}
+.card-primary__image._fixed-width {
+  width: 90%;
+  height: 90%;
+  top: 5%;
+}
+.card-primary__image._fixed-width img {
+  -o-object-fit: contain;
+  object-fit: contain;
 }
 @media (max-width: 1024px) {
   .card-primary__image {
@@ -16787,7 +16912,7 @@ textarea.input-reset {
   }
 }
 .card-primary__name {
-  margin-top: 4px;
+  margin-top: 8px;
 }
 @media (max-width: 1024px) {
   .card-primary__name {
@@ -16827,6 +16952,14 @@ textarea.input-reset {
   color: var(--primary600);
   font-size: var(--default-fz);
   line-height: var(--little-small-lh);
+}
+.card-primary__meter {
+  color: var(--primary600);
+  font-size: var(--default-fz);
+  line-height: 1;
+  font-weight: 400;
+  margin-top: 4px;
+  margin-bottom: 16px;
 }
 .card-primary__mortgage {
   margin-top: 8px;
@@ -37957,15 +38090,6 @@ textarea.input-reset {
   -ms-grid-columns: 15.2542372881% 29.6610169492% max-content 1fr 24px;
   grid-template-columns: 15.2542372881% 29.6610169492% -webkit-max-content 1fr 24px;
   grid-template-columns: 15.2542372881% 29.6610169492% max-content 1fr 24px;
-}
-.my-requests__table .object-info > div:nth-child(3) {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
 }
 @media (max-width: 1212px) {
   .my-requests__table .object-info {

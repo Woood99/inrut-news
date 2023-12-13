@@ -79,7 +79,24 @@
     &__user {}
 
     &__data {}
-
+    &__record-viewings{
+        display: grid;
+        justify-content: space-between;
+        grid-template-columns: 1fr 350px;
+        grid-column-gap: 16px;
+        margin-bottom: 16px;
+        @media (max-width:$desktop) {
+            margin-top: 8px;
+            grid-template-columns: 1fr;
+        }
+        >.col{
+            &:nth-child(2){
+                @media (max-width:$desktop){
+                     display: none; 
+                }
+            }
+        }
+    }
     &__record-viewing {
         background-color: var(--white);
         box-shadow: var(--shadow-primary);
@@ -109,7 +126,24 @@
             }
         }
     }
-
+    &__rejecteds{
+        display: grid;
+        justify-content: space-between;
+        grid-template-columns: 1fr 350px;
+        grid-column-gap: 16px;
+        margin-bottom: 16px;
+        @media (max-width:$desktop) {
+            margin-top: 8px;
+            grid-template-columns: 1fr;
+        }
+        >.col{
+            &:nth-child(2){
+                @media (max-width:$desktop){
+                     display: none; 
+                }
+            }
+        }
+    }
     &__rejected {
         background-color: var(--white);
         box-shadow: var(--shadow-primary);

@@ -14,7 +14,6 @@ import {
     currentFurnishingSets
 } from '../components/furnishingSets';
 import inputResize from '../modules/inputResize';
-import numberReplace from '../modules/numberReplace';
 import {
     currentInputText
 } from "../components/inputs";
@@ -25,10 +24,6 @@ import {
     emergingBlockScroll
 } from '../modules/emergingBlockScroll';
 export const tabs = () => {
-    const metroContainer = document.querySelector('.popup-primary--search-area');
-    const metroInnerMoscow = document.querySelector('#map-metro_moscow');
-    let metroBooleanStatus = false;
-
     const tabs = document.querySelectorAll('[data-tabs]');
     let tabsActiveHash = [];
     if (tabs.length > 0) {
@@ -239,14 +234,6 @@ export const tabs = () => {
                 tabActiveTitle.length ? tabActiveTitle[0].classList.remove('_tab-active') : null;
                 tabTitle.classList.add('_tab-active');
                 setTabsStatus(tabsBlock);
-
-                if (!metroBooleanStatus && metroContainer && metroInnerMoscow) {
-                    metroContainer.querySelector('.dragscroll').scrollTo({
-                        top: metroInnerMoscow.getBoundingClientRect().height / 3,
-                        left: metroInnerMoscow.getBoundingClientRect().width / 3,
-                    });
-                    metroBooleanStatus = true;
-                }
                 if (el.closest('.block-stock')) {
                     const topGap = window.pageYOffset + el.closest('.block-stock').getBoundingClientRect().top;
                     const headerFixed = document.querySelector('.header-fixed');

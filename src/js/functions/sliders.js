@@ -537,14 +537,25 @@ function initSliders() {
             })
 
             function filterCards(updatePermit) {
-                const complexValue = complexSelect.querySelector('.choices__list.choices__list--single .choices__item.choices__item--selectable').dataset.value;
-                const yearValue = yearSelect.querySelector('.choices__list.choices__list--single .choices__item.choices__item--selectable').dataset.value;
-                const quarterValue = quarterSelect.querySelector('.choices__list.choices__list--single .choices__item.choices__item--selectable').dataset.value;
+                let complexValue = '';
+                let yearValue = '';
+                let quarterValue = '';
+                if (complexSelect) {
+                    complexValue = complexSelect.querySelector('.choices__list.choices__list--single .choices__item.choices__item--selectable').dataset.value;
+                }
+                if (yearSelect) {
+                    yearValue = yearSelect.querySelector('.choices__list.choices__list--single .choices__item.choices__item--selectable').dataset.value;
+                }
+                if (quarterSelect) {
+                    quarterValue = quarterSelect.querySelector('.choices__list.choices__list--single .choices__item.choices__item--selectable').dataset.value;
+                }
 
                 const slides = el.querySelectorAll('.swiper-slide');
                 slides.forEach(slide => slide.setAttribute('hidden', ''));
                 const slidesValidate = Array.from(slides).filter(el => {
-                    return el.dataset.constructComplex === complexValue && el.dataset.constructYear === yearValue && el.dataset.constructQuarter === quarterValue;
+                    return (complexValue === '' || el.dataset.constructComplex === complexValue) && 
+                    (yearValue === '' ||  el.dataset.constructYear === yearValue) && 
+                    (quarterValue === '' || el.dataset.constructQuarter === quarterValue);
                 })
                 slidesValidate.length > 0 ? el.classList.add('_slider-visible') : el.classList.remove('_slider-visible');
                 slidesValidate.forEach(slide => slide.removeAttribute('hidden'));

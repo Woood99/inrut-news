@@ -118,6 +118,7 @@ import {
 import сharacteristicsBlock from './components/сharacteristicsBlock';
 import submitAppOffers from './components/submitAppOffers';
 import mortgageRequests from './components/mortgageRequests';
+import moveToFromBlock from './modules/moveToFromBlock';
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==================================================
@@ -267,6 +268,9 @@ document.addEventListener('DOMContentLoaded', () => {
     emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true);
     emergingBlockScroll('.mortgage-requests .mortgage-requests__save', '.footer-fixed.mortgage-requests-fixed', 99999999, true);
 
+    // ==================================================
+
+    moveToFromBlock('[data-move-block-to="bid-user"]','[data-move-block-from="bid-user"]',99999,1212,`${window.innerWidth >= 1920 ? 1.35 : 1}`);
 
     // ==================================================
     inputClue('.input-clue', 'clue-primary', `

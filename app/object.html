@@ -230,17 +230,19 @@
                                         Краснодар, ул.Карла-Маркса., 234
                                     </span>
                                 </div>
-                                <div class="object-data__price" data-main-info-price>
-                                    <span class="object-data__price-old">
-                                        <span>
-                                            <span>3 000 000</span> ₽
-                                        </span>
-                                        <span>-300 000 ₽</span>
-                                    </span>
-                                    <span class="object-data__price-new">
-                                        <span class="title-2">2 897 000 ₽</span>
-                                        <span>(94 742 ₽/м²)</span>
-                                    </span>
+                                <div class="object-data__price card-price card-price--up" data-main-info-price>
+                                    <span class="card-price__price">2 897 000 ₽</span>
+                                    <div class="secondary-tooltip">
+                                        <button class="btn btn-reset secondary-tooltip__btn" title="Посмотреть историю изменения цены" data-scroll-target="history-price"
+                                            data-scroll-target-gap="16">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#price-up"></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="object-data__meter">
+                                    94 742 ₽/м²
                                 </div>
                                 <div class="object-data__text">
                                     <p>
@@ -440,7 +442,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="object-body__history object-history">
+                            <div class="object-body__history object-history" data-scroll-block="history-price">
                                 <h2 class="object-history__title title-2">
                                     История изменения цены
                                 </h2>
@@ -647,7 +649,23 @@
     </div>
 </div>
 
-
+<div class="popup popup-primary popup-primary--im-buying">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="im-buying">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+        </button>
+        <div class="popup__content popup-primary__content im-buying">
+            <h2 class="title-2 im-buying__title">Отлично!</h2>
+            <div class="im-buying__descr">
+                <p>
+                    Поздравляем вас с выбором объекта. Мы уведомим продавца о вашем решении.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="popup popup-primary popup-primary--right popup-primary--tariff-popup">
     <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="tariff-popup">
@@ -31818,7 +31836,7 @@
                             </p>
                         </div>
                         <h3 class="record-viewing-two__subtitle title-3">
-                            Объект
+                            Объект/Продавец
                         </h3>
                         <a href="#" class="record-viewing-two__card object-small-card">
                             <div class="object-small-card__image">
@@ -31834,9 +31852,6 @@
                                 Краснодар, ул.Карла-Маркса., 234
                             </p>
                         </a>
-                        <h3 class="record-viewing-two__subtitle title-3">
-                            Продавец
-                        </h3>
                         <div class="record-viewing-two__user user-info">
                             <div class="user-info__avatar avatar online">
                                 <img loading="lazy" src="./img/avatar-1.jpg" width="45" height="45" alt="Абдурахманраджи Г.">

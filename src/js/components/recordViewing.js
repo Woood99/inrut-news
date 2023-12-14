@@ -315,31 +315,35 @@ export const recordViewing = () => {
     }
 };
 export const recordViewingTwo = () => {
-    const container = document.querySelector('.record-viewing-two');
-    if (!container) return; 
-    const cancel = container.querySelector('.record-viewing-two__cancel');
-    cancel.addEventListener('click',() => {
-        const modalHTML = `
-        <div class="record-viewing-two-confirm">
-        <div class="record-viewing-two-confirm__container">
-            <button class="btn-reset record-viewing-two-confirm__close" aria-label="Закрыть модальное окно">
-                <svg>
-                    <use xlink:href="./img/sprite.svg#x"></use>
-                </svg>
-                <span>Закрыть</span>
-            </button>
-             <div class="record-viewing-two-confirm__content">
-                 <h2 class="record-viewing-two-confirm__title title-2">
-                    Выберите причину отмены
-                 </h2>
-                 <div class="record-viewing-two-confirm__btns">
-                    <button type="button" class="btn btn-reset btn-primary record-viewing-two-confirm__btn record-viewing-two-confirm__btn--yes">Выбрал случайно</button>
-                    <button type="button" class="btn btn-reset btn-primary record-viewing-two-confirm__btn record-viewing-two-confirm__btn--no js-popup-close" data-popup-path="object-not-two">Объект не подходит</button>
-                 </div>
-             </div>
-        </div>
-        </div>
-        `;
-        modal(modalHTML, '.record-viewing-two-confirm', 300);
-    });
+    const containers = document.querySelectorAll('.record-viewing-two');
+    if (containers.length === 0) return;
+    containers.forEach(container => {
+        const btns = container.querySelectorAll('.record-viewing-two__cancel');
+        btns.forEach(cancel => {
+            cancel.addEventListener('click',() => {
+                const modalHTML = `
+                <div class="record-viewing-two-confirm">
+                <div class="record-viewing-two-confirm__container">
+                    <button class="btn-reset record-viewing-two-confirm__close" aria-label="Закрыть модальное окно">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#x"></use>
+                        </svg>
+                        <span>Закрыть</span>
+                    </button>
+                     <div class="record-viewing-two-confirm__content">
+                         <h2 class="record-viewing-two-confirm__title title-2">
+                            Выберите причину отмены
+                         </h2>
+                         <div class="record-viewing-two-confirm__btns">
+                            <button type="button" class="btn btn-reset btn-primary record-viewing-two-confirm__btn record-viewing-two-confirm__btn--yes">Выбрал случайно</button>
+                            <button type="button" class="btn btn-reset btn-primary record-viewing-two-confirm__btn record-viewing-two-confirm__btn--no js-popup-close" data-popup-path="object-not-two">Объект не подходит</button>
+                         </div>
+                     </div>
+                </div>
+                </div>
+                `;
+                modal(modalHTML, '.record-viewing-two-confirm', 300);
+            });
+        })
+    }) 
 };

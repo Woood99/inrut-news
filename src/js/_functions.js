@@ -178,4 +178,5 @@ popup(null, 'object-gallery--two');
 popup(null, 'warning-remove');
 popup(null, 'select-bank');
 popup(null, 'metro-map');
+popup(null, 'im-buying');
 // ========================================================================================

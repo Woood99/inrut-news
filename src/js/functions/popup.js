@@ -13,10 +13,9 @@ const popup = (options, modalName) => {
         isClose: () => {},
     }
     const settingsModal = {
-        btns: document.querySelectorAll(`[data-popup-path=${modalName}]`),
+        btnSelector: `[data-popup-path=${modalName}]`,
         modal,
         container,
-        isOpen: false,
         speed: modal.hasAttribute('data-popup-mobile-fast') && window.innerWidth <= 1212 ? 0 : 300,
         animation: 'fade',
         options: Object.assign(defaultOptions, options),
@@ -33,12 +32,14 @@ const popup = (options, modalName) => {
             '[tabindex]:not([tabindex^="-"])'
         ],
     };
-    settingsModal.btns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            if (!e.target.closest('.nav-arrow-secondary')) {
-                modalOpen(e.target);
+    document.addEventListener('click',(e) => {
+        const target = e.target;
+        const btn = target.closest(settingsModal.btnSelector); 
+        if (btn) {
+            if (!target.closest('.nav-arrow-secondary')) {
+                modalOpen(btn);
             }
-        })
+        }
     })
 
     modal.querySelectorAll('.js-popup-close').forEach(el => {
@@ -72,17 +73,23 @@ const popup = (options, modalName) => {
                 }, 1);
                 return;
             }
+            if (el.classList.contains('object-not-popup__btn') && document.querySelector('.popup-primary--record-viewing-two').classList.contains('is-open')) {
+                setTimeout(() => {
+                    modalClose(document.querySelector('.popup-primary--record-viewing-two'));
+                    enableScroll();
+                }, 1);
+            }
             modalClose()
         })
     })
     modal.addEventListener('click', (e) => {
         const target = e.target;
-        if (target.classList.contains('popup') && target.classList.contains('is-open') && settingsModal.isOpen) {
+        if (target.classList.contains('popup') && target.classList.contains('is-open') && settingsModal.modal.classList.contains('is-open')) {
             modalClose();
         }
     });
     window.addEventListener('keydown', (e) => {
-        if (e.keyCode === 27 && settingsModal.isOpen) {
+        if (e.keyCode === 27 && settingsModal.modal.classList.contains('is-open')) {
             if (document.querySelector('.checkboard-popup-card') && document.querySelector('.checkboard-popup-card').classList.contains('is-open')) {
                 return;
             }
@@ -92,7 +99,7 @@ const popup = (options, modalName) => {
             if (modalActiveList[modalActiveList.length - 1] !== modalName) return;
             modalClose();
         }
-        if (e.keyCode === 9 && settingsModal.isOpen) {
+        if (e.keyCode === 9 && settingsModal.modal.classList.contains('is-open')) {
             focusCatch(e);
         }
     });
@@ -101,7 +108,7 @@ const popup = (options, modalName) => {
     function modalOpen(target) {
         settingsModal.currentBtn = target,
             settingsModal.previousActiveElement = document.activeElement;
-        if (settingsModal.isOpen) return;
+        if (settingsModal.modal.classList.contains('is-open')) return;
         settingsModal.container.scrollTo(0, 0);
         settingsModal.modal.style.setProperty('--transition-time', `${settingsModal.speed / 1000}s`);
         settingsModal.modal.classList.add('is-open');
@@ -116,33 +123,45 @@ const popup = (options, modalName) => {
         setTimeout(() => {
             settingsModal.options.isOpen(settingsModal);
             settingsModal.container.classList.add('animate-open');
-            settingsModal.isOpen = true;
             popupLastString(modalName, 'added');
             focusTrap();
         }, settingsModal.speed);
     }
 
-    function modalClose() {
-        if (!settingsModal.isOpen) return;
+    function modalClose(target) {
+        if (target) {
+            const modal = target;
+            const container = target.querySelector('.popup__container');
+            if (!modal.classList.contains('is-open')) return
+            container.classList.remove('animate-open');
+            container.classList.remove(settingsModal.animation);
+            modal.classList.remove('is-open');
+            container.classList.remove('popup-open');
+            popupLastString(modalName, 'delete');
+            document.body.style.scrollBehavior = 'auto';
+            document.documentElement.style.scrollBehavior = 'auto';
+            focusTrap();
+        } else {
+            if (!settingsModal.modal.classList.contains('is-open')) return;
 
-        settingsModal.container.classList.remove('animate-open');
-        settingsModal.container.classList.remove(settingsModal.animation);
-        settingsModal.modal.classList.remove('is-open');
-        settingsModal.container.classList.remove('popup-open');
-        popupLastString(modalName, 'delete');
-        if (modalActiveList.length === 0) {
-            if (!document.querySelector('[data-menu]').classList.contains('menu--active')) {
-                if (!document.querySelector('.lg-container.gallery-primary-container.lg-show')) {
-                    enableScroll();
+            settingsModal.container.classList.remove('animate-open');
+            settingsModal.container.classList.remove(settingsModal.animation);
+            settingsModal.modal.classList.remove('is-open');
+            settingsModal.container.classList.remove('popup-open');
+            popupLastString(modalName, 'delete');
+            if (modalActiveList.length === 0) {
+                if (!document.querySelector('[data-menu]').classList.contains('menu--active')) {
+                    if (!document.querySelector('.lg-container.gallery-primary-container.lg-show')) {
+                        enableScroll();
+                    }
                 }
+    
             }
-
+            document.body.style.scrollBehavior = 'auto';
+            document.documentElement.style.scrollBehavior = 'auto';
+            settingsModal.options.isClose(settingsModal);
+            focusTrap();
         }
-        document.body.style.scrollBehavior = 'auto';
-        document.documentElement.style.scrollBehavior = 'auto';
-        settingsModal.options.isClose(settingsModal);
-        settingsModal.isOpen = false;
-        focusTrap();
     }
 
     function disableScroll() {
@@ -207,7 +226,7 @@ const popup = (options, modalName) => {
 
     function focusTrap() {
         const nodes = settingsModal.container.querySelectorAll(settingsModal.focusElements);
-        if (settingsModal.isOpen) {
+        if (settingsModal.modal.classList.contains('is-open')) {
             if (nodes.length) nodes[0].focus();
         } else {
             settingsModal.previousActiveElement.focus();

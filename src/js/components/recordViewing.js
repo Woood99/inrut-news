@@ -330,11 +330,11 @@ export const recordViewingTwo = () => {
             </button>
              <div class="record-viewing-two-confirm__content">
                  <h2 class="record-viewing-two-confirm__title title-2">
-                    Отменить заявку?
+                    Выберите причину отмены
                  </h2>
                  <div class="record-viewing-two-confirm__btns">
-                    <button type="button" class="btn btn-reset btn-primary record-viewing-two-confirm__btn record-viewing-two-confirm__btn--yes">Да, отменить</button>
-                    <button type="button" class="btn btn-reset btn-secondary record-viewing-two-confirm__btn record-viewing-two-confirm__btn--no">Не отменять</button>
+                    <button type="button" class="btn btn-reset btn-primary record-viewing-two-confirm__btn record-viewing-two-confirm__btn--yes">Выбрал случайно</button>
+                    <button type="button" class="btn btn-reset btn-primary record-viewing-two-confirm__btn record-viewing-two-confirm__btn--no js-popup-close" data-popup-path="object-not-two">Объект не подходит</button>
                  </div>
              </div>
         </div>

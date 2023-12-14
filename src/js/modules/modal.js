@@ -46,19 +46,6 @@ const modal = (modalHTML, container, speed = 300, target = false) => {
         if (recordViewingTwoConfirmBtnYes) {
             recordViewingTwoConfirmBtnYes.addEventListener('click', () => {
                 modalClose(settingsModal);
-                const recordViewingTwo = document.querySelector('.popup-primary--record-viewing-two');
-                const info = recordViewingTwo.querySelector('.record-viewing-two__info');
-                const cancelBtn = recordViewingTwo.querySelector('.record-viewing-two__cancel');
-                const sent = recordViewingTwo.querySelector('.record-viewing-two__sent');
-
-                const cancelApp = `
-                 <div class="record-viewing-two__cancel-app">
-                    <h3 class="title-3">Вы отменили заявку</h3>
-                 </div>
-                `
-                info.insertAdjacentHTML('afterbegin', cancelApp);
-                sent.remove();
-                cancelBtn.remove();
             })
         }
         modalEl.addEventListener('click', (e) => {

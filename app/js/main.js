@@ -4468,6 +4468,26 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   }
+  function scrollTarget() {
+    const targets = document.querySelectorAll('[data-scroll-target]');
+    if (targets.length === 0) return;
+    targets.forEach(target => {
+      target.addEventListener('click', () => {
+        const name = target.dataset.scrollTarget;
+        const to = document.querySelector(`[data-scroll-block="${name}"]`);
+        if (to) {
+          const gap = target.dataset.scrollTargetGap ? target.dataset.scrollTargetGap : 0;
+          const topGap = window.pageYOffset + to.getBoundingClientRect().top;
+          const headerFixed = document.querySelector('.header-fixed') ? document.querySelector('.header-fixed').clientHeight : 0;
+          window.scrollTo({
+            top: topGap - gap - headerFixed,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  }
+  scrollTarget();
 });
 
 /***/ }),

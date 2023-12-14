@@ -10334,13 +10334,13 @@ textarea.input-reset {
 }
 .card-price .secondary-tooltip {
   margin-left: 8px;
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
   z-index: 20;
 }
 .card-price .secondary-tooltip__btn {
   width: 100%;
-  width: 100%;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10350,11 +10350,18 @@ textarea.input-reset {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  border-radius: 8px;
+  border: 1px solid var(--primary200);
 }
 .card-price .secondary-tooltip__btn svg {
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
   stroke: none;
+}
+@media (min-width: 1213px) {
+  .card-price .secondary-tooltip__btn:hover {
+    border-color: var(--primaryTwo);
+  }
 }
 .card-price .secondary-tooltip__content {
   z-index: 21;
@@ -10363,7 +10370,7 @@ textarea.input-reset {
   width: max-content;
   max-width: 350px;
   bottom: auto;
-  top: 26px;
+  top: 32px;
   left: 50%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
@@ -10405,9 +10412,6 @@ textarea.input-reset {
   width: 100px;
   color: var(--primaryTwo);
 }
-.price-history__price {
-  width: 120px;
-}
 .price-history__more {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -10415,6 +10419,7 @@ textarea.input-reset {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  width: 120px;
 }
 
 .back-link {
@@ -16473,8 +16478,8 @@ textarea.input-reset {
   border-radius: 8px;
 }
 .card-primary__info--dislike-btn button, .card-primary__info--like-btn button {
-  width: 35px;
-  height: 33px;
+  width: 40px;
+  height: 38px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -16487,18 +16492,19 @@ textarea.input-reset {
   position: relative;
   background-color: #ebf7ff;
   z-index: 6;
-  border-radius: 8px;
+  border-radius: 10px;
   -webkit-transition: border-radius 0.4s ease-in-out;
   -o-transition: border-radius 0.4s ease-in-out;
   transition: border-radius 0.4s ease-in-out;
 }
 .card-primary__info--dislike-btn button svg, .card-primary__info--like-btn button svg {
-  width: 17px;
-  height: 17px;
+  width: 18px;
+  height: 18px;
   fill: var(--blue);
 }
 .card-primary__info--dislike-btn span, .card-primary__info--like-btn span {
   margin-left: 2px;
+  cursor: pointer;
   color: var(--blue);
   font-size: var(--small-fz);
   line-height: var(--small-lh);
@@ -16509,7 +16515,7 @@ textarea.input-reset {
   width: 117px;
   border-radius: 0 8px 8px 0;
   position: absolute;
-  left: 33px;
+  left: 38px;
   -webkit-transform: translateX(-100%);
   -ms-transform: translateX(-100%);
   transform: translateX(-100%);
@@ -32436,6 +32442,19 @@ textarea.input-reset {
   -ms-flex-direction: column;
   flex-direction: column;
 }
+.object-data__price.card-price {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+.object-data__meter {
+  color: var(--primary600);
+  font-size: var(--default-fz);
+  line-height: 1;
+  font-weight: 400;
+  margin-top: 4px;
+}
 .object-data__price-new span:nth-child(2) {
   color: var(--primary600);
   font-size: var(--default-fz);
@@ -36396,6 +36415,9 @@ textarea.input-reset {
   }
 }
 .detailed-flat .object-body__data {
+  margin-top: 0;
+}
+.detailed-flat .object-body__history {
   margin-top: 0;
 }
 .detailed-flat .object-body__stock {

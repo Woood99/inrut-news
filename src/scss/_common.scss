@@ -2372,20 +2372,28 @@
     }
     .secondary-tooltip {
         margin-left: 8px;
-        width: 22px;
-        height: 22px;
+        width: 28px;
+        height: 28px;
         z-index: 20;
         &__btn {
             width: 100%;
-            width: 100%;
+        height: 100%;
 
             display: flex;  
             align-items: center;
             justify-content: center;
+
+            border-radius: 8px;
+            border: 1px solid var(--primary200);
             svg{
-                width: 16px;
-                height: 16px;
+                width: 15px;
+                height: 15px;
                 stroke: none;
+            }
+            @media (min-width:$desktop-min){
+                 &:hover{
+                    border-color: var(--primaryTwo);
+                 } 
             }
         }
     
@@ -2395,7 +2403,7 @@
             max-width: 350px;
 
             bottom: auto;
-            top: calc(22px + 4px);
+            top: calc(28px + 4px);
             left: 50%;
             transform: translateX(-50%);
         }
@@ -2463,11 +2471,12 @@
     }
 
     &__price {
-        width: 120px;
+   
     }
 
     &__more {
         display: flex;
         align-items: center;
+        width: 120px;
     }
 }

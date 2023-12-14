@@ -54,7 +54,9 @@ import dropdownDown from './modules/dropdownDown';
 import {
     emergingBlockScroll
 } from './modules/emergingBlockScroll';
-import {controlCards} from './components/controlCards';
+import {
+    controlCards
+} from './components/controlCards';
 import videoBlock from './components/videoBlock';
 import reviewModal from './components/reviewModal';
 import placeSaleOptionMore from './components/placeSaleOptionMore';
@@ -270,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ==================================================
 
-    moveToFromBlock('[data-move-block-to="bid-user"]','[data-move-block-from="bid-user"]',99999,1212,`${window.innerWidth >= 1920 ? 1.35 : 1}`);
+    moveToFromBlock('[data-move-block-to="bid-user"]', '[data-move-block-from="bid-user"]', 99999, 1212, `${window.innerWidth >= 1920 ? 1.35 : 1}`);
 
     // ==================================================
     inputClue('.input-clue', 'clue-primary', `
@@ -322,4 +324,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+
+    function scrollTarget() {
+        const targets = document.querySelectorAll('[data-scroll-target]');
+        if (targets.length === 0) return;
+        targets.forEach(target => {
+            target.addEventListener('click', () => {
+                const name = target.dataset.scrollTarget;
+                const to = document.querySelector(`[data-scroll-block="${name}"]`);
+                if (to) {
+                    const gap = target.dataset.scrollTargetGap ? target.dataset.scrollTargetGap : 0;
+                    const topGap = window.pageYOffset + to.getBoundingClientRect().top;
+                    const headerFixed = document.querySelector('.header-fixed') ? document.querySelector('.header-fixed').clientHeight : 0;
+                    window.scrollTo({
+                        top: topGap - gap - headerFixed,
+                        behavior: 'smooth'
+                    })
+                }
+            });
+        })
+    }
+    scrollTarget();
 })

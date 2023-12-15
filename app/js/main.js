@@ -4681,6 +4681,7 @@ __webpack_require__.r(__webpack_exports__);
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'select-bank');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'metro-map');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'im-buying');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'change-mind');
 // ========================================================================================
 
 /***/ }),

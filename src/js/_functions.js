@@ -179,4 +179,5 @@ popup(null, 'warning-remove');
 popup(null, 'select-bank');
 popup(null, 'metro-map');
 popup(null, 'im-buying');
+popup(null, 'change-mind');
 // ========================================================================================

@@ -1832,6 +1832,39 @@ textarea.input-reset {
     background-color: rgba(34, 41, 102, 0.4);
   }
 }
+.popup-primary--change-mind {
+  text-align: center;
+}
+.popup-primary--change-mind .popup-primary__container {
+  min-height: auto;
+  margin: 50px auto;
+  text-align: center;
+  border-radius: 12px;
+  padding: 48px;
+  width: 450px;
+  z-index: 1050;
+}
+@media (max-width: 768px) {
+  .popup-primary--change-mind .popup-primary__container {
+    max-width: 100%;
+    width: calc(100% - 4px);
+    margin: 50px auto 0;
+    vertical-align: bottom;
+    padding: 65px 48px 48px;
+    border-radius: 16px 16px 0 0;
+  }
+}
+.popup-primary--change-mind::before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+@media (max-width: 1212px) {
+  .popup-primary--change-mind {
+    background-color: rgba(34, 41, 102, 0.4);
+  }
+}
 .popup-primary--interest-rate {
   background-color: rgba(34, 41, 102, 0.4);
 }
@@ -3917,7 +3950,10 @@ textarea.input-reset {
   margin-bottom: 16px;
 }
 
-.modal-object-gallery {
+.modal-object-gallery,
+.modal-apart-renov,
+.modal-furnishing-sets,
+.modal-ecology-parks {
   --transition-time: 0.3s;
   position: fixed;
   left: 0;
@@ -3934,14 +3970,20 @@ textarea.input-reset {
   -o-transition: opacity var(--transition-time), visibility var(--transition-time);
   transition: opacity var(--transition-time), visibility var(--transition-time);
 }
-.modal-object-gallery.is-open {
+.modal-object-gallery.is-open,
+.modal-apart-renov.is-open,
+.modal-furnishing-sets.is-open,
+.modal-ecology-parks.is-open {
   opacity: 1;
   visibility: visible;
   -webkit-transition: opacity var(--transition-time), visibility var(--transition-time);
   -o-transition: opacity var(--transition-time), visibility var(--transition-time);
   transition: opacity var(--transition-time), visibility var(--transition-time);
 }
-.modal-object-gallery__container {
+.modal-object-gallery__container,
+.modal-apart-renov__container,
+.modal-furnishing-sets__container,
+.modal-ecology-parks__container {
   position: relative;
   min-height: var(--vh);
   display: inline-block;
@@ -3958,11 +4000,17 @@ textarea.input-reset {
   min-height: var(--vh);
   vertical-align: bottom;
 }
-.modal-object-gallery__container.open {
+.modal-object-gallery__container.open,
+.modal-apart-renov__container.open,
+.modal-furnishing-sets__container.open,
+.modal-ecology-parks__container.open {
   display: inline-block !important;
 }
 @media (max-width: 1212px) {
-  .modal-object-gallery__container {
+  .modal-object-gallery__container,
+  .modal-apart-renov__container,
+  .modal-furnishing-sets__container,
+  .modal-ecology-parks__container {
     border-radius: 16px 16px 0 0;
     padding: 65px 10px 0;
     max-width: 100%;
@@ -3973,7 +4021,10 @@ textarea.input-reset {
     left: -2px;
   }
 }
-.modal-object-gallery__close {
+.modal-object-gallery__close,
+.modal-apart-renov__close,
+.modal-furnishing-sets__close,
+.modal-ecology-parks__close {
   position: absolute;
   right: 0;
   top: 0;
@@ -3993,7 +4044,10 @@ textarea.input-reset {
   -ms-flex-pack: center;
   justify-content: center;
 }
-.modal-object-gallery__close svg {
+.modal-object-gallery__close svg,
+.modal-apart-renov__close svg,
+.modal-furnishing-sets__close svg,
+.modal-ecology-parks__close svg {
   width: 25px;
   height: 25px;
   fill: var(--blue);
@@ -4002,38 +4056,59 @@ textarea.input-reset {
   transition: fill 0.4s ease-in-out;
 }
 @media (max-width: 1212px) {
-  .modal-object-gallery__close svg {
+  .modal-object-gallery__close svg,
+  .modal-apart-renov__close svg,
+  .modal-furnishing-sets__close svg,
+  .modal-ecology-parks__close svg {
     display: none;
   }
 }
-.modal-object-gallery__close span {
+.modal-object-gallery__close span,
+.modal-apart-renov__close span,
+.modal-furnishing-sets__close span,
+.modal-ecology-parks__close span {
   color: var(--blue);
   font-size: var(--small-fz);
   line-height: var(--small-lh);
   font-weight: 500;
 }
 @media (min-width: 1212px) {
-  .modal-object-gallery__close span {
+  .modal-object-gallery__close span,
+  .modal-apart-renov__close span,
+  .modal-furnishing-sets__close span,
+  .modal-ecology-parks__close span {
     display: none;
   }
 }
 @media (min-width: 1213px) {
-  .modal-object-gallery__close:hover svg {
+  .modal-object-gallery__close:hover svg,
+  .modal-apart-renov__close:hover svg,
+  .modal-furnishing-sets__close:hover svg,
+  .modal-ecology-parks__close:hover svg {
     fill: var(--primary500);
   }
 }
 @media (max-width: 1212px) {
-  .modal-object-gallery__close {
+  .modal-object-gallery__close,
+  .modal-apart-renov__close,
+  .modal-furnishing-sets__close,
+  .modal-ecology-parks__close {
     right: 16px;
     top: 24px;
     width: auto;
     height: auto;
   }
 }
-.modal-object-gallery__content .tabs__title {
+.modal-object-gallery__content .tabs__title,
+.modal-apart-renov__content .tabs__title,
+.modal-furnishing-sets__content .tabs__title,
+.modal-ecology-parks__content .tabs__title {
   max-width: 50%;
 }
-.modal-object-gallery__content .swiper-slide img {
+.modal-object-gallery__content .swiper-slide img,
+.modal-apart-renov__content .swiper-slide img,
+.modal-furnishing-sets__content .swiper-slide img,
+.modal-ecology-parks__content .swiper-slide img {
   width: 100%;
   height: 100%;
   border-radius: 12px;
@@ -5932,6 +6007,15 @@ textarea.input-reset {
 .complaint-popup__btn {
   margin-top: 32px;
   width: 100%;
+}
+
+.change-mind__btns {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+  grid-template-columns: 1fr;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
 }
 
 .thanks-popup {
@@ -16072,7 +16156,7 @@ textarea.input-reset {
   width: 100%;
   margin-bottom: 16px;
   position: relative;
-  z-index: 20;
+  z-index: 19;
 }
 .card-primary__images {
   display: -webkit-box;
@@ -31669,7 +31753,6 @@ textarea.input-reset {
   }
 }
 .object-body__record-viewing {
-  min-height: 100%;
   background-color: var(--white);
   -webkit-box-shadow: var(--shadow-primary);
   box-shadow: var(--shadow-primary);
@@ -33717,6 +33800,7 @@ textarea.input-reset {
 }
 .object-apart-renov__tabs .tabs-primary__content {
   margin-top: 0;
+  cursor: pointer;
 }
 .object-apart-renov__tabs .tabs-primary__btns .tabs__title {
   width: auto;
@@ -33764,6 +33848,7 @@ textarea.input-reset {
   -o-transition: box-shadow 0.4s ease-in-out, transform 0.4s ease-in-out;
   transition: box-shadow 0.4s ease-in-out, transform 0.4s ease-in-out;
   transition: box-shadow 0.4s ease-in-out, transform 0.4s ease-in-out, -webkit-box-shadow 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+  pointer-events: none;
 }
 .object-apart-renov__fullscreen svg {
   width: 16px;
@@ -38237,6 +38322,10 @@ textarea.input-reset {
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: start;
+  border-radius: 8px;
+  background-color: var(--dark);
+  height: 30px;
+  padding: 0 8px;
 }
 .my-requests__table .object-info .object-info__offers span {
   font-size: var(--default-fz);
@@ -38248,6 +38337,13 @@ textarea.input-reset {
   margin-left: 10px;
   width: 16px;
   height: 16px;
+}
+.my-requests__table .object-info .object-info__offers--true {
+  background-color: rgba(36, 202, 142, 0.2);
+}
+.my-requests__table .object-info .object-info__offers--false {
+  background-color: var(--primary100);
+  color: var(--white);
 }
 .my-requests__table .main-table__type {
   -ms-grid-columns: 11.0169491525% 25.4237288136% 1fr;

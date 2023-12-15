@@ -293,7 +293,8 @@
             background-color: rgba(34, 41, 102, 0.4);
         }
     }
-    &--im-buying{
+
+    &--im-buying {
         text-align: center;
 
         .popup-primary {
@@ -316,7 +317,8 @@
                     border-radius: 16px 16px 0 0;
                 }
             }
-            &__close{
+
+            &__close {
                 margin-top: -48px;
             }
         }
@@ -334,6 +336,7 @@
             background-color: rgba(34, 41, 102, 0.4);
         }
     }
+
     &--sber-tied {
         text-align: center;
         z-index: 1053;
@@ -558,7 +561,8 @@
             &__container {
                 border-radius: 12px 0 0 12px;
                 padding: 65px 0 48px;
-             max-width: 70%;
+                max-width: 70%;
+
                 @media (max-width:$desktop) {
                     border-radius: 0;
                     padding: 75px 16px 32px;
@@ -577,6 +581,50 @@
             background-color: rgba(34, 41, 102, 0.4);
         }
     }
+
+    &--change-mind {
+        text-align: center;
+
+        .popup-primary {
+            &__container {
+                min-height: auto;
+                margin: 50px auto;
+                text-align: center;
+                border-radius: 12px;
+
+                padding: 48px;
+                width: 450px;
+                z-index: 1050;
+                @media (max-width:$smallTablet-max) {
+                    max-width: 100%;
+                    width: calc(100% - 4px);
+                    margin: 50px auto 0;
+                    vertical-align: bottom;
+
+                    padding: 65px 48px 48px;
+
+                    border-radius: 16px 16px 0 0;
+                }
+
+            }
+        
+    
+        }
+
+
+        &::before {
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            height: 100%
+        }
+
+
+        @media (max-width:$desktop) {
+            background-color: rgba(34, 41, 102, 0.4);
+        }
+    }
+
 
     &--interest-rate {
         background-color: rgba(34, 41, 102, 0.4);
@@ -1458,7 +1506,8 @@
         margin-bottom: 32px;
         padding: 0 48px;
     }
-    &__list{
+
+    &__list {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(375px, 1fr));
         grid-column-gap: 16px;
@@ -1566,8 +1615,8 @@
 
     .bid {
         pointer-events: all;
-        &__body {
-        }
+
+        &__body {}
 
         &__time {
             margin-left: auto;
@@ -1578,6 +1627,7 @@
             display: flex;
             align-items: center;
             white-space: nowrap;
+
             >span {
                 margin-left: 6px;
                 margin-top: 2px;
@@ -1586,6 +1636,7 @@
                 font-size: var(--small-fz);
                 line-height: var(--small-lh);
                 line-height: 1;
+
                 span {
                     color: var(--blue);
                 }
@@ -2827,7 +2878,11 @@
         }
     }
 }
-.modal-object-gallery {
+
+.modal-object-gallery,
+.modal-apart-renov,
+.modal-furnishing-sets,
+.modal-ecology-parks {
     --transition-time: 0.3s;
     position: fixed;
     left: 0;
@@ -2860,10 +2915,11 @@
         box-shadow: var(--shadow-primary);
 
         margin: 0 auto;
-    padding: 48px 32px 32px;
-    width: 100%;
-    min-height: var(--vh);
-    vertical-align: bottom;
+        padding: 48px 32px 32px;
+        width: 100%;
+        min-height: var(--vh);
+        vertical-align: bottom;
+
         &.open {
             display: inline-block !important;
         }
@@ -2932,12 +2988,14 @@
             height: auto;
         }
     }
-    &__content{
-        .tabs__title{
+
+    &__content {
+        .tabs__title {
             max-width: 50%;
         }
-        .swiper-slide{
-            img{
+
+        .swiper-slide {
+            img {
                 width: 100%;
                 height: 100%;
                 border-radius: 12px;
@@ -2945,6 +3003,8 @@
         }
     }
 }
+
+
 
 .review-modal {
     --transition-time: 0.3s;
@@ -4783,7 +4843,14 @@
         width: 100%;
     }
 }
-
+.change-mind{
+    &__btns{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-column-gap: 16px;
+        grid-row-gap: 16px;
+    }
+}
 .thanks-popup {
     display: flex;
     flex-direction: column;
@@ -6291,8 +6358,7 @@
         }
     }
 
-    &__card {
-    }
+    &__card {}
 
     &__cancel {}
 
@@ -6415,11 +6481,12 @@
 }
 
 
-.im-buying{
-    &__descr{
+.im-buying {
+    &__descr {
         margin-top: 16px;
     }
 }
+
 .record-day {
 
     &__title {}

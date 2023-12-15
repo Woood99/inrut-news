@@ -1810,20 +1810,8 @@ textarea.input-reset {
 }
 .popup-primary--suggest-object .popup-primary__container {
   border-radius: 12px 0 0 12px;
-  padding: 65px 48px 48px;
-  width: 450px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-.popup-primary--suggest-object .popup-primary__container.popup-open {
-  display: -webkit-inline-box !important;
-  display: -ms-inline-flexbox !important;
-  display: inline-flex !important;
+  padding: 65px 0 48px;
+  max-width: 70%;
 }
 @media (max-width: 1212px) {
   .popup-primary--suggest-object .popup-primary__container {
@@ -2592,13 +2580,16 @@ textarea.input-reset {
 
 .suggest-object__title {
   margin-bottom: 32px;
-  text-align: center;
+  padding: 0 48px;
 }
-.suggest-object__btn {
-  width: 100%;
-}
-.suggest-object__btn:not(:last-child) {
-  margin-bottom: 16px;
+.suggest-object__list {
+  display: -ms-grid;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(375px, 1fr));
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  background-color: var(--stand-bg);
+  padding: 16px 48px;
 }
 
 .add-contact__form {
@@ -10374,7 +10365,7 @@ textarea.input-reset {
   margin-left: 8px;
   width: 28px;
   height: 28px;
-  z-index: 20;
+  z-index: 19;
 }
 .card-price .secondary-tooltip__btn {
   width: 100%;
@@ -11568,7 +11559,8 @@ textarea.input-reset {
   margin-top: 32px;
   display: -ms-grid;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
+  -ms-grid-columns: (1fr)[3];
+  grid-template-columns: repeat(3, 1fr);
   grid-row-gap: 24px;
   grid-column-gap: 16px;
 }
@@ -16049,7 +16041,7 @@ textarea.input-reset {
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 20;
+  z-index: 19;
 }
 .card-primary__top {
   position: relative;
@@ -16241,7 +16233,7 @@ textarea.input-reset {
 }
 .card-primary__info {
   position: absolute;
-  z-index: 3;
+  z-index: 22;
   top: 15px;
   padding: 0 15px;
   width: 100%;
@@ -23456,6 +23448,7 @@ textarea.input-reset {
   border-radius: 16px;
   padding: 24px 0;
   grid-column-gap: 16px;
+  grid-row-gap: 16px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 29.6610169492%;
@@ -23671,7 +23664,7 @@ textarea.input-reset {
   }
 }
 .bid__descr {
-  margin-top: 32px;
+  margin-top: 48px;
   font-size: var(--default-fz);
   line-height: var(--default-lh);
   font-weight: 400;
@@ -23753,13 +23746,7 @@ textarea.input-reset {
   margin-top: 48px;
 }
 .bid__maps {
-  margin-top: 32px;
   width: 100%;
-}
-@media (max-width: 768px) {
-  .bid__maps .bid__title {
-    padding: 0 16px;
-  }
 }
 .bid .bid--changed {
   color: var(--blue) !important;
@@ -23825,7 +23812,19 @@ textarea.input-reset {
   }
 }
 .bid-import .bid__descr {
-  margin-top: 24px;
+  margin-top: 16px;
+}
+
+@media (max-width: 768px) {
+  .bid-descr__title {
+    margin: 16px 16px 0;
+  }
+}
+.bid-descr__content {
+  margin-top: 16px;
+}
+.bid-descr__content p:not(:last-child) {
+  margin-bottom: 16px;
 }
 
 .bid-maps .bid__title span {
@@ -30782,6 +30781,9 @@ textarea.input-reset {
 }
 .purchase-request__history .btn {
   width: 100%;
+}
+.purchase-request__history .btn:not(:last-child) {
+  margin-bottom: 16px;
 }
 @media (max-width: 1212px) {
   .purchase-request__history {

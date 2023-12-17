@@ -7783,29 +7783,45 @@ const searchSelect = () => {
     const items = body.querySelectorAll('.search-select__item .checkbox-secondary__input');
     const btnWrapper = btn.querySelector('.search-select__button-wrapper');
     const btnList = btnWrapper.querySelector('div:nth-child(2)');
-    const arrSelected = [];
+    let arrSelected = [];
     items.forEach(input => {
       input.addEventListener('change', () => {
         const currentElem = input.closest('.search-select__item').querySelector('.checkbox-secondary__text span:nth-child(1)').textContent.trim();
-        if (input.checked) {
-          arrSelected.push(currentElem);
+        if (container.hasAttribute('data-search-select-single')) {
+          items.forEach(currentInput => {
+            if (currentInput !== input) currentInput.checked = false;
+          });
+          arrSelected = [];
+          input.checked ? arrSelected.push(currentElem) : arrSelected = [];
         } else {
-          const index = arrSelected.indexOf(currentElem);
-          if (index !== -1) {
-            arrSelected.splice(index, 1);
+          if (input.checked) {
+            arrSelected.push(currentElem);
+          } else {
+            const index = arrSelected.indexOf(currentElem);
+            if (index !== -1) {
+              arrSelected.splice(index, 1);
+            }
           }
         }
         updatePlaceholder();
       });
     });
+    const controls = container.querySelector('.search-select__control');
     const btnAll = container.querySelector('.search-select__all');
     const btnClear = container.querySelector('.search-select__clear');
-    btnAll.addEventListener('click', () => {
-      selectAll();
-    });
-    btnClear.addEventListener('click', () => {
-      clearAll();
-    });
+    if (container.hasAttribute('data-search-select-single') && controls) {
+      controls.remove();
+    }
+    if (btnAll) {
+      btnAll.addEventListener('click', () => {
+        selectAll();
+      });
+    }
+    if (btnClear) {
+      btnClear.addEventListener('click', () => {
+        clearAll();
+      });
+    }
     function clearAll() {
       items.forEach(input => input.checked = false);
       arrSelected.splice(0, arrSelected.length);

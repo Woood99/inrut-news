@@ -10152,6 +10152,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _controlCards__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./controlCards */ "./src/js/components/controlCards.js");
 
+
 const maps = () => {
   function removeControlsPrimary(map, containerSelector) {
     map.controls.remove('geolocationControl'); // удаляем геолокацию
@@ -10378,17 +10379,57 @@ const maps = () => {
         zoom: 10
       });
       removeControlsPrimary(map, '#map-draw');
-      map.behaviors.enable(['scrollZoom']);
-      map.controls.remove('fullscreenControl');
-      map.controls.get('zoomControl').options.set({
-        position: {
-          top: 212,
-          right: 15
-        },
-        maxWidth: '44'
-      });
+      drawSettings(map);
     }
     ymaps.ready(init);
+    function drawSettings(map) {
+      if (window.innerWidth <= 1212) {
+        map.controls.add('fullscreenControl');
+        const container = map.container._parentElement;
+        const mapDraw = container.closest('.map-draw');
+        const drawBtns = mapDraw ? mapDraw.querySelector('.map-draw__btns') : null;
+        map.controls.get('fullscreenControl').options.set({
+          position: {
+            top: 16,
+            right: 16
+          },
+          maxWidth: '44'
+        });
+        if (drawBtns !== null) {
+          const fullScreenControl = map.controls.get('fullscreenControl');
+          fullScreenControl.events.add('fullscreenenter', function () {
+            const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
+            fullscreenElement.classList.add('draw-map-active-fullscreen');
+            fullscreenElement.insertAdjacentElement('beforeend', drawBtns);
+            map.behaviors.enable(['scrollZoom']);
+            map.controls.add("zoomControl");
+            map.controls.get('zoomControl').options.set({
+              position: {
+                top: 16 + 44 + 16,
+                right: 16
+              },
+              maxWidth: '44'
+            });
+          });
+          fullScreenControl.events.add('fullscreenexit', function () {
+            map.controls.remove("zoomControl");
+            map.behaviors.disable(['scrollZoom']);
+            const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
+            fullscreenElement.classList.remove('yandex-map-active-fullscreen');
+            mapDraw.insertAdjacentElement('afterbegin', drawBtns);
+          });
+        }
+      } else {
+        map.behaviors.disable(['scrollZoom']);
+        map.controls.get('zoomControl').options.set({
+          position: {
+            top: 212,
+            right: 15
+          },
+          maxWidth: '44'
+        });
+      }
+    }
   }
   if (document.querySelector('#map-draw--2')) {
     function init() {

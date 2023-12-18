@@ -1,4 +1,7 @@
-import { controlCardsCardSecondary } from "./controlCards";
+import { auto } from "@popperjs/core";
+import {
+    controlCardsCardSecondary
+} from "./controlCards";
 
 const maps = () => {
     function removeControlsPrimary(map, containerSelector) {
@@ -170,7 +173,7 @@ const maps = () => {
                     });
                     setTimeout(() => {
                         document.querySelectorAll('.ymaps__route-close-wrapper').forEach(item => {
-                        item.closest('.ymaps-2-1-79-float-button').classList.add('ymaps__route-close');
+                            item.closest('.ymaps-2-1-79-float-button').classList.add('ymaps__route-close');
                         })
                     }, 10);
                     btnCloseRoute.events.add('click', function (e) {
@@ -235,17 +238,58 @@ const maps = () => {
                 zoom: 10,
             });
             removeControlsPrimary(map, '#map-draw');
-            map.behaviors.enable(['scrollZoom']);
-            map.controls.remove('fullscreenControl');
-            map.controls.get('zoomControl').options.set({
-                position: {
-                    top: 212,
-                    right: 15
-                },
-                maxWidth: '44'
-            })
+            drawSettings(map);
         }
         ymaps.ready(init);
+
+        function drawSettings(map) {
+            if (window.innerWidth <= 1212) {
+                map.controls.add('fullscreenControl');
+                const container = map.container._parentElement;
+                const mapDraw = container.closest('.map-draw');
+                const drawBtns = mapDraw ? mapDraw.querySelector('.map-draw__btns') : null;
+                map.controls.get('fullscreenControl').options.set({
+                    position: {
+                        top: 16,
+                        right: 16
+                    },
+                    maxWidth: '44',
+                })
+                if (drawBtns !== null) {
+                    const fullScreenControl = map.controls.get('fullscreenControl');
+                    fullScreenControl.events.add('fullscreenenter', function () {
+                        const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
+                        fullscreenElement.classList.add('draw-map-active-fullscreen');
+                        fullscreenElement.insertAdjacentElement('beforeend', drawBtns);
+                        map.behaviors.enable(['scrollZoom']);
+                        map.controls.add("zoomControl");
+                        map.controls.get('zoomControl').options.set({
+                            position: {
+                                top: 16 + 44 + 16,
+                                right: 16
+                            },
+                            maxWidth: '44'
+                        })
+                    });
+                    fullScreenControl.events.add('fullscreenexit', function () {
+                        map.controls.remove("zoomControl");
+                        map.behaviors.disable(['scrollZoom']);
+                        const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
+                        fullscreenElement.classList.remove('yandex-map-active-fullscreen');
+                        mapDraw.insertAdjacentElement('afterbegin', drawBtns);
+                    });
+                }
+            } else {
+                map.behaviors.disable(['scrollZoom']);
+                map.controls.get('zoomControl').options.set({
+                    position: {
+                        top: 212,
+                        right: 15
+                    },
+                    maxWidth: '44'
+                })
+            }
+        }
     }
     if (document.querySelector('#map-draw--2')) {
         function init() {
@@ -389,10 +433,10 @@ const maps = () => {
                 const controlCardBtnHorizontal = container.querySelector('.control-cards__btn--horizontal');
                 if (width <= 770 && width > 600) {
                     controlCardContent.classList.add('control-cards__content--horizontal-map');
-                    controlCardsCardSecondary(controlCardContent,controlCardBtnVertical);
+                    controlCardsCardSecondary(controlCardContent, controlCardBtnVertical);
                 } else {
                     controlCardContent.classList.remove('control-cards__content--horizontal-map');
-                    controlCardsCardSecondary(controlCardContent,controlCardBtnHorizontal);
+                    controlCardsCardSecondary(controlCardContent, controlCardBtnHorizontal);
                 }
             }
 

@@ -103,8 +103,8 @@ function initSliders() {
         new Swiper(slider, {
             observer: true,
             observeParents: true,
-            slidesPerView: 1,
-            spaceBetween: 32,
+            slidesPerView: 1.1,
+            spaceBetween: 16,
             speed: 800,
             navigation: {
                 prevEl: slider.closest('.history-changes').querySelector('.nav-arrow-primary--prev'),

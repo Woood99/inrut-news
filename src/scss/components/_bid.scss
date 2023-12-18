@@ -130,37 +130,56 @@
 
         &--price {
             >div {
-                display: flex;
-                order: 4;
-                width: max-content;
-                min-width: 50%;
-
-                >span {
-                    white-space: nowrap;
-                    color: var(--dark);
-                }
-
-                .bid__item-tooltips {
+                @media (min-width:$desktop-min){
                     display: flex;
-                    align-items: center;
-                    margin-top: -15px;
-                    margin-left: 15px;
-
-                    .main-tooltip {
-                        &:not(:last-child) {
-                            margin-right: 15px;
+                    order: 4;
+                    width: max-content;
+                    min-width: 50%;
+    
+                    >span {
+                        white-space: nowrap;
+                        color: var(--dark);
+                    } 
+                    .bid__item-tooltips {
+                        display: flex;
+                        align-items: center;
+                        margin-top: -15px;
+                        margin-left: 15px;
+    
+                        .main-tooltip {
+                            &:not(:last-child) {
+                                margin-right: 15px;
+                            }
                         }
                     }
-
-                    @media (max-width:$desktop) {
-                        margin: 15px 0 0 0;
-                    }
                 }
-
                 @media (max-width:$desktop) {
-                    width: auto;
-                    min-width: auto;
-                    flex-direction: column;
+                    font-size: var(--default-fz);
+                    line-height: var(--default-lh);
+                    font-weight: 400;
+        
+                    &:nth-child(1) {
+                        color: var(--primaryTwo);
+                        order: 1;
+                    }
+        
+                    &:nth-child(2) {
+                        color: var(--dark);
+                        order: 3;
+                        min-width: 50%;
+                        max-width: 50%;
+                        display: flex;
+                        align-items: center;
+                        flex-wrap: wrap;
+        
+                        @media (max-width:$desktop) {
+                            width: 150px;
+                            min-width: auto;
+                        }
+                    }
+                    .bid__item-tooltips{
+                        display: none;
+                    }
                 }
             }
         }
@@ -168,7 +187,11 @@
         &:not(:last-child) {
             margin-bottom: 16px;
         }
-
+        &--calc-prop{
+            @media (min-width:$desktop-min){
+                 display: none; 
+            }
+        }
         @media (max-width:$desktop) {
 
             &:not(:last-child) {
@@ -429,11 +452,7 @@
 
         @media (max-width:$desktop) {
             margin-top: 16px;
-            height: 250px;
-        }
-
-        @media (max-width:$mobile-max) {
-            height: 215px;
+            height: 300px;
         }
     }
 

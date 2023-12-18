@@ -8230,6 +8230,11 @@ const fieldSelect = () => {
           });
         }
         item.classList.toggle('_active');
+        if (container.hasAttribute('data-submit-filter-object-type')) {
+          const developer = document.querySelector('[data-submit-filter-developer]');
+          const currentItem = item.hasAttribute('data-submit-filter-object-type-item');
+          currentItem && item.classList.contains('_active') && developer ? developer.removeAttribute('hidden') : developer.setAttribute('hidden', '');
+        }
       }
     });
   });

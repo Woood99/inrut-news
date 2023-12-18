@@ -18,7 +18,7 @@ export const cardSecondaryActions = () => {
         const imagePagination = card.querySelector('.card-secondary__pagination');
 
 
-        if (window.innerWidth > 1024 && imageSwitchItems.length > 1) {
+        if (window.innerWidth > 1212 && imageSwitchItems.length > 1) {
             imageSwitchItems.forEach((el, index) => {
                 el.setAttribute('data-index', index);
                 if (card.querySelector('.card-secondary__item--limit')) {
@@ -29,7 +29,7 @@ export const cardSecondaryActions = () => {
                     imagePagination.innerHTML += `<li class="image-pagination__item ${index == 0 ? 'image-pagination__item--active' : ''}" data-index="${index}"></li>`;
                 }
                 el.addEventListener('mouseenter', (e) => {
-                    if (window.innerWidth > 1024) {
+                    if (window.innerWidth > 1212) {
                         card.querySelectorAll('.image-pagination__item').forEach(el => el.classList.remove('image-pagination__item--active'));
                         if (el.classList.contains('card-secondary__item--limit')) {
                             card.querySelector(`.image-pagination__item[data-index="${e.currentTarget.dataset.index - 1}"]`).classList.add('image-pagination__item--active');
@@ -40,7 +40,7 @@ export const cardSecondaryActions = () => {
                 });
 
                 el.addEventListener('mouseleave', (e) => {
-                    if (window.innerWidth > 1024) {
+                    if (window.innerWidth > 1212) {
                         card.querySelectorAll('.image-pagination__item').forEach(el => {
                             el.classList.remove('image-pagination__item--active')
                         });
@@ -80,7 +80,7 @@ export const cardSecondaryActions = () => {
 
     function favoriteMobile() {
         cards.forEach(card => {
-            if (window.innerWidth <= 1024) {
+            if (window.innerWidth <= 1212) {
                 const favorite = card.querySelector('.card-secondary__info--favorite');
                 const path = card.querySelector('.card-secondary__content');
                 if (favorite && path) {
@@ -98,7 +98,7 @@ export const cardSecondaryActions = () => {
 
     function tagsMobile() {
         cards.forEach(card => {
-            if (window.innerWidth <= 1024) {
+            if (window.innerWidth <= 1212) {
                 const tags = card.querySelector('.card-secondary__info--tags');
                 const path = card.querySelector('.card-secondary__item');
                 if (tags && path) {
@@ -123,7 +123,7 @@ export const cardPrimaryActions = () => {
         const imagePagination = card.querySelector('.card-primary__pagination');
 
 
-        if (!(window.innerWidth <= 1024 && imageSwitchItems.length <= 1)) {
+        if (!(window.innerWidth <= 1212 && imageSwitchItems.length <= 1)) {
             imageSwitchItems.forEach((el, index) => {
                 el.setAttribute('data-index', index);
                 if (card.querySelector('.card-primary__item--limit')) {
@@ -134,7 +134,7 @@ export const cardPrimaryActions = () => {
                     imagePagination.innerHTML += `<li class="image-pagination__item ${index == 0 ? 'image-pagination__item--active' : ''}" data-index="${index}"></li>`;
                 }
                 el.addEventListener('mouseenter', (e) => {
-                    if (window.innerWidth > 1024) {
+                    if (window.innerWidth > 1212) {
                         card.querySelectorAll('.image-pagination__item').forEach(el => el.classList.remove('image-pagination__item--active'));
                         if (el.classList.contains('card-primary__item--limit')) {
                             card.querySelector(`.image-pagination__item[data-index="${e.currentTarget.dataset.index - 1}"]`).classList.add('image-pagination__item--active');
@@ -145,7 +145,7 @@ export const cardPrimaryActions = () => {
                 });
 
                 el.addEventListener('mouseleave', (e) => {
-                    if (window.innerWidth > 1024) {
+                    if (window.innerWidth > 1212) {
                         card.querySelectorAll('.image-pagination__item').forEach(el => {
                             el.classList.remove('image-pagination__item--active')
                         });
@@ -197,7 +197,7 @@ export const cardPrimaryActions = () => {
 
     function favoriteMobile() {
         cards.forEach(card => {
-            if (window.innerWidth <= 1024) {
+            if (window.innerWidth <= 1212) {
                 const favorite = card.querySelector('.card-primary__info--favorite');
                 const path = card.querySelector('.card-primary__content');
                 if (favorite && path) {
@@ -215,7 +215,7 @@ export const cardPrimaryActions = () => {
 
     function tagsMobile() {
         cards.forEach(card => {
-            if (window.innerWidth <= 1024) {
+            if (window.innerWidth <= 1212) {
                 const tags = card.querySelector('.card-primary__info--tags');
                 const path = card.querySelector('.card-primary__item');
                 if (tags && path) {
@@ -254,7 +254,7 @@ function cardSliderMobile(cardImageWrapper, imagesBody, cardItems) {
     window.addEventListener('resize', body);
 
     function body() {
-        if (window.innerWidth <= 1024) {
+        if (window.innerWidth <= 1212) {
             if (!cardImageWrapper.classList.contains('swiper-initialized')) {
                 cardImageWrapper.classList.add('swiper');
                 imagesBody.classList.add('swiper-wrapper');

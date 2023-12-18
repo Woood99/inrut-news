@@ -15,7 +15,7 @@
             grid-row-gap: 16px;
         }
 
-        @media (max-width:$smallTablet-max) {
+        @media (max-width:$desktop) {
             grid-row-gap: 8px;
         }
     }
@@ -33,7 +33,7 @@
             padding: 24px 16px;
         }
 
-        @media (max-width:$smallTablet-max) {
+        @media (max-width:$desktop) {
             padding: 16px 0;
         }
     }
@@ -43,7 +43,7 @@
         align-items: end;
         justify-content: space-between;
 
-        @media (max-width:$smallTablet-max) {
+        @media (max-width:$desktop) {
             padding: 0 16px;
         }
     }
@@ -64,15 +64,18 @@
         width: 100%;
         max-width: 255px;
         box-sizing: border-box;
-        &:not(:last-child){
+
+        &:not(:last-child) {
             margin-bottom: 16px;
         }
+
         span {
             &:not(:last-child) {
                 margin-right: 16px;
             }
         }
-        @media (max-width:$smallTablet-max) {
+
+        @media (max-width:$desktop) {
             display: none;
         }
     }
@@ -80,7 +83,7 @@
     &__list {
         margin-top: 24px;
 
-        @media (max-width:$smallTablet-max) {
+        @media (max-width:$desktop) {
             padding: 0 16px;
         }
     }
@@ -107,7 +110,7 @@
                 align-items: center;
                 flex-wrap: wrap;
 
-                @media (max-width:$smallTablet-max) {
+                @media (max-width:$desktop) {
                     width: 150px;
                     min-width: auto;
                 }
@@ -149,14 +152,15 @@
                         }
                     }
 
-                    @media (max-width:$smallTablet-max) {
-                        display: none;
+                    @media (max-width:$desktop) {
+                        margin: 15px 0 0 0;
                     }
                 }
 
-                @media (max-width:$smallTablet-max) {
-                    width: 150px;
+                @media (max-width:$desktop) {
+                    width: auto;
                     min-width: auto;
+                    flex-direction: column;
                 }
             }
         }
@@ -164,7 +168,8 @@
         &:not(:last-child) {
             margin-bottom: 16px;
         }
-        @media (max-width:$smallTablet-max) {
+
+        @media (max-width:$desktop) {
 
             &:not(:last-child) {
                 margin-bottom: 12px;
@@ -194,12 +199,12 @@
             border: 1px solid var(--primary200);
             border-radius: 2px 12px 12px 12px;
 
-            @media (max-width:$smallTablet-max) {
+            @media (max-width:$desktop) {
                 padding: 16px 12px;
             }
         }
 
-        @media (max-width:$smallTablet-max) {
+        @media (max-width:$desktop) {
             margin: 24px 16px 0;
         }
     }
@@ -268,13 +273,16 @@
 
     &__import {
         margin-top: 48px;
+        @media (max-width:$desktop){
+            margin: 24px 16px 0; 
+        }
     }
 
     &__maps {
         width: 100%;
     }
 
-    .bid--changed{
+    .bid--changed {
         color: var(--blue) !important; // need hack :(
     }
 }
@@ -293,7 +301,7 @@
         min-height: 50px;
         padding: 16px;
 
-        @media (max-width:$smallTablet-max) {
+        @media (max-width:$desktop) {
             padding: 16px 12px;
         }
     }
@@ -347,26 +355,20 @@
 }
 
 .bid-import {
-    &__title {
-        @media (max-width:$smallTablet-max) {
-            margin: 16px 16px 0;
-        }
-    }
-
     .bid__descr {
         margin-top: 16px;
-    }
-}
-.bid-descr {
-    &__title {
-        @media (max-width:$smallTablet-max) {
-            margin: 16px 16px 0;
+        @media (max-width:$desktop){
+             margin: 16px 0 0;
         }
     }
-    &__content{
+}
+
+.bid-descr {
+    &__content {
         margin-top: 16px;
-        p{
-            &:not(:last-child){
+
+        p {
+            &:not(:last-child) {
                 margin-bottom: 16px;
             }
         }
@@ -382,11 +384,14 @@
             font-size: var(--small-fz);
             line-height: var(--small-lh);
             line-height: 1;
+
             span {
                 position: relative;
+
                 &:not(:first-child) {
                     padding-left: 14px;
-                   margin-left: 4px;
+                    margin-left: 4px;
+
                     &::before {
                         content: '';
                         position: absolute;
@@ -404,6 +409,17 @@
         }
     }
 
+    &__item {
+        margin-top: 16px;
+        @media (max-width:$desktop){
+             >span{
+                &:nth-child(2){
+                    width: max-content;
+                }
+             } 
+        }
+    }
+
     &__container {
         margin-top: 24px;
         width: 100%;
@@ -411,7 +427,7 @@
         background-color: var(--primary100);
         border-radius: 12px;
 
-        @media (max-width:$smallTablet-max) {
+        @media (max-width:$desktop) {
             margin-top: 16px;
             height: 250px;
         }
@@ -421,8 +437,8 @@
         }
     }
 
-    @media (max-width:$smallTablet-max) {
-        padding: 0 16px;
+    @media (max-width:$desktop) {
+        padding: 16px;
 
         .bid__title {
             padding: 0;
@@ -456,7 +472,7 @@
         }
     }
 
-    @media (max-width:$smallTablet-max) {
+    @media (max-width:$desktop) {
         flex-direction: row;
         align-items: start;
         flex-wrap: wrap;
@@ -485,7 +501,7 @@
         align-items: center;
         width: 100%;
 
-        @media (max-width:$smallTablet-max) {
+        @media (max-width:$desktop) {
             width: auto;
             align-items: start;
             margin: 16px 0 0 16px;
@@ -515,7 +531,7 @@
             }
         }
 
-        @media (max-width:$smallTablet-max) {
+        @media (max-width:$desktop) {
             margin-top: 2px;
         }
     }
@@ -534,7 +550,7 @@
                 font-weight: 500;
                 margin-left: 4px;
 
-                @media (max-width:$smallTablet-max) {
+                @media (max-width:$desktop) {
                     font-weight: 400;
                 }
             }
@@ -545,7 +561,7 @@
             }
         }
 
-        @media (max-width:$smallTablet-max) {
+        @media (max-width:$desktop) {
             margin-top: 8px;
         }
     }
@@ -565,7 +581,7 @@
             }
         }
 
-        @media (max-width:$smallTablet-max) {
+        @media (max-width:$desktop) {
             --icon-size: 12px;
         }
     }
@@ -590,7 +606,7 @@
             font-weight: 500;
         }
 
-        @media (max-width:$smallTablet-max) {
+        @media (max-width:$desktop) {
             span {
                 font-weight: 400;
             }
@@ -651,7 +667,7 @@
                 filter: none;
                 align-self: start;
 
-                @media (max-width:$smallTablet-max) {
+                @media (max-width:$desktop) {
                     --size: 57px;
                 }
             }
@@ -672,7 +688,7 @@
                 font-size: var(--default-fz);
                 line-height: var(--default-lh);
 
-                @media (max-width:$smallTablet-max) {
+                @media (max-width:$desktop) {
                     font-weight: 400;
                 }
             }
@@ -689,7 +705,7 @@
                     margin-right: 10px;
                 }
 
-                @media (max-width:$smallTablet-max) {
+                @media (max-width:$desktop) {
                     span {
                         font-weight: 400;
                     }
@@ -737,9 +753,11 @@
                     grid-column: 1/-1;
                 }
             }
-            &__time{
+
+            &__time {
                 margin-bottom: 0;
             }
+
             &__avatar {
                 --size: 95px;
 
@@ -749,7 +767,7 @@
             }
 
             &__name {
-                @media (max-width:$smallTablet-max) {
+                @media (max-width:$desktop) {
                     font-weight: 400;
                 }
             }
@@ -793,7 +811,7 @@
                         }
                     }
 
-                    @media (max-width:$smallTablet-max) {
+                    @media (max-width:$desktop) {
                         [data-mobile-text] {
                             font-size: 0;
 

@@ -261,11 +261,13 @@ const maps = () => {
                         const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
                         fullscreenElement.classList.add('draw-map-active-fullscreen');
                         fullscreenElement.insertAdjacentElement('beforeend', drawBtns);
-                        map.behaviors.enable(['scrollZoom']);
                         map.controls.add("zoomControl");
+
+                        map.behaviors.enable(['scrollZoom']);
+                        map.behaviors.enable(['drag']);
                         map.controls.get('zoomControl').options.set({
                             position: {
-                                top: 16 + 44 + 16,
+                                top: 'calc((100vh - 152px + 24px) / 2 - (90px / 2))',
                                 right: 16
                             },
                             maxWidth: '44'
@@ -274,6 +276,7 @@ const maps = () => {
                     fullScreenControl.events.add('fullscreenexit', function () {
                         map.controls.remove("zoomControl");
                         map.behaviors.disable(['scrollZoom']);
+                        map.behaviors.disable(['drag']);
                         const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
                         fullscreenElement.classList.remove('yandex-map-active-fullscreen');
                         mapDraw.insertAdjacentElement('afterbegin', drawBtns);
@@ -282,6 +285,7 @@ const maps = () => {
             } else {
                 map.controls.remove('fullscreenControl');
                 map.behaviors.disable(['scrollZoom']);
+                map.behaviors.disable(['drag']);
                 map.controls.get('zoomControl').options.set({
                     position: {
                         top: 212,

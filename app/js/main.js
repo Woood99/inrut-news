@@ -10400,6 +10400,8 @@ const maps = () => {
           },
           maxWidth: '44'
         });
+        map.behaviors.disable(['scrollZoom']);
+        map.behaviors.disable(['drag']);
         if (drawBtns !== null) {
           const fullScreenControl = map.controls.get('fullscreenControl');
           fullScreenControl.events.add('fullscreenenter', function () {

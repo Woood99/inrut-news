@@ -280,6 +280,7 @@ const maps = () => {
                     });
                 }
             } else {
+                map.controls.remove('fullscreenControl');
                 map.behaviors.disable(['scrollZoom']);
                 map.controls.get('zoomControl').options.set({
                     position: {

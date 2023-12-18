@@ -166,6 +166,7 @@ export const selectSecondaryCreate = (el) => {
         checkCloseSelected();
     });
     el.addEventListener('showDropdown', () => {
+        wrapper.classList.add('_show');
         if (window.innerWidth <= mobileWidth) {
             const modalHTML = `
             <div class="filter-modal">
@@ -196,6 +197,9 @@ export const selectSecondaryCreate = (el) => {
                 })
             })
         }
+    })
+    el.addEventListener('hideDropdown',() => {
+        wrapper.classList.remove('_show');
     })
     wrapper.addEventListener('mouseover', (e) => {
         if (!e.target.closest('.choices__list.choices__list--dropdown')) {

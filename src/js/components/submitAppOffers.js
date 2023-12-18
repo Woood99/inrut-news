@@ -47,7 +47,12 @@ const submitAppOffers = () => {
             item.removeAttribute('hidden');
         })
     }
+    updateMinItem();
     window.addEventListener('resize', () => {
+        updateMinItem();
+    });
+
+    function updateMinItem() {
         if (window.innerWidth > 1212) {
             minItem = 4;
             hiddenItems(items);
@@ -61,7 +66,7 @@ const submitAppOffers = () => {
             minItem = 2;
             hiddenItems(items);
         }
-    });
+    }
 };
 
 export default submitAppOffers;

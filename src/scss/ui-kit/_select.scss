@@ -477,7 +477,29 @@
     &__wrapper {
         height: 48px;
         position: relative;
+        border: 1px solid var(--primary200);
+        border-radius: 12px;
+        min-width: 125px;
 
+        transition: border $transitionSpeed $transitionFunction;
+        &::after {
+            content: '';
+            border: none;
+            width: 20px;
+            height: 20px;
+            background-color: transparent;
+            background-image: url('../img/check.svg');
+            transition: transform $transitionSpeedFast $transitionFunction;
+            display: block;
+
+            margin-top: 0;
+            top: -9px;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 16px;
+            position: absolute;
+            pointer-events: none;
+        }
         @media (max-width:$tablet-max) {
             height: 50px;
         }
@@ -505,49 +527,18 @@
 
     .choices {
         background-color: transparent;
-        border: 1px solid var(--primary200);
+        border: none;
 
         overflow: visible;
         padding: 0 16px;
-        border-radius: 12px;
-        transition: border-radius $transitionSpeed $transitionFunction,
-            border $transitionSpeed $transitionFunction;
         height: 100%;
         display: flex;
         align-items: center;
-        min-width: 125px;
-
-        &::after {
-            border: none;
-            width: 20px;
-            height: 20px;
-            background-color: transparent;
-            background-image: url('../img/check.svg');
-            transition: transform $transitionSpeedFast $transitionFunction;
-            display: block;
-
-            margin-top: 0;
-            top: -9px;
-            top: 50%;
-            transform: translateY(-50%);
-            right: 16px;
+        &::after{
+            content: none;
         }
-
         .choices__list {
             border-color: rgba(122, 127, 170, 0.1);
-        }
-
-        &.is-open {
-            .choices__list {}
-
-            &::after {
-                margin-top: 0;
-                transform: translateY(-50%) rotate(-180deg);
-            }
-        }
-
-        &.focus-visible {
-            border: 1px solid var(--blue);
         }
     }
 
@@ -664,7 +655,14 @@
             }
         }
     }
-
+    &._show{
+        .select-secondary__wrapper{
+            &::after {
+                margin-top: 0;
+                transform: translateY(-50%) rotate(-180deg);
+            }
+        }
+    }
     &--city {
         .choices__list--single {
             padding: 0 30px 0 60px;
@@ -683,8 +681,9 @@
 
     @media (min-width:$desktop-min) {
         &._hover {
-            .choices {
+            .select-secondary__wrapper{
                 border: 1px solid var(--blue);
+
             }
 
             .select-secondary__placeholder {

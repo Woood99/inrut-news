@@ -15626,6 +15626,35 @@ textarea.input-reset {
 .select-secondary__wrapper {
   height: 48px;
   position: relative;
+  border: 1px solid var(--primary200);
+  border-radius: 12px;
+  min-width: 125px;
+  -webkit-transition: border 0.4s ease-in-out;
+  -o-transition: border 0.4s ease-in-out;
+  transition: border 0.4s ease-in-out;
+}
+.select-secondary__wrapper::after {
+  content: "";
+  border: none;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  background-image: url("../img/check.svg");
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  transition: -webkit-transform 0.2s ease-in-out;
+  -o-transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+  display: block;
+  margin-top: 0;
+  top: -9px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 16px;
+  position: absolute;
+  pointer-events: none;
 }
 @media (max-width: 1024px) {
   .select-secondary__wrapper {
@@ -15650,13 +15679,9 @@ textarea.input-reset {
 }
 .select-secondary .choices {
   background-color: transparent;
-  border: 1px solid var(--primary200);
+  border: none;
   overflow: visible;
   padding: 0 16px;
-  border-radius: 12px;
-  -webkit-transition: border-radius 0.4s ease-in-out, border 0.4s ease-in-out;
-  -o-transition: border-radius 0.4s ease-in-out, border 0.4s ease-in-out;
-  transition: border-radius 0.4s ease-in-out, border 0.4s ease-in-out;
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -15664,39 +15689,12 @@ textarea.input-reset {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  min-width: 125px;
 }
 .select-secondary .choices::after {
-  border: none;
-  width: 20px;
-  height: 20px;
-  background-color: transparent;
-  background-image: url("../img/check.svg");
-  -webkit-transition: -webkit-transform 0.2s ease-in-out;
-  transition: -webkit-transform 0.2s ease-in-out;
-  -o-transition: transform 0.2s ease-in-out;
-  transition: transform 0.2s ease-in-out;
-  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
-  display: block;
-  margin-top: 0;
-  top: -9px;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  right: 16px;
+  content: none;
 }
 .select-secondary .choices .choices__list {
   border-color: rgba(122, 127, 170, 0.1);
-}
-.select-secondary .choices.is-open::after {
-  margin-top: 0;
-  -webkit-transform: translateY(-50%) rotate(-180deg);
-  -ms-transform: translateY(-50%) rotate(-180deg);
-  transform: translateY(-50%) rotate(-180deg);
-}
-.select-secondary .choices.focus-visible {
-  border: 1px solid var(--blue);
 }
 .select-secondary._error .choices {
   border: 1px solid var(--red);
@@ -15803,6 +15801,12 @@ textarea.input-reset {
 .select-secondary._selected .select-secondary__placeholder {
   color: #b6d5f8;
 }
+.select-secondary._show .select-secondary__wrapper::after {
+  margin-top: 0;
+  -webkit-transform: translateY(-50%) rotate(-180deg);
+  -ms-transform: translateY(-50%) rotate(-180deg);
+  transform: translateY(-50%) rotate(-180deg);
+}
 .select-secondary--city .choices__list--single {
   padding: 0 30px 0 60px;
 }
@@ -15815,7 +15819,7 @@ textarea.input-reset {
   }
 }
 @media (min-width: 1213px) {
-  .select-secondary._hover .choices {
+  .select-secondary._hover .select-secondary__wrapper {
     border: 1px solid var(--blue);
   }
   .select-secondary._hover .select-secondary__placeholder {
@@ -35098,6 +35102,12 @@ textarea.input-reset {
 .submit-price-proper .submit-app-options__row:not(:last-child) {
   margin-bottom: 24px;
 }
+@media (max-width: 1212px) {
+  .submit-price-proper .submit-app-options__row:last-child {
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+  }
+}
 
 .submit-app-import__textarea {
   --height: 165px;
@@ -35180,8 +35190,8 @@ textarea.input-reset {
 }
 @media (max-width: 768px) {
   .submit-app-maps > .row {
-    -ms-grid-columns: 1fr;
-    grid-template-columns: 1fr;
+    -ms-grid-columns: 100%;
+    grid-template-columns: 100%;
     grid-row-gap: 16px;
   }
 }

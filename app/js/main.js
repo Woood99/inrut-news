@@ -6088,6 +6088,7 @@ const selectSecondaryCreate = el => {
     checkCloseSelected();
   });
   el.addEventListener('showDropdown', () => {
+    wrapper.classList.add('_show');
     if (window.innerWidth <= mobileWidth) {
       const modalHTML = `
             <div class="filter-modal">
@@ -6117,6 +6118,9 @@ const selectSecondaryCreate = el => {
         });
       });
     }
+  });
+  el.addEventListener('hideDropdown', () => {
+    wrapper.classList.remove('_show');
   });
   wrapper.addEventListener('mouseover', e => {
     if (!e.target.closest('.choices__list.choices__list--dropdown')) {
@@ -13284,7 +13288,11 @@ const submitAppOffers = () => {
       item.removeAttribute('hidden');
     });
   }
+  updateMinItem();
   window.addEventListener('resize', () => {
+    updateMinItem();
+  });
+  function updateMinItem() {
     if (window.innerWidth > 1212) {
       minItem = 4;
       hiddenItems(items);
@@ -13298,7 +13306,7 @@ const submitAppOffers = () => {
       minItem = 2;
       hiddenItems(items);
     }
-  });
+  }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (submitAppOffers);
 

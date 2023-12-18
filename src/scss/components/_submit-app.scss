@@ -80,13 +80,15 @@
 .submit-app-options {
 
     &__title {}
-    &__descr{
+
+    &__descr {
         color: var(--primaryTwo);
         font-size: var(--default-fz);
         line-height: var(--default-lh);
         margin-bottom: 24px;
         display: block;
     }
+
     &__choice {
         &:not(:last-child) {
             margin-bottom: 24px;
@@ -142,6 +144,7 @@
             grid-template-columns: 1fr;
         }
     }
+
     &__item {
         &:not(:last-child) {
             margin-bottom: 24px;
@@ -166,15 +169,22 @@
         border-top: 1px solid var(--primary100);
     }
 }
-.submit-price-proper{
- .field-select__name{
-    --width: 325px;
- }       
- .submit-app-options__row{
-    &:not(:last-child){
-        margin-bottom: 24px;
+
+.submit-price-proper {
+    .field-select__name {
+        --width: 325px;
     }
- }
+
+    .submit-app-options__row {
+        &:not(:last-child) {
+            margin-bottom: 24px;
+        }
+        &:last-child{
+            @media (max-width:$desktop){
+                 grid-template-columns: 1fr; 
+            }
+        }
+    }
 }
 
 .submit-app-import {
@@ -192,14 +202,17 @@
         grid-template-columns: repeat(4, 1fr);
         grid-column-gap: 16px;
         grid-row-gap: 16px;
-        @media (max-width:$desktop){
-             grid-template-columns: repeat(3,1fr); 
+
+        @media (max-width:$desktop) {
+            grid-template-columns: repeat(3, 1fr);
         }
-        @media (max-width:$smallTablet-max){
-             grid-template-columns: repeat(2,1fr); 
+
+        @media (max-width:$smallTablet-max) {
+            grid-template-columns: repeat(2, 1fr);
         }
-        @media (max-width:$mobile-max){
-             grid-template-columns: 1fr; 
+
+        @media (max-width:$mobile-max) {
+            grid-template-columns: 1fr;
         }
     }
 
@@ -227,9 +240,7 @@
             color: var(--primary600);
         }
 
-        @media (max-width:$desktop) {
-       
-        }
+        @media (max-width:$desktop) {}
     }
 
     &._active {
@@ -256,7 +267,7 @@
         }
 
         @media (max-width:$smallTablet-max) {
-            grid-template-columns: 1fr;
+            grid-template-columns: 100%;
             grid-row-gap: 16px;
         }
     }
@@ -324,8 +335,8 @@
         padding: 0 10px 0 17px;
 
         transition: box-shadow $transitionSpeed $transitionFunction,
-        background-color $transitionSpeed $transitionFunction,
-        color $transitionSpeed $transitionFunction;
+            background-color $transitionSpeed $transitionFunction,
+            color $transitionSpeed $transitionFunction;
 
         svg {
             width: 14px;
@@ -356,10 +367,12 @@
             height: 44px;
             border-radius: 12px;
         }
-        &.active{
+
+        &.active {
             background-color: var(--blue);
             color: var(--white);
-            svg{
+
+            svg {
                 fill: var(--white);
             }
         }

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Создание города</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script defer src="js/main.js"></script>
+
+
+
+</head>
+
+<body class="page__body">
+    <div class="site-container site-container--place-sale">
+        @include('partials/header--menu.html')
+        <main class="main main-page-gap place-sale cities">
+            <div class="place-sale__top top-page-inner-title">
+                <div class="top-page-inner-title__container container">
+                    <a href="#" class="place-sale__back top-page-inner-title__back back-link">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#arrow-left"></use>
+                        </svg>
+                        <span>Назад</span>
+                    </a>
+                    <h1 class="cities__title top-page-inner-title__title title-1" data-da=".place-sale__body,1212,first">
+                        Город
+                    </h1>
+                </div>
+            </div>
+            <div class="cities__body">
+                <div class="container">
+                    <div class="main-table">
+                        <div class="main-table__inner container">
+                            <div class="main-table__table">
+                                <div class="main-table__type" style="grid-template-columns: 1fr 8.5%; justify-content: start;">
+                                    <span>Город</span>
+                                    <span>Действие</span>
+                                </div>
+                                <div class="main-table__list drag-drop drag-drop--order">
+                                    <div class="main-table__item object-info types-objects__item drag-drop__item"
+                                        style="grid-template-columns: 1fr max-content;justify-content: start;" draggable="true">
+                                        <span>
+                                            Москва
+                                        </span>
+                                        <div>
+                                            <a href="edit-city.html" title="Редактировать">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#pencil">
+                                                    </use>
+                                                </svg>
+                                            </a>
+                                            <button type="button" class="btn btn-reset" data-popup-path="warning-remove" title="Удалить">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#trash">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="main-table__next">
+                                <a href="create-city.html" class="btn btn-reset btn-primary">
+                                    Создать новый город
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        @include('partials/footer.html')
+    </div>
+    @include('partials/popup.html')
+</body>
+
+
+</html>

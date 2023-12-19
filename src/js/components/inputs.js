@@ -49,6 +49,9 @@ export const textareaSecondary = () => {
         const textareaMaxHeight = textarea.hasAttribute('data-textarea-secondary-max-height') ? textarea.dataset.textareaSecondaryMaxHeight : false;
         const textareaClear = textarea.querySelector('.textarea-secondary__clear');
         textareaInput.addEventListener('input', (e) => {
+            toggleActive(e.target, textarea);
+            changeHeight();
+            objectBaseComment();
             if (textareaClear) {
                 if (textareaInput.value.length >= 1) {
                     textareaClear.removeAttribute('hidden');

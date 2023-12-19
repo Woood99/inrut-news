@@ -33,7 +33,6 @@ function initSliders() {
                 slidesPerView: 3,
                 spaceBetween: 16,
                 speed: 800,
-                allowTouchMove: false,
                 navigation: {
                     prevEl: slider.closest('.place-sale-sale__cards').querySelector('.nav-arrow-primary--prev'),
                     nextEl: slider.closest('.place-sale-sale__cards').querySelector('.nav-arrow-primary--next'),

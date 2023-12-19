@@ -48,6 +48,9 @@ export const textareaSecondary = () => {
         const textareaMinHeight = textarea.dataset.textareaSecondaryMinHeight;
         const textareaMaxHeight = textarea.hasAttribute('data-textarea-secondary-max-height') ? textarea.dataset.textareaSecondaryMaxHeight : false;
         const textareaClear = textarea.querySelector('.textarea-secondary__clear');
+        toggleActive(textareaInput, textarea);
+        changeHeight();
+        objectBaseComment();
         textareaInput.addEventListener('input', (e) => {
             toggleActive(e.target, textarea);
             changeHeight();
@@ -58,20 +61,22 @@ export const textareaSecondary = () => {
                 } else {
                     textareaClear.setAttribute('hidden', '');
                 }
-
-                textareaClear.addEventListener('click', () => {
-                    textareaInput.value = '';
-                    textareaClear.setAttribute('hidden', '');
-                    toggleActive(e.target, textarea);
-                    changeHeight();
-                    objectBaseComment();
-                })
             }
-            toggleActive(e.target, textarea);
-            changeHeight();
-            objectBaseComment();
         });
-
+        if (textareaClear) {
+            textareaClear.addEventListener('click', () => {
+                textareaInput.value = '';
+                textareaClear.setAttribute('hidden', '');
+                toggleActive(textareaInput, textarea);
+                changeHeight();
+                objectBaseComment();
+                if (textareaInput.value.length >= 1) {
+                    textareaClear.removeAttribute('hidden');
+                } else {
+                    textareaClear.setAttribute('hidden', '');
+                }
+            })
+        }
         function changeHeight() {
             if (textareaMaxHeight) {
                 textarea.style.height = `${textareaMinHeight}px`;

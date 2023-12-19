@@ -53,144 +53,6 @@ const maps = () => {
             ymaps.ready(init);
         });
     }
-    if (document.querySelector('#object-maps')) {
-        const objectMaps = document.querySelector('#object-maps');
-        if (!objectMaps) return;
-
-        function init() {
-            let map = new ymaps.Map('object-maps', {
-                center: [55.77171185651524, 37.62811179984117],
-                zoom: 10,
-            });
-            positionElement(map);
-            removeControlsPrimary(map, '#object-maps');
-            const containerSelects = objectMaps.closest('.object-location--select');
-            if (containerSelects) {
-                let btnCloseRoute;
-                const btns = containerSelects.querySelectorAll('.object-location__btn');
-                const infrastructure = containerSelects.querySelector('.object-location__infrastructure');
-                const routes = containerSelects.querySelector('.object-location__routes');
-                const locationRoutesBtn = document.querySelector('.location-routes__btn');
-                btns.forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        btns.forEach(btn => btn.classList.remove('_active'));
-                        btn.classList.toggle('_active');
-                        if (btn.classList.contains('object-location__btn--infrastructure')) {
-                            infrastructure.classList.add('_active');
-                            objectMaps.classList.remove('_routes');
-                            routes.classList.remove('_active');
-                            locationRoutesBtn.classList.remove('_active');
-                            map.controls.remove(btnCloseRoute);
-                            routeHidden();
-                        } else if (btn.classList.contains('object-location__btn--routes')) {
-                            objectMaps.classList.add('_routes');
-                            routes.classList.add('_active');
-                            infrastructure.classList.remove('_active');
-                        } else {
-                            objectMaps.classList.remove('_routes');
-                            infrastructure.classList.remove('_active');
-                            routes.classList.remove('_active');
-                            locationRoutesBtn.classList.remove('_active');
-                            map.controls.remove(btnCloseRoute);
-                            routeHidden();
-                        }
-                    });
-                })
-                locationRoutesBtn.addEventListener('click', () => {
-                    if (!locationRoutesBtn.classList.contains('_active')) {
-                        locationRoutesBtn.classList.add('_active');
-                        routes.classList.add('_show');
-                        map.container.enterFullscreen();
-                        setTimeout(() => {
-                            routeShow();
-                        }, 50);
-                    } else {
-                        locationRoutesBtn.classList.remove('_active');
-                        routeHidden();
-                    }
-                });
-
-                const fullScreenControl = map.controls.get('fullscreenControl');
-                fullScreenControl.events.add('fullscreenenter', function () {
-                    const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
-                    fullscreenElement.classList.add('yandex-map-active-fullscreen');
-                    map.behaviors.enable(['scrollZoom']);
-                    if (infrastructure.classList.contains('_active')) {
-                        fullscreenElement.insertAdjacentElement('beforeend', infrastructure);
-                        infrastructure.classList.add('_active-fullscreen');
-                    }
-                    if (routes.classList.contains('_active')) {
-                        fullscreenElement.insertAdjacentElement('beforeend', routes);
-                        routes.classList.add('_active-fullscreen');
-                    }
-                });
-
-                fullScreenControl.events.add('fullscreenexit', function () {
-                    const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
-                    if (infrastructure.classList.contains('_active')) {
-                        objectMaps.closest('.object-location__maps').insertAdjacentElement('afterend', infrastructure);
-                        infrastructure.classList.remove('_active-fullscreen');
-                    }
-                    if (routes.classList.contains('_active')) {
-                        routes.classList.remove('_active-fullscreen');
-                        locationRoutesBtn.classList.remove('_active');
-                        routeHidden();
-                    }
-                    fullscreenElement.classList.remove('yandex-map-active-fullscreen');
-                    map.behaviors.disable(['scrollZoom']);
-                });
-
-                function routeShow() {
-                    map.controls.add('routePanelControl', {
-                        showHeader: true,
-                        title: 'Построить маршрут',
-                        float: 'right',
-                        maxWidth: '400px',
-                        position: {
-                            right: 76,
-                            top: 16,
-                        },
-                    });
-                    btnCloseRoute = new ymaps.control.Button({
-                        data: {
-                            content: `
-                            <div class="ymaps__route-close-wrapper">
-                                <svg>
-                                    <use xlink:href="./img/sprite.svg#x"></use>
-                                </svg>
-                            </div>
-                            `,
-                        },
-                        options: {
-                            maxWidth: [30, 100, 150]
-                        }
-                    });
-                    map.controls.add(btnCloseRoute, {
-                        position: {
-                            right: 92,
-                            top: 24,
-                        }
-                    });
-                    setTimeout(() => {
-                        document.querySelectorAll('.ymaps__route-close-wrapper').forEach(item => {
-                            item.closest('.ymaps-2-1-79-float-button').classList.add('ymaps__route-close');
-                        })
-                    }, 10);
-                    btnCloseRoute.events.add('click', function (e) {
-                        routeHidden();
-                        map.controls.remove(btnCloseRoute);
-                        locationRoutesBtn.classList.remove('_active');
-                    })
-                }
-
-                function routeHidden() {
-                    map.controls.remove('routePanelControl');
-                    routes.classList.remove('_show');
-                }
-            }
-        }
-        ymaps.ready(init);
-    }
     if (document.querySelector('#record-viewing-maps')) {
         const objectMaps = document.querySelector('#record-viewing-maps');
         if (!objectMaps) return;
@@ -231,73 +93,6 @@ const maps = () => {
         }
         ymaps.ready(init);
     }
-    if (document.querySelector('#map-draw')) {
-        function init() {
-            let map = new ymaps.Map('map-draw', {
-                center: [55.77171185651524, 37.62811179984117],
-                zoom: 10,
-            });
-            removeControlsPrimary(map, '#map-draw');
-            drawSettings(map);
-        }
-        ymaps.ready(init);
-
-        function drawSettings(map) {
-            if (window.innerWidth <= 1212) {
-                map.controls.add('fullscreenControl');
-                const container = map.container._parentElement;
-                const mapDraw = container.closest('.map-draw');
-                const drawBtns = mapDraw ? mapDraw.querySelector('.map-draw__btns') : null;
-                map.controls.get('fullscreenControl').options.set({
-                    position: {
-                        top: 16,
-                        right: 16
-                    },
-                    maxWidth: '44',
-                })
-                map.behaviors.disable(['scrollZoom']);
-                map.behaviors.disable(['drag']);
-                if (drawBtns !== null) {
-                    const fullScreenControl = map.controls.get('fullscreenControl');
-                    fullScreenControl.events.add('fullscreenenter', function () {
-                        const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
-                        fullscreenElement.classList.add('draw-map-active-fullscreen');
-                        fullscreenElement.insertAdjacentElement('beforeend', drawBtns);
-                        map.controls.add("zoomControl");
-
-                        map.behaviors.enable(['scrollZoom']);
-                        map.behaviors.enable(['drag']);
-                        map.controls.get('zoomControl').options.set({
-                            position: {
-                                top: 'calc((100vh - 152px + 24px) / 2 - (90px / 2))',
-                                right: 16
-                            },
-                            maxWidth: '44'
-                        })
-                    });
-                    fullScreenControl.events.add('fullscreenexit', function () {
-                        map.controls.remove("zoomControl");
-                        map.behaviors.disable(['scrollZoom']);
-                        map.behaviors.disable(['drag']);
-                        const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
-                        fullscreenElement.classList.remove('yandex-map-active-fullscreen');
-                        mapDraw.insertAdjacentElement('afterbegin', drawBtns);
-                    });
-                }
-            } else {
-                map.controls.remove('fullscreenControl');
-                map.behaviors.disable(['scrollZoom']);
-                map.behaviors.disable(['drag']);
-                map.controls.get('zoomControl').options.set({
-                    position: {
-                        top: 212,
-                        right: 15
-                    },
-                    maxWidth: '44'
-                })
-            }
-        }
-    }
     if (document.querySelector('#map-draw--2')) {
         function init() {
             let map = new ymaps.Map('map-draw--2', {
@@ -306,17 +101,6 @@ const maps = () => {
             });
             positionElement(map);
             removeControlsPrimary(map, '#map-draw--2');
-        }
-        ymaps.ready(init);
-    }
-    if (document.querySelector('#place-sale-address-map')) {
-        function init() {
-            let map = new ymaps.Map('place-sale-address-map', {
-                center: [55.77171185651524, 37.62811179984117],
-                zoom: 10,
-            });
-            positionElement(map);
-            removeControlsPrimary(map, '#place-sale-address-map');
         }
         ymaps.ready(init);
     }
@@ -481,6 +265,225 @@ const maps = () => {
             }
         })
 
+    }
+
+
+
+    if (document.querySelector('#map-draw')) {
+        function init() {
+            let map = new ymaps.Map('map-draw', {
+                center: [55.77171185651524, 37.62811179984117],
+                zoom: 10,
+            });
+            removeControlsPrimary(map, '#map-draw');
+            drawSettings(map);
+        }
+        ymaps.ready(init);
+
+        function drawSettings(map) {
+            if (window.innerWidth <= 1212) {
+                map.controls.add('fullscreenControl');
+                const container = map.container._parentElement;
+                const mapDraw = container.closest('.map-draw');
+                const drawBtns = mapDraw ? mapDraw.querySelector('.map-draw__btns') : null;
+                map.controls.get('fullscreenControl').options.set({
+                    position: {
+                        top: 16,
+                        right: 16
+                    },
+                    maxWidth: '44',
+                })
+                map.behaviors.disable(['scrollZoom']);
+                map.behaviors.disable(['drag']);
+                if (drawBtns !== null) {
+                    const fullScreenControl = map.controls.get('fullscreenControl');
+                    fullScreenControl.events.add('fullscreenenter', function () {
+                        const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
+                        fullscreenElement.classList.add('draw-map-active-fullscreen');
+                        fullscreenElement.insertAdjacentElement('beforeend', drawBtns);
+                        map.controls.add("zoomControl");
+
+                        map.behaviors.enable(['scrollZoom']);
+                        map.behaviors.enable(['drag']);
+                        map.controls.get('zoomControl').options.set({
+                            position: {
+                                top: 'calc((100vh - 152px + 24px) / 2 - (90px / 2))',
+                                right: 16
+                            },
+                            maxWidth: '44'
+                        })
+                    });
+                    fullScreenControl.events.add('fullscreenexit', function () {
+                        map.controls.remove("zoomControl");
+                        map.behaviors.disable(['scrollZoom']);
+                        map.behaviors.disable(['drag']);
+                        const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
+                        fullscreenElement.classList.remove('yandex-map-active-fullscreen');
+                        mapDraw.insertAdjacentElement('afterbegin', drawBtns);
+                    });
+                }
+            } else {
+                map.controls.remove('fullscreenControl');
+                map.behaviors.disable(['scrollZoom']);
+                map.behaviors.disable(['drag']);
+                map.controls.get('zoomControl').options.set({
+                    position: {
+                        top: 212,
+                        right: 15
+                    },
+                    maxWidth: '44'
+                })
+            }
+        }
+    }
+    if (document.querySelector('#place-sale-address-map')) {
+        function init() {
+            let map = new ymaps.Map('place-sale-address-map', {
+                center: [55.77171185651524, 37.62811179984117],
+                zoom: 10,
+            });
+            positionElement(map);
+            removeControlsPrimary(map, '#place-sale-address-map');
+        }
+        ymaps.ready(init);
+    }
+    if (document.querySelector('#object-maps')) {
+        const objectMaps = document.querySelector('#object-maps');
+        if (!objectMaps) return;
+
+        function init() {
+            let map = new ymaps.Map('object-maps', {
+                center: [55.77171185651524, 37.62811179984117],
+                zoom: 10,
+            });
+            positionElement(map);
+            removeControlsPrimary(map, '#object-maps');
+            const containerSelects = objectMaps.closest('.object-location--select');
+            if (containerSelects) {
+                let btnCloseRoute;
+                const btns = containerSelects.querySelectorAll('.object-location__btn');
+                const infrastructure = containerSelects.querySelector('.object-location__infrastructure');
+                const routes = containerSelects.querySelector('.object-location__routes');
+                const locationRoutesBtn = document.querySelector('.location-routes__btn');
+                btns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        btns.forEach(btn => btn.classList.remove('_active'));
+                        btn.classList.toggle('_active');
+                        if (btn.classList.contains('object-location__btn--infrastructure')) {
+                            infrastructure.classList.add('_active');
+                            objectMaps.classList.remove('_routes');
+                            routes.classList.remove('_active');
+                            locationRoutesBtn.classList.remove('_active');
+                            map.controls.remove(btnCloseRoute);
+                            routeHidden();
+                        } else if (btn.classList.contains('object-location__btn--routes')) {
+                            objectMaps.classList.add('_routes');
+                            routes.classList.add('_active');
+                            infrastructure.classList.remove('_active');
+                        } else {
+                            objectMaps.classList.remove('_routes');
+                            infrastructure.classList.remove('_active');
+                            routes.classList.remove('_active');
+                            locationRoutesBtn.classList.remove('_active');
+                            map.controls.remove(btnCloseRoute);
+                            routeHidden();
+                        }
+                    });
+                })
+                locationRoutesBtn.addEventListener('click', () => {
+                    if (!locationRoutesBtn.classList.contains('_active')) {
+                        locationRoutesBtn.classList.add('_active');
+                        routes.classList.add('_show');
+                        map.container.enterFullscreen();
+                        setTimeout(() => {
+                            routeShow();
+                        }, 50);
+                    } else {
+                        locationRoutesBtn.classList.remove('_active');
+                        routeHidden();
+                    }
+                });
+
+                const fullScreenControl = map.controls.get('fullscreenControl');
+                fullScreenControl.events.add('fullscreenenter', function () {
+                    const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
+                    fullscreenElement.classList.add('yandex-map-active-fullscreen');
+                    map.behaviors.enable(['scrollZoom']);
+                    if (infrastructure.classList.contains('_active')) {
+                        fullscreenElement.insertAdjacentElement('beforeend', infrastructure);
+                        infrastructure.classList.add('_active-fullscreen');
+                    }
+                    if (routes.classList.contains('_active')) {
+                        fullscreenElement.insertAdjacentElement('beforeend', routes);
+                        routes.classList.add('_active-fullscreen');
+                    }
+                });
+
+                fullScreenControl.events.add('fullscreenexit', function () {
+                    const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
+                    if (infrastructure.classList.contains('_active')) {
+                        objectMaps.closest('.object-location__maps').insertAdjacentElement('afterend', infrastructure);
+                        infrastructure.classList.remove('_active-fullscreen');
+                    }
+                    if (routes.classList.contains('_active')) {
+                        routes.classList.remove('_active-fullscreen');
+                        locationRoutesBtn.classList.remove('_active');
+                        routeHidden();
+                    }
+                    fullscreenElement.classList.remove('yandex-map-active-fullscreen');
+                    map.behaviors.disable(['scrollZoom']);
+                });
+
+                function routeShow() {
+                    map.controls.add('routePanelControl', {
+                        showHeader: true,
+                        title: 'Построить маршрут',
+                        float: 'right',
+                        maxWidth: '400px',
+                        position: {
+                            right: 76,
+                            top: 16,
+                        },
+                    });
+                    btnCloseRoute = new ymaps.control.Button({
+                        data: {
+                            content: `
+                            <div class="ymaps__route-close-wrapper">
+                                <svg>
+                                    <use xlink:href="./img/sprite.svg#x"></use>
+                                </svg>
+                            </div>
+                            `,
+                        },
+                        options: {
+                            maxWidth: [30, 100, 150]
+                        }
+                    });
+                    map.controls.add(btnCloseRoute, {
+                        position: {
+                            right: 92,
+                            top: 24,
+                        }
+                    });
+                    setTimeout(() => {
+                        document.querySelectorAll('.ymaps__route-close-wrapper').forEach(item => {
+                            item.closest('.ymaps-2-1-79-float-button').classList.add('ymaps__route-close');
+                        })
+                    }, 10);
+                    btnCloseRoute.events.add('click', function (e) {
+                        routeHidden();
+                        map.controls.remove(btnCloseRoute);
+                        locationRoutesBtn.classList.remove('_active');
+                    })
+                }
+
+                function routeHidden() {
+                    map.controls.remove('routePanelControl');
+                    routes.classList.remove('_show');
+                }
+            }
+        }
+        ymaps.ready(init);
     }
 };
 

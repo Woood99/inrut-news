@@ -26,7 +26,7 @@ const headerFixed = () => {
                         link.classList.remove('_active');
                     }
                 })
-                links[index].classList.add('_active');
+                if (links[index]) links[index].classList.add('_active');
             }
 
             if (sections[0].offsetTop - headerHeight - gap >= scrollDistance) {

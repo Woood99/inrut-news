@@ -4212,14 +4212,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_dragDrop__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./components/dragDrop */ "./src/js/components/dragDrop.js");
 /* harmony import */ var air_datepicker__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! air-datepicker */ "./node_modules/air-datepicker/index.es.js");
 /* harmony import */ var _components_createCalc__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./components/createCalc */ "./src/js/components/createCalc.js");
-/* harmony import */ var _components_createSale__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./components/createSale */ "./src/js/components/createSale.js");
-/* harmony import */ var _components_videoLoad__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./components/videoLoad */ "./src/js/components/videoLoad.js");
-/* harmony import */ var _components_haracteristicsBlock__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./components/сharacteristicsBlock */ "./src/js/components/сharacteristicsBlock.js");
-/* harmony import */ var _components_submitAppOffers__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./components/submitAppOffers */ "./src/js/components/submitAppOffers.js");
-/* harmony import */ var _components_mortgageRequests__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ./components/mortgageRequests */ "./src/js/components/mortgageRequests.js");
-/* harmony import */ var _modules_moveToFromBlock__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ./modules/moveToFromBlock */ "./src/js/modules/moveToFromBlock.js");
-/* harmony import */ var _components_replaceText__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ./components/replaceText */ "./src/js/components/replaceText.js");
-
+/* harmony import */ var _components_videoLoad__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./components/videoLoad */ "./src/js/components/videoLoad.js");
+/* harmony import */ var _components_haracteristicsBlock__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./components/сharacteristicsBlock */ "./src/js/components/сharacteristicsBlock.js");
+/* harmony import */ var _components_submitAppOffers__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./components/submitAppOffers */ "./src/js/components/submitAppOffers.js");
+/* harmony import */ var _components_mortgageRequests__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./components/mortgageRequests */ "./src/js/components/mortgageRequests.js");
+/* harmony import */ var _modules_moveToFromBlock__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ./modules/moveToFromBlock */ "./src/js/modules/moveToFromBlock.js");
+/* harmony import */ var _components_replaceText__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ./components/replaceText */ "./src/js/components/replaceText.js");
 
 
 
@@ -4365,11 +4363,10 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_tooltips__WEBPACK_IMPORTED_MODULE_45__.tooltipSecondary)();
   (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_46__.dragDrops)();
   (0,_components_createCalc__WEBPACK_IMPORTED_MODULE_48__.createCalc)();
-  (0,_components_createSale__WEBPACK_IMPORTED_MODULE_49__["default"])();
-  (0,_components_videoLoad__WEBPACK_IMPORTED_MODULE_50__.videoLoad)();
-  (0,_components_haracteristicsBlock__WEBPACK_IMPORTED_MODULE_51__["default"])();
-  (0,_components_submitAppOffers__WEBPACK_IMPORTED_MODULE_52__["default"])();
-  (0,_components_mortgageRequests__WEBPACK_IMPORTED_MODULE_53__["default"])();
+  (0,_components_videoLoad__WEBPACK_IMPORTED_MODULE_49__.videoLoad)();
+  (0,_components_haracteristicsBlock__WEBPACK_IMPORTED_MODULE_50__["default"])();
+  (0,_components_submitAppOffers__WEBPACK_IMPORTED_MODULE_51__["default"])();
+  (0,_components_mortgageRequests__WEBPACK_IMPORTED_MODULE_52__["default"])();
   // ==================================================
 
   (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.validateRadioPrimary)('.complaint-popup__form', '.textarea-primary__input', '.complaint-popup__btn', '.radio-primary__input');
@@ -4423,8 +4420,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ==================================================
 
-  (0,_modules_moveToFromBlock__WEBPACK_IMPORTED_MODULE_54__["default"])('[data-move-block-to="bid-user"]', '[data-move-block-from="bid-user"]', 99999, 1212, `${window.innerWidth >= 1920 ? 1.35 : 1}`);
-  (0,_components_replaceText__WEBPACK_IMPORTED_MODULE_55__["default"])();
+  (0,_modules_moveToFromBlock__WEBPACK_IMPORTED_MODULE_53__["default"])('[data-move-block-to="bid-user"]', '[data-move-block-from="bid-user"]', 99999, 1212, `${window.innerWidth >= 1920 ? 1.35 : 1}`);
+  (0,_components_replaceText__WEBPACK_IMPORTED_MODULE_54__["default"])();
   // ==================================================
   (0,_components_inputs__WEBPACK_IMPORTED_MODULE_6__.inputClue)('.input-clue', 'clue-primary', `
     <div class="clue-primary">
@@ -6979,127 +6976,6 @@ function blockAdded(block) {
 
 /***/ }),
 
-/***/ "./src/js/components/createSale.js":
-/*!*****************************************!*\
-  !*** ./src/js/components/createSale.js ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-const createSale = () => {
-  const saleCreate = document.querySelector('.place-sale-create');
-  const vidoeCreate = document.querySelector('.place-video-create');
-  if (saleCreate) {
-    const cards = saleCreate.querySelector('.place-sale-sale__cards');
-    const wrapper = cards.querySelector('.swiper-wrapper');
-    wrapper.addEventListener('click', e => {
-      const target = e.target;
-      const remove = target.closest('.card-stock-secondary__remove');
-      if (remove) {
-        e.preventDefault();
-        const item = remove.closest('.swiper-slide');
-        item.remove();
-        checkLengthCards(cards, wrapper);
-      }
-    });
-    checkLengthCards(cards, wrapper);
-    const title = document.querySelector('.add-complex .add-complex--complex .search-select-one__button-wrapper div:nth-child(2) span').textContent;
-    const name = saleCreate.querySelector('.place-sale-sale__field--name');
-    const nameInput = name.querySelector('input');
-    const start = saleCreate.querySelector('.place-sale-sale__field--start');
-    const startInput = start.querySelector('input');
-    const ending = saleCreate.querySelector('.place-sale-sale__field--ending');
-    const endingInput = ending.querySelector('input');
-    const descr = saleCreate.querySelector('.place-sale-sale__field--descr');
-    const descrInput = saleCreate.querySelector('.textarea-primary__input');
-    const photo = saleCreate.querySelector('.photo-load');
-    const photoInput = photo.querySelector('input');
-    const btn = saleCreate.querySelector('.place-sale-sale__save');
-    btn.addEventListener('click', () => {
-      create();
-      clearAllField();
-      checkLengthCards(cards, wrapper);
-    });
-    function create() {
-      let file = photoInput.files[0];
-      const image = file ? window.URL.createObjectURL(file) : '';
-      const saleHTML = `
-            <div class="swiper-slide drag-drop__item" draggable="true">
-            <article class="card-stock-secondary">
-                <a href="./promotion.html" class="card-stock-secondary__container">
-                    <button type="button" class="btn btn-reset card-stock-secondary__remove">
-                        <svg>
-                          <use xlink:href="./img/sprite.svg#trash"></use>
-                        </svg>
-                    </button>
-                    <div class="card-stock-secondary__image ibg">
-                        <picture>
-                            <source srcset="${image}" type="image/webp">
-                            <img loading="lazy" src="${image}" width="323" height="207" alt="${title}">
-                        </picture>
-                    </div>
-                    <div class="card-stock-secondary__content">
-                        <div class="row">
-                            <h3 class="card-stock-secondary__title title-4">
-                                ${title}
-                            </h3>
-                        </div>
-                        <div class="card-stock-secondary__name">
-                            ${nameInput.value}
-                        </div>
-                        <p class="card-stock-secondary__descr">
-                            ${descrInput.value}
-                        </p>
-                    </div>
-                    <div class="card-stock-secondary__times">
-                        <div>
-                            <span>Начало:</span>
-                            <span>${startInput.value}</span>
-                        </div>
-                        <div>
-                            <span>Окончание:</span>
-                            <span>${endingInput.value}</span>
-                        </div>
-                    </div>
-                </a>
-            </article>
-            </div>
-            `;
-      wrapper.insertAdjacentHTML('beforeend', saleHTML);
-    }
-    function clearAllField() {
-      name.classList.remove('_active');
-      nameInput.value = '';
-      start.classList.remove('_active');
-      startInput.value = '';
-      ending.classList.remove('_active');
-      endingInput.value = '';
-      descr.classList.remove('_active');
-      descrInput.value = '';
-      photoInput.value = '';
-      const photos = saleCreate.querySelectorAll('.place-sale-photo__image');
-      photos.forEach(photo => {
-        if (photo) photo.remove();
-      });
-    }
-  }
-  function checkLengthCards(cards, wrapper) {
-    const cardsLength = wrapper.querySelectorAll('.swiper-slide').length;
-    if (cardsLength >= 1) {
-      cards.classList.add('_active');
-    } else {
-      cards.classList.remove('_active');
-    }
-  }
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createSale);
-
-/***/ }),
-
 /***/ "./src/js/components/dragDrop.js":
 /*!***************************************!*\
   !*** ./src/js/components/dragDrop.js ***!
@@ -9628,7 +9504,7 @@ const headerFixed = () => {
             link.classList.remove('_active');
           }
         });
-        links[index].classList.add('_active');
+        if (links[index]) links[index].classList.add('_active');
       }
       if (sections[0].offsetTop - headerHeight - gap >= scrollDistance) {
         links.forEach(link => {
@@ -9746,6 +9622,9 @@ const textareaSecondary = () => {
     const textareaMinHeight = textarea.dataset.textareaSecondaryMinHeight;
     const textareaMaxHeight = textarea.hasAttribute('data-textarea-secondary-max-height') ? textarea.dataset.textareaSecondaryMaxHeight : false;
     const textareaClear = textarea.querySelector('.textarea-secondary__clear');
+    toggleActive(textareaInput, textarea);
+    changeHeight();
+    objectBaseComment();
     textareaInput.addEventListener('input', e => {
       toggleActive(e.target, textarea);
       changeHeight();
@@ -9756,18 +9635,22 @@ const textareaSecondary = () => {
         } else {
           textareaClear.setAttribute('hidden', '');
         }
-        textareaClear.addEventListener('click', () => {
-          textareaInput.value = '';
-          textareaClear.setAttribute('hidden', '');
-          toggleActive(e.target, textarea);
-          changeHeight();
-          objectBaseComment();
-        });
       }
-      toggleActive(e.target, textarea);
-      changeHeight();
-      objectBaseComment();
     });
+    if (textareaClear) {
+      textareaClear.addEventListener('click', () => {
+        textareaInput.value = '';
+        textareaClear.setAttribute('hidden', '');
+        toggleActive(textareaInput, textarea);
+        changeHeight();
+        objectBaseComment();
+        if (textareaInput.value.length >= 1) {
+          textareaClear.removeAttribute('hidden');
+        } else {
+          textareaClear.setAttribute('hidden', '');
+        }
+      });
+    }
     function changeHeight() {
       if (textareaMaxHeight) {
         textarea.style.height = `${textareaMinHeight}px`;
@@ -10357,139 +10240,6 @@ const maps = () => {
       ymaps.ready(init);
     });
   }
-  if (document.querySelector('#object-maps')) {
-    const objectMaps = document.querySelector('#object-maps');
-    if (!objectMaps) return;
-    function init() {
-      let map = new ymaps.Map('object-maps', {
-        center: [55.77171185651524, 37.62811179984117],
-        zoom: 10
-      });
-      positionElement(map);
-      removeControlsPrimary(map, '#object-maps');
-      const containerSelects = objectMaps.closest('.object-location--select');
-      if (containerSelects) {
-        let btnCloseRoute;
-        const btns = containerSelects.querySelectorAll('.object-location__btn');
-        const infrastructure = containerSelects.querySelector('.object-location__infrastructure');
-        const routes = containerSelects.querySelector('.object-location__routes');
-        const locationRoutesBtn = document.querySelector('.location-routes__btn');
-        btns.forEach(btn => {
-          btn.addEventListener('click', () => {
-            btns.forEach(btn => btn.classList.remove('_active'));
-            btn.classList.toggle('_active');
-            if (btn.classList.contains('object-location__btn--infrastructure')) {
-              infrastructure.classList.add('_active');
-              objectMaps.classList.remove('_routes');
-              routes.classList.remove('_active');
-              locationRoutesBtn.classList.remove('_active');
-              map.controls.remove(btnCloseRoute);
-              routeHidden();
-            } else if (btn.classList.contains('object-location__btn--routes')) {
-              objectMaps.classList.add('_routes');
-              routes.classList.add('_active');
-              infrastructure.classList.remove('_active');
-            } else {
-              objectMaps.classList.remove('_routes');
-              infrastructure.classList.remove('_active');
-              routes.classList.remove('_active');
-              locationRoutesBtn.classList.remove('_active');
-              map.controls.remove(btnCloseRoute);
-              routeHidden();
-            }
-          });
-        });
-        locationRoutesBtn.addEventListener('click', () => {
-          if (!locationRoutesBtn.classList.contains('_active')) {
-            locationRoutesBtn.classList.add('_active');
-            routes.classList.add('_show');
-            map.container.enterFullscreen();
-            setTimeout(() => {
-              routeShow();
-            }, 50);
-          } else {
-            locationRoutesBtn.classList.remove('_active');
-            routeHidden();
-          }
-        });
-        const fullScreenControl = map.controls.get('fullscreenControl');
-        fullScreenControl.events.add('fullscreenenter', function () {
-          const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
-          fullscreenElement.classList.add('yandex-map-active-fullscreen');
-          map.behaviors.enable(['scrollZoom']);
-          if (infrastructure.classList.contains('_active')) {
-            fullscreenElement.insertAdjacentElement('beforeend', infrastructure);
-            infrastructure.classList.add('_active-fullscreen');
-          }
-          if (routes.classList.contains('_active')) {
-            fullscreenElement.insertAdjacentElement('beforeend', routes);
-            routes.classList.add('_active-fullscreen');
-          }
-        });
-        fullScreenControl.events.add('fullscreenexit', function () {
-          const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
-          if (infrastructure.classList.contains('_active')) {
-            objectMaps.closest('.object-location__maps').insertAdjacentElement('afterend', infrastructure);
-            infrastructure.classList.remove('_active-fullscreen');
-          }
-          if (routes.classList.contains('_active')) {
-            routes.classList.remove('_active-fullscreen');
-            locationRoutesBtn.classList.remove('_active');
-            routeHidden();
-          }
-          fullscreenElement.classList.remove('yandex-map-active-fullscreen');
-          map.behaviors.disable(['scrollZoom']);
-        });
-        function routeShow() {
-          map.controls.add('routePanelControl', {
-            showHeader: true,
-            title: 'Построить маршрут',
-            float: 'right',
-            maxWidth: '400px',
-            position: {
-              right: 76,
-              top: 16
-            }
-          });
-          btnCloseRoute = new ymaps.control.Button({
-            data: {
-              content: `
-                            <div class="ymaps__route-close-wrapper">
-                                <svg>
-                                    <use xlink:href="./img/sprite.svg#x"></use>
-                                </svg>
-                            </div>
-                            `
-            },
-            options: {
-              maxWidth: [30, 100, 150]
-            }
-          });
-          map.controls.add(btnCloseRoute, {
-            position: {
-              right: 92,
-              top: 24
-            }
-          });
-          setTimeout(() => {
-            document.querySelectorAll('.ymaps__route-close-wrapper').forEach(item => {
-              item.closest('.ymaps-2-1-79-float-button').classList.add('ymaps__route-close');
-            });
-          }, 10);
-          btnCloseRoute.events.add('click', function (e) {
-            routeHidden();
-            map.controls.remove(btnCloseRoute);
-            locationRoutesBtn.classList.remove('_active');
-          });
-        }
-        function routeHidden() {
-          map.controls.remove('routePanelControl');
-          routes.classList.remove('_show');
-        }
-      }
-    }
-    ymaps.ready(init);
-  }
   if (document.querySelector('#record-viewing-maps')) {
     const objectMaps = document.querySelector('#record-viewing-maps');
     if (!objectMaps) return;
@@ -10526,71 +10276,6 @@ const maps = () => {
     }
     ymaps.ready(init);
   }
-  if (document.querySelector('#map-draw')) {
-    function init() {
-      let map = new ymaps.Map('map-draw', {
-        center: [55.77171185651524, 37.62811179984117],
-        zoom: 10
-      });
-      removeControlsPrimary(map, '#map-draw');
-      drawSettings(map);
-    }
-    ymaps.ready(init);
-    function drawSettings(map) {
-      if (window.innerWidth <= 1212) {
-        map.controls.add('fullscreenControl');
-        const container = map.container._parentElement;
-        const mapDraw = container.closest('.map-draw');
-        const drawBtns = mapDraw ? mapDraw.querySelector('.map-draw__btns') : null;
-        map.controls.get('fullscreenControl').options.set({
-          position: {
-            top: 16,
-            right: 16
-          },
-          maxWidth: '44'
-        });
-        map.behaviors.disable(['scrollZoom']);
-        map.behaviors.disable(['drag']);
-        if (drawBtns !== null) {
-          const fullScreenControl = map.controls.get('fullscreenControl');
-          fullScreenControl.events.add('fullscreenenter', function () {
-            const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
-            fullscreenElement.classList.add('draw-map-active-fullscreen');
-            fullscreenElement.insertAdjacentElement('beforeend', drawBtns);
-            map.controls.add("zoomControl");
-            map.behaviors.enable(['scrollZoom']);
-            map.behaviors.enable(['drag']);
-            map.controls.get('zoomControl').options.set({
-              position: {
-                top: 'calc((100vh - 152px + 24px) / 2 - (90px / 2))',
-                right: 16
-              },
-              maxWidth: '44'
-            });
-          });
-          fullScreenControl.events.add('fullscreenexit', function () {
-            map.controls.remove("zoomControl");
-            map.behaviors.disable(['scrollZoom']);
-            map.behaviors.disable(['drag']);
-            const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
-            fullscreenElement.classList.remove('yandex-map-active-fullscreen');
-            mapDraw.insertAdjacentElement('afterbegin', drawBtns);
-          });
-        }
-      } else {
-        map.controls.remove('fullscreenControl');
-        map.behaviors.disable(['scrollZoom']);
-        map.behaviors.disable(['drag']);
-        map.controls.get('zoomControl').options.set({
-          position: {
-            top: 212,
-            right: 15
-          },
-          maxWidth: '44'
-        });
-      }
-    }
-  }
   if (document.querySelector('#map-draw--2')) {
     function init() {
       let map = new ymaps.Map('map-draw--2', {
@@ -10599,17 +10284,6 @@ const maps = () => {
       });
       positionElement(map);
       removeControlsPrimary(map, '#map-draw--2');
-    }
-    ymaps.ready(init);
-  }
-  if (document.querySelector('#place-sale-address-map')) {
-    function init() {
-      let map = new ymaps.Map('place-sale-address-map', {
-        center: [55.77171185651524, 37.62811179984117],
-        zoom: 10
-      });
-      positionElement(map);
-      removeControlsPrimary(map, '#place-sale-address-map');
     }
     ymaps.ready(init);
   }
@@ -10748,6 +10422,215 @@ const maps = () => {
         }
       }
     });
+  }
+  if (document.querySelector('#map-draw')) {
+    function init() {
+      let map = new ymaps.Map('map-draw', {
+        center: [55.77171185651524, 37.62811179984117],
+        zoom: 10
+      });
+      removeControlsPrimary(map, '#map-draw');
+      drawSettings(map);
+    }
+    ymaps.ready(init);
+    function drawSettings(map) {
+      if (window.innerWidth <= 1212) {
+        map.controls.add('fullscreenControl');
+        const container = map.container._parentElement;
+        const mapDraw = container.closest('.map-draw');
+        const drawBtns = mapDraw ? mapDraw.querySelector('.map-draw__btns') : null;
+        map.controls.get('fullscreenControl').options.set({
+          position: {
+            top: 16,
+            right: 16
+          },
+          maxWidth: '44'
+        });
+        map.behaviors.disable(['scrollZoom']);
+        map.behaviors.disable(['drag']);
+        if (drawBtns !== null) {
+          const fullScreenControl = map.controls.get('fullscreenControl');
+          fullScreenControl.events.add('fullscreenenter', function () {
+            const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
+            fullscreenElement.classList.add('draw-map-active-fullscreen');
+            fullscreenElement.insertAdjacentElement('beforeend', drawBtns);
+            map.controls.add("zoomControl");
+            map.behaviors.enable(['scrollZoom']);
+            map.behaviors.enable(['drag']);
+            map.controls.get('zoomControl').options.set({
+              position: {
+                top: 'calc((100vh - 152px + 24px) / 2 - (90px / 2))',
+                right: 16
+              },
+              maxWidth: '44'
+            });
+          });
+          fullScreenControl.events.add('fullscreenexit', function () {
+            map.controls.remove("zoomControl");
+            map.behaviors.disable(['scrollZoom']);
+            map.behaviors.disable(['drag']);
+            const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
+            fullscreenElement.classList.remove('yandex-map-active-fullscreen');
+            mapDraw.insertAdjacentElement('afterbegin', drawBtns);
+          });
+        }
+      } else {
+        map.controls.remove('fullscreenControl');
+        map.behaviors.disable(['scrollZoom']);
+        map.behaviors.disable(['drag']);
+        map.controls.get('zoomControl').options.set({
+          position: {
+            top: 212,
+            right: 15
+          },
+          maxWidth: '44'
+        });
+      }
+    }
+  }
+  if (document.querySelector('#place-sale-address-map')) {
+    function init() {
+      let map = new ymaps.Map('place-sale-address-map', {
+        center: [55.77171185651524, 37.62811179984117],
+        zoom: 10
+      });
+      positionElement(map);
+      removeControlsPrimary(map, '#place-sale-address-map');
+    }
+    ymaps.ready(init);
+  }
+  if (document.querySelector('#object-maps')) {
+    const objectMaps = document.querySelector('#object-maps');
+    if (!objectMaps) return;
+    function init() {
+      let map = new ymaps.Map('object-maps', {
+        center: [55.77171185651524, 37.62811179984117],
+        zoom: 10
+      });
+      positionElement(map);
+      removeControlsPrimary(map, '#object-maps');
+      const containerSelects = objectMaps.closest('.object-location--select');
+      if (containerSelects) {
+        let btnCloseRoute;
+        const btns = containerSelects.querySelectorAll('.object-location__btn');
+        const infrastructure = containerSelects.querySelector('.object-location__infrastructure');
+        const routes = containerSelects.querySelector('.object-location__routes');
+        const locationRoutesBtn = document.querySelector('.location-routes__btn');
+        btns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            btns.forEach(btn => btn.classList.remove('_active'));
+            btn.classList.toggle('_active');
+            if (btn.classList.contains('object-location__btn--infrastructure')) {
+              infrastructure.classList.add('_active');
+              objectMaps.classList.remove('_routes');
+              routes.classList.remove('_active');
+              locationRoutesBtn.classList.remove('_active');
+              map.controls.remove(btnCloseRoute);
+              routeHidden();
+            } else if (btn.classList.contains('object-location__btn--routes')) {
+              objectMaps.classList.add('_routes');
+              routes.classList.add('_active');
+              infrastructure.classList.remove('_active');
+            } else {
+              objectMaps.classList.remove('_routes');
+              infrastructure.classList.remove('_active');
+              routes.classList.remove('_active');
+              locationRoutesBtn.classList.remove('_active');
+              map.controls.remove(btnCloseRoute);
+              routeHidden();
+            }
+          });
+        });
+        locationRoutesBtn.addEventListener('click', () => {
+          if (!locationRoutesBtn.classList.contains('_active')) {
+            locationRoutesBtn.classList.add('_active');
+            routes.classList.add('_show');
+            map.container.enterFullscreen();
+            setTimeout(() => {
+              routeShow();
+            }, 50);
+          } else {
+            locationRoutesBtn.classList.remove('_active');
+            routeHidden();
+          }
+        });
+        const fullScreenControl = map.controls.get('fullscreenControl');
+        fullScreenControl.events.add('fullscreenenter', function () {
+          const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
+          fullscreenElement.classList.add('yandex-map-active-fullscreen');
+          map.behaviors.enable(['scrollZoom']);
+          if (infrastructure.classList.contains('_active')) {
+            fullscreenElement.insertAdjacentElement('beforeend', infrastructure);
+            infrastructure.classList.add('_active-fullscreen');
+          }
+          if (routes.classList.contains('_active')) {
+            fullscreenElement.insertAdjacentElement('beforeend', routes);
+            routes.classList.add('_active-fullscreen');
+          }
+        });
+        fullScreenControl.events.add('fullscreenexit', function () {
+          const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
+          if (infrastructure.classList.contains('_active')) {
+            objectMaps.closest('.object-location__maps').insertAdjacentElement('afterend', infrastructure);
+            infrastructure.classList.remove('_active-fullscreen');
+          }
+          if (routes.classList.contains('_active')) {
+            routes.classList.remove('_active-fullscreen');
+            locationRoutesBtn.classList.remove('_active');
+            routeHidden();
+          }
+          fullscreenElement.classList.remove('yandex-map-active-fullscreen');
+          map.behaviors.disable(['scrollZoom']);
+        });
+        function routeShow() {
+          map.controls.add('routePanelControl', {
+            showHeader: true,
+            title: 'Построить маршрут',
+            float: 'right',
+            maxWidth: '400px',
+            position: {
+              right: 76,
+              top: 16
+            }
+          });
+          btnCloseRoute = new ymaps.control.Button({
+            data: {
+              content: `
+                            <div class="ymaps__route-close-wrapper">
+                                <svg>
+                                    <use xlink:href="./img/sprite.svg#x"></use>
+                                </svg>
+                            </div>
+                            `
+            },
+            options: {
+              maxWidth: [30, 100, 150]
+            }
+          });
+          map.controls.add(btnCloseRoute, {
+            position: {
+              right: 92,
+              top: 24
+            }
+          });
+          setTimeout(() => {
+            document.querySelectorAll('.ymaps__route-close-wrapper').forEach(item => {
+              item.closest('.ymaps-2-1-79-float-button').classList.add('ymaps__route-close');
+            });
+          }, 10);
+          btnCloseRoute.events.add('click', function (e) {
+            routeHidden();
+            map.controls.remove(btnCloseRoute);
+            locationRoutesBtn.classList.remove('_active');
+          });
+        }
+        function routeHidden() {
+          map.controls.remove('routePanelControl');
+          routes.classList.remove('_show');
+        }
+      }
+    }
+    ymaps.ready(init);
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (maps);
@@ -14481,7 +14364,6 @@ function initSliders() {
         slidesPerView: 3,
         spaceBetween: 16,
         speed: 800,
-        allowTouchMove: false,
         navigation: {
           prevEl: slider.closest('.place-sale-sale__cards').querySelector('.nav-arrow-primary--prev'),
           nextEl: slider.closest('.place-sale-sale__cards').querySelector('.nav-arrow-primary--next'),

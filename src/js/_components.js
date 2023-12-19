@@ -113,7 +113,7 @@ import AirDatepicker from 'air-datepicker';
 import {
     createCalc
 } from './components/createCalc';
-// import createSale from './components/createSale';
+import createSale from './components/createSale';
 import {
     videoLoad
 } from './components/videoLoad';
@@ -121,6 +121,7 @@ import сharacteristicsBlock from './components/сharacteristicsBlock';
 import submitAppOffers from './components/submitAppOffers';
 import mortgageRequests from './components/mortgageRequests';
 import moveToFromBlock from './modules/moveToFromBlock';
+import replaceText from './components/replaceText';
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==================================================
@@ -212,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
     tooltipSecondary();
     dragDrops();
     createCalc();
-    // createSale();
+    createSale();
     videoLoad();
     сharacteristicsBlock();
     submitAppOffers();
@@ -273,7 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==================================================
 
     moveToFromBlock('[data-move-block-to="bid-user"]', '[data-move-block-from="bid-user"]', 99999, 1212, `${window.innerWidth >= 1920 ? 1.35 : 1}`);
-
+    replaceText();
     // ==================================================
     inputClue('.input-clue', 'clue-primary', `
     <div class="clue-primary">

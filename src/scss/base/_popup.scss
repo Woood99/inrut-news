@@ -1344,10 +1344,11 @@
             &__close {
                 transform: translateX(16px);
                 margin-top: -70px;
-             @media (max-width:$desktop){
-                transform: translateX(0);
-                margin-top: 0; 
-             }
+
+                @media (max-width:$desktop) {
+                    transform: translateX(0);
+                    margin-top: 0;
+                }
             }
         }
 
@@ -1631,20 +1632,20 @@
         &__time {
             margin-left: auto;
         }
-        &__maps{
-         @media (max-width:$desktop){
-            width: calc(100% - 32px);  
-         }
+
+        &__maps {
+            @media (max-width:$desktop) {
+                width: calc(100% - 32px);
+            }
         }
+
         &__title,
         .bid-import__title {
             display: flex;
             align-items: center;
-overflow: hidden;
-white-space: nowrap;
+            flex-wrap: wrap;
+            gap: 6px;
             >span {
-                margin-left: 6px;
-                margin-top: 2px;
                 color: var(--primaryTwo);
                 font-weight: 400;
                 font-size: var(--small-fz);
@@ -1655,6 +1656,7 @@ white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
+
                 span {
                     color: var(--blue);
                 }
@@ -3630,32 +3632,52 @@ white-space: nowrap;
         border-radius: 0;
         border: none;
         text-align: left;
-        &__title{
+
+
+        font-size: var(--default-fz);
+        line-height: var(--default-lh);
+
+        &__title {
             margin-bottom: 24px;
+            font-size: var(--big-fz);
+            line-height: var(--big-lh);
         }
-        @media (min-width:$smallTablet-min){
-            &__date{
+
+        &__date {
+            width: 140px;
+        }
+
+        &__more {
+            width: 140px;
+        }
+
+        @media (min-width:$smallTablet-min) {
+            &__date {
                 width: 230px;
             }
-            &__more{
+
+            &__more {
                 width: 300px;
-            } 
+            }
         }
     }
-    .secondary-tooltip__close{
+
+    .secondary-tooltip__close {
         display: none;
     }
-    &._up{
-        .price-history__more{
+
+    &._up {
+        .price-history__more {
             color: var(--red);
         }
-        
+
     }
-    &._down{
-        .price-history__more{
+
+    &._down {
+        .price-history__more {
             color: var(--green);
         }
-        
+
     }
 }
 

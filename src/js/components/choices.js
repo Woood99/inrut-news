@@ -9,6 +9,7 @@ export const choicesSelect = () => {
                 shouldSort: false,
                 itemSelectText: '',
                 position: 'bottom',
+                allowHTML: true,
             })
         });
     }
@@ -21,6 +22,7 @@ export const choicesSelect = () => {
                 shouldSort: false,
                 itemSelectText: '',
                 position: 'bottom',
+                allowHTML: true,
             })
 
             el.addEventListener('showDropdown', () => {
@@ -67,6 +69,7 @@ export const choicesSelect = () => {
                 position: 'bottom',
                 noChoicesText: 'Вы выбрали все доступные теги',
                 removeItemButton: true,
+                allowHTML: true,
             })
             const placeholder = document.createElement('span');
             placeholder.textContent = 'Неважно';
@@ -161,6 +164,7 @@ export const selectSecondaryCreate = (el) => {
         itemSelectText: '',
         position: 'bottom',
         placeholder: true,
+        allowHTML: true,
     })
     el.addEventListener('change', () => {
         checkCloseSelected();

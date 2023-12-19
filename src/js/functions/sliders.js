@@ -25,20 +25,22 @@ import {
 
 function initSliders() {
     if (document.querySelector('.place-sale-sale__cards .swiper')) {
-        const slider = document.querySelector('.place-sale-sale__cards .swiper');
-        new Swiper(slider, {
-            observer: true,
-            observeParents: true,
-            slidesPerView: 3,
-            spaceBetween: 16,
-            speed: 800,
-            allowTouchMove: false,
-            navigation: {
-                prevEl: slider.closest('.place-sale-sale__cards').querySelector('.nav-arrow-primary--prev'),
-                nextEl: slider.closest('.place-sale-sale__cards').querySelector('.nav-arrow-primary--next'),
-                lockClass: '_hidden',
-            },
-        });
+        const items = document.querySelectorAll('.place-sale-sale__cards .swiper');
+        items.forEach(slider => {
+            new Swiper(slider, {
+                observer: true,
+                observeParents: true,
+                slidesPerView: 3,
+                spaceBetween: 16,
+                speed: 800,
+                allowTouchMove: false,
+                navigation: {
+                    prevEl: slider.closest('.place-sale-sale__cards').querySelector('.nav-arrow-primary--prev'),
+                    nextEl: slider.closest('.place-sale-sale__cards').querySelector('.nav-arrow-primary--next'),
+                    lockClass: '_hidden',
+                },
+            });
+        })
     }
     if (document.querySelector('.book-consultation__agents')) {
         const slider = document.querySelector('.book-consultation__agents');

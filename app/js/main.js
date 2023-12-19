@@ -4212,11 +4212,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_dragDrop__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./components/dragDrop */ "./src/js/components/dragDrop.js");
 /* harmony import */ var air_datepicker__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! air-datepicker */ "./node_modules/air-datepicker/index.es.js");
 /* harmony import */ var _components_createCalc__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./components/createCalc */ "./src/js/components/createCalc.js");
-/* harmony import */ var _components_videoLoad__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./components/videoLoad */ "./src/js/components/videoLoad.js");
-/* harmony import */ var _components_haracteristicsBlock__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./components/сharacteristicsBlock */ "./src/js/components/сharacteristicsBlock.js");
-/* harmony import */ var _components_submitAppOffers__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./components/submitAppOffers */ "./src/js/components/submitAppOffers.js");
-/* harmony import */ var _components_mortgageRequests__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./components/mortgageRequests */ "./src/js/components/mortgageRequests.js");
-/* harmony import */ var _modules_moveToFromBlock__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ./modules/moveToFromBlock */ "./src/js/modules/moveToFromBlock.js");
+/* harmony import */ var _components_createSale__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./components/createSale */ "./src/js/components/createSale.js");
+/* harmony import */ var _components_videoLoad__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./components/videoLoad */ "./src/js/components/videoLoad.js");
+/* harmony import */ var _components_haracteristicsBlock__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./components/сharacteristicsBlock */ "./src/js/components/сharacteristicsBlock.js");
+/* harmony import */ var _components_submitAppOffers__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./components/submitAppOffers */ "./src/js/components/submitAppOffers.js");
+/* harmony import */ var _components_mortgageRequests__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ./components/mortgageRequests */ "./src/js/components/mortgageRequests.js");
+/* harmony import */ var _modules_moveToFromBlock__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ./modules/moveToFromBlock */ "./src/js/modules/moveToFromBlock.js");
+/* harmony import */ var _components_replaceText__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ./components/replaceText */ "./src/js/components/replaceText.js");
 
 
 
@@ -4266,7 +4268,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// import createSale from './components/createSale';
+
+
 
 
 
@@ -4362,11 +4365,11 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_tooltips__WEBPACK_IMPORTED_MODULE_45__.tooltipSecondary)();
   (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_46__.dragDrops)();
   (0,_components_createCalc__WEBPACK_IMPORTED_MODULE_48__.createCalc)();
-  // createSale();
-  (0,_components_videoLoad__WEBPACK_IMPORTED_MODULE_49__.videoLoad)();
-  (0,_components_haracteristicsBlock__WEBPACK_IMPORTED_MODULE_50__["default"])();
-  (0,_components_submitAppOffers__WEBPACK_IMPORTED_MODULE_51__["default"])();
-  (0,_components_mortgageRequests__WEBPACK_IMPORTED_MODULE_52__["default"])();
+  (0,_components_createSale__WEBPACK_IMPORTED_MODULE_49__["default"])();
+  (0,_components_videoLoad__WEBPACK_IMPORTED_MODULE_50__.videoLoad)();
+  (0,_components_haracteristicsBlock__WEBPACK_IMPORTED_MODULE_51__["default"])();
+  (0,_components_submitAppOffers__WEBPACK_IMPORTED_MODULE_52__["default"])();
+  (0,_components_mortgageRequests__WEBPACK_IMPORTED_MODULE_53__["default"])();
   // ==================================================
 
   (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.validateRadioPrimary)('.complaint-popup__form', '.textarea-primary__input', '.complaint-popup__btn', '.radio-primary__input');
@@ -4420,8 +4423,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ==================================================
 
-  (0,_modules_moveToFromBlock__WEBPACK_IMPORTED_MODULE_53__["default"])('[data-move-block-to="bid-user"]', '[data-move-block-from="bid-user"]', 99999, 1212, `${window.innerWidth >= 1920 ? 1.35 : 1}`);
-
+  (0,_modules_moveToFromBlock__WEBPACK_IMPORTED_MODULE_54__["default"])('[data-move-block-to="bid-user"]', '[data-move-block-from="bid-user"]', 99999, 1212, `${window.innerWidth >= 1920 ? 1.35 : 1}`);
+  (0,_components_replaceText__WEBPACK_IMPORTED_MODULE_55__["default"])();
   // ==================================================
   (0,_components_inputs__WEBPACK_IMPORTED_MODULE_6__.inputClue)('.input-clue', 'clue-primary', `
     <div class="clue-primary">
@@ -5347,9 +5350,11 @@ const cardPrimaryActions = () => {
   });
   favoriteMobile();
   tagsMobile();
+  infoMobile();
   window.addEventListener('resize', () => {
     favoriteMobile();
     tagsMobile();
+    infoMobile();
   });
   function favoriteMobile() {
     cards.forEach(card => {
@@ -5397,6 +5402,23 @@ const cardPrimaryActions = () => {
       (0,_support_modules_slide__WEBPACK_IMPORTED_MODULE_1__._slideUp)(block);
     }
   }
+  function infoMobile() {
+    cards.forEach(card => {
+      if (window.innerWidth <= 1212) {
+        const info = card.querySelector('.card-primary__info');
+        const path = card.querySelector('.card-primary__item');
+        if (info && path) {
+          path.insertAdjacentElement('afterbegin', info);
+        }
+      } else {
+        const info = card.querySelector('.card-primary__item .card-primary__info');
+        const path = card.querySelector('.card-primary__top');
+        if (info && path) {
+          path.insertAdjacentElement('beforeend', info);
+        }
+      }
+    });
+  }
 };
 function cardSliderMobile(cardImageWrapper, imagesBody, cardItems) {
   let slider;
@@ -5411,7 +5433,6 @@ function cardSliderMobile(cardImageWrapper, imagesBody, cardItems) {
         slider = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](cardImageWrapper, {
           observer: true,
           observeParents: true,
-          autoHeight: true,
           slidesPerView: 1.12,
           spaceBetween: 8,
           speed: 800,
@@ -5938,7 +5959,8 @@ const choicesSelect = () => {
         searchEnabled: false,
         shouldSort: false,
         itemSelectText: '',
-        position: 'bottom'
+        position: 'bottom',
+        allowHTML: true
       });
     });
   }
@@ -5950,7 +5972,8 @@ const choicesSelect = () => {
         searchEnabled: false,
         shouldSort: false,
         itemSelectText: '',
-        position: 'bottom'
+        position: 'bottom',
+        allowHTML: true
       });
       el.addEventListener('showDropdown', () => {
         if (window.innerWidth <= mobileWidth) {
@@ -5993,7 +6016,8 @@ const choicesSelect = () => {
         itemSelectText: '',
         position: 'bottom',
         noChoicesText: 'Вы выбрали все доступные теги',
-        removeItemButton: true
+        removeItemButton: true,
+        allowHTML: true
       });
       const placeholder = document.createElement('span');
       placeholder.textContent = 'Неважно';
@@ -6082,7 +6106,8 @@ const selectSecondaryCreate = el => {
     shouldSort: false,
     itemSelectText: '',
     position: 'bottom',
-    placeholder: true
+    placeholder: true,
+    allowHTML: true
   });
   el.addEventListener('change', () => {
     checkCloseSelected();
@@ -6951,6 +6976,127 @@ function blockAdded(block) {
     });
   }
 }
+
+/***/ }),
+
+/***/ "./src/js/components/createSale.js":
+/*!*****************************************!*\
+  !*** ./src/js/components/createSale.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const createSale = () => {
+  const saleCreate = document.querySelector('.place-sale-create');
+  const vidoeCreate = document.querySelector('.place-video-create');
+  if (saleCreate) {
+    const cards = saleCreate.querySelector('.place-sale-sale__cards');
+    const wrapper = cards.querySelector('.swiper-wrapper');
+    wrapper.addEventListener('click', e => {
+      const target = e.target;
+      const remove = target.closest('.card-stock-secondary__remove');
+      if (remove) {
+        e.preventDefault();
+        const item = remove.closest('.swiper-slide');
+        item.remove();
+        checkLengthCards(cards, wrapper);
+      }
+    });
+    checkLengthCards(cards, wrapper);
+    const title = document.querySelector('.add-complex .add-complex--complex .search-select-one__button-wrapper div:nth-child(2) span').textContent;
+    const name = saleCreate.querySelector('.place-sale-sale__field--name');
+    const nameInput = name.querySelector('input');
+    const start = saleCreate.querySelector('.place-sale-sale__field--start');
+    const startInput = start.querySelector('input');
+    const ending = saleCreate.querySelector('.place-sale-sale__field--ending');
+    const endingInput = ending.querySelector('input');
+    const descr = saleCreate.querySelector('.place-sale-sale__field--descr');
+    const descrInput = saleCreate.querySelector('.textarea-primary__input');
+    const photo = saleCreate.querySelector('.photo-load');
+    const photoInput = photo.querySelector('input');
+    const btn = saleCreate.querySelector('.place-sale-sale__save');
+    btn.addEventListener('click', () => {
+      create();
+      clearAllField();
+      checkLengthCards(cards, wrapper);
+    });
+    function create() {
+      let file = photoInput.files[0];
+      const image = file ? window.URL.createObjectURL(file) : '';
+      const saleHTML = `
+            <div class="swiper-slide drag-drop__item" draggable="true">
+            <article class="card-stock-secondary">
+                <a href="./promotion.html" class="card-stock-secondary__container">
+                    <button type="button" class="btn btn-reset card-stock-secondary__remove">
+                        <svg>
+                          <use xlink:href="./img/sprite.svg#trash"></use>
+                        </svg>
+                    </button>
+                    <div class="card-stock-secondary__image ibg">
+                        <picture>
+                            <source srcset="${image}" type="image/webp">
+                            <img loading="lazy" src="${image}" width="323" height="207" alt="${title}">
+                        </picture>
+                    </div>
+                    <div class="card-stock-secondary__content">
+                        <div class="row">
+                            <h3 class="card-stock-secondary__title title-4">
+                                ${title}
+                            </h3>
+                        </div>
+                        <div class="card-stock-secondary__name">
+                            ${nameInput.value}
+                        </div>
+                        <p class="card-stock-secondary__descr">
+                            ${descrInput.value}
+                        </p>
+                    </div>
+                    <div class="card-stock-secondary__times">
+                        <div>
+                            <span>Начало:</span>
+                            <span>${startInput.value}</span>
+                        </div>
+                        <div>
+                            <span>Окончание:</span>
+                            <span>${endingInput.value}</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+            </div>
+            `;
+      wrapper.insertAdjacentHTML('beforeend', saleHTML);
+    }
+    function clearAllField() {
+      name.classList.remove('_active');
+      nameInput.value = '';
+      start.classList.remove('_active');
+      startInput.value = '';
+      ending.classList.remove('_active');
+      endingInput.value = '';
+      descr.classList.remove('_active');
+      descrInput.value = '';
+      photoInput.value = '';
+      const photos = saleCreate.querySelectorAll('.place-sale-photo__image');
+      photos.forEach(photo => {
+        if (photo) photo.remove();
+      });
+    }
+  }
+  function checkLengthCards(cards, wrapper) {
+    const cardsLength = wrapper.querySelectorAll('.swiper-slide').length;
+    if (cardsLength >= 1) {
+      cards.classList.add('_active');
+    } else {
+      cards.classList.remove('_active');
+    }
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createSale);
 
 /***/ }),
 
@@ -13031,6 +13177,36 @@ const recordViewingTwo = () => {
 
 /***/ }),
 
+/***/ "./src/js/components/replaceText.js":
+/*!******************************************!*\
+  !*** ./src/js/components/replaceText.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const replaceText = () => {
+  const elements = document.querySelectorAll('[data-replace-text]');
+  if (elements.length === 0) return;
+  elements.forEach(element => {
+    const defaultText = element.innerHTML;
+    const map = element.dataset.replaceText.trim().split(",");
+    replace(element, map, defaultText);
+    window.addEventListener('resize', () => {
+      replace(element, map, defaultText);
+    });
+  });
+  function replace(element, map, defaultText) {
+    element.innerHTML = window.innerWidth <= map[1] ? map[0] : defaultText;
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (replaceText);
+
+/***/ }),
+
 /***/ "./src/js/components/requisites.js":
 /*!*****************************************!*\
   !*** ./src/js/components/requisites.js ***!
@@ -13566,10 +13742,11 @@ const videoBlock = currentVideoBlock => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "currentVideoLoad": () => (/* binding */ currentVideoLoad),
+/* harmony export */   "validateYouTubeUrl": () => (/* binding */ validateYouTubeUrl),
 /* harmony export */   "videoLoad": () => (/* binding */ videoLoad)
 /* harmony export */ });
 const videoLoad = () => {
-  const containers = document.querySelectorAll('.video-load');
+  const containers = document.querySelectorAll('.video-load:not(._no)');
   containers.forEach(container => {
     const wrapper = container.querySelector('.video-load__wrapper');
     const btn = container.querySelector('.video-load__btn');
@@ -13644,13 +13821,13 @@ function generateVideoCard(url) {
     `;
   return videoCardHTML;
 }
-function validateYouTubeUrl(url) {
+const validateYouTubeUrl = url => {
   if (url) {
     var regExp = /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
     if (url.match(regExp)) return true;
   }
   return false;
-}
+};
 
 /***/ }),
 
@@ -14296,19 +14473,21 @@ swiper__WEBPACK_IMPORTED_MODULE_0__["default"].use([swiper__WEBPACK_IMPORTED_MOD
 
 function initSliders() {
   if (document.querySelector('.place-sale-sale__cards .swiper')) {
-    const slider = document.querySelector('.place-sale-sale__cards .swiper');
-    new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](slider, {
-      observer: true,
-      observeParents: true,
-      slidesPerView: 3,
-      spaceBetween: 16,
-      speed: 800,
-      allowTouchMove: false,
-      navigation: {
-        prevEl: slider.closest('.place-sale-sale__cards').querySelector('.nav-arrow-primary--prev'),
-        nextEl: slider.closest('.place-sale-sale__cards').querySelector('.nav-arrow-primary--next'),
-        lockClass: '_hidden'
-      }
+    const items = document.querySelectorAll('.place-sale-sale__cards .swiper');
+    items.forEach(slider => {
+      new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](slider, {
+        observer: true,
+        observeParents: true,
+        slidesPerView: 3,
+        spaceBetween: 16,
+        speed: 800,
+        allowTouchMove: false,
+        navigation: {
+          prevEl: slider.closest('.place-sale-sale__cards').querySelector('.nav-arrow-primary--prev'),
+          nextEl: slider.closest('.place-sale-sale__cards').querySelector('.nav-arrow-primary--next'),
+          lockClass: '_hidden'
+        }
+      });
     });
   }
   if (document.querySelector('.book-consultation__agents')) {

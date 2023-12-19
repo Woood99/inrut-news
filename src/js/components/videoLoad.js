@@ -1,5 +1,5 @@
 export const videoLoad = () => {
-    const containers = document.querySelectorAll('.video-load');
+    const containers = document.querySelectorAll('.video-load:not(._no)');
     containers.forEach(container => {
         const wrapper = container.querySelector('.video-load__wrapper');
         const btn = container.querySelector('.video-load__btn');
@@ -77,7 +77,7 @@ function generateVideoCard(url) {
     return videoCardHTML;
 }
 
-function validateYouTubeUrl(url) {
+export const validateYouTubeUrl = (url) => {
     if (url) {
         var regExp = /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
         if (url.match(regExp)) return true;

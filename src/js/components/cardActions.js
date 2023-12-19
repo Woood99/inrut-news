@@ -190,9 +190,11 @@ export const cardPrimaryActions = () => {
 
     favoriteMobile();
     tagsMobile();
+    infoMobile();
     window.addEventListener('resize', () => {
         favoriteMobile();
         tagsMobile();
+        infoMobile();
     });
 
     function favoriteMobile() {
@@ -243,6 +245,25 @@ export const cardPrimaryActions = () => {
             _slideUp(block);
         }
     }
+
+
+    function infoMobile() {
+        cards.forEach(card => {
+            if (window.innerWidth <= 1212) {
+                const info = card.querySelector('.card-primary__info');
+                const path = card.querySelector('.card-primary__item');
+                if (info && path) {
+                    path.insertAdjacentElement('afterbegin', info);
+                }
+            } else {
+                const info = card.querySelector('.card-primary__item .card-primary__info');
+                const path = card.querySelector('.card-primary__top');
+                if (info && path) {
+                    path.insertAdjacentElement('beforeend', info);
+                }
+            }
+        })
+    }
 };
 
 
@@ -263,7 +284,6 @@ function cardSliderMobile(cardImageWrapper, imagesBody, cardItems) {
                 slider = new Swiper(cardImageWrapper, {
                     observer: true,
                     observeParents: true,
-                    autoHeight: true,
                     slidesPerView: 1.12,
                     spaceBetween: 8,
                     speed: 800,

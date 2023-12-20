@@ -259,6 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==================================================
 
     emergingBlockScroll('.object-body__user .bid-user__btn--message', '.object-plate-bottom', 1212, true);
+    emergingBlockScroll('.object-body__user .bid-user__btn--comment', '.object-plate-bottom', 1212, true);
     emergingBlockScroll('.purchase-request .bid-user__btn', '.purchase-request-plate-bottom', 1212, true);
     emergingBlockScroll('.agent .bid-user__btn', '.agent-plate-bottom', 1212, true);
     emergingBlockScroll('.develop-inner .object-body__wrapper .bid-user__btn', '.object-plate-bottom', 1212, true);

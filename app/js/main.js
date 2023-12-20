@@ -4409,6 +4409,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==================================================
 
   (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__.emergingBlockScroll)('.object-body__user .bid-user__btn--message', '.object-plate-bottom', 1212, true);
+  (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__.emergingBlockScroll)('.object-body__user .bid-user__btn--comment', '.object-plate-bottom', 1212, true);
   (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__.emergingBlockScroll)('.purchase-request .bid-user__btn', '.purchase-request-plate-bottom', 1212, true);
   (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__.emergingBlockScroll)('.agent .bid-user__btn', '.agent-plate-bottom', 1212, true);
   (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__.emergingBlockScroll)('.develop-inner .object-body__wrapper .bid-user__btn', '.object-plate-bottom', 1212, true);

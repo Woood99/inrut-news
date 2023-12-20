@@ -10584,46 +10584,61 @@ const maps = () => {
           map.behaviors.disable(['scrollZoom']);
         });
         function routeShow() {
-          map.controls.add('routePanelControl', {
-            showHeader: true,
-            title: 'Построить маршрут',
-            float: 'right',
-            maxWidth: '400px',
-            position: {
-              right: 76,
-              top: 16
-            }
-          });
-          btnCloseRoute = new ymaps.control.Button({
-            data: {
-              content: `
-                            <div class="ymaps__route-close-wrapper">
-                                <svg>
-                                    <use xlink:href="./img/sprite.svg#x"></use>
-                                </svg>
-                            </div>
-                            `
-            },
-            options: {
-              maxWidth: [30, 100, 150]
-            }
-          });
-          map.controls.add(btnCloseRoute, {
-            position: {
-              right: 92,
-              top: 24
-            }
-          });
-          setTimeout(() => {
-            document.querySelectorAll('.ymaps__route-close-wrapper').forEach(item => {
-              item.closest('.ymaps-2-1-79-float-button').classList.add('ymaps__route-close');
+          if (window.innerWidth > 1212) {
+            map.controls.add('routePanelControl', {
+              showHeader: true,
+              title: 'Построить маршрут',
+              float: 'right',
+              maxWidth: '400px',
+              position: {
+                right: 76,
+                top: 16
+              }
             });
-          }, 10);
-          btnCloseRoute.events.add('click', function (e) {
-            routeHidden();
-            map.controls.remove(btnCloseRoute);
-            locationRoutesBtn.classList.remove('_active');
-          });
+            btnCloseRoute = new ymaps.control.Button({
+              data: {
+                content: `
+                                <div class="ymaps__route-close-wrapper">
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#x"></use>
+                                    </svg>
+                                </div>
+                                `
+              },
+              options: {
+                maxWidth: [30, 100, 150]
+              }
+            });
+            map.controls.add(btnCloseRoute, {
+              position: {
+                right: 92,
+                top: 24
+              }
+            });
+            setTimeout(() => {
+              document.querySelectorAll('.ymaps__route-close-wrapper').forEach(item => {
+                item.closest('.ymaps-2-1-79-float-button').classList.add('ymaps__route-close');
+              });
+            }, 1);
+            btnCloseRoute.events.add('click', function (e) {
+              routeHidden();
+              map.controls.remove(btnCloseRoute);
+              locationRoutesBtn.classList.remove('_active');
+            });
+          } else {
+            map.controls.add('routePanelControl', {
+              showHeader: true,
+              title: 'Построить маршрут',
+              float: 'left',
+              position: {
+                top: 0,
+                right: 0
+              }
+            });
+            setTimeout(() => {
+              map.controls.get('routePanelControl')._layout._parentElement.classList.add('map-routePanelControl');
+            }, 1);
+          }
         }
         function routeHidden() {
           map.controls.remove('routePanelControl');

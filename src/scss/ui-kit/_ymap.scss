@@ -4,6 +4,8 @@
     }
 }
 
+.yandex-map-active-fullscreen {}
+
 .ymaps-2-1-79-map {
 
     .ymaps-2-1-79-map {
@@ -36,6 +38,7 @@
         width: 44px;
 
         transition: box-shadow $transitionSpeed $transitionFunction;
+
         .ymaps-2-1-79-float-button {
             padding-left: 0;
             width: 100%;
@@ -86,14 +89,39 @@
                 position: static;
             }
         }
-        @media (min-width:$desktop-min){
-             &:hover{
+
+        @media (min-width:$desktop-min) {
+            &:hover {
                 box-shadow: var(--shadow-black-big);
-             } 
+            }
         }
-   @media (max-width:$desktop){
-    display: none; 
-   }
+
+        @media (max-width:$desktop) {
+            display: none;
+        }
+    }
+
+    .map-routePanelControl {
+        .ymaps-2-1-79-control-popup {
+            width: 500px !important;
+            max-width: 100% !important;
+            border-radius: 16px 0 16px 16px;
+            .ymaps-2-1-79-control-popup__content{
+            border-radius: 16px 0 16px 16px;
+            }
+        }
+        @media (max-width:$desktop) {
+            width: 100%;
+
+            .ymaps-2-1-79-control-popup {
+                width: 100% !important;
+                max-width: 100% !important;
+                border-radius: 0 0 16px 16px;
+                .ymaps-2-1-79-control-popup__content{
+                    border-radius: 0 0 16px 16px;
+                    }
+            }
+        }
     }
 
     .ymaps-2-1-79-float-button {
@@ -111,6 +139,7 @@
         align-items: center;
         justify-content: center;
         pointer-events: all !important;
+
         .ymaps-2-1-79-float-button-icon {
             position: static;
             width: 18px;
@@ -119,10 +148,12 @@
             background-size: cover;
             background-image: url('../img/fullscreen-map.svg');
         }
+
         &.ymaps__route-close {
             box-shadow: none !important;
             border: 1px solid transparent !important;
-            .ymaps-2-1-79-float-button-text{
+
+            .ymaps-2-1-79-float-button-text {
                 padding: 0;
                 width: 20px;
                 height: 20px;
@@ -152,6 +183,9 @@
         border-bottom: none;
         text-align: center;
         padding: 32px 32px 0;
+        @media (max-width:$desktop){
+             padding: 24px 16px 0; 
+        }
     }
 
     .ymaps-2-1-79-control-popup__layout {}
@@ -159,8 +193,12 @@
     .ymaps-2-1-79-control-popup__icon {
         display: none;
     }
+
     .ymaps-2-1-79-route-panel__inputs {
         padding: 0 32px 24px;
+        @media (max-width:$desktop){
+             padding: 0 16px 24px; 
+        }
     }
 
     .ymaps-2-1-79-route-panel-types {
@@ -201,19 +239,26 @@
     }
 }
 
-.page__body{
-    >ymaps{
-   bottom: 0;
-   right: 0;
+.page__body {
+    >ymaps {
+        bottom: 0;
+        right: 0;
+
         .ymaps-2-1-79-float-button.ymaps-2-1-79-_hidden-text.ymaps-2-1-79-_checked {
             position: relative;
             z-index: 99;
             background-color: #fff;
+            @media (max-width:$desktop){
+                box-shadow: none !important;
+                background-color: transparent !important;
+                border: none !important; 
+            }
         }
+
         .ymaps-2-1-79-float-button {
-            .ymaps-2-1-79-float-button-icon_icon_collapse{
+            .ymaps-2-1-79-float-button-icon_icon_collapse {
                 background-image: url('../img/x-black.svg') !important;
-    
+
             }
         }
     }

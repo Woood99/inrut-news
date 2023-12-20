@@ -1344,6 +1344,15 @@ textarea.input-reset {
 .popup-primary__container.popup-open {
   display: inline-block !important;
 }
+.popup-primary__header {
+  width: 100%;
+  height: 60px;
+  background-color: var(--white);
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
+}
 .popup-primary__close {
   position: sticky;
   top: 0;
@@ -1805,23 +1814,45 @@ textarea.input-reset {
 }
 .popup-primary--suggest-object .popup-primary__container {
   border-radius: 12px 0 0 12px;
-  padding: 65px 0 48px;
+  padding: 75px 0 48px;
   max-width: 70%;
 }
 @media (max-width: 1212px) {
   .popup-primary--suggest-object .popup-primary__container {
     border-radius: 0;
-    padding: 75px 0 32px;
+    padding: 0 0 48px;
     width: 100%;
     max-width: none;
   }
 }
 .popup-primary--suggest-object .popup-primary__close {
-  position: absolute;
-  -webkit-transform: translate(0);
-  -ms-transform: translate(0);
-  transform: translate(0);
-  margin: 0;
+  -webkit-transform: translateX(0px);
+  -ms-transform: translateX(0px);
+  transform: translateX(0px);
+  margin-top: -75px;
+  right: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background-color: var(--white);
+  z-index: 5;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: end;
+  position: sticky;
+  padding-right: 16px;
+  -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 1212px) {
+  .popup-primary--suggest-object .popup-primary__close {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+    margin-top: 0;
+    height: 50px;
+  }
 }
 @media (max-width: 1212px) {
   .popup-primary--suggest-object {
@@ -2471,11 +2502,16 @@ textarea.input-reset {
   position: relative;
   background-color: #f7f9fd;
 }
+@media (max-width: 1212px) {
+  .popup-primary--history-changes .popup-primary__container {
+    padding: 0 0 32px;
+  }
+}
 .popup-primary--history-changes .popup-primary__close {
   -webkit-transform: translateX(16px);
   -ms-transform: translateX(16px);
   transform: translateX(16px);
-  margin-top: -70px;
+  margin-top: -75px;
 }
 @media (max-width: 1212px) {
   .popup-primary--history-changes .popup-primary__close {
@@ -2483,6 +2519,20 @@ textarea.input-reset {
     -ms-transform: translateX(0);
     transform: translateX(0);
     margin-top: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    padding-right: 16px;
+    position: sticky;
+    width: 100%;
+    height: 50px;
+    background-color: var(--white);
+    z-index: 5;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: end;
+    -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   }
 }
 @media (max-width: 1212px) {
@@ -2626,11 +2676,12 @@ textarea.input-reset {
   grid-column-gap: 16px;
   grid-row-gap: 16px;
   background-color: var(--stand-bg);
-  padding: 16px 48px;
+  padding: 32px 48px 32px;
+  margin-bottom: -32px;
 }
 @media (max-width: 1212px) {
   .suggest-object__list {
-    padding: 16px;
+    padding: 32px 16px 16px;
   }
 }
 
@@ -2770,6 +2821,11 @@ textarea.input-reset {
 .history-changes .bid__title > span span,
 .history-changes .bid .bid-import__title > span span {
   color: var(--blue);
+}
+@media (max-width: 1212px) {
+  .history-changes {
+    padding: 16px 16px 0;
+  }
 }
 
 .edit-user__form {
@@ -24267,6 +24323,7 @@ textarea.input-reset {
   .bid-maps__container {
     margin-top: 16px;
     height: 300px;
+    pointer-events: none;
   }
 }
 @media (max-width: 1212px) {

@@ -12,7 +12,7 @@
             position: relative;
             grid-template-columns: percent(130, 1180)  percent(300, 1180) max-content 1fr max-content 24px;
             @media (max-width:$desktop) {
-                grid-template-columns: 1fr max-content 24px;
+                grid-template-columns: max-content max-content;
                 grid-column-gap: 32px;
             }
 
@@ -42,6 +42,17 @@
                 &--false{
                     background-color: var(--primary100);
                     color: var(--white);
+                }
+            }
+            .row{
+                @media (max-width:$desktop){
+                }
+            }
+            .object-info__parameter{
+                @media (max-width:$desktop){
+                     max-width: none;
+                     margin-left: 8px; 
+                     max-width: 250px;
                 }
             }
         }
@@ -82,9 +93,7 @@
             }
 
             @media (max-width:$desktop) {
-                order: 5;
-                grid-row: 1/2;
-                grid-column: 3/4;
+            display: none;
             }
         }
 

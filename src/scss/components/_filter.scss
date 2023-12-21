@@ -1350,7 +1350,7 @@
         border: 1px solid rgba(122, 127, 170, 0.1);
         box-shadow: 0 8px 20px rgba(0, 0, 0, .16);
         border-radius: 12px;
-        padding: 48px 32px 24px 32px;
+        padding: 48px 32px 16px 32px;
 
         transform: translateY(10px);
         opacity: 0;
@@ -1412,7 +1412,8 @@
             height: 32px;
         }
     }
-
+    &__error-text{
+    }
     &__all {}
 
     &__clear {
@@ -1438,6 +1439,16 @@
 
             &__label {
                 justify-content: space-between;
+                padding: 8px 0;
+                &::after{
+                    top: 10.5px;
+                }
+                @media (max-width:$desktop){
+                     padding: 16px 0;
+                     &::after{
+                        top: 18.5px;
+                     } 
+                }
             }
 
             &__text {
@@ -1453,14 +1464,6 @@
                     height: 22px;
                     max-width: 75px;
                 }
-            }
-        }
-
-        &:not(:last-child) {
-            margin-bottom: 16px;
-
-            @media (max-width:$desktop) {
-                margin-bottom: 32px;
             }
         }
     }
@@ -1626,6 +1629,9 @@
                 }
             }
         }
+        @media (max-width:$desktop){
+             display: none; 
+        }
     }
 
     &__dropdown {
@@ -1657,11 +1663,19 @@
 
 
         @media (max-width:$desktop) {
-            min-width: 320px;
-            padding: 48px 16px 16px 16px;
-            left: -16px !important;
-            right: auto !important;
-            width: calc(100% + 32px);
+            display: none;
+            text-align: left;
+            position: static;
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+            min-width: auto;
+            box-shadow: none;
+            background-color: transparent;
+            border-radius: 0;
+            border: none;
+            padding: 0;
+            width: 100%;
         }
 
         .simplebar-track.simplebar-vertical {
@@ -1693,7 +1707,11 @@
             pointer-events: none;
         }
     }
-
+    &__error-text{
+        padding: 0 48px 0 24px;
+        font-size: var(--default-fz);
+        line-height: var(--little-small-lh); 
+    }
     &__tags {
         padding: 0 48px 0 24px;
         display: flex;

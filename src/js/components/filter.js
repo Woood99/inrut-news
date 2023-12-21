@@ -287,6 +287,41 @@ export const searchSelect = () => {
         const btn = container.querySelector('.search-select__button');
         const body = container.querySelector('.search-select__dropdown');
         const close = container.querySelector('.search-select__close');
+        const search = container.querySelector('.search-select__input');
+
+        const itemsInput = body.querySelectorAll('.search-select__item .checkbox-secondary__input');
+        const items = body.querySelectorAll('.search-select__item');
+        const btnWrapper = btn.querySelector('.search-select__button-wrapper')
+        const btnList = btnWrapper.querySelector('div:nth-child(2)');
+        let arrSelected = [];
+        init();
+        itemsInput.forEach(input => {
+            input.addEventListener('change', () => {
+                const currentElem = input.closest('.search-select__item').querySelector('.checkbox-secondary__text span:nth-child(1)').textContent.trim();
+                if (container.hasAttribute('data-search-select-single')) {
+                    itemsInput.forEach(currentInput => {
+                        if (currentInput !== input) currentInput.checked = false;
+                    })
+                    arrSelected = [];
+                    input.checked ? arrSelected.push(currentElem) : arrSelected = [];
+                } else {
+                    if (input.checked) {
+                        arrSelected.push(currentElem);
+                    } else {
+                        const index = arrSelected.indexOf(currentElem);
+                        if (index !== -1) {
+                            arrSelected.splice(index, 1);
+                        }
+                    }
+                }
+                updatePlaceholder();
+            })
+        })
+        const controls = container.querySelector('.search-select__control');
+        const btnAll = container.querySelector('.search-select__all');
+        const btnClear = container.querySelector('.search-select__clear');
+        const selectorErrorText = 'search-select__error-text';
+
         btn.addEventListener('click', () => {
             containers.forEach(el => {
                 if (el !== container) el.classList.remove('_active')
@@ -323,35 +358,7 @@ export const searchSelect = () => {
                 container.classList.remove('_active');
             });
         }
-        const items = body.querySelectorAll('.search-select__item .checkbox-secondary__input');
-        const btnWrapper = btn.querySelector('.search-select__button-wrapper')
-        const btnList = btnWrapper.querySelector('div:nth-child(2)');
-        let arrSelected = [];
-        items.forEach(input => {
-            input.addEventListener('change', () => {
-                const currentElem = input.closest('.search-select__item').querySelector('.checkbox-secondary__text span:nth-child(1)').textContent.trim();
-                if (container.hasAttribute('data-search-select-single')) {
-                    items.forEach(currentInput => {
-                        if (currentInput !== input) currentInput.checked = false;
-                    })
-                    arrSelected = [];
-                    input.checked ? arrSelected.push(currentElem) : arrSelected = [];
-                } else {
-                    if (input.checked) {
-                        arrSelected.push(currentElem);
-                    } else {
-                        const index = arrSelected.indexOf(currentElem);
-                        if (index !== -1) {
-                            arrSelected.splice(index, 1);
-                        }
-                    }
-                }
-                updatePlaceholder();
-            })
-        })
-        const controls = container.querySelector('.search-select__control');
-        const btnAll = container.querySelector('.search-select__all');
-        const btnClear = container.querySelector('.search-select__clear');
+
         if (container.hasAttribute('data-search-select-single') && controls) {
             controls.remove();
         }
@@ -365,24 +372,62 @@ export const searchSelect = () => {
                 clearAll();
             });
         }
+        if (search) {
+            const input = search.querySelector('input');
+            input.addEventListener('input', () => {
+                const validateItems = searchFilterItems(input.value, Array.from(items));
+                if (body.querySelector(`.${selectorErrorText}`)) {
+                    body.querySelector(`.${selectorErrorText}`).remove();
+                }
+                if (input.value === '') {
+                    items.forEach(item => item.removeAttribute('hidden'));
+                } else {
+                    items.forEach(item => {
+                        item.setAttribute('hidden', '');
+                        const validateIndex = validateItems.indexOf(item);
+                        if (validateIndex !== -1) validateItems[validateIndex].removeAttribute('hidden');
+                    });
+                    if (validateItems.length === 0) {
+                        if (!body.querySelector(`.${selectorErrorText}`)) {
+                            const text = 'Ничего не найдено';
+                            const htmlText = `
+                                <div class="${selectorErrorText}">${text}</div>
+                            `;
+                            body.insertAdjacentHTML('beforeend', htmlText);
+                        }
+                    }
+                }
+            })
+        }
 
         function clearAll() {
-            items.forEach(input => input.checked = false);
+            itemsInput.forEach(input => input.checked = false);
             arrSelected.splice(0, arrSelected.length);
+            updateItems();
             updatePlaceholder()
         }
 
         function selectAll() {
-            items.forEach(input => {
+            itemsInput.forEach(input => {
                 const currentElem = input.closest('.search-select__item').querySelector('.checkbox-secondary__text span:nth-child(1)').textContent.trim();
                 if (arrSelected.indexOf(currentElem) === -1) {
                     arrSelected.push(currentElem);
                     input.checked = true;
                 }
             });
+            updateItems();
             updatePlaceholder()
         }
-
+        function updateItems() {
+            items.forEach(item => item.removeAttribute('hidden'));
+            if (body.querySelector(`.${selectorErrorText}`)) {
+                body.querySelector(`.${selectorErrorText}`).remove();
+            }
+            if (search) {
+                const searchInput = search.querySelector('input');
+                searchInput.value = '';
+            }
+        }
         function updatePlaceholder() {
             if (arrSelected.length >= 1) {
                 btnList.textContent = '';
@@ -399,6 +444,24 @@ export const searchSelect = () => {
                 btnList.textContent = btnList.textContent.slice(0, -2);
             }
         }
+
+        function searchFilterItems(value, items) {
+            return items.filter(item => {
+                const text = item.querySelector('.checkbox-secondary__text span').textContent;
+                const regex = new RegExp(value, 'gi')
+                return text.match(regex);
+            })
+        }
+
+        function init() {
+            itemsInput.forEach(input => {
+                if (input.checked) {
+                    const currentElem = input.closest('.search-select__item').querySelector('.checkbox-secondary__text span:nth-child(1)').textContent.trim(); 
+                    arrSelected.push(currentElem);
+                }
+            })
+            updatePlaceholder();
+        }
     });
 }
 export const searchSelectOne = () => {
@@ -412,11 +475,35 @@ export const searchSelectOne = () => {
         const close = container.querySelector('.search-select-one__close');
 
         const tags = container.querySelectorAll('.search-select-one__tag');
+        const search = container.querySelector('.search-select-one__input');
+        const selectorErrorText = 'search-select-one__error-text';
+        const body = container.querySelector('.search-select-one__dropdown');
+        init();
         btn.addEventListener('click', () => {
             containers.forEach(el => {
                 if (el !== container) el.classList.remove('_active')
             });
             container.classList.toggle('_active');
+            if (filterModalScreenWidthCheck() && container.classList.contains('_active')) {
+                const modalHTML = `
+                <div class="filter-modal">
+                    <div class="filter-modal__container">
+                        <button class="btn-reset filter-modal__close" aria-label="Закрыть модальное окно">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#x"></use>
+                            </svg>
+                            <span>Закрыть</span>
+                        </button>
+                        <div class="filter-modal__content">
+                        </div>
+                    </div>
+                </div>
+                `;
+                modal(modalHTML, '.filter-modal', 300, container, container.dataset.modalScroll);
+                const filterModal = document.querySelector('.filter-modal');
+                filterModal.querySelector('.filter-modal__content').insertAdjacentElement('beforeend', container.querySelector('.search-select-one__dropdown'));
+                filterModal.classList.add('_search-select-one');
+            }
         })
         document.addEventListener('click', (e) => {
             if (container.classList.contains('_active') && !e.target.closest('.search-select-one')) {
@@ -440,6 +527,14 @@ export const searchSelectOne = () => {
 
                 container.classList.add('_selected');
 
+                if (search) {
+                    setTimeout(() => {
+                        const input = search.querySelector('input');
+                        input.value = '';
+   
+                        list.forEach(item => item.removeAttribute('hidden'));
+                    }, 200);
+                }
 
                 if (container.classList.contains('create-meeting-show__form--object')) {
                     if (container.classList.contains('_error')) {
@@ -472,6 +567,51 @@ export const searchSelectOne = () => {
                     }
                     tag.classList.toggle('_active');
                 })
+            })
+        }
+
+
+        if (search) {
+            const input = search.querySelector('input');
+            input.addEventListener('input', () => {
+                const validateItems = searchFilterItems(input.value, Array.from(list));
+                if (body.querySelector(`.${selectorErrorText}`)) {
+                    body.querySelector(`.${selectorErrorText}`).remove();
+                }
+                if (input.value === '') {
+                    list.forEach(item => item.removeAttribute('hidden'));
+                } else {
+                    list.forEach(item => {
+                        item.setAttribute('hidden', '');
+                        const validateIndex = validateItems.indexOf(item);
+                        if (validateIndex !== -1) validateItems[validateIndex].removeAttribute('hidden');
+                    });
+                    if (validateItems.length === 0) {
+                        if (!body.querySelector(`.${selectorErrorText}`)) {
+                            const text = 'Ничего не найдено';
+                            const htmlText = `
+                                <div class="${selectorErrorText}">${text}</div>
+                            `;
+                            body.insertAdjacentHTML('beforeend', htmlText);
+                        }
+                    }
+                }
+            })
+        }
+
+        function searchFilterItems(value, items) {
+            return items.filter(item => {
+                const text = item.textContent;
+                const regex = new RegExp(value, 'gi')
+                return text.match(regex);
+            })
+        }
+        function init() {
+            list.forEach(item => {
+                if (item.classList.contains('_active')) {
+                    container.classList.add('_selected');
+                    placeholder.innerHTML = item.innerHTML;
+                }
             })
         }
     });
@@ -548,10 +688,6 @@ export const filterControl = () => {
             });
         }
     })
-
-
-
-
 }
 export const filterMobile = () => {
     const containers = document.querySelectorAll('.filter');

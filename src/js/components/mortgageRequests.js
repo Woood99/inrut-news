@@ -525,9 +525,9 @@ const mortgageRequests = () => {
         const result = createErrorFields(errorSectionItems);
 
         if (result === false && controls === true) {
-            // closeAllSection(form);
-            // openErrorSection(errorSectionItems);
-            // scrollToErrorSection(errorSectionItems);
+             closeAllSection(form);
+            openErrorSection(errorSectionItems);
+             scrollToErrorSection(errorSectionItems);
         }
 
         return result;

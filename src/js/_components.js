@@ -298,6 +298,22 @@ document.addEventListener('DOMContentLoaded', () => {
         </p>
     </div>
     `);
+    inputClue('.offer-room-clue', 'clue-primary', `
+        <div class="clue-primary">
+        <div class="clue-primary__close">
+            <svg>
+              <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+        </div>
+        <picture class="clue-primary__img">
+            <source srcset="./img/lora_face.webp" type="image/webp">
+            <img loading="lazy" src="./img/lora_face.png" width="48" height="48" alt="lora">
+        </picture>
+        <h4 class="clue-primary__title title-3">
+            Этот объект не подходит под выбранную цену
+        </h4>
+        </div>
+    `,'offer-room-clue',true);
 
 
     const datePickers = document.querySelectorAll('.date-picker');

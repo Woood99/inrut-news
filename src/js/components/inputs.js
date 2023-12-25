@@ -175,68 +175,56 @@ export const textareaTags = () => {
         }
     });
 };
-export const inputClue = (target, name, html) => {
+export const inputClue = (target, name, html, addClass = false, stub = false) => {
     const targets = document.querySelectorAll(target);
     let timeout;
     targets.forEach(target => {
         target.addEventListener('click', () => {
-            const container = document.querySelector(`.${name}`);
-            if (container) container.remove();
-            document.body.insertAdjacentHTML('beforeend', html);
-            setTimeout(() => {
-                document.querySelector(`.${name}`).classList.add('is-open');
-            }, 1);
-            clearTimeout(timeout);
-            timeout = setTimeout(() => {
-                close();
-            }, 4500);
-
-            document.querySelector(`.${name} .${name}__close`).addEventListener('click', () => {
-                clearTimeout(timeout);
-                close();
-            })
+            if (stub) {
+                setTimeout(() => {
+                    if (target.classList.contains('_clue')) {
+                        body(targets, target);
+                    }
+                }, 5);
+            } else {
+                body(targets, target)
+            }
         });
     })
 
-    function close() {
+    function body(targets, target) {
+        const container = document.querySelector(`.${name}`);
+        if (container) container.remove();
+        targets.forEach(currentTarget => {
+            if (target !== currentTarget) {
+                currentTarget.classList.remove('_clue');
+            }
+        })
+        document.body.insertAdjacentHTML('beforeend', html);
+        setTimeout(() => {
+            document.querySelector(`.${name}`).classList.add('is-open');
+            if (addClass !== false) document.querySelector(`.${name}`).classList.add(addClass);
+        }, 30);
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            close(target);
+        }, 4500);
+
+        document.querySelector(`.${name} .${name}__close`).addEventListener('click', () => {
+            clearTimeout(timeout);
+            close(target);
+        })
+    }
+
+    function close(target) {
         document.querySelector(`.${name}`).classList.remove('is-open');
+        clearTimeout(timeout);
         setTimeout(() => {
             document.querySelector(`.${name}`).remove();
+            target.classList.remove('_clue');
         }, 300);
     }
 };
-export const currentInputClue = (name, html, addClass = false) => {
-    let timeout;
-    const container = document.querySelector(`.${name}`);
-    if (container) container.remove();
-    document.body.insertAdjacentHTML('beforeend', html);
-    setTimeout(() => {
-        const container = document.querySelector(`.${name}`);
-        if (addClass !== false) container.classList.add(addClass);
-        container.classList.add('is-open');
-    }, 1);
-    const currentContainer = document.querySelector(`.${name}`);
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-        if (currentContainer) {
-            close();
-        }
-    }, 4500);
-
-    document.querySelector(`.${name} .${name}__close`).addEventListener('click', () => {
-        clearTimeout(timeout);
-        close();
-    })
-
-    function close() {
-        if (currentContainer) {
-            currentContainer.classList.remove('is-open');
-            setTimeout(() => {
-                document.querySelector(`.${name}`).remove();
-            }, 150);
-        }
-    }
-}
 
 
 export const valueToValueAttr = (field) => {

@@ -4445,6 +4445,22 @@ document.addEventListener('DOMContentLoaded', () => {
         </p>
     </div>
     `);
+  (0,_components_inputs__WEBPACK_IMPORTED_MODULE_6__.inputClue)('.offer-room-clue', 'clue-primary', `
+        <div class="clue-primary">
+        <div class="clue-primary__close">
+            <svg>
+              <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+        </div>
+        <picture class="clue-primary__img">
+            <source srcset="./img/lora_face.webp" type="image/webp">
+            <img loading="lazy" src="./img/lora_face.png" width="48" height="48" alt="lora">
+        </picture>
+        <h4 class="clue-primary__title title-3">
+            Этот объект не подходит под выбранную цену
+        </h4>
+        </div>
+    `, 'offer-room-clue', true);
   const datePickers = document.querySelectorAll('.date-picker');
   datePickers.forEach(datePicker => {
     const input = datePicker.querySelector('.date-picker__input');
@@ -9925,7 +9941,6 @@ const headerFixed = () => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "currentInputClue": () => (/* binding */ currentInputClue),
 /* harmony export */   "currentInputText": () => (/* binding */ currentInputText),
 /* harmony export */   "inputClue": () => (/* binding */ inputClue),
 /* harmony export */   "inputOnlyNumber": () => (/* binding */ inputOnlyNumber),
@@ -10104,63 +10119,53 @@ const textareaTags = () => {
     }
   });
 };
-const inputClue = (target, name, html) => {
+const inputClue = function (target, name, html) {
+  let addClass = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+  let stub = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
   const targets = document.querySelectorAll(target);
   let timeout;
   targets.forEach(target => {
     target.addEventListener('click', () => {
-      const container = document.querySelector(`.${name}`);
-      if (container) container.remove();
-      document.body.insertAdjacentHTML('beforeend', html);
-      setTimeout(() => {
-        document.querySelector(`.${name}`).classList.add('is-open');
-      }, 1);
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        close();
-      }, 4500);
-      document.querySelector(`.${name} .${name}__close`).addEventListener('click', () => {
-        clearTimeout(timeout);
-        close();
-      });
+      if (stub) {
+        setTimeout(() => {
+          if (target.classList.contains('_clue')) {
+            body(targets, target);
+          }
+        }, 5);
+      } else {
+        body(targets, target);
+      }
     });
   });
-  function close() {
+  function body(targets, target) {
+    const container = document.querySelector(`.${name}`);
+    if (container) container.remove();
+    targets.forEach(currentTarget => {
+      if (target !== currentTarget) {
+        currentTarget.classList.remove('_clue');
+      }
+    });
+    document.body.insertAdjacentHTML('beforeend', html);
+    setTimeout(() => {
+      document.querySelector(`.${name}`).classList.add('is-open');
+      if (addClass !== false) document.querySelector(`.${name}`).classList.add(addClass);
+    }, 30);
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      close(target);
+    }, 4500);
+    document.querySelector(`.${name} .${name}__close`).addEventListener('click', () => {
+      clearTimeout(timeout);
+      close(target);
+    });
+  }
+  function close(target) {
     document.querySelector(`.${name}`).classList.remove('is-open');
+    clearTimeout(timeout);
     setTimeout(() => {
       document.querySelector(`.${name}`).remove();
+      target.classList.remove('_clue');
     }, 300);
-  }
-};
-const currentInputClue = function (name, html) {
-  let addClass = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-  let timeout;
-  const container = document.querySelector(`.${name}`);
-  if (container) container.remove();
-  document.body.insertAdjacentHTML('beforeend', html);
-  setTimeout(() => {
-    const container = document.querySelector(`.${name}`);
-    if (addClass !== false) container.classList.add(addClass);
-    container.classList.add('is-open');
-  }, 1);
-  const currentContainer = document.querySelector(`.${name}`);
-  clearTimeout(timeout);
-  timeout = setTimeout(() => {
-    if (currentContainer) {
-      close();
-    }
-  }, 4500);
-  document.querySelector(`.${name} .${name}__close`).addEventListener('click', () => {
-    clearTimeout(timeout);
-    close();
-  });
-  function close() {
-    if (currentContainer) {
-      currentContainer.classList.remove('is-open');
-      setTimeout(() => {
-        document.querySelector(`.${name}`).remove();
-      }, 150);
-    }
   }
 };
 const valueToValueAttr = field => {
@@ -13788,8 +13793,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _inputs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./inputs */ "./src/js/components/inputs.js");
-
 const submitAppOffers = () => {
   const container = document.querySelector('.submit-app-offers');
   if (!container) return;
@@ -13827,22 +13830,7 @@ const submitAppOffers = () => {
       const currentPriceFrom = price.dataset.filterDropdownPriceFrom;
       const currentPriceTo = price.dataset.filterDropdownPriceTo;
       if (priceCardFrom && currentPriceFrom && currentPriceFrom > priceCardFrom) {
-        (0,_inputs__WEBPACK_IMPORTED_MODULE_0__.currentInputClue)('clue-primary', `
-                <div class="clue-primary">
-                    <div class="clue-primary__close">
-                        <svg>
-                          <use xlink:href="./img/sprite.svg#x"></use>
-                        </svg>
-                    </div>
-                    <picture class="clue-primary__img">
-                        <source srcset="./img/lora_face.webp" type="image/webp">
-                        <img loading="lazy" src="./img/lora_face.png" width="48" height="48" alt="lora">
-                    </picture>
-                    <h4 class="clue-primary__title title-3">
-                        Этот объект не подходит под выбранную цену
-                    </h4>
-                </div>
-                `, 'offer-room-clue');
+        item.classList.add('_clue');
       } else if (priceCardTo && currentPriceTo && currentPriceTo > priceCardTo) {} else {
         item.classList.toggle('_active');
       }

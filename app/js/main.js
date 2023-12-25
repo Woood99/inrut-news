@@ -9724,7 +9724,9 @@ const currentInputText = input => {
   inputTextBody(input);
 };
 function inputTextBody(el) {
+  if (!el) return;
   const input = el.querySelector('.input-text__input');
+  if (!input) return;
   input.value.length >= 1 ? el.classList.add('_active') : el.classList.remove('_active');
   input.addEventListener('input', () => {
     if (el.classList.contains('input-text--only-number')) {
@@ -10567,54 +10569,65 @@ const maps = () => {
     }
     ymaps.ready(init);
     function drawSettings(map) {
-      if (window.innerWidth <= 1212) {
-        map.controls.add('fullscreenControl');
-        const container = map.container._parentElement;
-        const mapDraw = container.closest('.map-draw');
-        const drawBtns = mapDraw ? mapDraw.querySelector('.map-draw__btns') : null;
-        map.controls.get('fullscreenControl').options.set({
-          position: {
-            top: 16,
-            right: 16
-          },
-          maxWidth: '44'
+      map.controls.get('fullscreenControl').options.set({
+        position: {
+          top: 16,
+          right: 16
+        },
+        maxWidth: '44'
+      });
+      const container = map.container._parentElement;
+      const mapDraw = container.closest('.map-draw');
+      const drawBtns = mapDraw ? mapDraw.querySelector('.map-draw__btns') : null;
+      if (drawBtns !== null) {
+        map.controls.add("zoomControl");
+        const fullScreenControl = map.controls.get('fullscreenControl');
+        fullScreenControl.events.add('fullscreenenter', function () {
+          map.behaviors.enable(['scrollZoom']);
+          const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
+          fullscreenElement.classList.add('draw-map-active-fullscreen');
+          fullscreenElement.insertAdjacentElement('beforeend', drawBtns);
+          map.controls.get('zoomControl').options.set({
+            position: {
+              top: 'calc((100vh - 152px + 24px) / 2 - (90px / 2))',
+              right: 16
+            },
+            maxWidth: '44'
+          });
         });
+        fullScreenControl.events.add('fullscreenexit', function () {
+          map.behaviors.disable(['scrollZoom']);
+          const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
+          fullscreenElement.classList.remove('yandex-map-active-fullscreen');
+          mapDraw.insertAdjacentElement('afterbegin', drawBtns);
+          if (window.innerWidth > 1212) {
+            map.controls.get('zoomControl').options.set({
+              position: {
+                top: 176,
+                right: 16
+              },
+              maxWidth: '44'
+            });
+          }
+        });
+      }
+      if (window.innerWidth <= 1212) {
         map.behaviors.disable(['scrollZoom']);
         map.behaviors.disable(['drag']);
         if (drawBtns !== null) {
           const fullScreenControl = map.controls.get('fullscreenControl');
           fullScreenControl.events.add('fullscreenenter', function () {
-            const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
-            fullscreenElement.classList.add('draw-map-active-fullscreen');
-            fullscreenElement.insertAdjacentElement('beforeend', drawBtns);
-            map.controls.add("zoomControl");
-            map.behaviors.enable(['scrollZoom']);
             map.behaviors.enable(['drag']);
-            map.controls.get('zoomControl').options.set({
-              position: {
-                top: 'calc((100vh - 152px + 24px) / 2 - (90px / 2))',
-                right: 16
-              },
-              maxWidth: '44'
-            });
           });
           fullScreenControl.events.add('fullscreenexit', function () {
-            map.controls.remove("zoomControl");
-            map.behaviors.disable(['scrollZoom']);
             map.behaviors.disable(['drag']);
-            const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
-            fullscreenElement.classList.remove('yandex-map-active-fullscreen');
-            mapDraw.insertAdjacentElement('afterbegin', drawBtns);
           });
         }
       } else {
-        map.controls.remove('fullscreenControl');
-        map.behaviors.disable(['scrollZoom']);
-        map.behaviors.disable(['drag']);
         map.controls.get('zoomControl').options.set({
           position: {
-            top: 212,
-            right: 15
+            top: 176,
+            right: 16
           },
           maxWidth: '44'
         });

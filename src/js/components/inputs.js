@@ -16,7 +16,9 @@ export const currentInputText = (input) => {
 }
 
 function inputTextBody(el) {
+    if (!el) return;
     const input = el.querySelector('.input-text__input');
+    if (!input) return;
     input.value.length >= 1 ? el.classList.add('_active') : el.classList.remove('_active');
     input.addEventListener('input', () => {
         if (el.classList.contains('input-text--only-number')) {

@@ -7656,6 +7656,12 @@ const filterSum = () => {
                     ${inputs[0].value && inputs[1].value ? '<div>-</div>' : ''}
                     ${inputs[1].value ? `<div>до ${convertSum(inputs[1].value)}</div>` : ''}
                 `;
+          if (inputs[0].value !== '') {
+            el.setAttribute('data-filter-dropdown-price-from', inputs[0].value.replace(/\s/g, ''));
+          }
+          if (inputs[1].value !== '') {
+            el.setAttribute('data-filter-dropdown-price-to', inputs[1].value.replace(/\s/g, ''));
+          }
         }
         if (el.dataset.filterDropdownName === 'Площадь' || el.dataset.filterDropdownName === 'Площадь кухни') {
           html = `
@@ -7748,6 +7754,14 @@ const filterSum = () => {
           }
         }
         buttonWrapper.classList.remove('_active');
+      }
+      if (el.dataset.filterDropdownName === 'Цена' || el.dataset.filterDropdownName === 'Сумма' || el.dataset.filterDropdownName === 'Стоимость объекта') {
+        if (inputs[0].value === '') {
+          el.removeAttribute('data-filter-dropdown-price-from');
+        }
+        if (inputs[1].value === '') {
+          el.removeAttribute('data-filter-dropdown-price-to');
+        }
       }
       buttonWrapper.innerHTML = html;
     }, 0);
@@ -9861,6 +9875,7 @@ const headerFixed = () => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "currentInputClue": () => (/* binding */ currentInputClue),
 /* harmony export */   "currentInputText": () => (/* binding */ currentInputText),
 /* harmony export */   "inputClue": () => (/* binding */ inputClue),
 /* harmony export */   "inputOnlyNumber": () => (/* binding */ inputOnlyNumber),
@@ -10059,6 +10074,32 @@ const inputClue = (target, name, html) => {
         close();
       });
     });
+  });
+  function close() {
+    document.querySelector(`.${name}`).classList.remove('is-open');
+    setTimeout(() => {
+      document.querySelector(`.${name}`).remove();
+    }, 300);
+  }
+};
+const currentInputClue = function (name, html) {
+  let addClass = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+  let timeout;
+  const container = document.querySelector(`.${name}`);
+  if (container) container.remove();
+  document.body.insertAdjacentHTML('beforeend', html);
+  setTimeout(() => {
+    const container = document.querySelector(`.${name}`);
+    if (addClass !== false) container.classList.add(addClass);
+    container.classList.add('is-open');
+  }, 1);
+  clearTimeout(timeout);
+  timeout = setTimeout(() => {
+    close();
+  }, 4500);
+  document.querySelector(`.${name} .${name}__close`).addEventListener('click', () => {
+    clearTimeout(timeout);
+    close();
   });
   function close() {
     document.querySelector(`.${name}`).classList.remove('is-open');
@@ -13678,11 +13719,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _inputs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./inputs */ "./src/js/components/inputs.js");
+
 const submitAppOffers = () => {
   const container = document.querySelector('.submit-app-offers');
   if (!container) return;
   const items = container.querySelectorAll('.submit-app-offers__item');
   const btn = container.querySelector('.submit-app-offers__btn');
+  const price = document.querySelector('.submit-app-options__item--price');
   let minItem = 4;
   hiddenItems(items);
   if (btn) {
@@ -13709,7 +13753,29 @@ const submitAppOffers = () => {
   }
   items.forEach(item => {
     item.addEventListener('input', () => {
-      item.classList.toggle('_active');
+      const priceCardFrom = item.dataset.offerRoomPriceFrom;
+      const priceCardTo = item.dataset.offerRoomPriceTo;
+      const currentPriceFrom = price.dataset.filterDropdownPriceFrom;
+      const currentPriceTo = price.dataset.filterDropdownPriceTo;
+      if (priceCardFrom && currentPriceFrom && currentPriceFrom > priceCardFrom) {
+        (0,_inputs__WEBPACK_IMPORTED_MODULE_0__.currentInputClue)('clue-primary', `
+                <div class="clue-primary">
+                    <div class="clue-primary__close">
+                        <svg>
+                          <use xlink:href="./img/sprite.svg#x"></use>
+                        </svg>
+                    </div>
+                    <svg class="clue-primary__icon">
+                        <use xlink:href="./img/sprite.svg#info"></use>
+                    </svg>
+                    <h4 class="clue-primary__title title-3">
+                        Этот объект не подходит под выбранную цену
+                    </h4>
+                </div>
+                `, 'offer-room-clue');
+      } else if (priceCardTo && currentPriceTo && currentPriceTo > priceCardTo) {} else {
+        item.classList.toggle('_active');
+      }
     });
   });
   function hiddenItems(items) {

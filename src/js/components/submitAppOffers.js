@@ -1,8 +1,11 @@
+import { currentInputClue } from "./inputs";
+
 const submitAppOffers = () => {
     const container = document.querySelector('.submit-app-offers');
     if (!container) return;
     const items = container.querySelectorAll('.submit-app-offers__item');
     const btn = container.querySelector('.submit-app-offers__btn');
+    const price = document.querySelector('.submit-app-options__item--price');
     let minItem = 4;
     hiddenItems(items);
     if (btn) {
@@ -28,7 +31,31 @@ const submitAppOffers = () => {
     }
     items.forEach(item => {
         item.addEventListener('input', () => {
-            item.classList.toggle('_active')
+            const priceCardFrom = item.dataset.offerRoomPriceFrom;
+            const priceCardTo = item.dataset.offerRoomPriceTo;
+            const currentPriceFrom = price.dataset.filterDropdownPriceFrom;
+            const currentPriceTo = price.dataset.filterDropdownPriceTo;
+            if (priceCardFrom && currentPriceFrom && currentPriceFrom > priceCardFrom) {
+                currentInputClue('clue-primary', `
+                <div class="clue-primary">
+                    <div class="clue-primary__close">
+                        <svg>
+                          <use xlink:href="./img/sprite.svg#x"></use>
+                        </svg>
+                    </div>
+                    <svg class="clue-primary__icon">
+                        <use xlink:href="./img/sprite.svg#info"></use>
+                    </svg>
+                    <h4 class="clue-primary__title title-3">
+                        Этот объект не подходит под выбранную цену
+                    </h4>
+                </div>
+                `,'offer-room-clue');
+            } else if (priceCardTo && currentPriceTo && currentPriceTo > priceCardTo) {
+
+            } else {
+                item.classList.toggle('_active')
+            }
         })
     })
 

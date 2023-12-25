@@ -126,6 +126,12 @@ export const filterSum = () => {
                     ${inputs[0].value && inputs[1].value ? '<div>-</div>' : ''}
                     ${inputs[1].value ? `<div>до ${convertSum(inputs[1].value)}</div>` : ''}
                 `;
+                    if (inputs[0].value !== '') {
+                        el.setAttribute('data-filter-dropdown-price-from', inputs[0].value.replace(/\s/g,''));
+                    }
+                    if (inputs[1].value !== '') {
+                        el.setAttribute('data-filter-dropdown-price-to', inputs[1].value.replace(/\s/g,''));
+                    }
                 }
                 if (el.dataset.filterDropdownName === 'Площадь' || el.dataset.filterDropdownName === 'Площадь кухни') {
                     html = `
@@ -221,9 +227,16 @@ export const filterSum = () => {
                         `;
                     }
                 }
-                buttonWrapper.classList.remove('_active')
+                buttonWrapper.classList.remove('_active');
             }
-
+            if (el.dataset.filterDropdownName === 'Цена' || el.dataset.filterDropdownName === 'Сумма' || el.dataset.filterDropdownName === 'Стоимость объекта') {
+                if (inputs[0].value === '') {
+                    el.removeAttribute('data-filter-dropdown-price-from');
+                }
+                if (inputs[1].value === '') {
+                    el.removeAttribute('data-filter-dropdown-price-to');
+                }
+            }
             buttonWrapper.innerHTML = html;
         }, 0);
     }
@@ -418,6 +431,7 @@ export const searchSelect = () => {
             updateItems();
             updatePlaceholder()
         }
+
         function updateItems() {
             items.forEach(item => item.removeAttribute('hidden'));
             if (body.querySelector(`.${selectorErrorText}`)) {
@@ -428,6 +442,7 @@ export const searchSelect = () => {
                 searchInput.value = '';
             }
         }
+
         function updatePlaceholder() {
             if (arrSelected.length >= 1) {
                 btnList.textContent = '';
@@ -456,7 +471,7 @@ export const searchSelect = () => {
         function init() {
             itemsInput.forEach(input => {
                 if (input.checked) {
-                    const currentElem = input.closest('.search-select__item').querySelector('.checkbox-secondary__text span:nth-child(1)').textContent.trim(); 
+                    const currentElem = input.closest('.search-select__item').querySelector('.checkbox-secondary__text span:nth-child(1)').textContent.trim();
                     arrSelected.push(currentElem);
                 }
             })
@@ -531,7 +546,7 @@ export const searchSelectOne = () => {
                     setTimeout(() => {
                         const input = search.querySelector('input');
                         input.value = '';
-   
+
                         list.forEach(item => item.removeAttribute('hidden'));
                     }, 200);
                 }
@@ -606,6 +621,7 @@ export const searchSelectOne = () => {
                 return text.match(regex);
             })
         }
+
         function init() {
             list.forEach(item => {
                 if (item.classList.contains('_active')) {
@@ -983,7 +999,7 @@ export const fieldRange = () => {
             })
         }
         if (choices) {
-            container.addEventListener('click',(e) => {
+            container.addEventListener('click', (e) => {
                 const target = e.target;
                 const choice = target.closest('.field-range__choice');
                 if (choice) {

@@ -204,6 +204,33 @@ export const inputClue = (target, name, html) => {
         }, 300);
     }
 };
+export const currentInputClue = (name,html,addClass = false) => {
+    let timeout;
+    const container = document.querySelector(`.${name}`);
+    if (container) container.remove();
+    document.body.insertAdjacentHTML('beforeend', html);
+    setTimeout(() => {
+        const container = document.querySelector(`.${name}`);
+        if (addClass !== false) container.classList.add(addClass);
+        container.classList.add('is-open');
+    }, 1);
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+        close();
+    }, 4500);
+
+    document.querySelector(`.${name} .${name}__close`).addEventListener('click', () => {
+        clearTimeout(timeout);
+        close();
+    })
+
+    function close() {
+        document.querySelector(`.${name}`).classList.remove('is-open');
+        setTimeout(() => {
+            document.querySelector(`.${name}`).remove();
+        }, 300);
+    }
+}
 
 
 export const valueToValueAttr = (field) => {

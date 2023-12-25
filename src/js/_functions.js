@@ -180,4 +180,35 @@ popup(null, 'select-bank');
 popup(null, 'metro-map');
 popup(null, 'im-buying');
 popup(null, 'change-mind');
+popup({
+    isOpen: (settingsModal) => {
+        const chat = document.querySelector('.chat');
+        if (!chat) return;
+        const bar = document.querySelector('.chat__bar .simplebar-content-wrapper');
+        const chatBottom = chat.querySelector('.chat__bottom');
+        const chatTags = chat.querySelector('.chat__tags');
+        chat.style.setProperty('--chat-bottom-height', `${chatBottom.offsetHeight}px`);
+        chat.style.setProperty('--chat-tags-height', `${chatTags.offsetHeight}px`);
+
+        if (settingsModal.currentBtn.closest('.record-viewing-two')) {
+            const btnHTML = `
+                <button type="button" class="btn btn-reset btn-primary chat__booking-btn">Детали брониварония</button>
+            `;
+
+            chatBottom.insertAdjacentHTML('beforebegin', btnHTML);
+            chat.style.setProperty('--chat-booking-height', `${chat.querySelector('.chat__booking-btn').offsetHeight + 16}px`);
+        }
+
+        bar.scrollTo({
+            top: bar.querySelector('.simplebar-content').clientHeight,
+        })
+    },
+    isClose: (settingsModal) => {
+        const chat = document.querySelector('.chat');
+        if (!chat) return;
+        const bookingbtn = chat.querySelector('.chat__booking-btn');
+        chat.style.setProperty('--chat-booking-height', `0px`);
+        if (bookingbtn) bookingbtn.remove();
+    }
+}, 'chat-lora');
 // ========================================================================================

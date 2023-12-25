@@ -972,6 +972,30 @@ export const fieldSelect = () => {
         })
     })
 }
+export const fieldRange = () => {
+    const containers = document.querySelectorAll('.field-range');
+    if (containers.length === 0) return;
+    containers.forEach(container => {
+        const choices = container.querySelector('.field-range__choices');
+        if (container.hasAttribute('data-field-range-floor')) {
+            container.querySelectorAll('.field-range__choice').forEach((item, index) => {
+                item.setAttribute(`data-range-floor-index`, index + 1);
+            })
+        }
+        if (choices) {
+            container.addEventListener('click',(e) => {
+                const target = e.target;
+                const choice = target.closest('.field-range__choice');
+                if (choice) {
+                    if (container.hasAttribute('data-field-range-floor')) {
+                        const index = choice.dataset.rangeFloorIndex;
+                        choice.classList.toggle('_active');
+                    }
+                }
+            })
+        }
+    })
+}
 
 function filterModalScreenWidthCheck() {
     return window.innerWidth <= 1212;

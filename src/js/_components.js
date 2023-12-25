@@ -8,7 +8,8 @@ import {
     dropdownDefault,
     searchSelect,
     searchSelectOne,
-    fieldSelect
+    fieldSelect,
+    fieldRange
 } from './components/filter';
 import getHeightBlock from './modules/getHeightBlock'
 import {
@@ -144,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     searchSelect();
     searchSelectOne();
     fieldSelect();
+    fieldRange();
 
     // ==================================================
 

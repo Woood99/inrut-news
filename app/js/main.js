@@ -4295,6 +4295,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_filter__WEBPACK_IMPORTED_MODULE_0__.searchSelect)();
   (0,_components_filter__WEBPACK_IMPORTED_MODULE_0__.searchSelectOne)();
   (0,_components_filter__WEBPACK_IMPORTED_MODULE_0__.fieldSelect)();
+  (0,_components_filter__WEBPACK_IMPORTED_MODULE_0__.fieldRange)();
 
   // ==================================================
 
@@ -4683,6 +4684,34 @@ __webpack_require__.r(__webpack_exports__);
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'metro-map');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'im-buying');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'change-mind');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])({
+  isOpen: settingsModal => {
+    const chat = document.querySelector('.chat');
+    if (!chat) return;
+    const bar = document.querySelector('.chat__bar .simplebar-content-wrapper');
+    const chatBottom = chat.querySelector('.chat__bottom');
+    const chatTags = chat.querySelector('.chat__tags');
+    chat.style.setProperty('--chat-bottom-height', `${chatBottom.offsetHeight}px`);
+    chat.style.setProperty('--chat-tags-height', `${chatTags.offsetHeight}px`);
+    if (settingsModal.currentBtn.closest('.record-viewing-two')) {
+      const btnHTML = `
+                <button type="button" class="btn btn-reset btn-primary chat__booking-btn">Детали брониварония</button>
+            `;
+      chatBottom.insertAdjacentHTML('beforebegin', btnHTML);
+      chat.style.setProperty('--chat-booking-height', `${chat.querySelector('.chat__booking-btn').offsetHeight + 16}px`);
+    }
+    bar.scrollTo({
+      top: bar.querySelector('.simplebar-content').clientHeight
+    });
+  },
+  isClose: settingsModal => {
+    const chat = document.querySelector('.chat');
+    if (!chat) return;
+    const bookingbtn = chat.querySelector('.chat__booking-btn');
+    chat.style.setProperty('--chat-booking-height', `0px`);
+    if (bookingbtn) bookingbtn.remove();
+  }
+}, 'chat-lora');
 // ========================================================================================
 
 /***/ }),
@@ -7485,6 +7514,7 @@ const favoriteChoicePopup = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "dropdownDefault": () => (/* binding */ dropdownDefault),
+/* harmony export */   "fieldRange": () => (/* binding */ fieldRange),
 /* harmony export */   "fieldSelect": () => (/* binding */ fieldSelect),
 /* harmony export */   "filterControl": () => (/* binding */ filterControl),
 /* harmony export */   "filterCustomSelectCheckboxes": () => (/* binding */ filterCustomSelectCheckboxes),
@@ -8392,6 +8422,30 @@ const fieldSelect = () => {
         }
       }
     });
+  });
+};
+const fieldRange = () => {
+  const containers = document.querySelectorAll('.field-range');
+  if (containers.length === 0) return;
+  containers.forEach(container => {
+    const choices = container.querySelector('.field-range__choices');
+    if (container.hasAttribute('data-field-range-floor')) {
+      container.querySelectorAll('.field-range__choice').forEach((item, index) => {
+        item.setAttribute(`data-range-floor-index`, index + 1);
+      });
+    }
+    if (choices) {
+      container.addEventListener('click', e => {
+        const target = e.target;
+        const choice = target.closest('.field-range__choice');
+        if (choice) {
+          if (container.hasAttribute('data-field-range-floor')) {
+            const index = choice.dataset.rangeFloorIndex;
+            choice.classList.toggle('_active');
+          }
+        }
+      });
+    }
   });
 };
 function filterModalScreenWidthCheck() {

@@ -22,6 +22,16 @@ export const filterDropdownChoice = () => {
                     });
                     el.querySelector('input').checked = true;
                     el.closest('.filter-dropdown__item').classList.add('active');
+                    item.querySelectorAll('.filter-dropdown__item').forEach(itemTwo => {
+                        if (!itemTwo.classList.contains('active')) {
+                            const inputs = itemTwo.querySelectorAll('.input-text');
+                            inputs.forEach(inputContainer => {
+                                inputContainer.classList.remove('_active');
+                                inputContainer.querySelector('input').value = '';
+                            })
+                        }
+                    });
+                    
                 } else {
                     el.querySelector('input').checked = true;
                 }
@@ -35,6 +45,7 @@ export const filterSum = () => {
     const container = document.querySelectorAll('.filter-dropdown');
     if (!container.length >= 1) return;
     container.forEach(el => {
+        const defaultItem = el.querySelector('.filter-dropdown__item.active');
         const btn = el.querySelector('.filter-dropdown__button');
         const inputs = el.querySelectorAll('.filter-range__nav input');
         const close = el.querySelector('.filter-dropdown__close');
@@ -80,7 +91,40 @@ export const filterSum = () => {
         document.addEventListener('click', (e) => {
             if (el.classList.contains('active') && !e.target.closest('.filter-dropdown') && !filterModalScreenWidthCheck()) {
                 el.classList.remove('active');
-                checkChangeTitle(el) ? changeTitleOne(el) : changeTitle(el);
+                if (checkChangeTitle(el)) {
+                    changeTitleOne(el);
+                } else {
+                    changeTitle(el);
+                }
+                setTimeout(() => {
+                    const items = el.querySelectorAll('.filter-dropdown__item');
+                    const currentItem = el.querySelector('.filter-dropdown__item.active');
+                    if (currentItem) {
+                        let value = false;
+                        const inputs = currentItem.querySelectorAll('.filter-range__nav input');
+                        for (let i = 0; i < inputs.length; i++) {
+                            const input = inputs[i];
+                            if (input.value !== '') {
+                                value = true;
+                                break;
+                            }
+                        }
+                        if (value === false) {
+                            items.forEach(item => {
+                                item.classList.remove('active');
+                                item.querySelector('.checkbox-secondary__input').checked = false;
+                            });
+                            defaultItem.classList.add('active');
+                            defaultItem.querySelector('.checkbox-secondary__input').checked = true;
+
+                            const calcProper = document.querySelector('.submit-app-options__item--calc-proper');
+                            if (calcProper) {
+                                const cash = calcProper.querySelector('[data-name="cash"]');
+                                cash.removeAttribute('disabled');
+                            }
+                        }
+                    }
+                }, 150);
             } else if (e.target.closest('.filter-dropdown') || e.target.closest('.filter-modal')) {
                 if (filterModalScreenWidthCheck() && el.classList.contains('active')) {
                     const currentEl = document.querySelector('.filter-modal .filter-modal__content');
@@ -127,10 +171,10 @@ export const filterSum = () => {
                     ${inputs[1].value ? `<div>до ${convertSum(inputs[1].value)}</div>` : ''}
                 `;
                     if (inputs[0].value !== '') {
-                        el.setAttribute('data-filter-dropdown-price-from', inputs[0].value.replace(/\s/g,''));
+                        el.setAttribute('data-filter-dropdown-price-from', inputs[0].value.replace(/\s/g, ''));
                     }
                     if (inputs[1].value !== '') {
-                        el.setAttribute('data-filter-dropdown-price-to', inputs[1].value.replace(/\s/g,''));
+                        el.setAttribute('data-filter-dropdown-price-to', inputs[1].value.replace(/\s/g, ''));
                     }
                 }
                 if (el.dataset.filterDropdownName === 'Площадь' || el.dataset.filterDropdownName === 'Площадь кухни') {
@@ -826,8 +870,9 @@ export const filterCustomSelectCheckboxes = () => {
         mortgageYesBank.addEventListener('change', () => {
             if (mortgageYesBank.checked) {
                 item.classList.add('_selected');
-
-                cash.setAttribute('disabled', true);
+                if (!item.classList.contains('submit-app-options__item--calc-proper')) {
+                    cash.setAttribute('disabled', true);
+                }
                 mortgageNoBank.setAttribute('disabled', true);
 
                 mortgageNoFee.removeAttribute('disabled');
@@ -841,7 +886,9 @@ export const filterCustomSelectCheckboxes = () => {
             } else {
                 item.classList.remove('_selected');
 
-                cash.removeAttribute('disabled');
+                if (!item.classList.contains('submit-app-options__item--calc-proper')) {
+                    cash.removeAttribute('disabled');
+                }
                 mortgageNoBank.removeAttribute('disabled');
 
                 mortgageNoFee.setAttribute('disabled', true);
@@ -861,7 +908,9 @@ export const filterCustomSelectCheckboxes = () => {
             if (mortgageNoBank.checked) {
                 item.classList.add('_selected');
 
-                cash.setAttribute('disabled', true);
+                if (!item.classList.contains('submit-app-options__item--calc-proper')) {
+                    cash.setAttribute('disabled', true);
+                }
                 mortgageYesBank.setAttribute('disabled', true);
 
                 mortgageNoFee.removeAttribute('disabled');
@@ -875,7 +924,9 @@ export const filterCustomSelectCheckboxes = () => {
             } else {
                 item.classList.remove('_selected');
 
-                cash.removeAttribute('disabled');
+                if (!item.classList.contains('submit-app-options__item--calc-proper')) {
+                    cash.removeAttribute('disabled');
+                }
                 mortgageYesBank.removeAttribute('disabled');
 
                 mortgageNoFee.setAttribute('disabled', true);

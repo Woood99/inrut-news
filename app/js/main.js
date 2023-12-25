@@ -7555,6 +7555,15 @@ const filterDropdownChoice = () => {
           });
           el.querySelector('input').checked = true;
           el.closest('.filter-dropdown__item').classList.add('active');
+          item.querySelectorAll('.filter-dropdown__item').forEach(itemTwo => {
+            if (!itemTwo.classList.contains('active')) {
+              const inputs = itemTwo.querySelectorAll('.input-text');
+              inputs.forEach(inputContainer => {
+                inputContainer.classList.remove('_active');
+                inputContainer.querySelector('input').value = '';
+              });
+            }
+          });
         } else {
           el.querySelector('input').checked = true;
         }
@@ -7566,6 +7575,7 @@ const filterSum = () => {
   const container = document.querySelectorAll('.filter-dropdown');
   if (!container.length >= 1) return;
   container.forEach(el => {
+    const defaultItem = el.querySelector('.filter-dropdown__item.active');
     const btn = el.querySelector('.filter-dropdown__button');
     const inputs = el.querySelectorAll('.filter-range__nav input');
     const close = el.querySelector('.filter-dropdown__close');
@@ -7611,7 +7621,39 @@ const filterSum = () => {
     document.addEventListener('click', e => {
       if (el.classList.contains('active') && !e.target.closest('.filter-dropdown') && !filterModalScreenWidthCheck()) {
         el.classList.remove('active');
-        checkChangeTitle(el) ? changeTitleOne(el) : changeTitle(el);
+        if (checkChangeTitle(el)) {
+          changeTitleOne(el);
+        } else {
+          changeTitle(el);
+        }
+        setTimeout(() => {
+          const items = el.querySelectorAll('.filter-dropdown__item');
+          const currentItem = el.querySelector('.filter-dropdown__item.active');
+          if (currentItem) {
+            let value = false;
+            const inputs = currentItem.querySelectorAll('.filter-range__nav input');
+            for (let i = 0; i < inputs.length; i++) {
+              const input = inputs[i];
+              if (input.value !== '') {
+                value = true;
+                break;
+              }
+            }
+            if (value === false) {
+              items.forEach(item => {
+                item.classList.remove('active');
+                item.querySelector('.checkbox-secondary__input').checked = false;
+              });
+              defaultItem.classList.add('active');
+              defaultItem.querySelector('.checkbox-secondary__input').checked = true;
+              const calcProper = document.querySelector('.submit-app-options__item--calc-proper');
+              if (calcProper) {
+                const cash = calcProper.querySelector('[data-name="cash"]');
+                cash.removeAttribute('disabled');
+              }
+            }
+          }
+        }, 150);
       } else if (e.target.closest('.filter-dropdown') || e.target.closest('.filter-modal')) {
         if (filterModalScreenWidthCheck() && el.classList.contains('active')) {
           const currentEl = document.querySelector('.filter-modal .filter-modal__content');
@@ -8305,7 +8347,9 @@ const filterCustomSelectCheckboxes = () => {
     mortgageYesBank.addEventListener('change', () => {
       if (mortgageYesBank.checked) {
         item.classList.add('_selected');
-        cash.setAttribute('disabled', true);
+        if (!item.classList.contains('submit-app-options__item--calc-proper')) {
+          cash.setAttribute('disabled', true);
+        }
         mortgageNoBank.setAttribute('disabled', true);
         mortgageNoFee.removeAttribute('disabled');
         certificate.removeAttribute('disabled');
@@ -8315,7 +8359,9 @@ const filterCustomSelectCheckboxes = () => {
         title.textContent = mortgageYesBank.closest('.checkbox-secondary').querySelector('.checkbox-secondary__text').textContent;
       } else {
         item.classList.remove('_selected');
-        cash.removeAttribute('disabled');
+        if (!item.classList.contains('submit-app-options__item--calc-proper')) {
+          cash.removeAttribute('disabled');
+        }
         mortgageNoBank.removeAttribute('disabled');
         mortgageNoFee.setAttribute('disabled', true);
         certificate.setAttribute('disabled', true);
@@ -8330,7 +8376,9 @@ const filterCustomSelectCheckboxes = () => {
     mortgageNoBank.addEventListener('change', () => {
       if (mortgageNoBank.checked) {
         item.classList.add('_selected');
-        cash.setAttribute('disabled', true);
+        if (!item.classList.contains('submit-app-options__item--calc-proper')) {
+          cash.setAttribute('disabled', true);
+        }
         mortgageYesBank.setAttribute('disabled', true);
         mortgageNoFee.removeAttribute('disabled');
         certificate.removeAttribute('disabled');
@@ -8340,7 +8388,9 @@ const filterCustomSelectCheckboxes = () => {
         title.textContent = mortgageNoBank.closest('.checkbox-secondary').querySelector('.checkbox-secondary__text').textContent;
       } else {
         item.classList.remove('_selected');
-        cash.removeAttribute('disabled');
+        if (!item.classList.contains('submit-app-options__item--calc-proper')) {
+          cash.removeAttribute('disabled');
+        }
         mortgageYesBank.removeAttribute('disabled');
         mortgageNoFee.setAttribute('disabled', true);
         certificate.setAttribute('disabled', true);
@@ -13695,13 +13745,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 const submitApp = () => {
-  const contianer = document.querySelector('.submit-app');
-  if (!contianer) return;
-  const checkbox = contianer.querySelector('.submit-app-maps__checkbox .checkbox-secondary__input');
-  const maps = contianer.querySelector('.submit-app-maps__map');
+  const container = document.querySelector('.submit-app');
+  if (!container) return;
+  const checkbox = container.querySelector('.submit-app-maps__checkbox .checkbox-secondary__input');
+  const maps = container.querySelector('.submit-app-maps__map');
   checkbox.addEventListener('change', () => {
     if (checkbox.checked) maps.setAttribute('hidden', '');
     if (!checkbox.checked) maps.removeAttribute('hidden');
+  });
+  const price = container.querySelector('.submit-app-options__item--price');
+  const priceItems = price.querySelectorAll('.filter-dropdown__item');
+  const calcProper = container.querySelector('.submit-app-options__item--calc-proper');
+  const cash = calcProper.querySelector('[data-name="cash"]');
+  priceItems.forEach(item => {
+    item.addEventListener('change', () => {
+      if (priceItems[0].classList.contains('active')) {
+        cash.removeAttribute('disabled');
+      }
+      if (priceItems[1].classList.contains('active')) {
+        cash.setAttribute('disabled', true);
+      }
+    });
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (submitApp);

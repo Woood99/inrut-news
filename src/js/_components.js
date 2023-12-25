@@ -47,7 +47,8 @@ import {
     inputMaskSnils,
     inputMaskOgrn,
     inputMaskOgrnip,
-    inputMaskInn
+    inputMaskInn,
+    submitAppValidate
 } from './components/formValidate';
 import dropdown from './modules/dropdown';
 import dropdownItems from './modules/dropdownItems';
@@ -232,6 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
     editUserValidate();
     createMeetingShowValidate();
     requisitesValidate();
+    submitAppValidate();
 
     // ==================================================
 
@@ -271,6 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
     emergingBlockScroll('.add-complex .place-sale__btn', '.footer-fixed.complex-fixed', 99999999, true);
     emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true);
     emergingBlockScroll('.mortgage-requests .mortgage-requests__save', '.footer-fixed.mortgage-requests-fixed', 99999999, true);
+    emergingBlockScroll('.submit-app .submit-app__btn', '.footer-fixed.submit-app-fixed', 99999999, true);
 
     // ==================================================
 

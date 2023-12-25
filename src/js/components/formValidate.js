@@ -551,6 +551,94 @@ export const requisitesValidate = () => {
         if (!validate()) e.preventDefault();
     })
 }
+export const submitAppValidate = () => {
+    const form = document.querySelector('.submit-app__container');
+    if (!form) return;
+    let formEventInput = false;
+
+    const price = form.querySelector('.submit-app-options__item--price');
+    const priceInputs = price.querySelectorAll('.input-text__input');
+    const priceButton = price.querySelector('.filter-dropdown__button');
+    const priceButtonWrapper = priceButton.querySelector('.filter-dropdown__button-wrapper');
+
+    const type = form.querySelector('[data-field-select-name="object-type"]');
+    const typeItems = type.querySelectorAll('.field-select__item');
+
+    const rooms = form.querySelector('[data-field-select-name="rooms"]');
+    const roomsItems = rooms.querySelectorAll('.field-select__item');
+
+    const descr = form.querySelector('[data-field-descr]');
+    const descrInput = descr.querySelector('textarea');
+
+    [typeItems, roomsItems].forEach(items => {
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+                setTimeout(() => {
+                    if (formEventInput) validate(false);
+                }, 1);
+            })
+        })
+    })
+
+    priceInputs.forEach(input => {
+        input.addEventListener('input', () => {
+            setTimeout(() => {
+                if (formEventInput) validate(false);
+            }, 1);
+        })
+    })
+
+    descrInput.addEventListener('input', () => {
+        setTimeout(() => {
+            if (formEventInput) validate(false);
+        }, 1);
+    })
+
+    function validate(controls = true) {
+        const errorItems = [];
+        let result = true;
+        formEventInput = true;
+        validateRemoveError(descr);
+        validateRemoveError(price);
+        validatRemoveErrorSelect(type);
+        validatRemoveErrorSelect(rooms);
+        if (!priceButtonWrapper.classList.contains('_active')) {
+            result = false;
+            validateCreateError(price, 'Укажите цену');
+            errorItems.push(price);
+        }
+        if (!validateCreateErrorSelect(type)) {
+            result = false;
+            errorItems.push(type);
+        }
+        if (!validateCreateErrorSelect(rooms)) {
+            result = false;
+            errorItems.push(rooms);
+        }
+        if (descrInput.value.length === 0) {
+            result = false;
+            validateCreateError(descr, 'Введите описание недвижимости');
+            errorItems.push(descr);
+        }
+        if (result === false && controls === true) {
+            scrollToError(errorItems);            
+        }
+        return result;
+    }
+
+    form.addEventListener('submit', (e) => {
+        if (!validate()) e.preventDefault();
+    })
+
+    function scrollToError(errorItems) {
+        const firsError = errorItems[0];
+        const topGap = window.pageYOffset + firsError.getBoundingClientRect().top;
+        window.scrollTo({
+            top: topGap - 16,
+            behavior: 'smooth'
+        })
+    }
+}
 
 
 export const inputMaskPhone = (input) => {
@@ -582,7 +670,32 @@ export const inputMaskInn = (input) => {
     inputMask.mask(input);
 }
 
-
+export const validateCreateErrorSelect = (container) => {
+    if (!container) return;
+    const items = container.querySelectorAll('.field-select__item');
+    if (!items.length === 0) return;
+    let value = false;
+    for (let i = 0; i < items.length; i++) {
+        const item = items[i];
+        if (item.classList.contains('_active')) {
+            value = true;
+            break;
+        }
+    }
+    if (value === false) {
+        container.classList.add('_error');
+        items.forEach(item => item.classList.add('_error'));
+    }
+    return value;
+}
+export const validatRemoveErrorSelect = (container) => {
+    if (!container.classList.contains('_error')) return;
+    container.classList.remove('_error');
+    const items = container.querySelectorAll('.field-select__item');
+    if (items.length > 0) {
+        items.forEach(item => item.classList.remove('_error'));
+    }
+}
 export const inputMaskValidate = (label, input, length) => {
     if (!label || !input) return;
     const inputLength = input.inputmask.unmaskedvalue().length;
@@ -622,7 +735,7 @@ export const validateCreateErrorYear = (label, input) => {
     const currentYear = new Date().getFullYear();
     const minYear = currentYear - 100;
     const value = input.value === '' ? input.value : Number(input.value.replace(/\s/g, ""));
-    if (label.hasAttribute('data-mortgage-requests-field') && label.dataset.mortgageRequestsField === 'year-issue'){
+    if (label.hasAttribute('data-mortgage-requests-field') && label.dataset.mortgageRequestsField === 'year-issue') {
         if (value === '') {
             result = false;
             validateCreateError(label, 'Укажите год выпуска');
@@ -637,7 +750,7 @@ export const validateCreateErrorYear = (label, input) => {
             }
         }
     }
-    if (label.hasAttribute('data-mortgage-requests-field') && label.dataset.mortgageRequestsField === 'estate-year-purchase'){
+    if (label.hasAttribute('data-mortgage-requests-field') && label.dataset.mortgageRequestsField === 'estate-year-purchase') {
         if (value === '') {
             result = false;
             validateCreateError(label, 'Укажите год приобретения недвижимости');
@@ -673,7 +786,7 @@ export const validateCreateErrorMask = (label, input, text, length) => {
     }
     return result;
 }
-export const validateCreateErrorUrl = (label,input,text) => {
+export const validateCreateErrorUrl = (label, input, text) => {
     let result = true;
     const objRE = /(^https?:\/\/)?[a-z0-9~_\-\.]+\.[a-z]{2,9}(\/|:|\?[!-~]*)?$/i;
     if (!objRE.test(input.value)) {

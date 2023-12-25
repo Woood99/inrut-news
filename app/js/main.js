@@ -4382,6 +4382,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.editUserValidate)();
   (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.createMeetingShowValidate)();
   (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.requisitesValidate)();
+  (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.submitAppValidate)();
 
   // ==================================================
 
@@ -4419,6 +4420,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__.emergingBlockScroll)('.add-complex .place-sale__btn', '.footer-fixed.complex-fixed', 99999999, true);
   (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__.emergingBlockScroll)('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true);
   (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__.emergingBlockScroll)('.mortgage-requests .mortgage-requests__save', '.footer-fixed.mortgage-requests-fixed', 99999999, true);
+  (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__.emergingBlockScroll)('.submit-app .submit-app__btn', '.footer-fixed.submit-app-fixed', 99999999, true);
 
   // ==================================================
 
@@ -8480,11 +8482,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "inputMaskSnils": () => (/* binding */ inputMaskSnils),
 /* harmony export */   "inputMaskValidate": () => (/* binding */ inputMaskValidate),
 /* harmony export */   "requisitesValidate": () => (/* binding */ requisitesValidate),
+/* harmony export */   "submitAppValidate": () => (/* binding */ submitAppValidate),
+/* harmony export */   "validatRemoveErrorSelect": () => (/* binding */ validatRemoveErrorSelect),
 /* harmony export */   "validateCheckboxPrimary": () => (/* binding */ validateCheckboxPrimary),
 /* harmony export */   "validateCreateError": () => (/* binding */ validateCreateError),
 /* harmony export */   "validateCreateErrorField": () => (/* binding */ validateCreateErrorField),
 /* harmony export */   "validateCreateErrorMask": () => (/* binding */ validateCreateErrorMask),
 /* harmony export */   "validateCreateErrorName": () => (/* binding */ validateCreateErrorName),
+/* harmony export */   "validateCreateErrorSelect": () => (/* binding */ validateCreateErrorSelect),
 /* harmony export */   "validateCreateErrorUrl": () => (/* binding */ validateCreateErrorUrl),
 /* harmony export */   "validateCreateErrorYear": () => (/* binding */ validateCreateErrorYear),
 /* harmony export */   "validateCreeateErrorSelect": () => (/* binding */ validateCreeateErrorSelect),
@@ -8989,6 +8994,85 @@ const requisitesValidate = () => {
     if (!validate()) e.preventDefault();
   });
 };
+const submitAppValidate = () => {
+  const form = document.querySelector('.submit-app__container');
+  if (!form) return;
+  let formEventInput = false;
+  const price = form.querySelector('.submit-app-options__item--price');
+  const priceInputs = price.querySelectorAll('.input-text__input');
+  const priceButton = price.querySelector('.filter-dropdown__button');
+  const priceButtonWrapper = priceButton.querySelector('.filter-dropdown__button-wrapper');
+  const type = form.querySelector('[data-field-select-name="object-type"]');
+  const typeItems = type.querySelectorAll('.field-select__item');
+  const rooms = form.querySelector('[data-field-select-name="rooms"]');
+  const roomsItems = rooms.querySelectorAll('.field-select__item');
+  const descr = form.querySelector('[data-field-descr]');
+  const descrInput = descr.querySelector('textarea');
+  [typeItems, roomsItems].forEach(items => {
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        setTimeout(() => {
+          if (formEventInput) validate(false);
+        }, 1);
+      });
+    });
+  });
+  priceInputs.forEach(input => {
+    input.addEventListener('input', () => {
+      setTimeout(() => {
+        if (formEventInput) validate(false);
+      }, 1);
+    });
+  });
+  descrInput.addEventListener('input', () => {
+    setTimeout(() => {
+      if (formEventInput) validate(false);
+    }, 1);
+  });
+  function validate() {
+    let controls = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+    const errorItems = [];
+    let result = true;
+    formEventInput = true;
+    validateRemoveError(descr);
+    validateRemoveError(price);
+    validatRemoveErrorSelect(type);
+    validatRemoveErrorSelect(rooms);
+    if (!priceButtonWrapper.classList.contains('_active')) {
+      result = false;
+      validateCreateError(price, 'Укажите цену');
+      errorItems.push(price);
+    }
+    if (!validateCreateErrorSelect(type)) {
+      result = false;
+      errorItems.push(type);
+    }
+    if (!validateCreateErrorSelect(rooms)) {
+      result = false;
+      errorItems.push(rooms);
+    }
+    if (descrInput.value.length === 0) {
+      result = false;
+      validateCreateError(descr, 'Введите описание недвижимости');
+      errorItems.push(descr);
+    }
+    if (result === false && controls === true) {
+      scrollToError(errorItems);
+    }
+    return result;
+  }
+  form.addEventListener('submit', e => {
+    if (!validate()) e.preventDefault();
+  });
+  function scrollToError(errorItems) {
+    const firsError = errorItems[0];
+    const topGap = window.pageYOffset + firsError.getBoundingClientRect().top;
+    window.scrollTo({
+      top: topGap - 16,
+      behavior: 'smooth'
+    });
+  }
+};
 const inputMaskPhone = input => {
   const inputMask = new (inputmask__WEBPACK_IMPORTED_MODULE_0___default())('+7 999 999-99-99');
   inputMask.mask(input);
@@ -9016,6 +9100,32 @@ const inputMaskOgrnip = input => {
 const inputMaskInn = input => {
   const inputMask = new (inputmask__WEBPACK_IMPORTED_MODULE_0___default())('999999999999');
   inputMask.mask(input);
+};
+const validateCreateErrorSelect = container => {
+  if (!container) return;
+  const items = container.querySelectorAll('.field-select__item');
+  if (!items.length === 0) return;
+  let value = false;
+  for (let i = 0; i < items.length; i++) {
+    const item = items[i];
+    if (item.classList.contains('_active')) {
+      value = true;
+      break;
+    }
+  }
+  if (value === false) {
+    container.classList.add('_error');
+    items.forEach(item => item.classList.add('_error'));
+  }
+  return value;
+};
+const validatRemoveErrorSelect = container => {
+  if (!container.classList.contains('_error')) return;
+  container.classList.remove('_error');
+  const items = container.querySelectorAll('.field-select__item');
+  if (items.length > 0) {
+    items.forEach(item => item.classList.remove('_error'));
+  }
 };
 const inputMaskValidate = (label, input, length) => {
   if (!label || !input) return;

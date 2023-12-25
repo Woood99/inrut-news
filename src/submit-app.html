@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="submit-app__body">
-                <form action="#" class="submit-app__container container">
+                <form action="#" id="submit-app-form" class="submit-app__container container">
                     <div class="submit-app__row submit-app-maps">
                         <h2 class="submit-app-maps__title submit-app__row-title title-2">
                             Расположение поиска
@@ -169,7 +169,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="submit-app-options__item filter-dropdown" data-filter-dropdown-name="Цена" data-filter-dropdown-subtitle="Любая">
+                                <div class="submit-app-options__item submit-app-options__item--price filter-dropdown" data-filter-dropdown-name="Цена" data-filter-dropdown-subtitle="Любая">
                                     <button type="button" class="btn btn-reset filter-dropdown__button">
                                         <div class="filter-dropdown__button-wrapper">
                                             <div>
@@ -998,7 +998,7 @@
                         <h2 class="submit-app-options__title submit-app__row-title title-2">
                             Описание
                         </h2>
-                        <div class="submit-app-options__textarea textarea-secondary textarea-secondary--default" data-textarea-secondary-min-height="165">
+                        <div class="submit-app-options__textarea textarea-secondary textarea-secondary--default" data-field-descr data-textarea-secondary-min-height="165">
                             <textarea name="type-value" class="input-reset textarea-secondary__input" maxlength="2000"
                                 placeholder="Напишите подробное описание о недвижимости, собственниках, соседях, транспортной доступности иинфраструктуре"></textarea>
                         </div>
@@ -1094,6 +1094,13 @@
                 </form>
             </div>
         </main>
+        <div class="footer-fixed submit-app-fixed">
+            <div class="footer-fixed__container">
+                <button type="submit" class="btn btn-reset btn-primary" form="submit-app-form" style="width: 100%;">
+                    Разместить
+                </button>
+            </div>
+        </div>
         @include('partials/footer.html')
     </div>
     @include('partials/popup.html')

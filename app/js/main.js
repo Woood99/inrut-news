@@ -10134,7 +10134,7 @@ const inputClue = (target, name, html) => {
 };
 const currentInputClue = function (name, html) {
   let addClass = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-  let timeout;
+  let timeout = arguments.length > 3 ? arguments[3] : undefined;
   const container = document.querySelector(`.${name}`);
   if (container) container.remove();
   document.body.insertAdjacentHTML('beforeend', html);
@@ -10152,10 +10152,12 @@ const currentInputClue = function (name, html) {
     close();
   });
   function close() {
-    document.querySelector(`.${name}`).classList.remove('is-open');
-    setTimeout(() => {
-      document.querySelector(`.${name}`).remove();
-    }, 300);
+    try {
+      document.querySelector(`.${name}`).classList.remove('is-open');
+      setTimeout(() => {
+        document.querySelector(`.${name}`).remove();
+      }, 150);
+    } catch (error) {}
   }
 };
 const valueToValueAttr = field => {
@@ -13822,6 +13824,8 @@ const submitAppOffers = () => {
       const currentPriceFrom = price.dataset.filterDropdownPriceFrom;
       const currentPriceTo = price.dataset.filterDropdownPriceTo;
       if (priceCardFrom && currentPriceFrom && currentPriceFrom > priceCardFrom) {
+        let timeout;
+        clearTimeout(timeout);
         (0,_inputs__WEBPACK_IMPORTED_MODULE_0__.currentInputClue)('clue-primary', `
                 <div class="clue-primary">
                     <div class="clue-primary__close">
@@ -13836,7 +13840,7 @@ const submitAppOffers = () => {
                         Этот объект не подходит под выбранную цену
                     </h4>
                 </div>
-                `, 'offer-room-clue');
+                `, 'offer-room-clue', timeout);
       } else if (priceCardTo && currentPriceTo && currentPriceTo > priceCardTo) {} else {
         item.classList.toggle('_active');
       }

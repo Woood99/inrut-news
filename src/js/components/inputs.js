@@ -79,6 +79,7 @@ export const textareaSecondary = () => {
                 }
             })
         }
+
         function changeHeight() {
             if (textareaMaxHeight) {
                 textarea.style.height = `${textareaMinHeight}px`;
@@ -204,8 +205,7 @@ export const inputClue = (target, name, html) => {
         }, 300);
     }
 };
-export const currentInputClue = (name,html,addClass = false) => {
-    let timeout;
+export const currentInputClue = (name, html, addClass = false, timeout) => {
     const container = document.querySelector(`.${name}`);
     if (container) container.remove();
     document.body.insertAdjacentHTML('beforeend', html);
@@ -225,10 +225,14 @@ export const currentInputClue = (name,html,addClass = false) => {
     })
 
     function close() {
-        document.querySelector(`.${name}`).classList.remove('is-open');
-        setTimeout(() => {
-            document.querySelector(`.${name}`).remove();
-        }, 300);
+        try {
+            document.querySelector(`.${name}`).classList.remove('is-open');
+            setTimeout(() => {
+                document.querySelector(`.${name}`).remove();
+            }, 150);
+        } catch (error) {
+
+        }
     }
 }
 
@@ -243,4 +247,3 @@ document.querySelectorAll('.textarea-primary').forEach(textarea => {
     const field = textarea.querySelector('.textarea-primary__input');
     valueToValueAttr(field);
 })
-

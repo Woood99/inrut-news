@@ -36,6 +36,8 @@ const submitAppOffers = () => {
             const currentPriceFrom = price.dataset.filterDropdownPriceFrom;
             const currentPriceTo = price.dataset.filterDropdownPriceTo;
             if (priceCardFrom && currentPriceFrom && currentPriceFrom > priceCardFrom) {
+                let timeout;
+                clearTimeout(timeout);
                 currentInputClue('clue-primary', `
                 <div class="clue-primary">
                     <div class="clue-primary__close">
@@ -50,7 +52,7 @@ const submitAppOffers = () => {
                         Этот объект не подходит под выбранную цену
                     </h4>
                 </div>
-                `,'offer-room-clue');
+                `,'offer-room-clue',timeout);
             } else if (priceCardTo && currentPriceTo && currentPriceTo > priceCardTo) {
 
             } else {

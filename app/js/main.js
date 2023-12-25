@@ -10134,7 +10134,7 @@ const inputClue = (target, name, html) => {
 };
 const currentInputClue = function (name, html) {
   let addClass = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-  let timeout = arguments.length > 3 ? arguments[3] : undefined;
+  let timeout;
   const container = document.querySelector(`.${name}`);
   if (container) container.remove();
   document.body.insertAdjacentHTML('beforeend', html);
@@ -10143,21 +10143,24 @@ const currentInputClue = function (name, html) {
     if (addClass !== false) container.classList.add(addClass);
     container.classList.add('is-open');
   }, 1);
+  const currentContainer = document.querySelector(`.${name}`);
   clearTimeout(timeout);
   timeout = setTimeout(() => {
-    close();
+    if (currentContainer) {
+      close();
+    }
   }, 4500);
   document.querySelector(`.${name} .${name}__close`).addEventListener('click', () => {
     clearTimeout(timeout);
     close();
   });
   function close() {
-    try {
-      document.querySelector(`.${name}`).classList.remove('is-open');
+    if (currentContainer) {
+      currentContainer.classList.remove('is-open');
       setTimeout(() => {
         document.querySelector(`.${name}`).remove();
       }, 150);
-    } catch (error) {}
+    }
   }
 };
 const valueToValueAttr = field => {
@@ -13824,8 +13827,6 @@ const submitAppOffers = () => {
       const currentPriceFrom = price.dataset.filterDropdownPriceFrom;
       const currentPriceTo = price.dataset.filterDropdownPriceTo;
       if (priceCardFrom && currentPriceFrom && currentPriceFrom > priceCardFrom) {
-        let timeout;
-        clearTimeout(timeout);
         (0,_inputs__WEBPACK_IMPORTED_MODULE_0__.currentInputClue)('clue-primary', `
                 <div class="clue-primary">
                     <div class="clue-primary__close">
@@ -13833,14 +13834,15 @@ const submitAppOffers = () => {
                           <use xlink:href="./img/sprite.svg#x"></use>
                         </svg>
                     </div>
-                    <svg class="clue-primary__icon">
-                        <use xlink:href="./img/sprite.svg#info"></use>
-                    </svg>
+                    <picture class="clue-primary__img">
+                        <source srcset="./img/lora_face.webp" type="image/webp">
+                        <img loading="lazy" src="./img/lora_face.png" width="48" height="48" alt="lora">
+                    </picture>
                     <h4 class="clue-primary__title title-3">
                         Этот объект не подходит под выбранную цену
                     </h4>
                 </div>
-                `, 'offer-room-clue', timeout);
+                `, 'offer-room-clue');
       } else if (priceCardTo && currentPriceTo && currentPriceTo > priceCardTo) {} else {
         item.classList.toggle('_active');
       }

@@ -36,8 +36,6 @@ const submitAppOffers = () => {
             const currentPriceFrom = price.dataset.filterDropdownPriceFrom;
             const currentPriceTo = price.dataset.filterDropdownPriceTo;
             if (priceCardFrom && currentPriceFrom && currentPriceFrom > priceCardFrom) {
-                let timeout;
-                clearTimeout(timeout);
                 currentInputClue('clue-primary', `
                 <div class="clue-primary">
                     <div class="clue-primary__close">
@@ -45,14 +43,15 @@ const submitAppOffers = () => {
                           <use xlink:href="./img/sprite.svg#x"></use>
                         </svg>
                     </div>
-                    <svg class="clue-primary__icon">
-                        <use xlink:href="./img/sprite.svg#info"></use>
-                    </svg>
+                    <picture class="clue-primary__img">
+                        <source srcset="./img/lora_face.webp" type="image/webp">
+                        <img loading="lazy" src="./img/lora_face.png" width="48" height="48" alt="lora">
+                    </picture>
                     <h4 class="clue-primary__title title-3">
                         Этот объект не подходит под выбранную цену
                     </h4>
                 </div>
-                `,'offer-room-clue',timeout);
+                `,'offer-room-clue');
             } else if (priceCardTo && currentPriceTo && currentPriceTo > priceCardTo) {
 
             } else {

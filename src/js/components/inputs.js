@@ -205,7 +205,8 @@ export const inputClue = (target, name, html) => {
         }, 300);
     }
 };
-export const currentInputClue = (name, html, addClass = false, timeout) => {
+export const currentInputClue = (name, html, addClass = false) => {
+    let timeout;
     const container = document.querySelector(`.${name}`);
     if (container) container.remove();
     document.body.insertAdjacentHTML('beforeend', html);
@@ -214,9 +215,12 @@ export const currentInputClue = (name, html, addClass = false, timeout) => {
         if (addClass !== false) container.classList.add(addClass);
         container.classList.add('is-open');
     }, 1);
+    const currentContainer = document.querySelector(`.${name}`);
     clearTimeout(timeout);
     timeout = setTimeout(() => {
-        close();
+        if (currentContainer) {
+            close();
+        }
     }, 4500);
 
     document.querySelector(`.${name} .${name}__close`).addEventListener('click', () => {
@@ -225,13 +229,11 @@ export const currentInputClue = (name, html, addClass = false, timeout) => {
     })
 
     function close() {
-        try {
-            document.querySelector(`.${name}`).classList.remove('is-open');
+        if (currentContainer) {
+            currentContainer.classList.remove('is-open');
             setTimeout(() => {
                 document.querySelector(`.${name}`).remove();
             }, 150);
-        } catch (error) {
-
         }
     }
 }

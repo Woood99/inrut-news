@@ -16307,6 +16307,17 @@ textarea.input-reset {
   flex-wrap: wrap;
   max-width: 100%;
 }
+.field-select__wrapper .secondary-tooltip {
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+}
+.field-select__wrapper .secondary-tooltip .secondary-tooltip__content {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  max-width: 250px;
+}
 .field-select__item {
   margin: 0 4px 4px 0;
   border: 1px solid transparent;
@@ -16483,22 +16494,24 @@ textarea.input-reset {
   margin: 0 4px 4px 0;
 }
 .field-range--col {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
   -webkit-box-align: start;
   -ms-flex-align: start;
   align-items: start;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 .field-range--col .field-range__name {
   font-weight: 500;
   margin: 0 0 12px 0;
   --width: auto;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
 }
 .field-range--col .field-range__choices {
-  margin-left: 0;
-  margin-top: 12px;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
 }
 @media (max-width: 1212px) {
   .field-range {
@@ -22169,6 +22182,12 @@ textarea.input-reset {
 }
 .filter-range .noUi-connects {
   border-radius: 0;
+}
+.filter-range--one .filter-range__nav {
+  -ms-grid-columns: 1fr -webkit-max-content;
+  -ms-grid-columns: 1fr max-content;
+  grid-template-columns: 1fr -webkit-max-content;
+  grid-template-columns: 1fr max-content;
 }
 @media (max-width: 1212px) {
   .filter-range {
@@ -35722,6 +35741,9 @@ textarea.input-reset {
   margin-top: 24px;
   padding-top: 24px;
   border-top: 1px solid var(--primary100);
+}
+.submit-app-options__item--price .filter-dropdown__dropdown {
+  min-width: 100%;
 }
 
 .submit-price-proper .field-select__name {

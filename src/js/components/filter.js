@@ -31,7 +31,7 @@ export const filterDropdownChoice = () => {
                             })
                         }
                     });
-                    
+
                 } else {
                     el.querySelector('input').checked = true;
                 }
@@ -1050,18 +1050,34 @@ export const fieldRange = () => {
             })
         }
         if (choices) {
-            container.addEventListener('click', (e) => {
-                const target = e.target;
-                const choice = target.closest('.field-range__choice');
-                if (choice) {
-                    if (container.hasAttribute('data-field-range-floor')) {
-                        const index = choice.dataset.rangeFloorIndex;
-                        choice.classList.toggle('_active');
+            if (container.hasAttribute('data-field-range-floor')) {
+                const one = container.querySelector('[data-range-floor-index="1"]');
+                const two = container.querySelector('[data-range-floor-index="2"]');
+                const three = container.querySelector('[data-range-floor-index="3"]');
+
+                one.addEventListener('click',() => {
+                    one.classList.toggle('_active');
+                })
+                two.addEventListener('click',() => {
+                    two.classList.toggle('_active');
+                    if (checkContains(three)) {
+                        three.classList.remove('_active');
                     }
-                }
-            })
+                })
+                three.addEventListener('click',() => {
+                    three.classList.toggle('_active');
+                    if (checkContains(two)) {
+                        two.classList.remove('_active');
+                    }
+                })
+            }
         }
     })
+
+
+    function checkContains(item) {
+        return item.classList.contains('_active');
+    }
 }
 
 function filterModalScreenWidthCheck() {

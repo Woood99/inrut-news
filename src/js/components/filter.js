@@ -281,6 +281,12 @@ export const filterSum = () => {
                     el.removeAttribute('data-filter-dropdown-price-to');
                 }
             }
+            const offerRoomClue = document.querySelectorAll('.offer-room-clue');
+            if (offerRoomClue.length > 0) {
+                offerRoomClue.forEach(item => {
+                    item.classList.remove('_active');
+                })
+            }
             buttonWrapper.innerHTML = html;
         }, 0);
     }

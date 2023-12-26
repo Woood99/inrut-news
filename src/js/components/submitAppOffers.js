@@ -14,7 +14,7 @@ const submitAppOffers = () => {
             };
             const btnTextMap = {
                 more: btn.querySelector('span').textContent,
-                none:  container.classList.contains('submit-app-offers--advant') ? 'Скрыть квартиры' : 'Меньше'
+                none: container.classList.contains('submit-app-offers--advant') ? 'Скрыть квартиры' : 'Меньше'
             }
             btn.addEventListener('click', () => {
                 if (container.classList.contains('_active')) {
@@ -30,17 +30,28 @@ const submitAppOffers = () => {
         }
         items.forEach(item => {
             item.addEventListener('input', () => {
-                const priceCardFrom = item.dataset.offerRoomPriceFrom;
-                const priceCardTo = item.dataset.offerRoomPriceTo;
-                const currentPriceFrom = price.dataset.filterDropdownPriceFrom;
-                const currentPriceTo = price.dataset.filterDropdownPriceTo;
-                if (priceCardFrom && currentPriceFrom && currentPriceFrom > priceCardFrom) {
-                    item.classList.add('_clue');
-                } else if (priceCardTo && currentPriceTo && currentPriceTo > priceCardTo) {
+                const currentPrice = +price.dataset.filterDropdownPriceTo;
 
-                } else {
-                    item.classList.toggle('_active')
+                const priceCardFrom = +item.dataset.offerRoomPriceFrom;
+                const priceCardTo = +item.dataset.offerRoomPriceTo;
+                if (!priceCardFrom && priceCardTo && currentPrice && currentPrice > priceCardTo) {
+                    item.classList.add('_clue');
+                    return;
+                } 
+                if (priceCardTo && currentPrice && priceCardTo <= currentPrice) {
+                    item.classList.add('_clue');
+                    return;
                 }
+                if (priceCardFrom && currentPrice && currentPrice <= priceCardFrom) {
+                    item.classList.add('_clue');
+                    return;
+                }
+                if (priceCardFrom && priceCardTo && currentPrice && !(priceCardTo >= currentPrice && priceCardFrom < currentPrice)) {
+                    item.classList.add('_clue');
+                    return;
+                }
+
+                item.classList.toggle('_active')
             })
         })
 

@@ -7821,6 +7821,12 @@ const filterSum = () => {
           el.removeAttribute('data-filter-dropdown-price-to');
         }
       }
+      const offerRoomClue = document.querySelectorAll('.offer-room-clue');
+      if (offerRoomClue.length > 0) {
+        offerRoomClue.forEach(item => {
+          item.classList.remove('_active');
+        });
+      }
       buttonWrapper.innerHTML = html;
     }, 0);
   }
@@ -13851,15 +13857,26 @@ const submitAppOffers = () => {
     }
     items.forEach(item => {
       item.addEventListener('input', () => {
-        const priceCardFrom = item.dataset.offerRoomPriceFrom;
-        const priceCardTo = item.dataset.offerRoomPriceTo;
-        const currentPriceFrom = price.dataset.filterDropdownPriceFrom;
-        const currentPriceTo = price.dataset.filterDropdownPriceTo;
-        if (priceCardFrom && currentPriceFrom && currentPriceFrom > priceCardFrom) {
+        const currentPrice = +price.dataset.filterDropdownPriceTo;
+        const priceCardFrom = +item.dataset.offerRoomPriceFrom;
+        const priceCardTo = +item.dataset.offerRoomPriceTo;
+        if (!priceCardFrom && priceCardTo && currentPrice && currentPrice > priceCardTo) {
           item.classList.add('_clue');
-        } else if (priceCardTo && currentPriceTo && currentPriceTo > priceCardTo) {} else {
-          item.classList.toggle('_active');
+          return;
         }
+        if (priceCardTo && currentPrice && priceCardTo <= currentPrice) {
+          item.classList.add('_clue');
+          return;
+        }
+        if (priceCardFrom && currentPrice && currentPrice <= priceCardFrom) {
+          item.classList.add('_clue');
+          return;
+        }
+        if (priceCardFrom && priceCardTo && currentPrice && !(priceCardTo >= currentPrice && priceCardFrom < currentPrice)) {
+          item.classList.add('_clue');
+          return;
+        }
+        item.classList.toggle('_active');
       });
     });
     function hiddenItems(items) {

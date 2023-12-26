@@ -10035,6 +10035,7 @@ const textareaSecondary = () => {
     toggleActive(textareaInput, textarea);
     changeHeight();
     objectBaseComment();
+    if (textareaMinHeight) textarea.style.minHeight = `${textareaMinHeight}px`;
     textareaInput.addEventListener('input', e => {
       toggleActive(e.target, textarea);
       changeHeight();

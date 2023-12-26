@@ -778,7 +778,46 @@
     }
 }
 
+.field-input {
+    display: flex;
+    align-items: start;
 
+    &__name {
+        margin-top: 10px;
+        margin-right: 24px;
+        width: var(--width);
+        flex: 0 0 var(--width);
+
+        display: flex;
+        align-items: center;
+
+        @media (max-width:$desktop){
+             width: 100%;
+             flex: 0 0 100%; 
+             margin: 0 0 10px 0;
+        }
+    }
+
+    &__wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 100%;
+
+    }
+
+    &--col{
+        flex-direction: column;
+        .field-input__name{
+            font-weight: 500;
+            margin: 0 0 12px 0;
+            --width: auto;
+        }
+    }
+
+    @media (max-width:$desktop){
+         flex-direction: column; 
+    }
+}
 
 .field-range {
     display: flex;

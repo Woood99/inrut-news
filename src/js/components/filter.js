@@ -1034,6 +1034,19 @@ export const fieldSelect = () => {
                     const developer = document.querySelector('[data-submit-filter-developer]');
                     const currentItem = item.hasAttribute('data-submit-filter-object-type-item');
                     currentItem && item.classList.contains('_active') && developer ? developer.removeAttribute('hidden') : developer.setAttribute('hidden', '');
+               
+                    const houseItem = item.hasAttribute('data-submit-filter-object-type-house');
+                    const notHouseField = document.querySelectorAll('[data-submit-filter-type="1"]');
+                    const houseField = document.querySelectorAll('[data-submit-filter-type="3"]');
+                    if (notHouseField.length > 0 && houseField.length > 0) {
+                        if (houseItem) {
+                            notHouseField.forEach(item => item.setAttribute('hidden',''));
+                            houseField.forEach(item => item.removeAttribute('hidden'));
+                        } else {
+                            houseField.forEach(item => item.setAttribute('hidden',''));
+                            notHouseField.forEach(item => item.removeAttribute('hidden'));
+                        }
+                    }
                 }
             }
         })

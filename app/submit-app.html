@@ -340,11 +340,13 @@
                                     <button type="button" class="btn btn-reset tag field-select__item">
                                         <span>Вторичка</span>
                                     </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item" data-submit-filter-object-type-item>
+                                    <button type="button" class="btn btn-reset tag field-select__item" data-submit-filter-object-type-house>
                                         <span>Дом, коттеджи, дачи</span>
                                     </button>
                                 </div>
                             </div>
+                        </div>
+                        <div class="submit-app-options__choice" data-submit-filter-type="1">
                             <div class="submit-app-options__item field-dropdown field-dropdown--col" data-submit-filter-developer data-field-dropdown-name="developer" hidden>
                                 <div class="field-dropdown__name">
                                     Застройщик
@@ -514,7 +516,7 @@
 
                                 </div>
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col" data-field-select-name="apartments">
+                            <div class="submit-app-options__item field-select field-select--multiple field-select--col" data-field-select-name="apartments">
                                 <div class="field-select__name">
                                     Тип жилья
                                 </div>
@@ -901,8 +903,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="submit-app-options__choice" style="margin-top: 48px;">
-                            <div class="submit-app-options__item field-select field-select--col" data-field-select-name="apartments">
+                        <div class="submit-app-options__choice" data-submit-filter-type="3" hidden>
+                            <div class="submit-app-options__item field-select field-select--multiple field-select--col" data-field-select-name="apartments">
                                 <div class="field-select__name">
                                     Тип дома
                                 </div>
@@ -921,7 +923,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col" data-field-select-name="apartments">
+                            <div class="submit-app-options__item field-select field-select--multiple field-select--col" data-field-select-name="apartments">
                                 <div class="field-select__name">
                                     Материал стен
                                 </div>
@@ -946,7 +948,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col" data-field-select-name="apartments">
+                            <div class="submit-app-options__item field-select field-select--multiple field-select--col" data-field-select-name="apartments">
                                 <div class="field-select__name">
                                  Состояние дома
                                 </div>
@@ -965,7 +967,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col field-select--multiple field-select--rooms" data-field-select-name="rooms">
+                            <div class="submit-app-options__item field-select field-select--multiple field-select--col field-select--multiple field-select--rooms" data-field-select-name="rooms">
                                 <div class="field-select__name">
                                     Этажей в доме
                                 </div>
@@ -984,7 +986,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col field-select--multiple field-select--rooms" data-field-select-name="rooms">
+                            <div class="submit-app-options__item field-select field-select--multiple field-select--col field-select--multiple field-select--rooms" data-field-select-name="rooms">
                                 <div class="field-select__name">
                                     Количество комнат
                                 </div>
@@ -1023,15 +1025,27 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="submit-app-options__item field-input field-range--col">
-                                Количество спален
-                                <input type="text" name="Имя" class="input-reset" placeholder="Имя">
+                            <div class="submit-app-options__item field-input field-input--col">
+                                <div class="field-input__name">
+                                    Количество спален
+                                </div>
+                                <div class="field-input__wrapper input-text input-text--no-subtitle input-text--only-number">
+                                    <label class="input-text__label">
+                                        <input type="text" name="Имя" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                    </label>
+                                </div>
                             </div>
-                            <div class="submit-app-options__item field-input field-range--col">
-                                Количество санузлов
-                                <input type="text" name="Имя" class="input-reset" placeholder="Имя">
+                            <div class="submit-app-options__item field-input field-input--col">
+                                <div class="field-input__name">
+                                    Количество санузлов
+                                </div>
+                                <div class="field-input__wrapper input-text input-text--no-subtitle input-text--only-number">
+                                    <label class="input-text__label">
+                                        <input type="text" name="Имя" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                    </label>
+                                </div>
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col" data-field-select-name="apartments">
+                            <div class="submit-app-options__item field-select field-select--multiple field-select--col" data-field-select-name="apartments">
                                 <div class="field-select__name">
                                     Тип участка
                                 </div>
@@ -1097,7 +1111,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col" data-field-select-name="discounts-promotions">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="discounts-promotions">
                                 <div class="field-select__name">
                                     Скидки и акции
                                 </div>
@@ -1187,11 +1201,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="submit-app-options__offers submit-app-offers">
-                            <h3 class="submit-app-offers__title submit-app__row-title title-2">
+                        <div class="submit-app-options__choice" data-submit-filter-type="3" hidden>
+                            <h2 class="submit-app-options__title submit-app__row-title title-2">
                                 Коммуникации и удобства
-                            </h3>
-                            <div class="submit-app-options__item field-select field-select--col" data-field-select-name="apartments">
+                            </h2>
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="apartments">
                                 <div class="field-select__name">
                                     Канализация 
                                 </div>
@@ -1207,7 +1221,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col" data-field-select-name="apartments">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="apartments">
                                 <div class="field-select__name">
                                     Водоснабжение 
                                 </div>
@@ -1223,7 +1237,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col" data-field-select-name="apartments">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="apartments">
                                 <div class="field-select__name">
                                     Газ 
                                 </div>
@@ -1239,7 +1253,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col" data-field-select-name="apartments">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="apartments">
                                 <div class="field-select__name">
                                     Отопление 
                                 </div>
@@ -1255,7 +1269,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col" data-field-select-name="apartments">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="apartments">
                                 <div class="field-select__name">
                                     Электричество 
                                 </div>
@@ -1307,12 +1321,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="submit-app-options__offers submit-app-offers">
+                        <div class="submit-app-options__offers submit-app-offers submit-app-offers--improv" data-submit-filter-type="3" hidden>
                             <h3 class="submit-app-offers__title submit-app__row-title title-2">
                                 Благоустройство
                             </h3>
                             <div class="submit-app-offers__list">
-                                <article class="submit-app-offers__item offer-room">
+                                <article class="submit-app-offers__item offer-room offer-room-clue" data-offer-room-price-from="34086285">
                                     <div class="offer-room__check" aria-hidden="true">
                                         <svg>
                                             <use xlink:href="img/sprite.svg#verif"></use>
@@ -1329,9 +1343,13 @@
                                                 Баня/Сауна
                                             </div>
                                         </div>
+                                        <div class="offer-room__subtitle">
+                                            <span>2 предложения</span> 
+                                            <span>от 34 086 285 руб.</span>
+                                        </div>
                                     </div>
                                 </article>
-                                <article class="submit-app-offers__item offer-room">
+                                <article class="submit-app-offers__item offer-room offer-room-clue" data-offer-room-price-from="34086285">
                                     <div class="offer-room__check" aria-hidden="true">
                                         <svg>
                                             <use xlink:href="img/sprite.svg#verif"></use>
@@ -1348,9 +1366,13 @@
                                                 Бассейн в доме
                                             </div>
                                         </div>
+                                        <div class="offer-room__subtitle">
+                                            <span>2 предложения</span> 
+                                            <span>от 34 086 285 руб.</span>
+                                        </div>
                                     </div>
                                 </article>
-                                <article class="submit-app-offers__item offer-room">
+                                <article class="submit-app-offers__item offer-room offer-room-clue" data-offer-room-price-from="34086285">
                                     <div class="offer-room__check" aria-hidden="true">
                                         <svg>
                                             <use xlink:href="img/sprite.svg#verif"></use>
@@ -1367,9 +1389,13 @@
                                                 Бассейн на улице
                                             </div>
                                         </div>
+                                        <div class="offer-room__subtitle">
+                                            <span>2 предложения</span> 
+                                            <span>от 34 086 285 руб.</span>
+                                        </div>
                                     </div>
                                 </article>
-                                <article class="submit-app-offers__item offer-room">
+                                <article class="submit-app-offers__item offer-room offer-room-clue" data-offer-room-price-from="34086285">
                                     <div class="offer-room__check" aria-hidden="true">
                                         <svg>
                                             <use xlink:href="img/sprite.svg#verif"></use>
@@ -1386,9 +1412,13 @@
                                                 Терраса
                                             </div>
                                         </div>
+                                        <div class="offer-room__subtitle">
+                                            <span>2 предложения</span> 
+                                            <span>от 34 086 285 руб.</span>
+                                        </div>
                                     </div>
                                 </article>
-                                <article class="submit-app-offers__item offer-room">
+                                <article class="submit-app-offers__item offer-room offer-room-clue" data-offer-room-price-from="34086285">
                                     <div class="offer-room__check" aria-hidden="true">
                                         <svg>
                                             <use xlink:href="img/sprite.svg#verif"></use>
@@ -1405,6 +1435,10 @@
                                                 Гараж
                                             </div>
                                         </div>
+                                        <div class="offer-room__subtitle">
+                                            <span>2 предложения</span> 
+                                            <span>от 34 086 285 руб.</span>
+                                        </div>
                                     </div>
                                 </article>
                             </div>
@@ -1415,7 +1449,7 @@
                                 </svg>
                             </button>
                         </div>
-                        <div class="submit-app-options__offers submit-app-offers">
+                        <div class="submit-app-options__offers submit-app-offers submit-app-offers--advant" data-submit-filter-type="1">
                             <h3 class="submit-app-offers__title submit-app__row-title title-2">
                                 Уникальные преимущества объекта
                             </h3>

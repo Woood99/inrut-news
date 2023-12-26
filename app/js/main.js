@@ -8501,6 +8501,18 @@ const fieldSelect = () => {
           const developer = document.querySelector('[data-submit-filter-developer]');
           const currentItem = item.hasAttribute('data-submit-filter-object-type-item');
           currentItem && item.classList.contains('_active') && developer ? developer.removeAttribute('hidden') : developer.setAttribute('hidden', '');
+          const houseItem = item.hasAttribute('data-submit-filter-object-type-house');
+          const notHouseField = document.querySelectorAll('[data-submit-filter-type="1"]');
+          const houseField = document.querySelectorAll('[data-submit-filter-type="3"]');
+          if (notHouseField.length > 0 && houseField.length > 0) {
+            if (houseItem) {
+              notHouseField.forEach(item => item.setAttribute('hidden', ''));
+              houseField.forEach(item => item.removeAttribute('hidden'));
+            } else {
+              houseField.forEach(item => item.setAttribute('hidden', ''));
+              notHouseField.forEach(item => item.removeAttribute('hidden'));
+            }
+          }
         }
       }
     });
@@ -13807,82 +13819,84 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 const submitAppOffers = () => {
-  const container = document.querySelector('.submit-app-offers');
-  if (!container) return;
-  const items = container.querySelectorAll('.submit-app-offers__item');
-  const btn = container.querySelector('.submit-app-offers__btn');
-  const price = document.querySelector('.submit-app-options__item--price');
-  let minItem = 4;
-  hiddenItems(items);
-  if (btn) {
-    if (items.length <= minItem) {
-      btn.remove();
-      return;
+  const containers = document.querySelectorAll('.submit-app-offers');
+  if (containers.length === 0) return;
+  containers.forEach(container => {
+    const items = container.querySelectorAll('.submit-app-offers__item');
+    const btn = container.querySelector('.submit-app-offers__btn');
+    const price = document.querySelector('.submit-app-options__item--price');
+    let minItem = 4;
+    hiddenItems(items);
+    if (btn) {
+      if (items.length <= minItem) {
+        btn.remove();
+        return;
+      }
+      ;
+      const btnTextMap = {
+        more: btn.querySelector('span').textContent,
+        none: container.classList.contains('submit-app-offers--advant') ? 'Скрыть квартиры' : 'Меньше'
+      };
+      btn.addEventListener('click', () => {
+        if (container.classList.contains('_active')) {
+          hiddenItems(items);
+          btn.querySelector('span').textContent = btnTextMap.more;
+          container.classList.remove('_active');
+        } else {
+          visibleAllItem(items);
+          btn.querySelector('span').textContent = btnTextMap.none;
+          container.classList.add('_active');
+        }
+      });
+    }
+    items.forEach(item => {
+      item.addEventListener('input', () => {
+        const priceCardFrom = item.dataset.offerRoomPriceFrom;
+        const priceCardTo = item.dataset.offerRoomPriceTo;
+        const currentPriceFrom = price.dataset.filterDropdownPriceFrom;
+        const currentPriceTo = price.dataset.filterDropdownPriceTo;
+        if (priceCardFrom && currentPriceFrom && currentPriceFrom > priceCardFrom) {
+          item.classList.add('_clue');
+        } else if (priceCardTo && currentPriceTo && currentPriceTo > priceCardTo) {} else {
+          item.classList.toggle('_active');
+        }
+      });
+    });
+    function hiddenItems(items) {
+      items.forEach((item, index) => {
+        if (index >= minItem) {
+          item.setAttribute('hidden', '');
+        } else {
+          item.removeAttribute('hidden');
+        }
+      });
     }
     ;
-    const btnTextMap = {
-      more: btn.querySelector('span').textContent,
-      none: 'Скрыть квартиры'
-    };
-    btn.addEventListener('click', () => {
-      if (container.classList.contains('_active')) {
-        hiddenItems(items);
-        btn.querySelector('span').textContent = btnTextMap.more;
-        container.classList.remove('_active');
-      } else {
-        visibleAllItem(items);
-        btn.querySelector('span').textContent = btnTextMap.none;
-        container.classList.add('_active');
-      }
-    });
-  }
-  items.forEach(item => {
-    item.addEventListener('input', () => {
-      const priceCardFrom = item.dataset.offerRoomPriceFrom;
-      const priceCardTo = item.dataset.offerRoomPriceTo;
-      const currentPriceFrom = price.dataset.filterDropdownPriceFrom;
-      const currentPriceTo = price.dataset.filterDropdownPriceTo;
-      if (priceCardFrom && currentPriceFrom && currentPriceFrom > priceCardFrom) {
-        item.classList.add('_clue');
-      } else if (priceCardTo && currentPriceTo && currentPriceTo > priceCardTo) {} else {
-        item.classList.toggle('_active');
-      }
-    });
-  });
-  function hiddenItems(items) {
-    items.forEach((item, index) => {
-      if (index >= minItem) {
-        item.setAttribute('hidden', '');
-      } else {
+    function visibleAllItem(items) {
+      items.forEach(item => {
         item.removeAttribute('hidden');
-      }
-    });
-  }
-  ;
-  function visibleAllItem(items) {
-    items.forEach(item => {
-      item.removeAttribute('hidden');
-    });
-  }
-  updateMinItem();
-  window.addEventListener('resize', () => {
+      });
+    }
     updateMinItem();
+    window.addEventListener('resize', () => {
+      updateMinItem();
+    });
+    function updateMinItem() {
+      if (window.innerWidth > 1212) {
+        minItem = 4;
+        hiddenItems(items);
+      }
+      if (window.innerWidth <= 1212 && window.innerWidth > 768) {
+        minItem = 3;
+        hiddenItems(items);
+        return;
+      }
+      if (window.innerWidth <= 768) {
+        minItem = 2;
+        hiddenItems(items);
+      }
+    }
   });
-  function updateMinItem() {
-    if (window.innerWidth > 1212) {
-      minItem = 4;
-      hiddenItems(items);
-    }
-    if (window.innerWidth <= 1212 && window.innerWidth > 768) {
-      minItem = 3;
-      hiddenItems(items);
-      return;
-    }
-    if (window.innerWidth <= 768) {
-      minItem = 2;
-      hiddenItems(items);
-    }
-  }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (submitAppOffers);
 

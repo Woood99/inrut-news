@@ -7314,21 +7314,27 @@ function toggleLoadedClass(container) {
     images.children.length > 0 ? container.classList.add('_loaded') : container.classList.remove('_loaded');
   }
 }
-function showImage(input) {
+function showImage(input, e) {
   const container = input.closest('.photo-load');
   const placeSaleImages = container.querySelector('.place-sale-photo__images');
   if (placeSaleImages) {
-    let files = input.files;
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      const imageURL = window.URL.createObjectURL(file);
-      placeSaleImages.innerHTML += photoGenerate(imageURL, file.name);
+    var files = e.target.files;
+    for (var i = 0; i < files.length; i++) {
+      var img = document.createElement("img");
+      img.classList.add('preview');
+      img.file = files[i];
+      placeSaleImages.appendChild(img); // assuming that "preview" is the div you are targeting
+
+      var reader = new FileReader();
+      reader.onload = function (aImg) {
+        return function (e) {
+          aImg.src = e.target.result;
+        };
+      }(img);
+      reader.readAsDataURL(files[i]);
     }
-    if (placeSaleImages.classList.contains('drag-drop')) {
-      (0,_dragDrop__WEBPACK_IMPORTED_MODULE_0__.currentDragDrop)(placeSaleImages);
-    }
-    toggleLoadedClass(container);
   }
+  console.log(input.files);
 }
 function inputChange(input, e) {
   if (input.hasAttribute('data-upload-drop-pdf')) {
@@ -7349,11 +7355,11 @@ function inputChange(input, e) {
     }
   } else {
     if (e.type === 'change') {
-      showImage(input);
+      showImage(input, e);
     }
     if (e.type === 'drop') {
       input.files = e.dataTransfer.files;
-      showImage(input);
+      showImage(input, e);
     }
   }
 }

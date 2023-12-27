@@ -17,7 +17,7 @@
 
 <body class="page__body">
     <div class="site-container site-container--buy-apartment site-container--header-filter">
-        @include('partials/header.html')
+        @include('partials/header--new.html')
         <main class="main main-page-gap buy-apartment">
             <div class="buy-apartment__body">
                 <h1 class="buy-apartment__title title-1 container">
@@ -36,7 +36,10 @@
                             <button type="button" class="btn btn-reset filter__close">Закрыть</button>
                         </div>
                         <div class="filter__inner">
-                            <div class="filter__row buy-apartment-filter__row--1 container">
+                            <div class="filter__row buy-apartment-filter__row--1 container" style="grid-template-columns: 100px 278px 1fr 18% max-content;">
+                                <div class="btn btn-reset filter__item filter-more-btn filter__btn-control">
+                                    <span>Фильтры</span>
+                                </div>
                                 <div class="filter__item filter__item--quantity-selection request-catalog__quantity-selection quantity-selection">
                                     <div class="quantity-selection__inner">
                                         <div class="checkbox">
@@ -123,18 +126,19 @@
                                         </label>
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-reset filter__item select-map-btn" data-popup-path="metro-map">
+                                <!-- <button type="button" class="btn btn-reset filter__item select-map-btn" data-popup-path="metro-map">
                                     <span>Станция метро</span>
                                     <svg>
                                         <use xlink:href="./img/sprite.svg#location-two"></use>
                                     </svg>
-                                </button>
+                                </button> -->
                                 <button type="button" class="btn btn-reset filter__item select-map-btn" data-popup-path="search-area">
                                     <span>Район поиска</span>
                                     <svg>
                                         <use xlink:href="./img/sprite.svg#location-two"></use>
                                     </svg>
                                 </button>
+                                <button type="reset" class="btn btn-reset btn-secondary filter__clear">Очистить</button>
                             </div>
                             <div class="filter__row buy-apartment-filter__row--2" hidden>
                                 <div class="container">
@@ -498,15 +502,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="filter__controls container">
-                            <button type="button" class="btn btn-reset filter__btn-control">
-                                <span>Еще фильтры</span>
-                                <svg>
-                                    <use xlink:href="./img/sprite.svg#check"></use>
-                                </svg>
-                            </button>
-                            <button type="reset" class="btn btn-reset btn-secondary filter__clear">Очистить</button>
                         </div>
                     </div>
                 </form>

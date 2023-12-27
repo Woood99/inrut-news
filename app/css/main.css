@@ -16361,6 +16361,76 @@ textarea.input-reset {
     width: 100%;
   }
 }
+.field-select--img .field-select__wrapper {
+  width: 100%;
+}
+.field-select--img .field-select__item {
+  position: relative;
+  border: 1px solid var(--primary200);
+  background-color: var(--white);
+  color: var(--dark);
+  width: 20%;
+  min-height: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 8px 16px 0px 0;
+}
+.field-select--img .field-select__item > img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 16px;
+}
+.field-select--img .field-select__item .field-select__check {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--blue);
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+  -o-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+  transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+}
+.field-select--img .field-select__item .field-select__check svg {
+  width: 10px;
+  height: 10px;
+  fill: none;
+  stroke: var(--white);
+  stroke-width: 1.5px;
+}
+.field-select--img .field-select__item._active {
+  border: 1px solid var(--blue);
+}
+.field-select--img .field-select__item._active .field-select__check {
+  opacity: 1;
+  visibility: visible;
+}
+@media (min-width: 1213px) {
+  .field-select--img .field-select__item:hover:not(._no-select, ._active) {
+    background-color: var(--white);
+    border: 1px solid var(--blue);
+  }
+}
 @media (max-width: 1212px) {
   .field-select {
     -webkit-box-orient: vertical;

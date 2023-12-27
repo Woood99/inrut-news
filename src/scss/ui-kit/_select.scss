@@ -773,6 +773,71 @@
              }
         }
     }
+    &--img{
+        .field-select__wrapper{
+                width: 100%;
+        }
+        .field-select__item{
+            position: relative;
+            border: 1px solid var(--primary200);
+            background-color: var(--white);
+            color: var(--dark);
+        width: 20%;
+            min-height: 150px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 8px 16px 0px 0;
+            >img{
+                width: 50px;
+                height: 50px;
+                margin-bottom: 16px;
+            }
+            .field-select__check{
+                position: absolute;
+                top: -4px;
+                right: -4px;
+                width: 20px;
+                height: 20px;
+                background-color: var(--blue);
+                border-radius: 50%;
+        
+                display: flex;
+                align-items: center;
+                justify-content: center;
+        
+                opacity: 0;
+                visibility: hidden;
+        
+                transition: opacity $transitionSpeed $transitionFunction,
+                    visibility $transitionSpeed $transitionFunction;
+        
+                svg {
+                    width: 10px;
+                    height: 10px;
+                    fill: none;
+                    stroke: var(--white);
+                    stroke-width: 1.5px;
+                }
+            }
+            &._active{
+                border: 1px solid var(--blue);
+                .field-select__check{
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+            @media (min-width:$desktop-min){
+                &:hover {
+                    &:not(._no-select, ._active) {
+                        background-color: var(--white);
+                        border: 1px solid var(--blue);
+                    }
+                } 
+            }
+        }
+    }
     @media (max-width:$desktop){
          flex-direction: column; 
     }

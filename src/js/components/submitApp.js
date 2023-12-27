@@ -1,11 +1,18 @@
 const submitApp = () => {
     const container = document.querySelector('.submit-app');
     if (!container) return;
-    const checkbox = container.querySelector('.submit-app-maps__checkbox .checkbox-secondary__input');
+    const any = container.querySelector('.submit-app-maps__any .checkbox-secondary__input');
+    const another = container.querySelector('.submit-app-maps__another');
+
     const maps = container.querySelector('.submit-app-maps__map');
-    checkbox.addEventListener('change',() => {
-        if (checkbox.checked) maps.setAttribute('hidden','');
-        if (!checkbox.checked) maps.removeAttribute('hidden');
+    any.addEventListener('change',() => {
+        if (any.checked) {
+            maps.setAttribute('hidden','');
+            another.setAttribute('hidden','');
+        } else {
+            maps.removeAttribute('hidden');
+            another.removeAttribute('hidden');
+        }
     })
 
     const price = container.querySelector('.submit-app-options__item--price');

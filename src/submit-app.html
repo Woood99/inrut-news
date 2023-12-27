@@ -34,6 +34,45 @@
             </div>
             <div class="submit-app__body">
                 <form action="#" id="submit-app-form" class="submit-app__container container">
+                    <div class="submit-app__row submit-app-options">
+                        <h2 class="submit-app-options__title submit-app__row-title title-2">
+                            Тип недвижимости
+                        </h2>
+                        <div class="submit-app-options__choice">
+                            <div class="submit-app-options__item field-select field-select--img field-select--col" data-submit-filter-object-type
+                                data-field-select-name="object-type">
+                                <div class="field-select__wrapper">
+                                    <button type="button" class="btn btn-reset tag field-select__item" data-submit-filter-object-type-item>
+                                        <img loading="lazy" src="./img/new-buildings.svg" alt="Новостройки">
+                                        <span>Новостройки</span>
+                                        <div class="field-select__check" aria-hidden="true">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#verif"></use>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <img loading="lazy" src="./img/secondary-house.svg" alt="Вторичка">
+                                        <span>Вторичка</span>
+                                        <div class="field-select__check" aria-hidden="true">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#verif"></use>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item" data-submit-filter-object-type-house>
+                                        <img loading="lazy" src="./img/house2.svg" alt="Дом, коттеджи, дачи">
+                                        <span>Дом, коттеджи, дачи</span>
+                                        <div class="field-select__check" aria-hidden="true">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#verif"></use>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="submit-app__row submit-app-maps">
                         <h2 class="submit-app-maps__title submit-app__row-title title-2">
                             Расположение поиска
@@ -61,7 +100,7 @@
                                 </svg>
                             </button>
                         </div>
-                        <div class="submit-app-maps__checkbox checkbox-secondary">
+                        <div class="submit-app-maps__checkbox submit-app-maps__any checkbox-secondary">
                             <input id="filter-urgent-app_1_2" name="filter-urgent-app-2" class="checkbox-secondary__input" type="checkbox" value="true">
                             <label for="filter-urgent-app_1_2" class="checkbox-secondary__label">
                                 <span class="checkbox-secondary__text">Любой район</span>
@@ -90,10 +129,10 @@
                             </div>
                             <div id="map-draw" class="map-primary remove-copyrights-pane"></div>
                         </div>
-                        <div class="submit-app-maps__checkbox checkbox-secondary">
+                        <div class="submit-app-maps__checkbox submit-app-maps__another checkbox-secondary">
                             <input id="filter-urgent-app_1_3" name="filter-urgent-app-3" class="checkbox-secondary__input" type="checkbox" value="true">
                             <label for="filter-urgent-app_1_3" class="checkbox-secondary__label">
-                                <span class="checkbox-secondary__text">Можно предлагать другие районы</span>
+                                <span class="checkbox-secondary__text">Можно предлагать соседние районы</span>
                             </label>
                         </div>
                     </div>
@@ -103,7 +142,8 @@
                                 Цена и свойства расчёта
                             </h2>
                             <div class="submit-app-options__row submit-app-options__row--3">
-                                <div class="submit-app-options__item submit-app-options__item--price filter-dropdown" data-filter-dropdown-name="Цена" data-filter-dropdown-subtitle="Любая" style="margin: 0;">
+                                <div class="submit-app-options__item submit-app-options__item--price filter-dropdown" data-filter-dropdown-name="Цена"
+                                    data-filter-dropdown-subtitle="Любая" style="margin: 0;">
                                     <button type="button" class="btn btn-reset filter-dropdown__button">
                                         <div class="filter-dropdown__button-wrapper">
                                             <div>
@@ -294,25 +334,32 @@
                         <h2 class="submit-app-options__title submit-app__row-title title-2">
                             Параметры заявки
                         </h2>
-                        <div class="submit-app-options__choice">
-                            <div class="submit-app-options__item field-select field-select--col" data-submit-filter-object-type data-field-select-name="object-type">
+                        <div class="submit-app-options__choice" data-submit-filter-type="1">
+                            <div class="submit-app-options__item field-select field-select--multiple field-select--col" data-field-select-name="apartments">
                                 <div class="field-select__name">
-                                    Тип объекта
+                                    Тип жилья
                                 </div>
                                 <div class="field-select__wrapper">
-                                    <button type="button" class="btn btn-reset tag field-select__item" data-submit-filter-object-type-item>
-                                        <span>Новостройки</span>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Квартира</span>
                                     </button>
                                     <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Вторичка</span>
+                                        <span>Апартаменты</span>
                                     </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item" data-submit-filter-object-type-house>
-                                        <span>Дом, коттеджи, дачи</span>
-                                    </button>
+                                    <div class="secondary-tooltip secondary-tooltip--dark">
+                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#info"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="secondary-tooltip__content">
+                                            <span>
+                                                В апартаментах нельзя прописаться и получить за них налоговый вычет, поэтому они стоят дешевле.
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="submit-app-options__choice" data-submit-filter-type="1">
                             <div class="submit-app-options__item field-dropdown field-dropdown--col" data-submit-filter-developer data-field-dropdown-name="developer" hidden>
                                 <div class="field-dropdown__name">
                                     Застройщик
@@ -480,31 +527,6 @@
                                         </div>
                                     </div>
 
-                                </div>
-                            </div>
-                            <div class="submit-app-options__item field-select field-select--multiple field-select--col" data-field-select-name="apartments">
-                                <div class="field-select__name">
-                                    Тип жилья
-                                </div>
-                                <div class="field-select__wrapper">
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Квартира</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Апартаменты</span>
-                                    </button>
-                                    <div class="secondary-tooltip secondary-tooltip--dark">
-                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#info"></use>
-                                            </svg>
-                                        </button>
-                                        <div class="secondary-tooltip__content">
-                                            <span>
-                                                В апартаментах нельзя прописаться и получить за них налоговый вычет, поэтому они стоят дешевле.
-                                            </span>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <div class="submit-app-options__item field-select field-select--col field-select--multiple field-select--rooms" data-field-select-name="rooms">
@@ -788,34 +810,10 @@
                                         <span>Рассрочка</span>
                                     </button>
                                     <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Мат. капитал</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
                                         <span>Трейд-ин</span>
                                     </button>
                                     <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Старт продаж</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Выдача ключей</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Новый корпус</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Кэшбэк и материальные подарки</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Специальные цены</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Последние квартиры</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Умный дом с Алисой</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Трансфер/Такси</span>
+                                        <span>Ищу со скидкой</span>
                                     </button>
                                 </div>
                             </div>
@@ -916,7 +914,7 @@
                             </div>
                             <div class="submit-app-options__item field-select field-select--multiple field-select--col" data-field-select-name="state-house">
                                 <div class="field-select__name">
-                                 Состояние дома
+                                    Состояние дома
                                 </div>
                                 <div class="field-select__wrapper">
                                     <button type="button" class="btn btn-reset tag field-select__item">
@@ -933,8 +931,8 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="submit-app-options__item field-select field-select--multiple field-select--col field-select--multiple field-select--rooms" 
-                            data-field-select-name="floors-house">
+                            <div class="submit-app-options__item field-select field-select--multiple field-select--col field-select--multiple field-select--rooms"
+                                data-field-select-name="floors-house">
                                 <div class="field-select__name">
                                     Этажей в доме
                                 </div>
@@ -953,7 +951,8 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="submit-app-options__item field-select field-select--multiple field-select--col field-select--multiple field-select--rooms" data-field-select-name="rooms-house">
+                            <div class="submit-app-options__item field-select field-select--multiple field-select--col field-select--multiple field-select--rooms"
+                                data-field-select-name="rooms-house">
                                 <div class="field-select__name">
                                     Количество комнат
                                 </div>
@@ -992,24 +991,40 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="submit-app-options__item field-input field-input--col" data-field-input-name="bedrooms">
-                                <div class="field-input__name">
+                            <div class="submit-app-options__item field-select field-select--multiple field-select--col field-select--multiple field-select--rooms"
+                                data-field-select-name="bedrooms">
+                                <div class="field-select__name">
                                     Количество спален
                                 </div>
-                                <div class="field-input__wrapper input-text input-text--no-subtitle input-text--only-number">
-                                    <label class="input-text__label">
-                                        <input type="text" name="Имя" maxlength="3" class="input-reset input-text__input" placeholder="">
-                                    </label>
+                                <div class="field-select__wrapper">
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>1</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>2</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>3</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>4+</span>
+                                    </button>
                                 </div>
                             </div>
-                            <div class="submit-app-options__item field-input field-input--col" data-field-input-name="bathrooms">
-                                <div class="field-input__name">
-                                    Количество санузлов
+                            <div class="submit-app-options__item field-select field-select--col" data-field-select-name="bathroom">
+                                <div class="field-select__name">
+                                    Санузел
                                 </div>
-                                <div class="field-input__wrapper input-text input-text--no-subtitle input-text--only-number">
-                                    <label class="input-text__label">
-                                        <input type="text" name="Имя" maxlength="3" class="input-reset input-text__input" placeholder="">
-                                    </label>
+                                <div class="field-select__wrapper">
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Совмещённый</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Раздельный</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Более одного</span>
+                                    </button>
                                 </div>
                             </div>
                             <div class="submit-app-options__item field-select field-select--multiple field-select--col" data-field-select-name="type-site">
@@ -1085,34 +1100,10 @@
                                         <span>Рассрочка</span>
                                     </button>
                                     <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Мат. капитал</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
                                         <span>Трейд-ин</span>
                                     </button>
                                     <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Старт продаж</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Выдача ключей</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Новый корпус</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Кэшбэк и материальные подарки</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Специальные цены</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Последние квартиры</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Умный дом с Алисой</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Трансфер/Такси</span>
+                                        <span>Ищу со скидкой</span>
                                     </button>
                                 </div>
                             </div>
@@ -1172,7 +1163,7 @@
                             </h2>
                             <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="sewerage">
                                 <div class="field-select__name">
-                                    Канализация 
+                                    Канализация
                                 </div>
                                 <div class="field-select__wrapper">
                                     <button type="button" class="btn btn-reset tag field-select__item">
@@ -1188,7 +1179,7 @@
                             </div>
                             <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="water">
                                 <div class="field-select__name">
-                                    Водоснабжение 
+                                    Водоснабжение
                                 </div>
                                 <div class="field-select__wrapper">
                                     <button type="button" class="btn btn-reset tag field-select__item">
@@ -1204,7 +1195,7 @@
                             </div>
                             <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="gas">
                                 <div class="field-select__name">
-                                    Газ 
+                                    Газ
                                 </div>
                                 <div class="field-select__wrapper">
                                     <button type="button" class="btn btn-reset tag field-select__item">
@@ -1220,7 +1211,7 @@
                             </div>
                             <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="heating">
                                 <div class="field-select__name">
-                                    Отопление 
+                                    Отопление
                                 </div>
                                 <div class="field-select__wrapper">
                                     <button type="button" class="btn btn-reset tag field-select__item">
@@ -1236,7 +1227,7 @@
                             </div>
                             <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="electricity">
                                 <div class="field-select__name">
-                                    Электричество 
+                                    Электричество
                                 </div>
                                 <div class="field-select__wrapper">
                                     <button type="button" class="btn btn-reset tag field-select__item">
@@ -1271,7 +1262,7 @@
                             </div>
                             <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="nearest-water">
                                 <div class="field-select__name">
-                                    Ближайший водоём
+                                    Рядом с водой
                                 </div>
                                 <div class="field-select__wrapper">
                                     <button type="button" class="btn btn-reset tag field-select__item">
@@ -1383,7 +1374,8 @@
                                         </div>
                                     </div>
                                 </article>
-                                <article class="submit-app-offers__item offer-room offer-room-clue" hidden data-offer-room-price-from="12086285" data-offer-room-price-to="52086285">
+                                <article class="submit-app-offers__item offer-room offer-room-clue" hidden data-offer-room-price-from="12086285"
+                                    data-offer-room-price-to="52086285">
                                     <div class="offer-room__check" aria-hidden="true">
                                         <svg>
                                             <use xlink:href="img/sprite.svg#verif"></use>
@@ -1511,7 +1503,8 @@
                                         </div>
                                     </div>
                                 </article>
-                                <article class="submit-app-offers__item offer-room offer-room-clue" hidden data-offer-room-price-from="12086285" data-offer-room-price-to="52086285">
+                                <article class="submit-app-offers__item offer-room offer-room-clue" hidden data-offer-room-price-from="12086285"
+                                    data-offer-room-price-to="52086285">
                                     <div class="offer-room__check" aria-hidden="true">
                                         <svg>
                                             <use xlink:href="img/sprite.svg#verif"></use>
@@ -1573,7 +1566,7 @@
                         </span>
                         <button type="button" class="btn btn-reset banner-mind__btn" data-popup-path="chat-lora">
                             <svg>
-                              <use xlink:href="./img/sprite.svg#check"></use>
+                                <use xlink:href="./img/sprite.svg#check"></use>
                             </svg>
                         </button>
                     </div>

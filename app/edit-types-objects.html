@@ -234,14 +234,14 @@
             <ul class="add-popup__list list-reset">
                 <li class="add-popup__item">
                     <a href="#" class="add-popup__link">
-                        <img loading="lazy" src="./img/flat.svg" alt=">Объявление на продаж">
-                        <span>Объект на продажу</span>
+                        <img loading="lazy" src="./img/flat.svg" alt=">Заявка на покупку">
+                        <span>Заявка на покупку</span>
                     </a>
                 </li>
                 <li class="add-popup__item">
                     <a href="#" class="add-popup__link">
-                        <img loading="lazy" src="./img/flat.svg" alt=">Заявка на покупку">
-                        <span>Заявка на покупку</span>
+                        <img loading="lazy" src="./img/flat.svg" alt=">Объявление на продаж">
+                        <span>Объект на продажу</span>
                     </a>
                 </li>
             </ul>
@@ -886,37 +886,41 @@
                     <span class=" personal-area__name">
                         Иван П.
                     </span>
-                    <button type="button" class="btn btn-reset personal-area__edit" data-popup-path="edit-profile_agent">Редактировать профиль</button>
+                    <button type="button" class="btn btn-reset personal-area__edit" data-popup-path="edit-profile">Редактировать профиль</button>
                 </div>
                 <nav class="personal-area__nav">
                     <ul data-spollers class="personal-area__list list-reset">
-                        <li class="personal-area__item">
-                            <button type="button" class="btn btn-reset personal-area__btn">
+                        <li class="personal-area__item personal-area-dropdown">
+                            <button type="button" data-spoller class="btn btn-reset personal-area__btn">
                                 <svg>
-                                    <use xlink:href="./img/sprite.svg#list-check"></use>
+                                    <use xlink:href="img/sprite.svg#add"></use>
                                 </svg>
-                                <span>Баланс</span>
-                                <span class="personal-area__quantity">
-                                    100 000
-                                </span>
-                            </button>
-                        </li>
-                    </ul>
-                    <ul data-spollers class="personal-area__list list-reset">
-                        <li class="personal-area__item">
-                            <button type="button" class="btn btn-reset personal-area__btn">
-                                <svg>
-                                    <use xlink:href="./img/sprite.svg#tg"></use>
+                                <span>Добавить</span>
+                                <svg class="personal-area-dropdown__arrow">
+                                    <use xlink:href="img/sprite.svg#arrow-small"></use>
                                 </svg>
-                                <span>Добавить объект</span>
                             </button>
+                            <div class="personal-area-dropdown__body">
+                                <button type="button" class="btn btn-reset personal-area__btn">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#house"></use>
+                                    </svg>
+                                    <span>Объявление на продажу</span>
+                                </button>
+                                <button type="button" class="btn btn-reset personal-area__btn">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#tg"></use>
+                                    </svg>
+                                    <span>Заявка на покупку</span>
+                                </button>
+                            </div>
                         </li>
                     </ul>
                     <ul class="personal-area__list list-reset">
                         <li class="personal-area__item">
                             <button type="button" class="btn btn-reset personal-area__btn">
                                 <svg>
-                                    <use xlink:href="./img/sprite.svg#chat"></use>
+                                    <use xlink:href="img/sprite.svg#chat"></use>
                                 </svg>
                                 <span>Чат</span>
                                 <span class="personal-area__quantity">
@@ -929,54 +933,28 @@
                         <li class="personal-area__item">
                             <button type="button" class="btn btn-reset personal-area__btn">
                                 <svg>
-                                    <use xlink:href="./img/sprite.svg#favorite-stroke"></use>
+                                    <use xlink:href="img/sprite.svg#cart-1"></use>
                                 </svg>
-                                <span>Избранное</span>
+                                <span>Мои заявки на покупку</span>
                             </button>
                         </li>
-                    </ul>
-                    <ul class="personal-area__list list-reset">
                         <li class="personal-area__item">
                             <button type="button" class="btn btn-reset personal-area__btn">
                                 <svg>
-                                    <use xlink:href="./img/sprite.svg#list"></use>
+                                    <use xlink:href="img/sprite.svg#cart-3"></use>
                                 </svg>
-                                <span>Заявки на покупку</span>
+                                <span>Предложения по заявкам</span>
                                 <span class="personal-area__quantity">
-                                    1234
+                                    +6
                                 </span>
                             </button>
                         </li>
                         <li class="personal-area__item">
                             <button type="button" class="btn btn-reset personal-area__btn">
                                 <svg>
-                                    <use xlink:href="./img/sprite.svg#calendar"></use>
+                                    <use xlink:href="img/sprite.svg#calendar"></use>
                                 </svg>
-                                <span>Календарь</span>
-                            </button>
-                        </li>
-                        <li class="personal-area__item">
-                            <button type="button" class="btn btn-reset personal-area__btn">
-                                <svg>
-                                    <use xlink:href="./img/sprite.svg#house-laptop"></use>
-                                </svg>
-                                <span>Мои клиенты</span>
-                            </button>
-                        </li>
-                        <li class="personal-area__item">
-                            <button type="button" class="btn btn-reset personal-area__btn">
-                                <svg>
-                                    <use xlink:href="./img/sprite.svg#briefcase-2"></use>
-                                </svg>
-                                <span>Сделки</span>
-                            </button>
-                        </li>
-                        <li class="personal-area__item">
-                            <button type="button" class="btn btn-reset personal-area__btn">
-                                <svg>
-                                    <use xlink:href="./img/sprite.svg#briefcase-2"></use>
-                                </svg>
-                                <span>Тарифная карта</span>
+                                <span>Календарь просмотров</span>
                             </button>
                         </li>
                     </ul>
@@ -984,35 +962,7 @@
                         <li class="personal-area__item">
                             <button type="button" class="btn btn-reset personal-area__btn">
                                 <svg>
-                                    <use xlink:href="./img/sprite.svg#house-chimney-window"></use>
-                                </svg>
-                                <span>База недвижимости</span>
-                            </button>
-                        </li>
-                        <li class="personal-area__item">
-                            <button type="button" class="btn btn-reset personal-area__btn">
-                                <svg>
-                                    <use xlink:href="./img/sprite.svg#list"></use>
-                                </svg>
-                                <span>Мои объекты</span>
-                            </button>
-                        </li>
-                    </ul>
-                    <ul class="personal-area__list list-reset">
-                        <li class="personal-area__item">
-                            <button type="button" class="btn btn-reset personal-area__btn">
-                                <svg>
-                                    <use xlink:href="./img/sprite.svg#bank"></use>
-                                </svg>
-                                <span>Ипотечные заявки</span>
-                            </button>
-                        </li>
-                    </ul>
-                    <ul class="personal-area__list list-reset">
-                        <li class="personal-area__item">
-                            <button type="button" class="btn btn-reset personal-area__btn">
-                                <svg>
-                                    <use xlink:href="./img/sprite.svg#sign-in"></use>
+                                    <use xlink:href="img/sprite.svg#sign-in"></use>
                                 </svg>
                                 <span>Выйти</span>
                             </button>

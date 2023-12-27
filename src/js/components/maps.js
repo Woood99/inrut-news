@@ -261,8 +261,8 @@ const maps = () => {
             let timerID = setInterval(function () {
                 if (typeof ymaps !== "undefined") {
                    
-                    skeletonMap.remove();
-                    mapSelector.removeAttribute('hidden');
+                     skeletonMap.remove();
+                     mapSelector.classList.remove('_hidden-map');
 
                     loaded_map = true;
                     clearInterval(timerID);

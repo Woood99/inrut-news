@@ -33,10 +33,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            padding: 16px;
-            background-color: var(--white);
             border-radius: 12px;
-            box-shadow: var(--shadow-secondary);
         }
 
         &._sticky {
@@ -52,6 +49,13 @@
         .map-primary {
             height: 100%;
             width: 100%;
+            
+            transition: opacity $transitionSpeed $transitionFunction,
+            visibility $transitionSpeed $transitionFunction;
+            &._hidden-map{
+                opacity: 0;
+                visibility: hidden;
+            }
         }
 
         &-resize {

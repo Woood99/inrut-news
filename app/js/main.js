@@ -10852,7 +10852,7 @@ const maps = () => {
       let timerID = setInterval(function () {
         if (typeof ymaps !== "undefined") {
           skeletonMap.remove();
-          mapSelector.removeAttribute('hidden');
+          mapSelector.classList.remove('_hidden-map');
           loaded_map = true;
           clearInterval(timerID);
         }

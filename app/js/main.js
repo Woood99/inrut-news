@@ -10805,29 +10805,20 @@ const maps = () => {
     ymaps.ready(init);
     const btn = container.querySelector('.control-cards__maps-resize');
     function reziseContainer(map) {
-      btn.addEventListener('mousedown', function (e) {
+      let value = false;
+      btn.addEventListener('mousedown', e => {
         e.preventDefault();
-        window.addEventListener('mousemove', resize);
-        window.addEventListener('mouseup', stopResize);
+        resize();
       });
-      function resize(e) {
-        const width = e.pageX - container.getBoundingClientRect().left - 20;
-        if (!(width <= 780 && width >= 382)) return;
-        container.style.gridTemplateColumns = `${width}px 1fr`;
-        map.container.fitToViewport();
-        const controlCardContent = container.querySelector('.control-cards__content');
-        const controlCardBtnVertical = container.querySelector('.control-cards__btn--vertical');
-        const controlCardBtnHorizontal = container.querySelector('.control-cards__btn--horizontal');
-        if (width <= 770 && width > 600) {
-          controlCardContent.classList.add('control-cards__content--horizontal-map');
-          (0,_controlCards__WEBPACK_IMPORTED_MODULE_0__.controlCardsCardSecondary)(controlCardContent, controlCardBtnVertical);
+      function resize() {
+        if (!value) {
+          container.style.gridTemplateColumns = `382px 1fr`;
+          value = true;
         } else {
-          controlCardContent.classList.remove('control-cards__content--horizontal-map');
-          (0,_controlCards__WEBPACK_IMPORTED_MODULE_0__.controlCardsCardSecondary)(controlCardContent, controlCardBtnHorizontal);
+          container.style.gridTemplateColumns = `780px 1fr`;
+          value = false;
         }
-      }
-      function stopResize() {
-        window.removeEventListener('mousemove', resize);
+        map.container.fitToViewport();
       }
     }
     const cardFull = container.querySelector('.popup-map__card-full');
@@ -10854,6 +10845,19 @@ const maps = () => {
         }
       }
     });
+    const skeletonMap = container.querySelector('.control-cards__maps--skeleton');
+    const mapSelector = container.querySelector('#control-cards__maps');
+    let loaded_map = false;
+    if (!loaded_map) {
+      let timerID = setInterval(function () {
+        if (typeof ymaps !== "undefined") {
+          skeletonMap.remove();
+          mapSelector.removeAttribute('hidden');
+          loaded_map = true;
+          clearInterval(timerID);
+        }
+      }, 500);
+    }
   }
   if (document.querySelector('#map-draw')) {
     function init() {

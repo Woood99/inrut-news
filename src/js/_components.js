@@ -71,7 +71,6 @@ import mortgage from './components/mortgage';
 import choicePay from './components/choicePay';
 import genplan from './components/genplan';
 import mapMetro from './components/mapMetro';
-import cardStockPopup from './components/cardStockPopup';
 import tag from './components/tag';
 import chat from './components/chat';
 import city from './components/city';
@@ -186,9 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
     choicePay();
     genplan();
     mapMetro();
-    cardStockPopup('.stock-developer__content .cards-list__items');
-    cardStockPopup('.block-stock .block-stock__slider');
-    cardStockPopup('.stock-offers-popup__items');
     tag();
     chat();
     city();

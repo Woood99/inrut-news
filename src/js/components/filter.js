@@ -746,15 +746,19 @@ export const filterControl = () => {
                             top: 0,
                             behavior: 'smooth'
                         })
+                    } else {
+                        enableScroll();
                     }
                 } else {
                     itemsHidden.forEach(item => {
                         _slideToggle(item, 700);
                     });
+                    container.classList.add('_active');
                     if (!container.classList.contains('filter--new-style')) {
                         moreBtn.querySelector('span').textContent = btnTextMap.none;
+                    } else {
+                        disableScroll();
                     }
-                    container.classList.add('_active');
                 }
             });
         }

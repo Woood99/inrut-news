@@ -4187,38 +4187,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_choicePay__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/choicePay */ "./src/js/components/choicePay.js");
 /* harmony import */ var _components_genplan__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/genplan */ "./src/js/components/genplan.js");
 /* harmony import */ var _components_mapMetro__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/mapMetro */ "./src/js/components/mapMetro.js");
-/* harmony import */ var _components_cardStockPopup__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/cardStockPopup */ "./src/js/components/cardStockPopup.js");
-/* harmony import */ var _components_tag__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/tag */ "./src/js/components/tag.js");
-/* harmony import */ var _components_chat__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/chat */ "./src/js/components/chat.js");
-/* harmony import */ var _components_city__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/city */ "./src/js/components/city.js");
-/* harmony import */ var _components_scrollDrag__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/scrollDrag */ "./src/js/components/scrollDrag.js");
-/* harmony import */ var _components_cardActions__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/cardActions */ "./src/js/components/cardActions.js");
-/* harmony import */ var _components_furnishingSets__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/furnishingSets */ "./src/js/components/furnishingSets.js");
-/* harmony import */ var _components_bookConsultation__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/bookConsultation */ "./src/js/components/bookConsultation.js");
-/* harmony import */ var _components_recordViewing__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/recordViewing */ "./src/js/components/recordViewing.js");
-/* harmony import */ var _components_wallet__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/wallet */ "./src/js/components/wallet.js");
-/* harmony import */ var _components_favorites__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/favorites */ "./src/js/components/favorites.js");
-/* harmony import */ var _components_clientPage__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/clientPage */ "./src/js/components/clientPage.js");
-/* harmony import */ var _components_requisites__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/requisites */ "./src/js/components/requisites.js");
-/* harmony import */ var _components_navDropdown__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./components/navDropdown */ "./src/js/components/navDropdown.js");
-/* harmony import */ var _components_videoModal__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./components/videoModal */ "./src/js/components/videoModal.js");
-/* harmony import */ var _components_favoriteBtn__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./components/favoriteBtn */ "./src/js/components/favoriteBtn.js");
-/* harmony import */ var _components_advancePayment__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./components/advancePayment */ "./src/js/components/advancePayment.js");
-/* harmony import */ var _components_submitApp__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./components/submitApp */ "./src/js/components/submitApp.js");
-/* harmony import */ var _components_wantDiscount__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./components/wantDiscount */ "./src/js/components/wantDiscount.js");
-/* harmony import */ var _components_onlineDisplay__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./components/onlineDisplay */ "./src/js/components/onlineDisplay.js");
-/* harmony import */ var _components_bankOffer__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./components/bankOffer */ "./src/js/components/bankOffer.js");
-/* harmony import */ var _components_tooltips__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./components/tooltips */ "./src/js/components/tooltips.js");
-/* harmony import */ var _components_dragDrop__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./components/dragDrop */ "./src/js/components/dragDrop.js");
-/* harmony import */ var air_datepicker__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! air-datepicker */ "./node_modules/air-datepicker/index.es.js");
-/* harmony import */ var _components_createCalc__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./components/createCalc */ "./src/js/components/createCalc.js");
-/* harmony import */ var _components_videoLoad__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./components/videoLoad */ "./src/js/components/videoLoad.js");
-/* harmony import */ var _components_haracteristicsBlock__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./components/сharacteristicsBlock */ "./src/js/components/сharacteristicsBlock.js");
-/* harmony import */ var _components_submitAppOffers__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./components/submitAppOffers */ "./src/js/components/submitAppOffers.js");
-/* harmony import */ var _components_mortgageRequests__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./components/mortgageRequests */ "./src/js/components/mortgageRequests.js");
-/* harmony import */ var _modules_moveToFromBlock__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ./modules/moveToFromBlock */ "./src/js/modules/moveToFromBlock.js");
-/* harmony import */ var _components_replaceText__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ./components/replaceText */ "./src/js/components/replaceText.js");
-
+/* harmony import */ var _components_tag__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/tag */ "./src/js/components/tag.js");
+/* harmony import */ var _components_chat__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/chat */ "./src/js/components/chat.js");
+/* harmony import */ var _components_city__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/city */ "./src/js/components/city.js");
+/* harmony import */ var _components_scrollDrag__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/scrollDrag */ "./src/js/components/scrollDrag.js");
+/* harmony import */ var _components_cardActions__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/cardActions */ "./src/js/components/cardActions.js");
+/* harmony import */ var _components_furnishingSets__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/furnishingSets */ "./src/js/components/furnishingSets.js");
+/* harmony import */ var _components_bookConsultation__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/bookConsultation */ "./src/js/components/bookConsultation.js");
+/* harmony import */ var _components_recordViewing__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/recordViewing */ "./src/js/components/recordViewing.js");
+/* harmony import */ var _components_wallet__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/wallet */ "./src/js/components/wallet.js");
+/* harmony import */ var _components_favorites__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/favorites */ "./src/js/components/favorites.js");
+/* harmony import */ var _components_clientPage__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/clientPage */ "./src/js/components/clientPage.js");
+/* harmony import */ var _components_requisites__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/requisites */ "./src/js/components/requisites.js");
+/* harmony import */ var _components_navDropdown__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/navDropdown */ "./src/js/components/navDropdown.js");
+/* harmony import */ var _components_videoModal__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./components/videoModal */ "./src/js/components/videoModal.js");
+/* harmony import */ var _components_favoriteBtn__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./components/favoriteBtn */ "./src/js/components/favoriteBtn.js");
+/* harmony import */ var _components_advancePayment__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./components/advancePayment */ "./src/js/components/advancePayment.js");
+/* harmony import */ var _components_submitApp__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./components/submitApp */ "./src/js/components/submitApp.js");
+/* harmony import */ var _components_wantDiscount__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./components/wantDiscount */ "./src/js/components/wantDiscount.js");
+/* harmony import */ var _components_onlineDisplay__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./components/onlineDisplay */ "./src/js/components/onlineDisplay.js");
+/* harmony import */ var _components_bankOffer__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./components/bankOffer */ "./src/js/components/bankOffer.js");
+/* harmony import */ var _components_tooltips__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./components/tooltips */ "./src/js/components/tooltips.js");
+/* harmony import */ var _components_dragDrop__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./components/dragDrop */ "./src/js/components/dragDrop.js");
+/* harmony import */ var air_datepicker__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! air-datepicker */ "./node_modules/air-datepicker/index.es.js");
+/* harmony import */ var _components_createCalc__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./components/createCalc */ "./src/js/components/createCalc.js");
+/* harmony import */ var _components_videoLoad__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./components/videoLoad */ "./src/js/components/videoLoad.js");
+/* harmony import */ var _components_haracteristicsBlock__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./components/сharacteristicsBlock */ "./src/js/components/сharacteristicsBlock.js");
+/* harmony import */ var _components_submitAppOffers__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./components/submitAppOffers */ "./src/js/components/submitAppOffers.js");
+/* harmony import */ var _components_mortgageRequests__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./components/mortgageRequests */ "./src/js/components/mortgageRequests.js");
+/* harmony import */ var _modules_moveToFromBlock__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./modules/moveToFromBlock */ "./src/js/modules/moveToFromBlock.js");
+/* harmony import */ var _components_replaceText__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ./components/replaceText */ "./src/js/components/replaceText.js");
 
 
 
@@ -4315,11 +4313,11 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_inputs__WEBPACK_IMPORTED_MODULE_6__.textareaTags)();
   // ==================================================
 
-  (0,_components_cardActions__WEBPACK_IMPORTED_MODULE_29__.cardSecondaryActions)();
-  (0,_components_cardActions__WEBPACK_IMPORTED_MODULE_29__.cardPrimaryActions)();
+  (0,_components_cardActions__WEBPACK_IMPORTED_MODULE_28__.cardSecondaryActions)();
+  (0,_components_cardActions__WEBPACK_IMPORTED_MODULE_28__.cardPrimaryActions)();
 
   // ==================================================
-  (0,_components_navDropdown__WEBPACK_IMPORTED_MODULE_37__["default"])();
+  (0,_components_navDropdown__WEBPACK_IMPORTED_MODULE_36__["default"])();
   (0,_components_maps__WEBPACK_IMPORTED_MODULE_4__["default"])();
   (0,_components_calendar__WEBPACK_IMPORTED_MODULE_7__.calendarPrimary)('.request-calendar .calendar-primary', 'eventsCalendar.json', false);
   (0,_components_calendar__WEBPACK_IMPORTED_MODULE_7__.calendarPrimary)('.calendar-page .calendar-primary', 'eventsCalendar.json', true);
@@ -4335,39 +4333,36 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_choicePay__WEBPACK_IMPORTED_MODULE_21__["default"])();
   (0,_components_genplan__WEBPACK_IMPORTED_MODULE_22__["default"])();
   (0,_components_mapMetro__WEBPACK_IMPORTED_MODULE_23__["default"])();
-  (0,_components_cardStockPopup__WEBPACK_IMPORTED_MODULE_24__["default"])('.stock-developer__content .cards-list__items');
-  (0,_components_cardStockPopup__WEBPACK_IMPORTED_MODULE_24__["default"])('.block-stock .block-stock__slider');
-  (0,_components_cardStockPopup__WEBPACK_IMPORTED_MODULE_24__["default"])('.stock-offers-popup__items');
-  (0,_components_tag__WEBPACK_IMPORTED_MODULE_25__["default"])();
-  (0,_components_chat__WEBPACK_IMPORTED_MODULE_26__["default"])();
-  (0,_components_city__WEBPACK_IMPORTED_MODULE_27__["default"])();
-  (0,_components_furnishingSets__WEBPACK_IMPORTED_MODULE_30__.furnishingSets)();
+  (0,_components_tag__WEBPACK_IMPORTED_MODULE_24__["default"])();
+  (0,_components_chat__WEBPACK_IMPORTED_MODULE_25__["default"])();
+  (0,_components_city__WEBPACK_IMPORTED_MODULE_26__["default"])();
+  (0,_components_furnishingSets__WEBPACK_IMPORTED_MODULE_29__.furnishingSets)();
   // bookConsultation();
-  (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_28__["default"])('.object-location__infrastructure', 1000, true);
-  (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_28__["default"])('.buy-apartment__tags .tags__list', 1000, 1180);
-  (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_28__["default"])('.home-services__list', 1000, 1180);
-  (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_28__["default"])('.tabs-primary.tabs-primary--controls .tabs__navigation', 1000, true);
-  (0,_components_recordViewing__WEBPACK_IMPORTED_MODULE_32__.recordViewing)();
-  (0,_components_recordViewing__WEBPACK_IMPORTED_MODULE_32__.recordViewingTwo)();
-  (0,_components_wallet__WEBPACK_IMPORTED_MODULE_33__["default"])();
-  (0,_components_favorites__WEBPACK_IMPORTED_MODULE_34__.favoritesPage)();
-  (0,_components_favorites__WEBPACK_IMPORTED_MODULE_34__.favoriteChoicePopup)();
-  (0,_components_clientPage__WEBPACK_IMPORTED_MODULE_35__.clientPage)();
-  (0,_components_requisites__WEBPACK_IMPORTED_MODULE_36__["default"])();
-  (0,_components_videoModal__WEBPACK_IMPORTED_MODULE_38__["default"])();
-  (0,_components_favoriteBtn__WEBPACK_IMPORTED_MODULE_39__["default"])();
-  (0,_components_advancePayment__WEBPACK_IMPORTED_MODULE_40__["default"])();
-  (0,_components_submitApp__WEBPACK_IMPORTED_MODULE_41__["default"])();
-  (0,_components_wantDiscount__WEBPACK_IMPORTED_MODULE_42__["default"])();
-  (0,_components_onlineDisplay__WEBPACK_IMPORTED_MODULE_43__["default"])();
-  (0,_components_bankOffer__WEBPACK_IMPORTED_MODULE_44__["default"])();
-  (0,_components_tooltips__WEBPACK_IMPORTED_MODULE_45__.tooltipSecondary)();
-  (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_46__.dragDrops)();
-  (0,_components_createCalc__WEBPACK_IMPORTED_MODULE_48__.createCalc)();
-  (0,_components_videoLoad__WEBPACK_IMPORTED_MODULE_49__.videoLoad)();
-  (0,_components_haracteristicsBlock__WEBPACK_IMPORTED_MODULE_50__["default"])();
-  (0,_components_submitAppOffers__WEBPACK_IMPORTED_MODULE_51__["default"])();
-  (0,_components_mortgageRequests__WEBPACK_IMPORTED_MODULE_52__["default"])();
+  (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_27__["default"])('.object-location__infrastructure', 1000, true);
+  (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_27__["default"])('.buy-apartment__tags .tags__list', 1000, 1180);
+  (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_27__["default"])('.home-services__list', 1000, 1180);
+  (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_27__["default"])('.tabs-primary.tabs-primary--controls .tabs__navigation', 1000, true);
+  (0,_components_recordViewing__WEBPACK_IMPORTED_MODULE_31__.recordViewing)();
+  (0,_components_recordViewing__WEBPACK_IMPORTED_MODULE_31__.recordViewingTwo)();
+  (0,_components_wallet__WEBPACK_IMPORTED_MODULE_32__["default"])();
+  (0,_components_favorites__WEBPACK_IMPORTED_MODULE_33__.favoritesPage)();
+  (0,_components_favorites__WEBPACK_IMPORTED_MODULE_33__.favoriteChoicePopup)();
+  (0,_components_clientPage__WEBPACK_IMPORTED_MODULE_34__.clientPage)();
+  (0,_components_requisites__WEBPACK_IMPORTED_MODULE_35__["default"])();
+  (0,_components_videoModal__WEBPACK_IMPORTED_MODULE_37__["default"])();
+  (0,_components_favoriteBtn__WEBPACK_IMPORTED_MODULE_38__["default"])();
+  (0,_components_advancePayment__WEBPACK_IMPORTED_MODULE_39__["default"])();
+  (0,_components_submitApp__WEBPACK_IMPORTED_MODULE_40__["default"])();
+  (0,_components_wantDiscount__WEBPACK_IMPORTED_MODULE_41__["default"])();
+  (0,_components_onlineDisplay__WEBPACK_IMPORTED_MODULE_42__["default"])();
+  (0,_components_bankOffer__WEBPACK_IMPORTED_MODULE_43__["default"])();
+  (0,_components_tooltips__WEBPACK_IMPORTED_MODULE_44__.tooltipSecondary)();
+  (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_45__.dragDrops)();
+  (0,_components_createCalc__WEBPACK_IMPORTED_MODULE_47__.createCalc)();
+  (0,_components_videoLoad__WEBPACK_IMPORTED_MODULE_48__.videoLoad)();
+  (0,_components_haracteristicsBlock__WEBPACK_IMPORTED_MODULE_49__["default"])();
+  (0,_components_submitAppOffers__WEBPACK_IMPORTED_MODULE_50__["default"])();
+  (0,_components_mortgageRequests__WEBPACK_IMPORTED_MODULE_51__["default"])();
   // ==================================================
 
   (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.validateRadioPrimary)('.complaint-popup__form', '.textarea-primary__input', '.complaint-popup__btn', '.radio-primary__input');
@@ -4424,8 +4419,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ==================================================
 
-  (0,_modules_moveToFromBlock__WEBPACK_IMPORTED_MODULE_53__["default"])('[data-move-block-to="bid-user"]', '[data-move-block-from="bid-user"]', 99999, 1212, `${window.innerWidth >= 1920 ? 1.35 : 1}`);
-  (0,_components_replaceText__WEBPACK_IMPORTED_MODULE_54__["default"])();
+  (0,_modules_moveToFromBlock__WEBPACK_IMPORTED_MODULE_52__["default"])('[data-move-block-to="bid-user"]', '[data-move-block-from="bid-user"]', 99999, 1212, `${window.innerWidth >= 1920 ? 1.35 : 1}`);
+  (0,_components_replaceText__WEBPACK_IMPORTED_MODULE_53__["default"])();
   // ==================================================
   (0,_components_inputs__WEBPACK_IMPORTED_MODULE_6__.inputClue)('.input-clue', 'clue-primary', `
     <div class="clue-primary">
@@ -4464,7 +4459,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const datePickers = document.querySelectorAll('.date-picker');
   datePickers.forEach(datePicker => {
     const input = datePicker.querySelector('.date-picker__input');
-    const wrapper = new air_datepicker__WEBPACK_IMPORTED_MODULE_47__["default"](input, {
+    const wrapper = new air_datepicker__WEBPACK_IMPORTED_MODULE_46__["default"](input, {
       autoClose: true,
       isMobile: true,
       onSelect: fd => {
@@ -5224,7 +5219,8 @@ const calendarPrimary = function (containerSelector, url) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "cardPrimaryActions": () => (/* binding */ cardPrimaryActions),
-/* harmony export */   "cardSecondaryActions": () => (/* binding */ cardSecondaryActions)
+/* harmony export */   "cardSecondaryActions": () => (/* binding */ cardSecondaryActions),
+/* harmony export */   "cardSecondaryMetro": () => (/* binding */ cardSecondaryMetro)
 /* harmony export */ });
 /* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
 /* harmony import */ var _support_modules_slide__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../support-modules/slide */ "./src/js/support-modules/slide.js");
@@ -5270,6 +5266,7 @@ const cardSecondaryActions = () => {
     cardSliderMobile(card.querySelector('.card-secondary__top'), card.querySelector('.card-secondary__images'), card.querySelectorAll('.card-secondary__item'));
     card.addEventListener('click', e => {
       const favorite = e.target.closest('.card-secondary__info--favorite');
+      const metroOther = e.target.closest('.metro-info__other');
       if (favorite && !(favorite.dataset.popupPath && favorite.dataset.popupPath === 'favorite-two')) {
         e.preventDefault();
         card.querySelectorAll('.card-secondary__info--favorite').forEach(el => {
@@ -5284,13 +5281,19 @@ const cardSecondaryActions = () => {
           }
         });
       }
+      if (metroOther) {
+        e.preventDefault();
+        metroOther.classList.toggle('_active');
+      }
     });
   });
   favoriteMobile();
   tagsMobile();
+  cardSecondaryMetro();
   window.addEventListener('resize', () => {
     favoriteMobile();
     tagsMobile();
+    cardSecondaryMetro();
   });
   function favoriteMobile() {
     cards.forEach(card => {
@@ -5465,6 +5468,41 @@ const cardPrimaryActions = () => {
     });
   }
 };
+const cardSecondaryMetro = () => {
+  const cards = document.querySelectorAll('.card-secondary');
+  if (cards.length === 0) return;
+  cards.forEach(card => {
+    const container = card.querySelector('.card-secondary__metro');
+    if (container) {
+      for (let i = 0; i < container.querySelectorAll('.metro-info__item:not(.metro-info__item--tooltip)').length; i++) {
+        const items = container.querySelectorAll('.metro-info__item:not(.metro-info__item--tooltip)');
+        const visibleItems = Array.from(items).filter(item => !item.hasAttribute('hidden'));
+        const other = container.querySelector('.metro-info__other');
+        const otherItemsContainer = container.querySelector('.metro-info__other-items');
+        const otherItems = otherItemsContainer.querySelectorAll('.metro-info__item--tooltip');
+        const count = container.querySelector('.metro-info__count span');
+        const widthCard = card.querySelector('.card-secondary__content').offsetWidth;
+        let widthMetro = 60;
+        items.forEach(item => {
+          widthMetro += item.offsetWidth + 16;
+        });
+        const visibleItemLast = visibleItems[visibleItems.length - 1];
+        const otherItemLast = otherItems[otherItems.length - 1];
+        if (widthMetro + (otherItemLast ? otherItemLast.offsetWidth + 16 : 0) > widthCard && visibleItems.length > 1) {
+          visibleItemLast.classList.add('metro-info__item--tooltip');
+          otherItemsContainer.insertAdjacentElement('beforeend', visibleItemLast);
+          count.textContent = otherItems.length + 1;
+        }
+        if (widthMetro + (visibleItemLast ? visibleItemLast.offsetWidth + 16 : 0) <= widthCard && otherItems.length > 0) {
+          otherItemLast.classList.remove('metro-info__item--tooltip');
+          other.insertAdjacentElement('beforebegin', otherItemLast);
+          count.textContent = otherItems.length - 1;
+        }
+        otherItems.length > 0 ? other.removeAttribute('hidden') : other.setAttribute('hidden', '');
+      }
+    }
+  });
+};
 function cardSliderMobile(cardImageWrapper, imagesBody, cardItems) {
   let slider;
   body();
@@ -5498,159 +5536,6 @@ function cardSliderMobile(cardImageWrapper, imagesBody, cardItems) {
     }
   }
 }
-
-/***/ }),
-
-/***/ "./src/js/components/cardStockPopup.js":
-/*!*********************************************!*\
-  !*** ./src/js/components/cardStockPopup.js ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modules/modal */ "./src/js/modules/modal.js");
-
-const cardStockPopup = containerSelector => {
-  const container = document.querySelector(containerSelector);
-  if (!container) return;
-  container.addEventListener('click', e => {
-    const target = e.target;
-    const cardSecondary = target.closest('.card-stock-secondary');
-    const cardThird = target.closest('.card-stock-third');
-    const cardStock = target.closest('.card-stock');
-    if (cardSecondary) {
-      const modalHTML = `
-            <div class="stock-popup">
-            <div class="stock-popup__container">
-                <button class="btn-reset stock-popup__close" aria-label="Закрыть модальное окно">
-                    <svg>
-                        <use xlink:href="./img/sprite.svg#x"></use>
-                    </svg>
-                    <span>Закрыть</span>
-                </button>
-                <div class="stock-popup__content">
-                    <div class="stock-popup__image ibg">
-                        ${cardSecondary.querySelector('.card-stock-secondary__image').innerHTML}
-                    </div>
-                    <div class="stock-popup__row">
-                        ${cardSecondary.querySelector('.row').innerHTML}
-                    </div>
-                    <div class="stock-popup__name">
-                        ${cardSecondary.querySelector('.card-stock-secondary__name').innerHTML}
-                    </div>
-                    <div class="stock-popup__descr">
-                        ${cardSecondary.querySelector('.card-stock-secondary__descr').dataset.cardStockDescrFull}
-                    </div>
-                    <div class="stock-popup__row-bottom">
-                        <a href="${cardSecondary.dataset.stockLink}" class="stock-popup__link">Смотреть</a>
-                        <div class="stock-popup__user user-info">
-                            ${cardSecondary.querySelector('.card-stock-secondary__user').innerHTML}
-                        </div>
-                    </div>
-                    <div class="stock-popup__btns">
-                    <button type="button" class="btn btn-reset btn-primary stock-popup__call">
-                        Показать телефон
-                    </button>
-                    <button type="button" class="btn btn-reset btn-secondary stock-popup__message">
-                        Задать вопрос
-                    </button>
-                </div>
-            </div>
-            </div>
-            `;
-      cardSecondary.classList.add('_active');
-      (0,_modules_modal__WEBPACK_IMPORTED_MODULE_0__["default"])(modalHTML, '.stock-popup', 300, cardSecondary);
-    }
-    if (cardThird) {
-      if (target.closest('.card-stock-third__tooltip')) return;
-      const modalHTML = `
-            <div class="stock-popup">
-            <div class="stock-popup__container">
-                <button class="btn-reset stock-popup__close" aria-label="Закрыть модальное окно">
-                    <svg>
-                        <use xlink:href="./img/sprite.svg#x"></use>
-                    </svg>
-                    <span>Закрыть</span>
-                </button>
-                 <div class="stock-popup__content">
-                    <div class="stock-popup__row">
-                      ${cardThird.querySelector('.card-stock-third__title').outerHTML}
-                       ${cardThird.querySelector('.card-stock-third__time').outerHTML}
-                    </div>
-                    <div class="stock-popup__name">
-                        ${cardThird.querySelector('.card-stock-third__name').innerHTML}
-                    </div>
-                    <div class="stock-popup__descr">
-                        ${cardThird.querySelector('.card-stock-third__descr').dataset.cardStockDescrFull}
-                    </div>
-                    <div class="stock-popup__row-bottom">
-                        <a href="${cardThird.dataset.stockLink}" class="stock-popup__link">Смотреть</a>
-                        <div class="stock-popup__user user-info">
-                        ${cardThird.querySelector('.card-stock-third__user').innerHTML}
-                        </div>
-                    </div>
-                    <div class="stock-popup__btns">
-                    <button type="button" class="btn btn-reset btn-primary stock-popup__call">
-                        Показать телефон
-                    </button>
-                    <button type="button" class="btn btn-reset btn-secondary stock-popup__message">
-                        Задать вопрос
-                    </button>
-                 </div>
-            </div>
-            </div>
-            `;
-      cardThird.classList.add('_active');
-      (0,_modules_modal__WEBPACK_IMPORTED_MODULE_0__["default"])(modalHTML, '.stock-popup', 300, cardThird);
-    }
-    if (cardStock) {
-      if (target.closest('.card-stock-third__tooltip')) return;
-      const modalHTML = `
-             <div class="stock-popup">
-             <div class="stock-popup__container">
-                 <button class="btn-reset stock-popup__close" aria-label="Закрыть модальное окно">
-                     <svg>
-                         <use xlink:href="./img/sprite.svg#x"></use>
-                     </svg>
-                     <span>Закрыть</span>
-                 </button>
-                  <div class="stock-popup__content">
-                    <div class="stock-popup__row">
-                        ${cardStock.dataset.stockTitle}
-                        ${cardStock.querySelector('.card-stock__time').outerHTML}
-                    </div>
-                     <div class="stock-popup__name">
-                         ${cardStock.dataset.stockName}
-                     </div>
-                     <div class="stock-popup__descr">
-                         ${cardStock.dataset.stockDescr}
-                     </div>
-                     <div class="stock-popup__row-bottom">
-                         <div class="stock-popup__user user-info">
-                            ${cardStock.querySelector('.user-info').innerHTML}
-                         </div>
-                     </div>
-                     <div class="stock-popup__btns">
-                     <button type="button" class="btn btn-reset btn-primary stock-popup__call">
-                         Показать телефон
-                     </button>
-                     <button type="button" class="btn btn-reset btn-secondary stock-popup__message">
-                         Задать вопрос
-                     </button>
-                     </div>
-             </div>
-             </div>
-             `;
-      cardStock.classList.add('_active');
-      (0,_modules_modal__WEBPACK_IMPORTED_MODULE_0__["default"])(modalHTML, '.stock-popup', 300, cardThird);
-    }
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (cardStockPopup);
 
 /***/ }),
 
@@ -6326,6 +6211,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "controlCards": () => (/* binding */ controlCards),
 /* harmony export */   "controlCardsCardSecondary": () => (/* binding */ controlCardsCardSecondary)
 /* harmony export */ });
+/* harmony import */ var _cardActions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cardActions */ "./src/js/components/cardActions.js");
+
 const controlCards = () => {
   const containers = document.querySelectorAll('.control-cards');
   if (containers.length === 0) return;
@@ -6365,6 +6252,7 @@ const actionForCards = (container, content, btn) => {
     }
   }
   controlCardsCardSecondary(content, btn);
+  (0,_cardActions__WEBPACK_IMPORTED_MODULE_0__.cardSecondaryMetro)();
   if (content.querySelectorAll('.card-primary').length >= 1) {
     const cardsPrimary = content.querySelectorAll('.card-primary');
     cardsPrimary.forEach(card => {
@@ -8254,15 +8142,19 @@ const filterControl = () => {
               top: 0,
               behavior: 'smooth'
             });
+          } else {
+            (0,_modules_enableScroll__WEBPACK_IMPORTED_MODULE_1__["default"])();
           }
         } else {
           itemsHidden.forEach(item => {
             (0,_support_modules_slide__WEBPACK_IMPORTED_MODULE_5__._slideToggle)(item, 700);
           });
+          container.classList.add('_active');
           if (!container.classList.contains('filter--new-style')) {
             moreBtn.querySelector('span').textContent = btnTextMap.none;
+          } else {
+            (0,_modules_disableScroll__WEBPACK_IMPORTED_MODULE_2__["default"])();
           }
-          container.classList.add('_active');
         }
       });
     }

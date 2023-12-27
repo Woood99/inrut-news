@@ -769,6 +769,7 @@ export const filterControl = () => {
                         _slideToggle(item, 700);
                     });
                     container.classList.remove('_active');
+                    enableScroll();
                 }
             })
         }

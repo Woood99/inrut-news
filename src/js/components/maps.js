@@ -262,8 +262,9 @@ const maps = () => {
         if (!loaded_map) {
             let timerID = setInterval(function () {
                 if (typeof ymaps !== "undefined") {
-                   
-                     skeletonMap.remove();
+                    if (skeletonMap) {
+                        skeletonMap.remove();
+                    }
                      mapSelector.classList.remove('_hidden-map');
 
                     loaded_map = true;

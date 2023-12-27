@@ -273,7 +273,6 @@ const maps = () => {
     }
 
 
-
     if (document.querySelector('#map-draw')) {
         function init() {
             let map = new ymaps.Map('map-draw', {

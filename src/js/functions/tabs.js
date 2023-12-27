@@ -330,7 +330,7 @@ export const tabs = () => {
             <div class="place-sale-field-price input-text input-text--only-number" style="max-width: 350px; margin-top: 24px;">
                 <label class="input-text__label">
                     <span>Цена</span>
-                    <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                    <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input renov-price" placeholder="">
                     <span>₽</span>
                 </label>
             </div>

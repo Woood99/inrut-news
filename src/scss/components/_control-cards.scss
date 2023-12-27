@@ -95,24 +95,34 @@
     }
 
     &--maps {
-        .control-cards__container {
-            display: block;
-            grid-template-columns: 780px 1fr;
-            grid-column-gap: 24px;
-        }
-
-        .control-cards__maps {
-            display: none;
-        }
-
-        &._map-active {
-            .control-cards__maps {
-                display: block;
-            }
-
+        @media (min-width:$desktop-min){
             .control-cards__container {
-                display: grid;
+                display: block;
+                grid-template-columns: 780px 1fr;
+                grid-column-gap: 24px;
+                &._map-full{
+                    .cards-list__items{
+                        grid-template-columns: 1fr;
+                    }
+                }
             }
+            .cards-list__items{
+                display: grid;
+                grid-template-columns: repeat(2,1fr);
+            }
+            .control-cards__maps {
+                display: none;
+            }
+    
+            &._map-active {
+                .control-cards__maps {
+                    display: block;
+                }
+    
+                .control-cards__container {
+                    display: grid;
+                }
+            } 
         }
     }
 

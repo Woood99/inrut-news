@@ -216,9 +216,11 @@ const maps = () => {
             function resize() {
                 if (!value) {
                     container.style.gridTemplateColumns = `382px 1fr`;
+                    container.classList.add('_map-full');
                     value = true;
                 } else {
                     container.style.gridTemplateColumns = `780px 1fr`;
+                    container.classList.remove('_map-full');
                     value = false;
                 }
 

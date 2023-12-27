@@ -114,7 +114,7 @@ function deleteTarget(target) {
     toggleLoadedClass(container);
 }
 
-function subtitleFile(input, length) {
+function subtitleFile(input,length) {
     let dots;
     const file = input.files[0];
     if (file) {
@@ -132,12 +132,11 @@ function showPdf(input) {
         let file = input.files[0];
         if (file) {
             const pdfURL = window.URL.createObjectURL(file);
-            placeSaleImages.innerHTML = pdfGenerate(pdfURL, file.name);
+            placeSaleImages.innerHTML = pdfGenerate(pdfURL,file.name);
         }
         toggleLoadedClass(container);
     }
 }
-
 function showDefault(input) {
     const container = input.closest('.photo-load');
     const images = container.querySelector('.photo-load__images');
@@ -145,12 +144,11 @@ function showDefault(input) {
         let files = input.files;
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
-            images.innerHTML += defaultGenerate(file.name, input);
+            images.innerHTML += defaultGenerate(file.name,input);
         }
         toggleLoadedClass(container);
     }
 }
-
 function toggleLoadedClass(container) {
     const images = container.querySelector('.photo-load__images');
     if (images) {
@@ -158,28 +156,21 @@ function toggleLoadedClass(container) {
     }
 }
 
-function showImage(input,e) {
+function showImage(input) {
     const container = input.closest('.photo-load');
     const placeSaleImages = container.querySelector('.place-sale-photo__images');
     if (placeSaleImages) {
-        var files = e.target.files;
-        for (var i = 0; i < files.length; i++) {
-        
-            var img = document.createElement("img");
-            img.classList.add('preview');
-            img.file = files[i];
-            placeSaleImages.appendChild(img); // assuming that "preview" is the div you are targeting
-        
-            var reader = new FileReader();
-            reader.onload = (function(aImg) { 
-              return function(e) { 
-                aImg.src = e.target.result; 
-              }; 
-            }(img));
-            reader.readAsDataURL(files[i]);
-          }
+        let files = input.files;
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const imageURL = window.URL.createObjectURL(file);
+            placeSaleImages.innerHTML += photoGenerate(imageURL, file.name);
+        }
+        if (placeSaleImages.classList.contains('drag-drop')) {
+            currentDragDrop(placeSaleImages)
+        }
+        toggleLoadedClass(container);
     }
-    console.log(input.files);
 }
 
 function inputChange(input, e) {
@@ -191,7 +182,7 @@ function inputChange(input, e) {
             input.files = e.dataTransfer.files;
             showPdf(input);
         }
-    } else if (input.hasAttribute('data-upload-drop-default')) {
+    } else if (input.hasAttribute('data-upload-drop-default')){
         if (e.type === 'change') {
             showDefault(input);
         }
@@ -201,11 +192,11 @@ function inputChange(input, e) {
         }
     } else {
         if (e.type === 'change') {
-            showImage(input,e);
+            showImage(input);
         }
         if (e.type === 'drop') {
             input.files = e.dataTransfer.files;
-            showImage(input,e);
+            showImage(input);
         }
     }
 }
@@ -260,7 +251,7 @@ function pdfGenerate(url, name) {
 }
 
 
-function defaultGenerate(name, input) {
+function defaultGenerate(name,input) {
     const placeSalePhotoHTML = `
     <div class="place-sale-photo__image ibg" title="${name}">
         <div>
@@ -276,5 +267,5 @@ function defaultGenerate(name, input) {
         </button>
     </div>
     `;
-    return placeSalePhotoHTML;
+return placeSalePhotoHTML;
 }

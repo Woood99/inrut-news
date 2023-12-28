@@ -1,10 +1,3 @@
-import {
-    auto
-} from "@popperjs/core";
-import {
-    controlCardsCardSecondary
-} from "./controlCards";
-
 const maps = () => {
     function removeControlsPrimary(map, containerSelector) {
         map.controls.remove('geolocationControl'); // удаляем геолокацию
@@ -298,6 +291,7 @@ const maps = () => {
             const container = map.container._parentElement;
             const mapDraw = container.closest('.map-draw');
             const drawBtns = mapDraw ? mapDraw.querySelector('.map-draw__btns') : null;
+            const searchArea = mapDraw.closest('.popup-primary--search-area');
             if (drawBtns !== null) {
                 map.controls.add("zoomControl");
                 const fullScreenControl = map.controls.get('fullscreenControl');
@@ -343,14 +337,20 @@ const maps = () => {
                     });
                 }
             } else {
+                const top = `${searchArea ? 212 : 'calc((100vh - 152px + 24px) / 2 - (90px / 2))'}`
                 map.controls.get('zoomControl').options.set({
                     position: {
-                        top: 176,
+                        top: Number(top),
                         right: 16
                     },
                     maxWidth: '44'
                 })
             }
+            if (searchArea) {
+                map.controls.remove('fullscreenControl');
+                map.behaviors.enable(['scrollZoom']);
+            }
+
         }
     }
     if (document.querySelector('#place-sale-address-map')) {

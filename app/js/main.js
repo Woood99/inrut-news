@@ -15610,7 +15610,7 @@ function mainSlider() {
   const previews = container.querySelectorAll('[main-slider-previews] .swiper-slide');
   createIndex(items, previews);
   init(items, previews);
-  createBodySliders(items);
+  createBodySliders(items, previews);
   createPreviewSlider(container);
   tabs(container, items, previews);
   function createIndex(items, previews) {
@@ -15633,8 +15633,13 @@ function mainSlider() {
       currentIndex == 1 ? item.classList.add('_active') : item.classList.remove('_active');
     });
   }
-  function createBodySliders(items) {
+  function createBodySliders(items, previews) {
     items.forEach(item => {
+      const currentIndexTab = Number(item.dataset.mainSliderItem);
+      const currentPreview = container.querySelector(`[data-main-slider-preview="${currentIndexTab}"]`);
+      const nextPreview = container.querySelector(`[data-main-slider-preview="${currentIndexTab + 1}"]`);
+      const nextTab = container.querySelector(`[data-main-slider-item="${currentIndexTab + 1}"]`);
+      let value = false;
       const slider = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](item, {
         slidesPerView: 1,
         spaceBetween: 15,
@@ -15655,7 +15660,43 @@ function mainSlider() {
                             `;
           }
         }
+        // on: {
+        //     beforeTransitionStart(slider) {
+        //         const countAllSlides = slider.slides.length
+        //         const swiperIndex = slider.realIndex
+        //         if (swiperIndex + 1 === countAllSlides) {
+        //             if (nextTab) {
+        //                 if (!value) {
+        //                     value = true;
+        //                     return;
+        //                 }
+
+        //                 item.setAttribute('hidden', '');
+        //                 nextTab.removeAttribute('hidden');
+
+        //                 currentPreview.classList.remove('_active');
+        //                 nextPreview.classList.add('_active');
+        //                 value = false;
+        //             }
+        //         }  else {
+        //             value = false;
+        //         }
+
+        //         if (swiperIndex === 0) {
+        //             if (value) {
+        //                 value = false;
+        //                 return;
+        //             }
+        //             console.log(swiperIndex);
+        //             console.log(countAllSlides);
+        //             value = true;
+        //         } else {
+        //             value = true;
+        //         }
+        //     }
+        // }
       });
+
       setTimeout(() => {
         slider.navigation.update();
       }, 1);

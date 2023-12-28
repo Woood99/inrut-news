@@ -8142,9 +8142,7 @@ const filterControl = () => {
               top: 0,
               behavior: 'smooth'
             });
-          } else {
-            (0,_modules_enableScroll__WEBPACK_IMPORTED_MODULE_1__["default"])();
-          }
+          } else {}
         } else {
           itemsHidden.forEach(item => {
             (0,_support_modules_slide__WEBPACK_IMPORTED_MODULE_5__._slideToggle)(item, 700);
@@ -8152,9 +8150,7 @@ const filterControl = () => {
           container.classList.add('_active');
           if (!container.classList.contains('filter--new-style')) {
             moreBtn.querySelector('span').textContent = btnTextMap.none;
-          } else {
-            (0,_modules_disableScroll__WEBPACK_IMPORTED_MODULE_2__["default"])();
-          }
+          } else {}
         }
       });
     }
@@ -8165,7 +8161,6 @@ const filterControl = () => {
             (0,_support_modules_slide__WEBPACK_IMPORTED_MODULE_5__._slideToggle)(item, 700);
           });
           container.classList.remove('_active');
-          (0,_modules_enableScroll__WEBPACK_IMPORTED_MODULE_1__["default"])();
         }
       });
     }

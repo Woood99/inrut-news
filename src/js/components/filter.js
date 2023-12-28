@@ -747,7 +747,7 @@ export const filterControl = () => {
                             behavior: 'smooth'
                         })
                     } else {
-                        enableScroll();
+                       
                     }
                 } else {
                     itemsHidden.forEach(item => {
@@ -757,7 +757,7 @@ export const filterControl = () => {
                     if (!container.classList.contains('filter--new-style')) {
                         moreBtn.querySelector('span').textContent = btnTextMap.none;
                     } else {
-                        disableScroll();
+                       
                     }
                 }
             });
@@ -769,7 +769,7 @@ export const filterControl = () => {
                         _slideToggle(item, 700);
                     });
                     container.classList.remove('_active');
-                    enableScroll();
+                  
                 }
             })
         }

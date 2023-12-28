@@ -2137,6 +2137,167 @@ margin-top: 4px;
 }
 
 
+.main-slider {
+    display: flex;
+    justify-content: space-between;
+    max-height: 500px;
+    &__body {
+        overflow: hidden;
+        margin-right: 5px;
+        flex: 0 1 percent(702, 996);
+        position: relative;
+        @media (max-width:$desktop) {
+            margin-right: 0;
+        }
+
+        @media (max-width:$smallTablet-max) {
+            flex: auto;
+        }
+    }
+
+    &__item {
+        overflow: hidden;
+    height: 100%;
+    border-radius: 12px;
+    width: 100%;
+    cursor: pointer;
+        .swiper-slide{
+            img{
+                width: 100%;
+    height: 100%;
+    border-radius: 12px;
+            }
+        }
+    }
+
+    &__preview {
+        flex-shrink: 0;
+        flex: 0 1 percent(289, 996);
+        border-radius: 12px;
+        .swiper-slide {
+            cursor: pointer;
+            filter: drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.04));
+            @media (min-width:$desktop-min) {
+                &:hover {
+                    .object-gallery-preview {
+                        opacity: 1;
+                        visibility: visible;
+
+                        &__icon {
+                            transform: translateY(0);
+                        }
+
+                        span {
+                            transform: translateY(0);
+                        }
+                    }
+                }
+            }
+
+            &._active {
+                .object-gallery-preview {
+                    opacity: 1;
+                    visibility: visible;
+
+                    &__icon {
+                        transform: translateY(0);
+                    }
+
+                    span {
+                        transform: translateY(0);
+                    }
+                }
+            }
+
+            a {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                border-radius: 12px;
+            }
+        }
+        .nav-arrow-primary {
+            &--next {
+                right: 50%;
+                top: auto;
+                bottom: 16px;
+                transform: translateX(50%);
+    
+                svg {
+                    transform: rotate(90deg);
+                }
+            }
+    
+            &--prev {
+                left: auto;
+                right: 50%;
+                transform: translateX(50%);
+                top: 16px;
+    
+                svg {
+                    transform: rotate(-90deg);
+                }
+            }
+        }
+        @media (max-width:$desktop) {
+            display: none;
+        }
+    }
+    &__fullscreen{
+        width: 36px;
+        height: 36px;
+
+        pointer-events: none;
+        background-color: var(--white);
+        box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: absolute;
+        z-index: 2;
+        top: 16px;
+        right: 16px;
+
+        transition: box-shadow $transitionSpeed $transitionFunction,
+            transform $transitionSpeed $transitionFunction;
+
+        svg {
+            width: 16px;
+            height: 16px;
+
+            path {
+                stroke: rgba(22, 22, 22, 0.5);
+                transition: stroke $transitionSpeed $transitionFunction;
+            }
+        }
+
+        @media (max-width:$desktop) {
+            display: none;
+        }
+
+        @media (min-width:$desktop-min) {
+            &:hover {
+                box-shadow: 0 7px 14px rgba(11, 31, 53, 0.15);
+                transform: scale(1.2);
+
+                svg {
+                    path {
+                        stroke: rgba(22, 22, 22, 1);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
 
 
 

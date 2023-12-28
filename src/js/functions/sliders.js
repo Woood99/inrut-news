@@ -224,7 +224,7 @@ function initSliders() {
     }
 
     objectSlider();
-
+    mainSlider();
     if (document.querySelector('.review-item__photo')) {
         const sliders = document.querySelectorAll('.review-item__photo');
         sliders.forEach(el => {
@@ -554,9 +554,9 @@ function initSliders() {
                 const slides = el.querySelectorAll('.swiper-slide');
                 slides.forEach(slide => slide.setAttribute('hidden', ''));
                 const slidesValidate = Array.from(slides).filter(el => {
-                    return (complexValue === '' || el.dataset.constructComplex === complexValue) && 
-                    (yearValue === '' ||  el.dataset.constructYear === yearValue) && 
-                    (quarterValue === '' || el.dataset.constructQuarter === quarterValue);
+                    return (complexValue === '' || el.dataset.constructComplex === complexValue) &&
+                        (yearValue === '' || el.dataset.constructYear === yearValue) &&
+                        (quarterValue === '' || el.dataset.constructQuarter === quarterValue);
                 })
                 slidesValidate.length > 0 ? el.classList.add('_slider-visible') : el.classList.remove('_slider-visible');
                 slidesValidate.forEach(slide => slide.removeAttribute('hidden'));
@@ -861,6 +861,110 @@ function objectSlider() {
             swiper: navSlider,
         },
     })
+}
+
+function mainSlider() {
+    const container = document.querySelector('[main-slider]');
+    if (!container) return;
+    const items = container.querySelectorAll('.main-slider__item');
+    const previews = container.querySelectorAll('[main-slider-previews] .swiper-slide');
+    createIndex(items, previews);
+    init(items,previews);
+    createBodySliders(items);
+    createPreviewSlider(container);
+    tabs(container,items, previews);
+
+    function createIndex(items, previews) {
+        items.forEach((item, index) => {
+            item.setAttribute('data-main-slider-item', index + 1);
+        })
+        previews.forEach((item, index) => {
+            item.setAttribute('data-main-slider-preview', index + 1);
+        })
+    }
+
+    function init(items,previews) {
+        items.forEach(item => {
+            const currentIndex = item.dataset.mainSliderItem;
+            if (currentIndex != 1) {
+                item.setAttribute('hidden', '');
+            }
+        })
+        previews.forEach(item => {
+            const currentIndex = item.dataset.mainSliderPreview;
+            currentIndex == 1 ? item.classList.add('_active') : item.classList.remove('_active');
+        })
+    }
+
+    function createBodySliders(items) {
+        items.forEach(item => {
+            const slider = new Swiper(item, {
+                slidesPerView: 1,
+                spaceBetween: 15,
+                observer: true,
+                observeParents: true,
+                navigation: {
+                    prevEl: '.nav-arrow-primary--prev',
+                    nextEl: '.nav-arrow-primary--next',
+                },
+                pagination: {
+                    el: '.pagination-primary',
+                    type: 'fraction',
+                    renderFraction: function (currentClass, totalClass) {
+                        return `
+                            <span class="${currentClass}"></span>
+                            <span class="swiper-pagination-word">из</span>
+                            <span class="${totalClass}"></span>
+                            `;
+                    }
+                },
+            })
+            setTimeout(() => {
+                slider.navigation.update();
+            }, 1);
+        })
+    }
+
+    function createPreviewSlider(container) {
+        const preview = container.querySelector('[main-slider-previews]');
+        const slidesLength = previews.length;
+        let slidesPerView = slidesLength <= 2 ? slidesLength : 2.6;
+        const slider = new Swiper(preview, {
+            slidesPerView: slidesPerView,
+            spaceBetween: 5,
+            observer: true,
+            observeParents: true,
+            freeMode: true,
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+            direction: 'vertical',
+            navigation: {
+                prevEl: '.nav-arrow-primary--prev',
+                nextEl: '.nav-arrow-primary--next',
+            },
+        })
+        setTimeout(() => {
+            slider.navigation.update();
+        }, 1);
+    }
+
+    function tabs(container, items, previews) {
+        const previewsContainer = container.querySelector('[main-slider-previews]');
+        previewsContainer.addEventListener('click', (e) => {
+            const target = e.target;
+            const preview = target.closest('[data-main-slider-preview]');
+            if (preview) {
+                const currentIndex = preview.dataset.mainSliderPreview;
+                const currentTab = container.querySelector(`[data-main-slider-item='${currentIndex}']`);
+                items.forEach(item => {
+                    item === currentTab ? item.removeAttribute('hidden') : item.setAttribute('hidden','');
+                })
+                previews.forEach(item => {
+                    item === preview ? item.classList.add('_active') : item.classList.remove('_active');
+                })
+            }
+        })
+    }
 }
 
 

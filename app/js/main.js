@@ -8182,10 +8182,12 @@ const filterControl = () => {
             (0,_support_modules_slide__WEBPACK_IMPORTED_MODULE_5__._slideToggle)(item, 700);
           });
           container.classList.remove('_active');
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
+          if (!container.closest('.object-body__filter')) {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+          }
         }
       });
     }

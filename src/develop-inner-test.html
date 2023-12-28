@@ -691,7 +691,7 @@
                                 Информация о квартирах обновлена 22 октября
                             </span>
                         </div>
-                        <form class="filter filter--more">
+                        <form class="filter filter--more filter--new-style">
                             <button type="button" class="btn btn-reset btn-secondary filter__btn">
                                 <svg>
                                     <use xlink:href="./img/sprite.svg#filter"></use>
@@ -704,7 +704,10 @@
                                         <button type="button" class="btn btn-reset filter__close">Закрыть</button>
                                     </div>
                                     <div class="filter__inner">
-                                        <div class="filter__row object-filter__row--1">
+                                        <div class="filter__row object-filter__row--1" style="grid-template-columns: 100px 1fr 278px 200px;">
+                                            <div class="btn btn-reset filter__item filter-more-btn filter__btn-control">
+                                                <span>Фильтры</span>
+                                            </div>
                                             <div class="filter__item select-secondary">
                                                 <div class="select-secondary__wrapper">
                                                     <span class="select-secondary__placeholder">
@@ -752,201 +755,153 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="filter__item filter-dropdown filter-dropdown--improved" data-filter-dropdown-name="Цена"
-                                                data-filter-dropdown-subtitle="Любая">
-                                                <button type="button" class="btn btn-reset filter-dropdown__button">
-                                                    <div class="filter-dropdown__button-wrapper">
-                                                        <div>
-                                                            Цена
-                                                        </div>
-                                                        <div>
-                                                            Любая
-                                                        </div>
-                                                    </div>
-                                                    <svg>
-                                                        <use xlink:href="./img/sprite.svg#check"></use>
-                                                    </svg>
-                                                </button>
-                                                <div class="filter-dropdown__dropdown filter-dropdown--improved__dropdown">
-                                                    <button type="button" class="btn btn-reset filter-dropdown__close">
-                                                        <svg>
-                                                            <use xlink:href="./img/sprite.svg#x"></use>
-                                                        </svg>
-                                                    </button>
-                                                    <label class="filter-dropdown__item active">
-                                                        <span class="filter-dropdown__subtitle">Стоимость объекта, ₽</span>
-                                                        <div class="filter-dropdown__range filter-range">
-                                                            <div class="filter-range__nav">
-                                                                <div class="input-text input-text--only-number">
-                                                                    <label class="input-text__label">
-                                                                        <span>Цена от</span>
-                                                                        <input type="text" maxlength="11" class="input-reset input-text__input" placeholder="Цена от">
-                                                                    </label>
-                                                                </div>
-                                                                <div>–</div>
-                                                                <div class="input-text input-text--only-number">
-                                                                    <label class="input-text__label">
-                                                                        <span>До</span>
-                                                                        <input type="text" maxlength="11" class="input-reset input-text__input" placeholder="До">
-                                                                    </label>
-                                                                </div>
-                                                                <div>
-                                                                    ₽
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                            </div>
+                                            <button type="reset" class="btn btn-reset filter__item btn-secondary filter__clear">Очистить</button>
                                         </div>
                                         <div class="filter__row object-filter__row--2" hidden>
-                                            <div class="filter__item filter-dropdown filter-dropdown--improved" data-filter-dropdown-name="Площадь"
-                                                data-filter-dropdown-subtitle="Любая">
-                                                <button type="button" class="btn btn-reset filter-dropdown__button">
-                                                    <div class="filter-dropdown__button-wrapper">
-                                                        <div>
-                                                            Площадь
-                                                        </div>
-                                                        <div>
-                                                            Любая
-                                                        </div>
+                                            <div class="filter__item field-range" data-field-range-name="square">
+                                                <div class="field-range__name">
+                                                    Площадь
+                                                </div>
+                                                <div class="field-range__wrapper">
+                                                    <div class="input-text input-text--no-exp input-text--only-number">
+                                                        <label class="input-text__label">
+                                                            <span>От</span>
+                                                            <input type="text" maxlength="3" class="input-reset input-text__input" placeholder="От">
+                                                        </label>
                                                     </div>
-                                                    <svg>
-                                                        <use xlink:href="./img/sprite.svg#check"></use>
-                                                    </svg>
-                                                </button>
-                                                <div class="filter-dropdown__dropdown filter-dropdown__dropdown--left filter-dropdown--improved__dropdown">
-                                                    <button type="button" class="btn btn-reset filter-dropdown__close">
+                                                    <div class="input-text input-text--only-number">
+                                                        <label class="input-text__label">
+                                                            <span>До</span>
+                                                            <input type="text" maxlength="3" class="input-reset input-text__input" placeholder="До">
+                                                            <span>м²</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="filter__item field-range" data-field-range-name="price">
+                                                <div class="field-range__name">
+                                                    Цена
+                                                </div>
+                                                <div class="field-range__wrapper">
+                                                    <div class="input-text input-text--no-exp input-text--only-number">
+                                                        <label class="input-text__label">
+                                                            <span>От</span>
+                                                            <input type="text" maxlength="12" class="input-reset input-text__input" placeholder="От">
+                                                        </label>
+                                                    </div>
+                                                    <div class="input-text input-text--only-number">
+                                                        <label class="input-text__label">
+                                                            <span>До</span>
+                                                            <input type="text" maxlength="12" class="input-reset input-text__input" placeholder="До">
+                                                            <span>₽</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="filter__item field-dropdown" data-field-dropdown-name="developer">
+                                                <div class="field-dropdown__name">
+                                                    Уникальные предложения
+                                                </div>
+                                                <div class="search-select field-dropdown__wrapper" data-search-select-subtitle="Не выбрано">
+                                                    <button type="button" class="btn btn-reset search-select__button">
+                                                        <div class="search-select__button-wrapper">
+                                                            <div></div>
+                                                            <div>Не выбрано</div>
+                                                        </div>
                                                         <svg>
-                                                            <use xlink:href="./img/sprite.svg#x"></use>
+                                                            <use xlink:href="./img/sprite.svg#check"></use>
                                                         </svg>
                                                     </button>
-                                                    <label class="filter-dropdown__item active">
-                                                        <span class="filter-dropdown__subtitle">Площадь объекта, м²</span>
-                                                        <div class="filter-dropdown__range filter-range">
-                                                            <div class="filter-range__nav">
-                                                                <div class="input-text input-text--only-number">
-                                                                    <label class="input-text__label">
-                                                                        <span>Площадь от</span>
-                                                                        <input type="text" maxlength="3" class="input-reset input-text__input" placeholder="Площадь от">
-                                                                    </label>
-                                                                </div>
-                                                                <div>–</div>
-                                                                <div class="input-text input-text--only-number">
-                                                                    <label class="input-text__label">
-                                                                        <span>До</span>
-                                                                        <input type="text" maxlength="3" class="input-reset input-text__input" placeholder="До">
-                                                                    </label>
-                                                                </div>
-                                                                <div>
-                                                                    м²
-                                                                </div>
+                                                    <div class="search-select__dropdown">
+                                                        <button type="button" class="btn btn-reset search-select__close">
+                                                            <svg>
+                                                                <use xlink:href="./img/sprite.svg#x"></use>
+                                                            </svg>
+                                                        </button>
+                                                        <label class="input-primary search-select__input">
+                                                            <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по названию">
+                                                        </label>
+                                                        <div class="search-select__control">
+                                                            <button type="button" class="btn btn-reset btn-secondary search-select__all">Выбрать всё</button>
+                                                            <button type="button" class="btn btn-reset btn-secondary search-select__clear">Очистить всё</button>
+                                                        </div>
+                                                        <div class="search-select__wrapper simplebar-third">
+                                                            <div class="search-select__item checkbox-secondary">
+                                                                <input id="unique-offers_1" name="unique-offers-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                                <label for="unique-offers_1" class="checkbox-secondary__label">
+                                                                    <span class="checkbox-secondary__text">
+                                                                        <span>Кухня-столовая</span>
+                                                                    </span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="search-select__item checkbox-secondary">
+                                                                <input id="unique-offers_2" name="unique-offers-name_2" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                                <label for="unique-offers_2" class="checkbox-secondary__label">
+                                                                    <span class="checkbox-secondary__text">
+                                                                        <span>Готовая отделка</span>
+                                                                    </span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="search-select__item checkbox-secondary">
+                                                                <input id="developer_3" name="developer-name_3" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                                <label for="developer_3" class="checkbox-secondary__label">
+                                                                    <span class="checkbox-secondary__text">
+                                                                        <span>ГК "А101"</span>
+                                                                    </span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="search-select__item checkbox-secondary">
+                                                                <input id="unique-offers_4" name="unique-offers-name_4" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                                <label for="unique-offers_4" class="checkbox-secondary__label">
+                                                                    <span class="checkbox-secondary__text">
+                                                                        <span>ГК МИЦ</span>
+                                                                    </span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="search-select__item checkbox-secondary">
+                                                                <input id="unique-offers_5" name="unique-offers-name_5" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                                <label for="unique-offers_5" class="checkbox-secondary__label">
+                                                                    <span class="checkbox-secondary__text">
+                                                                        <span>ЛСР</span>
+                                                                    </span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="search-select__item checkbox-secondary">
+                                                                <input id="unique-offers_6" name="unique-offers-name_6" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                                <label for="unique-offers_6" class="checkbox-secondary__label">
+                                                                    <span class="checkbox-secondary__text">
+                                                                        <span>MR GROUP</span>
+                                                                    </span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="search-select__item checkbox-secondary">
+                                                                <input id="unique-offers_7" name="unique-offers-name_7" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                                <label for="unique-offers_7" class="checkbox-secondary__label">
+                                                                    <span class="checkbox-secondary__text">
+                                                                        <span>ГК ДОНСТРОЙ</span>
+                                                                    </span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="search-select__item checkbox-secondary">
+                                                                <input id="unique-offers_8" name="unique-offers-name_8" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                                <label for="unique-offers_8" class="checkbox-secondary__label">
+                                                                    <span class="checkbox-secondary__text">
+                                                                        <span>ГК ДОНСТРОЙ</span>
+                                                                    </span>
+                                                                </label>
                                                             </div>
                                                         </div>
-                                                    </label>
+                                                    </div>
+        
                                                 </div>
                                             </div>
-                                            <div class="filter__item search-select search-select--no-search" data-search-select-subtitle="Любой">
-                                                <button type="button" class="btn btn-reset search-select__button">
-                                                    <div class="search-select__button-wrapper">
-                                                        <div>Уникальные предложения</div>
-                                                        <div>Любые</div>
-                                                    </div>
-                                                    <svg>
-                                                        <use xlink:href="./img/sprite.svg#check"></use>
-                                                    </svg>
-                                                </button>
-                                                <div class="search-select__dropdown search-select__dropdown--left">
-                                                    <button type="button" class="btn btn-reset search-select__close">
-                                                        <svg>
-                                                            <use xlink:href="./img/sprite.svg#x"></use>
-                                                        </svg>
-                                                    </button>
-                                                    <div class="search-select__control">
-                                                        <button type="button" class="btn btn-reset btn-secondary search-select__all">Выбрать всё</button>
-                                                        <button type="button" class="btn btn-reset btn-secondary search-select__clear">Очистить всё</button>
-                                                    </div>
-                                                    <div class="search-select__wrapper simplebar-third">
-                                                        <div class="search-select__item checkbox-secondary">
-                                                            <input id="unique-offers_1" name="unique-offers-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
-                                                            <label for="unique-offers_1" class="checkbox-secondary__label">
-                                                                <span class="checkbox-secondary__text">
-                                                                    <span>Кухня-столовая</span>
-                                                                </span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="search-select__item checkbox-secondary">
-                                                            <input id="unique-offers_2" name="unique-offers-name_2" class="checkbox-secondary__input" type="checkbox" value="true">
-                                                            <label for="unique-offers_2" class="checkbox-secondary__label">
-                                                                <span class="checkbox-secondary__text">
-                                                                    <span>Готовая отделка</span>
-                                                                </span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="search-select__item checkbox-secondary">
-                                                            <input id="developer_3" name="developer-name_3" class="checkbox-secondary__input" type="checkbox" value="true">
-                                                            <label for="developer_3" class="checkbox-secondary__label">
-                                                                <span class="checkbox-secondary__text">
-                                                                    <span>ГК "А101"</span>
-                                                                </span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="search-select__item checkbox-secondary">
-                                                            <input id="unique-offers_4" name="unique-offers-name_4" class="checkbox-secondary__input" type="checkbox" value="true">
-                                                            <label for="unique-offers_4" class="checkbox-secondary__label">
-                                                                <span class="checkbox-secondary__text">
-                                                                    <span>ГК МИЦ</span>
-                                                                </span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="search-select__item checkbox-secondary">
-                                                            <input id="unique-offers_5" name="unique-offers-name_5" class="checkbox-secondary__input" type="checkbox" value="true">
-                                                            <label for="unique-offers_5" class="checkbox-secondary__label">
-                                                                <span class="checkbox-secondary__text">
-                                                                    <span>ЛСР</span>
-                                                                </span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="search-select__item checkbox-secondary">
-                                                            <input id="unique-offers_6" name="unique-offers-name_6" class="checkbox-secondary__input" type="checkbox" value="true">
-                                                            <label for="unique-offers_6" class="checkbox-secondary__label">
-                                                                <span class="checkbox-secondary__text">
-                                                                    <span>MR GROUP</span>
-                                                                </span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="search-select__item checkbox-secondary">
-                                                            <input id="unique-offers_7" name="unique-offers-name_7" class="checkbox-secondary__input" type="checkbox" value="true">
-                                                            <label for="unique-offers_7" class="checkbox-secondary__label">
-                                                                <span class="checkbox-secondary__text">
-                                                                    <span>ГК ДОНСТРОЙ</span>
-                                                                </span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="search-select__item checkbox-secondary">
-                                                            <input id="unique-offers_8" name="unique-offers-name_8" class="checkbox-secondary__input" type="checkbox" value="true">
-                                                            <label for="unique-offers_8" class="checkbox-secondary__label">
-                                                                <span class="checkbox-secondary__text">
-                                                                    <span>ГК ДОНСТРОЙ</span>
-                                                                </span>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <button type="button" class="btn btn-reset filter__btn-control filter__btn-hidden">
+                                                <span>Скрыть фильтры</span>
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#check"></use>
+                                                </svg>
+                                            </button>
                                         </div>
-                                    </div>
-                                    <div class="filter__controls more">
-                                        <button type="button" class="btn btn-reset filter__btn-control">
-                                            <span>Еще фильтры</span>
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#check"></use>
-                                            </svg>
-                                        </button>
-                                        <button type="reset" class="btn btn-reset btn-secondary filter__clear">Очистить</button>
-                                        <button type="button" class="btn btn-reset btn-primary filter__go">
-                                            Показать 1567 объявлений
-                                        </button>
                                     </div>
                                 </div>
                             </div>

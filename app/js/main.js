@@ -4503,6 +4503,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
   scrollTarget();
+  const btnScrollUp = document.querySelector('.scroll-up');
+  if (btnScrollUp) {
+    scrollUp();
+    document.addEventListener('scroll', () => {
+      scrollUp();
+    });
+    btnScrollUp.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+  function scrollUp() {
+    const currentOffset = window.pageYOffset;
+    if (currentOffset >= 250) {
+      btnScrollUp.classList.add('_active');
+    } else {
+      btnScrollUp.classList.remove('_active');
+    }
+  }
 });
 
 /***/ }),
@@ -8161,6 +8182,10 @@ const filterControl = () => {
             (0,_support_modules_slide__WEBPACK_IMPORTED_MODULE_5__._slideToggle)(item, 700);
           });
           container.classList.remove('_active');
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
         }
       });
     }

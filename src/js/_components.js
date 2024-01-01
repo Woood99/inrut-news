@@ -122,6 +122,7 @@ import submitAppOffers from './components/submitAppOffers';
 import mortgageRequests from './components/mortgageRequests';
 import moveToFromBlock from './modules/moveToFromBlock';
 import replaceText from './components/replaceText';
+import metroItems from './components/metroItems';
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==================================================
@@ -272,7 +273,6 @@ document.addEventListener('DOMContentLoaded', () => {
     emergingBlockScroll('.submit-app .submit-app__btn', '.footer-fixed.submit-app-fixed', 99999999, true);
 
     // ==================================================
-
     moveToFromBlock('[data-move-block-to="bid-user"]', '[data-move-block-from="bid-user"]', 99999, 1212, `${window.innerWidth >= 1920 ? 1.35 : 1}`);
     replaceText();
     // ==================================================
@@ -310,6 +310,26 @@ document.addEventListener('DOMContentLoaded', () => {
         </h4>
         </div>
     `,'offer-room-clue',true);
+    // ==================================================
+    const objectMetro = document.querySelectorAll('.object-data__metro');
+    if (objectMetro.length > 0) {
+        objectMetro.forEach(container => {
+            metroItems(container, container.closest('.object-body__content'));
+        })
+        window.addEventListener('resize',() => {
+            objectMetro.forEach(container => {
+                metroItems(container, container.closest('.object-body__content'));
+            })
+        });
+    }
+    document.addEventListener('click',(e) => {
+        const metroOther = e.target.closest('.metro-info__other');
+        if (metroOther) {
+            e.preventDefault();
+            metroOther.classList.toggle('_active')
+        }            
+    })
+    // ==================================================
 
 
     const datePickers = document.querySelectorAll('.date-picker');

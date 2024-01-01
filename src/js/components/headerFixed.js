@@ -2,11 +2,11 @@ const headerFixed = () => {
     const headerFixed = document.querySelector('.header-fixed');
     if (!(headerFixed && window.innerWidth >= 1212)) return;
     const header = document.querySelector('.header');
-    const links = headerFixed.querySelectorAll('.header-fixed__item-link');
     const headerHeight = headerFixed.offsetHeight;
     const gap = 100;
     const smallGap = 20;
-
+    init();
+    const links = headerFixed.querySelectorAll('.header-fixed__item-link');
     toggleActiveClass(window.scrollY);
     glattScroll();
     showHeader(window.scrollY);
@@ -76,6 +76,16 @@ const headerFixed = () => {
             headerFixed.classList.remove('_active');
             main.classList.remove('_header-fixed');
         }
+    }
+
+    function init(){
+        const links = headerFixed.querySelectorAll('.header-fixed__item-link');
+        links.forEach(link => {
+            const currentSection = document.getElementById(link.getAttribute('href').replace('#', ''));
+            if (!currentSection) {
+                link.closest('.header-fixed__item').remove();
+            }
+        })
     }
 }
 

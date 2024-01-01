@@ -121,7 +121,7 @@ export const selectSecondaryCreate = (el) => {
     const mobileWidth = 1212;
     const wrapper = el.closest('.select-secondary');
     if (wrapper.classList.contains('select-secondary--quarter')) {
-        const currentQuarter = Math.ceil((new Date()).getMonth() / 3);
+        const currentQuarter = Math.floor((new Date().getMonth() + 3) / 3);
         const body = wrapper.querySelector('.select-secondary__body');
         let optionsHtml = '';
         if (currentQuarter === 1) {

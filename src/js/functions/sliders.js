@@ -926,8 +926,8 @@ function mainSlider() {
                 },
                 // on: {
                 //     beforeTransitionStart(slider) {
-                //         const countAllSlides = slider.slides.length
-                //         const swiperIndex = slider.realIndex
+                        // const countAllSlides = slider.slides.length
+                        // const swiperIndex = slider.realIndex
                 //         if (swiperIndex + 1 === countAllSlides) {
                 //             if (nextTab) {
                 //                 if (!value) {

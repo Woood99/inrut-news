@@ -823,17 +823,17 @@
                                                 <div class="shorts__list swiper">
                                                     <div class="swiper-wrapper">
                                                         <div class="swiper-slide">
-                                                            <video class="shorts__item short video-js"
+                                                            <video class="shorts__item short video-js vjs-default-skin vjs-fluid" controls
                                                                 data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=WlUbecHiP0U?si=U_QhhoOcNN33xizp"}] }'>
                                                             </video>
                                                         </div>
                                                         <div class="swiper-slide">
-                                                            <video class="shorts__item short video-js"
+                                                            <video class="shorts__item short video-js vjs-default-skin vjs-fluid" controls
                                                                 data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=LpJwbigxJFw"}] }'>
                                                             </video>
                                                         </div>
                                                         <div class="swiper-slide">
-                                                            <video class="shorts__item short video-js"
+                                                            <video class="shorts__item short video-js vjs-default-skin vjs-fluid" controls
                                                                 data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=1S94nl9gE8o"}] }'>
                                                             </video>
                                                         </div>
@@ -1402,11 +1402,16 @@
         const shortsItems = shortsContainer.querySelectorAll('.short');
         shortsItems.forEach(item => {
             videojs(item, {
+                controls: true,
                 navigationUI: 'hide',
                 fullscreen: false,
                 title: false,
-                controls: true,
+                rel: 1,
+                mute: 0,
                 youtube: {
+                    mute: 1,
+                    modestbranding: 1,
+                    fullscreen: false,
                     ytControls: 0,
                     rel: 0,
                     autohide: 0,

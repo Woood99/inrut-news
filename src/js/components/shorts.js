@@ -20,14 +20,54 @@ const shorts = () => {
 
         allowTouchMove: false,
         direction: 'vertical',
-        mousewheel: true,
+        // mousewheel: true,
         keyboard: true,
         forceToAxis: true,
+        grabCursor: true,
         navigation: {
             prevEl: container.querySelector('.shorts__prev'),
             nextEl: container.querySelector('.shorts__next'),
         },
     });
+    slider.on('slideNextTransitionStart', function () {
+        const video = slider.slides[slider.realIndex - 1].querySelector('.shorts__item');
+        videojs(video).pause();
+        videojs(video).currentTime(0);
+    });
+    slider.on('slidePrevTransitionStart', function () {
+        const video = slider.slides[slider.realIndex + 1].querySelector('.shorts__item');
+        videojs(video).pause();
+        videojs(video).currentTime(0);
+    });
+    slider.on('slideChange', function () {
+        const video = slider.slides[slider.realIndex].querySelector('.shorts__item');
+        setTimeout(() => {
+            videojs(video).play();
+        }, 500);
+    });
+    const wrapper = container.closest('.stock-developer__content');
+    if (wrapper) {
+        let scrolling = true;
+        wrapper.addEventListener('mousewheel', (e) => {
+            const y = e.wheelDelta;
+            const next = container.querySelector('.shorts__next').hasAttribute('disabled');
+            const prev = container.querySelector('.shorts__prev').hasAttribute('disabled');
+            if (scrolling) {
+                scrolling = false;
+                if (y > 0 && !prev) {
+                    e.preventDefault();
+                    slider.slidePrev();
+                }
+                if (y <= 0 && !next) {
+                    e.preventDefault();
+                    slider.slideNext();
+                }
+                setTimeout(() => {
+                    scrolling = true;
+                }, 150);
+            }
+        })
+    }
 
 
 

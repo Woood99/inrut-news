@@ -13512,7 +13512,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
 
-swiper__WEBPACK_IMPORTED_MODULE_0__["default"].use([swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_0__.Pagination, swiper__WEBPACK_IMPORTED_MODULE_0__.Mousewheel]);
+swiper__WEBPACK_IMPORTED_MODULE_0__["default"].use([swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_0__.Pagination, swiper__WEBPACK_IMPORTED_MODULE_0__.Mousewheel, swiper__WEBPACK_IMPORTED_MODULE_0__.Keyboard]);
 const shorts = () => {
   const container = document.querySelector('.shorts');
   if (!container) return;
@@ -13527,6 +13527,8 @@ const shorts = () => {
     allowTouchMove: false,
     direction: 'vertical',
     mousewheel: true,
+    keyboard: true,
+    forceToAxis: true,
     navigation: {
       prevEl: container.querySelector('.shorts__prev'),
       nextEl: container.querySelector('.shorts__next')

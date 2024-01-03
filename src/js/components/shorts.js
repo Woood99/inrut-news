@@ -1,9 +1,10 @@
 import Swiper, {
     Navigation,
     Pagination,
-    Mousewheel
+    Mousewheel,
+    Keyboard
 } from 'swiper';
-Swiper.use([Navigation, Pagination,Mousewheel]);
+Swiper.use([Navigation, Pagination, Mousewheel, Keyboard]);
 
 const shorts = () => {
     const container = document.querySelector('.shorts');
@@ -19,7 +20,9 @@ const shorts = () => {
 
         allowTouchMove: false,
         direction: 'vertical',
-        mousewheel: true, 
+        mousewheel: true,
+        keyboard: true,
+        forceToAxis: true,
         navigation: {
             prevEl: container.querySelector('.shorts__prev'),
             nextEl: container.querySelector('.shorts__next'),

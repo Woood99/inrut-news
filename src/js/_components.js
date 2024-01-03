@@ -123,6 +123,8 @@ import mortgageRequests from './components/mortgageRequests';
 import moveToFromBlock from './modules/moveToFromBlock';
 import replaceText from './components/replaceText';
 import metroItems from './components/metroItems';
+import shorts from './components/shorts';
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==================================================
@@ -275,6 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==================================================
     moveToFromBlock('[data-move-block-to="bid-user"]', '[data-move-block-from="bid-user"]', 99999, 1212, `${window.innerWidth >= 1920 ? 1.35 : 1}`);
     replaceText();
+    shorts();
     // ==================================================
     inputClue('.input-clue', 'clue-primary', `
     <div class="clue-primary">
@@ -405,4 +408,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btnScrollUp.classList.remove('_active');
         }
     }
+
+
+
 })

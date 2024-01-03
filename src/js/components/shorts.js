@@ -1,24 +1,31 @@
+import Swiper, {
+    Navigation,
+    Pagination,
+    Mousewheel
+} from 'swiper';
+Swiper.use([Navigation, Pagination,Mousewheel]);
+
 const shorts = () => {
     const container = document.querySelector('.shorts');
     if (!container) return;
     const list = container.querySelector('.shorts__list');
-    const prevBtn = container.querySelector('.shorts__prev');
-    const nextBtn = container.querySelector('.shorts__next');
-    const heightShort = container.querySelector('.shorts__item').offsetHeight;
     setIndex();
+    const slider = new Swiper(list, {
+        observer: true,
+        observeParents: true,
+        slidesPerView: 1,
+        spaceBetween: 16,
+        speed: 800,
 
-    nextBtn.addEventListener('click', () => {
-        list.scrollTo({
-            top: list.scrollTop + heightShort + 17,
-            behavior: 'smooth'
-        })
-    })
-    prevBtn.addEventListener('click', () => {
-        list.scrollTo({
-            top: list.scrollTop - heightShort - 17,
-            behavior: 'smooth'
-        })
-    })
+        allowTouchMove: false,
+        direction: 'vertical',
+        mousewheel: true, 
+        navigation: {
+            prevEl: container.querySelector('.shorts__prev'),
+            nextEl: container.querySelector('.shorts__next'),
+        },
+    });
+
 
 
     function setIndex() {

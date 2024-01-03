@@ -13510,25 +13510,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
+
+swiper__WEBPACK_IMPORTED_MODULE_0__["default"].use([swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_0__.Pagination, swiper__WEBPACK_IMPORTED_MODULE_0__.Mousewheel]);
 const shorts = () => {
   const container = document.querySelector('.shorts');
   if (!container) return;
   const list = container.querySelector('.shorts__list');
-  const prevBtn = container.querySelector('.shorts__prev');
-  const nextBtn = container.querySelector('.shorts__next');
-  const heightShort = container.querySelector('.shorts__item').offsetHeight;
   setIndex();
-  nextBtn.addEventListener('click', () => {
-    list.scrollTo({
-      top: list.scrollTop + heightShort + 17,
-      behavior: 'smooth'
-    });
-  });
-  prevBtn.addEventListener('click', () => {
-    list.scrollTo({
-      top: list.scrollTop - heightShort - 17,
-      behavior: 'smooth'
-    });
+  const slider = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](list, {
+    observer: true,
+    observeParents: true,
+    slidesPerView: 1,
+    spaceBetween: 16,
+    speed: 800,
+    allowTouchMove: false,
+    direction: 'vertical',
+    mousewheel: true,
+    navigation: {
+      prevEl: container.querySelector('.shorts__prev'),
+      nextEl: container.querySelector('.shorts__next')
+    }
   });
   function setIndex() {
     const shorts = list.querySelectorAll('.short');

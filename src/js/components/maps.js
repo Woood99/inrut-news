@@ -292,6 +292,12 @@ const maps = () => {
             const mapDraw = container.closest('.map-draw');
             const drawBtns = mapDraw ? mapDraw.querySelector('.map-draw__btns') : null;
             const searchArea = mapDraw.closest('.popup-primary--search-area');
+            const mobileFullscreen = mapDraw.closest('.submit-app__container') ? mapDraw.closest('.submit-app__container').querySelector('.map-draw__mobile-fullscreen') : null;
+            if (mobileFullscreen) {
+                mobileFullscreen.addEventListener('click',() => {
+                    map.container.enterFullscreen();
+                });
+            }
             if (drawBtns !== null) {
                 map.controls.add("zoomControl");
                 const fullScreenControl = map.controls.get('fullscreenControl');

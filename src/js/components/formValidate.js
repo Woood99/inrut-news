@@ -580,7 +580,7 @@ export const submitAppValidate = () => {
           setTimeout(() => {
             if (item.classList.contains('_active')) {
                 window.scrollTo({
-                    top: locationSectionOffset - 16,
+                    top: locationSectionOffset - (window.innerWidth > 1212 ? 16 : document.querySelector('.header').clientHeight + 8),
                     behavior: 'smooth'
                 })
             }

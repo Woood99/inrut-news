@@ -13584,7 +13584,6 @@ const shorts = () => {
     speed: 800,
     allowTouchMove: false,
     direction: 'vertical',
-    // mousewheel: true,
     keyboard: true,
     forceToAxis: true,
     grabCursor: true,
@@ -13628,7 +13627,7 @@ const shorts = () => {
         }
         setTimeout(() => {
           scrolling = true;
-        }, 150);
+        }, 500);
       }
     });
   }
@@ -15999,6 +15998,7 @@ const tabs = () => {
       });
     }
   }
+  let statusShorts = false;
   function setTabsAction(e) {
     const el = e.target;
     if (el.closest('[data-tabs-title]')) {
@@ -16079,6 +16079,28 @@ const tabs = () => {
               top: topHeaderMobile ? topGap - topHeaderMobile.offsetHeight - 20 : topGap - 20,
               behavior: 'smooth'
             });
+          }
+        }
+        if (el.closest('.stock-developer')) {
+          const shorts = tabsBlock.querySelector('.shorts');
+          const shortsSlider = shorts.querySelector('.shorts__list').swiper;
+          shortsSlider.slideTo(0);
+          const shortsVideos = shorts.querySelectorAll('.shorts__item');
+          if (tabTitle.classList.contains('stock-developer--shorts')) {
+            setTimeout(() => {
+              videojs(shortsVideos[0]).play();
+            }, 500);
+            statusShorts = true;
+          } else {
+            if (statusShorts) {
+              setTimeout(() => {
+                shortsVideos.forEach(video => {
+                  videojs(video).pause();
+                  videojs(video).currentTime(0);
+                });
+                statusShorts = false;
+              }, 500);
+            }
           }
         }
         const nav = tabTitle.closest('.tabs__navigation');

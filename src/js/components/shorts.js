@@ -20,7 +20,6 @@ const shorts = () => {
 
         allowTouchMove: false,
         direction: 'vertical',
-        // mousewheel: true,
         keyboard: true,
         forceToAxis: true,
         grabCursor: true,
@@ -64,7 +63,7 @@ const shorts = () => {
                 }
                 setTimeout(() => {
                     scrolling = true;
-                }, 150);
+                }, 500);
             }
         })
     }

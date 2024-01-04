@@ -35,8 +35,11 @@
             <div class="submit-app__body">
                 <form action="#" id="submit-app-form" class="submit-app__container container">
                     <div class="submit-app__row submit-app-options">
-                        <h2 class="submit-app-options__title submit-app__row-title title-2">
+                        <h2 class="submit-app-options__title submit-app__row-title title-2 necessarily">
                             Тип недвижимости
+                            <span class="necessarily__span">
+                                *
+                            </span>
                         </h2>
                         <div class="submit-app-options__choice">
                             <div class="submit-app-options__item field-select field-select--img field-select--col" data-submit-filter-object-type
@@ -74,8 +77,11 @@
                         </div>
                     </div>
                     <div class="submit-app__row submit-app-maps">
-                        <h2 class="submit-app-maps__title submit-app__row-title title-2">
+                        <h2 class="submit-app-maps__title submit-app__row-title title-2 necessarily">
                             Расположение поиска
+                            <span class="necessarily__span">
+                                *
+                            </span>
                         </h2>
                         <p class="submit-app-maps__descr">
                             Выберите город и нарисуйте желаемый район вашей заявки на карте
@@ -138,8 +144,11 @@
                     </div>
                     <div class="submit-app__row submit-app-options submit-app-options submit-price-proper">
                         <div class="submit-app-options__choice">
-                            <h2 class="submit-app-options__title submit-app__row-title title-2">
+                            <h2 class="submit-app-options__title submit-app__row-title title-2 necessarily">
                                 Цена и свойства расчёта
+                                <span class="necessarily__span">
+                                    *
+                                </span>
                             </h2>
                             <div class="submit-app-options__row submit-app-options__row--3">
                                 <div class="submit-app-options__item submit-app-options__item--price filter-dropdown" data-filter-dropdown-name="Цена"
@@ -855,19 +864,435 @@
                             </div>
                         </div>
                         <div class="submit-app-options__choice" data-submit-filter-type="2" hidden>
+                            <div class="submit-app-options__item field-select field-select--multiple field-select--col" data-field-select-name="apartments">
+                                <div class="field-select__name">
+                                    Тип жилья
+                                </div>
+                                <div class="field-select__wrapper">
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Квартира</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Апартаменты</span>
+                                    </button>
+                                    <div class="secondary-tooltip secondary-tooltip--dark">
+                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#info"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="secondary-tooltip__content">
+                                            <span>
+                                                В апартаментах нельзя прописаться и получить за них налоговый вычет, поэтому они стоят дешевле.
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="submit-app-options__item field-dropdown field-dropdown--col" data-field-dropdown-name="complex">
+                                <div class="field-dropdown__name">
+                                    Комплекс
+                                </div>
+                                <div class="search-select field-dropdown__wrapper" data-search-select-subtitle="Не выбрано">
+                                    <button type="button" class="btn btn-reset search-select__button">
+                                        <div class="search-select__button-wrapper">
+                                            <div></div>
+                                            <div>Не выбрано</div>
+                                        </div>
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#check"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="search-select__dropdown">
+                                        <button type="button" class="btn btn-reset search-select__close">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#x"></use>
+                                            </svg>
+                                        </button>
+                                        <label class="input-primary search-select__input">
+                                            <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по названию">
+                                        </label>
+                                        <div class="search-select__control">
+                                            <button type="button" class="btn btn-reset btn-secondary search-select__all">Выбрать всё</button>
+                                            <button type="button" class="btn btn-reset btn-secondary search-select__clear">Очистить всё</button>
+                                        </div>
+                                        <div class="search-select__wrapper simplebar-third">
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_17" name="developer-name_17" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_17" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>ПИК</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_18" name="developer-name_18" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_18" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>ГК Самолет</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_19" name="developer-name_19" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_19" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>ГК "А101"</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_30" name="developer-name_30" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_30" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>ГК МИЦ</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple field-select--rooms" data-field-select-name="rooms">
+                                <div class="field-select__name necessarily">
+                                    Комнатность
+                                    <span class="necessarily__span">
+                                        *
+                                    </span>
+                                </div>
+                                <div class="field-select__wrapper">
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Студия</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>1</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>2</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>3</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>4+</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="submit-app-options__item field-range field-range--col" data-field-range-name="total-area">
+                                <div class="field-range__name">
+                                    Площадь общая
+                                </div>
+                                <div class="field-range__wrapper">
+                                    <div class="input-text input-text--no-exp input-text--only-number">
+                                        <label class="input-text__label">
+                                            <span>От</span>
+                                            <input type="text" maxlength="3" class="input-reset input-text__input" placeholder="От">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--only-number">
+                                        <label class="input-text__label">
+                                            <span>До</span>
+                                            <input type="text" maxlength="3" class="input-reset input-text__input" placeholder="До">
+                                            <span>м²</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="submit-app-options__item field-range field-range--col" data-field-range-name="kitchen-area">
+                                <div class="field-range__name">
+                                    Площадь кухни
+                                </div>
+                                <div class="field-range__wrapper">
+                                    <div class="input-text input-text--no-exp input-text--only-number">
+                                        <label class="input-text__label">
+                                            <span>От</span>
+                                            <input type="text" maxlength="3" class="input-reset input-text__input" placeholder="От">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--only-number">
+                                        <label class="input-text__label">
+                                            <span>До</span>
+                                            <input type="text" maxlength="3" class="input-reset input-text__input" placeholder="До">
+                                            <span>м²</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="submit-app-options__item field-range field-range--col" data-field-range-name="floor-area" data-field-range-floor>
+                                <div class="field-range__name">
+                                    Этаж
+                                </div>
+                                <div class="field-range__wrapper">
+                                    <div class="input-text input-text--no-exp input-text--only-number">
+                                        <label class="input-text__label">
+                                            <span>От</span>
+                                            <input type="text" maxlength="3" class="input-reset input-text__input" placeholder="От">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--only-number">
+                                        <label class="input-text__label">
+                                            <span>До</span>
+                                            <input type="text" maxlength="3" class="input-reset input-text__input" placeholder="До">
+                                            <span>эт.</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="field-range__choices">
+                                    <button type="button" class="btn btn-reset tag field-range__choice">
+                                        <span>Не первый</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-range__choice">
+                                        <span>Не последний</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-range__choice">
+                                        <span>Последний</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="submit-app-options__item field-select field-select--col" data-field-select-name="bathroom">
+                                <div class="field-select__name">
+                                    Санузел
+                                </div>
+                                <div class="field-select__wrapper">
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Совмещённый</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Раздельный</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Более одного</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="infrastructure">
+                                <div class="field-select__name">
+                                    Инфраструктура
+                                </div>
+                                <div class="field-select__wrapper">
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Школа рядом</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>В детский сад пешком</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Детские площадки в шаговой доступности</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Рядом вузы и ссузы</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Магазин у дома</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Рядом медучереждения и аптеки</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Рядом кафе и рестораны</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="environment">
+                                <div class="field-select__name">
+                                    Окружение
+                                </div>
+                                <div class="field-select__wrapper">
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Рядом водоём</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Рядом лес</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Рядом набережная</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Рядом парк</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="popular-tags">
+                                <div class="field-select__name">
+                                    Популярные запросы
+                                </div>
+                                <div class="field-select__wrapper">
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Ипотека 0.1%</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>С отделкой</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>С кухней</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>В трейд-ин</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>С ключами</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Апартаменты</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>С парковкой</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>С большой кухней</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>С высокими потолками</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>С мебелью</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>С видео</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>С сохраняемой территорией</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Ипотека без первоначального взноса</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>С панорамными окнами</span>
+                                    </button>
+                                </div>
+                            </div>
                             <div class="submit-app-options__item field-select field-select--col" data-field-select-name="balcony">
                                 <div class="field-select__name">
                                     Балкон
                                 </div>
                                 <div class="field-select__wrapper">
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Без балкона</span>
+                                    <button type="button" class="btn btn-reset tag field-select__item _active field-select__default">
+                                        <span>Неважно</span>
                                     </button>
                                     <button type="button" class="btn btn-reset tag field-select__item">
                                         <span>Балкон</span>
                                     </button>
                                     <button type="button" class="btn btn-reset tag field-select__item">
                                         <span>Лоджия</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="layout">
+                                <div class="field-select__name">
+                                    Планировка
+                                </div>
+                                <div class="field-select__wrapper">
+                                    <button type="button" class="btn btn-reset tag field-select__item _active field-select__default">
+                                        <span>Неважно</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Смежная</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Изолированная</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="view-window">
+                                <div class="field-select__name">
+                                    Вид из окна
+                                </div>
+                                <div class="field-select__wrapper">
+                                    <button type="button" class="btn btn-reset tag field-select__item _active field-select__default">
+                                        <span>Неважно</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Во двор</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>На улицу</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="submit-app-options__item field-range field-range--col" data-field-range-name="year-construction">
+                                <div class="field-range__name">
+                                    Год постройки
+                                </div>
+                                <div class="field-range__wrapper">
+                                    <div class="input-text input-text--no-exp input-text--only-number">
+                                        <label class="input-text__label">
+                                            <span>От</span>
+                                            <input type="text" maxlength="4" class="input-reset input-text__input" placeholder="От">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp input-text--only-number">
+                                        <label class="input-text__label">
+                                            <span>До</span>
+                                            <input type="text" maxlength="4" class="input-reset input-text__input" placeholder="До">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="type-house">
+                                <div class="field-select__name">
+                                    Тип дома
+                                </div>
+                                <div class="field-select__wrapper">
+                                    <button type="button" class="btn btn-reset tag field-select__item _active field-select__default">
+                                        <span>Неважно</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Кирпичный</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Монолитный</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Панельный</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Блочный</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Кирпично-монолитный</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Сталинский</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="elevator">
+                                <div class="field-select__name">
+                                    Лифт
+                                </div>
+                                <div class="field-select__wrapper">
+                                    <button type="button" class="btn btn-reset tag field-select__item _active field-select__default">
+                                        <span>Неважно</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Есть любой</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Есть грузовой</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="parking">
+                                <div class="field-select__name">
+                                    Парковка
+                                </div>
+                                <div class="field-select__wrapper">
+                                    <button type="button" class="btn btn-reset tag field-select__item _active field-select__default">
+                                        <span>Неважно</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Наземная</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Многоуровневая</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Подземная</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>На крыше</span>
                                     </button>
                                 </div>
                             </div>
@@ -1524,6 +1949,88 @@
                                             </picture>
                                             <div class="offer-room__title title-3">
                                                 Камин
+                                            </div>
+                                        </div>
+                                        <div class="offer-room__subtitle">
+                                            <span>9 предложений</span>
+                                            <span>от 12 086 285 до 52 086 285 руб.</span>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                            <button type="button" class="btn btn-reset submit-app-offers__btn">
+                                <span>Ещё квартиры</span>
+                                <svg>
+                                    <use xlink:href="./img/sprite.svg#check"></use>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="submit-app-options__offers submit-app-offers submit-app-offers--advant" data-submit-filter-type="2" hidden>
+                            <h3 class="submit-app-offers__title submit-app__row-title title-2">
+                                Ремонт
+                            </h3>
+                            <div class="submit-app-offers__list">
+                                <article class="submit-app-offers__item offer-room offer-room-clue" data-offer-room-price-from="12086285" data-offer-room-price-to="52086285">
+                                    <div class="offer-room__check" aria-hidden="true">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#verif"></use>
+                                        </svg>
+                                    </div>
+                                    <input type="checkbox" name="submit-app-offers-1" value="Мастер-спальня" class="input-reset" placeholder="">
+                                    <div class="offer-room__container">
+                                        <div class="offer-room__image ibg">
+                                            <picture>
+                                                <source srcset="./img/card-21.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-21.jpg" width="366" height="248" alt="Мастер-спальня">
+                                            </picture>
+                                            <div class="offer-room__title title-3">
+                                               Без ремонта
+                                            </div>
+                                        </div>
+                                        <div class="offer-room__subtitle">
+                                            <span>9 предложений</span>
+                                            <span>от 12 086 285 до 52 086 285 руб.</span>
+                                        </div>
+                                    </div>
+                                </article>
+                                <article class="submit-app-offers__item offer-room offer-room-clue" data-offer-room-price-from="12086285" data-offer-room-price-to="52086285">
+                                    <div class="offer-room__check" aria-hidden="true">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#verif"></use>
+                                        </svg>
+                                    </div>
+                                    <input type="checkbox" name="submit-app-offers-2" value="Камин" class="input-reset" placeholder="">
+                                    <div class="offer-room__container">
+                                        <div class="offer-room__image ibg">
+                                            <picture>
+                                                <source srcset="./img/card-23.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-23.jpg" width="366" height="248" alt="Камин">
+                                            </picture>
+                                            <div class="offer-room__title title-3">
+                                                Космети́ческий
+                                            </div>
+                                        </div>
+                                        <div class="offer-room__subtitle">
+                                            <span>9 предложений</span>
+                                            <span>от 12 086 285 до 52 086 285 руб.</span>
+                                        </div>
+                                    </div>
+                                </article>
+                                <article class="submit-app-offers__item offer-room offer-room-clue" data-offer-room-price-from="12086285" data-offer-room-price-to="52086285">
+                                    <div class="offer-room__check" aria-hidden="true">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#verif"></use>
+                                        </svg>
+                                    </div>
+                                    <input type="checkbox" name="submit-app-offers-3" value="Зимний сад" class="input-reset" placeholder="">
+                                    <div class="offer-room__container">
+                                        <div class="offer-room__image ibg">
+                                            <picture>
+                                                <source srcset="./img/card-22.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-22.jpg" width="366" height="248" alt="Зимний сад">
+                                            </picture>
+                                            <div class="offer-room__title title-3">
+                                              Ремонт по дизайн-проекту
                                             </div>
                                         </div>
                                         <div class="offer-room__subtitle">

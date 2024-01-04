@@ -16406,12 +16406,20 @@ textarea.input-reset {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  margin: 8px 16px 0px 0;
+  margin: 8px 16px 0 0;
 }
 .field-select--img .field-select__item > img {
   width: 50px;
   height: 50px;
   margin-bottom: 16px;
+}
+@media (max-width: 1212px) {
+  .field-select--img .field-select__item > img {
+    width: 35px;
+    height: 35px;
+    margin-bottom: 0;
+    margin-right: 16px;
+  }
 }
 .field-select--img .field-select__item .field-select__check {
   position: absolute;
@@ -16453,6 +16461,23 @@ textarea.input-reset {
   .field-select--img .field-select__item:hover:not(._no-select, ._active) {
     background-color: var(--white);
     border: 1px solid var(--blue);
+  }
+}
+@media (max-width: 1212px) {
+  .field-select--img .field-select__item {
+    width: 100%;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: start;
+    min-height: 80px;
+    margin: 8px 0 0 0;
   }
 }
 .field-select__item {
@@ -16781,19 +16806,36 @@ textarea.input-reset {
     max-width: 100%;
   }
 }
+.field-dropdown__choices {
+  margin-left: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+@media (max-width: 1212px) {
+  .field-dropdown__choices {
+    margin-left: 0;
+  }
+}
+.field-dropdown__choice {
+  margin: 0 4px 4px 0;
+}
 .field-dropdown--col {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
   -webkit-box-align: start;
   -ms-flex-align: start;
   align-items: start;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 .field-dropdown--col .field-dropdown__name {
   font-weight: 500;
   margin: 0 0 12px 0;
   --width: auto;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
 }
 @media (max-width: 1212px) {
   .field-dropdown {

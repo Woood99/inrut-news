@@ -8195,7 +8195,11 @@ const fieldSelect = () => {
             if (item !== currentItem) currentItem.classList.remove('_active');
           });
         }
-        item.classList.toggle('_active');
+        if (container.classList.contains('field-select--necessarily')) {
+          item.classList.add('_active');
+        } else {
+          item.classList.toggle('_active');
+        }
         if (container.hasAttribute('data-submit-filter-object-type')) {
           const developer = document.querySelector('[data-submit-filter-developer]');
           const currentItem = item.hasAttribute('data-submit-filter-object-type-item');
@@ -8206,6 +8210,10 @@ const fieldSelect = () => {
           const secondaryField = document.querySelectorAll('[data-submit-filter-type="2"]');
           const houseField = document.querySelectorAll('[data-submit-filter-type="3"]');
           if (newBuildingsField.length > 0 && houseField.length > 0 && secondaryField.length > 0) {
+            if (currentItem || secondaryItem || houseItem) {
+              const itemsHidden = document.querySelectorAll('[data-submit-app-block-hidden]');
+              itemsHidden.forEach(item => item.removeAttribute('hidden'));
+            }
             if (currentItem) {
               houseField.forEach(item => item.setAttribute('hidden', ''));
               secondaryField.forEach(item => item.setAttribute('hidden', ''));
@@ -8824,13 +8832,12 @@ const submitAppValidate = () => {
   const roomsItems = rooms.querySelectorAll('.field-select__item');
   const descr = form.querySelector('[data-field-descr]');
   const descrInput = descr.querySelector('textarea');
-  const locationSectionOffset = form.querySelector('.submit-app-maps').offsetTop;
   typeItems.forEach(item => {
     item.addEventListener('click', () => {
       setTimeout(() => {
         if (item.classList.contains('_active')) {
           window.scrollTo({
-            top: locationSectionOffset - (window.innerWidth > 1212 ? 16 : document.querySelector('.header').clientHeight + 8),
+            top: form.querySelector('.submit-app-maps').offsetTop - (window.innerWidth > 1212 ? 16 : document.querySelector('.header').clientHeight + 8),
             behavior: 'smooth'
           });
         }

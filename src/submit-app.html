@@ -17,7 +17,7 @@
 
 <body class="page__body">
     <div class="site-container site-container--submit-app">
-        @include('partials/header.html')
+        @include('partials/header--new.html')
         <main class="main main-page-gap submit-app">
             <div class="submit-app__top top-page-inner-title">
                 <div class="top-page-inner-title__container container">
@@ -35,19 +35,16 @@
             <div class="submit-app__body">
                 <form action="#" id="submit-app-form" class="submit-app__container container">
                     <div class="submit-app__row submit-app-options">
-                        <h2 class="submit-app-options__title submit-app__row-title title-2 necessarily">
-                            Тип недвижимости
-                            <span class="necessarily__span">
-                                *
-                            </span>
+                        <h2 class="submit-app-options__title submit-app__row-title title-2">
+                            Что ищете?
                         </h2>
                         <div class="submit-app-options__choice">
-                            <div class="submit-app-options__item field-select field-select--img field-select--col" data-submit-filter-object-type
+                            <div class="submit-app-options__item field-select field-select--necessarily field-select--img field-select--col" data-submit-filter-object-type
                                 data-field-select-name="object-type">
                                 <div class="field-select__wrapper">
                                     <button type="button" class="btn btn-reset tag field-select__item" data-submit-filter-object-type-item>
-                                        <img loading="lazy" src="./img/new-buildings.svg" alt="Новостройки">
-                                        <span>Новостройки</span>
+                                        <img loading="lazy" src="./img/new-buildings.svg" alt="Новостройку">
+                                        <span>Новостройку</span>
                                         <div class="field-select__check" aria-hidden="true">
                                             <svg>
                                                 <use xlink:href="./img/sprite.svg#verif"></use>
@@ -55,8 +52,8 @@
                                         </div>
                                     </button>
                                     <button type="button" class="btn btn-reset tag field-select__item" data-submit-filter-object-type-secondary>
-                                        <img loading="lazy" src="./img/secondary-house.svg" alt="Вторичка">
-                                        <span>Вторичка</span>
+                                        <img loading="lazy" src="./img/secondary-house.svg" alt="Вторичку">
+                                        <span>Вторичку</span>
                                         <div class="field-select__check" aria-hidden="true">
                                             <svg>
                                                 <use xlink:href="./img/sprite.svg#verif"></use>
@@ -76,7 +73,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="submit-app__row submit-app-maps">
+                    <div class="submit-app__row submit-app-maps" data-submit-app-block-hidden hidden>
                         <h2 class="submit-app-maps__title submit-app__row-title title-2 necessarily">
                             Расположение поиска
                             <span class="necessarily__span">
@@ -143,7 +140,7 @@
                             </label>
                         </div>
                     </div>
-                    <div class="submit-app__row submit-app-options submit-app-options submit-price-proper">
+                    <div class="submit-app__row submit-app-options submit-app-options submit-price-proper" data-submit-app-block-hidden hidden>
                         <div class="submit-app-options__choice">
                             <h2 class="submit-app-options__title submit-app__row-title title-2 necessarily">
                                 Цена и свойства расчёта
@@ -340,7 +337,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="submit-app__row submit-app-options">
+                    <div class="submit-app__row submit-app-options" data-submit-app-block-hidden hidden>
                         <h2 class="submit-app-options__title submit-app__row-title title-2">
                             Параметры заявки
                         </h2>
@@ -2128,7 +2125,7 @@
                             </button>
                         </div>
                     </div>
-                    <div class="submit-app__row submit-app-options">
+                    <div class="submit-app__row submit-app-options" data-submit-app-block-hidden hidden>
                         <h2 class="submit-app-options__title submit-app__row-title title-2">
                             Описание
                         </h2>
@@ -2147,7 +2144,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="submit-app__banner banner-mind">
+                    <div class="submit-app__banner banner-mind" data-submit-app-block-hidden hidden>
                         <picture>
                             <source srcset="./img/lora_face.webp" type="image/webp">
                             <img loading="lazy" src="./img/lora_face.png" width="48" height="48" alt="lora">
@@ -2162,7 +2159,7 @@
                             </svg>
                         </button>
                     </div>
-                    <div class="submit-app__row submit-app-options">
+                    <div class="submit-app__row submit-app-options" data-submit-app-block-hidden hidden>
                         <div class="submit-app-options__choice">
                             <h2 class="submit-app-options__title submit-app__row-title title-2">
                                 Когда планируете начинать просмотр
@@ -2184,7 +2181,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="submit-app__row communic-method-radios radio-primary">
+                    <div class="submit-app__row communic-method-radios radio-primary" data-submit-app-block-hidden hidden>
                         <h2 class="communic-method-radios__title submit-app__row-title title-2">
                             Способ связи
                         </h2>
@@ -2203,7 +2200,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="submit-app__row your-contacts-field">
+                    <div class="submit-app__row your-contacts-field" data-submit-app-block-hidden hidden>
                         <h2 class="your-contacts-field__title submit-app__row-title title-2">
                             Ваши контакты
                         </h2>
@@ -2222,13 +2219,13 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-reset btn-primary submit-app__btn">
+                    <button type="submit" class="btn btn-reset btn-primary submit-app__btn" data-submit-app-block-hidden hidden>
                         Разместить
                     </button>
                 </form>
             </div>
         </main>
-        <div class="footer-fixed submit-app-fixed fix-block">
+        <div class="footer-fixed submit-app-fixed fix-block" data-submit-app-block-hidden hidden>
             <div class="footer-fixed__container">
                 <button type="submit" class="btn btn-reset btn-primary" form="submit-app-form" style="width: 100%;">
                     Разместить

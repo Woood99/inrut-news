@@ -1065,8 +1065,11 @@ export const fieldSelect = () => {
                         if (item !== currentItem) currentItem.classList.remove('_active');
                     })
                 }
-                item.classList.toggle('_active');
-
+                if (container.classList.contains('field-select--necessarily')) {
+                    item.classList.add('_active');
+                } else {
+                    item.classList.toggle('_active');
+                }
 
                 if (container.hasAttribute('data-submit-filter-object-type')) {
                     const developer = document.querySelector('[data-submit-filter-developer]');
@@ -1080,6 +1083,10 @@ export const fieldSelect = () => {
                     const secondaryField = document.querySelectorAll('[data-submit-filter-type="2"]');
                     const houseField = document.querySelectorAll('[data-submit-filter-type="3"]');
                     if (newBuildingsField.length > 0 && houseField.length > 0 && secondaryField.length > 0) {
+                        if (currentItem || secondaryItem || houseItem) {
+                            const itemsHidden = document.querySelectorAll('[data-submit-app-block-hidden]');
+                            itemsHidden.forEach(item => item.removeAttribute('hidden'));
+                        }
                         if (currentItem) {
                             houseField.forEach(item => item.setAttribute('hidden',''));
                             secondaryField.forEach(item => item.setAttribute('hidden',''));

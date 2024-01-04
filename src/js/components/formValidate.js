@@ -574,13 +574,12 @@ export const submitAppValidate = () => {
     const descr = form.querySelector('[data-field-descr]');
     const descrInput = descr.querySelector('textarea');
 
-    const locationSectionOffset = form.querySelector('.submit-app-maps').offsetTop;
     typeItems.forEach(item => {
         item.addEventListener('click', () => {
           setTimeout(() => {
             if (item.classList.contains('_active')) {
                 window.scrollTo({
-                    top: locationSectionOffset - (window.innerWidth > 1212 ? 16 : document.querySelector('.header').clientHeight + 8),
+                    top: form.querySelector('.submit-app-maps').offsetTop - (window.innerWidth > 1212 ? 16 : document.querySelector('.header').clientHeight + 8),
                     behavior: 'smooth'
                 })
             }

@@ -1045,13 +1045,20 @@ export const fieldSelect = () => {
     if (containers.length === 0) return;
     containers.forEach(container => {
         const name = container.dataset.fieldSelectName;
+        const defaultItem = container.querySelector('.field-select__default');
         container.querySelectorAll('.field-select__item').forEach((item, index) => {
             item.setAttribute(`data-select-${name}-index`, index + 1);
         })
         container.addEventListener('click', (e) => {
             const target = e.target;
             const item = target.closest('.field-select__item');
-            if (item) {
+            const currentDefaultItem = target.closest('.field-select__default');
+            if (currentDefaultItem) {
+                const items = container.querySelectorAll('.field-select__item:not(.field-select__default)');
+                items.forEach(item => item.classList.remove('_active'));
+            }
+            if (item && !item.classList.contains('.field-select__default')) {
+                if (defaultItem) defaultItem.classList.remove('_active');
                 if (!container.classList.contains('field-select--multiple')) {
                     const items = container.querySelectorAll('.field-select__item');
                     items.forEach(currentItem => {
@@ -1066,16 +1073,27 @@ export const fieldSelect = () => {
                     const currentItem = item.hasAttribute('data-submit-filter-object-type-item');
                     currentItem && item.classList.contains('_active') && developer ? developer.removeAttribute('hidden') : developer.setAttribute('hidden', '');
                
+                    const secondaryItem = item.hasAttribute('data-submit-filter-object-type-secondary');
                     const houseItem = item.hasAttribute('data-submit-filter-object-type-house');
-                    const notHouseField = document.querySelectorAll('[data-submit-filter-type="1"]');
+
+                    const newBuildingsField = document.querySelectorAll('[data-submit-filter-type="1"]');
+                    const secondaryField = document.querySelectorAll('[data-submit-filter-type="2"]');
                     const houseField = document.querySelectorAll('[data-submit-filter-type="3"]');
-                    if (notHouseField.length > 0 && houseField.length > 0) {
-                        if (houseItem) {
-                            notHouseField.forEach(item => item.setAttribute('hidden',''));
-                            houseField.forEach(item => item.removeAttribute('hidden'));
-                        } else {
+                    if (newBuildingsField.length > 0 && houseField.length > 0 && secondaryField.length > 0) {
+                        if (currentItem) {
                             houseField.forEach(item => item.setAttribute('hidden',''));
-                            notHouseField.forEach(item => item.removeAttribute('hidden'));
+                            secondaryField.forEach(item => item.setAttribute('hidden',''));
+                            newBuildingsField.forEach(item => item.removeAttribute('hidden'));
+                        }
+                        if (secondaryItem) {
+                            newBuildingsField.forEach(item => item.setAttribute('hidden',''));
+                            houseField.forEach(item => item.setAttribute('hidden',''));
+                            secondaryField.forEach(item => item.removeAttribute('hidden'));
+                        }
+                        if (houseItem) {
+                            newBuildingsField.forEach(item => item.setAttribute('hidden',''));
+                            secondaryField.forEach(item => item.setAttribute('hidden',''));
+                            houseField.forEach(item => item.removeAttribute('hidden'));
                         }
                     }
                 }

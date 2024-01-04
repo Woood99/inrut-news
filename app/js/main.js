@@ -8816,6 +8816,8 @@ const submitAppValidate = () => {
   const priceInputs = price.querySelectorAll('.input-text__input');
   const priceButton = price.querySelector('.filter-dropdown__button');
   const priceButtonWrapper = priceButton.querySelector('.filter-dropdown__button-wrapper');
+  const calcProper = form.querySelector('.submit-app-options__item--calc-proper');
+  const calcProperItems = calcProper.querySelectorAll('.checkbox-secondary input');
   const type = form.querySelector('[data-field-select-name="object-type"]');
   const typeItems = type.querySelectorAll('.field-select__item');
   const rooms = form.querySelector('[data-field-select-name="rooms"]');
@@ -8844,6 +8846,13 @@ const submitAppValidate = () => {
       });
     });
   });
+  calcProperItems.forEach(input => {
+    input.addEventListener('change', () => {
+      setTimeout(() => {
+        if (formEventInput) validate(false);
+      }, 1);
+    });
+  });
   priceInputs.forEach(input => {
     input.addEventListener('input', () => {
       setTimeout(() => {
@@ -8863,6 +8872,7 @@ const submitAppValidate = () => {
     formEventInput = true;
     validateRemoveError(descr);
     validateRemoveError(price);
+    validateRemoveError(calcProper);
     validatRemoveErrorSelect(type);
     validatRemoveErrorSelect(rooms);
     if (!validateCreateErrorSelect(type)) {
@@ -8874,7 +8884,12 @@ const submitAppValidate = () => {
       validateCreateError(price, 'Укажите цену');
       errorItems.push(price);
     }
-    if (!validateCreateErrorSelect(rooms)) {
+    if (!calcProper.classList.contains('_selected')) {
+      result = false;
+      validateCreateError(calcProper, 'Укажите свойства расчёта');
+      errorItems.push(calcProper);
+    }
+    if (!validateCreateErrorSelect(rooms) && !rooms.closest('.submit-app-options__choice').hasAttribute('hidden')) {
       result = false;
       errorItems.push(rooms);
     }

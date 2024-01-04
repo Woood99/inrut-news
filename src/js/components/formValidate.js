@@ -570,6 +570,20 @@ export const submitAppValidate = () => {
     const descr = form.querySelector('[data-field-descr]');
     const descrInput = descr.querySelector('textarea');
 
+    const locationSectionOffset = form.querySelector('.submit-app-maps').offsetTop;
+    typeItems.forEach(item => {
+        item.addEventListener('click', () => {
+          setTimeout(() => {
+            if (item.classList.contains('_active')) {
+                window.scrollTo({
+                    top: locationSectionOffset - 16,
+                    behavior: 'smooth'
+                })
+            }
+          }, 5);
+        })
+    });
+
     [typeItems, roomsItems].forEach(items => {
         items.forEach(item => {
             item.addEventListener('click', () => {
@@ -602,14 +616,14 @@ export const submitAppValidate = () => {
         validateRemoveError(price);
         validatRemoveErrorSelect(type);
         validatRemoveErrorSelect(rooms);
+        if (!validateCreateErrorSelect(type)) {
+            result = false;
+            errorItems.push(type);
+        }
         if (!priceButtonWrapper.classList.contains('_active')) {
             result = false;
             validateCreateError(price, 'Укажите цену');
             errorItems.push(price);
-        }
-        if (!validateCreateErrorSelect(type)) {
-            result = false;
-            errorItems.push(type);
         }
         if (!validateCreateErrorSelect(rooms)) {
             result = false;
@@ -621,7 +635,7 @@ export const submitAppValidate = () => {
             errorItems.push(descr);
         }
         if (result === false && controls === true) {
-            scrollToError(errorItems);            
+            scrollToError(errorItems);
         }
         return result;
     }
@@ -631,8 +645,8 @@ export const submitAppValidate = () => {
     })
 
     function scrollToError(errorItems) {
-        const firsError = errorItems[0];
-        const topGap = window.pageYOffset + firsError.getBoundingClientRect().top;
+        const firstError = errorItems[0];
+        const topGap = window.pageYOffset + firstError.getBoundingClientRect().top;
         window.scrollTo({
             top: topGap - 16,
             behavior: 'smooth'

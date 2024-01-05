@@ -796,6 +796,9 @@ export const filterMobile = () => {
             if (container.classList.contains('active')) container.classList.remove('active');
             if (mask && mask.classList.contains('active')) mask.classList.remove('active');
             if (!exceptionEnableScroll()) enableScroll();
+            if (document.querySelector('.filter-modal-map')){
+                document.querySelector('.filter-modal-map').classList.remove('_small-index');
+            }
         });
         filter.addEventListener('click', (e) => {
             const target = e.target;
@@ -804,6 +807,64 @@ export const filterMobile = () => {
                 if (!exceptionEnableScroll()) enableScroll();
             }
         })
+        const filterMap = filter.querySelector('.filter__map');
+        const map = document.querySelector('.control-cards__maps');
+        if (filterMap && map) {
+            filterMap.addEventListener('click', () => {
+                const modalHTML = `
+                <div class="filter-modal-map">
+                    <div class="filter-modal-map__container">
+                        <button class="btn-reset btn-primary filter-modal-map__close" aria-label="Закрыть модальное окно">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#x"></use>
+                            </svg>
+                        </button>
+                        <button type="button" class="btn btn-reset btn-primary filter-modal-map__filter">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#filter"></use>
+                            </svg>
+                        </button>
+                        <div class="filter-modal-map__content">
+                            <div id="filter-modal-map__map" class="map-primary remove-copyrights-pane _hidden-map"></div>
+                        </div>
+                    </div>
+                </div>
+                `;
+                modal(modalHTML, '.filter-modal-map', 300);
+                const mapContainer = document.querySelector('.filter-modal-map');
+                const filterBtn = mapContainer.querySelector('.filter-modal-map__filter');
+                function init() {
+                    let map = new ymaps.Map('filter-modal-map__map', {
+                        center: [55.77171185651524, 37.62811179984117],
+                        zoom: 10,
+                    });
+                    map.controls.remove('geolocationControl');
+                    map.controls.remove('searchControl');
+                    map.controls.remove('trafficControl');
+                    map.controls.remove('typeSelector');
+                    map.controls.remove('rulerControl');
+                    map.behaviors.enable(['scrollZoom']);
+                    map.controls.remove('fullscreenControl');
+
+                    map.controls.get('zoomControl').options.set({
+                        position: {
+                            top: 20,
+                            right: 20
+                        },
+                        maxWidth: '44'
+                    })
+                }
+                ymaps.ready(init);
+
+                filterBtn.addEventListener('click',() => {
+                    mask ? mask.classList.add('active') : container.classList.add('active');
+                   setTimeout(() => {
+                    mapContainer.classList.add('_small-index');
+                   }, 150);
+                    disableScroll();
+                });
+            });
+        }
 
         function exceptionEnableScroll() {
             return filter.closest('.checkboard-cst-popup') || filter.closest('.popup-primary');

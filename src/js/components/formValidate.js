@@ -568,9 +568,6 @@ export const submitAppValidate = () => {
     const type = form.querySelector('[data-field-select-name="object-type"]');
     const typeItems = type.querySelectorAll('.field-select__item');
 
-    const rooms = form.querySelector('[data-field-select-name="rooms"]');
-    const roomsItems = rooms.querySelectorAll('.field-select__item');
-
     const descr = form.querySelector('[data-field-descr]');
     const descrInput = descr.querySelector('textarea');
 
@@ -587,15 +584,13 @@ export const submitAppValidate = () => {
         })
     });
 
-    [typeItems, roomsItems].forEach(items => {
-        items.forEach(item => {
+        typeItems.forEach(item => {
             item.addEventListener('click', () => {
                 setTimeout(() => {
                     if (formEventInput) validate(false);
                 }, 1);
             })
         })
-    })
     calcProperItems.forEach(input => {
         input.addEventListener('change',() => {
             setTimeout(() => {
@@ -624,8 +619,7 @@ export const submitAppValidate = () => {
         validateRemoveError(descr);
         validateRemoveError(price);
         validateRemoveError(calcProper);
-        validatRemoveErrorSelect(type);
-        validatRemoveErrorSelect(rooms);
+        validatRemoveErrorSelect(type)
         if (!validateCreateErrorSelect(type)) {
             result = false;
             errorItems.push(type);
@@ -639,10 +633,6 @@ export const submitAppValidate = () => {
             result = false;
             validateCreateError(calcProper, 'Укажите свойства расчёта');
             errorItems.push(calcProper);
-        }
-        if (!validateCreateErrorSelect(rooms) && !rooms.closest('.submit-app-options__choice').hasAttribute('hidden')) {
-            result = false;
-            errorItems.push(rooms);
         }
         if (descrInput.value.length === 0) {
             result = false;

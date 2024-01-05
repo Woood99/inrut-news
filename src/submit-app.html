@@ -70,6 +70,7 @@
                                         </div>
                                     </button>
                                 </div>
+                                <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
                         </div>
                     </div>
@@ -84,24 +85,25 @@
                             Выберите город и нарисуйте желаемый район вашей заявки на карте
                         </p>
                         <div class="row">
-                            <div class="submit-app-maps__city select-secondary select-secondary--city _selected">
+                            <div class="submit-app-maps__city select-secondary select-secondary--city">
                                 <div class="select-secondary__wrapper">
                                     <span class="select-secondary__placeholder">
                                         Город
                                     </span>
                                     <select class="select-secondary__body" hidden name="city">
-                                        <option value="apartments">Санкт-Петербург</option>
-                                        <option value="apartments2">Волгоград</option>
-                                        <option value="apartments3">Москва</option>
+                                        <option value="Saint-Petersburg">Санкт-Петербург</option>
+                                        <option value="Volgograd">Волгоград</option>
+                                        <option value="Moscow">Москва</option>
                                     </select>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-reset select-map-btn" data-popup-path="metro-map">
+                            <button type="button" class="btn btn-reset select-map-btn submit-app-maps__metro" data-popup-path="metro-map">
                                 <span>Станция метро</span>
                                 <svg>
                                     <use xlink:href="./img/sprite.svg#location-two"></use>
                                 </svg>
                             </button>
+                            <input type="text" name="metro-selected-stations" class="input-reset" hidden data-metro-selected-stations placeholder="">
                         </div>
                         <div class="submit-app-maps__checkbox submit-app-maps__any checkbox-secondary">
                             <input id="filter-urgent-app_1_2" name="filter-urgent-app-2" class="checkbox-secondary__input" type="checkbox" value="true">
@@ -306,7 +308,7 @@
                                 </div>
                             </div>
                             <div class="submit-app-options__row" data-mortgage-field hidden>
-                                <div class="submit-app-options__item field-select" data-field-select-name="mortgage">
+                                <div class="submit-app-options__item field-select">
                                     <div class="field-select__name">
                                         Выберите ипотечную программу
                                     </div>
@@ -333,6 +335,7 @@
                                             <span>Затрудняюсь ответить, нужна помощь</span>
                                         </button>
                                     </div>
+                                    <input type="text" name="mortgage" class="input-reset field-select__input" hidden placeholder="">
                                 </div>
                             </div>
                         </div>
@@ -342,7 +345,7 @@
                             Параметры заявки
                         </h2>
                         <div class="submit-app-options__choice" data-submit-filter-type="1">
-                            <div class="submit-app-options__item field-select field-select--multiple field-select--col" data-field-select-name="apartments">
+                            <div class="submit-app-options__item field-select field-select--multiple field-select--col">
                                 <div class="field-select__name">
                                     Тип жилья
                                 </div>
@@ -369,6 +372,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <input type="text" name="apartments" class="input-reset field-select__input" hidden placeholder="">
                             </div>
                             <div class="submit-app-options__item field-dropdown field-dropdown--col" data-submit-filter-developer data-field-dropdown-name="developer" hidden>
                                 <div class="field-dropdown__name">
@@ -539,7 +543,7 @@
 
                                 </div>
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col field-select--multiple field-select--rooms" data-field-select-name="rooms">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple field-select--rooms">
                                 <div class="field-select__name">
                                     Комнатность
                                 </div>
@@ -560,6 +564,7 @@
                                         <span>4+</span>
                                     </button>
                                 </div>
+                                <input type="text" name="rooms" class="input-reset field-select__input" hidden placeholder="">
                             </div>
                             <div class="submit-app-options__item field-range field-range--col" data-field-range-name="total-area">
                                 <div class="field-range__name">
@@ -632,7 +637,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="class">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple">
                                 <div class="field-select__name">
                                     Класс
                                 </div>
@@ -656,8 +661,9 @@
                                         <span>Премиум</span>
                                     </button>
                                 </div>
+                                <input type="text" name="rooms" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col" data-field-select-name="year-delivery">
+                            <div class="submit-app-options__item field-select field-select--col">
                                 <div class="field-select__name">
                                     Год сдачи
                                 </div>
@@ -681,8 +687,9 @@
                                         <span>2026</span>
                                     </button>
                                 </div>
+                                <input type="text" name="year-delivery" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="finishing">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple">
                                 <div class="field-select__name">
                                     Отделка
                                 </div>
@@ -709,8 +716,9 @@
                                         <span>Ремонт по дизайн - проекту</span>
                                     </button>
                                 </div>
+                                <input type="text" name="finishing" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col" data-field-select-name="bathroom">
+                            <div class="submit-app-options__item field-select field-select--col">
                                 <div class="field-select__name">
                                     Санузел
                                 </div>
@@ -728,8 +736,9 @@
                                         <span>Более одного</span>
                                     </button>
                                 </div>
+                                <input type="text" name="bathroom" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="features-complex">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple">
                                 <div class="field-select__name">
                                     Особенности комплекса
                                 </div>
@@ -762,8 +771,9 @@
                                         <span>Надземный паркинг</span>
                                     </button>
                                 </div>
+                                <input type="features-complex" name="finishing" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="infrastructure">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple">
                                 <div class="field-select__name">
                                     Инфраструктура
                                 </div>
@@ -793,8 +803,9 @@
                                         <span>Рядом кафе и рестораны</span>
                                     </button>
                                 </div>
+                                <input type="infrastructure" name="finishing" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="environment">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple">
                                 <div class="field-select__name">
                                     Окружение
                                 </div>
@@ -815,8 +826,9 @@
                                         <span>Рядом парк</span>
                                     </button>
                                 </div>
+                                <input type="text" name="environment" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col" data-field-select-name="discounts-promotions">
+                            <div class="submit-app-options__item field-select field-select--col">
                                 <div class="field-select__name">
                                     Скидки и акции
                                 </div>
@@ -834,8 +846,9 @@
                                         <span>Ищу со скидкой</span>
                                     </button>
                                 </div>
+                                <input type="text" name="discounts-promotions" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="popular-tags">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple">
                                 <div class="field-select__name">
                                     Популярные запросы
                                 </div>
@@ -886,10 +899,11 @@
                                         <span>С панорамными окнами</span>
                                     </button>
                                 </div>
+                                <input type="text" name="popular-tags" class="input-reset field-select__input" hidden placeholder="">
                             </div>
                         </div>
                         <div class="submit-app-options__choice" data-submit-filter-type="2" hidden>
-                            <div class="submit-app-options__item field-select field-select--multiple field-select--col" data-field-select-name="apartments">
+                            <div class="submit-app-options__item field-select field-select--multiple field-select--col">
                                 <div class="field-select__name">
                                     Тип жилья
                                 </div>
@@ -916,6 +930,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <input type="text" name="apartments" class="input-reset field-select__input" hidden placeholder="">
                             </div>
                             <div class="submit-app-options__item field-dropdown field-dropdown--col" data-field-dropdown-name="complex">
                                 <div class="field-dropdown__name">
@@ -982,7 +997,7 @@
 
                                 </div>
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col field-select--multiple field-select--rooms" data-field-select-name="rooms">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple field-select--rooms">
                                 <div class="field-select__name necessarily">
                                     Комнатность
                                     <span class="necessarily__span">
@@ -1006,6 +1021,7 @@
                                         <span>4+</span>
                                     </button>
                                 </div>
+                                <input type="text" name="rooms" class="input-reset field-select__input" hidden placeholder="">
                             </div>
                             <div class="submit-app-options__item field-range field-range--col" data-field-range-name="total-area">
                                 <div class="field-range__name">
@@ -1078,7 +1094,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col" data-field-select-name="bathroom">
+                            <div class="submit-app-options__item field-select field-select--col">
                                 <div class="field-select__name">
                                     Санузел
                                 </div>
@@ -1096,8 +1112,9 @@
                                         <span>Более одного</span>
                                     </button>
                                 </div>
+                                <input type="text" name="bathroom" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col" data-field-select-name="balcony">
+                            <div class="submit-app-options__item field-select field-select--col">
                                 <div class="field-select__name">
                                     Балкон
                                 </div>
@@ -1112,8 +1129,9 @@
                                         <span>Лоджия</span>
                                     </button>
                                 </div>
+                                <input type="text" name="balcony" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="layout">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple">
                                 <div class="field-select__name">
                                     Планировка
                                 </div>
@@ -1128,8 +1146,9 @@
                                         <span>Изолированная</span>
                                     </button>
                                 </div>
+                                <input type="text" name="layout" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="view-window">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple">
                                 <div class="field-select__name">
                                     Вид из окна
                                 </div>
@@ -1144,6 +1163,7 @@
                                         <span>На улицу</span>
                                     </button>
                                 </div>
+                                <input type="text" name="view-window" class="input-reset field-select__input" hidden placeholder="">
                             </div>
                             <div class="submit-app-options__item field-range field-range--col" data-field-range-name="year-construction">
                                 <div class="field-range__name">
@@ -1164,7 +1184,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="type-house">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple">
                                 <div class="field-select__name">
                                     Тип дома
                                 </div>
@@ -1191,8 +1211,9 @@
                                         <span>Сталинский</span>
                                     </button>
                                 </div>
+                                <input type="text" name="type-house" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="parking">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple">
                                 <div class="field-select__name">
                                     Парковка
                                 </div>
@@ -1213,8 +1234,9 @@
                                         <span>На крыше</span>
                                     </button>
                                 </div>
+                                <input type="text" name="parking" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="infrastructure">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple">
                                 <div class="field-select__name">
                                     Инфраструктура
                                 </div>
@@ -1244,8 +1266,9 @@
                                         <span>Рядом кафе и рестораны</span>
                                     </button>
                                 </div>
+                                <input type="text" name="infrastructure" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="environment">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple">
                                 <div class="field-select__name">
                                     Окружение
                                 </div>
@@ -1266,8 +1289,9 @@
                                         <span>Рядом парк</span>
                                     </button>
                                 </div>
+                                <input type="text" name="environment" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="popular-tags">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple">
                                 <div class="field-select__name">
                                     Популярные запросы
                                 </div>
@@ -1318,10 +1342,11 @@
                                         <span>С панорамными окнами</span>
                                     </button>
                                 </div>
+                                <input type="text" name="popular-tags" class="input-reset field-select__input" hidden placeholder="">
                             </div>
                         </div>
                         <div class="submit-app-options__choice" data-submit-filter-type="3" hidden>
-                            <div class="submit-app-options__item field-select field-select--multiple field-select--col" data-field-select-name="house-type">
+                            <div class="submit-app-options__item field-select field-select--multiple field-select--col">
                                 <div class="field-select__name">
                                     Тип дома
                                 </div>
@@ -1342,8 +1367,9 @@
                                         <span>Дуплекс</span>
                                     </button>
                                 </div>
+                                <input type="text" name="house-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--multiple field-select--col" data-field-select-name="wall-material">
+                            <div class="submit-app-options__item field-select field-select--multiple field-select--col">
                                 <div class="field-select__name">
                                     Материал стен
                                 </div>
@@ -1370,8 +1396,9 @@
                                         <span>Блочный</span>
                                     </button>
                                 </div>
+                                <input type="text" name="wall-material" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--multiple field-select--col" data-field-select-name="state-house">
+                            <div class="submit-app-options__item field-select field-select--multiple field-select--col">
                                 <div class="field-select__name">
                                     Состояние дома
                                 </div>
@@ -1392,9 +1419,9 @@
                                         <span>Нужен капремонт или под снос</span>
                                     </button>
                                 </div>
+                                <input type="text" name="state-house" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--multiple field-select--col field-select--multiple field-select--rooms"
-                                data-field-select-name="floors-house">
+                            <div class="submit-app-options__item field-select field-select--multiple field-select--col field-select--multiple field-select--rooms">
                                 <div class="field-select__name">
                                     Этажей в доме
                                 </div>
@@ -1412,9 +1439,9 @@
                                         <span>4+</span>
                                     </button>
                                 </div>
+                                <input type="text" name="floors-house" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--multiple field-select--col field-select--multiple field-select--rooms"
-                                data-field-select-name="rooms-house">
+                            <div class="submit-app-options__item field-select field-select--multiple field-select--col field-select--multiple field-select--rooms">
                                 <div class="field-select__name">
                                     Количество комнат
                                 </div>
@@ -1432,6 +1459,7 @@
                                         <span>4+</span>
                                     </button>
                                 </div>
+                                <input type="text" name="rooms-house" class="input-reset field-select__input" hidden placeholder="">
                             </div>
                             <div class="submit-app-options__item field-range field-range--col" data-field-range-name="area-house">
                                 <div class="field-range__name">
@@ -1453,8 +1481,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="submit-app-options__item field-select field-select--multiple field-select--col field-select--multiple field-select--rooms"
-                                data-field-select-name="bedrooms">
+                            <div class="submit-app-options__item field-select field-select--multiple field-select--col field-select--multiple field-select--rooms">
                                 <div class="field-select__name">
                                     Количество спален
                                 </div>
@@ -1472,8 +1499,9 @@
                                         <span>4+</span>
                                     </button>
                                 </div>
+                                <input type="text" name="bedrooms" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col" data-field-select-name="bathroom">
+                            <div class="submit-app-options__item field-select field-select--col">
                                 <div class="field-select__name">
                                     Санузел
                                 </div>
@@ -1491,8 +1519,9 @@
                                         <span>Более одного</span>
                                     </button>
                                 </div>
+                                <input type="text" name="bathroom" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--multiple field-select--col" data-field-select-name="type-site">
+                            <div class="submit-app-options__item field-select field-select--multiple field-select--col">
                                 <div class="field-select__name">
                                     Тип участка
                                 </div>
@@ -1510,6 +1539,7 @@
                                         <span>Фермерский</span>
                                     </button>
                                 </div>
+                                <input type="text" name="type-site" class="input-reset field-select__input" hidden placeholder="">
                             </div>
                             <div class="submit-app-options__item field-range field-range--col" data-field-range-name="area-site">
                                 <div class="field-range__name">
@@ -1531,7 +1561,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="infrastructure">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple">
                                 <div class="field-select__name">
                                     Инфраструктура
                                 </div>
@@ -1561,8 +1591,9 @@
                                         <span>Рядом кафе и рестораны</span>
                                     </button>
                                 </div>
+                                <input type="text" name="infrastructure" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="discounts-promotions">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple">
                                 <div class="field-select__name">
                                     Скидки и акции
                                 </div>
@@ -1580,8 +1611,9 @@
                                         <span>Ищу со скидкой</span>
                                     </button>
                                 </div>
+                                <input type="text" name="discounts-promotions" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="popular-tags">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple">
                                 <div class="field-select__name">
                                     Популярные запросы
                                 </div>
@@ -1632,13 +1664,14 @@
                                         <span>С панорамными окнами</span>
                                     </button>
                                 </div>
+                                <input type="text" name="popular-tags" class="input-reset field-select__input" hidden placeholder="">
                             </div>
                         </div>
                         <div class="submit-app-options__choice" data-submit-filter-type="3" hidden>
                             <h2 class="submit-app-options__title submit-app__row-title title-2">
                                 Коммуникации и удобства
                             </h2>
-                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="sewerage">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple">
                                 <div class="field-select__name">
                                     Канализация
                                 </div>
@@ -1656,8 +1689,9 @@
                                         <span>Выгребная яма</span>
                                     </button>
                                 </div>
+                                <input type="text" name="sewerage" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="water">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple">
                                 <div class="field-select__name">
                                     Водоснабжение
                                 </div>
@@ -1675,8 +1709,9 @@
                                         <span>Колодец</span>
                                     </button>
                                 </div>
+                                <input type="text" name="water" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="gas">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple">
                                 <div class="field-select__name">
                                     Газ
                                 </div>
@@ -1694,8 +1729,9 @@
                                         <span>Газгольдер</span>
                                     </button>
                                 </div>
+                                <input type="text" name="gas" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col field-select--multiple" data-field-select-name="heating">
+                            <div class="submit-app-options__item field-select field-select--col field-select--multiple">
                                 <div class="field-select__name">
                                     Отопление
                                 </div>
@@ -1713,8 +1749,9 @@
                                         <span>Центральное</span>
                                     </button>
                                 </div>
+                                <input type="text" name="heating" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col" data-field-select-name="electricity">
+                            <div class="submit-app-options__item field-select field-select--col">
                                 <div class="field-select__name">
                                     Электричество
                                 </div>
@@ -1729,8 +1766,9 @@
                                         <span>Нет</span>
                                     </button>
                                 </div>
+                                <input type="text" name="electricity" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col" data-field-select-name="forest">
+                            <div class="submit-app-options__item field-select field-select--col">
                                 <div class="field-select__name">
                                     Лесной массив
                                 </div>
@@ -1754,8 +1792,9 @@
                                         <span>Более 1000 м</span>
                                     </button>
                                 </div>
+                                <input type="text" name="forest" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__item field-select field-select--col" data-field-select-name="nearest-water">
+                            <div class="submit-app-options__item field-select field-select--col">
                                 <div class="field-select__name">
                                     Рядом с водой
                                 </div>
@@ -1773,6 +1812,7 @@
                                         <span>Искуственный водоём</span>
                                     </button>
                                 </div>
+                                <input type="text" name="nearest-water" class="input-reset field-select__input" hidden placeholder="">
                             </div>
                         </div>
                         <div class="submit-app-options__offers submit-app-offers submit-app-offers--improv" data-submit-filter-type="3" hidden>

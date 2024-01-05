@@ -747,7 +747,7 @@ export const filterControl = () => {
                             behavior: 'smooth'
                         })
                     } else {
-                       
+
                     }
                 } else {
                     itemsHidden.forEach(item => {
@@ -757,13 +757,13 @@ export const filterControl = () => {
                     if (!container.classList.contains('filter--new-style')) {
                         moreBtn.querySelector('span').textContent = btnTextMap.none;
                     } else {
-                       
+
                     }
                 }
             });
         }
         if (hiddenBtn) {
-            hiddenBtn.addEventListener('click',() => {
+            hiddenBtn.addEventListener('click', () => {
                 if (container.classList.contains('_active')) {
                     itemsHidden.forEach(item => {
                         _slideToggle(item, 700);
@@ -772,7 +772,7 @@ export const filterControl = () => {
                     if (!container.closest('.object-body__filter')) {
                         window.scrollTo({
                             top: 0,
-                            behavior:'smooth',
+                            behavior: 'smooth',
                         })
                     }
                 }
@@ -1044,11 +1044,14 @@ export const fieldSelect = () => {
     const containers = document.querySelectorAll('.field-select');
     if (containers.length === 0) return;
     containers.forEach(container => {
+        updateInput(container);
         const name = container.dataset.fieldSelectName;
+        if (name) {
+            container.querySelectorAll('.field-select__item').forEach((item, index) => {
+                item.setAttribute(`data-select-${name}-index`, index + 1);
+            })
+        }
         const defaultItem = container.querySelector('.field-select__default');
-        container.querySelectorAll('.field-select__item').forEach((item, index) => {
-            item.setAttribute(`data-select-${name}-index`, index + 1);
-        })
         container.addEventListener('click', (e) => {
             const target = e.target;
             const item = target.closest('.field-select__item');
@@ -1075,7 +1078,7 @@ export const fieldSelect = () => {
                     const developer = document.querySelector('[data-submit-filter-developer]');
                     const currentItem = item.hasAttribute('data-submit-filter-object-type-item');
                     currentItem && item.classList.contains('_active') && developer ? developer.removeAttribute('hidden') : developer.setAttribute('hidden', '');
-               
+
                     const secondaryItem = item.hasAttribute('data-submit-filter-object-type-secondary');
                     const houseItem = item.hasAttribute('data-submit-filter-object-type-house');
 
@@ -1088,25 +1091,43 @@ export const fieldSelect = () => {
                             itemsHidden.forEach(item => item.removeAttribute('hidden'));
                         }
                         if (currentItem) {
-                            houseField.forEach(item => item.setAttribute('hidden',''));
-                            secondaryField.forEach(item => item.setAttribute('hidden',''));
+                            houseField.forEach(item => item.setAttribute('hidden', ''));
+                            secondaryField.forEach(item => item.setAttribute('hidden', ''));
                             newBuildingsField.forEach(item => item.removeAttribute('hidden'));
                         }
                         if (secondaryItem) {
-                            newBuildingsField.forEach(item => item.setAttribute('hidden',''));
-                            houseField.forEach(item => item.setAttribute('hidden',''));
+                            newBuildingsField.forEach(item => item.setAttribute('hidden', ''));
+                            houseField.forEach(item => item.setAttribute('hidden', ''));
                             secondaryField.forEach(item => item.removeAttribute('hidden'));
                         }
                         if (houseItem) {
-                            newBuildingsField.forEach(item => item.setAttribute('hidden',''));
-                            secondaryField.forEach(item => item.setAttribute('hidden',''));
+                            newBuildingsField.forEach(item => item.setAttribute('hidden', ''));
+                            secondaryField.forEach(item => item.setAttribute('hidden', ''));
                             houseField.forEach(item => item.removeAttribute('hidden'));
                         }
                     }
                 }
             }
+
+            updateInput(container);
         })
     })
+
+
+
+
+
+    function updateInput(container) {
+        const selectedItems = container.querySelectorAll('.field-select__item._active');
+        const input = container.querySelector('.field-select__input');
+
+        if (input) {
+            const result = Array.from(selectedItems).map(item => {
+                return item.querySelector('span').textContent.trim();
+            })
+            input.value = result.join(", ");
+        }
+    }
 }
 export const fieldRange = () => {
     const containers = document.querySelectorAll('.field-range');
@@ -1124,16 +1145,16 @@ export const fieldRange = () => {
                 const two = container.querySelector('[data-range-floor-index="2"]');
                 const three = container.querySelector('[data-range-floor-index="3"]');
 
-                one.addEventListener('click',() => {
+                one.addEventListener('click', () => {
                     one.classList.toggle('_active');
                 })
-                two.addEventListener('click',() => {
+                two.addEventListener('click', () => {
                     two.classList.toggle('_active');
                     if (checkContains(three)) {
                         three.classList.remove('_active');
                     }
                 })
-                three.addEventListener('click',() => {
+                three.addEventListener('click', () => {
                     three.classList.toggle('_active');
                     if (checkContains(two)) {
                         two.classList.remove('_active');

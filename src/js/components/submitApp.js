@@ -5,10 +5,10 @@ const submitApp = () => {
     const another = container.querySelector('.submit-app-maps__another');
 
     const maps = container.querySelector('.submit-app-maps__map');
-    any.addEventListener('change',() => {
+    any.addEventListener('change', () => {
         if (any.checked) {
-            maps.setAttribute('hidden','');
-            another.setAttribute('hidden','');
+            maps.setAttribute('hidden', '');
+            another.setAttribute('hidden', '');
         } else {
             maps.removeAttribute('hidden');
             another.removeAttribute('hidden');
@@ -23,7 +23,7 @@ const submitApp = () => {
 
 
     priceItems.forEach(item => {
-        item.addEventListener('change',() => {
+        item.addEventListener('change', () => {
             if (priceItems[0].classList.contains('active')) {
                 cash.removeAttribute('disabled');
             }
@@ -32,6 +32,21 @@ const submitApp = () => {
             }
         })
     })
+
+
+    const city = container.querySelector('.submit-app-maps__city');
+    const metro = container.querySelector('.submit-app-maps__metro');
+    if (city && metro) {
+        cityInit(city);
+        city.addEventListener('change', (e) => {
+            cityInit(city);
+        })
+
+        function cityInit(city) {
+            const name = city.querySelector('.choices__item.choices__item--selectable').textContent.trim();
+            name !== 'Москва' ? metro.setAttribute('hidden', '') : metro.removeAttribute('hidden');
+        }
+    }
 };
 
 export default submitApp;

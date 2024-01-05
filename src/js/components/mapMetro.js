@@ -17,10 +17,16 @@ const mapMetro = () => {
         navBottomCloseItem();
         navBottomMoreItem();
 
-        const moscowMetroItems = {};
-        container.querySelectorAll('.search-area__item').forEach(item => {
-            moscowMetroItems[item.dataset.searchAreaMetro] = Array.from(item.querySelectorAll('[data-metro-id]'));
-        })
+        const inputMetroItems = document.querySelector('[data-metro-selected-stations]');
+        let moscowMetroItems = {};
+        moscowMetroItemsDefault();
+        inputMetroItemsUpdate(inputMetroItems, moscowMetroItems);
+
+        function moscowMetroItemsDefault() {
+            container.querySelectorAll('.search-area__item').forEach(item => {
+                moscowMetroItems[item.dataset.searchAreaMetro] = Array.from(item.querySelectorAll('[data-metro-id]'));
+            })
+        }
 
         function activationAndClearAll() {
             const items = container.querySelectorAll('.search-area__item');
@@ -32,6 +38,7 @@ const mapMetro = () => {
                 btnAll.addEventListener('click', () => {
                     clearAllLine(elements);
                     navBottomUpdate(item.dataset.searchAreaMetro);
+                    inputMetroItemsUpdate(inputMetroItems, moscowMetroItems);
                 })
                 btnClear.addEventListener('click', () => {
                     elements.forEach(el => {
@@ -55,6 +62,7 @@ const mapMetro = () => {
                         }
                     })
                     navBottomUpdate();
+                    inputMetroItemsUpdate(inputMetroItems, moscowMetroItems);
                 })
             })
         }
@@ -85,6 +93,8 @@ const mapMetro = () => {
             container.querySelectorAll('.checkbox-secondary__input').forEach(input => input.checked = false);
             container.querySelectorAll('.map-metro_select').forEach(el => el.classList.remove('map-metro_select'))
             navBottomUpdate();
+            moscowMetroItemsDefault();
+            inputMetroItemsUpdate(inputMetroItems, moscowMetroItems);
         }
 
         function activationCheckbox() {
@@ -154,6 +164,7 @@ const mapMetro = () => {
 
                                 currentElementList.forEach(item => {
                                     item.querySelector('.checkbox-secondary__input').checked = false;
+                                    reindexingArrayMetro(item);
                                 })
                                 navBottomUpdate();
                             }
@@ -185,6 +196,7 @@ const mapMetro = () => {
 
                                 currentElementList.forEach(item => {
                                     item.querySelector('.checkbox-secondary__input').checked = false;
+                                    reindexingArrayMetro(item);
                                 })
                                 navBottomUpdate();
                             }
@@ -199,6 +211,7 @@ const mapMetro = () => {
             const currentLineElement = currentElement.closest('[data-search-area-metro]').dataset.searchAreaMetro;
             const currentElementArrayIndex = moscowMetroItems[currentLineElement].indexOf(currentElement);
             moscowMetroItems[currentLineElement].splice(0, 0, moscowMetroItems[currentLineElement].splice(currentElementArrayIndex, 1)[0]);
+            inputMetroItemsUpdate(inputMetroItems, moscowMetroItems);
         }
 
         function openSpoller(target, currentElem) {
@@ -417,6 +430,27 @@ const mapMetro = () => {
                     map.querySelector('#map-metro_moscow').style.transform = map.style.WebkitTransform = map.style.MsTransform = 'scale(' + scale + ')';
                 })
             })
+        }
+
+
+        function inputMetroItemsUpdate(input, items) {
+            if (input && container.classList.contains('search-area__form--primary')) {
+                let newItems = {};
+
+                for (const key in items) {
+                    const currentStation = [];
+                    const station = items[key];
+                    station.forEach(item => {
+                        if (item.querySelector('input').checked) {
+                            currentStation.push(item.querySelector('.checkbox-secondary__text').textContent.trim());
+                        }
+                    })
+                    if (currentStation.length > 0) {
+                        newItems[key] = currentStation;
+                    }
+                }
+               input.value = JSON.stringify(newItems);
+            }
         }
 
         clearAllBtn.addEventListener('click', clearAll);

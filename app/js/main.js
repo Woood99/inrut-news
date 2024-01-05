@@ -8174,11 +8174,14 @@ const fieldSelect = () => {
   const containers = document.querySelectorAll('.field-select');
   if (containers.length === 0) return;
   containers.forEach(container => {
+    updateInput(container);
     const name = container.dataset.fieldSelectName;
+    if (name) {
+      container.querySelectorAll('.field-select__item').forEach((item, index) => {
+        item.setAttribute(`data-select-${name}-index`, index + 1);
+      });
+    }
     const defaultItem = container.querySelector('.field-select__default');
-    container.querySelectorAll('.field-select__item').forEach((item, index) => {
-      item.setAttribute(`data-select-${name}-index`, index + 1);
-    });
     container.addEventListener('click', e => {
       const target = e.target;
       const item = target.closest('.field-select__item');
@@ -8232,8 +8235,19 @@ const fieldSelect = () => {
           }
         }
       }
+      updateInput(container);
     });
   });
+  function updateInput(container) {
+    const selectedItems = container.querySelectorAll('.field-select__item._active');
+    const input = container.querySelector('.field-select__input');
+    if (input) {
+      const result = Array.from(selectedItems).map(item => {
+        return item.querySelector('span').textContent.trim();
+      });
+      input.value = result.join(", ");
+    }
+  }
 };
 const fieldRange = () => {
   const containers = document.querySelectorAll('.field-range');
@@ -8828,8 +8842,6 @@ const submitAppValidate = () => {
   const calcProperItems = calcProper.querySelectorAll('.checkbox-secondary input');
   const type = form.querySelector('[data-field-select-name="object-type"]');
   const typeItems = type.querySelectorAll('.field-select__item');
-  const rooms = form.querySelector('[data-field-select-name="rooms"]');
-  const roomsItems = rooms.querySelectorAll('.field-select__item');
   const descr = form.querySelector('[data-field-descr]');
   const descrInput = descr.querySelector('textarea');
   typeItems.forEach(item => {
@@ -8844,13 +8856,11 @@ const submitAppValidate = () => {
       }, 5);
     });
   });
-  [typeItems, roomsItems].forEach(items => {
-    items.forEach(item => {
-      item.addEventListener('click', () => {
-        setTimeout(() => {
-          if (formEventInput) validate(false);
-        }, 1);
-      });
+  typeItems.forEach(item => {
+    item.addEventListener('click', () => {
+      setTimeout(() => {
+        if (formEventInput) validate(false);
+      }, 1);
     });
   });
   calcProperItems.forEach(input => {
@@ -8881,7 +8891,6 @@ const submitAppValidate = () => {
     validateRemoveError(price);
     validateRemoveError(calcProper);
     validatRemoveErrorSelect(type);
-    validatRemoveErrorSelect(rooms);
     if (!validateCreateErrorSelect(type)) {
       result = false;
       errorItems.push(type);
@@ -8895,10 +8904,6 @@ const submitAppValidate = () => {
       result = false;
       validateCreateError(calcProper, 'Укажите свойства расчёта');
       errorItems.push(calcProper);
-    }
-    if (!validateCreateErrorSelect(rooms) && !rooms.closest('.submit-app-options__choice').hasAttribute('hidden')) {
-      result = false;
-      errorItems.push(rooms);
     }
     if (descrInput.value.length === 0) {
       result = false;
@@ -9989,10 +9994,15 @@ const mapMetro = () => {
     activationAndClearAll();
     navBottomCloseItem();
     navBottomMoreItem();
-    const moscowMetroItems = {};
-    container.querySelectorAll('.search-area__item').forEach(item => {
-      moscowMetroItems[item.dataset.searchAreaMetro] = Array.from(item.querySelectorAll('[data-metro-id]'));
-    });
+    const inputMetroItems = document.querySelector('[data-metro-selected-stations]');
+    let moscowMetroItems = {};
+    moscowMetroItemsDefault();
+    inputMetroItemsUpdate(inputMetroItems, moscowMetroItems);
+    function moscowMetroItemsDefault() {
+      container.querySelectorAll('.search-area__item').forEach(item => {
+        moscowMetroItems[item.dataset.searchAreaMetro] = Array.from(item.querySelectorAll('[data-metro-id]'));
+      });
+    }
     function activationAndClearAll() {
       const items = container.querySelectorAll('.search-area__item');
       items.forEach(item => {
@@ -10002,6 +10012,7 @@ const mapMetro = () => {
         btnAll.addEventListener('click', () => {
           clearAllLine(elements);
           navBottomUpdate(item.dataset.searchAreaMetro);
+          inputMetroItemsUpdate(inputMetroItems, moscowMetroItems);
         });
         btnClear.addEventListener('click', () => {
           elements.forEach(el => {
@@ -10023,6 +10034,7 @@ const mapMetro = () => {
             }
           });
           navBottomUpdate();
+          inputMetroItemsUpdate(inputMetroItems, moscowMetroItems);
         });
       });
     }
@@ -10050,6 +10062,8 @@ const mapMetro = () => {
       container.querySelectorAll('.checkbox-secondary__input').forEach(input => input.checked = false);
       container.querySelectorAll('.map-metro_select').forEach(el => el.classList.remove('map-metro_select'));
       navBottomUpdate();
+      moscowMetroItemsDefault();
+      inputMetroItemsUpdate(inputMetroItems, moscowMetroItems);
     }
     function activationCheckbox() {
       const elementList = container.querySelectorAll('[data-metro-id]');
@@ -10111,6 +10125,7 @@ const mapMetro = () => {
                 item.classList.remove('map-metro_select');
                 currentElementList.forEach(item => {
                   item.querySelector('.checkbox-secondary__input').checked = false;
+                  reindexingArrayMetro(item);
                 });
                 navBottomUpdate();
               }
@@ -10135,6 +10150,7 @@ const mapMetro = () => {
                 station.classList.remove('map-metro_select');
                 currentElementList.forEach(item => {
                   item.querySelector('.checkbox-secondary__input').checked = false;
+                  reindexingArrayMetro(item);
                 });
                 navBottomUpdate();
               }
@@ -10147,6 +10163,7 @@ const mapMetro = () => {
       const currentLineElement = currentElement.closest('[data-search-area-metro]').dataset.searchAreaMetro;
       const currentElementArrayIndex = moscowMetroItems[currentLineElement].indexOf(currentElement);
       moscowMetroItems[currentLineElement].splice(0, 0, moscowMetroItems[currentLineElement].splice(currentElementArrayIndex, 1)[0]);
+      inputMetroItemsUpdate(inputMetroItems, moscowMetroItems);
     }
     function openSpoller(target, currentElem) {
       const spollers = container.querySelectorAll('.search-area__item');
@@ -10348,6 +10365,24 @@ const mapMetro = () => {
           map.querySelector('#map-metro_moscow').style.transform = map.style.WebkitTransform = map.style.MsTransform = 'scale(' + scale + ')';
         });
       });
+    }
+    function inputMetroItemsUpdate(input, items) {
+      if (input && container.classList.contains('search-area__form--primary')) {
+        let newItems = {};
+        for (const key in items) {
+          const currentStation = [];
+          const station = items[key];
+          station.forEach(item => {
+            if (item.querySelector('input').checked) {
+              currentStation.push(item.querySelector('.checkbox-secondary__text').textContent.trim());
+            }
+          });
+          if (currentStation.length > 0) {
+            newItems[key] = currentStation;
+          }
+        }
+        input.value = JSON.stringify(newItems);
+      }
     }
     clearAllBtn.addEventListener('click', clearAll);
   });
@@ -13708,6 +13743,18 @@ const submitApp = () => {
       }
     });
   });
+  const city = container.querySelector('.submit-app-maps__city');
+  const metro = container.querySelector('.submit-app-maps__metro');
+  if (city && metro) {
+    cityInit(city);
+    city.addEventListener('change', e => {
+      cityInit(city);
+    });
+    function cityInit(city) {
+      const name = city.querySelector('.choices__item.choices__item--selectable').textContent.trim();
+      name !== 'Москва' ? metro.setAttribute('hidden', '') : metro.removeAttribute('hidden');
+    }
+  }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (submitApp);
 

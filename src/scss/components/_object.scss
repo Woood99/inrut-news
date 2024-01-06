@@ -488,13 +488,15 @@
     background-color: var(--white);
     padding: 32px 24px;
     border-radius: 16px;
+@media (min-width:$desktop-min){
     .field-select,
     .field-dropdown,
     .field-range {
         &__name {
             --width: 220px;
         }
-    }
+    } 
+}
 
     &__top {
         margin-bottom: 32px;
@@ -519,14 +521,16 @@
 
     .filter__btn {
         @media (max-width:$desktop) {
-            margin: 0 16px;
-            width: calc(100% - 32px);
+            margin-left: 16px;
         }
     }
 
     &__row {
         &--1 {
             grid-template-columns: percent(419, 1132) percent(278, 1132) percent(419, 1132);
+            @media (max-width:$desktop){
+                margin: 0 16px 0 0 !important; 
+            }
         }
 
         &--2 {
@@ -564,6 +568,11 @@
                         padding: 0 30px 0 115px;
                     }
                 }
+            }
+            @media (max-width:$desktop){
+                 border-radius: 0;
+                 padding: 0; 
+                 display: block  !important;
             }
         }
     }

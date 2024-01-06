@@ -3982,6 +3982,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_replaceText__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ./components/replaceText */ "./src/js/components/replaceText.js");
 /* harmony import */ var _components_metroItems__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ./components/metroItems */ "./src/js/components/metroItems.js");
 /* harmony import */ var _components_shorts__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ./components/shorts */ "./src/js/components/shorts.js");
+/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! ./modules/modal */ "./src/js/modules/modal.js");
+
 
 
 
@@ -4240,6 +4242,25 @@ document.addEventListener('DOMContentLoaded', () => {
     if (metroOther) {
       e.preventDefault();
       metroOther.classList.toggle('_active');
+      if (window.innerWidth <= 1212) {
+        const modalHTML = `
+                <div class="metro-info-modal">
+                    <div class="metro-info-modal__container">
+                        <button class="btn-reset metro-info-modal__close" aria-label="Закрыть модальное окно">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#x"></use>
+                            </svg>
+                            <span>Закрыть</span>
+                        </button>
+                        <div class="metro-info-modal__content">
+                            ${metroOther.querySelector('.metro-info__other-items').innerHTML}
+                        </div>
+                    </div>
+                </div>
+                `;
+        (0,_modules_modal__WEBPACK_IMPORTED_MODULE_56__["default"])(modalHTML, '.metro-info-modal', 300);
+        const metroInfoModal = document.querySelector('.metro-info-modal');
+      }
     }
   });
   // ==================================================
@@ -4330,11 +4351,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_gallery__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/gallery */ "./src/js/components/gallery.js");
 /* harmony import */ var _components_videoBlock__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/videoBlock */ "./src/js/components/videoBlock.js");
 /* harmony import */ var _functions_sliders__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./functions/sliders */ "./src/js/functions/sliders.js");
-/* harmony import */ var _functions_dynamic_adapt__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./functions/dynamic-adapt */ "./src/js/functions/dynamic-adapt.js");
-/* harmony import */ var _functions_dynamic_adapt__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_functions_dynamic_adapt__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _functions_fix_fullheight__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./functions/fix-fullheight */ "./src/js/functions/fix-fullheight.js");
-/* harmony import */ var _functions_popup__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./functions/popup */ "./src/js/functions/popup.js");
-/* harmony import */ var _modules_inputResize__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/inputResize */ "./src/js/modules/inputResize.js");
+/* harmony import */ var _functions_fix_fullheight__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./functions/fix-fullheight */ "./src/js/functions/fix-fullheight.js");
+/* harmony import */ var _functions_popup__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./functions/popup */ "./src/js/functions/popup.js");
+/* harmony import */ var _modules_inputResize__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/inputResize */ "./src/js/modules/inputResize.js");
 
 
 
@@ -4350,27 +4369,26 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 // ========================================================================================
 
 
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'city');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'add');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'personal-area');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'edit-profile');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'edit-profile_agent');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'share-app');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'complaint');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'complaint-user');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'complaint-object');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'complaint-object-two');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'thanks');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'object-not');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'object-not-two');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'interest-rate-modal');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])({
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'city');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'add');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'personal-area');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'edit-profile');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'edit-profile_agent');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'share-app');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'complaint');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'complaint-user');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'complaint-object');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'complaint-object-two');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'thanks');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'object-not');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'object-not-two');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'interest-rate-modal');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])({
   isOpen: settingsModal => {
-    (0,_modules_inputResize__WEBPACK_IMPORTED_MODULE_9__["default"])(settingsModal.container.querySelector('.filter-range-one__input--w-auto'));
+    (0,_modules_inputResize__WEBPACK_IMPORTED_MODULE_8__["default"])(settingsModal.container.querySelector('.filter-range-one__input--w-auto'));
     if (document.body.querySelector('.main').classList.contains('mortgage')) {
       const itemsBody = document.querySelectorAll('.object-calc-mort__btn');
       const itemsModal = settingsModal.container.querySelectorAll('[data-mortgage-card]');
@@ -4389,8 +4407,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   isClose: () => {}
 }, 'interest-rate-modal-two');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'construct-progress-popup');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])({
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'construct-progress-popup');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])({
   isOpen: () => {
     if (window.innerWidth > 1212) return;
     const container = document.querySelector('.genplan');
@@ -4412,10 +4430,10 @@ __webpack_require__.r(__webpack_exports__);
     mask.classList.add('_active');
   }
 }, 'popup-genplan');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'popup-map_buy-apartment-building');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'search-area');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'search-area-two');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])({
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'popup-map_buy-apartment-building');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'search-area');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'search-area-two');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])({
   isOpen: settingsModal => {
     const chat = document.querySelector('.chat');
     if (!chat) return;
@@ -4443,12 +4461,12 @@ __webpack_require__.r(__webpack_exports__);
     if (bookingbtn) bookingbtn.remove();
   }
 }, 'chat');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'online-display-popup');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'authorization');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'sber-tied');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'kit-composition');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'book-consultation');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])({
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'online-display-popup');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'authorization');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'sber-tied');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'kit-composition');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'book-consultation');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])({
   isOpen: settingsModal => {
     (0,_components_videoBlock__WEBPACK_IMPORTED_MODULE_4__["default"])(settingsModal.container.querySelector('.screen-demonstation__video'));
   },
@@ -4456,31 +4474,31 @@ __webpack_require__.r(__webpack_exports__);
     settingsModal.container.querySelector('.video-block__video').innerHTML = '';
   }
 }, 'screen-demonstation-popup');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'record-viewing');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'record-viewing-two');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'personal-area-two');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'client-fixed');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'add-card');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'favorite-two');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'add-contact');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'add-addit-contact');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'create-agree');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'create-document');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'create-deal');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'edit-user');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'create-meeting-show');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'suggest-object');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'history-changes');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'furnishing-sets-popup');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'object-apart-renov-popup');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'object-ecology-parks-popup');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'videos-popup');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'stock-offers-popup');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'tariff-popup');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'tariff-bank-popup');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'want-discount');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'proposal-sent');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])({
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'record-viewing');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'record-viewing-two');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'personal-area-two');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'client-fixed');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'add-card');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'favorite-two');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'add-contact');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'add-addit-contact');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'create-agree');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'create-document');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'create-deal');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'edit-user');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'create-meeting-show');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'suggest-object');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'history-changes');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'furnishing-sets-popup');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'object-apart-renov-popup');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'object-ecology-parks-popup');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'videos-popup');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'stock-offers-popup');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'tariff-popup');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'tariff-bank-popup');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'want-discount');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'proposal-sent');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])({
   isOpen: settingsModal => {
     const currentBtn = settingsModal.currentBtn;
     const items = currentBtn.closest('.swiper-wrapper').querySelectorAll('.swiper-slide');
@@ -4500,13 +4518,13 @@ __webpack_require__.r(__webpack_exports__);
     });
   }
 }, 'object-gallery');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'object-gallery--two');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'warning-remove');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'select-bank');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'metro-map');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'im-buying');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])(null, 'change-mind');
-(0,_functions_popup__WEBPACK_IMPORTED_MODULE_8__["default"])({
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'object-gallery--two');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'warning-remove');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'select-bank');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'metro-map');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'im-buying');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'change-mind');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])({
   isOpen: settingsModal => {
     const chat = document.querySelector('.chat');
     if (!chat) return;
@@ -5095,10 +5113,12 @@ const cardSecondaryActions = () => {
   });
   favoriteMobile();
   tagsMobile();
+  tagsTwoMobile();
   cardSecondaryMetro();
   window.addEventListener('resize', () => {
     favoriteMobile();
     tagsMobile();
+    tagsTwoMobile();
     cardSecondaryMetro();
   });
   function favoriteMobile() {
@@ -5131,6 +5151,23 @@ const cardSecondaryActions = () => {
         const path = card.querySelector('.card-secondary__info');
         if (tags && path) {
           path.insertAdjacentElement('afterbegin', tags);
+        }
+      }
+    });
+  }
+  function tagsTwoMobile() {
+    cards.forEach(card => {
+      if (window.innerWidth <= 1212) {
+        const options = card.querySelector('.card-secondary__options');
+        const path = card.querySelector('.card-secondary__item');
+        if (options && path) {
+          path.insertAdjacentElement('afterbegin', options);
+        }
+      } else {
+        const options = card.querySelector('.card-secondary__options');
+        const path = card.querySelector('.card-secondary__top');
+        if (options && path) {
+          path.insertAdjacentElement('beforeend', options);
         }
       }
     });
@@ -7983,12 +8020,12 @@ const filterMobile = () => {
         const modalHTML = `
                 <div class="filter-modal-map">
                     <div class="filter-modal-map__container">
-                        <button class="btn-reset btn-primary filter-modal-map__close" aria-label="Закрыть модальное окно">
+                        <button class="btn btn-reset filter-modal-map__close" aria-label="Закрыть модальное окно">
                             <svg>
                                 <use xlink:href="./img/sprite.svg#x"></use>
                             </svg>
                         </button>
-                        <button type="button" class="btn btn-reset btn-primary filter-modal-map__filter">
+                        <button type="button" class="btn btn-reset filter-modal-map__filter">
                             <svg>
                                 <use xlink:href="./img/sprite.svg#filter"></use>
                             </svg>
@@ -69463,9 +69500,12 @@ var __webpack_exports__ = {};
   !*** ./src/js/main.js ***!
   \************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _vendor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_vendor */ "./src/js/_vendor.js");
-/* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_functions */ "./src/js/_functions.js");
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_components */ "./src/js/_components.js");
+/* harmony import */ var _functions_dynamic_adapt__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions/dynamic-adapt */ "./src/js/functions/dynamic-adapt.js");
+/* harmony import */ var _functions_dynamic_adapt__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_functions_dynamic_adapt__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _vendor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_vendor */ "./src/js/_vendor.js");
+/* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_functions */ "./src/js/_functions.js");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_components */ "./src/js/_components.js");
+
 
 
 

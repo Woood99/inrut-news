@@ -814,12 +814,12 @@ export const filterMobile = () => {
                 const modalHTML = `
                 <div class="filter-modal-map">
                     <div class="filter-modal-map__container">
-                        <button class="btn-reset btn-primary filter-modal-map__close" aria-label="Закрыть модальное окно">
+                        <button class="btn btn-reset filter-modal-map__close" aria-label="Закрыть модальное окно">
                             <svg>
                                 <use xlink:href="./img/sprite.svg#x"></use>
                             </svg>
                         </button>
-                        <button type="button" class="btn btn-reset btn-primary filter-modal-map__filter">
+                        <button type="button" class="btn btn-reset filter-modal-map__filter">
                             <svg>
                                 <use xlink:href="./img/sprite.svg#filter"></use>
                             </svg>

@@ -3627,10 +3627,13 @@
         z-index: 99;
         border-radius: 12px;
 
+        background: hsla(0,0%,100%,.6);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,.16);
         svg {
             width: 25px;
             height: 25px;
-            fill: var(--white);
+            fill: var(--gray);
             transition: fill $transitionSpeed $transitionFunction;
         }
     }
@@ -3649,12 +3652,21 @@
         left: 16px;
         z-index: 99;
         padding: 0;
+
+        background: hsla(0,0%,100%,.6);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,.16);
+        border-radius: 12px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
         svg {
             --size: 20px;
             width: var(--size);
             height: var(--size);
             flex: 0 0 var(--size);
-            stroke: currentColor;
+            stroke: var(--gray);
             stroke-width: 1.5px;
             fill: none;
         }
@@ -3825,6 +3837,134 @@
             color: var(--green);
         }
 
+    }
+}
+.metro-info-modal {
+    --transition-time: 0.3s;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1051;
+    background-color: rgba(34, 41, 102, 0.4);
+    cursor: pointer;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-time), visibility var(--transition-time);
+    text-align: center;
+    display: flex;
+    align-items: end;
+
+    &.is-open {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity var(--transition-time), visibility var(--transition-time);
+    }
+
+    &__container {
+        position: relative;
+        background-color: #fff;
+        cursor: default;
+        text-align: center;
+        display: none;
+        box-shadow: var(--shadow-primary);
+        margin: 50px auto;
+
+        &.open {
+            display: inline-block !important;
+        }
+
+        margin: 0 auto;
+        border-radius: 16px 16px 0 0;
+        padding: 65px 16px 32px;
+        width: 100%;
+        min-height: 185px;
+    }
+
+    &__close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        border: none;
+        padding: 0;
+        width: 60px;
+        height: 60px;
+        background-color: transparent;
+        cursor: pointer;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            width: 25px;
+            height: 25px;
+            fill: var(--blue);
+            transition: fill $transitionSpeed $transitionFunction;
+
+            @media (max-width:$desktop) {
+                display: none;
+            }
+        }
+
+        span {
+            color: var(--blue);
+            font-size: var(--small-fz);
+            line-height: var(--small-lh);
+            font-weight: 500;
+
+            @media (min-width:$desktop) {
+                display: none;
+            }
+        }
+
+        @media (min-width:$desktop-min) {
+            &:hover {
+                svg {
+                    fill: var(--primary500);
+                }
+            }
+        }
+
+        @media (max-width:$desktop) {
+            right: 16px;
+            top: 24px;
+            width: auto;
+            height: auto;
+        }
+    }
+
+    .metro-info__item {
+        position: static;
+        padding: 0;
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+        border-radius: 0;
+        border: none;
+        text-align: left;
+
+
+        font-size: var(--default-fz);
+        line-height: var(--default-lh);
+width: 100%;
+     min-width: 320px;
+     &:not(:last-child){
+        padding-bottom: 16px;
+        margin-bottom: 16px;
+        border-bottom: 1px solid var(--primary200);
+     }
+     .metro-info__icon{
+        margin-right: 16px;
+     }
+     .metro-info__name{
+        width: 200px;
+     }
+        .metro-info__road{
+            margin-left: 32px;
+        }
     }
 }
 

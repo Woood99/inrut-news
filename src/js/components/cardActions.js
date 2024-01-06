@@ -72,10 +72,12 @@ export const cardSecondaryActions = () => {
     })
     favoriteMobile();
     tagsMobile();
+    tagsTwoMobile();
     cardSecondaryMetro();
     window.addEventListener('resize', () => {
         favoriteMobile();
         tagsMobile();
+        tagsTwoMobile();
         cardSecondaryMetro();
     });
 
@@ -110,6 +112,23 @@ export const cardSecondaryActions = () => {
                 const path = card.querySelector('.card-secondary__info');
                 if (tags && path) {
                     path.insertAdjacentElement('afterbegin', tags);
+                }
+            }
+        })
+    }
+    function tagsTwoMobile() {
+        cards.forEach(card => {
+            if (window.innerWidth <= 1212) {
+                const options = card.querySelector('.card-secondary__options');
+                const path = card.querySelector('.card-secondary__item');
+                if (options && path) {
+                    path.insertAdjacentElement('afterbegin', options);
+                }
+            } else {
+                const options = card.querySelector('.card-secondary__options');
+                const path = card.querySelector('.card-secondary__top');
+                if (options && path) {
+                    path.insertAdjacentElement('beforeend', options);
                 }
             }
         })

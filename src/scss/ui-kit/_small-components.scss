@@ -2726,17 +2726,27 @@
     &__other{
         position: relative;
         cursor: pointer;
+      @media (min-width:$desktop-min){
         &._active{
             .metro-info__other-items{
                 opacity: 1;
                 visibility: visible;
                 transform: translateY(0);
             }
-        }
+        } 
+      }
     }
     &__count{
         font-size: var(--small-fz);
         white-space: nowrap;
+
+        border: 1px solid var(--primary200);
+        height: 25px;
+        padding: 0 12px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     &__other-items{
         opacity: 0;
@@ -2744,16 +2754,23 @@
         transform: translateY(-5px);
         position: absolute;
         right: 0;
-        top: 26px;
+        top: 29px;
 
-        background-color: var(--white);
         padding: 16px;
-        box-shadow: var(--shadow-secondary);
         z-index: 5;
         border-radius: 12px;
         transition: opacity $transitionSpeed $transitionFunction,
         visibility $transitionSpeed $transitionFunction,
         transform $transitionSpeed $transitionFunction;
+
+
+        background-color: var(--white);
+        border: 1px solid rgba(122, 127, 170, 0.2);
+        border-radius: 10px;
+        color: var(--dark);
+        padding: 16px;
+        font-size: var(--small-fz);
+        line-height: var(--small-lh);
         .metro-info__item{
             &:not(:last-child){
                 margin-bottom: 16px;

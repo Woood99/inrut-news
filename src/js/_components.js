@@ -124,7 +124,7 @@ import moveToFromBlock from './modules/moveToFromBlock';
 import replaceText from './components/replaceText';
 import metroItems from './components/metroItems';
 import shorts from './components/shorts';
-
+import modal from './modules/modal';
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==================================================
@@ -329,7 +329,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const metroOther = e.target.closest('.metro-info__other');
         if (metroOther) {
             e.preventDefault();
-            metroOther.classList.toggle('_active')
+            metroOther.classList.toggle('_active');
+            if (window.innerWidth <= 1212) {
+                const modalHTML = `
+                <div class="metro-info-modal">
+                    <div class="metro-info-modal__container">
+                        <button class="btn-reset metro-info-modal__close" aria-label="Закрыть модальное окно">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#x"></use>
+                            </svg>
+                            <span>Закрыть</span>
+                        </button>
+                        <div class="metro-info-modal__content">
+                            ${metroOther.querySelector('.metro-info__other-items').innerHTML}
+                        </div>
+                    </div>
+                </div>
+                `;
+                modal(modalHTML, '.metro-info-modal', 300);
+                const metroInfoModal = document.querySelector('.metro-info-modal');
+            }
         }            
     })
     // ==================================================

@@ -12249,11 +12249,6 @@ textarea.input-reset {
 }
 @media (max-width: 1212px) {
   .cards-list__controls {
-    padding: 0 16px;
-  }
-}
-@media (max-width: 1212px) {
-  .cards-list__controls {
     display: none;
   }
 }
@@ -12304,7 +12299,7 @@ textarea.input-reset {
   margin-top: 32px;
   width: 100%;
 }
-@media (max-width: 768px) {
+@media (max-width: 1212px) {
   .cards-list__next {
     margin: 16px auto 0;
     width: calc(100% - 32px);
@@ -12328,7 +12323,7 @@ textarea.input-reset {
     margin-top: 16px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 1212px) {
   .cards-list {
     border-radius: 0;
     background-color: transparent;
@@ -19435,7 +19430,7 @@ textarea.input-reset {
   flex-wrap: wrap;
   gap: 8px;
 }
-.card-scheme__tags span {
+.card-scheme__tags > span {
   background-color: var(--primary100);
   border-radius: 8px;
   color: var(--dark);
@@ -19484,6 +19479,8 @@ textarea.input-reset {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
   padding: 16px;
   left: -50%;
   -webkit-transform: translateX(calc(-50% - 8px));
@@ -19493,10 +19490,11 @@ textarea.input-reset {
   border-radius: 16px;
   background-color: var(--dark);
   border: none;
-}
-.card-scheme__tags .secondary-tooltip__content span:not(:last-child) {
-  margin-left: 0;
-  margin-right: 6px;
+  max-width: 320px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  gap: 8px;
 }
 .card-scheme__favorite {
   position: absolute;
@@ -30384,7 +30382,7 @@ textarea.input-reset {
   margin-left: 0;
 }
 .header.header--new .header-top__actions {
-  margin-right: 56px;
+  margin-right: 40px;
   margin-left: auto;
 }
 .header.header--new .header-main {
@@ -30456,7 +30454,7 @@ textarea.input-reset {
   margin-left: 16px;
 }
 .header-top__action:not(:last-child) {
-  margin-right: 40px;
+  margin-right: 24px;
 }
 @media (max-width: 1212px) {
   .header-top__action:not(:last-child) {
@@ -33114,6 +33112,9 @@ textarea.input-reset {
 .object-body__online-display {
   margin-top: 32px;
 }
+.object-body__data {
+  overflow: hidden;
+}
 .object-body__record-viewings {
   display: -ms-grid;
   display: grid;
@@ -33689,7 +33690,7 @@ textarea.input-reset {
   }
 }
 .object-characteristics__title {
-  margin-bottom: 24px;
+  margin-top: 16px;
 }
 .object-characteristics__item {
   display: -webkit-box;
@@ -33974,8 +33975,6 @@ textarea.input-reset {
 }
 .object-data__metro {
   margin-top: 16px;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 .object-data__tags {
   margin-top: 16px;
@@ -35217,6 +35216,9 @@ textarea.input-reset {
 @media (max-width: 1212px) {
   .main-slider__body {
     margin-right: 0;
+    -webkit-box-flex: 1;
+    -ms-flex: auto;
+    flex: auto;
   }
 }
 @media (max-width: 768px) {
@@ -35372,6 +35374,17 @@ textarea.input-reset {
   }
   .main-slider__fullscreen:hover svg path {
     stroke: rgb(22, 22, 22);
+  }
+}
+@media (max-width: 1212px) {
+  .main-slider {
+    height: 500px;
+  }
+}
+@media (max-width: 768px) {
+  .main-slider {
+    max-height: 350px;
+    height: 350px;
   }
 }
 
@@ -37446,9 +37459,14 @@ textarea.input-reset {
 }
 @media (max-width: 1212px) {
   .buy-apartment__body {
-    padding: calc(var(--header-height) + 24px) 0 16px;
+    padding: calc(var(--header-height, 40px) + 24px) 0 16px;
     background-color: var(--stand-bg);
     border-radius: 0 0 12px 12px;
+  }
+}
+@media (max-width: 1212px) {
+  .buy-apartment__body .buy-apartment__filter {
+    display: none;
   }
 }
 @media (max-width: 1212px) {

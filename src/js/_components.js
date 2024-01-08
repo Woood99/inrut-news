@@ -316,14 +316,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==================================================
     const objectMetro = document.querySelectorAll('.object-data__metro');
     if (objectMetro.length > 0) {
-        objectMetro.forEach(container => {
-            metroItems(container, container.closest('.object-body__content'));
-        })
+        body();
+        setTimeout(() => {
+            body();
+        }, 1);
         window.addEventListener('resize',() => {
-            objectMetro.forEach(container => {
-                metroItems(container, container.closest('.object-body__content'));
-            })
+            body();
         });
+        function body() {
+            objectMetro.forEach(container => {
+                metroItems(container, container.closest('.object-body__data'));
+            })
+        }
     }
     document.addEventListener('click',(e) => {
         const metroOther = e.target.closest('.metro-info__other');

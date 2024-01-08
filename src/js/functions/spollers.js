@@ -4,7 +4,7 @@ import {
     _slideDown,
     _slideToggle
 } from '../support-modules/slide';
-
+import { cardSchemeTag } from '../components/controlCards';
 const spollers = () => {
     const spollersArray = document.querySelectorAll('[data-spollers]');
     let speed = 500;
@@ -92,6 +92,7 @@ const spollers = () => {
                                 top: topGap - (window.innerWidth > 1212 ? headerFixed.offsetHeight : topHeaderMobile.offsetHeight) + heightTitle - 16,
                                 behavior: 'smooth'
                             })
+                            cardSchemeTag(spollerTitle.nextElementSibling);
                         }, speed);
                     }
                 }

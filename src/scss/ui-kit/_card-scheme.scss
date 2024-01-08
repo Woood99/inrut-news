@@ -28,12 +28,14 @@
             border-radius: 12px;
         }
 
-   @media (max-width:$desktop){
-    min-height: auto; 
-   }
-        &._fixed-width{
+        @media (max-width:$desktop) {
+            min-height: auto;
+        }
+
+        &._fixed-width {
             padding: 24px 32px;
-            img{
+
+            img {
                 object-fit: contain;
             }
         }
@@ -128,7 +130,7 @@
         flex-wrap: wrap;
         gap: 8px;
 
-        span {
+        >span {
             background-color: var(--primary100);
             border-radius: 8px;
             color: var(--dark);
@@ -164,6 +166,7 @@
             &__content {
                 display: flex;
                 align-items: center;
+                flex-wrap: wrap;
                 padding: 16px;
                 left: -50%;
                 transform: translateX(calc(-50% - 8px));
@@ -171,13 +174,9 @@
                 border-radius: 16px;
                 background-color: var(--dark);
                 border: none;
-
-                span {
-                    &:not(:last-child) {
-                        margin-left: 0;
-                        margin-right: 6px;
-                    }
-                }
+                max-width: 320px;
+                width: max-content;
+                gap: 8px;
             }
         }
     }
@@ -213,13 +212,15 @@
         line-height: var(--default-lh);
         font-weight: 500;
     }
-    &__frame{
+
+    &__frame {
         margin-top: 10px;
         display: block;
         color: var(--primary600);
         font-size: var(--default-fz);
         line-height: var(--little-small-lh);
     }
+
     &__btn {
         color: var(--blue);
         background-color: rgba(0, 150, 255, 0.08);
@@ -232,6 +233,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
         svg {
             margin-left: 10px;
             width: 20px;
@@ -239,9 +241,11 @@
             fill: currentColor;
         }
     }
-    .secondary-tooltip__btn{
+
+    .secondary-tooltip__btn {
         width: 55px;
     }
+
     &.card-scheme--improved {
         .card-scheme {
             &__container {

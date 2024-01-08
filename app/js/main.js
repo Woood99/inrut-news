@@ -4228,14 +4228,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==================================================
   const objectMetro = document.querySelectorAll('.object-data__metro');
   if (objectMetro.length > 0) {
-    objectMetro.forEach(container => {
-      (0,_components_metroItems__WEBPACK_IMPORTED_MODULE_54__["default"])(container, container.closest('.object-body__content'));
-    });
+    body();
+    setTimeout(() => {
+      body();
+    }, 1);
     window.addEventListener('resize', () => {
-      objectMetro.forEach(container => {
-        (0,_components_metroItems__WEBPACK_IMPORTED_MODULE_54__["default"])(container, container.closest('.object-body__content'));
-      });
+      body();
     });
+    function body() {
+      objectMetro.forEach(container => {
+        (0,_components_metroItems__WEBPACK_IMPORTED_MODULE_54__["default"])(container, container.closest('.object-body__data'));
+      });
+    }
   }
   document.addEventListener('click', e => {
     const metroOther = e.target.closest('.metro-info__other');
@@ -6023,6 +6027,7 @@ const clientPage = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   actionForCards: () => (/* binding */ actionForCards),
+/* harmony export */   cardSchemeTag: () => (/* binding */ cardSchemeTag),
 /* harmony export */   controlCards: () => (/* binding */ controlCards),
 /* harmony export */   controlCardsCardSecondary: () => (/* binding */ controlCardsCardSecondary)
 /* harmony export */ });
@@ -6189,6 +6194,51 @@ function checkHorizontal(target) {
 function checkVertical(target) {
   if (target) return target.classList.contains('control-cards__btn--vertical');
 }
+const cardSchemeTag = container => {
+  const cards = container.querySelectorAll('.card-scheme');
+  if (cards.length === 0) return;
+  const heightTag = 24;
+  const tooltipContentHTML = `
+    <div class="secondary-tooltip">
+        <div class="secondary-tooltip__btn">
+            ещё +<span>0</span>
+        </div>
+        <div class="secondary-tooltip__content">
+
+        </div>
+    </div>
+    `;
+  cards.forEach(card => {
+    const tagsContainer = card.querySelector('.card-scheme__tags');
+    if (tagsContainer) {
+      const tagsItems = card.querySelectorAll('.card-scheme__tags > span');
+      const tooltip = card.querySelector('.secondary-tooltip');
+      if (tooltip) tooltip.remove();
+      let tooltipAvav = false;
+      if (tagsItems.length > 0) {
+        for (let i = tagsItems.length - 1; i >= 0; i--) {
+          const element = tagsItems[i];
+          if (tagsContainer.offsetHeight > heightTag) {
+            if (tooltipAvav === false) {
+              tagsContainer.insertAdjacentHTML('beforeend', tooltipContentHTML);
+              tooltipAvav = true;
+            }
+            if (tooltipAvav === true) {
+              const tooltip = tagsContainer.querySelector('.secondary-tooltip__content');
+              tooltip.insertAdjacentElement('beforeend', element);
+            }
+          }
+        }
+        if (tooltipAvav === true) {
+          const tooltip = tagsContainer.querySelector('.secondary-tooltip__content');
+          const count = card.querySelector('.secondary-tooltip__btn > span');
+          const tooltipItemLength = tooltip.querySelectorAll('.secondary-tooltip__content > span').length;
+          count.textContent = tooltipItemLength;
+        }
+      }
+    }
+  });
+};
 
 /***/ }),
 
@@ -15862,6 +15912,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _support_modules_dataMediaQueries__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../support-modules/dataMediaQueries */ "./src/js/support-modules/dataMediaQueries.js");
 /* harmony import */ var _support_modules_slide__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../support-modules/slide */ "./src/js/support-modules/slide.js");
+/* harmony import */ var _components_controlCards__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/controlCards */ "./src/js/components/controlCards.js");
+
 
 
 const spollers = () => {
@@ -15949,6 +16001,7 @@ const spollers = () => {
                 top: topGap - (window.innerWidth > 1212 ? headerFixed.offsetHeight : topHeaderMobile.offsetHeight) + heightTitle - 16,
                 behavior: 'smooth'
               });
+              (0,_components_controlCards__WEBPACK_IMPORTED_MODULE_2__.cardSchemeTag)(spollerTitle.nextElementSibling);
             }, speed);
           }
         }

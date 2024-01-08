@@ -1,4 +1,6 @@
-import { cardSecondaryMetro } from "./cardActions";
+import {
+    cardSecondaryMetro
+} from "./cardActions";
 
 export const controlCards = () => {
     const containers = document.querySelectorAll('.control-cards');
@@ -12,7 +14,7 @@ export const controlCards = () => {
             if (btn) {
                 btn.addEventListener('click', () => {
                     btns.forEach(el => el.classList.remove('_active'));
-                    content.classList.remove('control-cards__content--horizontal', 'control-cards__content--vertical','control-cards__content--horizontal-map');
+                    content.classList.remove('control-cards__content--horizontal', 'control-cards__content--vertical', 'control-cards__content--horizontal-map');
                     actionForCards(container, content, btn);
                 });
             }
@@ -43,7 +45,7 @@ export const actionForCards = (container, content, btn) => {
 
 
 
-    controlCardsCardSecondary(content,btn);
+    controlCardsCardSecondary(content, btn);
     cardSecondaryMetro();
     if (content.querySelectorAll('.card-primary').length >= 1) {
         const cardsPrimary = content.querySelectorAll('.card-primary');
@@ -127,7 +129,7 @@ export const actionForCards = (container, content, btn) => {
 }
 
 
-export const controlCardsCardSecondary = (content,btn) => {
+export const controlCardsCardSecondary = (content, btn) => {
     if (content.querySelectorAll('.card-secondary').length >= 1) {
         const cardsSecondary = content.querySelectorAll('.card-secondary');
 
@@ -172,4 +174,50 @@ function checkHorizontal(target) {
 
 function checkVertical(target) {
     if (target) return target.classList.contains('control-cards__btn--vertical');
+}
+
+export const cardSchemeTag = (container) => {
+    const cards = container.querySelectorAll('.card-scheme');
+    if (cards.length === 0) return;
+    const heightTag = 24;
+    const tooltipContentHTML = `
+    <div class="secondary-tooltip">
+        <div class="secondary-tooltip__btn">
+            ещё +<span>0</span>
+        </div>
+        <div class="secondary-tooltip__content">
+
+        </div>
+    </div>
+    `;
+    cards.forEach(card => {
+        const tagsContainer = card.querySelector('.card-scheme__tags');
+        if (tagsContainer) {
+            const tagsItems = card.querySelectorAll('.card-scheme__tags > span');
+            const tooltip = card.querySelector('.secondary-tooltip');
+            if (tooltip) tooltip.remove();
+            let tooltipAvav = false;
+            if (tagsItems.length > 0) {
+                for (let i = tagsItems.length - 1; i >= 0; i--) {
+                    const element = tagsItems[i];
+                    if (tagsContainer.offsetHeight > heightTag) {
+                        if (tooltipAvav === false) {
+                            tagsContainer.insertAdjacentHTML('beforeend', tooltipContentHTML);
+                            tooltipAvav = true;
+                        }
+                        if (tooltipAvav === true) {
+                            const tooltip = tagsContainer.querySelector('.secondary-tooltip__content');
+                            tooltip.insertAdjacentElement('beforeend', element);
+                        }
+                    }
+                }
+                if (tooltipAvav === true) {
+                    const tooltip = tagsContainer.querySelector('.secondary-tooltip__content');
+                    const count = card.querySelector('.secondary-tooltip__btn > span'); 
+                    const tooltipItemLength = tooltip.querySelectorAll('.secondary-tooltip__content > span').length;
+                    count.textContent = tooltipItemLength;
+                }
+            }
+        }
+    })
 }

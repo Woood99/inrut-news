@@ -83,7 +83,9 @@
 
     &__user {}
 
-    &__data {}
+    &__data {
+        overflow: hidden;
+    }
     &__record-viewings{
         display: grid;
         justify-content: space-between;
@@ -653,7 +655,7 @@
     }
 
     &__title {
-        margin-bottom: 24px;
+        margin-top: 16px;
     }
 
     &__item {
@@ -926,7 +928,6 @@
     }
     &__metro{
         margin-top: 16px;
-        flex-wrap: wrap;
     }
     &__tags {
         margin-top: 16px;
@@ -2168,6 +2169,7 @@ margin-top: 4px;
         position: relative;
         @media (max-width:$desktop) {
             margin-right: 0;
+            flex: auto;
         }
 
         @media (max-width:$smallTablet-max) {
@@ -2314,6 +2316,13 @@ margin-top: 4px;
                 }
             }
         }
+    }
+    @media (max-width:$desktop){
+       height: 500px;
+    }
+    @media (max-width:$smallTablet-max){
+        max-height: 350px;
+        height: 350px;  
     }
 }
 

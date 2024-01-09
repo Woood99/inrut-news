@@ -1102,10 +1102,18 @@
                 width: calc(100% - 4px);
                 vertical-align: bottom;
                 position: relative;
+                @media (max-width:$desktop){
+                     min-height: 100%;
+                     border-radius: 0;
+                     margin-top: 0; 
+                }
             }
 
             &__close {
                 transform: translateX(16px);
+                @media (max-width:$desktop){
+                     transform: translateX(0); 
+                }
             }
         }
 
@@ -5694,7 +5702,7 @@ width: 100%;
             height: 550px;
 
             @media (max-width:$desktop) {
-                height: 500px;
+                height: 400px;
             }
         }
     }
@@ -5747,6 +5755,9 @@ width: 100%;
             grid-template-columns: 1fr 25%;
             grid-column-gap: 32px;
             grid-row-gap: 24px;
+            @media (max-width:$desktop){
+                 display: block; 
+            }
         }
 
         .object-apart-renov__item {
@@ -6715,6 +6726,7 @@ width: 100%;
                 height: 25px;
                 fill: none;
                 stroke: var(--orange);
+                transform: rotate(180deg);
             }
         }
 
@@ -6758,6 +6770,11 @@ width: 100%;
     &__btn {
         margin-left: auto;
         padding: 0 70px;
+        @media (max-width:$desktop){
+            margin-top: 32px;
+             padding: 0 24px;
+             width: 100%; 
+        }
     }
 
     &__bottom {
@@ -6791,17 +6808,38 @@ width: 100%;
                     &:nth-child(2) {
                         margin-top: 8px;
                         font-weight: 500;
+                        @media (max-width:$desktop){
+                             margin-top: 0;
+                             margin-left: 16px; 
+                        }
                     }
                 }
 
                 &:nth-child(1) {
                     width: 200px;
                     margin-right: 76px;
+                    @media (max-width:$desktop){
+                         margin-right: 0;
+                         width: 100%; 
+                    }
                 }
 
                 &:nth-child(2) {
                     width: 100px;
+                    @media (max-width:$desktop){
+                         width: 100%; 
+                    }
                 }
+                @media (max-width:$desktop){
+                     flex-direction: row; 
+                     align-items: center;
+                }
+            }
+            @media (max-width:$desktop){
+                 flex-direction: column;
+                 align-items: start; 
+                 gap: 8px;
+                 padding: 0;
             }
         }
     }

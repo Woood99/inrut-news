@@ -1,7 +1,7 @@
 .my-requests {
     &__body {
         @media (max-width:$desktop) {
-            padding: calc(var(--header-height) + 24px) 0 16px;
+            padding: calc(var(--header-height,51px) + 24px) 0 16px;
             background-color: var(--stand-bg);
         }
     }
@@ -10,9 +10,9 @@
         background-color: var(--stand-bg);
         .object-info {
             position: relative;
-            grid-template-columns: percent(130, 1180) percent(130, 1180) percent(300, 1180) max-content 1fr 24px;
+            grid-template-columns: percent(130, 1180) percent(450, 1180) max-content 1fr 24px;
             @media (max-width:$desktop) {
-                grid-template-columns: max-content max-content;
+                grid-template-columns: 1fr max-content;
                 grid-column-gap: 32px;
             }
 
@@ -46,7 +46,7 @@
             }
             .object-info__parameter{
                 @media (max-width:$desktop){
-                     max-width: 85%;
+                   max-width: 100%;
                      white-space: nowrap;
                      overflow: hidden;
                      text-overflow: ellipsis;
@@ -54,7 +54,7 @@
             }
         }
         .main-table__type{
-            grid-template-columns: percent(130, 1180) percent(300, 1180) 1fr;
+            grid-template-columns: percent(130, 1180) percent(450, 1180) 1fr;
             justify-content: start;
             margin: 0 24px;
             grid-column-gap: 20px;
@@ -90,7 +90,9 @@
             }
 
             @media (max-width:$desktop) {
-            display: none;
+                grid-column: 2/3;
+                grid-row: 3/4;
+                justify-self: end;
             }
         }
 

@@ -78,14 +78,12 @@ export const tooltipMain = () => {
                                     <span>Закрыть</span>
                                 </button>
                                 <div class="tooltip-modal__content">
+                                    ${tooltip.outerHTML}
                                 </div>
                             </div>
                         </div>
                         `;
                         modal(modalHTML, '.tooltip-modal', 300, tooltip);
-                        const tooltipModal = document.querySelector('.tooltip-modal');
-                        tooltipModal.classList.add('_one-tooltip');
-                        tooltipModal.querySelector('.tooltip-modal__content').innerHTML = content.outerHTML;
                     }
                 })
             })

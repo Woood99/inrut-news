@@ -8390,7 +8390,9 @@ const fieldSelect = () => {
     const input = container.querySelector('.field-select__input');
     if (input) {
       const result = Array.from(selectedItems).map(item => {
-        return item.querySelector('span').textContent.trim();
+        if (item.dataset.fieldValue) {
+          return item.dataset.fieldValue;
+        }
       });
       input.value = result.join(", ");
     }
@@ -8400,6 +8402,7 @@ const fieldRange = () => {
   const containers = document.querySelectorAll('.field-range');
   if (containers.length === 0) return;
   containers.forEach(container => {
+    updateInput(container);
     const choices = container.querySelector('.field-range__choices');
     if (container.hasAttribute('data-field-range-floor')) {
       container.querySelectorAll('.field-range__choice').forEach((item, index) => {
@@ -8426,11 +8429,28 @@ const fieldRange = () => {
             two.classList.remove('_active');
           }
         });
+        for (const element of [one, two, three]) {
+          element.addEventListener('click', () => {
+            updateInput(container);
+          });
+        }
       }
     }
   });
   function checkContains(item) {
     return item.classList.contains('_active');
+  }
+  function updateInput(container) {
+    const selectedItems = container.querySelectorAll('.field-range__choice._active');
+    const input = container.querySelector('.field-range__choices-input');
+    if (input) {
+      const result = Array.from(selectedItems).map(item => {
+        if (item.dataset.fieldValue) {
+          return item.dataset.fieldValue;
+        }
+      });
+      input.value = result.join(", ");
+    }
   }
 };
 function filterModalScreenWidthCheck() {
@@ -14177,14 +14197,12 @@ const tooltipMain = () => {
                                     <span>Закрыть</span>
                                 </button>
                                 <div class="tooltip-modal__content">
+                                    ${tooltip.outerHTML}
                                 </div>
                             </div>
                         </div>
                         `;
             (0,_modules_modal__WEBPACK_IMPORTED_MODULE_0__["default"])(modalHTML, '.tooltip-modal', 300, tooltip);
-            const tooltipModal = document.querySelector('.tooltip-modal');
-            tooltipModal.classList.add('_one-tooltip');
-            tooltipModal.querySelector('.tooltip-modal__content').innerHTML = content.outerHTML;
           }
         });
       });

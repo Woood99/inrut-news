@@ -796,7 +796,7 @@ export const filterMobile = () => {
             if (container.classList.contains('active')) container.classList.remove('active');
             if (mask && mask.classList.contains('active')) mask.classList.remove('active');
             if (!exceptionEnableScroll()) enableScroll();
-            if (document.querySelector('.filter-modal-map')){
+            if (document.querySelector('.filter-modal-map')) {
                 document.querySelector('.filter-modal-map').classList.remove('_small-index');
             }
         });
@@ -833,6 +833,7 @@ export const filterMobile = () => {
                 modal(modalHTML, '.filter-modal-map', 300);
                 const mapContainer = document.querySelector('.filter-modal-map');
                 const filterBtn = mapContainer.querySelector('.filter-modal-map__filter');
+
                 function init() {
                     let map = new ymaps.Map('filter-modal-map__map', {
                         center: [55.77171185651524, 37.62811179984117],
@@ -856,11 +857,11 @@ export const filterMobile = () => {
                 }
                 ymaps.ready(init);
 
-                filterBtn.addEventListener('click',() => {
+                filterBtn.addEventListener('click', () => {
                     mask ? mask.classList.add('active') : container.classList.add('active');
-                   setTimeout(() => {
-                    mapContainer.classList.add('_small-index');
-                   }, 150);
+                    setTimeout(() => {
+                        mapContainer.classList.add('_small-index');
+                    }, 150);
                     disableScroll();
                 });
             });
@@ -1184,7 +1185,9 @@ export const fieldSelect = () => {
 
         if (input) {
             const result = Array.from(selectedItems).map(item => {
-                return item.querySelector('span').textContent.trim();
+                if (item.dataset.fieldValue) {
+                    return item.dataset.fieldValue;
+                }
             })
             input.value = result.join(", ");
         }
@@ -1194,6 +1197,7 @@ export const fieldRange = () => {
     const containers = document.querySelectorAll('.field-range');
     if (containers.length === 0) return;
     containers.forEach(container => {
+        updateInput(container);
         const choices = container.querySelector('.field-range__choices');
         if (container.hasAttribute('data-field-range-floor')) {
             container.querySelectorAll('.field-range__choice').forEach((item, index) => {
@@ -1221,6 +1225,12 @@ export const fieldRange = () => {
                         two.classList.remove('_active');
                     }
                 })
+
+                for (const element of [one, two, three]) {
+                    element.addEventListener('click', () => {
+                        updateInput(container);
+                    })
+                }
             }
         }
     })
@@ -1228,6 +1238,20 @@ export const fieldRange = () => {
 
     function checkContains(item) {
         return item.classList.contains('_active');
+    }
+
+    function updateInput(container) {
+        const selectedItems = container.querySelectorAll('.field-range__choice._active');
+        const input = container.querySelector('.field-range__choices-input');
+
+        if (input) {
+            const result = Array.from(selectedItems).map(item => {
+                if (item.dataset.fieldValue) {
+                    return item.dataset.fieldValue;
+                }
+            })
+            input.value = result.join(", ");
+        }
     }
 }
 

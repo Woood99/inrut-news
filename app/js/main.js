@@ -16880,6 +16880,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal */ "./src/js/modules/modal.js");
+
 const dropdown = (containerSelector, targetSelector) => {
   const container = document.querySelectorAll(containerSelector);
   container.forEach(el => {
@@ -16887,30 +16889,20 @@ const dropdown = (containerSelector, targetSelector) => {
     const chatItem = el.closest('.chat__item');
     if (!el.classList.contains('_hover')) {
       target.addEventListener('click', e => {
-        e.preventDefault();
-        container.forEach(el => {
-          if (e.target.closest(containerSelector) !== el) {
-            el.classList.remove('_active');
-            if (el.closest('.chat__item')) {
-              el.closest('.chat__item').classList.remove('_dropdown-active');
-            }
-          }
-        });
-        el.classList.toggle('_active');
-        if (chatItem) {
-          chatItem.classList.toggle('_dropdown-active');
-        }
-      });
-    } else {
-      target.addEventListener('click', e => {
-        if (window.innerWidth <= 1212) {
+        if (window.innerWidth > 1212) {
           e.preventDefault();
           container.forEach(el => {
             if (e.target.closest(containerSelector) !== el) {
               el.classList.remove('_active');
+              if (el.closest('.chat__item')) {
+                el.closest('.chat__item').classList.remove('_dropdown-active');
+              }
             }
           });
           el.classList.toggle('_active');
+          if (chatItem) {
+            chatItem.classList.toggle('_dropdown-active');
+          }
         }
       });
     }
@@ -16919,6 +16911,31 @@ const dropdown = (containerSelector, targetSelector) => {
         if (el.classList.contains('_active')) el.classList.remove('_active');
         if (chatItem && chatItem.classList.contains('_dropdown-active')) {
           chatItem.classList.remove('_dropdown-active');
+        }
+      }
+    });
+    target.addEventListener('click', e => {
+      if (window.innerWidth <= 1212) {
+        e.preventDefault();
+        const modalHTML = `
+                <div class="tooltip-modal">
+                    <div class="tooltip-modal__container">
+                        <button class="btn-reset tooltip-modal__close" aria-label="Закрыть модальное окно">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#x"></use>
+                            </svg>
+                            <span>Закрыть</span>
+                        </button>
+                        <div class="tooltip-modal__content">
+                            ${el.querySelector('.dots-dropdown__dropdown').outerHTML}
+                        </div>
+                    </div>
+                </div>
+                `;
+        (0,_modal__WEBPACK_IMPORTED_MODULE_0__["default"])(modalHTML, '.tooltip-modal', 300);
+        const tooltipModal = document.querySelector('.tooltip-modal');
+        if (el.closest('.object-info')) {
+          tooltipModal.classList.add('_object-info');
         }
       }
     });

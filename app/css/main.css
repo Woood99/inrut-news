@@ -17291,6 +17291,11 @@ textarea.input-reset {
 .card-primary__metro {
   margin-top: 24px;
 }
+@media (max-width: 1212px) {
+  .card-primary__metro {
+    grid-column: 1/-1;
+  }
+}
 .card-primary__buying {
   color: var(--blue);
   background-color: rgba(0, 150, 255, 0.08);
@@ -22117,6 +22122,12 @@ textarea.input-reset {
   }
   .filter--new-style > .filter__row .quantity-selection__inner .checkbox__label {
     height: 40px;
+  }
+  .filter--new-style > .filter__row .search-select-one__button {
+    height: 40px;
+  }
+  .filter--new-style > .filter__row .input-primary__input {
+    height: 38px;
   }
   .filter--new-style > .filter__row .filter-dropdown__button {
     height: 40px;
@@ -32524,8 +32535,10 @@ textarea.input-reset {
 @media (max-width: 1212px) {
   .selection-estate__filter .filter__clear {
     max-width: none;
-    width: 50%;
-    padding: 0 22px;
+    width: auto;
+    padding: 0 32px;
+    margin: 0;
+    height: 40px;
   }
 }
 .selection-estate__filter .filter__go {
@@ -32541,8 +32554,15 @@ textarea.input-reset {
 }
 @media (max-width: 1212px) {
   .selection-estate__filter {
-    margin-top: 24px;
-    margin-bottom: 24px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0 16px;
+    margin-top: 12px;
+    margin-bottom: 12px;
   }
 }
 @media (max-width: 1212px) {
@@ -32609,8 +32629,12 @@ textarea.input-reset {
 
 @media (max-width: 1212px) {
   .your-app__container {
-    padding: calc(var(--header-height) + 24px) 0 0 0;
-    background-color: var(--stand-bg);
+    padding: calc(var(--header-height, 40px) + 24px) 0 0 0;
+  }
+}
+@media (max-width: 1212px) {
+  .your-app__title {
+    padding: 0 16px;
   }
 }
 @media (max-width: 1212px) {
@@ -32706,6 +32730,7 @@ textarea.input-reset {
 }
 @media (max-width: 1212px) {
   .your-app__objects {
+    margin-top: 24px;
     background-color: var(--white);
     padding: 22px 0 0;
   }
@@ -32736,7 +32761,7 @@ textarea.input-reset {
     background-color: var(--stand-bg);
   }
   .your-app .tabs-primary__container {
-    margin-top: 26px;
+    margin-top: 36px;
     padding-bottom: 16px;
   }
 }

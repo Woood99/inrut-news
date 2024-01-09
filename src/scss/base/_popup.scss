@@ -1660,10 +1660,11 @@
         margin: -16px;
         padding: 16px;
     }
-
     .bid {
         pointer-events: all;
-
+        &__start{
+            margin-top: 32px;
+        }
         &__body {}
 
         &__time {
@@ -3836,7 +3837,36 @@
         .price-history__more {
             color: var(--green);
         }
-
+    }
+    .main-tooltip__content{
+        position:static;
+        opacity: 1;
+        visibility: visible;
+        transform: translate(0);
+        background-color: transparent;
+        box-shadow: none;
+        color: var(--dark);
+        padding: 0;
+        font-size: var(--default-fz);
+        max-width: none;
+    }
+    .object-info__tooltip{
+        display: flex !important; 
+        align-items: center;
+        gap: 16px;
+        &:not(:last-child){
+            padding-bottom: 16px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--primary200)
+        }
+    }
+    &._one-tooltip{
+        .tooltip-modal__container {
+            min-height: 180px;
+        }
+        .main-tooltip__content{
+            font-size: var(--big-fz);
+        }
     }
 }
 .metro-info-modal {
@@ -5654,7 +5684,9 @@ width: 100%;
             }
         }
     }
-
+    .object-apart-renov__pagination {
+       display: flex;
+    }
     .object-apart-renov__descr {
         @media (max-width:$desktop) {
             padding: 0 16px;

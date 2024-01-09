@@ -4126,6 +4126,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_onlineDisplay__WEBPACK_IMPORTED_MODULE_42__["default"])();
   (0,_components_bankOffer__WEBPACK_IMPORTED_MODULE_43__["default"])();
   (0,_components_tooltips__WEBPACK_IMPORTED_MODULE_44__.tooltipSecondary)();
+  (0,_components_tooltips__WEBPACK_IMPORTED_MODULE_44__.tooltipMain)();
   (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_45__.dragDrops)();
   (0,_components_createCalc__WEBPACK_IMPORTED_MODULE_47__.createCalc)();
   (0,_components_videoLoad__WEBPACK_IMPORTED_MODULE_48__.videoLoad)();
@@ -14094,6 +14095,7 @@ const tag = () => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   tooltipMain: () => (/* binding */ tooltipMain),
 /* harmony export */   tooltipSecondary: () => (/* binding */ tooltipSecondary)
 /* harmony export */ });
 /* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modules/modal */ "./src/js/modules/modal.js");
@@ -14153,6 +14155,74 @@ const tooltipSecondary = () => {
       items.forEach(item => item.classList.remove('_active'));
     }
   });
+};
+const tooltipMain = () => {
+  const tooltips = document.querySelectorAll('.main-tooltips');
+  if (tooltips.length > 0) {
+    tooltips.forEach(item => {
+      const tooltips = item.querySelectorAll('.main-tooltip');
+      const moreBtn = item.querySelector('.main-tooltip-more');
+      tooltips.forEach(tooltip => {
+        const target = tooltip.querySelector('.main-tooltip__target');
+        const content = tooltip.querySelector('.main-tooltip__content');
+        target.addEventListener('click', () => {
+          if (window.innerWidth <= 1212) {
+            const modalHTML = `
+                        <div class="tooltip-modal">
+                            <div class="tooltip-modal__container">
+                                <button class="btn-reset tooltip-modal__close" aria-label="Закрыть модальное окно">
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#x"></use>
+                                    </svg>
+                                    <span>Закрыть</span>
+                                </button>
+                                <div class="tooltip-modal__content">
+                                </div>
+                            </div>
+                        </div>
+                        `;
+            (0,_modules_modal__WEBPACK_IMPORTED_MODULE_0__["default"])(modalHTML, '.tooltip-modal', 300, tooltip);
+            const tooltipModal = document.querySelector('.tooltip-modal');
+            tooltipModal.classList.add('_one-tooltip');
+            tooltipModal.querySelector('.tooltip-modal__content').innerHTML = content.outerHTML;
+          }
+        });
+      });
+      const maxTooltip = item.dataset.maxTooltip ? item.dataset.maxTooltip : 2;
+      if (tooltips.length > maxTooltip && moreBtn) {
+        moreBtn.removeAttribute('hidden');
+        const necessary = Array.from(tooltips).slice(maxTooltip);
+        moreBtn.textContent = `+${necessary.length}`;
+        moreBtn.addEventListener('click', () => {
+          let content = '';
+          necessary.forEach(item => {
+            content += item.outerHTML;
+          });
+          if (window.innerWidth <= 1212) {
+            const modalHTML = `
+                    <div class="tooltip-modal">
+                        <div class="tooltip-modal__container">
+                            <button class="btn-reset tooltip-modal__close" aria-label="Закрыть модальное окно">
+                                <svg>
+                                    <use xlink:href="./img/sprite.svg#x"></use>
+                                </svg>
+                                <span>Закрыть</span>
+                            </button>
+                            <div class="tooltip-modal__content">
+                                ${content}
+                            </div>
+                        </div>
+                    </div>
+                    `;
+            (0,_modules_modal__WEBPACK_IMPORTED_MODULE_0__["default"])(modalHTML, '.tooltip-modal', 300);
+          } else {
+            item.classList.add('_visible-all');
+            moreBtn.remove();
+          }
+        });
+      }
+    });
+  }
 };
 
 /***/ }),

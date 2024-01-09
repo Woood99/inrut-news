@@ -17,7 +17,7 @@
 
 <body class="page__body">
     <div class="site-container site-container--purchase-request">
-        @include('partials/header.html')
+        @include('partials/header--new.html')
         <main class="main main-page-gap my-requests">
             <div class="my-requests__body">
                 <div class="container">
@@ -39,19 +39,17 @@
                                         <span class="object-info__type">
                                             Покупка
                                         </span>
-                                    <div class="row">
-                                        <span>
+                                        <span class="object-info__name">
                                             Квартира
                                         </span>
                                         <span class="object-info__parameter">
                                             <span>1-2-комн.</span>
                                             <span>от 35 м²</span>
                                         </span>
-                                    </div>
                                     <span class="object-info__price">
                                         3 699 000 ₽
                                     </span>
-                                    <div class="object-info__tooltips">
+                                    <div class="object-info__tooltips main-tooltips">
                                         <div class="object-info__tooltip main-tooltip main-tooltip--bank">
                                             <div class="main-tooltip__target">
                                                 <svg>
@@ -62,12 +60,8 @@
                                                 В сделке используется сертификат
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="object-info__offers object-info__offers--true">
-                                        <svg>
-                                            <use xlink:href="img/sprite.svg#check-circle"></use>
-                                        </svg>
-                                        <span>Есть новые предлжения</span>
+                                        <button type="button" class="btn btn-reset main-tooltip-more" hidden>
+                                        </button>
                                     </div>
                                     <div class="dots-dropdown">
                                         <button type="button" class="btn btn-reset dots-dropdown__target">
@@ -99,21 +93,19 @@
                                     <span class="object-info__type">
                                         Продажа
                                     </span>
-                                    <div class="row">
-                                        <span>
-                                            Дом
-                                        </span>
-                                        <span class="object-info__parameter">
-                                            <span>1,2-комн.</span>
-                                            <span>от 34 м²</span>
-                                            <span>от 6 сот.</span>
-                                            <span>ИЖС</span>
-                                        </span>
-                                    </div>
+                                    <span class="object-info__name">
+                                        Дом
+                                    </span>
+                                    <span class="object-info__parameter">
+                                        <span>1,2-комн.</span>
+                                        <span>от 34 м²</span>
+                                        <span>от 6 сот.</span>
+                                        <span>ИЖС</span>
+                                    </span>
                                     <span class="object-info__price">
                                         125 699 000 ₽
                                     </span>
-                                    <div class="object-info__tooltips">
+                                    <div class="object-info__tooltips main-tooltips">
                                         <div class="object-info__tooltip main-tooltip main-tooltip--budget">
                                             <div class="main-tooltip__target">
                                                 <svg>
@@ -174,12 +166,8 @@
                                                 В сделке используется сертификат
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="object-info__offers object-info__offers--false">
-                                        <svg>
-                                            <use xlink:href="img/sprite.svg#check-circle"></use>
-                                        </svg>
-                                        <span>Есть новые покупатели</span>
+                                        <button type="button" class="btn btn-reset main-tooltip-more" hidden>
+                                        </button>
                                     </div>
                                     <div class="dots-dropdown">
                                         <button type="button" class="btn btn-reset dots-dropdown__target">
@@ -211,21 +199,19 @@
                                     <span class="object-info__type">
                                         Покупка
                                     </span>
-                                    <div class="row">
-                                        <span>
-                                            Квартира
-                                        </span>
-                                        <span class="object-info__parameter">
-                                            <span>Студия</span>
-                                            <span>1,2-комн.</span>
-                                            <span>от 34 м²</span>
-                                            <span>до 12 эт.</span>
-                                        </span>
-                                    </div>
+                                    <span class="object-info__name">
+                                        Квартира
+                                    </span>
+                                    <span class="object-info__parameter">
+                                        <span>Студия</span>
+                                        <span>1,2-комн.</span>
+                                        <span>от 34 м²</span>
+                                        <span>до 12 эт.</span>
+                                    </span>
                                     <span class="object-info__price">
                                         25 000 ₽
                                     </span>
-                                    <div class="object-info__tooltips">
+                                    <div class="object-info__tooltips main-tooltips">
                                         <div class="object-info__tooltip main-tooltip main-tooltip--calculator">
                                             <div class="main-tooltip__target">
                                                 <svg>
@@ -236,12 +222,8 @@
                                                 В сделке используется сертификат
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="object-info__offers object-info__offers--true">
-                                        <svg>
-                                            <use xlink:href="img/sprite.svg#check-circle"></use>
-                                        </svg>
-                                        <span>Есть новые предлжения</span>
+                                        <button type="button" class="btn btn-reset main-tooltip-more" hidden>
+                                        </button>
                                     </div>
                                     <div class="dots-dropdown">
                                         <button type="button" class="btn btn-reset dots-dropdown__target">
@@ -316,9 +298,9 @@
                 </div>
             </div>
             <div class="my-requests__banners container main-banners">
-                <div class="swiper main-banners__container swiper-initialized swiper-horizontal swiper-pointer-events swiper-autoheight">
-                    <div class="swiper-wrapper" style="height: 322px; transition-duration: 0ms; transform: translate3d(-1196px, 0px, 0px);">
-                        <div class="swiper-slide main-banners__item main-banner main-banner--one swiper-slide-prev" style="width: 1180px; margin-right: 16px;">
+                <div class="swiper main-banners__container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide main-banners__item main-banner main-banner--one swiper-slide-prev">
                             <div class="main-banner__content">
                                 <h2 class="main-banner__title">
                                     Семейная ипотека от 2,99%
@@ -334,7 +316,7 @@
                             <div class="main-banner__image" style="background-image: url('./img/banner-photo-1.png')" ;="">
                             </div>
                         </div>
-                        <div class="swiper-slide main-banners__item main-banner main-banner--two swiper-slide-active" style="width: 1180px; margin-right: 16px;">
+                        <div class="swiper-slide main-banners__item main-banner main-banner--two swiper-slide-active">
                             <div class="main-banner__content">
                                 <h2 class="main-banner__title">
                                     Успейте взять ипотеку

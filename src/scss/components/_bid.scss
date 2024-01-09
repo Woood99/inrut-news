@@ -135,7 +135,7 @@
                     order: 4;
                     width: max-content;
                     min-width: 50%;
-    
+                    max-width: 50%;
                     >span {
                         white-space: nowrap;
                         color: var(--dark);
@@ -143,14 +143,26 @@
                     .bid__item-tooltips {
                         display: flex;
                         align-items: center;
+                        flex-wrap: wrap;
                         margin-top: -15px;
                         margin-left: 15px;
-    
+                        gap: 12px;
                         .main-tooltip {
-                            &:not(:last-child) {
-                                margin-right: 15px;
+                        display: none;
+                            &:nth-child(1),
+                            &:nth-child(2),
+                            &:nth-child(3){
+                                display: inline-block;
                             }
                         }
+                        &._visible-all{
+                            .main-tooltip {
+                                display: inline-block;
+                            }
+                        }
+                    }
+                    .main-tooltip-more{
+                        display: flex;
                     }
                 }
                 @media (max-width:$desktop) {

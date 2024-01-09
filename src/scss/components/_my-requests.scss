@@ -10,7 +10,7 @@
         background-color: var(--stand-bg);
         .object-info {
             position: relative;
-            grid-template-columns: percent(130, 1180)  percent(300, 1180) max-content 1fr max-content 24px;
+            grid-template-columns: percent(130, 1180) percent(130, 1180) percent(300, 1180) max-content 1fr 24px;
             @media (max-width:$desktop) {
                 grid-template-columns: max-content max-content;
                 grid-column-gap: 32px;
@@ -44,15 +44,12 @@
                     color: var(--white);
                 }
             }
-            .row{
-                @media (max-width:$desktop){
-                }
-            }
             .object-info__parameter{
                 @media (max-width:$desktop){
-                     max-width: none;
-                     margin-left: 8px; 
-                     max-width: 250px;
+                     max-width: 85%;
+                     white-space: nowrap;
+                     overflow: hidden;
+                     text-overflow: ellipsis;
                 }
             }
         }

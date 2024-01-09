@@ -105,7 +105,7 @@ import wantDiscount from './components/wantDiscount';
 import onlineDisplay from './components/onlineDisplay';
 import bankOffer from './components/bankOffer';
 import {
-    tooltipSecondary
+    tooltipSecondary,tooltipMain
 } from './components/tooltips';
 import {
     dragDrops
@@ -212,6 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
     onlineDisplay();
     bankOffer();
     tooltipSecondary();
+    tooltipMain();
     dragDrops();
     createCalc();
     videoLoad();

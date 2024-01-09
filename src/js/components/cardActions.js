@@ -211,10 +211,12 @@ export const cardPrimaryActions = () => {
     favoriteMobile();
     tagsMobile();
     infoMobile();
+    cardPrimaryMetro();
     window.addEventListener('resize', () => {
         favoriteMobile();
         tagsMobile();
         infoMobile();
+        cardPrimaryMetro();
     });
 
     function favoriteMobile() {
@@ -292,6 +294,15 @@ export const cardSecondaryMetro = () => {
     cards.forEach(card => {
         const container = card.querySelector('.card-secondary__metro');
         metroItems(container, card.querySelector('.card-secondary__content'))
+    })
+
+}
+export const cardPrimaryMetro = () => {
+    const cards = document.querySelectorAll('.card-primary');
+    if (cards.length === 0) return;
+    cards.forEach(card => {
+        const container = card.querySelector('.card-primary__metro');
+        metroItems(container, card.querySelector('.card-primary__content'))
     })
 
 }

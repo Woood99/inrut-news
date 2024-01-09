@@ -5051,6 +5051,7 @@ const calendarPrimary = function (containerSelector, url) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   cardPrimaryActions: () => (/* binding */ cardPrimaryActions),
+/* harmony export */   cardPrimaryMetro: () => (/* binding */ cardPrimaryMetro),
 /* harmony export */   cardSecondaryActions: () => (/* binding */ cardSecondaryActions),
 /* harmony export */   cardSecondaryMetro: () => (/* binding */ cardSecondaryMetro)
 /* harmony export */ });
@@ -5247,10 +5248,12 @@ const cardPrimaryActions = () => {
   favoriteMobile();
   tagsMobile();
   infoMobile();
+  cardPrimaryMetro();
   window.addEventListener('resize', () => {
     favoriteMobile();
     tagsMobile();
     infoMobile();
+    cardPrimaryMetro();
   });
   function favoriteMobile() {
     cards.forEach(card => {
@@ -5322,6 +5325,14 @@ const cardSecondaryMetro = () => {
   cards.forEach(card => {
     const container = card.querySelector('.card-secondary__metro');
     (0,_metroItems__WEBPACK_IMPORTED_MODULE_1__["default"])(container, card.querySelector('.card-secondary__content'));
+  });
+};
+const cardPrimaryMetro = () => {
+  const cards = document.querySelectorAll('.card-primary');
+  if (cards.length === 0) return;
+  cards.forEach(card => {
+    const container = card.querySelector('.card-primary__metro');
+    (0,_metroItems__WEBPACK_IMPORTED_MODULE_1__["default"])(container, card.querySelector('.card-primary__content'));
   });
 };
 function cardSliderMobile(cardImageWrapper, imagesBody, cardItems) {
@@ -10617,24 +10628,6 @@ const maps = () => {
       }
       ymaps.ready(init);
     });
-  }
-  if (document.querySelector('#record-viewing-maps')) {
-    const objectMaps = document.querySelector('#record-viewing-maps');
-    if (!objectMaps) return;
-    function init() {
-      let map = new ymaps.Map('record-viewing-maps', {
-        center: [55.77171185651524, 37.62811179984117],
-        zoom: 10
-      });
-      positionElement(map);
-      removeControlsPrimary(map, '#record-viewing-maps');
-      const fullScreenControl = map.controls.get('fullscreenControl');
-      fullScreenControl.events.add('fullscreenenter', function () {
-        const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
-        fullscreenElement.parentNode.style.position = 'fixed';
-      });
-    }
-    ymaps.ready(init);
   }
   if (document.querySelector('#complaint-object-two-maps')) {
     const objectMaps = document.querySelector('#complaint-object-two-maps');

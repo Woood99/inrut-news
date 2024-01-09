@@ -48,26 +48,6 @@ const maps = () => {
             ymaps.ready(init);
         });
     }
-    if (document.querySelector('#record-viewing-maps')) {
-        const objectMaps = document.querySelector('#record-viewing-maps');
-        if (!objectMaps) return;
-
-        function init() {
-            let map = new ymaps.Map('record-viewing-maps', {
-                center: [55.77171185651524, 37.62811179984117],
-                zoom: 10,
-            });
-            positionElement(map);
-            removeControlsPrimary(map, '#record-viewing-maps');
-
-            const fullScreenControl = map.controls.get('fullscreenControl');
-            fullScreenControl.events.add('fullscreenenter', function () {
-                const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
-                fullscreenElement.parentNode.style.position = 'fixed';
-            });
-        }
-        ymaps.ready(init);
-    }
     if (document.querySelector('#complaint-object-two-maps')) {
         const objectMaps = document.querySelector('#complaint-object-two-maps');
         if (!objectMaps) return;

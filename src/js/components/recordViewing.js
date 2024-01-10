@@ -23,7 +23,7 @@ export const recordViewing = () => {
     const btn = container.querySelector('.record-viewing__btn');
 
     createDays();
-    createTime();
+    createTime(true);
     updateBottom();
     listDays.addEventListener('input', (e) => {
         const target = e.target;
@@ -40,7 +40,9 @@ export const recordViewing = () => {
                 // если занято
             }
 
-            createTime();
+            const currentDay = new Date().getDate();
+            const itemDay = new Date(rightTarget.value).getDate();
+            createTime(currentDay === itemDay ? true : false);
             updateBottom();
         }
     })
@@ -91,7 +93,7 @@ export const recordViewing = () => {
         slider(listDays, listDays.querySelector('.record-day__item'), container.querySelector('.record-day__prev'), container.querySelector('.record-day__next'));
     }
 
-    function createTime() {
+    function createTime(currentDay) {
         time.innerHTML = `
         <h3 class="record-time__title title-3">
             Выберите время
@@ -103,141 +105,21 @@ export const recordViewing = () => {
                 </svg>
             </div>
             <ul class="record-time__list list-reset">
-                <li class="record-time__item">
-                    <div class="record-time__check" aria-hidden="true">
-                        <svg>
-                            <use xlink:href="./img/sprite.svg#verif"></use>
-                        </svg>
-                    </div>
-                    <input type="radio" name="record-time" value="08:00" class="record-time__input input-reset">
-                    <span class="record-time__value">08:00</span>
-                </li>
-                <li class="record-time__item">
-                    <div class="record-time__check" aria-hidden="true">
-                        <svg>
-                            <use xlink:href="./img/sprite.svg#verif"></use>
-                        </svg>
-                    </div>
-                    <input type="radio" name="record-time" value="09:00" class="record-time__input input-reset">
-                    <span class="record-time__value">09:00</span>
-                </li>
-                <li class="record-time__item">
-                    <div class="record-time__check" aria-hidden="true">
-                        <svg>
-                            <use xlink:href="./img/sprite.svg#verif"></use>
-                        </svg>
-                    </div>
-                    <input type="radio" name="record-time" value="10:00" class="record-time__input input-reset">
-                    <span class="record-time__value">10:00</span>
-                </li>
-                <li class="record-time__item">
-                    <div class="record-time__check" aria-hidden="true">
-                        <svg>
-                            <use xlink:href="./img/sprite.svg#verif"></use>
-                        </svg>
-                    </div>
-                    <input type="radio" name="record-time" value="11:00" class="record-time__input input-reset">
-                    <span class="record-time__value">11:00</span>
-                </li>
-                <li class="record-time__item">
-                    <div class="record-time__check" aria-hidden="true">
-                        <svg>
-                            <use xlink:href="./img/sprite.svg#verif"></use>
-                        </svg>
-                    </div>
-                    <input type="radio" name="record-time" value="12:00" class="record-time__input input-reset">
-                    <span class="record-time__value">12:00</span>
-                </li>
-                <li class="record-time__item">
-                    <div class="record-time__check" aria-hidden="true">
-                        <svg>
-                            <use xlink:href="./img/sprite.svg#verif"></use>
-                        </svg>
-                    </div>
-                    <input type="radio" name="record-time" value="13:00" class="record-time__input input-reset">
-                    <span class="record-time__value">13:00</span>
-                </li>
-                <li class="record-time__item">
-                    <div class="record-time__check" aria-hidden="true">
-                        <svg>
-                            <use xlink:href="./img/sprite.svg#verif"></use>
-                        </svg>
-                    </div>
-                    <input type="radio" name="record-time" value="14:00" class="record-time__input input-reset">
-                    <span class="record-time__value">14:00</span>
-                </li>
-                <li class="record-time__item">
-                    <div class="record-time__check" aria-hidden="true">
-                        <svg>
-                            <use xlink:href="./img/sprite.svg#verif"></use>
-                        </svg>
-                    </div>
-                    <input type="radio" name="record-time" value="15:00" class="record-time__input input-reset">
-                    <span class="record-time__value">15:00</span>
-                </li>
-                <li class="record-time__item">
-                    <div class="record-time__check" aria-hidden="true">
-                        <svg>
-                            <use xlink:href="./img/sprite.svg#verif"></use>
-                        </svg>
-                    </div>
-                    <input type="radio" name="record-time" value="16:00" class="record-time__input input-reset">
-                    <span class="record-time__value">16:00</span>
-                </li>
-                <li class="record-time__item">
-                    <div class="record-time__check" aria-hidden="true">
-                        <svg>
-                            <use xlink:href="./img/sprite.svg#verif"></use>
-                        </svg>
-                    </div>
-                    <input type="radio" name="record-time" value="17:00" class="record-time__input input-reset">
-                    <span class="record-time__value">17:00</span>
-                </li>
-                <li class="record-time__item">
-                    <div class="record-time__check" aria-hidden="true">
-                        <svg>
-                            <use xlink:href="./img/sprite.svg#verif"></use>
-                        </svg>
-                    </div>
-                    <input type="radio" name="record-time" value="18:00" class="record-time__input input-reset">
-                    <span class="record-time__value">18:00</span>
-                </li>
-                <li class="record-time__item">
-                    <div class="record-time__check" aria-hidden="true">
-                        <svg>
-                            <use xlink:href="./img/sprite.svg#verif"></use>
-                        </svg>
-                    </div>
-                    <input type="radio" name="record-time" value="19:00" class="record-time__input input-reset">
-                    <span class="record-time__value">19:00</span>
-                </li>
-                <li class="record-time__item">
-                    <div class="record-time__check" aria-hidden="true">
-                        <svg>
-                            <use xlink:href="./img/sprite.svg#verif"></use>
-                        </svg>
-                    </div>
-                    <input type="radio" name="record-time" value="20:00" class="record-time__input input-reset">
-                    <span class="record-time__value">20:00</span>
-                </li>
-                <li class="record-time__item">
-                    <div class="record-time__check" aria-hidden="true">
-                        <svg>
-                            <use xlink:href="./img/sprite.svg#verif"></use>
-                        </svg>
-                    </div>
-                    <input type="radio" name="record-time" value="21:00" class="record-time__input input-reset">
-                    <span class="record-time__value">21:00</span>
-                </li>
-                <li class="record-time__item">
-                    <div class="record-time__check" aria-hidden="true">
-                        <svg>
-                            <use xlink:href="./img/sprite.svg#verif"></use>
-                        </svg>
-                    </div>
-                    <input type="radio" name="record-time" value="22:00" class="record-time__input input-reset">
-                    <span class="record-time__value">22:00</span>
-                </li>
+                ${generateItemTime(8,currentDay)}
+                ${generateItemTime(9,currentDay)}
+                ${generateItemTime(10,currentDay)}
+                ${generateItemTime(11,currentDay)}
+                ${generateItemTime(12,currentDay)}
+                ${generateItemTime(13,currentDay)}
+                ${generateItemTime(14,currentDay)}
+                ${generateItemTime(15,currentDay)}
+                ${generateItemTime(16,currentDay)}
+                ${generateItemTime(17,currentDay)}
+                ${generateItemTime(18,currentDay)}
+                ${generateItemTime(19,currentDay)}
+                ${generateItemTime(20,currentDay)}
+                ${generateItemTime(21,currentDay)}
+                ${generateItemTime(22,currentDay)}
             </ul>
             <div class="nav-arrow-secondary nav-arrow-secondary--next record-time__next">
                 <svg>
@@ -271,7 +153,38 @@ export const recordViewing = () => {
             checkNavBtn(wrapper, prev, next);
         })
     }
-
+    function generateItemTime(hour,currentDay) {
+        const currentHour = new Date().getHours();
+        const convertHour = hour < 10 ? `0${hour}:00` : `${hour}:00`;
+        let result = '';
+        if (currentHour < hour && currentDay === true) {
+            result = `
+            <li class="record-time__item">
+                <div class="record-time__check" aria-hidden="true">
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#verif"></use>
+                    </svg>
+                </div>
+                <input type="radio" name="record-time" value="${convertHour}" class="record-time__input input-reset">
+                <span class="record-time__value">${convertHour}</span>
+            </li>
+            `;
+        }
+        if (currentDay === false) {
+            result = `
+            <li class="record-time__item">
+                <div class="record-time__check" aria-hidden="true">
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#verif"></use>
+                    </svg>
+                </div>
+                <input type="radio" name="record-time" value="${convertHour}" class="record-time__input input-reset">
+                <span class="record-time__value">${convertHour}</span>
+            </li>
+            `;
+        }
+        return result;
+    }
     function checkNavBtn(wrapper, prev, next) {
         if (wrapper.scrollLeft === 0) {
             prev.classList.add('_disabled');

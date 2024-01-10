@@ -4338,6 +4338,36 @@ document.addEventListener('DOMContentLoaded', () => {
       btnScrollUp.classList.remove('_active');
     }
   }
+  const suggestObject = document.querySelector('.suggest-object');
+  if (suggestObject) {
+    const btns = suggestObject.querySelectorAll('[data-suggest-object-btn]');
+    const go = suggestObject.querySelector('.suggest-object__btn');
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (!btn.classList.contains('_suggest-active')) {
+          btn.classList.add('_suggest-active');
+          toggleGo();
+        } else {
+          btn.classList.remove('_suggest-active');
+          toggleGo();
+        }
+      });
+    });
+    function toggleGo() {
+      let result = false;
+      for (let i = 0; i < Array.from(btns).length; i++) {
+        if (btns[i].classList.contains('_suggest-active')) {
+          result = true;
+          break;
+        }
+      }
+      if (result) {
+        go.removeAttribute('disabled');
+      } else {
+        go.setAttribute('disabled', '');
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -4471,6 +4501,7 @@ __webpack_require__.r(__webpack_exports__);
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'sber-tied');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'kit-composition');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'book-consultation');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'record-viewing-three');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])({
   isOpen: settingsModal => {
     (0,_components_videoBlock__WEBPACK_IMPORTED_MODULE_4__["default"])(settingsModal.container.querySelector('.screen-demonstation__video'));

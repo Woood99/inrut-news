@@ -120,6 +120,7 @@ popup(null, 'authorization');
 popup(null, 'sber-tied');
 popup(null, 'kit-composition');
 popup(null, 'book-consultation');
+popup(null, 'record-viewing-three');
 popup({
     isOpen: (settingsModal) => {
         videoBlock(settingsModal.container.querySelector('.screen-demonstation__video'));

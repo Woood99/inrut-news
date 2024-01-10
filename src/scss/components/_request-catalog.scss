@@ -1,8 +1,13 @@
 .request-catalog {
     &__body {
         @media (max-width:$desktop) {
-            padding: calc(var(--header-height) + 24px) 0 16px;
+            padding: calc(var(--header-height,40px) + 24px) 0 16px;
             background-color: var(--stand-bg);
+        }
+        .request-catalog__filter{
+            @media (max-width:$desktop){
+                 display: none; 
+            }
         }
     }
 
@@ -10,9 +15,11 @@
         margin-top: 32px;
 
         @media (max-width:$desktop) {
-            padding: 0 $containerOffset+px;
-            margin-top: 16px;
-            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            margin-top: 12px;
+            margin-bottom: 12px;
         }
     }
 
@@ -84,7 +91,7 @@
 
 .request-catalog-filter {
     &__row--1 {
-        grid-template-columns: percent(350, 1180) percent(278, 1180) percent(200, 1180) percent(328, 1180);
+        grid-template-columns: 100px percent(358,1180) 278px 18% 200px;
     }
 
     &__row--2 {

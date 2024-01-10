@@ -433,6 +433,38 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    const suggestObject = document.querySelector('.suggest-object');
+    if (suggestObject) {
+        const btns = suggestObject.querySelectorAll('[data-suggest-object-btn]');
+        const go = suggestObject.querySelector('.suggest-object__btn');
+        btns.forEach(btn => {
+            btn.addEventListener('click',() => {
+                if (!btn.classList.contains('_suggest-active')) {
+                    btn.classList.add('_suggest-active');
+                    toggleGo();
+                } else {
+                    btn.classList.remove('_suggest-active');
+                    toggleGo();
+                }
+            });
+        })
+
+
+        function toggleGo() {
+            let result = false;
+            for (let i = 0; i < Array.from(btns).length; i++) {
+                if (btns[i].classList.contains('_suggest-active')) {
+                    result = true;
+                    break;
+                }
+            }
+            if (result) {
+                go.removeAttribute('disabled');
+            } else {
+                go.setAttribute('disabled','');
+            }
+        }
+    }
 
 
 })

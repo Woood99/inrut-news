@@ -8088,12 +8088,27 @@ const filterMobile = () => {
     if (!(btn && container)) return;
     const close = filter.querySelector('.filter__close');
     const mask = filter.querySelector('.filter__mask');
+    const filterRowMain = btn.nextElementSibling;
+    const filterClear = filter.querySelector('.filter__clear');
+    const inner = container.querySelector('.filter__inner');
     btn.addEventListener('click', () => {
       mask ? mask.classList.add('active') : container.classList.add('active');
+      if (filterRowMain.classList.contains('filter__row')) {
+        setTimeout(() => {
+          inner.insertAdjacentElement('afterbegin', filterRowMain);
+          inner.insertAdjacentElement('afterend', filterClear);
+        }, 110);
+      }
       (0,_modules_disableScroll__WEBPACK_IMPORTED_MODULE_2__["default"])();
     });
     close.addEventListener('click', () => {
-      if (container.classList.contains('active')) container.classList.remove('active');
+      if (container.classList.contains('active')) {
+        container.classList.remove('active');
+        setTimeout(() => {
+          btn.insertAdjacentElement('afterend', filterRowMain);
+          filterRowMain.insertAdjacentElement('beforeend', filterClear);
+        }, 75);
+      }
       if (mask && mask.classList.contains('active')) mask.classList.remove('active');
       if (!exceptionEnableScroll()) (0,_modules_enableScroll__WEBPACK_IMPORTED_MODULE_1__["default"])();
       if (document.querySelector('.filter-modal-map')) {

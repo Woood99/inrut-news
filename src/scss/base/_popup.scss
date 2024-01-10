@@ -1096,7 +1096,7 @@
         .popup-primary {
             &__container {
                 border-radius: 16px 16px 0 0;
-                padding: 65px 16px calc(48px + 82px);
+                padding: 65px 16px calc(48px + 171px);
                 min-height: auto;
                 margin: 32px auto 0;
                 width: calc(100% - 4px);
@@ -1145,6 +1145,9 @@
 
             &__close {
                 transform: translateX(16px);
+                @media (max-width:$desktop){
+                    transform: translateX(0); 
+               }
             }
         }
 
@@ -6893,6 +6896,9 @@ width: 100%;
         grid-template-columns: repeat(2, 1fr);
         grid-column-gap: 16px;
         grid-row-gap: 16px;
+        @media (max-width:$desktop){
+             grid-template-columns: 1fr; 
+        }
     }
 
     &__details {
@@ -6909,11 +6915,22 @@ width: 100%;
 
                 &:nth-child(2) {
                     margin-left: 8px;
+                    @media (max-width:$desktop){
+                         margin-left: 0;
+                         margin-top: 4px; 
+                    }
                 }
             }
 
             &:not(:last-child) {
                 margin-bottom: 8px;
+                @media (max-width:$desktop){
+                     margin-bottom: 16px; 
+                }
+            }
+            @media (max-width:$desktop){
+                 flex-direction: column;
+                 align-items: start; 
             }
         }
     }

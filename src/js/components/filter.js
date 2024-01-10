@@ -1173,8 +1173,41 @@ export const fieldSelect = () => {
 
             updateInput(container);
         })
-    })
 
+        if (container.hasAttribute('data-submit-filter-object-type')) {
+            const developer = document.querySelector('[data-submit-filter-developer]');
+            const currentItem = document.querySelector('[data-submit-filter-object-type-item]._active');
+            currentItem && developer ? developer.removeAttribute('hidden') : developer.setAttribute('hidden', '');
+
+            const secondaryItem = document.querySelector('data-submit-filter-object-type-secondary');
+            const houseItem = document.querySelector('data-submit-filter-object-type-house');
+
+            const newBuildingsField = document.querySelectorAll('[data-submit-filter-type="1"]');
+            const secondaryField = document.querySelectorAll('[data-submit-filter-type="2"]');
+            const houseField = document.querySelectorAll('[data-submit-filter-type="3"]');
+            if (newBuildingsField.length > 0 && houseField.length > 0 && secondaryField.length > 0) {
+                if (currentItem || secondaryItem || houseItem) {
+                    const itemsHidden = document.querySelectorAll('[data-submit-app-block-hidden]');
+                    itemsHidden.forEach(item => item.removeAttribute('hidden'));
+                }
+                if (currentItem) {
+                    houseField.forEach(item => item.setAttribute('hidden', ''));
+                    secondaryField.forEach(item => item.setAttribute('hidden', ''));
+                    newBuildingsField.forEach(item => item.removeAttribute('hidden'));
+                }
+                if (secondaryItem) {
+                    newBuildingsField.forEach(item => item.setAttribute('hidden', ''));
+                    houseField.forEach(item => item.setAttribute('hidden', ''));
+                    secondaryField.forEach(item => item.removeAttribute('hidden'));
+                }
+                if (houseItem) {
+                    newBuildingsField.forEach(item => item.setAttribute('hidden', ''));
+                    secondaryField.forEach(item => item.setAttribute('hidden', ''));
+                    houseField.forEach(item => item.removeAttribute('hidden'));
+                }
+            }
+        }
+    })
 
 
 

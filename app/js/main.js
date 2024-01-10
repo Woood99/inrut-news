@@ -9019,28 +9019,30 @@ const submitAppValidate = () => {
   const calcProper = form.querySelector('.submit-app-options__item--calc-proper');
   const calcProperItems = calcProper.querySelectorAll('.checkbox-secondary input');
   const type = form.querySelector('[data-field-select-name="object-type"]');
-  const typeItems = type.querySelectorAll('.field-select__item');
   const descr = form.querySelector('[data-field-descr]');
   const descrInput = descr.querySelector('textarea');
-  typeItems.forEach(item => {
-    item.addEventListener('click', () => {
-      setTimeout(() => {
-        if (item.classList.contains('_active')) {
-          window.scrollTo({
-            top: form.querySelector('.submit-app-maps').offsetTop - (window.innerWidth > 1212 ? 16 : document.querySelector('.header').clientHeight + 8),
-            behavior: 'smooth'
-          });
-        }
-      }, 5);
+  if (type) {
+    const typeItems = type.querySelectorAll('.field-select__item');
+    typeItems.forEach(item => {
+      item.addEventListener('click', () => {
+        setTimeout(() => {
+          if (item.classList.contains('_active')) {
+            window.scrollTo({
+              top: form.querySelector('.submit-app-maps').offsetTop - (window.innerWidth > 1212 ? 16 : document.querySelector('.header').clientHeight + 8),
+              behavior: 'smooth'
+            });
+          }
+        }, 5);
+      });
     });
-  });
-  typeItems.forEach(item => {
-    item.addEventListener('click', () => {
-      setTimeout(() => {
-        if (formEventInput) validate(false);
-      }, 1);
+    typeItems.forEach(item => {
+      item.addEventListener('click', () => {
+        setTimeout(() => {
+          if (formEventInput) validate(false);
+        }, 1);
+      });
     });
-  });
+  }
   calcProperItems.forEach(input => {
     input.addEventListener('change', () => {
       setTimeout(() => {

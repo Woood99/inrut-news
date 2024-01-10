@@ -4556,6 +4556,7 @@ __webpack_require__.r(__webpack_exports__);
 }, 'object-gallery');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'object-gallery--two');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'warning-remove');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'warning-remove2');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'select-bank');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'metro-map');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'im-buying');
@@ -13858,29 +13859,33 @@ const submitApp = () => {
   const any = container.querySelector('.submit-app-maps__any .checkbox-secondary__input');
   const another = container.querySelector('.submit-app-maps__another');
   const maps = container.querySelector('.submit-app-maps__map');
-  any.addEventListener('change', () => {
-    if (any.checked) {
-      maps.setAttribute('hidden', '');
-      another.setAttribute('hidden', '');
-    } else {
-      maps.removeAttribute('hidden');
-      another.removeAttribute('hidden');
-    }
-  });
-  const price = container.querySelector('.submit-app-options__item--price');
-  const priceItems = price.querySelectorAll('.filter-dropdown__item');
-  const calcProper = container.querySelector('.submit-app-options__item--calc-proper');
-  const cash = calcProper.querySelector('[data-name="cash"]');
-  priceItems.forEach(item => {
-    item.addEventListener('change', () => {
-      if (priceItems[0].classList.contains('active')) {
-        cash.removeAttribute('disabled');
-      }
-      if (priceItems[1].classList.contains('active')) {
-        cash.setAttribute('disabled', true);
+  if (any && another && maps) {
+    any.addEventListener('change', () => {
+      if (any.checked) {
+        maps.setAttribute('hidden', '');
+        another.setAttribute('hidden', '');
+      } else {
+        maps.removeAttribute('hidden');
+        another.removeAttribute('hidden');
       }
     });
-  });
+  }
+  const price = container.querySelector('.submit-app-options__item--price');
+  if (price) {
+    const priceItems = price.querySelectorAll('.filter-dropdown__item');
+    const calcProper = container.querySelector('.submit-app-options__item--calc-proper');
+    const cash = calcProper.querySelector('[data-name="cash"]');
+    priceItems.forEach(item => {
+      item.addEventListener('change', () => {
+        if (priceItems[0].classList.contains('active')) {
+          cash.removeAttribute('disabled');
+        }
+        if (priceItems[1].classList.contains('active')) {
+          cash.setAttribute('disabled', true);
+        }
+      });
+    });
+  }
   const city = container.querySelector('.submit-app-maps__city');
   const metro = container.querySelector('.submit-app-maps__metro');
   if (city && metro) {

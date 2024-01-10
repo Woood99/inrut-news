@@ -18,7 +18,7 @@
 <body class="page__body">
     <div class="site-container site-container--your-app">
         @include('partials/header--new.html')
-        <main class="main main-page-gap your-app purchase-request">
+        <main class="main main-page-gap your-app your-app-my purchase-request">
             <div class="container your-app__container">
                 <h1 class="your-app__title title-1">
                     Моя заявка
@@ -31,12 +31,12 @@
                             </svg>
                             <span>Редактировать</span>
                         </a>
-                        <a href="my-requestss2.html" class="btn btn-reset top-page-inner__btn delete-btn" title="Удалить">
+                        <button type="button" class="btn btn-reset top-page-inner__btn delete-btn" title="Закрыть" data-popup-path="warning-remove2">
                             <svg>
                                 <use xlink:href="./img/sprite.svg#trash"></use>
                             </svg>
                             <span>Закрыть</span>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -319,6 +319,46 @@
                             </p>
                         </div>
                     </div>
+                    <div class="submit-app">
+                    <div class="submit-app__row communic-method-radios radio-primary">
+                        <h2 class="communic-method-radios__title submit-app__row-title title-2">
+                            Способ связи
+                        </h2>
+                        <div class="communic-method-radios__wrapper">
+                            <div class="radio-primary__item">
+                                <input hidden id="communic-method_1" class="radio-primary__input" type="radio" value="По телефону и в сообщениях" name="communic-method">
+                                <label for="communic-method_1" class="radio-primary__label">
+                                    <span class="radio-primary__text">По телефону и в сообщениях</span>
+                                </label>
+                            </div>
+                            <div class="radio-primary__item">
+                                <input hidden id="communic-method_2" class="radio-primary__input" type="radio" value="Только переписка в сообщениях" name="communic-method">
+                                <label for="communic-method_2" class="radio-primary__label">
+                                    <span class="radio-primary__text">Только переписка в сообщениях</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="submit-app__row your-contacts-field">
+                        <h2 class="your-contacts-field__title submit-app__row-title title-2">
+                            Ваши контакты
+                        </h2>
+                        <div class="your-contacts-field__wrapper">
+                            <div class="input-text input-text--no-exp input-text--disabled">
+                                <label class="input-text__label">
+                                    <span>Номер телефона</span>
+                                    <input type="text" name="Застройщик" class="input-reset input-text__input" value="8 921 645 45 45" disabled placeholder="Номер телефона">
+                                </label>
+                            </div>
+                            <div class="input-text input-text--no-exp input-text--disabled">
+                                <label class="input-text__label">
+                                    <span>Имя, фамилия</span>
+                                    <input type="text" name="Имя, фамилия" class="input-reset input-text__input" value="Алексей Г." disabled placeholder="Имя, фамилия">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                     <div class="bid__sidebar">
                         <div class="_sticky">
                             <div class="purchase-request__history" data-da=".purchase-request,1212,2">

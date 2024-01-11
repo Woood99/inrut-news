@@ -4341,7 +4341,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const suggestObject = document.querySelector('.suggest-object');
   if (suggestObject) {
     const btns = suggestObject.querySelectorAll('[data-suggest-object-btn]');
-    const go = suggestObject.querySelector('.suggest-object__btn');
+    const go = suggestObject.closest('.popup-primary--suggest-object').querySelector('.suggest-object__btn');
     btns.forEach(btn => {
       const btnSpan = btn.querySelector('span');
       const btnStartText = btnSpan.textContent;
@@ -5059,7 +5059,7 @@ const calendarPrimary = function (containerSelector, url) {
           events[0].insertAdjacentHTML('beforeend', circleHTML);
         }
       });
-    }, 500);
+    }, 1000);
   }
   const requestCalendar = calendarEl.closest('.request-calendar');
   if (requestCalendar) {

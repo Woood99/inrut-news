@@ -164,7 +164,7 @@ export const calendarPrimary = (containerSelector, url, edit = false) => {
                     events[0].insertAdjacentHTML('beforeend', circleHTML);
                 }
             });
-        }, 500);
+        }, 1000);
     }
 
     const requestCalendar = calendarEl.closest('.request-calendar');

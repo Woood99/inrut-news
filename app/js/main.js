@@ -4308,8 +4308,9 @@ document.addEventListener('DOMContentLoaded', () => {
           const gap = target.dataset.scrollTargetGap ? target.dataset.scrollTargetGap : 0;
           const topGap = window.pageYOffset + to.getBoundingClientRect().top;
           const headerFixed = document.querySelector('.header-fixed') ? document.querySelector('.header-fixed').clientHeight : 0;
+          const headerHeight = document.querySelector('.header').offsetHeight;
           window.scrollTo({
-            top: topGap - gap - headerFixed,
+            top: window.innerWidth > 1212 ? topGap - gap - headerFixed : topGap - gap - headerFixed - headerHeight + 8,
             behavior: 'smooth'
           });
         }

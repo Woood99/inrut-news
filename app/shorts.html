@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Запрос на покупку</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
+    <script defer src="js/main.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container">
+        <main class="main main-page-gap shorts">
+            <div class="shorts">
+                <div class="shorts__list swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <video class="shorts__item short video-js vjs-default-skin vjs-fluid" controls
+                                data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=WlUbecHiP0U?si=U_QhhoOcNN33xizp"}] }'>
+                            </video>
+                        </div>
+                        <div class="swiper-slide">
+                            <video class="shorts__item short video-js vjs-default-skin vjs-fluid" controls
+                                data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=LpJwbigxJFw"}] }'>
+                            </video>
+                        </div>
+                        <div class="swiper-slide">
+                            <video class="shorts__item short video-js vjs-default-skin vjs-fluid" controls
+                                data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=1S94nl9gE8o"}] }'>
+                            </video>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-reset shorts__nav shorts__prev" title="Предыдущее видео">
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#check"></use>
+                    </svg>
+                </button>
+                <button type="button" class="btn btn-reset shorts__nav shorts__next" title="Следующие видео">
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#check"></use>
+                    </svg>
+                </button>
+            </div>
+        </main>
+    </div>
+    <script src="https://vjs.zencdn.net/7.10.2/video.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.6.1/Youtube.min.js"></script>
+    <script>
+        const shortsContainer = document.querySelector('.shorts');
+        const shortsItems = shortsContainer.querySelectorAll('.short');
+        shortsItems.forEach(item => {
+            videojs(item, {
+                controls: true,
+                navigationUI: 'hide',
+                fullscreen: false,
+                title: false,
+                rel: 1,
+                mute: 0,
+                youtube: {
+                    mute: 1,
+                    modestbranding: 1,
+                    fullscreen: false,
+                    ytControls: 0,
+                    rel: 0,
+                    autohide: 0,
+                    showinfo: 0,
+                }
+            });
+        })
+
+    </script>
+</body>
+
+
+</html>

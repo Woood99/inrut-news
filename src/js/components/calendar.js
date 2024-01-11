@@ -80,7 +80,6 @@ export const calendarPrimary = (containerSelector, url, edit = false) => {
                     <span>Закрыть</span>
                 </button>
                 <div class="calendar-event__content">
-                    <h2 class="calendar-event__title">Объект просмотра</h2>
                     <ul class="calendar-event__list list-reset calendar-event-simplebar">
 
                     </ul>

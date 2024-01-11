@@ -251,28 +251,6 @@ export const tabs = () => {
                         })
                     }
                 }
-                if (el.closest('.stock-developer')) {
-                    const shorts = tabsBlock.querySelector('.shorts');
-                    const shortsSlider = shorts.querySelector('.shorts__list').swiper;
-                    shortsSlider.slideTo(0);
-                    const shortsVideos = shorts.querySelectorAll('.shorts__item');
-                    if (tabTitle.classList.contains('stock-developer--shorts')) {
-                        setTimeout(() => {
-                            videojs(shortsVideos[0]).play();
-                        }, 500);
-                        statusShorts = true;
-                    } else {
-                        if (statusShorts) {
-                            setTimeout(() => {
-                                shortsVideos.forEach(video => {
-                                    videojs(video).pause();
-                                    videojs(video).currentTime(0);
-                                })
-                                statusShorts = false;
-                            }, 500);
-                        }
-                    }
-                }
 
                 const nav = tabTitle.closest('.tabs__navigation');
                 if (nav.querySelector('._edit')) {

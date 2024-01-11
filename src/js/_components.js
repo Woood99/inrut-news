@@ -438,12 +438,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const btns = suggestObject.querySelectorAll('[data-suggest-object-btn]');
         const go = suggestObject.querySelector('.suggest-object__btn');
         btns.forEach(btn => {
+            const btnSpan = btn.querySelector('span');
+            const btnStartText = btnSpan.textContent;            
             btn.addEventListener('click',() => {
                 if (!btn.classList.contains('_suggest-active')) {
                     btn.classList.add('_suggest-active');
+                    btnSpan.textContent = 'Объект выбран';
                     toggleGo();
                 } else {
                     btn.classList.remove('_suggest-active');
+                    btnSpan.textContent = btnStartText;
                     toggleGo();
                 }
             });

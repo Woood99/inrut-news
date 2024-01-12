@@ -814,6 +814,38 @@ function initSliders() {
                     }
                 },
             });
+
+            const moreBtn = el.querySelector('.object-slider-body__more');
+            const topBtns = document.querySelectorAll('.top-page-inner__btn');
+            if (moreBtn) {
+                if (topBtns.length === 0) moreBtn.remove();
+                topBtns.forEach(btn => {
+                    btn.classList.add('js-popup-close');
+                })
+                moreBtn.addEventListener('click', () => {
+                    const modalHTML = `
+                    <div class="nav-btns-popup">
+                    <div class="nav-btns-popup__container">
+                        <button class="btn-reset nav-btns-popup__close" aria-label="Закрыть модальное окно">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#x"></use>
+                            </svg>
+                            <span>Закрыть</span>
+                        </button>
+                         <div class="nav-btns-popup__content">
+                         </div>
+                    </div>
+                    </div>
+                    `;
+        
+                    modal(modalHTML, '.nav-btns-popup', 300);
+                    const container = document.querySelector('.nav-btns-popup');
+                    const content = container.querySelector('.nav-btns-popup__content');
+                    topBtns.forEach(btn => {
+                        content.insertAdjacentElement('beforeend', btn);
+                    });
+                })
+            }
         })
     }
 }

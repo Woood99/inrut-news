@@ -7889,6 +7889,9 @@ const searchSelectOne = () => {
         const filterModal = document.querySelector('.filter-modal');
         filterModal.querySelector('.filter-modal__content').insertAdjacentElement('beforeend', container.querySelector('.search-select-one__dropdown'));
         filterModal.classList.add('_search-select-one');
+        if (container.classList.contains('search-select-one--img-left')) {
+          filterModal.classList.add('search-select-one--img-left');
+        }
       }
     });
     document.addEventListener('click', e => {
@@ -15789,6 +15792,36 @@ function initSliders() {
           }
         }
       });
+      const moreBtn = el.querySelector('.object-slider-body__more');
+      const topBtns = document.querySelectorAll('.top-page-inner__btn');
+      if (moreBtn) {
+        if (topBtns.length === 0) moreBtn.remove();
+        topBtns.forEach(btn => {
+          btn.classList.add('js-popup-close');
+        });
+        moreBtn.addEventListener('click', () => {
+          const modalHTML = `
+                    <div class="nav-btns-popup">
+                    <div class="nav-btns-popup__container">
+                        <button class="btn-reset nav-btns-popup__close" aria-label="Закрыть модальное окно">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#x"></use>
+                            </svg>
+                            <span>Закрыть</span>
+                        </button>
+                         <div class="nav-btns-popup__content">
+                         </div>
+                    </div>
+                    </div>
+                    `;
+          (0,_modules_modal__WEBPACK_IMPORTED_MODULE_1__["default"])(modalHTML, '.nav-btns-popup', 300);
+          const container = document.querySelector('.nav-btns-popup');
+          const content = container.querySelector('.nav-btns-popup__content');
+          topBtns.forEach(btn => {
+            content.insertAdjacentElement('beforeend', btn);
+          });
+        });
+      }
     });
   }
 }

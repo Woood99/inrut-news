@@ -1865,7 +1865,7 @@ textarea.input-reset {
   margin: 50px auto;
   text-align: center;
   border-radius: 12px;
-  padding: 48px;
+  padding: 65px 48px 48px;
   width: 450px;
   z-index: 1050;
 }
@@ -1875,7 +1875,7 @@ textarea.input-reset {
     width: calc(100% - 4px);
     margin: 50px auto 0;
     vertical-align: bottom;
-    padding: 65px 48px 48px;
+    padding: 65px 16px 24px;
     border-radius: 16px 16px 0 0;
   }
 }
@@ -4531,6 +4531,14 @@ textarea.input-reset {
 }
 .record-viewing-two-confirm__container.open {
   display: inline-block !important;
+}
+@media (max-width: 1212px) {
+  .record-viewing-two-confirm__container {
+    vertical-align: bottom;
+    width: calc(100% - 4px);
+    min-height: auto;
+    padding: 48px 24px;
+  }
 }
 .record-viewing-two-confirm__close {
   position: absolute;
@@ -22580,6 +22588,9 @@ textarea.input-reset {
   .filter--new-style > .filter__row .quantity-selection__inner .checkbox__label {
     height: 40px;
   }
+  .filter--new-style > .filter__row .search-select-one {
+    max-width: 320px;
+  }
   .filter--new-style > .filter__row .search-select-one__button {
     height: 40px;
   }
@@ -24127,7 +24138,18 @@ textarea.input-reset {
   border-radius: 50%;
   width: 24px;
   height: 24px;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 24px;
+  flex: 0 0 24px;
   margin-right: 16px;
+}
+.search-select-one--img-left._selected .search-select-one__button-wrapper > div {
+  white-space: nowrap;
+}
+.search-select-one--img-left._selected .search-select-one__button-wrapper > div > span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .search-select-one--img-right .search-select-one__item {
   display: -webkit-box;
@@ -33172,6 +33194,11 @@ textarea.input-reset {
   -ms-grid-columns: 23.1481481481% 23.1481481481% 1fr 200px;
   grid-template-columns: 23.1481481481% 23.1481481481% 1fr 200px;
 }
+@media (max-width: 1212px) {
+  .selection-estate-filter .selection-estate__input {
+    display: none;
+  }
+}
 
 @media (max-width: 1212px) {
   .your-app__container {
@@ -33764,6 +33791,9 @@ textarea.input-reset {
 }
 .object .object-body .object-data__name {
   margin-top: 24px;
+}
+.object .bid-user__viewing {
+  display: none;
 }
 @media (max-width: 1212px) {
   .object {

@@ -471,6 +471,9 @@
                 .quantity-selection__inner .checkbox__label {
                     height: 40px;
                 }
+                .search-select-one{
+                    max-width: 320px;
+                }
                 .search-select-one__button {
                     height: 40px;
                 }
@@ -2111,13 +2114,25 @@
             >div:nth-child(2) {
                 display: flex;
                 align-items: center;
-                justify-content: end;
-
+    justify-content: end;
                 img {
                     border-radius: 50%;
                     width: 24px;
                     height: 24px;
+                    flex: 0 0 24px;
                     margin-right: 16px;
+                }
+            }
+        }
+        &._selected{
+            .search-select-one__button-wrapper{
+                >div{
+                    white-space: nowrap;
+                    >span{
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
                 }
             }
         }

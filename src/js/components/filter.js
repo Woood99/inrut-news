@@ -568,6 +568,9 @@ export const searchSelectOne = () => {
                 const filterModal = document.querySelector('.filter-modal');
                 filterModal.querySelector('.filter-modal__content').insertAdjacentElement('beforeend', container.querySelector('.search-select-one__dropdown'));
                 filterModal.classList.add('_search-select-one');
+                if (container.classList.contains('search-select-one--img-left')) {
+                    filterModal.classList.add('search-select-one--img-left');
+                }
             }
         })
         document.addEventListener('click', (e) => {

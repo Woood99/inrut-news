@@ -76,12 +76,18 @@
                         </svg>
                         <span>Поделиться</span>
                     </button>
+                    <button type="button" class="btn btn-reset top-page-inner__btn complain-btn js-popup-close" data-popup-path="complaint-object">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#complain"></use>
+                        </svg>
+                        <span>Пожаловаться</span>
+                    </button>
                 </div>
             </div>
             <div class="object__body object-body">
 
                 <div class="object-body__container container">
-                    <div class="object-body__content">
+                    <div class="col">
                         <div class="object-body__rejected object-rejected">
                             <h2 class="object-rejected__title title-2">
                                 Параметры по которым не подходит объект
@@ -128,28 +134,32 @@
                             <h2 class="object-rejected__title title-2">
                                 Комментарий
                             </h2>
-                            <p>
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates, ipsa! Ipsam, excepturi! Tenetur
-                                inventore odit ex nesciunt ullam, delectus doloremque repellat eligendi corporis voluptate blanditiis
-                                iusto, impedit repellendus esse veniam nobis vitae voluptas. Amet commodi dolorum architecto. Possimus
-                                unde facere rerum deserunt? Cupiditate corrupti saepe tempore adipisci consequatur corporis obcaecati
-                                minus praesentium necessitatibus aspernatur voluptas, minima odit eos magnam laboriosam, perferendis
-                                numquam assumenda, sapiente nemo voluptate voluptates labore nam. Cumque error blanditiis deserunt,
-                                voluptatem fugit earum ipsa cum magnam modi distinctio recusandae, nesciunt aut culpa similique
-                                repudiandae quod sint iure minima reiciendis pariatur quia. Magnam nam ipsam iusto quia, accusamus
-                                fugiat nesciunt expedita dolor quas animi beatae ipsa quaerat facilis corporis assumenda. Obcaecati,
-                                nihil blanditiis commodi ducimus quisquam cumque perferendis, incidunt error aut animi facilis impedit
-                                odit alias consequuntur? Porro minima saepe harum repellendus mollitia rerum accusamus qui, doloribus
-                                alias, dolor dolores doloremque? Illo officia, expedita tenetur libero quaerat ad dignissimos quae nihil
-                                quisquam quis, enim vel? Asperiores, voluptate nostrum. Necessitatibus ut molestias dolorum possimus
-                                dolores aperiam repellendus perspiciatis, vel veritatis quisquam in voluptatem, dolor officia deleniti.
-                                Facilis deleniti laborum sint libero, odio ratione vel, fuga maiores quidem, quos assumenda repellat
-                                reprehenderit. Nisi omnis eveniet, tenetur necessitatibus delectus a enim!
-                            </p>
+                            <div class="object-rejected__text">
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates, ipsa! Ipsam, excepturi! Tenetur
+                                    inventore odit ex nesciunt ullam, delectus doloremque repellat eligendi corporis voluptate blanditiis
+                                    iusto, impedit repellendus esse veniam nobis vitae voluptas. Amet commodi dolorum architecto. Possimus
+                                    unde facere rerum deserunt? Cupiditate corrupti saepe tempore adipisci consequatur corporis obcaecati
+                                    minus praesentium necessitatibus aspernatur voluptas, minima odit eos magnam laboriosam, perferendis
+                                    numquam assumenda, sapiente nemo voluptate voluptates labore nam. Cumque error blanditiis deserunt,
+                                    voluptatem fugit earum ipsa cum magnam modi distinctio recusandae, nesciunt aut culpa similique
+                                    repudiandae quod sint iure minima reiciendis pariatur quia. Magnam nam ipsam iusto quia, accusamus
+                                    fugiat nesciunt expedita dolor quas animi beatae ipsa quaerat facilis corporis assumenda. Obcaecati,
+                                    nihil blanditiis commodi ducimus quisquam cumque perferendis, incidunt error aut animi facilis impedit
+                                    odit alias consequuntur? Porro minima saepe harum repellendus mollitia rerum accusamus qui, doloribus
+                                    alias, dolor dolores doloremque? Illo officia, expedita tenetur libero quaerat ad dignissimos quae nihil
+                                    quisquam quis, enim vel? Asperiores, voluptate nostrum. Necessitatibus ut molestias dolorum possimus
+                                    dolores aperiam repellendus perspiciatis, vel veritatis quisquam in voluptatem, dolor officia deleniti.
+                                    Facilis deleniti laborum sint libero, odio ratione vel, fuga maiores quidem, quos assumenda repellat
+                                    reprehenderit. Nisi omnis eveniet, tenetur necessitatibus delectus a enim!
+                                </p>
+                            </div>
                             <button type="button" class="btn btn-reset btn-primary bid-user__btn--like" style="margin-top: 32px; width: 100%;" data-popup-path="change-mind">
                                 Изменить решение. Хочу на просмотр
                             </button>
                         </div>
+                    </div>
+                    <div class="object-body__content">
                         <div class="object-body__slider object-slider-two">
                             <div class="object-slider__body object-slider-body">
                                 <div class="swiper object-slider-body__wrapper" data-popup-path="object-gallery--two">
@@ -1351,9 +1361,18 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="object-plate-bottom plate-bottom" style="display: grid; grid-template-columns: 1fr;">
-                            <button type="button" class="btn btn-reset btn-secondary bid-user__btn bid-user__btn--call">
-                                Показать телефон
+                        <div class="object-plate-bottom plate-bottom" style="display: grid; grid-template-columns: 1fr 1fr;">
+                            <button type="button" class="btn btn-reset btn-primary object-plate-bottom__btn bid-user__btn--like" data-main-info-btn data-popup-path="record-viewing">
+                                <svg style="margin-right:10px;width:17px;height:17px;fill: currentColor;">
+                                    <use xlink:href="./img/sprite.svg#like"></use>
+                                </svg>
+                                <span data-mobile-text="На просмотр">Хочу на просмотр</span>
+                            </button>
+                            <button type="button" class="btn btn-reset btn-primary object-plate-bottom__btn bid-user__btn--dislike" data-popup-path="object-not-two" data-main-info-btn disabled>
+                                <svg style="margin-right:10px;width:17px;height:17px;fill: currentColor;">
+                                    <use xlink:href="./img/sprite.svg#dislike"></use>
+                                </svg>
+                                <span data-mobile-text="Не подходит">Объект не подходит</span>
                             </button>
                         </div>
                         <div class="object-body__location object-location object-location--select section-observ" id="section-location">
@@ -1411,7 +1430,7 @@
                         </div>
                     </div>
                     <div class="object-body__sidebar">
-                        <div class="object-body__user bid-user bid-user--grade _sticky" data-da=".object-body__content, 1212,7">
+                        <div class="object-body__user bid-user bid-user--grade _sticky" data-da=".object-body__content, 1212,3">
                             <div class="bid-user__container">
                                 <div class="bid-user__avatar avatar">
                                     <img loading="lazy" src="./img/samolet.png" width="129" height="129" alt="Алексей Г.">

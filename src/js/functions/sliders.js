@@ -861,6 +861,39 @@ function objectSlider() {
             swiper: navSlider,
         },
     })
+
+
+    const moreBtn = container.querySelector('.object-slider-body__more');
+    const topBtns = document.querySelectorAll('.top-page-inner__btn');
+    if (moreBtn) {
+        if (topBtns.length === 0) moreBtn.remove();
+        topBtns.forEach(btn => {
+            btn.classList.add('js-popup-close');
+        })
+        moreBtn.addEventListener('click', () => {
+            const modalHTML = `
+            <div class="nav-btns-popup">
+            <div class="nav-btns-popup__container">
+                <button class="btn-reset nav-btns-popup__close" aria-label="Закрыть модальное окно">
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#x"></use>
+                    </svg>
+                    <span>Закрыть</span>
+                </button>
+                 <div class="nav-btns-popup__content">
+                 </div>
+            </div>
+            </div>
+            `;
+
+            modal(modalHTML, '.nav-btns-popup', 300);
+            const container = document.querySelector('.nav-btns-popup');
+            const content = container.querySelector('.nav-btns-popup__content');
+            topBtns.forEach(btn => {
+                content.insertAdjacentElement('beforeend', btn);
+            });
+        })
+    }
 }
 
 function mainSlider() {
@@ -926,18 +959,18 @@ function mainSlider() {
                 },
                 // on: {
                 //     beforeTransitionStart(slider) {
-                        // const countAllSlides = slider.slides.length
-                        // const swiperIndex = slider.realIndex
+                // const countAllSlides = slider.slides.length
+                // const swiperIndex = slider.realIndex
                 //         if (swiperIndex + 1 === countAllSlides) {
                 //             if (nextTab) {
                 //                 if (!value) {
                 //                     value = true;
                 //                     return;
                 //                 }
-    
+
                 //                 item.setAttribute('hidden', '');
                 //                 nextTab.removeAttribute('hidden');
-    
+
                 //                 currentPreview.classList.remove('_active');
                 //                 nextPreview.classList.add('_active');
                 //                 value = false;
@@ -1005,6 +1038,38 @@ function mainSlider() {
                     item === preview ? item.classList.add('_active') : item.classList.remove('_active');
                 })
             }
+        })
+    }
+
+    const moreBtn = container.querySelector('.object-slider-body__more');
+    const topBtns = document.querySelectorAll('.top-page-inner__btn');
+    if (moreBtn) {
+        if (topBtns.length === 0) moreBtn.remove();
+        topBtns.forEach(btn => {
+            btn.classList.add('js-popup-close');
+        })
+        moreBtn.addEventListener('click', () => {
+            const modalHTML = `
+            <div class="nav-btns-popup">
+            <div class="nav-btns-popup__container">
+                <button class="btn-reset nav-btns-popup__close" aria-label="Закрыть модальное окно">
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#x"></use>
+                    </svg>
+                    <span>Закрыть</span>
+                </button>
+                 <div class="nav-btns-popup__content">
+                 </div>
+            </div>
+            </div>
+            `;
+
+            modal(modalHTML, '.nav-btns-popup', 300);
+            const container = document.querySelector('.nav-btns-popup');
+            const content = container.querySelector('.nav-btns-popup__content');
+            topBtns.forEach(btn => {
+                content.insertAdjacentElement('beforeend', btn);
+            });
         })
     }
 }

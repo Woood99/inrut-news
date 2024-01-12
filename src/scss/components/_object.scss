@@ -665,7 +665,12 @@
     }
 
     &__title {
-        margin-top: 16px;
+        &:first-child {
+        margin-bottom: 16px;
+        }
+        &:not(:first-child){
+            margin-top: 16px;
+        }
     }
 
     &__item {
@@ -2317,12 +2322,14 @@ margin-top: 4px;
             }
         }
     }
-    @media (max-width:$desktop){
-       height: 500px;
+    @media (max-width:$desktop) {
+        max-height: 450px;
+        height: 450px;
     }
-    @media (max-width:$smallTablet-max){
-        max-height: 350px;
-        height: 350px;  
+
+    @media (max-width:$smallTablet-max) {
+        max-height: 400px;
+        height: 400px;
     }
 }
 

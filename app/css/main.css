@@ -5097,6 +5097,128 @@ textarea.input-reset {
   stroke-width: 1.5px;
 }
 
+.nav-btns-popup {
+  --transition-time: 0.3s;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1051;
+  background-color: rgba(34, 41, 102, 0.4);
+  cursor: pointer;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity var(--transition-time), visibility var(--transition-time);
+  transition: opacity var(--transition-time), visibility var(--transition-time);
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: end;
+}
+.nav-btns-popup.is-open {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity var(--transition-time), visibility var(--transition-time);
+  transition: opacity var(--transition-time), visibility var(--transition-time);
+}
+.nav-btns-popup__container {
+  position: relative;
+  background-color: #fff;
+  cursor: default;
+  text-align: center;
+  display: none;
+  -webkit-box-shadow: var(--shadow-primary);
+  box-shadow: var(--shadow-primary);
+  margin: 50px auto;
+  margin: 0 auto;
+  border-radius: 16px 16px 0 0;
+  padding: 65px 16px 65px;
+  width: 100%;
+  min-height: 120px;
+}
+.nav-btns-popup__container.open {
+  display: inline-block !important;
+}
+.nav-btns-popup__close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: none;
+  padding: 0;
+  width: 60px;
+  height: 60px;
+  background-color: transparent;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.nav-btns-popup__close svg {
+  width: 25px;
+  height: 25px;
+  fill: var(--blue);
+  -webkit-transition: fill 0.4s ease-in-out;
+  transition: fill 0.4s ease-in-out;
+}
+@media (max-width: 1212px) {
+  .nav-btns-popup__close svg {
+    display: none;
+  }
+}
+.nav-btns-popup__close span {
+  color: var(--blue);
+  font-size: var(--small-fz);
+  line-height: var(--small-lh);
+  font-weight: 500;
+}
+@media (min-width: 1212px) {
+  .nav-btns-popup__close span {
+    display: none;
+  }
+}
+@media (min-width: 1213px) {
+  .nav-btns-popup__close:hover svg {
+    fill: var(--primary500);
+  }
+}
+@media (max-width: 1212px) {
+  .nav-btns-popup__close {
+    right: 16px;
+    top: 24px;
+    width: auto;
+    height: auto;
+  }
+}
+.nav-btns-popup .share-btn, .nav-btns-popup .complain-btn, .nav-btns-popup .favorite-btn, .nav-btns-popup .delete-btn, .nav-btns-popup .edit-btn {
+  width: 100%;
+  height: auto;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: start;
+}
+.nav-btns-popup .share-btn svg, .nav-btns-popup .complain-btn svg, .nav-btns-popup .favorite-btn svg, .nav-btns-popup .delete-btn svg, .nav-btns-popup .edit-btn svg {
+  margin-right: 16px;
+}
+.nav-btns-popup .share-btn span, .nav-btns-popup .complain-btn span, .nav-btns-popup .favorite-btn span, .nav-btns-popup .delete-btn span, .nav-btns-popup .edit-btn span {
+  display: block;
+}
+.nav-btns-popup .share-btn:not(:last-child), .nav-btns-popup .complain-btn:not(:last-child), .nav-btns-popup .favorite-btn:not(:last-child), .nav-btns-popup .delete-btn:not(:last-child), .nav-btns-popup .edit-btn:not(:last-child) {
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--primary200);
+}
+
 .metro-info-modal {
   --transition-time: 0.3s;
   position: fixed;
@@ -17555,6 +17677,9 @@ textarea.input-reset {
 }
 .card-primary__metro {
   margin-top: 24px;
+}
+.card-primary__metro .metro-info__other {
+  z-index: 99;
 }
 @media (max-width: 1212px) {
   .card-primary__metro {
@@ -34301,7 +34426,10 @@ textarea.input-reset {
     grid-template-columns: 1fr;
   }
 }
-.object-characteristics__title {
+.object-characteristics__title:first-child {
+  margin-bottom: 16px;
+}
+.object-characteristics__title:not(:first-child) {
   margin-top: 16px;
 }
 .object-characteristics__item {
@@ -35971,13 +36099,14 @@ textarea.input-reset {
 }
 @media (max-width: 1212px) {
   .main-slider {
-    height: 500px;
+    max-height: 450px;
+    height: 450px;
   }
 }
 @media (max-width: 768px) {
   .main-slider {
-    max-height: 350px;
-    height: 350px;
+    max-height: 400px;
+    height: 400px;
   }
 }
 

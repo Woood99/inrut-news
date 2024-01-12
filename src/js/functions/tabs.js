@@ -166,7 +166,6 @@ export const tabs = () => {
             });
         }
     }
-    let statusShorts = false;
 
     function setTabsAction(e) {
         const el = e.target;

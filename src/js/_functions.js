@@ -182,6 +182,7 @@ popup(null, 'select-bank');
 popup(null, 'metro-map');
 popup(null, 'im-buying');
 popup(null, 'change-mind');
+popup(null, 'change-mind-two');
 popup({
     isOpen: (settingsModal) => {
         const chat = document.querySelector('.chat');

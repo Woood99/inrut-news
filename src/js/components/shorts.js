@@ -44,30 +44,27 @@ const shorts = () => {
             videojs(video).play();
         }, 500);
     });
-    const wrapper = container.closest('.stock-developer__content');
-    if (wrapper) {
-        let scrolling = true;
-        wrapper.addEventListener('mousewheel', (e) => {
-            const y = e.wheelDelta;
-            const next = container.querySelector('.shorts__next').hasAttribute('disabled');
-            const prev = container.querySelector('.shorts__prev').hasAttribute('disabled');
-            if (scrolling) {
-                scrolling = false;
-                if (y > 0 && !prev) {
-                    e.preventDefault();
-                    slider.slidePrev();
-                }
-                if (y <= 0 && !next) {
-                    e.preventDefault();
-                    slider.slideNext();
-                }
-                setTimeout(() => {
-                    scrolling = true;
-                }, 500);
-            }
-        })
-    }
 
+    let scrolling = true;
+    container.addEventListener('mousewheel', (e) => {
+        const y = e.wheelDelta;
+        const next = container.querySelector('.shorts__next').hasAttribute('disabled');
+        const prev = container.querySelector('.shorts__prev').hasAttribute('disabled');
+        if (scrolling) {
+            scrolling = false;
+            if (y > 0 && !prev) {
+                e.preventDefault();
+                slider.slidePrev();
+            }
+            if (y <= 0 && !next) {
+                e.preventDefault();
+                slider.slideNext();
+            }
+            setTimeout(() => {
+                scrolling = true;
+            }, 500);
+        }
+    })
 
 
     function setIndex() {

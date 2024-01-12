@@ -30,6 +30,7 @@ popup(null, 'complaint-user');
 popup(null, 'complaint-object');
 popup(null, 'complaint-object-two');
 popup(null, 'thanks');
+popup(null, 'thanks-object');
 popup(null, 'object-not');
 popup(null, 'object-not-two');
 popup(null, 'interest-rate-modal');

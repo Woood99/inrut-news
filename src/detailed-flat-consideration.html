@@ -76,12 +76,18 @@
                         </svg>
                         <span>Поделиться</span>
                     </button>
+                    <button type="button" class="btn btn-reset top-page-inner__btn complain-btn" data-popup-path="complaint-object">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#complain"></use>
+                        </svg>
+                        <span>Пожаловаться</span>
+                    </button>
                 </div>
             </div>
             <div class="object__body object-body">
 
                 <div class="object-body__container container">
-                    <div class="object-body__content">
+                    <div class="col">
                         <div class="object-body__record-viewing record-viewing-two">
                             <div class="record-viewing-two__wrapper">
                                 <div class="record-viewing-two__info">
@@ -115,7 +121,7 @@
                             <div class="record-viewing-two__wrapper">
                                 <div class="record-viewing-two__info">
                                     <div class="record-viewing-two__sent">
-                                        <h3 class="title-3">Заявка подтверждена</h3>
+                                        <h3 class="title-3">Заявка подтверждена.</h3>
                                         <p>
                                             Вы записаны на просмотр объекта.
                                         </p>
@@ -143,6 +149,8 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="object-body__content">
                         <div class="object-body__slider object-slider-two">
                             <div class="object-slider__body object-slider-body">
                                 <div class="swiper object-slider-body__wrapper" data-popup-path="object-gallery--two">
@@ -1337,9 +1345,18 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="object-plate-bottom plate-bottom" style="display: grid; grid-template-columns: 1fr;">
-                            <button type="button" class="btn btn-reset btn-secondary bid-user__btn bid-user__btn--call">
-                                Показать телефон
+                        <div class="object-plate-bottom plate-bottom" style="display: grid; grid-template-columns: 1fr 1fr;">
+                            <button type="button" class="btn btn-reset btn-primary object-plate-bottom__btn bid-user__btn--dislike" data-popup-path="object-not-two" data-main-info-btn>
+                                <svg style="margin-right:10px;width:17px;height:17px;fill: currentColor;">
+                                    <use xlink:href="./img/sprite.svg#dislike"></use>
+                                </svg>
+                                <span data-mobile-text="Не подходит">Объект не подходит</span>
+                            </button>
+                            <button type="button" class="btn btn-reset btn-primary object-plate-bottom__btn bid-user__btn--like" data-popup-path="im-buying" data-main-info-btn>
+                                <svg style="margin-right:10px;width:17px;height:17px;fill: currentColor;">
+                                    <use xlink:href="./img/sprite.svg#like"></use>
+                                </svg>
+                                <span>Покупаю</span>
                             </button>
                         </div>
                         <div class="object-body__location object-location object-location--select section-observ" id="section-location">
@@ -1397,7 +1414,7 @@
                         </div>
                     </div>
                     <div class="object-body__sidebar">
-                        <div class="object-body__user bid-user bid-user--grade _sticky" data-da=".object-body__content, 1212,7">
+                        <div class="object-body__user bid-user bid-user--grade _sticky" data-da=".object-body__content, 1212,3">
                             <div class="bid-user__container">
                                 <div class="bid-user__avatar avatar">
                                     <img loading="lazy" src="./img/samolet.png" width="129" height="129" alt="Алексей Г.">
@@ -1415,7 +1432,7 @@
                                 <h3 class="bid-user__title title-3">
                                     Ваша оценка объекта
                                 </h3>
-                                <button type="button" class="btn btn-reset btn-primary bid-user__btn--like" data-main-info-btn data-popup-path="record-viewing" disabled>
+                                <button type="button" class="btn btn-reset btn-primary bid-user__btn--like bid-user__viewing" data-main-info-btn data-popup-path="record-viewing" disabled>
                                     <svg style="margin-right:10px;width:17px;height:17px;fill: currentColor;">
                                         <use xlink:href="./img/sprite.svg#like"></use>
                                     </svg>

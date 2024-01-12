@@ -18,8 +18,9 @@ function targetScroll(target, block, screenSize, beforeContainer) {
     if (window.innerWidth >= screenSize) return;
     const pageOffsetTop = window.pageYOffset;
     const targetOffsetTop = target.getBoundingClientRect().top;
+    const start = document.querySelector('.object-body__slider') ? document.querySelector('.object-body__slider').offsetTop : 0;
     if (beforeContainer) {
-        if (targetOffsetTop > innerHeight || pageOffsetTop >= targetOffsetTop + pageOffsetTop) {
+        if ((targetOffsetTop > innerHeight || pageOffsetTop >= targetOffsetTop + pageOffsetTop) && window.pageYOffset > start) {
             block.classList.add('active-fixed');
         } else {
             block.classList.remove('active-fixed');

@@ -52,6 +52,11 @@
                 margin-bottom: 16px;
             }
         }
+        &__viewing{
+            @media (max-width:$desktop){
+                 display: none; 
+            }
+        }
         @media (max-width:$desktop) {
             padding: 16px;
         }
@@ -132,11 +137,11 @@
         @media (max-width:$desktop) {
             justify-content: center;
             display: flex;
-            max-height: 500px;
+            max-height: 450px;
         }
 
         @media (max-width:$smallTablet-max) {
-            max-height: 350px;
+            max-height: 400px;
         }
     }
 
@@ -146,7 +151,6 @@
         &__body {
             margin-right: 0;
             width: 100%;
-            height: 100%;
 
             .swiper-slide {
                 &._fixed-width {
@@ -179,7 +183,9 @@
                 }
             }
 
-            @media (max-width:$desktop) {}
+           @media (min-width:$desktop-min){
+             height: 100%; 
+           }
         }
     }
 

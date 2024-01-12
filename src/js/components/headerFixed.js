@@ -3,6 +3,7 @@ const headerFixed = () => {
     if (!(headerFixed && window.innerWidth >= 1212)) return;
     const header = document.querySelector('.header');
     const headerHeight = headerFixed.offsetHeight;
+    const start = document.querySelector('.object-body__slider') ? document.querySelector('.object-body__slider').offsetTop : 0;
     const gap = 100;
     const smallGap = 20;
     init();
@@ -69,7 +70,7 @@ const headerFixed = () => {
             headerFixed.classList.remove('_active');
             return;
         }
-        if (scrollDistance >= header.offsetHeight + headerHeight + gap) {
+        if (scrollDistance >= (start > 0 ? start : header.offsetHeight + headerHeight + gap)) {
             headerFixed.classList.add('_active');
             main.classList.add('_header-fixed');
         } else {

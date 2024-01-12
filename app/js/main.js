@@ -4423,6 +4423,7 @@ __webpack_require__.r(__webpack_exports__);
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'complaint-object');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'complaint-object-two');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'thanks');
+(0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'thanks-object');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'object-not');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'object-not-two');
 (0,_functions_popup__WEBPACK_IMPORTED_MODULE_7__["default"])(null, 'interest-rate-modal');
@@ -9896,6 +9897,7 @@ const headerFixed = () => {
   if (!(headerFixed && window.innerWidth >= 1212)) return;
   const header = document.querySelector('.header');
   const headerHeight = headerFixed.offsetHeight;
+  const start = document.querySelector('.object-body__slider') ? document.querySelector('.object-body__slider').offsetTop : 0;
   const gap = 100;
   const smallGap = 20;
   init();
@@ -9956,7 +9958,7 @@ const headerFixed = () => {
       headerFixed.classList.remove('_active');
       return;
     }
-    if (scrollDistance >= header.offsetHeight + headerHeight + gap) {
+    if (scrollDistance >= (start > 0 ? start : header.offsetHeight + headerHeight + gap)) {
       headerFixed.classList.add('_active');
       main.classList.add('_header-fixed');
     } else {
@@ -17026,8 +17028,9 @@ function targetScroll(target, block, screenSize, beforeContainer) {
   if (window.innerWidth >= screenSize) return;
   const pageOffsetTop = window.pageYOffset;
   const targetOffsetTop = target.getBoundingClientRect().top;
+  const start = document.querySelector('.object-body__slider') ? document.querySelector('.object-body__slider').offsetTop : 0;
   if (beforeContainer) {
-    if (targetOffsetTop > innerHeight || pageOffsetTop >= targetOffsetTop + pageOffsetTop) {
+    if ((targetOffsetTop > innerHeight || pageOffsetTop >= targetOffsetTop + pageOffsetTop) && window.pageYOffset > start) {
       block.classList.add('active-fixed');
     } else {
       block.classList.remove('active-fixed');
@@ -17243,6 +17246,9 @@ const modal = function (modalHTML, container) {
         modalClose(settingsModal);
       }
       if (e.target.closest('.search-select-one__item')) {
+        modalClose(settingsModal);
+      }
+      if (e.target.closest('.js-popup-close')) {
         modalClose(settingsModal);
       }
     });

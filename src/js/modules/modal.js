@@ -58,6 +58,9 @@ const modal = (modalHTML, container, speed = 300, target = false) => {
             if (e.target.closest('.search-select-one__item')) {
                 modalClose(settingsModal);
             }
+            if (e.target.closest('.js-popup-close')) {
+                modalClose(settingsModal);
+            }
         })
         window.addEventListener('keydown', (e) => {
             if (e.keyCode == 27) {

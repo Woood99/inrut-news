@@ -1,29 +1,29 @@
-const maps = () => {
-    function removeControlsPrimary(map, containerSelector) {
-        map.controls.remove('geolocationControl'); // удаляем геолокацию
-        map.controls.remove('searchControl'); // удаляем поиск
-        map.controls.remove('trafficControl'); // удаляем контроль трафика
-        map.controls.remove('typeSelector'); // удаляем тип
-        map.controls.remove('rulerControl'); // удаляем контрол правил
-        map.behaviors.disable(['scrollZoom']); // отключаем скролл карты (опционально)
-    }
+function removeControlsPrimary(map, containerSelector) {
+    map.controls.remove('geolocationControl');
+    map.controls.remove('searchControl');
+    map.controls.remove('trafficControl');
+    map.controls.remove('typeSelector');
+    map.controls.remove('rulerControl');
+    map.behaviors.disable(['scrollZoom']);
+}
+function positionElement(map) {
+    map.controls.get('fullscreenControl').options.set({
+        position: {
+            top: 16,
+            right: 16
+        },
+        maxWidth: '44'
+    })
+    map.controls.get('zoomControl').options.set({
+        position: {
+            top: 92,
+            right: 16
+        },
+        maxWidth: '44'
+    })
+}
 
-    function positionElement(map) {
-        map.controls.get('fullscreenControl').options.set({
-            position: {
-                top: 16,
-                right: 16
-            },
-            maxWidth: '44'
-        })
-        map.controls.get('zoomControl').options.set({
-            position: {
-                top: 92,
-                right: 16
-            },
-            maxWidth: '44'
-        })
-    }
+export const bidMap = () => {
     if (document.querySelector('#bid-maps')) {
         document.querySelectorAll('#bid-maps').forEach(item => {
             function init() {
@@ -32,7 +32,7 @@ const maps = () => {
                     zoom: 10,
                 });
                 positionElement(map);
-                removeControlsPrimary(map, '#bid-maps');
+                removeControlsPrimary(map);
                 if (item.closest('.history-changes')) {
                     map.behaviors.enable(['scrollZoom']);
                     map.controls.remove('fullscreenControl');
@@ -48,6 +48,8 @@ const maps = () => {
             ymaps.ready(init);
         });
     }
+};
+export const complaintObjectMap = () => {
     if (document.querySelector('#complaint-object-two-maps')) {
         const objectMaps = document.querySelector('#complaint-object-two-maps');
         if (!objectMaps) return;
@@ -58,7 +60,7 @@ const maps = () => {
                 zoom: 10,
             });
             positionElement(map);
-            removeControlsPrimary(map, '#complaint-object-two-maps');
+            removeControlsPrimary(map);
 
             const fullScreenControl = map.controls.get('fullscreenControl');
             fullScreenControl.events.add('fullscreenenter', function () {
@@ -68,6 +70,8 @@ const maps = () => {
         }
         ymaps.ready(init);
     }
+};
+export const mapDraw2 = () => {
     if (document.querySelector('#map-draw--2')) {
         function init() {
             let map = new ymaps.Map('map-draw--2', {
@@ -75,10 +79,12 @@ const maps = () => {
                 zoom: 10,
             });
             positionElement(map);
-            removeControlsPrimary(map, '#map-draw--2');
+            removeControlsPrimary(map);
         }
         ymaps.ready(init);
     }
+};
+export const popupMap = () => {
     if (document.querySelector('#popup-map__map')) {
         const container = document.querySelector('.popup-map__container');
         if (!container) return;
@@ -88,7 +94,7 @@ const maps = () => {
                 center: [55.77171185651524, 37.62811179984117],
                 zoom: 10,
             });
-            removeControlsPrimary(map, '#popup-map__map');
+            removeControlsPrimary(map);
             map.behaviors.enable(['scrollZoom']);
             map.controls.remove('fullscreenControl');
             map.controls.get('zoomControl').options.set({
@@ -154,6 +160,8 @@ const maps = () => {
         })
 
     }
+};
+export const controlCardsMap = () => {
     if (document.querySelector('#control-cards__maps')) {
         const container = document.querySelector('#control-cards__maps').closest('.control-cards__container');
         if (!container) return;
@@ -163,7 +171,7 @@ const maps = () => {
                 center: [55.77171185651524, 37.62811179984117],
                 zoom: 10,
             });
-            removeControlsPrimary(map, '#control-cards__maps');
+            removeControlsPrimary(map);
             map.behaviors.enable(['scrollZoom']);
             map.controls.remove('fullscreenControl');
             map.controls.get('zoomControl').options.set({
@@ -248,14 +256,15 @@ const maps = () => {
 
     }
 
-
+};
+export const mapDraw = () => {
     if (document.querySelector('#map-draw')) {
         function init() {
             let map = new ymaps.Map('map-draw', {
                 center: [55.77171185651524, 37.62811179984117],
                 zoom: 10,
             });
-            removeControlsPrimary(map, '#map-draw');
+            removeControlsPrimary(map);
             drawSettings(map);
         }
         ymaps.ready(init);
@@ -339,6 +348,8 @@ const maps = () => {
 
         }
     }
+};
+export const placeSaleAddressMap = () => {
     if (document.querySelector('#place-sale-address-map')) {
         function init() {
             let map = new ymaps.Map('place-sale-address-map', {
@@ -346,10 +357,12 @@ const maps = () => {
                 zoom: 10,
             });
             positionElement(map);
-            removeControlsPrimary(map, '#place-sale-address-map');
+            removeControlsPrimary(map);
         }
         ymaps.ready(init);
     }
+};
+export const objectMaps = () => {
     if (document.querySelector('#object-maps')) {
         const objectMaps = document.querySelector('#object-maps');
         if (!objectMaps) return;
@@ -360,7 +373,7 @@ const maps = () => {
                 zoom: 10,
             });
             positionElement(map);
-            removeControlsPrimary(map, '#object-maps');
+            removeControlsPrimary(map);
             const containerSelects = objectMaps.closest('.object-location--select');
             if (containerSelects) {
                 let btnCloseRoute;
@@ -505,5 +518,3 @@ const maps = () => {
         ymaps.ready(init);
     }
 };
-
-export default maps;

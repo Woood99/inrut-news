@@ -3947,42 +3947,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_checkboard__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/checkboard */ "./src/js/components/checkboard.js");
 /* harmony import */ var _components_headerFixed__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/headerFixed */ "./src/js/components/headerFixed.js");
 /* harmony import */ var _components_mortgage__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/mortgage */ "./src/js/components/mortgage.js");
-/* harmony import */ var _components_choicePay__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/choicePay */ "./src/js/components/choicePay.js");
-/* harmony import */ var _components_genplan__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/genplan */ "./src/js/components/genplan.js");
-/* harmony import */ var _components_mapMetro__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/mapMetro */ "./src/js/components/mapMetro.js");
-/* harmony import */ var _components_tag__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/tag */ "./src/js/components/tag.js");
-/* harmony import */ var _components_chat__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/chat */ "./src/js/components/chat.js");
-/* harmony import */ var _components_city__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/city */ "./src/js/components/city.js");
-/* harmony import */ var _components_scrollDrag__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/scrollDrag */ "./src/js/components/scrollDrag.js");
-/* harmony import */ var _components_cardActions__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/cardActions */ "./src/js/components/cardActions.js");
-/* harmony import */ var _components_furnishingSets__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/furnishingSets */ "./src/js/components/furnishingSets.js");
-/* harmony import */ var _components_bookConsultation__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/bookConsultation */ "./src/js/components/bookConsultation.js");
-/* harmony import */ var _components_recordViewing__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/recordViewing */ "./src/js/components/recordViewing.js");
-/* harmony import */ var _components_wallet__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/wallet */ "./src/js/components/wallet.js");
-/* harmony import */ var _components_favorites__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/favorites */ "./src/js/components/favorites.js");
-/* harmony import */ var _components_clientPage__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/clientPage */ "./src/js/components/clientPage.js");
-/* harmony import */ var _components_requisites__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/requisites */ "./src/js/components/requisites.js");
-/* harmony import */ var _components_navDropdown__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/navDropdown */ "./src/js/components/navDropdown.js");
-/* harmony import */ var _components_videoModal__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./components/videoModal */ "./src/js/components/videoModal.js");
-/* harmony import */ var _components_favoriteBtn__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./components/favoriteBtn */ "./src/js/components/favoriteBtn.js");
-/* harmony import */ var _components_advancePayment__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./components/advancePayment */ "./src/js/components/advancePayment.js");
-/* harmony import */ var _components_submitApp__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./components/submitApp */ "./src/js/components/submitApp.js");
-/* harmony import */ var _components_wantDiscount__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./components/wantDiscount */ "./src/js/components/wantDiscount.js");
-/* harmony import */ var _components_onlineDisplay__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./components/onlineDisplay */ "./src/js/components/onlineDisplay.js");
-/* harmony import */ var _components_bankOffer__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./components/bankOffer */ "./src/js/components/bankOffer.js");
-/* harmony import */ var _components_tooltips__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./components/tooltips */ "./src/js/components/tooltips.js");
-/* harmony import */ var _components_dragDrop__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./components/dragDrop */ "./src/js/components/dragDrop.js");
-/* harmony import */ var air_datepicker__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! air-datepicker */ "./node_modules/air-datepicker/index.es.js");
-/* harmony import */ var _components_createCalc__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./components/createCalc */ "./src/js/components/createCalc.js");
-/* harmony import */ var _components_videoLoad__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./components/videoLoad */ "./src/js/components/videoLoad.js");
-/* harmony import */ var _components_haracteristicsBlock__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./components/сharacteristicsBlock */ "./src/js/components/сharacteristicsBlock.js");
-/* harmony import */ var _components_submitAppOffers__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./components/submitAppOffers */ "./src/js/components/submitAppOffers.js");
-/* harmony import */ var _components_mortgageRequests__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./components/mortgageRequests */ "./src/js/components/mortgageRequests.js");
-/* harmony import */ var _modules_moveToFromBlock__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./modules/moveToFromBlock */ "./src/js/modules/moveToFromBlock.js");
-/* harmony import */ var _components_replaceText__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ./components/replaceText */ "./src/js/components/replaceText.js");
-/* harmony import */ var _components_metroItems__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ./components/metroItems */ "./src/js/components/metroItems.js");
-/* harmony import */ var _components_shorts__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ./components/shorts */ "./src/js/components/shorts.js");
-/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! ./modules/modal */ "./src/js/modules/modal.js");
+/* harmony import */ var _components_mapMetro__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/mapMetro */ "./src/js/components/mapMetro.js");
+/* harmony import */ var _components_tag__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/tag */ "./src/js/components/tag.js");
+/* harmony import */ var _components_chat__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/chat */ "./src/js/components/chat.js");
+/* harmony import */ var _components_city__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/city */ "./src/js/components/city.js");
+/* harmony import */ var _components_scrollDrag__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/scrollDrag */ "./src/js/components/scrollDrag.js");
+/* harmony import */ var _components_cardActions__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/cardActions */ "./src/js/components/cardActions.js");
+/* harmony import */ var _components_furnishingSets__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/furnishingSets */ "./src/js/components/furnishingSets.js");
+/* harmony import */ var _components_bookConsultation__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/bookConsultation */ "./src/js/components/bookConsultation.js");
+/* harmony import */ var _components_recordViewing__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/recordViewing */ "./src/js/components/recordViewing.js");
+/* harmony import */ var _components_clientPage__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/clientPage */ "./src/js/components/clientPage.js");
+/* harmony import */ var _components_requisites__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/requisites */ "./src/js/components/requisites.js");
+/* harmony import */ var _components_navDropdown__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/navDropdown */ "./src/js/components/navDropdown.js");
+/* harmony import */ var _components_videoModal__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/videoModal */ "./src/js/components/videoModal.js");
+/* harmony import */ var _components_favoriteBtn__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/favoriteBtn */ "./src/js/components/favoriteBtn.js");
+/* harmony import */ var _components_submitApp__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/submitApp */ "./src/js/components/submitApp.js");
+/* harmony import */ var _components_wantDiscount__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/wantDiscount */ "./src/js/components/wantDiscount.js");
+/* harmony import */ var _components_onlineDisplay__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./components/onlineDisplay */ "./src/js/components/onlineDisplay.js");
+/* harmony import */ var _components_bankOffer__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./components/bankOffer */ "./src/js/components/bankOffer.js");
+/* harmony import */ var _components_tooltips__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./components/tooltips */ "./src/js/components/tooltips.js");
+/* harmony import */ var _components_dragDrop__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./components/dragDrop */ "./src/js/components/dragDrop.js");
+/* harmony import */ var air_datepicker__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! air-datepicker */ "./node_modules/air-datepicker/index.es.js");
+/* harmony import */ var _components_createCalc__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./components/createCalc */ "./src/js/components/createCalc.js");
+/* harmony import */ var _components_videoLoad__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./components/videoLoad */ "./src/js/components/videoLoad.js");
+/* harmony import */ var _components_haracteristicsBlock__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./components/сharacteristicsBlock */ "./src/js/components/сharacteristicsBlock.js");
+/* harmony import */ var _components_submitAppOffers__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./components/submitAppOffers */ "./src/js/components/submitAppOffers.js");
+/* harmony import */ var _components_mortgageRequests__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./components/mortgageRequests */ "./src/js/components/mortgageRequests.js");
+/* harmony import */ var _modules_moveToFromBlock__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./modules/moveToFromBlock */ "./src/js/modules/moveToFromBlock.js");
+/* harmony import */ var _components_replaceText__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./components/replaceText */ "./src/js/components/replaceText.js");
+/* harmony import */ var _components_metroItems__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./components/metroItems */ "./src/js/components/metroItems.js");
+/* harmony import */ var _components_shorts__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./components/shorts */ "./src/js/components/shorts.js");
+/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./modules/modal */ "./src/js/modules/modal.js");
 
 
 
@@ -4004,6 +3999,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// import choicePay from './components/choicePay';
+// import genplan from './components/genplan';
 
 
 
@@ -4013,16 +4010,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// import wallet from './components/wallet';
+// import {
+//     favoritesPage,
+//     favoriteChoicePopup
+// } from './components/favorites';
 
 
 
 
 
-
-
-
-
-
+// import advancePayment from './components/advancePayment';
 
 
 
@@ -4082,13 +4080,22 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_inputs__WEBPACK_IMPORTED_MODULE_6__.textareaTags)();
   // ==================================================
 
-  (0,_components_cardActions__WEBPACK_IMPORTED_MODULE_28__.cardSecondaryActions)();
-  (0,_components_cardActions__WEBPACK_IMPORTED_MODULE_28__.cardPrimaryActions)();
+  (0,_components_cardActions__WEBPACK_IMPORTED_MODULE_26__.cardSecondaryActions)();
+  (0,_components_cardActions__WEBPACK_IMPORTED_MODULE_26__.cardPrimaryActions)();
 
   // ==================================================
-  (0,_components_navDropdown__WEBPACK_IMPORTED_MODULE_36__["default"])();
-  (0,_components_maps__WEBPACK_IMPORTED_MODULE_4__["default"])();
-  (0,_components_calendar__WEBPACK_IMPORTED_MODULE_7__.calendarPrimary)('.request-calendar .calendar-primary', 'eventsCalendar.json', false);
+  (0,_components_navDropdown__WEBPACK_IMPORTED_MODULE_32__["default"])();
+  // ==================================================
+  (0,_components_maps__WEBPACK_IMPORTED_MODULE_4__.bidMap)();
+  (0,_components_maps__WEBPACK_IMPORTED_MODULE_4__.complaintObjectMap)();
+  (0,_components_maps__WEBPACK_IMPORTED_MODULE_4__.mapDraw2)();
+  (0,_components_maps__WEBPACK_IMPORTED_MODULE_4__.popupMap)();
+  (0,_components_maps__WEBPACK_IMPORTED_MODULE_4__.controlCardsMap)();
+  (0,_components_maps__WEBPACK_IMPORTED_MODULE_4__.mapDraw)();
+  (0,_components_maps__WEBPACK_IMPORTED_MODULE_4__.placeSaleAddressMap)();
+  (0,_components_maps__WEBPACK_IMPORTED_MODULE_4__.objectMaps)();
+  // ==================================================
+
   (0,_components_calendar__WEBPACK_IMPORTED_MODULE_7__.calendarPrimary)('.calendar-page .calendar-primary', 'eventsCalendar.json', true);
   (0,_components_calendar__WEBPACK_IMPORTED_MODULE_7__.calendarPrimary)('.home-services__calendar .calendar-primary', 'eventsCalendar.json', false);
   (0,_components_controlCards__WEBPACK_IMPORTED_MODULE_13__.controlCards)();
@@ -4099,40 +4106,40 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_checkboard__WEBPACK_IMPORTED_MODULE_18__["default"])();
   (0,_components_headerFixed__WEBPACK_IMPORTED_MODULE_19__["default"])();
   (0,_components_mortgage__WEBPACK_IMPORTED_MODULE_20__["default"])();
-  (0,_components_choicePay__WEBPACK_IMPORTED_MODULE_21__["default"])();
-  (0,_components_genplan__WEBPACK_IMPORTED_MODULE_22__["default"])();
-  (0,_components_mapMetro__WEBPACK_IMPORTED_MODULE_23__["default"])();
-  (0,_components_tag__WEBPACK_IMPORTED_MODULE_24__["default"])();
-  (0,_components_chat__WEBPACK_IMPORTED_MODULE_25__["default"])();
-  (0,_components_city__WEBPACK_IMPORTED_MODULE_26__["default"])();
-  (0,_components_furnishingSets__WEBPACK_IMPORTED_MODULE_29__.furnishingSets)();
+  // choicePay();
+  // genplan();
+  (0,_components_mapMetro__WEBPACK_IMPORTED_MODULE_21__["default"])();
+  (0,_components_tag__WEBPACK_IMPORTED_MODULE_22__["default"])();
+  (0,_components_chat__WEBPACK_IMPORTED_MODULE_23__["default"])();
+  (0,_components_city__WEBPACK_IMPORTED_MODULE_24__["default"])();
+  (0,_components_furnishingSets__WEBPACK_IMPORTED_MODULE_27__.furnishingSets)();
   // bookConsultation();
-  (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_27__["default"])('.object-location__infrastructure', 1000, true);
-  (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_27__["default"])('.buy-apartment__tags .tags__list', 1000, 1180);
-  (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_27__["default"])('.home-services__list', 1000, 1180);
-  (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_27__["default"])('.tabs-primary.tabs-primary--controls .tabs__navigation', 1000, true);
-  (0,_components_recordViewing__WEBPACK_IMPORTED_MODULE_31__.recordViewing)();
-  (0,_components_recordViewing__WEBPACK_IMPORTED_MODULE_31__.recordViewingTwo)();
-  (0,_components_wallet__WEBPACK_IMPORTED_MODULE_32__["default"])();
-  (0,_components_favorites__WEBPACK_IMPORTED_MODULE_33__.favoritesPage)();
-  (0,_components_favorites__WEBPACK_IMPORTED_MODULE_33__.favoriteChoicePopup)();
-  (0,_components_clientPage__WEBPACK_IMPORTED_MODULE_34__.clientPage)();
-  (0,_components_requisites__WEBPACK_IMPORTED_MODULE_35__["default"])();
-  (0,_components_videoModal__WEBPACK_IMPORTED_MODULE_37__["default"])();
-  (0,_components_favoriteBtn__WEBPACK_IMPORTED_MODULE_38__["default"])();
-  (0,_components_advancePayment__WEBPACK_IMPORTED_MODULE_39__["default"])();
-  (0,_components_submitApp__WEBPACK_IMPORTED_MODULE_40__["default"])();
-  (0,_components_wantDiscount__WEBPACK_IMPORTED_MODULE_41__["default"])();
-  (0,_components_onlineDisplay__WEBPACK_IMPORTED_MODULE_42__["default"])();
-  (0,_components_bankOffer__WEBPACK_IMPORTED_MODULE_43__["default"])();
-  (0,_components_tooltips__WEBPACK_IMPORTED_MODULE_44__.tooltipSecondary)();
-  (0,_components_tooltips__WEBPACK_IMPORTED_MODULE_44__.tooltipMain)();
-  (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_45__.dragDrops)();
-  (0,_components_createCalc__WEBPACK_IMPORTED_MODULE_47__.createCalc)();
-  (0,_components_videoLoad__WEBPACK_IMPORTED_MODULE_48__.videoLoad)();
-  (0,_components_haracteristicsBlock__WEBPACK_IMPORTED_MODULE_49__["default"])();
-  (0,_components_submitAppOffers__WEBPACK_IMPORTED_MODULE_50__["default"])();
-  (0,_components_mortgageRequests__WEBPACK_IMPORTED_MODULE_51__["default"])();
+  (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_25__["default"])('.object-location__infrastructure', 1000, true);
+  (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_25__["default"])('.buy-apartment__tags .tags__list', 1000, 1180);
+  (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_25__["default"])('.home-services__list', 1000, 1180);
+  (0,_components_scrollDrag__WEBPACK_IMPORTED_MODULE_25__["default"])('.tabs-primary.tabs-primary--controls .tabs__navigation', 1000, true);
+  (0,_components_recordViewing__WEBPACK_IMPORTED_MODULE_29__.recordViewing)();
+  (0,_components_recordViewing__WEBPACK_IMPORTED_MODULE_29__.recordViewingTwo)();
+  // wallet();
+  // favoritesPage();
+  // favoriteChoicePopup();
+  (0,_components_clientPage__WEBPACK_IMPORTED_MODULE_30__.clientPage)();
+  (0,_components_requisites__WEBPACK_IMPORTED_MODULE_31__["default"])();
+  (0,_components_videoModal__WEBPACK_IMPORTED_MODULE_33__["default"])();
+  (0,_components_favoriteBtn__WEBPACK_IMPORTED_MODULE_34__["default"])();
+  // advancePayment();
+  (0,_components_submitApp__WEBPACK_IMPORTED_MODULE_35__["default"])();
+  (0,_components_wantDiscount__WEBPACK_IMPORTED_MODULE_36__["default"])();
+  (0,_components_onlineDisplay__WEBPACK_IMPORTED_MODULE_37__["default"])();
+  (0,_components_bankOffer__WEBPACK_IMPORTED_MODULE_38__["default"])();
+  (0,_components_tooltips__WEBPACK_IMPORTED_MODULE_39__.tooltipSecondary)();
+  (0,_components_tooltips__WEBPACK_IMPORTED_MODULE_39__.tooltipMain)();
+  (0,_components_dragDrop__WEBPACK_IMPORTED_MODULE_40__.dragDrops)();
+  (0,_components_createCalc__WEBPACK_IMPORTED_MODULE_42__.createCalc)();
+  (0,_components_videoLoad__WEBPACK_IMPORTED_MODULE_43__.videoLoad)();
+  (0,_components_haracteristicsBlock__WEBPACK_IMPORTED_MODULE_44__["default"])();
+  (0,_components_submitAppOffers__WEBPACK_IMPORTED_MODULE_45__["default"])();
+  (0,_components_mortgageRequests__WEBPACK_IMPORTED_MODULE_46__["default"])();
   // ==================================================
 
   (0,_components_formValidate__WEBPACK_IMPORTED_MODULE_8__.validateRadioPrimary)('.complaint-popup__form', '.textarea-primary__input', '.complaint-popup__btn', '.radio-primary__input');
@@ -4188,9 +4195,9 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_12__.emergingBlockScroll)('.submit-app .submit-app__btn', '.footer-fixed.submit-app-fixed', 99999999, true);
 
   // ==================================================
-  (0,_modules_moveToFromBlock__WEBPACK_IMPORTED_MODULE_52__["default"])('[data-move-block-to="bid-user"]', '[data-move-block-from="bid-user"]', 99999, 1212, `${window.innerWidth >= 1920 ? 1.35 : 1}`);
-  (0,_components_replaceText__WEBPACK_IMPORTED_MODULE_53__["default"])();
-  (0,_components_shorts__WEBPACK_IMPORTED_MODULE_55__["default"])();
+  (0,_modules_moveToFromBlock__WEBPACK_IMPORTED_MODULE_47__["default"])('[data-move-block-to="bid-user"]', '[data-move-block-from="bid-user"]', 99999, 1212, `${window.innerWidth >= 1920 ? 1.35 : 1}`);
+  (0,_components_replaceText__WEBPACK_IMPORTED_MODULE_48__["default"])();
+  (0,_components_shorts__WEBPACK_IMPORTED_MODULE_50__["default"])();
   // ==================================================
   (0,_components_inputs__WEBPACK_IMPORTED_MODULE_6__.inputClue)('.input-clue', 'clue-primary', `
     <div class="clue-primary">
@@ -4238,7 +4245,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     function body() {
       objectMetro.forEach(container => {
-        (0,_components_metroItems__WEBPACK_IMPORTED_MODULE_54__["default"])(container, container.closest('.object-body__data'));
+        (0,_components_metroItems__WEBPACK_IMPORTED_MODULE_49__["default"])(container, container.closest('.object-body__data'));
       });
     }
   }
@@ -4263,7 +4270,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
                 `;
-        (0,_modules_modal__WEBPACK_IMPORTED_MODULE_56__["default"])(modalHTML, '.metro-info-modal', 300);
+        (0,_modules_modal__WEBPACK_IMPORTED_MODULE_51__["default"])(modalHTML, '.metro-info-modal', 300);
         const metroInfoModal = document.querySelector('.metro-info-modal');
       }
     }
@@ -4273,7 +4280,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const datePickers = document.querySelectorAll('.date-picker');
   datePickers.forEach(datePicker => {
     const input = datePicker.querySelector('.date-picker__input');
-    const wrapper = new air_datepicker__WEBPACK_IMPORTED_MODULE_46__["default"](input, {
+    const wrapper = new air_datepicker__WEBPACK_IMPORTED_MODULE_41__["default"](input, {
       autoClose: true,
       isMobile: true,
       onSelect: fd => {
@@ -4611,31 +4618,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var focus_visible__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! focus-visible */ "./node_modules/focus-visible/dist/focus-visible.js");
 /* harmony import */ var focus_visible__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(focus_visible__WEBPACK_IMPORTED_MODULE_0__);
 
-
-/***/ }),
-
-/***/ "./src/js/components/advancePayment.js":
-/*!*********************************************!*\
-  !*** ./src/js/components/advancePayment.js ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-const advancePayment = () => {
-  const items = document.querySelectorAll('.advance-pay');
-  if (items.length > 0) {
-    items.forEach(item => {
-      item.addEventListener('click', () => {
-        item.classList.toggle('_active');
-      });
-    });
-  }
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (advancePayment);
 
 /***/ }),
 
@@ -5062,7 +5044,7 @@ const calendarPrimary = function (containerSelector, url) {
           events[0].insertAdjacentHTML('beforeend', circleHTML);
         }
       });
-    }, 1000);
+    }, 200);
   }
   const requestCalendar = calendarEl.closest('.request-calendar');
   if (requestCalendar) {
@@ -5701,35 +5683,6 @@ const checkboard = () => {
   checkboardNav();
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (checkboard);
-
-/***/ }),
-
-/***/ "./src/js/components/choicePay.js":
-/*!****************************************!*\
-  !*** ./src/js/components/choicePay.js ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-const choicePay = () => {
-  const container = document.querySelector('.choice-pay');
-  if (!container) return;
-  const items = container.querySelectorAll('.choice-pay__card');
-  items.forEach(item => {
-    const check = item.querySelector('.choice-pay__check');
-    item.addEventListener('click', () => {
-      items.forEach(item => item.classList.remove('_active'));
-      item.classList.add('_active');
-      if (item.classList.contains('choice-pay__card--sum')) check.setAttribute('aria-label', 'Выбрано 100% оплата');
-      if (item.classList.contains('choice-pay__card--mortgage')) check.setAttribute('aria-label', 'Выбрана ипотека');
-    });
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (choicePay);
 
 /***/ }),
 
@@ -7257,71 +7210,6 @@ const favoriteBtn = () => {
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (favoriteBtn);
-
-/***/ }),
-
-/***/ "./src/js/components/favorites.js":
-/*!****************************************!*\
-  !*** ./src/js/components/favorites.js ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   favoriteChoicePopup: () => (/* binding */ favoriteChoicePopup),
-/* harmony export */   favoritesPage: () => (/* binding */ favoritesPage)
-/* harmony export */ });
-const favoritesPage = () => {
-  const container = document.querySelector('.favorites__tab--client');
-  if (container) {
-    const client = container.querySelector('[data-favorite-client-select]');
-    const selection = container.querySelector('[data-favorite-selection-select]');
-    if (client && selection) {
-      const select = client.querySelector('.select-secondary');
-      if (select) {
-        select.addEventListener('change', () => {
-          selection.removeAttribute('hidden');
-        });
-      }
-    }
-  }
-};
-const favoriteChoicePopup = () => {
-  const container = document.querySelector('.favorite-two');
-  if (!container) return;
-  const myListBtn = container.querySelector('[data-favorite-announcement-btn]');
-  const clientBtn = container.querySelector('[data-favorite-client-btn]');
-  const announcement = container.querySelector('[data-favorite-announcement-select]');
-  const client = container.querySelector('[data-favorite-client-select]');
-  const selection = container.querySelector('[data-favorite-selection-select]');
-  const selectionTwo = container.querySelector('[data-favorite-selection-select-two]');
-  myListBtn.addEventListener('click', () => {
-    clientBtn.classList.remove('_active');
-    myListBtn.classList.add('_active');
-    announcement.removeAttribute('hidden');
-    client.setAttribute('hidden', '');
-    selection.setAttribute('hidden', '');
-    if (announcement.classList.contains('_selected')) {
-      selectionTwo.removeAttribute('hidden');
-    }
-  });
-  clientBtn.addEventListener('click', () => {
-    myListBtn.classList.remove('_active');
-    clientBtn.classList.add('_active');
-    announcement.setAttribute('hidden', '');
-    selectionTwo.setAttribute('hidden', '');
-    client.removeAttribute('hidden');
-    if (client.classList.contains('_selected')) {
-      selection.removeAttribute('hidden');
-    }
-  });
-  announcement.addEventListener('change', () => {
-    if (announcement.classList.contains('_selected')) {
-      selectionTwo.removeAttribute('hidden');
-    }
-  });
-};
 
 /***/ }),
 
@@ -9773,118 +9661,6 @@ const galleryStories = () => {
 
 /***/ }),
 
-/***/ "./src/js/components/genplan.js":
-/*!**************************************!*\
-  !*** ./src/js/components/genplan.js ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _popperjs_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @popperjs/core */ "./node_modules/@popperjs/core/lib/popper.js");
-/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modules/modal */ "./src/js/modules/modal.js");
-/* harmony import */ var _functions_spollers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../functions/spollers */ "./src/js/functions/spollers.js");
-
-
-
-const genplan = () => {
-  const container = document.querySelector('.genplan');
-  if (!container) return;
-  const infrastructureBtn = container.querySelector('.genplan__infrastructure');
-  const marks = container.querySelectorAll('.genplan__mark');
-  const visualInfo = container.querySelectorAll('.visual-info');
-  const innerWidth = 1212;
-  function togglePopper(container) {
-    container.forEach(item => {
-      let popper;
-      item.addEventListener('mouseenter', () => {
-        if (!item.classList.contains('_static')) {
-          item.classList.add('_active');
-          item.classList.add('_big-index');
-          const btn = item.querySelector('button');
-          const content = item.querySelector('.visual-info__content') ? item.querySelector('.visual-info__content') : item.querySelector('div');
-          if (btn && content) {
-            popper = (0,_popperjs_core__WEBPACK_IMPORTED_MODULE_2__.createPopper)(btn, content, {
-              placement: 'auto',
-              modifiers: [{
-                name: 'offset',
-                options: {
-                  offset: [5, 5]
-                }
-              }]
-            });
-          }
-        }
-      });
-      item.addEventListener('mouseleave', () => {
-        if (!item.classList.contains('_static')) {
-          item.classList.remove('_active');
-          setTimeout(() => {
-            item.classList.remove('_big-index');
-          }, 150);
-          setTimeout(() => {
-            if (!item.classList.contains('_active')) popper.destroy();
-          }, 300);
-        }
-      });
-    });
-  }
-  if (window.innerWidth > innerWidth) {
-    togglePopper(marks);
-    togglePopper(visualInfo);
-  } else {
-    marks.forEach(item => {
-      item.addEventListener('click', () => {
-        const card = item.querySelector('.genplan-mark');
-        const modalHTML = `
-                <div class="genplan-popup-card">
-                <div class="genplan-popup-card__container">
-                    <button class="btn-reset genplan-popup-card__close" aria-label="Закрыть модальное окно">
-                        <span>Закрыть</span>
-                    </button>
-                     <div class="genplan-popup-card__content">
-                        ${card.outerHTML}
-                     </div>
-                </div>
-                </div>
-                `;
-        (0,_modules_modal__WEBPACK_IMPORTED_MODULE_0__["default"])(modalHTML, '.genplan-popup-card', 300);
-        (0,_functions_spollers__WEBPACK_IMPORTED_MODULE_1__["default"])();
-      });
-    });
-    visualInfo.forEach(item => {
-      item.addEventListener('click', () => {
-        visualInfo.forEach(el => {
-          if (item !== el) el.classList.remove('_active');
-        });
-        item.classList.toggle('_active');
-      });
-    });
-    const mask = container.querySelector('.genplan__mask');
-    mask.addEventListener('touchstart', () => {
-      mask.classList.remove('_active');
-      setTimeout(() => {
-        mask.classList.add('hidden');
-      }, 500);
-    });
-  }
-  visualInfo.forEach(item => item.classList.add('_no-visible'));
-  infrastructureBtn.addEventListener('click', () => {
-    const checked = infrastructureBtn.querySelector('input').checked;
-    if (checked) {
-      visualInfo.forEach(item => item.classList.remove('_no-visible'));
-    } else {
-      visualInfo.forEach(item => item.classList.add('_no-visible'));
-    }
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (genplan);
-
-/***/ }),
-
 /***/ "./src/js/components/headerFixed.js":
 /*!******************************************!*\
   !*** ./src/js/components/headerFixed.js ***!
@@ -10668,33 +10444,40 @@ const mapMetro = () => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   bidMap: () => (/* binding */ bidMap),
+/* harmony export */   complaintObjectMap: () => (/* binding */ complaintObjectMap),
+/* harmony export */   controlCardsMap: () => (/* binding */ controlCardsMap),
+/* harmony export */   mapDraw: () => (/* binding */ mapDraw),
+/* harmony export */   mapDraw2: () => (/* binding */ mapDraw2),
+/* harmony export */   objectMaps: () => (/* binding */ objectMaps),
+/* harmony export */   placeSaleAddressMap: () => (/* binding */ placeSaleAddressMap),
+/* harmony export */   popupMap: () => (/* binding */ popupMap)
 /* harmony export */ });
-const maps = () => {
-  function removeControlsPrimary(map, containerSelector) {
-    map.controls.remove('geolocationControl'); // удаляем геолокацию
-    map.controls.remove('searchControl'); // удаляем поиск
-    map.controls.remove('trafficControl'); // удаляем контроль трафика
-    map.controls.remove('typeSelector'); // удаляем тип
-    map.controls.remove('rulerControl'); // удаляем контрол правил
-    map.behaviors.disable(['scrollZoom']); // отключаем скролл карты (опционально)
-  }
-  function positionElement(map) {
-    map.controls.get('fullscreenControl').options.set({
-      position: {
-        top: 16,
-        right: 16
-      },
-      maxWidth: '44'
-    });
-    map.controls.get('zoomControl').options.set({
-      position: {
-        top: 92,
-        right: 16
-      },
-      maxWidth: '44'
-    });
-  }
+function removeControlsPrimary(map, containerSelector) {
+  map.controls.remove('geolocationControl');
+  map.controls.remove('searchControl');
+  map.controls.remove('trafficControl');
+  map.controls.remove('typeSelector');
+  map.controls.remove('rulerControl');
+  map.behaviors.disable(['scrollZoom']);
+}
+function positionElement(map) {
+  map.controls.get('fullscreenControl').options.set({
+    position: {
+      top: 16,
+      right: 16
+    },
+    maxWidth: '44'
+  });
+  map.controls.get('zoomControl').options.set({
+    position: {
+      top: 92,
+      right: 16
+    },
+    maxWidth: '44'
+  });
+}
+const bidMap = () => {
   if (document.querySelector('#bid-maps')) {
     document.querySelectorAll('#bid-maps').forEach(item => {
       function init() {
@@ -10703,7 +10486,7 @@ const maps = () => {
           zoom: 10
         });
         positionElement(map);
-        removeControlsPrimary(map, '#bid-maps');
+        removeControlsPrimary(map);
         if (item.closest('.history-changes')) {
           map.behaviors.enable(['scrollZoom']);
           map.controls.remove('fullscreenControl');
@@ -10719,6 +10502,8 @@ const maps = () => {
       ymaps.ready(init);
     });
   }
+};
+const complaintObjectMap = () => {
   if (document.querySelector('#complaint-object-two-maps')) {
     const objectMaps = document.querySelector('#complaint-object-two-maps');
     if (!objectMaps) return;
@@ -10728,7 +10513,7 @@ const maps = () => {
         zoom: 10
       });
       positionElement(map);
-      removeControlsPrimary(map, '#complaint-object-two-maps');
+      removeControlsPrimary(map);
       const fullScreenControl = map.controls.get('fullscreenControl');
       fullScreenControl.events.add('fullscreenenter', function () {
         const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
@@ -10737,6 +10522,8 @@ const maps = () => {
     }
     ymaps.ready(init);
   }
+};
+const mapDraw2 = () => {
   if (document.querySelector('#map-draw--2')) {
     function init() {
       let map = new ymaps.Map('map-draw--2', {
@@ -10744,10 +10531,12 @@ const maps = () => {
         zoom: 10
       });
       positionElement(map);
-      removeControlsPrimary(map, '#map-draw--2');
+      removeControlsPrimary(map);
     }
     ymaps.ready(init);
   }
+};
+const popupMap = () => {
   if (document.querySelector('#popup-map__map')) {
     const container = document.querySelector('.popup-map__container');
     if (!container) return;
@@ -10756,7 +10545,7 @@ const maps = () => {
         center: [55.77171185651524, 37.62811179984117],
         zoom: 10
       });
-      removeControlsPrimary(map, '#popup-map__map');
+      removeControlsPrimary(map);
       map.behaviors.enable(['scrollZoom']);
       map.controls.remove('fullscreenControl');
       map.controls.get('zoomControl').options.set({
@@ -10811,6 +10600,8 @@ const maps = () => {
       }
     });
   }
+};
+const controlCardsMap = () => {
   if (document.querySelector('#control-cards__maps')) {
     const container = document.querySelector('#control-cards__maps').closest('.control-cards__container');
     if (!container) return;
@@ -10819,7 +10610,7 @@ const maps = () => {
         center: [55.77171185651524, 37.62811179984117],
         zoom: 10
       });
-      removeControlsPrimary(map, '#control-cards__maps');
+      removeControlsPrimary(map);
       map.behaviors.enable(['scrollZoom']);
       map.controls.remove('fullscreenControl');
       map.controls.get('zoomControl').options.set({
@@ -10892,13 +10683,15 @@ const maps = () => {
       }, 500);
     }
   }
+};
+const mapDraw = () => {
   if (document.querySelector('#map-draw')) {
     function init() {
       let map = new ymaps.Map('map-draw', {
         center: [55.77171185651524, 37.62811179984117],
         zoom: 10
       });
-      removeControlsPrimary(map, '#map-draw');
+      removeControlsPrimary(map);
       drawSettings(map);
     }
     ymaps.ready(init);
@@ -10980,6 +10773,8 @@ const maps = () => {
       }
     }
   }
+};
+const placeSaleAddressMap = () => {
   if (document.querySelector('#place-sale-address-map')) {
     function init() {
       let map = new ymaps.Map('place-sale-address-map', {
@@ -10987,10 +10782,12 @@ const maps = () => {
         zoom: 10
       });
       positionElement(map);
-      removeControlsPrimary(map, '#place-sale-address-map');
+      removeControlsPrimary(map);
     }
     ymaps.ready(init);
   }
+};
+const objectMaps = () => {
   if (document.querySelector('#object-maps')) {
     const objectMaps = document.querySelector('#object-maps');
     if (!objectMaps) return;
@@ -11000,7 +10797,7 @@ const maps = () => {
         zoom: 10
       });
       positionElement(map);
-      removeControlsPrimary(map, '#object-maps');
+      removeControlsPrimary(map);
       const containerSelects = objectMaps.closest('.object-location--select');
       if (containerSelects) {
         let btnCloseRoute;
@@ -11140,7 +10937,6 @@ const maps = () => {
     ymaps.ready(init);
   }
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (maps);
 
 /***/ }),
 
@@ -14445,43 +14241,6 @@ const videoModal = () => {
 
 /***/ }),
 
-/***/ "./src/js/components/wallet.js":
-/*!*************************************!*\
-  !*** ./src/js/components/wallet.js ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-const wallet = () => {
-  const container = document.querySelector('.wallet');
-  if (!container) return;
-  const input = container.querySelector('.wallet-balance__label input');
-  const btn = container.querySelector('.wallet-balance__btn');
-  input.addEventListener('input', () => {
-    if (input.value.length >= 2 && input.value[0] === '0') {
-      input.value = input.value.slice(1);
-    }
-    if (input.value !== '' && input.value !== '0') {
-      btn.removeAttribute('disabled');
-    } else {
-      btn.setAttribute('disabled', '');
-    }
-  });
-  input.addEventListener('focusin', () => {
-    input.value = input.value.replace(' ₽', '');
-  });
-  input.addEventListener('focusout', () => {
-    if (input.value !== '' && input.value !== '0') input.value += ' ₽';
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (wallet);
-
-/***/ }),
-
 /***/ "./src/js/components/wantDiscount.js":
 /*!*******************************************!*\
   !*** ./src/js/components/wantDiscount.js ***!
@@ -16228,6 +15987,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_inputs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/inputs */ "./src/js/components/inputs.js");
 /* harmony import */ var _components_createCalc__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/createCalc */ "./src/js/components/createCalc.js");
 /* harmony import */ var _modules_emergingBlockScroll__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../modules/emergingBlockScroll */ "./src/js/modules/emergingBlockScroll.js");
+/* harmony import */ var _components_calendar__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/calendar */ "./src/js/components/calendar.js");
+
 
 
 
@@ -16366,6 +16127,10 @@ const tabs = () => {
           } else {
             favoritesTabs[index].hidden = true;
           }
+        }
+        if (tabsContentItem.children[0] && tabsContentItem.children[0].classList.contains('calendar-primary') && tabsTitles[index].classList.contains('_tab-active') && !tabsBlock.classList.contains('_init-calendar')) {
+          (0,_components_calendar__WEBPACK_IMPORTED_MODULE_11__.calendarPrimary)('.request-calendar .calendar-primary', 'eventsCalendar.json', false);
+          tabsBlock.classList.add('_init-calendar');
         }
       });
     }

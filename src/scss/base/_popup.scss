@@ -569,6 +569,9 @@
     }
 
     &--suggest-object {
+        @media (min-width:$desktop-min){
+            overflow: hidden; 
+        }
         .popup-primary {
             &__container {
                 border-radius: 12px 0 0 0;
@@ -1122,11 +1125,13 @@
             }
         }
 
-        &::before {
-            content: "";
-            display: inline-block;
-            vertical-align: middle;
-            height: 100%;
+        @media (min-width:$desktop-min){
+            &::before {
+                content: "";
+                display: inline-block;
+                vertical-align: middle;
+                height: 100%;
+            } 
         }
 
         @media (max-width:$desktop) {
@@ -1562,7 +1567,11 @@
 }
 
 .suggest-object {
-    width: 470px;
+    @media (min-width:$desktop-min){
+        height: calc(var(--vh) - 60px - 75px);
+        overflow-y: auto;
+        overflow-x: hidden; 
+    }
     &__list {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(375px, 1fr));
@@ -1570,19 +1579,15 @@
         grid-row-gap: 16px;
 
         background-color: var(--stand-bg);
-        padding: 32px 48px 100px;
+        padding: 32px 48px 48px;
         @media (max-width:$desktop) {
-            padding: 32px 16px 16px;
+            padding: 32px 16px calc(75px + 32px);
         }
     }
     &__bottom{
-        width: inherit;
         height: 75px;
-      position: fixed;
+   
         z-index: 1;
-        bottom: 0;
-        right: 0px;
-        margin-right: 18px;
         background-color: var(--white);
         box-shadow: var(--shadow-primary);
 
@@ -1591,6 +1596,13 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        @media (max-width:$desktop){
+             position: fixed;
+             bottom: 0;
+             right: 0;
+             left: 0;
+             width: 100%; 
+        }
     }
     &__btn{
         width: 100%;
@@ -7288,10 +7300,6 @@ width: 100%;
             &:hover {
                 border: 1px solid var(--blue);
             }
-        }
-
-        @media (max-width:$desktop) {
-            --width: 100px;
         }
     }
 

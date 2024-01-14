@@ -18,7 +18,16 @@ import {
 import {
     simplebar
 } from './components/simplebar';
-import maps from './components/maps';
+import {
+    bidMap,
+    complaintObjectMap,
+    mapDraw2,
+    popupMap,
+    controlCardsMap,
+    mapDraw,
+    placeSaleAddressMap,
+    objectMaps
+} from './components/maps';
 import linkCopy from './modules/linkCopy';
 import {
     inputText,
@@ -68,8 +77,8 @@ import {
 import checkboard from './components/checkboard';
 import headerFixed from './components/headerFixed';
 import mortgage from './components/mortgage';
-import choicePay from './components/choicePay';
-import genplan from './components/genplan';
+// import choicePay from './components/choicePay';
+// import genplan from './components/genplan';
 import mapMetro from './components/mapMetro';
 import tag from './components/tag';
 import chat from './components/chat';
@@ -87,11 +96,11 @@ import {
     recordViewing,
     recordViewingTwo
 } from './components/recordViewing';
-import wallet from './components/wallet';
-import {
-    favoritesPage,
-    favoriteChoicePopup
-} from './components/favorites';
+// import wallet from './components/wallet';
+// import {
+//     favoritesPage,
+//     favoriteChoicePopup
+// } from './components/favorites';
 import {
     clientPage
 } from './components/clientPage';
@@ -99,13 +108,14 @@ import requisites from './components/requisites'
 import navDropdown from './components/navDropdown';
 import videoModal from './components/videoModal';
 import favoriteBtn from './components/favoriteBtn';
-import advancePayment from './components/advancePayment';
+// import advancePayment from './components/advancePayment';
 import submitApp from './components/submitApp';
 import wantDiscount from './components/wantDiscount';
 import onlineDisplay from './components/onlineDisplay';
 import bankOffer from './components/bankOffer';
 import {
-    tooltipSecondary,tooltipMain
+    tooltipSecondary,
+    tooltipMain
 } from './components/tooltips';
 import {
     dragDrops
@@ -173,8 +183,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ==================================================
     navDropdown();
-    maps();
-    calendarPrimary('.request-calendar .calendar-primary', 'eventsCalendar.json', false);
+    // ==================================================
+    bidMap();
+    complaintObjectMap();
+    mapDraw2();
+    popupMap();
+    controlCardsMap();
+    mapDraw();
+    placeSaleAddressMap();
+    objectMaps();
+    // ==================================================
+
     calendarPrimary('.calendar-page .calendar-primary', 'eventsCalendar.json', true);
     calendarPrimary('.home-services__calendar .calendar-primary', 'eventsCalendar.json', false);
     controlCards();
@@ -185,8 +204,8 @@ document.addEventListener('DOMContentLoaded', () => {
     checkboard();
     headerFixed();
     mortgage();
-    choicePay();
-    genplan();
+    // choicePay();
+    // genplan();
     mapMetro();
     tag();
     chat();
@@ -199,14 +218,14 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollDrag('.tabs-primary.tabs-primary--controls .tabs__navigation', 1000, true);
     recordViewing();
     recordViewingTwo();
-    wallet();
-    favoritesPage();
-    favoriteChoicePopup();
+    // wallet();
+    // favoritesPage();
+    // favoriteChoicePopup();
     clientPage();
     requisites();
     videoModal();
     favoriteBtn();
-    advancePayment();
+    // advancePayment();
     submitApp();
     wantDiscount();
     onlineDisplay();
@@ -313,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
             Этот объект не подходит под выбранную цену
         </h4>
         </div>
-    `,'offer-room-clue',true);
+    `, 'offer-room-clue', true);
     // ==================================================
     const objectMetro = document.querySelectorAll('.object-data__metro');
     if (objectMetro.length > 0) {
@@ -321,16 +340,17 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             body();
         }, 1);
-        window.addEventListener('resize',() => {
+        window.addEventListener('resize', () => {
             body();
         });
+
         function body() {
             objectMetro.forEach(container => {
                 metroItems(container, container.closest('.object-body__data'));
             })
         }
     }
-    document.addEventListener('click',(e) => {
+    document.addEventListener('click', (e) => {
         const metroOther = e.target.closest('.metro-info__other');
         if (metroOther) {
             e.preventDefault();
@@ -354,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 modal(modalHTML, '.metro-info-modal', 300);
                 const metroInfoModal = document.querySelector('.metro-info-modal');
             }
-        }            
+        }
     })
     // ==================================================
 
@@ -417,10 +437,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('scroll', () => {
             scrollUp();
         })
-        btnScrollUp.addEventListener('click',() => {
+        btnScrollUp.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
-                behavior:'smooth',
+                behavior: 'smooth',
             })
         })
     }
@@ -440,8 +460,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const go = suggestObject.closest('.popup-primary--suggest-object').querySelector('.suggest-object__btn');
         btns.forEach(btn => {
             const btnSpan = btn.querySelector('span');
-            const btnStartText = btnSpan.textContent;            
-            btn.addEventListener('click',() => {
+            const btnStartText = btnSpan.textContent;
+            btn.addEventListener('click', () => {
                 if (!btn.classList.contains('_suggest-active')) {
                     btn.classList.add('_suggest-active');
                     btnSpan.textContent = 'Объект выбран';
@@ -466,7 +486,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (result) {
                 go.removeAttribute('disabled');
             } else {
-                go.setAttribute('disabled','');
+                go.setAttribute('disabled', '');
             }
         }
     }

@@ -23,6 +23,9 @@ import {
 import {
     emergingBlockScroll
 } from '../modules/emergingBlockScroll';
+import {
+    calendarPrimary
+} from '../components/calendar';
 export const tabs = () => {
     const tabs = document.querySelectorAll('[data-tabs]');
     let tabsActiveHash = [];
@@ -161,6 +164,11 @@ export const tabs = () => {
                     } else {
                         favoritesTabs[index].hidden = true;
                     }
+                }
+                if (tabsContentItem.children[0] && tabsContentItem.children[0].classList.contains('calendar-primary') && tabsTitles[index].classList.contains('_tab-active') 
+                && !tabsBlock.classList.contains('_init-calendar')) {
+                    calendarPrimary('.request-calendar .calendar-primary', 'eventsCalendar.json', false);
+                    tabsBlock.classList.add('_init-calendar');
                 }
 
             });

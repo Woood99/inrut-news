@@ -352,7 +352,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     document.addEventListener('click', (e) => {
         const metroOther = e.target.closest('.metro-info__other');
-        if (metroOther) {
+        const metroClose = e.target.closest('.metro-info__close');
+        if (metroOther && !e.target.closest('.metro-info__other-items')) {
             e.preventDefault();
             metroOther.classList.toggle('_active');
             if (window.innerWidth <= 1212) {
@@ -374,6 +375,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 modal(modalHTML, '.metro-info-modal', 300);
                 const metroInfoModal = document.querySelector('.metro-info-modal');
             }
+        }
+        if (metroClose) {
+            e.preventDefault();
+            metroOther.classList.remove('_active');
         }
     })
     // ==================================================

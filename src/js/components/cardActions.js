@@ -8,7 +8,7 @@ import {
     _slideDown,
     _slideUp
 } from '../support-modules/slide'
-
+import modal from '../modules/modal';
 export const cardSecondaryActions = () => {
     const cards = document.querySelectorAll('.card-secondary');
     if (cards.length === 0) return;
@@ -116,6 +116,7 @@ export const cardSecondaryActions = () => {
             }
         })
     }
+
     function tagsTwoMobile() {
         cards.forEach(card => {
             if (window.innerWidth <= 1212) {
@@ -184,6 +185,10 @@ export const cardPrimaryActions = () => {
             const copiesClose = e.target.closest('.card-primary__copies-close');
             const dislikeBtn = e.target.closest('.card-primary__info--dislike-btn');
             const likeBtn = e.target.closest('.card-primary__info--like-btn');
+
+            const dislike = e.target.closest('.card-primary__info--dislike');
+            const comment = e.target.closest('.card-primary__info--comment');
+
             if (favorite && !(favorite.dataset.popupPath && favorite.dataset.popupPath === 'favorite-two')) {
                 e.preventDefault();
                 card.querySelectorAll('.card-primary__info--favorite').forEach(el => {
@@ -204,6 +209,30 @@ export const cardPrimaryActions = () => {
             }
             if (dislikeBtn || likeBtn) {
                 e.preventDefault();
+            }
+            if (dislike || comment) {
+                const currentTarget = dislike || comment;
+                e.preventDefault();
+                if (currentTarget.querySelector('.secondary-tooltip__content')) {
+                    const modalHTML = `
+                    <div class="tooltip-modal">
+                        <div class="tooltip-modal__container">
+                            <button class="btn-reset tooltip-modal__close" aria-label="Закрыть модальное окно">
+                                <svg>
+                                    <use xlink:href="./img/sprite.svg#x"></use>
+                                </svg>
+                                <span>Закрыть</span>
+                            </button>
+                            <div class="tooltip-modal__content">
+                                ${currentTarget.querySelector('.secondary-tooltip__content').innerHTML}
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                    modal(modalHTML, '.tooltip-modal', 300);
+                    const tooltipModal = document.querySelector('.tooltip-modal');
+                    tooltipModal.classList.add('_card-tooltip');
+                }
             }
         })
     })

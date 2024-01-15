@@ -105,7 +105,9 @@ const styles = () => {
         .pipe(gulpif(isProd, cleanCSS({
             level: 2
         })))
-        .pipe(dest(paths.buildCssFolder))
+        .pipe(dest(paths.buildCssFolder, {
+            sourcemaps: '.'
+        }))
         .pipe(browserSync.stream());
 };
 
@@ -120,7 +122,7 @@ const scripts = () => {
             })
         ))
         .pipe(webpackStream({
-            mode: 'production',
+            mode: isProd ? 'production' : 'development',
             entry: {
                 main: './src/js/main.js',
             },

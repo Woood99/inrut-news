@@ -4038,9 +4038,10 @@
             }
 
             >div {
-              &:not(:last-child){
-                margin-bottom: 16px;
-              }
+                &:not(:last-child) {
+                    margin-bottom: 16px;
+                }
+
                 >div {
                     &:not(:last-child) {
                         margin-bottom: 8px;
@@ -4059,6 +4060,102 @@
                 -webkit-box-orient: vertical;
                 overflow: hidden;
             }
+        }
+    }
+}
+
+.shorts-modal {
+    --transition-time: 0.3s;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1051;
+    background-color: rgba(34, 41, 102, 0.4);
+    cursor: pointer;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-time), visibility var(--transition-time);
+    text-align: center;
+    display: flex;
+    align-items: end;
+
+
+    &.is-open {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity var(--transition-time), visibility var(--transition-time);
+    }
+
+    &__container {
+        position: relative;
+        background-color: #fff;
+        cursor: default;
+        text-align: center;
+        display: none;
+
+        &.open {
+            display: inline-block !important;
+        }
+
+        margin: 0 auto;
+        padding: 65px 16px 32px;
+        width: 100%;
+        min-height: 100%;
+    }
+
+    &__close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        border: none;
+        padding: 0;
+        width: 60px;
+        height: 60px;
+        background-color: transparent;
+        cursor: pointer;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            width: 25px;
+            height: 25px;
+            fill: var(--blue);
+            transition: fill $transitionSpeed $transitionFunction;
+
+            @media (max-width:$desktop) {
+                display: none;
+            }
+        }
+
+        span {
+            color: var(--blue);
+            font-size: var(--small-fz);
+            line-height: var(--small-lh);
+            font-weight: 500;
+
+            @media (min-width:$desktop) {
+                display: none;
+            }
+        }
+
+        @media (min-width:$desktop-min) {
+            &:hover {
+                svg {
+                    fill: var(--primary500);
+                }
+            }
+        }
+
+        @media (max-width:$desktop) {
+            right: 16px;
+            top: 24px;
+            width: auto;
+            height: auto;
         }
     }
 }

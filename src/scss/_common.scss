@@ -336,6 +336,9 @@
     &__btn {
         &:not(:last-child) {
             margin-right: 2px;
+            @media (max-width:$desktop) {
+                margin-right: 8px;
+            }
         }
     }
 
@@ -359,6 +362,10 @@
     &__btn {
         &:not(:last-child) {
             margin-right: 2px;
+
+            @media (max-width:$desktop) {
+                margin-right: 8px;
+            }
         }
     }
 
@@ -367,7 +374,28 @@
     }
 
 }
-
+.mobile-top{
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    &__btn{
+        margin-left: auto;
+        padding: 5px 6px;
+        border-radius: 6px;
+        border: 1px solid var(--primary200);
+        background-color:var(--white);
+        svg{
+            display: block;
+    width: 12px;
+    height: 13px;
+    fill: var(--gray);
+    transition: fill 0.4s ease-in-out;
+        }
+    }
+    @media (min-width:$desktop-min){
+         display: none; 
+    }
+}
 
 .map-metro {
     position: relative;

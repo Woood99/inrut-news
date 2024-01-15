@@ -154,6 +154,7 @@ popup(null, 'stock-offers-popup');
 popup(null, 'tariff-popup');
 popup(null, 'tariff-bank-popup');
 popup(null, 'want-discount');
+popup(null, 'want-discount2');
 popup(null, 'proposal-sent');
 popup({
     isOpen: (settingsModal) => {

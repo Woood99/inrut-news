@@ -48,15 +48,14 @@ export const calendarPrimary = (containerSelector, url, edit = false) => {
                     calendaryPrimary.next();
                     addedClassesCalendar();
                 }
-            }
+            },
         }
     })
 
     calendaryPrimary.render();
-
     getEvents();
     async function getEvents() {
-        const response = await fetch('./eventsCalendar.json');
+        const response = await fetch(url);
         if (response.ok) {
             const eventsArray = await response.json();
             eventModal(eventsArray);

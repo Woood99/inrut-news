@@ -14,7 +14,7 @@ const shorts = () => {
     const slider = new Swiper(list, {
         observer: true,
         observeParents: true,
-        slidesPerView: 1,
+        slidesPerView: 1.1,
         spaceBetween: 16,
         speed: 800,
 

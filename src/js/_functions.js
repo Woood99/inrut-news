@@ -132,7 +132,9 @@ popup({
 
 }, 'screen-demonstation-popup');
 popup(null, 'record-viewing');
+popup(null, 'record-viewing3');
 popup(null, 'record-viewing-two');
+popup(null, 'record-viewing-two2');
 popup(null, 'personal-area-two');
 popup(null, 'client-fixed');
 popup(null, 'add-card');
@@ -179,6 +181,7 @@ popup({
 popup(null, 'object-gallery--two');
 popup(null, 'warning-remove');
 popup(null, 'warning-remove2');
+popup(null, 'warning-remove3');
 popup(null, 'select-bank');
 popup(null, 'metro-map');
 popup(null, 'im-buying');

@@ -192,9 +192,6 @@ const shorts = () => {
             }) 
         }, 1250);
     }
-
-
-
 };
 
 export default shorts;

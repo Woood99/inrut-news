@@ -50,6 +50,7 @@ const shorts = () => {
         modalContainer.querySelector('.shorts-modal__content').innerHTML = generateSliderHTML(cards);
         createVideos(modalContainer);
         createSlider(modalContainer,currentIndex);
+        controlVideo(modalContainer);
     }
 
     function generateSliderHTML(cards) {
@@ -62,8 +63,9 @@ const shorts = () => {
                             <span class="web-skeleton__children"></span>
                         </span>
                     </div>
+                    <div class="shorts__item-panel"></div>
                     <video class="shorts__item short video-js vjs-default-skin vjs-fluid" controls
-                        data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "${card.dataset.shortCardUrl}"}] }'>
+                        data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "${card.dataset.shortCardUrl}&enablejsapi=1"}] }'>
                     </video>
                 </div>
             `;
@@ -114,7 +116,21 @@ const shorts = () => {
             });
         })
     }
-
+    function controlVideo(modalContainer) {
+        const slides = modalContainer.querySelectorAll('.swiper-slide');
+        if (slides.length === 0) return;
+        slides.forEach(slide => {
+            const video = slide.querySelector('.shorts__item');
+            const panel = slide.querySelector('.shorts__item-panel');
+            panel.addEventListener('click',() => {
+                   if (videojs(video).paused()) {
+                    videojs(video).play();
+                   } else {
+                    videojs(video).pause();
+                   }
+            })
+        })
+    }
     function createSlider(modalContainer,currentIndex) {
         const shorts = modalContainer.querySelectorAll('.shorts__item');
         shorts.forEach((item, index) => {
@@ -125,11 +141,10 @@ const shorts = () => {
         const slider = new Swiper(sliderEl, {
             observer: true,
             observeParents: true,
-            slidesPerView: 1.1,
+            slidesPerView: 1,
             spaceBetween: 16,
             speed: 800,
 
-            allowTouchMove: false,
             direction: 'vertical',
             keyboard: true,
             forceToAxis: true,
@@ -138,6 +153,12 @@ const shorts = () => {
             navigation: {
                 prevEl: modalContainer.querySelector('.shorts__prev'),
                 nextEl: modalContainer.querySelector('.shorts__next'),
+            },
+            breakpoints: {
+                1212: {
+                    slidesPerView: 1.1,
+                    allowTouchMove: false,
+                },
             },
         });
         setTimeout(() => {

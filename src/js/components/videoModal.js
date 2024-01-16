@@ -18,7 +18,8 @@ const videoModal = () => {
                      <div class="video-modal__content review-modal-content">
                      <div class="video-block video-block--auto">
                      <button type="button" class="btn btn-reset video-block__button" data-src="${target.dataset.videoModal}">
-                         ${target.querySelector('.video-card__image').innerHTML}
+                         ${target.querySelector('.video-card__image') ? target.querySelector('.video-card__image').innerHTML : ''}
+                         ${target.querySelector('.card-short__link picture') ? target.querySelector('.card-short__link picture').innerHTML : ''}
                          <div class="video-block__video">
      
                          </div>

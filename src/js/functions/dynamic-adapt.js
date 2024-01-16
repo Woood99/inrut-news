@@ -71,6 +71,7 @@ DynamicAdapt.prototype.mediaHandler = function (matchMedia, оbjects) {
 // Функция перемещения
 DynamicAdapt.prototype.moveTo = function (place, element, destination) {
     element.classList.add(this.daClassname);
+    element.classList.add('_dynamic-moved')
     if (place === 'last' || place >= destination.children.length) {
         destination.insertAdjacentElement('beforeend', element);
         return;

@@ -88,7 +88,7 @@ export const cardSecondaryActions = () => {
                 `;
                 modal(modalHTML, '.tooltip-modal', 300);
                 const tooltipModal = document.querySelector('.tooltip-modal');
-                tooltipModal.classList.add('_card-tooltip');
+                tooltipModal.classList.add('_card-tooltip-options');
             }
         })
 

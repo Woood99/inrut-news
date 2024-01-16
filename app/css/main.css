@@ -31091,6 +31091,24 @@ textarea.input-reset {
   grid-column-gap: 12px;
   grid-row-gap: 16px;
 }
+@media (max-width: 1212px) {
+  .shorts-items {
+    -ms-grid-columns: (minmax(120px, 200px))[4];
+    grid-template-columns: repeat(4, minmax(120px, 200px));
+  }
+}
+@media (max-width: 768px) {
+  .shorts-items {
+    -ms-grid-columns: (minmax(120px, 200px))[3];
+    grid-template-columns: repeat(3, minmax(120px, 200px));
+  }
+}
+@media (max-width: 576px) {
+  .shorts-items {
+    -ms-grid-columns: (1fr)[2];
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
 .shorts {
   display: -webkit-box;
@@ -39375,7 +39393,7 @@ textarea.input-reset {
 
 @media (max-width: 1212px) {
   .stock-developer__body {
-    padding: calc(var(--header-height) + 24px) 0 16px;
+    padding: calc(var(--header-height, 51px) + 24px) 0 16px;
     background-color: var(--stand-bg);
     border-radius: 0 0 12px 12px;
   }
@@ -39417,17 +39435,30 @@ textarea.input-reset {
 .stock-developer .tabs-primary__inner {
   margin-top: 24px;
 }
-.stock-developer .tabs-primary__inner > ._sticky {
-  padding-top: 8px;
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 5;
-  background-color: var(--white);
+@media (min-width: 1213px) {
+  .stock-developer .tabs-primary__inner > ._sticky {
+    padding-top: 8px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    background-color: var(--white);
+  }
+  .stock-developer .tabs-primary__inner .filter--sticky {
+    top: 47px;
+  }
 }
-.stock-developer .tabs-primary__inner .filter--sticky {
-  top: 47px;
+@media (max-width: 1212px) {
+  .stock-developer .tabs-primary__inner {
+    padding-top: 0;
+    margin-top: 0;
+  }
+}
+@media (max-width: 1212px) {
+  .stock-developer .tabs-primary {
+    padding: 24px 0;
+  }
 }
 .stock-developer .cards-list__items {
   margin-top: 0;
@@ -42383,9 +42414,9 @@ textarea.input-reset {
   margin-right: 12px;
 }
 .my-objects__content {
-  margin-top: 24px;
+  margin-top: 32px;
   background-color: var(--stand-bg);
-  padding: 24px 0;
+  padding: 32px 0;
   border-radius: 16px;
 }
 @media (max-width: 1212px) {
@@ -42396,6 +42427,8 @@ textarea.input-reset {
 }
 .my-objects .tabs-primary__container {
   background-color: transparent;
+  margin-top: 0;
+  padding: 0;
 }
 @media (max-width: 1212px) {
   .my-objects .tabs-primary__inner {

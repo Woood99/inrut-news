@@ -4054,11 +4054,9 @@
             }
 
             >p {
-                margin-top: 8px;
-                display: -webkit-box;
-                -webkit-line-clamp: 15;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
+                &:not(:last-child){
+                    margin-bottom: 4px;
+                }
             }
         }
     }
@@ -4091,7 +4089,7 @@
 
     &__container {
         position: relative;
-        background-color: #fff;
+        background-color: #f7f9fd;
         cursor: default;
         text-align: center;
         display: none;
@@ -7272,6 +7270,9 @@
         padding: 24px 32px;
         margin-bottom: 24px;
         max-width: max-content;
+        @media (max-width:$desktop){
+             padding: 24px; 
+        }
     }
 
     &__cancel-app {
@@ -7287,7 +7288,11 @@
     &__card {
         margin-bottom: 24px;
     }
-
+    &__user{
+        .user-info__name{
+            align-self: center;
+        }
+    }
     &__btns {
         margin-top: 32px;
         display: grid;
@@ -7336,7 +7341,18 @@
             }
         }
     }
-
+    &__user{
+        padding-top: 24px;
+        margin-top: 24px;
+        border-top: 1px solid var(--primary100);
+        >.row{
+            margin-top: 24px;
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            grid-column-gap: 16px;
+            grid-row-gap: 16px;
+        }
+    }
     &__card {}
 
     &__cancel {}

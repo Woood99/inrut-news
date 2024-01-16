@@ -5147,12 +5147,8 @@ textarea.input-reset {
 .tooltip-modal._card-tooltip .tooltip-modal__content > div > div span {
   display: block;
 }
-.tooltip-modal._card-tooltip .tooltip-modal__content > p {
-  margin-top: 8px;
-  display: -webkit-box;
-  -webkit-line-clamp: 15;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+.tooltip-modal._card-tooltip .tooltip-modal__content > p:not(:last-child) {
+  margin-bottom: 4px;
 }
 
 .shorts-modal {
@@ -5186,7 +5182,7 @@ textarea.input-reset {
 }
 .shorts-modal__container {
   position: relative;
-  background-color: #fff;
+  background-color: #f7f9fd;
   cursor: default;
   text-align: center;
   display: none;
@@ -8456,6 +8452,11 @@ textarea.input-reset {
   max-width: -moz-max-content;
   max-width: max-content;
 }
+@media (max-width: 1212px) {
+  .record-viewing-two__sent {
+    padding: 24px;
+  }
+}
 .record-viewing-two__cancel-app {
   border-radius: 16px;
   background-color: var(--dark);
@@ -8466,6 +8467,11 @@ textarea.input-reset {
 }
 .record-viewing-two__card {
   margin-bottom: 24px;
+}
+.record-viewing-two__user .user-info__name {
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
 }
 .record-viewing-two__btns {
   margin-top: 32px;
@@ -8523,6 +8529,20 @@ textarea.input-reset {
     -ms-flex-align: start;
     align-items: start;
   }
+}
+.record-viewing-two__user {
+  padding-top: 24px;
+  margin-top: 24px;
+  border-top: 1px solid var(--primary100);
+}
+.record-viewing-two__user > .row {
+  margin-top: 24px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
 }
 .record-viewing-two__maps .map-primary {
   height: 423px;

@@ -9,6 +9,7 @@ import {
     _slideUp
 } from '../support-modules/slide';
 import modal from '../modules/modal';
+import { mapPrimary,itsReadyMap } from './maps';
 export const filterDropdownChoice = () => {
     const items = document.querySelectorAll('.filter-dropdown__dropdown');
     if (!items.length >= 1) return;
@@ -797,20 +798,20 @@ export const filterMobile = () => {
         btn.addEventListener('click', () => {
             mask ? mask.classList.add('active') : container.classList.add('active');
             if (filterRowMain.classList.contains('filter__row')) {
-               setTimeout(() => {
-                inner.insertAdjacentElement('afterbegin',filterRowMain);
-                inner.insertAdjacentElement('afterend',filterClear);
-               }, 110);
+                setTimeout(() => {
+                    inner.insertAdjacentElement('afterbegin', filterRowMain);
+                    inner.insertAdjacentElement('afterend', filterClear);
+                }, 110);
             }
             disableScroll();
         });
         close.addEventListener('click', () => {
             if (container.classList.contains('active')) {
                 container.classList.remove('active');
-               setTimeout(() => {
-                btn.insertAdjacentElement('afterend',filterRowMain);
-                filterRowMain.insertAdjacentElement('beforeend',filterClear);
-               }, 75);
+                setTimeout(() => {
+                    btn.insertAdjacentElement('afterend', filterRowMain);
+                    filterRowMain.insertAdjacentElement('beforeend', filterClear);
+                }, 75);
             }
             if (mask && mask.classList.contains('active')) mask.classList.remove('active');
             if (!exceptionEnableScroll()) enableScroll();
@@ -851,29 +852,38 @@ export const filterMobile = () => {
                 modal(modalHTML, '.filter-modal-map', 300);
                 const mapContainer = document.querySelector('.filter-modal-map');
                 const filterBtn = mapContainer.querySelector('.filter-modal-map__filter');
+                mapPrimary();
+                let interval = setInterval(() => {
+                    if (itsReadyMap()) {
+                        clearInterval(interval);
+                        app();
+                    }
+                }, 500);
 
-                function init() {
-                    let map = new ymaps.Map('filter-modal-map__map', {
-                        center: [55.77171185651524, 37.62811179984117],
-                        zoom: 10,
-                    });
-                    map.controls.remove('geolocationControl');
-                    map.controls.remove('searchControl');
-                    map.controls.remove('trafficControl');
-                    map.controls.remove('typeSelector');
-                    map.controls.remove('rulerControl');
-                    map.behaviors.enable(['scrollZoom']);
-                    map.controls.remove('fullscreenControl');
+                function app() {
+                    function init() {
+                        let map = new ymaps.Map('filter-modal-map__map', {
+                            center: [55.77171185651524, 37.62811179984117],
+                            zoom: 10,
+                        });
+                        map.controls.remove('geolocationControl');
+                        map.controls.remove('searchControl');
+                        map.controls.remove('trafficControl');
+                        map.controls.remove('typeSelector');
+                        map.controls.remove('rulerControl');
+                        map.behaviors.enable(['scrollZoom']);
+                        map.controls.remove('fullscreenControl');
 
-                    map.controls.get('zoomControl').options.set({
-                        position: {
-                            top: 20,
-                            right: 20
-                        },
-                        maxWidth: '44'
-                    })
+                        map.controls.get('zoomControl').options.set({
+                            position: {
+                                top: 20,
+                                right: 20
+                            },
+                            maxWidth: '44'
+                        })
+                    }
+                    ymaps.ready(init);
                 }
-                ymaps.ready(init);
 
                 filterBtn.addEventListener('click', () => {
                     mask ? mask.classList.add('active') : container.classList.add('active');

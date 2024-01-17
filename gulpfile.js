@@ -122,12 +122,14 @@ const scripts = () => {
             })
         ))
         .pipe(webpackStream({
-            mode: 'development',
+            mode: 'production',
             entry: {
                 main: './src/js/main.js',
                 'buy-apartment': './src/js/buy-apartment.js',
                 'submit-app': './src/js/submit-app.js',
                 object: './src/js/object.js',
+                request: './src/js/request.js',
+                admin: './src/js/admin.js',
             },
             output: {
                 filename: '[name].js',

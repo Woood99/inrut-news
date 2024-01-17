@@ -111,7 +111,6 @@ export const bidMap = () => {
         }, 500);
 
         function app() {
-
             document.querySelectorAll('#bid-maps').forEach(item => {
                 function init() {
                     let map = new ymaps.Map(item, {

@@ -1,24 +1,6 @@
-import burgerMenu from './functions/burger';
-import {tabs} from "./functions/tabs";
-import spollers from "./functions/spollers";
-import {
-    galleryPrimary,
-    galleryStories
-} from './components/gallery';
-import videoBlock from './components/videoBlock';
-burgerMenu();
-tabs();
-spollers();
-galleryPrimary();
-galleryStories();
-// ========================================================================================
-
-import "./functions/sliders";
-import './functions/fix-fullheight';
-
-// ========================================================================================
 import popup from './functions/popup';
 import inputResize from './modules/inputResize';
+import videoBlock from './components/videoBlock';
 popup(null, 'city');
 popup(null, 'add');
 popup(null, 'personal-area');
@@ -218,4 +200,3 @@ popup({
         if (bookingbtn) bookingbtn.remove();
     }
 }, 'chat-lora');
-// ========================================================================================

@@ -10,9 +10,9 @@
     <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/buy-apartment.css">
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-    <script defer src="js/main.js"></script>
+    <script defer src="js/buy-apartment.js"></script>
 </head>
 
 <body class="page__body">
@@ -41,7 +41,7 @@
                                 <div class="btn btn-reset filter__item filter-more-btn filter__btn-control">
                                     <span>Фильтры</span>
                                 </div>
-                                <div class="filter__item filter__item--quantity-selection request-catalog__quantity-selection quantity-selection">
+                                <div class="filter__item filter__item--quantity-selection quantity-selection">
                                     <div class="quantity-selection__inner">
                                         <div class="checkbox">
                                             <input id="filter-quantity_studios" name="filter-quantity-studios" class="checkbox__input" type="checkbox" value="true">
@@ -506,60 +506,6 @@
                             </div>
                             <div class="cards-list__items control-cards__content control-cards__content--horizontal">
 
-                                <!-- <div class="card-secondary-skeleton">
-                                    <div class="card-secondary-skeleton__container">
-                                        <div class="card-secondary-skeleton__top">
-                                            <span class="card-secondary-skeleton__image web-skeleton">
-                                                <span class="web-skeleton__children"></span>
-                                            </span>
-                                        </div>
-                                        <div class="card-secondary-skeleton__content">
-                                            <span class="web-skeleton" style="width:85%;border-radius:4px;">
-                                                <span class="web-skeleton__children"></span>
-                                            </span>
-                                            <span class="web-skeleton" style="width:60%;border-radius:4px;margin-top: 8px;">
-                                                <span class="web-skeleton__children"></span>
-                                            </span>
-                                            <span class="web-skeleton" style="width:75%;border-radius:4px;margin-top: 5px;">
-                                                <span class="web-skeleton__children"></span>
-                                            </span>
-                                            <span class="web-skeleton" style="width:70%;border-radius:4px;margin-top: 5px;">
-                                                <span class="web-skeleton__children"></span>
-                                            </span>
-                                            <div class="col-2" style="margin-top:30px;">
-                                                <span class="web-skeleton" style="border-radius:4px;">
-                                                    <span class="web-skeleton__children"></span>
-                                                </span>
-                                                <span class="web-skeleton" style="border-radius:4px;">
-                                                    <span class="web-skeleton__children"></span>
-                                                </span>
-                                                <span class="web-skeleton" style="border-radius:4px;">
-                                                    <span class="web-skeleton__children"></span>
-                                                </span>
-                                            </div>
-                                            <div class="col" style="grid-column: 2/3;grid-row: 1/4;">
-                                                <span class="web-skeleton" style="border-radius:4px;width: 100%;height: 25px;">
-                                                    <span class="web-skeleton__children"></span>
-                                                </span>
-                                                <span class="web-skeleton" style="border-radius:4px;width: 100%;margin-top: 8px;">
-                                                    <span class="web-skeleton__children"></span>
-                                                </span>
-                                            </div>
-                                            <div class="card-secondary-skeleton__bottom user-info">
-                                                <div class="user-info__avatar avatar web-skeleton">
-                                                    <span class="web-skeleton__children"></span>
-                                                </div>
-                                                <span class="user-info__name web-skeleton" style="width:55%;border-radius: 4px;height:15px;">
-                                                    <span class="web-skeleton__children"></span>
-                                                </span>
-                                                <span class="user-info__pos web-skeleton" style="width:45%;border-radius: 4px;height:13px;align-self: end;">
-                                                    <span class="web-skeleton__children"></span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
-
                                 <article class="card-secondary">
                                     <a href="./develop-inner.html" class="card-secondary__container">
                                         <div class="card-secondary__top">
@@ -702,7 +648,7 @@
                                                     <div class="metro-info__other-items">
                                                         <button type="button" class="btn btn-reset metro-info__close">
                                                             <svg>
-                                                              <use xlink:href="./img/sprite.svg#x"></use>
+                                                                <use xlink:href="./img/sprite.svg#x"></use>
                                                             </svg>
                                                         </button>
                                                     </div>
@@ -941,7 +887,7 @@
                                                     <div class="metro-info__other-items">
                                                         <button type="button" class="btn btn-reset metro-info__close">
                                                             <svg>
-                                                              <use xlink:href="./img/sprite.svg#x"></use>
+                                                                <use xlink:href="./img/sprite.svg#x"></use>
                                                             </svg>
                                                         </button>
                                                     </div>
@@ -1099,7 +1045,7 @@
                                                     <div class="metro-info__other-items">
                                                         <button type="button" class="btn btn-reset metro-info__close">
                                                             <svg>
-                                                              <use xlink:href="./img/sprite.svg#x"></use>
+                                                                <use xlink:href="./img/sprite.svg#x"></use>
                                                             </svg>
                                                         </button>
                                                     </div>
@@ -2557,7 +2503,15 @@
         </main>
         @include('partials/footer.html')
     </div>
-    @include('partials/popup.html')
+    <!-- popups -->
+    @include('popups/city.html')
+    @include('popups/add.html')
+    @include('popups/personal-area2.html')
+    @include('popups/edit-profile.html')
+    @include('popups/sber-tied.html')
+    <!-- ==== -->
+    @include('popups/search-area.html')
+    <!-- popups -->
 </body>
 
 

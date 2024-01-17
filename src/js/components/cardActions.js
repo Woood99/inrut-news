@@ -233,7 +233,7 @@ export const cardPrimaryActions = () => {
             if (dislikeBtn || likeBtn) {
                 e.preventDefault();
             }
-            if (dislike || comment) {
+            if ((dislike || comment) && window.innerWidth <= 1212) {
                 const currentTarget = dislike || comment;
                 e.preventDefault();
                 if (currentTarget.querySelector('.secondary-tooltip__content')) {

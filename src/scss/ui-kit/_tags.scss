@@ -1,0 +1,138 @@
+.tags {
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+
+        @media (max-width:$desktop) {
+            overflow-x: auto;
+            @include hiddenScroll;
+            flex-wrap: nowrap;
+        }
+    }
+
+    &__item {
+        margin: 0 8px 8px 0;
+
+        @media (max-width:$desktop) {
+            margin: 0 8px 0 0;
+        }
+    }
+
+    &__btn {
+        margin-top: 6px;
+        color: var(--blue);
+        display: flex;
+        align-items: center;
+
+        span {
+            font-size: var(--small-fz);
+            line-height: var(--small-lh);
+            font-weight: 400;
+        }
+
+        svg {
+            width: 20px;
+            height: 17px;
+            fill: currentColor;
+            margin-left: 8px;
+            transition: transform $transitionSpeed $transitionFunction;
+        }
+
+        &.focus-visible {
+            color: var(--primary600);
+        }
+
+        @media (max-width:$desktop) {
+            display: none;
+        }
+    }
+
+    &._active {
+        .tags__btn {
+            svg {
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
+
+.tag {
+    height: 40px;
+    padding: 0 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+
+    color: var(--dark);
+    background-color: var(--primary100);
+    max-width: 100%;
+
+    span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &._active {
+        background-color: var(--blue);
+        color: var(--white);
+    }
+
+    &.focus-visible {
+        &:not(._active) {
+            background-color: var(--primary200);
+        }
+    }
+
+    @media (min-width:$desktop-min) {
+        &:hover {
+            &:not(._no-select, ._active) {
+                background-color: var(--primary200);
+            }
+        }
+    }
+
+    &._no-select {
+        cursor: default;
+    }
+}
+
+.tags-stickers {
+    .types-objects__item {
+        >div {
+            &:last-child {
+
+                button,
+                a {
+                    &:nth-child(1) {
+                        svg {
+                            stroke: var(--blue);
+                            fill: none;
+                            stroke-width: 1.5px;
+                        }
+                    }
+
+                    &:nth-child(2) {
+                        svg {
+                            stroke: none;
+                            fill: var(--red);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__filter {
+        margin-top: 32px;
+
+        .filter__row {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    .filter__clear {
+        margin-right: 0;
+    }
+}

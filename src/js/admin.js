@@ -25,6 +25,9 @@ import {
 } from './components/maps';
 import linkCopy from './modules/linkCopy';
 import {
+    calendarPrimary
+} from './components/calendar';
+import {
     validateRadioPrimary,
     validateCheckboxPrimary,
     bookConsultationValidate,
@@ -88,6 +91,8 @@ import {
 import сharacteristicsBlock from './components/сharacteristicsBlock';
 import submitAppOffers from './components/submitAppOffers';
 import mortgageRequests from './components/mortgageRequests';
+import moveToFromBlock from './modules/moveToFromBlock';
+import shorts from './components/shorts';
 import mobileTop from './components/mobileTop';
 import scrollUp from './components/scrollUp';
 import suggestObject from './components/suggestObject';
@@ -121,6 +126,8 @@ document.addEventListener('DOMContentLoaded', () => {
     objectMaps();
     // ==================================================
 
+    calendarPrimary('.calendar-page .calendar-primary', 'eventsCalendar.json', true);
+    calendarPrimary('.home-services__calendar .calendar-primary', 'eventsCalendar.json', false);
     controlCards();
     videoBlock();
     reviewModal();
@@ -133,6 +140,9 @@ document.addEventListener('DOMContentLoaded', () => {
     tag();
     chat();
     furnishingSets();
+    scrollDrag('.object-location__infrastructure', 1000, true);
+    scrollDrag('.buy-apartment__tags .tags__list', 1000, 1180);
+    scrollDrag('.home-services__list', 1000, 1180);
     scrollDrag('.tabs-primary.tabs-primary--controls .tabs__navigation', 1000, true);
     recordViewing();
     recordViewingTwo();
@@ -177,8 +187,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     emergingBlockScroll('.add-complex .place-sale__btn', '.footer-fixed.complex-fixed', 99999999, true);
     emergingBlockScroll('.create-calc .create-calc__btn', '.footer-fixed.create-calc-fixed', 99999999, true);
+    emergingBlockScroll('.mortgage-requests .mortgage-requests__save', '.footer-fixed.mortgage-requests-fixed', 99999999, true);
+    emergingBlockScroll('.submit-app .submit-app__btn', '.footer-fixed.submit-app-fixed', 99999999, true);
 
     // ==================================================
+    moveToFromBlock('[data-move-block-to="bid-user"]', '[data-move-block-from="bid-user"]', 99999, 1212, `${window.innerWidth >= 1920 ? 1.35 : 1}`);
+    shorts();
     mobileTop();
     scrollUp();
     suggestObject();

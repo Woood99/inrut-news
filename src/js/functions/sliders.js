@@ -368,7 +368,7 @@ function initSliders() {
             const slider = new Swiper(el, {
                 observer: true,
                 observeParents: true,
-                slidesPerView: 1.1,
+                slidesPerView: 2,
                 spaceBetween: 16,
                 speed: 800,
                 navigation: {
@@ -377,14 +377,11 @@ function initSliders() {
                 },
                 breakpoints: {
                     577: {
-                        slidesPerView: 1.8,
+                        slidesPerView: 3,
                     },
                     769: {
-                        slidesPerView: 2.4,
-                    },
-                    1213: {
                         slidesPerView: 4,
-                    }
+                    },
                 },
             });
             const cards = el.querySelectorAll('.news-card');

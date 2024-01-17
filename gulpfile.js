@@ -130,6 +130,7 @@ const scripts = () => {
                 object: './src/js/object.js',
                 request: './src/js/request.js',
                 admin: './src/js/admin.js',
+                ribbon: './src/js/ribbon.js',
             },
             output: {
                 filename: '[name].js',

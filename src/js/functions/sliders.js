@@ -383,7 +383,7 @@ function initSliders() {
                         slidesPerView: 2.4,
                     },
                     1213: {
-                        slidesPerView: 2,
+                        slidesPerView: 4,
                     }
                 },
             });

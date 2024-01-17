@@ -1,16 +1,19 @@
-.shorts-items{
+.shorts-items {
     display: grid;
-    grid-template-columns: repeat(6,minmax(120px,200px));
+    grid-template-columns: repeat(6, minmax(120px, 200px));
     grid-column-gap: 12px;
     grid-row-gap: 16px;
-    @media (max-width:$desktop){
-        grid-template-columns: repeat(4,minmax(120px,200px)); 
+
+    @media (max-width:$desktop) {
+        grid-template-columns: repeat(4, minmax(120px, 200px));
     }
-    @media (max-width:$smallTablet-max){
-        grid-template-columns: repeat(3,minmax(120px,200px)); 
+
+    @media (max-width:$smallTablet-max) {
+        grid-template-columns: repeat(3, minmax(120px, 200px));
     }
-    @media (max-width:$mobile-max){
-        grid-template-columns: repeat(2,1fr); 
+
+    @media (max-width:$mobile-max) {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -20,36 +23,51 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    &__wrapper{
+
+    &__wrapper {
         margin: 0 auto;
         min-height: 560px;
         min-width: 320px;
-    
+
         position: relative;
-    
+
         height: calc(100vh - 100px);
         width: calc(56.25vh - 125px *.5625);
-        @media (max-width:$mobile-max){
-             height: calc(100vh - 50px); 
-             width: 100%;
+
+        @media (max-width:$mobile-max) {
+            height: calc(var(--vh, 100vh) - 50px);
+            width: 100%;
         }
     }
+
     &__list {
         width: 100%;
         height: 100%;
         max-height: inherit;
+
+        .skeleton {
+            @media (max-width:$desktop) {
+                border-radius: 0 !important;
+
+                .web-skeleton {
+                    border-radius: 0 !important;
+                }
+            }
+        }
     }
 
     &__item {
         width: 100%;
         height: 100%;
+
         iframe {
             width: 100%;
             height: 100%;
             min-height: inherit;
         }
     }
-    &__item-panel{
+
+    &__item-panel {
         width: 100%;
         height: 84%;
         top: 53%;
@@ -59,6 +77,7 @@
         position: absolute;
         z-index: 1;
     }
+
     &__nav {
         width: 36px;
         height: 36px;
@@ -85,8 +104,9 @@
             opacity: 0.4;
             pointer-events: none;
         }
-        @media (max-width:$desktop){
-             display: none; 
+
+        @media (max-width:$desktop) {
+            display: none;
         }
     }
 
@@ -102,7 +122,8 @@
         bottom: 0;
 
     }
-    &__close{
+
+    &__close {
         width: 36px;
         height: 36px;
         border-radius: 50%;
@@ -132,65 +153,82 @@
     overflow: hidden;
     min-height: 560px;
     height: 100% !important;
-    .vjs-big-play-button{
+
+    .vjs-big-play-button {
         display: none !important;
     }
+
     .ytp-pause-overlay-container {
         display: none !important;
     }
 
-    .vjs-fullscreen-control{
+    .vjs-fullscreen-control {
         display: none;
     }
-    .vjs-picture-in-picture-control{
+
+    .vjs-picture-in-picture-control {
         display: none;
     }
-    .vjs-control-bar{
+
+    .vjs-control-bar {
         background-color: transparent !important;
-       display: grid !important;
-grid-template-columns: 40px 40px 1fr;
-grid-template-rows: 45px 5px;
-align-items: end;
-         height: 50px !important;
+        display: grid !important;
+        grid-template-columns: 40px 40px 1fr;
+        grid-template-rows: 45px 5px;
+        align-items: end;
+        height: 50px !important;
     }
-    .vjs-control{
+
+    .vjs-control {
         width: 5em;
     }
-    .vjs-button > .vjs-icon-placeholder:before {
+
+    .vjs-button>.vjs-icon-placeholder:before {
         font-size: 2.3em;
         line-height: 1.9;
     }
-    .vjs-play-control{
+
+    .vjs-play-control {
         grid-column: 1/2;
     }
-    .vjs-remaining-time{
+
+    .vjs-remaining-time {
         display: none;
     }
-    .vjs-load-progress{
-        background:transparent !important;
-        div{
-            background:transparent !important;
+
+    .vjs-load-progress {
+        background: transparent !important;
+
+        div {
+            background: transparent !important;
         }
     }
-    .vjs-volume-control{
+
+    .vjs-volume-control {
         top: 5px;
     }
-    .vjs-slider{
+
+    .vjs-slider {
         background-color: rgba(194, 202, 212, 0.8) !important;
     }
-    .vjs-play-progress{
-        background-color:#3272eb !important;
-        &::before{
+
+    .vjs-play-progress {
+        background-color: #3272eb !important;
+
+        &::before {
             content: none !important;
         }
     }
-    .vjs-mouse-display{
+
+    .vjs-mouse-display {
         display: none !important;
     }
-    .vjs-time-tooltip{
+
+    .vjs-time-tooltip {
         display: none !important;
     }
-    .vjs-progress-control{
+
+    .vjs-progress-control {
         grid-row: 2/3;
         grid-column: 1/-1;
         width: 100% !important;
@@ -199,14 +237,16 @@ align-items: end;
         pointer-events: none;
         overflow: hidden;
     }
-    .vjs-progress-holder{
+
+    .vjs-progress-holder {
         height: 5px !important;
         border-radius: 3px;
     }
-    @media (max-width:$mobile-max){
-         border-radius: 0; 
+
+    @media (max-width:$mobile-max) {
+        border-radius: 0;
     }
-    
+
 }
 
 .card-short {
@@ -214,6 +254,7 @@ align-items: end;
     height: 100%;
     position: relative;
     overflow: hidden;
+
     &__link {
         padding-bottom: percent(300, 187);
         border-radius: 12px;
@@ -222,10 +263,12 @@ align-items: end;
         position: relative;
         border-radius: 12px;
         background-color: #F8F8F8;
+
         img {
             border-radius: 12px;
             transition: transform $transitionSpeed $transitionFunction;
         }
+
         &::before {
             top: 0;
             right: 0;
@@ -248,6 +291,7 @@ align-items: end;
         bottom: 8px;
         left: 8px;
         z-index: 1;
+
         svg {
             width: 14px;
             height: 14px;
@@ -255,7 +299,8 @@ align-items: end;
             margin-right: 8px;
         }
     }
-    &__title{
+
+    &__title {
         color: var(--dark);
         font-size: var(--default-fz);
         font-weight: 500;
@@ -263,7 +308,8 @@ align-items: end;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-        span{
+
+        span {
             padding: 4px 4px 0 4px;
             overflow: hidden;
             white-space: nowrap;

@@ -49,7 +49,7 @@ const shorts = () => {
         const modalContainer = document.querySelector('.shorts-modal');
         modalContainer.querySelector('.shorts-modal__content').innerHTML = generateSliderHTML(cards);
         createVideos(modalContainer);
-        createSlider(modalContainer,currentIndex);
+        createSlider(modalContainer, currentIndex);
         controlVideo(modalContainer);
     }
 
@@ -116,22 +116,24 @@ const shorts = () => {
             });
         })
     }
+
     function controlVideo(modalContainer) {
         const slides = modalContainer.querySelectorAll('.swiper-slide');
         if (slides.length === 0) return;
         slides.forEach(slide => {
             const video = slide.querySelector('.shorts__item');
             const panel = slide.querySelector('.shorts__item-panel');
-            panel.addEventListener('click',() => {
-                   if (videojs(video).paused()) {
+            panel.addEventListener('click', () => {
+                if (videojs(video).paused()) {
                     videojs(video).play();
-                   } else {
+                } else {
                     videojs(video).pause();
-                   }
+                }
             })
         })
     }
-    function createSlider(modalContainer,currentIndex) {
+
+    function createSlider(modalContainer, currentIndex) {
         const shorts = modalContainer.querySelectorAll('.shorts__item');
         shorts.forEach((item, index) => {
             item.setAttribute('data-short-index', index);
@@ -162,56 +164,63 @@ const shorts = () => {
             },
         });
         setTimeout(() => {
-            slider.slides.forEach(slide => {
-              const skeleton = slide.querySelector('.skeleton');
-              if (skeleton) skeleton.remove();
-            })
-            const prev = modalContainer.querySelector('.shorts__prev');
-            const next = modalContainer.querySelector('.shorts__next');
             const currentVideo = slider.slides[currentIndex].querySelector('.shorts__item');
-            videojs(currentVideo).currentTime(0);
-            videojs(currentVideo).play();
-            slider.on('slideNextTransitionStart', function () {
-                const video = slider.slides[slider.realIndex - 1].querySelector('.shorts__item');
-                videojs(video).pause();
-                videojs(video).currentTime(0);
-            });
-            slider.on('slidePrevTransitionStart', function () {
-                const video = slider.slides[slider.realIndex + 1].querySelector('.shorts__item');
-                videojs(video).pause();
-                videojs(video).currentTime(0);
-            });
-            slider.on('slideChange', function () {
-                const video = slider.slides[slider.realIndex].querySelector('.shorts__item');
-                prev.classList.add('_disabled');
-                next.classList.add('_disabled');
-                setTimeout(() => {
-                    videojs(video).play();
-                    prev.classList.remove('_disabled');
-                    next.classList.remove('_disabled');
-                }, 500);
-            });
-            let scrolling = true;
-            modalContainer.addEventListener('mousewheel', (e) => {
-                const y = e.wheelDelta;
-                const next = modalContainer.querySelector('.shorts__next').hasAttribute('disabled');
-                const prev = modalContainer.querySelector('.shorts__prev').hasAttribute('disabled');
-                if (scrolling) {
-                    scrolling = false;
-                    if (y > 0 && !prev) {
-                        e.preventDefault();
-                        slider.slidePrev();
-                    }
-                    if (y <= 0 && !next) {
-                        e.preventDefault();
-                        slider.slideNext();
-                    }
+            videojs(currentVideo).ready(function () {
+                slider.slides.forEach(slide => {
+                    const skeleton = slide.querySelector('.skeleton');
+                    if (skeleton) skeleton.remove();
+                })
+                const prev = modalContainer.querySelector('.shorts__prev');
+                const next = modalContainer.querySelector('.shorts__next');
+
+                this.currentTime(0);
+                this.play();
+
+
+                slider.on('slideNextTransitionStart', function () {
+                    const video = slider.slides[slider.realIndex - 1].querySelector('.shorts__item');
+                    videojs(video).pause();
+                    videojs(video).currentTime(0);
+                });
+                slider.on('slidePrevTransitionStart', function () {
+                    const video = slider.slides[slider.realIndex + 1].querySelector('.shorts__item');
+                    videojs(video).pause();
+                    videojs(video).currentTime(0);
+                });
+                slider.on('slideChange', function () {
+                    const video = slider.slides[slider.realIndex].querySelector('.shorts__item');
+                    prev.classList.add('_disabled');
+                    next.classList.add('_disabled');
                     setTimeout(() => {
-                        scrolling = true;
+                        videojs(video).play();
+                        prev.classList.remove('_disabled');
+                        next.classList.remove('_disabled');
                     }, 500);
+                });
+                if (window.innerWidth > 1212) {
+                    let scrolling = true;
+                    modalContainer.addEventListener('mousewheel', (e) => {
+                        const y = e.wheelDelta;
+                        const next = modalContainer.querySelector('.shorts__next').hasAttribute('disabled');
+                        const prev = modalContainer.querySelector('.shorts__prev').hasAttribute('disabled');
+                        if (scrolling) {
+                            scrolling = false;
+                            if (y > 0 && !prev) {
+                                e.preventDefault();
+                                slider.slidePrev();
+                            }
+                            if (y <= 0 && !next) {
+                                e.preventDefault();
+                                slider.slideNext();
+                            }
+                            setTimeout(() => {
+                                scrolling = true;
+                            }, 500);
+                        }
+                    })
                 }
-            }) 
-        }, 1250);
+            });
+        }, window.innerWidth > 1212 ? 1250 : 2000);
     }
 };
 

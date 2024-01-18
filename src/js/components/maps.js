@@ -29,6 +29,10 @@ export const itsReadyMap = () => {
         return true;
     }
 }
+export const checkYmapsApiBlock = () => {
+    const script = document.querySelector('#ymaps-id');
+    return script ? true : false;
+}
 export const mapPrimary = (container) => {
     const maps = document.querySelectorAll('.map-primary');
     if (maps.length === 0) return;
@@ -103,12 +107,16 @@ export const mapPrimary = (container) => {
 };
 export const bidMap = () => {
     if (document.querySelector('#bid-maps')) {
-        let interval = setInterval(() => {
-            if (itsReadyMap()) {
-                clearInterval(interval);
-                app();
-            }
-        }, 500);
+        if (checkYmapsApiBlock()) {
+            let interval = setInterval(() => {
+                if (itsReadyMap()) {
+                    clearInterval(interval);
+                    app();
+                }
+            }, 500);
+        } else {
+            app();
+        }
 
         function app() {
             document.querySelectorAll('#bid-maps').forEach(item => {
@@ -138,12 +146,16 @@ export const bidMap = () => {
 };
 export const complaintObjectMap = () => {
     if (document.querySelector('#complaint-object-two-maps')) {
-        let interval = setInterval(() => {
-            if (itsReadyMap()) {
-                clearInterval(interval);
-                app();
-            }
-        }, 500);
+        if (checkYmapsApiBlock()) {
+            let interval = setInterval(() => {
+                if (itsReadyMap()) {
+                    clearInterval(interval);
+                    app();
+                }
+            }, 500);
+        } else {
+            app();
+        }
 
         function app() {
             const objectMaps = document.querySelector('#complaint-object-two-maps');
@@ -169,12 +181,16 @@ export const complaintObjectMap = () => {
 };
 export const mapDraw2 = () => {
     if (document.querySelector('#map-draw--2')) {
-        let interval = setInterval(() => {
-            if (itsReadyMap()) {
-                clearInterval(interval);
-                app();
-            }
-        }, 500);
+        if (checkYmapsApiBlock()) {
+            let interval = setInterval(() => {
+                if (itsReadyMap()) {
+                    clearInterval(interval);
+                    app();
+                }
+            }, 500);
+        } else {
+            app();
+        }
 
         function app() {
             function init() {
@@ -191,12 +207,16 @@ export const mapDraw2 = () => {
 };
 export const popupMap = () => {
     if (document.querySelector('#popup-map__map')) {
-        let interval = setInterval(() => {
-            if (itsReadyMap()) {
-                clearInterval(interval);
-                app();
-            }
-        }, 500);
+        if (checkYmapsApiBlock()) {
+            let interval = setInterval(() => {
+                if (itsReadyMap()) {
+                    clearInterval(interval);
+                    app();
+                }
+            }, 500);
+        } else {
+            app();
+        }
 
         function app() {
             const container = document.querySelector('.popup-map__container');
@@ -277,12 +297,16 @@ export const popupMap = () => {
 };
 export const controlCardsMap = () => {
     if (document.querySelector('#control-cards__maps')) {
-        let interval = setInterval(() => {
-            if (itsReadyMap()) {
-                clearInterval(interval);
-                app();
-            }
-        }, 500);
+        if (checkYmapsApiBlock()) {
+            let interval = setInterval(() => {
+                if (itsReadyMap()) {
+                    clearInterval(interval);
+                    app();
+                }
+            }, 500);
+        } else {
+            app();
+        }
 
         function app() {
             const container = document.querySelector('#control-cards__maps').closest('.control-cards__container');
@@ -371,12 +395,16 @@ export const controlCardsMap = () => {
 };
 export const mapDraw = () => {
     if (document.querySelector('#map-draw')) {
-        let interval = setInterval(() => {
-            if (itsReadyMap()) {
-                clearInterval(interval);
-                app();
-            }
-        }, 500);
+        if (checkYmapsApiBlock()) {
+            let interval = setInterval(() => {
+                if (itsReadyMap()) {
+                    clearInterval(interval);
+                    app();
+                }
+            }, 500);
+        } else {
+            app();
+        }
 
         function app() {
 
@@ -473,12 +501,16 @@ export const mapDraw = () => {
 };
 export const placeSaleAddressMap = () => {
     if (document.querySelector('#place-sale-address-map')) {
-        let interval = setInterval(() => {
-            if (itsReadyMap()) {
-                clearInterval(interval);
-                app();
-            }
-        }, 500);
+        if (checkYmapsApiBlock()) {
+            let interval = setInterval(() => {
+                if (itsReadyMap()) {
+                    clearInterval(interval);
+                    app();
+                }
+            }, 500);
+        } else {
+            app();
+        }
 
         function app() {
             function init() {
@@ -495,12 +527,16 @@ export const placeSaleAddressMap = () => {
 };
 export const objectMaps = () => {
     if (document.querySelector('#object-maps')) {
-        let interval = setInterval(() => {
-            if (itsReadyMap()) {
-                clearInterval(interval);
-                app();
-            }
-        }, 500);
+        if (checkYmapsApiBlock()) {
+            let interval = setInterval(() => {
+                if (itsReadyMap()) {
+                    clearInterval(interval);
+                    app();
+                }
+            }, 500);
+        } else {
+            app();
+        }
 
         function app() {
             const objectMaps = document.querySelector('#object-maps');

@@ -121,8 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
     mapDraw2();
     popupMap();
     controlCardsMap();
-    mapDraw();
+
     placeSaleAddressMap();
+    mapDraw();
     objectMaps();
     // ==================================================
 

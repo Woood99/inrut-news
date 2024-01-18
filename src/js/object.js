@@ -63,7 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
     cardSecondaryActions();
     cardPrimaryActions();
     mapPrimary();
+
     objectMaps();
+    
     videoBlock();
     headerFixed();
     mortgage();

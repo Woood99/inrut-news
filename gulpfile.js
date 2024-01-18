@@ -129,7 +129,7 @@ const scripts = () => {
                 'submit-app': './src/js/submit-app.js',
                 object: './src/js/object.js',
                 request: './src/js/request.js',
-                admin: './src/js/admin.js',
+                'admin-script': './src/js/admin-script.js',
                 ribbon: './src/js/ribbon.js',
             },
             output: {

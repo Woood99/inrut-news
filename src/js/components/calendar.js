@@ -3,11 +3,13 @@ import {
 } from 'fullcalendar';
 import SimpleBar from 'simplebar';
 import modal from '../modules/modal';
+import numberReplace from '../modules/numberReplace';
 
-
-export const calendarPrimary = (containerSelector, url, edit = false) => {
+export const calendarPrimary = (containerSelector, eventsSelector, edit = false) => {
     const calendarEl = document.querySelector(containerSelector);
-    if (!calendarEl) return;
+    const calendarEvents = document.querySelector(eventsSelector);
+    if (!(calendarEl && calendarEvents)) return;
+    const array = JSON.parse(calendarEvents.value);
     const calendaryPrimary = new Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         locale: 'ru',
@@ -16,9 +18,7 @@ export const calendarPrimary = (containerSelector, url, edit = false) => {
         moreLinkContent: (obj) => `+ еще ${obj.num}`,
         fixedWeekCount: false,
         eventClassNames: 'fc-event-container',
-        eventSources: [{
-            url,
-        }],
+        eventSources: [array],
         headerToolbar: {
             center: 'title',
             right: 'customNext',
@@ -53,24 +53,16 @@ export const calendarPrimary = (containerSelector, url, edit = false) => {
     })
 
     calendaryPrimary.render();
-    getEvents();
-    async function getEvents() {
-        const response = await fetch(url);
-        if (response.ok) {
-            const eventsArray = await response.json();
-            eventModal(eventsArray);
-            addedClassesCalendar();
-        }
-    }
+    eventModal(array);
+    addedClassesCalendar();
 
     function eventModal(eventsArray) {
         calendarEl.addEventListener('click', (e) => {
             if (!(e.target.classList.contains('.fc-event') || e.target.closest('.fc-event'))) return false;
             const event = e.target.closest('.fc-event');
-            const eventDate = event.closest('[data-date]').dataset.date.split('-');
-            const eventDateNew = `${eventDate[2]}.${eventDate[1]}.${eventDate[0]}`;
+            const eventDate = event.closest('[data-date]').dataset.date;
             const modalHTML = `
-            <div class="calendar-event" data-date="${eventDateNew}">
+            <div class="calendar-event" data-date="${eventDate}">
             <div class="calendar-event__container">
                 <button class="btn-reset calendar-event__close" aria-label="Закрыть модальное окно">
                     <svg>
@@ -107,7 +99,7 @@ export const calendarPrimary = (containerSelector, url, edit = false) => {
                 `;
             }
             eventsArray.forEach(el => {
-                if (el.date === eventDateNew) {
+                if (el.date === eventDate) {
                     const itemHTML = `
                 <li class="calendar-event__item calendar-event-item">
                     <div class="calendar-event-item__time">
@@ -128,9 +120,9 @@ export const calendarPrimary = (containerSelector, url, edit = false) => {
                         <div class="calendar-event-item__title">
                             ${el.title}
                         </div>
-                        <span class="calendar-event-item__price">${el.price}</span>
+                        <span class="calendar-event-item__price">${numberReplace(`${el.price}`)} ₽</span>
                         <div class="calendar-event-item__user user-info">
-                            <div class="user-info__avatar avatar online">
+                            <div class="user-info__avatar avatar">
                                 <img loading="lazy" src="${el.user.avatar}" width="32" height="32" alt="${el.user.name}">
                             </div>
                             <span class="user-info__name">
@@ -157,6 +149,7 @@ export const calendarPrimary = (containerSelector, url, edit = false) => {
                 if (el.closest('.fc-day')) el.closest('.fc-day').classList.add('fc-day-event');
             });
             document.querySelectorAll('.fc-day-event').forEach(el => {
+                el.querySelectorAll('.fc-event--circle').forEach(circle => circle.remove());
                 const events = el.querySelectorAll('.fc-event');
                 for (let i = 0; i < events.length; i++) {
                     const circleHTML = `<span class="fc-event--circle">Событие</span>`;
@@ -164,17 +157,5 @@ export const calendarPrimary = (containerSelector, url, edit = false) => {
                 }
             });
         }, 200);
-    }
-
-    const requestCalendar = calendarEl.closest('.request-calendar');
-    if (requestCalendar) {
-        requestCalendar.querySelector('.tabs__title:nth-child(2)').addEventListener('click', () => {
-            if (!requestCalendar.classList.contains('_calendar-init')) {
-                setTimeout(() => {
-                    calendaryPrimary.render();
-                    requestCalendar.classList.add('_calendar-init');
-                }, 10);
-            }
-        })
     }
 }

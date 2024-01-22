@@ -12,7 +12,7 @@
     }
 
     .fc-view-harness {
-        max-height: 620px;
+        max-height: 650px;
     }
 
     .fc-scrollgrid {}
@@ -113,7 +113,7 @@
     .fc-daygrid-day-events {
         margin: 0;
         position: absolute !important;
-        top: 20px;
+        top: 29px;
 
         @media (max-width:$desktop) {
             width: 100%;
@@ -218,9 +218,9 @@
             display: none;
         }
 
-        span {
+        .fc-event-main {
 
-            &:nth-child(1) {
+            span:nth-child(1) {
                 font-size: var(--very-small-fz);
                 line-height: 1;
                 color: var(--primary600);
@@ -233,7 +233,7 @@
                 }
             }
 
-            &:nth-child(2) {
+            span:nth-child(2) {
                 margin-top: 2px;
                 color: var(--primary600);
                 font-size: var(--very-small-fz);
@@ -246,22 +246,21 @@
                     display: none;
                 }
             }
+        }
+        .fc-event--circle {
+            font-size: 0;
+            line-height: 0;
+            width: 5px;
+            height: 5px;
+            background-color: var(--green);
+            border-radius: 50%;
 
-            &.fc-event--circle {
-                font-size: 0;
-                line-height: 0;
-                width: 5px;
-                height: 5px;
-                background-color: var(--green);
-                border-radius: 50%;
+            &:not(:first-child) {
+                margin-right: 3px;
+            }
 
-                &:not(:first-child) {
-                    margin-right: 3px;
-                }
-
-                @media (min-width:$desktop) {
-                    display: none;
-                }
+            @media (min-width:$desktop) {
+                display: none;
             }
         }
 
@@ -289,13 +288,13 @@
     .fc-daygrid-day-bottom {
         font-size: var(--very-small-fz);
         line-height: 1;
-        margin: auto 11px 0;
+        margin: auto 8px 0;
         transform: translateY(5px);
         .fc-daygrid-more-link {
     white-space: nowrap;
     border: 1px solid var(--primary200);
-    height: 25px;
-    padding: 0 12px;
+    height: 23px;
+    padding: 0 10px;
     border-radius: 8px;
     display: flex;
     align-items: center;

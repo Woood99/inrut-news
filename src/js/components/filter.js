@@ -991,9 +991,7 @@ export const filterCustomSelectCheckboxes = () => {
         mortgageYesBank.addEventListener('change', () => {
             if (mortgageYesBank.checked) {
                 item.classList.add('_selected');
-                if (!item.classList.contains('submit-app-options__item--calc-proper')) {
                     cash.setAttribute('disabled', true);
-                }
                 mortgageNoBank.setAttribute('disabled', true);
 
                 mortgageNoFee.removeAttribute('disabled');
@@ -1007,9 +1005,7 @@ export const filterCustomSelectCheckboxes = () => {
             } else {
                 item.classList.remove('_selected');
 
-                if (!item.classList.contains('submit-app-options__item--calc-proper')) {
-                    cash.removeAttribute('disabled');
-                }
+                cash.removeAttribute('disabled');
                 mortgageNoBank.removeAttribute('disabled');
 
                 mortgageNoFee.setAttribute('disabled', true);
@@ -1029,9 +1025,7 @@ export const filterCustomSelectCheckboxes = () => {
             if (mortgageNoBank.checked) {
                 item.classList.add('_selected');
 
-                if (!item.classList.contains('submit-app-options__item--calc-proper')) {
                     cash.setAttribute('disabled', true);
-                }
                 mortgageYesBank.setAttribute('disabled', true);
 
                 mortgageNoFee.removeAttribute('disabled');
@@ -1045,9 +1039,7 @@ export const filterCustomSelectCheckboxes = () => {
             } else {
                 item.classList.remove('_selected');
 
-                if (!item.classList.contains('submit-app-options__item--calc-proper')) {
                     cash.removeAttribute('disabled');
-                }
                 mortgageYesBank.removeAttribute('disabled');
 
                 mortgageNoFee.setAttribute('disabled', true);

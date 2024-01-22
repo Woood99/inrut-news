@@ -165,9 +165,9 @@ export const tabs = () => {
                         favoritesTabs[index].hidden = true;
                     }
                 }
-                if (tabsContentItem.children[0] && tabsContentItem.children[0].classList.contains('calendar-primary') && tabsTitles[index].classList.contains('_tab-active') 
+                if (tabsContentItem.children[1] && tabsContentItem.children[1].classList.contains('calendar-primary') && tabsTitles[index].classList.contains('_tab-active')
                 && !tabsBlock.classList.contains('_init-calendar')) {
-                    calendarPrimary('.request-calendar .calendar-primary', 'eventsCalendar.json', false);
+                    calendarPrimary('.request-calendar .calendar-primary','.request-calendar .calendar-primary-events', false);
                     tabsBlock.classList.add('_init-calendar');
                 }
 

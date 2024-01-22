@@ -241,6 +241,7 @@ export const recordViewingTwo = () => {
         const btns = container.querySelectorAll('.record-viewing-two__cancel');
         btns.forEach(cancel => {
             cancel.addEventListener('click', () => {
+                const ID = cancel.hasAttribute('data-suggestion-id') ? cancel.dataset.suggestionId : false;
                 const modalHTML = `
                 <div class="record-viewing-two-confirm">
                 <div class="record-viewing-two-confirm__container">
@@ -256,7 +257,9 @@ export const recordViewingTwo = () => {
                          </h2>
                          <div class="record-viewing-two-confirm__btns">
                             <button type="button" class="btn btn-reset btn-primary record-viewing-two-confirm__btn record-viewing-two-confirm__btn--yes">Выбрал случайно</button>
-                            <button type="button" class="btn btn-reset btn-primary record-viewing-two-confirm__btn record-viewing-two-confirm__btn--no js-popup-close" data-popup-path="object-not-two">Объект не подходит</button>
+                            <button type="button" class="btn btn-reset btn-primary record-viewing-two-confirm__btn record-viewing-two-confirm__btn--no js-popup-close" data-popup-path="object-not-two" ${ID ? `data-suggestion-id='${ID}'` : ''}>
+                                Объект не подходит
+                            </button>
                          </div>
                      </div>
                 </div>

@@ -25,9 +25,6 @@ import {
 } from './components/maps';
 import linkCopy from './modules/linkCopy';
 import {
-    calendarPrimary
-} from './components/calendar';
-import {
     validateRadioPrimary,
     validateCheckboxPrimary,
     bookConsultationValidate,
@@ -126,9 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
     placeSaleAddressMap();
     objectMaps();
     // ==================================================
-
-    calendarPrimary('.calendar-page .calendar-primary', 'eventsCalendar.json', true);
-    calendarPrimary('.home-services__calendar .calendar-primary', 'eventsCalendar.json', false);
     controlCards();
     videoBlock();
     reviewModal();

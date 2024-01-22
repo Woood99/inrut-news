@@ -13,8 +13,32 @@ popup(null, 'complaint-object');
 popup(null, 'complaint-object-two');
 popup(null, 'thanks');
 popup(null, 'thanks-object');
-popup(null, 'object-not');
-popup(null, 'object-not-two');
+popup({
+    isOpen: (settingsModal) => {
+        const currentID = settingsModal.currentBtn.hasAttribute('data-suggestion-id') ? settingsModal.currentBtn.dataset.suggestionId : false;
+        const btn = settingsModal.container.querySelector('.object-not-popup__btn');
+        if (currentID && btn) btn.setAttribute('data-suggestion-id', currentID);
+    },
+    isClose: (settingsModal) => {
+        setTimeout(() => {
+            const btn = settingsModal.container.querySelector('.object-not-popup__btn');
+            if (btn) btn.removeAttribute('data-suggestion-id');
+        }, 750);
+    }
+}, 'object-not');
+popup({
+    isOpen: (settingsModal) => {
+        const currentID = settingsModal.currentBtn.hasAttribute('data-suggestion-id') ? settingsModal.currentBtn.dataset.suggestionId : false;
+        const btn = settingsModal.container.querySelector('.object-not-popup__btn');
+        if (currentID && btn) btn.setAttribute('data-suggestion-id', currentID);
+    },
+    isClose: (settingsModal) => {
+        setTimeout(() => {
+            const btn = settingsModal.container.querySelector('.object-not-popup__btn');
+            if (btn) btn.removeAttribute('data-suggestion-id');
+        }, 750);
+    }
+}, 'object-not-two');
 popup(null, 'interest-rate-modal');
 popup({
     isOpen: (settingsModal) => {
@@ -113,9 +137,33 @@ popup({
     }
 
 }, 'screen-demonstation-popup');
-popup(null, 'record-viewing');
+popup({
+    isOpen: (settingsModal) => {
+        const currentID = settingsModal.currentBtn.hasAttribute('data-suggestion-id') ? settingsModal.currentBtn.dataset.suggestionId : false;
+        const btn = settingsModal.container.querySelector('.record-viewing__btn');
+        if (currentID && btn) btn.setAttribute('data-suggestion-id', currentID);
+    },
+    isClose: (settingsModal) => {
+        setTimeout(() => {
+            const btn = settingsModal.container.querySelector('.record-viewing__btn');
+            if (btn) btn.removeAttribute('data-suggestion-id');
+        }, 750);
+    }
+}, 'record-viewing');
 popup(null, 'record-viewing3');
-popup(null, 'record-viewing-two');
+popup({
+    isOpen: (settingsModal) => {
+        const currentID = settingsModal.currentBtn.hasAttribute('data-suggestion-id') ? settingsModal.currentBtn.dataset.suggestionId : false;
+        const btn = settingsModal.container.querySelector('.record-viewing-two__cancel');
+        if (currentID && btn) btn.setAttribute('data-suggestion-id', currentID);
+    },
+    isClose: (settingsModal) => {
+        setTimeout(() => {
+            const btn = settingsModal.container.querySelector('.record-viewing-two__cancel');
+            if (btn) btn.removeAttribute('data-suggestion-id');
+        }, 750);
+    }
+}, 'record-viewing-two');
 popup(null, 'record-viewing-two2');
 popup(null, 'personal-area-two');
 popup(null, 'client-fixed');
@@ -156,7 +204,7 @@ popup({
             currentIndex === index ? item.classList.add('_tab-active') : item.classList.remove('_tab-active');
         })
         imagesItems.forEach((item, currentIndex) => {
-            currentIndex === index ? item.removeAttribute('hidden') : item.setAttribute('hidden','');
+            currentIndex === index ? item.removeAttribute('hidden') : item.setAttribute('hidden', '');
         })
     },
 }, 'object-gallery');
@@ -167,7 +215,19 @@ popup(null, 'warning-remove3');
 popup(null, 'select-bank');
 popup(null, 'metro-map');
 popup(null, 'im-buying');
-popup(null, 'change-mind');
+popup({
+    isOpen: (settingsModal) => {
+        const currentID = settingsModal.currentBtn.hasAttribute('data-suggestion-id') ? settingsModal.currentBtn.dataset.suggestionId : false;
+        const btn = settingsModal.container.querySelector('.change-mind__btn');
+        if (currentID && btn) btn.setAttribute('data-suggestion-id', currentID);
+    },
+    isClose: (settingsModal) => {
+        setTimeout(() => {
+            const btn = settingsModal.container.querySelector('.change-mind__btn');
+            if (btn) btn.removeAttribute('data-suggestion-id');
+        }, 750);
+    }
+}, 'change-mind');
 popup(null, 'change-mind-two');
 popup({
     isOpen: (settingsModal) => {

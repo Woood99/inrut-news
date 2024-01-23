@@ -10,8 +10,7 @@ import './_main-scripts';
 import chat from './components/chat';
 document.addEventListener('DOMContentLoaded', () => {
     chat();
-    chatAction();
-
+    chatAction()
 
     function chatAction() {
         const chat = document.querySelector('.chat');

@@ -131,6 +131,7 @@ const scripts = () => {
                 request: './src/js/request.js',
                 'admin-script': './src/js/admin-script.js',
                 ribbon: './src/js/ribbon.js',
+                'chat-page': './src/js/chat-page.js',
             },
             output: {
                 filename: '[name].js',

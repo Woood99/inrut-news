@@ -7,13 +7,14 @@ const chat = () => {
         chat.style.setProperty('--chat-bottom-height', `${chatBottom.offsetHeight}px`);
     })
     window.addEventListener('resize', chatPosition);
-
-    chatTags.querySelectorAll('.chat__tag').forEach(tag => {
-        tag.addEventListener('click', () => {
-            chatPosition();
-            // ...
+    if (chatTags) {
+        chatTags.querySelectorAll('.chat__tag').forEach(tag => {
+            tag.addEventListener('click', () => {
+                chatPosition();
+                // ...
+            })
         })
-    })
+    }
     chatRename();
 
 

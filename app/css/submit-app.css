@@ -9671,7 +9671,7 @@ textarea.input-reset {
   font-weight: 400;
 }
 .message-item__text {
-  margin-top: 8px;
+  margin-top: 4px;
   background: var(--primary100);
   border-radius: 2px 12px 12px 12px;
   color: var(--dark);
@@ -9685,7 +9685,7 @@ textarea.input-reset {
   display: inline-block;
   position: relative;
 }
-.message-item__text span {
+.message-item__text span:last-child {
   position: absolute;
   bottom: 5px;
   right: 8px;
@@ -9695,6 +9695,38 @@ textarea.input-reset {
 }
 .message-item__text:not(:last-child) {
   margin-bottom: 16px;
+}
+.message-item__btn-help {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  background-color: var(--primary100);
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  border-radius: 12px;
+}
+.message-item__btn-help:not(:last-child) {
+  margin-bottom: 8px;
+}
+.message-item__btn-help svg {
+  margin-left: 16px;
+  width: 20px;
+  height: 20px;
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+.message-item.message-item--help .message-item__text > span:first-child {
+  font-weight: 500;
+  margin-bottom: 8px;
+  display: block;
 }
 
 .dots-dropdown {
@@ -18928,10 +18960,10 @@ textarea.input-reset {
 .chat__bar .message-item__text {
   background: var(--white);
   padding: 8px 48px 8px 16px;
-  max-width: 420px;
+  max-width: 485px;
   position: relative;
 }
-.chat__bar .message-item__text span {
+.chat__bar .message-item__text > span:last-child {
   position: absolute;
   bottom: 5px;
   right: 8px;
@@ -18940,7 +18972,10 @@ textarea.input-reset {
   color: var(--primaryTwo);
 }
 .chat__bar .message-item__text:not(:last-child) {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
+}
+.chat__bar .message-item__text:first-child {
+  margin-top: 0;
 }
 .chat__bar .message-item__user {
   -ms-grid-columns: 30px 1fr;
@@ -18989,7 +19024,7 @@ textarea.input-reset {
   align-items: start;
 }
 .chat__message:not(:last-child) {
-  margin-bottom: 48px;
+  margin-bottom: 24px;
 }
 .chat__message--me {
   -webkit-box-align: end;
@@ -19164,6 +19199,22 @@ textarea.input-reset {
 }
 .chat__textarea:focus {
   border: none;
+}
+.chat__textarea:first-child {
+  padding-left: 0;
+}
+.chat__person {
+  -ms-flex-item-align: end;
+  -ms-grid-row-align: end;
+  align-self: end;
+  width: 176px;
+  height: 176px;
+  margin: 16px 0;
+}
+.chat__person img {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
 }
 
 .chat-rename {

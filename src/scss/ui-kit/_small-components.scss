@@ -365,7 +365,7 @@
     }
 
     &__text {
-        margin-top: 8px;
+        margin-top: 4px;
         background: var(--primary100);
         border-radius: 2px 12px 12px 12px;
 
@@ -381,7 +381,7 @@
         display: inline-block;
         position: relative;
 
-        span {
+        span:last-child {
             position: absolute;
             bottom: 5px;
             right: 8px;
@@ -392,6 +392,36 @@
 
         &:not(:last-child) {
             margin-bottom: 16px;
+        }
+    }
+    &__btn-help{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color:var(--primary100);
+        width: 100%;
+        text-align: left;
+        padding: 12px 16px;
+        border-radius: 12px;
+        &:not(:last-child){
+            margin-bottom: 8px;
+        }
+        svg{
+            margin-left: 16px;
+            width: 20px;
+            height: 20px;
+            transform: rotate(-90deg);
+        }
+    }
+    &.message-item--help{
+        .message-item__text{
+            >span{
+                &:first-child{
+                    font-weight: 500;
+                    margin-bottom: 8px;
+                    display: block;
+                }
+            }
         }
     }
 }

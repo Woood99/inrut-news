@@ -1,0 +1,42 @@
+.chat-page {
+    max-height: calc(var(--vh) - var(--header-height));
+    background: rgba(203, 226, 255, 0.5);
+    display: flex;
+    justify-content: center;
+    .chat {
+        margin: 0;
+        border-radius: 0;
+        border: none;
+        min-height: auto;
+        &__container{
+            grid-template-columns: 176px 1fr;
+            grid-column-gap: 32px;
+        }
+        &__col{
+            border: none;
+        }
+        &__wrapper {
+            background: none;
+            padding-left: 0;
+            padding-right: 0;
+            .simplebar-content{
+                padding-right: 48px !important;
+            }
+            .simplebar-track.simplebar-vertical{
+                margin-right: 0;
+            }
+        }
+
+        &__bar {
+            max-height: calc(var(--vh) - var(--header-height) - 32px - var(--chat-bottom-height) - var(--chat-booking-height) - 10px);
+            min-height: calc(var(--vh) - var(--header-height) - 32px - var(--chat-bottom-height) - var(--chat-booking-height) - 10px);
+        }
+
+
+        &__bottom {
+            width: calc(100% - 48px);
+        }
+    }
+
+
+}

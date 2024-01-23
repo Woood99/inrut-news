@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Чат</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/chat-page.css">
+    <script defer src="js/chat-page.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container">
+        @include('partials/header--new.html')
+        <main class="main chat-page">
+            <div class="chat container">
+                <div class="chat__container">
+                    <div class="chat__col chat__person">
+                        <picture>
+                            <source srcset="./img/lora_face.webp" type="image/webp">
+                            <img loading="lazy" src="./img/lora_face.png" width="48" height="48" alt="lora">
+                        </picture>
+                    </div>
+                    <div class="chat__col">
+                        <div class="chat__wrapper">
+                            <div class="chat__bar simplebar-third">
+                                <time datetime="2024-01-19" class="chat__date">19 января</time>
+                                <div class="message-item chat__message">
+                                    <div class="message-item__text">
+                                        <p>
+                                            Здравствуйте, я Lora, первый цифровой человек в мире девелопмента. Я могу рассказать вам о проектах
+                                        </p>
+                                        <span>09:45</span>
+                                    </div>
+                                </div>
+                                <div class="message-item chat__message chat__message--me">
+                                    <div class="message-item__text">
+                                        <p>
+                                            Паспорт
+                                        </p>
+                                        <span>09:45</span>
+                                    </div>
+                                </div>
+                                <div class="message-item chat__message message-item--help">
+                                    <div class="message-item__text">
+                                        <span>
+                                            Вот что я нашла
+                                        </span>
+                                        <div>
+                                            <button type="button" class="btn btn-reset message-item__btn-help">
+                                                <span>Не подтягиваются данные из личного кабинета</span>
+                                                <svg>
+                                                  <use xlink:href="./img/sprite.svg#check"></use>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-reset message-item__btn-help">
+                                                <span>Не проходит платёж за паспорт</span>
+                                                <svg>
+                                                  <use xlink:href="./img/sprite.svg#check"></use>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-reset message-item__btn-help">
+                                                <span>Проблема при отправке заявления на паспорт</span>
+                                                <svg>
+                                                  <use xlink:href="./img/sprite.svg#check"></use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <span>09:45</span>
+                                    </div>
+                                </div>
+                                <time datetime="2024-01-19" class="chat__date">Сегодня</time>
+                                <div class="message-item chat__message chat__message--me">
+                                    <div class="message-item__text">
+                                        <p>
+                                            Вопрос
+                                        </p>
+                                        <span>09:45</span>
+                                    </div>
+                                </div>
+                                <div class="message-item chat__message">
+                                    <div class="message-item__text">
+                                        <p>
+                                            Ответ Лоры
+                                        </p>
+                                        <span>09:45</span>
+                                    </div>
+                                </div>
+                                <div class="message-item chat__message chat__message--me">
+                                    <div class="message-item__text">
+                                        <p>
+                                            Вопрос
+                                        </p>
+                                        <span>09:45</span>
+                                    </div>
+                                </div>
+                                <div class="message-item chat__message">
+                                    <div class="message-item__text">
+                                        <p>
+                                            Ответ Лоры
+                                        </p>
+                                        <span>09:45</span>
+                                    </div>
+                                    <div class="message-item__text">
+                                        <p>
+                                            Ответ Лоры  Ответ Лоры  Ответ Лоры  Ответ Лоры  Ответ Лоры  Ответ Лоры  Ответ Лоры  Ответ Лоры  Ответ Лоры  Ответ Лоры  Ответ Лоры  Ответ Лоры
+                                            Ответ Лоры  Ответ Лоры  Ответ Лоры  Ответ Лоры  Ответ Лоры  Ответ Лоры  Ответ Лоры  Ответ Лоры  Ответ Лоры  Ответ Лоры  Ответ Лоры  Ответ Лоры
+                                        </p>
+                                        <span>09:45</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chat__bottom textarea-secondary" data-textarea-secondary-min-height="50" data-textarea-secondary-max-height="125">
+                                <textarea class="input-reset chat__textarea textarea-secondary__input" placeholder="Ваше сообщение" maxlength="1024"></textarea>
+                                <button type="button" class="btn btn-reset chat__bottom-send" title="Отправить">
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#send"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- popups -->
+    @include('popups/city.html')
+    @include('popups/add.html')
+    @include('popups/personal-area2.html')
+    @include('popups/edit-profile.html')
+    @include('popups/sber-tied.html')
+    <!-- popups -->
+</body>
+
+
+</html>

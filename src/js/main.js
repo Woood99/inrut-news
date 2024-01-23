@@ -123,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
     placeSaleAddressMap();
     objectMaps();
     // ==================================================
+
     controlCards();
     videoBlock();
     reviewModal();

@@ -1,5 +1,6 @@
 .chat-page {
-    max-height: calc(var(--vh) - var(--header-height));
+    max-height: calc(var(--vh,100vh) - var(--header-height));
+    min-height: calc(var(--vh,100vh) - var(--header-height));
     background: rgba(203, 226, 255, 0.5);
     display: flex;
     justify-content: center;
@@ -11,6 +12,9 @@
         &__container{
             grid-template-columns: 176px 1fr;
             grid-column-gap: 32px;
+            @media (max-width:$desktop){
+                 grid-template-columns: 100%; 
+            }
         }
         &__col{
             border: none;
@@ -20,23 +24,51 @@
             padding-left: 0;
             padding-right: 0;
             .simplebar-content{
-                padding-right: 48px !important;
+                @media (min-width:$desktop-min){
+                    padding-right: 48px !important; 
+                }
             }
             .simplebar-track.simplebar-vertical{
                 margin-right: 0;
+                @media (max-width:$desktop){
+                     margin-right: -10px; 
+                }
+            }
+            .simplebar-third .simplebar-content-wrapper{
+                padding-right: 0;
+            }
+            @media (max-width:$desktop){
+                 padding-bottom: 8px; 
             }
         }
 
         &__bar {
             max-height: calc(var(--vh) - var(--header-height) - 32px - var(--chat-bottom-height) - var(--chat-booking-height) - 10px);
             min-height: calc(var(--vh) - var(--header-height) - 32px - var(--chat-bottom-height) - var(--chat-booking-height) - 10px);
+            @media (max-width:$desktop){
+                max-height: calc(var(--vh) - var(--header-height) - 32px - var(--chat-bottom-height) - var(--chat-booking-height) - 3px - 55px);
+                min-height: calc(var(--vh) - var(--header-height) - 32px - var(--chat-bottom-height) - var(--chat-booking-height) - 3px - 55px); 
+            }
         }
 
 
         &__bottom {
             width: calc(100% - 48px);
+            @media (max-width:$desktop){
+                 width: 100%; 
+            }
+        }
+        &__person{
+            @media (max-width:$desktop){
+                 display: none; 
+            }
+        }
+        &__top{
+         
         }
     }
 
-
+    @media (max-width:$desktop){
+        margin: var(--header-height,51px) 0 0;
+    }
 }

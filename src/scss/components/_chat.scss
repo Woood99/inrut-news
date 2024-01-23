@@ -209,6 +209,9 @@
                 &:first-child{
                     margin-top: 0;
                 }
+                @media (max-width:$desktop){
+                     padding: 8px 16px 24px 16px; 
+                }
             }
 
             &__user {
@@ -518,5 +521,31 @@
         opacity: 1;
         visibility: visible;
         pointer-events: all;
+    }
+}
+
+
+.chat-lora{
+    &__top{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: var(--blue);
+        border: none;
+        margin: 0 -16px;
+        padding: 0 16px;
+        height: 55px;
+        .chat__user{
+            font-size: var(--little-big-fz);
+            line-height: var(--little-big-lh);
+            font-weight: 500;
+            color: var(--white);
+        }
+        .chat__pos{
+            color: var(--white);
+        }
+        @media (min-width:$desktop-min){
+            display: none; 
+       }
     }
 }

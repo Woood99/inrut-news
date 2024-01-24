@@ -87,6 +87,8 @@ const modal = (modalHTML, container, speed = 300, target = false) => {
                     target.classList.remove('active');
                     if (settingsModal.modal.classList.contains('filter-modal--select-sort')) {
                         target.querySelector('.choices').insertAdjacentElement('beforeend', settingsModal.container.querySelector('.select-sort').children[0]);
+                    } else if (settingsModal.modal.classList.contains('filter-modal--select-secondary')) {
+                        target.querySelector('.choices').insertAdjacentElement('beforeend', settingsModal.container.querySelector('.choices__list'));
                     } else {
                         target.insertAdjacentElement('beforeend', settingsModal.container.querySelector('.filter-modal__content').children[0]);
                     }

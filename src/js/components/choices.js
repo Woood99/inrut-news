@@ -28,7 +28,7 @@ export const choicesSelect = () => {
             el.addEventListener('showDropdown', () => {
                 if (window.innerWidth <= mobileWidth) {
                     const modalHTML = `
-                    <div class="filter-modal filter-modal--select-sort">
+                    <div class="filter-modal filter-modal--select-sort _selects">
                         <div class="filter-modal__container">
                             <button class="btn-reset filter-modal__close" aria-label="Закрыть модальное окно">
                                 <svg>
@@ -173,7 +173,7 @@ export const selectSecondaryCreate = (el) => {
         wrapper.classList.add('_show');
         if (window.innerWidth <= mobileWidth) {
             const modalHTML = `
-            <div class="filter-modal">
+            <div class="filter-modal filter-modal--select-secondary _selects">
                 <div class="filter-modal__container">
                     <button class="btn-reset filter-modal__close" aria-label="Закрыть модальное окно">
                         <svg>

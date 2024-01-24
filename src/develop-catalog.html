@@ -10,25 +10,26 @@
     <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/object.css">
-    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-    <script defer src="js/object.js"></script>
+    <link rel="stylesheet" href="css/request.css">
+    <script id="ymaps-id"></script>
+    <script defer src="js/request.js"></script>
 </head>
 
 <body class="page__body">
-    <div class="site-container site-container--develop-catalog">
-        @include('partials/header.html')
+    <div class="site-container site-container--header-filter">
+        @include('partials/header--new.html')
         <main class="main main-page-gap selection-estate develop-catalog">
             <div class="develop-catalog__body">
                 <h1 class="develop-catalog__title title-1 container">
                     В базе 1567 застройщиков
                 </h1>
-                <form class="develop-catalog__filter develop-catalog-filter filter container">
+
+                <form class="develop-catalog__filter develop-catalog-filter filter filter--more filter--new-style" data-da=".header,1212,last">
                     <button type="button" class="btn btn-reset btn-secondary filter__btn">
                         <svg>
-                            <use xlink:href="img/sprite.svg#filter"></use>
+                            <use xlink:href="./img/sprite.svg#filter"></use>
                         </svg>
-                        <span>Фильтр</span>
+                        <span>Фильтры</span>
                     </button>
                     <div class="filter__container">
                         <div class="filter__top">
@@ -36,7 +37,11 @@
                             <button type="button" class="btn btn-reset filter__close">Закрыть</button>
                         </div>
                         <div class="filter__inner">
-                            <div class="filter__row" style="grid-template-columns: 22% 22% 22% 1fr;">
+                            <div class="filter__row buy-apartment-filter__row--1 container" data-da=".filter--new-style,1212,1"
+                                style="grid-template-columns: 100px 22% 25% 1fr 200px;">
+                                <div class="btn btn-reset filter__item filter-more-btn filter__btn-control">
+                                    <span>Фильтры</span>
+                                </div>
                                 <div class="filter__item search-select-one search-select-one--left _selected">
                                     <button type="button" class="btn btn-reset search-select-one__button">
                                         <div class="search-select-one__button-wrapper">
@@ -175,110 +180,90 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="filter__item search-select" data-search-select-subtitle="Любой">
-                                    <button type="button" class="btn btn-reset search-select__button">
-                                        <div class="search-select__button-wrapper">
-                                            <div>Комплекс</div>
-                                            <div>Любой</div>
+                                <label class="filter__item filter__item--input stock-developer__input input-primary">
+                                    <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Название ЖК или застройщика">
+                                </label>
+                                <button type="reset" class="btn btn-reset btn-secondary filter__clear">Очистить</button>
+                            </div>
+                            <div class="filter__row buy-apartment-filter__row--2" hidden>
+                                <div class="container">
+                                    <div class="filter__item field-dropdown" data-field-dropdown-name="complex">
+                                        <div class="field-dropdown__name">
+                                            Комплекс
                                         </div>
+                                        <div class="search-select field-dropdown__wrapper" data-search-select-subtitle="Не выбрано">
+                                            <button type="button" class="btn btn-reset search-select__button">
+                                                <div class="search-select__button-wrapper">
+                                                    <div></div>
+                                                    <div>Не выбрано</div>
+                                                </div>
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#check"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="search-select__dropdown">
+                                                <button type="button" class="btn btn-reset search-select__close">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#x"></use>
+                                                    </svg>
+                                                </button>
+                                                <label class="input-primary search-select__input">
+                                                    <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по названию">
+                                                </label>
+                                                <div class="search-select__control">
+                                                    <button type="button" class="btn btn-reset btn-secondary search-select__all">Выбрать всё</button>
+                                                    <button type="button" class="btn btn-reset btn-secondary search-select__clear">Очистить всё</button>
+                                                </div>
+                                                <div class="search-select__wrapper simplebar-third">
+                                                    <div class="search-select__item checkbox-secondary">
+                                                        <input id="developer_17" name="developer-name_17" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                        <label for="developer_17" class="checkbox-secondary__label">
+                                                            <span class="checkbox-secondary__text">
+                                                                <span>ПИК</span>
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="search-select__item checkbox-secondary">
+                                                        <input id="developer_18" name="developer-name_18" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                        <label for="developer_18" class="checkbox-secondary__label">
+                                                            <span class="checkbox-secondary__text">
+                                                                <span>ГК Самолет</span>
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="search-select__item checkbox-secondary">
+                                                        <input id="developer_19" name="developer-name_19" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                        <label for="developer_19" class="checkbox-secondary__label">
+                                                            <span class="checkbox-secondary__text">
+                                                                <span>ГК "А101"</span>
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="search-select__item checkbox-secondary">
+                                                        <input id="developer_30" name="developer-name_30" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                        <label for="developer_30" class="checkbox-secondary__label">
+                                                            <span class="checkbox-secondary__text">
+                                                                <span>ГК МИЦ</span>
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-reset filter__btn-control filter__btn-hidden">
+                                        <span>Скрыть фильтры</span>
                                         <svg>
                                             <use xlink:href="img/sprite.svg#check"></use>
                                         </svg>
                                     </button>
-                                    <div class="search-select__dropdown search-select__dropdown--left">
-                                        <button type="button" class="btn btn-reset search-select__close">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#x"></use>
-                                            </svg>
-                                        </button>
-                                        <label class="input-primary search-select__input">
-                                            <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по названию">
-                                        </label>
-                                        <div class="search-select__control">
-                                            <button type="button" class="btn btn-reset btn-secondary search-select__all">Выбрать всё</button>
-                                            <button type="button" class="btn btn-reset btn-secondary search-select__clear">Очистить всё</button>
-                                        </div>
-                                        <div class="search-select__wrapper simplebar-third">
-                                            <div class="search-select__item checkbox-secondary">
-                                                <input id="developer_10" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
-                                                <label for="developer_10" class="checkbox-secondary__label">
-                                                    <span class="checkbox-secondary__text">
-                                                        <span>ПИК</span>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                            <div class="search-select__item checkbox-secondary">
-                                                <input id="developer_11" name="developer-name_2" class="checkbox-secondary__input" type="checkbox" value="true">
-                                                <label for="developer_11" class="checkbox-secondary__label">
-                                                    <span class="checkbox-secondary__text">
-                                                        <span>ГК Самолет</span>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                            <div class="search-select__item checkbox-secondary">
-                                                <input id="developer_12" name="developer-name_3" class="checkbox-secondary__input" type="checkbox" value="true">
-                                                <label for="developer_12" class="checkbox-secondary__label">
-                                                    <span class="checkbox-secondary__text">
-                                                        <span>ГК "А101"</span>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                            <div class="search-select__item checkbox-secondary">
-                                                <input id="developer_13" name="developer-name_4" class="checkbox-secondary__input" type="checkbox" value="true">
-                                                <label for="developer_13" class="checkbox-secondary__label">
-                                                    <span class="checkbox-secondary__text">
-                                                        <span>ГК МИЦ</span>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                            <div class="search-select__item checkbox-secondary">
-                                                <input id="developer_14" name="developer-name_5" class="checkbox-secondary__input" type="checkbox" value="true">
-                                                <label for="developer_14" class="checkbox-secondary__label">
-                                                    <span class="checkbox-secondary__text">
-                                                        <span>ЛСР</span>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                            <div class="search-select__item checkbox-secondary">
-                                                <input id="developer_15" name="developer-name_6" class="checkbox-secondary__input" type="checkbox" value="true">
-                                                <label for="developer_15" class="checkbox-secondary__label">
-                                                    <span class="checkbox-secondary__text">
-                                                        <span>MR GROUP</span>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                            <div class="search-select__item checkbox-secondary">
-                                                <input id="developer_16" name="developer-name_7" class="checkbox-secondary__input" type="checkbox" value="true">
-                                                <label for="developer_16" class="checkbox-secondary__label">
-                                                    <span class="checkbox-secondary__text">
-                                                        <span>ГК ДОНСТРОЙ</span>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                            <div class="search-select__item checkbox-secondary">
-                                                <input id="developer_17" name="developer-name_8" class="checkbox-secondary__input" type="checkbox" value="true">
-                                                <label for="developer_17" class="checkbox-secondary__label">
-                                                    <span class="checkbox-secondary__text">
-                                                        <span>ГК Эталон</span>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
-                                <label class="filter__item filter__item--input stock-developer__input input-primary">
-                                    <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Название ЖК или застройщика">
-                                </label>
                             </div>
-                        </div>
-                        <div class="filter__controls develop-catalog__controls">
-                            <button type="reset" class="btn btn-reset btn-secondary filter__clear">Очистить</button>
-                            <button type="button" class="btn btn-reset btn-primary filter__go">
-                                Показать 1567 застройщиков
-                            </button>
                         </div>
                     </div>
                 </form>
+
                 <div class="develop-catalog__table main-table">
                     <div class="main-table__inner container">
                     <div class="main-table__table">
@@ -480,7 +465,13 @@
         </main>
         @include('partials/footer.html')
     </div>
-    @include('partials/popup.html')
+     <!-- popups -->
+     @include('popups/city.html')
+     @include('popups/add.html')
+     @include('popups/personal-area2.html')
+     @include('popups/edit-profile.html')
+     @include('popups/sber-tied.html')
+     <!-- popups -->
 </body>
 
 

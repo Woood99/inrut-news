@@ -2,19 +2,16 @@
     .bid-user {
         padding: 40px 24px 32px;
 
-        &::before,
-        &::after {
-            content: '';
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: percent(104.5, 367);
-        }
-
         @media (max-width:$desktop) {
             padding: 16px;
         }
+    }
+
+    .bid__body {
+        background-color: transparent;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
     }
 
     .agent-object {
@@ -27,51 +24,42 @@
         }
     }
 
-    .filter__btn {
-        @media (max-width:$desktop) {
-            margin: 0 16px;
-            width: calc(100% - 32px);
-        }
-    }
-
     .card-secondary {
         &__bottom {
             border-top: 1px solid var(--primary100);
             display: flex;
+            align-items: center;
+            justify-content: space-between;
             width: calc(100% + 35px);
-            padding-top: 16px;
-            margin-top: 16px;
-            margin-left: -24px;
-            padding-left: 24px;
-        }
-
-        .card-secondary__info--mobile {
-            display: none;
-        }
-
-        .card-secondary__info--controls {
-            display: none;
-        }
-
-        &__prices--1 {
-            margin-bottom: 10px;
-        }
-
-        &__prices--2 {
-            margin-top: 0;
-            margin-bottom: 24px;
+            margin: auto -24px 0 -24px;
+            padding: 16px 24px 0 24px;
         }
     }
-    @media (min-width:$tablet-min){
-        .control-cards__content--vertical .card-secondary__bottom {
-            margin: 32px 0 0 -24px;
-            padding: 16px 24px 0 24px;
-            width: calc(100% + 48px);
-
-            .card-secondary__info--mobile {
-                display: flex;
+    .block-stock{
+        &__tabs{
+            @media (max-width:$desktop){
+                 padding: 0;
+                 border-radius: 0; 
             }
-        } 
+        }
+        &__title{
+            @media (max-width:$desktop){
+                 padding: 0 16px; 
+            }
+        }
+        .tabs-primary__container{
+            @media (max-width:$desktop){
+                 margin-top: 16px; 
+            }
+        }
+        .tabs-primary__inner{
+            @media (max-width:$desktop){
+                 padding-top: 0; 
+            }
+        }
+        @media (max-width:$desktop){
+              
+        }
     }
 }
 
@@ -84,6 +72,9 @@
             font-weight: 500;
             font-size: var(--default-fz);
             line-height: var(--default-lh);
+            @media (max-width:$desktop){
+                 display: block; 
+            }
         }
 
         @media (max-width:$desktop) {
@@ -97,20 +88,19 @@
         @media (max-width:$desktop) {
             margin-top: 24px;
             margin-bottom: 0;
-        }
-    }
-
-    &__sort {
-        @media (max-width:$desktop) {
-            justify-content: center;
-            margin-top: 16px;
             padding: 0 16px;
         }
     }
 
     &__cards-list {
         margin-top: 24px;
+        >.container{
+            @media (max-width:$desktop){
+                 padding: 0; 
+            }
+        }
     }
+    
 }
 
 .agent-object-filter {

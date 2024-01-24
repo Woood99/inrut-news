@@ -9,7 +9,10 @@ import {
     _slideUp
 } from '../support-modules/slide';
 import modal from '../modules/modal';
-import { mapPrimary,itsReadyMap } from './maps';
+import {
+    mapPrimary,
+    itsReadyMap
+} from './maps';
 export const filterDropdownChoice = () => {
     const items = document.querySelectorAll('.filter-dropdown__dropdown');
     if (!items.length >= 1) return;
@@ -750,8 +753,6 @@ export const filterControl = () => {
                             top: 0,
                             behavior: 'smooth'
                         })
-                    } else {
-
                     }
                 } else {
                     itemsHidden.forEach(item => {
@@ -760,8 +761,6 @@ export const filterControl = () => {
                     container.classList.add('_active');
                     if (!container.classList.contains('filter--new-style')) {
                         moreBtn.querySelector('span').textContent = btnTextMap.none;
-                    } else {
-
                     }
                 }
             });
@@ -773,7 +772,7 @@ export const filterControl = () => {
                         _slideToggle(item, 700);
                     });
                     container.classList.remove('_active');
-                    if (!container.closest('.object-body__filter')) {
+                    if (!container.closest('.object-body__filter') && !hiddenBtn.classList.contains('_no-scroll-to')) {
                         window.scrollTo({
                             top: 0,
                             behavior: 'smooth',
@@ -798,20 +797,16 @@ export const filterMobile = () => {
         btn.addEventListener('click', () => {
             mask ? mask.classList.add('active') : container.classList.add('active');
             if (filterRowMain.classList.contains('filter__row')) {
-                setTimeout(() => {
-                    inner.insertAdjacentElement('afterbegin', filterRowMain);
-                    inner.insertAdjacentElement('afterend', filterClear);
-                }, 110);
+                inner.insertAdjacentElement('afterbegin', filterRowMain);
+                inner.insertAdjacentElement('afterend', filterClear);
             }
             disableScroll();
         });
         close.addEventListener('click', () => {
             if (container.classList.contains('active')) {
                 container.classList.remove('active');
-                setTimeout(() => {
-                    btn.insertAdjacentElement('afterend', filterRowMain);
-                    filterRowMain.insertAdjacentElement('beforeend', filterClear);
-                }, 75);
+                btn.insertAdjacentElement('afterend', filterRowMain);
+                filterRowMain.insertAdjacentElement('beforeend', filterClear);
             }
             if (mask && mask.classList.contains('active')) mask.classList.remove('active');
             if (!exceptionEnableScroll()) enableScroll();
@@ -991,7 +986,7 @@ export const filterCustomSelectCheckboxes = () => {
         mortgageYesBank.addEventListener('change', () => {
             if (mortgageYesBank.checked) {
                 item.classList.add('_selected');
-                    cash.setAttribute('disabled', true);
+                cash.setAttribute('disabled', true);
                 mortgageNoBank.setAttribute('disabled', true);
 
                 mortgageNoFee.removeAttribute('disabled');
@@ -1025,7 +1020,7 @@ export const filterCustomSelectCheckboxes = () => {
             if (mortgageNoBank.checked) {
                 item.classList.add('_selected');
 
-                    cash.setAttribute('disabled', true);
+                cash.setAttribute('disabled', true);
                 mortgageYesBank.setAttribute('disabled', true);
 
                 mortgageNoFee.removeAttribute('disabled');
@@ -1039,7 +1034,7 @@ export const filterCustomSelectCheckboxes = () => {
             } else {
                 item.classList.remove('_selected');
 
-                    cash.removeAttribute('disabled');
+                cash.removeAttribute('disabled');
                 mortgageYesBank.removeAttribute('disabled');
 
                 mortgageNoFee.setAttribute('disabled', true);

@@ -1,127 +1,54 @@
 .agent {
-
-    &__body {
-
-        .bid {
-            &__container {
-                grid-template-columns: 1fr 350px;
-          padding: 24px 0;
-
-                @media (max-width:$desktop) {
-                    margin-top: 24px;
-                    padding: 0;
-                    grid-template-columns: repeat(2, 1fr);
-                    grid-row-gap: 8px;
-                }
-            }
-
-            &__body {
-                padding: 0;
-                background-color: transparent;
-                box-shadow: none;
-                border-radius: 0;
-                min-width: 0;
-            }
-
-            &__start {
-                padding: 0;
-            }
-
-            &__list {
-                padding: 0;
-            }
-
-            &__descr {
-                margin: 24px 0 0;
-            }
-
-            &__video {
-                margin-top: 32px;
-            }
-        }
-
-        .bid-user {
-           padding-bottom: 0;
-
-            &__content {}
-            &__avatar{
-                --size: 95px;
-            }
-            &__btns {
-                margin-top: 32px;
-                width: 100%;
-            }
-
-            &__btn {
-                width: 100%;
-                margin-top: 0;
-
-                &:not(:last-child) {
-                    margin-bottom: 16px;
-                }
-            }
-
-            &__bottom {
-                margin-top: 24px;
-                border-top: 1px solid var(--primary100);
-                width: 100%;
-                padding: 16px;
-                width: calc(100% + 48px);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
-                &--yandex {
-                    width: 26px;
-                    height: 26px;
-                }
-
-                @media (max-width:$smallTablet-max) {
-                    width: calc(100% + 32px);
-                    margin: 24px -16px 0;
-                }
-            }
-
-            @media (max-width:$desktop) {
-                padding: 16px 16px 0;
-
-            }
-        }
-
-        @media (max-width:$desktop) {
-            padding-top: calc(54px + 24px); // height + gap
-            padding-left: 0;
-            padding-right: 0;
-        }
+    .bid__container{
+          @media (min-width:$desktop-min){
+            grid-row-gap: 0; 
+          }
     }
+    .bid-user {
+        padding-bottom: 0;
 
-    &__tabs {
-        padding-top: 24px;
+        &__content {}
 
-        @media (max-width:$desktop) {
-            margin-top: 8px;
-            padding-bottom: 0;
-            background-color: var(--white);
+        &__btns {
+            margin-top: 32px;
+            width: 100%;
         }
 
-        .tabs-primary__container {
-            padding-bottom: 24px;
+        &__btn {
+            width: 100%;
+            margin-top: 0;
+
+            &:not(:last-child) {
+                margin-bottom: 16px;
+            }
         }
 
+        &__bottom {
+            margin-top: 24px;
+            border-top: 1px solid var(--primary100);
+            width: 100%;
+            padding: 16px;
+            width: calc(100% + 48px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-        .tabs__body {
+            &--yandex {
+                width: 26px;
+                height: 26px;
+            }
+
             @media (max-width:$smallTablet-max) {
-                .tabs-primary__row {
-                    &:first-child {
-                        padding-top: 0;
-                    }
-                }
+                width: calc(100% + 32px);
+                margin: 24px -16px 0;
             }
         }
+
+        @media (max-width:$desktop) {
+            padding: 16px 16px 0;
+
+        }
     }
-
-    &__top {}
-
     &__row {
         padding: 24px;
         background-color: var(--white);
@@ -137,7 +64,7 @@
         }
 
         @media (max-width:$desktop) {
-            padding: 16px;
+       padding: 16px 0;
         }
     }
 
@@ -236,7 +163,7 @@
 
 .review-item {
     border: 1px solid var(--primary200);
-   border-radius: 12px;
+    border-radius: 12px;
     padding: 16px;
 
     &__top {
@@ -251,14 +178,17 @@
     &__info {
         align-self: start;
     }
+
     &__rating {
         display: flex;
         align-items: center;
         margin-bottom: 8px;
-        >div{
+
+        >div {
             display: flex;
             align-items: center;
         }
+
         svg {
             width: 16px;
             height: 16px;
@@ -361,17 +291,20 @@
         margin-top: 24px;
         padding-top: 24px;
         pointer-events: none;
+
         .review-item__user {
             margin-bottom: 16px;
             pointer-events: all;
             cursor: pointer;
         }
-        >div:nth-child(2){
+
+        >div:nth-child(2) {
             pointer-events: all;
             background: var(--primary100);
             border-radius: 2px 12px 12px 12px;
             padding: 16px;
             cursor: pointer;
+
             p {
                 color: var(--dark);
                 font-size: var(--default-fz);
@@ -413,11 +346,11 @@
                 color: var(--primaryTwo);
             }
 
-          @media (min-width:$desktop-min){
-            &:hover {
-                background-color: var(--primary200);
-            } 
-          }
+            @media (min-width:$desktop-min) {
+                &:hover {
+                    background-color: var(--primary200);
+                }
+            }
         }
     }
 
@@ -430,7 +363,7 @@
             &__stage {
                 align-self: start;
                 font-size: var(--small-fz);
-             line-height: 1;
+                line-height: 1;
                 padding: 5px 10px;
                 background-color: var(--primary200);
                 border-radius: 6px;

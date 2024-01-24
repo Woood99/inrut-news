@@ -257,6 +257,30 @@ export const cardPrimaryActions = () => {
                     tooltipModal.classList.add('_card-tooltip');
                 }
             }
+
+            const tooltip = e.target.closest('.secondary-tooltip');
+            if (tooltip && window.innerWidth <= 1212) {
+                e.preventDefault();
+                const content = tooltip.querySelector('.secondary-tooltip__content');
+                const modalHTML = `
+                <div class="tooltip-modal">
+                    <div class="tooltip-modal__container">
+                        <button class="btn-reset tooltip-modal__close" aria-label="Закрыть модальное окно">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#x"></use>
+                            </svg>
+                            <span>Закрыть</span>
+                        </button>
+                        <div class="tooltip-modal__content">
+                            ${content.innerHTML}
+                        </div>
+                    </div>
+                </div>
+                `;
+                modal(modalHTML, '.tooltip-modal', 300);
+                const tooltipModal = document.querySelector('.tooltip-modal');
+                tooltipModal.classList.add('_card-tooltip-options');
+            }
         })
     })
 

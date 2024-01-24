@@ -1756,6 +1756,9 @@ textarea.input-reset {
     background-color: rgba(34, 41, 102, 0.4);
   }
 }
+.popup-primary--complaint-object {
+  z-index: 1052;
+}
 .popup-primary--complaint-object .popup-primary__container {
   border-radius: 12px 0 0 12px;
   padding: 65px 48px 48px;
@@ -4762,6 +4765,13 @@ textarea.input-reset {
 .filter-modal._search-select-one .filter-modal__container {
   padding: 65px 0 32px;
 }
+.filter-modal._selects .filter-modal__container {
+  padding-left: 0;
+  padding-right: 0;
+}
+.filter-modal._selects .choices__item {
+  text-align: left;
+}
 
 .filter-modal-map {
   --transition-time: 0.3s;
@@ -5078,21 +5088,6 @@ textarea.input-reset {
 .tooltip-modal._one-tooltip .main-tooltip__content {
   font-size: var(--big-fz);
 }
-.tooltip-modal._object-info .dots-dropdown__dropdown {
-  position: static;
-  padding: 0;
-  border-radius: 0;
-  width: 100%;
-  opacity: 1;
-  visibility: visible;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  border: none;
-}
-.tooltip-modal._object-info .dots-dropdown__dropdown button,
-.tooltip-modal._object-info .dots-dropdown__dropdown a {
-  padding: 16px 0;
-}
 .tooltip-modal._object-info .dots-dropdown__dropdown button:nth-child(1),
 .tooltip-modal._object-info .dots-dropdown__dropdown a:nth-child(1) {
   color: var(--red);
@@ -5167,6 +5162,29 @@ textarea.input-reset {
   -ms-flex-pack: center;
   justify-content: center;
   white-space: nowrap;
+}
+.tooltip-modal .dots-dropdown__dropdown {
+  position: static;
+  padding: 0;
+  border-radius: 0;
+  width: 100%;
+  opacity: 1;
+  visibility: visible;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
+  -webkit-transform: translate(0);
+  -ms-transform: translate(0);
+  transform: translate(0);
+}
+.tooltip-modal .dots-dropdown__dropdown button, .tooltip-modal .dots-dropdown__dropdown a {
+  padding: 0;
+  width: 100%;
+}
+.tooltip-modal .dots-dropdown__dropdown button:not(:last-child), .tooltip-modal .dots-dropdown__dropdown a:not(:last-child) {
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--primary200);
 }
 
 .shorts-modal {
@@ -14707,14 +14725,9 @@ textarea.input-reset {
   -webkit-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
   transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
 }
-@media (max-width: 768px) {
+@media (max-width: 1212px) {
   .secondary-tooltip__content {
-    padding: 12px;
-    left: 50%;
-    bottom: 20px;
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
+    display: none;
   }
 }
 .secondary-tooltip__close {
@@ -16002,6 +16015,23 @@ textarea.input-reset {
 .field-dropdown__wrapper .filter-dropdown__button-wrapper > div:nth-child(1) {
   display: none;
 }
+.field-dropdown__wrapper .select-secondary__wrapper {
+  background-color: var(--white);
+}
+@media (min-width: 1213px) {
+  .field-dropdown__wrapper .select-secondary__wrapper {
+    height: 40px;
+  }
+}
+.field-dropdown__wrapper .select-secondary__wrapper .choices__list--single {
+  text-align: left;
+  padding: 0 30px 0 0;
+}
+@media (min-width: 1213px) {
+  .field-dropdown__wrapper .select-secondary__wrapper .choices__list--single {
+    font-size: var(--default-small-fz);
+  }
+}
 @media (max-width: 1212px) {
   .field-dropdown__wrapper {
     max-width: 85%;
@@ -16974,8 +17004,6 @@ textarea.input-reset {
     height: 100%;
     background-color: var(--white);
     pointer-events: none;
-    -webkit-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
-    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
     opacity: 0;
     visibility: hidden;
   }
@@ -17110,6 +17138,11 @@ textarea.input-reset {
 @media (max-width: 768px) {
   .filter__item:not(:last-child) {
     margin-bottom: 16px;
+  }
+}
+@media (max-width: 1212px) {
+  .filter__item--input {
+    width: 100%;
   }
 }
 .filter__controls {
@@ -17397,6 +17430,12 @@ textarea.input-reset {
     max-width: 320px;
   }
   .filter--new-style > .filter__row .search-select-one__button {
+    height: 40px;
+  }
+  .filter--new-style > .filter__row .search-select {
+    max-width: 320px;
+  }
+  .filter--new-style > .filter__row .search-select__button {
     height: 40px;
   }
   .filter--new-style > .filter__row .input-primary__input {
@@ -19391,12 +19430,7 @@ textarea.input-reset {
 }
 @media (max-width: 1212px) {
   .video-block__button {
-    height: 200px;
-  }
-}
-@media (max-width: 768px) {
-  .video-block__button {
-    height: 160px;
+    height: 240px;
   }
 }
 .video-block__poster {

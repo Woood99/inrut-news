@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Сервис «Переезд»</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/service-moving.css">
+    <script id="ymaps-id"></script>
+    <script defer src="js/service-moving.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container">
+        @include('partials/header--new.html')
+        <main class="main main-page-gap service-moving">
+            <div class="service-moving__top top-page-inner-title">
+                <div class="top-page-inner-title__container container">
+                    <a href="#" class="top-page-inner-title__back back-link">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#arrow-left"></use>
+                        </svg>
+                        <span>Назад</span>
+                    </a>
+                    <h1 class="service-moving__title top-page-inner-title__title title-1">
+                        Сервис «Переезд»
+                    </h1>
+                </div>
+            </div>
+            <div class="service-moving__body">
+                <form action="#" id="service-moving-form" class="service-moving__container container">
+                    <div class="col">
+                        <div class="service-moving__row">
+                            <h2 class="service-moving__subtitle title-2">
+                                Адрес
+                            </h2>
+                            <div class="service-moving__address service-moving-address">
+                                <div class="service-moving-address__block service-moving-address__from">
+                                    <h4 class="service-moving-address__title title-4">Откуда</h4>
+                                    <div class="row">
+                                        <div class="input-text input-text--no-exp input-text--disabled">
+                                            <label class="input-text__label">
+                                                <span>Адрес</span>
+                                                <input type="text" name="Адрес" class="input-reset input-text__input" disabled value="Краснодар, Тополиная улица, 40/1к1"
+                                                    placeholder="">
+                                            </label>
+                                        </div>
+                                        <div class="input-text input-text--no-exp input-text--only-number input-text--disabled">
+                                            <label class="input-text__label">
+                                                <span>Номер квартиры</span>
+                                                <input type="text" name="Имя" class="input-reset input-text__input" disabled value="11" maxlength="4" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="service-moving-address__block service-moving-address__to">
+                                    <h4 class="service-moving-address__title title-4">Куда</h4>
+                                    <div class="row">
+                                        <div class="input-text input-text--no-exp">
+                                            <label class="input-text__label">
+                                                <span>Адрес</span>
+                                                <input type="text" name="Адрес" class="input-reset input-text__input" placeholder="">
+                                            </label>
+                                        </div>
+                                        <div class="input-text input-text--no-exp input-text--only-number">
+                                            <label class="input-text__label">
+                                                <span>Номер квартиры</span>
+                                                <input type="text" name="Имя" class="input-reset input-text__input" maxlength="4" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-moving__row">
+                            <h2 class="service-moving__subtitle title-2">
+                                Заказчик
+                            </h2>
+                            <div class="service-moving__client service-moving-client">
+                                <div class="row">
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Имя</span>
+                                            <input type="text" name="Имя" class="input-reset input-text__input" value="Алексей" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Фамилия</span>
+                                            <input type="text" name="Фамилия" class="input-reset input-text__input" value="Гаврилов" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Номер телефона</span>
+                                            <input type="text" name="Застройщик" class="input-reset input-text__input input-phone-mask" value="8 921 645 45 45" placeholder="">
+                                        </label>
+                                    </div>
+                                </div>
+                                <label class="toggle-checkbox service-moving-client__toggle">
+                                    <input type="checkbox" name="toggle-1">
+                                    <div aria-hidden="true"></div>
+                                    <span>Груз получит заказчик</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="service-moving__row">
+                            <h2 class="service-moving__subtitle title-2">
+                                Получатель
+                            </h2>
+                            <div class="service-moving__client service-moving-client">
+                                <div class="row">
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Имя</span>
+                                            <input type="text" name="Имя" class="input-reset input-text__input" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Фамилия</span>
+                                            <input type="text" name="Фамилия" class="input-reset input-text__input" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Номер телефона</span>
+                                            <input type="text" name="Застройщик" class="input-reset input-text__input input-phone-mask" placeholder="">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-moving__row">
+                            <h2 class="service-moving__subtitle title-2">
+                                Дата и время
+                            </h2>
+                            <p class="service-moving__descr">
+                                Если вы хотите сделать заказ на завтра, его нужно сделать до 18:00
+                            </p>
+                            <div class="service-moving__time service-moving-time">
+                                <div class="row">
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Дата</span>
+                                            <input type="text" name="Дата" class="input-reset input-text__input service-moving-time__date" value="" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Время</span>
+                                            <input type="text" name="Время" class="input-reset input-text__input input-time" value="00:00" placeholder="">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-moving__row">
+                            <h2 class="service-moving__subtitle title-2">
+                                Параметры груза
+                            </h2>
+                            <div class="service-moving__options service-moving-options">
+                                <div class="service-moving-options__list">
+                                    <article class="offer-room offer-room--border">
+                                        <div class="offer-room__check" aria-hidden="true">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#verif"></use>
+                                            </svg>
+                                        </div>
+                                        <input type="checkbox" name="submit-app-offers-1" value="Студия" class="input-reset" placeholder="">
+                                        <div class="offer-room__container">
+                                            <div class="offer-room__title title-4">
+                                                Студия
+                                            </div>
+                                            <div class="offer-room__image">
+                                                <picture>
+                                                    <source srcset="./img/studio.webp" type="image/webp">
+                                                    <img loading="lazy" src="./img/studio.png" width="124" height="80" alt="Студия">
+                                                </picture>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <article class="offer-room offer-room--border">
+                                        <div class="offer-room__check" aria-hidden="true">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#verif"></use>
+                                            </svg>
+                                        </div>
+                                        <input type="checkbox" name="submit-app-offers-1" value="1-комн. квартира" class="input-reset" placeholder="">
+                                        <div class="offer-room__container">
+                                            <div class="offer-room__title title-4">
+                                                1-комн. квартира
+                                            </div>
+                                            <div class="offer-room__image">
+                                                <picture>
+                                                    <source srcset="./img/studio.webp" type="image/webp">
+                                                    <img loading="lazy" src="./img/studio.png" width="124" height="80" alt="1-комн. квартира">
+                                                </picture>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <article class="offer-room offer-room--border">
+                                        <div class="offer-room__check" aria-hidden="true">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#verif"></use>
+                                            </svg>
+                                        </div>
+                                        <input type="checkbox" name="submit-app-offers-1" value="2-комн. квартира" class="input-reset" placeholder="">
+                                        <div class="offer-room__container">
+                                            <div class="offer-room__title title-4">
+                                                2-комн. квартира
+                                            </div>
+                                            <div class="offer-room__image">
+                                                <picture>
+                                                    <source srcset="./img/studio.webp" type="image/webp">
+                                                    <img loading="lazy" src="./img/studio.png" width="124" height="80" alt="2-комн. квартира">
+                                                </picture>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <article class="offer-room offer-room--border">
+                                        <div class="offer-room__check" aria-hidden="true">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#verif"></use>
+                                            </svg>
+                                        </div>
+                                        <input type="checkbox" name="submit-app-offers-1" value="3-комн. квартира" class="input-reset" placeholder="">
+                                        <div class="offer-room__container">
+                                            <div class="offer-room__title title-4">
+                                                3-комн. квартира
+                                            </div>
+                                            <div class="offer-room__image">
+                                                <picture>
+                                                    <source srcset="./img/studio.webp" type="image/webp">
+                                                    <img loading="lazy" src="./img/studio.png" width="124" height="80" alt="3-комн. квартира">
+                                                </picture>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                            <div class="service-moving__quantity service-moving-quantity">
+                                <h2 class="service-moving__subtitle title-2">
+                                    Вещи, мебель и техника
+                                </h2>
+                                <div class="service-moving-quantity__list">
+                                    <div class="service-moving-quantity__item">
+                                        <div class="service-moving-quantity__icon">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#box"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="service-moving-quantity__text">
+                                            Коробка с вещами
+                                        </div>
+                                        <div class="service-moving-quantity__quantity quantity">
+                                            <div class="quantity__button quantity__button_minus">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#minus"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="quantity__input">
+                                                <input type="text" maxlength="2" value="1">
+                                            </div>
+                                            <div class="quantity__button quantity__button_plus">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#plus"></use>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-reset btn-primary service-moving__btn">
+                            Рассчитать стоимость
+                        </button>
+                    </div>
+                    <div class="service-moving__sidebar col">
+                        <div class="_sticky">
+                            <div class="service-moving__right">
+                                123
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+        @include('partials/footer.html')
+    </div>
+    <!-- popups -->
+    @include('popups/city.html')
+    @include('popups/add.html')
+    @include('popups/personal-area2.html')
+    @include('popups/edit-profile.html')
+    @include('popups/sber-tied.html')
+    <!-- popups -->
+</body>
+
+
+</html>

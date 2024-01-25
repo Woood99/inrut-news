@@ -34,6 +34,7 @@ import {
     inputMaskOgrn,
     inputMaskOgrnip,
     inputMaskInn,
+    inputMaskTime
 } from './components/formValidate';
 import dropdown from './modules/dropdown';
 import dropdownItems from './modules/dropdownItems';
@@ -120,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputsMaskOgrn = document.querySelectorAll('.input-ogrn-mask');
     const inputsMaskOgrnip = document.querySelectorAll('.input-ogrnip-mask');
     const inputsInnMask = document.querySelectorAll('.input-inn-mask');
+    const inputsTimeMask = document.querySelectorAll('.input-time');
 
     inputsMaskPhone.forEach(input => inputMaskPhone(input));
     inputsMaskSeriesNumber.forEach(input => inputMaskSeriesNumber(input));
@@ -128,6 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
     inputsMaskOgrn.forEach(input => inputMaskOgrn(input));
     inputsMaskOgrnip.forEach(input => inputMaskOgrnip(input));
     inputsInnMask.forEach(input => inputMaskInn(input));
+    inputsTimeMask.forEach(input => inputMaskTime(input));
 
     dropdown('.dots-dropdown', '.dots-dropdown__target');
     dropdownItems('.your-app-bid__item--dropdown', 'button', 'Скрыть');

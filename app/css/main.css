@@ -1092,6 +1092,65 @@ textarea.input-reset {
   }
 }
 
+.quantity {
+  width: 92px;
+  height: 32px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.quantity__button {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 30px;
+  flex: 0 0 30px;
+  position: relative;
+  cursor: pointer;
+  border: 1px solid rgba(166, 166, 166, 0.45);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+.quantity__button svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--dark);
+}
+@media (any-hover: hover) {
+  .quantity__button:hover::before, .quantity__button:hover::after {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+.quantity__button_minus svg {
+  fill: none;
+  stroke: var(--dark);
+}
+.quantity__input {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+.quantity__input input {
+  height: 100%;
+  color: var(--dark);
+  font-size: var(--small-fz);
+  line-height: var(--small-lh);
+  width: 100%;
+  text-align: center;
+  border: none;
+  outline: none;
+}
+
 .radio-primary {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -13708,8 +13767,8 @@ textarea.input-reset {
 }
 
 .chat-lora-btn {
-  width: 56px;
-  height: 56px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   background-color: var(--white);
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -22305,8 +22364,36 @@ textarea.input-reset {
   opacity: 1;
   visibility: visible;
 }
+.offer-room--border {
+  border: 1px solid var(--primary200);
+  border-radius: 12px;
+  padding: 16px;
+  -webkit-transition: border 0.4s ease-in-out;
+  transition: border 0.4s ease-in-out;
+}
+.offer-room--border .offer-room__image {
+  padding-bottom: 0;
+}
+.offer-room--border .offer-room__image::before {
+  content: none;
+}
+.offer-room--border .offer-room__image img {
+  position: static;
+}
+.offer-room--border .offer-room__title {
+  position: static;
+  margin-bottom: 16px;
+  color: var(--dark);
+}
+.offer-room--border .offer-room__check {
+  width: 22px;
+  height: 22px;
+}
+.offer-room--border._active {
+  border-color: var(--blue);
+}
 @media (min-width: 1213px) {
-  .offer-room:hover .offer-room__image img {
+  .offer-room:not(.offer-room--border):hover .offer-room__image img {
     opacity: 0.8;
   }
 }

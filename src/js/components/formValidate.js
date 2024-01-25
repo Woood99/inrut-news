@@ -689,6 +689,27 @@ export const inputMaskInn = (input) => {
     const inputMask = new Inputmask('999999999999');
     inputMask.mask(input);
 }
+export const inputMaskTime = (input) => {
+    const inputMask = new Inputmask('99:99');
+    inputMask.mask(input);
+
+    input.addEventListener('change',(e) => {
+        const hours = input.value.substring(0,2);
+        const minutes = input.value.substring(3,5);
+        if (input.value === '') {
+            input.value = '00:00';
+            const inputText = input.closest('.input-text');
+            if (inputText) inputText.classList.add('_active');
+        }
+        if (!(hours >= 0 && hours <= 23)) {
+            input.value = `00:${input.value.substring(3,5)}`;
+        }
+        if (!(minutes >= 0 && minutes <= 59)) {
+            input.value = `${input.value.substring(0,2)}:00`;
+        }
+
+    })
+};
 
 export const validateCreateErrorSelect = (container) => {
     if (!container) return;

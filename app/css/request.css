@@ -9714,7 +9714,7 @@ textarea.input-reset {
 .message-item__text:not(:last-child) {
   margin-bottom: 16px;
 }
-.message-item__btn-help {
+.message-item__btn-clue {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9730,10 +9730,10 @@ textarea.input-reset {
   padding: 12px 16px;
   border-radius: 12px;
 }
-.message-item__btn-help:not(:last-child) {
+.message-item__btn-clue:not(:last-child) {
   margin-bottom: 8px;
 }
-.message-item__btn-help svg {
+.message-item__btn-clue svg {
   margin-left: 16px;
   width: 20px;
   height: 20px;
@@ -9741,10 +9741,36 @@ textarea.input-reset {
   -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
 }
+.message-item__btn-help {
+  display: block;
+  background-color: var(--primary100);
+  width: 100%;
+  text-align: left;
+  padding: 0 16px;
+  border-radius: 12px;
+  height: 35px;
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
+}
+.message-item.message-item--clue .message-item__text > span:first-child {
+  font-weight: 500;
+  margin-bottom: 12px;
+  display: block;
+}
 .message-item.message-item--help .message-item__text > span:first-child {
   font-weight: 500;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   display: block;
+}
+.message-item.message-item--help .message-item__text > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 8px;
 }
 
 .dots-dropdown {
@@ -13679,6 +13705,33 @@ textarea.input-reset {
 .banner-test__play svg {
   width: 2.4rem;
   height: 2.4rem;
+}
+
+.chat-lora-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--white);
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 112px;
+  right: 32px;
+  z-index: 99;
+}
+.chat-lora-btn img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 
 .tags__list {
@@ -26594,7 +26647,7 @@ textarea.input-reset {
   align-self: end;
   width: 176px;
   height: 176px;
-  margin: 16px 0 48px;
+  margin: 16px 0 calc(var(--chat-bottom-height) + 10px + 16px);
 }
 .chat__person img {
   border-radius: 50%;
@@ -26674,33 +26727,52 @@ textarea.input-reset {
   pointer-events: all;
 }
 
-.chat-lora__top {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  background-color: var(--blue);
-  border: none;
-  margin: 0 -16px;
-  padding: 0 16px;
-  height: 55px;
+@media (max-width: 1212px) {
+  .chat-lora__top {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    background-color: var(--blue);
+    border: none;
+    margin: 0 -16px;
+    padding: 0 16px;
+    height: 55px;
+  }
+  .chat-lora__top .chat__user {
+    font-size: var(--little-big-fz);
+    line-height: var(--little-big-lh);
+    font-weight: 500;
+    color: var(--white);
+  }
+  .chat-lora__top .chat__pos {
+    color: var(--white);
+  }
 }
-.chat-lora__top .chat__user {
-  font-size: var(--little-big-fz);
-  line-height: var(--little-big-lh);
-  font-weight: 500;
-  color: var(--white);
-}
-.chat-lora__top .chat__pos {
-  color: var(--white);
+@media (min-width: 1213px) {
+  .chat-lora__top > div {
+    display: none;
+  }
 }
 @media (min-width: 1213px) {
   .chat-lora__top {
+    margin-top: 16px;
+    height: auto;
+    padding: 0;
+    border: none;
+  }
+}
+.chat-lora__back {
+  max-width: 200px;
+  margin-left: auto;
+}
+@media (max-width: 1212px) {
+  .chat-lora__back {
     display: none;
   }
 }

@@ -154,7 +154,27 @@
                                     <div class="input-text input-text--no-exp">
                                         <label class="input-text__label">
                                             <span>Время</span>
-                                            <input type="text" name="Время" class="input-reset input-text__input input-time" value="00:00" placeholder="">
+                                            <input type="text" name="Время" class="input-reset input-text__input input-time" value="" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Время аренды</span>
+                                            <div class="quantity" data-value="1">
+                                                <div class="quantity__button quantity__button_minus">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#minus"></use>
+                                                    </svg>
+                                                </div>
+                                                <div class="quantity__input">
+                                                    <input type="text" class="service-moving__rent-time" maxlength="2" disabled="" value="1">
+                                                </div>
+                                                <div class="quantity__button quantity__button_plus">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#plus"></use>
+                                                    </svg>
+                                                </div>
+                                            </div>
                                         </label>
                                     </div>
                                 </div>
@@ -166,13 +186,13 @@
                             </h2>
                             <div class="service-moving__options service-moving-options">
                                 <div class="service-moving-options__list">
-                                    <article class="offer-room offer-room--border">
+                                    <article class="offer-room offer-room--border _active">
                                         <div class="offer-room__check" aria-hidden="true">
                                             <svg>
                                                 <use xlink:href="img/sprite.svg#verif"></use>
                                             </svg>
                                         </div>
-                                        <input type="checkbox" name="submit-app-offers-1" value="Студия" class="input-reset" placeholder="">
+                                        <input type="radio" name="service-moving-option" checked value="Студия" class="input-reset" placeholder="">
                                         <div class="offer-room__container">
                                             <div class="offer-room__title title-4">
                                                 Студия
@@ -191,7 +211,7 @@
                                                 <use xlink:href="img/sprite.svg#verif"></use>
                                             </svg>
                                         </div>
-                                        <input type="checkbox" name="submit-app-offers-1" value="1-комн. квартира" class="input-reset" placeholder="">
+                                        <input type="radio" name="service-moving-option" value="1-комн. квартира" class="input-reset" placeholder="">
                                         <div class="offer-room__container">
                                             <div class="offer-room__title title-4">
                                                 1-комн. квартира
@@ -210,7 +230,7 @@
                                                 <use xlink:href="img/sprite.svg#verif"></use>
                                             </svg>
                                         </div>
-                                        <input type="checkbox" name="submit-app-offers-1" value="2-комн. квартира" class="input-reset" placeholder="">
+                                        <input type="radio" name="service-moving-option" value="2-комн. квартира" class="input-reset" placeholder="">
                                         <div class="offer-room__container">
                                             <div class="offer-room__title title-4">
                                                 2-комн. квартира
@@ -229,7 +249,7 @@
                                                 <use xlink:href="img/sprite.svg#verif"></use>
                                             </svg>
                                         </div>
-                                        <input type="checkbox" name="submit-app-offers-1" value="3-комн. квартира" class="input-reset" placeholder="">
+                                        <input type="radio" name="service-moving-option" value="3-комн. квартира" class="input-reset" placeholder="">
                                         <div class="offer-room__container">
                                             <div class="offer-room__title title-4">
                                                 3-комн. квартира
@@ -258,14 +278,239 @@
                                         <div class="service-moving-quantity__text">
                                             Коробка с вещами
                                         </div>
-                                        <div class="service-moving-quantity__quantity quantity">
+                                        <div class="service-moving-quantity__quantity quantity" data-value="0">
                                             <div class="quantity__button quantity__button_minus">
                                                 <svg>
                                                     <use xlink:href="./img/sprite.svg#minus"></use>
                                                 </svg>
                                             </div>
                                             <div class="quantity__input">
-                                                <input type="text" maxlength="2" value="1">
+                                                <input type="text" maxlength="2" disabled value="0">
+                                            </div>
+                                            <div class="quantity__button quantity__button_plus">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#plus"></use>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="service-moving-quantity__item">
+                                        <div class="service-moving-quantity__icon">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#box"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="service-moving-quantity__text">
+                                            Кровать
+                                        </div>
+                                        <div class="service-moving-quantity__quantity quantity" data-value="0">
+                                            <div class="quantity__button quantity__button_minus">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#minus"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="quantity__input">
+                                                <input type="text" maxlength="2" disabled value="0">
+                                            </div>
+                                            <div class="quantity__button quantity__button_plus">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#plus"></use>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="service-moving-quantity__item">
+                                        <div class="service-moving-quantity__icon">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#box"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="service-moving-quantity__text">
+                                            Плита
+                                        </div>
+                                        <div class="service-moving-quantity__quantity quantity" data-value="0">
+                                            <div class="quantity__button quantity__button_minus">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#minus"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="quantity__input">
+                                                <input type="text" maxlength="2" disabled value="0">
+                                            </div>
+                                            <div class="quantity__button quantity__button_plus">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#plus"></use>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="service-moving-quantity__item">
+                                        <div class="service-moving-quantity__icon">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#box"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="service-moving-quantity__text">
+                                            Стиральная машина
+                                        </div>
+                                        <div class="service-moving-quantity__quantity quantity" data-value="0">
+                                            <div class="quantity__button quantity__button_minus">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#minus"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="quantity__input">
+                                                <input type="text" maxlength="2" disabled value="0">
+                                            </div>
+                                            <div class="quantity__button quantity__button_plus">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#plus"></use>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="service-moving-quantity__item">
+                                        <div class="service-moving-quantity__icon">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#box"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="service-moving-quantity__text">
+                                            Шкаф
+                                        </div>
+                                        <div class="service-moving-quantity__quantity quantity" data-value="0">
+                                            <div class="quantity__button quantity__button_minus">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#minus"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="quantity__input">
+                                                <input type="text" maxlength="2" disabled value="0">
+                                            </div>
+                                            <div class="quantity__button quantity__button_plus">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#plus"></use>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="service-moving-quantity__item">
+                                        <div class="service-moving-quantity__icon">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#box"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="service-moving-quantity__text">
+                                            Холодильник
+                                        </div>
+                                        <div class="service-moving-quantity__quantity quantity" data-value="0">
+                                            <div class="quantity__button quantity__button_minus">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#minus"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="quantity__input">
+                                                <input type="text" maxlength="2" disabled value="0">
+                                            </div>
+                                            <div class="quantity__button quantity__button_plus">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#plus"></use>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="service-moving-quantity__item">
+                                        <div class="service-moving-quantity__icon">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#box"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="service-moving-quantity__text">
+                                            Стул
+                                        </div>
+                                        <div class="service-moving-quantity__quantity quantity" data-value="0">
+                                            <div class="quantity__button quantity__button_minus">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#minus"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="quantity__input">
+                                                <input type="text" maxlength="2" disabled value="0">
+                                            </div>
+                                            <div class="quantity__button quantity__button_plus">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#plus"></use>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="service-moving-quantity__item">
+                                        <div class="service-moving-quantity__icon">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#box"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="service-moving-quantity__text">
+                                            Телевизор
+                                        </div>
+                                        <div class="service-moving-quantity__quantity quantity" data-value="0">
+                                            <div class="quantity__button quantity__button_minus">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#minus"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="quantity__input">
+                                                <input type="text" maxlength="2" disabled value="0">
+                                            </div>
+                                            <div class="quantity__button quantity__button_plus">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#plus"></use>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="service-moving-quantity__item">
+                                        <div class="service-moving-quantity__icon">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#box"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="service-moving-quantity__text">
+                                            Стол
+                                        </div>
+                                        <div class="service-moving-quantity__quantity quantity" data-value="0">
+                                            <div class="quantity__button quantity__button_minus">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#minus"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="quantity__input">
+                                                <input type="text" maxlength="2" disabled value="0">
+                                            </div>
+                                            <div class="quantity__button quantity__button_plus">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#plus"></use>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="service-moving-quantity__item">
+                                        <div class="service-moving-quantity__icon">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#box"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="service-moving-quantity__text">
+                                            Диван
+                                        </div>
+                                        <div class="service-moving-quantity__quantity quantity" data-value="0">
+                                            <div class="quantity__button quantity__button_minus">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#minus"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="quantity__input">
+                                                <input type="text" maxlength="2" disabled value="0">
                                             </div>
                                             <div class="quantity__button quantity__button_plus">
                                                 <svg>
@@ -277,14 +522,207 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-reset btn-primary service-moving__btn">
+                        <div class="service-moving__row">
+                            <h2 class="service-moving__subtitle title-2">
+                                Что можно добавить к заказу
+                            </h2>
+                            <div class="service-moving__features service-moving-features">
+                                <div class="service-moving-features__list">
+                                    <div class="service-moving-features__item features-item">
+                                        <div class="col">
+                                            <div class="features-item__title">
+                                                Грузчики
+                                            </div>
+                                            <div class="features-item__price" data-price="2000">
+                                                От <span>2 000</span> ₽
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-reset tag features-item__btn">
+                                            Добавить
+                                        </button>
+                                    </div>
+                                    <div class="service-moving-features__item features-item">
+                                        <div class="col">
+                                            <div class="features-item__title">
+                                                Картонная коробка
+                                            </div>
+                                            <div class="features-item__price" data-price="63">
+                                                От <span>63</span> ₽/шт.
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-reset tag features-item__btn">
+                                            Добавить
+                                        </button>
+                                    </div>
+                                    <div class="service-moving-features__item features-item">
+                                        <div class="col">
+                                            <div class="features-item__title">
+                                                Пузырчатая плёнка
+                                            </div>
+                                            <div class="features-item__price" data-price="30">
+                                                От <span>30</span> ₽/м
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-reset tag features-item__btn">
+                                            Добавить
+                                        </button>
+                                    </div>
+                                    <div class="service-moving-features__item features-item">
+                                        <div class="col">
+                                            <div class="features-item__title">
+                                                Скотч
+                                            </div>
+                                            <div class="features-item__price" data-price="48">
+                                                От <span>48</span> ₽/шт.
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-reset tag features-item__btn">
+                                            Добавить
+                                        </button>
+                                    </div>
+                                    <div class="service-moving-features__item features-item">
+                                        <div class="col">
+                                            <div class="features-item__title">
+                                                Стретч-плёнка
+                                            </div>
+                                            <div class="features-item__price" data-price="220">
+                                                От <span>220</span> ₽/рулон
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-reset tag features-item__btn">
+                                            Добавить
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-moving__row">
+                            <h2 class="service-moving__subtitle title-2">
+                                Комментарий к заказу
+                            </h2>
+                            <p class="service-moving__descr">
+                                Укажите код домофона, есть ли препятствия для проезда и другую важную информацию
+                            </p>
+                            <div class="service-moving__comment service-moving-comment">
+                                <div class="textarea-secondary textarea-secondary--default" data-textarea-secondary-min-height="96" style="min-height: 96px;">
+                                    <textarea name="type-value" class="input-reset textarea-secondary__input" maxlength="2500" placeholder="Напишите комментарий"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-moving__row">
+                            <h2 class="service-moving__subtitle title-2">
+                                Тарифы
+                            </h2>
+                            <div class="service-moving__rates service-moving-rates">
+                                <div class="service-moving-rates__list">
+                                    <article class="offer-room offer-room--border offer-room--border-img-up">
+                                        <div class="offer-room__check" aria-hidden="true">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#verif"></use>
+                                            </svg>
+                                        </div>
+                                        <input type="radio" name="service-moving-rate" value="1000" class="input-reset" placeholder="">
+                                        <div class="offer-room__container">
+                                            <div class="offer-room__image">
+                                                <picture>
+                                                    <source srcset="./img/car2.webp" type="image/webp">
+                                                    <img loading="lazy" src="./img/car2.png" width="52" height="52" alt="Фургон">
+                                                </picture>
+                                            </div>
+                                            <div class="offer-room__title title-4">
+                                                Фургон
+                                            </div>
+                                            <div class="offer-room__price title-3">
+                                                <span>1 000</span> ₽
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <article class="offer-room offer-room--border offer-room--border-img-up">
+                                        <div class="offer-room__check" aria-hidden="true">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#verif"></use>
+                                            </svg>
+                                        </div>
+                                        <input type="radio" name="service-moving-rate" value="1500" class="input-reset" placeholder="">
+                                        <div class="offer-room__container">
+                                            <div class="offer-room__image">
+                                                <picture>
+                                                    <source srcset="./img/car2.webp" type="image/webp">
+                                                    <img loading="lazy" src="./img/car2.png" width="52" height="52" alt="Малый грузовик">
+                                                </picture>
+                                            </div>
+                                            <div class="offer-room__title title-4">
+                                                Малый грузовик
+                                            </div>
+                                            <div class="offer-room__price title-3">
+                                                <span>1 500</span> ₽
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <article class="offer-room offer-room--border offer-room--border-img-up">
+                                        <div class="offer-room__check" aria-hidden="true">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#verif"></use>
+                                            </svg>
+                                        </div>
+                                        <input type="radio" name="service-moving-rate" value="2000" class="input-reset" placeholder="">
+                                        <div class="offer-room__container">
+                                            <div class="offer-room__image">
+                                                <picture>
+                                                    <source srcset="./img/car2.webp" type="image/webp">
+                                                    <img loading="lazy" src="./img/car2.png" width="52" height="52" alt="Средний грузовик">
+                                                </picture>
+                                            </div>
+                                            <div class="offer-room__title title-4">
+                                                Средний грузовик
+                                            </div>
+                                            <div class="offer-room__price title-3">
+                                                <span>2 000</span> ₽
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <article class="offer-room offer-room--border offer-room--border-img-up">
+                                        <div class="offer-room__check" aria-hidden="true">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#verif"></use>
+                                            </svg>
+                                        </div>
+                                        <input type="radio" name="service-moving-rate" value="2500" class="input-reset" placeholder="">
+                                        <div class="offer-room__container">
+                                            <div class="offer-room__image">
+                                                <picture>
+                                                    <source srcset="./img/car2.webp" type="image/webp">
+                                                    <img loading="lazy" src="./img/car2.png" width="52" height="52" alt="Большой грузовик">
+                                                </picture>
+                                            </div>
+                                            <div class="offer-room__title title-4">
+                                                Большой грузовик
+                                            </div>
+                                            <div class="offer-room__price title-3">
+                                                <span>2 500</span> ₽
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-reset btn-primary service-moving__btn">
                             Рассчитать стоимость
                         </button>
                     </div>
                     <div class="service-moving__sidebar col">
                         <div class="_sticky">
-                            <div class="service-moving__right">
-                                123
+                            <div class="service-moving__result service-moving-result">
+                                <div class="service-moving-result__start">
+                                    <h3 class="service-moving-result__title title-3">
+                                        Расчёт стоимости
+                                    </h3>
+                                    <div class="service-moving-result__descr">
+                                        <p>
+                                            Чтобы узнать стоимость переезда, укажите нужный тариф и нажмите «Рассчитать стоимость»
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

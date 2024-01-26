@@ -11,6 +11,7 @@ import {
     getCurrentDateString,
     getTomorrowDay
 } from './modules/date';
+import numberReplace from './modules/numberReplace';
 // ==============================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,11 +19,20 @@ document.addEventListener('DOMContentLoaded', () => {
     if (form) {
         let booleanForm = false;
         quantity();
+        const clientToggle = form.querySelector('.service-moving-client__toggle input');
+        const recipient = form.querySelector('[data-service-moving-recipient]');
         const date = form.querySelector('.service-moving-time__date');
         const optionsItems = form.querySelector('.service-moving-options__list').children;
         const featuresItems = form.querySelectorAll('.service-moving-features__item');
         const ratesItems = form.querySelector('.service-moving-rates__list').children;
         const btn = form.querySelector('.service-moving__btn');
+        clientToggle.addEventListener('input',() => {
+            if (clientToggle.checked){
+                recipient.setAttribute('hidden','');
+            } else {
+                recipient.removeAttribute('hidden');
+            }
+        })
         if (date) {
             new AirDatepicker(date, {
                 autoClose: true,
@@ -39,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const inputs = itemsArray.map(item => item.querySelector('input'));
             inputs.forEach(input => {
                 input.addEventListener('input', () => {
-                    // const currentActiveItem = itemsArray.find(item => item.classList.contains('_active'));
                     const currentItem = input.closest('.offer-room');
                     itemsArray.forEach(item => item.classList.remove('_active'));
                     currentItem.classList.toggle('_active');
@@ -83,7 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             quantity.remove();
                             item.insertAdjacentHTML('beforeend', btnHTML);
                         }
-                        if (booleanForm) resultUpdate();
                     }, 1);
                 })
             })
@@ -96,23 +104,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     const currentItem = input.closest('.offer-room');
                     itemsArray.forEach(item => item.classList.remove('_active'));
                     currentItem.classList.toggle('_active');
-                    if (booleanForm) resultUpdate();
                 });
             })
         }
+        form.addEventListener('click',() => {
+            setTimeout(() => {
+                if (booleanForm) resultUpdate();
+            }, 1);
+        })
         btn.addEventListener('click', () => {
-            resultUpdate();
-            booleanForm = true;
+            setTimeout(() => {
+                resultUpdate();
+                booleanForm = true;
+            }, 1);
         });
     };
 
     const result = form.querySelector('.service-moving-result');
     const start = result.querySelector('.service-moving-result__start');
-    let startHTML = start.outerHTML;
-
 
     function resultUpdate() {
-        const resultBlock = form.querySelector('.service-moving-result');
         const featuresBlock = form.querySelector('.service-moving-features');
         const rateBlock = form.querySelector('.service-moving-rates');
 
@@ -144,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const option = `
                     <div class="service-moving-result__option">
                         <span>${item}</span>
-                        <span>${listFeaturesItems[item].resultPrice()} ₽</span>
+                        <span>${numberReplace(String(listFeaturesItems[item].resultPrice()))} ₽</span>
                     </div>
                     `;
                     htmlOptions += option;
@@ -157,16 +168,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="service-moving-result__main">
                     <h2 class="service-moving-result__main-title title-3">
                         <span>Общая стоимость</span>
-                        <span>${resultPrice} ₽</span>
+                        <span>${numberReplace(String(resultPrice))} ₽</span>
                     </h2>
                     <div class="service-moving-result__options">
                         <div class="service-moving-result__option">
                             <span>Тариф</span>
-                            <span>${ratePrice} ₽</span>
+                            <span>${numberReplace(String(ratePrice))} ₽</span>
                         </div>
                         <div class="service-moving-result__option">
                             <span>Время аренды</span>
-                            <span>${rentTime} ч</span>
+                            <span>${numberReplace(String(rentTime))} ч</span>
                         </div>
                         ${htmlOptions}
                     </div>

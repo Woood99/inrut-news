@@ -8,8 +8,7 @@ import './_main-scripts';
 // ==============================
 import getHeightBlock from './modules/getHeightBlock'
 import {
-    mapPrimary,
-    objectMaps
+    mapPrimary
 } from './components/maps';
 import linkCopy from './modules/linkCopy';
 import {
@@ -64,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
     cardPrimaryActions();
     mapPrimary();
 
-    objectMaps();
     
     videoBlock();
     headerFixed();

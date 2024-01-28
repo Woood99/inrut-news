@@ -947,13 +947,67 @@ export const filterCustomSelectCheckboxes = () => {
         const mortgageNoBank = item.querySelector('[data-name="mortgage_no-bank"]');
         const mortgageNoFee = item.querySelector('[data-name="mortgage_no-fee"]');
         const certificate = item.querySelector('[data-name="certificate"]');
-        mortgageNoFee.setAttribute('disabled', true);
         const titleDefault = title.textContent;
-
         let certificateBoolean = false;
         let mortgageNoFeeBoolean = false;
-
+        init();
         cash.addEventListener('change', () => {
+            cashUpdate();
+        });
+        mortgageYesBank.addEventListener('change', () => {
+            mortgageYesBankUpdate();
+        });
+        mortgageNoBank.addEventListener('change', () => {
+            mortgageNoBankUpdate();
+        });
+
+        certificate.addEventListener('change', () => {
+            certificateUpdate();
+        });
+        mortgageNoFee.addEventListener('change', () => {
+            mortgageNoFeeUpdate();
+        });
+
+        const mortgageField = document.querySelector('[data-mortgage-field]');
+        if (mortgageField) {
+            [mortgageYesBank, mortgageNoBank].forEach(item => {
+                item.addEventListener('change', () => {
+                    if (mortgageYesBank.checked || mortgageNoBank.checked) {
+                        mortgageField.removeAttribute('hidden');
+                    } else {
+                        mortgageField.setAttribute('hidden', '');
+                    }
+                });
+            })
+        }
+
+        function movingCheckbox(index, element) {
+            dropdownContainerList.children[index].insertAdjacentElement('beforebegin', element.closest('.checkbox-secondary'));
+        }
+
+        function movingCheckboxDefault() {
+            checkboxes.forEach((checkbox, index) => movingCheckbox(index, checkbox));
+        }
+
+        function init() {
+            if (cash.checked) {
+                cashUpdate();
+            }
+            if (mortgageYesBank.checked) {
+                mortgageYesBankUpdate();
+            }
+            if (mortgageNoBank.checked) {
+                mortgageNoBankUpdate();
+            }
+            if (certificate.checked) {
+                certificateUpdate();
+            }
+            if (mortgageNoFee.checked) {
+                mortgageNoFeeUpdate();
+            }
+        }
+
+        function cashUpdate() {
             if (cash.checked) {
                 item.classList.add('_selected');
 
@@ -982,8 +1036,9 @@ export const filterCustomSelectCheckboxes = () => {
                 certificateBoolean = false;
                 mortgageNoFeeBoolean = false;
             }
-        });
-        mortgageYesBank.addEventListener('change', () => {
+        }
+
+        function mortgageYesBankUpdate() {
             if (mortgageYesBank.checked) {
                 item.classList.add('_selected');
                 cash.setAttribute('disabled', true);
@@ -1015,8 +1070,9 @@ export const filterCustomSelectCheckboxes = () => {
                 certificateBoolean = false;
                 mortgageNoFeeBoolean = false;
             }
-        });
-        mortgageNoBank.addEventListener('change', () => {
+        }
+
+        function mortgageNoBankUpdate() {
             if (mortgageNoBank.checked) {
                 item.classList.add('_selected');
 
@@ -1050,9 +1106,9 @@ export const filterCustomSelectCheckboxes = () => {
                 certificateBoolean = false;
                 mortgageNoFeeBoolean = false;
             }
-        });
+        }
 
-        certificate.addEventListener('change', () => {
+        function certificateUpdate() {
             const value = certificate.nextElementSibling.querySelector('.checkbox-secondary__text').textContent.trim();
             if (!certificateBoolean) {
                 title.textContent += `, ${value}`;
@@ -1061,8 +1117,9 @@ export const filterCustomSelectCheckboxes = () => {
                 title.textContent = title.textContent.replace(`, ${value}`, '');
                 certificateBoolean = false;
             }
-        });
-        mortgageNoFee.addEventListener('change', () => {
+        }
+
+        function mortgageNoFeeUpdate() {
             const value = mortgageNoFee.nextElementSibling.querySelector('.checkbox-secondary__text').textContent.trim();
             if (!mortgageNoFeeBoolean) {
                 title.textContent += `, ${value}`;
@@ -1071,27 +1128,6 @@ export const filterCustomSelectCheckboxes = () => {
                 title.textContent = title.textContent.replace(`, ${value}`, '');
                 mortgageNoFeeBoolean = false;
             }
-        });
-
-        const mortgageField = document.querySelector('[data-mortgage-field]');
-        if (mortgageField) {
-            [mortgageYesBank, mortgageNoBank].forEach(item => {
-                item.addEventListener('change', () => {
-                    if (mortgageYesBank.checked || mortgageNoBank.checked) {
-                        mortgageField.removeAttribute('hidden');
-                    } else {
-                        mortgageField.setAttribute('hidden', '');
-                    }
-                });
-            })
-        }
-
-        function movingCheckbox(index, element) {
-            dropdownContainerList.children[index].insertAdjacentElement('beforebegin', element.closest('.checkbox-secondary'));
-        }
-
-        function movingCheckboxDefault() {
-            checkboxes.forEach((checkbox, index) => movingCheckbox(index, checkbox));
         }
     });
 };

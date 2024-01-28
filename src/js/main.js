@@ -18,10 +18,7 @@ import {
     complaintObjectMap,
     mapDraw2,
     popupMap,
-    controlCardsMap,
-    mapDraw,
-    placeSaleAddressMap,
-    objectMaps
+    controlCardsMap
 } from './components/maps';
 import linkCopy from './modules/linkCopy';
 import {
@@ -119,9 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     popupMap();
     controlCardsMap();
     
-    mapDraw();
-    placeSaleAddressMap();
-    objectMaps();
+
     // ==================================================
 
     controlCards();

@@ -26,9 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const featuresItems = form.querySelectorAll('.service-moving-features__item');
         const ratesItems = form.querySelector('.service-moving-rates__list').children;
         const btn = form.querySelector('.service-moving__btn');
-        clientToggle.addEventListener('input',() => {
-            if (clientToggle.checked){
-                recipient.setAttribute('hidden','');
+        clientToggle.addEventListener('input', () => {
+            if (!clientToggle.checked) {
+                recipient.setAttribute('hidden', '');
             } else {
                 recipient.removeAttribute('hidden');
             }
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             })
         }
-        form.addEventListener('click',() => {
+        form.addEventListener('click', () => {
             setTimeout(() => {
                 if (booleanForm) resultUpdate();
             }, 1);
@@ -130,8 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const featuresItems = featuresBlock.querySelectorAll('.features-item');
         const currentRate = rateBlock.querySelector('.offer-room._active');
 
-        const rentTime = form.querySelector('.service-moving__rent-time').value;
-
+        const rentTime = form.querySelector('.service-moving__rent-time').closest('.quantity').dataset.value;
+        const movers = form.querySelector('.service-moving__movers').value;
+        const priceMovers = form.querySelector('.service-moving__movers').dataset.priceMovers;
         if (currentRate) {
             const listFeaturesItems = {};
             const ratePrice = currentRate.querySelector('input').value;
@@ -140,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
 
             let htmlOptions = '';
-            let resultPrice = ratePrice * rentTime;
+            let resultPrice = (ratePrice * rentTime) + (movers * priceMovers);
             if (activeFeaturesItems.length > 0) {
                 activeFeaturesItems.forEach(item => {
                     listFeaturesItems[item.querySelector('.features-item__title').textContent.trim()] = {
@@ -172,12 +173,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     </h2>
                     <div class="service-moving-result__options">
                         <div class="service-moving-result__option">
-                            <span>Тариф</span>
+                            <span>Машина</span>
                             <span>${numberReplace(String(ratePrice))} ₽</span>
                         </div>
                         <div class="service-moving-result__option">
                             <span>Время аренды</span>
                             <span>${numberReplace(String(rentTime))} ч</span>
+                        </div>
+                        <div class="service-moving-result__option">
+                            <span>Грузчики</span>
+                            <span>${numberReplace(String(movers * priceMovers))} ₽</span>
                         </div>
                         ${htmlOptions}
                     </div>

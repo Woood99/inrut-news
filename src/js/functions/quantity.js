@@ -1,3 +1,4 @@
+
 const quantity = () => {
     document.addEventListener("click", function (e) {
         const quantity = e.target.closest('.quantity');
@@ -24,10 +25,31 @@ const quantity = () => {
                 }
                 if (value < 0 || Number.isNaN(value)) value = 0;
             }
-            targetElement.closest('.quantity').querySelector('input').value = value;
+            if (targetElement.closest('.quantity').hasAttribute('data-hour-format')) {
+                targetElement.closest('.quantity').querySelector('input').value = formatHour(value);
+            } else {
+                targetElement.closest('.quantity').querySelector('input').value = value;
+            }
             targetElement.closest('.quantity').setAttribute('data-value', valueAttr);
         }
     });
+
+
+    function formatHour(hour) {
+        if (hour === 1) {
+            return `${hour} час`;
+        }
+        if (hour > 1 && hour < 5) {
+            return `${hour} часа`;
+        }
+        if (hour < 21) {
+            return `${hour} часов`;
+        }
+        if (hour < 25) {
+            return `${hour} часа`;
+        }
+        return `${hour} ч`;
+    }
 }
 
 export default quantity;

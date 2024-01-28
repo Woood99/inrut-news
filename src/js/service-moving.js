@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (form) {
         let booleanForm = false;
         quantity();
+        const customerInputs = form.querySelectorAll('.service-moving-client--customer .row .input-text');
         const clientToggle = form.querySelector('.service-moving-client__toggle input');
         const recipient = form.querySelector('[data-service-moving-recipient]');
         const date = form.querySelector('.service-moving-time__date');
@@ -29,8 +30,16 @@ document.addEventListener('DOMContentLoaded', () => {
         clientToggle.addEventListener('input', () => {
             if (!clientToggle.checked) {
                 recipient.setAttribute('hidden', '');
+                customerInputs.forEach(item => {
+                    item.classList.remove('input-text--disabled');
+                    item.querySelector('input').removeAttribute('disabled');
+                })
             } else {
                 recipient.removeAttribute('hidden');
+                customerInputs.forEach(item => {
+                    item.classList.add('input-text--disabled');
+                    item.querySelector('input').setAttribute('disabled','');
+                })
             }
         })
         if (date) {

@@ -16,113 +16,112 @@ import numberReplace from './modules/numberReplace';
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('#service-moving-form');
-    if (form) {
-        quantity();
-        const customerInputs = form.querySelectorAll('.service-moving-client--customer .row .input-text');
-        const clientToggle = form.querySelector('.service-moving-client__toggle input');
-        const recipient = form.querySelector('[data-service-moving-recipient]');
-        const date = form.querySelector('.service-moving-time__date');
-        const optionsItems = form.querySelector('.service-moving-options__list').children;
-        const featuresItems = form.querySelectorAll('.service-moving-features__item');
-        const ratesItems = form.querySelector('.service-moving-rates__list').children;
-        clientToggle.addEventListener('input', () => {
-            if (!clientToggle.checked) {
-                recipient.setAttribute('hidden', '');
-                customerInputs.forEach(item => {
-                    item.classList.remove('input-text--disabled');
-                    item.querySelector('input').removeAttribute('disabled');
-                })
-            } else {
-                recipient.removeAttribute('hidden');
-                customerInputs.forEach(item => {
-                    item.classList.add('input-text--disabled');
-                    item.querySelector('input').setAttribute('disabled','');
-                })
+    if (!form) return;
+    payMethod();
+    quantity();
+    const customerInputs = form.querySelectorAll('.service-moving-client--customer .row .input-text');
+    const clientToggle = form.querySelector('.service-moving-client__toggle input');
+    const recipient = form.querySelector('[data-service-moving-recipient]');
+    const date = form.querySelector('.service-moving-time__date');
+    const optionsItems = form.querySelector('.service-moving-options__list').children;
+    const featuresItems = form.querySelectorAll('.service-moving-features__item');
+    const ratesItems = form.querySelector('.service-moving-rates__list').children;
+    clientToggle.addEventListener('input', () => {
+        if (!clientToggle.checked) {
+            recipient.setAttribute('hidden', '');
+            customerInputs.forEach(item => {
+                item.classList.remove('input-text--disabled');
+                item.querySelector('input').removeAttribute('disabled');
+            })
+        } else {
+            recipient.removeAttribute('hidden');
+            customerInputs.forEach(item => {
+                item.classList.add('input-text--disabled');
+                item.querySelector('input').setAttribute('disabled', '');
+            })
+        }
+    })
+    if (date) {
+        new AirDatepicker(date, {
+            autoClose: true,
+            isMobile: true,
+            minDate: getTomorrowDay(getCurrentDateString()),
+            onSelect: (fd) => {
+                const inputText = date.closest('.input-text')
+                fd.date ? inputText.classList.add('_active') : inputText.classList.remove('_active');
             }
         })
-        if (date) {
-            new AirDatepicker(date, {
-                autoClose: true,
-                isMobile: true,
-                minDate: getTomorrowDay(getCurrentDateString()),
-                onSelect: (fd) => {
-                    const inputText = date.closest('.input-text')
-                    fd.date ? inputText.classList.add('_active') : inputText.classList.remove('_active');
-                }
-            })
-        }
-        if (optionsItems.length > 0) {
-            const itemsArray = Array.from(optionsItems);
-            const inputs = itemsArray.map(item => item.querySelector('input'));
-            inputs.forEach(input => {
-                input.addEventListener('input', () => {
-                    const currentItem = input.closest('.offer-room');
-                    itemsArray.forEach(item => item.classList.remove('_active'));
-                    currentItem.classList.toggle('_active');
-                });
-            })
-        }
-        if (featuresItems.length > 0) {
-            const quantityHTML = `
-            <div class="quantity" data-value="1">
-                <div class="quantity__button quantity__button_minus">
-                    <svg>
-                        <use xlink:href="./img/sprite.svg#minus"></use>
-                    </svg>
-                </div>
-                <div class="quantity__input">
-                    <input type="text" maxlength="2" disabled value="1">
-                </div>
-                <div class="quantity__button quantity__button_plus">
-                    <svg>
-                        <use xlink:href="./img/sprite.svg#plus"></use>
-                    </svg>
-                </div>
-            </div>
-            `;
-            const btnHTML = `
-            <button type="button" class="btn btn-reset tag features-item__btn">
-                Добавить
-            </button>
-            `;
-            featuresItems.forEach(item => {
-                item.addEventListener('click', (e) => {
-                    setTimeout(() => {
-                        const target = e.target;
-                        const btn = target.closest('.features-item__btn');
-                        if (btn) {
-                            btn.remove();
-                            item.insertAdjacentHTML('beforeend', quantityHTML);
-                        }
-                        const quantity = target.closest('.quantity');
-                        if (quantity && quantity.dataset.value < 1) {
-                            quantity.remove();
-                            item.insertAdjacentHTML('beforeend', btnHTML);
-                        }
-                    }, 1);
-                })
-            })
-        }
-        if (ratesItems.length > 0) {
-            const itemsArray = Array.from(ratesItems);
-            const inputs = itemsArray.map(item => item.querySelector('input'));
-            inputs.forEach(input => {
-                input.addEventListener('input', () => {
-                    const currentItem = input.closest('.offer-room');
-                    itemsArray.forEach(item => item.classList.remove('_active'));
-                    currentItem.classList.toggle('_active');
-                });
-            })
-        }
-        form.addEventListener('click', () => {
-            setTimeout(() => {
-                resultUpdate();
-            }, 1);
+    }
+    if (optionsItems.length > 0) {
+        const itemsArray = Array.from(optionsItems);
+        const inputs = itemsArray.map(item => item.querySelector('input'));
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                const currentItem = input.closest('.offer-room');
+                itemsArray.forEach(item => item.classList.remove('_active'));
+                currentItem.classList.toggle('_active');
+            });
         })
-    };
+    }
+    if (featuresItems.length > 0) {
+        const quantityHTML = `
+        <div class="quantity" data-value="1">
+            <div class="quantity__button quantity__button_minus">
+                <svg>
+                    <use xlink:href="./img/sprite.svg#minus"></use>
+                </svg>
+            </div>
+            <div class="quantity__input">
+                <input type="text" maxlength="2" disabled value="1">
+            </div>
+            <div class="quantity__button quantity__button_plus">
+                <svg>
+                    <use xlink:href="./img/sprite.svg#plus"></use>
+                </svg>
+            </div>
+        </div>
+        `;
+        const btnHTML = `
+        <button type="button" class="btn btn-reset tag features-item__btn">
+            Добавить
+        </button>
+        `;
+        featuresItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                setTimeout(() => {
+                    const target = e.target;
+                    const btn = target.closest('.features-item__btn');
+                    if (btn) {
+                        btn.remove();
+                        item.insertAdjacentHTML('beforeend', quantityHTML);
+                    }
+                    const quantity = target.closest('.quantity');
+                    if (quantity && quantity.dataset.value < 1) {
+                        quantity.remove();
+                        item.insertAdjacentHTML('beforeend', btnHTML);
+                    }
+                }, 1);
+            })
+        })
+    }
+    if (ratesItems.length > 0) {
+        const itemsArray = Array.from(ratesItems);
+        const inputs = itemsArray.map(item => item.querySelector('input'));
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                const currentItem = input.closest('.offer-room');
+                itemsArray.forEach(item => item.classList.remove('_active'));
+                currentItem.classList.toggle('_active');
+            });
+        })
+    }
+    form.addEventListener('click', () => {
+        setTimeout(() => {
+            resultUpdate();
+        }, 1);
+    })
 
     const result = form.querySelector('.service-moving-result');
-    const start = result.querySelector('.service-moving-result__start');
 
     function resultUpdate() {
         const featuresBlock = form.querySelector('.service-moving-features');
@@ -205,8 +204,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
 
-            if (start) start.remove();
             result.innerHTML = htmlResult;
+        }
+    }
+
+
+
+    function payMethod() {
+        const tabs = form.querySelectorAll('[data-pay-method-tab]');
+        const content = form.querySelectorAll('[data-pay-method-content]');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                content.forEach(item => item.setAttribute('hidden', ''));
+                const currentContent = Array.from(content).find(item => item.dataset.payMethodContent === tab.dataset.payMethodTab);
+                if (currentContent) currentContent.removeAttribute('hidden');
+            })
+        })
+
+        const payCashInput = form.querySelector('.pay-cash-input');
+        const payCashCheckbox = form.querySelector('.pay-cash-no-change');
+        const mainTitle = form.querySelector('.service-moving-result__main-title span:nth-child(2)');
+        if (payCashInput && payCashCheckbox && mainTitle) {
+            const inputText = payCashInput.closest('.input-text');
+            payCashCheckbox.addEventListener('input', () => {
+                if (payCashCheckbox.checked) {
+                    payCashInput.value = mainTitle.textContent.replace(/[^0-9]/g, '');
+                    inputText.classList.add('_active');
+                } else {
+                    payCashInput.value = '';
+                    inputText.classList.remove('_active');
+                }
+            })
         }
     }
 })

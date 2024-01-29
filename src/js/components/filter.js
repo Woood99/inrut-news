@@ -157,7 +157,9 @@ export const filterSum = () => {
             });
         })
     })
-
+    function init() {
+        
+    }
     function changeTitle(el, currentElMobile) {
         setTimeout(() => {
             const itemActive = !currentElMobile ? el.querySelector('.filter-dropdown__item.active') : document.querySelector('.filter-modal .filter-dropdown__item.active');

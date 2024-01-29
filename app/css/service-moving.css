@@ -1152,6 +1152,19 @@ textarea.input-reset {
   outline: none;
   background-color: transparent;
 }
+.quantity.quantity--small {
+  height: 25px;
+  width: 75px;
+}
+.quantity.quantity--small .quantity__button {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 25px;
+  flex: 0 0 25px;
+}
+.quantity.quantity--small .quantity__button svg {
+  width: 11px;
+  height: 11px;
+}
 
 .radio-primary {
   display: -webkit-box;
@@ -22426,8 +22439,10 @@ textarea.input-reset {
 }
 .offer-room--border .offer-room__title {
   position: static;
-  margin-bottom: 16px;
   color: var(--dark);
+}
+.offer-room--border .offer-room__title:not(:last-child) {
+  margin-bottom: 16px;
 }
 .offer-room--border .offer-room__check {
   width: 22px;
@@ -33139,18 +33154,40 @@ textarea.input-reset {
   margin-top: 16px;
 }
 .service-moving-result__option {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: -webkit-max-content -webkit-max-content;
+  -ms-grid-columns: max-content max-content;
+  grid-template-columns: -webkit-max-content -webkit-max-content;
+  grid-template-columns: max-content max-content;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  grid-column-gap: 8px;
+  grid-row-gap: 8px;
 }
 .service-moving-result__option:not(:last-child) {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--primary100);
+}
+.service-moving-result__option > span:nth-child(1) {
+  font-weight: 500;
+}
+.service-moving-result__option > span:nth-child(2) {
+  font-weight: 500;
+  -ms-grid-column-align: end;
+  justify-self: end;
+}
+.service-moving-result__option > span:nth-child(3) {
+  font-size: var(--small-fz);
+}
+.service-moving-result__option .quantity {
+  -ms-grid-column-align: end;
+  justify-self: end;
 }
 .service-moving-result__checkbox {
   margin-top: 16px;
@@ -33171,5 +33208,8 @@ textarea.input-reset {
   flex-wrap: wrap;
   gap: 24px 48px;
   margin: 16px 0;
+}
+.service-moving-pay-method .radio-primary__item:not(:last-child) {
+  margin-bottom: 16px;
 }
 /*# sourceMappingURL=service-moving.css.map */

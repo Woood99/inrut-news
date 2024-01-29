@@ -17,7 +17,6 @@ import numberReplace from './modules/numberReplace';
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('#service-moving-form');
     if (form) {
-        let booleanForm = false;
         quantity();
         const customerInputs = form.querySelectorAll('.service-moving-client--customer .row .input-text');
         const clientToggle = form.querySelector('.service-moving-client__toggle input');
@@ -26,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const optionsItems = form.querySelector('.service-moving-options__list').children;
         const featuresItems = form.querySelectorAll('.service-moving-features__item');
         const ratesItems = form.querySelector('.service-moving-rates__list').children;
-        const btn = form.querySelector('.service-moving__btn');
         clientToggle.addEventListener('input', () => {
             if (!clientToggle.checked) {
                 recipient.setAttribute('hidden', '');
@@ -118,15 +116,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         form.addEventListener('click', () => {
             setTimeout(() => {
-                if (booleanForm) resultUpdate();
+                resultUpdate();
             }, 1);
         })
-        btn.addEventListener('click', () => {
-            setTimeout(() => {
-                resultUpdate();
-                booleanForm = true;
-            }, 1);
-        });
     };
 
     const result = form.querySelector('.service-moving-result');

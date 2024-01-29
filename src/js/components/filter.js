@@ -53,6 +53,7 @@ export const filterSum = () => {
         const btn = el.querySelector('.filter-dropdown__button');
         const inputs = el.querySelectorAll('.filter-range__nav input');
         const close = el.querySelector('.filter-dropdown__close');
+        checkChangeTitle(el) ? changeTitleOne(el) : changeTitle(el);
         btn.addEventListener('click', () => {
             container.forEach(elTwo => {
                 if (elTwo !== el) elTwo.classList.remove('active')

@@ -30,8 +30,6 @@ import scrollTarget from './components/scrollTarget';
 import metroInfo from './components/metroInfo';
 document.addEventListener('DOMContentLoaded', () => {
     cardSecondaryActions();
-    mapPrimary();
-    mapDraw();
     controlCardsMap();
     controlCards();
     mapMetro();
@@ -39,4 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollUp();
     scrollTarget();
     metroInfo();
+
+    // ==============================================
+    
+    // ==== maps ====
+
+    mapPrimary();
+    mapDraw();
 })

@@ -583,7 +583,7 @@ export const submitAppValidate = () => {
                 }, 5);
             })
         });
-    
+
         typeItems.forEach(item => {
             item.addEventListener('click', () => {
                 setTimeout(() => {
@@ -693,9 +693,9 @@ export const inputMaskTime = (input) => {
     const inputMask = new Inputmask('99:99');
     inputMask.mask(input);
 
-    input.addEventListener('change',(e) => {
-        const hours = input.value.substring(0,2);
-        const minutes = input.value.substring(3,5);
+    input.addEventListener('change', (e) => {
+        const hours = input.value.substring(0, 2);
+        const minutes = input.value.substring(3, 5);
         if (input.value === '') {
             input.value = '00:00';
             const inputText = input.closest('.input-text');
@@ -710,6 +710,38 @@ export const inputMaskTime = (input) => {
 
     })
 };
+export const inputMaskCard = (input) => {
+    const inputMask = new Inputmask({
+        mask: "[9999] [9999] [9999] [9999]",
+        greedy: false
+    });
+    inputMask.mask(input);
+}
+export const inputMaskCardValidity = (input) => {
+    const inputMask = new Inputmask('99/99');
+    inputMask.mask(input);
+    input.addEventListener('input', (e) => {
+
+        const firstLetterMonth = input.value.substring(0, 1);
+        const firstLetterDay = input.value.substring(3, 4);
+        if (firstLetterMonth > 1 && firstLetterMonth < 10 && input.value.substring(3, 5) === '__') {
+            input.value = `0${firstLetterMonth}/${input.value.substring(3, 5)}`;
+            input.focus();
+            input.setSelectionRange(3,3);
+        }
+        if (input.value.substring(0, 2) > 12) {
+            input.value = `12/${input.value.substring(3, 5)}`;
+            input.focus();
+            input.setSelectionRange(3,3);
+        }
+        if (firstLetterDay > 3) {
+            input.value = `${input.value.substring(0,2)}:31`;
+        }
+        if (input.value.substring(3,5) > 31) {
+            input.value = `${input.value.substring(0,2)}:31`;
+        }
+    })
+}
 
 export const validateCreateErrorSelect = (container) => {
     if (!container) return;

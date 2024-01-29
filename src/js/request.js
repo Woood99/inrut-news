@@ -42,9 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
     linkCopy('.share-app-popup__btn');
     cardSecondaryActions();
     cardPrimaryActions();
-    mapPrimary();
-    bidMap();
-    mapDraw();
     videoBlock();
     mortgage();
     mapMetro();
@@ -63,5 +60,11 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileTop();
     suggestObject();
     metroInfo();
+
+
+    // ==== maps ====
+    mapPrimary();
+    bidMap();
+    mapDraw();
 })
 

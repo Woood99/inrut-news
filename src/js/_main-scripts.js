@@ -34,7 +34,9 @@ import {
     inputMaskOgrn,
     inputMaskOgrnip,
     inputMaskInn,
-    inputMaskTime
+    inputMaskTime,
+    inputMaskCard,
+    inputMaskCardValidity
 } from './components/formValidate';
 import dropdown from './modules/dropdown';
 import dropdownItems from './modules/dropdownItems';
@@ -122,6 +124,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputsMaskOgrnip = document.querySelectorAll('.input-ogrnip-mask');
     const inputsInnMask = document.querySelectorAll('.input-inn-mask');
     const inputsTimeMask = document.querySelectorAll('.input-time');
+    const inputsCardMask = document.querySelectorAll('.input-card-mask');
+    const inputsCardValidityMask = document.querySelectorAll('.input-card-validity-mask');
 
     inputsMaskPhone.forEach(input => inputMaskPhone(input));
     inputsMaskSeriesNumber.forEach(input => inputMaskSeriesNumber(input));
@@ -131,6 +135,8 @@ document.addEventListener('DOMContentLoaded', () => {
     inputsMaskOgrnip.forEach(input => inputMaskOgrnip(input));
     inputsInnMask.forEach(input => inputMaskInn(input));
     inputsTimeMask.forEach(input => inputMaskTime(input));
+    inputsCardMask.forEach(input => inputMaskCard(input));
+    inputsCardValidityMask.forEach(input => inputMaskCardValidity(input));
 
     dropdown('.dots-dropdown', '.dots-dropdown__target');
     dropdownItems('.your-app-bid__item--dropdown', 'button', 'Скрыть');

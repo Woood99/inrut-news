@@ -8,7 +8,8 @@ import './_main-scripts';
 // ==============================
 import getHeightBlock from './modules/getHeightBlock'
 import {
-    mapPrimary
+    mapPrimary,
+    objectMaps
 } from './components/maps';
 import linkCopy from './modules/linkCopy';
 import {
@@ -61,9 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
     linkCopy('.share-app-popup__btn');
     cardSecondaryActions();
     cardPrimaryActions();
-    mapPrimary();
-
-    
     videoBlock();
     headerFixed();
     mortgage();
@@ -101,5 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
     datePickers();
     scrollTarget();
     metroInfo();
+
+    // ==============================================
+
+    // ==== maps ====
+    mapPrimary();
+    objectMaps();
 })
 

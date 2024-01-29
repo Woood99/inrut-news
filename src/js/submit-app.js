@@ -23,8 +23,6 @@ import chat from './components/chat';
 import submitApp from './components/submitApp';
 import submitAppOffers from './components/submitAppOffers';
 document.addEventListener('DOMContentLoaded', () => {
-    mapPrimary();
-    mapDraw();
     mapMetro();
     tag();
     chat();
@@ -32,5 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
     submitAppOffers();
     submitAppValidate();
     emergingBlockScroll('.submit-app .submit-app__btn', '.footer-fixed.submit-app-fixed', 99999999, true);
+
+    // ==== maps ====
+    mapPrimary();
+    mapDraw();
 })
 

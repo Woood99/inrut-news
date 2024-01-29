@@ -18,7 +18,10 @@ import {
     complaintObjectMap,
     mapDraw2,
     popupMap,
-    controlCardsMap
+    controlCardsMap,
+    mapDraw,
+    placeSaleAddressMap,
+    objectMaps
 } from './components/maps';
 import linkCopy from './modules/linkCopy';
 import {
@@ -108,14 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
     cardSecondaryActions();
     cardPrimaryActions();
 
-    // ==================================================
-    mapPrimary();
-    bidMap();
-    complaintObjectMap();
-    mapDraw2();
-    popupMap();
-    controlCardsMap();
-    
 
     // ==================================================
 
@@ -210,5 +205,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
-})
 
+    // ==============================================
+
+    // ==== maps ====
+    mapPrimary();
+    complaintObjectMap();
+    mapDraw2();
+    popupMap();
+    controlCardsMap();
+
+    bidMap();
+    mapDraw();
+    placeSaleAddressMap();
+    objectMaps();
+})

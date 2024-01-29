@@ -112,17 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
     cardPrimaryActions();
 
     // ==================================================
-    mapPrimary();
-    bidMap();
-    complaintObjectMap();
-    mapDraw2();
-    popupMap();
-    controlCardsMap();
-
-    placeSaleAddressMap();
-    mapDraw();
-    objectMaps();
-    // ==================================================
     controlCards();
     videoBlock();
     reviewModal();
@@ -214,5 +203,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
-})
 
+
+    // ==============================================
+
+    // ==== maps ====
+    mapPrimary();
+    complaintObjectMap();
+    mapDraw2();
+    popupMap();
+    controlCardsMap();
+
+    bidMap();
+    mapDraw();
+    placeSaleAddressMap();
+    objectMaps();
+})

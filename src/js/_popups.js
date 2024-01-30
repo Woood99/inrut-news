@@ -215,6 +215,7 @@ popup(null, 'warning-remove3');
 popup(null, 'select-bank');
 popup(null, 'metro-map');
 popup(null, 'im-buying');
+popup(null, 'service-moving-confirm');
 popup({
     isOpen: (settingsModal) => {
         const currentID = settingsModal.currentBtn.hasAttribute('data-suggestion-id') ? settingsModal.currentBtn.dataset.suggestionId : false;

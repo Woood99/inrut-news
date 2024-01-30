@@ -101,7 +101,9 @@
 
     &__address {}
     &__pay-method-tab{
-        margin-top: 16px;
+       &:not(:last-child){
+        margin-bottom: 16px;
+       }
     }
     &__pay-card{
         display: grid;
@@ -142,7 +144,19 @@
             margin-bottom: 24px;
         }
     }
-
+    &__add{
+        margin-top: 24px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+   justify-content: center;
+        svg{
+            margin-left: 16px;
+            width: 16px;
+            height: 16px;
+            fill: var(--blue);
+        }   
+    }
     &__title {
         margin-bottom: 8px;
     }
@@ -171,6 +185,7 @@
 }
 
 .service-moving-time {
+    margin-top: 32px;
     .row {
         display: grid;
         grid-template-columns: 280px 185px 1fr;
@@ -313,7 +328,7 @@
 
 
 .service-moving-rates {
-
+    margin-bottom: 32px;
     &__list {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -434,6 +449,20 @@
     .radio-primary__item {
         &:not(:last-child) {
             margin-bottom: 16px;
+        }
+        .radio-primary__text{
+            &--icon{
+                display: flex;
+                align-items: center;
+                position: relative;
+                svg{
+                    margin-right: 8px;
+                    position: relative;
+                    top: -1px;
+                    width: 33px;
+                    max-width: 33px;
+                }
+            }
         }
     }
 }

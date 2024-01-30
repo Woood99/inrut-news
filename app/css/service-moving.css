@@ -2666,6 +2666,39 @@ textarea.input-reset {
     background-color: rgba(34, 41, 102, 0.4);
   }
 }
+.popup-primary--service-moving-confirm {
+  text-align: center;
+}
+.popup-primary--service-moving-confirm .popup-primary__container {
+  min-height: auto;
+  margin: 50px auto;
+  text-align: left;
+  border-radius: 24px;
+  padding: 65px 48px 48px;
+  max-width: 650px;
+  min-width: 400px;
+}
+@media (max-width: 768px) {
+  .popup-primary--service-moving-confirm .popup-primary__container {
+    max-width: 100%;
+    width: calc(100% - 4px);
+    margin: 50px auto 0;
+    vertical-align: bottom;
+    padding: 75px 16px 32px;
+    border-radius: 16px 16px 0 0;
+  }
+}
+.popup-primary--service-moving-confirm::before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+@media (max-width: 1212px) {
+  .popup-primary--service-moving-confirm {
+    background-color: rgba(34, 41, 102, 0.4);
+  }
+}
 
 .warning-remove__btns {
   margin-top: 24px;
@@ -2679,6 +2712,14 @@ textarea.input-reset {
 }
 .warning-remove__btn:not(:last-child) {
   margin-bottom: 16px;
+}
+
+.service-moving-confirm__title {
+  text-align: center;
+}
+.service-moving-confirm__button {
+  margin-top: 24px;
+  width: 100%;
 }
 
 .tariff-popup > div p:not(:last-child) {
@@ -33043,9 +33084,31 @@ textarea.input-reset {
 .service-moving-address .row {
   display: -ms-grid;
   display: grid;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   -ms-grid-columns: (1fr)[2];
   grid-template-columns: repeat(2, 1fr);
   gap: 8px;
+}
+.service-moving-address__secondary .row {
+  -ms-grid-columns: (1fr)[2] 32px;
+  grid-template-columns: repeat(2, 1fr) 32px;
+}
+.service-moving-address__secondary .row svg {
+  width: 20px;
+  height: 20px;
+}
+.service-moving-address__secondary-delete {
+  -ms-grid-column-align: end;
+  justify-self: end;
+  width: 20px;
+  height: 20px;
+}
+.service-moving-address__secondary-delete svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--red);
 }
 
 .service-moving-client .row {

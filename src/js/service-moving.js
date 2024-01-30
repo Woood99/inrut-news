@@ -12,6 +12,9 @@ import {
     getTomorrowDay
 } from './modules/date';
 import numberReplace from './modules/numberReplace';
+import {
+    currentInputText
+} from './components/inputs';
 // ==============================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -169,9 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function resultUpdate() {
         const optionsOrderActive = Array.from(optionsOrder).filter(item => item.classList.contains('_active') && item.dataset.optionPrice);
-        const optionOrderSumm = optionsOrderActive.reduce((acc,item) => {
-            return acc + Number(item.dataset.optionPrice);
-        },0)
 
         const featuresBlock = form.querySelector('.service-moving-features');
         const featuresItems = featuresBlock.querySelectorAll('.features-item');
@@ -180,12 +180,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const movers = form.querySelector('.service-moving__movers').value;
         const priceMovers = form.querySelector('.service-moving__movers').dataset.priceMovers;
         const listFeaturesItems = {};
+        const listOptionsOrderItems = {};
         const activeFeaturesItems = Array.from(featuresItems).filter(item => {
             if (item.querySelector('.quantity')) return true;
         })
 
         let htmlOptions = '';
-        let resultPrice = (rentTime * rentTimePrice) + (movers * priceMovers) + optionOrderSumm;
+        let htmlOptionsOrder = '';
+        let resultPrice = (rentTime * rentTimePrice) + (movers * priceMovers);
         if (activeFeaturesItems.length > 0) {
             activeFeaturesItems.forEach(item => {
                 listFeaturesItems[item.querySelector('.features-item__title').textContent.trim()] = {
@@ -223,7 +225,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 htmlOptions += option;
                 resultPrice += listFeaturesItems[item].resultPrice();
             }
-
+        }
+        if (optionsOrderActive.length > 0) {
+            optionsOrderActive.forEach(item => {
+                listOptionsOrderItems[item.querySelector('.small-card-select__title').textContent.trim()] = {
+                    'price': item.dataset.optionPrice,
+                };
+            })
+            for (const item in listOptionsOrderItems) {
+                const option = `
+                <div class="service-moving-result__option">
+                    <span>${item}</span>
+                    <span>${listOptionsOrderItems[item].price} ₽</span>
+                </div>
+                `;
+                htmlOptionsOrder += option;
+                resultPrice += Number(listOptionsOrderItems[item].price);
+            }
         }
         const htmlResult = `
                 <div class="service-moving-result__main">
@@ -273,6 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                         </div>
                         ${htmlOptions}
+                        ${htmlOptionsOrder}
                     </div>
                     <div class="service-moving-result__checkbox checkbox-secondary">
                         <input id="personal-info" name="personal-info" class="checkbox-secondary__input" type="checkbox" value="true">
@@ -317,5 +336,45 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             })
         }
+    }
+
+
+
+    const secondaryAddressBtn = form.querySelector('.service-moving-address__add');
+    const addressTo = form.querySelector('.service-moving-address__to');
+    secondaryAddressBtn.addEventListener('click', () => {
+        createSecondaryAddress();
+        const currentBlock = addressTo.previousElementSibling;
+        currentBlock.querySelectorAll('.input-text').forEach(item => currentInputText(item));
+        const removeBtn = currentBlock.querySelector('.service-moving-address__secondary-delete')
+        removeBtn.addEventListener('click', () => currentBlock.remove());
+    })
+
+    function createSecondaryAddress() {
+        const html = `
+        <div class="service-moving-address__block service-moving-address__secondary">
+            <h4 class="service-moving-address__title title-4">Промежуточный адрес</h4>
+            <div class="row">
+                <div class="input-text input-text--no-exp">
+                    <label class="input-text__label">
+                        <span>Адрес</span>
+                        <input type="text" name="Адрес" class="input-reset input-text__input" placeholder="">
+                    </label>
+                </div>
+                <div class="input-text input-text--no-exp input-text--only-number">
+                    <label class="input-text__label">
+                        <span>Номер квартиры</span>
+                        <input type="text" name="Имя" class="input-reset input-text__input" maxlength="4" placeholder="">
+                    </label>
+                </div>
+                <button type="button" class="btn btn-reset service-moving-address__secondary-delete">
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#trash"></use>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        `;
+        addressTo.insertAdjacentHTML('beforebegin', html);
     }
 })

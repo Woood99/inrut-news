@@ -26,6 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const optionsItems = form.querySelector('.service-moving-options__list').children;
     const featuresItems = form.querySelectorAll('.service-moving-features__item');
     const ratesItems = form.querySelector('.service-moving-rates__list').children;
+
+    const optionsOrder = form.querySelectorAll('.service-moving-options-order .service-moving-options-order__item');
+    optionsOrder.forEach(item => {
+        item.addEventListener('click', () => item.classList.toggle('_active'));
+    })
+
     clientToggle.addEventListener('input', () => {
         if (!clientToggle.checked) {
             recipient.setAttribute('hidden', '');
@@ -115,81 +121,158 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         })
     }
-    form.addEventListener('click', () => {
+    form.querySelector('.col').addEventListener('click', () => {
         setTimeout(() => {
             resultUpdate();
+        }, 1);
+    })
+
+    const sidebar = form.querySelector('.service-moving__sidebar');
+
+    sidebar.addEventListener('click', (e) => {
+        setTimeout(() => {
+            const target = e.target;
+            const quantityButton = target.closest('.quantity__button');
+            if (quantityButton) {
+                const quantity = quantityButton.closest('.quantity');
+                const quantityName = quantity.closest('.service-moving-result__option').dataset.optionName;
+                const quantityFeatureName = quantity.closest('.service-moving-result__option').dataset.optionFeatureName;
+                if (quantityName) {
+                    const quantityInput = quantity.querySelector('input');
+
+                    const currentInputBlock = form.querySelector(`[data-option-block-name=${quantityName}]`);
+                    if (currentInputBlock) {
+                        if (quantityButton.classList.contains('quantity__button_plus')) {
+                            currentInputBlock.closest('.quantity').querySelector('.quantity__button_plus').click();
+                        }
+                        if (quantityButton.classList.contains('quantity__button_minus')) {
+                            currentInputBlock.closest('.quantity').querySelector('.quantity__button_minus').click();
+                        }
+                    }
+                }
+                if (quantityFeatureName) {
+                    const currentBlock = form.querySelector(`[data-option-feature-block="${quantityFeatureName}"`);
+                    if (currentBlock) {
+                        if (quantityButton.classList.contains('quantity__button_plus')) {
+                            currentBlock.querySelector('.quantity').querySelector('.quantity__button_plus').click();
+                        }
+                        if (quantityButton.classList.contains('quantity__button_minus')) {
+                            currentBlock.querySelector('.quantity').querySelector('.quantity__button_minus').click();
+                        }
+                    }
+                }
+            }
         }, 1);
     })
 
     const result = form.querySelector('.service-moving-result');
 
     function resultUpdate() {
+        const optionsOrderActive = Array.from(optionsOrder).filter(item => item.classList.contains('_active') && item.dataset.optionPrice);
+        const optionOrderSumm = optionsOrderActive.reduce((acc,item) => {
+            return acc + Number(item.dataset.optionPrice);
+        },0)
+
         const featuresBlock = form.querySelector('.service-moving-features');
-        const rateBlock = form.querySelector('.service-moving-rates');
-
         const featuresItems = featuresBlock.querySelectorAll('.features-item');
-        const currentRate = rateBlock.querySelector('.offer-room._active');
-
         const rentTime = form.querySelector('.service-moving__rent-time').closest('.quantity').dataset.value;
+        const rentTimePrice = form.querySelector('.service-moving__rent-time').dataset.priceRent;
         const movers = form.querySelector('.service-moving__movers').value;
         const priceMovers = form.querySelector('.service-moving__movers').dataset.priceMovers;
-        if (currentRate) {
-            const listFeaturesItems = {};
-            const ratePrice = currentRate.querySelector('input').value;
-            const activeFeaturesItems = Array.from(featuresItems).filter(item => {
-                if (item.querySelector('.quantity')) return true;
-            })
+        const listFeaturesItems = {};
+        const activeFeaturesItems = Array.from(featuresItems).filter(item => {
+            if (item.querySelector('.quantity')) return true;
+        })
 
-            let htmlOptions = '';
-            let resultPrice = (ratePrice * rentTime) + (movers * priceMovers);
-            if (activeFeaturesItems.length > 0) {
-                activeFeaturesItems.forEach(item => {
-                    listFeaturesItems[item.querySelector('.features-item__title').textContent.trim()] = {
-                        'price': item.querySelector('.features-item__price').dataset.price,
-                        'quantity': item.querySelector('.quantity').dataset.value,
-                        resultPrice() {
-                            return this.quantity * this.price
-                        }
-                    };
-                })
-                for (const item in listFeaturesItems) {
-                    const option = `
-                    <div class="service-moving-result__option">
-                        <span>${item}</span>
+        let htmlOptions = '';
+        let resultPrice = (rentTime * rentTimePrice) + (movers * priceMovers) + optionOrderSumm;
+        if (activeFeaturesItems.length > 0) {
+            activeFeaturesItems.forEach(item => {
+                listFeaturesItems[item.querySelector('.features-item__title').textContent.trim()] = {
+                    'price': item.querySelector('.features-item__price').dataset.price,
+                    'quantity': item.querySelector('.quantity').dataset.value,
+                    'name': item.dataset.optionFeatureBlock,
+                    resultPrice() {
+                        return this.quantity * this.price
+                    }
+                };
+            })
+            for (const item in listFeaturesItems) {
+                const option = `
+                    <div class="service-moving-result__option" data-option-feature-name='${listFeaturesItems[item].name}'>
+                    <span>${item}</span>
+                        <span>${listFeaturesItems[item].quantity} * ${listFeaturesItems[item].price} ₽</span>
                         <span>${numberReplace(String(listFeaturesItems[item].resultPrice()))} ₽</span>
+                        <div class="quantity quantity--small" data-value="${listFeaturesItems[item].quantity}">
+                            <div class="quantity__button quantity__button_minus">
+                                <svg>
+                                    <use xlink:href="./img/sprite.svg#minus"></use>
+                                </svg>
+                            </div>
+                            <div class="quantity__input">
+                                <input type="text" maxlength="2" disabled="" value="${listFeaturesItems[item].quantity}">
+                            </div>
+                            <div class="quantity__button quantity__button_plus">
+                                <svg>
+                                    <use xlink:href="./img/sprite.svg#plus"></use>
+                                </svg>
+                            </div>
+                        </div>
                     </div>
                     `;
-                    htmlOptions += option;
-                    resultPrice += listFeaturesItems[item].resultPrice();
-                }
-
+                htmlOptions += option;
+                resultPrice += listFeaturesItems[item].resultPrice();
             }
 
-            const htmlResult = `
+        }
+        const htmlResult = `
                 <div class="service-moving-result__main">
                     <h2 class="service-moving-result__main-title title-3">
                         <span>Общая стоимость</span>
                         <span>${numberReplace(String(resultPrice))} ₽</span>
                     </h2>
                     <div class="service-moving-result__options">
-                        <div class="service-moving-result__option">
-                            <span>Машина</span>
-                            <span>${numberReplace(String(ratePrice))} ₽</span>
-                        </div>
-                        <div class="service-moving-result__option">
+                        <div class="service-moving-result__option" data-option-name="rent-time">
                             <span>Время аренды</span>
-                            <span>${numberReplace(String(rentTime))} ч</span>
+                            <span>${rentTime == 0 ? '0' : `${rentTime} * ${rentTimePrice}`} ₽</span>
+                            <span>${numberReplace(String(rentTime * rentTimePrice))} ₽</span>
+                            <div class="quantity quantity--small" data-value="${rentTime}" data-max-value="24">
+                                <div class="quantity__button quantity__button_minus">
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#minus"></use>
+                                    </svg>
+                                </div>
+                                <div class="quantity__input">
+                                    <input type="text" maxlength="2" disabled="" value="${rentTime}">
+                                </div>
+                                <div class="quantity__button quantity__button_plus">
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#plus"></use>
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
-                        <div class="service-moving-result__option">
+                        <div class="service-moving-result__option" data-option-name="movers">
                             <span>Грузчики</span>
+                            <span>${movers == 0 ? '0' : `${movers} * ${priceMovers}`} ₽</span>
                             <span>${numberReplace(String(movers * priceMovers))} ₽</span>
+                            <div class="quantity quantity--small" data-value="${movers}" data-max-value="5">
+                                <div class="quantity__button quantity__button_minus">
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#minus"></use>
+                                    </svg>
+                                </div>
+                                <div class="quantity__input">
+                                    <input type="text" maxlength="2" disabled="" value="${movers}">
+                                </div>
+                                <div class="quantity__button quantity__button_plus">
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#plus"></use>
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
                         ${htmlOptions}
-                    </div>
-                    <div class="service-moving-result__descr">
-                        <p>
-                            *Если у вас возникли вопросы по стоимости заказа, вы  можете связаться со службой поддержки 8 800 100-10-63
-                        </p>
                     </div>
                     <div class="service-moving-result__checkbox checkbox-secondary">
                         <input id="personal-info" name="personal-info" class="checkbox-secondary__input" type="checkbox" value="true">
@@ -204,11 +287,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
 
-            result.innerHTML = htmlResult;
-        }
+        result.innerHTML = htmlResult;
     }
-
-
 
     function payMethod() {
         const tabs = form.querySelectorAll('[data-pay-method-tab]');

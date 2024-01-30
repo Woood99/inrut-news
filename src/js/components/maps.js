@@ -1,4 +1,4 @@
-function removeControlsPrimary(map, containerSelector) {
+export const removeControlsPrimary = (map) => {
     map.controls.remove('geolocationControl');
     map.controls.remove('searchControl');
     map.controls.remove('trafficControl');
@@ -7,7 +7,7 @@ function removeControlsPrimary(map, containerSelector) {
     map.behaviors.disable(['scrollZoom']);
 }
 
-function positionElement(map) {
+export const positionElement = (map) => {
     map.controls.get('fullscreenControl').options.set({
         position: {
             top: 16,

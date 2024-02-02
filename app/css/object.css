@@ -29857,12 +29857,16 @@ textarea.input-reset {
 .object-data-order {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 100%;
-  grid-template-columns: 100%;
+  -ms-grid-columns: (1fr)[2];
+  grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 16px;
   grid-row-gap: 16px;
 }
-
+.object-data-order .card-f__descr {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
 .object-body__slider {
   padding: 10px;
   background-color: var(--white);

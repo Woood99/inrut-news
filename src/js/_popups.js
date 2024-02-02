@@ -179,6 +179,7 @@ popup(null, 'create-meeting-show');
 popup(null, 'suggest-object');
 popup(null, 'history-changes');
 popup(null, 'furnishing-sets-popup');
+popup(null, 'furnishing-sets-popup2');
 popup(null, 'object-apart-renov-popup');
 popup(null, 'object-ecology-parks-popup');
 popup(null, 'videos-popup');

@@ -441,7 +441,7 @@ function initSliders() {
         })
     }
     if (document.querySelector('.object-apart-renov__images')) {
-        const sliders = document.querySelectorAll('.object-apart-renov__images');
+        const sliders = document.querySelectorAll('.object-apart-renov__images:not(._no-swiper)');
         sliders.forEach(el => {
             const slider = new Swiper(el, {
                 observer: true,
@@ -472,7 +472,7 @@ function initSliders() {
                     },
                 },
             });
-            const marks = el.querySelectorAll('.object-apart-renov__mark');
+            const marks = el.querySelectorAll('.object-apart-renov__mark:not(._edit)');
             marks.forEach(mark => {
                 let popper;
                 mark.addEventListener('mouseenter', () => {

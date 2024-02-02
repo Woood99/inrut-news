@@ -57,6 +57,7 @@ import suggestObject from './components/suggestObject';
 import datePickers from './components/datePickers';
 import scrollTarget from './components/scrollTarget';
 import metroInfo from './components/metroInfo';
+import apartKitchen from './components/apartKitchen';
 document.addEventListener('DOMContentLoaded', () => {
     getHeightBlock('.header-fixed', '--header-fixed-height');
     linkCopy('.share-app-popup__btn');
@@ -105,5 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==== maps ====
     mapPrimary();
     objectMaps();
+    apartKitchen();
 })
 

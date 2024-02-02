@@ -2033,7 +2033,7 @@ textarea.input-reset {
     padding: 24px;
   }
 }
-.popup-primary--furnishing-sets-popup .object-apart-renov__image, .popup-primary--object-apart-renov-popup .object-apart-renov__image, .popup-primary--object-gallery .object-apart-renov__image, .popup-primary--construct-progress .object-apart-renov__image, .popup-primary--object-ecology-parks-popup .object-apart-renov__image {
+.popup-primary--object-apart-renov-popup .object-apart-renov__image, .popup-primary--object-gallery .object-apart-renov__image, .popup-primary--construct-progress .object-apart-renov__image, .popup-primary--object-ecology-parks-popup .object-apart-renov__image {
   -o-object-fit: contain;
   object-fit: contain;
   width: auto;
@@ -5301,11 +5301,13 @@ textarea.input-reset {
   -ms-transform: translate(0);
   transform: translate(0);
 }
-.tooltip-modal .dots-dropdown__dropdown button, .tooltip-modal .dots-dropdown__dropdown a {
+.tooltip-modal .dots-dropdown__dropdown button,
+.tooltip-modal .dots-dropdown__dropdown a {
   padding: 0;
   width: 100%;
 }
-.tooltip-modal .dots-dropdown__dropdown button:not(:last-child), .tooltip-modal .dots-dropdown__dropdown a:not(:last-child) {
+.tooltip-modal .dots-dropdown__dropdown button:not(:last-child),
+.tooltip-modal .dots-dropdown__dropdown a:not(:last-child) {
   padding-bottom: 16px;
   margin-bottom: 16px;
   border-bottom: 1px solid var(--primary200);
@@ -9068,6 +9070,10 @@ textarea.input-reset {
   padding: 0 16px;
 }
 
+.apart-kitchen-container .furnishing-sets__tabs {
+  height: 600px;
+}
+
 .fade {
   opacity: 0;
 }
@@ -10441,6 +10447,9 @@ textarea.input-reset {
     -ms-grid-columns: 100%;
     grid-template-columns: 100%;
   }
+}
+.cards-list__items--no-gap {
+  margin-top: 0;
 }
 .cards-list__banner {
   display: -webkit-box;
@@ -13596,6 +13605,9 @@ textarea.input-reset {
   }
 }
 
+.apart-kitchen__title {
+  margin-bottom: 16px;
+}
 .apart-kitchen__btns {
   display: -ms-grid;
   display: grid;
@@ -13613,6 +13625,44 @@ textarea.input-reset {
 }
 .apart-kitchen__field:not(:last-child) {
   margin-bottom: 16px;
+}
+.apart-kitchen__selects {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 12px;
+  grid-row-gap: 12px;
+}
+.apart-kitchen__select {
+  border-radius: 12px;
+  border: 1px solid var(--primary100);
+  padding: 16px;
+}
+.apart-kitchen__canvas {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.apart-kitchen-select {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+}
+.apart-kitchen-select__info {
+  margin-top: 16px;
+}
+.apart-kitchen-select__name {
+  font-weight: 500;
 }
 
 .banner-mind {
@@ -18902,6 +18952,10 @@ textarea.input-reset {
   right: auto;
   left: 15px;
 }
+.card-primary.card-primary--kit .card-primary__name {
+  margin-top: 0;
+}
+
 .card-secondary {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -32053,9 +32107,19 @@ textarea.input-reset {
   width: max-content;
   z-index: 3;
 }
-.object-apart-renov__mark._active > div {
+.object-apart-renov__mark._active:not(._edit) > div {
   opacity: 1;
   visibility: visible;
+}
+.object-apart-renov__mark._edit svg {
+  stroke: var(--white);
+  fill: none;
+  stroke-width: 1.5px;
+  width: 15px;
+  height: 15px;
+}
+.object-apart-renov__mark._edit._active > button {
+  background-color: rgba(0, 91, 255, 0.75);
 }
 .object-apart-renov__nav-prev, .object-apart-renov__nav-next {
   z-index: 2;

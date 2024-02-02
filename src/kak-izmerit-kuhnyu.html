@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Сервис «Переезд»</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/service-moving.css">
+    <script id="ymaps-id"></script>
+    <script defer src="js/service-moving.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container">
+        @include('partials/header--new.html')
+        <main class="main main-page-gap instruct-kitchen">
+            <div class="service-moving__top top-page-inner-title">
+                <div class="top-page-inner-title__container container">
+                    <a href="#" class="top-page-inner-title__back back-link">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#arrow-left"></use>
+                        </svg>
+                        <span>Назад</span>
+                    </a>
+                </div>
+            </div>
+            <div class="instruct-kitchen container">
+                <div class="instruct-kitchen__item">
+                    <h2 class="instruct-kitchen__title title-2">
+                        Укажите размеры кухни
+                    </h2>
+                    <div class="item-info">
+                        <div class="item-info__image">
+                            <picture>
+                                <source srcset="https://cdn.leroymerlin.ru/lmru/image/upload/v1659349429/upload/fudzi/elbrus/advice-new/kuhni/kak-izmerit-kukhnyu/001.png/001.png"
+                                    type="image/webp">
+                                <img loading="lazy"
+                                    src="https://cdn.leroymerlin.ru/lmru/image/upload/v1659349429/upload/fudzi/elbrus/advice-new/kuhni/kak-izmerit-kukhnyu/001.png/001.png" width=""
+                                    height="" alt="">
+                            </picture>
+                            <img alt="" src="">
+                        </div>
+                        <div class="item-info__text">
+                            <p>
+                                На плане укажите ширину, высоту и глубину помещения.
+                            </p>
+                            <ul>
+                                <li>
+                                    Длина помещения, м (Д).
+                                </li>
+                                <li>
+                                    Ширина помещения, м (Ш).
+                                </li>
+                                <li>
+                                    Высота от пола до потолка, м (В1).
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="instruct-kitchen__item">
+                    <h2 class="instruct-kitchen__title title-2">
+                        Обозначьте расположение окон и дверей
+                    </h2>
+                    <h3 class="instruct-kitchen__subtitle title-3">
+                        Двери
+                    </h3>
+                    <div class="item-info">
+                        <div class="item-info__image">
+                            <picture>
+                                <source srcset="https://cdn.leroymerlin.ru/lmru/image/upload/v1659349428/upload/fudzi/elbrus/advice-new/kuhni/kak-izmerit-kukhnyu/002.png/002.png"
+                                    type="image/webp">
+                                <img loading="lazy"
+                                    src="https://cdn.leroymerlin.ru/lmru/image/upload/v1659349428/upload/fudzi/elbrus/advice-new/kuhni/kak-izmerit-kukhnyu/002.png/002.png" width=""
+                                    height="" alt="">
+                            </picture>
+                            <img alt="" src="">
+                        </div>
+                        <div class="item-info__text">
+                            <ul>
+                                <li>
+                                    1-ая дверь — ширина, см.
+                                </li>
+                                <li>
+                                    2-ая дверь (если есть) — ширина, см
+                                </li>
+                            </ul>
+                            <p>
+                                Обозначьте на плане, в какую сторону открываются двери.
+                            </p>
+                        </div>
+                    </div>
+                    <h3 class="instruct-kitchen__subtitle title-3">
+                        Окна
+                    </h3>
+                    <div class="item-info">
+                        <div class="item-info__image">
+                            <picture>
+                                <source srcset="https://cdn.leroymerlin.ru/lmru/image/upload/v1659349428/upload/fudzi/elbrus/advice-new/kuhni/kak-izmerit-kukhnyu/003.png/003.png"
+                                    type="image/webp">
+                                <img loading="lazy"
+                                    src="https://cdn.leroymerlin.ru/lmru/image/upload/v1659349428/upload/fudzi/elbrus/advice-new/kuhni/kak-izmerit-kukhnyu/003.png/003.png" width=""
+                                    height="" alt="">
+                            </picture>
+                            <img alt="" src="">
+                        </div>
+                        <div class="item-info__text">
+                            <ul>
+                                <li>
+                                    1-ое окно, ширина, см.
+                                    <br>
+                                    Высота от пола до окна, см
+                                </li>
+                                <li>
+                                    2-ое окно (если есть), ширина, см.
+                                    <br>
+                                    Высота от пола до окна, см
+                                </li>
+                            </ul>
+                            <p>
+                                Обозначьте на плане, в какую сторону открываются окна.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="instruct-kitchen__item">
+                    <h2 class="instruct-kitchen__title title-2">
+                        Санитарное пространство
+                    </h2>
+                    <div class="item-info">
+                        <div class="item-info__image">
+                            <picture>
+                                <source srcset="https://cdn.leroymerlin.ru/lmru/image/upload/v1659349429/upload/fudzi/elbrus/advice-new/kuhni/kak-izmerit-kukhnyu/004.png/004.png"
+                                    type="image/webp">
+                                <img loading="lazy"
+                                    src="https://cdn.leroymerlin.ru/lmru/image/upload/v1659349429/upload/fudzi/elbrus/advice-new/kuhni/kak-izmerit-kukhnyu/004.png/004.png" width=""
+                                    height="" alt="">
+                            </picture>
+                            <img alt="" src="">
+                        </div>
+                        <div class="item-info__text">
+                            <p>
+                                Санитарное пространство — это пространство для труб (слив или поступление воды), которые крепятся к стене. Из-за них мебель двигается, поэтому важно
+                                указать это пространство на плане.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        @include('partials/footer.html')
+    </div>
+    <!-- popups -->
+    @include('popups/city.html')
+    @include('popups/add.html')
+    @include('popups/personal-area2.html')
+    @include('popups/edit-profile.html')
+    @include('popups/sber-tied.html')
+    @include('popups/service-moving-confirm.html')
+    <!-- popups -->
+</body>
+
+
+</html>

@@ -3,6 +3,7 @@ import inputResize from './modules/inputResize';
 import videoBlock from './components/videoBlock';
 popup(null, 'city');
 popup(null, 'add');
+popup(null, 'kitchen-design');
 popup(null, 'personal-area');
 popup(null, 'edit-profile');
 popup(null, 'edit-profile_agent');

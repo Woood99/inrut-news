@@ -7,10 +7,10 @@ import './_main-scripts';
 
 // ==============================
 import getHeightBlock from './modules/getHeightBlock'
-import {
-    mapPrimary,
-    objectMaps
-} from './components/maps';
+// import {
+//     mapPrimary,
+//     objectMaps
+// } from './components/maps';
 import linkCopy from './modules/linkCopy';
 import {
     validateRadioPrimary,
@@ -100,12 +100,11 @@ document.addEventListener('DOMContentLoaded', () => {
     datePickers();
     scrollTarget();
     metroInfo();
-
+    apartKitchen();
     // ==============================================
 
     // ==== maps ====
-    mapPrimary();
-    objectMaps();
-    apartKitchen();
+    // mapPrimary();
+    // objectMaps();
 })
 

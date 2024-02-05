@@ -506,6 +506,29 @@ export const tabs = () => {
                 </div>
             </div>
             `;
+            const charResComplex = `
+            <div class="tabs__body" data-tabs-item>
+                <div class="main-table__inner container">
+                    <div class="main-table__table">
+                        <div class="main-table__type" style="grid-template-columns: 9% 17% 18% 20% 21% 5.5%; justify-content: start;">
+                            <span>Порядок</span>
+                            <span>Название</span>
+                            <span style="justify-self: center;">Тип</span>
+                            <span style="justify-self: center;">Показывать в фильтре</span>
+                            <span style="justify-self: center;">Обязательное</span>
+                            <span>Действие</span>
+                        </div>
+                        <div class="main-table__list drag-drop drag-drop--order">
+                        </div>
+                    </div>
+                    <div class="main-table__next">
+                        <a href="create-char-object.html" class="btn btn-reset btn-primary">
+                            Создать характеристику жилого комплекса
+                        </a>
+                    </div>
+                </div>
+            </div>
+            `;
             if (currentTabs.closest('.furnishing-sets')) {
                 tabs.insertAdjacentHTML('beforeend', furnishingSetsHTML);
                 setTabsStatus(tabsBlock);
@@ -526,6 +549,10 @@ export const tabs = () => {
                 update(tabsBlock.querySelector('.tabs__body:last-child'));
             } else if (currentTabs.closest('.place-sale--apart-renov')) {
                 tabs.insertAdjacentHTML('beforeend', apartRenovHTML);
+                setTabsStatus(tabsBlock);
+                update(tabsBlock.querySelector('.tabs__body:last-child'));
+            } else if (currentTabs.closest('.create-types-objects-tabs')) {
+                tabs.insertAdjacentHTML('beforeend', charResComplex);
                 setTabsStatus(tabsBlock);
                 update(tabsBlock.querySelector('.tabs__body:last-child'));
             }

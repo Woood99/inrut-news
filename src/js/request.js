@@ -9,7 +9,7 @@ import './_main-scripts';
 import {
     mapPrimary,
     bidMap,
-    mapDraw,
+    // mapDraw,
 } from './components/maps';
 import linkCopy from './modules/linkCopy';
 import {
@@ -65,6 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==== maps ====
     mapPrimary();
     bidMap();
-    mapDraw();
+    // mapDraw();
 })
 

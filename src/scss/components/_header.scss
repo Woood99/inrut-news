@@ -4,6 +4,57 @@
 
     &__top {}
 
+    &__search {
+        margin: 0 24px;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: transparent;
+        border: 1px solid var(--primary200);
+        padding: 0 16px;
+        border-radius: 12px;
+        height: 40px;
+        transition: border $transitionSpeed $transitionFunction;
+
+        input {
+            border: none;
+            flex-grow: 1;
+            padding-left: 16px;
+            padding-right: 16px;
+            color: var(--primaryTwo);
+            font-size: var(--default-fz);
+            line-height: var(--default-lh);
+            background-color: transparent;
+            height: 100%;
+
+            &::placeholder {
+                color: inherit;
+            }
+        }
+
+        button {
+            width: 20px;
+            height: 20px;
+
+            svg {
+                width: 100%;
+                height: 100%;
+                fill: var(--primaryTwo);
+            }
+        }
+
+        @media (min-width:$desktop-min) {
+            &:hover {
+                border: 1px solid var(--blue);
+            }
+        }
+
+        &:focus {
+            border: 1px solid var(--blue);
+        }
+    }
+
     &__main {
         position: relative;
         height: 65px;
@@ -39,47 +90,174 @@
             margin-left: 32px;
         }
     }
-    &.header--new{
-        .header-top{
-            &__city{
+
+    &.header--new {
+        .header-top {
+            &__city {
                 margin-left: 0;
             }
-            &__actions{
+
+            &__actions {
                 margin-right: 40px;
                 margin-left: auto;
             }
         }
-        .header-main{
+
+        .header-main {
             height: 55px;
-            .nav__list{
+
+            .nav__list {
                 margin-left: 32px;
             }
-            .nav__link{
+
+            .nav__link {
                 font-size: var(--default-small-fz);
             }
-            @media (max-width:$desktop){
+
+            @media (max-width:$desktop) {
                 height: auto;
-                 .header-main__logo{
+
+                .header-main__logo {
                     display: none;
-                 } 
+                }
             }
         }
-        .header-personal__name,.header-action__name,.city__name{
+
+        .header-personal__name,
+        .header-action__name,
+        .city__name {
             font-size: var(--default-small-fz);
         }
-        .city__title svg{
+
+        .city__title svg {
             width: 12px;
             height: 14px;
         }
-        .header-personal__title svg{
+
+        .header-personal__title svg {
             width: 14px;
             height: 14px;
         }
-        .header-action__title svg{
+
+        .header-action__title svg {
             width: 14px;
             height: 14px;
         }
     }
+
+    &.header--fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        transition: transform $transitionSpeed $transitionFunction;
+    }
+
+    &._hide-top {
+        transform: translateY(-50px);
+
+        &._active {
+            transform: translateY(-105px);
+        }
+    }
+
+
+    .nav {
+        transform: translateY(-10px);
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        width: 100%;
+        min-height: calc((var(--vh, 100vh) - var(--header-height, 105px)) / 100 * 80);
+        height: 100%;
+        background-color: var(--white);
+
+        transition: opacity $transitionSpeed $transitionFunction,
+            visibility $transitionSpeed $transitionFunction,
+            transform $transitionSpeed $transitionFunction;
+
+        &._active-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        &__container {
+            padding-top: 24px;
+            padding-bottom: 24px;
+
+            display: flex;
+            height: 100%;
+        }
+
+        &__menu {
+            min-width: 249px;
+            max-width: 249px;
+        }
+
+        &__content {
+            flex-grow: 1;
+        }
+    }
+
+
+    .nav-menu {
+        height: 100%;
+        border-right: 1px solid var(--primary100);
+
+        &__item {
+            &:not(:last-child) {}
+
+            &._active {
+                color: var(--blue);
+            }
+
+            >a {
+                font-weight: 500;
+                padding: 16px 0;
+                width: 100%;
+            }
+        }
+    }
+
+    .nav-content {
+        margin-top: 16px;
+        padding-left: 32px;
+
+        &__body {
+            display: none;
+            grid-template-columns: repeat(2, 1fr);
+            grid-column-gap: 24px;
+            grid-row-gap: 24px;
+
+            &._active {
+                display: grid;
+            }
+        }
+
+        &__title {
+            grid-column: 1/-1;
+        }
+
+        &__item {
+            display: flex;
+            align-items: center;
+
+            img {
+                width: 55px;
+                height: 55px;
+            }
+
+            span {
+                margin-left: 16px;
+            }
+        }
+    }
+
 }
 
 .header-top {
@@ -332,6 +510,37 @@
         }
     }
 
+    &__menu {
+        margin-left: 32px;
+        height: 40px;
+        padding: 0 32px;
+        font-size: var(--default-small-fz);
+
+        svg {
+            pointer-events: none;
+            transition: fill $transitionSpeed $transitionFunction;
+        }
+
+        span {
+            pointer-events: none;
+            margin-left: 8px;
+        }
+
+        @media (min-width:$desktop-min) {
+            &:hover {
+                svg {
+                    fill: var(--blue) !important;
+                }
+            }
+
+            &:active {
+                svg {
+                    fill: var(--white) !important;
+                }
+            }
+        }
+    }
+
     &__nav {
         @media (max-width:$desktop) {
             display: flex;
@@ -438,4 +647,3 @@
         }
     }
 }
-

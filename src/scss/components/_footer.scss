@@ -36,6 +36,73 @@
     }
 
     &__nav {
+        .nav {
+        
+            &__list {
+                display: flex;
+                align-items: center;
+                height: 100%;
+            }
+        
+            &__item {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                padding: 0 24px;
+                cursor: pointer;
+        
+                &:last-child {
+                    padding-right: 0;
+                }
+                @media (min-width:$desktop-min) {
+                    &:hover {
+                        .nav__link {
+                            color: var(--blue);
+            
+                            &::before {
+                                width: 125%;
+                            }
+                        }
+                    }
+                }
+            }
+        
+            &__link {
+                color: var(--primaryTwo);
+                font-weight: 500;
+                font-size: var(--default-fz);
+                line-height: var(--little-small-lh);
+                transition: color $transitionSpeed $transitionFunction;
+                height: 100%;
+                position: relative;
+        
+                display: flex;
+                align-items: center;
+        
+                &::before {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 0;
+                    height: 2px;
+                    background-color: var(--blue);
+                    transition: width $transitionSpeed $transitionFunction;
+                }
+                &-arrow {
+                    width: 12px;
+                    height: 12px;
+                    fill: var(--blue);
+                    margin-left: auto;
+        
+                    @media (min-width:$desktop) {
+                        display: none;
+                    }
+                }
+        
+            }
+        }
         @media (max-width:$smallTablet-max) {
             margin-top: 24px;
 

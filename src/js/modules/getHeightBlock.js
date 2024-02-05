@@ -9,6 +9,3 @@ const getHeightBlock = (selector, nameVariable) => {
     }
 }
 export default getHeightBlock;
-
-
-// getHeightBlock('.header', '--header-height');

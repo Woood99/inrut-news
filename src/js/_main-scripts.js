@@ -1,4 +1,5 @@
-import getHeightBlock from './modules/getHeightBlock'
+import getHeightBlock from './modules/getHeightBlock';
+import header from './components/header';
 import {
     filterControl,
     uiSliderOne,
@@ -54,9 +55,11 @@ import {
 } from './components/tooltips';
 document.addEventListener('DOMContentLoaded', () => {
 
-
+    header();
     getHeightBlock('.header', '--header-height');
-
+    window.addEventListener('scroll',() => {
+        getHeightBlock('.header', '--header-height');
+    })
     filterControl();
     uiSliderOne();
     filterSum();

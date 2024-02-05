@@ -20,7 +20,7 @@
 
 <body class="page__body">
     <div class="site-container site-container--place-sale">
-        @include('partials/header--menu.html')
+        @include('partials/header--new.html')
         <main class="main main-page-gap place-sale view-types-objects">
             <div class="place-sale__top top-page-inner-title">
                 <div class="top-page-inner-title__container container">
@@ -37,240 +37,84 @@
             </div>
             <div class="place-sale__body">
                 <div class="container">
-                    <div class="place-sale__row main-table">
-                        <h2 class="place-sale__row-title place-sale-options__title title-2">
-                            Характеристики жилого комплекса
-                        </h2>
 
-                        <div class="object-apart-renov__tabs tabs-primary">
-                            <div data-tabs class="tabs-primary__inner">
-                                <nav data-tabs-titles class="tabs-primary__btns tabs__navigation" style="max-width: none;">
-                                    <button type="button" class="btn btn-reset tabs__title _tab-active">
-                                        Общая
-                                    </button>
-                                    <button type="button" class="btn btn-reset tabs__title tabs__title--edit">
-                                        <input type="text" name="Имя" class="input-reset" value="На территории комплекса" disabled>
-                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#pencil">
-                                                </use>
-                                            </svg>
-                                        </div>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tabs__title tabs__title--edit">
-                                        <input type="text" name="Имя" class="input-reset" value="Парковка" disabled>
-                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#pencil">
-                                                </use>
-                                            </svg>
-                                        </div>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tabs__title tabs__title--edit">
-                                        <input type="text" name="Имя" class="input-reset" value="Безопасность" disabled>
-                                        <div class="btn btn-reset tabs__title-edit" title="Редактировать">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#pencil">
-                                                </use>
-                                            </svg>
-                                        </div>
-                                    </button>
-                                </nav>
-                                <div class="tabs-primary__container">
-                                    <div data-tabs-body class="tabs__content tabs-primary__content">
-                                        <div class="tabs__body">
-                                            <div class="main-table__inner container">
-                                                <div class="main-table__table">
-                                                    <div class="main-table__type" style="grid-template-columns: 9% 17% 18% 20% 21% 8%; justify-content: start;">
-                                                        <span>Порядок</span>
-                                                        <span>Название</span>
-                                                        <span style="justify-self: center;">Тип</span>
-                                                        <span style="justify-self: center;">Показывать в фильтре</span>
-                                                        <span style="justify-self: center;">Обязательное</span>
-                                                        <span>Действие</span>
-                                                    </div>
-                                                    <div class="main-table__list drag-drop drag-drop--order">
-                                                        <div class="main-table__item object-info types-objects__item drag-drop__item"
-                                                            style="grid-template-columns: 9% 17% 18% 20% 21% 5.5%;justify-content: start;" draggable="true">
-                                                            <div>
-                                                                <svg>
-                                                                    <use xlink:href="./img/sprite.svg#right-left"></use>
-                                                                </svg>
-                                                                <span data-drag-drop-order-number>1</span>
-                                                            </div>
-                                                            <span>
-                                                                Срок сдачи
-                                                            </span>
-                                                            <span style="justify-self: center; text-align: center;">
-                                                                Текстовое поле
-                                                            </span>
-                                                            <span style="justify-self: center;">
-                                                               Да
-                                                            </span>
-                                                            <span style="justify-self: center;">
-                                                               Нет
-                                                            </span>
-                                                            <div>
-                                                                <a href="edit-types-objects.html" title="Редактировать">
-                                                                    <svg>
-                                                                        <use xlink:href="./img/sprite.svg#pencil">
-                                                                        </use>
-                                                                    </svg>
-                                                                </a>
-                                                                <button type="button" class="btn btn-reset" title="Удалить" data-popup-path="warning-remove">
-                                                                    <svg>
-                                                                        <use xlink:href="./img/sprite.svg#trash">
-                                                                        </use>
-                                                                    </svg>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="main-table__item object-info types-objects__item drag-drop__item"
-                                                        style="grid-template-columns: 9% 17% 18% 20% 21% 5.5%;justify-content: start;" draggable="true">
-                                                            <div>
-                                                                <svg>
-                                                                    <use xlink:href="./img/sprite.svg#right-left"></use>
-                                                                </svg>
-                                                                <span data-drag-drop-order-number>2</span>
-                                                            </div>
-                                                            <span>
-                                                                Тип Жилья
-                                                            </span>
-                                                            <span style="justify-self: center; text-align: center;">
-                                                                Список - единичный выбор
-                                                            </span>
-                                                            <span style="justify-self: center; text-align: center;">
-                                                                Нет
-                                                            </span>
-                                                            <span style="justify-self: center; text-align: center;">
-                                                                Нет
-                                                            </span>
-                                                            <div>
-                                                                <a href="edit-types-objects-2.html" title="Редактировать">
-                                                                    <svg>
-                                                                        <use xlink:href="./img/sprite.svg#pencil">
-                                                                        </use>
-                                                                    </svg>
-                                                                </a>
-                                                                <button type="button" class="btn btn-reset" title="Удалить" data-popup-path="warning-remove">
-                                                                    <svg>
-                                                                        <use xlink:href="./img/sprite.svg#trash">
-                                                                        </use>
-                                                                    </svg>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                    <div class="object-apart-renov__tabs place-sale__row tabs-primary tabs-primary--controls create-types-objects-tabs" data-section-fields="types-objects">
+                        <div class="place-sale__row-title row" style="display: flex;align-items: flex-start;justify-content: space-between;">
+                            <h2 class="place-sale-photo__title title-2">
+                                Характеристики жилого комплекса
+                            </h2>
+                            <button type="button" class="btn btn-reset tabs-primary__create-new">
+                                <svg>
+                                    <use xlink:href="./img/sprite.svg#plus"></use>
+                                </svg>
+                                Добавить новое поле
+                            </button>
+                        </div>
+                        <div data-tabs class="tabs-primary__inner">
+                            <nav data-tabs-titles class="tabs-primary__btns tabs__navigation" style="max-width: none;">
+                                <button type="button" class="btn btn-reset tabs__title _tab-active tabs__title--edit">
+                                    <input type="text" name="Имя" class="input-reset _width-auto" value="Общая" disabled>
+                                    <div class="btn btn-reset tabs__title-edit" title="Редактировать">
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#pencil">
+                                            </use>
+                                        </svg>
+                                    </div>
+                                    <div class="btn btn-reset tabs__title-remove" title="Удалить">
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#trash">
+                                            </use>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <button type="button" class="btn btn-reset tabs__title tabs__title--edit">
+                                    <input type="text" name="Имя" class="input-reset _width-auto" value="Парковка" disabled>
+                                    <div class="btn btn-reset tabs__title-edit" title="Редактировать">
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#pencil">
+                                            </use>
+                                        </svg>
+                                    </div>
+                                    <div class="btn btn-reset tabs__title-remove" title="Удалить">
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#trash">
+                                            </use>
+                                        </svg>
+                                    </div>
+                                </button>
+                            </nav>
+                            <div class="tabs-primary__container">
+                                <div data-tabs-body class="tabs__content tabs-primary__content">
+                                    <div class="tabs__body">
+                                        <div class="main-table__inner container">
+                                            <div class="main-table__table">
+                                                <div class="main-table__type" style="grid-template-columns: 9% 17% 18% 20% 21% 5.5%; justify-content: start;">
+                                                    <span>Порядок</span>
+                                                    <span>Название</span>
+                                                    <span style="justify-self: center;">Тип</span>
+                                                    <span style="justify-self: center;">Показывать в фильтре</span>
+                                                    <span style="justify-self: center;">Обязательное</span>
+                                                    <span>Действие</span>
                                                 </div>
-                                                <div class="main-table__next">
-                                                    <a href="create-char-object.html" class="btn btn-reset btn-primary">
-                                                        Создать характеристику жилого комплекса
-                                                    </a>
+                                                <div class="main-table__list drag-drop drag-drop--order">
+
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="tabs__body" hidden>
-                                            <div class="main-table__inner container">
-                                                <div class="main-table__table">
-                                                    <div class="main-table__type" style="grid-template-columns: 9% 17% 18% 20% 21% 5.5%; justify-content: start;">
-                                                        <span>Порядок</span>
-                                                        <span>Название</span>
-                                                        <span style="justify-self: center;">Тип</span>
-                                                        <span style="justify-self: center;">Показывать в фильтре</span>
-                                                        <span style="justify-self: center;">Обязательное</span>
-                                                        <span>Действие</span>
-                                                    </div>
-                                                    <div class="main-table__list drag-drop drag-drop--order">
-                                                        <div class="main-table__item object-info types-objects__item drag-drop__item"
-                                                        style="grid-template-columns: 9% 17% 18% 20% 21% 5.5%;justify-content: start;" draggable="true">
-                                                            <div>
-                                                                <svg>
-                                                                    <use xlink:href="./img/sprite.svg#right-left"></use>
-                                                                </svg>
-                                                                <span data-drag-drop-order-number>1</span>
-                                                            </div>
-                                                            <span>
-                                                               Школа
-                                                            </span>
-                                                            <span style="justify-self: center; text-align: center;">
-                                                              Список - единичный выбор
-                                                            </span>
-                                                            <span style="justify-self: center;">
-                                                            Нет
-                                                            </span>
-                                                            <span style="justify-self: center;">
-                                                               Нет
-                                                            </span>
-                                                            <div>
-                                                                <a href="edit-types-objects.html" title="Редактировать">
-                                                                    <svg>
-                                                                        <use xlink:href="./img/sprite.svg#pencil">
-                                                                        </use>
-                                                                    </svg>
-                                                                </a>
-                                                                <button type="button" class="btn btn-reset" title="Удалить" data-popup-path="warning-remove">
-                                                                    <svg>
-                                                                        <use xlink:href="./img/sprite.svg#trash">
-                                                                        </use>
-                                                                    </svg>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                        <div  class="main-table__item object-info types-objects__item drag-drop__item"
-                                                        style="grid-template-columns: 9% 17% 18% 20% 21% 5.5%;justify-content: start;" draggable="true">
-                                                            <div>
-                                                                <svg>
-                                                                    <use xlink:href="./img/sprite.svg#right-left"></use>
-                                                                </svg>
-                                                                <span data-drag-drop-order-number>2</span>
-                                                            </div>
-                                                            <span>
-                                                                Поликлиника
-                                                            </span>
-                                                            <span style="justify-self: center; text-align: center;">
-                                                                Список - единичный выбор
-                                                            </span>
-                                                            <span style="justify-self: center;">
-                                                                Нет
-                                                            </span>
-                                                            <span style="justify-self: center;">
-                                                                Нет
-                                                            </span>
-                                                            <div>
-                                                                <a href="edit-types-objects-2.html" title="Редактировать">
-                                                                    <svg>
-                                                                        <use xlink:href="./img/sprite.svg#pencil">
-                                                                        </use>
-                                                                    </svg>
-                                                                </a>
-                                                                <button type="button" class="btn btn-reset" title="Удалить" data-popup-path="warning-remove">
-                                                                    <svg>
-                                                                        <use xlink:href="./img/sprite.svg#trash">
-                                                                        </use>
-                                                                    </svg>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="main-table__next">
-                                                    <a href="create-char-object.html" class="btn btn-reset btn-primary">
-                                                        Создать характеристику жилого комплекса
-                                                    </a>
-                                                </div>
+                                            <div class="main-table__next">
+                                                <a href="create-char-object.html" class="btn btn-reset btn-primary">
+                                                    Создать характеристику жилого комплекса
+                                                </a>
                                             </div>
                                         </div>
-                                        <div class="tabs__body" hidden>
-                                           
-                                        </div>
-                                        <div class="tabs__body" hidden>
-                                           
-                                        </div>
+                                    </div>
+                                    <div class="tabs__body" hidden>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="place-sale__row main-table">
                         <h2 class="place-sale__row-title place-sale-options__title title-2">
                             Характеристики квартир жилого комплекса

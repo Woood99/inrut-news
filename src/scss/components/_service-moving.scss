@@ -74,8 +74,9 @@
         @media (min-width:$desktop-min) {
             ._sticky {
                 position: sticky;
-                top: 16px;
+                top: calc(16px + var(--dynamic-header-height, 0));
                 width: 100%;
+                transition: top $transitionSpeed $transitionFunction;
             }
         }
     }
@@ -100,23 +101,27 @@
     }
 
     &__address {}
-    &__pay-method-tab{
-       &:not(:last-child){
-        margin-bottom: 16px;
-       }
+
+    &__pay-method-tab {
+        &:not(:last-child) {
+            margin-bottom: 16px;
+        }
     }
-    &__pay-card{
+
+    &__pay-card {
         display: grid;
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 8px;
-        .secondary-tooltip{
-            &__content{
+
+        .secondary-tooltip {
+            &__content {
                 max-width: 150px;
                 width: max-content;
             }
         }
     }
-    &__pay-cash{
+
+    &__pay-cash {
         display: grid;
         grid-template-columns: 1fr max-content;
         align-items: center;
@@ -144,19 +149,22 @@
             margin-bottom: 24px;
         }
     }
-    &__add{
+
+    &__add {
         margin-top: 24px;
         width: 100%;
         display: flex;
         align-items: center;
-   justify-content: center;
-        svg{
+        justify-content: center;
+
+        svg {
             margin-left: 16px;
             width: 16px;
             height: 16px;
             fill: var(--blue);
-        }   
+        }
     }
+
     &__title {
         margin-bottom: 8px;
     }
@@ -167,20 +175,24 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
     }
-    &__secondary{
-        .row{
+
+    &__secondary {
+        .row {
             grid-template-columns: repeat(2, 1fr) 32px;
-            svg{
+
+            svg {
                 width: 20px;
                 height: 20px;
             }
         }
     }
-    &__secondary-delete{
+
+    &__secondary-delete {
         justify-self: end;
         width: 20px;
         height: 20px;
-        svg{
+
+        svg {
             width: 100%;
             height: 100%;
             fill: var(--red);
@@ -206,6 +218,7 @@
 
 .service-moving-time {
     margin-top: 32px;
+
     .row {
         display: grid;
         grid-template-columns: 280px 185px 1fr;
@@ -349,6 +362,7 @@
 
 .service-moving-rates {
     margin-bottom: 32px;
+
     &__list {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -417,15 +431,18 @@
             &:nth-child(1) {
                 font-weight: 500;
             }
-            &:nth-child(2){
+
+            &:nth-child(2) {
                 font-weight: 500;
                 justify-self: end;
             }
-            &:nth-child(3){
+
+            &:nth-child(3) {
                 font-size: var(--small-fz);
             }
         }
-        .quantity{
+
+        .quantity {
             justify-self: end;
         }
     }
@@ -470,12 +487,14 @@
         &:not(:last-child) {
             margin-bottom: 16px;
         }
-        .radio-primary__text{
-            &--icon{
+
+        .radio-primary__text {
+            &--icon {
                 display: flex;
                 align-items: center;
                 position: relative;
-                svg{
+
+                svg {
                     margin-right: 8px;
                     position: relative;
                     top: -1px;

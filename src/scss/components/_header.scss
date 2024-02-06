@@ -1,6 +1,6 @@
 .header {
     position: relative;
-    z-index: 99;
+    z-index: 100;
 
     &__top {}
 
@@ -19,6 +19,7 @@
         position: relative;
         z-index: 99;
         transition: box-shadow $transitionSpeed $transitionFunction;
+
         @media (max-width:$desktop) {
             box-shadow: none;
             height: 50px;
@@ -54,7 +55,6 @@
             }
 
             &__actions {
-                margin-right: 40px;
                 margin-left: auto;
             }
         }
@@ -128,7 +128,7 @@
         right: 0;
         left: 0;
         width: 100%;
-        min-height: calc((var(--vh, 100vh) - var(--header-height, 105px)) / 100 * 80);
+        min-height: calc((var(--vh, 100vh) - var(--header-height, 105px)) / 100 * 95);
         height: 100%;
         background-color: var(--white);
 
@@ -159,20 +159,22 @@
             flex-grow: 1;
             position: relative;
         }
-        &__close{
+
+        &__close {
             position: absolute;
-   top: 0px;
-   right: 0;
+            top: 0px;
+            right: 0;
 
-   width: 25px;
-   height: 25px;
+            width: 25px;
+            height: 25px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-            svg{
-       width: 100%;
-       height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            svg {
+                width: 100%;
+                height: 100%;
                 fill: var(--blue);
             }
         }
@@ -182,7 +184,8 @@
     .nav-menu {
         height: 100%;
         border-right: 1px solid var(--primary200);
-    padding-right: 24px;
+        padding-right: 24px;
+
         &__item {
             &:not(:last-child) {}
 
@@ -197,8 +200,9 @@
                 align-items: center;
                 justify-content: space-between;
                 transition: background-color $transitionSpeed $transitionFunction,
-                color $transitionSpeed $transitionFunction;
-                svg{
+                    color $transitionSpeed $transitionFunction;
+
+                svg {
                     width: 24px;
                     height: 24px;
                     fill: var(--dark);
@@ -207,10 +211,11 @@
             }
 
             &._active {
-                a{
+                a {
                     background-color: rgba(0, 150, 255, 0.08);
                     color: var(--blue);
-                    svg{
+
+                    svg {
                         fill: var(--blue);
                     }
                 }
@@ -221,18 +226,21 @@
     .nav-content {
         margin-top: 0;
         padding-left: 24px;
-        &__tags{
+
+        &__tags {
             margin-top: 8px;
             display: flex;
             align-items: center;
             flex-wrap: wrap;
             gap: 12px;
         }
-        .chat-lora-btn-second{
+
+        .chat-lora-btn-second {
             grid-column: 1/-1;
             max-width: 76.71%;
 
         }
+
         &__body {
             display: none;
             grid-template-columns: repeat(3, 1fr);
@@ -242,7 +250,8 @@
             &._active {
                 display: grid;
             }
-            &._one{
+
+            &._one {
                 grid-row-gap: 8px;
             }
         }
@@ -251,20 +260,24 @@
             grid-column: 1/-1;
         }
 
-        &__item {
-          
-        }
+        &__item {}
     }
 
-    &.header--menu-active{
-        .header-main{
+    &.header--menu-active {
+        .header-main {
             box-shadow: none;
+        }
+
+        .header__search {
+            display: none;
         }
     }
 }
-.nav-content-chat{
+
+.nav-content-chat {
     grid-column: 1/-1;
 }
+
 .header-top {
     height: 50px;
     background-color: #f7f9fd; // stand-bg
@@ -338,6 +351,21 @@
             }
         }
     }
+    &--calendar,
+    &--chat,
+    &--personal {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+
+        svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--primaryTwo);
+            margin-bottom: 4px;
+        }
+    }
 
     &--calendar {
         @media (max-width:$desktop) {
@@ -345,27 +373,6 @@
         }
     }
 
-    &--chat {
-        .header-action__title {
-            svg {
-                width: 16px;
-                height: 16px;
-            }
-        }
-    }
-
-    &--favorite {
-        .header-action__title {
-            svg {
-                width: 16px;
-                height: 16px;
-            }
-        }
-
-        .secondary-tooltip__content {
-            min-width: max-content;
-        }
-    }
 
     &__title {
         color: var(--primaryTwo);
@@ -426,46 +433,6 @@
     }
 }
 
-.header-personal {
-    &__title {
-        display: flex;
-        align-items: center;
-        color: var(--dark);
-        transition: color $transitionSpeed $transitionFunction;
-
-        svg {
-            width: 16px;
-            height: 16px;
-            fill: var(--primaryTwo);
-        }
-
-        @media (min-width:$desktop-min) {
-            &:hover {
-                color: var(--blue);
-            }
-        }
-    }
-
-    &__name {
-        white-space: nowrap;
-        color: var(--primaryTwo);
-        margin-left: 10px;
-        font-size: var(--default-fz);
-        line-height: var(--little-small-lh);
-        transition: color $transitionSpeed $transitionFunction;
-        font-weight: 500;
-
-        @media (min-width:$desktop-min) {
-            &:hover {
-                color: var(--blue);
-            }
-        }
-
-        @media (max-width:$desktop) {
-            display: none;
-        }
-    }
-}
 
 .header-authorization {
     &__title {

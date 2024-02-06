@@ -845,6 +845,19 @@ function initSliders() {
             }
         })
     }
+
+    if (document.querySelector('.repair-apart-services__content')) {
+        const sliders = document.querySelectorAll('.repair-apart-services__content');
+        sliders.forEach(el => {
+            const slider = new Swiper(el, {
+                observer: true,
+                observeParents: true,
+                slidesPerView: 3,
+                spaceBetween: 16,
+                speed: 800,
+            });
+        })
+    }
 }
 
 

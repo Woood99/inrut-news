@@ -133,6 +133,7 @@ const scripts = () => {
                 ribbon: './src/js/ribbon.js',
                 'chat-page': './src/js/chat-page.js',
                 'service-moving': './src/js/service-moving.js',
+                'service-repair': './src/js/service-repair.js',
             },
             output: {
                 filename: '[name].js',

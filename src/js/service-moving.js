@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1);
     })
 
-    const sidebar = form.querySelector('.service-moving__sidebar');
+    const sidebar = form.querySelector('.service-sample__sidebar');
 
     sidebar.addEventListener('click', (e) => {
         setTimeout(() => {
@@ -175,10 +175,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const featuresBlock = form.querySelector('.service-moving-features');
         const featuresItems = featuresBlock.querySelectorAll('.features-item');
-        const rentTime = form.querySelector('.service-moving__rent-time').closest('.quantity').dataset.value;
-        const rentTimePrice = form.querySelector('.service-moving__rent-time').dataset.priceRent;
-        const movers = form.querySelector('.service-moving__movers').value;
-        const priceMovers = form.querySelector('.service-moving__movers').dataset.priceMovers;
+        const rentTime = form.querySelector('.service-sample__rent-time').closest('.quantity').dataset.value;
+        const rentTimePrice = form.querySelector('.service-sample__rent-time').dataset.priceRent;
+        const movers = form.querySelector('.service-sample__movers').value;
+        const priceMovers = form.querySelector('.service-sample__movers').dataset.priceMovers;
         const listFeaturesItems = {};
         const listOptionsOrderItems = {};
         const activeFeaturesItems = Array.from(featuresItems).filter(item => {

@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const addProperty = form.querySelector('.service-repair-add-property');
 
     const date = form.querySelector('.service-moving-time__date');
-    const optionsItems = form.querySelector('.service-moving-options__list').children;
     const featuresItems = form.querySelectorAll('.service-moving-features__item');
 
     const optionsOrder = form.querySelectorAll('.service-moving-options-order .service-moving-options-order__item');
@@ -34,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (addProperty) {
         const btn = addProperty.querySelector('.service-repair-add-property__btn');
-        btn.addEventListener('click',() => {
+        btn.addEventListener('click', () => {
             const modalHTML = `
             <div class="add-property">
                 <div class="add-property__container">
@@ -52,8 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="input-text input-text--no-exp">
                             <label class="input-text__label">
                                 <span>Адрес</span>
-                                <input type="text" name="Адрес" class="input-reset input-text__input add-property__address" placeholder="">
+                                <input type="text" name="Адрес" class="input-reset input-text__input add-property__address" id="address-input" placeholder="">
                             </label>
+                            <div id="address-suggestions"></div>
                         </div>
                         <div class="input-text input-text--no-exp input-text--only-number">
                             <label class="input-text__label">
@@ -109,18 +109,30 @@ document.addEventListener('DOMContentLoaded', () => {
             const addressInput = modalEl.querySelector('.add-property__address');
             const hiddenBlock = modalEl.querySelectorAll('[data-add-property-hidden]');
             const nameInput = modalEl.querySelector('.add-property__name');
+            const apartNumber = modalEl.querySelector('.add-property__apart-number')
             const tags = modalEl.querySelectorAll('.add-property__tag');
             const btnSubmit = modalEl.querySelector('.add-property__submit');
-            addressInput.addEventListener('input',() => {
+            addressInput.addEventListener('input', () => {
                 if (addressInput.value.length > 0) {
                     hiddenBlock.forEach(item => item.removeAttribute('hidden'));
+                } else {
+                    hiddenBlock.forEach(item => item.setAttribute('hidden', ''));
+                }
+                submitToggleDisabled();
+            })
+            apartNumber.addEventListener('input', () => {
+                submitToggleDisabled()
+            });
+
+            function submitToggleDisabled() {
+                if (apartNumber.value.length > 0 && addressInput.value.length > 0) {
                     btnSubmit.removeAttribute('disabled');
                 } else {
-                    hiddenBlock.forEach(item => item.setAttribute('hidden',''));
-                    btnSubmit.setAttribute('disabled','');
+                    btnSubmit.setAttribute('disabled', '');
                 }
-            })
-            modalEl.addEventListener('click',(e) => {
+            }
+
+            modalEl.addEventListener('click', (e) => {
                 const target = e.target;
                 const tag = target.closest('.add-property__tag');
                 const submit = target.closest('.add-property__submit');
@@ -134,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (submit) {
                     const values = {
                         address: addressInput.value,
-                        apartNumber: modalEl.querySelector('.add-property__apart-number').value
+                        apartNumber: apartNumber.value
                     };
                     const resultHTML = `
                     <div class="service-sample__row">
@@ -171,34 +183,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })
     }
-    if (optionsItems.length > 0) {
-        const itemsArray = Array.from(optionsItems);
-        const inputs = itemsArray.map(item => item.querySelector('input'));
-        inputs.forEach(input => {
-            input.addEventListener('input', () => {
-                const currentItem = input.closest('.offer-room');
-                itemsArray.forEach(item => item.classList.remove('_active'));
-                currentItem.classList.toggle('_active');
-            });
-        })
-    }
     if (featuresItems.length > 0) {
-        const quantityHTML = `
-        <div class="quantity" data-value="1">
-            <div class="quantity__button quantity__button_minus">
-                <svg>
-                    <use xlink:href="./img/sprite.svg#minus"></use>
-                </svg>
-            </div>
-            <div class="quantity__input">
-                <input type="text" maxlength="2" disabled value="1">
-            </div>
-            <div class="quantity__button quantity__button_plus">
-                <svg>
-                    <use xlink:href="./img/sprite.svg#plus"></use>
-                </svg>
-            </div>
-        </div>
+        const closeHTML = `
+        <button type="button" class="btn btn-reset features-item__close">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+        </button>
         `;
         const btnHTML = `
         <button type="button" class="btn btn-reset tag features-item__btn">
@@ -212,11 +203,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     const btn = target.closest('.features-item__btn');
                     if (btn) {
                         btn.remove();
-                        item.insertAdjacentHTML('beforeend', quantityHTML);
+                        item.insertAdjacentHTML('beforeend', closeHTML);
                     }
-                    const quantity = target.closest('.quantity');
-                    if (quantity && quantity.dataset.value < 1) {
-                        quantity.remove();
+                    const close = target.closest('.features-item__close');
+                    if (close) {
+                        close.remove();
                         item.insertAdjacentHTML('beforeend', btnHTML);
                     }
                 }, 1);
@@ -270,7 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const result = form.querySelector('.service-moving-result');
 
     function resultUpdate() {
-      
+
     }
 
     function payMethod() {

@@ -18,7 +18,7 @@
         box-shadow: 0 2px 4px 0 #00000012;
         position: relative;
         z-index: 99;
-
+        transition: box-shadow $transitionSpeed $transitionFunction;
         @media (max-width:$desktop) {
             box-shadow: none;
             height: 50px;
@@ -256,6 +256,11 @@
         }
     }
 
+    &.header--menu-active{
+        .header-main{
+            box-shadow: none;
+        }
+    }
 }
 .nav-content-chat{
     grid-column: 1/-1;

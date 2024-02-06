@@ -32433,6 +32433,10 @@ textarea.input-reset {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.0705882353);
   position: relative;
   z-index: 99;
+  -webkit-transition: -webkit-box-shadow 0.4s ease-in-out;
+  transition: -webkit-box-shadow 0.4s ease-in-out;
+  transition: box-shadow 0.4s ease-in-out;
+  transition: box-shadow 0.4s ease-in-out, -webkit-box-shadow 0.4s ease-in-out;
 }
 @media (max-width: 1212px) {
   .header__main {
@@ -32661,6 +32665,11 @@ textarea.input-reset {
 .header .nav-content__title {
   grid-column: 1/-1;
 }
+.header.header--menu-active .header-main {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
 .nav-content-chat {
   grid-column: 1/-1;
 }
@@ -34409,6 +34418,9 @@ textarea.input-reset {
   z-index: -1;
 }
 
+.home-top {
+  background-color: var(--primary100);
+}
 .home-top__container {
   padding-top: 24px;
   padding-bottom: 24px;
@@ -34435,7 +34447,6 @@ textarea.input-reset {
   -ms-flex-align: center;
   align-items: center;
   width: 100%;
-  max-width: 1000px;
 }
 .home-top__image {
   width: 120px;
@@ -34473,8 +34484,8 @@ textarea.input-reset {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  background-color: transparent;
-  border: 1px solid var(--primary200);
+  background-color: var(--white);
+  border: none;
   padding: 0 16px;
   border-radius: 12px;
   height: 48px;
@@ -34517,6 +34528,12 @@ textarea.input-reset {
   fill: none;
   stroke: var(--blue);
   stroke-width: 1.5px;
+}
+.home-top .tag {
+  background-color: var(--white);
+}
+.home-top .tag-icon {
+  background-color: var(--white);
 }
 
 .service {

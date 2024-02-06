@@ -5704,7 +5704,8 @@
         align-items: center;
         padding: 14px 22px;
         color: var(--dark);
-        transition: background-color $transitionSpeed $transitionFunction;
+        transition: background-color $transitionSpeed $transitionFunction,
+        color $transitionSpeed $transitionFunction;
         font-size: var(--default-fz);
         line-height: var(--little-small-lh);
         font-weight: 400;
@@ -5718,13 +5719,15 @@
             flex: 0 0 var(--size);
             margin-right: 18px;
             fill: var(--blue);
+            transition: fill $transitionSpeed $transitionFunction;
         }
 
         @media (min-width:$desktop) {
 
             &:hover,
             &.focus-visible {
-                background-color: var(--hover-primary);
+                background-color: rgba(0, 150, 255, 0.08);
+                color: var(--blue);
             }
         }
 

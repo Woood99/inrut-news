@@ -348,31 +348,31 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         if (validate()){
             const modalHTML = `
-            <div class="add-property">
-                <div class="add-property__container">
-                    <button class="btn-reset add-property__close" aria-label="Закрыть модальное окно">
+            <div class="confirm-service">
+                <div class="confirm-service__container">
+                    <button class="btn-reset confirm-service__close" aria-label="Закрыть модальное окно">
                         <svg>
                             <use xlink:href="./img/sprite.svg#x"></use>
                         </svg>
                         <span>Закрыть</span>
                     </button>
-                    <div class="add-property__content">
-                        <h2 class="service-moving-confirm__title title-2">
+                    <div class="confirm-service__content">
+                        <h2 class="confirm-service__title title-2">
                             Услуга заказана
                         </h2>
-                        <div class="service-moving-confirm__text">
+                        <div class="confirm-service__text">
                             <p>
                                 Транспортная компания свяжется с вами в день перевозки. Дополнительную информацию можно узнать по телефону 8 800 951-40-49
                             </p>
                         </div>
-                        <button type="button" class="btn btn-reset btn-primary service-moving-confirm__button js-popup-close">
+                        <button type="button" class="btn btn-reset btn-primary confirm-service__button js-popup-close">
                             Готово
                         </button>
                     </div>
                 </div>
             </div>
             `;
-            modal(modalHTML, '.add-property', 300);
+            modal(modalHTML, '.confirm-service', 300);
         }
     })
 })

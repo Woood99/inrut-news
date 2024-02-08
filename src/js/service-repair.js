@@ -11,11 +11,16 @@ import {
     currentInputText
 } from './components/inputs';
 import modal from './modules/modal';
+import {
+    validateRemoveError,
+    validateCreateError
+} from './components/formValidate';
 // ==============================
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('#service-repair-form');
     if (!form) return;
+    let formEventInput = false;
     payMethod();
     quantity();
     const addProperty = form.querySelector('.service-repair-add-property');
@@ -160,6 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
         areaRepairInput.addEventListener('input', () => {
             setTimeout(() => {
                 resultUpdate();
+                if (formEventInput) validate();
             }, 1);
         })
     }
@@ -236,14 +242,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = {
                 name: addService.querySelector('.small-card-select__title').textContent.trim(),
                 price: addService.dataset.optionPrice,
+                area: areaRepairValue == 0 ? 1 : areaRepairValue,
                 resultPrice() {
-                    return this.price * areaRepairValue
+                    return this.price * this.area
                 }
             }
             const option = `
             <div class="service-moving-result__option">
                 <span>${data.name}</span>
-                <span>${areaRepairValue == 0 ? '0' : `${areaRepairValue} * ${numberReplace(String(data.price))}`} ₽</span>
+                <span>${data.area} * ${numberReplace(String(data.price))} ₽</span>
                 <span>${numberReplace(String(data.resultPrice()))} ₽</span>
             </div>
             `;
@@ -261,7 +268,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             htmlOptionItem = '';
         }
-
         const htmlResult = `
                 <div class="service-moving-result__main">
                     <h2 class="service-moving-result__main-title title-3">
@@ -285,7 +291,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             </span>
                         </label>
                     </div>
-                    <button type="button" class="btn btn-reset btn-primary service-moving-result__btn">Заказать услугу</button>
+                    <button type="submit" form="service-repair-form" class="btn btn-reset btn-primary service-moving-result__btn">
+                        Заказать услугу
+                    </button>
                 </div>
             `;
 
@@ -320,4 +328,51 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         }
     }
+
+
+    const areaRepairLabel = areaRepairInput.closest('.input-text');
+    function validate() {
+        let result = true;
+        formEventInput = true;
+        validateRemoveError(areaRepairLabel);
+
+        if (areaRepairInput.value === '') {
+            result = false;
+            validateCreateError(areaRepairLabel, 'Введите площадь ремонта');
+        }
+
+        return result;
+    }
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (validate()){
+            const modalHTML = `
+            <div class="add-property">
+                <div class="add-property__container">
+                    <button class="btn-reset add-property__close" aria-label="Закрыть модальное окно">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#x"></use>
+                        </svg>
+                        <span>Закрыть</span>
+                    </button>
+                    <div class="add-property__content">
+                        <h2 class="service-moving-confirm__title title-2">
+                            Услуга заказана
+                        </h2>
+                        <div class="service-moving-confirm__text">
+                            <p>
+                                Транспортная компания свяжется с вами в день перевозки. Дополнительную информацию можно узнать по телефону 8 800 951-40-49
+                            </p>
+                        </div>
+                        <button type="button" class="btn btn-reset btn-primary service-moving-confirm__button js-popup-close">
+                            Готово
+                        </button>
+                    </div>
+                </div>
+            </div>
+            `;
+            modal(modalHTML, '.add-property', 300);
+        }
+    })
 })

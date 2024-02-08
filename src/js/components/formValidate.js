@@ -792,6 +792,7 @@ export const validateRemoveError = (label) => {
 }
 
 export const validateCreateErrorName = (label, input) => {
+    console.log(label);
     let result = true;
     if (label.hasAttribute('data-validate-min-length') && input.value.length < label.dataset.validateMinLength) {
         result = false;

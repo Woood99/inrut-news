@@ -5,12 +5,7 @@ import './functions/fix-fullheight';
 import './_popups';
 import './_main-scripts';
 
-import AirDatepicker from 'air-datepicker';
 import quantity from './functions/quantity';
-import {
-    getCurrentDateString,
-    getTomorrowDay
-} from './modules/date';
 import numberReplace from './modules/numberReplace';
 import {
     currentInputText
@@ -24,13 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
     payMethod();
     quantity();
     const addProperty = form.querySelector('.service-repair-add-property');
-
-    const date = form.querySelector('.service-moving-time__date');
-    const featuresItems = form.querySelectorAll('.service-moving-features__item');
-
     const optionsOrder = form.querySelectorAll('.service-moving-options-order .service-moving-options-order__item');
-
-
+    const areaRepairInput = form.querySelector('.service-area-repair-input');
     if (addProperty) {
         const btn = addProperty.querySelector('.service-repair-add-property__btn');
         btn.addEventListener('click', () => {
@@ -166,102 +156,140 @@ document.addEventListener('DOMContentLoaded', () => {
 
         })
     }
-
+    if (areaRepairInput) {
+        areaRepairInput.addEventListener('input', () => {
+            setTimeout(() => {
+                resultUpdate();
+            }, 1);
+        })
+    }
 
     optionsOrder.forEach(item => {
-        item.addEventListener('click', () => item.classList.toggle('_active'));
+        item.addEventListener('click', () => {
+            optionsOrder.forEach(currentItem => {
+                if (item !== currentItem) {
+                    currentItem.classList.remove('_active')
+                }
+            });
+            item.classList.toggle('_active')
+        });
     })
 
-    if (date) {
-        new AirDatepicker(date, {
-            autoClose: true,
-            isMobile: true,
-            minDate: getTomorrowDay(getCurrentDateString()),
-            onSelect: (fd) => {
-                const inputText = date.closest('.input-text')
-                fd.date ? inputText.classList.add('_active') : inputText.classList.remove('_active');
-            }
-        })
-    }
-    if (featuresItems.length > 0) {
-        const closeHTML = `
-        <button type="button" class="btn btn-reset features-item__close">
-            <svg>
-                <use xlink:href="./img/sprite.svg#x"></use>
-            </svg>
-        </button>
-        `;
-        const btnHTML = `
-        <button type="button" class="btn btn-reset tag features-item__btn">
-            Добавить
-        </button>
-        `;
-        featuresItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                setTimeout(() => {
-                    const target = e.target;
-                    const btn = target.closest('.features-item__btn');
-                    if (btn) {
-                        btn.remove();
-                        item.insertAdjacentHTML('beforeend', closeHTML);
-                    }
-                    const close = target.closest('.features-item__close');
-                    if (close) {
-                        close.remove();
-                        item.insertAdjacentHTML('beforeend', btnHTML);
-                    }
-                }, 1);
-            })
-        })
-    }
-    form.querySelector('.col').addEventListener('click', () => {
+    form.querySelector('.col').addEventListener('click', (e) => {
         setTimeout(() => {
+            updateForm(e);
             resultUpdate();
         }, 1);
     })
 
-    const sidebar = form.querySelector('.service-sample__sidebar');
+    const result = form.querySelector('.service-moving-result');
+    resultUpdate();
 
-    sidebar.addEventListener('click', (e) => {
-        setTimeout(() => {
-            const target = e.target;
-            const quantityButton = target.closest('.quantity__button');
-            if (quantityButton) {
-                const quantity = quantityButton.closest('.quantity');
-                const quantityName = quantity.closest('.service-moving-result__option').dataset.optionName;
-                const quantityFeatureName = quantity.closest('.service-moving-result__option').dataset.optionFeatureName;
-                if (quantityName) {
-                    const quantityInput = quantity.querySelector('input');
+    function updateForm(e) {
+        const target = e.target;
+        const serviceTypeSelectInput = form.querySelector('.service-type-select-input');
+        if (serviceTypeSelectInput && target.closest('.field-select--necessarily')) {
+            const value = serviceTypeSelectInput.value;
+            if (value !== '') {
+                const contentItems = form.querySelectorAll('[data-select-content]');
+                const currentContent = form.querySelector(`[data-select-content="${value}"]`);
 
-                    const currentInputBlock = form.querySelector(`[data-option-block-name=${quantityName}]`);
-                    if (currentInputBlock) {
-                        if (quantityButton.classList.contains('quantity__button_plus')) {
-                            currentInputBlock.closest('.quantity').querySelector('.quantity__button_plus').click();
-                        }
-                        if (quantityButton.classList.contains('quantity__button_minus')) {
-                            currentInputBlock.closest('.quantity').querySelector('.quantity__button_minus').click();
-                        }
-                    }
-                }
-                if (quantityFeatureName) {
-                    const currentBlock = form.querySelector(`[data-option-feature-block="${quantityFeatureName}"`);
-                    if (currentBlock) {
-                        if (quantityButton.classList.contains('quantity__button_plus')) {
-                            currentBlock.querySelector('.quantity').querySelector('.quantity__button_plus').click();
-                        }
-                        if (quantityButton.classList.contains('quantity__button_minus')) {
-                            currentBlock.querySelector('.quantity').querySelector('.quantity__button_minus').click();
-                        }
-                    }
+                contentItems.forEach(item => {
+                    item.setAttribute('hidden', '');
+                    const contentItems = item.querySelectorAll('.service-type-select__content');
+                    contentItems.forEach(item => item.classList.remove('_active'));
+                });
+                if (currentContent) {
+                    currentContent.removeAttribute('hidden');
+                    const contentItems = currentContent.querySelectorAll('.service-type-select__content');
+                    contentItems.forEach((item, index) => {
+                        index === 0 ? item.classList.add('_active') : item.classList.remove('_active');
+                    });
                 }
             }
-        }, 1);
-    })
+        }
 
-    const result = form.querySelector('.service-moving-result');
+        const serviceTypeSelectContent = target.closest('.service-type-select__content');
+        if (serviceTypeSelectContent) {
+            const allItems = form.querySelectorAll('.service-type-select__content');
+            allItems.forEach(item => item.classList.remove('_active'));
+            serviceTypeSelectContent.classList.add('_active');
+        }
+    }
 
     function resultUpdate() {
+        const areaRepairValue = areaRepairInput.value === '' ? 0 : areaRepairInput.value;
+        const repairItemActive = form.querySelector('.service-type-select__content._active');
+        const repairItemActiveData = {
+            name: repairItemActive.querySelector('.offer-room__title').textContent.trim(),
+            price: repairItemActive.dataset.offerPrice,
+            resultPrice() {
+                return this.price * areaRepairValue
+            }
+        };
 
+        const addService = form.querySelector('.service-moving-options-order__item._active');
+        let resultPrice = repairItemActiveData.resultPrice();
+        let htmlOptionItem = '';
+        let htmlOptionsOrder = '';
+        if (addService) {
+            const data = {
+                name: addService.querySelector('.small-card-select__title').textContent.trim(),
+                price: addService.dataset.optionPrice,
+                resultPrice() {
+                    return this.price * areaRepairValue
+                }
+            }
+            const option = `
+            <div class="service-moving-result__option">
+                <span>${data.name}</span>
+                <span>${areaRepairValue == 0 ? '0' : `${areaRepairValue} * ${numberReplace(String(data.price))}`} ₽</span>
+                <span>${numberReplace(String(data.resultPrice()))} ₽</span>
+            </div>
+            `;
+            htmlOptionsOrder += option;
+            resultPrice += Number(data.resultPrice());
+        }
+        if (areaRepairValue > 0) {
+            htmlOptionItem = `
+            <div class="service-moving-result__option">
+                <span>${repairItemActiveData.name}</span>
+                <span>${areaRepairValue == 0 ? '0' : `${areaRepairValue} * ${numberReplace(String(repairItemActiveData.price))}`} ₽</span>
+                <span>${numberReplace(String(resultPrice))} ₽</span>
+            </div>
+            `;
+        } else {
+            htmlOptionItem = '';
+        }
+
+        const htmlResult = `
+                <div class="service-moving-result__main">
+                    <h2 class="service-moving-result__main-title title-3">
+                        <span>Общая стоимость</span>
+                        <span>${numberReplace(String(resultPrice))} ₽</span>
+                    </h2>
+                    <div class="service-moving-result__options">
+                        <div class="service-moving-result__option">
+                            <span>Площадь ремонта</span>
+                            <span>${areaRepairValue} м²</span>
+                        </div>
+                        ${htmlOptionItem}
+                        ${htmlOptionsOrder}
+                    </div>
+                    <div class="service-moving-result__checkbox checkbox-secondary">
+                        <input id="personal-info" name="personal-info" class="checkbox-secondary__input" type="checkbox" value="true">
+                        <label for="personal-info" class="checkbox-secondary__label">
+                            <span class="checkbox-secondary__text">
+                                <span>Я соглашаюсь на обработку</span>
+                                <a href="#">персональных данных</a>
+                            </span>
+                        </label>
+                    </div>
+                    <button type="button" class="btn btn-reset btn-primary service-moving-result__btn">Заказать услугу</button>
+                </div>
+            `;
+
+        result.innerHTML = htmlResult;
     }
 
     function payMethod() {

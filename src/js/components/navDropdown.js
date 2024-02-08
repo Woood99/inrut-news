@@ -6,6 +6,7 @@ const navDropdown = () => {
     let isOpen = false;
     const body = document.body;
     const targetDefaultHTML = target.innerHTML;
+    const close = container.querySelector('.nav__close');
     const targetActiveHTML = `
     <svg width="24" height="24" viewBox="-4 -4 24 24" fill="#005bff" xmlns="http://www.w3.org/2000/svg"><path xmlns="http://www.w3.org/2000/svg" d="M9.41429 7.99997L15.0718 2.34244L13.6576 0.928223L8.00008 6.58576L2.3439 0.929582L0.929688 2.3438L6.58586 7.99997L0.929688 13.6561L2.3439 15.0704L8.00008 9.41418L13.6576 15.0717L15.0718 13.6575L9.41429 7.99997Z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
     <span>Меню</span>
@@ -14,6 +15,9 @@ const navDropdown = () => {
     target.addEventListener('click', () => {
         !isOpen ? openMenu() : closeMenu();
     })
+    close.addEventListener('click',() => {
+        if (isOpen) closeMenu();
+    });
     document.addEventListener('click', (e) => {
         const target = e.target;
         if (!target.closest('.header') && isOpen) {

@@ -1,5 +1,6 @@
 .main-banners {
     position: relative;
+
     &__container {
         border-radius: 12px;
     }
@@ -7,7 +8,8 @@
     &__item {
         height: 100% !important; // Hack! need to be redefined swiper
     }
-    &__nav{
+
+    &__nav {
         position: absolute;
         right: calc(24px + 16px);
         bottom: calc(24px + 16px);
@@ -16,6 +18,7 @@
         align-items: center;
         justify-content: end;
         pointer-events: none;
+
         .nav-arrow-secondary {
             border: 1px solid var(--blue);
             pointer-events: all;
@@ -32,8 +35,9 @@
                 opacity: 0.4;
             }
         }
-        @media (max-width:$smallTablet-max){
-             display: none; 
+
+        @media (max-width:$smallTablet-max) {
+            display: none;
         }
     }
 }
@@ -90,7 +94,8 @@
         left: 0;
         bottom: 0;
         right: 0;
-        @media (max-width:$desktop){
+
+        @media (max-width:$desktop) {
             background-position: bottom right 0%;
         }
     }
@@ -129,6 +134,46 @@
             padding: 0 22px;
         }
     }
+
+    &__block {
+        margin-top: 32px;
+        max-width: 400px;
+        background-color: var(--white);
+        box-shadow: var(--shadow-primary);
+        border-radius: 12px;
+        padding: 16px 24px;
+
+        .row {
+            display: flex;
+            &:not(:last-child){
+                margin-bottom: 16px;
+                padding-bottom: 16px;
+                border-bottom: 1px solid var(--primary200);
+            }
+            &:nth-child(1) {
+                justify-content: space-between;
+            }
+
+            &:nth-child(2) {
+                align-items: center;
+                svg {
+                    width: 16px;
+                    height: 16px;
+                    stroke: var(--primaryTwo);
+                    fill: none;
+                }
+                span{
+                    font-size: var(--small-fz);
+                    line-height: var(--small-lh);
+                    margin-left: 8px;
+                }
+            }
+            .main-banner__btn{
+                margin-top: 0;
+            }
+        }
+    }
+
     @media (max-width:$smallTablet-max) {
         padding: 24px 16px;
     }

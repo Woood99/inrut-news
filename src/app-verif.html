@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Сервис «Переезд»</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/service-moving.css">
+    <script id="ymaps-id"></script>
+    <script defer src="js/service-moving.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container">
+        @include('partials/header--new.html')
+        <main class="main main-page-gap service-moving">
+            <div class="service-sample__top top-page-inner-title">
+                <div class="top-page-inner-title__container container">
+                    <a href="#" class="top-page-inner-title__back back-link">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#arrow-left"></use>
+                        </svg>
+                        <span>Назад</span>
+                    </a>
+                    <h1 class="service-sample__title top-page-inner-title__title title-1">
+                        Заявка на юридическую проверку
+                    </h1>
+                </div>
+            </div>
+            <div class="service-sample__body">
+                <form action="#" id="service-moving-form" class="service-sample__container container">
+                    <div class="col">
+                        <div class="service-sample__row">
+                            <h2 class="service-sample__subtitle title-2">
+                                Адрес
+                            </h2>
+                            <div class="service-sample__address service-moving-address">
+                                <div class="service-moving-address__block service-moving-address__from">
+                                    <h4 class="service-moving-address__title title-4">Откуда</h4>
+                                    <div class="row">
+                                        <div class="input-text input-text--no-exp">
+                                            <label class="input-text__label">
+                                                <span>Адрес</span>
+                                                <input type="text" name="Адрес" class="input-reset input-text__input" value="Краснодар, Тополиная улица, 40/1к1"
+                                                    placeholder="">
+                                            </label>
+                                        </div>
+                                        <div class="input-text input-text--no-exp input-text--only-number">
+                                            <label class="input-text__label">
+                                                <span>Номер квартиры</span>
+                                                <input type="text" name="Имя" class="input-reset input-text__input" value="11" maxlength="4" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="service-moving-address__block service-moving-address__to">
+                                    <h4 class="service-moving-address__title title-4">Куда</h4>
+                                    <div class="row">
+                                        <div class="input-text input-text--no-exp">
+                                            <label class="input-text__label">
+                                                <span>Адрес</span>
+                                                <input type="text" name="Адрес" class="input-reset input-text__input" placeholder="">
+                                            </label>
+                                        </div>
+                                        <div class="input-text input-text--no-exp input-text--only-number">
+                                            <label class="input-text__label">
+                                                <span>Номер квартиры</span>
+                                                <input type="text" name="Имя" class="input-reset input-text__input" maxlength="4" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-sample__row">
+                            <h2 class="service-sample__subtitle title-2">
+                                Заказчик
+                            </h2>
+                            <div class="service-sample__client service-moving-client service-moving-client--customer">
+                                <div class="row">
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Имя</span>
+                                            <input type="text" name="Имя" class="input-reset input-text__input" value="Алексей" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Фамилия</span>
+                                            <input type="text" name="Фамилия" class="input-reset input-text__input" value="Гаврилов" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Номер телефона</span>
+                                            <input type="text" name="Застройщик" class="input-reset input-text__input input-phone-mask" value="8 921 645 45 45" placeholder="">
+                                        </label>
+                                    </div>
+                                </div>
+                                <label class="toggle-checkbox service-moving-client__toggle">
+                                    <input type="checkbox" name="toggle-1">
+                                    <div aria-hidden="true"></div>
+                                    <span>Груз получит другой человек</span>
+                                </label>
+                            </div>
+                            <div class="service-sample__client service-moving-client service-moving-client--recipient" data-service-moving-recipient hidden>
+                                <h2 class="service-sample__subtitle title-2">
+                                    Получатель
+                                </h2>
+                                <div class="row">
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Имя</span>
+                                            <input type="text" name="Имя" class="input-reset input-text__input" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Фамилия</span>
+                                            <input type="text" name="Фамилия" class="input-reset input-text__input" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Номер телефона</span>
+                                            <input type="text" name="Застройщик" class="input-reset input-text__input input-phone-mask" placeholder="">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-sample__sidebar col">
+                        <div class="_sticky">
+                            <div class="service-sample__result service-moving-result">
+                                <div class="service-moving-result__main">
+                                    <h2 class="service-moving-result__main-title title-3">
+                                        <span>Общая стоимость</span>
+                                        <span>0 ₽</span>
+                                    </h2>
+                                    <div class="service-moving-result__options">
+                                        <div class="service-moving-result__option" data-option-name="rent-time">
+                                            <span>Время аренды</span>
+                                            <span>0 ₽</span>
+                                            <span>0 ₽</span>
+                                            <div class="quantity quantity--small" data-value="0" data-max-value="24">
+                                                <div class="quantity__button quantity__button_minus">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#minus"></use>
+                                                    </svg>
+                                                </div>
+                                                <div class="quantity__input">
+                                                    <input type="text" maxlength="2" disabled="" value="0">
+                                                </div>
+                                                <div class="quantity__button quantity__button_plus">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#plus"></use>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="service-moving-result__option" data-option-name="movers">
+                                            <span>Грузчики</span>
+                                            <span>0 ₽</span>
+                                            <span>0 ₽</span>
+                                            <div class="quantity quantity--small" data-value="0">
+                                                <div class="quantity__button quantity__button_minus">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#minus"></use>
+                                                    </svg>
+                                                </div>
+                                                <div class="quantity__input">
+                                                    <input type="text" maxlength="2" disabled="" value="0">
+                                                </div>
+                                                <div class="quantity__button quantity__button_plus">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#plus"></use>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="service-moving-result__checkbox checkbox-secondary">
+                                        <input id="personal-info" name="personal-info" class="checkbox-secondary__input" type="checkbox" value="true">
+                                        <label for="personal-info" class="checkbox-secondary__label">
+                                            <span class="checkbox-secondary__text">
+                                                <span>Я соглашаюсь на обработку</span>
+                                                <a href="#">персональных данных</a>
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <button type="button" class="btn btn-reset btn-primary service-moving-result__btn" data-popup-path="service-moving-confirm">Заказать услугу</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+        @include('partials/footer.html')
+    </div>
+    <!-- popups -->
+    @include('popups/city.html')
+    @include('popups/add.html')
+    @include('popups/personal-area2.html')
+    @include('popups/edit-profile.html')
+    @include('popups/sber-tied.html')
+    @include('popups/service-moving-confirm.html')
+    <!-- popups -->
+</body>
+
+
+</html>

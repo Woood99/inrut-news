@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </label>
                     </div>
                     <button type="submit" form="service-repair-form" class="btn btn-reset btn-primary service-moving-result__btn">
-                        Заказать услугу
+                        Получить расчет стоимости
                     </button>
                 </div>
             `;

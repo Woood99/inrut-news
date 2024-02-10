@@ -14626,7 +14626,7 @@ textarea.input-reset {
   flex-direction: column;
 }
 .banner-item__title {
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   max-width: 350px;
 }
 .banner-item__title img {
@@ -14641,6 +14641,38 @@ textarea.input-reset {
 }
 .banner-item__descr {
   max-width: 350px;
+  margin-bottom: 16px;
+}
+.banner-item__list {
+  padding-left: 16px;
+  max-width: 350px;
+}
+.banner-item__list li {
+  position: relative;
+}
+.banner-item__list li::before {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: var(--blue);
+  border-radius: 50%;
+  left: -16px;
+  top: 8px;
+}
+.banner-item__list li:not(:last-child) {
+  margin-bottom: 12px;
+}
+.banner-item__link {
+  margin-top: 24px;
+  display: block;
+  color: var(--blue);
+}
+.banner-item__subtitle {
+  margin-top: 16px;
+}
+.banner-item__subtitle._gap-left {
+  margin-left: 16px;
 }
 .banner-item__number {
   display: none;
@@ -25227,6 +25259,17 @@ textarea.input-reset {
 .main-banner__block .row .main-banner__btn {
   margin-top: 0;
 }
+.main-banner__block .secondary-tooltip__content {
+  max-width: 400px;
+  width: 400px;
+}
+.main-banner__block._big {
+  max-width: 500px;
+}
+.main-banner__block._big .secondary-tooltip__content {
+  max-width: 500px;
+  width: 500px;
+}
 .main-banner__tooltip {
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -25252,10 +25295,6 @@ textarea.input-reset {
   color: var(--gray);
 }
 .main-banner__tooltip .secondary-tooltip__content {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  max-width: 400px;
   top: calc(100% + 16px + 4px);
   z-index: 999;
   left: -24px;
@@ -25293,6 +25332,35 @@ textarea.input-reset {
   padding-bottom: 16px;
   margin-bottom: 16px;
   border-bottom: 1px solid var(--primary100);
+}
+.main-banner__list {
+  margin-top: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 16px;
+  max-width: 550px;
+}
+.main-banner__list li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.main-banner__list li svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: var(--green);
+  stroke-width: 1.5px;
+  margin-right: 8px;
 }
 @media (max-width: 768px) {
   .main-banner {

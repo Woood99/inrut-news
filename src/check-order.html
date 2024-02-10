@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Сервис «Ремонт»</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/service-repair.css">
+    <script id="ymaps-id"></script>
+    <script defer src="js/service-repair.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container">
+        @include('partials/header--new.html')
+        <main class="main main-page-gap repair-apart">
+            <div class="top-page-inner-title">
+                <div class="top-page-inner-title__container container">
+                    <a href="#" class="top-page-inner-title__back back-link">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#arrow-left"></use>
+                        </svg>
+                        <span>Назад</span>
+                    </a>
+                </div>
+            </div>
+            <div class="repair-apart__banner home-banners__item main-banner main-banner--one">
+                <div class="main-banner__content container--no-padding">
+                    <h1 class="main-banner__title">
+                        Проверьте сделку и защитите сертификатом
+                    </h1>
+                    <p class="main-banner__descr">
+                        Для безопасной покупки доверьте нам проверку¹ квартиры и получите сертификат на возмещение средств
+                    </p>
+                    <div class="main-banner__block _big">
+                        <div class="row">
+                            <h2 class="title-3">от 15 900 до 37 500 ₽</h2>
+                            <a href="#" class="btn btn-reset btn-primary main-banner__btn">
+                                Заказать услугу
+                            </a>
+                        </div>
+                        <div class="main-banner__tooltip secondary-tooltip">
+                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                <svg>
+                                    <use xlink:href="./img/sprite.svg#info"></use>
+                                </svg>
+                                <span>От чего зависит цена</span>
+                            </button>
+                            <div class="secondary-tooltip__content">
+                                <h3 class="title-4 _title">
+                                    Цена зависит от региона и типа недвижимости
+                                </h3>
+                                <ul class="list-reset">
+                                    <li>
+                                        <span>Санкт-Петербург, Москва и область</span>
+                                        <span>
+                                            от 27 500 ₽
+                                            до 37 500 ₽
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>Все остальные регионы</span>
+                                        <span>
+                                            от 15 900 ₽
+                                            до 27 500 ₽
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="main-banner__list list-reset">
+                        <li>
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#verif"></use>
+                            </svg>
+                            <span>
+                                Юридическая проверка
+                            </span>
+                        </li>
+                        <li>
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#verif"></use>
+                            </svg>
+                            <span>
+                                Сертификат на возмещение стоимости
+                            </span>
+                        </li>
+                        <li>
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#verif"></use>
+                            </svg>
+                            <span>
+                                Консультация юриста онлайн
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="main-banner__image container--no-padding" style="background-image: url('./img/banner-4.webp');     background-position: bottom right 0%; background-size: auto;">
+                </div>
+            </div>
+            <div class="repair-apart__content container">
+                <div class="repair-apart__row repair-apart-about">
+                    <h2 class="repair-apart__title title-2">
+                        Что вы получите при заказе проверки
+                    </h2>
+                    <div class="repair-apart-about__items">
+                        <div class="repair-apart-about__item banner-item">
+                            <h3 class="banner-item__title title-2">
+                                Юридическая
+                                проверка
+                            </h3>
+                            <p class="banner-item__descr">
+                                Вы получите правовое заключение, в которое входят:
+                            </p>
+                            <ul class="banner-item__list list-reset">
+                                <li>
+                                    Данные из ЕГРН
+                                </li>
+                                <li>
+                                    Чек-лист проверок по рискам для недвижимости
+                                </li>
+                                <li>
+                                    История перехода права собственности
+                                </li>
+                                <li>
+                                    Рекомендации, как обезопасить сделку
+                                </li>
+                                <li>
+                                    Дополнения к договору купли-продажи для защиты ваших прав
+                                </li>
+                            </ul>
+                            <a href="#" class="banner-item__link">
+                                Пример правового заключения
+                            </a>
+                            <div class="banner-item__number">
+                                1
+                            </div>
+                        </div>
+                        <div class="repair-apart-about__item banner-item">
+                            <h3 class="banner-item__title title-2">
+                                Сертификат
+                                на возмещение стоимости
+                            </h3>
+                            <ul class="banner-item__list list-reset">
+                                <li>
+                                    Если у вас ипотека от СберБанка, при утрате права собственности мы гарантируем возмещение оценочной стоимости недвижимости
+                                </li>
+                                <li>
+                                    Если у вас ипотека от другого банка или сделка за свои средства, при утрате права собственности мы гарантируем возмещение кадастровой стоимости недвижимости
+                                </li>
+                            </ul>
+                            <h3 class="banner-item__subtitle title-3 _gap-left">Вернем до 25 млн рублей</h3>
+                            <a href="#" class="banner-item__link">
+                                Пример сертификата
+                            </a>
+                            <div class="banner-item__number">
+                                2
+                            </div>
+                        </div>
+                        <div class="repair-apart-about__item banner-item">
+                            <h3 class="banner-item__title title-2">
+                                Консультация юриста
+                                онлайн
+                            </h3>
+                            <p class="banner-item__descr">
+                                В чате с юристом можно:
+                            </p>
+                            <ul class="banner-item__list list-reset">
+                                <li>
+                                    Уточнить непонятные моменты в правовом заключении
+                                </li>
+                                <li>
+                                    Обсудить договор купли-продажи
+                                </li>
+                                <li>
+                                    Узнать о своих правах будущего собственника
+                                </li>
+                            </ul>
+                            <div class="banner-item__number">
+                                3
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        @include('partials/footer.html')
+    </div>
+    <!-- popups -->
+    @include('popups/city.html')
+    @include('popups/add.html')
+    @include('popups/personal-area2.html')
+    @include('popups/edit-profile.html')
+    @include('popups/sber-tied.html')
+    @include('popups/service-moving-confirm.html')
+    <!-- popups -->
+</body>
+
+
+</html>

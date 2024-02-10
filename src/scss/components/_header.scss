@@ -228,11 +228,14 @@
         padding-left: 24px;
 
         &__tags {
-            margin-top: 8px;
+            grid-column: 1/-1;
             display: flex;
             align-items: center;
             flex-wrap: wrap;
             gap: 12px;
+            &:not(:first-child){
+                margin-top: 8px;
+            }
         }
         .nav-content-chat{
             background-color: #f5f5f5;
@@ -269,10 +272,6 @@
     &.header--menu-active {
         .header-main {
             box-shadow: none;
-        }
-
-        .header__search {
-            display: none;
         }
     }
 }

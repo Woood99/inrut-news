@@ -1,0 +1,2059 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Агент</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/request.css">
+    <script id="ymaps-id"></script>
+    <script defer src="js/request.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container">
+        <header class="header header--new">
+    <div class="header__top header-top">
+        <div class="header-top__container container">
+            <button class="header-top__burger burger" aria-label="Открыть меню" aria-expanded="false" data-burger>
+                <span class="burger__line"></span>
+            </button>
+            <div class="header-top__city city" data-da=".header .nav__container,1212,3">
+                <button type="button" class="btn btn-reset city__title" data-popup-path="city">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#location-fill"></use>
+                    </svg>
+                    <span class="city__name">Краснодар</span>
+                    <p class="city__descr">
+                        Изменить
+                    </p>
+                </button>
+            </div>
+            <div class="header-top__actions">
+                <div class="header-top__action header-action header-action--add">
+                    <button type="button" data-popup-path="add" class="btn btn-reset header-action__title">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#add"></use>
+                        </svg>
+                        <span class="header-action__name">
+                            Добавить
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header__main header-main">
+        <div class="header-main__container container">
+            <a href="#" class="header-main__logo logo" data-da=".header-top__container,1212,1">
+                <img loading="lazy" src="./img/logo.svg" width="83" height="25" class="logo__img" alt="Продам.Онлайн">
+            </a>
+            <button type="button" class="btn btn-reset btn-secondary header-main__menu">
+                <svg width="24" height="24" viewBox="-3 -7 24 24" fill="#005bff" xmlns="http://www.w3.org/2000/svg">
+                    <path xmlns="http://www.w3.org/2000/svg" d="M0 0H18V2H0V0ZM0 4H18V6H0V4ZM0 8H18V10H0V8Z"></path>
+                </svg>
+                <span>Меню</span>
+            </button>
+            <a href="./chat.html" class="btn btn-reset chat-lora-btn-second header__search">
+                <span>Нужна помощь? спросите у Лолы</span>
+                <picture>
+                    <source srcset="./img/lora_face.webp" type="image/webp">
+                    <img loading="lazy" src="./img/lora_face.webp" width="28" height="28" alt="Lora">
+                </picture>
+            </a>
+            <div class="header-top__actions">
+                <button type="button" class="btn btn-reset header-top__action header-action header-action--calendar">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#calendar"></use>
+                    </svg>
+                    Календарь
+                </button>
+                <button type="button" class="btn btn-reset header-top__action header-action header-action--chat">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#chat"></use>
+                    </svg>
+                    Чат
+                </button>
+                <button type="button" class="btn btn-reset header-top__action header-action header-action--personal" data-popup-path="personal-area-two">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#door-open"></use>
+                    </svg>
+                    Кабинет
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="header__nav nav" data-menu>
+        <div class="nav__container container">
+            <ul class="nav__menu nav-menu list-reset">
+                <li class="nav-menu__item _dropdown" data-nav-dropdown-target="1">
+                    <a href="./buy-apartment-building-test.html">
+                        <span>Новостройки</span>
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#arrow-right"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li class="nav-menu__item _dropdown" data-nav-dropdown-target="2">
+                    <a href="#">
+                        <span>Покупка</span>
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#arrow-right"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li class="nav-menu__item _dropdown" data-nav-dropdown-target="3">
+                    <a href="#">
+                        <span>Услуги</span>
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#arrow-right"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li class="nav-menu__item _dropdown" data-nav-dropdown-target="4">
+                    <a href="#">
+                        <span>Лента</span>
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#arrow-right"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li class="nav-menu__item _dropdown" data-nav-dropdown-target="5">
+                    <a href="#">
+                        <span>Сервисы</span>
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#arrow-right"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li class="nav-menu__item _dropdown" data-nav-dropdown-target="6">
+                    <a href="#">
+                        <span>Специалисты</span>
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#arrow-right"></use>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+            <div class="nav__content nav-content">
+                <div class="nav-content__body" data-nav-dropdown-content="1">
+                    <div class="nav-content__tags">
+                        <button type="button" class="btn btn-reset tag tag--message">
+                            <span>
+                                Подбери подходящий ЖК
+                            </span>
+                        </button>
+                        <button type="button" class="btn btn-reset tag tag--message">
+                            <span>
+                                Найди хорошую скидку
+                            </span>
+                        </button>
+                        <button type="button" class="btn btn-reset tag tag--message">
+                            <span>
+                                Покажи топ продаж
+                            </span>
+                        </button>
+                    </div>
+                    <h3 class="nav-content__title title-3">Новостройки</h3>
+                    <a href="./mortgage.html" class="nav-content__item service-card-second">
+                        <span>Жилые комплексы</span>
+                        <img loading="lazy" src="./img/calc-mortgage.svg" alt="Ипотека">
+                    </a>
+                    <div class="nav-content-chat">
+                        <a href="./chat.html" class="btn btn-reset chat-lora-btn-second">
+                            <span>Нужна помощь? спросите у Лолы</span>
+                            <picture>
+                                <source srcset="./img/lora_face.webp" type="image/webp">
+                                <img loading="lazy" src="./img/lora_face.webp" width="28" height="28" alt="Lora">
+                            </picture>
+                        </a>
+                        <div class="nav-content__tags">
+                            <button type="button" class="btn btn-reset tag tag--message">
+                                <span>
+                                    Подбери подходящий ЖК
+                                </span>
+                            </button>
+                            <button type="button" class="btn btn-reset tag tag--message">
+                                <span>
+                                    Найди хорошую скидку
+                                </span>
+                            </button>
+                            <button type="button" class="btn btn-reset tag tag--message">
+                                <span>
+                                    Покажи топ продаж
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-content__body" data-nav-dropdown-content="2">
+                    <div class="nav-content__tags">
+                        <button type="button" class="btn btn-reset tag tag--message">
+                            <span>
+                                Найди покупателя на мой объект
+                            </span>
+                        </button>
+                        <button type="button" class="btn btn-reset tag tag--message">
+                            <span>
+                                Какой сейчас спрос
+                            </span>
+                        </button>
+                        <button type="button" class="btn btn-reset tag tag--message">
+                            <span>
+                                Сделай оценку моего объекта
+                            </span>
+                        </button>
+                    </div>
+                    <h3 class="nav-content__title title-3">Покупка</h3>
+                    <a href="./mortgage.html" class="nav-content__item service-card-second">
+                        <span>Заявки на покупку</span>
+                        <img loading="lazy" src="./img/calc-mortgage.svg" alt="Ипотека">
+                    </a>
+                    <div class="nav-content-chat">
+                        <a href="./chat.html" class="btn btn-reset chat-lora-btn-second">
+                            <span>Нужна помощь? спросите у Лолы</span>
+                            <picture>
+                                <source srcset="./img/lora_face.webp" type="image/webp">
+                                <img loading="lazy" src="./img/lora_face.webp" width="28" height="28" alt="Lora">
+                            </picture>
+                        </a>
+                        <div class="nav-content__tags">
+                            <button type="button" class="btn btn-reset tag tag--message">
+                                <span>
+                                    Найди покупателя на мой объект
+                                </span>
+                            </button>
+                            <button type="button" class="btn btn-reset tag tag--message">
+                                <span>
+                                    Какой сейчас спрос
+                                </span>
+                            </button>
+                            <button type="button" class="btn btn-reset tag tag--message">
+                                <span>
+                                    Сделай оценку моего объекта
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-content__body" data-nav-dropdown-content="3">
+                    <div class="nav-content__tags">
+                        <button type="button" class="btn btn-reset tag tag--message">
+                            <span>
+                                Получи одобрение ипотеки
+                            </span>
+                        </button>
+                        <button type="button" class="btn btn-reset tag tag--message">
+                            <span>
+                                Закажи юридическую проверку недвижимости
+                            </span>
+                        </button>
+                        <button type="button" class="btn btn-reset tag tag--message">
+                            <span>
+                             Сделай оценку недвижимости для ипотеки
+                            </span>
+                        </button>
+                    </div>
+                    <h3 class="nav-content__title title-3">Услуги</h3>
+                    <a href="./mortgage.html" class="nav-content__item service-card-second">
+                        <span>Ипотека</span>
+                        <img loading="lazy" src="./img/calc-mortgage.svg" alt="Ипотека">
+                    </a>
+                    <a href="#" class="nav-content__item service-card-second">
+                        <span>Ипотечное страхование</span>
+                        <img loading="lazy" src="./img/mortgage-service.svg" alt="Ипотечное страхование">
+                    </a>
+                    <a href="#" class="nav-content__item service-card-second">
+                        <span>Оценка недвижимости для ипотеки</span>
+                        <img loading="lazy" src="./img/service-11.png" alt="Оценка недвижимости для ипотеки">
+                    </a>
+                    <a href="#" class="nav-content__item service-card-second">
+                        <span>Юридическая проверка</span>
+                        <img loading="lazy" src="./img/service-12.png" alt="Юридическая проверка">
+                    </a>
+
+                    <div class="nav-content-chat">
+                        <a href="./chat.html" class="btn btn-reset chat-lora-btn-second">
+                            <span>Нужна помощь? спросите у Лолы</span>
+                            <picture>
+                                <source srcset="./img/lora_face.webp" type="image/webp">
+                                <img loading="lazy" src="./img/lora_face.webp" width="28" height="28" alt="Lora">
+                            </picture>
+                        </a>
+                        <div class="nav-content__tags">
+                            <button type="button" class="btn btn-reset tag tag--message">
+                                <span>
+                                    Получи одобрение ипотеки
+                                </span>
+                            </button>
+                            <button type="button" class="btn btn-reset tag tag--message">
+                                <span>
+                                    Закажи юридическую проверку недвижимости
+                                </span>
+                            </button>
+                            <button type="button" class="btn btn-reset tag tag--message">
+                                <span>
+                                 Сделай оценку недвижимости для ипотеки
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-content__body" data-nav-dropdown-content="4">
+                    <div class="nav-content__tags">
+                        <button type="button" class="btn btn-reset tag tag--message">
+                            <span>
+                                Получи одобрение ипотеки
+                            </span>
+                        </button>
+                        <button type="button" class="btn btn-reset tag tag--message">
+                            <span>
+                                Закажи юридическую проверку недвижимости
+                            </span>
+                        </button>
+                        <button type="button" class="btn btn-reset tag tag--message">
+                            <span>
+                             Сделай оценку недвижимости для ипотеки
+                            </span>
+                        </button>
+                    </div>
+                    <h3 class="nav-content__title title-3">Лента</h3>
+                    <a href="./mortgage.html" class="nav-content__item service-card-second">
+                        <span>Акции</span>
+                        <img loading="lazy" src="./img/calc-mortgage.svg" alt="Ипотека">
+                    </a>
+                    <a href="#" class="nav-content__item service-card-second">
+                        <span>Shorts</span>
+                        <img loading="lazy" src="./img/mortgage-service.svg" alt="Ипотечное страхование">
+                    </a>
+                    <a href="#" class="nav-content__item service-card-second">
+                        <span>Видео</span>
+                        <img loading="lazy" src="./img/service-11.png" alt="Оценка недвижимости для ипотеки">
+                    </a>
+
+                    <div class="nav-content-chat">
+                        <a href="./chat.html" class="btn btn-reset chat-lora-btn-second">
+                            <span>Нужна помощь? спросите у Лолы</span>
+                            <picture>
+                                <source srcset="./img/lora_face.webp" type="image/webp">
+                                <img loading="lazy" src="./img/lora_face.webp" width="28" height="28" alt="Lora">
+                            </picture>
+                        </a>
+                        <div class="nav-content__tags">
+                            <button type="button" class="btn btn-reset tag tag--message">
+                                <span>
+                                    Получи одобрение ипотеки
+                                </span>
+                            </button>
+                            <button type="button" class="btn btn-reset tag tag--message">
+                                <span>
+                                    Закажи юридическую проверку недвижимости
+                                </span>
+                            </button>
+                            <button type="button" class="btn btn-reset tag tag--message">
+                                <span>
+                                 Сделай оценку недвижимости для ипотеки
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-content__body" data-nav-dropdown-content="5">
+                    <div class="nav-content__tags">
+                        <button type="button" class="btn btn-reset tag tag--message">
+                            <span>
+                                Получи одобрение ипотеки
+                            </span>
+                        </button>
+                        <button type="button" class="btn btn-reset tag tag--message">
+                            <span>
+                                Закажи юридическую проверку недвижимости
+                            </span>
+                        </button>
+                        <button type="button" class="btn btn-reset tag tag--message">
+                            <span>
+                             Сделай оценку недвижимости для ипотеки
+                            </span>
+                        </button>
+                    </div>
+                    <h3 class="nav-content__title title-3">Сервисы</h3>
+                    <a href="./service-moving.html" class="nav-content__item service-card-second">
+                        <span>Переезд</span>
+                        <img loading="lazy" src="./img/calc-mortgage.svg" alt="Ипотека">
+                    </a>
+                    <a href="./buy-apartment-building-kitchen.html" class="nav-content__item service-card-second">
+                        <span>Кухни</span>
+                        <img loading="lazy" src="./img/mortgage-service.svg" alt="Кухни">
+                    </a>
+
+                    <div class="nav-content-chat">
+                        <a href="./chat.html" class="btn btn-reset chat-lora-btn-second">
+                            <span>Нужна помощь? спросите у Лолы</span>
+                            <picture>
+                                <source srcset="./img/lora_face.webp" type="image/webp">
+                                <img loading="lazy" src="./img/lora_face.webp" width="28" height="28" alt="Lora">
+                            </picture>
+                        </a>
+                        <div class="nav-content__tags">
+                            <button type="button" class="btn btn-reset tag tag--message">
+                                <span>
+                                    Получи одобрение ипотеки
+                                </span>
+                            </button>
+                            <button type="button" class="btn btn-reset tag tag--message">
+                                <span>
+                                    Закажи юридическую проверку недвижимости
+                                </span>
+                            </button>
+                            <button type="button" class="btn btn-reset tag tag--message">
+                                <span>
+                                 Сделай оценку недвижимости для ипотеки
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-reset nav__close">
+                    <svg>
+                      <use xlink:href="./img/sprite.svg#x"></use>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <main class="main main-page-gap purchase-request agent">
+
+            <div class="purchase-request__top top-page-inner-title container">
+                <div class="top-page-inner-title__container">
+                    <a href="#" class="purchase-request__back top-page-inner-title__back back-link">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#arrow-left"></use>
+                        </svg>
+                        <span>Назад</span>
+                    </a>
+                    <h1 class="purchase-request__title top-page-inner-title__title title-1" data-da=".mobile-top,1212,first">
+                        Агент Алексей Гаврилов
+                    </h1>
+                    <div class="purchase-request__btns top-page-inner-title__btns">
+                        <button type="button" class="btn btn-reset top-page-inner__btn delete-btn" data-popup-path="warning-remove" title="Удалить">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#trash"></use>
+                            </svg>
+                            <span>Удалить</span>
+                        </button>
+                        <button type="button" class="btn btn-reset top-page-inner__btn edit-btn" title="Редактировать">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#pencil"></use>
+                            </svg>
+                            <span>Редактировать</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="purchase-request__body bid">
+                <div class="mobile-top">
+                    <button type="button" class="btn btn-reset mobile-top__btn">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#dots-vertical">
+                            </use>
+                        </svg>
+                    </button>
+                </div>
+                <div class="bid__container container--no-padding">
+                    <div class="bid__body">
+                        <div class="bid__start">
+                            <h2 class="bid__title title-2">
+                                Об агенте
+                            </h2>
+                        </div>
+                        <ul class="bid__list list-reset">
+                            <li class="bid__item">
+                                <span>Специализация</span>
+                                <span>Агент</span>
+                            </li>
+                            <li class="bid__item">
+                                <span>Стаж</span>
+                                <span>2 года</span>
+                            </li>
+                            <li class="bid__item">
+                                <span>Регион работы</span>
+                                <span>Калинингра, Калининградская область</span>
+                            </li>
+                            <li class="bid__item">
+                                <span>Направление</span>
+                                <span>
+                                    Новостройка, <br>
+                                    Вторичка, <br>
+                                    Дома, дачи, коттеджи
+                                </span>
+                            </li>
+                        </ul>
+                        <p class="bid__descr">
+                            Опыт работы, г. Москва: Инком недвижимость (2011 – 2012) Простор Недвижимость (2015 –
+                            2017)
+                            НДВ Супермарке недвижимости (2017 – 2019) ИП Иванова Светлана Дмитриевна (2020 –
+                            Настоящее
+                            время) Купля-продажа, коммерческий найм, юридическое сопровождение сделок с
+                            недвижимостью.
+                        </p>
+
+                        <div class="bid__video video-block">
+                            <button type="button" class="btn btn-reset video-block__button" data-src="https://www.youtube.com/embed/OaFmmd2Ium8">
+                                <picture>
+                                    <source srcset="./img/poster-1.webp" type="image/webp">
+                                    <img loading="lazy" src="./img/poster-1.jpg" class="video-block__poster" alt="">
+                                </picture>
+                                <div class="video-block__video">
+
+                                </div>
+                                <div class="video-block__play">
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#play"></use>
+                                    </svg>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="agent__reviews agent__row agent-reviews">
+                        <h2 class="agent-reviews__title title-2">
+                            Отзывы клиентов <span>(16 отзывов)</span>
+                        </h2>
+                        <div class="agent-reviews__row">
+                            <div class="agent-reviews__filter">
+                                <div class="agent-reviews__checkbox checkbox-secondary">
+                                    <input id="agent-reviews_1" name="agent-reviews" class="checkbox-secondary__input" type="checkbox" value="true">
+                                    <label for="agent-reviews_1" class="checkbox-secondary__label">
+                                        <div class="checkbox-secondary__content">
+                                            <div>
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                            </div>
+                                            <span>6 отзывов</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="agent-reviews__checkbox checkbox-secondary">
+                                    <input id="agent-reviews_2" name="agent-reviews" class="checkbox-secondary__input" type="checkbox" value="true">
+                                    <label for="agent-reviews_2" class="checkbox-secondary__label">
+                                        <div class="checkbox-secondary__content">
+                                            <div>
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                                <svg class="_star-default">
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                            </div>
+                                            <span>6 отзывов</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="agent-reviews__checkbox checkbox-secondary">
+                                    <input id="agent-reviews_3" name="agent-reviews" class="checkbox-secondary__input" type="checkbox" value="true">
+                                    <label for="agent-reviews_3" class="checkbox-secondary__label">
+                                        <div class="checkbox-secondary__content">
+                                            <div>
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                                <svg class="_star-default">
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                                <svg class="_star-default">
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                            </div>
+                                            <span>1 отзывов</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="agent-reviews__checkbox checkbox-secondary">
+                                    <input id="agent-reviews_4" name="agent-reviews" class="checkbox-secondary__input" type="checkbox" value="true">
+                                    <label for="agent-reviews_4" class="checkbox-secondary__label">
+                                        <div class="checkbox-secondary__content">
+                                            <div>
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                                <svg class="_star-default">
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                                <svg class="_star-default">
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                                <svg class="_star-default">
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                            </div>
+                                            <span>1 отзывов</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="agent-reviews__checkbox checkbox-secondary">
+                                    <input id="agent-reviews_5" name="agent-reviews" class="checkbox-secondary__input" type="checkbox" value="true">
+                                    <label for="agent-reviews_5" class="checkbox-secondary__label">
+                                        <div class="checkbox-secondary__content">
+                                            <div>
+                                                <svg>
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                                <svg class="_star-default">
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                                <svg class="_star-default">
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                                <svg class="_star-default">
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                                <svg class="_star-default">
+                                                    <use xlink:href="img/sprite.svg#star"></use>
+                                                </svg>
+                                            </div>
+                                            <span>1 отзывов</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="agent-reviews__total">
+                                <div>
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#star"></use>
+                                    </svg>
+                                    <span>3.7</span>
+                                </div>
+                                <span>из 5</span>
+                            </div>
+                        </div>
+                        <div class="agent-reviews__items">
+                            <div class="agent-reviews__item review-item review-item--stage">
+                                <div class="review-item__top">
+                                    <div class="user-info review-item__user">
+                                        <div class="user-info__avatar avatar online">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                        </div>
+                                        <span class="user-info__name">
+                                            Марта П.
+                                        </span>
+                                        <span class="user-info__pos">
+                                            Покупатель
+                                        </span>
+                                    </div>
+                                    <span class="review-item__stage">
+                                        Жду ключи: Литер 1
+                                    </span>
+                                    <div class="review-item__info">
+                                        <time datetime="2022.12.12" class="review-item__time">12.12.2022</time>
+                                    </div>
+                                </div>
+                                <div class="review-item__rating">
+                                    <div>
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#star"></use>
+                                        </svg>
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#star"></use>
+                                        </svg>
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#star"></use>
+                                        </svg>
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#star"></use>
+                                        </svg>
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#star"></use>
+                                        </svg>
+                                    </div>
+                                    <span>4.8</span>
+                                </div>
+                                <div class="review-item__ratings">
+                                    <div class="review-item__rating">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#star"></use>
+                                        </svg>
+                                        <span>5.0</span>
+                                        <span>Цена/качество</span>
+                                    </div>
+                                    <div class="review-item__rating">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#star"></use>
+                                        </svg>
+                                        <span>5.0</span>
+                                        <span>Инфраструктура</span>
+                                    </div>
+                                    <div class="review-item__rating">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#star"></use>
+                                        </svg>
+                                        <span>5.0</span>
+                                        <span>Транспортная доступность</span>
+                                    </div>
+                                    <div class="review-item__rating">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#star"></use>
+                                        </svg>
+                                        <span>5.0</span>
+                                        <span>Экология</span>
+                                    </div>
+                                </div>
+                                <p class="review-item__descr">
+                                    Первый раз брал ипотеку. Светлана всё сделала профессионально и быстро. Всем
+                                    советую обращаться к данному специалисту по недвижимости и всё что с этим
+                                    связано. Поверьте не разочаруетесь!!!
+                                </p>
+                                <div class="review-item__photo swiper swiper-initialized swiper-horizontal swiper-pointer-events">
+                                    <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
+                                        <button type="button" data-review-modal="" class="btn btn-reset swiper-slide swiper-slide-active" style="width: 177px; margin-right: 8px;">
+                                            <picture>
+                                                <source srcset="./img/card-1.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-1.jpg" alt="">
+                                            </picture>
+                                        </button>
+                                        <button type="button" data-review-modal="" class="btn btn-reset swiper-slide swiper-slide-next" style="width: 177px; margin-right: 8px;">
+                                            <picture>
+                                                <source srcset="./img/card-2.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-2.jpg" alt="">
+                                            </picture>
+                                        </button>
+                                        <button type="button" data-review-modal="" class="btn btn-reset swiper-slide" style="width: 177px; margin-right: 8px;">
+                                            <picture>
+                                                <source srcset="./img/card-3.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-3.jpg" alt="">
+                                            </picture>
+                                        </button>
+                                        <button type="button" data-review-modal="" class="btn btn-reset swiper-slide _last" style="width: 177px; margin-right: 8px;">
+                                            <picture>
+                                                <source srcset="./img/card-1.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-1.jpg" alt="">
+                                            </picture>
+                                            <span>+4</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="review-item__answer" data-review-modal="">
+                                    <div class="user-info review-item__user">
+                                        <div class="user-info__avatar avatar online">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                        </div>
+                                        <span class="user-info__name">
+                                            Марта П.
+                                        </span>
+                                        <span class="user-info__pos">
+                                            Агент
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <p>
+                                            Спасибо за теплые слова!
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="review-item__bottom">
+                                    <span>
+                                        Вам помог этот отзыв ?
+                                    </span>
+                                    <button type="button" class="btn btn-reset">
+                                        Да <span>10</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset">
+                                        Нет <span>3</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="agent-reviews__item review-item review-item--stage">
+                                <div class="review-item__top">
+                                    <div class="user-info review-item__user">
+                                        <div class="user-info__avatar avatar online">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Сергей С.">
+                                        </div>
+                                        <span class="user-info__name">
+                                            Сергей С.
+                                        </span>
+                                        <span class="user-info__pos">
+                                            Покупатель
+                                        </span>
+                                    </div>
+                                    <span class="review-item__stage">
+                                        Здесь живу: Литер 1
+                                    </span>
+                                    <div class="review-item__info">
+                                        <time datetime="2023-04-18" class="review-item__time">18.04.2023</time>
+                                    </div>
+                                </div>
+                                <div class="review-item__rating">
+                                    <div>
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#star"></use>
+                                        </svg>
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#star"></use>
+                                        </svg>
+                                    </div>
+                                    <span>2</span>
+                                </div>
+                                <div class="review-item__ratings">
+                                    <div class="review-item__rating">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#star"></use>
+                                        </svg>
+                                        <span>5.0</span>
+                                        <span>Цена/качество</span>
+                                    </div>
+                                    <div class="review-item__rating">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#star"></use>
+                                        </svg>
+                                        <span>5.0</span>
+                                        <span>Инфраструктура</span>
+                                    </div>
+                                    <div class="review-item__rating">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#star"></use>
+                                        </svg>
+                                        <span>5.0</span>
+                                        <span>Транспортная доступность</span>
+                                    </div>
+                                    <div class="review-item__rating">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#star"></use>
+                                        </svg>
+                                        <span>5.0</span>
+                                        <span>Экология</span>
+                                    </div>
+                                </div>
+                                <p class="review-item__descr">
+                                    Первый раз брал ипотеку. Светлана всё сделала профессионально и быстро.
+                                </p>
+                                <div class="review-item__photo swiper swiper-initialized swiper-horizontal swiper-pointer-events">
+                                    <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
+                                        <button type="button" data-review-modal="" class="btn btn-reset swiper-slide swiper-slide-active" style="width: 177px; margin-right: 8px;">
+                                            <picture>
+                                                <source srcset="./img/card-1.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-1.jpg" alt="">
+                                            </picture>
+                                        </button>
+                                        <button type="button" data-review-modal="" class="btn btn-reset swiper-slide swiper-slide-next" style="width: 177px; margin-right: 8px;">
+                                            <picture>
+                                                <source srcset="./img/card-2.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-2.jpg" alt="">
+                                            </picture>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="review-item__answer" data-review-modal="">
+                                    <div class="user-info review-item__user">
+                                        <div class="user-info__avatar avatar online">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                        </div>
+                                        <span class="user-info__name">
+                                            Марта П.
+                                        </span>
+                                        <span class="user-info__pos">
+                                            Агент
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <p>
+                                            Спасибо за теплые слова!!!
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="review-item__bottom">
+                                    <span>
+                                        Вам помог этот отзыв ?
+                                    </span>
+                                    <button type="button" class="btn btn-reset">
+                                        Да <span>100</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset">
+                                        Нет <span>19</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="agent-reviews__item review-item review-item--stage">
+                                <div class="review-item__top">
+                                    <div class="user-info review-item__user">
+                                        <div class="user-info__avatar avatar online">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Сергей С.">
+                                        </div>
+                                        <span class="user-info__name">
+                                            Сергей С.
+                                        </span>
+                                        <span class="user-info__pos">
+                                            Покупатель
+                                        </span>
+                                    </div>
+                                    <span class="review-item__stage">
+                                        Был на просмотре: Литер 1
+                                    </span>
+                                    <div class="review-item__info">
+                                        <time datetime="2023-04-18" class="review-item__time">18.04.2023</time>
+                                    </div>
+                                </div>
+                                <div class="review-item__rating">
+                                    <div>
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#star"></use>
+                                        </svg>
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#star"></use>
+                                        </svg>
+                                    </div>
+                                    <span>2</span>
+                                </div>
+                                <div class="review-item__ratings">
+                                    <div class="review-item__rating">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#star"></use>
+                                        </svg>
+                                        <span>5.0</span>
+                                        <span>Цена/качество</span>
+                                    </div>
+                                    <div class="review-item__rating">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#star"></use>
+                                        </svg>
+                                        <span>5.0</span>
+                                        <span>Инфраструктура</span>
+                                    </div>
+                                    <div class="review-item__rating">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#star"></use>
+                                        </svg>
+                                        <span>5.0</span>
+                                        <span>Транспортная доступность</span>
+                                    </div>
+                                    <div class="review-item__rating">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#star"></use>
+                                        </svg>
+                                        <span>5.0</span>
+                                        <span>Экология</span>
+                                    </div>
+                                </div>
+                                <p class="review-item__descr">
+                                    Первый раз брал ипотеку. Светлана всё сделала профессионально и быстро.
+                                </p>
+                                <div class="review-item__answer" data-review-modal="">
+                                    <div class="user-info review-item__user">
+                                        <div class="user-info__avatar avatar online">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                        </div>
+                                        <span class="user-info__name">
+                                            Марта П.
+                                        </span>
+                                        <span class="user-info__pos">
+                                            Агент
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <p>
+                                            Спасибо за теплые слова!!!
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="review-item__bottom">
+                                    <span>
+                                        Вам помог этот отзыв ?
+                                    </span>
+                                    <button type="button" class="btn btn-reset">
+                                        Да <span>100</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset">
+                                        Нет <span>19</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-reset btn-secondary main-table__next">
+                            Следующая страница
+                        </button>
+                        <div class="main-table__pagination pagination">
+                            <ul class="pagination__list list-reset">
+                                <li class="pagination__item" disabled="">
+                                    <a href="#">
+                                        1
+                                    </a>
+                                </li>
+                                <li class="pagination__item">
+                                    <a href="#">
+                                        2
+                                    </a>
+                                </li>
+                                <li class="pagination__item">
+                                    <a href="#">
+                                        3
+                                    </a>
+                                </li>
+                                <li class="pagination__item">
+                                    <a href="#">
+                                        4
+                                    </a>
+                                </li>
+                                <li class="pagination__item">
+                                    <a href="#">
+                                        5
+                                    </a>
+                                </li>
+                                <li class="pagination__item dots" tabindex="-1">
+                                    ...
+                                </li>
+                                <li class="pagination__item">
+                                    <a href="#">
+                                        199
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bid__sidebar">
+                        <div class="_sticky">
+                            <div class="bid__user bid-user" data-da=".bid__container,1212,2">
+                                <div class="bid-user__avatar avatar">
+                                    <img loading="lazy" src="./img/avatar-1.jpg" width="129" height="129" alt="Алексей Г.">
+                                </div>
+                                <div class="bid-user__content">
+                                    <a href="#" class="bid-user__name">
+                                        Алексей Г.
+                                    </a>
+                                    <time class="bid-user__time" datetime="2022-12-12">
+                                        Агент был в сети 12.12.2022
+                                    </time>
+                                    <div class="bid-user__quantity">
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#briefcase"></use>
+                                        </svg>
+                                        <span>10 объектов</span>,&nbsp;
+                                        <span>8 сделок</span>
+                                    </div>
+                                </div>
+                                <div class="bid-user__btns">
+                                    <button type="button" class="btn btn-reset btn-primary bid-user__btn bid-user__btn--call">
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#phone"></use>
+                                        </svg>
+                                        Позвонить
+                                    </button>
+                                </div>
+                                <div class="bid-user__bottom">
+                                    <button type="button" class="btn btn-reset bid-user__bottom--yandex">
+                                        <img loading="lazy" src="./img/yandex.png" width="26" height="26" alt="Яндекс">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="plate-bottom purchase-request-plate-bottom">
+                        <button type="button" class="btn btn-reset btn-primary purchase-request-plate-bottom__btn">
+                            Позвонить
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="purchase-request__suggested-objects tabs-primary">
+                <h2 class="tabs-primary__title title-2 container">
+                    Объекты агента <span>(3 объекта)</span>
+                </h2>
+
+
+
+                <div data-tabs class="tabs-primary__inner">
+                    <div class="container--no-padding">
+                        <nav data-tabs-titles class="tabs-primary__btns tabs__navigation">
+                            <button type="button" class="btn btn-reset tabs__title _tab-active">
+                                Вторичка <span>1</span>
+                            </button>
+                            <button type="button" class="btn btn-reset tabs__title">
+                                Новостройки <span>1</span>
+                            </button>
+                            <button type="button" class="btn btn-reset tabs__title">
+                                Дома, коттеджи, дачи <span>1</span>
+                            </button>
+                        </nav>
+                    </div>
+                    <div class="tabs-primary__container">
+                        <div class="control-cards__container container--no-padding">
+                            <div data-tabs-body class="tabs__content tabs-primary__content">
+                                <div class="tabs__body">
+                                    <div class="tabs-primary__row">
+                                        <div class="tabs-primary__row-list">
+                                            <article class="tabs-primary__row-item card-primary">
+                                                <div class="card-primary__container">
+                                                    <a href="#" class="card-primary__link"></a>
+                                                    <div class="card-primary__top">
+                                                        <a href="#" class="card-primary__images">
+                                                            <div class="card-primary__item">
+                                                                <div class="card-primary__image">
+                                                                    <picture>
+                                                                        <source srcset="./img/card-6.webp" type="image/webp">
+                                                                        <img loading="lazy" src="./img/card-6.jpg" width="323" height="207"
+                                                                            alt="1-комн. квартира, 54 м², 12/12 эт.">
+                                                                    </picture>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-primary__item">
+                                                                <div class="card-primary__image">
+                                                                    <picture>
+                                                                        <source srcset="./img/card-7.webp" type="image/webp">
+                                                                        <img loading="lazy" src="./img/card-7.jpg" width="323" height="207"
+                                                                            alt="1-комн. квартира, 54 м², 12/12 эт.">
+                                                                    </picture>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-primary__item">
+                                                                <div class="card-primary__image">
+                                                                    <picture>
+                                                                        <source srcset="./img/card-8.webp" type="image/webp">
+                                                                        <img loading="lazy" src="./img/card-8.jpg" width="323" height="207"
+                                                                            alt="1-комн. квартира, 54 м², 12/12 эт.">
+                                                                    </picture>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                        <ul class="card-primary__pagination list-reset" aria-hidden="true"></ul>
+                                                        <div class="card-primary__info">
+                                                            <div class="row card-primary__info--tags">
+                                                                <span>
+                                                                    Ипотека 0,1%
+                                                                </span>
+                                                                <div class="secondary-tooltip">
+                                                                    <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                                        ещё +2
+                                                                    </button>
+                                                                    <div class="secondary-tooltip__content">
+                                                                        <span>Скидка до 15%</span>
+                                                                        <span>С кухней</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="card-primary__info--btns-right">
+                                                                <div class="card-primary__info--controls dots-dropdown">
+                                                                    <button type="button" class="btn btn-reset dots-dropdown__target">
+                                                                        <svg>
+                                                                            <use xlink:href="./img/sprite.svg#dots-vertical">
+                                                                            </use>
+                                                                        </svg>
+                                                                    </button>
+                                                                    <div class="dots-dropdown__dropdown">
+                                                                        <button type="button" class="btn btn-reset">
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#prohibit">
+                                                                                </use>
+                                                                            </svg>
+                                                                            Заблокировать
+                                                                        </button>
+                                                                        <button type="button" class="btn btn-reset" data-popup-path="complaint-object">
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#warning">
+                                                                                </use>
+                                                                            </svg>
+                                                                            Пожаловаться
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-primary__content">
+                                                        <div class="card-price card-price--down">
+                                                            <span class="card-price__price">21 897 000 ₽</span>
+                                                            <div class="secondary-tooltip secondary-tooltip--click">
+                                                                <button type="button" class="btn btn-reset secondary-tooltip__btn" title="Посмотреть историю изменения цены">
+                                                                    <svg>
+                                                                        <use xlink:href="./img/sprite.svg#price-down"></use>
+                                                                    </svg>
+                                                                </button>
+                                                                <div class="secondary-tooltip__content price-history">
+                                                                    <button class="btn btn-reset secondary-tooltip__close">
+                                                                        <svg>
+                                                                            <use xlink:href="./img/sprite.svg#x"></use>
+                                                                        </svg>
+                                                                    </button>
+                                                                    <h3 class="price-history__title">
+                                                                        История изменения цены
+                                                                    </h3>
+                                                                    <div class="price-history__wrapper">
+                                                                        <div class="price-history__row">
+                                                                            <span class="price-history__col price-history__date">
+                                                                                12.12.2023
+                                                                            </span>
+                                                                            <div class="price-history__col price-history__more">
+                                                                                <span>-</span>
+                                                                                <span>1 206 500 ₽</span>
+                                                                            </div>
+                                                                            <span class="price-history__col price-history__price">
+                                                                                91 730 500 ₽
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="price-history__row">
+                                                                            <span class="price-history__col price-history__date">
+                                                                                12.12.2023
+                                                                            </span>
+                                                                            <div class="price-history__col price-history__more">
+                                                                                <span>-</span>
+                                                                                <span>206 500 ₽</span>
+                                                                            </div>
+                                                                            <span class="price-history__col price-history__price">
+                                                                                9 730 500 ₽
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-primary__meter">
+                                                            94 742 ₽/м²
+                                                        </div>
+                                                        <h3 class="card-primary__name title-4">
+                                                            1-комн. квартира, 54 м², 12/12 эт.
+                                                        </h3>
+                                                        <div class="card-primary__address">
+                                                            <span class="card-primary__address--one">ЖК Вознесенский</span>
+                                                            <span class="card-primary__address--two">
+                                                                Краснодар, ул.Карла-Маркса., 234
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                        </div>
+                                    </div>
+
+                                    <button type="button" class="btn btn-reset btn-secondary tabs-primary__next">
+                                        Следующая страница
+                                    </button>
+                                    <div class="tabs-primary__pagination pagination">
+                                        <ul class="pagination__list list-reset">
+                                            <li class="pagination__item" disabled>
+                                                <a href="#">
+                                                    1
+                                                </a>
+                                            </li>
+                                            <li class="pagination__item">
+                                                <a href="#">
+                                                    2
+                                                </a>
+                                            </li>
+                                            <li class="pagination__item">
+                                                <a href="#">
+                                                    3
+                                                </a>
+                                            </li>
+                                            <li class="pagination__item">
+                                                <a href="#">
+                                                    4
+                                                </a>
+                                            </li>
+                                            <li class="pagination__item">
+                                                <a href="#">
+                                                    5
+                                                </a>
+                                            </li>
+                                            <li class="pagination__item dots" tabindex="-1">
+                                                ...
+                                            </li>
+                                            <li class="pagination__item">
+                                                <a href="#">
+                                                    199
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="tabs__body" hidden>
+                                    <div class="tabs-primary__row">
+                                        <div class="tabs-primary__row-list">
+                                            <article class="tabs-primary__row-item card-primary">
+                                                <div class="card-primary__container">
+                                                    <a href="#" class="card-primary__link"></a>
+                                                    <div class="card-primary__top">
+                                                        <a href="#" class="card-primary__images">
+                                                            <div class="card-primary__item">
+                                                                <div class="card-primary__image">
+                                                                    <picture>
+                                                                        <source srcset="./img/card-6.webp" type="image/webp">
+                                                                        <img loading="lazy" src="./img/card-6.jpg" width="323" height="207"
+                                                                            alt="1-комн. квартира, 54 м², 12/12 эт.">
+                                                                    </picture>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-primary__item">
+                                                                <div class="card-primary__image">
+                                                                    <picture>
+                                                                        <source srcset="./img/card-7.webp" type="image/webp">
+                                                                        <img loading="lazy" src="./img/card-7.jpg" width="323" height="207"
+                                                                            alt="1-комн. квартира, 54 м², 12/12 эт.">
+                                                                    </picture>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-primary__item">
+                                                                <div class="card-primary__image">
+                                                                    <picture>
+                                                                        <source srcset="./img/card-8.webp" type="image/webp">
+                                                                        <img loading="lazy" src="./img/card-8.jpg" width="323" height="207"
+                                                                            alt="1-комн. квартира, 54 м², 12/12 эт.">
+                                                                    </picture>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                        <ul class="card-primary__pagination list-reset" aria-hidden="true"></ul>
+                                                        <div class="card-primary__info">
+                                                            <div class="row card-primary__info--tags">
+                                                                <span>
+                                                                    Ипотека 0,1%
+                                                                </span>
+                                                                <div class="secondary-tooltip">
+                                                                    <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                                        ещё +2
+                                                                    </button>
+                                                                    <div class="secondary-tooltip__content">
+                                                                        <span>Скидка до 15%</span>
+                                                                        <span>С кухней</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="card-primary__info--btns-right">
+                                                                <div class="card-primary__info--controls dots-dropdown">
+                                                                    <button type="button" class="btn btn-reset dots-dropdown__target">
+                                                                        <svg>
+                                                                            <use xlink:href="./img/sprite.svg#dots-vertical">
+                                                                            </use>
+                                                                        </svg>
+                                                                    </button>
+                                                                    <div class="dots-dropdown__dropdown">
+                                                                        <button type="button" class="btn btn-reset">
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#prohibit">
+                                                                                </use>
+                                                                            </svg>
+                                                                            Заблокировать
+                                                                        </button>
+                                                                        <button type="button" class="btn btn-reset" data-popup-path="complaint-object">
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#warning">
+                                                                                </use>
+                                                                            </svg>
+                                                                            Пожаловаться
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-primary__content">
+                                                        <div class="card-price card-price--down">
+                                                            <span class="card-price__price">21 897 000 ₽</span>
+                                                            <div class="secondary-tooltip secondary-tooltip--click">
+                                                                <button type="button" class="btn btn-reset secondary-tooltip__btn" title="Посмотреть историю изменения цены">
+                                                                    <svg>
+                                                                        <use xlink:href="./img/sprite.svg#price-down"></use>
+                                                                    </svg>
+                                                                </button>
+                                                                <div class="secondary-tooltip__content price-history">
+                                                                    <button class="btn btn-reset secondary-tooltip__close">
+                                                                        <svg>
+                                                                            <use xlink:href="./img/sprite.svg#x"></use>
+                                                                        </svg>
+                                                                    </button>
+                                                                    <h3 class="price-history__title">
+                                                                        История изменения цены
+                                                                    </h3>
+                                                                    <div class="price-history__wrapper">
+                                                                        <div class="price-history__row">
+                                                                            <span class="price-history__col price-history__date">
+                                                                                12.12.2023
+                                                                            </span>
+                                                                            <div class="price-history__col price-history__more">
+                                                                                <span>-</span>
+                                                                                <span>1 206 500 ₽</span>
+                                                                            </div>
+                                                                            <span class="price-history__col price-history__price">
+                                                                                91 730 500 ₽
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="price-history__row">
+                                                                            <span class="price-history__col price-history__date">
+                                                                                12.12.2023
+                                                                            </span>
+                                                                            <div class="price-history__col price-history__more">
+                                                                                <span>-</span>
+                                                                                <span>206 500 ₽</span>
+                                                                            </div>
+                                                                            <span class="price-history__col price-history__price">
+                                                                                9 730 500 ₽
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-primary__meter">
+                                                            94 742 ₽/м²
+                                                        </div>
+                                                        <h3 class="card-primary__name title-4">
+                                                            1-комн. квартира, 54 м², 12/12 эт.
+                                                        </h3>
+                                                        <div class="card-primary__address">
+                                                            <span class="card-primary__address--one">ЖК Вознесенский</span>
+                                                            <span class="card-primary__address--two">
+                                                                Краснодар, ул.Карла-Маркса., 234
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                        </div>
+                                    </div>
+
+                                    <button type="button" class="btn btn-reset btn-secondary tabs-primary__next">
+                                        Следующая страница
+                                    </button>
+                                    <div class="tabs-primary__pagination pagination">
+                                        <ul class="pagination__list list-reset">
+                                            <li class="pagination__item" disabled>
+                                                <a href="#">
+                                                    1
+                                                </a>
+                                            </li>
+                                            <li class="pagination__item">
+                                                <a href="#">
+                                                    2
+                                                </a>
+                                            </li>
+                                            <li class="pagination__item">
+                                                <a href="#">
+                                                    3
+                                                </a>
+                                            </li>
+                                            <li class="pagination__item">
+                                                <a href="#">
+                                                    4
+                                                </a>
+                                            </li>
+                                            <li class="pagination__item">
+                                                <a href="#">
+                                                    5
+                                                </a>
+                                            </li>
+                                            <li class="pagination__item dots" tabindex="-1">
+                                                ...
+                                            </li>
+                                            <li class="pagination__item">
+                                                <a href="#">
+                                                    199
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="tabs__body" hidden>
+                                    <div class="tabs-primary__row">
+                                        <div class="tabs-primary__row-list">
+                                            <article class="tabs-primary__row-item card-primary">
+                                                <div class="card-primary__container">
+                                                    <a href="#" class="card-primary__link"></a>
+                                                    <div class="card-primary__top">
+                                                        <a href="#" class="card-primary__images">
+                                                            <div class="card-primary__item">
+                                                                <div class="card-primary__image">
+                                                                    <picture>
+                                                                        <source srcset="./img/card-6.webp" type="image/webp">
+                                                                        <img loading="lazy" src="./img/card-6.jpg" width="323" height="207"
+                                                                            alt="1-комн. квартира, 54 м², 12/12 эт.">
+                                                                    </picture>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-primary__item">
+                                                                <div class="card-primary__image">
+                                                                    <picture>
+                                                                        <source srcset="./img/card-7.webp" type="image/webp">
+                                                                        <img loading="lazy" src="./img/card-7.jpg" width="323" height="207"
+                                                                            alt="1-комн. квартира, 54 м², 12/12 эт.">
+                                                                    </picture>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-primary__item">
+                                                                <div class="card-primary__image">
+                                                                    <picture>
+                                                                        <source srcset="./img/card-8.webp" type="image/webp">
+                                                                        <img loading="lazy" src="./img/card-8.jpg" width="323" height="207"
+                                                                            alt="1-комн. квартира, 54 м², 12/12 эт.">
+                                                                    </picture>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                        <ul class="card-primary__pagination list-reset" aria-hidden="true"></ul>
+                                                        <div class="card-primary__info">
+                                                            <div class="row card-primary__info--tags">
+                                                                <span>
+                                                                    Ипотека 0,1%
+                                                                </span>
+                                                                <div class="secondary-tooltip">
+                                                                    <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                                        ещё +2
+                                                                    </button>
+                                                                    <div class="secondary-tooltip__content">
+                                                                        <span>Скидка до 15%</span>
+                                                                        <span>С кухней</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="card-primary__info--btns-right">
+                                                                <div class="card-primary__info--controls dots-dropdown">
+                                                                    <button type="button" class="btn btn-reset dots-dropdown__target">
+                                                                        <svg>
+                                                                            <use xlink:href="./img/sprite.svg#dots-vertical">
+                                                                            </use>
+                                                                        </svg>
+                                                                    </button>
+                                                                    <div class="dots-dropdown__dropdown">
+                                                                        <button type="button" class="btn btn-reset">
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#prohibit">
+                                                                                </use>
+                                                                            </svg>
+                                                                            Заблокировать
+                                                                        </button>
+                                                                        <button type="button" class="btn btn-reset" data-popup-path="complaint-object">
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#warning">
+                                                                                </use>
+                                                                            </svg>
+                                                                            Пожаловаться
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-primary__content">
+                                                        <div class="card-price card-price--down">
+                                                            <span class="card-price__price">21 897 000 ₽</span>
+                                                            <div class="secondary-tooltip secondary-tooltip--click">
+                                                                <button type="button" class="btn btn-reset secondary-tooltip__btn" title="Посмотреть историю изменения цены">
+                                                                    <svg>
+                                                                        <use xlink:href="./img/sprite.svg#price-down"></use>
+                                                                    </svg>
+                                                                </button>
+                                                                <div class="secondary-tooltip__content price-history">
+                                                                    <button class="btn btn-reset secondary-tooltip__close">
+                                                                        <svg>
+                                                                            <use xlink:href="./img/sprite.svg#x"></use>
+                                                                        </svg>
+                                                                    </button>
+                                                                    <h3 class="price-history__title">
+                                                                        История изменения цены
+                                                                    </h3>
+                                                                    <div class="price-history__wrapper">
+                                                                        <div class="price-history__row">
+                                                                            <span class="price-history__col price-history__date">
+                                                                                12.12.2023
+                                                                            </span>
+                                                                            <div class="price-history__col price-history__more">
+                                                                                <span>-</span>
+                                                                                <span>1 206 500 ₽</span>
+                                                                            </div>
+                                                                            <span class="price-history__col price-history__price">
+                                                                                91 730 500 ₽
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="price-history__row">
+                                                                            <span class="price-history__col price-history__date">
+                                                                                12.12.2023
+                                                                            </span>
+                                                                            <div class="price-history__col price-history__more">
+                                                                                <span>-</span>
+                                                                                <span>206 500 ₽</span>
+                                                                            </div>
+                                                                            <span class="price-history__col price-history__price">
+                                                                                9 730 500 ₽
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-primary__meter">
+                                                            94 742 ₽/м²
+                                                        </div>
+                                                        <h3 class="card-primary__name title-4">
+                                                            1-комн. квартира, 54 м², 12/12 эт.
+                                                        </h3>
+                                                        <div class="card-primary__address">
+                                                            <span class="card-primary__address--one">ЖК Вознесенский</span>
+                                                            <span class="card-primary__address--two">
+                                                                Краснодар, ул.Карла-Маркса., 234
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                        </div>
+                                    </div>
+
+                                    <button type="button" class="btn btn-reset btn-secondary tabs-primary__next">
+                                        Следующая страница
+                                    </button>
+                                    <div class="tabs-primary__pagination pagination">
+                                        <ul class="pagination__list list-reset">
+                                            <li class="pagination__item" disabled>
+                                                <a href="#">
+                                                    1
+                                                </a>
+                                            </li>
+                                            <li class="pagination__item">
+                                                <a href="#">
+                                                    2
+                                                </a>
+                                            </li>
+                                            <li class="pagination__item">
+                                                <a href="#">
+                                                    3
+                                                </a>
+                                            </li>
+                                            <li class="pagination__item">
+                                                <a href="#">
+                                                    4
+                                                </a>
+                                            </li>
+                                            <li class="pagination__item">
+                                                <a href="#">
+                                                    5
+                                                </a>
+                                            </li>
+                                            <li class="pagination__item dots" tabindex="-1">
+                                                ...
+                                            </li>
+                                            <li class="pagination__item">
+                                                <a href="#">
+                                                    199
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer__container container">
+        <div class="footer__top">
+            <a href="#" class="footer__logo logo">
+                <img loading="lazy" src="./img/logo.svg" width="83" height="25" class="logo__img"
+                    alt="Продам.Онлайн">
+            </a>
+            <nav class="footer__nav nav">
+                <ul class="nav__list list-reset">
+                    <li class="nav__item"><a href="#" class="nav__link">Продажа</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Новостройки</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Покупка</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Услуги</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer__write">
+            <p>
+                Есть предложения, напишите нам.
+            </p>
+            <button type="button" class="btn btn-reset btn-secondary footer__btn">Написать</button>
+        </div>
+        <p class="footer__descr">
+            © 2021-2022 ООО «Продам онлайн», официальный сайт использует куки-файлы и другие технологии, чтобы помочь
+            вам в навигации, а также предоставить лучший пользовательский опыт, анализировать использование наших
+            продуктов и услуг, повысить качество рекламных и маркетинговых активностей. Если Вы не хотите, чтобы Ваши
+            пользовательские данные обрабатывались, пожалуйста, ограничьте их использование в своём браузере.
+        </p>
+    </div>
+</footer>
+
+    </div>
+     <!-- popups -->
+     <div class="popup popup-primary popup-primary--left popup-primary--city" data-popup-mobile-fast>
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="city">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content city-popup">
+            <h2 class="city-popup__title title-2">
+                Выбор города
+            </h2>
+            <div class="city-popup__input">
+                <button type="button" class="btn btn-reset">
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#search"></use>
+                    </svg>
+                </button>
+                <input type="search" name="Название города" class="input-reset" placeholder="Введите название города">
+                <button type="button" class="btn btn-reset city-popup__clear" hidden>
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#x"></use>
+                    </svg>
+                </button>
+            </div>
+            <div class="city-popup__list">
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Москва</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Калининград</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Санкт-Петербург</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Казань</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Краснодар</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Екатеринбург</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Нижний-Новгород</button>
+            </div>
+            <div class="checkbox-secondary city-popup__auto">
+                <input id="city-auto" name="city-auto" class="checkbox-secondary__input" type="checkbox" value="true">
+                <label for="city-auto" class="checkbox-secondary__label">
+                    <span class="checkbox-secondary__text">
+                        Определить автоматически
+                    </span>
+                </label>
+            </div>
+            <button type="button" class="btn btn-reset btn-primary js-popup-close city-popup__save" disabled>Сохранить</button>
+        </div>
+    </div>
+</div>
+     <div class="popup popup-primary popup-primary--right popup-primary--add">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="add">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content add-popup">
+            <h2 class="add-popup__title title-2">
+                Добавить
+            </h2>
+            <ul class="add-popup__list list-reset">
+                <li class="add-popup__item">
+                    <a href="#" class="add-popup__link">
+                        <img loading="lazy" src="./img/flat.svg" alt=">Заявка на покупку">
+                        <span>Заявка на покупку</span>
+                    </a>
+                </li>
+                <li class="add-popup__item">
+                    <a href="#" class="add-popup__link">
+                        <img loading="lazy" src="./img/flat.svg" alt=">Объявление на продаж">
+                        <span>Объект на продажу</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+     <div class="popup popup-secondary popup-secondary--right popup-secondary--personal">
+    <div class="popup__container popup-secondary__container" role="dialog" aria-modal="true" data-popup-target="personal-area-two">
+        <button class="btn-reset js-popup-close popup__close popup-secondary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-secondary__content personal-area">
+            <div class="personal-area__container">
+                <h2 class="personal-area__title title-2">
+                    Личный кабинет
+                </h2>
+                <div class="personal-area__info">
+                    <div class="personal-area__avatar avatar">
+                        <img loading="lazy" src="./img/avatar-1.jpg" width="45" height="45" alt="Иван П.">
+                    </div>
+                    <span class=" personal-area__name">
+                        Иван П.
+                    </span>
+                    <button type="button" class="btn btn-reset personal-area__edit" data-popup-path="edit-profile">Редактировать профиль</button>
+                </div>
+                <nav class="personal-area__nav">
+                    <ul data-spollers class="personal-area__list list-reset">
+                        <li class="personal-area__item personal-area-dropdown">
+                            <button type="button" data-spoller class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#add"></use>
+                                </svg>
+                                <span>Добавить</span>
+                                <svg class="personal-area-dropdown__arrow">
+                                    <use xlink:href="img/sprite.svg#arrow-small"></use>
+                                </svg>
+                            </button>
+                            <div class="personal-area-dropdown__body">
+                                <button type="button" class="btn btn-reset personal-area__btn">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#house"></use>
+                                    </svg>
+                                    <span>Объявление на продажу</span>
+                                </button>
+                                <button type="button" class="btn btn-reset personal-area__btn">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#tg"></use>
+                                    </svg>
+                                    <span>Заявка на покупку</span>
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#chat"></use>
+                                </svg>
+                                <span>Чат</span>
+                                <span class="personal-area__quantity">
+                                    +6
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#cart-1"></use>
+                                </svg>
+                                <span>Мои заявки на покупку</span>
+                            </button>
+                        </li>
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#cart-3"></use>
+                                </svg>
+                                <span>Предложения по заявкам</span>
+                                <span class="personal-area__quantity">
+                                    +6
+                                </span>
+                            </button>
+                        </li>
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#calendar"></use>
+                                </svg>
+                                <span>Календарь просмотров</span>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#house-laptop2"></use>
+                                </svg>
+                                <span>Мои объекты</span>
+                                <span class="personal-area__quantity">
+                                    6
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#sign-in"></use>
+                                </svg>
+                                <span>Выйти</span>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+     <div class="popup popup-primary popup-primary--right popup-primary--edit-profile">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="edit-profile">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <form action="#" class="popup__content popup-primary__content edit-profile container">
+            <h2 class="edit-profile__title title-2">
+                Настройки личного кабинета
+            </h2>
+            <div class="col">
+                <div class="edit-profile__user">
+                    <div class="edit-profile__avatar avatar">
+                        <img loading="lazy" src="./img/avatar.png" width="90" height="90" alt="Иван Петров">
+                        <div>
+                            <input type="file" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                            <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.02 5.714h5.96c.868 0 1.376.253 1.874.838.026.03.446.552.903 1.116.457.565 1.388.903 2.243.903h.572c2.285 0 4 1.715 4 4.572v8.571c0 2.286-2.286 4.572-5.143 4.572H8.572c-2.858 0-5.143-2.286-5.143-4.572v-8.571c0-2.857 1.714-4.572 4-4.572H8c.855 0 1.786-.338 2.243-.903.457-.564.877-1.086.903-1.116.498-.585 1.006-.838 1.873-.838zM9.885 16.857A6.116 6.116 0 0016 22.971a6.117 6.117 0 006.114-6.114A6.117 6.117 0 0016 10.743a6.116 6.116 0 00-6.114 6.114zm1.828 0a4.285 4.285 0 118.571 0 4.285 4.285 0 01-8.57 0z"
+                                    fill="currentColor"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="edit-profile__subtitle">
+                        Фамилия, имя, отчество
+                    </div>
+                    <div class="edit-profile__name title-2">
+                        Иван Петров Сергеевич
+                    </div>
+                </div>
+                <div class="edit-profile__tied">
+                    <div class="secondary-tooltip secondary-tooltip--dark">
+                        <button type="button" class="btn btn-reset edit-profile__tied-btn secondary-tooltip__btn" data-popup-path="sber-tied">
+                            <img loading="lazy" src="./img/sber.png" width="34" height="34" alt="Сбербанк ID">
+                        </button>
+                        <div class="secondary-tooltip__content">
+                            Привязанные аккаунты
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="edit-profile__wrapper">
+                <h4 class="edit-profile__wrapper-subtitle title-3">Личные данные</h4>
+                <label class="input-primary input-primary--disabled">
+                    <input type="text" name="Фамилия" class="input-reset input-primary__input" disabled value="Петров" placeholder="Фамилия">
+                    <div class="secondary-tooltip secondary-tooltip--dark secondary-tooltip--top-center">
+                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#info"></use>
+                            </svg>
+                        </button>
+                        <div class="secondary-tooltip__content">
+                            Для вашего профиля редактирование данных недоступно.
+                        </div>
+                    </div>
+                </label>
+                <label class="input-primary input-primary--disabled">
+                    <input type="text" name="Имя" class="input-reset input-primary__input" disabled value="Иван" placeholder="Имя">
+                    <div class="secondary-tooltip secondary-tooltip--dark">
+                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#info"></use>
+                            </svg>
+                        </button>
+                        <div class="secondary-tooltip__content">
+                            Для вашего профиля редактирование данных недоступно.
+                        </div>
+                    </div>
+                </label>
+                <label class="input-primary input-primary--disabled">
+                    <input type="text" name="Отчество" class="input-reset input-primary__input" disabled value="Сергеевич" placeholder="Отчество">
+                    <div class="secondary-tooltip secondary-tooltip--dark secondary-tooltip--top-center">
+                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#info"></use>
+                            </svg>
+                        </button>
+                        <div class="secondary-tooltip__content">
+                            Для вашего профиля редактирование данных недоступно.
+                        </div>
+                    </div>
+                </label>
+                <label class="input-primary input-primary--disabled">
+                    <input type="text" name="Дата рождения" class="input-reset input-primary__input" disabled value="16.02.1982" placeholder="Телефон">
+                    <div class="secondary-tooltip secondary-tooltip--dark">
+                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#info"></use>
+                            </svg>
+                        </button>
+                        <div class="secondary-tooltip__content">
+                            Для вашего профиля редактирование данных недоступно.
+                        </div>
+                    </div>
+                </label>
+                <div class="input-text input-text--no-exp _active">
+                    <label class="input-text__label">
+                        <span>Номер телефона</span>
+                        <input type="tel" name="Телефон" class="input-reset input-text__input input-phone-mask" value="89876543210" placeholder="">
+                    </label>
+                </div>
+                <div class="input-text input-text--no-exp _active">
+                    <label class="input-text__label">
+                        <span>Эл.почта</span>
+                        <input type="text" name="Эл.почта" class="input-reset input-text__input" value="address@gmail.com" placeholder="">
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-reset btn-primary edit-profile__save">Сохранить</button>
+        </form>
+    </div>
+</div>
+     <div class="popup popup-primary popup-primary--right popup-primary--sber-tied">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="sber-tied">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content popup-tied">
+            <h2 class="popup-tied__title title-2">
+                Привязанные аккаунты
+            </h2>
+            <p class="popup-tied__descr">
+                Привязанный аккаунт позволит входить без СМС и пароля.
+            </p>
+            <div class="popup-tied__card">
+                <img loading="lazy" src="./img/sber.png" width="32" height="32" class="popup-tied__icon" alt="Сбербанк">
+                <div>
+                    <span>Сбер ID</span>
+                    <span>Вход 21.06.2023</span>
+                    <button type="button" class="btn btn-reset">Отвязать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+     <!-- popups -->
+</body>
+
+
+</html>

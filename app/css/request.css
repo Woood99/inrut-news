@@ -12722,10 +12722,10 @@ textarea.input-reset {
 .top-page-inner-title__container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: -webkit-max-content 1fr;
-  -ms-grid-columns: max-content 1fr;
-  grid-template-columns: -webkit-max-content 1fr;
-  grid-template-columns: max-content 1fr;
+  -ms-grid-columns: minmax(-webkit-min-content, -webkit-max-content) 1fr;
+  -ms-grid-columns: minmax(min-content, max-content) 1fr;
+  grid-template-columns: minmax(-webkit-min-content, -webkit-max-content) 1fr;
+  grid-template-columns: minmax(min-content, max-content) 1fr;
   grid-column-gap: 24px;
   grid-row-gap: 16px;
 }
@@ -12756,8 +12756,8 @@ textarea.input-reset {
 .top-page-inner-title__btns {
   -ms-grid-column-align: end;
   justify-self: end;
-  -ms-grid-row-align: end;
-  align-self: end;
+  -ms-grid-row-align: start;
+  align-self: start;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12770,6 +12770,7 @@ textarea.input-reset {
   -ms-grid-row: 2;
   -ms-grid-row-span: 1;
   grid-row: 2/3;
+  margin-top: 8px;
 }
 .top-page-inner-title__btn:not(:last-child) {
   margin-right: 2px;
@@ -14577,6 +14578,16 @@ textarea.input-reset {
 .banner-item__title {
   margin-bottom: 32px;
   max-width: 350px;
+}
+.banner-item__title img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 4px 0 6px;
+  -webkit-transform: translateY(2px);
+  -ms-transform: translateY(2px);
+  transform: translateY(2px);
 }
 .banner-item__descr {
   max-width: 350px;
@@ -28951,6 +28962,9 @@ textarea.input-reset {
 .header .nav-content__tags:not(:first-child) {
   margin-top: 8px;
 }
+.header .nav-content__tags:first-child {
+  margin-top: -22px;
+}
 .header .nav-content .nav-content-chat {
   background-color: #f5f5f5;
   padding: 16px;
@@ -29066,7 +29080,7 @@ textarea.input-reset {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  font-size: var(--default-small-fz);
+  font-size: var(--small-fz);
   color: var(--primaryTwo);
 }
 .header-action--calendar svg, .header-action--chat svg, .header-action--personal svg {
@@ -31749,5 +31763,38 @@ textarea.input-reset {
 }
 .moving-inner .small-card-select__input {
   cursor: default;
+}
+
+.list-appraisers .main-table__type {
+  -ms-grid-columns: 26.5017667845% 26.5017667845% 1fr;
+  grid-template-columns: 26.5017667845% 26.5017667845% 1fr;
+}
+.list-appraisers .object-info-grade {
+  -ms-grid-columns: 26.5017667845% 26.5017667845% 44.1696113074%;
+  grid-template-columns: 26.5017667845% 26.5017667845% 44.1696113074%;
+}
+.list-appraisers .object-info-grade__rating {
+  -ms-grid-column-align: start;
+  justify-self: start;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: -webkit-max-content -webkit-max-content;
+  -ms-grid-columns: max-content max-content;
+  grid-template-columns: -webkit-max-content -webkit-max-content;
+  grid-template-columns: max-content max-content;
+}
+.list-appraisers .object-info-grade__rating--number {
+  grid-column: 1/-1;
+  margin: 0;
+}
+.list-appraisers .object-info-grade .user-info__name {
+  max-width: 430px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.appraisers .bid-user {
+  padding-bottom: 32px;
 }
 /*# sourceMappingURL=request.css.map */

@@ -2949,7 +2949,7 @@
 
     &__container {
         display: grid;
-        grid-template-columns: max-content 1fr;
+        grid-template-columns: minmax(min-content,max-content) 1fr;
         grid-column-gap: 24px;
         grid-row-gap: 16px;
     }
@@ -2971,11 +2971,12 @@
 
     &__btns {
         justify-self: end;
-        align-self: end;
+        align-self: start;
         display: flex;
         align-items: center;
         grid-column: 2/3;
         grid-row: 2/3;
+        margin-top: 8px;
     }
 
     &__btn {
@@ -4853,6 +4854,14 @@
     &__title {
         margin-bottom: 32px;
         max-width: 350px;
+        img{
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 4px 0 6px;
+            transform: translateY(2px);
+        }
     }
 
     &__descr {

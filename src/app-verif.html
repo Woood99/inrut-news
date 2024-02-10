@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#111111">
-    <title>Сервис «Переезд»</title>
+    <title>Заявка на юридическую проверку</title>
     <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/service-moving.css">
+    <link rel="stylesheet" href="css/app-verif.css">
     <script id="ymaps-id"></script>
-    <script defer src="js/service-moving.js"></script>
+    <script defer src="js/app-verif.js"></script>
 </head>
 
 <body class="page__body">
     <div class="site-container">
         @include('partials/header--new.html')
-        <main class="main main-page-gap service-moving">
+        <main class="main main-page-gap service-moving app-verif">
             <div class="service-sample__top top-page-inner-title">
                 <div class="top-page-inner-title__container container">
                     <a href="#" class="top-page-inner-title__back back-link">
@@ -33,15 +33,14 @@
                 </div>
             </div>
             <div class="service-sample__body">
-                <form action="#" id="service-moving-form" class="service-sample__container container">
+                <form action="#" id="app-verif-form" class="service-sample__container container">
                     <div class="col">
                         <div class="service-sample__row">
                             <h2 class="service-sample__subtitle title-2">
                                 Адрес
                             </h2>
                             <div class="service-sample__address service-moving-address">
-                                <div class="service-moving-address__block service-moving-address__from">
-                                    <h4 class="service-moving-address__title title-4">Откуда</h4>
+                                <div class="service-moving-address__block">
                                     <div class="row">
                                         <div class="input-text input-text--no-exp">
                                             <label class="input-text__label">
@@ -58,28 +57,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="service-moving-address__block service-moving-address__to">
-                                    <h4 class="service-moving-address__title title-4">Куда</h4>
-                                    <div class="row">
-                                        <div class="input-text input-text--no-exp">
-                                            <label class="input-text__label">
-                                                <span>Адрес</span>
-                                                <input type="text" name="Адрес" class="input-reset input-text__input" placeholder="">
-                                            </label>
-                                        </div>
-                                        <div class="input-text input-text--no-exp input-text--only-number">
-                                            <label class="input-text__label">
-                                                <span>Номер квартиры</span>
-                                                <input type="text" name="Имя" class="input-reset input-text__input" maxlength="4" placeholder="">
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="service-sample__row">
                             <h2 class="service-sample__subtitle title-2">
-                                Заказчик
+                                Данные заказчика услуги
                             </h2>
                             <div class="service-sample__client service-moving-client service-moving-client--customer">
                                 <div class="row">
@@ -105,12 +87,12 @@
                                 <label class="toggle-checkbox service-moving-client__toggle">
                                     <input type="checkbox" name="toggle-1">
                                     <div aria-hidden="true"></div>
-                                    <span>Груз получит другой человек</span>
+                                    <span>Заказчик услуги и покупатель недвижимости одно и то же лицо</span>
                                 </label>
                             </div>
-                            <div class="service-sample__client service-moving-client service-moving-client--recipient" data-service-moving-recipient hidden>
+                            <div class="service-sample__client service-moving-client service-moving-client--recipient" data-service-moving-recipient>
                                 <h2 class="service-sample__subtitle title-2">
-                                    Получатель
+                                    Данные покупателя недвижимости
                                 </h2>
                                 <div class="row">
                                     <div class="input-text input-text--no-exp">
@@ -134,68 +116,133 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="service-sample__row">
+                            <h2 class="service-sample__subtitle title-2">
+                                Загрузите документы
+                            </h2>
+                            <div class="photo-load">
+                                <div class="place-sale-photo__images drag-drop photo-load__images">
+                                </div>
+                                <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                    <button type="button" class="btn btn-reset">
+                                        <p>
+                                            <span class="btn btn-reset btn-primary">Выберите файлы</span> <span>или перетащите в эту область</span>
+                                        </p>
+                                    </button>
+                                    <input type="file" data-upload-drop name="upload" accept=".pdf, .jpeg, .jpg, .png, .bmp, .tiff, .tif, .heic, .zip, .rar" class="input-reset">
+                                </div>
+                            </div>
+                            <div class="service-sample__documents documentation app-verif-documents">
+                                <h4 class="app-verif-documents__subtitle title-4">Обязательные документы</h4>
+                                <div data-spollers class="spollers">
+                                    <div class="spollers__item documentation__subtitle">
+                                        <span class="title-3">
+                                            Свидетельство о регистрации права собственности или выписка из ЕГРН с указанием документа-основания возникновения права собственности
+                                        </span>
+                                    </div>
+                                    <div class="spollers__item">
+                                        <button type="button" data-spoller class="btn btn-reset spollers__title">
+                                            <div>
+                                                <span class="title-3">
+                                                    Документами-основаниями возникновения права собственности на квартиру могут быть:
+                                                </span>
+                                            </div>
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="spollers__body" hidden>
+                                            <ul class="documentation__elements">
+                                                <li class="documentation__element">
+                                                    Договор передачи жилья в собственность (если квартира была приватизирована)
+                                                </li>
+                                                <li class="documentation__element">
+                                                    Договор с Застройщиком или Договор уступки прав требования (если квартира приобреталась на первичном рынке)
+                                                </li>
+                                                <li class="documentation__element">
+                                                    Договор купли-продажи или Договор мены (если квартира была куплена на вторичном рынке)
+                                                </li>
+                                                <li class="documentation__element">
+                                                    Справка о выплаченном пае (если квартира приобреталась через ЖСК)
+                                                </li>
+                                                <li class="documentation__element">
+                                                    Свидетельство о праве на наследство (если квартира получена в наследство)
+                                                </li>
+                                                <li class="documentation__element">
+                                                    Договор дарения (если квартира получена в дар)
+                                                </li>
+                                                <li class="documentation__element">
+                                                    Соглашение о разделе имущества (если квартира была получена в результате добровольного раздела общего имущества супругов)
+                                                </li>
+                                                <li class="documentation__element">
+                                                    Решение суда (если имущество супругов, наследников или других претендентов делили по суду)
+                                                </li>
+                                                <li class="documentation__element">
+                                                    Договор купли-продажи с использованием кредитных средств (если квартира приобреталась на заемные средства банка)
+                                                </li>
+                                                <li class="documentation__element">
+                                                    Договор пожизненного содержания с иждивением (Договор ренты) (если квартира была приобретена под обязательство ренты)
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="service-sample__documents documentation app-verif-documents">
+                                <h4 class="app-verif-documents__subtitle title-4">Дополнительные документы</h4>
+                                <div data-spollers class="spollers">
+                                    <div class="spollers__item">
+                                        <button type="button" data-spoller class="btn btn-reset spollers__title">
+                                            <div>
+                                                <span class="title-3">
+                                                    Для приватизированных квартир:
+                                                </span>
+                                            </div>
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="spollers__body" hidden>
+                                            <ul class="documentation__elements">
+                                                <li class="documentation__element">
+                                                    Заявление к договору передачи
+                                                </li>
+                                                <li class="documentation__element">
+                                                    Архивная выписка из домовой книги
+                                                </li>
+                                                <li class="documentation__element">
+                                                    Выписка об отсутствии иных зарегистрированных лиц на момент приватизации.
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="spollers__item">
+                                        <button type="button" data-spoller class="btn btn-reset spollers__title">
+                                            <div>
+                                                <span class="title-3">
+                                                    Перечень документов в случае ренты:
+                                                </span>
+                                            </div>
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="spollers__body" hidden>
+                                            <ul class="documentation__elements">
+                                                <li class="documentation__element">
+                                                    Свидетельство о смерти рентополучателя
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="service-sample__sidebar col">
                         <div class="_sticky">
                             <div class="service-sample__result service-moving-result">
-                                <div class="service-moving-result__main">
-                                    <h2 class="service-moving-result__main-title title-3">
-                                        <span>Общая стоимость</span>
-                                        <span>0 ₽</span>
-                                    </h2>
-                                    <div class="service-moving-result__options">
-                                        <div class="service-moving-result__option" data-option-name="rent-time">
-                                            <span>Время аренды</span>
-                                            <span>0 ₽</span>
-                                            <span>0 ₽</span>
-                                            <div class="quantity quantity--small" data-value="0" data-max-value="24">
-                                                <div class="quantity__button quantity__button_minus">
-                                                    <svg>
-                                                        <use xlink:href="./img/sprite.svg#minus"></use>
-                                                    </svg>
-                                                </div>
-                                                <div class="quantity__input">
-                                                    <input type="text" maxlength="2" disabled="" value="0">
-                                                </div>
-                                                <div class="quantity__button quantity__button_plus">
-                                                    <svg>
-                                                        <use xlink:href="./img/sprite.svg#plus"></use>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="service-moving-result__option" data-option-name="movers">
-                                            <span>Грузчики</span>
-                                            <span>0 ₽</span>
-                                            <span>0 ₽</span>
-                                            <div class="quantity quantity--small" data-value="0">
-                                                <div class="quantity__button quantity__button_minus">
-                                                    <svg>
-                                                        <use xlink:href="./img/sprite.svg#minus"></use>
-                                                    </svg>
-                                                </div>
-                                                <div class="quantity__input">
-                                                    <input type="text" maxlength="2" disabled="" value="0">
-                                                </div>
-                                                <div class="quantity__button quantity__button_plus">
-                                                    <svg>
-                                                        <use xlink:href="./img/sprite.svg#plus"></use>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="service-moving-result__checkbox checkbox-secondary">
-                                        <input id="personal-info" name="personal-info" class="checkbox-secondary__input" type="checkbox" value="true">
-                                        <label for="personal-info" class="checkbox-secondary__label">
-                                            <span class="checkbox-secondary__text">
-                                                <span>Я соглашаюсь на обработку</span>
-                                                <a href="#">персональных данных</a>
-                                            </span>
-                                        </label>
-                                    </div>
-                                    <button type="button" class="btn btn-reset btn-primary service-moving-result__btn" data-popup-path="service-moving-confirm">Заказать услугу</button>
-                                </div>
+                                content
                             </div>
                         </div>
                     </div>

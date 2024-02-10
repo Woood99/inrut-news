@@ -134,6 +134,7 @@ const scripts = () => {
                 'chat-page': './src/js/chat-page.js',
                 'service-moving': './src/js/service-moving.js',
                 'service-repair': './src/js/service-repair.js',
+                'app-verif': './src/js/app-verif.js',
             },
             output: {
                 filename: '[name].js',

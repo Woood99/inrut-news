@@ -15,9 +15,11 @@ import {
     validateRemoveError,
     validateCreateError
 } from './components/formValidate';
+import { emergingBlockScroll } from './modules/emergingBlockScroll';
 // ==============================
 
 document.addEventListener('DOMContentLoaded', () => {
+    emergingBlockScroll('.repair-apart-appraisers', '.footer-fixed.repair-apart-footer', 99999999, true);
     const form = document.querySelector('#service-repair-form');
     if (!form) return;
     let formEventInput = false;
@@ -375,4 +377,6 @@ document.addEventListener('DOMContentLoaded', () => {
             modal(modalHTML, '.confirm-service', 300);
         }
     })
+
+    
 })

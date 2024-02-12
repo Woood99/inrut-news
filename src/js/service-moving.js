@@ -28,9 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const date = form.querySelector('.service-moving-time__date');
     const optionsItems = form.querySelector('.service-moving-options__list').children;
     const featuresItems = form.querySelectorAll('.service-moving-features__item');
-    const ratesItems = form.querySelector('.service-moving-rates__list').children;
 
     const optionsOrder = form.querySelectorAll('.service-moving-options-order .service-moving-options-order__item');
+    const serviceMovingQuantity = form.querySelector('.service-moving-quantity');
     optionsOrder.forEach(item => {
         item.addEventListener('click', () => item.classList.toggle('_active'));
     })
@@ -69,6 +69,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const currentItem = input.closest('.offer-room');
                 itemsArray.forEach(item => item.classList.remove('_active'));
                 currentItem.classList.toggle('_active');
+                if (currentItem.hasAttribute('data-hidden-furniture')) {
+                    serviceMovingQuantity.setAttribute('hidden','');
+                } else {
+                    serviceMovingQuantity.removeAttribute('hidden');
+                }
             });
         })
     }
@@ -111,17 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }, 1);
             })
-        })
-    }
-    if (ratesItems.length > 0) {
-        const itemsArray = Array.from(ratesItems);
-        const inputs = itemsArray.map(item => item.querySelector('input'));
-        inputs.forEach(input => {
-            input.addEventListener('input', () => {
-                const currentItem = input.closest('.offer-room');
-                itemsArray.forEach(item => item.classList.remove('_active'));
-                currentItem.classList.toggle('_active');
-            });
         })
     }
     form.querySelector('.col').addEventListener('click', () => {

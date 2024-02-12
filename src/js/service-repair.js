@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const option = `
             <div class="service-moving-result__option">
-                <span>${data.name}</span>
+                <span>${data.name} ремонт от</span>
                 <span>${numberReplace(String(data.resultPrice()))} ₽</span>
                 <span>${data.area} * ${numberReplace(String(data.price))} ₽</span>
             </div>
@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const htmlResult = `
                 <div class="service-moving-result__main">
                     <h2 class="service-moving-result__main-title title-3">
-                        <span>Общая стоимость</span>
+                        <span>Общая стоимость от</span>
                         <span>${numberReplace(String(resultPrice))} ₽</span>
                     </h2>
                     <div class="service-moving-result__options">

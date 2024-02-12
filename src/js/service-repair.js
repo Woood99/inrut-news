@@ -15,7 +15,9 @@ import {
     validateRemoveError,
     validateCreateError
 } from './components/formValidate';
-import { emergingBlockScroll } from './modules/emergingBlockScroll';
+import {
+    emergingBlockScroll
+} from './modules/emergingBlockScroll';
 // ==============================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -196,6 +198,18 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateForm(e) {
         const target = e.target;
         const serviceTypeSelectInput = form.querySelector('.service-type-select-input');
+        const serviceType = target.closest('.field-select--necessarily');
+        if (serviceType) {
+            const btn = target.closest('.field-select__item');
+            const to = form.querySelector('.service-type-options');
+            if (btn && to) {
+                const topGap = window.pageYOffset + to.getBoundingClientRect().top;
+                window.scrollTo({
+                    top: topGap - 16,
+                    behavior: 'smooth'
+                })
+            }
+        }
         if (serviceTypeSelectInput && target.closest('.field-select--necessarily')) {
             const value = serviceTypeSelectInput.value;
             if (value !== '') {
@@ -242,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let htmlOptionsOrder = '';
         if (addService) {
             const data = {
-                name: addService.querySelector('.small-card-select__title').textContent.trim(),
+                name: addService.querySelector('.small-card-select__title').textContent.replace('дизайн','').trim(),
                 price: addService.dataset.optionPrice,
                 area: areaRepairValue == 0 ? 1 : areaRepairValue,
                 resultPrice() {
@@ -333,6 +347,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     const areaRepairLabel = areaRepairInput.closest('.input-text');
+
     function validate() {
         let result = true;
         formEventInput = true;
@@ -348,7 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-        if (validate()){
+        if (validate()) {
             const modalHTML = `
             <div class="confirm-service">
                 <div class="confirm-service__container">
@@ -378,5 +393,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 
-    
+
 })

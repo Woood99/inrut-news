@@ -202,9 +202,9 @@ document.addEventListener('DOMContentLoaded', () => {
             for (const item in listFeaturesItems) {
                 const option = `
                     <div class="service-moving-result__option" data-option-feature-name='${listFeaturesItems[item].name}'>
-                    <span>${item}</span>
-                        <span>${listFeaturesItems[item].quantity} * ${listFeaturesItems[item].price} ₽</span>
+                        <span>${item}</span>
                         <span>${numberReplace(String(listFeaturesItems[item].resultPrice()))} ₽</span>
+                        <span>${listFeaturesItems[item].quantity} * ${listFeaturesItems[item].price} ₽</span>
                         <div class="quantity quantity--small" data-value="${listFeaturesItems[item].quantity}">
                             <div class="quantity__button quantity__button_minus">
                                 <svg>
@@ -252,8 +252,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="service-moving-result__options">
                         <div class="service-moving-result__option" data-option-name="rent-time">
                             <span>Время аренды</span>
-                            <span>${rentTime == 0 ? '0' : `${rentTime} * ${rentTimePrice}`} ₽</span>
                             <span>${numberReplace(String(rentTime * rentTimePrice))} ₽</span>
+                            <span>${rentTime == 0 ? '0' : `${rentTime} * ${rentTimePrice}`} ₽</span>
                             <div class="quantity quantity--small" data-value="${rentTime}" data-max-value="24">
                                 <div class="quantity__button quantity__button_minus">
                                     <svg>
@@ -272,8 +272,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <div class="service-moving-result__option" data-option-name="movers">
                             <span>Грузчики</span>
-                            <span>${movers == 0 ? '0' : `${movers} * ${priceMovers}`} ₽</span>
                             <span>${numberReplace(String(movers * priceMovers))} ₽</span>
+                            <span>${movers == 0 ? '0' : `${movers} * ${priceMovers}`} ₽</span>
                             <div class="quantity quantity--small" data-value="${movers}" data-max-value="5">
                                 <div class="quantity__button quantity__button_minus">
                                     <svg>
@@ -338,16 +338,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-
-
     const secondaryAddressBtn = form.querySelector('.service-moving-address__add');
-    const addressTo = form.querySelector('.service-moving-address__to');
     secondaryAddressBtn.addEventListener('click', () => {
         createSecondaryAddress();
-        const currentBlock = addressTo.previousElementSibling;
+        const currentBlock = secondaryAddressBtn.previousElementSibling;
         currentBlock.querySelectorAll('.input-text').forEach(item => currentInputText(item));
         const removeBtn = currentBlock.querySelector('.service-moving-address__secondary-delete')
-        removeBtn.addEventListener('click', () => currentBlock.remove());
+        removeBtn.addEventListener('click', () => {
+            currentBlock.remove()
+        });
     })
 
     function createSecondaryAddress() {
@@ -375,6 +374,6 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         </div>
         `;
-        addressTo.insertAdjacentHTML('afterend', html);
+        secondaryAddressBtn.insertAdjacentHTML('beforebegin', html);
     }
 })

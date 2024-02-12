@@ -250,8 +250,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const option = `
             <div class="service-moving-result__option">
                 <span>${data.name}</span>
-                <span>${data.area} * ${numberReplace(String(data.price))} ₽</span>
                 <span>${numberReplace(String(data.resultPrice()))} ₽</span>
+                <span>${data.area} * ${numberReplace(String(data.price))} ₽</span>
             </div>
             `;
             htmlOptionsOrder += option;
@@ -261,8 +261,8 @@ document.addEventListener('DOMContentLoaded', () => {
             htmlOptionItem = `
             <div class="service-moving-result__option">
                 <span>${repairItemActiveData.name}</span>
-                <span>${areaRepairValue == 0 ? '0' : `${areaRepairValue} * ${numberReplace(String(repairItemActiveData.price))}`} ₽</span>
                 <span>${numberReplace(String(resultPrice))} ₽</span>
+                <span>${areaRepairValue == 0 ? '0' : `${areaRepairValue} * ${numberReplace(String(repairItemActiveData.price))}`} ₽</span>
             </div>
             `;
         } else {

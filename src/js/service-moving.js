@@ -375,6 +375,6 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         </div>
         `;
-        addressTo.insertAdjacentHTML('beforebegin', html);
+        addressTo.insertAdjacentHTML('afterend', html);
     }
 })

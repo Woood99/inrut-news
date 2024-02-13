@@ -703,7 +703,16 @@
         &:not([hidden]) {
             display: grid;
         }
-
+        &.col-1{
+            grid-template-columns: 100%;
+            .object-characteristics__item{
+                span{
+                    &:nth-child(2){
+                        max-width: 50%;
+                    }
+                }
+            }
+        }
         @media (max-width:$desktop) {
             grid-template-columns: 1fr;
         }

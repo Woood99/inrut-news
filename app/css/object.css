@@ -14982,6 +14982,27 @@ textarea.input-reset {
   width: 10%;
 }
 
+.rating-small {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.rating-small svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--yellow);
+  margin-right: 8px;
+}
+.rating-small__number {
+  font-weight: 500;
+}
+.rating-small__quantity {
+  margin-left: 8px;
+}
+
 .main-slider {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -20048,13 +20069,15 @@ textarea.input-reset {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  border-radius: 8px;
-  border: 1px solid var(--primary200);
-  margin-left: 12px;
-  width: 28px;
-  height: 28px;
   z-index: 19;
   position: static;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  margin-bottom: 12px;
+}
+.card-primary__rating {
+  margin-top: 12px;
 }
 
 .card-secondary {
@@ -31606,6 +31629,13 @@ textarea.input-reset {
 .object-characteristics__list:not([hidden]) {
   display: -ms-grid;
   display: grid;
+}
+.object-characteristics__list.col-1 {
+  -ms-grid-columns: 100%;
+  grid-template-columns: 100%;
+}
+.object-characteristics__list.col-1 .object-characteristics__item span:nth-child(2) {
+  max-width: 50%;
 }
 @media (max-width: 1212px) {
   .object-characteristics__list {

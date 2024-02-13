@@ -14982,6 +14982,27 @@ textarea.input-reset {
   width: 10%;
 }
 
+.rating-small {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.rating-small svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--yellow);
+  margin-right: 8px;
+}
+.rating-small__number {
+  font-weight: 500;
+}
+.rating-small__quantity {
+  margin-left: 8px;
+}
+
 .skeleton {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -19773,13 +19794,15 @@ textarea.input-reset {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  border-radius: 8px;
-  border: 1px solid var(--primary200);
-  margin-left: 12px;
-  width: 28px;
-  height: 28px;
   z-index: 19;
   position: static;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  margin-bottom: 12px;
+}
+.card-primary__rating {
+  margin-top: 12px;
 }
 
 .user-info {
@@ -20164,6 +20187,9 @@ textarea.input-reset {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   gap: 24px;
 }
 .point-system__title {
@@ -20181,12 +20207,22 @@ textarea.input-reset {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  background-color: var(--blue);
+  border-radius: 8px 0;
+  padding: 4px 12px;
 }
 .point-system__target svg {
   width: 16px;
   height: 16px;
-  stroke: var(--primaryTwo);
+  stroke: var(--white);
+  stroke-width: 1.5;
   fill: none;
+}
+.point-system__target span {
+  margin-left: 8px;
+  color: var(--white);
+  font-size: var(--small-fz);
+  line-height: var(--small-lh);
 }
 .point-system__items {
   margin-top: 24px;
@@ -20194,11 +20230,27 @@ textarea.input-reset {
 .point-system__item {
   max-width: 400px;
 }
+.point-system__item:not(:last-child) {
+  margin-bottom: 12px;
+}
 .point-system__result {
   margin-top: 32px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 .point-system__result > span {
+  margin-left: 8px;
   font-weight: 500;
+  background-color: var(--blue);
+  border-radius: 8px 0;
+  padding: 4px 12px;
+  color: var(--white);
+  font-size: var(--small-fz);
+  line-height: var(--small-lh);
 }
 .point-system__image {
   min-width: 35%;

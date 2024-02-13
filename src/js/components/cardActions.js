@@ -281,6 +281,32 @@ export const cardPrimaryActions = () => {
                 const tooltipModal = document.querySelector('.tooltip-modal');
                 tooltipModal.classList.add('_card-tooltip-options');
             }
+
+
+            const pointSystem = e.target.closest('.point-system');
+            if (pointSystem) {
+                e.preventDefault();
+                const content = pointSystem.querySelector('.point-system__container');
+                const data = {
+           
+                };
+                const modalHTML = `
+                <div class="point-system-popup">
+                    <div class="point-system-popup__container">
+                        <button class="btn-reset point-system-popup__close" aria-label="Закрыть модальное окно">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#x"></use>
+                            </svg>
+                            <span>Закрыть</span>
+                        </button>
+                        <div class="point-system-popup__content point-system">
+                            ${content.innerHTML}
+                        </div>
+                    </div>
+                </div>
+                `;
+                modal(modalHTML, '.point-system-popup', 300);
+            }
         })
     })
 

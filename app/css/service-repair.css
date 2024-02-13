@@ -5382,6 +5382,108 @@ textarea.input-reset {
   border-bottom: 1px solid var(--primary200);
 }
 
+.point-system-popup {
+  --transition-time: 0.3s;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1051;
+  background-color: rgba(34, 41, 102, 0.4);
+  cursor: pointer;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity var(--transition-time), visibility var(--transition-time);
+  transition: opacity var(--transition-time), visibility var(--transition-time);
+  text-align: center;
+}
+.point-system-popup::before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+.point-system-popup.is-open {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity var(--transition-time), visibility var(--transition-time);
+  transition: opacity var(--transition-time), visibility var(--transition-time);
+}
+.point-system-popup__container {
+  position: relative;
+  background-color: #fff;
+  cursor: default;
+  text-align: center;
+  display: none;
+  -webkit-box-shadow: var(--shadow-primary);
+  box-shadow: var(--shadow-primary);
+  margin: 50px auto;
+  border-radius: 12px;
+  padding: 65px 48px 48px;
+  width: 1000px;
+}
+.point-system-popup__container.open {
+  display: inline-block !important;
+}
+.point-system-popup__close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: none;
+  padding: 0;
+  width: 60px;
+  height: 60px;
+  background-color: transparent;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.point-system-popup__close svg {
+  width: 25px;
+  height: 25px;
+  fill: var(--blue);
+  -webkit-transition: fill 0.4s ease-in-out;
+  transition: fill 0.4s ease-in-out;
+}
+@media (max-width: 1212px) {
+  .point-system-popup__close svg {
+    display: none;
+  }
+}
+.point-system-popup__close span {
+  color: var(--blue);
+  font-size: var(--small-fz);
+  line-height: var(--small-lh);
+  font-weight: 500;
+}
+@media (min-width: 1212px) {
+  .point-system-popup__close span {
+    display: none;
+  }
+}
+@media (min-width: 1213px) {
+  .point-system-popup__close:hover svg {
+    fill: var(--primary500);
+  }
+}
+@media (max-width: 1212px) {
+  .point-system-popup__close {
+    right: 16px;
+    top: 24px;
+    width: auto;
+    height: auto;
+  }
+}
+
 .shorts-modal {
   --transition-time: 0.3s;
   position: fixed;
@@ -14842,6 +14944,44 @@ textarea.input-reset {
   width: 100%;
 }
 
+.infographics-small {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+.infographics-small__block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.infographics-small__number {
+  font-weight: 500;
+}
+.infographics-small__line {
+  margin-left: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 172px;
+  height: 4px;
+  background-color: #f0f0f0;
+}
+.infographics-small__line > span {
+  height: 100%;
+  background-color: var(--blue);
+  width: 10%;
+}
+
 .main-slider {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -20248,6 +20388,24 @@ textarea.input-reset {
 }
 .card-primary.card-primary--kit .card-primary__name {
   margin-top: 0;
+}
+.card-primary__point-system {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid var(--primary200);
+  margin-left: 12px;
+  width: 28px;
+  height: 28px;
+  z-index: 19;
+  position: static;
 }
 
 .card-secondary {
@@ -34680,7 +34838,7 @@ textarea.input-reset {
 }
 
 .repair-apart-footer {
-  height: 58px;
+  height: 62px;
 }
 .repair-apart-footer .footer-fixed__container {
   width: 100%;
@@ -34688,6 +34846,11 @@ textarea.input-reset {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+}
+.repair-apart-footer .footer-fixed__container .btn {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
 }
 
 .check-order .repair-apart-about__items {

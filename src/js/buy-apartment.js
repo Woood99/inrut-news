@@ -22,6 +22,7 @@ import {
 } from './components/controlCards';
 import mapMetro from './components/mapMetro';
 import {
+    cardPrimaryActions,
     cardSecondaryActions,
 } from './components/cardActions';
 
@@ -31,6 +32,7 @@ import metroInfo from './components/metroInfo';
 import {galleryPrimary} from './components/gallery'
 document.addEventListener('DOMContentLoaded', () => {
     cardSecondaryActions();
+    cardPrimaryActions();
     controlCardsMap();
     controlCards();
     mapMetro();

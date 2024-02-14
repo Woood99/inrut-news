@@ -2886,12 +2886,6 @@
     justify-content: center;
     position: absolute;
 
-    opacity: 0;
-    visibility: hidden;
-
-    transition: opacity $transitionSpeed $transitionFunction,
-        visibility $transitionSpeed $transitionFunction;
-
     &::before {
         content: '';
         display: block;
@@ -2918,8 +2912,6 @@
         position: relative;
         z-index: 1;
 
-        transform: translateY(5px);
-        transition: transform $transitionSpeed $transitionFunction;
 
         svg {
             width: 16px;
@@ -2938,9 +2930,6 @@
         position: relative;
         z-index: 1;
 
-        transform: translateY(5px);
-
-        transition: transform $transitionSpeed $transitionFunction;
     }
 }
 
@@ -4222,6 +4211,9 @@
         &:not(:last-child) {
             margin-bottom: 16px;
         }
+        .color-circle{
+            margin-left: 8px;
+        }
     }
 
     &__selects {
@@ -5097,5 +5089,19 @@
     }
     &__quantity{
         margin-left: 8px;
+    }
+}
+
+
+.color-circle{
+    --size: 32px;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    &--40{
+        --size:40px;
+    }
+    &--24{
+        --size:24px;
     }
 }

@@ -789,9 +789,27 @@
                 grid-template-columns: 100%;
             }
             &__item{
+                align-items: start;
+                &::after{
+                    content: none;
+                }
                 span{
+                    &:nth-child(1){
+                        width: 50%;
+                        position: relative;
+                        &::before{
+                            content: "";
+                            border-bottom: 1px dotted rgba(204,214,228,.6);
+                            bottom: 0.2em;
+                            display: block;
+                            left: 0;
+                            position: absolute;
+                            width: 100%;
+                        }
+                    }
                     &:nth-child(2){
-                        max-width: 65%;
+                        width: 50%;
+                        max-width: none;
                         text-align: left;
                     }
                 }

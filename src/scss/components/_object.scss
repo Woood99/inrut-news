@@ -703,16 +703,7 @@
         &:not([hidden]) {
             display: grid;
         }
-        &.col-1{
-            grid-template-columns: 100%;
-            .object-characteristics__item{
-                span{
-                    &:nth-child(2){
-                        max-width: 50%;
-                    }
-                }
-            }
-        }
+
         @media (max-width:$desktop) {
             grid-template-columns: 1fr;
         }
@@ -792,7 +783,21 @@
             margin-top: 12px;
         }
     }
-
+    &.object-characteristics--second{
+        .object-characteristics{
+            &__list{
+                grid-template-columns: 100%;
+            }
+            &__item{
+                span{
+                    &:nth-child(2){
+                        max-width: 65%;
+                        text-align: left;
+                    }
+                }
+            }
+        }
+    }
     @media (max-width:$desktop) {
         padding: 16px;
     }

@@ -9872,6 +9872,29 @@ textarea.input-reset {
     transform: translateX(100%);
   }
 }
+.flex {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+.align-center {
+  -webkit-box-align: center !important;
+  -ms-flex-align: center !important;
+  align-items: center !important;
+}
+
+.flex-row {
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: normal !important;
+  -ms-flex-direction: row !important;
+  flex-direction: row !important;
+}
+
+.gap-8 {
+  gap: 8px !important;
+}
+
 .back-link {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -31630,13 +31653,6 @@ textarea.input-reset {
   display: -ms-grid;
   display: grid;
 }
-.object-characteristics__list.col-1 {
-  -ms-grid-columns: 100%;
-  grid-template-columns: 100%;
-}
-.object-characteristics__list.col-1 .object-characteristics__item span:nth-child(2) {
-  max-width: 50%;
-}
 @media (max-width: 1212px) {
   .object-characteristics__list {
     -ms-grid-columns: 1fr;
@@ -31726,6 +31742,14 @@ textarea.input-reset {
   .object-characteristics__more {
     margin-top: 12px;
   }
+}
+.object-characteristics.object-characteristics--second .object-characteristics__list {
+  -ms-grid-columns: 100%;
+  grid-template-columns: 100%;
+}
+.object-characteristics.object-characteristics--second .object-characteristics__item span:nth-child(2) {
+  max-width: 65%;
+  text-align: left;
 }
 @media (max-width: 1212px) {
   .object-characteristics {
@@ -33903,6 +33927,21 @@ textarea.input-reset {
 }
 .develop-inner .block-stock .video-card__title {
   max-height: 40px;
+}
+.develop-inner.develop-inner-kitchen .object-data .row {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+.develop-inner.develop-inner-kitchen .object-data .object-data__price-new span:nth-child(2) {
+  font-weight: 500;
+  font-size: var(--big-fz);
+  line-height: var(--big-lh);
+  color: var(--dark);
 }
 
 .detailed-flat .bid-user {

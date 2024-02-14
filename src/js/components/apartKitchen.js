@@ -3,6 +3,7 @@ const apartKitchen = () => {
     if (!container) return;
     const controls = container.querySelector('.apart-kitchen');
     const tableTop = container.querySelector('[data-field-select-name="table-top"]');
+    const styleColor = container.querySelector('[data-field-select-name="style-color"]');
     container.addEventListener('click', (e) => {
         const target = e.target;
         const currentMark = target.closest('.object-apart-renov__mark._edit');
@@ -28,24 +29,38 @@ const apartKitchen = () => {
 
         const styleColorBtn = target.closest('[data-select-style-color-index]');
         if (styleColorBtn) {
-            const currentTabName = container.querySelector('.tabs-primary__btns .tabs__title._tab-active').textContent.trim();
-            const currentTab = container.querySelector(`[data-apart-kitchen-item="${currentTabName}"]`);
-            const currentItemName = currentTab.querySelector('.furnishing-sets__btn._active').textContent.trim().replace(' см', '');
-            const currentItem = currentTab.querySelector(`[data-apart-kitchen-tab="${currentItemName}"]`);
-            const image = currentItem.querySelector('.object-apart-renov__image-bg');
             const currentColor = window.getComputedStyle(styleColorBtn.querySelector('.color-circle')).getPropertyValue('background-color');
-            image.style.backgroundColor = currentColor;
+            setColorImage(currentColor)
         }
 
         const type = target.closest('[data-select-type-index]');
         if (type) {
             if (type.dataset.selectTypeIndex == 3) {
                 tableTop.removeAttribute('hidden');
+                styleColor.setAttribute('hidden','');
+                setColorDefault();
             } else {
                 tableTop.setAttribute('hidden', '');
+                styleColor.removeAttribute('hidden');
             }
         }
     })
+
+
+    function setColorImage(color) {
+        const currentTabName = container.querySelector('.tabs-primary__btns .tabs__title._tab-active').textContent.trim();
+        const currentTab = container.querySelector(`[data-apart-kitchen-item="${currentTabName}"]`);
+        const currentItemName = currentTab.querySelector('.furnishing-sets__btn._active').textContent.trim().replace(' см', '');
+        const currentItem = currentTab.querySelector(`[data-apart-kitchen-tab="${currentItemName}"]`);
+        const image = currentItem.querySelector('.object-apart-renov__image-bg');
+        image.style.backgroundColor = color;
+    }
+
+    function setColorDefault() {
+        const activeItem = styleColor.querySelector('.field-select__item._active');
+        if (activeItem) activeItem.classList.remove('_active');
+        setColorImage('transparent');
+    }
 };
 
 export default apartKitchen;

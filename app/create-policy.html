@@ -312,34 +312,39 @@
             <div class="create-policy__body">
                 <div class="container">
                     <div class="create-policy__content">
-                        <div class="bank-info bank-info--second bank-info--no-animate bank-info--no-bg">
-                            <div>
-                                <span>
-                                    <div class="avatar">
-                                        <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
-                                    </div>
-                                </span>
-                                <span>
-                                    ПАО "Сбербанк"
-                                </span>
-                            </div>
-                            <div class="bank-info__price">
-                                2 350 ₽
-                            </div>
-                            <button type="button" class="btn btn-reset bank-info__dropdown-target">
-                                <svg>
-                                    <use xlink:href="./img/sprite.svg#check"></use>
-                                </svg>
-                                <span>Подробнее о полисе</span>
-                            </button>
-                            <div class="bank-info__dropdown" hidden="">
-                                <a href="#" target="_blank">Условия страхования Жизнь</a>
-                                <a href="#" target="_blank">Правила страхования Жизнь</a>
-                                <a href="#" target="_blank">Образец полиса Жизнь</a>
+                        <div class="create-policy__row">
+                            <div class="bank-info bank-info--second bank-info--no-animate bank-info--no-bg">
+                                <div>
+                                    <span>
+                                        <div class="avatar">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                        </div>
+                                    </span>
+                                    <span>
+                                        ПАО "Сбербанк"
+                                    </span>
+                                </div>
+                                <div class="bank-info__price">
+                                    2 350 ₽
+                                </div>
+                                <button type="button" class="btn btn-reset bank-info__dropdown-target">
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#check"></use>
+                                    </svg>
+                                    <span>Подробнее о полисе</span>
+                                </button>
+                                <div class="bank-info__dropdown" hidden="">
+                                    <a href="#" target="_blank">Условия страхования Жизнь</a>
+                                    <a href="#" target="_blank">Правила страхования Жизнь</a>
+                                    <a href="#" target="_blank">Образец полиса Жизнь</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="create-policy__wrapper">
-                            <div class="row">
+                        <div class="create-policy__row">
+                            <h2 class="create-policy__subtitle title-2">
+                                Контакты
+                            </h2>
+                            <div class="create-policy__wrapper">
                                 <div class="input-text input-text--no-exp">
                                     <label class="input-text__label">
                                         <span>Мобильный телефона</span>
@@ -353,7 +358,12 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="row">
+                        </div>
+                        <div class="create-policy__row">
+                            <h2 class="create-policy__subtitle title-2">
+                                Заемщик
+                            </h2>
+                            <div class="create-policy__wrapper">
                                 <div class="input-text input-text--no-exp">
                                     <label class="input-text__label">
                                         <span>Фамилия</span>
@@ -389,7 +399,7 @@
                                         <input type="text" name="Имя" class="input-reset input-text__input date-picker__input" placeholder="">
                                     </label>
                                 </div>
-                                <div class="input-text input-text--no-exp" data-mortgage-requests-field="place-birth" data-validate-required>
+                                <div class="input-text input-text--no-exp">
                                     <label class="input-text__label">
                                         <span>Место рождения</span>
                                         <input type="text" name="Место рождения" class="input-reset input-text__input" value="" placeholder="">
@@ -398,8 +408,7 @@
                                 <div class="input-text input-text--no-exp">
                                     <label class="input-text__label">
                                         <span>Серия и номер паспорта</span>
-                                        <input type="text" name="Серия и номер паспорта" class="input-reset input-text__input input-series-number-mask" value=""
-                                            placeholder="">
+                                        <input type="text" name="Серия и номер паспорта" class="input-reset input-text__input input-series-number-mask" value="" placeholder="">
                                     </label>
                                 </div>
                                 <div class="input-text input-text--no-exp">
@@ -414,60 +423,105 @@
                                         <input type="text" name="Имя" class="input-reset input-text__input" value="" placeholder="">
                                     </label>
                                 </div>
-                                <div class="input-text input-text--no-exp mortgage-requests__field--row">
+                                <div class="input-text input-text--no-exp">
                                     <label class="input-text__label">
                                         <span>Кем выдан паспорт</span>
                                         <input type="text" name="Кем выдан паспорт" class="input-reset input-text__input" value="" placeholder="">
                                     </label>
                                 </div>
-                                <div class="mortgage-requests__fields">
-                                    <h3 class="title-3 mortgage-requests__field--row">Адрес регистрации</h3>
-                                    <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="registration-address"
-                                        data-validate-required>
-                                        <label class="input-text__label">
-                                            <span>Адрес регистрации</span>
-                                            <input type="text" name="Адрес регистрации" class="input-reset input-text__input" value="" placeholder="">
-                                        </label>
-                                    </div>
-                                    <label class="toggle-checkbox mortgage-requests__field--row">
-                                        <input type="checkbox" name="toggle-2" data-mortgage-requests-toggle="2">
-                                        <div aria-hidden="true"></div>
-                                        <span>Адрес фактического проживания совпадает с адресом регистрации</span>
+                            </div>
+                            <h3 class="create-policy__subtitle title-3">Адрес регистрации</h3>
+                            <div class="create-policy__wrapper grid-c-full">
+                                <div class="input-text input-text--no-exp">
+                                    <label class="input-text__label">
+                                        <span>Адрес регистрации</span>
+                                        <input type="text" name="Адрес регистрации" class="input-reset input-text__input" value="" placeholder="">
                                     </label>
-                                    <div class="input-text input-text--no-exp mortgage-requests__field--row" data-mortgage-requests-field="residence-address"
-                                        data-validate-required data-mortgage-requests-content="2">
-                                        <label class="input-text__label">
-                                            <span>Адрес фактического проживания</span>
-                                            <input type="text" name="Адрес фактического проживания" class="input-reset input-text__input" value="" placeholder="">
-                                        </label>
-                                    </div>
+                                </div>
+                                <label class="toggle-checkbox">
+                                    <input type="checkbox" name="toggle-2">
+                                    <div aria-hidden="true"></div>
+                                    <span>Адрес фактического проживания совпадает с адресом регистрации</span>
+                                </label>
+                                <div class="input-text input-text--no-exp">
+                                    <label class="input-text__label">
+                                        <span>Адрес фактического проживания</span>
+                                        <input type="text" name="Адрес фактического проживания" class="input-reset input-text__input" value="" placeholder="">
+                                    </label>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="input-text input-text--no-exp input-text--disabled">
+                        </div>
+                        <div class="create-policy__row">
+                            <h2 class="create-policy__subtitle title-2">
+                                Недвижимость
+                            </h2>
+                            <div class="create-policy__wrapper">
+                                <label class="toggle-checkbox">
+                                    <input type="checkbox" name="toggle-2">
+                                    <div aria-hidden="true"></div>
+                                    <span>Проведена перепланировка</span>
+                                </label>
+                                <label class="toggle-checkbox">
+                                    <input type="checkbox" name="toggle-2">
+                                    <div aria-hidden="true"></div>
+                                    <span>Есть деревянные перекрытия</span>
+                                </label>
+                                <div class="select-secondary _disabled">
+                                    <div class="select-secondary__wrapper">
+                                        <span class="select-secondary__placeholder">
+                                            Тип недвижимости
+                                        </span>
+                                        <select class="select-secondary__body" hidden name="complex">
+                                            <option value="complex">Квартира</option>
+                                            <option value="complex2">Комната/доля</option>
+                                            <option value="complex3">Земельный участок</option>
+                                            <option value="complex3">Земельный участок + дом</option>
+                                            <option value="complex3">Апартаменты</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="input-text input-text--no-exp">
                                     <label class="input-text__label">
-                                        <span>Профессия</span>
-                                        <input type="text" name="Адрес" class="input-reset input-text__input" disabled value="Офисный сотрудник" placeholder="">
+                                        <span>Адрес объекта недвижимости</span>
+                                        <input type="text" name="Адрес объекта недвижимости" class="input-reset input-text__input" placeholder="">
                                     </label>
                                 </div>
                                 <div class="input-text input-text--no-exp input-text--only-number">
                                     <label class="input-text__label">
-                                        <span>Рост</span>
-                                        <input type="text" name="Рост" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                        <span>Кадастровый номер </span>
+                                        <input type="text" name="Кадастровый номер " class="input-reset input-text__input" placeholder="">
                                     </label>
                                 </div>
                                 <div class="input-text input-text--no-exp input-text--only-number">
                                     <label class="input-text__label">
-                                        <span>Вес</span>
-                                        <input type="text" name="Вес" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                        <span>Год постройки дома</span>
+                                        <input type="text" name="Год постройки дома" class="input-reset input-text__input" placeholder="">
+                                    </label>
+                                </div>
+                                <div class="input-text input-text--no-exp input-text--only-number">
+                                    <label class="input-text__label">
+                                        <span>Этажность дома</span>
+                                        <input type="text" name="Этажность дома" class="input-reset input-text__input" placeholder="">
+                                    </label>
+                                </div>
+                                <div class="input-text input-text--only-number">
+                                    <label class="input-text__label">
+                                        <span>Общая площадь</span>
+                                        <input type="text" name="Этажность дома" class="input-reset input-text__input" placeholder="">
+                                        <span>м2</span>
                                     </label>
                                 </div>
                             </div>
-                            <div class="row">
+                        </div>
+                        <div class="create-policy__row">
+                            <h2 class="create-policy__subtitle title-2">
+                                Ипотечный договор
+                            </h2>
+                            <div class="create-policy__wrapper">
                                 <div class="input-text input-text--no-exp input-text--disabled">
                                     <label class="input-text__label">
                                         <span>Банк</span>
-                                        <input type="text" name="Адрес" class="input-reset input-text__input" disabled value="ПАО "Сбербанк"" placeholder="">
+                                        <input type="text" name="Адрес" class="input-reset input-text__input" disabled value="ПАО Сбербанк" placeholder="">
                                     </label>
                                 </div>
                                 <div class="input-text input-text--only-number">
@@ -512,6 +566,26 @@
                                     </div>
                                     <input type="text" name="object" value="Волгоград" class="search-select-one__input-hidden" hidden>
                                 </div>
+                                <div class="input-text input-text--only-number">
+                                    <label class="input-text__label">
+                                        <span>Годовая ставка по ипотеке</span>
+                                        <input type="text" name="Имя" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                        <span>
+                                            %
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="input-text input-text--only-number">
+                                    <label class="input-text__label">
+                                        <span>Повышенная процентная ставка</span>
+                                        <input type="text" name="Имя" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                        <span>
+                                            %
+                                        </span>
+                                    </label>
+                                </div>
+
+
                                 <div class="input-text input-text--no-exp date-picker">
                                     <label class="input-text__label">
                                         <span>Дата кредитного договора</span>
@@ -525,7 +599,12 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="row">
+                        </div>
+                        <div class="create-policy__row">
+                            <h2 class="create-policy__subtitle title-2">
+                                Срок действия полиса
+                            </h2>
+                            <div class="create-policy__wrapper">
                                 <div class="input-text input-text--no-exp">
                                     <label class="input-text__label">
                                         <span>Дата начала регистрации</span>
@@ -539,10 +618,11 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="row">
-                                <button type="button" class="btn btn-reset btn-primary m-l-auto">Оформить</button>
-                            </div>
                         </div>
+                        <div class="row">
+                            <button type="button" class="btn btn-reset btn-primary m-l-auto">Оформить</button>
+                        </div>
+
                     </div>
                 </div>
             </div>

@@ -135,6 +135,7 @@ const scripts = () => {
                 'service-moving': './src/js/service-moving.js',
                 'service-repair': './src/js/service-repair.js',
                 'app-verif': './src/js/app-verif.js',
+                'mortgage-insur': './src/js/mortgage-insur.js',
             },
             output: {
                 filename: '[name].js',

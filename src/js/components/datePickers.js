@@ -1,5 +1,4 @@
 import AirDatepicker from 'air-datepicker';
-
 const datePickers = () => {
     const datePickers = document.querySelectorAll('.date-picker');
     datePickers.forEach(datePicker => {

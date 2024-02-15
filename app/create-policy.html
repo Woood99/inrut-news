@@ -311,7 +311,7 @@
             </div>
             <div class="create-policy__body">
                 <div class="container">
-                    <div class="create-policy__content">
+                    <form action="#" class="create-policy__form">
                         <div class="create-policy__row">
                             <div class="bank-info bank-info--second bank-info--no-animate bank-info--no-bg">
                                 <div>
@@ -345,16 +345,16 @@
                                 Контакты
                             </h2>
                             <div class="create-policy__wrapper">
-                                <div class="input-text input-text--no-exp">
+                                <div class="input-text input-text--no-exp" data-policy-field="tel">
                                     <label class="input-text__label">
                                         <span>Мобильный телефона</span>
                                         <input type="text" name="Застройщик" class="input-reset input-text__input input-phone-mask" placeholder="">
                                     </label>
                                 </div>
-                                <div class="input-text input-text--no-exp">
+                                <div class="input-text input-text--no-exp" data-policy-field="email">
                                     <label class="input-text__label">
                                         <span>Email</span>
-                                        <input type="email" name="Почта" class="input-reset input-text__input" placeholder="" inputmode="text">
+                                        <input type="text" name="Почта" class="input-reset input-text__input" placeholder="">
                                     </label>
                                 </div>
                             </div>
@@ -364,13 +364,13 @@
                                 Заемщик
                             </h2>
                             <div class="create-policy__wrapper">
-                                <div class="input-text input-text--no-exp">
+                                <div class="input-text input-text--no-exp" data-policy-field="surname" data-validate-required>
                                     <label class="input-text__label">
                                         <span>Фамилия</span>
                                         <input type="text" name="Фамилия" class="input-reset input-text__input" value="" placeholder="">
                                     </label>
                                 </div>
-                                <div class="input-text input-text--no-exp">
+                                <div class="input-text input-text--no-exp" data-policy-field="name" data-validate-required>
                                     <label class="input-text__label">
                                         <span>Имя</span>
                                         <input type="text" name="Имя" class="input-reset input-text__input" value="" placeholder="">
@@ -393,37 +393,37 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="filter__item input-text input-text--no-exp date-picker">
+                                <div class="filter__item input-text input-text--no-exp" data-policy-field="date-birth">
                                     <label class="input-text__label">
                                         <span>Дата рождения</span>
-                                        <input type="text" name="Имя" class="input-reset input-text__input date-picker__input" placeholder="">
+                                        <input type="text" name="Имя" class="input-reset input-text__input" placeholder="">
                                     </label>
                                 </div>
-                                <div class="input-text input-text--no-exp">
+                                <div class="input-text input-text--no-exp" data-policy-field="place-birth" data-validate-required>
                                     <label class="input-text__label">
                                         <span>Место рождения</span>
                                         <input type="text" name="Место рождения" class="input-reset input-text__input" value="" placeholder="">
                                     </label>
                                 </div>
-                                <div class="input-text input-text--no-exp">
+                                <div class="input-text input-text--no-exp" data-policy-field="series-number">
                                     <label class="input-text__label">
                                         <span>Серия и номер паспорта</span>
                                         <input type="text" name="Серия и номер паспорта" class="input-reset input-text__input input-series-number-mask" value="" placeholder="">
                                     </label>
                                 </div>
-                                <div class="input-text input-text--no-exp">
+                                <div class="input-text input-text--no-exp" data-policy-field="depart-code">
                                     <label class="input-text__label">
                                         <span>Код подразделения</span>
                                         <input type="text" name="Код подразделения" class="input-reset input-text__input input-depart-code-mask" value="" placeholder="">
                                     </label>
                                 </div>
-                                <div class="input-text input-text--no-exp">
+                                <div class="input-text input-text--no-exp" data-policy-field="date-iss">
                                     <label class="input-text__label">
                                         <span>Дата выдачи</span>
                                         <input type="text" name="Имя" class="input-reset input-text__input" value="" placeholder="">
                                     </label>
                                 </div>
-                                <div class="input-text input-text--no-exp">
+                                <div class="input-text input-text--no-exp" data-policy-field="passport-issued" data-validate-required="">
                                     <label class="input-text__label">
                                         <span>Кем выдан паспорт</span>
                                         <input type="text" name="Кем выдан паспорт" class="input-reset input-text__input" value="" placeholder="">
@@ -432,18 +432,18 @@
                             </div>
                             <h3 class="create-policy__subtitle title-3">Адрес регистрации</h3>
                             <div class="create-policy__wrapper grid-c-full">
-                                <div class="input-text input-text--no-exp">
+                                <div class="input-text input-text--no-exp" data-policy-field="registration-address" data-validate-required>
                                     <label class="input-text__label">
                                         <span>Адрес регистрации</span>
                                         <input type="text" name="Адрес регистрации" class="input-reset input-text__input" value="" placeholder="">
                                     </label>
                                 </div>
                                 <label class="toggle-checkbox">
-                                    <input type="checkbox" name="toggle-2">
+                                    <input type="checkbox" name="toggle-2" data-mortgage-requests-toggle="1">
                                     <div aria-hidden="true"></div>
                                     <span>Адрес фактического проживания совпадает с адресом регистрации</span>
                                 </label>
-                                <div class="input-text input-text--no-exp">
+                                <div class="input-text input-text--no-exp" data-mortgage-requests-content="1" data-policy-field="residence-address" data-validate-required>
                                     <label class="input-text__label">
                                         <span>Адрес фактического проживания</span>
                                         <input type="text" name="Адрес фактического проживания" class="input-reset input-text__input" value="" placeholder="">
@@ -619,11 +619,19 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <button type="button" class="btn btn-reset btn-primary m-l-auto">Оформить</button>
+                        <div class="create-policy__bottom">
+                            <div class="checkbox-secondary">
+                                <input id="personal-info" name="personal-info" class="checkbox-secondary__input create-policy__checkbox" type="checkbox" value="true">
+                                <label for="personal-info" class="checkbox-secondary__label">
+                                    <span class="checkbox-secondary__text">
+                                        <span>Я соглашаюсь на обработку</span>
+                                        <a href="#">персональных данных</a>
+                                    </span>
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-reset btn-primary create-policy__btn" disabled>Оформить</button>
                         </div>
-
-                    </div>
+                    </form>
                 </div>
             </div>
         </main>

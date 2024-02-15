@@ -6,8 +6,6 @@
         padding: 24px 0;
     }
 
-    &__content {}
-
     &__row {
         padding: 24px;
         background-color: var(--white);
@@ -15,7 +13,7 @@
         border-radius: 12px;
 
         &:not(:last-child) {
-            margin-bottom: 32px;
+            margin-bottom: 16px;
         }
     }
     &__subtitle{
@@ -28,6 +26,25 @@
         grid-column-gap: 8px;
         &:not(:last-child){
             margin-bottom: 24px;
+        }
+    }
+    &__bottom{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__checkbox{
+        +.checkbox-secondary__label{
+            a{
+                color: var(--blue);
+                @media (min-width:$desktop-min){
+                    transition: color $transitionSpeed $transitionFunction;
+                     &:hover{
+                        color: var(--blue-dark);
+                        text-decoration: underline;
+                     } 
+                }
+            }
         }
     }
 }

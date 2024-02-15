@@ -287,9 +287,6 @@ export const cardPrimaryActions = () => {
             if (pointSystem) {
                 e.preventDefault();
                 const content = pointSystem.querySelector('.point-system__container');
-                const data = {
-           
-                };
                 const modalHTML = `
                 <div class="point-system-popup">
                     <div class="point-system-popup__container">

@@ -17,7 +17,7 @@
     transition: box-shadow $transitionSpeed $transitionFunction,
     transform $transitionSpeed $transitionFunction;
     text-align: start;
-
+    min-height: 112px;
     div {
         &:nth-child(1) {
             display: flex;
@@ -68,13 +68,63 @@
             justify-self: end;
         }
     }
-
+    &__dropdown-target{
+        color: var(--blue);
+        display: flex;
+        align-items: center;
+        svg {
+            margin-right: 8px;
+            width: 24px;
+            height: 24px;
+            fill: var(--blue);
+            transition: transform $transitionSpeedFast $transitionFunction;
+        }
+        &._active{
+            svg{
+                transform: rotate(-180deg);
+            }
+        }
+    }
+    &__dropdown{
+        margin-top: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+        background-color:var(--primary100);
+        border-radius: 12px;
+        padding: 16px 32px;
+        width: 100%;
+        grid-column: 1/-1;
+        a{
+            transition: color $transitionSpeed $transitionFunction;
+            color: var(--blue);
+            @media (min-width:$desktop-min){
+                 &:hover{
+                    text-decoration: underline;
+                    color: var(--blue-dark);
+                 } 
+            }
+        }
+    }
+    &__btn{
+        justify-self: end;
+    }
     @media (min-width:$desktop) {
         &:hover {
             &:not(.bank-info--no-animate) {
                 box-shadow: var(--shadow-primary);
                 transform: translateY(-3px);
             }
+        }
+    }
+
+    &--second{
+        grid-template-columns: percent(300, 1084) percent(250, 1084) max-content 1fr;
+        .bank-info__price{
+            font-size: var(--little-big-fz);
+            line-height: var(--little-big-lh);
+            font-weight: 500;
         }
     }
 }

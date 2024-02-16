@@ -12,10 +12,14 @@ const navDropdown = () => {
     <span>Меню</span>
     `;
     setFirstItem();
+
+    const headerSearch = header.querySelector('.header__search');
+    const navContent = container.querySelector('.nav-content');
+
     target.addEventListener('click', () => {
         !isOpen ? openMenu() : closeMenu();
     })
-    close.addEventListener('click',() => {
+    close.addEventListener('click', () => {
         if (isOpen) closeMenu();
     });
     document.addEventListener('click', (e) => {
@@ -63,6 +67,8 @@ const navDropdown = () => {
         container.classList.add('_active-menu');
         header.classList.add('header--menu-active');
         body.classList.add('_nav-active-mask');
+
+        navContent.insertAdjacentElement('afterbegin', headerSearch);
     }
 
     function closeMenu() {
@@ -72,6 +78,11 @@ const navDropdown = () => {
         container.classList.remove('_active-menu');
         header.classList.remove('header--menu-active');
         body.classList.remove('_nav-active-mask');
+
+
+        setTimeout(() => {
+            target.insertAdjacentElement('afterend', headerSearch);
+        }, 300);
     }
 
 };

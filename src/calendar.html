@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Календарь запланированных просмотров</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/request.css">
+    <script id="ymaps-id"></script>
+    <script defer src="js/request.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container site-container--calendar-page">
+        @include('partials/header--new.html')
+        <main class="main main-page-gap calendar-page">
+            <div class="calendar-page__container">
+                <h1 class="calendar-page__title title-1 container">
+                    Календарь запланированных просмотров
+                </h1>
+                <div class="calendar-page__body">
+                    <div class="container">
+                        <div class="calendar-page__calendar">
+                            <input type="text" name="Имя" class="input-reset calendar-primary-events" hidden value='
+                            [
+                            {
+                                "date": "2024-01-12",
+                                "time": "21:40",
+                                "title": "1-комн. квартира, 55м²,4/5эт.",
+                                "location": "Краснодар, ул.Карла-Маркса., 234",
+                                "price": "4000000",
+                                "user": {
+                                    "avatar": "./img/avatar-1.jpg",
+                                    "pos": "Агент",
+                                    "name": "Алексей Г."
+                                }
+                            },
+                            {
+                                "date": "2024-01-30",
+                                "time": "22:00",
+                                "title": "1-комн. квартира, 55м²,4/5эт.",
+                                "location": "Краснодар, ул.Карла-Маркса., 234",
+                                "price": "2400000",
+                                "user": {
+                                    "avatar": "./img/avatar-1.jpg",
+                                    "pos": "Агент",
+                                    "name": "Алексей Г."
+                                }
+                            },
+                            {
+                                "date": "2024-01-30",
+                                "time": "12:00",
+                                "title": "1-комн. квартира, 55м²,4/5эт.",
+                                "location": "Волгоград, ул.Карла-Маркса., 234",
+                                "price": " 1750000",
+                                "user": {
+                                    "avatar": "./img/avatar-1.jpg",
+                                    "pos": "Агент",
+                                    "name": "Сергей Г."
+                                }
+                            }
+                            ]
+                            '>
+                            <div class="calendar-primary"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        @include('partials/footer.html')
+    </div>
+    <!-- popups -->
+    @include('popups/city.html')
+    @include('popups/add.html')
+    @include('popups/personal-area2.html')
+    @include('popups/edit-profile.html')
+    @include('popups/sber-tied.html')
+    <!-- ==== -->
+    <!-- popups -->
+</body>
+
+
+</html>

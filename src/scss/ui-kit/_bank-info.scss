@@ -85,14 +85,13 @@
         }
     }
     &__dropdown{
-        margin-top: 16px;
+        margin-top: 24px;
+        padding-top: 24px;
+        border-top: 1px solid var(--primary100);
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 32px;
-        background-color:var(--primary100);
-        border-radius: 12px;
-        padding: 16px 32px;
         width: 100%;
         grid-column: 1/-1;
         a{
@@ -109,6 +108,14 @@
     &__btn{
         justify-self: end;
     }
+    &__present{
+      display: flex;
+      align-items: center;
+      color: var(--blue);
+      svg,img{
+        margin-right: 8px;
+      }
+    }
     @media (min-width:$desktop) {
         &:hover {
             &:not(.bank-info--no-animate) {
@@ -119,7 +126,15 @@
     }
 
     &--second{
-        grid-template-columns: percent(300, 1084) percent(250, 1084) max-content 1fr;
+        grid-template-columns: percent(200, 1132) percent(180, 1132) percent(220, 1132) 1fr;
+        .bank-info__price{
+            font-size: var(--little-big-fz);
+            line-height: var(--little-big-lh);
+            font-weight: 500;
+        }
+    }
+    &--three{
+        grid-template-columns: percent(200, 1132) percent(180, 1132) percent(220, 1132) max-content 1fr;
         .bank-info__price{
             font-size: var(--little-big-fz);
             line-height: var(--little-big-lh);

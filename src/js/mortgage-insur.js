@@ -20,10 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
     bankFilter.addEventListener('click', () => {
         const itemActive = bankFilter.querySelector('.search-select-one__item._active');
         if (itemActive) {
-            if (itemActive.hasAttribute('data-bank-second')) {
-                itemsToggle.forEach(item => item.removeAttribute('hidden'));
-            } else {
+            if (!itemActive.hasAttribute('data-bank-second')) {
                 itemsToggle.forEach(item => item.setAttribute('hidden', ''));
+            } else {
+                itemsToggle.forEach(item => item.removeAttribute('hidden'));
             }
         }
     });
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('click', (e) => {
         const target = e.target;
-        const bank = target.closest('.bank-info--second');
+        const bank = target.closest('.bank-info--second') || target.closest('.bank-info--three');
         if (bank) {
             const more = target.closest('.bank-info__dropdown-target');
             if (more) {

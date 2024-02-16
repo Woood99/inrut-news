@@ -12,7 +12,14 @@ export function getCurrentDateStringFormatDefault() {
     const yyyy = today.getFullYear();
     return dd + '.' + mm + '.' + yyyy;
 }
-
+export function getCurrentTime() {
+    const currentTime = new Date().toLocaleTimeString('en-US', {
+        hour12: false,
+        hour: "numeric",
+        minute: "numeric"
+    });
+    return currentTime;
+}
 export function getTomorrowDay(currentDate) {
     const startDate = new Date(currentDate);
     const day = 60 * 60 * 24 * 1000;

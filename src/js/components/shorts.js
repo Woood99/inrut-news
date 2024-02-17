@@ -5,8 +5,6 @@ import Swiper, {
     Keyboard
 } from 'swiper';
 import modal from '../modules/modal';
-import videojs from "video.js";
-import "videojs-youtube";
 Swiper.use([Navigation, Pagination, Mousewheel, Keyboard]);
 const shorts = () => {
     const shortItems = document.querySelector('.shorts-items');
@@ -92,28 +90,24 @@ const shorts = () => {
         return htmlSlider;
     }
 
-    function createVideos(modalContainer) {
-        const slides = modalContainer.querySelectorAll('[data-swipe-index]');
-        slides.forEach(slide => {
-            const video = slide.querySelector('[data-short-index]');
-            videojs(video, {
-                controls: true,
-                navigationUI: 'hide',
+    function createVideo(currentVideo) {
+        videojs(currentVideo, {
+            controls: true,
+            navigationUI: 'hide',
+            fullscreen: false,
+            title: false,
+            rel: 1,
+            mute: 0,
+            youtube: {
+                mute: 1,
+                modestbranding: 1,
                 fullscreen: false,
-                title: false,
-                rel: 1,
-                mute: 0,
-                youtube: {
-                    mute: 1,
-                    modestbranding: 1,
-                    fullscreen: false,
-                    ytControls: 0,
-                    rel: 0,
-                    autohide: 0,
-                    showinfo: 0,
-                }
-            });
-        })
+                ytControls: 0,
+                rel: 0,
+                autohide: 0,
+                showinfo: 0,
+            }
+        });
     }
 
     function controlVideo(modalContainer) {
@@ -165,25 +159,25 @@ const shorts = () => {
         setTimeout(() => {
             const currentSlide = slider.slides[currentIndex];
             const currentVideo = currentSlide.querySelector('.shorts__item');
-            createVideos(modalContainer);
+            createVideo(currentVideo);
             currentSlide.classList.add('_pause');
             const prev = modalContainer.querySelector('.shorts__prev');
             const next = modalContainer.querySelector('.shorts__next');
-            [prev,next].forEach(btn => btn.classList.add('_disabled'));
-            videoPlay(currentVideo,true, 1500);
-
+            [prev, next].forEach(btn => btn.classList.add('_disabled'));
+            videoPlay(currentVideo, 1500);
+            currentSlide.classList.add('_init');
             slider.on('slideChange', function () {
-                videosPause(modalContainer);
                 const video = slider.slides[slider.realIndex].querySelector('.shorts__item');
-                [prev,next].forEach(btn => btn.classList.add('_disabled'));
-                    videoPlay(video,false);
+                [prev, next].forEach(btn => btn.classList.add('_disabled'));
+                getCurrentSlideFromVideo(video).classList.add('_init');
+                videoPlay(video, 0);
             });
             if (window.innerWidth > 1212) {
                 setTimeout(() => {
                     containerWheel(modalContainer, slider);
                 }, 500);
             }
-        }, window.innerWidth > 1212 ? 1250 : 2000);
+        }, 1300);
     }
 
     function removeSkeleton(currentVideo) {
@@ -217,12 +211,13 @@ const shorts = () => {
         })
     }
 
-    function videoPlay(currentVideo, mainInerval,delay) {
-        if (mainInerval) {
+    function videoPlay(currentVideo, delay) {
+        if (delay !== 0) {
             let interval = setInterval(() => {
                 if (videojs(currentVideo).isReady_) {
                     clearInterval(interval);
                     setTimeout(() => {
+                        videosPause();
                         const currentSlide = getCurrentSlideFromVideo(currentVideo);
                         if (!currentSlide.classList.contains('_play')) {
                             removeSkeleton(currentVideo);
@@ -231,13 +226,13 @@ const shorts = () => {
                             currentSlide.classList.remove('_pause');
                             currentSlide.classList.add('_play');
 
-
-                            [document.querySelector('.shorts__prev'),document.querySelector('.shorts__next')].forEach(btn => btn.classList.remove('_disabled'));
+                            [document.querySelector('.shorts__prev'), document.querySelector('.shorts__next')].forEach(btn => btn.classList.remove('_disabled'));
                         }
                     }, delay);
                 }
             }, 100);
         } else {
+            videosPause();
             const currentSlide = getCurrentSlideFromVideo(currentVideo);
             if (!currentSlide.classList.contains('_play')) {
                 removeSkeleton(currentVideo);
@@ -245,21 +240,23 @@ const shorts = () => {
                 videojs(currentVideo).play();
                 currentSlide.classList.remove('_pause');
                 currentSlide.classList.add('_play');
-                setTimeout(() => {
-                    [document.querySelector('.shorts__prev'),document.querySelector('.shorts__next')].forEach(btn => btn.classList.remove('_disabled'));
-                }, 350);
+
+                [document.querySelector('.shorts__prev'), document.querySelector('.shorts__next')].forEach(btn => btn.classList.remove('_disabled'));
             }
         }
     }
 
-    function videosPause(modalContainer) {
+    function videosPause() {
+        const modalContainer = document.querySelector('.shorts-modal');
         const shorts = modalContainer.querySelectorAll('.shorts__item');
         shorts.forEach(item => {
             const currentSlide = getCurrentSlideFromVideo(item);
-            currentSlide.classList.remove('_play');
-            if (!currentSlide.classList.contains('_pause')) {
-                videojs(item).pause();
-                currentSlide.classList.add('_pause');
+            if (currentSlide.classList.contains('_init')) {
+                currentSlide.classList.remove('_play');
+                if (!currentSlide.classList.contains('_pause')) {
+                    videojs(item).pause();
+                    currentSlide.classList.add('_pause');
+                }
             }
         })
     }

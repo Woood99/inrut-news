@@ -22,7 +22,6 @@ const shorts = () => {
         }
     })
 
-
     function cardsSetIndex(cards) {
         cards.forEach((card, index) => {
             card.setAttribute('data-short-card-index', index);
@@ -48,7 +47,6 @@ const shorts = () => {
         modal(modalHTML, '.shorts-modal', 300);
         const modalContainer = document.querySelector('.shorts-modal');
         modalContainer.querySelector('.shorts-modal__content').innerHTML = generateSliderHTML(cards);
-        createVideos(modalContainer);
         createSlider(modalContainer, currentIndex);
         controlVideo(modalContainer);
     }
@@ -57,14 +55,14 @@ const shorts = () => {
         let htmlSlides = '';
         cards.forEach(card => {
             htmlSlides += `
-                <div class="swiper-slide">
+                <div class="swiper-slide" data-swipe-index="${card.dataset.shortCardIndex}">
                     <div class="skeleton" style="height:calc(100% + 4px);position:absolute;top:-4px;left:0;right:0; ;border-radius:12px;">
                         <span class="web-skeleton" style="width:100%;border-radius:12px;height: 100%;">
                             <span class="web-skeleton__children"></span>
                         </span>
                     </div>
                     <div class="shorts__item-panel"></div>
-                    <video class="shorts__item short video-js vjs-default-skin vjs-fluid" controls
+                    <video class="shorts__item short video-js vjs-default-skin vjs-fluid" data-short-index="${card.dataset.shortCardIndex}" controls
                         data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "${card.dataset.shortCardUrl}&enablejsapi=1"}] }'>
                     </video>
                 </div>
@@ -94,27 +92,26 @@ const shorts = () => {
         return htmlSlider;
     }
 
-    function createVideos(modalContainer) {
-        const shorts = modalContainer.querySelectorAll('.shorts__item');
-        shorts.forEach(item => {
-            videojs(item, {
-                controls: true,
-                navigationUI: 'hide',
+    function createVideo(modalContainer, index) {
+        const currentSlide = modalContainer.querySelector(`[data-swipe-index='${index}']`);
+        const videoItem = currentSlide.querySelector('[data-short-index]')
+        videojs(videoItem, {
+            controls: true,
+            navigationUI: 'hide',
+            fullscreen: false,
+            title: false,
+            rel: 1,
+            mute: 0,
+            youtube: {
+                mute: 1,
+                modestbranding: 1,
                 fullscreen: false,
-                title: false,
-                rel: 1,
-                mute: 0,
-                youtube: {
-                    mute: 1,
-                    modestbranding: 1,
-                    fullscreen: false,
-                    ytControls: 0,
-                    rel: 0,
-                    autohide: 0,
-                    showinfo: 0,
-                }
-            });
-        })
+                ytControls: 0,
+                rel: 0,
+                autohide: 0,
+                showinfo: 0,
+            }
+        });
     }
 
     function controlVideo(modalContainer) {
@@ -134,10 +131,6 @@ const shorts = () => {
     }
 
     function createSlider(modalContainer, currentIndex) {
-        const shorts = modalContainer.querySelectorAll('.shorts__item');
-        shorts.forEach((item, index) => {
-            item.setAttribute('data-short-index', index);
-        })
         const sliderEl = modalContainer.querySelector('.shorts__list');
 
         const slider = new Swiper(sliderEl, {
@@ -165,62 +158,90 @@ const shorts = () => {
         });
         setTimeout(() => {
             const currentVideo = slider.slides[currentIndex].querySelector('.shorts__item');
-            videojs(currentVideo).ready(function () {
-                slider.slides.forEach(slide => {
-                    const skeleton = slide.querySelector('.skeleton');
-                    if (skeleton) skeleton.remove();
-                })
-                const prev = modalContainer.querySelector('.shorts__prev');
-                const next = modalContainer.querySelector('.shorts__next');
+            createVideo(modalContainer, currentIndex);
+            const prev = modalContainer.querySelector('.shorts__prev');
+            const next = modalContainer.querySelector('.shorts__next');
+            videoPlay(currentVideo);
 
-                this.currentTime(0);
-                this.play();
-
-
-                slider.on('slideNextTransitionStart', function () {
-                    const video = slider.slides[slider.realIndex - 1].querySelector('.shorts__item');
-                    videojs(video).pause();
-                    videojs(video).currentTime(0);
-                });
-                slider.on('slidePrevTransitionStart', function () {
-                    const video = slider.slides[slider.realIndex + 1].querySelector('.shorts__item');
-                    videojs(video).pause();
-                    videojs(video).currentTime(0);
-                });
-                slider.on('slideChange', function () {
-                    const video = slider.slides[slider.realIndex].querySelector('.shorts__item');
-                    prev.classList.add('_disabled');
-                    next.classList.add('_disabled');
-                    setTimeout(() => {
-                        videojs(video).play();
-                        prev.classList.remove('_disabled');
-                        next.classList.remove('_disabled');
-                    }, 500);
-                });
-                if (window.innerWidth > 1212) {
-                    let scrolling = true;
-                    modalContainer.addEventListener('mousewheel', (e) => {
-                        const y = e.wheelDelta;
-                        const next = modalContainer.querySelector('.shorts__next').hasAttribute('disabled');
-                        const prev = modalContainer.querySelector('.shorts__prev').hasAttribute('disabled');
-                        if (scrolling) {
-                            scrolling = false;
-                            if (y > 0 && !prev) {
-                                e.preventDefault();
-                                slider.slidePrev();
-                            }
-                            if (y <= 0 && !next) {
-                                e.preventDefault();
-                                slider.slideNext();
-                            }
-                            setTimeout(() => {
-                                scrolling = true;
-                            }, 500);
-                        }
-                    })
-                }
+            slider.on('slideNextTransitionStart', function () {
+                videosPause(modalContainer);
             });
+            slider.on('slidePrevTransitionStart', function () {
+                videosPause(modalContainer);
+            });
+            slider.on('slideChange', function () {
+                const video = slider.slides[slider.realIndex].querySelector('.shorts__item');
+                prev.classList.add('_disabled');
+                next.classList.add('_disabled');
+                setTimeout(() => {
+                    videoPlay(video);
+                }, 400);
+                setTimeout(() => {
+                    prev.classList.remove('_disabled');
+                    next.classList.remove('_disabled');
+                }, 1250);
+            });
+            if (window.innerWidth > 1212) {
+                containerWheel(modalContainer, slider);
+            }
         }, window.innerWidth > 1212 ? 1250 : 2000);
+    }
+
+    function removeSkeleton(currentVideo) {
+        const currentSlide = videojs(currentVideo).el_.closest('.swiper-slide');
+        const skeleton = currentSlide.querySelector('.skeleton');
+        if (skeleton) skeleton.remove();
+    }
+
+    function containerWheel(modalContainer, slider) {
+        let scrolling = true;
+        modalContainer.addEventListener('mousewheel', (e) => {
+            const y = e.wheelDelta;
+            const next = modalContainer.querySelector('.shorts__next').hasAttribute('disabled');
+            const prev = modalContainer.querySelector('.shorts__prev').hasAttribute('disabled');
+            if (scrolling) {
+                scrolling = false;
+                if (y > 0 && !prev) {
+                    e.preventDefault();
+                    videojs(getCurrentSlide(slider)).pause();
+                    slider.slidePrev();
+                }
+                if (y <= 0 && !next) {
+                    e.preventDefault();
+                    videojs(getCurrentSlide(slider)).pause();
+                    slider.slideNext();
+                }
+                setTimeout(() => {
+                    scrolling = true;
+                }, 1250);
+            }
+        })
+    }
+
+    function videoPlay(currentVideo) {
+        let interval = setInterval(() => {
+            if (videojs(currentVideo).isReady_) {
+                clearInterval(interval);
+                setTimeout(() => {
+                    removeSkeleton(currentVideo);
+                    videojs(currentVideo).currentTime(0);
+                    videojs(currentVideo).play();
+                }, 500);
+            }
+        }, 100);
+    }
+
+    function videosPause(modalContainer) {
+        const shorts = modalContainer.querySelectorAll('.shorts__item');
+        shorts.forEach(item => {
+            if (!videojs(item).paused()) {
+                videojs(item).pause();
+            }
+        })
+    }
+
+    function getCurrentSlide(slider) {
+        return slider.slides[slider.realIndex].querySelector('.shorts__item');
     }
 };
 

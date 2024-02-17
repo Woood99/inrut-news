@@ -179,9 +179,11 @@ const shorts = () => {
                     videoPlay(video,false);
             });
             if (window.innerWidth > 1212) {
-                containerWheel(modalContainer, slider);
+                setTimeout(() => {
+                    containerWheel(modalContainer, slider);
+                }, 500);
             }
-        }, 1501);
+        }, window.innerWidth > 1212 ? 1250 : 2000);
     }
 
     function removeSkeleton(currentVideo) {

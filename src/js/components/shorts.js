@@ -250,7 +250,7 @@ const shorts = () => {
                     setTimeout(() => {
                         removeSkeleton(currentVideo);
                     }, 50);
-                }, 1000);
+                }, window.innerWidth > 1212 ? 1000 : 1500);
             }
         }
     }

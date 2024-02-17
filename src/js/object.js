@@ -52,7 +52,6 @@ import {
     dragDrops
 } from './components/dragDrop';
 
-import shorts from './components/shorts';
 import suggestObject from './components/suggestObject';
 import datePickers from './components/datePickers';
 import scrollTarget from './components/scrollTarget';
@@ -95,7 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
     emergingBlockScroll('.develop-inner .object-body__wrapper .bid-user__btn', '.object-plate-bottom', 1212, true);
     emergingBlockScroll('.detailed-flat .object-body__user .bid-user__btn', '.object-plate-bottom', 1212, true);
     emergingBlockScroll('.object-base-inner .object-body__user .card-user__btn', '.object-plate-bottom', 1212, true);
-    shorts();
     suggestObject();
     datePickers();
     scrollTarget();

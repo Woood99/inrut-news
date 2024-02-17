@@ -89,7 +89,6 @@ import сharacteristicsBlock from './components/сharacteristicsBlock';
 import submitAppOffers from './components/submitAppOffers';
 import mortgageRequests from './components/mortgageRequests';
 import moveToFromBlock from './modules/moveToFromBlock';
-import shorts from './components/shorts';
 import mobileTop from './components/mobileTop';
 import scrollUp from './components/scrollUp';
 import suggestObject from './components/suggestObject';
@@ -178,7 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ==================================================
     moveToFromBlock('[data-move-block-to="bid-user"]', '[data-move-block-from="bid-user"]', 99999, 1212, `${window.innerWidth >= 1920 ? 1.35 : 1}`);
-    shorts();
     mobileTop();
     scrollUp();
     suggestObject();

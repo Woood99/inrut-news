@@ -164,8 +164,8 @@ const shorts = () => {
             const prev = modalContainer.querySelector('.shorts__prev');
             const next = modalContainer.querySelector('.shorts__next');
             [prev, next].forEach(btn => btn.classList.add('_disabled'));
-            videoPlay(currentVideo, 1500);
             currentSlide.classList.add('_init');
+            videoPlay(currentVideo, 1500);
             slider.on('slideChange', function () {
                 const video = slider.slides[slider.realIndex].querySelector('.shorts__item');
                 [prev, next].forEach(btn => btn.classList.add('_disabled'));
@@ -196,12 +196,16 @@ const shorts = () => {
                 scrolling = false;
                 if (y > 0 && !prev) {
                     e.preventDefault();
-                    videojs(getCurrentVideo(slider)).pause();
+                    if (getCurrentSlideFromVideo(getCurrentVideo(slider)).classList.contains('_init')) {
+                        videojs(getCurrentVideo(slider)).pause();
+                    }
                     slider.slidePrev();
                 }
                 if (y <= 0 && !next) {
                     e.preventDefault();
-                    videojs(getCurrentVideo(slider)).pause();
+                    if (getCurrentSlideFromVideo(getCurrentVideo(slider)).classList.contains('_init')) {
+                        videojs(getCurrentVideo(slider)).pause();
+                    }
                     slider.slideNext();
                 }
                 setTimeout(() => {
@@ -217,16 +221,17 @@ const shorts = () => {
                 if (videojs(currentVideo).isReady_) {
                     clearInterval(interval);
                     setTimeout(() => {
-                        videosPause();
                         const currentSlide = getCurrentSlideFromVideo(currentVideo);
-                        if (!currentSlide.classList.contains('_play')) {
-                            removeSkeleton(currentVideo);
+                        if (!currentSlide.classList.contains('_play') && currentSlide.classList.contains('_init')) {
                             videojs(currentVideo).currentTime(0);
                             videojs(currentVideo).play();
                             currentSlide.classList.remove('_pause');
                             currentSlide.classList.add('_play');
 
                             [document.querySelector('.shorts__prev'), document.querySelector('.shorts__next')].forEach(btn => btn.classList.remove('_disabled'));
+                            setTimeout(() => {
+                                removeSkeleton(currentVideo);
+                            }, 50);
                         }
                     }, delay);
                 }
@@ -234,30 +239,29 @@ const shorts = () => {
         } else {
             videosPause();
             const currentSlide = getCurrentSlideFromVideo(currentVideo);
-            if (!currentSlide.classList.contains('_play')) {
-                removeSkeleton(currentVideo);
-                videojs(currentVideo).currentTime(0);
-                videojs(currentVideo).play();
-                currentSlide.classList.remove('_pause');
-                currentSlide.classList.add('_play');
-
-                [document.querySelector('.shorts__prev'), document.querySelector('.shorts__next')].forEach(btn => btn.classList.remove('_disabled'));
+            if (!currentSlide.classList.contains('_play') && currentSlide.classList.contains('_init')) {
+                setTimeout(() => {
+                    videojs(currentVideo).currentTime(0);
+                    videojs(currentVideo).play();
+                    currentSlide.classList.remove('_pause');
+                    currentSlide.classList.add('_play');
+    
+                    [document.querySelector('.shorts__prev'), document.querySelector('.shorts__next')].forEach(btn => btn.classList.remove('_disabled'));
+                    setTimeout(() => {
+                        removeSkeleton(currentVideo);
+                    }, 50);
+                }, 1000);
             }
         }
     }
 
     function videosPause() {
         const modalContainer = document.querySelector('.shorts-modal');
-        const shorts = modalContainer.querySelectorAll('.shorts__item');
+        const shorts = modalContainer.querySelectorAll('.swiper-slide._play');
         shorts.forEach(item => {
-            const currentSlide = getCurrentSlideFromVideo(item);
-            if (currentSlide.classList.contains('_init')) {
-                currentSlide.classList.remove('_play');
-                if (!currentSlide.classList.contains('_pause')) {
-                    videojs(item).pause();
-                    currentSlide.classList.add('_pause');
-                }
-            }
+            item.classList.remove('_play');
+            videojs(item.querySelector('.shorts__item')).pause();
+            item.classList.add('_pause');
         })
     }
 

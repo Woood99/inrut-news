@@ -7,8 +7,13 @@ import './_main-scripts';
 
 import datePickers from './components/datePickers'
 import setCurrentDate from './modules/setCurrentDate';
-import { _slideDown,_slideUp } from './support-modules/slide';
-import { getCurrentTime } from './modules/date';
+import {
+    _slideDown,
+    _slideUp
+} from './support-modules/slide';
+import {
+    getCurrentTime
+} from './modules/date';
 import dataFaq from './data/dataFaq';
 // ==============================
 
@@ -41,11 +46,30 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentFaq = dataFaq[currentID];
             if (currentFaq) {
                 content.insertAdjacentHTML('beforeend', generateMessageMe(currentFaq.question));
-                content.insertAdjacentHTML('beforeend', generateMessageAi(currentFaq.answer));
+                content.insertAdjacentHTML('beforeend', generateMessageAi('Печатает...', true));
                 scrollContent();
-                if (!faq.classList.contains('_active')) faq.classList.add('_active');
                 scrollToBlock();
+                if (!faq.classList.contains('_active')) faq.classList.add('_active');
                 hiddenCurrentFaq(tag);
+
+                const lastMessage = content.querySelector('.message-item.chat__message:last-child');
+                if (lastMessage) {
+                    const dots = Array.from(lastMessage.querySelectorAll('.message-item__text-dots span'));
+                    let currentActiveIndex = 0;
+                    let dotsInterval = setInterval(() => {
+                        dots.forEach(dot => dot.classList.remove('_active'));
+                        dots[currentActiveIndex].classList.add('_active');
+                        currentActiveIndex += 1;
+                        if (currentActiveIndex >= dots.length) currentActiveIndex = 0;
+                        console.log(currentActiveIndex);
+                    }, 300);
+                    setTimeout(() => {
+                        clearInterval(dotsInterval);
+                        lastMessage.outerHTML = generateMessageAi(currentFaq.answer, false);
+                        scrollContent();
+                        scrollToBlock();
+                    }, 1500);
+                }
             }
         })
 
@@ -53,6 +77,14 @@ document.addEventListener('DOMContentLoaded', () => {
         function generateMessageMe(text) {
             const html = `
             <div class="message-item chat__message chat__message--me">
+                <div class="message-item__user">
+                    <div class="message-item__avatar avatar">
+                        <img loading="lazy" src="./img/avatar-1.jpg" width="30" height="30" alt="Лора">
+                    </div>
+                    <span class="message-item__name">
+                        Вы
+                    </span>
+                </div>
                 <div class="message-item__text">
                     <p>
                        ${text}
@@ -64,10 +96,30 @@ document.addEventListener('DOMContentLoaded', () => {
             return html;
         }
 
-        function generateMessageAi(text) {
+        function generateMessageAi(text, dots) {
+            let dotsHTML = '';
+            if (dots) {
+                dotsHTML = `
+                <div class="message-item__text-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                `;
+            }
             const html = `
             <div class="message-item chat__message">
-                <div class="message-item__text">
+                <div class="message-item__user">
+                    <div class="message-item__avatar avatar">
+                        <img loading="lazy" src="./img/lora_face.png" width="30" height="30" alt="Лора">
+                    </div>
+                    <span class="message-item__name">
+                        Лола
+                    </span>
+                    <span class="message-item__pos">Искусственный интеллект</span>
+                </div>
+                <div class="message-item__text ${dots ? '_dots' : ''}">
+                    ${dotsHTML}
                     ${text}
                     <span>${getCurrentTime()}</span>
                 </div>
@@ -75,15 +127,17 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             return html;
         }
+
         function scrollContent() {
             const element = faq.querySelector('.simplebar-content-wrapper');
             const content = element.querySelector('.simplebar-content');
             const lastMessageMe = element.querySelector('.message-item:nth-last-child(2)');
             const lastMessage = element.querySelector('.message-item:last-child');
             element.scrollTo({
-                top: content.clientHeight - lastMessageMe.clientHeight - lastMessage.clientHeight - 24,
+                top: content.clientHeight - lastMessageMe.clientHeight - lastMessage.clientHeight - 24 - 24 - 24,
             })
         }
+
         function scrollToBlock() {
             const topGap = window.pageYOffset + faq.getBoundingClientRect().top;
             window.scrollTo({

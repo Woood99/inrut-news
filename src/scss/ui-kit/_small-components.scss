@@ -381,7 +381,7 @@
         display: inline-block;
         position: relative;
 
-        span:last-child {
+        >span:last-child {
             position: absolute;
             bottom: 5px;
             right: 8px;
@@ -392,6 +392,27 @@
 
         &:not(:last-child) {
             margin-bottom: 16px;
+        }
+        &-dots{
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-right: 8px;
+            >span{
+                border-radius: 50%;
+                display: block;
+                width: 8px;
+                height: 8px;
+                background-color:var(--primary100);
+                transition: background-color $transitionSpeed $transitionFunction;
+                &._active{
+                    background-color: var(--blue);
+                }
+            }
+        }
+        &._dots{
+            display: flex;
+            align-items: center;
         }
     }
 

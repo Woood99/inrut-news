@@ -10346,7 +10346,7 @@ textarea.input-reset {
   display: inline-block;
   position: relative;
 }
-.message-item__text span:last-child {
+.message-item__text > span:last-child {
   position: absolute;
   bottom: 5px;
   right: 8px;
@@ -10356,6 +10356,36 @@ textarea.input-reset {
 }
 .message-item__text:not(:last-child) {
   margin-bottom: 16px;
+}
+.message-item__text-dots {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+  margin-right: 8px;
+}
+.message-item__text-dots > span {
+  border-radius: 50%;
+  display: block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary100);
+  -webkit-transition: background-color 0.4s ease-in-out;
+  transition: background-color 0.4s ease-in-out;
+}
+.message-item__text-dots > span._active {
+  background-color: var(--blue);
+}
+.message-item__text._dots {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 .message-item__btn-clue {
   display: -webkit-box;
@@ -28990,6 +29020,8 @@ textarea.input-reset {
 }
 .chat__message--me .message-item__user {
   text-align: left;
+  -ms-grid-columns: 1fr 30px;
+  grid-template-columns: 1fr 30px;
 }
 .chat__message--me .message-item__avatar {
   -ms-grid-column: 2;

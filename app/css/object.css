@@ -18700,10 +18700,16 @@ textarea.input-reset {
   max-width: 100%;
 }
 .field-input__wrapper .input-text__label {
-  -ms-grid-columns: 1fr -webkit-max-content;
-  -ms-grid-columns: 1fr max-content;
-  grid-template-columns: 1fr -webkit-max-content;
-  grid-template-columns: 1fr max-content;
+  -ms-grid-columns: 100%;
+  grid-template-columns: 100%;
+}
+.field-input__wrapper._not-wrap {
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 16px;
 }
 .field-input--col {
   -webkit-box-orient: vertical;
@@ -18718,6 +18724,150 @@ textarea.input-reset {
 }
 @media (max-width: 1212px) {
   .field-input {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+.field-date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+}
+.field-date__name {
+  margin-top: 10px;
+  margin-right: 24px;
+  width: var(--width);
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 var(--width);
+  flex: 0 0 var(--width);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+@media (max-width: 1212px) {
+  .field-date__name {
+    width: 100%;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    margin: 0 0 10px 0;
+  }
+}
+.field-date__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 16px;
+  max-width: 100%;
+}
+.field-date__wrapper .input-text__label {
+  -ms-grid-columns: 100%;
+  grid-template-columns: 100%;
+}
+.field-date__col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 8px;
+}
+.field-date__col .input-text:nth-child(1) {
+  max-width: 85px;
+}
+.field-date--col {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.field-date--col .field-date__name {
+  font-weight: 500;
+  margin: 0 0 12px 0;
+  --width: auto;
+}
+@media (max-width: 1212px) {
+  .field-date {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+.field-checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+}
+.field-checkbox__name {
+  margin-top: 10px;
+  margin-right: 24px;
+  width: var(--width);
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 var(--width);
+  flex: 0 0 var(--width);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+@media (max-width: 1212px) {
+  .field-checkbox__name {
+    width: 100%;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    margin: 0 0 10px 0;
+  }
+}
+.field-checkbox__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 100%;
+}
+.field-checkbox__wrapper .checkbox-secondary__label {
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: start;
+}
+.field-checkbox--col {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.field-checkbox--col .field-checkbox__name {
+  font-weight: 500;
+  margin: 0 0 12px 0;
+  --width: auto;
+}
+@media (max-width: 1212px) {
+  .field-checkbox {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
@@ -24950,6 +25100,75 @@ textarea.input-reset {
 }
 .search-select--no-search .search-select__control {
   margin-top: 0;
+}
+.search-select--img-left .search-select__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.search-select--img-left .search-select__item:not(:last-child) {
+  margin-bottom: 8px;
+}
+.search-select--img-left .search-select__item .checkbox-secondary__text {
+  margin: 0 0 0 16px;
+}
+.search-select--img-left .search-select__item .checkbox-secondary__text > span {
+  -webkit-transform: translateY(-4px);
+  -ms-transform: translateY(-4px);
+  transform: translateY(-4px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.search-select--img-left .search-select__item img {
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  margin-right: 16px;
+}
+.search-select--img-left .search-select__button-wrapper > div:nth-child(2) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.search-select--img-left .search-select__button-wrapper > div:nth-child(2) > span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  gap: 8px;
+}
+.search-select--img-left .search-select__button-wrapper > div:nth-child(2) > span:not(:first-child) {
+  margin-left: 12px;
+}
+.search-select--img-left .search-select__button-wrapper > div:nth-child(2) img {
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 24px;
+  flex: 0 0 24px;
+}
+.search-select--img-left._selected .search-select__button-wrapper > div {
+  white-space: nowrap;
+}
+.search-select--img-left._selected .search-select__button-wrapper > div > span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 @media (max-width: 1212px) {
   .search-select {

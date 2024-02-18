@@ -4,7 +4,6 @@ import {
 import SimpleBar from 'simplebar';
 import modal from '../modules/modal';
 import numberReplace from '../modules/numberReplace';
-
 export const calendarPrimary = (containerSelector, eventsSelector, edit = false) => {
     const calendarEl = document.querySelector(containerSelector);
     const calendarEvents = document.querySelector(eventsSelector);
@@ -168,7 +167,7 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
     const calendaryPrimary = new Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         locale: 'ru',
-        dayMaxEvents: 1,
+        dayMaxEvents: 2,
         firstDay: 1,
         moreLinkContent: (obj) => `+ еще ${obj.num}`,
         fixedWeekCount: false,
@@ -300,18 +299,31 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
 
 
 
-
     function btnAdded() {
-        const btnAdd = `
-            <button type="button" class="btn btn-reset calendar-btn-add">
+        document.querySelectorAll('.fc-day.fc-daygrid-day').forEach(el => {
+            const wrapper = el.querySelector('.fc-daygrid-day-frame');
+            wrapper.insertAdjacentHTML('beforeend', generateBtnAdd(el.dataset.date));
+        });
+    }
+
+
+    function generateBtnAdd(date) {
+        const html = `
+            <a href="#" data-current-date="${date}" class="btn btn-reset calendar-btn-add">
                 <svg>
                 <use xlink:href="./img/sprite.svg#plus"></use>
                 </svg>
-            </button>
+            </a>
         `;
-        document.querySelectorAll('.fc-day.fc-daygrid-day').forEach(el => {
-            const wrapper = el.querySelector('.fc-daygrid-day-frame');
-            wrapper.insertAdjacentHTML('beforeend', btnAdd);
-        });
+
+        return html;
     }
+
+    document.addEventListener('click', (e) => {
+        const target = e.target;
+        const createEvent = target.closest('.calendar-btn-add');
+        if (createEvent) {
+            document.location = `calendar-create-event.html?event=${createEvent.dataset.currentDate}`;
+        }
+    })
 }

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Календарь запланированных просмотров</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/calendar-page.css">
+    <script id="ymaps-id"></script>
+    <script defer src="js/calendar-page.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container site-container--calendar-page">
+        @include('partials/header--new.html')
+        <main class="main main-page-gap calendar-create-event">
+            <input type="text" name="Имя" class="input-reset" date-current hidden placeholder="Имя">
+            <div class="calendar-create-event__container">
+                <h1 class="calendar-create-event__title title-1 container">
+                    Новое событие
+                </h1>
+                <div class="calendar-create-event__body">
+                    <div class="container">
+                        <form action="#" class="calendar-create-event__form">
+                            <div class="calendar-create-event__row">
+                                <div class="calendar-create-event__item field-input field-input--col">
+                                    <div class="field-input__name">
+                                        Название
+                                    </div>
+                                    <div class="field-input__wrapper">
+                                        <div class="input-text input-text--no-exp">
+                                            <label class="input-text__label">
+                                                <input type="text" class="input-reset input-text__input" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="calendar-create-event__item field-date field-date--col">
+                                    <div class="field-date__name">
+                                        Время и дата
+                                    </div>
+                                    <div class="field-date__wrapper">
+                                        <div class="field-date__col">
+                                            <div class="input-text input-text--no-exp">
+                                                <label class="input-text__label">
+                                                    <input type="text" name="Время" class="input-reset input-text__input input-time" value="" placeholder="">
+                                                </label>
+                                            </div>
+                                            <div class="input-text input-text--no-exp date-picker">
+                                                <label class="input-text__label">
+                                                    <input type="text" name="Дата" class="input-reset input-text__input date-picker__input calendar-create-event__date" value=""
+                                                        placeholder="">
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <span>一</span>
+                                        <div class="field-date__col">
+                                            <div class="input-text input-text--no-exp">
+                                                <label class="input-text__label">
+                                                    <input type="text" name="Время" class="input-reset input-text__input input-time" value="" placeholder="">
+                                                </label>
+                                            </div>
+                                            <div class="input-text input-text--no-exp date-picker">
+                                                <label class="input-text__label">
+                                                    <input type="text" name="Дата" class="input-reset input-text__input date-picker__input calendar-create-event__date" value=""
+                                                        placeholder="">
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="calendar-create-event__item field-dropdown field-dropdown--col" data-field-dropdown-name="developer">
+                                    <div class="field-dropdown__name">
+                                        Участники
+                                    </div>
+                                    <div class="search-select search-select--img-left field-dropdown__wrapper" data-search-select-subtitle="Вы">
+                                        <button type="button" class="btn btn-reset search-select__button">
+                                            <div class="search-select__button-wrapper">
+                                                <div></div>
+                                                <div>Вы</div>
+                                            </div>
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#check"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="search-select__dropdown">
+                                            <button type="button" class="btn btn-reset search-select__close">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#x"></use>
+                                                </svg>
+                                            </button>
+                                            <label class="input-primary search-select__input">
+                                                <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по названию">
+                                            </label>
+                                            <div class="search-select__wrapper simplebar-third">
+                                                <div class="search-select__item checkbox-secondary">
+                                                    <input id="people-you" name="developer-name_1" class="checkbox-secondary__input" disabled checked type="checkbox" value="true">
+                                                    <label for="people-you" class="checkbox-secondary__label">
+                                                        <span class="checkbox-secondary__text">
+                                                            <span>
+                                                                <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
+                                                                <span>Вы</span>
+                                                            </span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                                <div class="search-select__item checkbox-secondary">
+                                                    <input id="people-1" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                    <label for="people-1" class="checkbox-secondary__label">
+                                                        <span class="checkbox-secondary__text">
+                                                            <span>
+                                                                <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
+                                                                <span>Владимир А.</span>
+                                                            </span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                                <div class="search-select__item checkbox-secondary">
+                                                    <input id="people-2" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                    <label for="people-2" class="checkbox-secondary__label">
+                                                        <span class="checkbox-secondary__text">
+                                                            <span>
+                                                                <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
+                                                                <span>Александр Б.</span>
+                                                            </span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                                <div class="search-select__item checkbox-secondary">
+                                                    <input id="people-3" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                    <label for="people-3" class="checkbox-secondary__label">
+                                                        <span class="checkbox-secondary__text">
+                                                            <span>
+                                                                <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
+                                                                <span>Сергей А.</span>
+                                                            </span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                                <div class="search-select__item checkbox-secondary">
+                                                    <input id="people-4" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                    <label for="people-4" class="checkbox-secondary__label">
+                                                        <span class="checkbox-secondary__text">
+                                                            <span>
+                                                                <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
+                                                                <span>Сергей С.</span>
+                                                            </span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                                <div class="search-select__item checkbox-secondary">
+                                                    <input id="people-5" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                    <label for="people-5" class="checkbox-secondary__label">
+                                                        <span class="checkbox-secondary__text">
+                                                            <span>
+                                                                <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
+                                                                <span>Евгений А.</span>
+                                                            </span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="calendar-create-event__item field-input field-input--col">
+                                    <div class="field-input__name">
+                                        Укажите место
+                                    </div>
+                                    <div class="field-input__wrapper">
+                                        <div class="input-text input-text--no-exp">
+                                            <label class="input-text__label">
+                                                <input type="text" class="input-reset input-text__input" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="calendar-create-event__item field-input field-input--col">
+                                    <div class="field-input__name">
+                                        Уведомления
+                                    </div>
+                                    <div class="field-input__wrapper">
+                                        <div class="input-text input-text--no-exp">
+                                            <label class="input-text__label">
+                                                <input type="text" class="input-reset input-text__input" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="calendar-create-event__item field-select field-select--necessarily field-select--col" data-field-select-name="object-type">
+                                    <div class="field-select__name">
+                                        Видимость
+                                    </div>
+                                    <div class="field-select__wrapper">
+                                        <button type="button" class="btn btn-reset tag field-select__item _active" data-field-value="Все">
+                                            Все
+                                        </button>
+                                        <button type="button" class="btn btn-reset tag field-select__item" data-field-value="Участники">
+                                            Участники
+                                        </button>
+                                    </div>
+                                    <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
+                                </div>
+                                <div class="calendar-create-event__item field-checkbox field-checkbox--col">
+                                    <div class="field-checkbox__name">
+                                        Видимость
+                                    </div>
+                                    <div class="field-checkbox__wrapper">
+                                        <div class="checkbox-secondary">
+                                            <input id="calendar-create-event-checkbox-1" name="personal-info" class="checkbox-secondary__input" type="checkbox" value="true">
+                                            <label for="calendar-create-event-checkbox-1" class="checkbox-secondary__label">
+                                                <span class="checkbox-secondary__text">
+                                                    Участники могут редактировать событие
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="checkbox-secondary">
+                                            <input id="calendar-create-event-checkbox-2" name="personal-info" class="checkbox-secondary__input" type="checkbox" value="true">
+                                            <label for="calendar-create-event-checkbox-2" class="checkbox-secondary__label">
+                                                <span class="checkbox-secondary__text">
+                                                    Участники могут приглашать других
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="calendar-create-event__item field-input field-input--col">
+                                    <div class="field-input__name">
+                                        Ссылка на звонок
+                                    </div>
+                                    <div class="field-input__wrapper _not-wrap">
+                                        <div class="input-text input-text--no-exp">
+                                            <label class="input-text__label">
+                                                <input type="text" class="input-reset input-text__input" placeholder="">
+                                            </label>
+                                        </div>
+                                        <button type="button" class="btn btn-reset calendar-create-event__create-link">Создать</button>
+                                        <div class="secondary-tooltip secondary-tooltip--click secondary-tooltip--bottom-center calendar-create-event__create-link-tooltip">
+                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 16 16">
+                                                    <path fill="currentColor" d="M6.5 3a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0zm0 5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0zm0 5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z"></path>
+                                                </svg>
+                                            </button>
+                                            <div class="secondary-tooltip__content">
+                                                <button type="button" class="btn btn-reset secondary-tooltip__close">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#x"></use>
+                                                    </svg>
+                                                </button>
+                                                <button type="button" class="btn btn-reset calendar-create-event__create-link-select _active">
+                                                    VK звонки
+                                                </button>
+                                                <button type="button" class="btn btn-reset calendar-create-event__create-link-select">
+                                                    Видеозвонки Mail.ru
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="calendar-create-event__btns">
+                                <button type="button" class="btn btn-reset btn-secondary" onclick="window.history.go(-1); return false;">Закрыть</button>
+                                <button type="button" class="btn btn-reset btn-primary">Создать</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        @include('partials/footer.html')
+    </div>
+    <script>
+        const split = window.location.href.split('?')[1];
+        const input = document.querySelector('[date-current]');
+        if (split && input) {
+            const date = split.split("=")[1];
+            input.setAttribute('value', date);
+        }
+
+    </script>
+    <!-- popups -->
+    @include('popups/city.html')
+    @include('popups/add.html')
+    @include('popups/personal-area2.html')
+    @include('popups/edit-profile.html')
+    @include('popups/sber-tied.html')
+    <!-- ==== -->
+    <!-- popups -->
+</body>
+
+
+</html>

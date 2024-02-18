@@ -909,8 +909,13 @@
         max-width: 100%;
         .input-text{
             &__label{
-                grid-template-columns: 1fr max-content;
+                grid-template-columns: 100%;
             }
+        }
+        &._not-wrap{
+            flex-wrap: nowrap;
+            align-items: center;
+            gap: 16px;
         }
     }
 
@@ -928,7 +933,106 @@
         flex-direction: column;
     }
 }
+.field-date {
+    display: flex;
+    align-items: start;
 
+    &__name {
+        margin-top: 10px;
+        margin-right: 24px;
+        width: var(--width);
+        flex: 0 0 var(--width);
+
+        display: flex;
+        align-items: center;
+
+        @media (max-width:$desktop) {
+            width: 100%;
+            flex: 0 0 100%;
+            margin: 0 0 10px 0;
+        }
+    }
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        max-width: 100%;
+        .input-text{
+            &__label{
+                grid-template-columns: 100%;
+            }
+        }
+    }
+    &__col{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        .input-text{
+            &:nth-child(1){
+                max-width: 85px;
+            }
+            &:nth-child(2){
+            }
+        }
+    }
+    &--col {
+        flex-direction: column;
+        .field-date__name {
+            font-weight: 500;
+            margin: 0 0 12px 0;
+            --width: auto;
+        }
+    }
+
+    @media (max-width:$desktop) {
+        flex-direction: column;
+    }
+}
+.field-checkbox {
+    display: flex;
+    align-items: start;
+
+    &__name {
+        margin-top: 10px;
+        margin-right: 24px;
+        width: var(--width);
+        flex: 0 0 var(--width);
+
+        display: flex;
+        align-items: center;
+
+        @media (max-width:$desktop) {
+            width: 100%;
+            flex: 0 0 100%;
+            margin: 0 0 10px 0;
+        }
+    }
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+      gap: 12px;
+      max-width: 100%;
+      .checkbox-secondary{
+        &__label{
+            justify-content: start;
+        }
+      }
+    }
+    &--col {
+        flex-direction: column;
+        .field-checkbox__name {
+            font-weight: 500;
+            margin: 0 0 12px 0;
+            --width: auto;
+        }
+    }
+
+    @media (max-width:$desktop) {
+        flex-direction: column;
+    }
+}
 .field-range {
     display: flex;
     align-items: center;

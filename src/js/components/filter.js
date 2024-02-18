@@ -158,9 +158,11 @@ export const filterSum = () => {
             });
         })
     })
+
     function init() {
-        
+
     }
+
     function changeTitle(el, currentElMobile) {
         setTimeout(() => {
             const itemActive = !currentElMobile ? el.querySelector('.filter-dropdown__item.active') : document.querySelector('.filter-modal .filter-dropdown__item.active');
@@ -364,16 +366,28 @@ export const searchSelect = () => {
         const btnWrapper = btn.querySelector('.search-select__button-wrapper')
         const btnList = btnWrapper.querySelector('div:nth-child(2)');
         let arrSelected = [];
+        const imgLeft = container.classList.contains('search-select--img-left');
         init();
         itemsInput.forEach(input => {
             input.addEventListener('change', () => {
-                const currentElem = input.closest('.search-select__item').querySelector('.checkbox-secondary__text span:nth-child(1)').textContent.trim();
+                const currentElem = imgLeft ?
+                    input.closest('.search-select__item').querySelector('.checkbox-secondary__text').innerHTML.trim() :
+                    input.closest('.search-select__item').querySelector('.checkbox-secondary__text span:nth-child(1)').textContent.trim();
                 if (container.hasAttribute('data-search-select-single')) {
                     itemsInput.forEach(currentInput => {
                         if (currentInput !== input) currentInput.checked = false;
                     })
                     arrSelected = [];
                     input.checked ? arrSelected.push(currentElem) : arrSelected = [];
+                } else if (container.classList.contains('search-select--img-left')) {
+                    if (input.checked) {
+                        arrSelected.push(currentElem);
+                    } else {
+                        const index = arrSelected.indexOf(currentElem);
+                        if (index !== -1) {
+                            arrSelected.splice(index, 1);
+                        }
+                    }
                 } else {
                     if (input.checked) {
                         arrSelected.push(currentElem);
@@ -508,12 +522,20 @@ export const searchSelect = () => {
                 btnList.textContent = container.dataset.searchSelectSubtitle;
                 btnWrapper.classList.remove('_active');
             }
-            arrSelected.forEach(el => {
-                btnList.textContent += `${el}, `;
-            });
-
-            if (btnList.textContent !== container.dataset.searchSelectSubtitle) {
-                btnList.textContent = btnList.textContent.slice(0, -2);
+            if (imgLeft) {
+                arrSelected.forEach(el => {
+                    btnList.innerHTML += `${el},`;
+                });
+                if (btnList.innerHTML !== container.dataset.searchSelectSubtitle) {
+                    btnList.innerHTML = btnList.innerHTML.slice(0, -2);
+                }
+            } else {
+                arrSelected.forEach(el => {
+                    btnList.textContent += `${el}, `;
+                });
+                if (btnList.textContent !== container.dataset.searchSelectSubtitle) {
+                    btnList.textContent = btnList.textContent.slice(0, -2);
+                }
             }
         }
 
@@ -527,9 +549,16 @@ export const searchSelect = () => {
 
         function init() {
             itemsInput.forEach(input => {
-                if (input.checked) {
-                    const currentElem = input.closest('.search-select__item').querySelector('.checkbox-secondary__text span:nth-child(1)').textContent.trim();
-                    arrSelected.push(currentElem);
+                if (imgLeft) {
+                    if (input.checked) {
+                        const currentElem = input.closest('.search-select__item').querySelector('.checkbox-secondary__text').innerHTML.trim();
+                        arrSelected.push(currentElem);
+                    }
+                } else {
+                    if (input.checked) {
+                        const currentElem = input.closest('.search-select__item').querySelector('.checkbox-secondary__text span:nth-child(1)').textContent.trim();
+                        arrSelected.push(currentElem);
+                    }
                 }
             })
             updatePlaceholder();

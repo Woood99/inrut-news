@@ -1,0 +1,109 @@
+.calendar-create-event {
+
+    &__title {
+        @media (max-width:$desktop) {
+            padding: 0 16px;
+        }
+    }
+
+    &__container {
+        @media (max-width:$desktop) {
+            padding: calc(var(--header-height) + 24px) 0 16px;
+            background-color: var(--stand-bg);
+        }
+    }
+
+    &__body {
+        margin-top: 32px;
+        padding: 32px;
+        background-color: var(--stand-bg);
+        border-radius: 16px;
+
+        @media (max-width:$desktop) {
+            margin-top: 24px;
+            background-color: var(--white);
+            padding: 0;
+        }
+    }
+    &__row{
+        padding: 24px;
+        background-color: var(--white);
+        box-shadow: var(--shadow-primary);
+        border-radius: 12px;
+        &:not(:last-child){
+            margin-bottom: 16px;
+        }
+    }
+    &__item{
+        max-width: 500px;
+        width: 100%;
+        &:not(:last-child){
+            margin-bottom: 32px;
+        }
+        .field-input{
+            &__wrapper{
+                width: 100%;
+                .input-text{
+                    width: 100%;
+                }
+            }
+        }
+        .field-dropdown{
+            &__wrapper{
+                max-width: 100%;
+            }
+        }
+    }
+    &__create-link{
+        color: var(--blue);
+        @media (min-width:$desktop-min){
+        transition: color $transitionSpeed $transitionFunction;
+             &:hover{
+                text-decoration: underline;
+                color: var(--blue-dark);
+             } 
+        }
+    }
+    &__create-link-tooltip{
+        .secondary-tooltip__content{
+            padding: 48px 0 16px;
+            width: max-content;
+            max-width: 300px;
+            min-width: 200px;
+        }
+    }
+    &__create-link-select{
+        text-align: left;
+        display: flex;
+        align-items: center;
+        padding: 12px 16px;
+        width: 100%;
+        transition: background-color $transitionSpeed $transitionFunction,
+        color $transitionSpeed $transitionFunction;
+
+        svg{
+            width: 12px;
+            height: 12px;
+            stroke:var(--blue);
+            stroke-width: 1.5px;
+            fill: none;
+
+        }
+        @media (min-width:$desktop-min){
+             &:hover{
+                background-color: #f2f2f2;
+             } 
+        }
+        &._active{
+            pointer-events: none;
+    background-color: rgba(0, 150, 255, 0.08);
+    color: var(--blue);
+        }
+    }
+    &__btns{
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        gap: 16px;
+    }
+}

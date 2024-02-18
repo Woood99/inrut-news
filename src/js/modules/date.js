@@ -25,3 +25,6 @@ export function getTomorrowDay(currentDate) {
     const day = 60 * 60 * 24 * 1000;
     return new Date(startDate.getTime() + day);
 }
+export function reverseDate(date) {
+    return date.split("-").reverse().join(".");
+}

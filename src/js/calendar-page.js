@@ -6,8 +6,29 @@ import './_popups';
 import './_main-scripts';
 
 // ==============================
-import { calendarSecondary } from './components/calendar';
+import {
+    calendarSecondary
+} from './components/calendar';
+import {
+    reverseDate
+} from './modules/date';
+import AirDatepicker from 'air-datepicker';
 document.addEventListener('DOMContentLoaded', () => {
-    calendarSecondary('.calendar-page__calendar .calendar-primary','.calendar-page__calendar .calendar-primary-events', false);
+    const createEvent = document.querySelector('.calendar-create-event');
+    const calendarPage = document.querySelector('.calendar-page');
+    if (calendarPage) {
+        calendarSecondary('.calendar-page__calendar .calendar-primary', '.calendar-page__calendar .calendar-primary-events', false);
+    }
+    if (createEvent) {
+        const dateEvent = document.querySelector('[date-current]').value;
+        const form = createEvent.querySelector('.calendar-create-event__form');
+        const dates = form.querySelectorAll('.calendar-create-event__date');
+        dates.forEach((date) => {
+            date.value = reverseDate(dateEvent);
+            new AirDatepicker(date, {
+                autoClose: true,
+                isMobile: true,
+            })
+        })
+    }
 })
-

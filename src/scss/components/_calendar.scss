@@ -701,3 +701,42 @@
 
     }
 }
+
+
+.calendar-secondary{
+    .fc-day.fc-daygrid-day{
+        @media (min-width:$desktop-min){
+             &:hover{
+                .calendar-btn-add{
+                    opacity: 1;
+                    visibility: visible;
+                }
+             } 
+        }
+    }
+   .calendar-btn-add{
+    width: 24px;
+    height: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--primary100);
+    border-radius: 4px;
+
+    position: absolute;
+    top: 8px;
+    right: 8px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity $transitionSpeed $transitionFunction,
+    visibility $transitionSpeed $transitionFunction;
+    svg{
+        width: 12px;
+        height: 12px;
+    }
+   }
+}

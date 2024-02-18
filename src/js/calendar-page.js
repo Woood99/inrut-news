@@ -6,8 +6,8 @@ import './_popups';
 import './_main-scripts';
 
 // ==============================
-import { calendarPrimary } from './components/calendar';
+import { calendarSecondary } from './components/calendar';
 document.addEventListener('DOMContentLoaded', () => {
-    calendarPrimary('.calendar-page__calendar .calendar-primary','.calendar-page__calendar .calendar-primary-events', false);
+    calendarSecondary('.calendar-page__calendar .calendar-primary','.calendar-page__calendar .calendar-primary-events', false);
 })
 

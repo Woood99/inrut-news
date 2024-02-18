@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 content.insertAdjacentHTML('beforeend', generateMessageAi('Печатает...', true));
                 scrollContent();
                 scrollToBlock();
-                if (!faq.classList.contains('_active')) faq.classList.add('_active');
                 hiddenCurrentFaq(tag);
 
                 const lastMessage = content.querySelector('.message-item.chat__message:last-child');
@@ -61,14 +60,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         dots[currentActiveIndex].classList.add('_active');
                         currentActiveIndex += 1;
                         if (currentActiveIndex >= dots.length) currentActiveIndex = 0;
-                        console.log(currentActiveIndex);
                     }, 300);
                     setTimeout(() => {
                         clearInterval(dotsInterval);
                         lastMessage.outerHTML = generateMessageAi(currentFaq.answer, false);
                         scrollContent();
                         scrollToBlock();
-                    }, 1500);
+                    }, 2500);
                 }
             }
         })

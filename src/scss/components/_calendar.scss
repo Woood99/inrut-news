@@ -673,6 +673,142 @@
 
 }
 
+.event {
+    padding: 16px;
+    background-color: var(--white);
+    box-shadow: var(--shadow-primary);
+    border-radius: 12px;
+
+    &__subtitle {
+        margin-bottom: 8px;
+    }
+
+    &__header {
+        margin: 0 -16px 16px;
+        padding: 0 16px 16px;
+        width: calc(100% + 32px);
+        border-bottom: 1px solid var(--primary100);
+
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        gap: 16px;
+    }
+    &__edit,&__remove{
+        width: 20px;
+        height: 20px;
+        svg{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &__edit{
+        stroke: var(--blue);
+        fill: none;
+        stroke-width: 1.5px;
+    }
+    &__remove{
+        fill: var(--red);
+        stroke-width: 1.5px;
+    }
+    &__title {
+        font-weight: 500;
+        font-size: var(--little-big-fz);
+        line-height: var(--little-big-lh);
+    }
+
+    &__descr {
+        margin-top: 16px;
+        color: var(--primaryTwo);
+    }
+
+    &__time {
+        margin-top: 16px;
+        display: flex;
+        align-items: center;
+
+        >span {
+            font-size: var(--default-fz);
+            line-height: var(--default-lh);
+
+            &:nth-child(1) {
+                font-weight: 500;
+                margin-right: 16px;
+            }
+
+            &:nth-child(3) {
+                margin: 0 8px;
+            }
+        }
+    }
+
+    &__users {
+        border-top: 1px solid var(--primary100);
+        width: calc(100% + 32px);
+        margin: 16px -16px 0;
+        padding: 16px 16px 0;
+    }
+
+    &__user {
+        .user-info__name {
+            font-weight: 400;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 12px;
+        }
+    }
+
+    &__location {
+        margin-top: 24px;
+    }
+
+    &__link {
+        margin-top: 24px;
+
+        a {
+            display: block;
+            color: var(--blue);
+
+            @media (min-width:$desktop-min) {
+                transition: color $transitionSpeed $transitionFunction;
+
+                &:hover {
+                    color: var(--blue-dark);
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    &__files {
+        margin-top: 24px;
+    }
+
+    &__notifs {
+        margin-top: 24px;
+    }
+
+    &__notif {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        &:not(:last-child) {
+            margin-bottom: 8px;
+        }
+    }
+
+    &__status {
+        margin: 24px -16px 0;
+        padding: 16px 16px 0;
+        border-top: 1px solid var(--primary100);
+        width: calc(100% + 32px);
+        text-align: right;
+    }
+
+}
+
 
 .air-datepicker-global-container {
     z-index: 9999;
@@ -713,24 +849,28 @@
 
 
 .calendar-secondary {
-    .fc-daygrid-day-events{
+    .fc-daygrid-day-events {
         max-width: 100%;
     }
-    .fc-daygrid-event-harness{
-        &:not(:last-child){
+
+    .fc-daygrid-event-harness {
+        &:not(:last-child) {
             margin-bottom: 8px;
         }
     }
-    .fc-event .fc-event-main{
+
+    .fc-event .fc-event-main {
         display: flex;
         align-items: center;
         gap: 4px;
-        span:nth-child(2){
+
+        span:nth-child(2) {
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
         }
     }
+
     .fc-day.fc-daygrid-day {
         @media (min-width:$desktop-min) {
             &:hover {

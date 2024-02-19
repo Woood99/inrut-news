@@ -13,6 +13,7 @@ import {
     reverseDate
 } from './modules/date';
 import AirDatepicker from 'air-datepicker';
+import { dropImage } from './components/dropImage';
 document.addEventListener('DOMContentLoaded', () => {
     const createEvent = document.querySelector('.calendar-create-event');
     const calendarPage = document.querySelector('.calendar-page');
@@ -22,13 +23,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (createEvent) {
         const dateEvent = document.querySelector('[date-current]').value;
         const form = createEvent.querySelector('.calendar-create-event__form');
-        const dates = form.querySelectorAll('.calendar-create-event__date');
-        dates.forEach((date) => {
-            date.value = reverseDate(dateEvent);
-            new AirDatepicker(date, {
-                autoClose: true,
-                isMobile: true,
-            })
+        timeAndDate(form,dateEvent);
+        dropImage();
+    }
+
+
+
+    function timeAndDate(form,dateEvent) {
+        const date = form.querySelector('.calendar-create-event__date');
+        date.value = reverseDate(dateEvent);
+        new AirDatepicker(date, {
+            autoClose: true,
+            isMobile: true,
         })
     }
 })

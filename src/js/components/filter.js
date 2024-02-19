@@ -13,6 +13,9 @@ import {
     mapPrimary,
     itsReadyMap
 } from './maps';
+import {
+    currentSimplebar
+} from './simplebar';
 export const filterDropdownChoice = () => {
     const items = document.querySelectorAll('.filter-dropdown__dropdown');
     if (!items.length >= 1) return;
@@ -158,10 +161,6 @@ export const filterSum = () => {
             });
         })
     })
-
-    function init() {
-
-    }
 
     function changeTitle(el, currentElMobile) {
         setTimeout(() => {
@@ -569,156 +568,7 @@ export const searchSelectOne = () => {
     const containers = document.querySelectorAll('.search-select-one');
     if (!containers.length >= 1) return;
     containers.forEach(container => {
-        const btn = container.querySelector('.search-select-one__button');
-        const list = container.querySelectorAll('.search-select-one__item');
-        const input = container.querySelector('.search-select-one__input-hidden');
-        const placeholder = container.querySelector('.search-select-one__button-wrapper div:nth-child(2)');
-        const close = container.querySelector('.search-select-one__close');
-
-        const tags = container.querySelectorAll('.search-select-one__tag');
-        const search = container.querySelector('.search-select-one__input');
-        const selectorErrorText = 'search-select-one__error-text';
-        const body = container.querySelector('.search-select-one__dropdown');
-        init();
-        btn.addEventListener('click', () => {
-            containers.forEach(el => {
-                if (el !== container) el.classList.remove('_active')
-            });
-            container.classList.toggle('_active');
-            if (filterModalScreenWidthCheck() && container.classList.contains('_active')) {
-                const modalHTML = `
-                <div class="filter-modal">
-                    <div class="filter-modal__container">
-                        <button class="btn-reset filter-modal__close" aria-label="Закрыть модальное окно">
-                            <svg>
-                                <use xlink:href="./img/sprite.svg#x"></use>
-                            </svg>
-                            <span>Закрыть</span>
-                        </button>
-                        <div class="filter-modal__content">
-                        </div>
-                    </div>
-                </div>
-                `;
-                modal(modalHTML, '.filter-modal', 300, container, container.dataset.modalScroll);
-                const filterModal = document.querySelector('.filter-modal');
-                filterModal.querySelector('.filter-modal__content').insertAdjacentElement('beforeend', container.querySelector('.search-select-one__dropdown'));
-                filterModal.classList.add('_search-select-one');
-                if (container.classList.contains('search-select-one--img-left')) {
-                    filterModal.classList.add('search-select-one--img-left');
-                }
-            }
-        })
-        document.addEventListener('click', (e) => {
-            if (container.classList.contains('_active') && !e.target.closest('.search-select-one')) {
-                container.classList.remove('_active');
-            }
-        })
-        if (close) {
-            close.addEventListener('click', () => {
-                container.classList.remove('_active');
-            });
-        }
-        list.forEach(item => {
-            item.addEventListener('click', () => {
-                list.forEach(item => item.classList.remove('_active'));
-
-                input.value = item.dataset.value;
-                item.classList.add('_active');
-                placeholder.innerHTML = item.innerHTML;
-
-                container.classList.remove('_active');
-
-                container.classList.add('_selected');
-
-                if (search) {
-                    setTimeout(() => {
-                        const input = search.querySelector('input');
-                        input.value = '';
-
-                        list.forEach(item => item.removeAttribute('hidden'));
-                    }, 200);
-                }
-
-                if (container.classList.contains('create-meeting-show__form--object')) {
-                    if (container.classList.contains('_error')) {
-                        container.querySelector('._error-span').remove();
-                        container.classList.remove('_error');
-                    }
-                }
-
-                const favoriteTwo = container.closest('.favorite-two');
-                if (container.hasAttribute('data-favorite-client-select')) {
-                    if (container.classList.contains('_selected')) {
-                        favoriteTwo.querySelector('[data-favorite-selection-select]').removeAttribute('hidden');
-                    }
-                }
-
-                // ПРИМЕР!!
-                if (container.closest('.your-contacts-field__wrapper')) {
-                    const tel = container.nextElementSibling;
-                    tel.classList.add('_active');
-                    tel.querySelector('input').value = '+7 999 999-99-99';
-                }
-            })
-        })
-
-        if (tags.length > 0) {
-            tags.forEach(tag => {
-                tag.addEventListener('click', () => {
-                    if (container.classList.contains('search-select-one--tags-one')) {
-                        tags.forEach(tag => tag.classList.remove('_active'));
-                    }
-                    tag.classList.toggle('_active');
-                })
-            })
-        }
-
-
-        if (search) {
-            const input = search.querySelector('input');
-            input.addEventListener('input', () => {
-                const validateItems = searchFilterItems(input.value, Array.from(list));
-                if (body.querySelector(`.${selectorErrorText}`)) {
-                    body.querySelector(`.${selectorErrorText}`).remove();
-                }
-                if (input.value === '') {
-                    list.forEach(item => item.removeAttribute('hidden'));
-                } else {
-                    list.forEach(item => {
-                        item.setAttribute('hidden', '');
-                        const validateIndex = validateItems.indexOf(item);
-                        if (validateIndex !== -1) validateItems[validateIndex].removeAttribute('hidden');
-                    });
-                    if (validateItems.length === 0) {
-                        if (!body.querySelector(`.${selectorErrorText}`)) {
-                            const text = 'Ничего не найдено';
-                            const htmlText = `
-                                <div class="${selectorErrorText}">${text}</div>
-                            `;
-                            body.insertAdjacentHTML('beforeend', htmlText);
-                        }
-                    }
-                }
-            })
-        }
-
-        function searchFilterItems(value, items) {
-            return items.filter(item => {
-                const text = item.textContent;
-                const regex = new RegExp(value, 'gi')
-                return text.match(regex);
-            })
-        }
-
-        function init() {
-            list.forEach(item => {
-                if (item.classList.contains('_active')) {
-                    container.classList.add('_selected');
-                    placeholder.innerHTML = item.innerHTML;
-                }
-            })
-        }
+        searchSelectOneBody(container);
     });
 }
 export const uiSliderOne = () => {
@@ -1370,7 +1220,328 @@ export const fieldRange = () => {
         }
     }
 }
+export const fieldNotif = () => {
+    const containers = document.querySelectorAll('.field-notif');
+    if (containers.length === 0) return;
+    const htmlItem = `
+    <div class="field-notif__item">
+        <div class="field-notif__select search-select-one search-select-one--left search-select-one--no-search">
+            <button type="button" class="btn btn-reset search-select-one__button">
+                <div class="search-select-one__button-wrapper">
+                    <div>Время</div>
+                    <div>Не выбрано</div>
+                </div>
+                <svg>
+                    <use xlink:href="./img/sprite.svg#check"></use>
+                </svg>
+            </button>
+            <div class="search-select-one__dropdown">
+                <button type="button" class="btn btn-reset search-select-one__close">
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#x"></use>
+                    </svg>
+                </button>
+                <div class="search-select-one__wrapper simplebar-third">
+                    <div class="search-select-one__item" data-value="now">
+                        в момент события
+                    </div>
+                    <div class="search-select-one__item" data-value="5-min">
+                       за 5 мин
+                    </div>
+                    <div class="search-select-one__item" data-value="15-min">
+                        за 15 мин
+                    </div>
+                    <div class="search-select-one__item" data-value="30-min">
+                        за 30 мин
+                    </div>
+                    <div class="search-select-one__item" data-value="1-hour">
+                        за 1 час
+                    </div>
+                    <div class="search-select-one__item" data-value="2-hour">
+                        за 2 часа
+                    </div>
+                    <div class="search-select-one__item" data-value="1-day">
+                        за 1 день
+                    </div>
+                    <div class="search-select-one__item" data-value="2-day">
+                        за 2 дня
+                    </div>
+                    <div class="search-select-one__item" data-value="1-week">
+                        за 1 неделю
+                    </div>
+                </div>
+            </div>
+            <input type="text" name="object" value="" class="search-select-one__input-hidden" hidden>
+            </div>
+            <div class="field-notif__select search-select-one search-select-one--left search-select-one--no-search">
+            <button type="button" class="btn btn-reset search-select-one__button">
+                <div class="search-select-one__button-wrapper">
+                    <div>Способ</div>
+                    <div>Не выбрано</div>
+                </div>
+                <svg>
+                    <use xlink:href="./img/sprite.svg#check"></use>
+                </svg>
+            </button>
+            <div class="search-select-one__dropdown">
+                <button type="button" class="btn btn-reset search-select-one__close">
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#x"></use>
+                    </svg>
+                </button>
+                <div class="search-select-one__wrapper simplebar-third">
+                    <div class="search-select-one__item" data-value="email">
+                        по e-mail
+                    </div>
+                    <div class="search-select-one__item" data-value="sms">
+                       в смс
+                    </div>
+                    <div class="search-select-one__item" data-value="CalDAV">
+                        через CalDAV
+                    </div>
+                </div>
+            </div>
+            <input type="text" name="object" value="" class="search-select-one__input-hidden" hidden>
+        </div>
+        <button type="button" class="btn btn-reset field-notif__remove">
+            <svg>
+                <use xlink:href="./img/sprite.svg#trash"></use>
+            </svg>
+        </button>
+    </div>
+    `;
+    containers.forEach(container => {
+        const buttonAdd = container.querySelector('.field-notif__add');
+        const buttonAddSpan = buttonAdd.querySelector('span');
+        let itemsLength = container.querySelectorAll('.field-notif__item').length;
+        buttonAdd.addEventListener('click', () => {
+            buttonAdd.insertAdjacentHTML('beforebegin', htmlItem);
+            const currentItem = buttonAdd.previousElementSibling;
+            if (currentItem) {
+                const selects = currentItem.querySelectorAll('.search-select-one');
+                selects.forEach(select => {
+                    searchSelectOneBody(select);
+                });
+            }
+            updateBtnAdd('add');
+        })
+        container.addEventListener('click', (e) => {
+            const target = e.target;
+            const buttonRemove = target.closest('.field-notif__remove');
+            if (buttonRemove) {
+                const currentItem = target.closest('.field-notif__item');
+                currentItem.remove();
+                updateBtnAdd('remove');
+            }
+        })
+
+
+        function updateBtnAdd(status) {
+            if (status === 'add') itemsLength += 1;
+            if (status === 'remove') itemsLength -= 1;
+            if (itemsLength === 0) buttonAddSpan.textContent = 'Добавить уведомление';
+            if (itemsLength > 0) buttonAddSpan.textContent = 'Добавить ещё уведомление';
+            if (itemsLength >= 5) {
+                buttonAdd.setAttribute('hidden','');
+            } else {
+                buttonAdd.removeAttribute('hidden');
+            }
+        }
+    })
+
+
+}
+export const tooltipSelect = () => {
+    const items = document.querySelectorAll('[data-tooltip-selects]');
+    items.forEach(item => {
+        inputUpdate(item);
+        item.addEventListener('click', (e) => {
+            const target = e.target;
+            const select = target.closest('[data-tooltip-select]');
+            if (select) {
+                clearAllSelects(item);
+                select.classList.add('_active');
+                inputUpdate(item);
+                hiddenTooltip(item);
+            }
+        });
+    });
+
+
+    function clearAllSelects(item) {
+        const selects = item.querySelectorAll('[data-tooltip-select]');
+        selects.forEach(select => select.classList.remove('_active'));
+    }
+
+    function inputUpdate(item) {
+        const input = item.querySelector('[data-tooltip-input]');
+        const activeSelect = Array.from(item.querySelectorAll('[data-tooltip-select]')).find(select => select.classList.contains('_active'));
+        if (activeSelect) {
+            input.value = activeSelect.textContent.trim();
+        }
+    }
+
+    function hiddenTooltip(item) {
+        const container = item.closest('.secondary-tooltip--click');
+        if (container) {
+            container.classList.remove('_active');
+        }
+    }
+}
 
 function filterModalScreenWidthCheck() {
     return window.innerWidth <= 1212;
+}
+
+
+export const searchSelectOneBody = (container) => {
+    const btn = container.querySelector('.search-select-one__button');
+    const list = container.querySelectorAll('.search-select-one__item');
+    const input = container.querySelector('.search-select-one__input-hidden');
+    const placeholder = container.querySelector('.search-select-one__button-wrapper div:nth-child(2)');
+    const close = container.querySelector('.search-select-one__close');
+
+    const tags = container.querySelectorAll('.search-select-one__tag');
+    const search = container.querySelector('.search-select-one__input');
+    const selectorErrorText = 'search-select-one__error-text';
+    const body = container.querySelector('.search-select-one__dropdown');
+    init();
+    btn.addEventListener('click', () => {
+        setTimeout(() => {
+            container.classList.toggle('_active');
+        }, 1);
+        if (filterModalScreenWidthCheck() && container.classList.contains('_active')) {
+            const modalHTML = `
+            <div class="filter-modal">
+                <div class="filter-modal__container">
+                    <button class="btn-reset filter-modal__close" aria-label="Закрыть модальное окно">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#x"></use>
+                        </svg>
+                        <span>Закрыть</span>
+                    </button>
+                    <div class="filter-modal__content">
+                    </div>
+                </div>
+            </div>
+            `;
+            modal(modalHTML, '.filter-modal', 300, container, container.dataset.modalScroll);
+            const filterModal = document.querySelector('.filter-modal');
+            filterModal.querySelector('.filter-modal__content').insertAdjacentElement('beforeend', container.querySelector('.search-select-one__dropdown'));
+            filterModal.classList.add('_search-select-one');
+            if (container.classList.contains('search-select-one--img-left')) {
+                filterModal.classList.add('search-select-one--img-left');
+            }
+        }
+    })
+    if (close) {
+        close.addEventListener('click', () => {
+            setTimeout(() => {
+                container.classList.remove('_active');
+            }, 1);
+        });
+    }
+    list.forEach(item => {
+        item.addEventListener('click', () => {
+            list.forEach(item => item.classList.remove('_active'));
+
+            input.value = item.dataset.value;
+            item.classList.add('_active');
+            placeholder.innerHTML = item.innerHTML;
+
+            setTimeout(() => {
+                container.classList.remove('_active');
+            }, 1);
+
+            container.classList.add('_selected');
+
+            if (search) {
+                setTimeout(() => {
+                    const input = search.querySelector('input');
+                    input.value = '';
+
+                    list.forEach(item => item.removeAttribute('hidden'));
+                }, 200);
+            }
+
+            if (container.classList.contains('create-meeting-show__form--object')) {
+                if (container.classList.contains('_error')) {
+                    container.querySelector('._error-span').remove();
+                    container.classList.remove('_error');
+                }
+            }
+
+            const favoriteTwo = container.closest('.favorite-two');
+            if (container.hasAttribute('data-favorite-client-select')) {
+                if (container.classList.contains('_selected')) {
+                    favoriteTwo.querySelector('[data-favorite-selection-select]').removeAttribute('hidden');
+                }
+            }
+
+            // ПРИМЕР!!
+            if (container.closest('.your-contacts-field__wrapper')) {
+                const tel = container.nextElementSibling;
+                tel.classList.add('_active');
+                tel.querySelector('input').value = '+7 999 999-99-99';
+            }
+        })
+    })
+
+    if (tags.length > 0) {
+        tags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                if (container.classList.contains('search-select-one--tags-one')) {
+                    tags.forEach(tag => tag.classList.remove('_active'));
+                }
+                tag.classList.toggle('_active');
+            })
+        })
+    }
+
+
+    if (search) {
+        const input = search.querySelector('input');
+        input.addEventListener('input', () => {
+            const validateItems = searchFilterItems(input.value, Array.from(list));
+            if (body.querySelector(`.${selectorErrorText}`)) {
+                body.querySelector(`.${selectorErrorText}`).remove();
+            }
+            if (input.value === '') {
+                list.forEach(item => item.removeAttribute('hidden'));
+            } else {
+                list.forEach(item => {
+                    item.setAttribute('hidden', '');
+                    const validateIndex = validateItems.indexOf(item);
+                    if (validateIndex !== -1) validateItems[validateIndex].removeAttribute('hidden');
+                });
+                if (validateItems.length === 0) {
+                    if (!body.querySelector(`.${selectorErrorText}`)) {
+                        const text = 'Ничего не найдено';
+                        const htmlText = `
+                            <div class="${selectorErrorText}">${text}</div>
+                        `;
+                        body.insertAdjacentHTML('beforeend', htmlText);
+                    }
+                }
+            }
+        })
+    }
+
+    function searchFilterItems(value, items) {
+        return items.filter(item => {
+            const text = item.textContent;
+            const regex = new RegExp(value, 'gi')
+            return text.match(regex);
+        })
+    }
+
+    function init() {
+        currentSimplebar(container.querySelector('.search-select-one__wrapper.simplebar-third'));
+        list.forEach(item => {
+            if (item.classList.contains('_active')) {
+                container.classList.add('_selected');
+                placeholder.innerHTML = item.innerHTML;
+            }
+        })
+    }
 }

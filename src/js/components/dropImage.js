@@ -8,7 +8,6 @@ export const dropImage = () => {
     if (photoLoad.length === 0) return;
 
     photoLoad.forEach(container => toggleLoadedClass(container));
-
     ['dragenter', 'dragleave', 'dragover', 'drop'].forEach(eventName => {
         photoLoad.forEach(photo => {
             const input = photo.querySelector('[data-upload-drop]');
@@ -93,7 +92,6 @@ export const currentDropImage = (container) => {
     }
 };
 
-
 document.addEventListener('click', (e) => {
     const target = e.target;
     if (target.closest('.place-sale-photo__remove')) {
@@ -114,7 +112,7 @@ function deleteTarget(target) {
     toggleLoadedClass(container);
 }
 
-function subtitleFile(input,length) {
+function subtitleFile(input, length) {
     let dots;
     const file = input.files[0];
     if (file) {
@@ -132,23 +130,25 @@ function showPdf(input) {
         let file = input.files[0];
         if (file) {
             const pdfURL = window.URL.createObjectURL(file);
-            placeSaleImages.innerHTML = pdfGenerate(pdfURL,file.name);
+            placeSaleImages.innerHTML = pdfGenerate(pdfURL, file.name);
         }
         toggleLoadedClass(container);
     }
 }
-function showDefault(input) {
+
+function showDefault(input,maxLength = false) {
     const container = input.closest('.photo-load');
     const images = container.querySelector('.photo-load__images');
     if (images) {
         let files = input.files;
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
-            images.innerHTML += defaultGenerate(file.name,input);
+            images.innerHTML += defaultGenerate(file.name, input,maxLength);
         }
         toggleLoadedClass(container);
     }
 }
+
 function toggleLoadedClass(container) {
     const images = container.querySelector('.photo-load__images');
     if (images) {
@@ -182,9 +182,9 @@ function inputChange(input, e) {
             input.files = e.dataTransfer.files;
             showPdf(input);
         }
-    } else if (input.hasAttribute('data-upload-drop-default')){
+    } else if (input.hasAttribute('data-upload-drop-default')) {
         if (e.type === 'change') {
-            showDefault(input);
+            showDefault(input,12);
         }
         if (e.type === 'drop') {
             input.files = e.dataTransfer.files;
@@ -251,14 +251,14 @@ function pdfGenerate(url, name) {
 }
 
 
-function defaultGenerate(name,input) {
+function defaultGenerate(name, input,maxLength) {
     const placeSalePhotoHTML = `
     <div class="place-sale-photo__image ibg" title="${name}">
         <div>
             <svg>
             <use xlink:href="./img/sprite.svg#save"></use>
             </svg>
-            <span>${subtitleFile(input,18)}</span>
+            <span>${subtitleFile(input,maxLength ? maxLength : 18)}</span>
         </div>
         <button type="button" class="btn btn-reset place-sale-photo__remove" title="Удалить фото">
             <svg>
@@ -267,5 +267,5 @@ function defaultGenerate(name,input) {
         </button>
     </div>
     `;
-return placeSalePhotoHTML;
+    return placeSalePhotoHTML;
 }

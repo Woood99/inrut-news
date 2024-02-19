@@ -10,7 +10,9 @@ import {
     searchSelect,
     searchSelectOne,
     fieldSelect,
-    fieldRange
+    fieldRange,
+    tooltipSelect,
+    fieldNotif
 } from './components/filter';
 import {
     choicesSelect
@@ -71,7 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
     fieldSelect();
     fieldRange();
     choicesSelect();
-
+    tooltipSelect();
+    fieldNotif();
+    
     simplebar('.simplebar-primary');
     simplebar('.simplebar-secondary');
     simplebar('.simplebar-third');
@@ -153,4 +157,16 @@ document.addEventListener('DOMContentLoaded', () => {
     spollers();
     tooltipSecondary();
     tooltipMain();
+
+
+    document.addEventListener('click', (e) => {
+        const target = e.target;
+        const searchSelectOne = document.querySelectorAll('.search-select-one');
+        if (searchSelectOne.length > 0) {
+            const currentContainer = target.closest('.search-select-one');
+            if (currentContainer && !currentContainer.classList.contains('_active') || !currentContainer) {
+                searchSelectOne.forEach(container => container.classList.remove('_active'));
+            }
+        }
+    })
 });

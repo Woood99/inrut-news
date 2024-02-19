@@ -10,3 +10,9 @@ export const simplebar = (selector) => {
         }
     });
 }
+
+
+export const currentSimplebar = (container) => {
+    if (!container) return;
+    new SimpleBar(container);
+}

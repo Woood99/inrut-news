@@ -238,6 +238,7 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                     console.log(el);
                     let itemUsersHTML = '';
                     let itemNotifHTML = '';
+                    let itemFilesHTML = '';
                     el.participants.forEach(user => {
                         itemUsersHTML += `
                         <div class="event__user user-info user-info--small">
@@ -255,6 +256,16 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                         <div class="event__notif">
                             <span>${notif.time}</span>
                             <span>${notif.method}</span>
+                        </div>
+                        `;
+                    });
+                    el.files.forEach(file => {
+                        itemFilesHTML += `
+                        <div class="event__file file-small-block">
+                            <div class="file-small-block__image">
+                                <img src="${file.link}" alt="${file.title}">
+                            </div>
+                            <span class="file-small-block__title">${file.title}</span>
                         </div>
                         `;
                     });
@@ -300,7 +311,7 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                             </div>
                             <div class="event__files">
                                 <h4 class="title-4 event__subtitle">Файлы</h4>
-                                <a href="${el.link}">${el.link}</a>
+                                ${itemFilesHTML}
                             </div>
                             
                             <div class="event__notifs">

@@ -13,7 +13,9 @@ import {
     reverseDate
 } from './modules/date';
 import AirDatepicker from 'air-datepicker';
-import { dropImage } from './components/dropImage';
+import {
+    dropImage
+} from './components/dropImage';
 document.addEventListener('DOMContentLoaded', () => {
     const createEvent = document.querySelector('.calendar-create-event');
     const calendarPage = document.querySelector('.calendar-page');
@@ -23,18 +25,31 @@ document.addEventListener('DOMContentLoaded', () => {
     if (createEvent) {
         const dateEvent = document.querySelector('[date-current]').value;
         const form = createEvent.querySelector('.calendar-create-event__form');
-        timeAndDate(form,dateEvent);
+        timeAndDate(form, dateEvent);
         dropImage();
+        descrAdd(form);
     }
 
 
 
-    function timeAndDate(form,dateEvent) {
+    function timeAndDate(form, dateEvent) {
         const date = form.querySelector('.calendar-create-event__date');
         date.value = reverseDate(dateEvent);
         new AirDatepicker(date, {
             autoClose: true,
             isMobile: true,
         })
+    }
+
+    function descrAdd(form) {
+        const blockBtn = form.querySelector('[data-add-descr-btn]');
+        const descrSection = form.querySelector('[data-add-descr-section]');
+        if (blockBtn && descrSection) {
+            const btn = blockBtn.querySelector('.calendar-create-event__add');
+            btn.addEventListener('click', () => {
+                descrSection.removeAttribute('hidden');
+                blockBtn.remove();
+            })
+        }
     }
 })

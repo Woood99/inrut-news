@@ -13,6 +13,7 @@ const modal = (modalHTML, container, speed = 300, target = false) => {
         const recordViewingTwoConfirmBtnYes = modalEl.querySelector('.record-viewing-two-confirm__btn--yes');
         const recordViewingTwoConfirmBtnNo = modalEl.querySelector('.record-viewing-two-confirm__btn--no');
         const settingsModal = {
+            body: document.body,
             modal: modalEl,
             container: modalContainerEl,
             isOpen: false,
@@ -71,6 +72,7 @@ const modal = (modalHTML, container, speed = 300, target = false) => {
 
     function modalClose(settingsModal) {
         if (settingsModal.isOpen) {
+            settingsModal.body.classList.remove('_popup-open');
             settingsModal.container.classList.remove('animate-open');
             settingsModal.container.classList.remove(settingsModal.animation);
             settingsModal.modal.classList.remove('is-open');
@@ -114,6 +116,7 @@ const modal = (modalHTML, container, speed = 300, target = false) => {
 
     function modalOpen(settingsModal) {
         if (!settingsModal.isOpen) {
+            settingsModal.body.classList.add('_popup-open');
             settingsModal.container.scrollTo(0, 0);
             settingsModal.modal.style.setProperty('--transition-time', `${settingsModal.speed / 1000}s`);
             settingsModal.modal.classList.add('is-open');

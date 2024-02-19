@@ -4,6 +4,7 @@ import {
 import SimpleBar from 'simplebar';
 import modal from '../modules/modal';
 import numberReplace from '../modules/numberReplace';
+import { galleryPrimaryBody } from './gallery';
 export const calendarPrimary = (containerSelector, eventsSelector, edit = false) => {
     const calendarEl = document.querySelector(containerSelector);
     const calendarEvents = document.querySelector(eventsSelector);
@@ -261,23 +262,23 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                     });
                     el.files.forEach(file => {
                         itemFilesHTML += `
-                        <div class="event__file file-small-block">
+                        <a href="${file.link}" class="event__file file-small-block default-gallery__item">
                             <div class="file-small-block__image">
                                 <img src="${file.link}" alt="${file.title}">
                             </div>
                             <span class="file-small-block__title">${file.title}</span>
-                        </div>
+                        </a>
                         `;
                     });
                     const itemHTML = `
                         <li class="calendar-event__item event">
                             <div class="event__header">
-                                <button type="button" class="btn btn-reset event__edit">
+                                <a href="${el.linkEdit}" class="event__edit">
                                     <svg>
                                         <use xlink:href="./img/sprite.svg#pencil">
                                         </use>
                                     </svg>
-                                </button>
+                                </a>
                                 <button type="button" class="btn btn-reset event__remove">
                                     <svg>
                                         <use xlink:href="./img/sprite.svg#trash">
@@ -301,6 +302,17 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                                 <h4 class="title-4 event__subtitle">Участники</h4>
                                 ${itemUsersHTML}
                             </div>
+                            <div class="event__object">
+                                <h4 class="title-4 event__subtitle">Объект</h4>
+                                <div class="object-small-card object-small-card--small object-small-card--title">
+                                    <div class="object-small-card__image">
+                                        <img loading="lazy" src="${el.object.image}" width="45" height="45" alt="${el.object.title}">
+                                    </div>
+                                    <h4 class="object-small-card__title">
+                                        ${el.object.title}
+                                    </h4>
+                                </div>
+                            </div>
                             <div class="event__location">
                                 <h4 class="title-4 event__subtitle">Адрес или место</h4>
                                 <span>${el.location}</span>
@@ -309,7 +321,7 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                                 <h4 class="title-4 event__subtitle">Ссылка на звонок</h4>
                                 <a href="${el.link}">${el.link}</a>
                             </div>
-                            <div class="event__files">
+                            <div class="event__files default-gallery">
                                 <h4 class="title-4 event__subtitle">Файлы</h4>
                                 ${itemFilesHTML}
                             </div>
@@ -326,8 +338,13 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                     document.querySelector('.calendar-event__list').insertAdjacentHTML('beforeend', itemHTML);
                 }
             })
-            const calendarEventSimplebar = document.querySelector('.calendar-event-simplebar');
+
+            const modalContainer = document.querySelector('.calendar-event');
+            const calendarEventSimplebar = modalContainer.querySelector('.calendar-event-simplebar');
             new SimpleBar(calendarEventSimplebar);
+            
+            const galleryFiles = modalContainer.querySelectorAll('.default-gallery');
+            galleryFiles.forEach((gallery, index) => galleryPrimaryBody(gallery, `gallery-primary-container--default-${index+1}`,'default-gallery__item'));
         });
     }
 

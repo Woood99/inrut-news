@@ -668,13 +668,16 @@
 
     &__subtitle {
         margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
     }
     &__icon{
         fill: var(--gray);
         width: 14px;
         height: 14px;
         min-width: 16px;
-        margin-right: 12px;
     }
     &__header {
         margin: 0 -16px 16px;
@@ -709,27 +712,17 @@
         font-size: var(--little-big-fz);
         line-height: var(--little-big-lh);
         font-weight: 400;
-        display: flex;
-        .event__icon{
-            transform: translateY(5px);
-        }
     }
 
     &__descr {
         margin-top: 16px;
-        color: var(--primaryTwo);
-
-        display: flex;
-        .event__icon{
-            transform: translateY(5px);
-        }
     }
 
     &__time {
         margin-top: 16px;
         display: flex;
         align-items: center;
-
+        flex-wrap: wrap;
         >span {
             font-size: var(--default-fz);
             line-height: var(--default-lh);
@@ -766,6 +759,7 @@
         .object-small-card{
             .object-small-card__title{
                 font-weight: 400;
+                color: var(--gray);
             }
         }
     }
@@ -878,7 +872,7 @@
         }
     }
 
-    .fc-event .fc-event-main {
+    .fc-event .fc-event-main .fc-event-small {
         display: flex;
         align-items: center;
         gap: 4px;
@@ -887,6 +881,10 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+        }
+        &._active{
+            text-decoration: line-through;
+            color: var(--primaryTwo);
         }
     }
 
@@ -926,5 +924,15 @@
             width: 12px;
             height: 12px;
         }
+    }
+
+    .fc-header-toolbar{
+        margin: 24px 0 0;
+        order: 2;
+    }
+    .fc-popover{
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
     }
 }

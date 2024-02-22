@@ -1,5 +1,6 @@
 .filter {
-    transition: opacity $transitionSpeed $transitionFunction;
+    position: relative;
+
     &__container {
         @media (max-width:$desktop) {
             display: flex;
@@ -127,6 +128,7 @@
     }
 
     &__item {
+        transition: opacity $transitionSpeed $transitionFunction;
         @media (max-width:$desktop) {
             &:not(:last-child) {
                 margin-bottom: 24px;
@@ -269,6 +271,8 @@
                     }
 
                     >.filter-dropdown {
+                        z-index: 99;
+
                         .filter-dropdown__button {
                             height: 40px;
                         }
@@ -566,52 +570,23 @@
             display: none;
         }
     }
-    &._inactive{
+
+    .loading {
+        top: -16px;
+    }
+
+    &._inactive {
         pointer-events: none;
-        opacity: 0.65;
+        .loading {
+            display: flex;
+        }
+        .filter__item{
+            opacity: 0.65;
+        }
     }
 }
 
-.loading {
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    align-items: center;
-    cursor: not-allowed;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 2
-}
 
-.loading._blue .loading__ball {
-    background-color: var(--blue);
-}
-
-.loading__ball {
-    animation: flappy 1.4s ease-in-out infinite;
-    background-color: #fff;
-    border-radius: 50%;
-    display: inline-block;
-    height: 8px;
-    margin: 0 4px;
-    width: 8px;
-}
-
-.loading__ball:nth-child(2) {
-    animation-delay: .2s
-}
-
-.loading__ball:nth-child(3) {
-    animation-delay: .4s
-}
 
 
 
@@ -1745,6 +1720,7 @@
                 margin-right: -12px;
             }
         }
+
         .simplebar-track.simplebar-horizontal,
         .simplebar-track.simplebar-vertical {
             pointer-events: none;
@@ -1863,6 +1839,7 @@
             opacity: 1;
             visibility: visible;
             transform: translateY(4px);
+
             .simplebar-track.simplebar-horizontal,
             .simplebar-track.simplebar-vertical {
                 pointer-events: all;
@@ -2205,6 +2182,7 @@
             visibility: visible;
             transform: translateY(4px);
         }
+
         .simplebar-track.simplebar-horizontal,
         .simplebar-track.simplebar-vertical {
             pointer-events: all;

@@ -4,7 +4,9 @@ import {
 import SimpleBar from 'simplebar';
 import modal from '../modules/modal';
 import numberReplace from '../modules/numberReplace';
-import { galleryPrimaryBody } from './gallery';
+import {
+    galleryPrimaryBody
+} from './gallery';
 export const calendarPrimary = (containerSelector, eventsSelector, edit = false) => {
     const calendarEl = document.querySelector(containerSelector);
     const calendarEvents = document.querySelector(eventsSelector);
@@ -182,7 +184,7 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
         eventContent: (obj) => {
             return {
                 html: `
-                <div data-current-time='${obj.event._def.extendedProps.timeStart}'>
+                <div class="fc-event-small" data-current-event-id='${obj.event._def.extendedProps.eventID}'>
                     <span>${obj.event._def.extendedProps.timeStart}</span>
                     <span>${obj.event._def.title}</span>
                 </div>
@@ -210,13 +212,14 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
     })
 
     calendaryPrimary.render();
-    eventModal(array);
+     eventModal(array);
     btnAdded();
 
     function eventModal(eventsArray) {
         calendarEl.addEventListener('click', (e) => {
-            if (!(e.target.classList.contains('.fc-event') || e.target.closest('.fc-event'))) return false;
-            const event = e.target.closest('.fc-event');
+            const target = e.target;
+            if (!(target.closest('.fc-event') || target.closest('.fc-daygrid-more-link'))) return;
+            const event = target.closest('.fc-event') || target.closest('[data-date]');
             const eventDate = event.closest('[data-date]').dataset.date;
             const modalHTML = `
             <div class="calendar-event" data-date="${eventDate}">
@@ -238,7 +241,6 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
             modal(modalHTML, '.calendar-event', 300);
             eventsArray.forEach(el => {
                 if (el.date === eventDate) {
-                    console.log(el);
                     let itemUsersHTML = '';
                     let itemNotifHTML = '';
                     let itemFilesHTML = '';
@@ -273,7 +275,7 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                         `;
                     });
                     const itemHTML = `
-                        <li class="calendar-event__item event">
+                        <li class="calendar-event__item event" data-event-id="${el.eventID}">
                             <div class="event__header">
                                 <button type="button" class="btn btn-reset event__status">
                                     ${el.status}
@@ -293,23 +295,29 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                             </div>
                             <div class="event__title">
                                 <div class="event__subtitle">
-                                    <h4 class="title-4">Участники</h4>
                                     <svg class="event__icon">
                                         <use xlink:href="img/sprite.svg#emoji"></use>
                                     </svg>
+                                    <h4 class="title-4">Название</h4>
                                 </div>
                                 ${el.title}
                             </div>
                             <div class="event__descr">
-                                <svg class="event__icon">
-                                    <use xlink:href="img/sprite.svg#emoji"></use>
-                                </svg>
+                                <div class="event__subtitle">
+                                    <svg class="event__icon">
+                                        <use xlink:href="img/sprite.svg#emoji"></use>
+                                    </svg>
+                                    <h4 class="title-4">Описание</h4>
+                                </div>
                                 ${el.descr}
                             </div>
                             <div class="event__time">
-                                <svg class="event__icon">
-                                    <use xlink:href="img/sprite.svg#time-2"></use>
-                                </svg>
+                                <div class="event__subtitle">
+                                    <svg class="event__icon">
+                                        <use xlink:href="img/sprite.svg#time-2"></use>
+                                    </svg>
+                                    <h4 class="title-4">Дата и время</h4>
+                                </div>
                                 <span>${el.date}</span>
                                 <span>${el.timeStart}</span>
                                 <span>一</span>
@@ -356,14 +364,21 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
             const modalContainer = document.querySelector('.calendar-event');
             const calendarEventSimplebar = modalContainer.querySelector('.calendar-event-simplebar');
             new SimpleBar(calendarEventSimplebar);
-            
-            const galleryFiles = modalContainer.querySelectorAll('.default-gallery');
-            galleryFiles.forEach((gallery, index) => galleryPrimaryBody(gallery, `gallery-primary-container--default-${index+1}`,'default-gallery__item'));
 
+            const galleryFiles = modalContainer.querySelectorAll('.default-gallery');
+            galleryFiles.forEach((gallery, index) => galleryPrimaryBody(gallery, `gallery-primary-container--default-${index+1}`, 'default-gallery__item'));
+            modalContainer.addEventListener('click', (e) => {
+                const target = e.target;
+                const statusBtn = target.closest('.event__status');
+                if (statusBtn) {
+                    const currentID = statusBtn.closest('.event').dataset.eventId;
+                    const currentDate = event.closest('[data-date]');
+                    const currentEvent = currentDate.querySelector(`[data-current-event-id="${currentID}"]`);
+                    if (currentEvent) currentEvent.classList.add('_active')
+                }
+            })
         });
     }
-
-
 
     function btnAdded() {
         document.querySelectorAll('.fc-day.fc-daygrid-day').forEach(el => {
@@ -371,7 +386,6 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
             wrapper.insertAdjacentHTML('beforeend', generateBtnAdd(el.dataset.date));
         });
     }
-
 
     function generateBtnAdd(date) {
         const html = `

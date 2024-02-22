@@ -5205,29 +5205,6 @@
 }
 
 
-
-
-.card-banner {
-
-    &_yellow {}
-
-    &_credit {}
-
-    &__image {}
-
-    &__content {}
-
-    &__title {}
-
-    &__descr {}
-
-    &__bottom {}
-
-    &__elements {}
-
-    &__element {}
-}
-
 .card-banner_credit {
     padding: 32px;
 
@@ -5319,37 +5296,33 @@
 .loading {
     align-items: center;
     cursor: not-allowed;
-    display: flex;
-    height: 100%;
+    display: none;
+    height: auto;
     justify-content: center;
     left: 0;
     position: absolute;
     top: 0;
+    bottom: 0;
     width: 100%;
-    z-index: 2
-}
-
-.loading._blue .loading__ball {
-    background-color: var(--blue);
-}
-
-.loading__ball {
-    animation: flappy 1.4s ease-in-out infinite;
-    background-color: #fff;
-    border-radius: 50%;
-    display: inline-block;
-    height: 8px;
-    margin: 0 4px;
-    width: 8px;
-    &:nth-child(2){
-
+    z-index: 99;
+    &__ball{
+        animation: flappy 1.4s ease-in-out infinite;
+        background-color: #fff;
+        border-radius: 50%;
+        display: inline-block;
+        height: 12px;
+        width: 12px;
+        margin: 0 6px;
+        &:nth-child(2){
+            animation-delay: .2s;
+        }
+        &:nth-child(3){
+            animation-delay: .4s;
+        }
     }
-}
-
-.loading__ball:nth-child(2) {
-    animation-delay: .2s
-}
-
-.loading__ball:nth-child(3) {
-    animation-delay: .4s
+    &._blue{
+        .loading__ball {
+            background-color: var(--blue);
+        }
+    }
 }

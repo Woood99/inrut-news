@@ -15,7 +15,7 @@
     }
 
     .lg-outer {
-        background-color: var(--white);
+        background-color: #151515;
         height: 100%;
         bottom: 0;
         top: auto;
@@ -28,12 +28,11 @@
     }
 
     .lg-outer .lg-content {
-        margin-top: 70px;
-        height: calc(100% - 116px);
+        height: 100%;
         width: 70%;
         position: relative;
         overflow: hidden;
-        border-radius: 12px;
+
         .lg-inner {
             height: 100%;
             position: relative;
@@ -44,8 +43,9 @@
 
                 .lg-image {
                     height: 100%;
-                    max-width: 85vw;
-                    border-radius: 12px;
+                    max-width: 100%;
+                    object-fit: contain;
+
                     @media (max-width:$desktop) {
                         height: auto;
                         max-width: 100%;
@@ -65,7 +65,7 @@
 
                     .lg-video-poster {
                         height: 100%;
-                        max-width: 85vw;
+                        max-width: 100%;
 
                         @media (max-width:$desktop) {
                             height: auto !important;
@@ -97,13 +97,6 @@
         display: none;
     }
 
-    .lg-components {
-        position: static;
-        @media (max-width:$desktop){
-             height: 116px; 
-        }
-    }
-
     .gallery-primary-container__close {
         margin: 16px 16px 0 0;
         float: right;
@@ -122,11 +115,16 @@
             height: 20px;
             fill: var(--blue);
         }
+
         @media (min-width:$desktop-min) {
             &:hover {
                 color: var(--primary500);
             }
         }
+    }
+
+    .lg-components {
+        display: none;
     }
 
     .gallery-primary-container__prev,
@@ -154,16 +152,6 @@
 
         @media (max-width:$desktop) {
             right: 8px;
-        }
-    }
-
-    .lg-outer .lg-thumb-outer {
-        background-color: transparent;
-        width: 70%;
-        height: 116px;
-
-        @media (max-width:$desktop) {
-            width: 100%;
         }
     }
 
@@ -246,14 +234,80 @@
         background: rgba(34, 41, 102, 0.4);
     }
 
+    .gallery-info {
+        position: fixed;
+        right: 16px;
+        top: 70px;
+        width: calc(30% - 32px);
+        padding: 24px;
+        background-color: #2e2e2e;
+        box-shadow: var(--shadow-primary);
+        color: var(--white);
+        border-radius: 16px;
+
+        &__title {
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        &__price {
+            display: block;
+
+            .object-data__price-new {
+                >span {
+                    &:nth-child(1) {
+                        color: var(--white);
+                    }
+                }
+            }
+        }
+
+        &__address {
+            margin-top: 8px;
+            margin-bottom: 24px;
+            display: block;
+
+            .object-data__address--two {
+                color: var(--white);
+            }
+
+            .object-data__address--one {
+                color: var(--white);
+            }
+        }
+
+        &__btn {
+            margin: 0;
+            width: 100%;
+
+            &:not(:last-child) {
+                margin-bottom: 16px;
+            }
+
+            &.btn-secondary {
+                background-color: var(--white);
+
+                @media (min-width:$desktop-min) {
+                    &:hover {
+                        background-color: var(--primary200);
+                    }
+                }
+            }
+        }
+
+        @media (max-width:$desktop) {
+            position: static;
+            width: 100%;
+            max-width: 500px;
+            margin-top: 24px;
+            margin-bottom: 24px;
+        }
+    }
 
     &[class*="gallery-primary-container--default"] {
         .lg-outer .lg-content {
-            width: 85%;
-        }
-
-        .lg-outer .lg-thumb-outer {
-            width: 85%;
+            width: 90%;
+            margin: 0 auto;
         }
     }
 }
@@ -302,79 +356,5 @@
         border-radius: 16px;
         height: 90%;
         width: calc(100% - 48px - 64px - 24px);
-    }
-}
-
-.gallery-info {
-
-    &__title {
-
-    }
-
-    &__price {
-       margin-bottom: 8px;
-       .object-data__price-new{
-        @media (max-width:$desktop){
-             span{
-                &:nth-child(1){
-                    font-size: var(--small-fz); 
-                }
-                &:nth-child(2){
-                    font-size: var(--very-small-fz);
-                }
-             } 
-        }
-       }
-       @media (max-width:$desktop){
-         margin-bottom: 4px; 
-       }
-    }
-    &__title{
-        @media (max-width:$desktop){
-             font-size: var(--small-fz); 
-        }
-    }
-    &__address {
-        margin-top: 8px;
-        margin-bottom: 24px;
-        display: block;
-        @media (max-width:$desktop){
-             display: none; 
-        }
-    }
-    &__btns{
-        @media (max-width:$desktop){
-            margin-top: 16px;
-             display: grid;
-             grid-template-columns: repeat(2,1fr); 
-             grid-column-gap: 16px;
-        }
-    }
-    &__btn {
-        margin: 0;
-        width: 100%;
-
-        &:not(:last-child) {
-            margin-bottom: 16px;
-            @media (max-width:$desktop){
-                 margin-bottom: 0; 
-            }
-        }
-        @media (max-width:$desktop){
-             font-size: var(--small-fz);
-             height: 40px;
-             padding: 0 24px; 
-        }
-    }
-    @media (max-width:$desktop){
-         padding: 12px 16px; 
-         margin-top: 32px;
-         position: fixed;
-         bottom: 0;
-         width: 100%;
-         right: 0;
-         left: 0;
-         background-color:var(--white);
-         box-shadow: 0px -2px 1px rgba(0, 0, 0, 0.1);
     }
 }

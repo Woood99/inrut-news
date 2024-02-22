@@ -182,8 +182,10 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
         eventContent: (obj) => {
             return {
                 html: `
-            <span>${obj.event._def.extendedProps.timeStart}</span>
-            <span>${obj.event._def.title}</span>
+                <div data-current-time='${obj.event._def.extendedProps.timeStart}'>
+                    <span>${obj.event._def.extendedProps.timeStart}</span>
+                    <span>${obj.event._def.title}</span>
+                </div>
             `
             }
         },
@@ -273,9 +275,9 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                     const itemHTML = `
                         <li class="calendar-event__item event">
                             <div class="event__header">
-                                <div class="event__status">
+                                <button type="button" class="btn btn-reset event__status">
                                     ${el.status}
-                                </div>
+                                </button>
                                 <a href="${el.linkEdit}" class="event__edit">
                                     <svg>
                                         <use xlink:href="./img/sprite.svg#pencil">
@@ -357,6 +359,7 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
             
             const galleryFiles = modalContainer.querySelectorAll('.default-gallery');
             galleryFiles.forEach((gallery, index) => galleryPrimaryBody(gallery, `gallery-primary-container--default-${index+1}`,'default-gallery__item'));
+
         });
     }
 

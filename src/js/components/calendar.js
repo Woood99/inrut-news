@@ -273,6 +273,9 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                     const itemHTML = `
                         <li class="calendar-event__item event">
                             <div class="event__header">
+                                <div class="event__status">
+                                    ${el.status}
+                                </div>
                                 <a href="${el.linkEdit}" class="event__edit">
                                     <svg>
                                         <use xlink:href="./img/sprite.svg#pencil">
@@ -287,12 +290,24 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                                 </button>
                             </div>
                             <div class="event__title">
+                                <div class="event__subtitle">
+                                    <h4 class="title-4">Участники</h4>
+                                    <svg class="event__icon">
+                                        <use xlink:href="img/sprite.svg#emoji"></use>
+                                    </svg>
+                                </div>
                                 ${el.title}
                             </div>
                             <div class="event__descr">
+                                <svg class="event__icon">
+                                    <use xlink:href="img/sprite.svg#emoji"></use>
+                                </svg>
                                 ${el.descr}
                             </div>
                             <div class="event__time">
+                                <svg class="event__icon">
+                                    <use xlink:href="img/sprite.svg#time-2"></use>
+                                </svg>
                                 <span>${el.date}</span>
                                 <span>${el.timeStart}</span>
                                 <span>一</span>
@@ -329,9 +344,6 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                             <div class="event__notifs">
                                 <h4 class="title-4 event__subtitle">Уведомления</h4>
                                 ${itemNotifHTML}
-                            </div>
-                            <div class="event__status">
-                                ${el.status}
                             </div>
                         </li>
                     `;

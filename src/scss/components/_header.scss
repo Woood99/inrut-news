@@ -162,7 +162,7 @@
 
         &__close {
             position: absolute;
-            top: 0px;
+            top: 24px;
             right: 0;
 
             width: 25px;
@@ -212,7 +212,7 @@
 
             &._active {
                 a {
-                    background-color: rgba(0, 150, 255, 0.08);
+                    background-color: #f5f7fa;
                     color: var(--blue);
 
                     svg {
@@ -226,6 +226,7 @@
     .nav-content {
         margin-top: 0;
       padding-left: 24px;
+      margin-top: -24px;
         &__tags {
             grid-column: 1/-1;
             display: flex;
@@ -490,26 +491,11 @@
 
         svg {
             pointer-events: none;
-            transition: fill $transitionSpeed $transitionFunction;
         }
 
         span {
             pointer-events: none;
             margin-left: 8px;
-        }
-
-        @media (min-width:$desktop-min) {
-            &:hover {
-                svg {
-                    fill: var(--blue) !important;
-                }
-            }
-
-            &:active {
-                svg {
-                    fill: var(--white) !important;
-                }
-            }
         }
     }
 

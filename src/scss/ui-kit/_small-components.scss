@@ -5325,3 +5325,33 @@
         }
     }
 }
+
+
+.fc-event-big {
+    >div{
+        &:not(:last-child){
+            margin-bottom: 8px;
+        }
+    }
+    &__users{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .user-info{
+        &:not(:last-child){
+            margin-right: 12px;
+            grid-template-columns: 28px 1fr max-content;
+            &::after{
+                transform: translate(-6px,3px);
+                content: ',';
+            }
+        }
+    }
+    .object-small-card__title {
+        font-weight: 400;
+        color: var(--gray);
+    }
+    .user-info__name{
+        font-weight: 400;
+    }
+}

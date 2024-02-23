@@ -212,7 +212,8 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
     })
 
     calendaryPrimary.render();
-     eventModal(array);
+    eventModal(array);
+    initInfo(array);
     btnAdded();
 
     function eventModal(eventsArray) {
@@ -328,7 +329,7 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                                 ${itemUsersHTML}
                             </div>
                             <div class="event__object">
-                                <h4 class="title-4 event__subtitle">Объект</h4>
+                                <h4 class="title-4 event__subtitle">Встреча на объекте</h4>
                                 <div class="object-small-card object-small-card--small object-small-card--title">
                                     <div class="object-small-card__image">
                                         <img loading="lazy" src="${el.object.image}" width="45" height="45" alt="${el.object.title}">
@@ -397,6 +398,71 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
         `;
 
         return html;
+    }
+
+    function initInfo(eventsArray) {
+        const infoBlock = document.querySelector('.calendar-page__info');
+        const currentDateBlock = calendarEl.querySelector('.fc-day.fc-day-fri.fc-day-today.fc-daygrid-day');
+        const currentDate = currentDateBlock.dataset.date;
+        const currentDateEvents = eventsArray.filter(item => item.date === currentDate);
+        const eventsHTML = currentDateEvents.map(event => {
+            const usersHTML = event.participants.map(user => {
+                return `
+                <div class="event__user user-info user-info--small">
+                    <div class="user-info__avatar avatar">
+                        <img loading="lazy" src="${user.avatar}" width="30" height="30" alt="${user.name}">
+                    </div>
+                    <span class="user-info__name">
+                        ${user.name}
+                    </span>
+                </div>
+                `;
+            });
+            const eventHTML = `
+            <div class="fc-event-big" data-current-event-id="${event.eventID}">
+                <div>
+                    <span>${event.timeStart}</span>
+                    <span>${event.title}</span>
+                </div>
+                <div class="object-small-card object-small-card--small object-small-card--title">
+                    <div class="object-small-card__image">
+                        <img loading="lazy" src="./img/card-1.jpg" width="45" height="45" alt="1-комн. квартира, 55м²,4/5эт.">
+                    </div>
+                    <h4 class="object-small-card__title">
+                        1-комн. квартира, 55м²,4/5эт.
+                    </h4>
+                </div>
+                <div class="fc-event-big__users">
+                    <div class="user-info user-info--small">
+                        <div class="user-info__avatar avatar">
+                            <img loading="lazy" src="./img/avatar-1.jpg" width="30" height="30" alt="Вы">
+                        </div>
+                        <span class="user-info__name">
+                            Вы
+                        </span>
+                    </div>
+                    <div class="user-info user-info--small">
+                        <div class="user-info__avatar avatar">
+                            <img loading="lazy" src="./img/avatar-1.jpg" width="30" height="30" alt="Вы">
+                        </div>
+                        <span class="user-info__name">
+                            Михаил
+                        </span>
+                    </div>
+                    <div class="user-info user-info--small">
+                        <div class="user-info__avatar avatar">
+                            <img loading="lazy" src="./img/avatar-1.jpg" width="30" height="30" alt="Вы">
+                        </div>
+                        <span class="user-info__name">
+                            Никита
+                        </span>
+                    </div>
+                </div>
+            </div>
+            `;
+            return eventHTML;
+        });
+        infoBlock.insertAdjacentHTML('beforeend', eventsHTML);
     }
 
     document.addEventListener('click', (e) => {

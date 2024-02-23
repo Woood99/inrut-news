@@ -10949,6 +10949,9 @@ textarea.input-reset {
   font-weight: 500;
   -ms-grid-row-align: end;
   align-self: end;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .object-small-card__descr {
   -ms-grid-column: 2;
@@ -10963,6 +10966,9 @@ textarea.input-reset {
   font-weight: 400;
   -ms-grid-row-align: start;
   align-self: start;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .object-small-card--title .object-small-card__title {
   -ms-grid-row-align: center;
@@ -15268,28 +15274,16 @@ textarea.input-reset {
   background-color: var(--blue);
 }
 
+.fc-event-big {
+  cursor: pointer;
+}
 .fc-event-big > div:not(:last-child) {
   margin-bottom: 8px;
 }
-.fc-event-big__users {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-.fc-event-big .user-info:not(:last-child) {
-  margin-right: 12px;
-  -ms-grid-columns: 28px 1fr -webkit-max-content;
-  -ms-grid-columns: 28px 1fr max-content;
-  grid-template-columns: 28px 1fr -webkit-max-content;
-  grid-template-columns: 28px 1fr max-content;
-}
-.fc-event-big .user-info:not(:last-child)::after {
-  -webkit-transform: translate(-6px, 3px);
-  -ms-transform: translate(-6px, 3px);
-  transform: translate(-6px, 3px);
-  content: ",";
+.fc-event-big > div > span:nth-child(2) {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .fc-event-big .object-small-card__title {
   font-weight: 400;

@@ -966,6 +966,10 @@
         font-weight: 500;
 
         align-self: end;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     &__descr {
@@ -978,6 +982,10 @@
         font-weight: 400;
 
         align-self: start;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     &--title{
         .object-small-card__title{
@@ -5328,22 +5336,16 @@
 
 
 .fc-event-big {
+    cursor: pointer;
     >div{
         &:not(:last-child){
             margin-bottom: 8px;
         }
-    }
-    &__users{
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .user-info{
-        &:not(:last-child){
-            margin-right: 12px;
-            grid-template-columns: 28px 1fr max-content;
-            &::after{
-                transform: translate(-6px,3px);
-                content: ',';
+        >span{
+            &:nth-child(2){
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
         }
     }

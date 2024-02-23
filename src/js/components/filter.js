@@ -1342,7 +1342,7 @@ export const fieldNotif = () => {
             if (itemsLength === 0) buttonAddSpan.textContent = 'Добавить уведомление';
             if (itemsLength > 0) buttonAddSpan.textContent = 'Добавить ещё уведомление';
             if (itemsLength >= 5) {
-                buttonAdd.setAttribute('hidden','');
+                buttonAdd.setAttribute('hidden', '');
             } else {
                 buttonAdd.removeAttribute('hidden');
             }
@@ -1443,6 +1443,9 @@ export const searchSelectOneBody = (container) => {
     }
     list.forEach(item => {
         item.addEventListener('click', () => {
+            if (!container.classList.contains('_only-search')) {
+                container.dispatchEvent(new Event('change'));
+            }
             list.forEach(item => item.classList.remove('_active'));
 
             input.value = item.dataset.value;
@@ -1461,6 +1464,7 @@ export const searchSelectOneBody = (container) => {
                     input.value = '';
 
                     list.forEach(item => item.removeAttribute('hidden'));
+                    container.classList.remove('_only-search');
                 }, 200);
             }
 
@@ -1507,8 +1511,10 @@ export const searchSelectOneBody = (container) => {
                 body.querySelector(`.${selectorErrorText}`).remove();
             }
             if (input.value === '') {
+                container.classList.remove('_only-search');
                 list.forEach(item => item.removeAttribute('hidden'));
             } else {
+                container.classList.add('_only-search');
                 list.forEach(item => {
                     item.setAttribute('hidden', '');
                     const validateIndex = validateItems.indexOf(item);

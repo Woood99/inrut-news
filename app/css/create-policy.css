@@ -10949,6 +10949,9 @@ textarea.input-reset {
   font-weight: 500;
   -ms-grid-row-align: end;
   align-self: end;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .object-small-card__descr {
   -ms-grid-column: 2;
@@ -10963,6 +10966,9 @@ textarea.input-reset {
   font-weight: 400;
   -ms-grid-row-align: start;
   align-self: start;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .object-small-card--title .object-small-card__title {
   -ms-grid-row-align: center;
@@ -15268,28 +15274,16 @@ textarea.input-reset {
   background-color: var(--blue);
 }
 
+.fc-event-big {
+  cursor: pointer;
+}
 .fc-event-big > div:not(:last-child) {
   margin-bottom: 8px;
 }
-.fc-event-big__users {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-.fc-event-big .user-info:not(:last-child) {
-  margin-right: 12px;
-  -ms-grid-columns: 28px 1fr -webkit-max-content;
-  -ms-grid-columns: 28px 1fr max-content;
-  grid-template-columns: 28px 1fr -webkit-max-content;
-  grid-template-columns: 28px 1fr max-content;
-}
-.fc-event-big .user-info:not(:last-child)::after {
-  -webkit-transform: translate(-6px, 3px);
-  -ms-transform: translate(-6px, 3px);
-  transform: translate(-6px, 3px);
-  content: ",";
+.fc-event-big > div > span:nth-child(2) {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .fc-event-big .object-small-card__title {
   font-weight: 400;
@@ -27673,6 +27667,18 @@ textarea.input-reset {
 }
 .event__status {
   color: var(--blue);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.event__status svg {
+  width: 14px;
+  height: 14px;
+  fill: var(--blue);
+  margin-right: 8px;
 }
 @media (min-width: 1213px) {
   .event__status:hover {
@@ -27763,7 +27769,7 @@ textarea.input-reset {
   width: 12px;
   height: 12px;
 }
-.calendar-secondary .fc-header-toolbar {
+.calendar-secondary .fc-toolbar.fc-header-toolbar {
   margin: 24px 0 0;
   -webkit-box-ordinal-group: 3;
   -ms-flex-order: 2;

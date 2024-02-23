@@ -7,6 +7,9 @@ import numberReplace from '../modules/numberReplace';
 import {
     galleryPrimaryBody
 } from './gallery';
+import {
+    currentSimplebar
+} from './simplebar';
 export const calendarPrimary = (containerSelector, eventsSelector, edit = false) => {
     const calendarEl = document.querySelector(containerSelector);
     const calendarEvents = document.querySelector(eventsSelector);
@@ -210,18 +213,19 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
             },
         }
     })
-    const infoBlock = document.querySelector('.calendar-page__info');
+    const infoBlock = document.querySelector('.calendar-info');
     calendaryPrimary.render();
     eventModal(array);
     initInfo(array);
     btnAdded();
 
     function eventModal(eventsArray) {
-        calendarEl.addEventListener('click', (e) => {
+        infoBlock.addEventListener('click', (e) => {
             const target = e.target;
-            if (!(target.closest('.fc-event') || target.closest('.fc-daygrid-more-link'))) return;
-            const event = target.closest('.fc-event') || target.closest('[data-date]');
-            const eventDate = event.closest('[data-date]').dataset.date;
+            const event = target.closest('.fc-event-big');
+            if (!event) return;
+            const eventDate = infoBlock.dataset.currentDate;
+            const eventID = event.dataset.currentEventId;
             const modalHTML = `
             <div class="calendar-event" data-date="${eventDate}">
             <div class="calendar-event__container">
@@ -240,13 +244,14 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
             </div>
             `;
             modal(modalHTML, '.calendar-event', 300);
-            eventsArray.forEach(el => {
-                if (el.date === eventDate) {
-                    let itemUsersHTML = '';
-                    let itemNotifHTML = '';
-                    let itemFilesHTML = '';
-                    el.participants.forEach(user => {
-                        itemUsersHTML += `
+            const currentEventDate = eventsArray.filter(event => event.eventID == eventID);
+            if (currentEventDate.length > 0) {
+                const el = currentEventDate[0];
+                let itemUsersHTML = '';
+                let itemNotifHTML = '';
+                let itemFilesHTML = '';
+                el.participants.forEach(user => {
+                    itemUsersHTML += `
                         <div class="event__user user-info user-info--small">
                             <div class="user-info__avatar avatar">
                                 <img loading="lazy" src="${user.avatar}" width="30" height="30" alt="${user.name}">
@@ -256,17 +261,17 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                             </span>
                         </div>
                         `;
-                    });
-                    el.notifications.forEach(notif => {
-                        itemNotifHTML += `
+                });
+                el.notifications.forEach(notif => {
+                    itemNotifHTML += `
                         <div class="event__notif">
                             <span>${notif.time}</span>
                             <span>${notif.method}</span>
                         </div>
                         `;
-                    });
-                    el.files.forEach(file => {
-                        itemFilesHTML += `
+                });
+                el.files.forEach(file => {
+                    itemFilesHTML += `
                         <a href="${file.link}" class="event__file file-small-block default-gallery__item">
                             <div class="file-small-block__image">
                                 <img src="${file.link}" alt="${file.title}">
@@ -274,11 +279,15 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                             <span class="file-small-block__title">${file.title}</span>
                         </a>
                         `;
-                    });
-                    const itemHTML = `
+                });
+                const itemHTML = `
                         <li class="calendar-event__item event" data-event-id="${el.eventID}">
                             <div class="event__header">
                                 <button type="button" class="btn btn-reset event__status">
+                                <svg>
+                                    <use xlink:href="./img/sprite.svg#assessment">
+                                    </use>
+                                </svg>
                                     ${el.status}
                                 </button>
                                 <a href="${el.linkEdit}" class="event__edit">
@@ -330,13 +339,16 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                             </div>
                             <div class="event__object">
                                 <h4 class="title-4 event__subtitle">Встреча на объекте</h4>
-                                <div class="object-small-card object-small-card--small object-small-card--title">
+                                <div class="object-small-card object-small-card--small">
                                     <div class="object-small-card__image">
                                         <img loading="lazy" src="${el.object.image}" width="45" height="45" alt="${el.object.title}">
                                     </div>
                                     <h4 class="object-small-card__title">
                                         ${el.object.title}
                                     </h4>
+                                    <p class="object-small-card__descr">
+                                    ${el.object.address}
+                                    </p>
                                 </div>
                             </div>
                             <div class="event__location">
@@ -344,8 +356,8 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                                 <span>${el.location}</span>
                             </div>
                             <div class="event__link">
-                                <h4 class="title-4 event__subtitle">Ссылка на звонок</h4>
-                                <a href="${el.link}">${el.link}</a>
+                                <h4 class="title-4 event__subtitle">Видеовстреча</h4>
+                                <a href="${el.meeting}">${el.meeting}</a>
                             </div>
                             <div class="event__files default-gallery">
                                 <h4 class="title-4 event__subtitle">Файлы</h4>
@@ -358,9 +370,8 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                             </div>
                         </li>
                     `;
-                    document.querySelector('.calendar-event__list').insertAdjacentHTML('beforeend', itemHTML);
-                }
-            })
+                document.querySelector('.calendar-event__list').insertAdjacentHTML('beforeend', itemHTML);
+            }
 
             const modalContainer = document.querySelector('.calendar-event');
             const calendarEventSimplebar = modalContainer.querySelector('.calendar-event-simplebar');
@@ -373,8 +384,7 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                 const statusBtn = target.closest('.event__status');
                 if (statusBtn) {
                     const currentID = statusBtn.closest('.event').dataset.eventId;
-                    const currentDate = event.closest('[data-date]');
-                    const currentEvent = currentDate.querySelector(`[data-current-event-id="${currentID}"]`);
+                    const currentEvent = eventDate.querySelector(`[data-current-event-id="${currentID}"]`);
                     if (currentEvent) currentEvent.classList.add('_active')
                 }
             })
@@ -424,54 +434,50 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
         `;
     }
 
-    function generateInfo(eventsArray,currentDate){
+    function generateInfo(eventsArray, currentDate) {
         infoBlock.innerHTML = '';
         const currentDateEvents = eventsArray.filter(item => item.date === currentDate);
         const currentDateTitle = `
-            <h2 class="title-3" style="margin-bottom: 24px;">${getCurrentDate(currentDate)}</h2>
+            <div class="calendar-info__header">
+                <h2 class="title-3" style="margin-bottom: 24px;">${getCurrentDate(currentDate)}</h2>
+            </div>
         `;
         let eventsHTML = currentDateEvents.map(event => {
-            const usersHTML = event.participants.map(user => {
-                return `
-                <div class="user-info user-info--small">
-                    <div class="user-info__avatar avatar">
-                        <img loading="lazy" src="${user.avatar}" width="30" height="30" alt="${user.name}">
-                    </div>
-                    <span class="user-info__name">
-                        ${user.name}
-                    </span>
-                </div>
-                `;
-            });
             const eventHTML = `
             <div class="fc-event-big" data-current-event-id="${event.eventID}">
                 <div>
                     <span>${event.timeStart}</span>
                     <span>${event.title}</span>
                 </div>
-                <div class="object-small-card object-small-card--small object-small-card--title">
+                <div class="object-small-card object-small-card--small">
                     <div class="object-small-card__image">
-                        <img loading="lazy" src="./img/card-1.jpg" width="45" height="45" alt="1-комн. квартира, 55м²,4/5эт.">
+                        <img loading="lazy" src="${event.object.image}" width="45" height="45" alt="${event.object.title}">
                     </div>
                     <h4 class="object-small-card__title">
-                        1-комн. квартира, 55м²,4/5эт.
+                        ${event.object.title}
                     </h4>
-                </div>
-                <div class="fc-event-big__users">
-                    ${usersHTML.join('')}
+                    <p class="object-small-card__descr">
+                        ${event.object.address}
+                    </p>
                 </div>
             </div>
             `;
             return eventHTML;
         });
+        infoBlock.setAttribute('data-current-date', currentDate);
         infoBlock.insertAdjacentHTML('beforeend', currentDateTitle);
-        infoBlock.insertAdjacentHTML('beforeend', eventsHTML.length === 0 ? 'Нет событий' : eventsHTML.join(''));
+        infoBlock.insertAdjacentHTML('beforeend', `
+            <div class="calendar-info__content simplebar-third">
+                ${eventsHTML.length === 0 ? 'Нет событий' : eventsHTML.join('')}
+            </div>
+        `);
+        currentSimplebar(infoBlock.querySelector('.calendar-info__content.simplebar-third'));
     }
 
     function initInfo(eventsArray) {
         const currentDateBlock = calendarEl.querySelector('.fc-day.fc-day-fri.fc-day-today.fc-daygrid-day');
         const currentDate = currentDateBlock.dataset.date;
-        generateInfo(eventsArray,currentDate);
+        generateInfo(eventsArray, currentDate);
     }
 
     document.addEventListener('click', (e) => {
@@ -480,7 +486,7 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
         const dateBlock = target.closest('.fc-day.fc-daygrid-day');
         if (dateBlock && !createEvent) {
             const currentDate = dateBlock.dataset.date;
-            generateInfo(array,currentDate);
+            generateInfo(array, currentDate);
             return;
         }
         if (createEvent) {

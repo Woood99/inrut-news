@@ -210,7 +210,7 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
             },
         }
     })
-
+    const infoBlock = document.querySelector('.calendar-page__info');
     calendaryPrimary.render();
     eventModal(array);
     initInfo(array);
@@ -400,15 +400,40 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
         return html;
     }
 
-    function initInfo(eventsArray) {
-        const infoBlock = document.querySelector('.calendar-page__info');
-        const currentDateBlock = calendarEl.querySelector('.fc-day.fc-day-fri.fc-day-today.fc-daygrid-day');
-        const currentDate = currentDateBlock.dataset.date;
+    function getCurrentDate(currentDate) {
+        const newDate = new Date(currentDate);
+        const maps = {
+            daysOfWeek: [
+                'Воскресенье',
+                'Понедельник',
+                'Вторник',
+                'Среда',
+                'Четверг',
+                'Пятница',
+                'Суббота',
+            ],
+            months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+            months2: ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'],
+        };
+        const date = new Date(newDate.setDate(newDate.getDate()));
+        return `
+            ${maps.daysOfWeek[date.getDay()]}
+            ${date.getDate()}
+            ${maps.months2[maps.months.indexOf(maps.months[date.getMonth()])].toLowerCase()}
+            
+        `;
+    }
+
+    function generateInfo(eventsArray,currentDate){
+        infoBlock.innerHTML = '';
         const currentDateEvents = eventsArray.filter(item => item.date === currentDate);
-        const eventsHTML = currentDateEvents.map(event => {
+        const currentDateTitle = `
+            <h2 class="title-3" style="margin-bottom: 24px;">${getCurrentDate(currentDate)}</h2>
+        `;
+        let eventsHTML = currentDateEvents.map(event => {
             const usersHTML = event.participants.map(user => {
                 return `
-                <div class="event__user user-info user-info--small">
+                <div class="user-info user-info--small">
                     <div class="user-info__avatar avatar">
                         <img loading="lazy" src="${user.avatar}" width="30" height="30" alt="${user.name}">
                     </div>
@@ -433,41 +458,31 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                     </h4>
                 </div>
                 <div class="fc-event-big__users">
-                    <div class="user-info user-info--small">
-                        <div class="user-info__avatar avatar">
-                            <img loading="lazy" src="./img/avatar-1.jpg" width="30" height="30" alt="Вы">
-                        </div>
-                        <span class="user-info__name">
-                            Вы
-                        </span>
-                    </div>
-                    <div class="user-info user-info--small">
-                        <div class="user-info__avatar avatar">
-                            <img loading="lazy" src="./img/avatar-1.jpg" width="30" height="30" alt="Вы">
-                        </div>
-                        <span class="user-info__name">
-                            Михаил
-                        </span>
-                    </div>
-                    <div class="user-info user-info--small">
-                        <div class="user-info__avatar avatar">
-                            <img loading="lazy" src="./img/avatar-1.jpg" width="30" height="30" alt="Вы">
-                        </div>
-                        <span class="user-info__name">
-                            Никита
-                        </span>
-                    </div>
+                    ${usersHTML.join('')}
                 </div>
             </div>
             `;
             return eventHTML;
         });
-        infoBlock.insertAdjacentHTML('beforeend', eventsHTML);
+        infoBlock.insertAdjacentHTML('beforeend', currentDateTitle);
+        infoBlock.insertAdjacentHTML('beforeend', eventsHTML.length === 0 ? 'Нет событий' : eventsHTML.join(''));
+    }
+
+    function initInfo(eventsArray) {
+        const currentDateBlock = calendarEl.querySelector('.fc-day.fc-day-fri.fc-day-today.fc-daygrid-day');
+        const currentDate = currentDateBlock.dataset.date;
+        generateInfo(eventsArray,currentDate);
     }
 
     document.addEventListener('click', (e) => {
         const target = e.target;
         const createEvent = target.closest('.calendar-btn-add');
+        const dateBlock = target.closest('.fc-day.fc-daygrid-day');
+        if (dateBlock && !createEvent) {
+            const currentDate = dateBlock.dataset.date;
+            generateInfo(array,currentDate);
+            return;
+        }
         if (createEvent) {
             document.location = `calendar-create-event.html?event=${createEvent.dataset.currentDate}`;
         }

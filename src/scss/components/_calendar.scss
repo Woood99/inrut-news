@@ -667,11 +667,12 @@
     border-radius: 12px;
 
     &__subtitle {
-        margin-bottom: 8px;
         display: flex;
         align-items: center;
         gap: 8px;
-        width: 100%;
+        --width: 200px;
+        width: var(--width);
+        flex: 0 0 var(--width)
     }
     &__icon{
         fill: var(--gray);
@@ -712,17 +713,23 @@
         font-size: var(--little-big-fz);
         line-height: var(--little-big-lh);
         font-weight: 400;
+
+
+        display: flex;
+        align-items: start;
     }
 
     &__descr {
         margin-top: 16px;
+
+        display: flex;
+        align-items: start;
     }
 
     &__time {
         margin-top: 16px;
         display: flex;
-        align-items: center;
-        flex-wrap: wrap;
+        align-items: start;
         >span {
             font-size: var(--default-fz);
             line-height: var(--default-lh);
@@ -743,6 +750,10 @@
         width: calc(100% + 32px);
         margin: 16px -16px 0;
         padding: 16px 16px 0;
+
+        display: flex;
+        flex-wrap: wrap;
+        align-items: start;
     }
 
     &__user {
@@ -751,11 +762,17 @@
         }
 
         &:not(:last-child) {
-            margin-bottom: 12px;
+            margin-right: 16px;
+            &::after{
+
+            }
         }
     }
     &__object{
         margin-top: 24px;
+
+        display: flex;
+        align-items: start;
         .object-small-card{
             .object-small-card__title{
                 font-weight: 400;
@@ -765,11 +782,15 @@
     }
     &__location {
         margin-top: 24px;
+
+        display: flex;
+        align-items: start;
     }
 
     &__link {
         margin-top: 24px;
-
+        display: flex;
+        align-items: start;
         a {
             display: block;
             color: var(--blue);
@@ -787,10 +808,28 @@
 
     &__files {
         margin-top: 24px;
+
+        display: flex;
+        align-items: start;
+        >div{
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .file-small-block{
+            max-width: 100%;
+            width: max-content;
+            flex: 0 0 max-content;
+            max-width: 200px;
+        }
     }
 
     &__notifs {
         margin-top: 24px;
+
+        display: flex;
+        align-items: start;
     }
 
     &__notif {
@@ -799,25 +838,17 @@
         gap: 4px;
 
         &:not(:last-child) {
-            margin-bottom: 8px;
+            margin-right: 16px;
         }
     }
-    &__files{
-        .file-small-block{
-            max-width: 100%;
-            width: max-content;
-            &:not(:last-child){
-                margin-bottom: 12px;
-            }
-        }
-    }
+
     &__status{
         color: var(--blue);
         display: flex;
         align-items: center;
         svg{
-            width: 14px;
-            height: 14px;
+            width: 20px;
+            height: 20px;
             fill: var(--blue);
             margin-right: 8px;
         }
@@ -876,7 +907,7 @@
 
     .fc-daygrid-event-harness {
         &:not(:last-child) {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
     }
 
@@ -934,7 +965,19 @@
         }
     }
     .fc-toolbar.fc-header-toolbar{
-
+            justify-content: start;
+            .fc-toolbar-chunk{
+                &:nth-child(1){
+                }
+                &:nth-child(2){
+                    margin: 0 0 0 32px;
+                }
+                &:nth-child(3){
+                    margin: 0 24px;
+                }
+                &:nth-child(4){
+                }
+            }
     }
     .fc-popover{
         opacity: 0;

@@ -170,7 +170,7 @@ export const complaintObjectMap = () => {
                 removeControlsPrimary(map);
 
                 const fullScreenControl = map.controls.get('fullscreenControl');
-                fullScreenControl.events.add('fullscreenenter', function () {
+                fullScreenControls.add('fullscreenenter', function () {
                     const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
                     fullscreenElement.parentNode.style.position = 'fixed';
                 });
@@ -439,7 +439,7 @@ export const mapDraw = () => {
                 if (drawBtns !== null) {
                     map.controls.add("zoomControl");
                     const fullScreenControl = map.controls.get('fullscreenControl');
-                    fullScreenControl.events.add('fullscreenenter', function () {
+                    fullScreenControls.add('fullscreenenter', function () {
                         map.behaviors.enable(['scrollZoom']);
                         const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
                         fullscreenElement.classList.add('draw-map-active-fullscreen');
@@ -452,7 +452,7 @@ export const mapDraw = () => {
                             maxWidth: '44'
                         })
                     });
-                    fullScreenControl.events.add('fullscreenexit', function () {
+                    fullScreenControls.add('fullscreenexit', function () {
                         map.behaviors.disable(['scrollZoom']);
                         const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
                         fullscreenElement.classList.remove('yandex-map-active-fullscreen');
@@ -473,10 +473,10 @@ export const mapDraw = () => {
                     map.behaviors.disable(['drag']);
                     if (drawBtns !== null) {
                         const fullScreenControl = map.controls.get('fullscreenControl');
-                        fullScreenControl.events.add('fullscreenenter', function () {
+                        fullScreenControls.add('fullscreenenter', function () {
                             map.behaviors.enable(['drag']);
                         });
-                        fullScreenControl.events.add('fullscreenexit', function () {
+                        fullScreenControls.add('fullscreenexit', function () {
                             map.behaviors.disable(['drag']);
                         });
                     }
@@ -596,7 +596,7 @@ export const objectMaps = () => {
                     });
 
                     const fullScreenControl = map.controls.get('fullscreenControl');
-                    fullScreenControl.events.add('fullscreenenter', function () {
+                    fullScreenControls.add('fullscreenenter', function () {
                         const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
                         fullscreenElement.classList.add('yandex-map-active-fullscreen');
                         map.behaviors.enable(['scrollZoom']);
@@ -610,7 +610,7 @@ export const objectMaps = () => {
                         }
                     });
 
-                    fullScreenControl.events.add('fullscreenexit', function () {
+                    fullScreenControls.add('fullscreenexit', function () {
                         const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
                         if (infrastructure.classList.contains('_active')) {
                             objectMaps.closest('.object-location__maps').insertAdjacentElement('afterend', infrastructure);
@@ -663,7 +663,7 @@ export const objectMaps = () => {
                                     item.closest('.ymaps-2-1-79-float-button').classList.add('ymaps__route-close');
                                 })
                             }, 1);
-                            btnCloseRoute.events.add('click', function (e) {
+                            btnCloseRoutes.add('click', function (e) {
                                 routeHidden();
                                 map.controls.remove(btnCloseRoute);
                                 locationRoutesBtn.classList.remove('_active');

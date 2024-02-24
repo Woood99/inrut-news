@@ -216,6 +216,7 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
     const infoBlock = document.querySelector('.calendar-info');
     calendaryPrimary.render();
     eventModal(array);
+    init();
     initInfo(array);
     btnAdded();
 
@@ -283,11 +284,11 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                 const itemHTML = `
                         <li class="calendar-event__item event" data-event-id="${el.eventID}">
                             <div class="event__header">
-                                <button type="button" class="btn btn-reset event__status">
-                                <svg>
-                                    <use xlink:href="./img/sprite.svg#assessment">
-                                    </use>
-                                </svg>
+                                <button type="button" class="btn btn-reset event__status js-popup-close">
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#assessment">
+                                        </use>
+                                    </svg>
                                     ${el.status}
                                 </button>
                                 <a href="${el.linkEdit}" class="event__edit">
@@ -361,7 +362,9 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                             </div>
                             <div class="event__files default-gallery">
                                 <h4 class="title-4 event__subtitle">Файлы</h4>
-                                ${itemFilesHTML}
+                                <div>
+                                    ${itemFilesHTML}
+                                </div>
                             </div>
                             
                             <div class="event__notifs">
@@ -384,8 +387,10 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                 const statusBtn = target.closest('.event__status');
                 if (statusBtn) {
                     const currentID = statusBtn.closest('.event').dataset.eventId;
-                    const currentEvent = eventDate.querySelector(`[data-current-event-id="${currentID}"]`);
-                    if (currentEvent) currentEvent.classList.add('_active')
+                    const currentEvents = document.querySelectorAll(`[data-current-event-id="${currentID}"]`);
+                    if (currentEvents.length > 0) {
+                        currentEvents.forEach(item => item.classList.add('_active'))
+                    }
                 }
             })
         });
@@ -460,6 +465,12 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                         ${event.object.address}
                     </p>
                 </div>
+                <div class="fc-event-big__status">
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#info"></use>
+                    </svg>
+                    ${event.statusApp}
+                </div>
             </div>
             `;
             return eventHTML;
@@ -481,7 +492,11 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
             generateInfo(eventsArray, currentDate);
         }
     }
-
+    function init() {
+        const newEvent = document.querySelector('.calendar-page__new-event');
+        const to = calendarEl.querySelector('.fc-header-toolbar');
+        to.insertAdjacentElement('beforeend',newEvent);
+    }
     document.addEventListener('click', (e) => {
         const target = e.target;
         const createEvent = target.closest('.calendar-btn-add');

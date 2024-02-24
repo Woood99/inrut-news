@@ -4162,7 +4162,7 @@ textarea.input-reset {
   display: none;
   -webkit-box-shadow: var(--shadow-primary);
   box-shadow: var(--shadow-primary);
-  width: 406px;
+  width: 650px;
   border-radius: 12px 0 0 12px;
   padding: 75px 0 0;
 }
@@ -15281,6 +15281,21 @@ textarea.input-reset {
 
 .fc-event-big {
   cursor: pointer;
+  position: relative;
+  padding-left: 24px;
+}
+.fc-event-big::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: calc(100% - 16px);
+  background-color: var(--blue);
+}
+.fc-event-big > div:nth-child(1) > span:nth-child(1) {
+  color: var(--dark);
+  margin-right: 8px;
 }
 .fc-event-big > div:not(:last-child) {
   margin-bottom: 8px;
@@ -15296,6 +15311,33 @@ textarea.input-reset {
 }
 .fc-event-big .user-info__name {
   font-weight: 400;
+}
+.fc-event-big__status {
+  font-size: var(--small-fz);
+  line-height: var(--small-lh);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 8px;
+}
+.fc-event-big__status svg {
+  width: 14px;
+  height: 14px;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 14px;
+  flex: 0 0 14px;
+  fill: none;
+  stroke-width: 1.5px;
+  stroke: var(--primaryTwo);
+}
+.fc-event-big._active > div:nth-child(1) {
+  text-decoration: line-through;
+}
+.fc-event-big._active .object-small-card__title {
+  text-decoration: line-through;
+}
+.fc-event-big._active .object-small-card__descr {
+  text-decoration: line-through;
 }
 
 .tags__list {
@@ -26300,7 +26342,6 @@ textarea.input-reset {
   border-radius: 12px;
 }
 .event__subtitle {
-  margin-bottom: 8px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -26308,7 +26349,11 @@ textarea.input-reset {
   -ms-flex-align: center;
   align-items: center;
   gap: 8px;
-  width: 100%;
+  --width: 200px;
+  width: var(--width);
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 var(--width);
+  flex: 0 0 var(--width);
 }
 .event__icon {
   fill: var(--gray);
@@ -26352,20 +26397,30 @@ textarea.input-reset {
   font-size: var(--little-big-fz);
   line-height: var(--little-big-lh);
   font-weight: 400;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
 }
 .event__descr {
   margin-top: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
 }
 .event__time {
   margin-top: 16px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
 }
 .event__time > span {
   font-size: var(--default-fz);
@@ -26383,15 +26438,29 @@ textarea.input-reset {
   width: calc(100% + 32px);
   margin: 16px -16px 0;
   padding: 16px 16px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
 }
 .event__user .user-info__name {
   font-weight: 400;
 }
 .event__user:not(:last-child) {
-  margin-bottom: 12px;
+  margin-right: 16px;
 }
 .event__object {
   margin-top: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
 }
 .event__object .object-small-card .object-small-card__title {
   font-weight: 400;
@@ -26399,9 +26468,21 @@ textarea.input-reset {
 }
 .event__location {
   margin-top: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
 }
 .event__link {
   margin-top: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
 }
 .event__link a {
   display: block;
@@ -26419,9 +26500,42 @@ textarea.input-reset {
 }
 .event__files {
   margin-top: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+}
+.event__files > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.event__files .file-small-block {
+  max-width: 100%;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 max-content;
+  flex: 0 0 max-content;
+  max-width: 200px;
 }
 .event__notifs {
   margin-top: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
 }
 .event__notif {
   display: -webkit-box;
@@ -26433,16 +26547,7 @@ textarea.input-reset {
   gap: 4px;
 }
 .event__notif:not(:last-child) {
-  margin-bottom: 8px;
-}
-.event__files .file-small-block {
-  max-width: 100%;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-}
-.event__files .file-small-block:not(:last-child) {
-  margin-bottom: 12px;
+  margin-right: 16px;
 }
 .event__status {
   color: var(--blue);
@@ -26454,8 +26559,8 @@ textarea.input-reset {
   align-items: center;
 }
 .event__status svg {
-  width: 14px;
-  height: 14px;
+  width: 20px;
+  height: 20px;
   fill: var(--blue);
   margin-right: 8px;
 }
@@ -26496,7 +26601,7 @@ textarea.input-reset {
   max-width: 100%;
 }
 .calendar-secondary .fc-daygrid-event-harness:not(:last-child) {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 .calendar-secondary .fc-event .fc-event-main .fc-event-small {
   display: -webkit-box;
@@ -26547,6 +26652,17 @@ textarea.input-reset {
 .calendar-secondary .calendar-btn-add svg {
   width: 12px;
   height: 12px;
+}
+.calendar-secondary .fc-toolbar.fc-header-toolbar {
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: start;
+}
+.calendar-secondary .fc-toolbar.fc-header-toolbar .fc-toolbar-chunk:nth-child(2) {
+  margin: 0 0 0 32px;
+}
+.calendar-secondary .fc-toolbar.fc-header-toolbar .fc-toolbar-chunk:nth-child(3) {
+  margin: 0 24px;
 }
 .calendar-secondary .fc-popover {
   opacity: 0;
@@ -32141,6 +32257,10 @@ textarea.input-reset {
   border-bottom: 1px solid var(--primary100);
   margin-bottom: 16px;
   padding-bottom: 16px;
+}
+.calendar-page__new-event {
+  margin-left: auto;
+  color: var(--blue);
 }
 
 .calendar-info {

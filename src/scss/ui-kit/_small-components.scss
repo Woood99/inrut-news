@@ -5337,7 +5337,26 @@
 
 .fc-event-big {
     cursor: pointer;
+    position: relative;
+    padding-left: 24px;
+    &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 2px;
+        height: calc(100% - 16px);
+        background-color: var(--blue);
+    }
     >div{
+        &:nth-child(1){
+            >span{
+                &:nth-child(1){
+                    color: var(--dark);
+                    margin-right: 8px;
+                }
+            }
+        }
         &:not(:last-child){
             margin-bottom: 8px;
         }
@@ -5355,5 +5374,34 @@
     }
     .user-info__name{
         font-weight: 400;
+    }
+    &__status{
+        font-size: var(--small-fz);
+        line-height: var(--small-lh);
+        display: flex;
+        gap: 8px;
+        svg{
+            width: 14px;
+            height: 14px;
+            flex: 0 0 14px;
+            fill: none;
+            stroke-width: 1.5px;
+            stroke: var(--primaryTwo);
+        }
+    }
+    &._active{
+        >div{
+            &:nth-child(1){
+                text-decoration: line-through;
+            }
+        }
+        .object-small-card{
+            &__title {
+                text-decoration: line-through;
+            }
+            &__descr {
+                text-decoration: line-through;
+            }
+        }
     }
 }

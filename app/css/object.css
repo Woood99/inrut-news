@@ -4162,7 +4162,7 @@ textarea.input-reset {
   display: none;
   -webkit-box-shadow: var(--shadow-primary);
   box-shadow: var(--shadow-primary);
-  width: 406px;
+  width: 650px;
   border-radius: 12px 0 0 12px;
   padding: 75px 0 0;
 }
@@ -15281,6 +15281,21 @@ textarea.input-reset {
 
 .fc-event-big {
   cursor: pointer;
+  position: relative;
+  padding-left: 24px;
+}
+.fc-event-big::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: calc(100% - 16px);
+  background-color: var(--blue);
+}
+.fc-event-big > div:nth-child(1) > span:nth-child(1) {
+  color: var(--dark);
+  margin-right: 8px;
 }
 .fc-event-big > div:not(:last-child) {
   margin-bottom: 8px;
@@ -15296,6 +15311,33 @@ textarea.input-reset {
 }
 .fc-event-big .user-info__name {
   font-weight: 400;
+}
+.fc-event-big__status {
+  font-size: var(--small-fz);
+  line-height: var(--small-lh);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 8px;
+}
+.fc-event-big__status svg {
+  width: 14px;
+  height: 14px;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 14px;
+  flex: 0 0 14px;
+  fill: none;
+  stroke-width: 1.5px;
+  stroke: var(--primaryTwo);
+}
+.fc-event-big._active > div:nth-child(1) {
+  text-decoration: line-through;
+}
+.fc-event-big._active .object-small-card__title {
+  text-decoration: line-through;
+}
+.fc-event-big._active .object-small-card__descr {
+  text-decoration: line-through;
 }
 
 .main-slider {
@@ -33692,6 +33734,10 @@ textarea.input-reset {
 }
 .object-similar__items .card-secondary .card-secondary__bottom {
   margin-top: auto;
+}
+.object-similar__btn {
+  margin-top: 24px;
+  width: 100%;
 }
 
 .object-two .object-plate-bottom__btn {

@@ -82,6 +82,7 @@ export const bookConsultationValidate = () => {
     const telInput = telLabel.querySelector('input');
     const agentToggle = form.querySelector('.toggle-checkbox input');
     const agents = form.querySelector('.book-consultation__agents');
+    const cardsAgent = agents.querySelectorAll('.card-agent');
 
     [nameLabel, telInput].forEach(el => {
         el.addEventListener('input', () => {
@@ -91,41 +92,35 @@ export const bookConsultationValidate = () => {
     nameInput.addEventListener('input', () => {
         nameInput.value = nameInput.value.replace(/[0-9]/g, '');
     })
-    if (agents) {
-        const cardsAgent = agents.querySelectorAll('.card-agent');
-        agentToggle.addEventListener('input', () => {
-            if (!agentToggle.checked) {
-                cardsAgent.forEach(card => {
-                    card.classList.remove('_error');
-                    card.classList.remove('_active');
-                    card.querySelector('input').checked = false;
-                })
-            }
-        })
-        cardsAgent.forEach(card => {
-            card.querySelector('input').addEventListener('input', () => {
-                if (formEventInput) validate();
+    agentToggle.addEventListener('input', () => {
+        if (!agentToggle.checked) {
+            cardsAgent.forEach(card => {
+                card.classList.remove('_error');
+                card.classList.remove('_active');
+                card.querySelector('input').checked = false;
             })
+        }
+    })
+    cardsAgent.forEach(card => {
+        card.querySelector('input').addEventListener('input', () => {
+            if (formEventInput) validate();
         })
-    }
+    })
 
     function validate() {
         let result = true;
         formEventInput = true;
         validateRemoveError(telLabel);
         validateRemoveError(nameLabel);
-        if (agents) {
-            const cardsAgent = agents.querySelectorAll('.card-agent');
-            cardsAgent.forEach(card => card.classList.remove('_error'));
-        }
+        cardsAgent.forEach(card => card.classList.remove('_error'));
 
         if (!validateCreateErrorName(nameLabel, nameInput)) {
             result = false;
         }
-        if (!validateCreateErrorMask(telLabel, telInput, validateTextMap.tel, 10)) {
+        if (!validateCreateErrorTel(telLabel, telInput, validateTextMap.tel)) {
             result = false;
         }
-        if (agents && agents.classList.contains('_active') && !agents.querySelector('.card-agent input:checked')) {
+        if (agents.classList.contains('_active') && !agents.querySelector('.card-agent input:checked')) {
             result = false;
             cardsAgent.forEach(agent => agent.classList.add('_error'));
         }

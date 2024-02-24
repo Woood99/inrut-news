@@ -393,11 +393,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 
-    document.querySelectorAll('.field-select__input').forEach(input => {
-        console.log(input);
-        input.addEventListener('change',() => {
-            console.log('da');
-        })
-    })
-
 })

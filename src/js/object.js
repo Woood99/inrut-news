@@ -11,6 +11,7 @@ import {
     mapPrimary,
     objectMaps
 } from './components/maps';
+import bookConsultation from './components/bookConsultation';
 import linkCopy from './modules/linkCopy';
 import {
     validateRadioPrimary,
@@ -99,9 +100,10 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollTarget();
     metroInfo();
     apartKitchen();
+    bookConsultation();
     // ==============================================
 
     // ==== maps ====
-    // mapPrimary();
-    // objectMaps();
+     mapPrimary();
+     objectMaps();
 })

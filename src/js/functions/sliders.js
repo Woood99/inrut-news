@@ -41,6 +41,23 @@ function initSliders() {
             });
         })
     }
+    if (document.querySelector('.place-sale-sale__shorts .swiper')) {
+        const items = document.querySelectorAll('.place-sale-sale__shorts .swiper');
+        items.forEach(slider => {
+            new Swiper(slider, {
+                observer: true,
+                observeParents: true,
+                slidesPerView: 5,
+                spaceBetween: 16,
+                speed: 800,
+                navigation: {
+                    prevEl: slider.closest('.place-sale-sale__shorts').querySelector('.nav-arrow-primary--prev'),
+                    nextEl: slider.closest('.place-sale-sale__shorts').querySelector('.nav-arrow-primary--next'),
+                    lockClass: '_hidden',
+                },
+            });
+        })
+    }
     if (document.querySelector('.book-consultation__agents')) {
         const slider = document.querySelector('.book-consultation__agents');
         new Swiper(slider, {

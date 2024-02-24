@@ -82,6 +82,7 @@ export const bookConsultationValidate = () => {
     const telInput = telLabel.querySelector('input');
     const agentToggle = form.querySelector('.toggle-checkbox input');
     const agents = form.querySelector('.book-consultation__agents');
+    if (!agents) return;
     const cardsAgent = agents.querySelectorAll('.card-agent');
 
     [nameLabel, telInput].forEach(el => {

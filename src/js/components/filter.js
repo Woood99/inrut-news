@@ -1039,7 +1039,7 @@ export const fieldSelect = () => {
     const containers = document.querySelectorAll('.field-select');
     if (containers.length === 0) return;
     containers.forEach(container => {
-        updateInput(container);
+        updateInput(container,false);
         const name = container.dataset.fieldSelectName;
         if (name) {
             container.querySelectorAll('.field-select__item').forEach((item, index) => {
@@ -1104,7 +1104,7 @@ export const fieldSelect = () => {
                 }
             }
 
-            updateInput(container);
+            updateInput(container,true);
         })
 
         if (container.hasAttribute('data-submit-filter-object-type')) {
@@ -1145,7 +1145,7 @@ export const fieldSelect = () => {
 
 
 
-    function updateInput(container) {
+    function updateInput(container,change) {
         const selectedItems = container.querySelectorAll('.field-select__item._active');
         const input = container.querySelector('.field-select__input');
 
@@ -1156,6 +1156,9 @@ export const fieldSelect = () => {
                 }
             })
             input.value = result.join(", ");
+            if (change) {
+                input.dispatchEvent(new Event('change'));
+            }
         }
     }
 }
@@ -1445,6 +1448,8 @@ export const searchSelectOneBody = (container) => {
         item.addEventListener('click', () => {
             if (!container.classList.contains('_only-search')) {
                 container.dispatchEvent(new Event('change'));
+                const form = container.closest('form');
+                if (form) form.dispatchEvent(new Event('change'));
             }
             list.forEach(item => item.classList.remove('_active'));
 

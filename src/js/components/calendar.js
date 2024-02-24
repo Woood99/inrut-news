@@ -475,9 +475,11 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
     }
 
     function initInfo(eventsArray) {
-        const currentDateBlock = calendarEl.querySelector('.fc-day.fc-day-fri.fc-day-today.fc-daygrid-day');
-        const currentDate = currentDateBlock.dataset.date;
-        generateInfo(eventsArray, currentDate);
+        const currentDateBlock = calendarEl.querySelector('.fc-day.fc-day-today.fc-daygrid-day');
+        if (currentDateBlock){
+            const currentDate = currentDateBlock.dataset.date;
+            generateInfo(eventsArray, currentDate);
+        }
     }
 
     document.addEventListener('click', (e) => {

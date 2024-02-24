@@ -575,8 +575,15 @@ function initSliders() {
                     nextEl: '.nav-arrow-primary--next',
                 },
                 pagination: {
-                    el: '.pagination-primary',
+                    el: el.querySelector('.pagination-primary'),
                     type: 'fraction',
+                    renderFraction: function (currentClass, totalClass) {
+                        return `
+                            <span class="${currentClass}"></span>
+                            <span class="swiper-pagination-word">из</span>
+                            <span class="${totalClass}"></span>
+                            `;
+                    }
                 },
             });
         })

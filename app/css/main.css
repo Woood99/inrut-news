@@ -19121,6 +19121,7 @@ textarea.input-reset {
   }
 }
 .field-select__item {
+  position: relative;
   margin: 0 4px 4px 0;
   border: 1px solid transparent;
 }
@@ -19133,6 +19134,12 @@ textarea.input-reset {
   border-color: var(--red);
   background-color: transparent;
   color: var(--red);
+}
+.field-select__checkbox {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
 }
 .field-select--col {
   -webkit-box-orient: vertical;
@@ -39576,16 +39583,11 @@ textarea.input-reset {
   }
 }
 .object-similar__items {
-  margin: -16px -6px;
-  padding: 16px 6px;
-}
-.object-similar__items .swiper-wrapper {
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-}
-.object-similar__items .swiper-slide {
-  height: auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 16px;
 }
 .object-similar__items .card-primary {
   height: 100%;
@@ -39595,6 +39597,10 @@ textarea.input-reset {
 }
 .object-similar__items .card-secondary .card-secondary__bottom {
   margin-top: auto;
+}
+.object-similar .card-secondary-skeleton {
+  height: 100%;
+  width: 100%;
 }
 .object-similar__btn {
   margin-top: 24px;

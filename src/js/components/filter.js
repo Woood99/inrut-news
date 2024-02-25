@@ -1039,9 +1039,10 @@ export const fieldSelect = () => {
     const containers = document.querySelectorAll('.field-select');
     if (containers.length === 0) return;
     containers.forEach(container => {
-        updateInput(container,false);
+        updateInput(container, false);
         const name = container.dataset.fieldSelectName;
         if (name) {
+            init(container, name);
             container.querySelectorAll('.field-select__item').forEach((item, index) => {
                 item.setAttribute(`data-select-${name}-index`, index + 1);
             })
@@ -1053,18 +1054,25 @@ export const fieldSelect = () => {
             const currentDefaultItem = target.closest('.field-select__default');
             if (currentDefaultItem) {
                 const items = container.querySelectorAll('.field-select__item:not(.field-select__default)');
-                items.forEach(item => item.classList.remove('_active'));
+                items.forEach(item => {
+                    item.classList.remove('_active')
+                    item.querySelector('.field-select__checkbox').checked = false;
+                });
             }
             if (item && !item.classList.contains('.field-select__default')) {
                 if (defaultItem) defaultItem.classList.remove('_active');
                 if (!container.classList.contains('field-select--multiple')) {
                     const items = container.querySelectorAll('.field-select__item');
                     items.forEach(currentItem => {
-                        if (item !== currentItem) currentItem.classList.remove('_active');
+                        if (item !== currentItem) {
+                            currentItem.classList.remove('_active');
+                            currentItem.querySelector('.field-select__checkbox').checked = false;
+                        }
                     })
                 }
                 if (container.classList.contains('field-select--necessarily')) {
                     item.classList.add('_active');
+                    currentItem.querySelector('.field-select__checkbox').checked = true;
                 } else {
                     item.classList.toggle('_active');
                 }
@@ -1104,7 +1112,11 @@ export const fieldSelect = () => {
                 }
             }
 
-            updateInput(container,true);
+            updateInput(container, true);
+
+            container.querySelectorAll('.field-select__checkbox').forEach(item => {
+                console.log(item.checked)
+            });
         })
 
         if (container.hasAttribute('data-submit-filter-object-type')) {
@@ -1142,10 +1154,7 @@ export const fieldSelect = () => {
         }
     })
 
-
-
-
-    function updateInput(container,change) {
+    function updateInput(container, change) {
         const selectedItems = container.querySelectorAll('.field-select__item._active');
         const input = container.querySelector('.field-select__input');
 
@@ -1160,6 +1169,14 @@ export const fieldSelect = () => {
                 input.dispatchEvent(new Event('change'));
             }
         }
+    }
+
+    function init(container, name) {
+        const items = Array.from(container.querySelectorAll('.field-select__item'));
+        items.forEach(item => {
+            const checkbox = `<input type="checkbox" name="${name}-checkbox" class="input-reset field-select__checkbox" placeholder="">`;
+            item.insertAdjacentHTML('beforeend', checkbox);
+        })
     }
 }
 export const fieldRange = () => {

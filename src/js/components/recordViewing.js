@@ -1,8 +1,9 @@
 import scrollDrag from './scrollDrag';
 import modal from '../modules/modal';
 import {
-    inputMaskValidate
+    inputMaskValidate,validateCreateErrorMask,   validateRemoveError
 } from './formValidate';
+import { validateTextMap } from '../modules/validateTextMap';
 export const recordViewing = () => {
     const containers = document.querySelectorAll('.record-viewing');
     if (containers.length === 0) return;
@@ -70,7 +71,7 @@ export const recordViewing = () => {
                     // если занято
                 }
 
-                validate();
+                validate(true);
                 if (bottom)  updateBottom();
             }
         })
@@ -211,7 +212,7 @@ export const recordViewing = () => {
 
 
 
-        function validate() {
+        function validate(errors = false) {
             if (!containerForm) {
 
                 if (listDays.querySelector('.record-day__input:checked') && container.querySelector('.record-time__container') && container.querySelector('.record-time__input:checked')) {
@@ -225,11 +226,22 @@ export const recordViewing = () => {
                 const phoneInput = phone.querySelector('input');
                 if (listDays.querySelector('.record-day__input:checked') && container.querySelector('.record-time__container') && container.querySelector('.record-time__input:checked') 
                 && inputMaskValidate(phone, phoneInput, 10)) {
-                    btn.removeAttribute('disabled');
+                   btn.classList.remove('_disabled-popup');
                 } else {
-                    btn.setAttribute('disabled', '');
+                    btn.classList.add('_disabled-popup');
                 }
-
+                if (errors){
+                    validateRemoveError(phone);
+                    validateCreateErrorMask(phone, phoneInput, validateTextMap.tel, 10);
+                    const timeItems = container.querySelectorAll('.record-time__item');
+                    const activeItem = Array.from(timeItems).find(item => item.classList.contains('_active'));
+                    if (!activeItem){
+                        timeItems.forEach(item => item.classList.add('_error'))
+                    } else {
+                        timeItems.forEach(item => item.classList.remove('_error'))
+                    }
+        
+                }
             }
         }
 
@@ -282,7 +294,7 @@ export const recordViewing = () => {
             const phoneInput = phone.querySelector('input');
 
             phoneInput.addEventListener('input',() => {
-                validate()
+                validate(true);
             })
 
             function movingButton() {
@@ -294,6 +306,9 @@ export const recordViewing = () => {
                 form.querySelector('.record-viewing__field').insertAdjacentElement('afterend', btn);
                 btn.classList.remove('_moving');
             }
+            btn.addEventListener('click',() => {
+                validate(true);
+            })
         }
     })
 };

@@ -36,7 +36,7 @@ const popup = (options, modalName) => {
         const target = e.target;
         const btn = target.closest(settingsModal.btnSelector); 
         if (btn) {
-            if (!target.closest('.nav-arrow-secondary')) {
+            if (!target.closest('.nav-arrow-secondary') && !target.classList.contains('_disabled-popup')) {
                 modalOpen(btn);
             }
         }
@@ -79,7 +79,9 @@ const popup = (options, modalName) => {
                     enableScroll();
                 }, 1);
             }
-            modalClose()
+            if (!el.classList.contains('_disabled-popup')){
+                modalClose()
+            }
         })
     })
     modal.addEventListener('click', (e) => {

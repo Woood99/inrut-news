@@ -26,9 +26,10 @@ export const recordViewing = () => {
         const listDays = container.querySelector('.record-day__list');
         const time = container.querySelector('.record-viewing__time');
         const btn = container.querySelector('.record-viewing__btn');
+        const bottom = container.querySelector('.record-viewing__bottom');
         createDays();
         createTime(true);
-        updateBottom();
+        if (bottom)  updateBottom();
         setTimeout(() => {
             checkNavBtn(time.querySelector('.record-time__list'), time.querySelector('.record-time__prev'), time.querySelector('.record-time__next'));
         }, 3000);
@@ -50,7 +51,7 @@ export const recordViewing = () => {
                 const currentDay = new Date().getDate();
                 const itemDay = new Date(rightTarget.value).getDate();
                 createTime(currentDay === itemDay ? true : false);
-                updateBottom();
+                if (bottom)  updateBottom();
                 checkNavBtn(time.querySelector('.record-time__list'), time.querySelector('.record-time__prev'), time.querySelector('.record-time__next'));
             }
         })
@@ -70,7 +71,7 @@ export const recordViewing = () => {
                 }
 
                 validate();
-                updateBottom();
+                if (bottom)  updateBottom();
             }
         })
 
@@ -255,12 +256,19 @@ export const recordViewing = () => {
 
 
         if (containerForm) {
+            const form = container.querySelector('.record-viewing__container');
             const toggle = container.querySelector('.toggle-checkbox input');
             const agents = container.querySelector('.record-viewing__agents');
 
 
             toggle.addEventListener('change', () => {
-                toggle.checked ? agents.classList.add('_active') : agents.classList.remove('_active');
+                if (toggle.checked) {
+                    agents.classList.add('_active');
+                    movingButton();
+                } else {
+                    agents.classList.remove('_active')
+                    movingButtonDefault();
+                }
             })
             const cards = agents.querySelectorAll('.card-agent');
             cards.forEach(card => {
@@ -276,6 +284,16 @@ export const recordViewing = () => {
             phoneInput.addEventListener('input',() => {
                 validate()
             })
+
+            function movingButton() {
+                form.insertAdjacentElement('beforeend', btn);
+                btn.classList.add('_moving');
+            }
+        
+            function movingButtonDefault() {
+                form.querySelector('.record-viewing__field').insertAdjacentElement('afterend', btn);
+                btn.classList.remove('_moving');
+            }
         }
     })
 };

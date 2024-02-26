@@ -165,6 +165,19 @@ popup({
         }, 750);
     }
 }, 'record-viewing-two');
+popup({
+    isOpen: (settingsModal) => {
+        const currentID = settingsModal.currentBtn.hasAttribute('data-suggestion-id') ? settingsModal.currentBtn.dataset.suggestionId : false;
+        const btn = settingsModal.container.querySelector('.record-viewing-two__cancel');
+        if (currentID && btn) btn.setAttribute('data-suggestion-id', currentID);
+    },
+    isClose: (settingsModal) => {
+        setTimeout(() => {
+            const btn = settingsModal.container.querySelector('.record-viewing-two__cancel');
+            if (btn) btn.removeAttribute('data-suggestion-id');
+        }, 750);
+    }
+}, 'record-viewing5');
 popup(null, 'record-viewing-two2');
 popup(null, 'personal-area-two');
 popup(null, 'client-fixed');
@@ -214,6 +227,7 @@ popup(null, 'object-gallery--two');
 popup(null, 'warning-remove');
 popup(null, 'warning-remove2');
 popup(null, 'warning-remove3');
+popup(null, 'warning-remove4');
 popup(null, 'order-report');
 popup(null, 'select-bank');
 popup(null, 'metro-map');

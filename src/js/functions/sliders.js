@@ -83,8 +83,8 @@ function initSliders() {
             spaceBetween: 16,
             speed: 800,
             navigation: {
-                prevEl: slider.closest('.record-viewing').querySelector('.nav-arrow-secondary--prev'),
-                nextEl: slider.closest('.record-viewing').querySelector('.nav-arrow-secondary--next'),
+                prevEl: slider.closest('.record-viewing__choices').querySelector('.nav-arrow-secondary--prev'),
+                nextEl: slider.closest('.record-viewing__choices').querySelector('.nav-arrow-secondary--next'),
             },
         });
     }

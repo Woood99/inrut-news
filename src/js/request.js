@@ -63,8 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ==== maps ====
-    mapPrimary();
-    bidMap();
-    mapDraw();
+    // mapPrimary();
+    // bidMap();
+    // mapDraw();
 })
 

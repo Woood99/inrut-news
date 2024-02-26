@@ -1,6 +1,6 @@
 const header = () => {
     const headerFixed = document.querySelector('.header-fixed');
-    const header = document.querySelector('.header');
+    const header = document.querySelector('.header--test');
     if (headerFixed || !header || window.innerWidth <= 1212) return;
     const main = document.querySelector('.main');
     main.style.paddingTop = '105px';

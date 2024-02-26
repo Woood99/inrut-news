@@ -107,7 +107,9 @@ const chat = () => {
     }
 
     function chatPosition() {
-        chat.style.setProperty('--chat-tags-height', `${chatTags.offsetHeight}px`);
+        if (chatTags){
+            chat.style.setProperty('--chat-tags-height', `${chatTags.offsetHeight}px`);
+        }
     }
 };
 

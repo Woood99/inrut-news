@@ -29,7 +29,9 @@ export const recordViewing = () => {
         createDays();
         createTime(true);
         updateBottom();
-        checkNavBtn(time.querySelector('.record-time__list'), time.querySelector('.record-time__prev'), time.querySelector('.record-time__next'));
+        setTimeout(() => {
+            checkNavBtn(time.querySelector('.record-time__list'), time.querySelector('.record-time__prev'), time.querySelector('.record-time__next'));
+        }, 3000);
         listDays.addEventListener('input', (e) => {
             const target = e.target;
             const rightTarget = target.closest('.record-day__input');
@@ -272,7 +274,7 @@ export const recordViewing = () => {
             const phoneInput = phone.querySelector('input');
 
             phoneInput.addEventListener('input',() => {
-                validate();
+                validate()
             })
         }
     })

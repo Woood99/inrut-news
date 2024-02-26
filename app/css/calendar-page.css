@@ -16606,6 +16606,13 @@ textarea.input-reset {
   -ms-grid-row-align: center;
   align-self: center;
 }
+.user-info.user-info--name .user-info__name {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1/3;
+  -ms-grid-row-align: center;
+  align-self: center;
+}
 
 .user-info-review {
   display: -ms-grid;
@@ -17535,9 +17542,9 @@ textarea.input-reset {
 }
 .object-info-grade__rating--quantity {
   margin-left: 4px;
-  color: var(--dark);
-  font-size: var(--default-fz);
-  line-height: var(--little-small-lh);
+  font-size: var(--default-small-fz);
+  line-height: var(--default-small-lh);
+  color: var(--primaryTwo);
 }
 @media (max-width: 1212px) {
   .object-info-grade__rating {
@@ -18813,7 +18820,7 @@ textarea.input-reset {
   flex-wrap: wrap;
   max-width: 100%;
 }
-.field-input__wrapper .input-text__label {
+.field-input__wrapper .input-text:not(.input-text--only-number) .input-text__label {
   -ms-grid-columns: 100%;
   grid-template-columns: 100%;
 }
@@ -28002,21 +28009,23 @@ textarea.input-reset {
   -ms-flex-align: center;
   align-items: center;
 }
-.bid-user__rating span {
+.bid-user__rating > span {
   font-size: var(--default-fz);
   line-height: var(--little-small-lh);
   color: var(--primary600);
 }
-.bid-user__rating span:nth-child(2) {
-  font-weight: 500;
+.bid-user__rating > span:nth-child(2) {
+  font-weight: 400;
   margin-left: 4px;
+  font-size: var(--default-small-fz);
+  color: var(--primaryTwo);
 }
 @media (max-width: 1212px) {
-  .bid-user__rating span:nth-child(2) {
+  .bid-user__rating > span:nth-child(2) {
     font-weight: 400;
   }
 }
-.bid-user__rating span:nth-child(3) {
+.bid-user__rating > span:nth-child(3) {
   margin-left: 4px;
   font-weight: 400;
 }
@@ -28034,13 +28043,16 @@ textarea.input-reset {
   align-items: center;
   --icon-size: 16px;
 }
+.bid-user__rating-stars span {
+  color: var(--blue);
+  margin-left: 8px;
+  font-weight: 500;
+}
 .bid-user__rating-stars svg {
+  margin-left: 8px;
   width: var(--icon-size);
   height: var(--icon-size);
   fill: var(--yellow);
-}
-.bid-user__rating-stars svg:not(:last-child) {
-  margin-right: 2px;
 }
 @media (max-width: 1212px) {
   .bid-user__rating-stars {
@@ -28063,9 +28075,8 @@ textarea.input-reset {
   margin-right: 5px;
 }
 .bid-user__quantity span {
-  color: inherit;
-  font-size: var(--default-fz);
-  line-height: var(--little-small-lh);
+  color: var(--primaryTwo);
+  font-size: var(--default-small-fz);
   font-weight: 500;
 }
 @media (max-width: 1212px) {
@@ -29980,7 +29991,6 @@ textarea.input-reset {
   }
 }
 .service-sample__body {
-  margin-top: 8px;
   background-color: var(--stand-bg);
   padding: 24px 0;
 }

@@ -1056,7 +1056,8 @@ export const fieldSelect = () => {
                 const items = container.querySelectorAll('.field-select__item:not(.field-select__default)');
                 items.forEach(item => {
                     item.classList.remove('_active')
-                    item.querySelector('.field-select__checkbox').checked = false;
+                    const checkbox = item.querySelector('.field-select__checkbox');
+                    if (checkbox) checkbox.checked = false;
                 });
             }
             if (item && !item.classList.contains('.field-select__default')) {
@@ -1066,13 +1067,15 @@ export const fieldSelect = () => {
                     items.forEach(currentItem => {
                         if (item !== currentItem) {
                             currentItem.classList.remove('_active');
-                            currentItem.querySelector('.field-select__checkbox').checked = false;
+                            const checkbox = currentItem.querySelector('.field-select__checkbox')
+                            if (checkbox) checkbox.checked = false;
                         }
                     })
                 }
                 if (container.classList.contains('field-select--necessarily')) {
                     item.classList.add('_active');
-                    currentItem.querySelector('.field-select__checkbox').checked = true;
+                    const checkbox = currentItem.querySelector('.field-select__checkbox')
+                    if (checkbox) checkbox.checked = true;
                 } else {
                     item.classList.toggle('_active');
                 }
@@ -1113,10 +1116,6 @@ export const fieldSelect = () => {
             }
 
             updateInput(container, true);
-
-            container.querySelectorAll('.field-select__checkbox').forEach(item => {
-                console.log(item.checked)
-            });
         })
 
         if (container.hasAttribute('data-submit-filter-object-type')) {

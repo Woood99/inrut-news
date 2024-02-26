@@ -287,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const htmlResult = `
                 <div class="service-moving-result__main">
                     <h2 class="service-moving-result__main-title title-3">
-                        <span>Общая стоимость от</span>
+                        <span>Стоимость от</span>
                         <span>${numberReplace(String(resultPrice))} ₽</span>
                     </h2>
                     <div class="service-moving-result__options">
@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </label>
                     </div>
                     <button type="submit" form="service-repair-form" class="btn btn-reset btn-primary service-moving-result__btn">
-                        Получить расчет стоимости
+                        Оставить заявку
                     </button>
                 </div>
             `;

@@ -91,39 +91,34 @@
     }
 
     &__row {
-        margin-top: 32px;
+        margin-top: 24px;
         display: flex;
         justify-content: space-between;
     }
 
     &__total {
-        margin: 0 16px;
-        flex-grow: 1;
+     margin-right: 16px;
         display: flex;
         flex-direction: column;
-        align-items: end;
-        justify-content: center;
 
-        >div {
+        >div:nth-child(1) {
             display: flex;
             align-items: center;
-            font-size: var(--very-big-fz);
-            line-height: var(--very-big-lh);
+            font-size: var(--little-big-fz);
+            line-height: var(--little-big-lh);
             font-weight: 500;
+        }
+        >div:nth-child(2) {
+            margin-top: 8px;
+            font-size: var(--default-small-fz);
+            color: var(--primaryTwo);
         }
 
         svg {
-            margin-right: 8px;
-            width: 48px;
-            height: 48px;
+            margin-left: 8px;
+            width: 26px;
+            height: 26px;
             fill: var(--yellow);
-        }
-
-        >span {
-            font-size: var(--default-fz);
-            line-height: var(--little-small-lh);
-            margin-right: 16px;
-            font-weight: 500;
         }
     }
 
@@ -197,18 +192,18 @@
         }
 
         span {
-            color: var(--primary600);
+
+            &:nth-child(1) {
+                color: var(--blue);
             font-size: var(--small-fz);
             line-height: var(--small-lh);
-            margin-left: 8px;
-
-            &:nth-child(2) {
-                font-weight: 500;
+            margin-right: 8px;
+            font-weight: 500;
+            }
+            &:nth-child(3){
+                margin-left: 8px;
             }
 
-            &:nth-child(3) {
-                font-weight: 400;
-            }
         }
     }
 
@@ -222,7 +217,10 @@
     &__ratings {
         display: flex;
         flex-wrap: wrap;
-        gap: 16px;
+        gap: 16px 24px;
+        .review-item__rating{
+            margin: 0;
+        }
     }
 
     &__descr {

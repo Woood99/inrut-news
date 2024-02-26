@@ -88,7 +88,6 @@ import {
 import сharacteristicsBlock from './components/сharacteristicsBlock';
 import submitAppOffers from './components/submitAppOffers';
 import mortgageRequests from './components/mortgageRequests';
-import moveToFromBlock from './modules/moveToFromBlock';
 import mobileTop from './components/mobileTop';
 import scrollUp from './components/scrollUp';
 import suggestObject from './components/suggestObject';
@@ -174,7 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
     emergingBlockScroll('.submit-app .submit-app__btn', '.footer-fixed.submit-app-fixed', 99999999, true);
 
     // ==================================================
-    moveToFromBlock('[data-move-block-to="bid-user"]', '[data-move-block-from="bid-user"]', 99999, 1212, `${window.innerWidth >= 1920 ? 1.35 : 1}`);
     mobileTop();
     scrollUp();
     suggestObject();

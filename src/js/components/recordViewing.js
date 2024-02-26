@@ -1,10 +1,13 @@
 import scrollDrag from './scrollDrag';
 import modal from '../modules/modal';
+import {
+    inputMaskValidate
+} from './formValidate';
 export const recordViewing = () => {
     const containers = document.querySelectorAll('.record-viewing');
     if (containers.length === 0) return;
     containers.forEach(container => {
-
+        const containerForm = container.classList.contains('record-viewing--form');
         const newDate = new Date();
         const maps = {
             daysOfWeek: [
@@ -23,7 +26,6 @@ export const recordViewing = () => {
         const listDays = container.querySelector('.record-day__list');
         const time = container.querySelector('.record-viewing__time');
         const btn = container.querySelector('.record-viewing__btn');
-
         createDays();
         createTime(true);
         updateBottom();
@@ -204,11 +206,27 @@ export const recordViewing = () => {
             }
         }
 
+
+
         function validate() {
-            if (listDays.querySelector('.record-day__input:checked') && container.querySelector('.record-time__container') && container.querySelector('.record-time__input:checked')) {
-                btn.removeAttribute('disabled');
+            if (!containerForm) {
+
+                if (listDays.querySelector('.record-day__input:checked') && container.querySelector('.record-time__container') && container.querySelector('.record-time__input:checked')) {
+                    btn.removeAttribute('disabled');
+                } else {
+                    btn.setAttribute('disabled', '');
+                }
+
             } else {
-                btn.setAttribute('disabled', '');
+                const phone = container.querySelector('.record-viewing__form--tel');
+                const phoneInput = phone.querySelector('input');
+                if (listDays.querySelector('.record-day__input:checked') && container.querySelector('.record-time__container') && container.querySelector('.record-time__input:checked') 
+                && inputMaskValidate(phone, phoneInput, 10)) {
+                    btn.removeAttribute('disabled');
+                } else {
+                    btn.setAttribute('disabled', '');
+                }
+
             }
         }
 
@@ -231,6 +249,31 @@ export const recordViewing = () => {
                 bottomTime.textContent = timeItem.querySelector('.record-time__value').textContent;
             }
 
+        }
+
+
+        if (containerForm) {
+            const toggle = container.querySelector('.toggle-checkbox input');
+            const agents = container.querySelector('.record-viewing__agents');
+
+
+            toggle.addEventListener('change', () => {
+                toggle.checked ? agents.classList.add('_active') : agents.classList.remove('_active');
+            })
+            const cards = agents.querySelectorAll('.card-agent');
+            cards.forEach(card => {
+                card.addEventListener('input', () => {
+                    cards.forEach(card => card.classList.remove('_active'));
+                    card.classList.add('_active');
+                });
+            })
+
+            const phone = container.querySelector('.record-viewing__form--tel');
+            const phoneInput = phone.querySelector('input');
+
+            phoneInput.addEventListener('input',() => {
+                validate();
+            })
         }
     })
 };

@@ -1074,7 +1074,7 @@ export const fieldSelect = () => {
                 }
                 if (container.classList.contains('field-select--necessarily')) {
                     item.classList.add('_active');
-                    const checkbox = currentItem.querySelector('.field-select__checkbox')
+                    const checkbox = item.querySelector('.field-select__checkbox')
                     if (checkbox) checkbox.checked = true;
                 } else {
                     item.classList.toggle('_active');

@@ -45,8 +45,11 @@ const submitApp = () => {
         })
 
         function cityInit(city) {
-            const name = city.querySelector('.choices__item.choices__item--selectable').textContent.trim();
-            name !== 'Москва' ? metro.setAttribute('hidden', '') : metro.removeAttribute('hidden');
+            const item = city.querySelector('.choices__item.choices__item--selectable');
+            if (item){
+                const name = item.textContent.trim();
+                name !== 'Москва' ? metro.setAttribute('hidden', '') : metro.removeAttribute('hidden');
+            }
         }
     }
 };

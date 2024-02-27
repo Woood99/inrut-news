@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Рейтинг агента</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/request.css">
+    <script id="ymaps-id"></script>
+    <script defer src="js/request.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container site-container--your-app">
+        @include('partials/header--new.html')
+        <main class="main main-page-gap your-app your-app-my purchase-request agent-rating">
+            <div class="container your-app__container">
+                <h1 class="your-app__title title-1" data-da=".mobile-top,1212,first">
+                    Рейтинг агента
+                </h1>
+                <div class="top-page-inner">
+                    <div class="top-page-inner__btns">
+                        <button type="button" class="btn btn-reset top-page-inner__btn delete-btn" title="Закрыть" data-popup-path="warning-remove2">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#trash"></use>
+                            </svg>
+                            <span>Удалить</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="purchase-request__body bid" style="margin-top: 32px;">
+                <div class="mobile-top">
+                    <button type="button" class="btn btn-reset mobile-top__btn">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#dots-vertical">
+                            </use>
+                        </svg>
+                    </button>
+                </div>
+                <div class="bid__container container--no-padding" style="padding-top: 16px;">
+                    <div class="bid__body">
+                        <div class="bid__rating bid-rating">
+                            <h2 class="bid__title title-2">
+                                Оцените пожалуйста работу агента
+                            </h2>
+                            <div class="bid-rating__items">
+                            <div class="bid-rating__item">
+                                <p class="bid-rating__descr">
+                                    Навыки ведения переговоров
+                                </p>
+                                <div class="rating rating_set">
+                                    <div class="rating__body">
+                                        <div class="rating__active"></div>
+                                        <div class="rating__items">
+                                            <input type="radio" class="rating__item" value="1" name="rating">
+                                            <input type="radio" class="rating__item" value="2" name="rating">
+                                            <input type="radio" class="rating__item" value="3" name="rating">
+                                            <input type="radio" class="rating__item" value="4" name="rating">
+                                            <input type="radio" class="rating__item" value="5" name="rating">
+                                        </div>
+                                    </div>
+                                    <div class="rating__value">3</div>
+                                </div>
+                            </div>
+                            <div class="bid-rating__item">
+                                <p class="bid-rating__descr">
+                                    Знание рынка
+                                </p>
+                                <div class="rating rating_set">
+                                    <div class="rating__body">
+                                        <div class="rating__active"></div>
+                                        <div class="rating__items">
+                                            <input type="radio" class="rating__item" value="1" name="rating">
+                                            <input type="radio" class="rating__item" value="2" name="rating">
+                                            <input type="radio" class="rating__item" value="3" name="rating">
+                                            <input type="radio" class="rating__item" value="4" name="rating">
+                                            <input type="radio" class="rating__item" value="5" name="rating">
+                                        </div>
+                                    </div>
+                                    <div class="rating__value">4</div>
+                                </div>
+                            </div>
+                            <div class="bid-rating__item">
+                                <p class="bid-rating__descr">
+                                    Быстрота ответа
+                                </p>
+                                <div class="rating rating_set">
+                                    <div class="rating__body">
+                                        <div class="rating__active"></div>
+                                        <div class="rating__items">
+                                            <input type="radio" class="rating__item" value="1" name="rating">
+                                            <input type="radio" class="rating__item" value="2" name="rating">
+                                            <input type="radio" class="rating__item" value="3" name="rating">
+                                            <input type="radio" class="rating__item" value="4" name="rating">
+                                            <input type="radio" class="rating__item" value="5" name="rating">
+                                        </div>
+                                    </div>
+                                    <div class="rating__value">5</div>
+                                </div>
+                            </div>
+                            <div class="bid-rating__item">
+                                <p class="bid-rating__descr">
+                                    Навыки ведения переговоров
+                                </p>
+                                <div class="rating rating_set">
+                                    <div class="rating__body">
+                                        <div class="rating__active"></div>
+                                        <div class="rating__items">
+                                            <input type="radio" class="rating__item" value="1" name="rating">
+                                            <input type="radio" class="rating__item" value="2" name="rating">
+                                            <input type="radio" class="rating__item" value="3" name="rating">
+                                            <input type="radio" class="rating__item" value="4" name="rating">
+                                            <input type="radio" class="rating__item" value="5" name="rating">
+                                        </div>
+                                    </div>
+                                    <div class="rating__value">1</div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="submit-app">
+                        <div class="submit-app__row agent-rating__content">
+                            <h2 class="submit-app__row-title title-2">
+                                Оставьте ваш комментарий
+                            </h2>
+                            <div class="textarea-secondary textarea-secondary--default" data-textarea-secondary-min-height="96">
+                                <textarea name="type-value" class="input-reset textarea-secondary__input" maxlength="2000" placeholder="Расскажите подробно"></textarea>
+                            </div>
+                            <div class="field-file field-file--col">
+                                <div class="field-file__name">
+                                    Прикрепите файлы к отзыву фото/видео объекта или переписки 
+                                </div>
+                                <div class="field-file__wrapper">
+                                    <div class="photo-load place-sale-photo">
+                                        <div class="place-sale-photo__images photo-load__images">
+                                        </div>
+                                        <div class="place-sale-photo__wrapper photo-load__wrapper _container">
+                                            <button type="button" class="btn btn-reset">
+                                                <p>
+                                                    <span class="btn btn-reset btn-primary">
+                                                        Загрузите файлы
+                                                    </span>
+                                                    <span>
+                                                        или перетащите в
+                                                        эту область
+                                                    </span>
+                                                </p>
+                                            </button>
+                                            <input type="file" data-upload-drop data-upload-drop-default data-upload-max-length="10" name="upload" multiple class="input-reset">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bid__sidebar">
+                        <div class="_sticky">
+                            <div class="bid__user bid-user" data-da=".bid__container,1212,2">
+                                <div class="bid-user__avatar avatar">
+                                    <img loading="lazy" src="./img/avatar-1.jpg" width="129" height="129" alt="Алексей Г.">
+                                </div>
+                                <div class="bid-user__content">
+                                    <a href="#" class="bid-user__name">
+                                        Алексей Г.
+                                    </a>
+                                    <time class="bid-user__time" datetime="2022-12-12">
+                                        Агент был в сети 12.12.2022
+                                    </time>
+                                    <div class="bid-user__quantity">
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#briefcase"></use>
+                                        </svg>
+                                        <span>10 объектов</span>,&nbsp;
+                                        <span>8 сделок</span>
+                                    </div>
+                                </div>
+                                <div class="bid-user__btns">
+                                    <button type="button" class="btn btn-reset btn-primary bid-user__btn bid-user__btn--call">
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#phone"></use>
+                                        </svg>
+                                        Позвонить
+                                    </button>
+                                </div>
+                                <div class="bid-user__bottom">
+                                    <button type="button" class="btn btn-reset bid-user__bottom--yandex">
+                                        <img loading="lazy" src="./img/yandex.png" width="26" height="26" alt="Яндекс">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="plate-bottom purchase-request-plate-bottom">
+                        <button type="button" class="btn btn-reset btn-primary purchase-request-plate-bottom__btn">
+                            Предложить объект
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        @include('partials/footer.html')
+    </div>
+    <!-- popups -->
+    @include('popups/city.html')
+    @include('popups/add.html')
+    @include('popups/personal-area2.html')
+    @include('popups/edit-profile.html')
+    @include('popups/sber-tied.html')
+    <!-- ==== -->
+    @include('popups/warning-remove2.html')
+    @include('popups/history-changes.html')
+    <!-- popups -->
+</body>
+
+
+</html>

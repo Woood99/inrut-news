@@ -215,7 +215,8 @@ export const selectSecondaryCreate = (el) => {
     })
 
     function checkCloseSelected() {
-        if (!el.nextElementSibling.querySelector('.choices__item').classList.contains('choices__placeholder')) {
+        const item = el.nextElementSibling.querySelector('.choices__item');
+        if (item && !item.classList.contains('choices__placeholder')) {
             el.closest('.select-secondary').classList.add('_selected');
             wrapper.classList.remove('_hover');
         } else {

@@ -38,6 +38,7 @@ import wantDiscount from './components/wantDiscount';
 import mobileTop from './components/mobileTop';
 import suggestObject from './components/suggestObject';
 import metroInfo from './components/metroInfo';
+import rating from './modules/rating';
 document.addEventListener('DOMContentLoaded', () => {
     linkCopy('.share-app-popup__btn');
     cardSecondaryActions();
@@ -60,11 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileTop();
     suggestObject();
     metroInfo();
-
+    rating();
 
     // ==== maps ====
-    // mapPrimary();
-    // bidMap();
-    // mapDraw();
+    mapPrimary();
+    bidMap();
+    mapDraw();
 })
 

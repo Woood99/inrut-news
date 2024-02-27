@@ -44,7 +44,6 @@ import {
     controlCards
 } from './components/controlCards';
 import videoBlock from './components/videoBlock';
-import reviewModal from './components/reviewModal';
 import placeSaleOptionMore from './components/placeSaleOptionMore';
 import {
     dropImage
@@ -114,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     controlCards();
     videoBlock();
-    reviewModal();
     placeSaleOptionMore();
     dropImage();
     checkboard();

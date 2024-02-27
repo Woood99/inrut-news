@@ -39,6 +39,7 @@ import mobileTop from './components/mobileTop';
 import suggestObject from './components/suggestObject';
 import metroInfo from './components/metroInfo';
 import rating from './modules/rating';
+import { galleryPrimary } from './components/gallery';
 document.addEventListener('DOMContentLoaded', () => {
     linkCopy('.share-app-popup__btn');
     cardSecondaryActions();
@@ -62,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     suggestObject();
     metroInfo();
     rating();
-
+    galleryPrimary();
     // ==== maps ====
     mapPrimary();
     bidMap();

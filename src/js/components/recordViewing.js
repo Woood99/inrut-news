@@ -9,6 +9,7 @@ export const recordViewing = () => {
     if (containers.length === 0) return;
     containers.forEach(container => {
         const containerForm = container.classList.contains('record-viewing--form');
+        let status = false;
         const newDate = new Date();
         const maps = {
             daysOfWeek: [
@@ -230,7 +231,7 @@ export const recordViewing = () => {
                 } else {
                     btn.classList.add('_disabled-popup');
                 }
-                if (errors){
+                if (errors && status){
                     validateRemoveError(phone);
                     validateCreateErrorMask(phone, phoneInput, validateTextMap.tel, 10);
                     const timeItems = container.querySelectorAll('.record-time__item');
@@ -307,6 +308,7 @@ export const recordViewing = () => {
                 btn.classList.remove('_moving');
             }
             btn.addEventListener('click',() => {
+                status = true;
                 validate(true);
             })
         }

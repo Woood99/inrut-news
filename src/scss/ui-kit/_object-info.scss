@@ -9,11 +9,11 @@
     grid-column-gap: 20px;
     justify-content: space-between;
     grid-template-columns: percent(155, 1180) percent(305, 1180) max-content 1fr percent(220, 1180);
-    padding: 32px 24px;
     -webkit-tap-highlight-color: transparent;
     transition: box-shadow $transitionSpeed $transitionFunction,
         transform $transitionSpeed $transitionFunction;
-    min-height: 112px;
+        min-height: 96px;
+        padding: 24px;
     position: relative;
     &__link {
         cursor: pointer;
@@ -219,12 +219,12 @@
     align-items: center;
     grid-column-gap: 20px;
     grid-template-columns: percent(375, 968) max-content 1fr;
-    padding: 32px 24px;
 
     -webkit-tap-highlight-color: transparent;
     transition: box-shadow $transitionSpeed $transitionFunction,
         transform $transitionSpeed $transitionFunction;
-    min-height: 112px;
+        min-height: 96px;
+        padding: 24px;
     &__time-geo {
         span {
             display: flex;
@@ -560,16 +560,13 @@
     background: var(--white);
     box-shadow: var(--shadow-primary);
     border-radius: 12px;
- padding: 32px 24px;
     grid-column-gap: 20px;
     display: grid;
     grid-template-columns: percent(332, 1016) percent(356, 1016) 1fr;
     align-items: center;
     transition: box-shadow $transitionSpeed $transitionFunction;
-    min-height: 112px;
-    &__from {
-
-    }
+    min-height: 96px;
+    padding: 24px;
 
     &__quantity {
         font-size: var(--default-fz);
@@ -588,53 +585,11 @@
     }
 
     &__rating {
-        display: flex;
-        align-items: center;
-        justify-self: end;
-
-        svg {
-            width: 16px;
-            height: 16px;
-            fill: var(--yellow);
-
-            @media (max-width:$desktop) {
-                width: 12px;
-                height: 12px;
-            }
-        }
-
-        &--number {
-            margin-left: 4px;
-
-            color: var(--dark);
-            font-size: var(--default-fz);
-            line-height: var(--little-small-lh);
-            font-weight: 500;
-        }
-
-        &--quantity {
-            margin-left: 4px;
-
-            font-size: var(--default-small-fz);
-            line-height: var(--default-small-lh);
-            color: var(--primaryTwo);
-        }
+        justify-self: start;
 
         @media (max-width:$desktop) {
             grid-column: 1/-1;
             justify-self: start;
-        }
-    }
-
-    &__stars {
-        justify-self: center;
-        display: flex;
-        align-items: center;
-
-        svg {
-            &:not(:last-child) {
-                margin-right: 2px;
-            }
         }
     }
     @media (min-width:$desktop-min) {
@@ -667,7 +622,8 @@
     grid-column-gap: 32px;
     grid-row-gap: 8px;
     grid-template-columns: percent(400, 968) 1fr 1fr;
-    padding: 32px 24px;
+   padding: 24px;
+   min-height: 96px;
     -webkit-tap-highlight-color: transparent;
     transition: box-shadow $transitionSpeed $transitionFunction;
 

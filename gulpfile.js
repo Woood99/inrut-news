@@ -138,6 +138,7 @@ const scripts = () => {
                 'mortgage-insur': './src/js/mortgage-insur.js',
                 'create-policy': './src/js/create-policy.js',
                 'calendar-page': './src/js/calendar-page.js',
+                'profile': './src/js/profile.js',
             },
             output: {
                 filename: '[name].js',

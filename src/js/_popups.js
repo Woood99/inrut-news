@@ -228,6 +228,15 @@ popup(null, 'warning-remove');
 popup(null, 'warning-remove2');
 popup(null, 'warning-remove3');
 popup(null, 'warning-remove4');
+popup({
+    isOpen: (settingsModal) => {
+        const currentID = settingsModal.currentBtn.closest('.field-linked-account').dataset.linkedAccountId;
+        const btn = settingsModal.container.querySelector('[data-linked-account-id]');
+        if (btn) {
+            btn.setAttribute('data-linked-account-id', currentID);
+        }
+    }
+}, 'warning-remove5');
 popup(null, 'order-report');
 popup(null, 'select-bank');
 popup(null, 'metro-map');

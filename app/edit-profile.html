@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#111111">
-    <title>Запрос на покупку</title>
+    <title>Редактирование профиля</title>
     <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/request.css">
-    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-    <script defer src="js/request.js"></script>
+    <link rel="stylesheet" href="css/profile.css">
+    <script id="ymaps-id"></script>
+    <script defer src="js/profile.js"></script>
 </head>
 
 <body class="page__body">
-    <div class="site-container site-container--purchase-request">
+    <div class="site-container">
         <header class="header header--new header--test fix-block">
     <div class="header__top header-top">
         <div class="header-top__container container">
@@ -295,491 +295,145 @@
     </div>
 </header>
 
-        <main class="main main-page-gap my-requests moving-requests requests-all">
-            <div class="my-requests__body">
-                <div class="container">
-                    <h1 class="my-requests__title title-2">
-                        Мои заявки
-                    </h1>
-                </div>
-                <div class="tabs-primary">
-                    <div data-tabs class="tabs-primary__inner">
-                        <div class="container">
-                            <nav data-tabs-titles class="tabs-primary__btns tabs__navigation">
-                                <button type="button" class="btn btn-reset tabs__title _tab-active">
-                                    Переезд
-                                </button>
-                                <button type="button" class="btn btn-reset tabs__title">
-                                    Ремонт
-                                </button>
-                                <button type="button" class="btn btn-reset tabs__title">
-                                    Юридическая проверка
-                                </button>
-                                <button type="button" class="btn btn-reset tabs__title">
-                                    Оценка
-                                </button>
-                                <button type="button" class="btn btn-reset tabs__title">
-                                    Кухня
-                                </button>
-                            </nav>
-                        </div>
-                        <div class="tabs-primary__container">
-                            <div data-tabs-body class="tabs__content tabs-primary__content">
-
-                                <div class="tabs__body" hidden>
-                                    <div class="my-requests__table main-table">
-                                        <div class="main-table__inner container">
-                                            <div class="main-table__table">
-                                                <div class="main-table__type">
-                                                    <span>Заявка</span>
-                                                    <span>Номер заказа</span>
-                                                    <span>Дата заказа</span>
-                                                </div>
-                                                <div class="main-table__list">
-                                                    <div class="main-table__item object-info moving-card">
-                                                        <a href="./moving-inner.html" class="object-info__link"></a>
-                                                        <span class="object-info__type moving-card__type">
-                                                            <img loading="lazy" src="./img/moving.png" width="32" height="32" class="" alt="">
-                                                            Переезд
-                                                        </span>
-                                                        <div>
-                                                            <span>Заказ № </span>
-                                                            <span>OT-0068-00000176</span>
-                                                        </div>
-                                                        <span>
-                                                            26.01.24
-                                                        </span>
-                                                        <div class="dots-dropdown">
-                                                            <button type="button" class="btn btn-reset dots-dropdown__target">
-                                                                <svg>
-                                                                    <use xlink:href="img/sprite.svg#dots-vertical">
-                                                                    </use>
-                                                                </svg>
-                                                            </button>
-                                                            <div class="dots-dropdown__dropdown">
-                                                                <button type="button" class="btn btn-reset js-popup-close" data-popup-path="warning-remove2">
-                                                                    <svg>
-                                                                        <use xlink:href="img/sprite.svg#trash">
-                                                                        </use>
-                                                                    </svg>
-                                                                    Закрыть заявку
-                                                                </button>
-                                                                <a href="./edit-app.html" class="btn btn-reset">
-                                                                    <svg>
-                                                                        <use xlink:href="img/sprite.svg#pencil">
-                                                                        </use>
-                                                                    </svg>
-                                                                    Редактировать
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="moving-card__line progress-bar">
-                                                            <div class="progress-bar__title">
-                                                                <div class="progress-bar__status _accepted">
-                                                                    <svg>
-                                                                        <use xlink:href="./img/sprite.svg#verif"></use>
-                                                                    </svg>
-                                                                </div>
-                                                                <p>Заявка принята</p>
-                                                            </div>
-                                                            <div class="progress-bar__line">
-                                                                <div class="progress-bar__section _active"></div>
-                                                                <div class="progress-bar__section"></div>
-                                                                <div class="progress-bar__section"></div>
-                                                                <div class="progress-bar__section"></div>
-                                                                <div class="progress-bar__section"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="main-table__next">
-                                                <button type="button" class="btn btn-reset btn-secondary">
-                                                    Следующая страница
-                                                </button>
-                                            </div>
-                                            <div class="main-table__pagination pagination">
-                                                <ul class="pagination__list list-reset">
-                                                    <li class="pagination__item" disabled="">
-                                                        <a href="#">
-                                                            1
-                                                        </a>
-                                                    </li>
-                                                    <li class="pagination__item">
-                                                        <a href="#">
-                                                            2
-                                                        </a>
-                                                    </li>
-                                                    <li class="pagination__item">
-                                                        <a href="#">
-                                                            3
-                                                        </a>
-                                                    </li>
-                                                    <li class="pagination__item">
-                                                        <a href="#">
-                                                            4
-                                                        </a>
-                                                    </li>
-                                                    <li class="pagination__item">
-                                                        <a href="#">
-                                                            5
-                                                        </a>
-                                                    </li>
-                                                    <li class="pagination__item dots" tabindex="-1">
-                                                        ...
-                                                    </li>
-                                                    <li class="pagination__item">
-                                                        <a href="#">
-                                                            199
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tabs__body" hidden>
-                                    <div class="my-requests__table main-table">
-                                        <div class="main-table__inner container">
-                                            <div class="main-table__table">
-                                                <div class="main-table__type">
-                                                    <span>Заявка</span>
-                                                    <span>Номер заказа</span>
-                                                    <span>Дата заказа</span>
-                                                </div>
-                                                <div class="main-table__list">
-                                                    <div class="main-table__item object-info moving-card">
-                                                        <a href="./moving-inner.html" class="object-info__link"></a>
-                                                        <span class="object-info__type moving-card__type">
-                                                            <img loading="lazy" src="./img/moving.png" width="32" height="32" class="" alt="">
-                                                            Ремонт
-                                                        </span>
-                                                        <div>
-                                                            <span>Заказ № </span>
-                                                            <span>OT-0068-00000176</span>
-                                                        </div>
-                                                        <span>
-                                                            26.01.24
-                                                        </span>
-                                                        <div class="dots-dropdown">
-                                                            <button type="button" class="btn btn-reset dots-dropdown__target">
-                                                                <svg>
-                                                                    <use xlink:href="img/sprite.svg#dots-vertical">
-                                                                    </use>
-                                                                </svg>
-                                                            </button>
-                                                            <div class="dots-dropdown__dropdown">
-                                                                <button type="button" class="btn btn-reset js-popup-close" data-popup-path="warning-remove2">
-                                                                    <svg>
-                                                                        <use xlink:href="img/sprite.svg#trash">
-                                                                        </use>
-                                                                    </svg>
-                                                                    Закрыть заявку
-                                                                </button>
-                                                                <a href="./edit-app.html" class="btn btn-reset">
-                                                                    <svg>
-                                                                        <use xlink:href="img/sprite.svg#pencil">
-                                                                        </use>
-                                                                    </svg>
-                                                                    Редактировать
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="moving-card__line progress-bar">
-                                                            <div class="progress-bar__title">
-                                                                <div class="progress-bar__status _accepted">
-                                                                    <svg>
-                                                                        <use xlink:href="./img/sprite.svg#verif"></use>
-                                                                    </svg>
-                                                                </div>
-                                                                <p>Заявка принята</p>
-                                                            </div>
-                                                            <div class="progress-bar__line">
-                                                                <div class="progress-bar__section _active"></div>
-                                                                <div class="progress-bar__section"></div>
-                                                                <div class="progress-bar__section"></div>
-                                                                <div class="progress-bar__section"></div>
-                                                                <div class="progress-bar__section"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="main-table__next">
-                                                <button type="button" class="btn btn-reset btn-secondary">
-                                                    Следующая страница
-                                                </button>
-                                            </div>
-                                            <div class="main-table__pagination pagination">
-                                                <ul class="pagination__list list-reset">
-                                                    <li class="pagination__item" disabled="">
-                                                        <a href="#">
-                                                            1
-                                                        </a>
-                                                    </li>
-                                                    <li class="pagination__item">
-                                                        <a href="#">
-                                                            2
-                                                        </a>
-                                                    </li>
-                                                    <li class="pagination__item">
-                                                        <a href="#">
-                                                            3
-                                                        </a>
-                                                    </li>
-                                                    <li class="pagination__item">
-                                                        <a href="#">
-                                                            4
-                                                        </a>
-                                                    </li>
-                                                    <li class="pagination__item">
-                                                        <a href="#">
-                                                            5
-                                                        </a>
-                                                    </li>
-                                                    <li class="pagination__item dots" tabindex="-1">
-                                                        ...
-                                                    </li>
-                                                    <li class="pagination__item">
-                                                        <a href="#">
-                                                            199
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tabs__body" hidden>
-                                    <div class="my-requests__table main-table">
-                                        <div class="main-table__inner container">
-                                            <div class="main-table__table">
-                                                <div class="main-table__type">
-                                                    <span>Заявка</span>
-                                                    <span>Номер заказа</span>
-                                                    <span>Дата заказа</span>
-                                                </div>
-                                                <div class="main-table__list">
-                                                    <div class="main-table__item object-info moving-card">
-                                                        <a href="./app-verif-edit.html" class="object-info__link"></a>
-                                                        <span class="object-info__type moving-card__type">
-                                                            <img loading="lazy" src="./img/moving.png" width="32" height="32" class="" alt="">
-                                                            Юридическая проверка
-                                                        </span>
-                                                        <div>
-                                                            <span>Заказ № </span>
-                                                            <span>OT-0068-00000176</span>
-                                                        </div>
-                                                        <span>
-                                                            26.01.24
-                                                        </span>
-                                                        <div class="dots-dropdown">
-                                                            <button type="button" class="btn btn-reset dots-dropdown__target">
-                                                                <svg>
-                                                                    <use xlink:href="img/sprite.svg#dots-vertical">
-                                                                    </use>
-                                                                </svg>
-                                                            </button>
-                                                            <div class="dots-dropdown__dropdown">
-                                                                <button type="button" class="btn btn-reset js-popup-close" data-popup-path="warning-remove2">
-                                                                    <svg>
-                                                                        <use xlink:href="img/sprite.svg#trash">
-                                                                        </use>
-                                                                    </svg>
-                                                                    Закрыть заявку
-                                                                </button>
-                                                                <a href="./edit-app.html" class="btn btn-reset">
-                                                                    <svg>
-                                                                        <use xlink:href="img/sprite.svg#pencil">
-                                                                        </use>
-                                                                    </svg>
-                                                                    Редактировать
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="moving-card__line progress-bar">
-                                                            <div class="progress-bar__title">
-                                                                <div class="progress-bar__status _accepted">
-                                                                    <svg>
-                                                                        <use xlink:href="./img/sprite.svg#verif"></use>
-                                                                    </svg>
-                                                                </div>
-                                                                <p>Заявка принята</p>
-                                                            </div>
-                                                            <div class="progress-bar__line">
-                                                                <div class="progress-bar__section _active"></div>
-                                                                <div class="progress-bar__section"></div>
-                                                                <div class="progress-bar__section"></div>
-                                                                <div class="progress-bar__section"></div>
-                                                                <div class="progress-bar__section"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="main-table__next">
-                                                <button type="button" class="btn btn-reset btn-secondary">
-                                                    Следующая страница
-                                                </button>
-                                            </div>
-                                            <div class="main-table__pagination pagination">
-                                                <ul class="pagination__list list-reset">
-                                                    <li class="pagination__item" disabled="">
-                                                        <a href="#">
-                                                            1
-                                                        </a>
-                                                    </li>
-                                                    <li class="pagination__item">
-                                                        <a href="#">
-                                                            2
-                                                        </a>
-                                                    </li>
-                                                    <li class="pagination__item">
-                                                        <a href="#">
-                                                            3
-                                                        </a>
-                                                    </li>
-                                                    <li class="pagination__item">
-                                                        <a href="#">
-                                                            4
-                                                        </a>
-                                                    </li>
-                                                    <li class="pagination__item">
-                                                        <a href="#">
-                                                            5
-                                                        </a>
-                                                    </li>
-                                                    <li class="pagination__item dots" tabindex="-1">
-                                                        ...
-                                                    </li>
-                                                    <li class="pagination__item">
-                                                        <a href="#">
-                                                            199
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tabs__body" hidden>
-                                    <div class="my-requests__table main-table">
-                                        <div class="main-table__inner container">
-                                            <div class="main-table__table">
-                                                <div class="main-table__type">
-                                                    <span>Заявка</span>
-                                                    <span>Номер заказа</span>
-                                                    <span>Дата заказа</span>
-                                                </div>
-                                                <div class="main-table__list">
-                                                    <div class="main-table__item object-info moving-card _disabled">
-                                                        <a href="./moving-inner.html" class="object-info__link"></a>
-                                                        <span class="object-info__type moving-card__type">
-                                                            <img loading="lazy" src="./img/moving.png" width="32" height="32" class="" alt="">
-                                                            Отчёт
-                                                        </span>
-                                                        <div>
-                                                            <span>Заказ № </span>
-                                                            <span>OT-0068-00000176</span>
-                                                        </div>
-                                                        <span>
-                                                            26.01.24
-                                                        </span>
-                                                        <div class="dots-dropdown">
-                                                            <button type="button" class="btn btn-reset dots-dropdown__target">
-                                                                <svg>
-                                                                    <use xlink:href="img/sprite.svg#dots-vertical">
-                                                                    </use>
-                                                                </svg>
-                                                            </button>
-                                                            <div class="dots-dropdown__dropdown">
-                                                                <button type="button" class="btn btn-reset js-popup-close" data-popup-path="warning-remove2">
-                                                                    <svg>
-                                                                        <use xlink:href="img/sprite.svg#trash">
-                                                                        </use>
-                                                                    </svg>
-                                                                    Закрыть заявку
-                                                                </button>
-                                                                <a href="./edit-app.html" class="btn btn-reset">
-                                                                    <svg>
-                                                                        <use xlink:href="img/sprite.svg#pencil">
-                                                                        </use>
-                                                                    </svg>
-                                                                    Редактировать
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="moving-card__line progress-bar">
-                                                            <div class="progress-bar__title">
-                                                                <div class="progress-bar__status _accepted">
-                                                                    <svg>
-                                                                        <use xlink:href="./img/sprite.svg#verif"></use>
-                                                                    </svg>
-                                                                </div>
-                                                                <p>Заявка принята</p>
-                                                            </div>
-                                                            <div class="progress-bar__line">
-                                                                <div class="progress-bar__section _active"></div>
-                                                                <div class="progress-bar__section"></div>
-                                                                <div class="progress-bar__section"></div>
-                                                                <div class="progress-bar__section"></div>
-                                                                <div class="progress-bar__section"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="main-table__next">
-                                                <button type="button" class="btn btn-reset btn-secondary">
-                                                    Следующая страница
-                                                </button>
-                                            </div>
-                                            <div class="main-table__pagination pagination">
-                                                <ul class="pagination__list list-reset">
-                                                    <li class="pagination__item" disabled="">
-                                                        <a href="#">
-                                                            1
-                                                        </a>
-                                                    </li>
-                                                    <li class="pagination__item">
-                                                        <a href="#">
-                                                            2
-                                                        </a>
-                                                    </li>
-                                                    <li class="pagination__item">
-                                                        <a href="#">
-                                                            3
-                                                        </a>
-                                                    </li>
-                                                    <li class="pagination__item">
-                                                        <a href="#">
-                                                            4
-                                                        </a>
-                                                    </li>
-                                                    <li class="pagination__item">
-                                                        <a href="#">
-                                                            5
-                                                        </a>
-                                                    </li>
-                                                    <li class="pagination__item dots" tabindex="-1">
-                                                        ...
-                                                    </li>
-                                                    <li class="pagination__item">
-                                                        <a href="#">
-                                                            199
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
+        <main class="main main-page-gap edit-profile">
+            <h1 class="title-2 container">
+                Редактирование профиля
+            </h1>
+            <div class="edit-profile__body">
+                <div class="edit-profile__content container">
+                    <div class="edit-profile__row">
+                        <div class="edit-profile__user">
+                            <div class="edit-profile__avatar avatar">
+                                <img loading="lazy" src="./img/avatar.png" width="90" height="90" alt="Иван Петров">
+                                <div>
+                                    <input type="file" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                    <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M13.02 5.714h5.96c.868 0 1.376.253 1.874.838.026.03.446.552.903 1.116.457.565 1.388.903 2.243.903h.572c2.285 0 4 1.715 4 4.572v8.571c0 2.286-2.286 4.572-5.143 4.572H8.572c-2.858 0-5.143-2.286-5.143-4.572v-8.571c0-2.857 1.714-4.572 4-4.572H8c.855 0 1.786-.338 2.243-.903.457-.564.877-1.086.903-1.116.498-.585 1.006-.838 1.873-.838zM9.885 16.857A6.116 6.116 0 0016 22.971a6.117 6.117 0 006.114-6.114A6.117 6.117 0 0016 10.743a6.116 6.116 0 00-6.114 6.114zm1.828 0a4.285 4.285 0 118.571 0 4.285 4.285 0 01-8.57 0z"
+                                            fill="currentColor"></path>
+                                    </svg>
                                 </div>
                             </div>
+                            <div class="edit-profile__name title-2">
+                                Иван Петров Сергеевич
+                            </div>
+                        </div>
+                        <div class="edit-profile__item">
+                            <h3 class="edit-profile__subtitle title-3">
+                                Контактные данные
+                            </h3>
+                            <div class="edit-profile__field">
+                                <div class="input-text input-text--no-exp input-text--disabled">
+                                    <label class="input-text__label">
+                                        <span>Номер телефона</span>
+                                        <input type="text" name="Номер телефона" value="+7 414 214-24-12" disabled class="input-reset input-text__input input-phone-mask" placeholder="">
+                                    </label>
+                                </div>
+                                <div class="input-text input-text--no-exp input-text--disabled">
+                                    <label class="input-text__label">
+                                        <span>Email</span>
+                                        <input type="text" name="Email" disabled class="input-reset input-text__input" placeholder="">
+                                    </label>
+                                </div>
+                                <button type="button" class="btn btn-reset edit-profile__edit" data-edit-profile-btn>
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#pencil">
+                                        </use>
+                                    </svg>
+                                    <span>Изменить данные</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="edit-profile__item">
+                            <h3 class="edit-profile__subtitle title-3">
+                                Личные данные
+                            </h3>
+                            <div class="edit-profile__field">
+                                <label class="input-primary input-primary--disabled">
+                                    <input type="text" name="Фамилия" class="input-reset input-primary__input" disabled value="Петров" placeholder="Фамилия">
+                                    <div class="secondary-tooltip secondary-tooltip--dark secondary-tooltip--top-center">
+                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#info"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="secondary-tooltip__content">
+                                            Для вашего профиля редактирование данных недоступно.
+                                        </div>
+                                    </div>
+                                </label>
+                                <label class="input-primary input-primary--disabled">
+                                    <input type="text" name="Имя" class="input-reset input-primary__input" disabled value="Иван" placeholder="Имя">
+                                    <div class="secondary-tooltip secondary-tooltip--dark">
+                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#info"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="secondary-tooltip__content">
+                                            Для вашего профиля редактирование данных недоступно.
+                                        </div>
+                                    </div>
+                                </label>
+                                <label class="input-primary input-primary--disabled">
+                                    <input type="text" name="Отчество" class="input-reset input-primary__input" disabled value="Сергеевич" placeholder="Отчество">
+                                    <div class="secondary-tooltip secondary-tooltip--dark secondary-tooltip--top-center">
+                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#info"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="secondary-tooltip__content">
+                                            Для вашего профиля редактирование данных недоступно.
+                                        </div>
+                                    </div>
+                                </label>
+                                <label class="input-primary input-primary--disabled">
+                                    <input type="text" name="Дата рождения" class="input-reset input-primary__input" disabled value="16.02.1982" placeholder="Телефон">
+                                    <div class="secondary-tooltip secondary-tooltip--dark">
+                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#info"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="secondary-tooltip__content">
+                                            Для вашего профиля редактирование данных недоступно.
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="edit-profile__item">
+                            <h3 class="edit-profile__subtitle title-3">
+                                Привязанные аккаунты
+                            </h3>
+                            <div class="edit-profile__field">
+                                <div class="field-linked-account" data-linked-account-id="1">
+                                    <img loading="lazy" src="img/sber.png" width="30" height="30" class="field-linked-account__img" alt="external-system-icon">
+                                    <div class="field-linked-account__info">
+                                        <span class="field-linked-account__name">
+                                            Сбер ID
+                                        </span>
+                                        <span class="field-linked-account__time">
+                                            Вход 21.06.2023
+                                        </span>
+                                    </div>
+                                    <label class="toggle-checkbox" data-popup-path="warning-remove5">
+                                        <input type="checkbox" name="toggle-1" checked disabled>
+                                        <div aria-hidden="true"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="edit-profile__item edit-profile__bottom">
+                            <button type="button" class="btn btn-reset btn-secondary">Удалить личный кабинет</button>
+                            <button type="button" class="btn btn-reset btn-primary">Выйти из личного кабинета</button>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
+
         <footer class="footer">
     <div class="footer__container container">
         <div class="footer__top">
@@ -1149,8 +803,8 @@
     </div>
 </div>
     <!-- ==== -->
-    <div class="popup popup-primary popup-primary--warning-remove">
-    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="warning-remove2">
+    <div class="popup popup-primary popup-primary--warning-remove popup-primary--warning-remove5">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="warning-remove5">
         <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
             <svg>
                 <use xlink:href="./img/sprite.svg#x"></use>
@@ -1159,11 +813,14 @@
         </button>
         <div class="popup__content popup-primary__content warning-remove">
             <h2 class="warning-remove__title title-2">
-                Вы действительно хотите закрыть заявку?
+                Вы уверены, что хотите отвязать аккаунт?
             </h2>
+            <p class="warning-remove__descr">
+                ФИО и данные останутся. Вы можете привязать новый аккаунт, чтобы их обновить
+            </p>
             <div class="warning-remove__btns">
-                <button type="button" class="btn btn-reset btn-primary warning-remove__btn js-popup-close">Да</button>
-                <button type="button" class="btn btn-reset btn-secondary warning-remove__btn js-popup-close">Нет</button>
+                <button type="button" class="btn btn-reset btn-primary warning-remove__btn js-popup-close">Отмена</button>
+                <button type="button" class="btn btn-reset btn-secondary warning-remove__btn js-popup-close" data-linked-account-id>Отвязать</button>
             </div>
         </div>
     </div>

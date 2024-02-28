@@ -49,28 +49,35 @@
     &__images {
         display: flex;
 
-    @media (min-width:$desktop-min){
-        position: absolute;
-        left: 0;
-        top: 0;
-        z-index: 2;
-        width: 100%;
-        height: 100% !important; 
-    }
+        @media (min-width:$desktop-min) {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 2;
+            width: 100%;
+            height: 100% !important;
+        }
 
         @media (max-width:$desktop) {
             min-width: 100%;
             min-height: 100%;
+
             &.swiper-wrapper {
                 align-items: stretch;
             }
         }
     }
-
+    .metro-info{
+        >.metro-info__item{
+            &:not(:first-child){
+                display: none;
+            }
+        }
+    }
     &__item {
 
-      @media (min-width:$desktop-min){
-             flex-grow: 1;
+        @media (min-width:$desktop-min) {
+            flex-grow: 1;
             cursor: pointer;
 
             &:first-child {
@@ -108,14 +115,16 @@
                     z-index: 3;
                     inset: 0;
                 }
-            } 
-      }
-      @media (max-width:$desktop){
-         min-width: 100%; 
-      }
-      @media (max-width:$smallTablet-max){
-        min-width: 85%;  
-      }
+            }
+        }
+
+        @media (max-width:$desktop) {
+            min-width: 100%;
+        }
+
+        @media (max-width:$smallTablet-max) {
+            min-width: 85%;
+        }
     }
 
     &__image {
@@ -586,6 +595,7 @@
         flex-direction: column;
         height: 100%;
         overflow: hidden;
+
         @media (max-width:$desktop) {
             display: grid;
             grid-template-columns: 1fr 30px;
@@ -616,12 +626,14 @@
         }
     }
 
-    &__metro{
+    &__metro {
         margin-bottom: 24px;
-   @media (max-width:$desktop){
-    grid-column: 1/2; 
-   }
+
+        @media (max-width:$desktop) {
+            grid-column: 1/2;
+        }
     }
+
     &__price {
         display: grid;
         align-items: center;
@@ -750,8 +762,8 @@
             border-radius: 12px;
             color: var(--gray);
             padding: 0 12px;
-           font-size: 12px;
-         line-height: 1;
+            font-size: 12px;
+            line-height: 1;
             display: flex;
             align-items: center;
             justify-content: center;

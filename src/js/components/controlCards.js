@@ -1,7 +1,3 @@
-import {
-    cardSecondaryMetro
-} from "./cardActions";
-
 export const controlCards = () => {
     const containers = document.querySelectorAll('.control-cards');
     if (containers.length === 0) return;
@@ -46,7 +42,6 @@ export const actionForCards = (container, content, btn) => {
 
 
     controlCardsCardSecondary(content, btn);
-    cardSecondaryMetro();
     if (content.querySelectorAll('.card-primary').length >= 1) {
         const cardsPrimary = content.querySelectorAll('.card-primary');
 

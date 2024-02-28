@@ -101,7 +101,6 @@ export const cardSecondaryActions = () => {
         favoriteMobile();
         tagsMobile();
         tagsTwoMobile();
-        cardSecondaryMetro();
     });
 
     function favoriteMobile() {
@@ -315,7 +314,6 @@ export const cardPrimaryActions = () => {
         favoriteMobile();
         tagsMobile();
         infoMobile();
-        cardPrimaryMetro();
     });
 
     function favoriteMobile() {
@@ -392,7 +390,7 @@ export const cardSecondaryMetro = () => {
     if (cards.length === 0) return;
     cards.forEach(card => {
         const container = card.querySelector('.card-secondary__metro');
-        metroItems(container, card.querySelector('.card-secondary__content'))
+        metroItems(container)
     })
 
 }
@@ -401,7 +399,8 @@ export const cardPrimaryMetro = () => {
     if (cards.length === 0) return;
     cards.forEach(card => {
         const container = card.querySelector('.card-primary__metro');
-        metroItems(container, card.querySelector('.card-primary__content'))
+        console.log(container);
+        metroItems(container)
     })
 
 }

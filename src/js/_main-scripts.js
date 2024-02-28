@@ -163,10 +163,16 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', (e) => {
         const target = e.target;
         const searchSelectOne = document.querySelectorAll('.search-select-one');
+        const metroInfoActive = document.querySelectorAll('.metro-info__other._active');
         if (searchSelectOne.length > 0) {
             const currentContainer = target.closest('.search-select-one');
             if (currentContainer && !currentContainer.classList.contains('_active') || !currentContainer) {
                 searchSelectOne.forEach(container => container.classList.remove('_active'));
+            }
+        }
+        if (metroInfoActive.length > 0) {
+            if (!target.closest('.metro-info') && window.innerWidth > 1212){
+                metroInfoActive.forEach(item => item.classList.remove('_active'));
             }
         }
     })

@@ -1,21 +1,11 @@
 import metroItems from './metroItems';
 import modal from '../modules/modal';
 const metroInfo = () => {
-    const objectMetro = document.querySelectorAll('.object-data__metro');
+     const objectMetro = document.querySelectorAll('.object-data__metro');
     if (objectMetro.length > 0) {
-        body();
-        setTimeout(() => {
-            body();
-        }, 1);
-        window.addEventListener('resize', () => {
-            body();
-        });
-
-        function body() {
-            objectMetro.forEach(container => {
-                metroItems(container, container.closest('.object-body__data'));
-            })
-        }
+        objectMetro.forEach(container => {
+            metroItems(container, 2);
+        })
     }
     document.addEventListener('click', (e) => {
         const metroOther = e.target.closest('.metro-info__other');
@@ -51,4 +41,3 @@ const metroInfo = () => {
 };
 
 export default metroInfo;
-

@@ -169,11 +169,11 @@ export const controlCardsCardSecondary = (content, btn) => {
 }
 
 function checkHorizontal(target) {
-    if (target) return target.classList.contains('control-cards__btn--horizontal');
+    if (target) return target.classList.contains('control-cards__btn--horizontal') || target.classList.contains('filter-actions__map');
 }
 
 function checkVertical(target) {
-    if (target) return target.classList.contains('control-cards__btn--vertical');
+    if (target) return target.classList.contains('control-cards__btn--vertical') || target.classList.contains('filter-actions__list'); 
 }
 
 export const cardSchemeTag = (container) => {

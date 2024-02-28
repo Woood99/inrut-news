@@ -12,7 +12,8 @@ import {
     fieldSelect,
     fieldRange,
     tooltipSelect,
-    fieldNotif
+    fieldNotif,
+    filterActions
 } from './components/filter';
 import {
     choicesSelect
@@ -75,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     choicesSelect();
     tooltipSelect();
     fieldNotif();
-    
+    filterActions();
     simplebar('.simplebar-primary');
     simplebar('.simplebar-secondary');
     simplebar('.simplebar-third');

@@ -16,6 +16,9 @@ import {
 import {
     currentSimplebar
 } from './simplebar';
+import {
+    actionForCards
+} from './controlCards';
 export const filterDropdownChoice = () => {
     const items = document.querySelectorAll('.filter-dropdown__dropdown');
     if (!items.length >= 1) return;
@@ -1572,3 +1575,35 @@ export const searchSelectOneBody = (container) => {
         })
     }
 }
+
+
+export const filterActions = () => {
+    const filter = document.querySelector('.filter-actions');
+    if (!filter) return;
+    const btns = filter.querySelectorAll('.filter-actions__btn')
+    const listBtn = filter.querySelector('.filter-actions__list');
+    const mapBtn = filter.querySelector('.filter-actions__map');
+    const metroBtn = filter.querySelector('.filter-actions__metro');
+    const currentFilterContainer = filter.closest('.filter');
+    const searchAreaBtn = currentFilterContainer.querySelector('.select-map-btn');
+    const controlCards = document.querySelector('.control-cards');
+    if (controlCards) {
+        const controlCardsContent = controlCards.querySelector('.control-cards__content');
+        listBtn.addEventListener('click', () => {
+            actions(controlCardsContent, listBtn);
+            actionForCards(controlCards, controlCardsContent, listBtn);
+            if (searchAreaBtn) searchAreaBtn.removeAttribute('hidden');
+        })
+        mapBtn.addEventListener('click', () => {
+            actions(controlCardsContent, mapBtn);
+            actionForCards(controlCards, controlCardsContent, mapBtn);
+            if (searchAreaBtn) searchAreaBtn.setAttribute('hidden', '');
+        });
+    }
+
+    function actions(content, currentBtn) {
+        content.classList.remove('control-cards__content--horizontal', 'control-cards__content--vertical', 'control-cards__content--horizontal-map');
+        btns.forEach(btn => btn.classList.remove('_active'));
+        currentBtn.classList.add('_active');
+    }
+};

@@ -37,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function scroll(evt) {
             if (evt.target.closest('.chat')) return;
-            console.log('da');
             const scrollTarget = document.querySelector('.chat__bar .simplebar-content-wrapper');
             var delta = Math.max(-1, Math.min(1, (evt.wheelDelta || -evt.detail)));
             scrollTarget.scrollTo({

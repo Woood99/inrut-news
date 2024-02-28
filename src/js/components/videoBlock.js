@@ -1,6 +1,5 @@
 const videoBlock = (currentVideoBlock) => {
     if (currentVideoBlock) {
-        console.log(currentVideoBlock);
         const btn = currentVideoBlock.querySelector('.video-block__button');
         const content = currentVideoBlock.querySelector('.video-block__video');
         createVideoBlock(btn, content);

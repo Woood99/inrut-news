@@ -322,38 +322,13 @@ export const controlCardsMap = () => {
                 map.controls.remove('fullscreenControl');
                 map.controls.get('zoomControl').options.set({
                     position: {
-                        top: 20,
-                        right: 20
+                        top: 188,
+                        right: 15
                     },
                     maxWidth: '44'
                 })
-                if (innerWidth > 1212) reziseContainer(map)
             }
             ymaps.ready(init);
-
-            const btn = container.querySelector('.control-cards__maps-resize');
-
-            function reziseContainer(map) {
-                let value = false;
-                btn.addEventListener('mousedown', (e) => {
-                    e.preventDefault()
-                    resize();
-                })
-
-                function resize() {
-                    if (!value) {
-                        container.style.gridTemplateColumns = `382px 1fr`;
-                        container.classList.add('_map-full');
-                        value = true;
-                    } else {
-                        container.style.gridTemplateColumns = `780px 1fr`;
-                        container.classList.remove('_map-full');
-                        value = false;
-                    }
-
-                    map.container.fitToViewport();
-                }
-            }
 
             const cardFull = container.querySelector('.popup-map__card-full');
             container.addEventListener('click', (e) => {

@@ -314,7 +314,7 @@
                         </div>
                         <div class="filter__inner">
                             <div class="filter__row buy-apartment-filter__row--1 container" data-da=".filter--new-style,1212,1"
-                                style="grid-template-columns: 125px 278px 1fr 18% 200px;">
+                                style="grid-template-columns: 125px 278px 1fr 1fr max-content;">
                                 <div class="btn btn-reset filter__item filter-more-btn filter__btn-control">
                                     <svg>
                                         <use xlink:href="./img/sprite.svg#filter"></use>
@@ -407,13 +407,13 @@
                                         </label>
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-reset filter__item select-map-btn" data-popup-path="search-area">
-                                    <span>Район поиска</span>
-                                    <svg>
-                                        <use xlink:href="./img/sprite.svg#location-two"></use>
-                                    </svg>
-                                </button>
-                                <button type="reset" class="btn btn-reset btn-secondary filter__clear">Очистить</button>
+                                <div class="filter__item filter-actions">
+                                    <span class="filter-actions__name">Поиск</span>
+                                    <button type="button" class="btn btn-reset filter-actions__list filter-actions__btn">Списком</button>
+                                    <button type="button" class="btn btn-reset filter-actions__map filter-actions__btn _active">На карте</button>
+                                    <button type="button" class="btn btn-reset filter-actions__metro filter-actions__btn">Метро</button>
+                                </div>
+                                <button type="reset" class="btn btn-reset filter__clear">Очистить</button>
                             </div>
                             <div class="filter__row buy-apartment-filter__row--2" hidden>
                                 <div class="container">
@@ -755,6 +755,12 @@
                                             </button>
                                         </div>
                                     </div>
+                                    <button type="button" class="btn btn-reset filter__item select-map-btn" hidden data-popup-path="search-area">
+                                        <span>Район поиска</span>
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#location-two"></use>
+                                        </svg>
+                                    </button>
                                     <button type="button" class="btn btn-reset filter__btn-control filter__btn-hidden">
                                         <span>Скрыть фильтры</span>
                                         <svg>
@@ -777,18 +783,6 @@
                 <div class="buy-apartment__cards-list cards-list control-cards control-cards--maps _map-active">
                     <div class="container control-cards__container">
                         <div class="control-cards__wrapper">
-                            <div class="cards-list__controls control-cards__btns">
-                                <button type="button" class="btn btn-reset control-cards__btn control-cards__btn--horizontal _active">
-                                    <svg>
-                                        <use xlink:href="./img/sprite.svg#apps"></use>
-                                    </svg>
-                                </button>
-                                <button type="button" class="btn btn-reset control-cards__btn control-cards__btn--vertical">
-                                    <svg>
-                                        <use xlink:href="./img/sprite.svg#pause"></use>
-                                    </svg>
-                                </button>
-                            </div>
                             <div class="cards-list__items control-cards__content control-cards__content--horizontal">
                                 <div class="card-secondary-skeleton">
                                     <div class="card-secondary-skeleton__container">
@@ -2816,18 +2810,67 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="control-cards__maps _sticky">
+                        <div class="control-cards__maps _sticky map-draw map-draw--icons">
                             <div class="control-cards__maps--skeleton skeleton">
                                 <span class="web-skeleton" style="width:100%;border-radius:12px;height: 100%;">
                                     <span class="web-skeleton__children"></span>
                                 </span>
                             </div>
-                            <button type="button" class="btn btn-reset control-cards__maps-resize">
-                                <svg>
-                                    <use xlink:href="./img/sprite.svg#resize"></use>
-                                </svg>
-                            </button>
+                            <div class="map-draw__btns">
+                                <button type="button" class="btn btn-reset map-draw__btn" title="Нарисовать область">
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#finger"></use>
+                                    </svg>
+                                </button>
+                                <button type="button" class="btn btn-reset map-draw__btn" title="Добавить ещё область">
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#plus"></use>
+                                    </svg>
+                                </button>
+                                <button type="button" class="btn btn-reset map-draw__btn" title="Очистить">
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#trash"></use>
+                                    </svg>
+                                </button>
+                            </div>
                             <div id="control-cards__maps" class="map-primary remove-copyrights-pane _hidden-map"></div>
+                            <div class="tooltip-card" style="position: absolute;top: 100px;left: 30px; z-index: 99;">
+                                <a href="#" class="tooltip-card__container">
+                                    <div class="tooltip-card__image ibg">
+                                        <picture>
+                                            <source srcset="./img/card-1.webp" type="image/webp">
+                                            <img loading="lazy" src="./img/card-1.jpg" width="323" height="207" alt="1-комн. квартира, 54 м², 12/12 эт.">
+                                        </picture>
+                                    </div>
+                                    <div class="tooltip-card__content">
+                                        <h4 class="tooltip-card__name">
+                                            ЖК “Элит цветочные поляны экопарк”
+                                        </h4>
+                                        <ul class="tooltip-card__list list-reset">
+                                            <li class="tooltip-card__item">
+                                                <span>Студии</span>
+                                                <span>от 4,7 млн ₽</span>
+                                            </li>
+                                            <li class="tooltip-card__item">
+                                                <span>1-комн.</span>
+                                                <span>от 34,7 млн ₽</span>
+                                            </li>
+                                            <li class="tooltip-card__item">
+                                                <span>2-комн.</span>
+                                                <span>от 40,7 млн ₽</span>
+                                            </li>
+                                            <li class="tooltip-card__item">
+                                                <span>3-комн.</span>
+                                                <span>от 134 млн ₽</span>
+                                            </li>
+                                            <li class="tooltip-card__item">
+                                                <span>4-комн.</span>
+                                                <span>от 134 млн ₽</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2838,7 +2881,7 @@
                     <picture>
                         <source srcset="./img/lora_face.webp" type="image/webp">
                         <img loading="lazy" src="./img/lora_face.webp" width="32" height="32" alt="Lora">
-                      </picture>
+                    </picture>
                 </a>
                 <div class="secondary-tooltip__content">
                     <button class="btn btn-reset secondary-tooltip__close">

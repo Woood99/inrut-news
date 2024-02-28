@@ -322,7 +322,7 @@ export const controlCardsMap = () => {
                 map.controls.remove('fullscreenControl');
                 map.controls.get('zoomControl').options.set({
                     position: {
-                        top: 188,
+                        top: (window.innerHeight - 90) / 2,
                         right: 15
                     },
                     maxWidth: '44'

@@ -132,9 +132,9 @@
                                 </div>
                                 <div class="filter__item filter-actions">
                                     <span class="filter-actions__name">Поиск</span>
-                                    <button type="button" class="btn btn-reset filter-actions__list filter-actions__btn">Списком</button>
                                     <button type="button" class="btn btn-reset filter-actions__map filter-actions__btn _active">На карте</button>
-                                    <button type="button" class="btn btn-reset filter-actions__metro filter-actions__btn">Метро</button>
+                                    <button type="button" class="btn btn-reset filter-actions__list filter-actions__btn">Списком</button>
+                                    <button type="button" class="btn btn-reset filter-actions__metro filter-actions__btn" data-popup-path="metro-map">Метро</button>
                                 </div>
                                 <button type="reset" class="btn btn-reset filter__clear">Очистить</button>
                             </div>
@@ -375,6 +375,19 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="filter__item field-select _not-choice" data-search-area-btn hidden>
+                                        <div class="field-select__name">
+                                            Расположение
+                                        </div>
+                                        <div class="field-select__wrapper">
+                                            <button type="button" class="btn btn-reset field-select__item select-map-btn" data-popup-path="search-area">
+                                                <span>Укажите область на карте</span>
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#finger"></use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
                                     <div class="filter__item field-select field-select--multiple" data-field-select-name="class">
                                         <div class="field-select__name">
                                             Класс
@@ -419,7 +432,7 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="filter__item field-select field-select--multiple" data-field-select-name="finishing">
+                                    <div class="filter__item field-select field-select--multiple _border-bottom" data-field-select-name="finishing">
                                         <div class="field-select__name">
                                             Отделка
                                         </div>
@@ -478,12 +491,6 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-reset filter__item select-map-btn" hidden data-popup-path="search-area">
-                                        <span>Район поиска</span>
-                                        <svg>
-                                            <use xlink:href="./img/sprite.svg#location-two"></use>
-                                        </svg>
-                                    </button>
                                     <button type="button" class="btn btn-reset filter__btn-control filter__btn-hidden">
                                         <span>Скрыть фильтры</span>
                                         <svg>
@@ -2552,7 +2559,7 @@
                                 </button>
                                 <button type="button" class="btn btn-reset map-draw__btn" title="Очистить">
                                     <svg>
-                                        <use xlink:href="./img/sprite.svg#trash"></use>
+                                        <use xlink:href="./img/sprite.svg#trash-2"></use>
                                     </svg>
                                 </button>
                             </div>
@@ -2569,6 +2576,7 @@
                                         <h4 class="tooltip-card__name">
                                             ЖК “Элит цветочные поляны экопарк”
                                         </h4>
+                                        <div class="tooltip-card__wrapper">
                                         <ul class="tooltip-card__list list-reset">
                                             <li class="tooltip-card__item">
                                                 <span>Студии</span>
@@ -2586,11 +2594,45 @@
                                                 <span>3-комн.</span>
                                                 <span>от 134 млн ₽</span>
                                             </li>
+                                        </ul>
+                                        <ul class="tooltip-card__list list-reset">
                                             <li class="tooltip-card__item">
                                                 <span>4-комн.</span>
                                                 <span>от 134 млн ₽</span>
                                             </li>
+                                            <li class="tooltip-card__item">
+                                                <span>5-комн.</span>
+                                                <span>от 134 млн ₽</span>
+                                            </li>
                                         </ul>
+                                    </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="tooltip-card" style="position: absolute;top: 300px;left: 30px; z-index: 99;">
+                                <a href="#" class="tooltip-card__container">
+                                    <div class="tooltip-card__image ibg">
+                                        <picture>
+                                            <source srcset="./img/card-1.webp" type="image/webp">
+                                            <img loading="lazy" src="./img/card-1.jpg" width="323" height="207" alt="1-комн. квартира, 54 м², 12/12 эт.">
+                                        </picture>
+                                    </div>
+                                    <div class="tooltip-card__content">
+                                        <h4 class="tooltip-card__name">
+                                            ЖК “Элит цветочные поляны экопарк”
+                                        </h4>
+                                        <div class="tooltip-card__wrapper">
+                                        <ul class="tooltip-card__list list-reset">
+                                            <li class="tooltip-card__item">
+                                                <span>Студии</span>
+                                                <span>от 4,7 млн ₽</span>
+                                            </li>
+                                            <li class="tooltip-card__item">
+                                                <span>1-комн.</span>
+                                                <span>от 34,7 млн ₽</span>
+                                            </li>
+                                        </ul>
+                                    </div>
                                     </div>
                                 </a>
                             </div>
@@ -2635,6 +2677,7 @@
     @include('popups/sber-tied.html')
     <!-- ==== -->
     @include('popups/search-area.html')
+    @include('popups/metro-map.html')
     <!-- popups -->
 </body>
 

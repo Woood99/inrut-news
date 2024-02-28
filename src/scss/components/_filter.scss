@@ -128,7 +128,8 @@
     }
 
     &__item {
-        transition: opacity $transitionSpeed $transitionFunction;
+        transition: opacity $transitionSpeed $transitionFunction,
+        border $transitionSpeed $transitionFunction;
         @media (max-width:$desktop) {
             &:not(:last-child) {
                 margin-bottom: 24px;
@@ -184,21 +185,11 @@
         color: var(--blue);
         display: flex;
         align-items: center;
-
-        span {
-            font-size: var(--small-fz);
-            line-height: var(--small-lh);
-            font-weight: 400;
-        }
-
+        font-size: var(--default-small-fz);
         svg {
             width: 20px;
             height: 17px;
             fill: currentColor;
-        }
-
-        &.focus-visible {
-            color: var(--primary600);
         }
 
         @media (max-width:$desktop) {
@@ -369,6 +360,11 @@
                     .filter__item {
                         &:not(:last-child) {
                             margin-bottom: 16px;
+                            &._border-bottom{
+                                margin-bottom: 24px;
+                                padding-bottom: 16px;
+                                border-bottom: 1px solid var(--primary200);
+                            }
                         }
                     }
 
@@ -382,6 +378,20 @@
                     .field-select {
                         &__item {
                             font-size: var(--default-small-fz);
+                            background-color: var(--white);
+                            border: 1px solid var(--primary200);
+                            font-weight: 400;
+                            @media (min-width:$desktop-min){
+                                 &:hover{
+                                    &:not(._active){
+                                        border: 1px solid var(--blue);
+                                    }
+                                 } 
+                            }
+                            &._active{
+                                background-color: var(--blue);
+                                border: 1px solid var(--blue);
+                            }
                         }
                     }
 
@@ -2359,10 +2369,13 @@
     padding: 0 16px;
     &__name{
         margin-right: auto;
+        font-size: var(--default-small-fz);
     }
     &__btn{
         color: var(--blue);
         position: relative;
+        font-size: var(--default-small-fz);
+
         &::before{
             content: '';
             position: absolute;

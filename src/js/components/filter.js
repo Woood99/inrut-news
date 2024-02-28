@@ -1042,115 +1042,118 @@ export const fieldSelect = () => {
     const containers = document.querySelectorAll('.field-select');
     if (containers.length === 0) return;
     containers.forEach(container => {
-        updateInput(container, false);
-        const name = container.dataset.fieldSelectName;
-        if (name) {
-            init(container, name);
-            container.querySelectorAll('.field-select__item').forEach((item, index) => {
-                item.setAttribute(`data-select-${name}-index`, index + 1);
-            })
-        }
-        const defaultItem = container.querySelector('.field-select__default');
-        container.addEventListener('click', (e) => {
-            const target = e.target;
-            const item = target.closest('.field-select__item');
-            const currentDefaultItem = target.closest('.field-select__default');
-            if (currentDefaultItem) {
-                const items = container.querySelectorAll('.field-select__item:not(.field-select__default)');
-                items.forEach(item => {
-                    item.classList.remove('_active')
-                    const checkbox = item.querySelector('.field-select__checkbox');
-                    if (checkbox) checkbox.checked = false;
-                });
+        if (!container.classList.contains('_not-choice')) {
+
+            updateInput(container, false);
+            const name = container.dataset.fieldSelectName;
+            if (name) {
+                init(container, name);
+                container.querySelectorAll('.field-select__item').forEach((item, index) => {
+                    item.setAttribute(`data-select-${name}-index`, index + 1);
+                })
             }
-            if (item && !item.classList.contains('.field-select__default')) {
-                if (defaultItem) defaultItem.classList.remove('_active');
-                if (!container.classList.contains('field-select--multiple')) {
-                    const items = container.querySelectorAll('.field-select__item');
-                    items.forEach(currentItem => {
-                        if (item !== currentItem) {
-                            currentItem.classList.remove('_active');
-                            const checkbox = currentItem.querySelector('.field-select__checkbox')
-                            if (checkbox) checkbox.checked = false;
-                        }
-                    })
+            const defaultItem = container.querySelector('.field-select__default');
+            container.addEventListener('click', (e) => {
+                const target = e.target;
+                const item = target.closest('.field-select__item');
+                const currentDefaultItem = target.closest('.field-select__default');
+                if (currentDefaultItem) {
+                    const items = container.querySelectorAll('.field-select__item:not(.field-select__default)');
+                    items.forEach(item => {
+                        item.classList.remove('_active')
+                        const checkbox = item.querySelector('.field-select__checkbox');
+                        if (checkbox) checkbox.checked = false;
+                    });
                 }
-                if (container.classList.contains('field-select--necessarily')) {
-                    item.classList.add('_active');
-                    const checkbox = item.querySelector('.field-select__checkbox')
-                    if (checkbox) checkbox.checked = true;
-                } else {
-                    item.classList.toggle('_active');
-                }
+                if (item && !item.classList.contains('.field-select__default')) {
+                    if (defaultItem) defaultItem.classList.remove('_active');
+                    if (!container.classList.contains('field-select--multiple')) {
+                        const items = container.querySelectorAll('.field-select__item');
+                        items.forEach(currentItem => {
+                            if (item !== currentItem) {
+                                currentItem.classList.remove('_active');
+                                const checkbox = currentItem.querySelector('.field-select__checkbox')
+                                if (checkbox) checkbox.checked = false;
+                            }
+                        })
+                    }
+                    if (container.classList.contains('field-select--necessarily')) {
+                        item.classList.add('_active');
+                        const checkbox = item.querySelector('.field-select__checkbox')
+                        if (checkbox) checkbox.checked = true;
+                    } else {
+                        item.classList.toggle('_active');
+                    }
 
-                if (container.hasAttribute('data-submit-filter-object-type')) {
-                    const developer = document.querySelector('[data-submit-filter-developer]');
-                    const currentItem = item.hasAttribute('data-submit-filter-object-type-item');
-                    currentItem && item.classList.contains('_active') && developer ? developer.removeAttribute('hidden') : developer.setAttribute('hidden', '');
+                    if (container.hasAttribute('data-submit-filter-object-type')) {
+                        const developer = document.querySelector('[data-submit-filter-developer]');
+                        const currentItem = item.hasAttribute('data-submit-filter-object-type-item');
+                        currentItem && item.classList.contains('_active') && developer ? developer.removeAttribute('hidden') : developer.setAttribute('hidden', '');
 
-                    const secondaryItem = item.hasAttribute('data-submit-filter-object-type-secondary');
-                    const houseItem = item.hasAttribute('data-submit-filter-object-type-house');
+                        const secondaryItem = item.hasAttribute('data-submit-filter-object-type-secondary');
+                        const houseItem = item.hasAttribute('data-submit-filter-object-type-house');
 
-                    const newBuildingsField = document.querySelectorAll('[data-submit-filter-type="1"]');
-                    const secondaryField = document.querySelectorAll('[data-submit-filter-type="2"]');
-                    const houseField = document.querySelectorAll('[data-submit-filter-type="3"]');
-                    if (newBuildingsField.length > 0 && houseField.length > 0 && secondaryField.length > 0) {
-                        if (currentItem || secondaryItem || houseItem) {
-                            const itemsHidden = document.querySelectorAll('[data-submit-app-block-hidden]');
-                            itemsHidden.forEach(item => item.removeAttribute('hidden'));
-                        }
-                        if (currentItem) {
-                            houseField.forEach(item => item.setAttribute('hidden', ''));
-                            secondaryField.forEach(item => item.setAttribute('hidden', ''));
-                            newBuildingsField.forEach(item => item.removeAttribute('hidden'));
-                        }
-                        if (secondaryItem) {
-                            newBuildingsField.forEach(item => item.setAttribute('hidden', ''));
-                            houseField.forEach(item => item.setAttribute('hidden', ''));
-                            secondaryField.forEach(item => item.removeAttribute('hidden'));
-                        }
-                        if (houseItem) {
-                            newBuildingsField.forEach(item => item.setAttribute('hidden', ''));
-                            secondaryField.forEach(item => item.setAttribute('hidden', ''));
-                            houseField.forEach(item => item.removeAttribute('hidden'));
+                        const newBuildingsField = document.querySelectorAll('[data-submit-filter-type="1"]');
+                        const secondaryField = document.querySelectorAll('[data-submit-filter-type="2"]');
+                        const houseField = document.querySelectorAll('[data-submit-filter-type="3"]');
+                        if (newBuildingsField.length > 0 && houseField.length > 0 && secondaryField.length > 0) {
+                            if (currentItem || secondaryItem || houseItem) {
+                                const itemsHidden = document.querySelectorAll('[data-submit-app-block-hidden]');
+                                itemsHidden.forEach(item => item.removeAttribute('hidden'));
+                            }
+                            if (currentItem) {
+                                houseField.forEach(item => item.setAttribute('hidden', ''));
+                                secondaryField.forEach(item => item.setAttribute('hidden', ''));
+                                newBuildingsField.forEach(item => item.removeAttribute('hidden'));
+                            }
+                            if (secondaryItem) {
+                                newBuildingsField.forEach(item => item.setAttribute('hidden', ''));
+                                houseField.forEach(item => item.setAttribute('hidden', ''));
+                                secondaryField.forEach(item => item.removeAttribute('hidden'));
+                            }
+                            if (houseItem) {
+                                newBuildingsField.forEach(item => item.setAttribute('hidden', ''));
+                                secondaryField.forEach(item => item.setAttribute('hidden', ''));
+                                houseField.forEach(item => item.removeAttribute('hidden'));
+                            }
                         }
                     }
                 }
-            }
 
-            updateInput(container, true);
-        })
+                updateInput(container, true);
+            })
 
-        if (container.hasAttribute('data-submit-filter-object-type')) {
-            const developer = document.querySelector('[data-submit-filter-developer]');
-            const currentItem = document.querySelector('[data-submit-filter-object-type-item]._active');
-            currentItem && developer ? developer.removeAttribute('hidden') : developer.setAttribute('hidden', '');
+            if (container.hasAttribute('data-submit-filter-object-type')) {
+                const developer = document.querySelector('[data-submit-filter-developer]');
+                const currentItem = document.querySelector('[data-submit-filter-object-type-item]._active');
+                currentItem && developer ? developer.removeAttribute('hidden') : developer.setAttribute('hidden', '');
 
-            const secondaryItem = document.querySelector('data-submit-filter-object-type-secondary');
-            const houseItem = document.querySelector('data-submit-filter-object-type-house');
+                const secondaryItem = document.querySelector('data-submit-filter-object-type-secondary');
+                const houseItem = document.querySelector('data-submit-filter-object-type-house');
 
-            const newBuildingsField = document.querySelectorAll('[data-submit-filter-type="1"]');
-            const secondaryField = document.querySelectorAll('[data-submit-filter-type="2"]');
-            const houseField = document.querySelectorAll('[data-submit-filter-type="3"]');
-            if (newBuildingsField.length > 0 && houseField.length > 0 && secondaryField.length > 0) {
-                if (currentItem || secondaryItem || houseItem) {
-                    const itemsHidden = document.querySelectorAll('[data-submit-app-block-hidden]');
-                    itemsHidden.forEach(item => item.removeAttribute('hidden'));
-                }
-                if (currentItem) {
-                    houseField.forEach(item => item.setAttribute('hidden', ''));
-                    secondaryField.forEach(item => item.setAttribute('hidden', ''));
-                    newBuildingsField.forEach(item => item.removeAttribute('hidden'));
-                }
-                if (secondaryItem) {
-                    newBuildingsField.forEach(item => item.setAttribute('hidden', ''));
-                    houseField.forEach(item => item.setAttribute('hidden', ''));
-                    secondaryField.forEach(item => item.removeAttribute('hidden'));
-                }
-                if (houseItem) {
-                    newBuildingsField.forEach(item => item.setAttribute('hidden', ''));
-                    secondaryField.forEach(item => item.setAttribute('hidden', ''));
-                    houseField.forEach(item => item.removeAttribute('hidden'));
+                const newBuildingsField = document.querySelectorAll('[data-submit-filter-type="1"]');
+                const secondaryField = document.querySelectorAll('[data-submit-filter-type="2"]');
+                const houseField = document.querySelectorAll('[data-submit-filter-type="3"]');
+                if (newBuildingsField.length > 0 && houseField.length > 0 && secondaryField.length > 0) {
+                    if (currentItem || secondaryItem || houseItem) {
+                        const itemsHidden = document.querySelectorAll('[data-submit-app-block-hidden]');
+                        itemsHidden.forEach(item => item.removeAttribute('hidden'));
+                    }
+                    if (currentItem) {
+                        houseField.forEach(item => item.setAttribute('hidden', ''));
+                        secondaryField.forEach(item => item.setAttribute('hidden', ''));
+                        newBuildingsField.forEach(item => item.removeAttribute('hidden'));
+                    }
+                    if (secondaryItem) {
+                        newBuildingsField.forEach(item => item.setAttribute('hidden', ''));
+                        houseField.forEach(item => item.setAttribute('hidden', ''));
+                        secondaryField.forEach(item => item.removeAttribute('hidden'));
+                    }
+                    if (houseItem) {
+                        newBuildingsField.forEach(item => item.setAttribute('hidden', ''));
+                        secondaryField.forEach(item => item.setAttribute('hidden', ''));
+                        houseField.forEach(item => item.removeAttribute('hidden'));
+                    }
                 }
             }
         }
@@ -1585,7 +1588,7 @@ export const filterActions = () => {
     const mapBtn = filter.querySelector('.filter-actions__map');
     const metroBtn = filter.querySelector('.filter-actions__metro');
     const currentFilterContainer = filter.closest('.filter');
-    const searchAreaBtn = currentFilterContainer.querySelector('.select-map-btn');
+    const searchAreaBtn = currentFilterContainer.querySelector('[data-search-area-btn]');
     const controlCards = document.querySelector('.control-cards');
     if (controlCards) {
         const controlCardsContent = controlCards.querySelector('.control-cards__content');

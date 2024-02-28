@@ -883,7 +883,29 @@
             }
         }
     }
-
+    .select-map-btn{
+        background-color: var(--primary100);
+        font-weight: 500;
+        height: 38px;
+        border: 1px solid transparent;
+        transition: background-color $transitionSpeed $transitionFunction,
+        all $transitionSpeed $transitionFunction;
+        svg{
+            fill: var(--dark) !important;
+        }
+        &._active{
+            color: var(--gray) !important;
+            background-color:var(--white) !important;
+            border: 1px solid var(--primary100) !important;
+        }
+        @media (min-width:$desktop-min){
+             &:hover{
+                background-color: var(--primary200);
+                border: 1px solid transparent;
+                color: var(--gray);
+             } 
+        }
+    }
     @media (max-width:$desktop) {
         flex-direction: column;
     }

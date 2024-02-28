@@ -386,7 +386,7 @@
 
 
 .tooltip-card {
-    max-width: 400px;
+    max-width: 600px;
     width: 100%;
     background-color: var(--white);
     box-shadow: var(--shadow-primary);
@@ -394,7 +394,8 @@
     overflow: hidden;
     &__container {
         display: grid;
-        grid-template-columns: percent(150, 400) 1fr;
+        grid-template-columns: percent(170, 600) 1fr;
+        width: max-content;
     }
 
     &__image {
@@ -402,19 +403,28 @@
 
     &__content {
         padding: 16px;
+        width: max-content;
     }
 
     &__name {
         font-size: var(--default-small-fz);
         font-weight: 500;
     }
-
-    &__list {
+    &__wrapper{
         margin-top: 16px;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-column-gap: 32px;
+        width: max-content;
+    }
+    &__list {
+        width: max-content;
+        min-width: 160px;
     }
 
     &__item {    
         display: flex;
+        width: 100%;
         span {
           font-size: 12px;
             &:nth-child(1) {
@@ -424,7 +434,7 @@
             &:nth-child(2) {
                 order: 3;
                 width: max-content;
-                min-width: 50%;
+                min-width: 45%;
                 font-weight: 500;
             }
         }

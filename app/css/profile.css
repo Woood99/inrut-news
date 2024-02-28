@@ -15506,6 +15506,70 @@ textarea.input-reset {
   margin-left: auto;
 }
 
+.very-small-card {
+  padding: 12px 16px 6px 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 16px;
+}
+.very-small-card__image {
+  width: 85px;
+  height: 85px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 12px;
+}
+.very-small-card__image img {
+  border-radius: 12px;
+  width: 75px;
+  height: 75px;
+  -o-object-fit: contain;
+  object-fit: contain;
+  background-color: transparent;
+  z-index: 10;
+  position: relative;
+}
+@media (max-width: 1212px) {
+  .very-small-card__image img {
+    width: 70px;
+    height: 70px;
+  }
+}
+.very-small-card__image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(24, 26, 29, 0.0392156863);
+  border-radius: 12px;
+}
+.very-small-card__price {
+  display: block;
+  font-size: var(--default-small-fz);
+  font-weight: 500;
+}
+.very-small-card__name {
+  color: var(--dark);
+  font-size: var(--default-small-fz);
+  margin-top: 4px;
+}
+.very-small-card__address {
+  margin-top: 6px;
+  font-size: var(--small-fz);
+  color: var(--primary600);
+}
+
 .tags__list {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -16625,15 +16689,18 @@ textarea.input-reset {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
+  padding: 16px;
 }
 .tooltip-card__image {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 170px;
   flex: 0 0 170px;
   width: 170px;
+  border-radius: 12px;
+  overflow: hidden;
 }
 .tooltip-card__content {
-  padding: 16px;
+  margin-left: 16px;
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
@@ -16704,6 +16771,23 @@ textarea.input-reset {
 }
 .tooltip-card__item:not(:last-child) {
   margin-bottom: 8px;
+}
+
+.tooltip-cards {
+  background-color: var(--white);
+  -webkit-box-shadow: var(--shadow-primary);
+  box-shadow: var(--shadow-primary);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.tooltip-cards__bottom {
+  margin: 12px auto 0;
+  padding: 12px 0 16px;
+  border-top: 1px solid var(--primary100);
+  color: var(--blue);
+  text-align: center;
+  width: 100%;
+  font-size: var(--default-small-fz);
 }
 
 .select-primary {
@@ -18577,11 +18661,6 @@ textarea.input-reset {
 
 .logo {
   width: 83px;
-}
-@media (max-width: 1212px) {
-  .logo {
-    width: 125px;
-  }
 }
 
 .city__title {

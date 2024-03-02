@@ -13,9 +13,6 @@
     <link rel="stylesheet" href="css/main.css">
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     <script defer src="js/main.js"></script>
-
-
-
 </head>
 
 <body class="page__body">
@@ -42,41 +39,71 @@
                             Параметры
                         </h2>
                         <div class="place-sale-options__row place-sale-options__row--1" style="grid-template-columns: repeat(3,1fr); margin-bottom: 24px;">
-                            <div class="place-sale-options__item input-text _active">
+                            <div class="place-sale-options__item input-text input-text--disabled _active">
                                 <label class="input-text__label">
                                     <span>Название</span>
-                                    <input type="text" name="Имя" class="input-reset input-text__input" value="Администратор" placeholder="">
+                                    <input type="text" name="Имя" class="input-reset input-text__input" disabled data-checkbox-name value="Администратор" placeholder="">
                                 </label>
                             </div>
                         </div>
-                        <div class="place-sale-options__row place-sale-options__row--2" style="grid-template-columns: repeat(5,max-content);">
+                        <div class="place-sale-options__row place-sale-options__row--2" data-checkbox-list style="grid-template-columns: repeat(5,max-content); grid-row-gap: 16px;">
                             <div class="checkbox-secondary">
-                                <input id="test-id_1" name="test-id-name_1" class="checkbox-secondary__input" checked type="checkbox" value="true">
+                                <input id="test-id_1" name="input-role" class="checkbox-secondary__input" checked type="radio">
                                 <label for="test-id_1" class="checkbox-secondary__label">
                                     <span class="checkbox-secondary__text">Администратор</span>
                                 </label>
                             </div>
                             <div class="checkbox-secondary">
-                                <input id="test-id_2" name="test-id-name_2" class="checkbox-secondary__input" type="checkbox" value="true">
+                                <input id="test-id_2" name="input-role" class="checkbox-secondary__input" type="radio">
                                 <label for="test-id_2" class="checkbox-secondary__label">
                                     <span class="checkbox-secondary__text">Агент</span>
                                 </label>
                             </div>
                             <div class="checkbox-secondary">
-                                <input id="test-id_3" name="test-id-name_3" class="checkbox-secondary__input" type="checkbox" value="true">
+                                <input id="test-id_3" name="input-role" class="checkbox-secondary__input" type="radio">
                                 <label for="test-id_3" class="checkbox-secondary__label">
                                     <span class="checkbox-secondary__text">Юрист</span>
                                 </label>
                             </div>
                             <div class="checkbox-secondary">
-                                <input id="test-id_4" name="test-id-name_4" class="checkbox-secondary__input" type="checkbox" value="true">
+                                <input id="test-id_4" name="input-role" class="checkbox-secondary__input" type="radio">
                                 <label for="test-id_4" class="checkbox-secondary__label">
                                     <span class="checkbox-secondary__text">Ипотечный брокер</span>
                                 </label>
                             </div>
                             <div class="checkbox-secondary">
-                                <input id="test-id_5" name="test-id-name_5" class="checkbox-secondary__input" type="checkbox" value="true">
+                                <input id="test-id_5" name="input-role" class="checkbox-secondary__input" type="radio">
                                 <label for="test-id_5" class="checkbox-secondary__label">
+                                    <span class="checkbox-secondary__text">Суперпользователь</span>
+                                </label>
+                            </div>
+                            <div class="checkbox-secondary">
+                                <input id="test-id_6" name="input-role" class="checkbox-secondary__input" checked type="radio">
+                                <label for="test-id_6" class="checkbox-secondary__label">
+                                    <span class="checkbox-secondary__text">Администратор</span>
+                                </label>
+                            </div>
+                            <div class="checkbox-secondary">
+                                <input id="test-id_7" name="input-role" class="checkbox-secondary__input" type="radio">
+                                <label for="test-id_7" class="checkbox-secondary__label">
+                                    <span class="checkbox-secondary__text">Агент</span>
+                                </label>
+                            </div>
+                            <div class="checkbox-secondary">
+                                <input id="test-id_8" name="input-role" class="checkbox-secondary__input" type="radio">
+                                <label for="test-id_8" class="checkbox-secondary__label">
+                                    <span class="checkbox-secondary__text">Юрист</span>
+                                </label>
+                            </div>
+                            <div class="checkbox-secondary">
+                                <input id="test-id_9" name="input-role" class="checkbox-secondary__input" type="radio">
+                                <label for="test-id_9" class="checkbox-secondary__label">
+                                    <span class="checkbox-secondary__text">Ипотечный брокер</span>
+                                </label>
+                            </div>
+                            <div class="checkbox-secondary">
+                                <input id="test-id_10" name="input-role" class="checkbox-secondary__input" type="radio">
+                                <label for="test-id_10" class="checkbox-secondary__label">
                                     <span class="checkbox-secondary__text">Суперпользователь</span>
                                 </label>
                             </div>
@@ -91,6 +118,20 @@
         @include('partials/footer.html')
     </div>
     @include('partials/popup.html')
+
+
+    <script>
+        const inputName = document.querySelector('[data-checkbox-name]');
+        const checkboxes = Array.from(document.querySelector('[data-checkbox-list]').children);
+        checkboxes.forEach(checkbox => {
+            const input = checkbox.querySelector('input');
+            input.addEventListener('change', () => {
+                const name = checkbox.querySelector('.checkbox-secondary__text').textContent.trim();
+                inputName.value = name;
+            })
+        })
+
+    </script>
 </body>
 
 

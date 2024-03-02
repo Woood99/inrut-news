@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>База агентов каталог</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script defer src="js/main.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container site-container--base-agent-catalog">
+        @include('partials/header.html')
+        <main class="main main-page-gap base-agent-catalog employees">
+            <div class="base-agent-catalog__body">
+                <h1 class="base-agent-catalog__title title-2 container">
+                    В базе 1 567 специалистов
+                </h1>
+                <form class="base-agent-catalog__filter base-agent-catalog-filter filter filter--new-style container" data-da=".header,1212,last">
+                    <button type="button" class="btn btn-reset btn-secondary filter__btn">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#filter"></use>
+                        </svg>
+                        <span>Фильтр</span>
+                    </button>
+                    <div class="filter__container">
+                        <div class="filter__top">
+                            <span>Фильтры</span>
+                            <button type="button" class="btn btn-reset filter__close">Закрыть</button>
+                        </div>
+                        <div class="filter__inner">
+                            <div class="filter__row base-agent-catalog-filter__row--1" data-da=".filter--new-style,1212,1" style="grid-template-columns: 22% 27% 32% max-content;">
+                                <div class="filter__item base-agent-catalog__select select-secondary select-secondary--city _selected">
+                                    <div class="select-secondary__wrapper">
+                                        <span class="select-secondary__placeholder">
+                                            Город
+                                        </span>
+                                        <select class="select-secondary__body" name="complex" hidden>
+                                            <option value="apartments">Санкт-Петербург</option>
+                                            <option value="apartments2">Волгоград</option>
+                                            <option value="apartments3">Москва</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="filter__item search-select" data-search-select-subtitle="Любая">
+                                    <button type="button" class="btn btn-reset search-select__button">
+                                        <div class="search-select__button-wrapper">
+                                            <div>Роль</div>
+                                            <div>Любая</div>
+                                        </div>
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#check"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="search-select__dropdown">
+                                        <button type="button" class="btn btn-reset search-select__close">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#x"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="search-select__control">
+                                            <button type="button" class="btn btn-reset btn-secondary search-select__all">Выбрать всё</button>
+                                            <button type="button" class="btn btn-reset btn-secondary search-select__clear">Очистить всё</button>
+                                        </div>
+                                        <div class="search-select__wrapper simplebar-third">
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="role_1" name="role_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="role_1" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>Юрист</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="role_2" name="role_2" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="role_2" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>Отдел продаж</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="role_3" name="role_3" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="role_3" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>Ипотечный брокер</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="filter__item input-text">
+                                    <label class="input-text__label">
+                                        <span>ФИО специалиста</span>
+                                        <input type="text" name="Имя" class="input-reset input-text__input">
+                                    </label>
+                                </div>
+                                <button type="reset" class="btn btn-reset filter__clear">Очистить</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="base-agent-catalog__table main-table">
+                    <div class="main-table__inner container">
+                        <a href="./create-employee.html" class="btn btn-reset btn-primary" style="width: 100%;margin-bottom: 32px;">
+                            Создать специалиста
+                        </a>
+                        <div class="main-table__table">
+                            <div class="main-table__type" style="grid-template-columns: 30.1% 24.8% 30.6% 1fr;">
+                                <span>Имя/роль</span>
+                                <span>Последний вход</span>
+                                <span>Активный</span>
+                                <span style="justify-self: end;">Действие</span>
+                            </div>
+                            <div class="main-table__list">
+                                <a href="./agent.html" class="main-table__item object-info-grade" style="grid-template-columns: 30.1% 25% 29% 1fr;">
+                                    <div class="object-info-grade__from user-info">
+                                        <div class="user-info__avatar avatar online">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" width="45" height="45" alt="Абдурахманраджи Г.">
+                                        </div>
+                                        <span class="user-info__name">
+                                            Абдурахманраджи Г.
+                                        </span>
+                                        <span class="user-info__pos">
+                                            Отдел продаж
+                                        </span>
+                                    </div>
+                                    <time datetime="2023-11-05">
+                                        05:11:2023
+                                    </time>
+                                    <span>
+                                        Да
+                                    </span>
+                                    <div style="justify-self: end;">
+                                        <button type="button" class="btn btn-reset btn-remove-imp" data-popup-path="warning-remove" title="Удалить">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#trash">
+                                                </use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </a>
+                                <a href="./agent.html" class="main-table__item object-info-grade" style="grid-template-columns: 30.1% 25% 29% 1fr;">
+                                    <div class="object-info-grade__from user-info">
+                                        <div class="user-info__avatar avatar online">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" width="45" height="45" alt="Абдурахманраджи Г.">
+                                        </div>
+                                        <span class="user-info__name">
+                                            Абдурахманраджи Г.
+                                        </span>
+                                        <span class="user-info__pos">
+                                            Юрист
+                                        </span>
+                                    </div>
+                                    <time datetime="2023-11-05">
+                                        05:11:2023
+                                    </time>
+                                    <span>
+                                        Да
+                                    </span>
+                                    <div style="justify-self: end;">
+                                        <button type="button" class="btn btn-reset btn-remove-imp" data-popup-path="warning-remove" title="Удалить">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#trash">
+                                                </use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </a>
+                                <a href="./agent.html" class="main-table__item object-info-grade" style="grid-template-columns: 30.1% 25% 29% 1fr;">
+                                    <div class="object-info-grade__from user-info">
+                                        <div class="user-info__avatar avatar online">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" width="45" height="45" alt="Абдурахманраджи Г.">
+                                        </div>
+                                        <span class="user-info__name">
+                                            Абдурахманраджи Г.
+                                        </span>
+                                        <span class="user-info__pos">
+                                            Ипотечный брокер
+                                        </span>
+                                    </div>
+                                    <time datetime="2023-11-05">
+                                        05:11:2023
+                                    </time>
+                                    <span>
+                                        Да
+                                    </span>
+                                    <div style="justify-self: end;">
+                                        <button type="button" class="btn btn-reset btn-remove-imp" data-popup-path="warning-remove" title="Удалить">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#trash">
+                                                </use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-reset btn-third main-table__next">
+                            Следующая страница
+                        </button>
+                        <div class="main-table__pagination pagination">
+                            <ul class="pagination__list list-reset">
+                                <li class="pagination__item" disabled>
+                                    <a href="#">
+                                        1
+                                    </a>
+                                </li>
+                                <li class="pagination__item">
+                                    <a href="#">
+                                        2
+                                    </a>
+                                </li>
+                                <li class="pagination__item">
+                                    <a href="#">
+                                        3
+                                    </a>
+                                </li>
+                                <li class="pagination__item">
+                                    <a href="#">
+                                        4
+                                    </a>
+                                </li>
+                                <li class="pagination__item">
+                                    <a href="#">
+                                        5
+                                    </a>
+                                </li>
+                                <li class="pagination__item dots" tabindex="-1">
+                                    ...
+                                </li>
+                                <li class="pagination__item">
+                                    <a href="#">
+                                        199
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        @include('partials/footer.html')
+    </div>
+    @include('partials/popup.html')
+</body>
+
+
+</html>

@@ -42,6 +42,7 @@ const paths = {
     srcJs: `${srcFolder}/js/*.js`,
     buildJsFolder: `${buildFolder}/js`,
     srcPartialsFolder: `${srcFolder}/partials`,
+    srcPopupsFolder: `${srcFolder}/popups`,
     resourcesFolder: `${srcFolder}/resources`,
 };
 
@@ -213,6 +214,7 @@ const watchFiles = () => {
     watch(paths.srcScss, styles);
     watch(paths.srcFullJs, scripts);
     watch(`${paths.srcPartialsFolder}/*.html`, htmlInclude);
+    watch(`${paths.srcPopupsFolder}/*.html`, htmlInclude);
     watch(`${srcFolder}/*.html`, htmlInclude);
     watch(`${paths.resourcesFolder}/**`, resources);
     watch(`${paths.srcImgFolder}/**/**.{jpg,jpeg,png,svg}`, images);

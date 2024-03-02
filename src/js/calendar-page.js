@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         timeAndDate(form, dateEvent);
         dropImage();
         descrAdd(form);
+        toggleObjectAddress(form.querySelector('[data-create-event-object]'), form.querySelector('[data-create-event-address]'));
     }
 
 
@@ -51,5 +52,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 blockBtn.remove();
             })
         }
+    }
+
+    function toggleObjectAddress(object, address) {
+        if (!(object && address)) return;
+        const addressInput = address.querySelector('input');
+        object.addEventListener('change', function() {
+            setTimeout(() => {
+                if (this.classList.contains('_selected')) {
+                    address.classList.add('_disabled-opacity');
+                }
+            }, 50);
+        })
+        addressInput.addEventListener('input', function () {
+            if (this.value.length > 0) {
+                object.classList.add('_disabled-opacity');
+            } else {
+                object.classList.remove('_disabled-opacity');
+            }
+        })
     }
 })

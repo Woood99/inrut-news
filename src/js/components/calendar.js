@@ -331,8 +331,6 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                                 </div>
                                 <span>${el.date}</span>
                                 <span>${el.timeStart}</span>
-                                <span>一</span>
-                                <span>${el.timeEnd}</span>
                             </div>
                             <div class="event__users">
                                 <h4 class="title-4 event__subtitle">Участники</h4>

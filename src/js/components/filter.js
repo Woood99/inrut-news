@@ -121,13 +121,15 @@ export const filterSum = () => {
                             }
                         }
                         if (value === false) {
-                            items.forEach(item => {
-                                item.classList.remove('active');
-                                item.querySelector('.checkbox-secondary__input').checked = false;
-                            });
-                            defaultItem.classList.add('active');
-                            defaultItem.querySelector('.checkbox-secondary__input').checked = true;
+                            if (el.querySelector('.checkbox-secondary__input')) {
+                                items.forEach(item => {
+                                    item.classList.remove('active');
+                                    item.querySelector('.checkbox-secondary__input').checked = false;
+                                });
+                                defaultItem.classList.add('active');
+                                defaultItem.querySelector('.checkbox-secondary__input').checked = true;
 
+                            }
                             const calcProper = document.querySelector('.submit-app-options__item--calc-proper');
                             if (calcProper) {
                                 const cash = calcProper.querySelector('[data-name="cash"]');
@@ -168,6 +170,7 @@ export const filterSum = () => {
     function changeTitle(el, currentElMobile) {
         setTimeout(() => {
             const itemActive = !currentElMobile ? el.querySelector('.filter-dropdown__item.active') : document.querySelector('.filter-modal .filter-dropdown__item.active');
+            if (!itemActive) return;
             const inputs = itemActive.querySelectorAll('.filter-range__nav input');
             const buttonWrapper = !currentElMobile ? el.querySelector('.filter-dropdown__button-wrapper') : currentElMobile.querySelector('.filter-dropdown__button-wrapper');
             let html = ``;

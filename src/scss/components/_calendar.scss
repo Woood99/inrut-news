@@ -82,18 +82,26 @@
 
             &.fc-day-today {
                 .fc-daygrid-day-number {
-                    color: var(--blue);
-                    text-decoration: underline;
+                    color: var(--white);
+                    background-color: var(--blue);
                 }
             }
         }
 
         .fc-daygrid-day-number {
-            padding: 8px 8px 0 8px;
+        width: 24px;
+        height: 24px;
+           background-color: transparent;
             font-size: var(--small-fz);
             line-height: var(--small-lh);
             color: var(--dark);
+            top: 8px;
+            left: 8px;
+            border-radius: 4px;
 
+            display: flex;
+            align-items: center;
+            justify-content: center;
             @media (max-width:$desktop) {
                 padding: 0;
                 font-weight: 500;
@@ -293,7 +301,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-
+            color: var(--blue);
+            font-weight: 500;
             @media (min-width:$desktop-min) {
                 &:hover {
                     background-color: transparent;
@@ -338,13 +347,13 @@
     .fc-button.fc-button-primary {
         margin-left: 0;
         background-color: transparent;
-        border: 1px solid currentColor;
+        border: 1px solid transparent;
         border-radius: 8px !important;
         padding: 0;
-        width: 28px;
-        height: 28px;
-        flex: 1 1 28px;
-        color: var(--blue);
+        width: 26px;
+        height: 26px;
+        flex: 1 1 26px;
+        color: var(--black);
         transition: all $transitionSpeed $transitionFunction;
 
         &:active {
@@ -369,6 +378,11 @@
             align-items: center;
             justify-content: center;
             width: auto;
+        }
+        @media (min-width:$desktop-min){
+             &:hover{
+                background-color: var(--primary100);
+             } 
         }
     }
 

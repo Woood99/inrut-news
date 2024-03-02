@@ -9706,6 +9706,11 @@ textarea.input-reset {
   pointer-events: none;
 }
 
+._disabled-opacity {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
 @-webkit-keyframes fade {
   0% {
     opacity: 0;
@@ -27459,14 +27464,28 @@ textarea.input-reset {
   background-color: var(--white);
 }
 .calendar-primary .fc-daygrid-day.fc-day-today.fc-day-today .fc-daygrid-day-number {
-  color: var(--blue);
-  text-decoration: underline;
+  color: var(--white);
+  background-color: var(--blue);
 }
 .calendar-primary .fc-daygrid-day .fc-daygrid-day-number {
-  padding: 8px 8px 0 8px;
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
   font-size: var(--small-fz);
   line-height: var(--small-lh);
   color: var(--dark);
+  top: 8px;
+  left: 8px;
+  border-radius: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 @media (max-width: 1212px) {
   .calendar-primary .fc-daygrid-day .fc-daygrid-day-number {
@@ -27667,6 +27686,8 @@ textarea.input-reset {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  color: var(--blue);
+  font-weight: 500;
 }
 @media (min-width: 1213px) {
   .calendar-primary .fc-daygrid-day-bottom .fc-daygrid-more-link:hover {
@@ -27708,15 +27729,15 @@ textarea.input-reset {
 .calendar-primary .fc-button.fc-button-primary {
   margin-left: 0;
   background-color: transparent;
-  border: 1px solid currentColor;
+  border: 1px solid transparent;
   border-radius: 8px !important;
   padding: 0;
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   -webkit-box-flex: 1;
-  -ms-flex: 1 1 28px;
-  flex: 1 1 28px;
-  color: var(--blue);
+  -ms-flex: 1 1 26px;
+  flex: 1 1 26px;
+  color: var(--black);
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
@@ -27747,6 +27768,11 @@ textarea.input-reset {
   -ms-flex-pack: center;
   justify-content: center;
   width: auto;
+}
+@media (min-width: 1213px) {
+  .calendar-primary .fc-button.fc-button-primary:hover {
+    background-color: var(--primary100);
+  }
 }
 .calendar-primary.calendar-primary--mobile-start .fc-toolbar.fc-header-toolbar {
   margin-bottom: 12px;
@@ -35654,7 +35680,7 @@ textarea.input-reset {
   margin-left: 0;
 }
 .header:not(.header--test).header--new .header-top__actions {
-  margin-right: 40px;
+  margin-right: 32px;
   margin-left: auto;
 }
 .header:not(.header--test).header--new .header-main {

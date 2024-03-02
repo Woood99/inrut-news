@@ -36,7 +36,7 @@
                 <div class="container">
                     <div class="place-sale__row place-sale-options">
                         <h2 class="place-sale__row-title place-sale-options__title title-2">
-                            Параметры
+                            Роль
                         </h2>
                         <div class="place-sale-options__row place-sale-options__row--1" style="grid-template-columns: repeat(3,1fr); margin-bottom: 24px;">
                             <div class="place-sale-options__item input-text _active">
@@ -47,6 +47,24 @@
                             </div>
                         </div>
                         <div class="place-sale-options__row place-sale-options__row--2" data-add-groups-list style="grid-template-columns: repeat(5,max-content); grid-row-gap: 16px;">
+                            <div class="checkbox-secondary" data-role-id="0">
+                                <input type="checkbox" id="role-id-0" name="input-role" class="checkbox-secondary__input">
+                                <label for="role-id-0" class="checkbox-secondary__label">
+                                    <span class="checkbox-secondary__text">Менеджер отдела продаж</span>
+                                </label>
+                            </div>
+                            <div class="checkbox-secondary" data-role-id="1">
+                                <input type="checkbox" id="role-id-1" name="input-role" class="checkbox-secondary__input">
+                                <label for="role-id-1" class="checkbox-secondary__label">
+                                    <span class="checkbox-secondary__text">Юрист</span>
+                                </label>
+                            </div>
+                            <div class="checkbox-secondary" data-role-id="2">
+                                <input type="checkbox" id="role-id-2" name="input-role" class="checkbox-secondary__input">
+                                <label for="role-id-2" class="checkbox-secondary__label">
+                                    <span class="checkbox-secondary__text">Ипотечный брокер</span>
+                                </label>
+                            </div>
                         </div>
                         <button type="button" class="btn btn-reset btn-primary" data-add-groups-btn style="width: 100%; margin-top: 32px;">
                             Сохранить
@@ -68,7 +86,6 @@
             if (inputName.value !== '') {
                 const items = list.querySelectorAll('.checkbox-secondary');
                 const lastItem = items[items.length - 1];
-                console.log(lastItem);
                 const currentID = lastItem === undefined ? 0 : +lastItem.dataset.roleId + 1;
                 const html = `
                 <div class="checkbox-secondary" data-role-id="${currentID}">

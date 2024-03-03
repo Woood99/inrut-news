@@ -6,8 +6,8 @@ const metroItems = (container,maxItem = 1) => {
         const otherCount = container.querySelector('.metro-info__count span');
         if (items.length > maxItem) {
             other.removeAttribute('hidden');
-            otherCount.textContent = items.length - 1;
-            const otherItems = Array.from(items).filter((item,index) => index !== 0);
+            const otherItems = Array.from(items).filter((item,index) => index > maxItem - 1);
+            otherCount.textContent = otherItems.length;
             const tooltipItems = container.querySelector('.metro-info__other-items');
             other.addEventListener('click',(e) => {
                 if (!move){

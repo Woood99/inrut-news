@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <use xlink:href="./img/sprite.svg#pencil">
                 </use>
             </svg>
-            <span>Изменить данные</span>
+            <span>Изменить контактные данные</span>
         </button>
         `
         container.addEventListener('click', (e) => {

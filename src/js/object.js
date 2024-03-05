@@ -59,6 +59,7 @@ import scrollTarget from './components/scrollTarget';
 import metroInfo from './components/metroInfo';
 import apartKitchen from './components/apartKitchen';
 import moveToFromBlock from './modules/moveToFromBlock';
+import genplan from './components/genplan';
 document.addEventListener('DOMContentLoaded', () => {
     getHeightBlock('.header-fixed', '--header-fixed-height');
     linkCopy('.share-app-popup__btn');
@@ -102,10 +103,11 @@ document.addEventListener('DOMContentLoaded', () => {
     metroInfo();
     apartKitchen();
     bookConsultation();
+    genplan();
     moveToFromBlock('[data-move-block-to="bid-user"]', '[data-move-block-from="bid-user"]', 99999, 1212, `${window.innerWidth >= 1920 ? 1.35 : 1}`);
     // ==============================================
 
     // ==== maps ====
-    //  mapPrimary();
-    //  objectMaps();
+      mapPrimary();
+     objectMaps();
 })

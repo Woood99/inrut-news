@@ -208,8 +208,8 @@ document.addEventListener('DOMContentLoaded', () => {
     popupMap();
     controlCardsMap();
 
-    // bidMap();
-    // mapDraw();
-    // placeSaleAddressMap();
-    // objectMaps();
+    bidMap();
+    mapDraw();
+    placeSaleAddressMap();
+    objectMaps();
 })

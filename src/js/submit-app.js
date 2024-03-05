@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     emergingBlockScroll('.submit-app .submit-app__btn', '.footer-fixed.submit-app-fixed', 99999999, true);
 
     // ==== maps ====
-    // mapPrimary();
-    // mapDraw();
+     mapPrimary();
+     mapDraw();
 })
 

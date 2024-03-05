@@ -42,7 +42,7 @@
     }
 
     &__content {
-        padding: 16px 24px 0px;
+        padding: 0 24px;
         width: 100%;
         flex-grow: 1;
     }
@@ -102,9 +102,8 @@
 
             &:nth-child(2) {
                 color: var(--primaryTwo);
-                font-size: var(--very-small-fz);
                 line-height: 1;
-                font-weight: 400;
+                font-weight: 500;
                 margin-left: 5px;
                 display: inline-block;
             }
@@ -201,7 +200,7 @@
 
     &__term {
         margin-top: 4px;
-        color: var(--primary600);
+        color: var(--primaryTwo);
         font-size: var(--default-fz);
         line-height: var(--little-small-lh);
         display: flex;
@@ -213,11 +212,10 @@
         margin-top: 4px;
         display: block;
 
-        color: var(--primary600);
+        color: var(--primaryTwo);
 
         font-size: var(--default-fz);
         line-height: var(--default-lh);
-        font-weight: 500;
     }
 
     &__frame {
@@ -231,6 +229,7 @@
     &__btn {
         color: var(--blue);
         background-color: rgba(0, 150, 255, 0.08);
+        border: 1px solid transparent;
         padding: 8px 16px;
         border-radius: 12px;
         font-size: var(--small-fz);
@@ -240,7 +239,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-
+        transition: background-color $transitionSpeed $transitionFunction,
+        border $transitionSpeed $transitionFunction;
         svg {
             margin-left: 10px;
             width: 20px;
@@ -258,7 +258,7 @@
             &__container {
                 border: 1px solid var(--primary100);
                 box-shadow: none;
-                padding-bottom: 24px;
+                padding-bottom: 16px;
                 text-align: left;
             }
 
@@ -274,6 +274,10 @@
                         &__container {
                             box-shadow: var(--shadow-primary);
                             transform: translateY(-3px);
+                        }
+                        &__btn{
+                            border: 1px solid var(--blue);
+                            background-color:var(--white);
                         }
                     }
                 }

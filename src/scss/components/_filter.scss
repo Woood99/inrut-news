@@ -129,7 +129,8 @@
 
     &__item {
         transition: opacity $transitionSpeed $transitionFunction,
-        border $transitionSpeed $transitionFunction;
+            border $transitionSpeed $transitionFunction;
+
         @media (max-width:$desktop) {
             &:not(:last-child) {
                 margin-bottom: 24px;
@@ -164,15 +165,10 @@
     }
 
     &__clear {
-  margin-left: 16px;
-      padding: 0;
+        margin-left: 16px;
+        padding: 0;
         color: var(--red);
         font-weight: 500;
-        @media (min-width:$desktop-min){
-             &:hover{
-                text-decoration: underline;
-             } 
-        }
     }
 
     &__go {
@@ -192,6 +188,7 @@
         display: flex;
         align-items: center;
         font-size: var(--default-fz);
+
         svg {
             width: 20px;
             height: 17px;
@@ -202,12 +199,15 @@
             display: none;
         }
     }
-    &__btn-hidden{
+
+    &__btn-hidden {
         font-size: var(--default-fz);
-        svg{
+
+        svg {
             margin-left: 4px;
         }
     }
+
     &__search {
         display: flex;
         align-items: center;
@@ -253,8 +253,8 @@
                     margin-bottom: 0;
                     padding-bottom: 16px;
                     justify-content: start;
+
                     >.filter__clear {
-                        height: 40px;
                         font-size: var(--default-fz);
                     }
 
@@ -363,15 +363,16 @@
                     background-color: var(--stand-bg);
 
                     .container {
-                 padding-top: 32px;
-                 padding-bottom: 32px;
+                        padding-top: 32px;
+                        padding-bottom: 32px;
                         width: 100%;
                     }
 
                     .filter__item {
                         &:not(:last-child) {
                             margin-bottom: 20px;
-                            &._border-bottom{
+
+                            &._border-bottom {
                                 padding-bottom: 20px;
                                 border-bottom: 1px solid var(--primary200);
                             }
@@ -391,14 +392,17 @@
                             background-color: var(--white);
                             border: 1px solid var(--primary200);
                             font-weight: 400;
-                            @media (min-width:$desktop-min){
-                                 &:hover{
-                                    &:not(._active){
+
+                            @media (min-width:$desktop-min) {
+                                &:hover {
+                                    &:not(._active) {
                                         border: 1px solid var(--blue);
+                                        color: var(--blue);
                                     }
-                                 } 
+                                }
                             }
-                            &._active{
+
+                            &._active {
                                 background-color: var(--blue);
                                 border: 1px solid var(--blue);
                             }
@@ -458,6 +462,12 @@
                     .input-text {
                         background-color: var(--white);
                         border-radius: 12px;
+                        &:nth-child(1){
+                            border-radius: 12px 0 0 12px;
+                        }
+                        &:nth-child(2){
+                            border-radius: 0 12px 12px 0;
+                        }
                     }
                 }
 
@@ -589,10 +599,12 @@
 
     &._inactive {
         pointer-events: none;
+
         .loading {
             display: flex;
         }
-        .filter__item{
+
+        .filter__item {
             opacity: 0.65;
         }
     }
@@ -2369,7 +2381,7 @@
 }
 
 
-.filter-actions{
+.filter-actions {
     display: flex;
     align-items: center;
     gap: 16px;
@@ -2378,38 +2390,15 @@
     border: 1px solid var(--primary200);
     border-radius: 12px;
     padding: 0 16px;
-    &__name{
+
+    &__name {
         margin-right: auto;
         font-size: var(--default-fz);
     }
-    &__btn{
+
+    &__btn {
         color: var(--blue);
         position: relative;
         font-size: var(--default-fz);
-
-        &::before{
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            right: 0;
-            width: 100%;
-            height: 1px;
-            background-color: var(--blue);
-            opacity: 0;
-
-            transition: opacity $transitionSpeed $transitionFunction;
-        }
-        @media (min-width:$desktop-min){
-             &:hover{
-                &::before{
-                    opacity: 1;
-                }
-             } 
-        }
-        &._active{
-            &::before{
-                opacity: 1;
-            }
-        }
     }
 }

@@ -742,7 +742,6 @@ function initSliders() {
                     if (currentContainer) {
                         if (btn.classList.contains('_active')) {
                             _slideDown(currentContainer, 300);
-
                             const topGap = window.pageYOffset + currentContainer.getBoundingClientRect().top;
                             if (window.innerWidth >= 1212) {
                                 window.scrollTo({

@@ -303,7 +303,7 @@
 
         display: flex;
         flex-direction: column;
-        align-items: start;
+        align-items: end;
 
         @media (max-width:$desktop) {
             top: 10px;
@@ -313,24 +313,24 @@
     }
 
     &__btn {
+        width: 44px;
         height: 44px;
-        width: 220px;
         background-color: var(--white);
         border: 1px solid rgba(93, 112, 134, 0.1);
         box-shadow: var(--shadow-primary);
-        border-radius: 16px;
+        border-radius: 50%;
         display: flex;
         align-items: center;
-
-        padding: 0 10px 0 17px;
+        justify-content: center;
+        padding: 0;
 
         transition: box-shadow $transitionSpeed $transitionFunction,
             background-color $transitionSpeed $transitionFunction,
             color $transitionSpeed $transitionFunction;
 
         svg {
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
             fill: var(--dark);
 
             transition: fill $transitionSpeed $transitionFunction;
@@ -338,7 +338,7 @@
 
         span {
             margin-left: 10px;
-            font-size: 15px;
+            font-size: var(--default-fz);
             line-height: var(--default-lh);
             font-weight: 400;
         }
@@ -358,7 +358,15 @@
             height: 44px;
             border-radius: 12px;
         }
-
+        &-more {
+            width: max-content;
+            border-radius: 24px;
+            padding: 0 16px;
+    
+            span {
+                font-weight: 500;
+            }
+        }
         &.active {
             background-color: var(--blue);
             color: var(--white);
@@ -384,34 +392,7 @@
         }
     }
 
-    &--icons {
-        .map-draw {
-            &__btns{
-                align-items: end;
-            }
-            &__btn {
-                border-radius: 50%;
-                justify-content: center;
-                padding: 0;
-                width: 44px;
-                height: 44px;
 
-                svg {
-                    width: 16px;
-                    height: 16px;
-                }
-                &-more{
-                    width: max-content;
-                    border-radius: 24px;
-                    padding: 0 16px;
-                    span{
-                font-weight: 500;
-
-                    }
-                }
-            }
-        }
-    }
 
     @media (max-width:$desktop) {
         pointer-events: none;

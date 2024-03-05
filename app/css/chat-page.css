@@ -333,8 +333,8 @@ a {
   font-family: "CoFoSans", sans-serif;
   border-radius: 12px;
   color: var(--blue);
-  border: 1px solid currentColor;
-  background-color: var(--white);
+  border: 1px solid transparent;
+  background-color: rgba(0, 150, 255, 0.08);
   font-size: var(--default-fz);
   line-height: var(--little-small-lh);
   font-weight: 500;
@@ -349,24 +349,22 @@ a {
   -ms-flex-pack: center;
   justify-content: center;
   white-space: nowrap;
-  background-color: rgba(0, 150, 255, 0.08);
-  border: none;
 }
 @media (min-width: 1213px) {
   .btn-secondary.focus-visible {
-    background-color: rgba(0, 150, 255, 0.12);
-    color: var(--blue);
+    border: 1px solid var(--blue);
+    background-color: var(--white);
   }
   .btn-secondary:hover {
-    background-color: rgba(0, 150, 255, 0.12);
-    color: var(--blue);
+    border: 1px solid var(--blue);
+    background-color: var(--white);
   }
   .btn-secondary:hover svg {
     fill: var(--blue) !important;
   }
   .btn-secondary:active {
-    color: var(--white);
-    background-color: var(--blue);
+    border: 1px solid var(--blue);
+    background-color: var(--white);
   }
 }
 .btn-secondary:disabled {
@@ -2459,7 +2457,7 @@ textarea.input-reset {
 }
 .popup-primary--book-consultation .popup-primary__container {
   border-radius: 12px 0 0 12px;
-  padding: 65px 48px 48px;
+  padding: 40px 48px 48px;
   width: 850px;
 }
 @media (max-width: 1212px) {
@@ -2583,7 +2581,7 @@ textarea.input-reset {
 }
 .popup-primary--record-viewing-three .popup-primary__container {
   border-radius: 0;
-  padding: 40px 16px 198px;
+  padding: 40px 16px 24px;
   margin: 0;
   width: 100%;
 }
@@ -12398,7 +12396,7 @@ textarea.input-reset {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  gap: 16px;
+  gap: 4px 16px;
   max-width: 100%;
 }
 .metro-info__item {
@@ -12409,32 +12407,12 @@ textarea.input-reset {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  font-size: var(--small-fz);
-  line-height: var(--small-lh);
+  font-size: var(--default-fz);
+  line-height: var(--default-lh);
 }
 .metro-info__icon {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background-color: var(--dark);
-  border-radius: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
   margin-right: 8px;
   position: relative;
-  width: 20px;
-  height: 20px;
-}
-.metro-info__icon svg {
-  width: 8px;
-  height: 10px;
-  fill: var(--white);
-  stroke: var(--white);
-  stroke-width: 1.5px;
 }
 .metro-info__name {
   overflow: hidden;
@@ -12442,7 +12420,7 @@ textarea.input-reset {
   white-space: nowrap;
 }
 .metro-info__road {
-  margin-left: 16px;
+  margin-left: 6px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12452,12 +12430,13 @@ textarea.input-reset {
   white-space: nowrap;
 }
 .metro-info__road svg {
+  margin-left: 4px;
   width: 14px;
   height: 14px;
-  fill: #bfbfc8;
+  fill: var(--primaryTwo);
 }
 .metro-info__time {
-  margin-left: 12px;
+  color: var(--primaryTwo);
 }
 .metro-info__other {
   position: relative;
@@ -14569,6 +14548,31 @@ textarea.input-reset {
 .scroll-up._active {
   opacity: 1;
   visibility: visible;
+}
+
+.underline-hover {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+}
+.underline-hover::before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  opacity: 0;
+}
+@media (min-width: 1213px) {
+  .underline-hover:hover::before {
+    opacity: 1;
+  }
+}
+.underline-hover._active::before {
+  opacity: 1;
 }
 
 .necessarily {

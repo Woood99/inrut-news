@@ -118,7 +118,7 @@ export const bookConsultationValidate = () => {
         if (!validateCreateErrorName(nameLabel, nameInput)) {
             result = false;
         }
-        if (!validateCreateErrorTel(telLabel, telInput, validateTextMap.tel)) {
+        if (!validateCreateErrorMask(telLabel, telInput, validateTextMap.tel, 10)) {
             result = false;
         }
         if (agents.classList.contains('_active') && !agents.querySelector('.card-agent input:checked')) {

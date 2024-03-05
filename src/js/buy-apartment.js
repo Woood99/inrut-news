@@ -46,6 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // ==== maps ====
 
-    mapPrimary();
-    mapDraw();
+    // mapPrimary();
+    // mapDraw();
 })

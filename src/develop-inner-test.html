@@ -20,11 +20,6 @@
         @include('partials/header.html')
         <div class="header-fixed fix-block">
             <div class="header-fixed__container">
-                <div class="header-fixed__top">
-                    <h3 class="header-fixed__title">
-                        ЖК “Новое Внуково”
-                    </h3>
-                </div>
                 <nav class="header-fixed__nav">
                     <ul class="header-fixed__list list-reset">
                         <li class="header-fixed__item">
@@ -389,9 +384,6 @@
                                             <span>94 742 ₽/м²</span>
                                         </span>
                                     </div>
-                                    <div class="object-data__mortgage">
-                                        В ипотеку <span>от 14 350 ₽/мес.</span>
-                                    </div>
                                 </div>
                                 <div class="object-data__characteristics object-characteristics">
                                     <div class="object-characteristics__container">
@@ -682,8 +674,8 @@
                                         </div>
                                     </div>
                                     <div class="object-viewing__btns">
+                                        <a href="./calendar.html" class="btn btn-reset object-viewing__more">Смотреть все записи</a>
                                         <button type="button" class="btn btn-reset btn-secondary" data-popup-path="warning-remove4">Отменить запись</button>
-                                        <a href="./calendar.html" class="btn btn-reset btn-primary">Смотреть другие записи</a>
                                     </div>
                                 </div>
                                 <div class="col">
@@ -748,12 +740,46 @@
                                     <button type="button" class="btn btn-reset filter__close">Закрыть</button>
                                 </div>
                                 <div class="filter__inner">
-                                    <div class="filter__row object-filter__row--1" data-da=".filter--new-style,1212,1" style="grid-template-columns: 125px 460px 278px max-content;">
+                                    <div class="filter__row object-filter__row--1" data-da=".filter--new-style,1212,1" style="grid-template-columns: 125px 278px 460px max-content;">
                                         <div class="btn btn-reset filter__item filter-more-btn filter__btn-control">
                                             <svg>
                                                 <use xlink:href="./img/sprite.svg#filter"></use>
                                             </svg>
                                             <span>Фильтры</span>
+                                        </div>
+                                        <div class="filter__item filter__item--quantity-selection quantity-selection">
+                                            <div class="quantity-selection__inner">
+                                                <div class="checkbox">
+                                                    <input id="filter-quantity_studios" name="filter-quantity-studios" class="checkbox__input" type="checkbox" value="true">
+                                                    <label for="filter-quantity_studios" class="checkbox__label">
+                                                        <span class="checkbox__text checkbox__text-studios">Студия</span>
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <input id="filter-quantity_1" name="filter-quantity-1" class="checkbox__input" type="checkbox" value="true">
+                                                    <label for="filter-quantity_1" class="checkbox__label">
+                                                        <span class="checkbox__text">1</span>
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <input id="filter-quantity_2" name="filter-quantity-2" class="checkbox__input" type="checkbox" value="true">
+                                                    <label for="filter-quantity_2" class="checkbox__label">
+                                                        <span class="checkbox__text">2</span>
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <input id="filter-quantity_3" name="filter-quantity-3" class="checkbox__input" type="checkbox" value="true">
+                                                    <label for="filter-quantity_3" class="checkbox__label">
+                                                        <span class="checkbox__text">3</span>
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <input id="filter-quantity_4" name="filter-quantity-4" class="checkbox__input" type="checkbox" value="true">
+                                                    <label for="filter-quantity_4" class="checkbox__label">
+                                                        <span class="checkbox__text">4+</span>
+                                                    </label>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="filter__item filter-dropdown filter-dropdown--improved" data-filter-dropdown-name="Цена" data-filter-dropdown-subtitle="Любая">
                                             <button type="button" class="btn btn-reset filter-dropdown__button">
@@ -797,40 +823,6 @@
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="filter__item filter__item--quantity-selection quantity-selection">
-                                            <div class="quantity-selection__inner">
-                                                <div class="checkbox">
-                                                    <input id="filter-quantity_studios" name="filter-quantity-studios" class="checkbox__input" type="checkbox" value="true">
-                                                    <label for="filter-quantity_studios" class="checkbox__label">
-                                                        <span class="checkbox__text checkbox__text-studios">Студия</span>
-                                                    </label>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <input id="filter-quantity_1" name="filter-quantity-1" class="checkbox__input" type="checkbox" value="true">
-                                                    <label for="filter-quantity_1" class="checkbox__label">
-                                                        <span class="checkbox__text">1</span>
-                                                    </label>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <input id="filter-quantity_2" name="filter-quantity-2" class="checkbox__input" type="checkbox" value="true">
-                                                    <label for="filter-quantity_2" class="checkbox__label">
-                                                        <span class="checkbox__text">2</span>
-                                                    </label>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <input id="filter-quantity_3" name="filter-quantity-3" class="checkbox__input" type="checkbox" value="true">
-                                                    <label for="filter-quantity_3" class="checkbox__label">
-                                                        <span class="checkbox__text">3</span>
-                                                    </label>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <input id="filter-quantity_4" name="filter-quantity-4" class="checkbox__input" type="checkbox" value="true">
-                                                    <label for="filter-quantity_4" class="checkbox__label">
-                                                        <span class="checkbox__text">4+</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <button type="reset" class="btn btn-reset filter__clear">Очистить</button>
                                     </div>
                                     <div class="filter__row object-filter__row--2" hidden>
@@ -865,26 +857,6 @@
                                                         <span>До</span>
                                                         <input type="text" maxlength="3" class="input-reset input-text__input" placeholder="До">
                                                         <span>м²</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="filter__item field-range" data-field-range-name="price">
-                                            <div class="field-range__name">
-                                                Цена
-                                            </div>
-                                            <div class="field-range__wrapper">
-                                                <div class="input-text input-text--no-exp input-text--only-number">
-                                                    <label class="input-text__label">
-                                                        <span>От</span>
-                                                        <input type="text" maxlength="12" class="input-reset input-text__input" placeholder="От">
-                                                    </label>
-                                                </div>
-                                                <div class="input-text input-text--only-number">
-                                                    <label class="input-text__label">
-                                                        <span>До</span>
-                                                        <input type="text" maxlength="12" class="input-reset input-text__input" placeholder="До">
-                                                        <span>₽</span>
                                                     </label>
                                                 </div>
                                             </div>

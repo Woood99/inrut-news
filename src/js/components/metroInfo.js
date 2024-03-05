@@ -4,7 +4,7 @@ const metroInfo = () => {
      const objectMetro = document.querySelectorAll('.object-data__metro');
     if (objectMetro.length > 0) {
         objectMetro.forEach(container => {
-            metroItems(container, 2);
+            metroItems(container, 9999);
         })
     }
     document.addEventListener('click', (e) => {

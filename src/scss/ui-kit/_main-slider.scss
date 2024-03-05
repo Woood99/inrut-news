@@ -17,6 +17,20 @@
         @media (max-width:$smallTablet-max) {
             flex: auto;
         }
+        @media (min-width:$desktop-min) {
+            &:hover {
+                .main-slider__fullscreen{
+                    box-shadow: 0 7px 14px rgba(11, 31, 53, 0.15);
+                    transform: scale(1.2);
+    
+                    svg {
+                        path {
+                            stroke: rgba(22, 22, 22, 1);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     &__item {
@@ -118,6 +132,8 @@
         transition: box-shadow $transitionSpeed $transitionFunction,
             transform $transitionSpeed $transitionFunction;
 
+        border-radius: 50%;
+
         svg {
             width: 16px;
             height: 16px;
@@ -130,19 +146,6 @@
 
         @media (max-width:$desktop) {
             display: none;
-        }
-
-        @media (min-width:$desktop-min) {
-            &:hover {
-                box-shadow: 0 7px 14px rgba(11, 31, 53, 0.15);
-                transform: scale(1.2);
-
-                svg {
-                    path {
-                        stroke: rgba(22, 22, 22, 1);
-                    }
-                }
-            }
         }
     }
 

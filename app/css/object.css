@@ -15581,7 +15581,15 @@ textarea.input-reset {
   align-items: start;
   gap: 4px;
 }
-.card-checkbox__info .user-info__link {
+.card-checkbox .user-info {
+  -ms-grid-columns: 50px 1fr;
+  grid-template-columns: 50px 1fr;
+}
+.card-checkbox .user-info__avatar {
+  width: 50px;
+  height: 50px;
+}
+.card-checkbox .user-info__link {
   grid-column: 2/-1;
   color: var(--blue);
   z-index: 99;
@@ -31201,11 +31209,16 @@ textarea.input-reset {
   padding: 32px;
 }
 .additionally__title {
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 .additionally__descr {
-  margin-bottom: 16px;
   color: var(--primaryTwo);
+}
+.additionally__descr span {
+  color: var(--dark);
+  font-weight: 500;
+  display: inline-block;
+  margin-left: 5px;
 }
 .additionally__items {
   display: -ms-grid;
@@ -31214,6 +31227,36 @@ textarea.input-reset {
   grid-template-columns: 100%;
   grid-column-gap: 12px;
   grid-row-gap: 16px;
+  margin-top: 16px;
+}
+.additionally__more {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 24px;
+  color: var(--blue);
+  font-size: var(--default-fz);
+  line-height: 1;
+  font-weight: 500;
+}
+.additionally__more svg {
+  margin-left: 5px;
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+}
+.additionally__more._active svg {
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
 }
 .additionally__form {
   margin-top: 32px;

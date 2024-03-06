@@ -4,17 +4,46 @@
     background-color: var(--white);
     padding: 32px;
     &__title {
-        margin-bottom: 12px;
+        margin-bottom: 8px;
     }
     &__descr{
-        margin-bottom: 16px;
         color: var(--primaryTwo);
+        span{
+            color: var(--dark);
+            font-weight: 500;
+            display: inline-block;
+            margin-left: 5px;
+        }
     }
     &__items {
         display: grid;
         grid-template-columns: 100%;
         grid-column-gap: 12px;
         grid-row-gap: 16px;
+        margin-top: 16px;
+    }
+    &__more{
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        margin-bottom: 24px;
+        color: var(--blue);
+        font-size: var(--default-fz);
+        line-height: 1;
+        font-weight: 500;
+        svg {
+            margin-left: 5px;
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            transition: transform $transitionSpeedFast $transitionFunction;
+        }
+
+        &._active {
+            svg {
+                transform: rotate(-180deg);
+            }
+        }
     }
     &__form{
         margin-top: 32px;

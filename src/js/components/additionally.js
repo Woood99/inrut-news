@@ -47,39 +47,82 @@ const additionally = () => {
                         totalSumm += currentSumm;
                     }
                     updateDescr();
-                    checkErrorCards();
+                    checkErrorCardsSumm(container, totalSumm);
                 }
             })
+
             function updateDescr() {
                 totalSummElement.textContent = `${numberReplace(String(totalSumm))} ₽`;
             }
-            function checkErrorCards() {
+
+            function checkErrorCardsSumm(container, totalSumm) {
                 const cards = Array.from(container.querySelectorAll('[data-additionally-card-calc]'));
+                cards.forEach(card => card.classList.remove('_disabled-opacity'));
+
                 const unsuitableCards = cards.filter(card => {
                     const currentSumm = Number(replaceValue(card.querySelector('[data-card-summ]').textContent));
                     return currentSumm > totalSumm && !card.classList.contains('_active');
                 })
-                cards.forEach(card => card.classList.remove('_disabled-opacity'));
                 unsuitableCards.forEach(card => card.classList.add('_disabled-opacity'));
             }
-    
         }
-        if (typeQuantity){
+        if (typeQuantity) {
+            const descr = container.querySelector('.additionally__descr');
+            const maxSumm = Number(replaceValue(container.dataset.totalSummMax));
+            const maxQuantity = Number(replaceValue(container.dataset.totalQuantityMax));
+            const currentSummElement = container.querySelector('[data-total-summ-current]');
+            let totalSumm = Number(replaceValue(currentSummElement.dataset.totalSummCurrent));
+            let currentQuantity = 0;
             container.addEventListener('change', (e) => {
                 const target = e.target;
                 const card = target.closest('[data-additionally-card-calc]');
                 if (card) {
                     const currentSumm = Number(replaceValue(card.querySelector('[data-card-summ]').textContent));
-                    console.log(currentSumm);
+                    if (target.checked) {
+                        card.classList.add('_active');
+                        totalSumm += currentSumm;
+                        currentQuantity++;
+                    } else {
+                        card.classList.remove('_active');
+                        totalSumm -= currentSumm;
+                        currentQuantity--;
+                    }
+                    const cards = Array.from(container.querySelectorAll('[data-additionally-card-calc]'));
+                    cards.forEach(card => card.classList.remove('_disabled-opacity'));
+                    updateDescr();
+                    checkErrorCardsSumm(cards, totalSumm, maxSumm);
+                    checkErrorCardsQuantity(cards);
                 }
             })
-        }
 
+            function checkErrorCardsSumm(cards, totalSumm, maxSumm) {
+                const unsuitableCards = cards.filter(card => {
+                    const currentSumm = Number(replaceValue(card.querySelector('[data-card-summ]').textContent));
+                    return currentSumm + totalSumm > maxSumm && !card.classList.contains('_active');
+                })
+                unsuitableCards.forEach(card => card.classList.add('_disabled-opacity'));
+            }
+
+            function checkErrorCardsQuantity(cards) {
+                const notActiveCard = cards.filter(card => !card.classList.contains('_active'));
+                if (currentQuantity >= maxQuantity) {
+                    notActiveCard.forEach(card => card.classList.add('_disabled-opacity'));
+                }
+            }
+
+            function updateDescr() {
+                if (currentQuantity === 0) {
+                    descr.textContent = `Выберите ${maxQuantity} подарка`;
+                } else {
+                    descr.textContent = `Выбрано ${currentQuantity} из ${maxQuantity} подарка`;
+                }
+            }
+
+        }
 
         function replaceValue(el) {
             return el.replace(/[^0-9]/g, '');
         }
-
     })
 }
 

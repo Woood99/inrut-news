@@ -88,7 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
     validateRadioPrimary('.complaint-object-popup__form', '.textarea-primary__input', '.complaint-object-popup__btn', '.radio-primary__input');
     validateCheckboxPrimary('.object-not-popup__form', '.textarea-primary__input', '.object-not-popup__btn', '.checkbox-secondary__input');
     bookConsultationValidate();
-    clientFixedValidate();
     createAgreeValidate();
     addContactValidate();
     createDealValidate();

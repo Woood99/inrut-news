@@ -18,11 +18,12 @@ import {
 import {
     validateTextMap
 } from './modules/validateTextMap';
+import   datePickers from './components/datePickers'
 document.addEventListener('DOMContentLoaded', () => {
     tag();
     chat();
     editProfile();
-
+    datePickers();
     function editProfile() {
         const container = document.querySelector('.edit-profile');
         if (!container) return;

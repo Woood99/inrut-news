@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Редактирование профиля</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <script id="ymaps-id"></script>
+    <script defer src="js/profile.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container">
+        @include('partials/header.html')
+        <main class="main main-page-gap edit-profile">
+            <h1 class="title-2 container">
+                Создание профиля
+            </h1>
+            <div class="edit-profile__body">
+                <div class="edit-profile__content container">
+                    <div class="edit-profile__row">
+                        <div class="edit-profile__user">
+                            <div class="edit-profile__avatar avatar">
+                                <img loading="lazy" src="./img/avatar.png" width="90" height="90" alt="Иван Петров">
+                                <div>
+                                    <input type="file" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                    <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M13.02 5.714h5.96c.868 0 1.376.253 1.874.838.026.03.446.552.903 1.116.457.565 1.388.903 2.243.903h.572c2.285 0 4 1.715 4 4.572v8.571c0 2.286-2.286 4.572-5.143 4.572H8.572c-2.858 0-5.143-2.286-5.143-4.572v-8.571c0-2.857 1.714-4.572 4-4.572H8c.855 0 1.786-.338 2.243-.903.457-.564.877-1.086.903-1.116.498-.585 1.006-.838 1.873-.838zM9.885 16.857A6.116 6.116 0 0016 22.971a6.117 6.117 0 006.114-6.114A6.117 6.117 0 0016 10.743a6.116 6.116 0 00-6.114 6.114zm1.828 0a4.285 4.285 0 118.571 0 4.285 4.285 0 01-8.57 0z"
+                                            fill="currentColor"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="edit-profile__name title-1">
+                                ФИО
+                            </div>
+                        </div>
+                        <div class="edit-profile__item">
+                            <h3 class="edit-profile__subtitle title-3">
+                                Личные данные
+                            </h3>
+                            <div class="edit-profile__field">
+                                <div class="input-text input-text--no-exp">
+                                    <label class="input-text__label">
+                                        <span>Фамилия</span>
+                                        <input type="text" name="Фамилия" class="input-reset input-text__input" placeholder="">
+                                    </label>
+                                </div>
+                                <div class="input-text input-text--no-exp">
+                                    <label class="input-text__label">
+                                        <span>Имя</span>
+                                        <input type="text" name="Фамилия" class="input-reset input-text__input" placeholder="">
+                                    </label>
+                                </div>
+                                <div class="input-text input-text--no-exp">
+                                    <label class="input-text__label">
+                                        <span>Отчество</span>
+                                        <input type="text" name="Отчество" class="input-reset input-text__input" placeholder="">
+                                    </label>
+                                </div>
+                                <div class="input-text input-text--no-exp date-picker">
+                                    <label class="input-text__label">
+                                        <span>Дата рождения</span>
+                                        <input type="text" name="Дата рождения" class="input-reset input-text__input date-picker__input" placeholder="">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="edit-profile__item">
+                            <h3 class="edit-profile__subtitle title-3">
+                                Контактные данные
+                            </h3>
+                            <div class="edit-profile__field">
+                                <div class="input-text input-text--no-exp">
+                                    <label class="input-text__label">
+                                        <span>Номер телефона</span>
+                                        <input type="text" name="Номер телефона" class="input-reset input-text__input input-phone-mask" placeholder="">
+                                    </label>
+                                </div>
+                                <div class="input-text input-text--no-exp">
+                                    <label class="input-text__label">
+                                        <span>Email</span>
+                                        <input type="text" name="Email" class="input-reset input-text__input" placeholder="">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="edit-profile__item edit-profile__bottom">
+                            <button type="button" class="btn btn-reset btn-primary">Сохранить</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        @include('partials/footer.html')
+    </div>
+    <!-- popups -->
+    @include('popups/city.html')
+    @include('popups/add.html')
+    @include('popups/personal-area2.html')
+    @include('popups/edit-profile.html')
+    @include('popups/sber-tied.html')
+    <!-- ==== -->
+    @include('popups/warning-remove5.html')
+    <!-- popups -->
+</body>
+
+
+</html>

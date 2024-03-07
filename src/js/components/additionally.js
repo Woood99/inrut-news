@@ -176,7 +176,6 @@ const additionally = () => {
         const cardMap = {
             index: card.dataset.cardAdditionallyIndex,
             title: card.querySelector('.user-info__name').textContent.trim(),
-            descr: card.querySelector('.user-info__pos').textContent.trim(),
             oldPrice: card.querySelector('.card-checkbox__price span:nth-child(1)').textContent.trim(),
             newPrice: card.querySelector('.card-checkbox__price span:nth-child(2)').textContent.trim(),
         };
@@ -185,9 +184,6 @@ const additionally = () => {
             <div class="user-info card-checkbox__info">
                 <span class="user-info__name">
                     ${cardMap.title}
-                </span>
-                <span class="user-info__pos">
-                    ${cardMap.descr}
                 </span>
             </div>
             <div class="card-checkbox__price">

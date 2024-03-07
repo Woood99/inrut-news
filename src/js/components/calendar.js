@@ -175,7 +175,7 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
         locale: 'ru',
         dayMaxEvents: 2,
         firstDay: 1,
-        moreLinkContent: (obj) => `+ еще ${obj.num}`,
+        moreLinkContent: (obj) => `Смотреть все`,
         fixedWeekCount: false,
         eventClassNames: 'fc-event-container',
         eventSources: [array],
@@ -437,7 +437,51 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
         `;
     }
 
-    function generateInfo(eventsArray, currentDate) {
+    function generateCurrentInfo(eventsArray, currentDate,currentCard) {
+        infoBlock.innerHTML = '';
+        const currentID = currentCard.dataset.currentEventId;
+        const currentEvent = eventsArray.find(card => card.eventID == currentID);
+        const currentDateTitle = `
+            <div class="calendar-info__header">
+                <h2 class="title-3" style="margin-bottom: 24px;">${getCurrentDate(currentDate)}</h2>
+            </div>
+        `;
+        const eventHTML = `
+        <div class="fc-event-big" data-current-event-id="${currentEvent.eventID}">
+            <div>
+                <span>${currentEvent.timeStart}</span>
+                <span>${currentEvent.title}</span>
+            </div>
+            <div class="object-small-card object-small-card--small">
+                <div class="object-small-card__image">
+                    <img loading="lazy" src="${currentEvent.object.image}" width="45" height="45" alt="${currentEvent.object.title}">
+                </div>
+                <h4 class="object-small-card__title">
+                    ${currentEvent.object.title}
+                </h4>
+                <p class="object-small-card__descr">
+                    ${currentEvent.object.address}
+                </p>
+            </div>
+            <div class="fc-event-big__status">
+                <svg>
+                    <use xlink:href="./img/sprite.svg#info"></use>
+                </svg>
+                ${currentEvent.statusApp}
+            </div>
+        </div>
+        `;
+        infoBlock.setAttribute('data-current-date', currentDate);
+        infoBlock.insertAdjacentHTML('beforeend', currentDateTitle);
+        infoBlock.insertAdjacentHTML('beforeend', `
+            <div class="calendar-info__content simplebar-third">
+                ${eventHTML}
+            </div>
+        `);
+        currentSimplebar(infoBlock.querySelector('.calendar-info__content.simplebar-third'));
+    }
+
+    function generateAllInfo(eventsArray, currentDate) {
         infoBlock.innerHTML = '';
         const currentDateEvents = eventsArray.filter(item => item.date === currentDate);
         const currentDateTitle = `
@@ -485,24 +529,29 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
 
     function initInfo(eventsArray) {
         const currentDateBlock = calendarEl.querySelector('.fc-day.fc-day-today.fc-daygrid-day');
-        if (currentDateBlock){
+        if (currentDateBlock) {
             const currentDate = currentDateBlock.dataset.date;
-            generateInfo(eventsArray, currentDate);
+            generateAllInfo(eventsArray, currentDate);
         }
     }
+
     function init() {
         const newEvent = document.querySelector('.calendar-page__new-event');
         const to = calendarEl.querySelector('.fc-header-toolbar');
-        to.insertAdjacentElement('beforeend',newEvent);
+        to.insertAdjacentElement('beforeend', newEvent);
     }
     document.addEventListener('click', (e) => {
         const target = e.target;
         const createEvent = target.closest('.calendar-btn-add');
+        const smallCard = target.closest('.fc-event-small');
         const dateBlock = target.closest('.fc-day.fc-daygrid-day');
-        if (dateBlock && !createEvent) {
+        if (!createEvent && dateBlock) {
             const currentDate = dateBlock.dataset.date;
-            generateInfo(array, currentDate);
-            return;
+            if (smallCard) {
+                generateCurrentInfo(array, currentDate,smallCard);
+            } else {
+                generateAllInfo(array, currentDate);
+            }
         }
         if (createEvent) {
             document.location = `calendar-create-event.html?event=${createEvent.dataset.currentDate}`;

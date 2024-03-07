@@ -11,6 +11,7 @@
     cursor: pointer;
 
     transition: background-color $transitionSpeed $transitionFunction;
+
     &__title {
         font-size: var(--default-fz);
         line-height: var(--default-lh);
@@ -60,68 +61,83 @@
     }
 
 
-    &--light-blue{
+    &--light-blue {
         background-color: #e8ffff;
-        @media (min-width:$desktop-min){
-           &:hover{
-            background-color: #d5f2f2; 
-           }
-        }
-    }
-    &--green{
-        background-color: #ebfde6;
-        @media (min-width:$desktop-min){
-           &:hover{
-            background-color: #dbfbd1; 
-           }
-        }
-    }
-    &--light-purple{
-        background-color: #f9f2ff;
-        @media (min-width:$desktop-min){
-           &:hover{
-            background-color: #f0d9ff; 
-           }
-        }
-    }
-    &--orange{
-        background-color: #ffecd6;
-        @media (min-width:$desktop-min){
-            &:hover{
-            background-color: #ffe0bf; 
+
+        @media (min-width:$desktop-min) {
+            &:hover {
+                background-color: #d5f2f2;
             }
         }
     }
-    &--blue{
+
+    &--green {
+        background-color: #ebfde6;
+
+        @media (min-width:$desktop-min) {
+            &:hover {
+                background-color: #dbfbd1;
+            }
+        }
+    }
+
+    &--light-purple {
+        background-color: #f9f2ff;
+
+        @media (min-width:$desktop-min) {
+            &:hover {
+                background-color: #f0d9ff;
+            }
+        }
+    }
+
+    &--orange {
+        background-color: #ffecd6;
+
+        @media (min-width:$desktop-min) {
+            &:hover {
+                background-color: #ffe0bf;
+            }
+        }
+    }
+
+    &--blue {
         background-color: #edf4ff;
-        @media (min-width:$desktop-min){
-             &:hover{
+
+        @media (min-width:$desktop-min) {
+            &:hover {
                 background-color: #d9ecff;
-             } 
+            }
         }
     }
-    &--dark-green{
+
+    &--dark-green {
         background-color: #e3ffec;
-        @media (min-width:$desktop-min){
-             &:hover{
+
+        @media (min-width:$desktop-min) {
+            &:hover {
                 background-color: #cef5d9;
-             } 
+            }
         }
     }
-    &--yellow{
+
+    &--yellow {
         background-color: #fff1c5;
-        @media (min-width:$desktop-min){
-            &:hover{
+
+        @media (min-width:$desktop-min) {
+            &:hover {
                 background-color: #ffe7a8;
             }
         }
     }
-    &--dark-purple{
+
+    &--dark-purple {
         background-color: #ffdfed;
-        @media (min-width:$desktop-min){
-             &:hover{
+
+        @media (min-width:$desktop-min) {
+            &:hover {
                 background-color: #ffc4dd;
-             } 
+            }
         }
     }
 }
@@ -129,7 +145,8 @@
 .card-stock-secondary {
     box-sizing: border-box;
     height: 100%;
-    &__remove{
+
+    &__remove {
         position: absolute;
         top: 10px;
         right: 10px;
@@ -156,6 +173,7 @@
             fill: var(--red);
         }
     }
+
     &__container {
         position: relative;
         z-index: 1;
@@ -183,6 +201,7 @@
             }
         }
     }
+
     &__times {
         position: absolute;
         top: 16px;
@@ -216,6 +235,7 @@
             }
         }
     }
+
     &__image {
         padding-bottom: percent(207, 323);
         border-radius: 12px;
@@ -230,7 +250,7 @@
 
     &__content {
         width: 100%;
-        padding: 20px 24px 16px;
+        padding: 16px 24px 16px;
 
         .row {
             display: flex;
@@ -245,6 +265,7 @@
 
     &__title {
         transition: color $transitionSpeed $transitionFunction;
+        margin-bottom: 5px;
     }
 
     &__date {
@@ -255,7 +276,6 @@
     }
 
     &__name {
-        margin-top: 5px;
 
         color: var(--dark);
         font-size: var(--small-fz);
@@ -266,7 +286,7 @@
     }
 
     &__descr {
-        margin-top: 20px;
+        margin-top: 16px;
         font-size: var(--small-fz);
         line-height: var(--small-lh);
         color: var(--primary600);
@@ -288,24 +308,37 @@
             padding: 16px;
         }
     }
-
-  @media (min-width:$desktop-min){
-    &:hover {
-        .card-stock-secondary__container {
-            box-shadow: var(--shadow-primary);
-        }
-
-        .card-stock-secondary__image {
-            img {
-                transform: scale(1.02);
+    &--no-shadow{
+        .card-stock-secondary{
+            &__container{
+                background-color:transparent;
+                box-shadow: none;
+                border-radius: 12px 12px 0 0;
+            }
+            &__content{
+                padding: 16px 0 0;
             }
         }
-
-        .card-stock-secondary__title {
-            color: var(--blue);
+    }
+    @media (min-width:$desktop-min) {
+        &:hover {
+            &:not(.card-stock-secondary--no-shadow){
+                .card-stock-secondary__container {
+                    box-shadow: var(--shadow-primary);
+                }
+    
+                .card-stock-secondary__image {
+                    img {
+                        transform: scale(1.02);
+                    }
+                }
+    
+                .card-stock-secondary__title {
+                    color: var(--blue);
+                }
+            }
         }
-    } 
-  }
+    }
 
     &._active {
         .card-stock-secondary__container {
@@ -326,7 +359,8 @@
 
 .card-stock-third {
     box-sizing: border-box;
-    &__remove{
+
+    &__remove {
         position: absolute;
         top: 10px;
         right: 10px;
@@ -353,6 +387,7 @@
             fill: var(--red);
         }
     }
+
     &__container {
         position: relative;
         z-index: 1;

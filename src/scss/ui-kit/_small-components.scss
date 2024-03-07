@@ -5391,7 +5391,11 @@
         height: calc(100% - 16px);
         background-color: var(--blue);
     }
-
+    &:last-child{
+        &::before{
+            height: 100%;
+        }
+    }
     >div {
         &:nth-child(1) {
             >span {
@@ -5587,11 +5591,14 @@
         display: flex;
         align-items: center;
         flex-shrink: 0;
+
         >span {
             font-size: var(--small-fz);
             line-height: var(--small-lh);
+
             &:nth-child(1) {
                 position: relative;
+
                 &::before {
                     content: '';
                     border-bottom: 1px solid currentColor;
@@ -5610,28 +5617,34 @@
             }
         }
     }
+
     &__info {
         display: flex;
         flex-direction: column;
         align-items: start;
         gap: 4px;
     }
-    .user-info{
+
+    .user-info {
         grid-template-columns: 50px 1fr;
-        &__pos{
-            white-space:normal;
+
+        &__pos {
+            white-space: normal;
         }
-        &__avatar{
+
+        &__avatar {
             width: 50px;
             height: 50px;
         }
-        &__link{
+
+        &__link {
             grid-column: 2/-1;
             color: var(--blue);
             z-index: 99;
-          justify-self: start;
+            justify-self: start;
         }
     }
+
     &__time {
         font-size: var(--small-fz);
     }
@@ -5659,18 +5672,22 @@
             text-align: center;
         }
     }
-    &__remove{
-        svg{
+
+    &__remove {
+        svg {
             width: 16px;
             height: 16px;
         }
     }
+
     &--second {
         padding: 24px;
         gap: 24px;
-        .toggle-checkbox{
+
+        .toggle-checkbox {
             margin-left: 0;
         }
+
         .card-checkbox {
             &__name {
                 font-weight: 500;

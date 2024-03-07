@@ -1,5 +1,6 @@
 .calendar-page {
     margin-top: 0;
+
     &__title {
         @media (max-width:$desktop) {
             padding: 0 16px;
@@ -35,56 +36,71 @@
             padding: 16px;
         }
     }
-    .calendar-primary{
+
+    .calendar-primary {
         background-color: var(--white);
         padding: 24px;
         border-radius: 12px;
         box-shadow: var(--shadow-primary);
     }
-    &__info{
+
+    &__info {
         height: 100%;
-        .fc-event-big{
-            &:not(:last-child){
+
+        .fc-event-big {
+            &:not(:last-child) {
                 border-bottom: 1px solid var(--primary100);
                 margin-bottom: 16px;
                 padding-bottom: 16px;
             }
         }
     }
-    &__new-event{
-     margin-left: auto;
+
+    &__new-event {
+        margin-left: auto;
         color: var(--blue);
 
         display: flex;
         align-items: center;
         gap: 6px;
-        svg{
+
+        svg {
             fill: currentColor;
             width: 12px;
             height: 12px;
         }
     }
 }
-.calendar-info{
+
+.calendar-info {
     background-color: var(--white);
     padding: 24px;
     border-radius: 12px;
     box-shadow: var(--shadow-primary);
     min-height: 100%;
-    &__header{
 
-    }
-    &__content{
+    &__header {}
+
+    &__content {
         max-height: 569px;
-        .simplebar-track.simplebar-vertical{
+
+        .simplebar-track.simplebar-vertical {
             margin-right: -16px;
         }
     }
-    @media (min-width:$desktop-min){
-         &._sticky{
+
+    @media (min-width:$desktop-min) {
+        &._sticky {
             position: sticky;
-    top: 16px;
-    width: 100%;
-         } 
+            top: 16px;
+            width: 100%;
+        }
+    }
+    &._one-style{
+        .fc-event-big{
+            &::before{
+                height: 100%;
+            }
+        }
     }
 }

@@ -53,6 +53,78 @@
         }
     }
 
+    &__discount {
+        width: auto !important;
+        height: 19px !important;
+
+        .secondary-tooltip {
+            &__btn {
+                padding: 0 8px;
+                background-color: var(--blue);
+                border: none;
+                color: var(--white);
+                font-size: 12px;
+            }
+
+            &__content {
+                height: min-content;
+
+                .title-3 {
+                    margin-bottom: 8px;
+                }
+
+                ul {
+                    margin: 16px 0;
+
+                    li {
+                        color: var(--primaryTwo);
+                        &:not(:last-child) {
+                            margin-bottom: 8px;
+                        }
+
+                        &._line {
+                            display: flex;
+                            width: 100%;
+
+                            &::after {
+                                content: '';
+                                flex: 1 1 0%;
+                                position: relative;
+                                top: 12px;
+                                border-bottom: 1px dashed var(--primary200);
+                                height: 1px;
+                                order: 2;
+                                margin: 0 6px;
+                            }
+
+                            span {
+                                &:nth-child(1) {
+                                    white-space: nowrap;
+                                }
+
+                                &:nth-child(2) {
+                                    order: 3;
+                                    text-align: right;
+                                    max-width: 40%;
+                                }
+                            }
+                        }
+
+                        &._price-you {
+                            color: var(--dark);
+                        }
+
+                        &._blue {
+                            color: var(--blue);
+                        }
+                    }
+                }
+                .btn{
+                    width: 100%;
+                }
+            }
+        }
+    }
 
     &--up {
         .secondary-tooltip {

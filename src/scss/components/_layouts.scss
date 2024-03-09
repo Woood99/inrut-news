@@ -181,7 +181,7 @@
 .room-info-card {
     display: grid;
     align-items: center;
-    grid-template-columns: calc(85px + 8px) max-content max-content max-content 1fr;
+    grid-template-columns: calc(85px + 8px) max-content 1fr max-content max-content;
     grid-column-gap: 24px;
    padding: 16px;
    .card-price .secondary-tooltip{
@@ -264,16 +264,7 @@
         }
     }
     &__price-new {
-
-        span {
-            &:nth-child(1){
-            }
-            &:nth-child(2) {
-                color: var(--primaryTwo);
-                font-weight: 500;
-                margin-left: 5px;
-            }
-        }
+        transition: color $transitionSpeed $transitionFunction;
     }
 
     &__price-old {
@@ -319,9 +310,13 @@
         align-items: center;
         gap: 12px;
     }
+    &__add-tags{
+        justify-self: end;
+    }
     &__tags{
         display: flex;
         flex-wrap: wrap;
+        justify-self: end;
         gap: 8px;
         >span {
             background-color: var(--primary100);
@@ -374,7 +369,6 @@
         }
     }
     &__present{
-        justify-self: end;
     }
     &__col{
       display: flex;
@@ -394,6 +388,9 @@
     @media (min-width:$desktop-min) {
         &:hover {
             .room-info-card__title {
+                color: var(--blue);
+            }
+            .room-info-card__price-new {
                 color: var(--blue);
             }
         }

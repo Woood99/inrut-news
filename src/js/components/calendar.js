@@ -433,7 +433,6 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
             ${maps.daysOfWeek[date.getDay()]}
             ${date.getDate()}
             ${maps.months2[maps.months.indexOf(maps.months[date.getMonth()])].toLowerCase()}
-            
         `;
     }
 

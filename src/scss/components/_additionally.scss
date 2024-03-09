@@ -5,6 +5,16 @@
     padding: 32px;
     &__title {
         margin-bottom: 8px;
+        display: flex; 
+        align-items: center;
+        gap: 12px;
+        .secondary-tooltip{
+            &__content{
+                width: max-content;
+                max-width: 300px;
+                font-weight: 400;
+            }
+        }
     }
     &__descr{
         color: var(--primaryTwo);
@@ -20,14 +30,13 @@
         display: grid;
         grid-template-columns: 100%;
         grid-column-gap: 12px;
-        grid-row-gap: 16px;
+        grid-row-gap: 12px;
        margin-bottom: 16px;
     }
     &__more{
         display: flex;
         align-items: center;
         margin-top: 20px;
-        margin-bottom: 24px;
         color: var(--blue);
         font-size: var(--default-fz);
         line-height: 1;
@@ -60,21 +69,13 @@
 }
 .additionally-calc{
     margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid var(--primary100);
     width: 100%;
     .card-checkbox{
         border-radius: 0;
         padding: 0;
         border: none;
         &:not(:last-child){
-            margin-bottom: 12px;
-        }
-        &__price{
-            >span{
-                &:nth-child(2){
-                }
-            }
+            margin-bottom: 5px;
         }
     }
     .user-info{
@@ -83,13 +84,16 @@
        &__name{
         align-self: flex-start;
         white-space: normal;
+            color: var(--gray);
+            font-weight: 400;
        }
     }
+
     &__list{
-        margin-top: 16px;
+        margin-top: 12px;
         max-height: 125px;
     }
     .simplebar-track.simplebar-vertical{
-        margin-right: -17px;
+        margin-right: -10px;
     }
 }

@@ -2541,7 +2541,7 @@ textarea.input-reset {
 .popup-primary--record-viewing .popup-primary__container {
   border-radius: 16px 16px 0 0;
   padding: 65px 16px 219px;
-  min-height: auto;
+  min-height: var(--vh);
   margin: 32px auto 0;
   width: calc(100% - 4px);
   vertical-align: bottom;
@@ -2581,7 +2581,6 @@ textarea.input-reset {
 }
 .popup-primary--record-viewing-three .popup-primary__container {
   border-radius: 0;
-  padding: 40px 16px 24px;
   margin: 0;
   width: 100%;
 }
@@ -8814,6 +8813,12 @@ textarea.input-reset {
   opacity: 1;
   pointer-events: all;
 }
+.record-viewing__card {
+  width: 100%;
+}
+.record-viewing__card.room-info-card .user-cashback {
+  background-color: var(--stand-bg);
+}
 .record-viewing--form .record-viewing__clue {
   padding: 16px;
 }
@@ -9052,6 +9057,24 @@ textarea.input-reset {
     top: 16px;
     width: 100%;
   }
+}
+
+.record-viewing-present {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 350px;
+  grid-template-columns: 1fr 350px;
+  grid-column-gap: 12px;
+}
+.record-viewing-present__wrapper {
+  background-color: var(--white);
+  -webkit-box-shadow: var(--shadow-primary);
+  box-shadow: var(--shadow-primary);
+  padding: 32px;
+  border-radius: 12px;
+}
+.record-viewing-present__col {
+  text-align: left;
 }
 
 .im-buying__descr {
@@ -9717,6 +9740,13 @@ textarea.input-reset {
   color: var(--dark);
 }
 
+.title-3-imp {
+  font-weight: 500;
+  font-size: var(--little-big-fz);
+  line-height: var(--little-big-lh);
+  color: var(--dark);
+}
+
 .title-4 {
   font-weight: 500;
   font-size: var(--default-fz);
@@ -9742,6 +9772,10 @@ textarea.input-reset {
   stroke: none;
   width: 20px;
   height: 20px;
+}
+
+.btn-remove--gray svg {
+  fill: var(--primaryTwo);
 }
 
 .btn-remove-imp svg {
@@ -16193,7 +16227,7 @@ textarea.input-reset {
   z-index: 999;
   left: 0;
   bottom: auto;
-  padding: 8px 16px;
+  padding: 20px;
 }
 .secondary-tooltip--bottom-center .secondary-tooltip__content {
   top: calc(100% + 12px);
@@ -16203,7 +16237,7 @@ textarea.input-reset {
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   bottom: auto;
-  padding: 8px 16px;
+  padding: 20px;
 }
 .secondary-tooltip--dark .secondary-tooltip__content {
   border: none;

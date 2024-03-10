@@ -2541,7 +2541,7 @@ textarea.input-reset {
 .popup-primary--record-viewing .popup-primary__container {
   border-radius: 16px 16px 0 0;
   padding: 65px 16px 219px;
-  min-height: auto;
+  min-height: var(--vh);
   margin: 32px auto 0;
   width: calc(100% - 4px);
   vertical-align: bottom;
@@ -2581,7 +2581,6 @@ textarea.input-reset {
 }
 .popup-primary--record-viewing-three .popup-primary__container {
   border-radius: 0;
-  padding: 40px 16px 24px;
   margin: 0;
   width: 100%;
 }
@@ -8814,6 +8813,12 @@ textarea.input-reset {
   opacity: 1;
   pointer-events: all;
 }
+.record-viewing__card {
+  width: 100%;
+}
+.record-viewing__card.room-info-card .user-cashback {
+  background-color: var(--stand-bg);
+}
 .record-viewing--form .record-viewing__clue {
   padding: 16px;
 }
@@ -9052,6 +9057,24 @@ textarea.input-reset {
     top: 16px;
     width: 100%;
   }
+}
+
+.record-viewing-present {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 350px;
+  grid-template-columns: 1fr 350px;
+  grid-column-gap: 12px;
+}
+.record-viewing-present__wrapper {
+  background-color: var(--white);
+  -webkit-box-shadow: var(--shadow-primary);
+  box-shadow: var(--shadow-primary);
+  padding: 32px;
+  border-radius: 12px;
+}
+.record-viewing-present__col {
+  text-align: left;
 }
 
 .im-buying__descr {
@@ -9717,6 +9740,13 @@ textarea.input-reset {
   color: var(--dark);
 }
 
+.title-3-imp {
+  font-weight: 500;
+  font-size: var(--little-big-fz);
+  line-height: var(--little-big-lh);
+  color: var(--dark);
+}
+
 .title-4 {
   font-weight: 500;
   font-size: var(--default-fz);
@@ -9742,6 +9772,10 @@ textarea.input-reset {
   stroke: none;
   width: 20px;
   height: 20px;
+}
+
+.btn-remove--gray svg {
+  fill: var(--primaryTwo);
 }
 
 .btn-remove-imp svg {
@@ -16775,8 +16809,8 @@ textarea.input-reset {
 .room-info {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 20.6611570248% 18.6983471074% 24.7933884298% 18.5950413223% 1fr;
-  grid-template-columns: 20.6611570248% 18.6983471074% 24.7933884298% 18.5950413223% 1fr;
+  -ms-grid-columns: 18.7617260788% 14.0712945591% 21.1069418386% 16.8855534709% 1fr;
+  grid-template-columns: 18.7617260788% 14.0712945591% 21.1069418386% 16.8855534709% 1fr;
   -webkit-box-align: start;
   -ms-flex-align: start;
   align-items: start;
@@ -17315,7 +17349,7 @@ textarea.input-reset {
   z-index: 999;
   left: 0;
   bottom: auto;
-  padding: 8px 16px;
+  padding: 20px;
 }
 .secondary-tooltip--bottom-center .secondary-tooltip__content {
   top: calc(100% + 12px);
@@ -17325,7 +17359,7 @@ textarea.input-reset {
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   bottom: auto;
-  padding: 8px 16px;
+  padding: 20px;
 }
 .secondary-tooltip--dark .secondary-tooltip__content {
   border: none;
@@ -25326,8 +25360,9 @@ textarea.input-reset {
   background-color: var(--blue);
   border: none;
   color: var(--white);
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1;
+  font-weight: 500;
 }
 .card-price__discount .secondary-tooltip__content {
   height: -webkit-min-content;
@@ -25336,6 +25371,9 @@ textarea.input-reset {
   z-index: 22;
 }
 .card-price__discount .secondary-tooltip__content .title-3 {
+  margin-bottom: 8px;
+}
+.card-price__discount .secondary-tooltip__content p {
   margin-bottom: 8px;
 }
 .card-price__discount .secondary-tooltip__content ul {
@@ -25406,6 +25444,7 @@ textarea.input-reset {
   grid-template-columns: -webkit-max-content -webkit-max-content;
   grid-template-columns: max-content max-content;
   grid-row-gap: 4px;
+  grid-row-gap: 8px;
 }
 .card-price._old-price .card-price__old-price {
   -ms-grid-column: 1;
@@ -25424,9 +25463,7 @@ textarea.input-reset {
   grid-row: 1/2;
 }
 .card-price._old-price .card-price__price {
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 1;
-  grid-column: 1/2;
+  grid-column: 1/-1;
 }
 .card-price._old-price .card-price__history {
   -ms-grid-column: 2;
@@ -30252,8 +30289,9 @@ textarea.input-reset {
   padding: 1px 6px;
 }
 .user-cashback__item._prc .user-cashback__price .secondary-tooltip__btn span:nth-child(2) {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--white);
+  font-weight: 500;
 }
 .user-cashback__item._prc .user-cashback__price .secondary-tooltip__content {
   width: -webkit-max-content;
@@ -32090,6 +32128,8 @@ textarea.input-reset {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-transition: color 0.4s ease-in-out;
+  transition: color 0.4s ease-in-out;
 }
 @media (max-width: 1212px) {
   .room-info-card__price {
@@ -32098,10 +32138,6 @@ textarea.input-reset {
     -ms-grid-column-span: 1;
     grid-column: 2/3;
   }
-}
-.room-info-card__price-new {
-  -webkit-transition: color 0.4s ease-in-out;
-  transition: color 0.4s ease-in-out;
 }
 .room-info-card__price-old {
   display: -webkit-box;
@@ -32168,7 +32204,7 @@ textarea.input-reset {
   color: var(--dark);
   height: 24px;
   padding: 0 12px;
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -32180,6 +32216,7 @@ textarea.input-reset {
   -ms-flex-pack: center;
   justify-content: center;
   white-space: nowrap;
+  font-weight: 500;
 }
 .room-info-card__tags .secondary-tooltip {
   width: auto;
@@ -32191,7 +32228,7 @@ textarea.input-reset {
   color: var(--dark);
   height: 24px;
   padding: 0 20px;
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -32203,6 +32240,7 @@ textarea.input-reset {
   -ms-flex-pack: center;
   justify-content: center;
   white-space: nowrap;
+  font-weight: 500;
 }
 .room-info-card__tags .secondary-tooltip__content {
   display: -webkit-box;
@@ -32213,15 +32251,11 @@ textarea.input-reset {
   align-items: center;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  padding: 16px;
   left: -50%;
   -webkit-transform: translateX(calc(-50% - 8px));
   -ms-transform: translateX(calc(-50% - 8px));
   transform: translateX(calc(-50% - 8px));
   top: 28px;
-  border-radius: 16px;
-  background-color: var(--dark);
-  border: none;
   max-width: 320px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -32230,6 +32264,20 @@ textarea.input-reset {
   height: -moz-max-content;
   height: max-content;
   gap: 8px;
+}
+.room-info-card__present {
+  width: 25px;
+  height: 25px;
+}
+.room-info-card__present .secondary-tooltip__btn {
+  width: 25px;
+  height: 25px;
+}
+.room-info-card__present .secondary-tooltip__content {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  max-width: 250px;
 }
 .room-info-card__col {
   display: -webkit-box;
@@ -32248,7 +32296,7 @@ textarea.input-reset {
   .room-info-card:hover .room-info-card__title {
     color: var(--blue);
   }
-  .room-info-card:hover .room-info-card__price-new {
+  .room-info-card:hover .room-info-card__price {
     color: var(--blue);
   }
 }

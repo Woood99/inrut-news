@@ -8813,11 +8813,20 @@ textarea.input-reset {
   opacity: 1;
   pointer-events: all;
 }
-.record-viewing__card {
+.record-viewing__card.room-info-card {
   width: 100%;
+  -ms-grid-columns: 93px -webkit-max-content 1fr;
+  -ms-grid-columns: 93px max-content 1fr;
+  grid-template-columns: 93px -webkit-max-content 1fr;
+  grid-template-columns: 93px max-content 1fr;
+  padding: 16px 0;
 }
 .record-viewing__card.room-info-card .user-cashback {
+  padding: 12px;
+  border-radius: 12px;
   background-color: var(--stand-bg);
+  -ms-grid-column-align: end;
+  justify-self: end;
 }
 .record-viewing--form .record-viewing__clue {
   padding: 16px;
@@ -8831,6 +8840,18 @@ textarea.input-reset {
 }
 .record-viewing--form .record-viewing__btn._moving {
   margin-bottom: 0;
+}
+.record-viewing__present {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 12px;
+  grid-row-gap: 12px;
+  margin-bottom: 24px;
+}
+.record-viewing__object {
+  margin-bottom: 8px;
 }
 
 .record-viewing-two .container {
@@ -9057,24 +9078,6 @@ textarea.input-reset {
     top: 16px;
     width: 100%;
   }
-}
-
-.record-viewing-present {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 350px;
-  grid-template-columns: 1fr 350px;
-  grid-column-gap: 12px;
-}
-.record-viewing-present__wrapper {
-  background-color: var(--white);
-  -webkit-box-shadow: var(--shadow-primary);
-  box-shadow: var(--shadow-primary);
-  padding: 32px;
-  border-radius: 12px;
-}
-.record-viewing-present__col {
-  text-align: left;
 }
 
 .im-buying__descr {
@@ -29027,6 +29030,7 @@ textarea.input-reset {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  gap: 16px;
 }
 .user-cashback__item:not(:last-child) {
   margin-bottom: 4px;

@@ -7454,10 +7454,15 @@
         }
     }
     &__card{
-        width: 100%;
         &.room-info-card{
+        width: 100%;
+        grid-template-columns: calc(85px + 8px) max-content 1fr;
+        padding: 16px 0;
             .user-cashback{
+                padding: 12px;
+                border-radius: 12px;
                 background-color: var(--stand-bg);
+                justify-self: end;
             }
         }
     }
@@ -7477,6 +7482,16 @@
                 }
             }
         }
+    }
+    &__present{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-column-gap: 12px;
+        grid-row-gap: 12px;
+        margin-bottom: 24px;
+    }
+    &__object{
+      margin-bottom: 8px;
     }
 }
 
@@ -7734,21 +7749,6 @@
 
 
 
-.record-viewing-present {
-    display: grid;
-    grid-template-columns: 1fr 350px;
-    grid-column-gap: 12px;
-    &__wrapper {
-        background-color: var(--white);
-        box-shadow: var(--shadow-primary);
-        padding: 32px;
-        border-radius: 12px;
-    }
-
-    &__col {
-        text-align: left;
-    }
-}
 
 
 

@@ -44,13 +44,16 @@ const additionally = () => {
                         card.classList.add('_active');
                         totalSumm -= currentSumm;
                         sendingToBasket(card);
+                        sendingToPopup(card);
                     } else {
                         card.classList.remove('_active');
                         totalSumm += currentSumm;
                         removeBasketFromCard(card);
+                        removePopupFromCard(card);
                     }
                     updateDescr();
                     checkErrorCardsSumm(container, totalSumm);
+                    checkLengthPresent();
                 }
             })
 
@@ -79,8 +82,10 @@ const additionally = () => {
                         const currentSumm = Number(replaceValue(currentCard.querySelector('[data-card-summ]').textContent));
                         totalSumm += currentSumm;
                         removeBasketFromBasket(card,currentCard);
+                        removePopupFromBasket(document.querySelector(`[data-card-popup-index='${currentID}']`));
                         updateDescr();
                         checkErrorCardsSumm(container, totalSumm);
+                        checkLengthPresent();
                     }
                 }
             })
@@ -102,17 +107,20 @@ const additionally = () => {
                         totalSumm += currentSumm;
                         currentQuantity++;
                         sendingToBasket(card);
+                        sendingToPopup(card);
                     } else {
                         card.classList.remove('_active');
                         totalSumm -= currentSumm;
                         currentQuantity--;
                         removeBasketFromCard(card);
+                        removePopupFromCard(card);
                     }
                     const cards = Array.from(container.querySelectorAll('[data-additionally-card-calc]'));
                     cards.forEach(card => card.classList.remove('_disabled-opacity'));
                     updateDescr();
                     checkErrorCardsSumm(cards, totalSumm, maxSumm);
                     checkErrorCardsQuantity(cards);
+                    checkLengthPresent();
                 }
             })
 
@@ -150,11 +158,13 @@ const additionally = () => {
                         totalSumm -= currentSumm;
                         currentQuantity--;
                         removeBasketFromBasket(card,currentCard);
+                        removePopupFromBasket(document.querySelector(`[data-card-popup-index='${currentID}']`));
                         const cards = Array.from(container.querySelectorAll('[data-additionally-card-calc]'));
                         cards.forEach(card => card.classList.remove('_disabled-opacity'));
                         updateDescr();
                         checkErrorCardsSumm(cards, totalSumm, maxSumm);
                         checkErrorCardsQuantity(cards);
+                        checkLengthPresent();
                     }
                 }
             })
@@ -205,15 +215,17 @@ const additionally = () => {
     function removeBasketFromBasket(card,currentCard) {
         currentCard.classList.remove('_active');
         currentCard.querySelector('input').checked = false;
-        card.remove();
+         card.remove();
         visibleOrHiddenBasket();
     }
+
     function removeBasketFromCard(card){
         const currentID = card.dataset.cardAdditionallyIndex;
         const currentCard = document.querySelector(`[data-card-basket-index='${currentID}']`);
         currentCard.remove();
         visibleOrHiddenBasket();
     }
+
     function visibleOrHiddenBasket(){
         const basketContainer = document.querySelector('.additionally-calc');
         if (!basketContainer) return;
@@ -223,6 +235,61 @@ const additionally = () => {
             basketContainer.setAttribute('hidden','');
         } else {
             basketContainer.removeAttribute('hidden');
+        }
+    }
+
+    function sendingToPopup(card){
+        const target = document.querySelector('.record-viewing__present');
+        if (!target) return;
+        const cardMap = {
+            index: card.dataset.cardAdditionallyIndex,
+            title: card.querySelector('.user-info__name').textContent.trim(),
+            tooltip: card.querySelector('.secondary-tooltip').outerHTML,
+            link: card.querySelector('.user-info__link') ? card.querySelector('.user-info__link').outerHTML : '',
+            avatar: card.querySelector('.user-info__avatar').outerHTML,
+        };
+        const cardHTML = `
+        <li class="card-checkbox card-checkbox--second" data-card-popup-index="${cardMap.index}">
+            <div class="user-info card-checkbox__info">
+                ${cardMap.avatar}
+                <span class="user-info__name">
+                    ${cardMap.title}
+                </span>
+                ${cardMap.link}
+            </div>
+            <div class="card-checkbox__present">
+                <img src="./img/present.png" width="25" height="25" alt="">
+            </div>
+            ${cardMap.tooltip}
+        </li>
+        `;
+        target.insertAdjacentHTML('beforeend', cardHTML);
+    }
+
+    function removePopupFromCard(card) {
+        const currentID = card.dataset.cardAdditionallyIndex;
+        const currentCard = document.querySelector(`[data-card-popup-index='${currentID}']`);
+        currentCard.remove();
+    }
+
+    function removePopupFromBasket(card){
+        if (card){
+            card.remove();
+        }
+    }
+
+    function checkLengthPresent(){
+        const target = document.querySelector('.record-viewing__present');
+        if (!target) return;
+        const items = target.querySelectorAll('.card-checkbox');
+        if (items.length === 0) {
+            const html = `
+                <span class="record-viewing__present-start">Подарки не выбраны!</span>
+            `
+            target.insertAdjacentHTML('beforeend',html);
+        } else {
+            const textStart = target.querySelector('.record-viewing__present-start');
+            if (textStart) textStart.remove();
         }
     }
 }

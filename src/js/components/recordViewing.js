@@ -301,6 +301,15 @@ export const recordViewing = () => {
             function movingButton() {
                 form.insertAdjacentElement('beforeend', btn);
                 btn.classList.add('_moving');
+
+                const popup = form.closest('.popup-primary--record-viewing');
+                if (popup){
+                    const topGap = btn.offsetTop;
+                    popup.scrollTo({
+                        top: topGap - 16,
+                        behavior: 'smooth'
+                    })
+                }
             }
         
             function movingButtonDefault() {

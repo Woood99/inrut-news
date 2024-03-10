@@ -4,7 +4,9 @@ import {
     _slideDown,
     _slideToggle
 } from '../support-modules/slide';
-import { cardSchemeTag } from '../components/controlCards';
+import {
+    cardSchemeTag
+} from '../components/controlCards';
 const spollers = () => {
     const spollersArray = document.querySelectorAll('[data-spollers]');
     let speed = 500;
@@ -94,14 +96,24 @@ const spollers = () => {
                             cardSchemeTag(spollerTitle.nextElementSibling);
                         }, speed);
                     }
+                    if (spollerTitle.classList.contains('_spoller-active') && el.closest('.record-viewing__object')) {
+                        const popup = document.querySelector('.popup-primary--record-viewing');
+                        setTimeout(() => {
+                            const topGap = spollerTitle.offsetTop;
+                            popup.scrollTo({
+                                top: topGap - 16,
+                                behavior: 'smooth'
+                            })
+                        }, speed);
+                    }
                 }
                 if (el.closest('.layouts__item-btn')) {
-                        const activeBodyBlock = spollersBlock.querySelector('.room-body__container:not([hidden])');
-                        const activeCard = spollersBlock.querySelector('.room-body__items .card-scheme._active');
-                        if (activeBodyBlock && activeCard) {
-                            activeCard.classList.remove('_active');
-                            activeBodyBlock.setAttribute('hidden', '');
-                        }
+                    const activeBodyBlock = spollersBlock.querySelector('.room-body__container:not([hidden])');
+                    const activeCard = spollersBlock.querySelector('.room-body__items .card-scheme._active');
+                    if (activeBodyBlock && activeCard) {
+                        activeCard.classList.remove('_active');
+                        activeBodyBlock.setAttribute('hidden', '');
+                    }
                 }
                 e.preventDefault();
             }

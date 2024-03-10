@@ -15579,10 +15579,6 @@ textarea.input-reset {
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
-.card-checkbox__price > span {
-  font-size: var(--small-fz);
-  line-height: var(--small-lh);
-}
 .card-checkbox__price > span:nth-child(1) {
   position: relative;
 }
@@ -15663,11 +15659,19 @@ textarea.input-reset {
   height: 16px;
 }
 .card-checkbox--second {
-  padding: 24px;
+  padding: 17px;
   gap: 24px;
 }
 .card-checkbox--second .toggle-checkbox {
   margin-left: 0;
+}
+.card-checkbox--second .user-info {
+  -ms-grid-columns: 44px 1fr;
+  grid-template-columns: 44px 1fr;
+}
+.card-checkbox--second .user-info__avatar {
+  width: 44px;
+  height: 44px;
 }
 .card-checkbox--second .card-checkbox__name {
   font-weight: 500;
@@ -17262,10 +17266,11 @@ textarea.input-reset {
 }
 .secondary-tooltip__content {
   background-color: var(--white);
-  border: 1px solid rgba(122, 127, 170, 0.2);
+  -webkit-box-shadow: 0 10px 32px rgba(40, 45, 60, 0.02), 0 2px 24px rgba(40, 45, 60, 0.02), 0 0 16px rgba(40, 45, 60, 0.04);
+  box-shadow: 0 10px 32px rgba(40, 45, 60, 0.02), 0 2px 24px rgba(40, 45, 60, 0.02), 0 0 16px rgba(40, 45, 60, 0.04);
   border-radius: 10px;
   color: var(--dark);
-  padding: 16px;
+  padding: 20px;
   font-size: var(--small-fz);
   line-height: var(--small-lh);
   position: absolute;
@@ -25243,6 +25248,21 @@ textarea.input-reset {
   align-items: center;
   position: relative;
 }
+.card-price__old-price {
+  position: relative;
+  font-size: var(--little-big-fz);
+  line-height: var(--little-big-lh);
+}
+.card-price__old-price::before {
+  content: "";
+  border-bottom: 1px solid currentColor;
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  -webkit-transform: rotate(-5deg);
+  -ms-transform: rotate(-5deg);
+  transform: rotate(-5deg);
+}
 .card-price__price {
   font-size: var(--big-small-fz);
   line-height: var(--big-small-fz);
@@ -25286,7 +25306,7 @@ textarea.input-reset {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  max-width: 350px;
+  max-width: 400px;
   bottom: auto;
   top: 32px;
   left: -8px;
@@ -25297,6 +25317,7 @@ textarea.input-reset {
 .card-price__discount {
   width: auto !important;
   height: auto !important;
+  z-index: 99 !important;
 }
 .card-price__discount .secondary-tooltip__btn {
   height: 24px;
@@ -25312,6 +25333,7 @@ textarea.input-reset {
   height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
+  z-index: 22;
 }
 .card-price__discount .secondary-tooltip__content .title-3 {
   margin-bottom: 8px;
@@ -25375,6 +25397,44 @@ textarea.input-reset {
 }
 .card-price--down .price-history__more {
   color: var(--green);
+}
+.card-price._old-price {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: -webkit-max-content -webkit-max-content;
+  -ms-grid-columns: max-content max-content;
+  grid-template-columns: -webkit-max-content -webkit-max-content;
+  grid-template-columns: max-content max-content;
+  grid-row-gap: 4px;
+}
+.card-price._old-price .card-price__old-price {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+.card-price._old-price .card-price__discount {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+}
+.card-price._old-price .card-price__price {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+}
+.card-price._old-price .card-price__history {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
 }
 
 .price-history__title {
@@ -30200,6 +30260,9 @@ textarea.input-reset {
   width: -moz-max-content;
   width: max-content;
   max-width: 300px;
+}
+.user-cashback__item._prc .user-cashback__price .secondary-tooltip__content .title-3 {
+  margin-bottom: 8px;
 }
 .user-cashback__price {
   font-weight: 500;
@@ -40788,6 +40851,7 @@ textarea.input-reset {
   font-size: var(--default-fz);
   line-height: var(--default-lh);
   color: var(--dark);
+  font-weight: 500;
 }
 @media (max-width: 1212px) {
   .object-history {

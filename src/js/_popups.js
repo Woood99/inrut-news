@@ -241,6 +241,7 @@ popup(null, 'order-report');
 popup(null, 'select-bank');
 popup(null, 'metro-map');
 popup(null, 'im-buying');
+popup(null, 'book-object');
 popup(null, 'service-moving-confirm');
 popup({
     isOpen: (settingsModal) => {

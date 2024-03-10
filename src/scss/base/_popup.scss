@@ -167,6 +167,7 @@
             }
         }
     }
+
     &--kitchen-design {
         .popup-primary {
             &__container {
@@ -1171,19 +1172,53 @@
             background-color: rgba(34, 41, 102, 0.4);
         }
     }
-    &--record-viewing-three{
+
+    &--record-viewing-three {
         .popup-primary {
             &__container {
                 border-radius: 0;
                 padding: 32px 16px 24px;
                 margin: 0;
-          width: 100%;
+                width: 100%;
             }
         }
-        &::before{
+
+        &::before {
             content: none;
         }
     }
+
+    &--book-object {
+
+        .popup-primary {
+            &__container {
+                border-radius: 0;
+                padding: 32px 16px 24px;
+                margin: 0;
+                width: 100%;
+                min-height: var(--vh);
+                vertical-align: bottom;
+                position: relative;
+                @media (max-width:$desktop) {
+                    min-height: 100%;
+                    border-radius: 0;
+                    margin-top: 0;
+                }
+            }
+            &__close {
+                transform: translateX(16px);
+
+                @media (max-width:$desktop) {
+                    transform: translateX(0);
+                }
+            }
+        }
+
+        &::before {
+            content: none;
+        }
+    }
+
     &--record-viewing-two {
         z-index: 1050;
 
@@ -1501,16 +1536,19 @@
             background-color: rgba(34, 41, 102, 0.4);
         }
     }
-    &--warning-remove5{
-        .warning-remove{
-            &__btns{
+
+    &--warning-remove5 {
+        .warning-remove {
+            &__btns {
                 flex-direction: row;
             }
-            &__btn{
+
+            &__btn {
                 flex-grow: 1;
             }
         }
     }
+
     &--order-report {
         text-align: center;
 
@@ -1523,6 +1561,7 @@
                 padding: 65px 48px 48px;
                 max-width: 650px;
                 min-width: 500px;
+
                 @media (max-width:$smallTablet-max) {
                     max-width: 100%;
                     width: calc(100% - 4px);
@@ -1593,10 +1632,12 @@
 
 .warning-remove {
     &__title {}
-    &__descr{
+
+    &__descr {
         margin-top: 12px;
         color: var(--primaryTwo);
     }
+
     &__btns {
         margin-top: 24px;
 
@@ -1606,6 +1647,7 @@
     }
 
 }
+
 .order-report {
     &__title {
         text-align: center;
@@ -2148,7 +2190,8 @@
             grid-template-columns: 1fr;
         }
     }
-    &__items{
+
+    &__items {
         margin-top: 24px;
         padding-top: 24px;
         border-top: 1px solid var(--primary100);
@@ -2156,10 +2199,12 @@
         display: flex;
         flex-direction: column;
         align-items: start;
-        .card-checkbox{
+
+        .card-checkbox {
             width: 100%;
         }
     }
+
     .user-info-develop {
         grid-template-columns: 57px 1fr;
 
@@ -2183,7 +2228,7 @@
     }
 
     &__agree {
-  margin-top: 32px;
+        margin-top: 32px;
 
         .checkbox-secondary__label {
             justify-content: start;
@@ -2897,13 +2942,14 @@
     }
 
     &--authorization {
-    
+
         .popup-secondary {
             &__container {
                 border-radius: 12px 0 0 12px;
                 padding: 65px 48px 48px;
                 width: 475px;
                 background-color: var(--stand-bg);
+
                 @media (max-width:$desktop) {
                     border-radius: 0;
                     padding: 60px 10px;
@@ -4302,12 +4348,14 @@
     visibility: hidden;
     transition: opacity var(--transition-time), visibility var(--transition-time);
     text-align: center;
+
     &::before {
         content: "";
         display: inline-block;
         vertical-align: middle;
         height: 100%;
     }
+
     &.is-open {
         opacity: 1;
         visibility: visible;
@@ -4329,7 +4377,7 @@
 
         border-radius: 12px;
         padding: 65px 48px 48px;
-    width: 1000px;
+        width: 1000px;
     }
 
     &__close {
@@ -5898,7 +5946,7 @@
         padding: 14px 22px;
         color: var(--dark);
         transition: background-color $transitionSpeed $transitionFunction,
-        color $transitionSpeed $transitionFunction;
+            color $transitionSpeed $transitionFunction;
         font-size: var(--default-fz);
         line-height: var(--little-small-lh);
         font-weight: 400;
@@ -6353,9 +6401,11 @@
             height: 350px;
         }
     }
-    .pagination-primary{
+
+    .pagination-primary {
         display: flex;
     }
+
     @media (min-width:$desktop-min) {
         ._sticky {
             position: sticky;
@@ -6789,13 +6839,13 @@
             grid-template-columns: 1fr;
         }
 
-        &:nth-child(2){
+        &:nth-child(2) {
             grid-template-columns: 100%;
             width: 100%;
             grid-row-gap: 16px;
-            button,a{
 
-            }
+            button,
+            a {}
         }
     }
 
@@ -7207,7 +7257,96 @@
         }
     }
 }
+.book-object{
+    .container {
+        padding: 0;
+        max-width: 1072px;
+    }
 
+    &__descr {
+        margin-top: 8px;
+    }
+
+
+    &__btn {
+        margin-left: auto;
+        padding: 0 70px;
+
+        @media (max-width:$desktop) {
+            margin-top: 32px;
+            padding: 0 24px;
+            width: 100%;
+        }
+    }
+
+    &__choices {
+        margin-top: 32px;
+    }
+
+    &__field {
+        margin-top: 16px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 16px;
+        margin-bottom: 32px;
+    }
+
+    &__card {
+        &.room-info-card {
+            width: 100%;
+            grid-template-columns: calc(85px + 8px) max-content max-content 1fr;
+            padding: 16px 0;
+
+            .user-cashback {
+                padding: 12px;
+                border-radius: 12px;
+                background-color: var(--stand-bg);
+                justify-self: end;
+            }
+        }
+    }
+
+    &__present {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 12px;
+        grid-row-gap: 12px;
+
+        .card-checkbox {
+            .secondary-tooltip {
+                z-index: 98;
+            }
+        }
+    }
+
+    &__object {
+        margin-bottom: 16px;
+
+        .spollers {
+            &__item {
+                transition: margin $transitionSpeed $transitionFunction;
+
+                &._active {
+                    margin-bottom: 32px;
+                }
+            }
+
+            &__title {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                width: 100%;
+                padding: 12px 0;
+
+                svg {
+                    width: 30px;
+                    height: 25px;
+                    fill: var(--gray);
+                }
+            }
+        }
+    }
+}
 .record-viewing {
     .container {
         padding: 0;
@@ -7248,9 +7387,11 @@
             color: var(--dark);
         }
     }
-    &__descr{
+
+    &__descr {
         margin-top: 8px;
     }
+
     &__days {
         margin-top: 32px;
         margin-bottom: 32px;
@@ -7362,23 +7503,26 @@
         }
     }
 
-    &__choices{
+    &__choices {
         margin-top: 32px;
     }
-    &__field{
+
+    &__field {
         margin-top: 16px;
         display: grid;
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(2, 1fr);
         grid-column-gap: 16px;
         margin-bottom: 32px;
     }
-    &__agents{
+
+    &__agents {
         margin: 0 -24px;
         padding: 32px 24px;
         opacity: 0.35;
         pointer-events: none;
         transition: opacity $transitionSpeed $transitionFunction;
-        .card-agent{
+
+        .card-agent {
             padding: 24px 16px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             position: relative;
@@ -7448,17 +7592,20 @@
                 }
             }
         }
-        &._active{
+
+        &._active {
             opacity: 1;
             pointer-events: all;
         }
     }
-    &__card{
-        &.room-info-card{
-        width: 100%;
-        grid-template-columns: calc(85px + 8px) max-content max-content 1fr;
-        padding: 16px 0;
-            .user-cashback{
+
+    &__card {
+        &.room-info-card {
+            width: 100%;
+            grid-template-columns: calc(85px + 8px) max-content max-content 1fr;
+            padding: 16px 0;
+
+            .user-cashback {
                 padding: 12px;
                 border-radius: 12px;
                 background-color: var(--stand-bg);
@@ -7466,56 +7613,67 @@
             }
         }
     }
-    &--form{
-        .record-viewing{
-            &__clue{
+
+    &--form {
+        .record-viewing {
+            &__clue {
                 padding: 16px;
             }
-            &__clue-icon{
+
+            &__clue-icon {
                 --size: 32px;
             }
-            &__btn{
+
+            &__btn {
                 width: 100%;
                 margin-bottom: 32px;
-                &._moving{
+
+                &._moving {
                     margin-bottom: 0;
                 }
             }
         }
     }
-    &__present{
+
+    &__present {
         display: grid;
-        grid-template-columns: repeat(3,1fr);
+        grid-template-columns: repeat(3, 1fr);
         grid-column-gap: 12px;
         grid-row-gap: 12px;
-        .card-checkbox{
-            .secondary-tooltip{
+
+        .card-checkbox {
+            .secondary-tooltip {
                 z-index: 98;
             }
         }
     }
-    &__object{
+
+    &__object {
         margin-bottom: 16px;
-      .spollers{
-        &__item{
-            transition: margin $transitionSpeed $transitionFunction;
-            &._active{
-                margin-bottom: 32px;
+
+        .spollers {
+            &__item {
+                transition: margin $transitionSpeed $transitionFunction;
+
+                &._active {
+                    margin-bottom: 32px;
+                }
+            }
+
+            &__title {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                width: 100%;
+                padding: 12px 0;
+
+                svg {
+                    width: 30px;
+                    height: 25px;
+                    fill: var(--gray);
+                }
             }
         }
-        &__title{
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            width: 100%;
-            padding: 12px 0;
-            svg{
-                width: 30px;
-                height: 25px;
-                fill: var(--gray);
-            }
-        }
-      }
     }
 }
 
@@ -7930,6 +8088,7 @@
         position: relative;
         transition: border $transitionSpeed $transitionFunction;
         font-weight: 500;
+
         &:not(:last-child) {
             margin-right: 16px;
         }
@@ -7942,9 +8101,11 @@
                 visibility: visible;
             }
         }
-        &._error{
+
+        &._error {
             border: 1px solid var(--red);
         }
+
         @media (min-width:$desktop-min) {
             &:hover {
                 border: 1px solid var(--blue);
@@ -8043,16 +8204,16 @@
 
 
 .apart-kitchen-container {
-   .furnishing-sets__tabs {
+    .furnishing-sets__tabs {
         height: auto;
     }
 }
-.apart-kitchen-container
-.kitchen-design{
-    &__list{
+
+.apart-kitchen-container .kitchen-design {
+    &__list {
         margin-top: 32px;
         display: grid;
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(2, 1fr);
         grid-row-gap: 24px;
         grid-column-gap: 16px;
     }
@@ -8136,6 +8297,7 @@
         border-radius: 24px;
         padding: 65px 48px 48px;
         text-align: left;
+
         &.open {
             display: inline-block !important;
         }
@@ -8211,34 +8373,40 @@
         transition: opacity var(--transition-time), visibility var(--transition-time);
     }
 
-    &__descr{
+    &__descr {
         margin-top: 8px;
     }
-    &__fields{
-        .row{
+
+    &__fields {
+        .row {
             width: 100%;
             margin-top: 16px;
             display: grid;
             align-items: center;
             gap: 8px;
-            &:nth-child(1){
+
+            &:nth-child(1) {
                 grid-template-columns: 1fr 250px;
             }
-            &:nth-child(2){
+
+            &:nth-child(2) {
                 grid-template-columns: 100%;
             }
-            &:nth-child(3){
-               display: flex;
+
+            &:nth-child(3) {
+                display: flex;
             }
         }
-      
+
     }
-    &__btns{
+
+    &__btns {
         margin-top: 24px;
         display: flex;
         justify-content: end;
         gap: 8px;
     }
+
     @media (max-width:$desktop) {
         background-color: transparent;
     }
@@ -8286,6 +8454,7 @@
         border-radius: 24px;
         padding: 65px 48px 48px;
         text-align: left;
+
         &.open {
             display: inline-block !important;
         }
@@ -8360,9 +8529,10 @@
     }
 
 
-    &__title{
+    &__title {
         text-align: center;
     }
+
     &__text {
         margin-top: 16px;
         text-align: center;

@@ -82,7 +82,7 @@ const additionally = () => {
                         const currentSumm = Number(replaceValue(currentCard.querySelector('[data-card-summ]').textContent));
                         totalSumm += currentSumm;
                         removeBasketFromBasket(card,currentCard);
-                        removePopupFromBasket(document.querySelector(`[data-card-popup-index='${currentID}']`));
+                        removePopupFromBasket(document.querySelectorAll(`[data-card-popup-index='${currentID}']`));
                         updateDescr();
                         checkErrorCardsSumm(container, totalSumm);
                         checkLengthPresent();
@@ -158,7 +158,7 @@ const additionally = () => {
                         totalSumm -= currentSumm;
                         currentQuantity--;
                         removeBasketFromBasket(card,currentCard);
-                        removePopupFromBasket(document.querySelector(`[data-card-popup-index='${currentID}']`));
+                        removePopupFromBasket(document.querySelectorAll(`[data-card-popup-index='${currentID}']`));
                         const cards = Array.from(container.querySelectorAll('[data-additionally-card-calc]'));
                         cards.forEach(card => card.classList.remove('_disabled-opacity'));
                         updateDescr();
@@ -239,57 +239,100 @@ const additionally = () => {
     }
 
     function sendingToPopup(card){
-        const target = document.querySelector('.record-viewing__present');
-        if (!target) return;
-        const cardMap = {
-            index: card.dataset.cardAdditionallyIndex,
-            title: card.querySelector('.user-info__name').textContent.trim(),
-            tooltip: card.querySelector('.secondary-tooltip').outerHTML,
-            link: card.querySelector('.user-info__link') ? card.querySelector('.user-info__link').outerHTML : '',
-            avatar: card.querySelector('.user-info__avatar').outerHTML,
-        };
-        const cardHTML = `
-        <li class="card-checkbox card-checkbox--second" data-card-popup-index="${cardMap.index}">
-            <div class="user-info card-checkbox__info">
-                ${cardMap.avatar}
-                <span class="user-info__name">
-                    ${cardMap.title}
-                </span>
-                ${cardMap.link}
-            </div>
-            <div class="card-checkbox__present">
-                <img src="./img/present.png" width="25" height="25" alt="">
-            </div>
-            ${cardMap.tooltip}
-        </li>
-        `;
-        target.insertAdjacentHTML('beforeend', cardHTML);
+        const recordViewingTarget = document.querySelector('.record-viewing__present');
+        const bookObjectTarget = document.querySelector('.book-object__present');
+        if (recordViewingTarget){
+            const cardMap = {
+                index: card.dataset.cardAdditionallyIndex,
+                title: card.querySelector('.user-info__name').textContent.trim(),
+                tooltip: card.querySelector('.secondary-tooltip').outerHTML,
+                link: card.querySelector('.user-info__link') ? card.querySelector('.user-info__link').outerHTML : '',
+                avatar: card.querySelector('.user-info__avatar').outerHTML,
+            };
+            const cardHTML = `
+            <li class="card-checkbox card-checkbox--second" data-card-popup-index="${cardMap.index}">
+                <div class="user-info card-checkbox__info">
+                    ${cardMap.avatar}
+                    <span class="user-info__name">
+                        ${cardMap.title}
+                    </span>
+                    ${cardMap.link}
+                </div>
+                <div class="card-checkbox__present">
+                    <img src="./img/present.png" width="25" height="25" alt="">
+                </div>
+                ${cardMap.tooltip}
+            </li>
+            `;
+            recordViewingTarget.insertAdjacentHTML('beforeend', cardHTML);
+        }
+        if (bookObjectTarget){
+            const cardMap = {
+                index: card.dataset.cardAdditionallyIndex,
+                title: card.querySelector('.user-info__name').textContent.trim(),
+                tooltip: card.querySelector('.secondary-tooltip').outerHTML,
+                link: card.querySelector('.user-info__link') ? card.querySelector('.user-info__link').outerHTML : '',
+                avatar: card.querySelector('.user-info__avatar').outerHTML,
+            };
+            const cardHTML = `
+            <li class="card-checkbox card-checkbox--second" data-card-popup-index="${cardMap.index}">
+                <div class="user-info card-checkbox__info">
+                    ${cardMap.avatar}
+                    <span class="user-info__name">
+                        ${cardMap.title}
+                    </span>
+                    ${cardMap.link}
+                </div>
+                <div class="card-checkbox__present">
+                    <img src="./img/present.png" width="25" height="25" alt="">
+                </div>
+                ${cardMap.tooltip}
+            </li>
+            `;
+            bookObjectTarget.insertAdjacentHTML('beforeend', cardHTML);
+        }
     }
 
     function removePopupFromCard(card) {
         const currentID = card.dataset.cardAdditionallyIndex;
-        const currentCard = document.querySelector(`[data-card-popup-index='${currentID}']`);
-        currentCard.remove();
+        const currentCards = document.querySelectorAll(`[data-card-popup-index='${currentID}']`);
+        currentCards.forEach(card => {
+            card.remove();
+        })
     }
 
-    function removePopupFromBasket(card){
-        if (card){
+    function removePopupFromBasket(cards){
+        cards.forEach(card => {
             card.remove();
-        }
+        })
     }
 
     function checkLengthPresent(){
-        const target = document.querySelector('.record-viewing__present');
-        if (!target) return;
-        const items = target.querySelectorAll('.card-checkbox');
-        if (items.length === 0) {
-            const html = `
-                <span class="record-viewing__present-start">Подарки не выбраны!</span>
-            `
-            target.insertAdjacentHTML('beforeend',html);
-        } else {
-            const textStart = target.querySelector('.record-viewing__present-start');
-            if (textStart) textStart.remove();
+        const recordViewingTarget = document.querySelector('.record-viewing__present');
+        const bookObjectTarget = document.querySelector('.book-object__present');
+        if (recordViewingTarget){
+            const items = recordViewingTarget.querySelectorAll('.card-checkbox');
+            if (items.length === 0) {
+                const html = `
+                    <span class="record-viewing__present-start">Подарки не выбраны!</span>
+                `
+                recordViewingTarget.insertAdjacentHTML('beforeend',html);
+            } else {
+                const textStart = recordViewingTarget.querySelector('.record-viewing__present-start');
+                if (textStart) textStart.remove();
+            }
+        }
+        if (bookObjectTarget){
+            const items = bookObjectTarget.querySelectorAll('.card-checkbox');
+            if (items.length === 0) {
+                const html = `
+                    <span class="book-object__present-start">Подарки не выбраны!</span>
+                `
+                bookObjectTarget.insertAdjacentHTML('beforeend',html);
+            } else {
+                const textStart = bookObjectTarget.querySelector('.book-object__present-start');
+                if (textStart) textStart.remove();
+            }
         }
     }
 }

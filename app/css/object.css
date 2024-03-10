@@ -2588,6 +2588,37 @@ textarea.input-reset {
 .popup-primary--record-viewing-three::before {
   content: none;
 }
+.popup-primary--book-object .popup-primary__container {
+  border-radius: 0;
+  padding: 32px 16px 24px;
+  margin: 0;
+  width: 100%;
+  min-height: var(--vh);
+  vertical-align: bottom;
+  position: relative;
+}
+@media (max-width: 1212px) {
+  .popup-primary--book-object .popup-primary__container {
+    min-height: 100%;
+    border-radius: 0;
+    margin-top: 0;
+  }
+}
+.popup-primary--book-object .popup-primary__close {
+  -webkit-transform: translateX(16px);
+  -ms-transform: translateX(16px);
+  transform: translateX(16px);
+}
+@media (max-width: 1212px) {
+  .popup-primary--book-object .popup-primary__close {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+.popup-primary--book-object::before {
+  content: none;
+}
 .popup-primary--record-viewing-two {
   z-index: 1050;
 }
@@ -8543,6 +8574,89 @@ textarea.input-reset {
   .screen-demonstation .video-block.video-block {
     border-radius: 16px 16px 0 0;
   }
+}
+
+.book-object .container {
+  padding: 0;
+  max-width: 1072px;
+}
+.book-object__descr {
+  margin-top: 8px;
+}
+.book-object__btn {
+  margin-left: auto;
+  padding: 0 70px;
+}
+@media (max-width: 1212px) {
+  .book-object__btn {
+    margin-top: 32px;
+    padding: 0 24px;
+    width: 100%;
+  }
+}
+.book-object__choices {
+  margin-top: 32px;
+}
+.book-object__field {
+  margin-top: 16px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 16px;
+  margin-bottom: 32px;
+}
+.book-object__card.room-info-card {
+  width: 100%;
+  -ms-grid-columns: 93px -webkit-max-content -webkit-max-content 1fr;
+  -ms-grid-columns: 93px max-content max-content 1fr;
+  grid-template-columns: 93px -webkit-max-content -webkit-max-content 1fr;
+  grid-template-columns: 93px max-content max-content 1fr;
+  padding: 16px 0;
+}
+.book-object__card.room-info-card .user-cashback {
+  padding: 12px;
+  border-radius: 12px;
+  background-color: var(--stand-bg);
+  -ms-grid-column-align: end;
+  justify-self: end;
+}
+.book-object__present {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 12px;
+  grid-row-gap: 12px;
+}
+.book-object__present .card-checkbox .secondary-tooltip {
+  z-index: 98;
+}
+.book-object__object {
+  margin-bottom: 16px;
+}
+.book-object__object .spollers__item {
+  -webkit-transition: margin 0.4s ease-in-out;
+  transition: margin 0.4s ease-in-out;
+}
+.book-object__object .spollers__item._active {
+  margin-bottom: 32px;
+}
+.book-object__object .spollers__title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 12px 0;
+}
+.book-object__object .spollers__title svg {
+  width: 30px;
+  height: 25px;
+  fill: var(--gray);
 }
 
 .record-viewing .container {
@@ -22796,12 +22910,7 @@ textarea.input-reset {
   flex-grow: 1;
 }
 .card-scheme__name {
-  margin-right: 12px;
   display: inline-block;
-}
-.card-scheme__price {
-  margin-top: 16px;
-  margin-bottom: 4px;
 }
 .card-scheme__price-old {
   display: -webkit-box;
@@ -22841,8 +22950,16 @@ textarea.input-reset {
   line-height: var(--small-lh);
   font-weight: 400;
 }
-.card-scheme__price-new {
-  margin-top: 2px;
+.card-scheme__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-top: 16px;
+  margin-bottom: 4px;
+  gap: 12px;
 }
 .card-scheme__price-new span:nth-child(2) {
   color: var(--primaryTwo);
@@ -23016,9 +23133,6 @@ textarea.input-reset {
   box-shadow: none;
   padding-bottom: 16px;
   text-align: left;
-}
-.card-scheme.card-scheme--improved .card-scheme__price {
-  margin-top: 16px;
 }
 @media (min-width: 1213px) {
   .card-scheme.card-scheme--improved:hover:not(._active) .card-scheme__container {

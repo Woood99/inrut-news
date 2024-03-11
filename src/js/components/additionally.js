@@ -319,6 +319,7 @@ const additionally = () => {
             const items = container.querySelectorAll('.card-checkbox');
             const popup = container.closest('.popup');
             const subtitle = popup.querySelector('[data-additionally-subtitle]');
+            if (!subtitle) return;
             if (items.length === 0) {
                 subtitle.textContent = 'Объект';
             } else {

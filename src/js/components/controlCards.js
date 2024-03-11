@@ -32,7 +32,6 @@ export const actionForCards = (container, content, btn) => {
     if (checkVertical(btn)) {
         content.classList.add('control-cards__content--vertical');
         container.querySelectorAll('.control-cards__btn--vertical').forEach(el => el.classList.add('_active'));
-
         // maps
         if (container.classList.contains('control-cards--maps')) {
             container.classList.remove('_map-active');
@@ -131,7 +130,8 @@ export const controlCardsCardSecondary = (content, btn) => {
         cardsSecondary.forEach(card => {
             const favorite = card.querySelector('.card-secondary__info--favorite');
             const bottom = card.querySelector('.card-secondary__bottom');
-            const bottomMobile = bottom.querySelector('.card-secondary__info--mobile')
+            const bottomMobile = bottom.querySelector('.card-secondary__info--mobile');
+            const quantity = card.querySelector('.card-secondary__quantity');
             if (favorite && bottomMobile) {
                 if (checkVertical(btn)) {
                     if (!bottomMobile.querySelector('.card-secondary__info--favorite')) {
@@ -155,9 +155,16 @@ export const controlCardsCardSecondary = (content, btn) => {
 
             if (checkVertical(btn)) {
                 bottom.classList.add('_vertical-active');
+                if (quantity){
+                    bottom.insertAdjacentElement('beforebegin',quantity);
+                }
             }
             if (checkHorizontal(btn)) {
                 bottom.classList.remove('_vertical-active');
+                const addInfo = card.querySelector('.card-secondary__add-info');
+                if (addInfo && quantity){
+                    addInfo.insertAdjacentElement('afterbegin',quantity);
+                }
             }
         })
     }

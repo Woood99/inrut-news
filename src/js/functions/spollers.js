@@ -101,7 +101,7 @@ const spollers = () => {
                         setTimeout(() => {
                             const topGap = spollerTitle.offsetTop;
                             popup.scrollTo({
-                                top: topGap - 16,
+                                top: topGap - 140,
                                 behavior: 'smooth'
                             })
                         }, speed);

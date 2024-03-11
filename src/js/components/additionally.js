@@ -81,7 +81,7 @@ const additionally = () => {
                         const currentCard = document.querySelector(`[data-card-additionally-index='${currentID}']`);
                         const currentSumm = Number(replaceValue(currentCard.querySelector('[data-card-summ]').textContent));
                         totalSumm += currentSumm;
-                        removeBasketFromBasket(card,currentCard);
+                        removeBasketFromBasket(card, currentCard);
                         removePopupFromBasket(document.querySelectorAll(`[data-card-popup-index='${currentID}']`));
                         updateDescr();
                         checkErrorCardsSumm(container, totalSumm);
@@ -157,7 +157,7 @@ const additionally = () => {
                         const currentSumm = Number(replaceValue(currentCard.querySelector('[data-card-summ]').textContent));
                         totalSumm -= currentSumm;
                         currentQuantity--;
-                        removeBasketFromBasket(card,currentCard);
+                        removeBasketFromBasket(card, currentCard);
                         removePopupFromBasket(document.querySelectorAll(`[data-card-popup-index='${currentID}']`));
                         const cards = Array.from(container.querySelectorAll('[data-additionally-card-calc]'));
                         cards.forEach(card => card.classList.remove('_disabled-opacity'));
@@ -174,6 +174,7 @@ const additionally = () => {
             return el.replace(/[^0-9]/g, '');
         }
     })
+
     function init(items) {
         items.forEach((item, index) => item.setAttribute('data-card-additionally-index', index));
     }
@@ -212,36 +213,36 @@ const additionally = () => {
         visibleOrHiddenBasket();
     }
 
-    function removeBasketFromBasket(card,currentCard) {
+    function removeBasketFromBasket(card, currentCard) {
         currentCard.classList.remove('_active');
         currentCard.querySelector('input').checked = false;
-         card.remove();
+        card.remove();
         visibleOrHiddenBasket();
     }
 
-    function removeBasketFromCard(card){
+    function removeBasketFromCard(card) {
         const currentID = card.dataset.cardAdditionallyIndex;
         const currentCard = document.querySelector(`[data-card-basket-index='${currentID}']`);
         currentCard.remove();
         visibleOrHiddenBasket();
     }
 
-    function visibleOrHiddenBasket(){
+    function visibleOrHiddenBasket() {
         const basketContainer = document.querySelector('.additionally-calc');
         if (!basketContainer) return;
         const basket = basketContainer.querySelector('.additionally-calc__list .simplebar-content');
         if (!basket) return;
-        if (basket.children.length === 0){
-            basketContainer.setAttribute('hidden','');
+        if (basket.children.length === 0) {
+            basketContainer.setAttribute('hidden', '');
         } else {
             basketContainer.removeAttribute('hidden');
         }
     }
 
-    function sendingToPopup(card){
+    function sendingToPopup(card) {
         const recordViewingTarget = document.querySelector('.record-viewing__present');
         const bookObjectTarget = document.querySelector('.book-object__present');
-        if (recordViewingTarget){
+        if (recordViewingTarget) {
             const cardMap = {
                 index: card.dataset.cardAdditionallyIndex,
                 title: card.querySelector('.user-info__name').textContent.trim(),
@@ -266,7 +267,7 @@ const additionally = () => {
             `;
             recordViewingTarget.insertAdjacentHTML('beforeend', cardHTML);
         }
-        if (bookObjectTarget){
+        if (bookObjectTarget) {
             const cardMap = {
                 index: card.dataset.cardAdditionallyIndex,
                 title: card.querySelector('.user-info__name').textContent.trim(),
@@ -301,37 +302,27 @@ const additionally = () => {
         })
     }
 
-    function removePopupFromBasket(cards){
+    function removePopupFromBasket(cards) {
         cards.forEach(card => {
             card.remove();
         })
     }
 
-    function checkLengthPresent(){
-        const recordViewingTarget = document.querySelector('.record-viewing__present');
-        const bookObjectTarget = document.querySelector('.book-object__present');
-        if (recordViewingTarget){
-            const items = recordViewingTarget.querySelectorAll('.card-checkbox');
+    function checkLengthPresent() {
+        const recordViewingTarget = document.querySelector('.book-object__present');
+        const bookObjectTarget = document.querySelector('.record-viewing__present');
+        body(recordViewingTarget);
+        body(bookObjectTarget);
+
+        function body(container) {
+            if (!container) return;
+            const items = container.querySelectorAll('.card-checkbox');
+            const popup = container.closest('.popup');
+            const subtitle = popup.querySelector('[data-additionally-subtitle]');
             if (items.length === 0) {
-                const html = `
-                    <span class="record-viewing__present-start">Подарки не выбраны!</span>
-                `
-                recordViewingTarget.insertAdjacentHTML('beforeend',html);
+                subtitle.textContent = 'Объект';
             } else {
-                const textStart = recordViewingTarget.querySelector('.record-viewing__present-start');
-                if (textStart) textStart.remove();
-            }
-        }
-        if (bookObjectTarget){
-            const items = bookObjectTarget.querySelectorAll('.card-checkbox');
-            if (items.length === 0) {
-                const html = `
-                    <span class="book-object__present-start">Подарки не выбраны!</span>
-                `
-                bookObjectTarget.insertAdjacentHTML('beforeend',html);
-            } else {
-                const textStart = bookObjectTarget.querySelector('.book-object__present-start');
-                if (textStart) textStart.remove();
+                subtitle.textContent = 'Объект и подарки';
             }
         }
     }

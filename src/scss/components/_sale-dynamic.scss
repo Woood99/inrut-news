@@ -1,0 +1,229 @@
+.sale-dynamic {
+
+    &__title {}
+
+    &__text {
+        margin-top: 12px;
+
+        p {
+            &:not(:last-child) {
+                margin-bottom: 4px;
+            }
+        }
+
+        span {
+            font-weight: 500;
+
+            a {
+                color: var(--blue);
+            }
+        }
+    }
+
+    &__tabs {
+        margin-top: 24px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 12px;
+        grid-row-gap: 12px;
+    }
+
+    &__form {
+        margin-top: 24px;
+        display: grid;
+        grid-template-columns: 300px max-content;
+        grid-column-gap: 12px;
+
+        .select-secondary__wrapper {
+            background-color: var(--white);
+        }
+    }
+
+    &__info {
+        margin-top: 16px;
+        display: grid;
+        align-items: center;
+        grid-template-columns: fit-content(225px) fit-content(225px) max-content;
+        grid-column-gap: 32px;
+        grid-row-gap: 16px;
+    }
+
+    &__wrapper {
+        margin-top: 24px;
+    }
+
+    &__value {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        background-color: var(--white);
+        box-shadow: var(--shadow-primary);
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    &__value-info {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 4px;
+
+        span {
+            font-weight: 500;
+        }
+    }
+
+    &__content {
+        display: grid;
+        grid-template-columns: 1fr 240px;
+    }
+}
+
+.dynamic-section {
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-primary);
+    padding: 24px;
+
+    display: flex;
+    flex-direction: column;
+
+    &__wrapper {
+        height: 344px;
+        position: relative;
+
+        display: flex;
+    }
+
+    &__svg {
+        width: 100%;
+        position: absolute;
+        overflow: hidden;
+    }
+
+    &__info {
+        margin-top: 24px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    &__info-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        span {
+            width: 10px;
+            height: 10px;
+            background-color: var(--primaryTwo);
+            border-radius: 50%;
+        }
+    }
+
+    &__item {
+        width: 100%;
+    }
+
+}
+
+
+.dynamic-section-item {
+    cursor: pointer;
+    text-align: center;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    &__tooltip {
+        display: none;
+        position: absolute;
+        width: max-content;
+        max-width: 300px;
+
+        background-color: var(--white);
+        box-shadow: 0 10px 32px rgba(40, 45, 60, .02), 0 2px 24px rgba(40, 45, 60, .02), 0 0 16px rgba(40, 45, 60, .04);
+        border-radius: 10px;
+        color: var(--dark);
+        padding: 20px;
+    }
+
+    &__wrapper {
+        flex-grow: 1;
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__top {
+        position: relative;
+        height: calc(50% - 20px);
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+    }
+
+    &__price {
+        bottom: calc(28.7922%);
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+
+        span {
+            font-size: 12px;
+        }
+    }
+
+    &__circle {
+        width: 8px;
+        height: 8px;
+        background-color: rgb(255, 255, 255);
+        border: 2px solid var(--dark);
+        border-radius: 50%;
+    }
+
+    &__bottom {
+        display: flex;
+        justify-content: end;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        width: calc(100% - 32px);
+        opacity: 0.7;
+        background-color: var(--blue);
+        border-radius: 12px;
+        &::before{
+            content: attr(data-diagram-value);
+            font-size: 12px;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            transform: translateY(calc(-100% - 6px));
+        }
+    }
+    &__date{
+        margin-top: 8px;
+        margin-bottom: 4px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        font-size: 12px;
+    }
+    &._active {
+        background-color: var(--primary100);
+
+        .dynamic-section-item {
+            &__tooltip {
+                display: block;
+            }
+        }
+    }
+}

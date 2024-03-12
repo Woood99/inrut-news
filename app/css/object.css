@@ -25079,6 +25079,37 @@ textarea.input-reset {
   border-color: var(--blue);
 }
 
+.dynamic-circle {
+  --size: 80px;
+  position: relative;
+  width: var(--size);
+  height: var(--size);
+}
+.dynamic-circle svg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.dynamic-circle .progress {
+  -webkit-transform: rotate(-90deg) translateX(20px);
+  -ms-transform: rotate(-90deg) translateX(20px);
+  transform: rotate(-90deg) translateX(20px);
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+}
+.dynamic-circle__value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-weight: 500;
+}
+
 .info-price-block__name {
   color: var(--primaryTwo);
   margin-bottom: 8px;
@@ -32755,6 +32786,13 @@ textarea.input-reset {
   white-space: nowrap;
 }
 
+.sale-dynamic__container {
+  background-color: var(--white);
+  -webkit-box-shadow: var(--shadow-primary);
+  box-shadow: var(--shadow-primary);
+  padding: 32px;
+  border-radius: 12px;
+}
 .sale-dynamic__text {
   margin-top: 12px;
 }
@@ -32768,7 +32806,7 @@ textarea.input-reset {
   color: var(--blue);
 }
 .sale-dynamic__tabs {
-  margin-top: 24px;
+  margin-top: 32px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[3];
@@ -32777,7 +32815,7 @@ textarea.input-reset {
   grid-row-gap: 12px;
 }
 .sale-dynamic__form {
-  margin-top: 24px;
+  grid-column: 1/-1;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 300px -webkit-max-content;
@@ -32790,7 +32828,9 @@ textarea.input-reset {
   background-color: var(--white);
 }
 .sale-dynamic__info {
-  margin-top: 16px;
+  grid-column: 1/-1;
+  margin-top: 24px;
+  margin-bottom: 32px;
   display: -ms-grid;
   display: grid;
   -webkit-box-align: center;
@@ -32844,11 +32884,6 @@ textarea.input-reset {
 }
 
 .dynamic-section {
-  background-color: var(--white);
-  border-radius: 12px;
-  -webkit-box-shadow: var(--shadow-primary);
-  box-shadow: var(--shadow-primary);
-  padding: 24px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -32923,6 +32958,13 @@ textarea.input-reset {
   border-radius: 10px;
   color: var(--dark);
   padding: 20px;
+  text-align: left;
+}
+.dynamic-section-item__tooltip span {
+  display: block;
+}
+.dynamic-section-item__tooltip span:not(:last-child) {
+  margin-bottom: 8px;
 }
 .dynamic-section-item__wrapper {
   -webkit-box-flex: 1;

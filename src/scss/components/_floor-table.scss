@@ -1,0 +1,138 @@
+.floor-table {
+
+    &__header {
+        display: flex;
+        align-items: center;
+        background-color: var(--primary100);
+        border-radius: 12px;
+        width: 100%;
+    }
+    &__field{
+        padding: 16px 20px;
+        &:nth-child(1){
+            width: 15%;
+        }
+        &:nth-child(2){
+            width: 18.5%;
+        }
+        &:nth-child(3){
+            width: 18.5%;
+        }
+        &:nth-child(4){
+            width: 18.5%;
+        }
+        &:nth-child(5){
+            width: 18.5%;
+        }
+        &:nth-child(6){
+            width: 11%;
+        }
+    }
+    &__sort-floor {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        svg {
+            transform: scale(1, -1);
+            transition: transform $transitionSpeed $transitionFunction;
+        }
+
+        &._active {
+            svg {
+                transform: scale(1);
+            }
+        }
+    }
+    &__list {
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+    &__item-field{
+        padding: 16px 20px;
+    }
+    &__item-result {
+        width: 15%;
+    }
+
+    &__item-1 {
+        width: 18.5%;
+        p{
+            &:nth-child(1){
+                color: rgb(139, 197, 64);
+            }
+        }
+    }
+
+    &__item-2 {
+        width: 18.5%;
+        p{
+            &:nth-child(1){
+                color: rgb(78, 195, 224);
+            }
+        }
+    }
+
+    &__item-3 {
+        width: 18.5%;
+        p{
+            &:nth-child(1){
+                color: rgb(178, 181, 182);
+            }
+        }
+    }
+
+    &__item-more {
+        width: 18.5%;
+        p{
+            &:nth-child(1){
+                color: rgb(106, 126, 133);
+            }
+        }
+    }
+
+    &__item-floor {
+        width: 11%;
+        font-weight: 500;
+    }
+
+    &__item-result,
+    &__item-1,
+    &__item-2,
+    &__item-3,
+    &__item-more{
+        p{
+            &:not(:last-child){
+                margin-bottom: 4px;
+            }
+            &:nth-child(1){
+                font-weight: 500;
+            }
+            &:nth-child(2){
+                color: var(--primaryTwo);
+            }
+        }
+    }
+    &__bottom{
+        margin-top: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    &__more{
+        color: var(--dark);
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        svg{
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+    }
+}
+

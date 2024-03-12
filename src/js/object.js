@@ -63,6 +63,7 @@ import genplan from './components/genplan';
 import additionally from './components/additionally';
 import saleDynamic from './components/saleDynamic';
 import dynamicCircle from './components/dynamicCircle';
+import floorTable from './components/floorTable';
 document.addEventListener('DOMContentLoaded', () => {
     getHeightBlock('.header-fixed', '--header-fixed-height');
     linkCopy('.share-app-popup__btn');
@@ -110,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     additionally();
     saleDynamic();
     dynamicCircle();
+    floorTable();
     // ==============================================
 
     // ==== maps ====

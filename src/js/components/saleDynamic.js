@@ -1,13 +1,15 @@
 import {
     createPopper
 } from '@popperjs/core';
-
+import numberReplace from '../modules/numberReplace';
 const saleDynamic = () => {
     const container = document.querySelector('.sale-dynamic');
     if (!container) return;
     tabs(container);
     popper(container)
     diagramSetHeight(container);
+    Chart.register(ChartDataLabels);
+    chartLine(container);
 
     function tabs(container) {
         const btns = container.querySelectorAll('[data-sale-dynamic-tab]');
@@ -80,13 +82,81 @@ const saleDynamic = () => {
             maxValueElement.querySelector('[data-diagram-value]').style.height = '50%';
             const maxValue = maxValueElement.querySelector('[data-diagram-value]').dataset.diagramValue;
             elements.forEach(element => {
-                if (maxValueElement !== element){
+                if (maxValueElement !== element) {
                     const currentValue = element.querySelector('[data-diagram-value]').dataset.diagramValue;
                     element.querySelector('[data-diagram-value]').style.height = `${(currentValue / maxValue * 100) / 2}%`;
-                }  
+                }
             })
         });
     }
+    function chartLine(container){
+        const items = container.querySelectorAll('.dynamic-section__svg');
+        items.forEach(item => {
+            const data = item.dataset.values.split('-');
+            const labels = data.map(item => '');
+            const canvas = item.querySelector('.dynamic-section__canvas');
+            new Chart(canvas, {
+                type: 'line',
+                data: {
+                    labels,
+                    datasets: [{
+                        data,
+                        borderColor: "#2a6be4",
+                        backgroundColor: '#fff',
+                        fill: false,
+                        lineTension: 0,
+                    }]
+                },
+                options: {
+                    layout: {
+                        padding: {
+                            left:48,
+                            right:48,
+                            bottom:0,
+                            top:32,
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false,
+                            },
+                            border: {
+                                display: false,
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                display: false,
+                                beginAtZero: true
+                            },
+                            border: {
+                                display: false,
+                            },
+                            grid: {
+                                display: false,
+                            },
+                        },
+                    },
+                    plugins: {
+                        legend: {
+                            display: false,
+                        },
+                        datalabels: {
+                            align: "top",
+                            anchor: "auto",
+                            formatter: function (value, context) {
+                                return numberReplace(String(value));
+                            },
+                        },
+                    },
+                },
+            });
+        
+        })
+    }
+
 };
 
 export default saleDynamic;

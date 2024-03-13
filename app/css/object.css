@@ -18,6 +18,7 @@
   --pink: #FA8080;
   --orange: #D86D00;
   --gray: #3D3D3D;
+  --light-blue: #2a6be4;
   --blue: #005bff;
   --blue-dark: #065cc5;
   --bg-page: #f2f5f7;
@@ -32893,7 +32894,7 @@ textarea.input-reset {
   flex-direction: column;
 }
 .dynamic-section__wrapper {
-  height: 344px;
+  height: 376px;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -32901,8 +32902,14 @@ textarea.input-reset {
 }
 .dynamic-section__svg {
   width: 100%;
+  height: 182px;
   position: absolute;
   overflow: hidden;
+  pointer-events: none;
+}
+.dynamic-section__canvas {
+  max-height: 182px;
+  width: 100% !important;
 }
 .dynamic-section__info {
   margin-top: 24px;
@@ -32944,6 +32951,9 @@ textarea.input-reset {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: end;
 }
 .dynamic-section-item__tooltip {
   display: none;
@@ -32967,58 +32977,6 @@ textarea.input-reset {
   margin-bottom: 8px;
 }
 .dynamic-section-item__wrapper {
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-.dynamic-section-item__top {
-  position: relative;
-  height: calc(50% - 20px);
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-.dynamic-section-item__price {
-  bottom: 28.7922%;
-  position: absolute;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  gap: 6px;
-}
-.dynamic-section-item__price span {
-  font-size: 12px;
-}
-.dynamic-section-item__circle {
-  width: 8px;
-  height: 8px;
-  background-color: rgb(255, 255, 255);
-  border: 2px solid var(--dark);
-  border-radius: 50%;
-}
-.dynamic-section-item__bottom {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -33033,7 +32991,7 @@ textarea.input-reset {
   background-color: var(--blue);
   border-radius: 12px;
 }
-.dynamic-section-item__bottom::before {
+.dynamic-section-item__wrapper::before {
   content: attr(data-diagram-value);
   font-size: 12px;
   width: 100%;

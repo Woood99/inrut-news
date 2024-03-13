@@ -104,7 +104,7 @@ const saleDynamic = () => {
                         borderColor: "#2a6be4",
                         backgroundColor: '#fff',
                         fill: false,
-                        lineTension: 0,
+                        lineTension: 0.4
                     }]
                 },
                 options: {

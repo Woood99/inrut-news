@@ -97,12 +97,10 @@ const styles = () => {
                 message: "Error: <%= error.message %>"
             })
         ))
-        .pipe(mainSass())
-        .pipe(autoprefixer({
-            cascade: false,
-            grid: true,
+        .pipe(mainSass({
             overrideBrowserslist: ["last 5 versions"]
         }))
+
         .pipe(gulpif(isProd, cleanCSS({
             level: 2
         })))

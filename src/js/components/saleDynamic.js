@@ -93,12 +93,11 @@ const saleDynamic = () => {
         const items = container.querySelectorAll('.dynamic-section__svg');
         items.forEach(item => {
             const data = item.dataset.values.split('-');
-            const labels = data.map(item => '');
             const canvas = item.querySelector('.dynamic-section__canvas');
             new Chart(canvas, {
                 type: 'line',
                 data: {
-                    labels,
+                    labels: data.map(item => ''),
                     datasets: [{
                         data,
                         borderColor: "#2a6be4",

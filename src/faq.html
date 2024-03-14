@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Объект</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/faq.css">
+    <script id="ymaps-id"></script>
+    <script defer src="js/faq.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container">
+        @include('partials/header.html')
+        <main class="main main-page-gap faq default-page">
+            <h1 class="title-2 container">
+                Вопрос-ответ
+            </h1>
+            <div class="default-page__body">
+                <div class="container">
+                    <div class="faq__banner faq-banner">
+                        <div class="faq-banner__image">
+                            <img loading="lazy" src="https://xn--h1alcedd.xn--d1aqf.xn--p1ai/local/templates/main/img/key-indicators-family.png" alt="" width="716" height="300">
+                        </div>
+                        <div class="faq-banner__content">
+                            <h2 class="faq-banner__title title-2">
+                                Узнайте, какие программы господдержки доступны в вашем регионе
+                            </h2>
+                            <form action="#" class="faq-banner__filter">
+                                <div class="search-select faq-banner__field" data-search-select-subtitle="Любой">
+                                    <button type="button" class="btn btn-reset search-select__button">
+                                        <div class="search-select__button-wrapper">
+                                            <div>Регион</div>
+                                            <div>Любой</div>
+                                        </div>
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#check"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="search-select__dropdown search-select__dropdown--left">
+                                        <button type="button" class="btn btn-reset search-select__close">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#x"></use>
+                                            </svg>
+                                        </button>
+                                        <label class="input-primary search-select__input">
+                                            <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по названию">
+                                        </label>
+                                        <div class="search-select__control">
+                                            <button type="button" class="btn btn-reset btn-secondary search-select__all">Выбрать всё</button>
+                                            <button type="button" class="btn btn-reset btn-secondary search-select__clear">Очистить всё</button>
+                                        </div>
+                                        <div class="search-select__wrapper simplebar-third">
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_1" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_1" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>Станция метро 1</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_2" name="developer-name_2" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_2" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>Станция метро 2</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_3" name="developer-name_3" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_3" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>Станция метро 3</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="search-select faq-banner__field" data-search-select-subtitle="Любая">
+                                    <button type="button" class="btn btn-reset search-select__button">
+                                        <div class="search-select__button-wrapper">
+                                            <div>Тип программы</div>
+                                            <div>Любая</div>
+                                        </div>
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#check"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="search-select__dropdown search-select__dropdown--left">
+                                        <button type="button" class="btn btn-reset search-select__close">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#x"></use>
+                                            </svg>
+                                        </button>
+                                        <label class="input-primary search-select__input">
+                                            <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по названию">
+                                        </label>
+                                        <div class="search-select__control">
+                                            <button type="button" class="btn btn-reset btn-secondary search-select__all">Выбрать всё</button>
+                                            <button type="button" class="btn btn-reset btn-secondary search-select__clear">Очистить всё</button>
+                                        </div>
+                                        <div class="search-select__wrapper simplebar-third">
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_1" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_1" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>Станция метро 1</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_2" name="developer-name_2" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_2" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>Станция метро 2</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_3" name="developer-name_3" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_3" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>Станция метро 3</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="search-select faq-banner__field" data-search-select-subtitle="Любые">
+                                    <button type="button" class="btn btn-reset search-select__button">
+                                        <div class="search-select__button-wrapper">
+                                            <div>Категории участников</div>
+                                            <div>Любые</div>
+                                        </div>
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#check"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="search-select__dropdown search-select__dropdown--left">
+                                        <button type="button" class="btn btn-reset search-select__close">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#x"></use>
+                                            </svg>
+                                        </button>
+                                        <label class="input-primary search-select__input">
+                                            <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по названию">
+                                        </label>
+                                        <div class="search-select__control">
+                                            <button type="button" class="btn btn-reset btn-secondary search-select__all">Выбрать всё</button>
+                                            <button type="button" class="btn btn-reset btn-secondary search-select__clear">Очистить всё</button>
+                                        </div>
+                                        <div class="search-select__wrapper simplebar-third">
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_1" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_1" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>Станция метро 1</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_2" name="developer-name_2" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_2" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>Станция метро 2</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="search-select__item checkbox-secondary">
+                                                <input id="developer_3" name="developer-name_3" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                <label for="developer_3" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        <span>Станция метро 3</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="faq__programs programs-list">
+                        <div class="programs-list__items">
+                            <article class="programs-list__card program-card">
+                                <div class="program-card__content">
+                                    <div class="program-card__type">
+                                        <span>Федеральная</span>
+                                    </div>
+                                    <h3 class="program-card__title title-3">
+                                        Выплата взамен земельного участка для многодетных семей Владимирской области
+                                    </h3>
+                                    <p class="program-card__descr">
+                                        Выплата в 250 тыс. рублей на улучшение жилищных условий семьям с тремя и более детьми
+                                    </p>
+                                </div>
+                                <div class="program-card__bottom">
+                                    <div class="program-card__time-row">
+                                        <div class="program-card__time">
+                                            <span class="title-3">
+                                                Подача до
+                                            </span>
+                                            <span>
+                                                Бессрочно
+                                            </span>
+                                        </div>
+                                        <div class="program-card__time">
+                                            <span class="title-3">
+                                                Действует до
+                                            </span>
+                                            <span>
+                                                Бессрочно
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="program-card__btns">
+                                        <a href="#" class="btn btn-reset btn-secondary btn-secondary--small program-card__button">
+                                            Консультация 
+                                        </a>
+                                        <a href="#" class="btn btn-reset btn-primary btn-primary--small program-card__button">
+                                            О программе 
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="programs-list__card program-card">
+                                <div class="program-card__content">
+                                    <div class="program-card__type">
+                                        <span>Федеральная</span>
+                                    </div>
+                                    <h3 class="program-card__title title-3">
+                                        Выплата взамен земельного участка для многодетных семей Владимирской области
+                                    </h3>
+                                    <p class="program-card__descr">
+                                        Выплата в 250 тыс. рублей на улучшение жилищных условий семьям с тремя и более детьми
+                                    </p>
+                                </div>
+                                <div class="program-card__bottom">
+                                    <div class="program-card__time-row">
+                                        <div class="program-card__time">
+                                            <span class="title-3">
+                                                Подача до
+                                            </span>
+                                            <span>
+                                                Бессрочно
+                                            </span>
+                                        </div>
+                                        <div class="program-card__time">
+                                            <span class="title-3">
+                                                Действует до
+                                            </span>
+                                            <span>
+                                                Бессрочно
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="program-card__btns">
+                                        <a href="#" class="btn btn-reset btn-secondary btn-secondary--small program-card__button">
+                                            Консультация 
+                                        </a>
+                                        <a href="#" class="btn btn-reset btn-primary btn-primary--small program-card__button">
+                                            О программе 
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="programs-list__card program-card">
+                                <div class="program-card__content">
+                                    <div class="program-card__type">
+                                        <span>Федеральная</span>
+                                    </div>
+                                    <h3 class="program-card__title title-3">
+                                        Выплата взамен земельного участка для многодетных семей Владимирской области
+                                    </h3>
+                                    <p class="program-card__descr">
+                                        Выплата в 250 тыс. рублей на улучшение жилищных условий семьям с тремя и более детьми
+                                    </p>
+                                </div>
+                                <div class="program-card__bottom">
+                                    <div class="program-card__time-row">
+                                        <div class="program-card__time">
+                                            <span class="title-3">
+                                                Подача до
+                                            </span>
+                                            <span>
+                                                Бессрочно
+                                            </span>
+                                        </div>
+                                        <div class="program-card__time">
+                                            <span class="title-3">
+                                                Действует до
+                                            </span>
+                                            <span>
+                                                Бессрочно
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="program-card__btns">
+                                        <a href="#" class="btn btn-reset btn-secondary btn-secondary--small program-card__button">
+                                            Консультация 
+                                        </a>
+                                        <a href="#" class="btn btn-reset btn-primary btn-primary--small program-card__button">
+                                            О программе 
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="programs-list__card program-card">
+                                <div class="program-card__content">
+                                    <div class="program-card__type">
+                                        <span>Федеральная</span>
+                                    </div>
+                                    <h3 class="program-card__title title-3">
+                                        Выплата взамен земельного участка для многодетных семей Владимирской области
+                                    </h3>
+                                    <p class="program-card__descr">
+                                        Выплата в 250 тыс. рублей на улучшение жилищных условий семьям с тремя и более детьми
+                                    </p>
+                                </div>
+                                <div class="program-card__bottom">
+                                    <div class="program-card__time-row">
+                                        <div class="program-card__time">
+                                            <span class="title-3">
+                                                Подача до
+                                            </span>
+                                            <span>
+                                                Бессрочно
+                                            </span>
+                                        </div>
+                                        <div class="program-card__time">
+                                            <span class="title-3">
+                                                Действует до
+                                            </span>
+                                            <span>
+                                                Бессрочно
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="program-card__btns">
+                                        <a href="#" class="btn btn-reset btn-secondary btn-secondary--small program-card__button">
+                                            Консультация 
+                                        </a>
+                                        <a href="#" class="btn btn-reset btn-primary btn-primary--small program-card__button">
+                                            О программе 
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        @include('partials/footer.html')
+    </div>
+    <!-- popups -->
+    @include('popups/city.html')
+    @include('popups/add.html')
+    @include('popups/personal-area2.html')
+    @include('popups/sber-tied.html')
+    <!-- ==== -->
+
+    <!-- popups -->
+</body>
+
+
+</html>

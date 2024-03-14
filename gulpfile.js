@@ -138,6 +138,9 @@ const scripts = () => {
                 'create-policy': './src/js/create-policy.js',
                 'calendar-page': './src/js/calendar-page.js',
                 'profile': './src/js/profile.js',
+                'faq': './src/js/faq.js',
+                'mortgage-supp': './src/js/mortgage-supp.js',
+                'documents': './src/js/documents.js',
             },
             output: {
                 filename: '[name].js',

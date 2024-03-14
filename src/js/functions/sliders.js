@@ -41,6 +41,22 @@ function initSliders() {
             });
         })
     }
+    if (document.querySelector('.popular-instructions__slider .swiper')) {
+        const items = document.querySelectorAll('.popular-instructions__slider .swiper');
+        items.forEach(slider => {
+            new Swiper(slider, {
+                observer: true,
+                observeParents: true,
+                slidesPerView: 3,
+                spaceBetween: 12,
+                speed: 800,
+                navigation: {
+                    prevEl: slider.closest('.popular-instructions').querySelector('.nav-arrow-primary--prev'),
+                    nextEl: slider.closest('.popular-instructions').querySelector('.nav-arrow-primary--next'),
+                },
+            });
+        })
+    }
     if (document.querySelector('.place-sale-sale__shorts .swiper')) {
         const items = document.querySelectorAll('.place-sale-sale__shorts .swiper');
         items.forEach(slider => {

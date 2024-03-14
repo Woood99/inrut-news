@@ -93,6 +93,7 @@ import suggestObject from './components/suggestObject';
 import datePickers from './components/datePickers';
 import scrollTarget from './components/scrollTarget';
 import metroInfo from './components/metroInfo';
+import dynamicRow from './components/dynamicRow';
 document.addEventListener('DOMContentLoaded', () => {
     galleryPrimary();
     galleryStories();
@@ -179,6 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
     datePickers();
     scrollTarget();
     metroInfo();
+    dynamicRow();
     // ==================================================
 
 

@@ -70,7 +70,9 @@
             margin-top: 32px;
         }
     }
-
+    &__dynamic{
+        margin-top: 32px;
+    }
     &__services {
         margin-top: 32px;
     }
@@ -854,7 +856,84 @@
     }
 }   
 
+.home-dynamic{
+    &__wrapper{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-column-gap: 12px;
+        grid-row-gap: 12px;
+    }
+    &__col{
+        background-color: var(--white);
+        border-radius: 12px;
+        box-shadow: var(--shadow-primary);
+        padding: 32px;
+    }
+    &__rows{
+        margin-top: 16px;
+    }
+    &__content{
+        margin-top: 16px;
 
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 8px;
+    }
+    .dynamic-row{
+        &__item{
+            &:not(:last-child){
+                margin-bottom: 8px;
+            }
+        }
+    }
+    &__text{
+        margin-top: 24px;
+        p{
+            color: var(--primaryTwo);
+            margin-bottom: 16px;
+        }
+        ol {
+            margin-top: 8px;
+            li {
+                position: relative;
+                counter-increment: inst;
+                margin: 0 0 12px 19px;
+
+                &::before {
+                    content: counter(inst) ". ";
+                    position: absolute;
+                  top: 50%;
+                  transform: translateY(-50%);
+                    left: -19px;
+                    font-weight: 500;
+                }
+            }
+        }
+        ul{
+            margin-top: 8px;
+            li{
+                margin: 0 0 12px 15px;
+                position: relative;
+                &::before{
+                    content: "";
+                    position: absolute;
+                    top: 7px;
+                    left: -15px;
+                    width: 6px;
+                    height: 6px;
+                    border-radius: 50%;
+                  background-color: currentColor;
+                }
+            }
+        }
+    }
+    &__more{
+        display: block;
+        margin-top: 24px;
+        color: var(--blue);
+    }
+}
 
 .home-top {
     margin-top: 24px;

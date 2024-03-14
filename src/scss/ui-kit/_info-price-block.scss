@@ -1,5 +1,4 @@
 .info-price-block {
-
     &__name {
         color: var(--primaryTwo);
         margin-bottom: 8px;
@@ -37,9 +36,23 @@
         display: flex;
         align-items: center;
         gap: 6px;
+        position: relative;
+        &::before{
+            content: "";
+            flex: 1 1 0%;
+            position: relative;
+            top: 5px;
+            border-bottom: 1px dashed var(--primary200);
+            height: 1px;
+            order: 2;
+            flex-grow: 1;
+        }
         .info-price-block{
             &__name{
                 margin-bottom: 0;
+            }
+            &__wrapper{
+                order: 3;
             }
         }
     }

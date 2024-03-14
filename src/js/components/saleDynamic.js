@@ -2,6 +2,7 @@ import {
     createPopper
 } from '@popperjs/core';
 import numberReplace from '../modules/numberReplace';
+import convertSum from '../modules/convertSum';
 const saleDynamic = () => {
     const container = document.querySelector('.sale-dynamic');
     if (!container) return;
@@ -146,7 +147,7 @@ const saleDynamic = () => {
                             align: "top",
                             anchor: "auto",
                             formatter: function (value, context) {
-                                return numberReplace(String(value));
+                                return convertSum(value);
                             },
                         },
                     },

@@ -20537,6 +20537,10 @@ textarea.input-reset {
   left: 50%;
   transform: translate(-50%, -50%);
   font-weight: 500;
+  font-size: 12px;
+}
+.dynamic-circle._60 {
+  --size: 60px;
 }
 
 .info-price-block__name {
@@ -20568,9 +20572,23 @@ textarea.input-reset {
   display: flex;
   align-items: center;
   gap: 6px;
+  position: relative;
+}
+.info-price-block._row::before {
+  content: "";
+  flex: 1 1 0%;
+  position: relative;
+  top: 5px;
+  border-bottom: 1px dashed var(--primary200);
+  height: 1px;
+  order: 2;
+  flex-grow: 1;
 }
 .info-price-block._row .info-price-block__name {
   margin-bottom: 0;
+}
+.info-price-block._row .info-price-block__wrapper {
+  order: 3;
 }
 
 .filter {
@@ -26965,7 +26983,7 @@ textarea.input-reset {
   flex-direction: column;
 }
 .dynamic-section__wrapper {
-  height: 376px;
+  height: 400px;
   position: relative;
   display: flex;
 }
@@ -26999,8 +27017,7 @@ textarea.input-reset {
 .dynamic-section-item__tooltip {
   display: none;
   position: absolute;
-  width: max-content;
-  max-width: 450px;
+  width: 450px;
   background-color: var(--white);
   box-shadow: 0 10px 32px rgba(40, 45, 60, 0.02), 0 2px 24px rgba(40, 45, 60, 0.02), 0 0 16px rgba(40, 45, 60, 0.04);
   border-radius: 10px;
@@ -27026,7 +27043,7 @@ textarea.input-reset {
   border-radius: 12px;
 }
 .dynamic-section-item__wrapper::before {
-  content: attr(data-diagram-value);
+  content: attr(data-diagram-value) " шт.";
   font-size: 12px;
   width: 100%;
   position: absolute;
@@ -27074,7 +27091,7 @@ textarea.input-reset {
 .apartmentography-house__wrapper {
   margin-top: 24px;
   display: grid;
-  grid-template-columns: 48% 40%;
+  grid-template-columns: 55% 40%;
   grid-column-gap: 40px;
   grid-row-gap: 16px;
   justify-content: space-between;
@@ -27088,14 +27105,7 @@ textarea.input-reset {
   display: flex;
   align-items: center;
 }
-.apartmentography-house__block {
-  width: 24px;
-  height: 24px;
-  border-radius: 4px;
-  background-color: currentColor;
-}
 .apartmentography-house__name {
-  margin-left: 16px;
   color: var(--dark);
 }
 .apartmentography-house__line {
@@ -27110,20 +27120,51 @@ textarea.input-reset {
   background-color: currentColor;
   border-radius: 6px;
 }
+.apartmentography-house__quantity {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.apartmentography-house__quantity > span {
+  padding: 5px 8px;
+  border-radius: 6px;
+  background-color: var(--primary100);
+  display: block;
+  color: var(--dark);
+  font-size: 11px;
+  line-height: 1;
+}
 .apartmentography-house__info {
   background-color: var(--primary100);
   border-radius: 12px;
   padding: 20px;
   display: flex;
   align-items: start;
+  flex-direction: column;
   gap: 24px;
+}
+.apartmentography-house__element {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.apartmentography-house__element::before {
+  content: "";
+  flex: 1 1 0%;
+  position: relative;
+  top: 5px;
+  border-bottom: 1px dashed var(--primary200);
+  height: 1px;
+  order: 2;
+  flex-grow: 1;
 }
 .apartmentography-house__element p:nth-child(1) {
   color: var(--primaryTwo);
-  margin-bottom: 8px;
 }
 .apartmentography-house__element p:nth-child(2) {
   font-weight: 500;
+  order: 3;
 }
 
 .apartmentography-floor__header {
@@ -31214,6 +31255,23 @@ textarea.input-reset {
   width: 100%;
 }
 
+.object-other-slider {
+  margin-top: 24px;
+}
+.object-other-slider .spollers__item:not(:last-child) {
+  margin-bottom: 24px;
+}
+.object-other-slider .spollers__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.object-other-slider .spollers__title svg {
+  width: 30px;
+  height: 25px;
+  fill: var(--gray);
+  transition: transform 0.2s ease-in-out;
+}
 .object-removed .object-body__wrapper {
   margin-top: 0;
 }
@@ -31536,6 +31594,9 @@ textarea.input-reset {
   .detailed-flat .object-data__characteristics {
     margin-top: 24px;
   }
+}
+.detailed-flat .object-body {
+  padding-bottom: 12px;
 }
 .detailed-flat .object-body__container {
   margin-top: 16px;

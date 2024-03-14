@@ -6,8 +6,8 @@ const dynamicRow = () => {
         let maxValueElement = elements[0];
 
         elements.forEach(element => {
-            const currentValue = element.querySelector('.dynamic-row__value').textContent.trim();
-            const elementValue = maxValueElement.querySelector('.dynamic-row__value').textContent.trim();
+            const currentValue = element.querySelector('.dynamic-row__value').textContent.replace('млн.','').replace('шт.','').trim();
+            const elementValue = maxValueElement.querySelector('.dynamic-row__value').textContent.replace('млн.','').replace('шт.','').trim();
             console.log(Number(currentValue));
             console.log(Number(elementValue));
             if (Number(currentValue) >= Number(elementValue)) {
@@ -15,10 +15,10 @@ const dynamicRow = () => {
             }
         })
         maxValueElement.querySelector('.dynamic-row__line span').style.width = '100%';
-        const maxValue = maxValueElement.querySelector('.dynamic-row__value').textContent.trim();
+        const maxValue = maxValueElement.querySelector('.dynamic-row__value').textContent.replace('млн.','').replace('шт.','').trim();
         elements.forEach(element => {
             if (maxValueElement !== element) {
-                const currentValue = element.querySelector('.dynamic-row__value').textContent.trim();
+                const currentValue = element.querySelector('.dynamic-row__value').textContent.replace('млн.','').replace('шт.','').trim();
                 element.querySelector('.dynamic-row__line span').style.width = `${(currentValue / maxValue * 100)}%`;
             }
         })

@@ -22,7 +22,7 @@
     &__wrapper {
         margin-top: 24px;
         display: grid;
-        grid-template-columns: 48% 40%;
+        grid-template-columns: 55% 40%;
         grid-column-gap: 40px;
         grid-row-gap: 16px;
         justify-content: space-between;
@@ -39,15 +39,7 @@
         align-items: center;
     }
 
-    &__block {
-        width: 24px;
-        height: 24px;
-        border-radius: 4px;
-        background-color: currentColor;
-    }
-
     &__name {
-        margin-left: 16px;
         color: var(--dark);
     }
 
@@ -66,6 +58,18 @@
     }
 
     &__quantity {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        >span{
+            padding: 5px 8px;
+            border-radius: 6px;
+            background-color: var(--primary100);
+            display: block;
+            color: var(--dark);
+            font-size: 11px;
+            line-height: 1;
+        }
     }
 
     &__info {
@@ -74,16 +78,31 @@
         padding: 20px;
         display: flex;
         align-items: start;
+        flex-direction: column;
         gap: 24px;
     }
     &__element{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        &::before{
+            content: "";
+            flex: 1 1 0%;
+            position: relative;
+            top: 5px;
+            border-bottom: 1px dashed var(--primary200);
+            height: 1px;
+            order: 2;
+            flex-grow: 1;
+        }
         p{
             &:nth-child(1){
                 color: var(--primaryTwo);
-                margin-bottom: 8px;
             }
             &:nth-child(2){
                 font-weight: 500;
+                order: 3;
             }
         }
     }

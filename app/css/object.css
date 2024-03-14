@@ -20564,6 +20564,14 @@ textarea.input-reset {
 .info-price-block._minus .info-price-block__price {
   color: var(--green);
 }
+.info-price-block._row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.info-price-block._row .info-price-block__name {
+  margin-bottom: 0;
+}
 
 .filter {
   position: relative;
@@ -26900,12 +26908,6 @@ textarea.input-reset {
 .sale-dynamic__text p:not(:last-child) {
   margin-bottom: 4px;
 }
-.sale-dynamic__text span {
-  font-weight: 500;
-}
-.sale-dynamic__text span a {
-  color: var(--blue);
-}
 .sale-dynamic__tabs {
   margin-top: 32px;
   display: grid;
@@ -26916,7 +26918,7 @@ textarea.input-reset {
 .sale-dynamic__form {
   grid-column: 1/-1;
   display: grid;
-  grid-template-columns: 300px max-content;
+  grid-template-columns: 300px;
   grid-column-gap: 12px;
 }
 .sale-dynamic__form .select-secondary__wrapper {
@@ -26928,8 +26930,8 @@ textarea.input-reset {
   margin-bottom: 32px;
   display: grid;
   align-items: center;
-  grid-template-columns: fit-content(225px) fit-content(225px) max-content;
-  grid-column-gap: 32px;
+  grid-template-columns: max-content max-content;
+  grid-column-gap: 24px;
   grid-row-gap: 16px;
 }
 .sale-dynamic__wrapper {
@@ -26980,20 +26982,7 @@ textarea.input-reset {
 }
 .dynamic-section__info {
   margin-top: 24px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.dynamic-section__info-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.dynamic-section__info-item span {
-  width: 10px;
-  height: 10px;
-  background-color: var(--primaryTwo);
-  border-radius: 50%;
+  color: var(--primaryTwo);
 }
 .dynamic-section__item {
   width: 100%;
@@ -27011,19 +27000,19 @@ textarea.input-reset {
   display: none;
   position: absolute;
   width: max-content;
-  max-width: 300px;
+  max-width: 450px;
   background-color: var(--white);
   box-shadow: 0 10px 32px rgba(40, 45, 60, 0.02), 0 2px 24px rgba(40, 45, 60, 0.02), 0 0 16px rgba(40, 45, 60, 0.04);
   border-radius: 10px;
   color: var(--dark);
   padding: 20px;
   text-align: left;
+  z-index: 99;
+  flex-direction: column;
+  gap: 8px;
 }
 .dynamic-section-item__tooltip span {
   display: block;
-}
-.dynamic-section-item__tooltip span:not(:last-child) {
-  margin-bottom: 8px;
 }
 .dynamic-section-item__wrapper {
   display: flex;
@@ -27058,18 +27047,30 @@ textarea.input-reset {
   background-color: var(--primary100);
 }
 .dynamic-section-item._active .dynamic-section-item__tooltip {
-  display: block;
+  display: flex;
 }
 .dynamic-section-item._active .dynamic-section-item__bottom {
   opacity: 0.85;
 }
 
-.apartmentography-house__container {
+.apartmentography__container {
   background-color: var(--white);
   box-shadow: var(--shadow-primary);
   padding: 32px;
   border-radius: 12px;
 }
+.apartmentography .tabs-primary {
+  margin-top: 16px;
+}
+.apartmentography .tabs-primary__container {
+  padding: 0;
+  border-radius: 0;
+  background-color: transparent;
+}
+.apartmentography .tabs-primary__inner {
+  margin-top: 0;
+}
+
 .apartmentography-house__wrapper {
   margin-top: 24px;
   display: grid;
@@ -27125,12 +27126,6 @@ textarea.input-reset {
   font-weight: 500;
 }
 
-.apartmentography-floor__container {
-  background-color: var(--white);
-  box-shadow: var(--shadow-primary);
-  padding: 32px;
-  border-radius: 12px;
-}
 .apartmentography-floor__header {
   display: flex;
   justify-content: space-between;
@@ -27154,10 +27149,10 @@ textarea.input-reset {
   padding: 16px 20px;
 }
 .floor-table__field:nth-child(1) {
-  width: 15%;
+  width: 11%;
 }
 .floor-table__field:nth-child(2) {
-  width: 18.5%;
+  width: 15%;
 }
 .floor-table__field:nth-child(3) {
   width: 18.5%;
@@ -27169,7 +27164,7 @@ textarea.input-reset {
   width: 18.5%;
 }
 .floor-table__field:nth-child(6) {
-  width: 11%;
+  width: 18.5%;
 }
 .floor-table__sort-floor {
   display: flex;

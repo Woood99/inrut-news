@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Сравнение новостроек</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/comparison.css">
+    <script id="ymaps-id"></script>
+    <script defer src="js/comparison.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container">
+        <header class="header header--new">
+    <div class="header__top header-top">
+        <div class="header-top__container container">
+            <button class="header-top__burger burger" aria-label="Открыть меню" aria-expanded="false" data-burger>
+                <span class="burger__line"></span>
+            </button>
+            <div class="header-top__city city" data-da=".header-main__nav,1212,3">
+                <button type="button" class="btn btn-reset city__title" data-popup-path="city">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#location-fill"></use>
+                    </svg>
+                    <span class="city__name">Краснодар</span>
+                    <p class="city__descr">
+                        Изменить
+                    </p>
+                </button>
+            </div>
+            <div class="header-top__actions">
+                <div class="header-top__action header-action header-action--calendar secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                    <a href="./present.html" class="btn btn-reset header-action__title secondary-tooltip__btn">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#bonus"></use>
+                        </svg>
+                    </a>
+                    <div class="secondary-tooltip__content">
+                        Кешбэк и подарки
+                    </div>
+                </div>
+                <div class="header-top__action header-action header-action--calendar secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                    <a href="./calendar.html" class="btn btn-reset header-action__title secondary-tooltip__btn">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#calendar"></use>
+                        </svg>
+                    </a>
+                    <div class="secondary-tooltip__content">
+                        Календарь
+                    </div>
+                </div>
+                <div class="header-top__action header-action header-action--add">
+                    <button type="button" data-popup-path="add" class="btn btn-reset header-action__title">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#add"></use>
+                        </svg>
+                        <span class="header-action__name">
+                            Добавить
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="header-top__personal header-personal">
+                <button type="button" class="btn btn-reset header-personal__title" data-popup-path="personal-area-two">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#door-open"></use>
+                    </svg>
+                    <span class="header-personal__name">
+                        Кабинет
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="header__main header-main">
+        <div class="header-main__container container">
+            <a href="#" class="header-main__logo logo" data-da=".header-top__container,1212,1">
+                <img loading="lazy" src="./img/logo.svg" width="238" height="32" class="logo__img" alt="Продам.Онлайн">
+            </a>
+            <nav class="header-main__nav nav" data-menu>
+                <button type="button" class="btn btn-reset header-main__close">Закрыть</button>
+                <div class="header-main__title">Меню</div>
+                <ul class="nav__list list-reset" data-spollers="1212,max" data-one-spoller>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">
+                            Новостройки
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">
+                            Покупка
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="stock-developer.html" class="nav__link">
+                            Лента
+                        </a>
+                    </li>
+                </ul>
+                <div class="swiper header-main__banners">
+                    <div class="swiper-wrapper header-main__banners-container">
+                        <div class="swiper-slide header-main__banners-slide header-main__banners-slide--1"></div>
+                        <div class="swiper-slide header-main__banners-slide header-main__banners-slide--2"></div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+        <main class="main main-page-gap default-page comparison">
+            <h1 class="title-2 container">
+                Сравнение новостроек
+            </h1>
+            <div class="default-page__body">
+                <div class="container">
+                    <section class="comparison-block">
+                        <div class="comparison-block__top">
+                            <div class="comparison-block__top-container">
+                                <div class="comparison-block__left-col comparison-block__actions">
+                                    <div class="checkbox-secondary">
+                                        <input id="personal-info" name="personal-info" class="checkbox-secondary__input" type="checkbox" value="true">
+                                        <label for="personal-info" class="checkbox-secondary__label">
+                                            <span class="checkbox-secondary__text">
+                                                Показывать только различия
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="comparison-block__col comparison-block__col-top">
+                                    <article class="comparison-block__card comparison-card">
+                                        <button type="button" class="btn btn-reset comparison-card__remove" title="Удалить">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#trash">
+                                                </use>
+                                            </svg>
+                                        </button>
+                                        <div class="comparison-card__image ibg">
+                                            <picture>
+                                                <source srcset="./img/card-8.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-8.jpg" width="818" height="480" alt="">
+                                            </picture>
+                                        </div>
+                                        <span class="comparison-card__number">
+                                            1/3
+                                        </span>
+                                        <h3 class="comparison-card__name title-4">
+                                            д. Начапкино, литера 28.5
+                                        </h3>
+                                        <span class="comparison-card__id">
+                                            ID дома: 56817
+                                        </span>
+                                        <button type="button" class="btn btn-reset btn-secondary btn-secondary--small comparison-card__btn">Выбрать квартиру</button>
+                                    </article>
+                                </div>
+                                <div class="comparison-block__col comparison-block__col-top">
+                                    <article class="comparison-block__card comparison-card">
+                                        <div class="comparison-card__image ibg">
+                                            <picture>
+                                                <source srcset="./img/card-1.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-1.jpg" width="818" height="480" alt="">
+                                            </picture>
+                                        </div>
+                                        <span class="comparison-card__number">
+                                            1/3
+                                        </span>
+                                        <h3 class="comparison-card__name title-4">
+                                            д. Начапкино, литера 28.5
+                                        </h3>
+                                        <span class="comparison-card__id">
+                                            ID дома: 56817
+                                        </span>
+                                        <button type="button" class="btn btn-reset btn-secondary btn-secondary--small comparison-card__btn">Выбрать квартиру</button>
+                                    </article>
+                                </div>
+                                <div class="comparison-block__col comparison-block__col-top">
+                                    <article class="comparison-block__card comparison-card">
+                                        <div class="comparison-card__image ibg">
+                                            <picture>
+                                                <source srcset="./img/card-20.webp" type="image/webp">
+                                                <img loading="lazy" src="./img/card-20.jpg" width="229" height="240" alt="">
+                                            </picture>
+                                        </div>
+                                        <span class="comparison-card__number">
+                                            1/3
+                                        </span>
+                                        <h3 class="comparison-card__name title-4">
+                                            д. Начапкино, литера 28.5
+                                        </h3>
+                                        <span class="comparison-card__id">
+                                            ID дома: 56817
+                                        </span>
+                                        <button type="button" class="btn btn-reset btn-secondary btn-secondary--small comparison-card__btn">Выбрать квартиру</button>
+                                    </article>
+                                </div>
+                                <div class="comparison-block__col comparison-block__col-top">
+                                    Добавить объект из Каталога новостроек
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-reset nav-arrow-primary nav-arrow-primary--prev comparison-block__nav comparison-block__prev">
+                                <div class="nav-arrow-primary__wrapper">
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#arrow-right"></use>
+                                    </svg>
+                                </div>
+                            </button>
+                            <button type="button" class="btn btn-reset nav-arrow-primary nav-arrow-primary--next comparison-block__nav comparison-block__next">
+                                <div class="nav-arrow-primary__wrapper">
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#arrow-right"></use>
+                                    </svg>
+                                </div>
+                            </button>
+                        </div>
+                        <div data-spollers class="comparison-block__body spollers">
+                            <div class="spollers__item _active">
+                                <button type="button" data-spoller class="btn btn-reset spollers__title _spoller-active">
+                                    <h3 class="title-3">
+                                        Общая информация
+                                    </h3>
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#check"></use>
+                                    </svg>
+                                </button>
+                                <div class="spollers__body">
+                                    <div class="comparison-block__options">
+                                        <div class="comparison-block__option">
+                                            <div class="comparison-block__left-col comparison-block__subtitle">
+                                                Статус
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                <div class="btn btn-reset tag tag--small tag--blue _no-select">
+                                                    Строится
+                                                </div>
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                <div class="btn btn-reset tag tag--small tag--blue _no-select">
+                                                    Строится
+                                                </div>
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                <div class="btn btn-reset tag tag--small tag--blue _no-select">
+                                                    Строится
+                                                </div>
+                                            </div>
+                                            <div class="comparison-block__col"></div>
+                                        </div>
+                                        <div class="comparison-block__option">
+                                            <div class="comparison-block__left-col comparison-block__subtitle">
+                                                Застройщик
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                ООО СЗ НАЧАПКИНО
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                ООО СЗ СЕВЕРНАЯ ВЕНЕЦИЯ
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                ООО СЗ СК МПС
+                                            </div>
+                                            <div class="comparison-block__col"></div>
+                                        </div>
+                                        <div class="comparison-block__option">
+                                            <div class="comparison-block__left-col comparison-block__subtitle">
+                                                Группа компаний
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                —
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                Садовое кольцо
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                ПСК
+                                            </div>
+                                            <div class="comparison-block__col"></div>
+                                        </div>
+                                        <div class="comparison-block__option">
+                                            <div class="comparison-block__left-col comparison-block__subtitle">
+                                                Ввод в эксплуатацию
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                IV кв. 2024
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                II кв. 2025
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                IV кв. 2025
+                                            </div>
+                                            <div class="comparison-block__col"></div>
+                                        </div>
+                                        <div class="comparison-block__option">
+                                            <div class="comparison-block__left-col comparison-block__subtitle">
+                                                Выдача ключей
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                13.06.2025
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                31.12.2025
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                30.06.2026
+                                            </div>
+                                            <div class="comparison-block__col"></div>
+                                        </div>
+                                        <div class="comparison-block__option">
+                                            <div class="comparison-block__left-col comparison-block__subtitle">
+                                                Обеспечение обязательств застройщика
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                Эскроу
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                Эскроу
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                Эскроу
+                                            </div>
+                                            <div class="comparison-block__col"></div>
+                                        </div>
+                                        <div class="comparison-block__option">
+                                            <div class="comparison-block__left-col comparison-block__subtitle">
+                                                Регион
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                Республика Башкортостан
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                Московская область
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                Город Санкт-Петербург
+                                            </div>
+                                            <div class="comparison-block__col"></div>
+                                        </div>
+                                        <div class="comparison-block__option">
+                                            <div class="comparison-block__left-col comparison-block__subtitle">
+                                                Адрес
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                д. Начапкино, литера 28.5
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                г. Красногорск
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                г. Санкт-Петербург, ш Пулковское
+                                            </div>
+                                            <div class="comparison-block__col"></div>
+                                        </div>
+                                        <div class="comparison-block__option">
+                                            <div class="comparison-block__left-col comparison-block__subtitle">
+                                                Метро
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                —
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                <div class="metro-info">
+                                                    <div class="metro-info__item">
+                                                        <div class="metro-info__icon">
+                                                            <svg width="20" height="20" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M12.5634 13.0129H12.0132L12.4504 12.2937L12.7015 13.0129H12.5634ZM10.4765 15.5407L12.0037 13.0286V13.5726V15.1307V15.6904H12.5634H18.75H19.3097V15.1307V13.5726V13.0129H18.75H17.9269L13.9717 3.01133L13.5431 1.92757L12.9652 2.93959L9.99849 8.13432L7.03494 2.9398L6.45732 1.92734L6.02834 3.01118L2.06969 13.0129H1.25H0.69028V13.5726V15.1307V15.6904H1.25H7.43658H7.9963V15.1307V13.5726V13.0309L9.51979 15.5404L9.99792 16.328L10.4765 15.5407ZM7.43658 13.0129H7.29848L7.5493 12.2946L7.98536 13.0129H7.43658Z"
+                                                                    fill="#4FB04F" stroke="white" stroke-width="1.4"></path>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="metro-info__name">
+                                                            Некрасовка
+                                                        </div>
+                                                        <div class="metro-info__road">
+                                                            <div class="metro-info__time">
+                                                                1 мин.
+                                                            </div>
+                                                            <svg>
+                                                                <use xlink:href="./img/sprite.svg#run2"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="metro-info__item">
+                                                        <div class="metro-info__icon">
+                                                            <svg width="20" height="20" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M12.5634 13.0129H12.0132L12.4504 12.2937L12.7015 13.0129H12.5634ZM10.4765 15.5407L12.0037 13.0286V13.5726V15.1307V15.6904H12.5634H18.75H19.3097V15.1307V13.5726V13.0129H18.75H17.9269L13.9717 3.01133L13.5431 1.92757L12.9652 2.93959L9.99849 8.13432L7.03494 2.9398L6.45732 1.92734L6.02834 3.01118L2.06969 13.0129H1.25H0.69028V13.5726V15.1307V15.6904H1.25H7.43658H7.9963V15.1307V13.5726V13.0309L9.51979 15.5404L9.99792 16.328L10.4765 15.5407ZM7.43658 13.0129H7.29848L7.5493 12.2946L7.98536 13.0129H7.43658Z"
+                                                                    fill="#943E90" stroke="white" stroke-width="1.4"></path>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="metro-info__name">
+                                                            Некрасовка екрасовка Некрасовка
+                                                        </div>
+                                                        <div class="metro-info__road">
+                                                            <div class="metro-info__time">
+                                                                ~ 1 мин.
+                                                            </div>
+                                                            <svg>
+                                                                <use xlink:href="./img/sprite.svg#run2"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="metro-info__item">
+                                                        <div class="metro-info__icon">
+                                                            <svg width="20" height="20" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M12.5634 13.0129H12.0132L12.4504 12.2937L12.7015 13.0129H12.5634ZM10.4765 15.5407L12.0037 13.0286V13.5726V15.1307V15.6904H12.5634H18.75H19.3097V15.1307V13.5726V13.0129H18.75H17.9269L13.9717 3.01133L13.5431 1.92757L12.9652 2.93959L9.99849 8.13432L7.03494 2.9398L6.45732 1.92734L6.02834 3.01118L2.06969 13.0129H1.25H0.69028V13.5726V15.1307V15.6904H1.25H7.43658H7.9963V15.1307V13.5726V13.0309L9.51979 15.5404L9.99792 16.328L10.4765 15.5407ZM7.43658 13.0129H7.29848L7.5493 12.2946L7.98536 13.0129H7.43658Z"
+                                                                    fill="#5BBEBB" stroke="white" stroke-width="1.4"></path>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="metro-info__name">
+                                                            Некрасовка
+                                                        </div>
+                                                        <div class="metro-info__road">
+                                                            <div class="metro-info__time">
+                                                                ~ 1 мин.
+                                                            </div>
+                                                            <svg>
+                                                                <use xlink:href="./img/sprite.svg#run2"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                <div class="metro-info">
+                                                    <div class="metro-info__item">
+                                                        <div class="metro-info__icon">
+                                                            <svg width="20" height="20" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M12.5634 13.0129H12.0132L12.4504 12.2937L12.7015 13.0129H12.5634ZM10.4765 15.5407L12.0037 13.0286V13.5726V15.1307V15.6904H12.5634H18.75H19.3097V15.1307V13.5726V13.0129H18.75H17.9269L13.9717 3.01133L13.5431 1.92757L12.9652 2.93959L9.99849 8.13432L7.03494 2.9398L6.45732 1.92734L6.02834 3.01118L2.06969 13.0129H1.25H0.69028V13.5726V15.1307V15.6904H1.25H7.43658H7.9963V15.1307V13.5726V13.0309L9.51979 15.5404L9.99792 16.328L10.4765 15.5407ZM7.43658 13.0129H7.29848L7.5493 12.2946L7.98536 13.0129H7.43658Z"
+                                                                    fill="#4FB04F" stroke="white" stroke-width="1.4"></path>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="metro-info__name">
+                                                            Некрасовка
+                                                        </div>
+                                                        <div class="metro-info__road">
+                                                            <div class="metro-info__time">
+                                                                1 мин.
+                                                            </div>
+                                                            <svg>
+                                                                <use xlink:href="./img/sprite.svg#run2"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="metro-info__item">
+                                                        <div class="metro-info__icon">
+                                                            <svg width="20" height="20" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M12.5634 13.0129H12.0132L12.4504 12.2937L12.7015 13.0129H12.5634ZM10.4765 15.5407L12.0037 13.0286V13.5726V15.1307V15.6904H12.5634H18.75H19.3097V15.1307V13.5726V13.0129H18.75H17.9269L13.9717 3.01133L13.5431 1.92757L12.9652 2.93959L9.99849 8.13432L7.03494 2.9398L6.45732 1.92734L6.02834 3.01118L2.06969 13.0129H1.25H0.69028V13.5726V15.1307V15.6904H1.25H7.43658H7.9963V15.1307V13.5726V13.0309L9.51979 15.5404L9.99792 16.328L10.4765 15.5407ZM7.43658 13.0129H7.29848L7.5493 12.2946L7.98536 13.0129H7.43658Z"
+                                                                    fill="#943E90" stroke="white" stroke-width="1.4"></path>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="metro-info__name">
+                                                            Некрасовка екрасовка Некрасовка
+                                                        </div>
+                                                        <div class="metro-info__road">
+                                                            <div class="metro-info__time">
+                                                                ~ 1 мин.
+                                                            </div>
+                                                            <svg>
+                                                                <use xlink:href="./img/sprite.svg#run2"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="metro-info__item">
+                                                        <div class="metro-info__icon">
+                                                            <svg width="20" height="20" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M12.5634 13.0129H12.0132L12.4504 12.2937L12.7015 13.0129H12.5634ZM10.4765 15.5407L12.0037 13.0286V13.5726V15.1307V15.6904H12.5634H18.75H19.3097V15.1307V13.5726V13.0129H18.75H17.9269L13.9717 3.01133L13.5431 1.92757L12.9652 2.93959L9.99849 8.13432L7.03494 2.9398L6.45732 1.92734L6.02834 3.01118L2.06969 13.0129H1.25H0.69028V13.5726V15.1307V15.6904H1.25H7.43658H7.9963V15.1307V13.5726V13.0309L9.51979 15.5404L9.99792 16.328L10.4765 15.5407ZM7.43658 13.0129H7.29848L7.5493 12.2946L7.98536 13.0129H7.43658Z"
+                                                                    fill="#5BBEBB" stroke="white" stroke-width="1.4"></path>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="metro-info__name">
+                                                            Некрасовка
+                                                        </div>
+                                                        <div class="metro-info__road">
+                                                            <div class="metro-info__time">
+                                                                ~ 1 мин.
+                                                            </div>
+                                                            <svg>
+                                                                <use xlink:href="./img/sprite.svg#run2"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="comparison-block__col"></div>
+                                        </div>
+                                        <div class="comparison-block__option">
+                                            <div class="comparison-block__left-col comparison-block__subtitle">
+                                                Результат проверки
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                <a href="#" class="underline-hover">
+                                                    Пройдена
+                                                </a>
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                <a href="#" class="underline-hover">
+                                                    Пройдена
+                                                </a>
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                <a href="#" class="underline-hover">
+                                                    Пройдена
+                                                </a>
+                                            </div>
+                                            <div class="comparison-block__col"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="spollers__item _active">
+                                <button type="button" data-spoller class="btn btn-reset spollers__title _spoller-active">
+                                    <h3 class="title-3">
+                                        Об объекте
+                                    </h3>
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#check"></use>
+                                    </svg>
+                                </button>
+                                <div class="spollers__body">
+                                    <div class="comparison-block__options">
+                                        <div class="comparison-block__option">
+                                            <div class="comparison-block__left-col comparison-block__subtitle">
+                                                Назначение помещения
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                Жилое
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                Жилое
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                Жилое
+                                            </div>
+                                            <div class="comparison-block__col"></div>
+                                        </div>
+                                        <div class="comparison-block__option">
+                                            <div class="comparison-block__left-col comparison-block__subtitle">
+                                                Класс недвижимости
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                Типовой
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                Комфорт
+                                            </div>
+                                            <div class="comparison-block__col">
+                                                Комфорт
+                                            </div>
+                                            <div class="comparison-block__col"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer__container container">
+        <div class="footer__top">
+            <a href="#" class="footer__logo logo">
+                <img loading="lazy" src="./img/logo.svg" width="83" height="25" class="logo__img"
+                    alt="Продам.Онлайн">
+            </a>
+            <nav class="footer__nav nav">
+                <ul class="nav__list list-reset">
+                    <li class="nav__item"><a href="#" class="nav__link">Продажа</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Новостройки</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Покупка</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Услуги</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer__write">
+            <p>
+                Есть предложения, напишите нам.
+            </p>
+            <button type="button" class="btn btn-reset btn-secondary footer__btn">Написать</button>
+        </div>
+        <p class="footer__descr">
+            © 2021-2022 ООО «Продам онлайн», официальный сайт использует куки-файлы и другие технологии, чтобы помочь
+            вам в навигации, а также предоставить лучший пользовательский опыт, анализировать использование наших
+            продуктов и услуг, повысить качество рекламных и маркетинговых активностей. Если Вы не хотите, чтобы Ваши
+            пользовательские данные обрабатывались, пожалуйста, ограничьте их использование в своём браузере.
+        </p>
+    </div>
+</footer>
+
+    </div>
+    <!-- popups -->
+    <div class="popup popup-primary popup-primary--left popup-primary--city" data-popup-mobile-fast>
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="city">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content city-popup">
+            <h2 class="city-popup__title title-2">
+                Выбор города
+            </h2>
+            <div class="city-popup__input">
+                <button type="button" class="btn btn-reset">
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#search"></use>
+                    </svg>
+                </button>
+                <input type="search" name="Название города" class="input-reset" placeholder="Введите название города">
+                <button type="button" class="btn btn-reset city-popup__clear" hidden>
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#x"></use>
+                    </svg>
+                </button>
+            </div>
+            <div class="city-popup__list">
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Москва</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Калининград</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Санкт-Петербург</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Казань</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Краснодар</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Екатеринбург</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Нижний-Новгород</button>
+            </div>
+            <div class="checkbox-secondary city-popup__auto">
+                <input id="city-auto" name="city-auto" class="checkbox-secondary__input" type="checkbox" value="true">
+                <label for="city-auto" class="checkbox-secondary__label">
+                    <span class="checkbox-secondary__text">
+                        Определить автоматически
+                    </span>
+                </label>
+            </div>
+            <button type="button" class="btn btn-reset btn-primary js-popup-close city-popup__save" disabled>Сохранить</button>
+        </div>
+    </div>
+</div>
+    <div class="popup popup-primary popup-primary--right popup-primary--add">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="add">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content add-popup">
+            <h2 class="add-popup__title title-2">
+                Добавить
+            </h2>
+            <ul class="add-popup__list list-reset">
+                <li class="add-popup__item">
+                    <a href="#" class="add-popup__link">
+                        <img loading="lazy" src="./img/flat.svg" alt=">Заявка на покупку">
+                        <span>Заявка на покупку</span>
+                    </a>
+                </li>
+                <li class="add-popup__item">
+                    <a href="#" class="add-popup__link">
+                        <img loading="lazy" src="./img/flat.svg" alt=">Объявление на продаж">
+                        <span>Объект на продажу</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+    <div class="popup popup-secondary popup-secondary--right popup-secondary--personal">
+    <div class="popup__container popup-secondary__container" role="dialog" aria-modal="true" data-popup-target="personal-area-two">
+        <button class="btn-reset js-popup-close popup__close popup-secondary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-secondary__content personal-area">
+            <div class="personal-area__container">
+                <h2 class="personal-area__title title-2">
+                    Личный кабинет
+                </h2>
+                <div class="personal-area__info">
+                    <div class="personal-area__avatar avatar">
+                        <img loading="lazy" src="./img/avatar-1.jpg" width="45" height="45" alt="Иван П.">
+                    </div>
+                    <span class=" personal-area__name">
+                        Иван П.
+                    </span>
+                    <a href="./edit-profile.html" class="btn btn-reset personal-area__edit">Редактировать профиль</a>
+                </div>
+                <nav class="personal-area__nav">
+                    <ul data-spollers class="personal-area__list list-reset">
+                        <li class="personal-area__item personal-area-dropdown">
+                            <button type="button" data-spoller class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#add"></use>
+                                </svg>
+                                <span>Добавить</span>
+                                <svg class="personal-area-dropdown__arrow">
+                                    <use xlink:href="img/sprite.svg#arrow-small"></use>
+                                </svg>
+                            </button>
+                            <div class="personal-area-dropdown__body">
+                                <button type="button" class="btn btn-reset personal-area__btn">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#house"></use>
+                                    </svg>
+                                    <span>Объявление на продажу</span>
+                                </button>
+                                <button type="button" class="btn btn-reset personal-area__btn">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#tg"></use>
+                                    </svg>
+                                    <span>Заявка на покупку</span>
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#chat"></use>
+                                </svg>
+                                <span>Чат</span>
+                                <span class="personal-area__quantity">
+                                    +6
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <a href="./present.html" type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#bonus"></use>
+                                </svg>
+                                <span>
+                                    Кешбэк и подарки
+                                </span>
+                                <span class="personal-area__quantity">
+                                    +6
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#cart-1"></use>
+                                </svg>
+                                <span>Мои заявки на покупку</span>
+                            </button>
+                        </li>
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#cart-3"></use>
+                                </svg>
+                                <span>Предложения по заявкам</span>
+                                <span class="personal-area__quantity">
+                                    +6
+                                </span>
+                            </button>
+                        </li>
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#calendar"></use>
+                                </svg>
+                                <span>Календарь просмотров</span>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#house-laptop2"></use>
+                                </svg>
+                                <span>Мои объекты</span>
+                                <span class="personal-area__quantity">
+                                    6
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#sign-in"></use>
+                                </svg>
+                                <span>Выйти</span>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="popup popup-primary popup-primary--right popup-primary--sber-tied">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="sber-tied">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content popup-tied">
+            <h2 class="popup-tied__title title-2">
+                Привязанные аккаунты
+            </h2>
+            <p class="popup-tied__descr">
+                Привязанный аккаунт позволит входить без СМС и пароля.
+            </p>
+            <div class="popup-tied__card">
+                <img loading="lazy" src="./img/sber.png" width="32" height="32" class="popup-tied__icon" alt="Сбербанк">
+                <div>
+                    <span>Сбер ID</span>
+                    <span>Вход 21.06.2023</span>
+                    <button type="button" class="btn btn-reset">Отвязать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- ==== -->
+
+    <!-- popups -->
+</body>
+
+
+</html>

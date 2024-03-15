@@ -5,12 +5,16 @@ import './functions/fix-fullheight';
 import './_popups';
 import './_main-scripts';
 import dataFaq2 from './data/dataFaq2';
+import {
+    getCurrentTime
+} from './modules/date';
 // ==============================
 
 document.addEventListener('DOMContentLoaded', () => {
     const dataFaq = dataFaq2;
     const mortgageSupp = document.querySelector('.mortgage-supp');
     if (mortgageSupp) {
+        let sections = {};
         const wrapper = mortgageSupp.querySelector('.create-policy-faq__wrapper');
         const faq = document.querySelector('.create-policy-faq');
         if (!faq) return;
@@ -18,28 +22,73 @@ document.addEventListener('DOMContentLoaded', () => {
         faq.addEventListener('click', (e) => {
             const target = e.target;
             const tag = target.closest('[data-chat-tag]');
+            const addTag = target.closest('[data-chat-add-tag]');
+            const finishedTag = target.closest('[data-chat-finished-tag]');
+
             const tagBack = target.closest('[data-chat-tag-back]');
-            if (tag){
+            const tagAddBack = target.closest('[data-chat-add-tag-back]');
+            if (tag) {
                 const currentText = tag.textContent.trim();
                 const currentFaq = dataFaq[currentText];
                 if (!currentFaq) return;
-                const addTags = currentFaq.additionalTags;
-                const addTagsHTML = createAddTags(addTags);
-                appendAddTags(addTagsHTML);
+                appendAddTags(currentText, currentFaq);
             }
-            if (tagBack){
-               const addTags = tagBack.closest('.create-policy-faq__add-tags');
-               const defaultTags = wrapper.querySelector('.create-policy-faq__tags');
-               addTags.remove();
-               defaultTags.removeAttribute('hidden');
+            if (addTag) {
+                const currentTagText = addTag.textContent.trim();
+                const currentFaq = dataFaq[sections.one].additionalTags[currentTagText].tags;
+                if (!currentFaq) return;
+                appendFinishedTags(currentTagText,currentFaq);
+            }
+            if (finishedTag){
+                const currentTagText = finishedTag.textContent.trim();
+                const currentFaq = dataFaq.questions[currentTagText];
+                content.insertAdjacentHTML('beforeend', generateMessageMe(currentTagText));
+                content.insertAdjacentHTML('beforeend', generateMessageAi('Печатает...', true));
+                scrollContent();
+                scrollToBlock();
+                hiddenCurrentFaq(finishedTag);
+
+                const lastMessage = content.querySelector('.message-item.chat__message:last-child');
+                if (lastMessage) {
+                    const dots = Array.from(lastMessage.querySelectorAll('.message-item__text-dots span'));
+                    let currentActiveIndex = 0;
+                    let dotsInterval = setInterval(() => {
+                        dots.forEach(dot => dot.classList.remove('_active'));
+                        dots[currentActiveIndex].classList.add('_active');
+                        currentActiveIndex += 1;
+                        if (currentActiveIndex >= dots.length) currentActiveIndex = 0;
+                    }, 300);
+                    setTimeout(() => {
+                        clearInterval(dotsInterval);
+                        lastMessage.outerHTML = generateMessageAi(currentFaq, false);
+                        scrollContent();
+                        scrollToBlock();
+                    }, 2500);
+                }
+            }
+
+            if (tagBack) {
+                const addTags = tagBack.closest('.create-policy-faq__add-tags');
+                const defaultTags = wrapper.querySelector('.create-policy-faq__tags');
+                addTags.remove();
+                defaultTags.removeAttribute('hidden');
+                delete sections.one;
+            }
+            if (tagAddBack){
+                const addTags = tagAddBack.closest('.create-policy-faq__add-tags');
+                 addTags.remove();
+                const currentFaq = dataFaq[sections.one];
+                 appendAddTags(sections.one, currentFaq);
+                 delete sections.two;
             }
         })
 
-        function createAddTags(tags) {
+        function createAddTags(addTags,tagName) {
+            if (!addTags) return;
             let html = '';
-            for (const tag in tags) {
+            for (const tag in addTags) {
                 html += `
-                    <button type="button" class="btn btn-reset tag tag--message" data-chat-add-tag>
+                    <button type="button" class="btn btn-reset tag tag--message" ${tagName}>
                         <span>
                             ${tag.trim()}
                         </span>
@@ -49,7 +98,9 @@ document.addEventListener('DOMContentLoaded', () => {
             return html.trim();
         }
 
-        function appendAddTags(htmlTags) {
+        function appendAddTags(currentText, currentFaq) {
+            sections.one = currentText;
+            const htmlTags = createAddTags(currentFaq.additionalTags,'data-chat-add-tag');
             const defaultTags = wrapper.querySelector('.create-policy-faq__tags');
             const html = `
                 <div class="create-policy-faq__add-tags">
@@ -60,6 +111,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
             defaultTags.setAttribute('hidden', '');
+            wrapper.insertAdjacentHTML('beforeend', html);
+        }
+        function appendFinishedTags(currentText,currentFaq){
+            sections.two = currentText;
+            const htmlTags = currentFaq.map(item => {
+                return `
+                    <button type="button" class="btn btn-reset tag tag--message" data-chat-finished-tag>
+                        <span>
+                            ${item.trim()}
+                        </span>
+                    </button>
+                `;
+            })
+            const addTags = wrapper.querySelector('.create-policy-faq__add-tags');
+            const html = `
+                <div class="create-policy-faq__add-tags">
+                    <button type="button" class="btn btn-reset btn-primary btn-primary--small" data-chat-add-tag-back>
+                        Назад
+                    </button>
+                    ${htmlTags.join('')}
+                </div>
+            `;
+            addTags.remove();
             wrapper.insertAdjacentHTML('beforeend', html);
         }
 
@@ -140,5 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!target) return;
             target.remove();
         }
+
+
     }
 })

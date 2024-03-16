@@ -69,9 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (tagBack) {
                 const addTags = tagBack.closest('.create-policy-faq__add-tags');
-                const defaultTags = wrapper.querySelector('.create-policy-faq__tags');
                 addTags.remove();
-                defaultTags.removeAttribute('hidden');
                 delete sections.one;
             }
             if (tagAddBack){
@@ -110,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${htmlTags}
                 </div>
             `;
-            defaultTags.setAttribute('hidden', '');
             wrapper.insertAdjacentHTML('beforeend', html);
         }
         function appendFinishedTags(currentText,currentFaq){

@@ -8718,6 +8718,14 @@ textarea.input-reset {
     transform: scale(1);
   }
 }
+@keyframes blikDots {
+  0%, 33% {
+    background: var(--primary100);
+  }
+  22% {
+    background: var(--blue);
+  }
+}
 .flex {
   display: flex !important;
 }
@@ -9130,6 +9138,49 @@ textarea.input-reset {
 .message-item__text._dots {
   display: flex;
   align-items: center;
+}
+.message-item__text p:not(:last-child), .message-item__text ul:not(:last-child), .message-item__text ol:not(:last-child) {
+  margin-bottom: 16px;
+}
+.message-item__text strong {
+  font-weight: 500;
+}
+.message-item__text ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 16px;
+}
+.message-item__text ul li {
+  position: relative;
+}
+.message-item__text ul li::before {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: var(--blue);
+  border-radius: 50%;
+  left: -16px;
+  top: 8px;
+}
+.message-item__text ul li:not(:last-child) {
+  margin-bottom: 12px;
+}
+.message-item__text ol {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 16px;
+}
+.message-item__text a {
+  color: var(--blue);
+}
+@media (min-width: 1213px) {
+  .message-item__text a {
+    transition: color 0.4s ease-in-out;
+  }
+  .message-item__text a:hover {
+    color: var(--blue-dark);
+  }
 }
 .message-item__btn-clue {
   display: flex;
@@ -13344,6 +13395,35 @@ textarea.input-reset {
   background-color: var(--stand-bg);
   margin-top: 16px;
   padding: 16px 0;
+}
+
+.flashing-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.flashing-dots__dots {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.flashing-dots__dots span {
+  border-radius: 50%;
+  display: block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary100);
+  transition: background-color 0.4s ease-in-out;
+  animation: blikDots 1s linear infinite;
+}
+.flashing-dots__dots span:nth-child(1) {
+  animation-delay: 0s;
+}
+.flashing-dots__dots span:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.flashing-dots__dots span:nth-child(3) {
+  animation-delay: 0.6s;
 }
 
 .main-slider {

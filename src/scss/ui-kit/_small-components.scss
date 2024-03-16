@@ -426,6 +426,51 @@
             display: flex;
             align-items: center;
         }
+        p,ul,ol{
+            &:not(:last-child){
+                margin-bottom: 16px;
+            }
+        }
+        strong{
+            font-weight: 500;
+        }
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0 0 0 16px;
+            li {
+                position: relative;
+    
+                &::before {
+                    content: "";
+                    position: absolute;
+                    width: 6px;
+                    height: 6px;
+                    background-color: var(--blue);
+                    border-radius: 50%;
+                    left: -16px;
+                    top: 8px;
+                }
+    
+                &:not(:last-child) {
+                    margin-bottom: 12px;
+                }
+            }
+        }
+        ol{
+            list-style: none;
+            margin: 0;
+            padding: 0 0 0 16px;  
+        }
+        a{
+            color: var(--blue);
+            @media (min-width:$desktop-min){
+                transition: color $transitionSpeed $transitionFunction;
+                 &:hover{
+                    color: var(--blue-dark);
+                 } 
+            }
+        }
     }
 
     &__btn-clue {
@@ -5391,11 +5436,13 @@
         height: calc(100% - 16px);
         background-color: var(--blue);
     }
-    &:last-child{
-        &::before{
+
+    &:last-child {
+        &::before {
             height: 100%;
         }
     }
+
     >div {
         &:nth-child(1) {
             >span {
@@ -5585,10 +5632,12 @@
     gap: 12px;
     align-items: center;
     position: relative;
-    &__present{
+
+    &__present {
         margin-left: auto;
         flex: 0 0 25px;
     }
+
     &__price {
         margin-left: auto;
         display: flex;
@@ -5688,18 +5737,21 @@
         .toggle-checkbox {
             margin-left: 0;
         }
-        .user-info{
+
+        .user-info {
             grid-template-columns: 44px 1fr;
-            &__avatar{
+
+            &__avatar {
                 width: 44px;
                 height: 44px;
             }
         }
+
         .card-checkbox {
             &__name {
                 font-weight: 500;
             }
-        
+
         }
     }
 }
@@ -5768,7 +5820,7 @@
 }
 
 
-.line-bottom{
+.line-bottom {
     padding-bottom: 16px;
     margin-bottom: 16px;
     border-bottom: 1px solid var(--primary100);
@@ -5799,10 +5851,43 @@
 
 
 
-.default-page{
-    &__body{
+.default-page {
+    &__body {
         background-color: var(--stand-bg);
         margin-top: 16px;
         padding: 16px 0;
+    }
+}
+
+
+.flashing-dots {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    &__dots{
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        span {
+            border-radius: 50%;
+            display: block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary100);
+            transition: background-color $transitionSpeed $transitionFunction;
+            animation: blikDots 1s linear infinite;
+    
+            &:nth-child(1) {
+                animation-delay: 0s;
+            }
+    
+            &:nth-child(2) {
+                animation-delay: 0.3s
+            }
+    
+            &:nth-child(3) {
+                animation-delay: 0.6s;
+            }
+        }
     }
 }

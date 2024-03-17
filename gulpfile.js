@@ -142,6 +142,7 @@ const scripts = () => {
                 'mortgage-supp': './src/js/mortgage-supp.js',
                 'documents': './src/js/documents.js',
                 'comparison': './src/js/comparison.js',
+                'investments': './src/js/investments.js',
             },
             output: {
                 filename: '[name].js',

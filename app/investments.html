@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Инвестиции</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/investments.css">
+    <script id="ymaps-id"></script>
+    <script defer src="js/investments.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container">
+        <header class="header header--new">
+    <div class="header__top header-top">
+        <div class="header-top__container container">
+            <button class="header-top__burger burger" aria-label="Открыть меню" aria-expanded="false" data-burger>
+                <span class="burger__line"></span>
+            </button>
+            <div class="header-top__city city" data-da=".header-main__nav,1212,3">
+                <button type="button" class="btn btn-reset city__title" data-popup-path="city">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#location-fill"></use>
+                    </svg>
+                    <span class="city__name">Краснодар</span>
+                    <p class="city__descr">
+                        Изменить
+                    </p>
+                </button>
+            </div>
+            <div class="header-top__actions">
+                <div class="header-top__action header-action header-action--calendar secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                    <a href="./present.html" class="btn btn-reset header-action__title secondary-tooltip__btn">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#bonus"></use>
+                        </svg>
+                    </a>
+                    <div class="secondary-tooltip__content">
+                        Кешбэк и подарки
+                    </div>
+                </div>
+                <div class="header-top__action header-action header-action--calendar secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                    <a href="./calendar.html" class="btn btn-reset header-action__title secondary-tooltip__btn">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#calendar"></use>
+                        </svg>
+                    </a>
+                    <div class="secondary-tooltip__content">
+                        Календарь
+                    </div>
+                </div>
+                <div class="header-top__action header-action header-action--add">
+                    <button type="button" data-popup-path="add" class="btn btn-reset header-action__title">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#add"></use>
+                        </svg>
+                        <span class="header-action__name">
+                            Добавить
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="header-top__personal header-personal">
+                <button type="button" class="btn btn-reset header-personal__title" data-popup-path="personal-area-two">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#door-open"></use>
+                    </svg>
+                    <span class="header-personal__name">
+                        Кабинет
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="header__main header-main">
+        <div class="header-main__container container">
+            <a href="#" class="header-main__logo logo" data-da=".header-top__container,1212,1">
+                <img loading="lazy" src="./img/logo.svg" width="238" height="32" class="logo__img" alt="Продам.Онлайн">
+            </a>
+            <nav class="header-main__nav nav" data-menu>
+                <button type="button" class="btn btn-reset header-main__close">Закрыть</button>
+                <div class="header-main__title">Меню</div>
+                <ul class="nav__list list-reset" data-spollers="1212,max" data-one-spoller>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">
+                            Новостройки
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">
+                            Покупка
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="stock-developer.html" class="nav__link">
+                            Лента
+                        </a>
+                    </li>
+                </ul>
+                <div class="swiper header-main__banners">
+                    <div class="swiper-wrapper header-main__banners-container">
+                        <div class="swiper-slide header-main__banners-slide header-main__banners-slide--1"></div>
+                        <div class="swiper-slide header-main__banners-slide header-main__banners-slide--2"></div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+        <main class="main main-page-gap default-page investments">
+            <h1 class="title-2 container">
+                Инвестиции
+            </h1>
+            <div class="default-page__body">
+                <div class="container">
+                    <div class="investments__container">
+                        <form action="#" class="investments__form">
+                            <div data-spollers class="spollers">
+                                <div class="spollers__item investments__spoller">
+                                    <button type="button" data-spoller class="btn btn-reset spollers__title">
+                                        <h3 class="title-3">
+                                            Покупка
+                                        </h3>
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="spollers__body investments__content" hidden>
+                                        <div class="investments-fields col-1">
+                                            <div class="radio-primary">
+                                                <div class="radio-primary__item">
+                                                    <input hidden id="purchase_1" class="radio-primary__input" checked type="radio" name="purchase">
+                                                    <label for="purchase_1" class="radio-primary__label">
+                                                        <span class="radio-primary__text">Кредит</span>
+                                                    </label>
+                                                </div>
+                                                <div class="radio-primary__item">
+                                                    <input hidden id="purchase_2" class="radio-primary__input" type="radio" name="purchase">
+                                                    <label for="purchase_2" class="radio-primary__label">
+                                                        <span class="radio-primary__text">Собственные средства</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="investments-fields col-2">
+                                            <div class="input-text input-text--only-number">
+                                                <label class="input-text__label">
+                                                    <span>Цена покупки</span>
+                                                    <input type="text" name="Цена покупки" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                    <span>₽</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="investments-fields col-1">
+                                            <div class="checkbox-secondary _start">
+                                                <input id="tax" name="tax" class="checkbox-secondary__input" type="checkbox">
+                                                <label for="tax" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        Налоговый вычет применялся
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="investments-fields col-1">
+                                            <label class="toggle-checkbox">
+                                                <input type="checkbox" name="toggle-1" data-investments-toggle="2">
+                                                <div aria-hidden="true"></div>
+                                                <span>Буду привлекать риэлтора</span>
+                                            </label>
+                                        </div>
+                                        <div class="investments-item-toggle" data-investments-item-toggle="2" hidden>
+                                            <div class="investments-fields col-2">
+                                                <div class="input-text input-text--only-number">
+                                                    <label class="input-text__label">
+                                                        <span>Цена услуг риэлтора</span>
+                                                        <input type="text" name="Цена покупки" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                        <span>₽</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="investments-result">
+                                            <div class="investments-result__item">
+                                                <span>
+                                                    Госпошлина за покупку:
+                                                </span>
+                                                <span>
+                                                    —
+                                                </span>
+                                            </div>
+                                            <div class="investments-result__item">
+                                                <span>
+                                                    Сумма налогового вычета:
+                                                </span>
+                                                <span>
+                                                    —
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="spollers__item investments__spoller">
+                                    <button type="button" data-spoller class="btn btn-reset spollers__title">
+                                        <h3 class="title-3">
+                                            Кредит
+                                        </h3>
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="spollers__body investments__content" hidden>
+                                        <div class="investments-fields col-1">
+                                            <div class="radio-primary">
+                                                <div class="radio-primary__item">
+                                                    <input hidden id="credit_1" class="radio-primary__input" checked type="radio" name="credit">
+                                                    <label for="credit_1" class="radio-primary__label">
+                                                        <span class="radio-primary__text">Ипотека</span>
+                                                    </label>
+                                                </div>
+                                                <div class="radio-primary__item">
+                                                    <input hidden id="credit_2" class="radio-primary__input" type="radio" name="credit">
+                                                    <label for="credit_2" class="radio-primary__label">
+                                                        <span class="radio-primary__text">Иной-кредит</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="investments-fields col-2">
+                                            <div class="input-text input-text--only-number">
+                                                <label class="input-text__label">
+                                                    <span>Сумма первоначального взноса</span>
+                                                    <input type="text" name="Цена покупки" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                    <span>₽</span>
+                                                </label>
+                                            </div>
+                                            <div class="input-text input-text--only-number">
+                                                <label class="input-text__label">
+                                                    <span>Срок погашения ипотеки</span>
+                                                    <input type="text" name="Цена покупки" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                                    <span>лет</span>
+                                                </label>
+                                            </div>
+                                            <div class="input-text input-text--only-number">
+                                                <label class="input-text__label">
+                                                    <span>Ставка</span>
+                                                    <input type="text" name="Цена покупки" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                                    <span>%</span>
+                                                </label>
+                                            </div>
+                                            <div class="checkbox-secondary _start">
+                                                <input id="tax_2" name="tax_2" class="checkbox-secondary__input" type="checkbox">
+                                                <label for="tax_2" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        Налоговый вычет применялся
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="investments-fields col-1">
+                                            <div class="checkbox-secondary _start">
+                                                <input id="bid-auto" name="bid-auto" class="checkbox-secondary__input" type="checkbox">
+                                                <label for="bid-auto" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        Рассчитать процентную ставку автоматически
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="investments-result">
+                                            <div class="investments-result__item">
+                                                <span>
+                                                    Сумма ипотеки:
+                                                </span>
+                                                <span>
+                                                    —
+                                                </span>
+                                            </div>
+                                            <div class="investments-result__item">
+                                                <span>
+                                                    Сумма ежемесячного платежа:
+                                                </span>
+                                                <span>
+                                                    —
+                                                </span>
+                                            </div>
+                                            <div class="investments-result__item">
+                                                <span>
+                                                    Сумма налогового вычета до:
+                                                </span>
+                                                <span>
+                                                    —
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="spollers__item investments__spoller">
+                                    <button type="button" data-spoller="" class="btn btn-reset spollers__title">
+                                        <h3 class="title-3">
+                                            Страхование
+                                        </h3>
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="spollers__body investments__content" hidden>
+                                        <div class="investments-fields col-1">
+                                            <label class="toggle-checkbox">
+                                                <input type="checkbox" name="toggle-1" checked disabled>
+                                                <div aria-hidden="true"></div>
+                                                <span>Страхование недвижимости</span>
+                                            </label>
+                                        </div>
+                                        <div class="investments-fields col-2">
+                                            <div class="input-text input-text--only-number">
+                                                <label class="input-text__label">
+                                                    <span>Срок страхования</span>
+                                                    <input type="text" name="Цена покупки" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                                    <span>лет</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="investments-result">
+                                            <div class="investments-result__item">
+                                                <span>
+                                                    Страховая сумма:
+                                                </span>
+                                                <span>
+                                                    —
+                                                </span>
+                                            </div>
+                                            <div class="investments-result__item">
+                                                <span>
+                                                    Платёж за первый год:
+                                                </span>
+                                                <span>
+                                                    —
+                                                </span>
+                                            </div>
+                                            <p class="investments-result__descr">
+                                                При проведении расчёта сумма будет обновлена с учётом роста цен
+                                            </p>
+                                        </div>
+                                        <div class="investments-fields col-1">
+                                            <label class="toggle-checkbox">
+                                                <input type="checkbox" name="toggle-1" data-investments-toggle="1">
+                                                <div aria-hidden="true"></div>
+                                                <span>Страхование жизни и здоровья</span>
+                                            </label>
+                                        </div>
+                                        <div class="investments-item-toggle" data-investments-item-toggle="1" hidden>
+                                            <div class="investments-fields col-2">
+                                                <div class="input-text input-text--only-number">
+                                                    <label class="input-text__label">
+                                                        <span>Срок страхования</span>
+                                                        <input type="text" name="Цена покупки" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                                        <span>лет</span>
+                                                    </label>
+                                                </div>
+                                                <div class="input-text input-text--only-number">
+                                                    <label class="input-text__label">
+                                                        <span>Ваш возраст</span>
+                                                        <input type="text" name="Цена покупки" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                                        <span>лет</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="investments-fields col-1">
+                                                <div class="radio-primary">
+                                                    <span class="radio-primary__subtitle">
+                                                        Пол
+                                                    </span>
+                                                    <div class="radio-primary__item">
+                                                        <input hidden id="man" class="radio-primary__input" checked type="radio" name="gender">
+                                                        <label for="man" class="radio-primary__label">
+                                                            <span class="radio-primary__text">Мужчина</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio-primary__item">
+                                                        <input hidden id="woman" class="radio-primary__input" type="radio" name="gender">
+                                                        <label for="woman" class="radio-primary__label">
+                                                            <span class="radio-primary__text">Женщина</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="investments-result">
+                                                <div class="investments-result__item">
+                                                    <span>
+                                                        Страховая сумма:
+                                                    </span>
+                                                    <span>
+                                                        —
+                                                    </span>
+                                                </div>
+                                                <div class="investments-result__item">
+                                                    <span>
+                                                        Платёж за первый год:
+                                                    </span>
+                                                    <span>
+                                                        —
+                                                    </span>
+                                                </div>
+                                                <p class="investments-result__descr">
+                                                    При проведении расчёта сумма будет обновлена с учётом роста цен
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="spollers__item investments__spoller">
+                                    <button type="button" data-spoller class="btn btn-reset spollers__title">
+                                        <h3 class="title-3">
+                                            Ремонт
+                                        </h3>
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="spollers__body investments__content" hidden>
+                                        <div class="investments-fields col-1">
+                                            <div class="radio-primary">
+                                                <div class="radio-primary__item">
+                                                    <input hidden id="repair_1" class="radio-primary__input" checked type="radio" name="repair" data-repair-toggle="true">
+                                                    <label for="repair_1" class="radio-primary__label">
+                                                        <span class="radio-primary__text">Буду делать</span>
+                                                    </label>
+                                                </div>
+                                                <div class="radio-primary__item">
+                                                    <input hidden id="repair_2" class="radio-primary__input" type="radio" name="repair" data-repair-toggle="false">
+                                                    <label for="repair_2" class="radio-primary__label">
+                                                        <span class="radio-primary__text">Не буду делать</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="investments-item-toggle" data-investments-item-toggle="repair">
+                                            <div class="investments-fields col-1">
+                                                <div class="checkbox-secondary _start">
+                                                    <input id="calc-auto" name="calc-auto" class="checkbox-secondary__input" type="checkbox">
+                                                    <label for="calc-auto" class="checkbox-secondary__label">
+                                                        <span class="checkbox-secondary__text">
+                                                           Рассчитать стоимость автоматически
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="investments-fields col-2">
+                                                <div class="select-secondary">
+                                                    <div class="select-secondary__wrapper">
+                                                        <span class="select-secondary__placeholder">
+                                                            Тип ремонта
+                                                        </span>
+                                                        <select class="select-secondary__body" hidden name="type-repair">
+                                                            <option placeholder>Не выбрано</option>
+                                                            <option value="room-1">Косметический</option>
+                                                            <option value="room-2">Капитальный</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="select-secondary">
+                                                    <div class="select-secondary__wrapper">
+                                                        <span class="select-secondary__placeholder">
+                                                            Класс ремонта
+                                                        </span>
+                                                        <select class="select-secondary__body" hidden name="class-repair">
+                                                            <option placeholder>Не выбрано</option>
+                                                            <option value="room-1">Эконом</option>
+                                                            <option value="room-2">Стандарт</option>
+                                                            <option value="room-2">Дизайнерский</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="input-text input-text--only-number">
+                                                    <label class="input-text__label">
+                                                        <span>Срок простоя при ремонте</span>
+                                                        <input type="text" name="Цена покупки" maxlength="2" value="1" class="input-reset input-text__input" placeholder="">
+                                                        <span>мес</span>
+                                                    </label>
+                                                </div>
+                                                <div class="input-text input-text--no-exp input-text--only-number">
+                                                    <label class="input-text__label">
+                                                        <span>Период проведения ремонта</span>
+                                                        <input type="text" name="Цена покупки" maxlength="4" value="2024" class="input-reset input-text__input" placeholder="">
+                                                    </label>
+                                                </div>
+                                                <div class="input-text input-text--only-number">
+                                                    <label class="input-text__label">
+                                                        <span>Стоимость ремонта</span>
+                                                        <input type="text" name="Цена покупки" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                        <span>₽</span>
+                                                    </label>
+                                                </div>
+                                                <button type="button" class="btn btn-reset investments__repair-btn" data-popup-path="repair-calc">
+                                                    <svg>
+                                                      <use xlink:href="./img/sprite.svg#calc"></use>
+                                                    </svg>
+                                                    Детальный расчёт ремонта
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-reset investments__save btn-primary">
+                                Сохранить
+                            </button>
+                        </form>
+                        <div class="investments__sidebar">
+                            <div class="_sticky">
+                                f
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer__container container">
+        <div class="footer__top">
+            <a href="#" class="footer__logo logo">
+                <img loading="lazy" src="./img/logo.svg" width="83" height="25" class="logo__img"
+                    alt="Продам.Онлайн">
+            </a>
+            <nav class="footer__nav nav">
+                <ul class="nav__list list-reset">
+                    <li class="nav__item"><a href="#" class="nav__link">Продажа</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Новостройки</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Покупка</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Услуги</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer__write">
+            <p>
+                Есть предложения, напишите нам.
+            </p>
+            <button type="button" class="btn btn-reset btn-secondary footer__btn">Написать</button>
+        </div>
+        <p class="footer__descr">
+            © 2021-2022 ООО «Продам онлайн», официальный сайт использует куки-файлы и другие технологии, чтобы помочь
+            вам в навигации, а также предоставить лучший пользовательский опыт, анализировать использование наших
+            продуктов и услуг, повысить качество рекламных и маркетинговых активностей. Если Вы не хотите, чтобы Ваши
+            пользовательские данные обрабатывались, пожалуйста, ограничьте их использование в своём браузере.
+        </p>
+    </div>
+</footer>
+
+    </div>
+    <!-- popups -->
+    <div class="popup popup-primary popup-primary--left popup-primary--city" data-popup-mobile-fast>
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="city">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content city-popup">
+            <h2 class="city-popup__title title-2">
+                Выбор города
+            </h2>
+            <div class="city-popup__input">
+                <button type="button" class="btn btn-reset">
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#search"></use>
+                    </svg>
+                </button>
+                <input type="search" name="Название города" class="input-reset" placeholder="Введите название города">
+                <button type="button" class="btn btn-reset city-popup__clear" hidden>
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#x"></use>
+                    </svg>
+                </button>
+            </div>
+            <div class="city-popup__list">
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Москва</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Калининград</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Санкт-Петербург</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Казань</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Краснодар</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Екатеринбург</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Нижний-Новгород</button>
+            </div>
+            <div class="checkbox-secondary city-popup__auto">
+                <input id="city-auto" name="city-auto" class="checkbox-secondary__input" type="checkbox" value="true">
+                <label for="city-auto" class="checkbox-secondary__label">
+                    <span class="checkbox-secondary__text">
+                        Определить автоматически
+                    </span>
+                </label>
+            </div>
+            <button type="button" class="btn btn-reset btn-primary js-popup-close city-popup__save" disabled>Сохранить</button>
+        </div>
+    </div>
+</div>
+    <div class="popup popup-primary popup-primary--right popup-primary--add">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="add">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content add-popup">
+            <h2 class="add-popup__title title-2">
+                Добавить
+            </h2>
+            <ul class="add-popup__list list-reset">
+                <li class="add-popup__item">
+                    <a href="#" class="add-popup__link">
+                        <img loading="lazy" src="./img/flat.svg" alt=">Заявка на покупку">
+                        <span>Заявка на покупку</span>
+                    </a>
+                </li>
+                <li class="add-popup__item">
+                    <a href="#" class="add-popup__link">
+                        <img loading="lazy" src="./img/flat.svg" alt=">Объявление на продаж">
+                        <span>Объект на продажу</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+    <div class="popup popup-secondary popup-secondary--right popup-secondary--personal">
+    <div class="popup__container popup-secondary__container" role="dialog" aria-modal="true" data-popup-target="personal-area-two">
+        <button class="btn-reset js-popup-close popup__close popup-secondary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-secondary__content personal-area">
+            <div class="personal-area__container">
+                <h2 class="personal-area__title title-2">
+                    Личный кабинет
+                </h2>
+                <div class="personal-area__info">
+                    <div class="personal-area__avatar avatar">
+                        <img loading="lazy" src="./img/avatar-1.jpg" width="45" height="45" alt="Иван П.">
+                    </div>
+                    <span class=" personal-area__name">
+                        Иван П.
+                    </span>
+                    <a href="./edit-profile.html" class="btn btn-reset personal-area__edit">Редактировать профиль</a>
+                </div>
+                <nav class="personal-area__nav">
+                    <ul data-spollers class="personal-area__list list-reset">
+                        <li class="personal-area__item personal-area-dropdown">
+                            <button type="button" data-spoller class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#add"></use>
+                                </svg>
+                                <span>Добавить</span>
+                                <svg class="personal-area-dropdown__arrow">
+                                    <use xlink:href="img/sprite.svg#arrow-small"></use>
+                                </svg>
+                            </button>
+                            <div class="personal-area-dropdown__body">
+                                <button type="button" class="btn btn-reset personal-area__btn">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#house"></use>
+                                    </svg>
+                                    <span>Объявление на продажу</span>
+                                </button>
+                                <button type="button" class="btn btn-reset personal-area__btn">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#tg"></use>
+                                    </svg>
+                                    <span>Заявка на покупку</span>
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#chat"></use>
+                                </svg>
+                                <span>Чат</span>
+                                <span class="personal-area__quantity">
+                                    +6
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <a href="./present.html" type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#bonus"></use>
+                                </svg>
+                                <span>
+                                    Кешбэк и подарки
+                                </span>
+                                <span class="personal-area__quantity">
+                                    +6
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#cart-1"></use>
+                                </svg>
+                                <span>Мои заявки на покупку</span>
+                            </button>
+                        </li>
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#cart-3"></use>
+                                </svg>
+                                <span>Предложения по заявкам</span>
+                                <span class="personal-area__quantity">
+                                    +6
+                                </span>
+                            </button>
+                        </li>
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#calendar"></use>
+                                </svg>
+                                <span>Календарь просмотров</span>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#house-laptop2"></use>
+                                </svg>
+                                <span>Мои объекты</span>
+                                <span class="personal-area__quantity">
+                                    6
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#sign-in"></use>
+                                </svg>
+                                <span>Выйти</span>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="popup popup-primary popup-primary--right popup-primary--sber-tied">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="sber-tied">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content popup-tied">
+            <h2 class="popup-tied__title title-2">
+                Привязанные аккаунты
+            </h2>
+            <p class="popup-tied__descr">
+                Привязанный аккаунт позволит входить без СМС и пароля.
+            </p>
+            <div class="popup-tied__card">
+                <img loading="lazy" src="./img/sber.png" width="32" height="32" class="popup-tied__icon" alt="Сбербанк">
+                <div>
+                    <span>Сбер ID</span>
+                    <span>Вход 21.06.2023</span>
+                    <button type="button" class="btn btn-reset">Отвязать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- ==== -->
+    <div class="popup popup-primary popup-primary--right popup-primary--repair-calc">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="repair-calc">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content repair-calc">
+            <h2 class="repair-calc__title title-2">
+                Расчёт стоимости ремонта
+            </h2>
+            <form action="#" class="repair-calc__form">
+                <div class="repair-calc__fields">
+                    <div class="input-text input-text--only-number">
+                        <label class="input-text__label">
+                            <span>Стоимость дизайн-проекта</span>
+                            <input type="text" name="Цена покупки" maxlength="12" class="input-reset input-text__input" placeholder="">
+                            <span>₽</span>
+                        </label>
+                    </div>
+                    <div class="input-text input-text--only-number">
+                        <label class="input-text__label">
+                            <span>Стоимость работ</span>
+                            <input type="text" name="Цена покупки" maxlength="12" class="input-reset input-text__input" placeholder="">
+                            <span>₽</span>
+                        </label>
+                    </div>
+                    <div class="input-text input-text--only-number">
+                        <label class="input-text__label">
+                            <span>Стоимость стройматериалов</span>
+                            <input type="text" name="Цена покупки" maxlength="12" class="input-reset input-text__input" placeholder="">
+                            <span>₽</span>
+                        </label>
+                    </div>
+                    <div class="input-text input-text--only-number">
+                        <label class="input-text__label">
+                            <span>Стоимость интерьера и отделки</span>
+                            <input type="text" name="Цена покупки" maxlength="12" class="input-reset input-text__input" placeholder="">
+                            <span>₽</span>
+                        </label>
+                    </div>
+                    <div class="input-text input-text--only-number">
+                        <label class="input-text__label">
+                            <span>Стоимость электрики</span>
+                            <input type="text" name="Цена покупки" maxlength="12" class="input-reset input-text__input" placeholder="">
+                            <span>₽</span>
+                        </label>
+                    </div>
+                    <div class="input-text input-text--only-number">
+                        <label class="input-text__label">
+                            <span>Стоимость сантехники</span>
+                            <input type="text" name="Цена покупки" maxlength="12" class="input-reset input-text__input" placeholder="">
+                            <span>₽</span>
+                        </label>
+                    </div>
+                    <button type="button" class="btn btn-reset repair-calc__create">
+                        <svg>
+                          <use xlink:href="./img/sprite.svg#plus"></use>
+                        </svg>
+                        Добавить расход
+                    </button>
+                </div>
+                <div class="repair-calc__bottom">
+                    <div class="repair-calc__result">
+                        Итого: <span>0 ₽</span>
+                    </div>
+                    <button type="button" class="btn btn-reset btn-primary repair-calc__btn js-popup-close">Сохранить</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+    <!-- popups -->
+</body>
+
+
+</html>

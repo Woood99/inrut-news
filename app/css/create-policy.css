@@ -1006,6 +1006,9 @@ textarea.input-reset {
     width: 100%;
   }
 }
+.checkbox-secondary._start .checkbox-secondary__label {
+  justify-content: start;
+}
 
 .quantity {
   width: 92px;
@@ -1068,6 +1071,9 @@ textarea.input-reset {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+.radio-primary__subtitle {
+  font-weight: 500;
 }
 .radio-primary__item {
   position: relative;
@@ -1433,6 +1439,18 @@ textarea.input-reset {
 }
 @media (max-width: 1212px) {
   .popup-primary--add .popup-primary__container {
+    border-radius: 0;
+    padding: 64px 16px;
+    width: 100%;
+  }
+}
+.popup-primary--repair-calc .popup-primary__container {
+  border-radius: 12px 0 0 12px;
+  padding: 65px 48px 24px;
+  width: 700px;
+}
+@media (max-width: 1212px) {
+  .popup-primary--repair-calc .popup-primary__container {
     border-radius: 0;
     padding: 64px 16px;
     width: 100%;
@@ -8513,6 +8531,60 @@ textarea.input-reset {
   .confirm-service {
     background-color: transparent;
   }
+}
+
+.repair-calc {
+  min-height: calc(var(--vh) - 65px - 24px);
+  display: flex;
+  flex-direction: column;
+}
+.repair-calc__title {
+  margin-bottom: 24px;
+}
+.repair-calc__form {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.repair-calc__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.repair-calc__create {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--blue);
+  width: max-content;
+}
+.repair-calc__create svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+.repair-calc__field {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr max-content;
+  grid-gap: 8px;
+}
+.repair-calc__bottom {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.repair-calc__result {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--little-big-fz);
+  line-height: var(--little-big-lh);
+}
+.repair-calc__result span {
+  font-weight: 500;
 }
 
 .burger {

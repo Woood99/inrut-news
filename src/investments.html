@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Инвестиции</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/investments.css">
+    <script id="ymaps-id"></script>
+    <script defer src="js/investments.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container">
+        @include('partials/header.html')
+        <main class="main main-page-gap default-page investments">
+            <h1 class="title-2 container">
+                Инвестиции
+            </h1>
+            <div class="default-page__body">
+                <div class="container">
+                    <div class="investments__container">
+                        <form action="#" class="investments__form">
+                            <div data-spollers class="spollers">
+                                <div class="spollers__item investments__spoller">
+                                    <button type="button" data-spoller class="btn btn-reset spollers__title">
+                                        <h3 class="title-3">
+                                            Покупка
+                                        </h3>
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="spollers__body investments__content" hidden>
+                                        <div class="investments-fields col-1">
+                                            <div class="radio-primary">
+                                                <div class="radio-primary__item">
+                                                    <input hidden id="purchase_1" class="radio-primary__input" checked type="radio" name="purchase">
+                                                    <label for="purchase_1" class="radio-primary__label">
+                                                        <span class="radio-primary__text">Кредит</span>
+                                                    </label>
+                                                </div>
+                                                <div class="radio-primary__item">
+                                                    <input hidden id="purchase_2" class="radio-primary__input" type="radio" name="purchase">
+                                                    <label for="purchase_2" class="radio-primary__label">
+                                                        <span class="radio-primary__text">Собственные средства</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="investments-fields col-2">
+                                            <div class="input-text input-text--only-number">
+                                                <label class="input-text__label">
+                                                    <span>Цена покупки</span>
+                                                    <input type="text" name="Цена покупки" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                    <span>₽</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="investments-fields col-1">
+                                            <div class="checkbox-secondary _start">
+                                                <input id="tax" name="tax" class="checkbox-secondary__input" type="checkbox">
+                                                <label for="tax" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        Налоговый вычет применялся
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="investments-fields col-1">
+                                            <label class="toggle-checkbox">
+                                                <input type="checkbox" name="toggle-1" data-investments-toggle="2">
+                                                <div aria-hidden="true"></div>
+                                                <span>Буду привлекать риэлтора</span>
+                                            </label>
+                                        </div>
+                                        <div class="investments-item-toggle" data-investments-item-toggle="2" hidden>
+                                            <div class="investments-fields col-2">
+                                                <div class="input-text input-text--only-number">
+                                                    <label class="input-text__label">
+                                                        <span>Цена услуг риэлтора</span>
+                                                        <input type="text" name="Цена покупки" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                        <span>₽</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="investments-result">
+                                            <div class="investments-result__item">
+                                                <span>
+                                                    Госпошлина за покупку:
+                                                </span>
+                                                <span>
+                                                    —
+                                                </span>
+                                            </div>
+                                            <div class="investments-result__item">
+                                                <span>
+                                                    Сумма налогового вычета:
+                                                </span>
+                                                <span>
+                                                    —
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="spollers__item investments__spoller">
+                                    <button type="button" data-spoller class="btn btn-reset spollers__title">
+                                        <h3 class="title-3">
+                                            Кредит
+                                        </h3>
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="spollers__body investments__content" hidden>
+                                        <div class="investments-fields col-1">
+                                            <div class="radio-primary">
+                                                <div class="radio-primary__item">
+                                                    <input hidden id="credit_1" class="radio-primary__input" checked type="radio" name="credit">
+                                                    <label for="credit_1" class="radio-primary__label">
+                                                        <span class="radio-primary__text">Ипотека</span>
+                                                    </label>
+                                                </div>
+                                                <div class="radio-primary__item">
+                                                    <input hidden id="credit_2" class="radio-primary__input" type="radio" name="credit">
+                                                    <label for="credit_2" class="radio-primary__label">
+                                                        <span class="radio-primary__text">Иной-кредит</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="investments-fields col-2">
+                                            <div class="input-text input-text--only-number">
+                                                <label class="input-text__label">
+                                                    <span>Сумма первоначального взноса</span>
+                                                    <input type="text" name="Цена покупки" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                    <span>₽</span>
+                                                </label>
+                                            </div>
+                                            <div class="input-text input-text--only-number">
+                                                <label class="input-text__label">
+                                                    <span>Срок погашения ипотеки</span>
+                                                    <input type="text" name="Цена покупки" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                                    <span>лет</span>
+                                                </label>
+                                            </div>
+                                            <div class="input-text input-text--only-number">
+                                                <label class="input-text__label">
+                                                    <span>Ставка</span>
+                                                    <input type="text" name="Цена покупки" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                                    <span>%</span>
+                                                </label>
+                                            </div>
+                                            <div class="checkbox-secondary _start">
+                                                <input id="tax_2" name="tax_2" class="checkbox-secondary__input" type="checkbox">
+                                                <label for="tax_2" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        Налоговый вычет применялся
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="investments-fields col-1">
+                                            <div class="checkbox-secondary _start">
+                                                <input id="bid-auto" name="bid-auto" class="checkbox-secondary__input" type="checkbox">
+                                                <label for="bid-auto" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        Рассчитать процентную ставку автоматически
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="investments-result">
+                                            <div class="investments-result__item">
+                                                <span>
+                                                    Сумма ипотеки:
+                                                </span>
+                                                <span>
+                                                    —
+                                                </span>
+                                            </div>
+                                            <div class="investments-result__item">
+                                                <span>
+                                                    Сумма ежемесячного платежа:
+                                                </span>
+                                                <span>
+                                                    —
+                                                </span>
+                                            </div>
+                                            <div class="investments-result__item">
+                                                <span>
+                                                    Сумма налогового вычета до:
+                                                </span>
+                                                <span>
+                                                    —
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="spollers__item investments__spoller">
+                                    <button type="button" data-spoller="" class="btn btn-reset spollers__title">
+                                        <h3 class="title-3">
+                                            Страхование
+                                        </h3>
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="spollers__body investments__content" hidden>
+                                        <div class="investments-fields col-1">
+                                            <label class="toggle-checkbox">
+                                                <input type="checkbox" name="toggle-1" checked disabled>
+                                                <div aria-hidden="true"></div>
+                                                <span>Страхование недвижимости</span>
+                                            </label>
+                                        </div>
+                                        <div class="investments-fields col-2">
+                                            <div class="input-text input-text--only-number">
+                                                <label class="input-text__label">
+                                                    <span>Срок страхования</span>
+                                                    <input type="text" name="Цена покупки" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                                    <span>лет</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="investments-result">
+                                            <div class="investments-result__item">
+                                                <span>
+                                                    Страховая сумма:
+                                                </span>
+                                                <span>
+                                                    —
+                                                </span>
+                                            </div>
+                                            <div class="investments-result__item">
+                                                <span>
+                                                    Платёж за первый год:
+                                                </span>
+                                                <span>
+                                                    —
+                                                </span>
+                                            </div>
+                                            <p class="investments-result__descr">
+                                                При проведении расчёта сумма будет обновлена с учётом роста цен
+                                            </p>
+                                        </div>
+                                        <div class="investments-fields col-1">
+                                            <label class="toggle-checkbox">
+                                                <input type="checkbox" name="toggle-1" data-investments-toggle="1">
+                                                <div aria-hidden="true"></div>
+                                                <span>Страхование жизни и здоровья</span>
+                                            </label>
+                                        </div>
+                                        <div class="investments-item-toggle" data-investments-item-toggle="1" hidden>
+                                            <div class="investments-fields col-2">
+                                                <div class="input-text input-text--only-number">
+                                                    <label class="input-text__label">
+                                                        <span>Срок страхования</span>
+                                                        <input type="text" name="Цена покупки" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                                        <span>лет</span>
+                                                    </label>
+                                                </div>
+                                                <div class="input-text input-text--only-number">
+                                                    <label class="input-text__label">
+                                                        <span>Ваш возраст</span>
+                                                        <input type="text" name="Цена покупки" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                                        <span>лет</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="investments-fields col-1">
+                                                <div class="radio-primary">
+                                                    <span class="radio-primary__subtitle">
+                                                        Пол
+                                                    </span>
+                                                    <div class="radio-primary__item">
+                                                        <input hidden id="man" class="radio-primary__input" checked type="radio" name="gender">
+                                                        <label for="man" class="radio-primary__label">
+                                                            <span class="radio-primary__text">Мужчина</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio-primary__item">
+                                                        <input hidden id="woman" class="radio-primary__input" type="radio" name="gender">
+                                                        <label for="woman" class="radio-primary__label">
+                                                            <span class="radio-primary__text">Женщина</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="investments-result">
+                                                <div class="investments-result__item">
+                                                    <span>
+                                                        Страховая сумма:
+                                                    </span>
+                                                    <span>
+                                                        —
+                                                    </span>
+                                                </div>
+                                                <div class="investments-result__item">
+                                                    <span>
+                                                        Платёж за первый год:
+                                                    </span>
+                                                    <span>
+                                                        —
+                                                    </span>
+                                                </div>
+                                                <p class="investments-result__descr">
+                                                    При проведении расчёта сумма будет обновлена с учётом роста цен
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="spollers__item investments__spoller">
+                                    <button type="button" data-spoller class="btn btn-reset spollers__title">
+                                        <h3 class="title-3">
+                                            Ремонт
+                                        </h3>
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="spollers__body investments__content" hidden>
+                                        <div class="investments-fields col-1">
+                                            <div class="radio-primary">
+                                                <div class="radio-primary__item">
+                                                    <input hidden id="repair_1" class="radio-primary__input" checked type="radio" name="repair" data-repair-toggle="true">
+                                                    <label for="repair_1" class="radio-primary__label">
+                                                        <span class="radio-primary__text">Буду делать</span>
+                                                    </label>
+                                                </div>
+                                                <div class="radio-primary__item">
+                                                    <input hidden id="repair_2" class="radio-primary__input" type="radio" name="repair" data-repair-toggle="false">
+                                                    <label for="repair_2" class="radio-primary__label">
+                                                        <span class="radio-primary__text">Не буду делать</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="investments-item-toggle" data-investments-item-toggle="repair">
+                                            <div class="investments-fields col-1">
+                                                <div class="checkbox-secondary _start">
+                                                    <input id="calc-auto" name="calc-auto" class="checkbox-secondary__input" type="checkbox">
+                                                    <label for="calc-auto" class="checkbox-secondary__label">
+                                                        <span class="checkbox-secondary__text">
+                                                           Рассчитать стоимость автоматически
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="investments-fields col-2">
+                                                <div class="select-secondary">
+                                                    <div class="select-secondary__wrapper">
+                                                        <span class="select-secondary__placeholder">
+                                                            Тип ремонта
+                                                        </span>
+                                                        <select class="select-secondary__body" hidden name="type-repair">
+                                                            <option placeholder>Не выбрано</option>
+                                                            <option value="room-1">Косметический</option>
+                                                            <option value="room-2">Капитальный</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="select-secondary">
+                                                    <div class="select-secondary__wrapper">
+                                                        <span class="select-secondary__placeholder">
+                                                            Класс ремонта
+                                                        </span>
+                                                        <select class="select-secondary__body" hidden name="class-repair">
+                                                            <option placeholder>Не выбрано</option>
+                                                            <option value="room-1">Эконом</option>
+                                                            <option value="room-2">Стандарт</option>
+                                                            <option value="room-2">Дизайнерский</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="input-text input-text--only-number">
+                                                    <label class="input-text__label">
+                                                        <span>Срок простоя при ремонте</span>
+                                                        <input type="text" name="Цена покупки" maxlength="2" value="1" class="input-reset input-text__input" placeholder="">
+                                                        <span>мес</span>
+                                                    </label>
+                                                </div>
+                                                <div class="input-text input-text--no-exp input-text--only-number">
+                                                    <label class="input-text__label">
+                                                        <span>Период проведения ремонта</span>
+                                                        <input type="text" name="Цена покупки" maxlength="4" value="2024" class="input-reset input-text__input" placeholder="">
+                                                    </label>
+                                                </div>
+                                                <div class="input-text input-text--only-number">
+                                                    <label class="input-text__label">
+                                                        <span>Стоимость ремонта</span>
+                                                        <input type="text" name="Цена покупки" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                        <span>₽</span>
+                                                    </label>
+                                                </div>
+                                                <button type="button" class="btn btn-reset investments__repair-btn" data-popup-path="repair-calc">
+                                                    <svg>
+                                                      <use xlink:href="./img/sprite.svg#calc"></use>
+                                                    </svg>
+                                                    Детальный расчёт ремонта
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-reset investments__save btn-primary">
+                                Сохранить
+                            </button>
+                        </form>
+                        <div class="investments__sidebar">
+                            <div class="_sticky">
+                                f
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        @include('partials/footer.html')
+    </div>
+    <!-- popups -->
+    @include('popups/city.html')
+    @include('popups/add.html')
+    @include('popups/personal-area2.html')
+    @include('popups/sber-tied.html')
+    <!-- ==== -->
+    @include('popups/repair-calc.html')
+    <!-- popups -->
+</body>
+
+
+</html>

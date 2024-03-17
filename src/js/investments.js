@@ -26,11 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
             value === 'true' ? visibleItems('repair') : hiddenItems('repair');
         }
 
-        const repairCreateField = target.closest('.repair-calc__create');
-        const repairRemoveField = target.closest('.repair-calc__field-remove');
-        if (repairCreateField) {
-            const fieldHTML = `
-                <div class="repair-calc__field" data-repair-calc-field>
+        const createFieldBtn = target.closest('[data-calc-create-field]');
+        if (createFieldBtn) {
+            const value = createFieldBtn.dataset.calcCreateField;
+            let fieldHTML = ``;
+            if (value == '1') {
+                fieldHTML = `
+                <div class="calc-popup__field _one">
                     <div class="input-text input-text--no-exp">
                         <label class="input-text__label">
                             <span>Наименование затрат</span>
@@ -44,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span>₽</span>
                         </label>
                     </div>
-                    <button type="button" class="btn btn-reset btn-remove repair-calc__field-remove" title="Удалить">
+                    <button type="button" class="btn btn-reset btn-remove calc-popup__field-remove" title="Удалить">
                         <svg>
                             <use xlink:href="./img/sprite.svg#trash">
                             </use>
@@ -52,13 +54,48 @@ document.addEventListener('DOMContentLoaded', () => {
                     </button>
                 </div>
             `;
-            repairCreateField.insertAdjacentHTML('beforebegin', fieldHTML);
-            const field = repairCreateField.previousElementSibling;
+            }
+            if (value == '2'){
+                fieldHTML = `
+                <div class="calc-popup__field _two">
+                    <div class="input-text input-text--no-exp">
+                        <label class="input-text__label">
+                            <span>Наименование позиции</span>
+                            <input type="text" name="Цена покупки" class="input-reset input-text__input" placeholder="">
+                        </label>
+                    </div>
+                    <div class="input-text input-text--only-number">
+                        <label class="input-text__label">
+                            <span>Стоимость</span>
+                            <input type="text" maxlength="12" class="input-reset input-text__input" placeholder="">
+                            <span>₽</span>
+                        </label>
+                    </div>
+                    <div class="input-text input-text--only-number">
+                        <label class="input-text__label">
+                            <span>Кол-во</span>
+                            <input type="text" name="Стоимость" maxlength="4" value="1" class="input-reset input-text__input" placeholder="">
+                            <span>шт</span>
+                        </label>
+                    </div>
+                    <button type="button" class="btn btn-reset btn-remove calc-popup__field-remove" title="Удалить">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#trash">
+                            </use>
+                        </svg>
+                    </button>
+                </div>
+            `;
+            }
+            createFieldBtn.insertAdjacentHTML('beforebegin', fieldHTML);
+            const field = createFieldBtn.previousElementSibling;
             field.querySelectorAll('.input-text').forEach(item => currentInputText(item));
         }
-        if (repairRemoveField) {
-            const currentField = repairRemoveField.closest('.repair-calc__field');
-            currentField.remove();
+
+        const removeBtn = target.closest('.calc-popup__field-remove');
+        if (removeBtn) {
+            const field = removeBtn.closest('.calc-popup__field');
+            field.remove();
         }
     })
 

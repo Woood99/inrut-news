@@ -115,6 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==============================================
 
     // ==== maps ====
-      mapPrimary();
-     objectMaps();
+    //   mapPrimary();
+    //  objectMaps();
 })

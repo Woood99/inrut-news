@@ -65,8 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
     rating();
     galleryPrimary();
     // ==== maps ====
-    mapPrimary();
-    bidMap();
-    mapDraw();
+    // mapPrimary();
+    // bidMap();
+    // mapDraw();
 })
 

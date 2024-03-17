@@ -243,7 +243,6 @@ popup(null, 'metro-map');
 popup(null, 'im-buying');
 popup(null, 'book-object');
 popup(null, 'service-moving-confirm');
-popup(null, 'repair-calc');
 popup({
     isOpen: (settingsModal) => {
         const currentID = settingsModal.currentBtn.hasAttribute('data-suggestion-id') ? settingsModal.currentBtn.dataset.suggestionId : false;
@@ -289,3 +288,6 @@ popup({
         if (bookingbtn) bookingbtn.remove();
     }
 }, 'chat-lora');
+popup(null, 'repair-calc');
+popup(null, 'furniture-calc');
+popup(null, 'technique-calc');

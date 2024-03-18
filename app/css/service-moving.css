@@ -821,6 +821,59 @@ textarea.input-reset {
   right: 16px;
 }
 
+.input-second {
+  position: relative;
+  display: block;
+}
+.input-second__wrapper {
+  padding: 24px 0 6px;
+  display: block;
+}
+.input-second__wrapper::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--primary200);
+  transition: background-color 0.4s ease-in-out;
+}
+.input-second__input {
+  min-width: auto;
+  width: 100%;
+  min-width: 200px;
+  border: none;
+  background: none;
+  outline: none;
+}
+.input-second__input:focus + .input-second__text {
+  font-size: var(--small-fz);
+  transform: translateY(-22px);
+}
+.input-second__input:disabled {
+  border: none;
+  opacity: 0.7;
+}
+.input-second__text {
+  font-size: var(--default-fz);
+  line-height: 1;
+  color: var(--primaryTwo);
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  transition: font-size 0.25s ease-in-out, transform 0.25s ease-in-out;
+}
+@media (min-width: 1213px) {
+  .input-second:hover .input-second__wrapper::before {
+    background-color: var(--dark);
+  }
+}
+.input-second._active .input-second__text {
+  font-size: var(--small-fz);
+  transform: translateY(-22px);
+}
+
 .checkbox {
   position: relative;
 }

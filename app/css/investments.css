@@ -821,6 +821,59 @@ textarea.input-reset {
   right: 16px;
 }
 
+.input-second {
+  position: relative;
+  display: block;
+}
+.input-second__wrapper {
+  padding: 24px 0 6px;
+  display: block;
+}
+.input-second__wrapper::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--primary200);
+  transition: background-color 0.4s ease-in-out;
+}
+.input-second__input {
+  min-width: auto;
+  width: 100%;
+  min-width: 200px;
+  border: none;
+  background: none;
+  outline: none;
+}
+.input-second__input:focus + .input-second__text {
+  font-size: var(--small-fz);
+  transform: translateY(-22px);
+}
+.input-second__input:disabled {
+  border: none;
+  opacity: 0.7;
+}
+.input-second__text {
+  font-size: var(--default-fz);
+  line-height: 1;
+  color: var(--primaryTwo);
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  transition: font-size 0.25s ease-in-out, transform 0.25s ease-in-out;
+}
+@media (min-width: 1213px) {
+  .input-second:hover .input-second__wrapper::before {
+    background-color: var(--dark);
+  }
+}
+.input-second._active .input-second__text {
+  font-size: var(--small-fz);
+  transform: translateY(-22px);
+}
+
 .checkbox {
   position: relative;
 }
@@ -23539,9 +23592,22 @@ textarea.input-reset {
   grid-template-columns: 100%;
   grid-row-gap: 24px;
 }
-.investments__save {
+.investments__comment {
+  display: none;
   width: 100%;
   margin-top: 24px;
+  box-shadow: var(--shadow-primary);
+  border-radius: 12px;
+  border: none;
+}
+.investments__comment > p, .investments__comment div, .investments__comment img {
+  display: block;
+}
+.investments__comment > p:not(:last-child), .investments__comment div:not(:last-child), .investments__comment img:not(:last-child) {
+  margin-bottom: 16px;
+}
+.investments__comment img {
+  width: 75%;
 }
 .investments__sidebar {
   grid-column: 2/3;
@@ -23564,6 +23630,10 @@ textarea.input-reset {
   stroke: currentColor;
   stroke-width: 14px;
 }
+.investments__link {
+  color: var(--blue);
+  width: max-content;
+}
 .investments ._necessarily {
   color: var(--red);
 }
@@ -23572,6 +23642,9 @@ textarea.input-reset {
 }
 .investments._valid .investments-result-block {
   display: grid;
+}
+.investments._valid .investments__comment {
+  display: block;
 }
 
 .investments-item-toggle {
@@ -23640,7 +23713,8 @@ textarea.input-reset {
 }
 
 .investments-clue {
-  background-color: var(--primary100);
+  background-color: var(--white);
+  border: 1px solid var(--primary100);
   border-radius: 12px;
   padding: 16px;
   font-weight: 500;
@@ -23735,7 +23809,9 @@ textarea.input-reset {
   font-weight: 500;
   margin-bottom: 8px;
 }
-.investments-info-second__title {
+.investments-info-second__top {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 16px;
 }
 .investments-info-second__items {

@@ -10,6 +10,13 @@ export const inputText = () => {
         })
     }
 }
+export const inputSecond = () => {
+    const items = document.querySelectorAll('.input-second');
+    if (items.length === 0) return;
+    items.forEach(item => {
+        currentInputSecond(item);
+    })
+};
 export const currentInputText = (input) => {
     if (!input) return;
     inputTextBody(input);
@@ -232,6 +239,18 @@ export const valueToValueAttr = (field) => {
     field.addEventListener('input', () => {
         field.setAttribute('value', field.value);
     })
+}
+
+export const currentInputSecond = (item) => {
+    const input = item.querySelector('.input-second__input');
+    input.addEventListener('input',() => {
+        if (item.classList.contains('_only-number')) {
+            input.value = input.value.replace(/\D/g, '');
+            input.value = numberReplace(input.value);
+        }
+        input.value.length > 0 ? item.classList.add('_active') : item.classList.remove('_active');
+    });
+    inputCursorEnd(input, 'focus');
 }
 
 document.querySelectorAll('.textarea-primary').forEach(textarea => {

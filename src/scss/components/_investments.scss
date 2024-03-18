@@ -53,11 +53,23 @@
         grid-template-columns: 100%;
         grid-row-gap: 24px;
     }
-    &__save {
+    &__comment{
+        display: none;
         width: 100%;
         margin-top: 24px;
+        box-shadow: var(--shadow-primary);
+        border-radius: 12px;
+        border: none;
+        >p,div,img{
+            display: block;
+            &:not(:last-child){
+                margin-bottom: 16px;
+            }
+        }
+        img{
+            width: 75%;
+        }
     }
-
     &__sidebar {
         grid-column: 2/3;
         grid-row: 1/2;
@@ -79,6 +91,10 @@
           stroke-width: 14px;
         }
     }
+    &__link{
+        color: var(--blue);
+        width: max-content;
+    }
     ._necessarily{
         color: var(--red);
     }
@@ -88,6 +104,9 @@
         }
         .investments-result-block{
             display: grid;
+        }
+        .investments__comment{
+            display: block;
         }
     }
 }
@@ -160,7 +179,8 @@
     }
 }
 .investments-clue {
-    background-color: var(--primary100);
+   background-color: var(--white);
+   border: 1px solid var(--primary100);
     border-radius: 12px;
     padding: 16px;
     font-weight: 500;
@@ -275,9 +295,12 @@ justify-content: center;
 }
 
 .investments-info-second {
-
-    &__title {
+    &__top{
+        display: flex;
+        justify-content: space-between;
         margin-bottom: 16px;
+    }
+    &__title {
     }
 
     &__items {

@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const spollers = container.querySelectorAll('[data-spoller-item]');
     const mortgageProgram  = container.querySelector('[data-mortgage-program]');
+    const go = container.querySelector('.investments-sidebar__button');
     document.addEventListener('click', (e) => {
         const target = e.target;
         const inputToggle = target.closest('[data-investments-toggle]');
@@ -187,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const goBtn = target.closest('.investments-sidebar__button');
         if (goBtn) {
-            fieldValid();
+            fieldValid(goBtn);
         }
     })
 
@@ -214,8 +215,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function fieldValid() {
         container.classList.add('_valid');
         const spollerItems = container.querySelectorAll('.investments__content');
+        go.remove();
+
         spollerItems.forEach(item => {
-            item.classList.add('_disabled');
+            // item.classList.add('_disabled');
             const inputsText = item.querySelectorAll('.input-text');
             const selectsSecondary = item.querySelectorAll('.select-secondary');
             inputsText.forEach(item => item.classList.add('input-text--disabled'))
@@ -225,5 +228,9 @@ document.addEventListener('DOMContentLoaded', () => {
             top: 0,
             behavior: 'smooth'
         })
+    }
+
+    function updateSidebarList(){
+        const list = container.querySelector('.investments-sidebar__list');
     }
 })

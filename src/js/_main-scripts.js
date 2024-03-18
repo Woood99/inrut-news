@@ -26,7 +26,8 @@ import {
     inputOnlyNumber,
     textareaSecondary,
     textareaTags,
-    inputClue
+    inputClue,
+    inputSecond
 } from './components/inputs';
 import navDropdown from './components/navDropdown';
 import city from './components/city';
@@ -82,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     simplebar('.simplebar-third');
 
     inputText();
+    inputSecond()
     inputOnlyNumber();
     textareaSecondary();
     textareaTags();

@@ -88,22 +88,25 @@ textarea.input-reset {
             margin-left: 8px;
         }
     }
-    @media (min-width:$desktop-min){
-         &:hover{
-            &:not(.input-primary--disabled){
-                .input-primary{
-                    &__input{
+
+    @media (min-width:$desktop-min) {
+        &:hover {
+            &:not(.input-primary--disabled) {
+                .input-primary {
+                    &__input {
                         border: 1px solid var(--blue);
                     }
                 }
             }
-         } 
+        }
     }
 }
-.input-cvc{
+
+.input-cvc {
     -webkit-text-security: disc;
     text-security: disc;
 }
+
 .textarea-primary {
     position: relative;
     width: 100%;
@@ -135,23 +138,27 @@ textarea.input-reset {
             border: 1px solid var(--blue);
         }
     }
-    &__remove{
+
+    &__remove {
         position: absolute;
         bottom: 16px;
         right: 16px;
         width: 16px;
         height: 16px;
-        svg{
+
+        svg {
             width: 16px;
             height: 16px;
             fill: var(--red);
         }
     }
-    &--remove{
-        .textarea-primary__input{
+
+    &--remove {
+        .textarea-primary__input {
             padding-right: 24px;
         }
     }
+
     @media (max-width:$desktop) {
         --height: 96px;
     }
@@ -201,14 +208,17 @@ textarea.input-reset {
         height: 18px;
         fill: var(--primaryTwo);
     }
-    &--default{
+
+    &--default {
         min-height: var(--height);
-        .textarea-secondary{
-            &__input{
+
+        .textarea-secondary {
+            &__input {
                 background-color: transparent;
                 border-radius: 12px;
                 border: 1px solid var(--primary200);
                 padding: 16px;
+
                 &::placeholder {
                     color: var(--primaryTwo);
                 }
@@ -218,6 +228,7 @@ textarea.input-reset {
 
     &._error {
         margin-bottom: 32px;
+
         .textarea-secondary__input {
             border: 1px solid var(--red);
 
@@ -244,7 +255,7 @@ textarea.input-reset {
 .textarea-tags {
     position: relative;
     width: 100%;
-  height: auto;
+    height: auto;
     background-color: transparent;
     border: 1px solid var(--primary200);
     border-radius: 12px;
@@ -256,15 +267,16 @@ textarea.input-reset {
 
     display: grid;
     grid-template-columns: max-content 1fr;
-    
-    >span{
-      display: flex;
-      justify-content: center;
-      padding: 7px 0;
+
+    >span {
+        display: flex;
+        justify-content: center;
+        padding: 7px 0;
         margin-right: 16px;
-      transition: color $transitionSpeed $transitionFunction;
+        transition: color $transitionSpeed $transitionFunction;
     }
-    &__list{
+
+    &__list {
         grid-column: 1/-1;
         display: flex;
         align-items: center;
@@ -274,21 +286,24 @@ textarea.input-reset {
         padding-bottom: 8px;
         height: max-content;
     }
-    &__tag{
-    margin: 0 16px 7px 0;
-    color: var(--dark);
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-    svg{
-        margin-left: 4px;
-        width: 16px;
-        height: 16px;
-        fill: var(--dark);
-        cursor: pointer;
-    }
+
+    &__tag {
+        margin: 0 16px 7px 0;
+        color: var(--dark);
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+
+        svg {
+            margin-left: 4px;
+            width: 16px;
+            height: 16px;
+            fill: var(--dark);
+            cursor: pointer;
+        }
 
     }
+
     &__input {
         flex-grow: 1;
         min-width: 350px;
@@ -297,7 +312,7 @@ textarea.input-reset {
         padding: 7px 0 7px 0;
         color: var(--gray);
         font-size: var(--default-fz);
-      line-height: var(--default-lh);
+        line-height: var(--default-lh);
         font-weight: 400;
         border: none;
         background-color: transparent;
@@ -309,12 +324,14 @@ textarea.input-reset {
 
         resize: none;
     }
-    &._active{
-        >span{
+
+    &._active {
+        >span {
             color: #b6d5f8;
         }
     }
 }
+
 .input-text {
     position: relative;
     display: block;
@@ -355,7 +372,7 @@ textarea.input-reset {
         &:disabled {}
 
         &::placeholder {
-            color: rgba(61, 61, 61,0.42);
+            color: rgba(61, 61, 61, 0.42);
         }
     }
 
@@ -450,19 +467,20 @@ textarea.input-reset {
         }
     }
 
-  @media (min-width:$desktop-min){
-    &:hover{
-        &:not(.input-text--disabled){
-            .input-text__label{
-                border: 1px solid var(--blue);
-                >span{
-                    color: var(--blue);
+    @media (min-width:$desktop-min) {
+        &:hover {
+            &:not(.input-text--disabled) {
+                .input-text__label {
+                    border: 1px solid var(--blue);
+
+                    >span {
+                        color: var(--blue);
+                    }
                 }
             }
-        }
 
-     }  
-  }
+        }
+    }
 }
 
 
@@ -483,5 +501,72 @@ textarea.input-reset {
         top: 50%;
         transform: translateY(-50%);
         right: 16px;
+    }
+}
+
+.input-second {
+    position: relative;
+    display: block;
+
+    &__wrapper {
+        padding: 24px 0 6px;
+display: block;
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--primary200);
+            transition: background-color $transitionSpeed $transitionFunction;
+        }
+    }
+
+    &__input {
+        min-width: auto;
+        width: 100%;
+        min-width: 200px;
+        border: none;
+        background: none;
+        outline: none;
+
+        &:focus+.input-second__text {
+            font-size: var(--small-fz);
+            transform: translateY(-22px);
+        }
+
+        &:disabled {
+            border: none;
+            opacity: 0.7;
+        }
+    }
+
+    &__text {
+        font-size: var(--default-fz);
+        line-height: 1;
+        color: var(--primaryTwo);
+
+        position: absolute;
+        bottom: 12px;
+        left: 0;
+
+        transition: font-size 0.25s $transitionFunction,
+            transform 0.25s $transitionFunction;
+    }
+    @media (min-width:$desktop-min){
+         &:hover{
+            .input-second__wrapper{
+                &::before{
+                    background-color: var(--dark);
+                }
+            }
+         } 
+    }
+    &._active {
+        .input-second__text{
+            font-size: var(--small-fz);
+            transform: translateY(-22px);
+        }
     }
 }

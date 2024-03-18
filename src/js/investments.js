@@ -7,7 +7,7 @@ import './_main-scripts';
 
 // ==============================
 import {
-    currentInputText
+    currentInputText,currentInputSecond
 } from './components/inputs';
 import {
     selectSecondaryCreate
@@ -65,17 +65,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (value == '1') {
                 fieldHTML = `
                 <div class="calc-popup__field _one">
-                    <div class="input-text input-text--no-exp">
-                        <label class="input-text__label">
-                            <span>Наименование затрат</span>
-                            <input type="text" name="Цена покупки" class="input-reset input-text__input" placeholder="">
+                    <div class="input-second">
+                        <label class="input-second__wrapper">
+                            <input type="text" name="Имя" class="input-reset input-second__input" placeholder="">
+                            <span class="input-second__text">Наименование затрат</span>
                         </label>
                     </div>
-                    <div class="input-text input-text--only-number">
-                        <label class="input-text__label">
-                            <span>Стоимость</span>
-                            <input type="text" maxlength="12" class="input-reset input-text__input" placeholder="">
-                            <span>₽</span>
+                    <div class="input-second _number-format">
+                        <label class="input-second__wrapper">
+                            <input type="text" name="Имя" maxlength="12" class="input-reset input-second__input" placeholder="">
+                            <span class="input-second__text">Стоимость</span>
                         </label>
                     </div>
                     <button type="button" class="btn btn-reset btn-remove calc-popup__field-remove" title="Удалить">
@@ -121,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             createFieldBtn.insertAdjacentHTML('beforebegin', fieldHTML);
             const field = createFieldBtn.previousElementSibling;
+            field.querySelectorAll('.input-second').forEach(item => currentInputSecond(item));
             field.querySelectorAll('.input-text').forEach(item => currentInputText(item));
         }
 

@@ -244,7 +244,7 @@ export const valueToValueAttr = (field) => {
 export const currentInputSecond = (item) => {
     const input = item.querySelector('.input-second__input');
     input.addEventListener('input',() => {
-        if (item.classList.contains('_only-number')) {
+        if (item.classList.contains('_number-format')) {
             input.value = input.value.replace(/\D/g, '');
             input.value = numberReplace(input.value);
         }

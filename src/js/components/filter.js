@@ -1599,3 +1599,60 @@ export const filterActions = () => {
         currentBtn.classList.add('_active');
     }
 };
+
+export const selectThird = () => {
+    const selects = document.querySelectorAll('.select-third');
+    selects.forEach(select => currentSelectThird(select));
+}
+
+export const currentSelectThird = (container) => {
+    const input = container.querySelector('.select-third__input-hidden');
+    const placeholder = container.querySelector('.select-third__value');
+    const items = container.querySelectorAll('.select-third__item');
+    init();
+    container.addEventListener('click',(e) => {
+        const target = e.target;
+        const button = target.closest('.select-third__button');
+        const item = target.closest('.select-third__item');
+        if (button){
+            container.classList.contains('_show') ? close() : show();
+        }
+        if (item){
+            choice(item);
+        }
+    })
+
+    function show() {
+        container.classList.add('_show');
+    }
+
+    function close() {
+        container.classList.remove('_show');
+    }
+    function choice(item){
+        const value = item.dataset.value;
+        input.value = value;
+        container.classList.add('_selected');
+        items.forEach(item => item.removeAttribute('selected'));
+        item.setAttribute('selected','');
+
+        updatePlaceholder();
+        close();
+    }
+
+    function updatePlaceholder(){
+        const selectedItem = Array.from(items).find(item => item.hasAttribute('selected'));
+        if (!selectedItem) return;
+        placeholder.textContent = selectedItem.textContent.trim();
+    }
+
+    function init(){
+        const selectedItem = Array.from(items).find(item => item.hasAttribute('selected'));
+        if (!selectedItem) return;
+
+        const value = selectedItem.dataset.value;
+        input.value = value;
+        container.classList.add('_selected');
+        updatePlaceholder();
+    }
+}

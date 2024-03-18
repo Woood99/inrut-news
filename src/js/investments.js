@@ -18,12 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!container) return;
     datePickers();
 
-    const spollers = document.querySelectorAll('[data-spoller-item]');
+    const spollers = container.querySelectorAll('[data-spoller-item]');
+    const mortgageProgram  = container.querySelector('[data-mortgage-program]');
     document.addEventListener('click', (e) => {
         const target = e.target;
         const inputToggle = target.closest('[data-investments-toggle]');
         const repairRadio = target.closest('[data-repair-toggle]');
         const purchaseRadio = target.closest('[data-purchase-toggle]');
+        const mortgageProgramRadio = target.closest('[data-mortgage-program-toggle]');
         if (inputToggle) {
             const currentID = inputToggle.dataset.investmentsToggle;
             inputToggle.checked ? visibleItems(currentID) : hiddenItems(currentID);
@@ -44,6 +46,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 spollers.forEach(item => {
                     item.removeAttribute('hidden');
                 })
+            }
+        }
+        if (mortgageProgramRadio) {
+            const value = mortgageProgramRadio.dataset.mortgageProgramToggle;
+            if (value == '2') {
+                mortgageProgram.setAttribute('hidden','');
+            } else {
+                mortgageProgram.removeAttribute('hidden');
             }
         }
 

@@ -1,20 +1,33 @@
 .card-document {
-    background-color: var(--white);
-    box-shadow: var(--shadow-primary);
-    padding: 20px;
-    border-radius: 12px;
     position: relative;
+    overflow: hidden;
 
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    &__type{
+    &__wrapper {
+        clip-path: polygon(100% 100%, 0 100%, 0 0, 73% 0, 75% 1%, 76% 2%, 77% 3%, 97% 22%, 98% 23%, 99% 24%, 100% 27%);
+        z-index: 2;
+        background-color: var(--white);
+        box-shadow: var(--shadow-primary);
+        position: relative;
+        padding: 20px 48px 20px 20px;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+
+        box-sizing: border-box;
+
+        transition: background-color .3s;
+    }
+
+    &__type {
         margin-bottom: 16px;
-        span{
-        font-size: var(--small-fz);
+
+        span {
+            font-size: var(--small-fz);
             color: var(--primaryTwo);
         }
     }
+
     &__title {
         margin-bottom: 32px;
     }
@@ -22,11 +35,47 @@
     &__image {
         margin-top: auto;
     }
-    &__link{
+
+    &__link {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
+    }
+
+    &::before,
+    &::after {
+        clip-path: polygon(100% 100%, 0 100%, 0 0, 73% 0, 75% 1%, 76% 2%, 77% 3%, 97% 22%, 98% 23%, 99% 24%, 100% 27%);
+        content: "";
+        background-color: #f1f2f4;
+        border-radius: 8px;
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transition: transform .3s ease;
+        z-index: 1;
+        will-change: transform;
+    }
+
+    @media (min-width:$desktop-min) {
+       &:hover{
+        .card-document__wrapper {
+            background-color: #fed141;
+        }
+
+        &::before {
+            background-color: #ffbc4b;
+            transform: rotate(3deg);
+        }
+
+        &::after {
+            background-color: #fb9c0f;
+            transform: rotate(-3deg);
+        }
+       }
     }
 }

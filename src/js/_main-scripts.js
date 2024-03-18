@@ -182,7 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (selectThird.length > 0) {
             const currentContainer = target.closest('.select-third');
-        
             if (currentContainer && !currentContainer.classList.contains('_show') || !currentContainer) {
                 selectThird.forEach(container => container.classList.remove('_show'));
             }

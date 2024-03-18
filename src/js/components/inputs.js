@@ -243,14 +243,19 @@ export const valueToValueAttr = (field) => {
 
 export const currentInputSecond = (item) => {
     const input = item.querySelector('.input-second__input');
-    input.addEventListener('input',() => {
+    body();
+    input.addEventListener('input', () => {
+        body();
+    });
+    inputCursorEnd(input, 'focus');
+
+    function body() {
         if (item.classList.contains('_number-format')) {
             input.value = input.value.replace(/\D/g, '');
             input.value = numberReplace(input.value);
         }
         input.value.length > 0 ? item.classList.add('_active') : item.classList.remove('_active');
-    });
-    inputCursorEnd(input, 'focus');
+    }
 }
 
 document.querySelectorAll('.textarea-primary').forEach(textarea => {

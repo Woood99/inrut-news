@@ -5446,6 +5446,7 @@
     >div {
         &:nth-child(1) {
             >span {
+                transition: color $transitionSpeed $transitionFunction;
                 &:nth-child(1) {
                     color: var(--dark);
                     margin-right: 8px;
@@ -5507,6 +5508,16 @@
                 text-decoration: line-through;
             }
         }
+    }
+    @media (min-width:$desktop-min){
+    
+         &:hover{
+            >div:first-child{
+                span{
+                color: var(--blue);
+                }
+             }
+         } 
     }
 }
 

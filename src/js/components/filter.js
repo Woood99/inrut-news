@@ -19,7 +19,9 @@ import {
 import {
     actionForCards
 } from './controlCards';
-import { convertSum } from '../modules/convertSum';
+import {
+    convertSum
+} from '../modules/convertSum';
 export const filterDropdownChoice = () => {
     const items = document.querySelectorAll('.filter-dropdown__dropdown');
     if (!items.length >= 1) return;
@@ -337,6 +339,7 @@ export const filterSum = () => {
             buttonWrapper.innerHTML = html;
         }, 0);
     }
+
     function checkChangeTitle(container, currentContainer) {
         return (container || currentContainer).classList.contains('filter-dropdown--one');
     }
@@ -359,38 +362,39 @@ export const searchSelect = () => {
         let arrSelected = [];
         const imgLeft = container.classList.contains('search-select--img-left');
         init();
-        itemsInput.forEach(input => {
-            input.addEventListener('change', () => {
-                const currentElem = imgLeft ?
-                    input.closest('.search-select__item').querySelector('.checkbox-secondary__text').innerHTML.trim() :
-                    input.closest('.search-select__item').querySelector('.checkbox-secondary__text span:nth-child(1)').textContent.trim();
-                if (container.hasAttribute('data-search-select-single')) {
-                    itemsInput.forEach(currentInput => {
-                        if (currentInput !== input) currentInput.checked = false;
-                    })
-                    arrSelected = [];
-                    input.checked ? arrSelected.push(currentElem) : arrSelected = [];
-                } else if (container.classList.contains('search-select--img-left')) {
-                    if (input.checked) {
-                        arrSelected.push(currentElem);
-                    } else {
-                        const index = arrSelected.indexOf(currentElem);
-                        if (index !== -1) {
-                            arrSelected.splice(index, 1);
-                        }
-                    }
+        container.addEventListener('change', (e) => {
+            const item = e.target.closest('.search-select__item');
+            const input = item.querySelector('.checkbox-secondary__input');
+            if (!input) return;
+            const currentElem = imgLeft ?
+                input.closest('.search-select__item').querySelector('.checkbox-secondary__text').innerHTML.trim() :
+                input.closest('.search-select__item').querySelector('.checkbox-secondary__text span:nth-child(1)').textContent.trim();
+            if (container.hasAttribute('data-search-select-single')) {
+                itemsInput.forEach(currentInput => {
+                    if (currentInput !== input) currentInput.checked = false;
+                })
+                arrSelected = [];
+                input.checked ? arrSelected.push(currentElem) : arrSelected = [];
+            } else if (container.classList.contains('search-select--img-left')) {
+                if (input.checked) {
+                    arrSelected.push(currentElem);
                 } else {
-                    if (input.checked) {
-                        arrSelected.push(currentElem);
-                    } else {
-                        const index = arrSelected.indexOf(currentElem);
-                        if (index !== -1) {
-                            arrSelected.splice(index, 1);
-                        }
+                    const index = arrSelected.indexOf(currentElem);
+                    if (index !== -1) {
+                        arrSelected.splice(index, 1);
                     }
                 }
-                updatePlaceholder();
-            })
+            } else {
+                if (input.checked) {
+                    arrSelected.push(currentElem);
+                } else {
+                    const index = arrSelected.indexOf(currentElem);
+                    if (index !== -1) {
+                        arrSelected.splice(index, 1);
+                    }
+                }
+            }
+            updatePlaceholder();
         })
         const controls = container.querySelector('.search-select__control');
         const btnAll = container.querySelector('.search-select__all');
@@ -506,6 +510,7 @@ export const searchSelect = () => {
         }
 
         function updatePlaceholder() {
+            console.log(arrSelected);
             if (arrSelected.length >= 1) {
                 btnList.textContent = '';
                 btnWrapper.classList.add('_active');
@@ -539,7 +544,8 @@ export const searchSelect = () => {
         }
 
         function init() {
-            itemsInput.forEach(input => {
+            arrSelected = [];
+            container.querySelectorAll('.search-select__item .checkbox-secondary__input').forEach(input => {
                 if (imgLeft) {
                     if (input.checked) {
                         const currentElem = input.closest('.search-select__item').querySelector('.checkbox-secondary__text').innerHTML.trim();
@@ -554,6 +560,19 @@ export const searchSelect = () => {
             })
             updatePlaceholder();
         }
+
+        setTimeout(() => {
+            var observer = new MutationObserver(function (mutations) {
+                for (var i in mutations) {
+                    var mutation = mutations[i];
+                    console.log('da');
+                    init();
+                };
+            });
+            observer.observe(body.querySelector('.simplebar-content'), {
+                childList: true,
+            });
+        }, 1000);
     });
 }
 export const searchSelectOne = () => {
@@ -1610,14 +1629,14 @@ export const currentSelectThird = (container) => {
     const placeholder = container.querySelector('.select-third__value');
     const items = container.querySelectorAll('.select-third__item');
     init();
-    container.addEventListener('click',(e) => {
+    container.addEventListener('click', (e) => {
         const target = e.target;
         const button = target.closest('.select-third__button');
         const item = target.closest('.select-third__item');
-        if (button){
+        if (button) {
             container.classList.contains('_show') ? close() : show();
         }
-        if (item){
+        if (item) {
             choice(item);
         }
     })
@@ -1629,24 +1648,25 @@ export const currentSelectThird = (container) => {
     function close() {
         container.classList.remove('_show');
     }
-    function choice(item){
+
+    function choice(item) {
         const value = item.dataset.value;
         input.value = value;
         container.classList.add('_selected');
         items.forEach(item => item.removeAttribute('selected'));
-        item.setAttribute('selected','');
+        item.setAttribute('selected', '');
 
         updatePlaceholder();
         close();
     }
 
-    function updatePlaceholder(){
+    function updatePlaceholder() {
         const selectedItem = Array.from(items).find(item => item.hasAttribute('selected'));
         if (!selectedItem) return;
         placeholder.textContent = selectedItem.textContent.trim();
     }
 
-    function init(){
+    function init() {
         const selectedItem = Array.from(items).find(item => item.hasAttribute('selected'));
         if (!selectedItem) return;
 

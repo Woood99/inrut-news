@@ -443,10 +443,6 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
         `;
     }
 
-    function generateCurrentInfo(eventsArray, currentDate, currentCard) {
-      
-    }
-
     function generateAllInfo(eventsArray, currentDate) {
         infoBlock.innerHTML = '';
         const currentDateEvents = eventsArray.filter(item => item.date === currentDate);
@@ -487,7 +483,7 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
         infoBlock.insertAdjacentHTML('beforeend', currentDateTitle);
         infoBlock.insertAdjacentHTML('beforeend', `
             <div class="calendar-info__content simplebar-third">
-                ${eventsHTML.length === 0 ? 'Нет событий' : eventsHTML.join('')}
+                ${eventsHTML.length === 0 ? 'Нет планов' : eventsHTML.join('')}
             </div>
         `);
         currentSimplebar(infoBlock.querySelector('.calendar-info__content.simplebar-third'));

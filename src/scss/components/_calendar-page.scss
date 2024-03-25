@@ -29,7 +29,8 @@
     &__calendar {
         display: grid;
         grid-template-columns: 1fr 350px;
-        grid-column-gap: 16px;
+        grid-column-gap: 12px;
+        grid-row-gap: 12px;
 
         @media (max-width:$desktop) {
             box-shadow: none;
@@ -70,6 +71,33 @@
             height: 12px;
         }
     }
+
+    &__list {
+        background-color: var(--white);
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: var(--shadow-primary);
+        grid-column: 1/-1;
+
+        .main-table {
+            margin-top: 32px;
+            padding: 0;
+            border-radius: 0;
+
+            &__type {
+                display: grid;
+                grid-template-columns: percent(210, 968) percent(400, 968) 1fr;
+                grid-column-gap: 15px;
+            }
+
+            .object-info-secondary {
+                grid-template-columns: percent(210, 968) percent(400, 968) 1fr;
+                &__from {
+                    margin: 0;
+                }
+            }
+        }
+    }
 }
 
 .calendar-info {
@@ -96,9 +124,10 @@
             width: 100%;
         }
     }
-    &._one-style{
-        .fc-event-big{
-            &::before{
+
+    &._one-style {
+        .fc-event-big {
+            &::before {
                 height: 100%;
             }
         }

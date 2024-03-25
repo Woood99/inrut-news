@@ -510,7 +510,6 @@ export const searchSelect = () => {
         }
 
         function updatePlaceholder() {
-            console.log(arrSelected);
             if (arrSelected.length >= 1) {
                 btnList.textContent = '';
                 btnWrapper.classList.add('_active');
@@ -564,8 +563,6 @@ export const searchSelect = () => {
         setTimeout(() => {
             var observer = new MutationObserver(function (mutations) {
                 for (var i in mutations) {
-                    var mutation = mutations[i];
-                    console.log('da');
                     init();
                 };
             });

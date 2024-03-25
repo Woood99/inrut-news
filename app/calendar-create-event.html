@@ -116,18 +116,26 @@
         <main class="main main-page-gap calendar-create-event">
             <input type="text" name="Имя" class="input-reset" date-current hidden placeholder="Имя">
             <div class="calendar-create-event__container">
-                <h1 class="calendar-create-event__title title-2 container">
-                    Новое событие
-                </h1>
+                <div class="top-page-inner-title__container container">
+                    <a href="#" class="submit-app__back top-page-inner-title__back back-link">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#arrow-left"></use>
+                        </svg>
+                        <span>Назад</span>
+                    </a>
+                    <h1 class="calendar-create-event__title top-page-inner-title__title title-2">
+                        Новое событие
+                    </h1>
+                </div>
                 <div class="calendar-create-event__body">
                     <div class="container">
-                        <form action="#" class="calendar-create-event__form">
+                        <form action="#" id="calendar-create-event-form" class="calendar-create-event__form">
                             <div class="calendar-create-event__row">
                                 <div class="calendar-create-event__item field-dropdown field-dropdown--col _container" data-field-dropdown-name="developer">
                                     <div class="field-dropdown__name">
                                         Действие
                                     </div>
-                                    <div class="search-select-one field-dropdown__wrapper">
+                                    <div class="search-select-one field-dropdown__wrapper" data-video-meeting-target>
                                         <button type="button" class="btn btn-reset search-select-one__button">
                                             <div class="search-select-one__button-wrapper">
                                                 <div></div>
@@ -150,7 +158,7 @@
                                                 <div class="search-select-one__item" data-value="object-1">
                                                     <span>Просмотр объекта</span>
                                                 </div>
-                                                <div class="search-select-one__item" data-value="object-2">
+                                                <div class="search-select-one__item" data-value="video-meeting">
                                                     <span>Видеовстреча</span>
                                                 </div>
                                                 <div class="search-select-one__item" data-value="object-2">
@@ -164,7 +172,7 @@
                                         <input type="text" name="object" value="Волгоград" class="search-select-one__input-hidden" hidden>
                                     </div>
                                 </div>
-                                <div class="calendar-create-event__item field-input field-input--col _container">
+                                <div class="calendar-create-event__item field-input field-input--col _container" data-video-meeting-block>
                                     <div class="field-input__name">
                                         Видеовстреча
                                     </div>
@@ -284,6 +292,30 @@
                                         <input type="text" name="object" value="Волгоград" class="search-select-one__input-hidden" hidden>
                                     </div>
                                 </div>
+                                <div class="calendar-create-event__item field-input field-input--col _container" data-create-event-object-address hidden>
+                                    <div class="field-input__name">
+                                        Адрес
+                                    </div>
+                                    <div class="field-input__wrapper _disabled-opacity">
+                                        <div class="input-text input-text--no-exp">
+                                            <label class="input-text__label">
+                                                <input type="text" class="input-reset input-text__input" value="Краснодар, ул.Академика Королева, 8/1, к. 1" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="calendar-create-event__item field-input field-input--col _container">
+                                    <div class="field-input__name">
+                                        Или укажите адрес/место
+                                    </div>
+                                    <div class="field-input__wrapper" data-create-event-address>
+                                        <div class="input-text input-text--no-exp">
+                                            <label class="input-text__label">
+                                                <input type="text" class="input-reset input-text__input" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="calendar-create-event__item field-dropdown field-dropdown--col _container" data-field-dropdown-name="developer">
                                     <div class="field-dropdown__name">
                                         Участники
@@ -322,18 +354,6 @@
                                             </div>
                                         </div>
 
-                                    </div>
-                                </div>
-                                <div class="calendar-create-event__item field-input field-input--col _container">
-                                    <div class="field-input__name">
-                                        Или укажите адрес/место
-                                    </div>
-                                    <div class="field-input__wrapper" data-create-event-address>
-                                        <div class="input-text input-text--no-exp">
-                                            <label class="input-text__label">
-                                                <input type="text" class="input-reset input-text__input" placeholder="">
-                                            </label>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="calendar-create-event__item field-notif field-notif--col _container">
@@ -483,15 +503,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="calendar-create-event__btns">
-                                <button type="button" class="btn btn-reset btn-secondary" onclick="window.history.go(-1); return false;">Закрыть</button>
-                                <button type="button" class="btn btn-reset btn-primary">Создать</button>
-                            </div>
+                                <button type="button" class="btn btn-reset btn-primary calendar-create-event__btn">Создать</button>
                         </form>
                     </div>
                 </div>
             </div>
         </main>
+        <div class="footer-fixed calendar-create-event-fixed fix-block">
+            <div class="footer-fixed__container">
+                <button type="submit" class="btn btn-reset btn-primary" form="calendar-create-event-form" style="width: 100%;">
+                    Создать
+                </button>
+            </div>
+        </div>
         <footer class="footer">
     <div class="footer__container container">
         <div class="footer__top">

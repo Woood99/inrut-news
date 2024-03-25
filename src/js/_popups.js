@@ -292,5 +292,4 @@ popup(null, 'repair-calc');
 popup(null, 'furniture-calc');
 popup(null, 'technique-calc');
 popup(null, 'expenses-calc');
-popup(null, 'authorization-phone');
 popup(null, 'authorization-recovery');

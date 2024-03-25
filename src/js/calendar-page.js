@@ -16,7 +16,11 @@ import AirDatepicker from 'air-datepicker';
 import {
     dropImage
 } from './components/dropImage';
+import {
+    emergingBlockScroll
+} from './modules/emergingBlockScroll';
 document.addEventListener('DOMContentLoaded', () => {
+    emergingBlockScroll('.calendar-create-event .calendar-create-event__btn', '.footer-fixed.calendar-create-event-fixed', 99999999, true);
     const createEvent = document.querySelector('.calendar-create-event');
     const calendarPage = document.querySelector('.calendar-page');
     if (calendarPage) {
@@ -28,7 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
         timeAndDate(form, dateEvent);
         dropImage();
         descrAdd(form);
-        toggleObjectAddress(form.querySelector('[data-create-event-object]'), form.querySelector('[data-create-event-address]'));
+        toggleObjectAddress(form, form.querySelector('[data-create-event-object]'), form.querySelector('[data-create-event-address]'));
+        videoMeetingToggle(form);
     }
 
 
@@ -54,13 +59,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function toggleObjectAddress(object, address) {
+    function toggleObjectAddress(form, object, address) {
         if (!(object && address)) return;
         const addressInput = address.querySelector('input');
-        object.addEventListener('change', function() {
+        const objectAddress = form.querySelector('[data-create-event-object-address]');
+        object.addEventListener('change', function () {
             setTimeout(() => {
                 if (this.classList.contains('_selected')) {
                     address.classList.add('_disabled-opacity');
+                    objectAddress.removeAttribute('hidden');
+                } else {
+                    objectAddress.setAttribute('hidden', '');
                 }
             }, 50);
         })
@@ -71,5 +80,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 object.classList.remove('_disabled-opacity');
             }
         })
+    }
+
+    function videoMeetingToggle(form) {
+        const target = form.querySelector('[data-video-meeting-target]');
+        const block = form.querySelector('[data-video-meeting-block]');
+        if (!(target && block)) return;
+        body();
+        target.addEventListener('change', body);
+
+        function body() {
+            setTimeout(() => {
+                const input = target.querySelector('.search-select-one__input-hidden');
+                if (input.value === 'video-meeting') {
+                    block.removeAttribute('hidden');
+                } else {
+                    block.setAttribute('hidden', '');
+                }
+            }, 1);
+        }
     }
 })

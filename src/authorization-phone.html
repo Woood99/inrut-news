@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Войти по номеру телефона</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <script id="ymaps-id"></script>
+    <script defer src="js/profile.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container">
+        @include('partials/header.html')
+        <main class="main main-page-gap edit-profile">
+            <h1 class="title-2 container">
+                Войти по номеру телефона
+            </h1>
+            <div class="edit-profile__body">
+                <div class="edit-profile__content container">
+                    <div class="edit-profile__row">
+                        <div class="authorization-phone__container">
+                            <form action="#" class="authorization-phone__form">
+                                <div class="input-text input-text--no-exp authorization-phone__label">
+                                    <label class="input-text__label">
+                                        <span>Номер телефона</span>
+                                        <input type="text" name="Номер телефона" autocapitalize="off" autocomplete="username" autocorrect="off" class="input-reset input-text__input input-phone-mask" inputmode="text">
+                                    </label>
+                                </div>
+                                <div class="input-text input-text--no-exp authorization-phone__label">
+                                    <label class="input-text__label">
+                                        <span>Пароль</span>
+                                        <input type="password" name="Пароль" autocapitalize="off" autocomplete="current-password" autocorrect="off" class="input-reset input-text__input">
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-reset btn-primary authorization-phone__btn">Войти</button>
+                                <button type="button" data-popup-path="authorization-recovery" class="btn btn-reset authorization-phone__link underline-hover js-popup-close">Забыли пароль?</button>
+                            </form>
+                            <div class="authorization-phone__right">
+                                <div class="authorization-phone__text">
+                                    <span aria-hidden="true"></span>
+                                    <p>Или</p>
+                                    <span aria-hidden="true"></span>
+                                </div>
+                                <div class="authorization-phone__list">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-reset btn-third btn_logo">
+                                            <div>
+                                                <img loading="lazy" src="img/sber.png" width="30" height="30" class="authorization-popup__item-icon" alt="Сбербанк ID">
+                                                <span>Войти по сбер ID</span>
+                                            </div>
+                                        </button>
+                                        <button type="button" class="btn btn-reset btn-third btn_logo">
+                                            <div>
+                                                <img loading="lazy" src="img/gosusligi.svg" width="30" height="30" class="authorization-popup__item-icon" alt="Tinkoff ID">
+                                                <span>Через «Госуслуги»</span>
+                                            </div>
+                                        </button>
+                                        <button type="button" class="btn btn-reset btn-third btn_logo">
+                                            <div>
+                                                <img loading="lazy" src="img/tinkoff.svg" width="30" height="30" class="authorization-popup__item-icon" alt="Tinkoff ID">
+                                                <span>Войти с Tinkoff ID</span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" class="btn btn-reset btn-third btn_logo">
+                                            <div>
+                                                <img loading="lazy" src="img/tinkoff.svg" width="30" height="30" class="authorization-popup__item-icon" alt="Tinkoff ID">
+                                                <span>Войти с Alfa ID</span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        @include('partials/footer.html')
+    </div>
+    <!-- popups -->
+    @include('popups/city.html')
+    @include('popups/add.html')
+    @include('popups/personal-area2.html')
+    @include('popups/edit-profile.html')
+    @include('popups/sber-tied.html')
+    <!-- ==== -->
+    @include('popups/authorization-recovery.html')
+    <!-- popups -->
+</body>
+
+
+</html>

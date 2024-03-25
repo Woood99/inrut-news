@@ -64,11 +64,33 @@
         display: flex;
         align-items: center;
         gap: 6px;
+        font-weight: 500;
+        >div{
+            width: 26px;
+            height: 26px;
+            border-radius: 8px;
 
-        svg {
-            fill: currentColor;
-            width: 12px;
-            height: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition: background-color $transitionSpeed $transitionFunction;
+            svg{
+                width: 12px;
+                height: 12px;
+                fill: var(--blue);
+            }
+        }
+        >span{
+            margin: 0 !important;
+        }
+        @media (min-width:$desktop-min){
+             &:hover{
+              >div{
+                background-color: var(--primary100);
+                color: var(--blue);
+              }
+             } 
         }
     }
 
@@ -94,6 +116,21 @@
                 grid-template-columns: percent(210, 968) percent(400, 968) 1fr;
                 &__from {
                     margin: 0;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 16px;
+                }
+                &__time-geo{
+                    span{
+                        color: var(--dark);
+                    }
+                }
+                .user-info{
+                    grid-template-columns: 32px 1fr;
+                    &__avatar{
+                        width: 32px;
+                        height: 32px;
+                    }
                 }
             }
         }

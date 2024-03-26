@@ -364,6 +364,7 @@ export const searchSelect = () => {
         init();
         container.addEventListener('change', (e) => {
             const item = e.target.closest('.search-select__item');
+            if (!item) return;
             const input = item.querySelector('.checkbox-secondary__input');
             if (!input) return;
             const currentElem = imgLeft ?
@@ -454,7 +455,8 @@ export const searchSelect = () => {
         if (search) {
             const input = search.querySelector('input');
             input.addEventListener('input', () => {
-                const validateItems = searchFilterItems(input.value, Array.from(items));
+                const items = Array.from(body.querySelectorAll('.search-select__item'));
+                const validateItems = searchFilterItems(input.value,items);
                 if (body.querySelector(`.${selectorErrorText}`)) {
                     body.querySelector(`.${selectorErrorText}`).remove();
                 }
@@ -534,7 +536,7 @@ export const searchSelect = () => {
             }
         }
 
-        function searchFilterItems(value, items) {
+        function searchFilterItems(value,items) {
             return items.filter(item => {
                 const text = item.querySelector('.checkbox-secondary__text span').textContent;
                 const regex = new RegExp(value, 'gi')
@@ -1479,14 +1481,16 @@ export const searchSelectOneBody = (container) => {
                 if (form) form.dispatchEvent(new Event('change'));
             }
             list.forEach(item => item.classList.remove('_active'));
-
             input.value = item.dataset.value;
             item.classList.add('_active');
             placeholder.innerHTML = item.innerHTML;
-
             setTimeout(() => {
                 container.classList.remove('_active');
             }, 1);
+            if (item.classList.contains('search-select-one__placeholder')){
+                container.classList.remove('_selected');
+               return;
+            }
 
             container.classList.add('_selected');
 
@@ -1581,6 +1585,10 @@ export const searchSelectOneBody = (container) => {
                 placeholder.innerHTML = item.innerHTML;
             }
         })
+        const itemPlaceholder = Array.from(list).find(item => item.classList.contains('search-select-one__placeholder'));
+        if (!container.classList.contains('_selected') && itemPlaceholder){
+            itemPlaceholder.classList.add('_active');
+        }
     }
 }
 

@@ -135,41 +135,15 @@
                                     <div class="field-dropdown__name">
                                         Действие
                                     </div>
-                                    <div class="search-select-one field-dropdown__wrapper" data-video-meeting-target>
-                                        <button type="button" class="btn btn-reset search-select-one__button">
-                                            <div class="search-select-one__button-wrapper">
-                                                <div></div>
-                                                <div>Не выбрано</div>
-                                            </div>
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#check"></use>
-                                            </svg>
-                                        </button>
-                                        <div class="search-select-one__dropdown search-select-one__dropdown--left">
-                                            <button type="button" class="btn btn-reset search-select-one__close">
-                                                <svg>
-                                                    <use xlink:href="./img/sprite.svg#x"></use>
-                                                </svg>
-                                            </button>
-                                            <label class="input-primary search-select-one__input">
-                                                <input type="search" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по имени">
-                                            </label>
-                                            <div class="search-select-one__wrapper simplebar-third">
-                                                <div class="search-select-one__item" data-value="object-1">
-                                                    <span>Просмотр объекта</span>
-                                                </div>
-                                                <div class="search-select-one__item" data-value="video-meeting">
-                                                    <span>Видеовстреча</span>
-                                                </div>
-                                                <div class="search-select-one__item" data-value="object-2">
-                                                    <span>Показ объекта</span>
-                                                </div>
-                                                <div class="search-select-one__item" data-value="object-2">
-                                                    <span>Позвонить</span>
-                                                </div>
-                                            </div>
+                                    <div class="select-secondary field-dropdown__wrapper" data-video-meeting-target>
+                                        <div class="select-secondary__wrapper">
+                                            <select class="select-secondary__body" hidden name="complex">
+                                                <option value="none" placeholder>Не выбрано</option>
+                                                <option value="Просмотр объекта">Просмотр объекта</option>
+                                                <option value="video-meeting">Видеовстреча</option>
+                                                <option value="Показ объекта">Показ объекта</option>
+                                            </select>
                                         </div>
-                                        <input type="text" name="object" value="Волгоград" class="search-select-one__input-hidden" hidden>
                                     </div>
                                 </div>
                                 <div class="calendar-create-event__item field-input field-input--col _container" data-video-meeting-block>
@@ -255,7 +229,7 @@
                                     <div class="field-dropdown__name">
                                         Объект
                                     </div>
-                                    <div class="search-select-one search-select-one--img-left search-select-one--img-left--no-circle field-dropdown__wrapper"
+                                    <div class="search-select-one search-select-one--img-left search-select-one--no-search search-select-one--img-left--no-circle field-dropdown__wrapper"
                                         data-create-event-object>
                                         <button type="button" class="btn btn-reset search-select-one__button">
                                             <div class="search-select-one__button-wrapper">
@@ -272,10 +246,10 @@
                                                     <use xlink:href="./img/sprite.svg#x"></use>
                                                 </svg>
                                             </button>
-                                            <label class="input-primary search-select-one__input">
-                                                <input type="search" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по имени">
-                                            </label>
                                             <div class="search-select-one__wrapper simplebar-third">
+                                                <div class="search-select-one__item search-select-one__placeholder" data-value="none">
+                                                    Не выбрано
+                                                </div>
                                                 <div class="search-select-one__item" data-value="object-1">
                                                     <img loading="lazy" src="./img/card-1.jpg" alt="ПИК">
                                                     <span>1-комн. квартира,54 м², 12/12 эт.</span>
@@ -334,7 +308,7 @@
                                         </button>
                                     </div>
                                 </div>
-                                <div class="calendar-create-event__item field-dropdown field-dropdown--col _container" data-field-dropdown-name="developer">
+                                <div class="calendar-create-event__item field-dropdown field-dropdown--col _container" data-field-dropdown-name="developer" data-participant-section hidden>
                                     <div class="field-dropdown__name">
                                         Участники
                                     </div>
@@ -458,11 +432,6 @@
                                                 </div>
                                                 <input type="text" name="object" value="email" class="search-select-one__input-hidden" hidden>
                                             </div>
-                                            <button type="button" class="btn btn-reset field-notif__remove">
-                                                <svg>
-                                                    <use xlink:href="./img/sprite.svg#trash"></use>
-                                                </svg>
-                                            </button>
                                         </div>
                                         <button type="button" class="btn btn-reset field-notif__add">
                                             <svg>
@@ -594,6 +563,39 @@
                 <div class="search-select__item checkbox-secondary">
                     <input id="people-1" name="developer-name_1" class="checkbox-secondary__input" checked type="checkbox" value="true">
                     <label for="people-1" class="checkbox-secondary__label">
+                        <span class="checkbox-secondary__text">
+                            <span>
+                                <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
+                                <span>Владимир А.</span>
+                            </span>
+                        </span>
+                    </label>
+                </div>
+                <div class="search-select__item checkbox-secondary">
+                    <input id="people-2" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                    <label for="people-2" class="checkbox-secondary__label">
+                        <span class="checkbox-secondary__text">
+                            <span>
+                                <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
+                                <span>Владимир А.</span>
+                            </span>
+                        </span>
+                    </label>
+                </div>
+                <div class="search-select__item checkbox-secondary">
+                    <input id="people-3" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                    <label for="people-3" class="checkbox-secondary__label">
+                        <span class="checkbox-secondary__text">
+                            <span>
+                                <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
+                                <span>Владимир А.</span>
+                            </span>
+                        </span>
+                    </label>
+                </div>
+                <div class="search-select__item checkbox-secondary">
+                    <input id="people-4" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                    <label for="people-4" class="checkbox-secondary__label">
                         <span class="checkbox-secondary__text">
                             <span>
                                 <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">

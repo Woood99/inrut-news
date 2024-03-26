@@ -10,6 +10,9 @@ import {
 import {
     currentSimplebar
 } from './simplebar';
+import {
+    getCurrentDateStringFormatDefault
+} from '../modules/date';
 export const calendarPrimary = (containerSelector, eventsSelector, edit = false) => {
     const calendarEl = document.querySelector(containerSelector);
     const calendarEvents = document.querySelector(eventsSelector);
@@ -233,8 +236,6 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
     }
 
     function eventGenerateModal(eventsArray, eventDate, eventID) {
-        console.log(eventDate);
-        console.log(eventID);
         const modalHTML = `
         <div class="calendar-event" data-date="${eventDate}">
         <div class="calendar-event__container">
@@ -259,16 +260,27 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
             let itemUsersHTML = '';
             let itemNotifHTML = '';
             let itemFilesHTML = '';
+            let itemVideoMeetingHTML = '';
             el.participants.forEach(user => {
+                const tag = user.link ? 'a' : 'div';
                 itemUsersHTML += `
-                    <div class="event__user user-info user-info--small">
-                        <div class="user-info__avatar avatar">
-                            <img loading="lazy" src="${user.avatar}" width="30" height="30" alt="${user.name}">
+                    <${tag} ${tag === 'a' ? `href=${user.link}` : ''} class="event__user user-info user-info--small-mobile ${user.pos ? '' : 'user-info--name'} ${user.link ? '_hover' : ''}">
+                        <div class="user-info__avatar avatar online">
+                            <img loading="lazy" src="${user.avatar}" width="40" height="40" alt="${user.name}">
                         </div>
-                        <span class="user-info__name">
+                        <span class="user-info__name" data-user-name-full="Лев Гаврилов">
                             ${user.name}
                         </span>
-                    </div>
+                            ${user.pos 
+                            ? 
+                            `
+                            <span class="user-info__pos">
+                            ${user.pos}
+                            </span>
+                            `
+                            : ''
+                        }
+                    </${tag}>
                     `;
             });
             el.notifications.forEach(notif => {
@@ -289,16 +301,17 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                     </a>
                     `;
             });
+            if (el.meeting) {
+                itemVideoMeetingHTML = `
+                <div class="event__link">
+                    <h4 class="title-4 event__subtitle">Видеовстреча</h4>
+                    <a href="${el.meeting}">${el.meeting}</a>
+                </div>
+                `
+            }
             const itemHTML = `
                     <li class="calendar-event__item event" data-event-id="${el.eventID}">
                         <div class="event__header">
-                            <button type="button" class="btn btn-reset event__status js-popup-close">
-                                <svg>
-                                    <use xlink:href="./img/sprite.svg#assessment">
-                                    </use>
-                                </svg>
-                                ${el.status}
-                            </button>
                             <a href="${el.linkEdit}" class="event__edit">
                                 <svg>
                                     <use xlink:href="./img/sprite.svg#pencil">
@@ -313,39 +326,27 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                             </button>
                         </div>
                         <div class="event__title">
-                            <div class="event__subtitle">
-                                <svg class="event__icon">
-                                    <use xlink:href="img/sprite.svg#emoji"></use>
-                                </svg>
-                                <h4 class="title-4">Название</h4>
+                            <div class="title-4 event__subtitle">
+                                Название
                             </div>
                             ${el.title}
                         </div>
+                        ${itemVideoMeetingHTML ? itemVideoMeetingHTML : ''}
+                        <div class="event__time">
+                            <div class="title-4 event__subtitle">
+                                Дата и время
+                            </div>
+                            <span>${getCurrentDateStringFormatDefault(el.date)}</span>
+                            <span>${el.timeStart}</span>
+                        </div>
                         <div class="event__descr">
-                            <div class="event__subtitle">
-                                <svg class="event__icon">
-                                    <use xlink:href="img/sprite.svg#emoji"></use>
-                                </svg>
-                                <h4 class="title-4">Описание</h4>
+                            <div class="title-4 event__subtitle">
+                                Описание
                             </div>
                             ${el.descr}
                         </div>
-                        <div class="event__time">
-                            <div class="event__subtitle">
-                                <svg class="event__icon">
-                                    <use xlink:href="img/sprite.svg#time-2"></use>
-                                </svg>
-                                <h4 class="title-4">Дата и время</h4>
-                            </div>
-                            <span>${el.date}</span>
-                            <span>${el.timeStart}</span>
-                        </div>
-                        <div class="event__users">
-                            <h4 class="title-4 event__subtitle">Участники</h4>
-                            ${itemUsersHTML}
-                        </div>
                         <div class="event__object">
-                            <h4 class="title-4 event__subtitle">Встреча на объекте</h4>
+                            <h4 class="title-4 event__subtitle">Объект и адрес</h4>
                             <div class="object-small-card object-small-card--small">
                                 <div class="object-small-card__image">
                                     <img loading="lazy" src="${el.object.image}" width="45" height="45" alt="${el.object.title}">
@@ -354,17 +355,21 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                                     ${el.object.title}
                                 </h4>
                                 <p class="object-small-card__descr">
-                                ${el.object.address}
+                                    ${el.object.address}
                                 </p>
                             </div>
                         </div>
                         <div class="event__location">
-                            <h4 class="title-4 event__subtitle">Адрес или место</h4>
-                            <span>${el.location}</span>
+                            <h4 class="title-4 event__subtitle">Адрес</h4>
+                            <span>${el.object.address}</span>
                         </div>
-                        <div class="event__link">
-                            <h4 class="title-4 event__subtitle">Видеовстреча</h4>
-                            <a href="${el.meeting}">${el.meeting}</a>
+                        <div class="event__users">
+                            <h4 class="title-4 event__subtitle">Участники</h4>
+                            ${itemUsersHTML}
+                        </div>
+                        <div class="event__notifs">
+                            <h4 class="title-4 event__subtitle">Уведомления</h4>
+                            ${itemNotifHTML}
                         </div>
                         <div class="event__files default-gallery">
                             <h4 class="title-4 event__subtitle">Файлы</h4>
@@ -372,11 +377,9 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                                 ${itemFilesHTML}
                             </div>
                         </div>
-                        
-                        <div class="event__notifs">
-                            <h4 class="title-4 event__subtitle">Уведомления</h4>
-                            ${itemNotifHTML}
-                        </div>
+                        <button type="button" class="btn btn-reset btn-secondary event__status js-popup-close">
+                            ${el.status}
+                        </button>
                     </li>
                 `;
             document.querySelector('.calendar-event__list').insertAdjacentHTML('beforeend', itemHTML);
@@ -511,7 +514,7 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
             const currentDate = dateBlock.dataset.date;
             if (smallCard) {
                 const currentID = smallCard.dataset.currentEventId;
-                 eventGenerateModal(array,currentDate,currentID);
+                eventGenerateModal(array, currentDate, currentID);
             } else {
                 generateAllInfo(array, currentDate);
             }

@@ -98,7 +98,7 @@
             color: var(--dark);
             top: 8px;
             left: 8px;
-            border-radius: 4px;
+            border-radius: 8px;
 
             display: flex;
             align-items: center;
@@ -355,7 +355,7 @@
         height: 26px;
         flex: 1 1 26px;
         color: var(--primaryTwo);
-        transition: all $transitionSpeed $transitionFunction;
+        transition: all $transitionSpeedFast $transitionFunction;
         &:active {
             color: var(--blue);
             background: transparent;
@@ -763,10 +763,7 @@
     }
 
     &__users {
-        border-top: 1px solid var(--primary100);
-        width: calc(100% + 32px);
-        margin: 16px -16px 0;
-        padding: 16px 16px 0;
+      margin-top: 16px;
 
         display: flex;
         flex-wrap: wrap;
@@ -774,14 +771,26 @@
     }
 
     &__user {
-        .user-info__name {
-            font-weight: 400;
+        grid-template-columns: 32px 1fr;
+        .user-info{
+            &__avatar{
+                width: 32px;
+                height: 32px;
+            }
+            &__name{
+                transition: color $transitionSpeed $transitionFunction;
+            }
         }
-
         &:not(:last-child) {
             margin-right: 16px;
-            &::after{
-
+        }
+        &._hover{
+            @media (min-width:$desktop-min){
+                 &:hover{
+                    .user-info__name{
+                        color: var(--blue);
+                    }
+                 } 
             }
         }
     }
@@ -860,21 +869,8 @@
     }
 
     &__status{
-        color: var(--blue);
-        display: flex;
-        align-items: center;
-        svg{
-            width: 20px;
-            height: 20px;
-            fill: var(--blue);
-            margin-right: 8px;
-        }
-        @media (min-width:$desktop-min){
-             &:hover{
-                color: var(--blue-dark);
-                text-decoration: underline;
-             } 
-        }
+        margin-top: 24px;
+        width: 100%;
     }
 }
 
@@ -984,8 +980,8 @@
         opacity: 0;
         visibility: hidden;
 
-        transition: opacity $transitionSpeed $transitionFunction,
-            visibility $transitionSpeed $transitionFunction;
+        transition: opacity $transitionSpeedFast $transitionFunction,
+            visibility $transitionSpeedFast $transitionFunction;
 
         svg {
             width: 12px;

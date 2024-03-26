@@ -377,6 +377,20 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                                 ${itemFilesHTML}
                             </div>
                         </div>
+                        <div class="event__controls">
+                            <h4 class="title-4 event__subtitle">Придёте?</h4>
+                            <div>
+                                <button type="button" class="btn btn-reset tag">
+                                    Да
+                                </button>
+                                <button type="button" class="btn btn-reset tag">
+                                    Нет
+                                </button>
+                            </div>
+                            <label class="textarea-primary">
+                                <textarea class="input-reset textarea-primary__input" placeholder="Комментарий"></textarea>
+                            </label>
+                        </div>
                         <button type="button" class="btn btn-reset btn-secondary event__status js-popup-close">
                             ${el.status}
                         </button>

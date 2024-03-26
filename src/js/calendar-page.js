@@ -31,8 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const form = createEvent.querySelector('.calendar-create-event__form');
         timeAndDate(form, dateEvent);
         dropImage();
-        descrAdd(form);
-        toggleObjectAddress(form, form.querySelector('[data-create-event-object]'), form.querySelector('[data-create-event-address]'));
+        blockHidden(form, '[data-add-descr-btn]', '[data-add-descr-section]');
+        blockHidden(form, '[data-address-btn]', '[data-address-section]');
+        toggleObjectAddress(form, form.querySelector('[data-create-event-object]'), form.querySelector('[data-address-section]'));
         videoMeetingToggle(form);
     }
 
@@ -47,28 +48,45 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    function descrAdd(form) {
-        const blockBtn = form.querySelector('[data-add-descr-btn]');
-        const descrSection = form.querySelector('[data-add-descr-section]');
-        if (blockBtn && descrSection) {
-            const btn = blockBtn.querySelector('.calendar-create-event__add');
-            btn.addEventListener('click', () => {
-                descrSection.removeAttribute('hidden');
-                blockBtn.remove();
+    function blockHidden(form,btnSelector,sectionSelector) {
+        const blockBtn = form.querySelector(btnSelector);
+        const section = form.querySelector(sectionSelector);
+        if (!(blockBtn && section)) return;
+        const btn = blockBtn.querySelector('.calendar-create-event__add');
+        const field = section.querySelector('textarea') || section.querySelector('input'); 
+        btn.addEventListener('click', () => {
+            section.removeAttribute('hidden');
+            blockBtn.setAttribute('hidden', '');
+        })
+
+        const remove = section.querySelector('.field-input__remove');
+        if (remove) {
+            remove.addEventListener('click', () => {
+                section.setAttribute('hidden', '');
+                blockBtn.removeAttribute('hidden');
+                if (field) field.value = '';
+
+                if (sectionSelector === '[data-address-section]'){
+                    form.querySelector('[data-create-event-object]').classList.remove('_disabled-opacity');
+                }
             })
         }
     }
 
-    function toggleObjectAddress(form, object, address) {
-        if (!(object && address)) return;
-        const addressInput = address.querySelector('input');
+    function toggleObjectAddress(form, object, addressSection) {
+        if (!(object && addressSection)) return;
+        const addressInput = form.querySelector('[data-create-event-address] input');
         const objectAddress = form.querySelector('[data-create-event-object-address]');
+        const addressBtn = form.querySelector('[data-address-btn]');
         object.addEventListener('change', function () {
             setTimeout(() => {
                 if (this.classList.contains('_selected')) {
-                    address.classList.add('_disabled-opacity');
+                    addressSection.setAttribute('hidden','');
+                    addressBtn.setAttribute('hidden','');
                     objectAddress.removeAttribute('hidden');
                 } else {
+                    addressSection.removeAttribute('hidden');
+                    addressBtn.removeAttribute('hidden');
                     objectAddress.setAttribute('hidden', '');
                 }
             }, 50);

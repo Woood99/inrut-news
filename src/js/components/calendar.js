@@ -334,7 +334,7 @@ export const calendarSecondary = (containerSelector, eventsSelector, edit = fals
                         ${itemVideoMeetingHTML ? itemVideoMeetingHTML : ''}
                         <div class="event__time">
                             <div class="title-4 event__subtitle">
-                                Дата и время
+                               Время и дата
                             </div>
                             <span>${getCurrentDateStringFormatDefault(el.date)}</span>
                             <span>${el.timeStart}</span>

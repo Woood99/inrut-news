@@ -182,6 +182,19 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="calendar-create-event__item field-input field-input--col _container" data-video-meeting-block>
+                                    <div class="field-input__name">
+                                        Видеовстреча
+                                    </div>
+                                    <div class="field-input__wrapper _not-wrap">
+                                        <button type="button" class="btn btn-reset btn btn-secondary btn-secondary--small calendar-create-event__add-link">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#telemost"></use>
+                                            </svg>
+                                            <span>Добавить видеовстречу</span>
+                                        </button>
+                                    </div>
+                                </div>
                                 <div class="calendar-create-event__item field-date field-date--col _container">
                                     <div class="field-date__name">
                                         Время и дата
@@ -227,7 +240,7 @@
                                 </div>
                                 <div class="calendar-create-event__item field-dropdown field-dropdown--col _container" data-field-dropdown-name="developer">
                                     <div class="field-dropdown__name">
-                                        Объект
+                                        Встреча на объекте
                                     </div>
                                     <div class="search-select-one search-select-one--img-left search-select-one--no-search search-select-one--img-left--no-circle field-dropdown__wrapper"
                                         data-create-event-object>
@@ -308,11 +321,13 @@
                                         </button>
                                     </div>
                                 </div>
-                                <div class="calendar-create-event__item field-dropdown field-dropdown--col _container" data-field-dropdown-name="developer" data-participant-section hidden>
+                                <div class="calendar-create-event__item field-dropdown field-dropdown--col _container" data-field-dropdown-name="developer" data-participant-section
+                                    hidden>
                                     <div class="field-dropdown__name">
                                         Участники
                                     </div>
-                                    <div class="search-select search-select--img-left field-dropdown__wrapper" data-search-select-subtitle="Не выбрано" data-create-event-participant>
+                                    <div class="search-select search-select--img-left field-dropdown__wrapper" data-search-select-subtitle="Не выбрано"
+                                        data-create-event-participant>
                                         <button type="button" class="btn btn-reset search-select__button">
                                             <div class="search-select__button-wrapper">
                                                 <div></div>
@@ -490,7 +505,7 @@
                                     </div>
                                 </div>
                             </div>
-                                <button type="button" class="btn btn-reset btn-primary calendar-create-event__btn">Создать</button>
+                            <button type="button" class="btn btn-reset btn-primary calendar-create-event__btn">Создать</button>
                         </form>
                     </div>
                 </div>
@@ -605,7 +620,35 @@
                     </label>
                 </div>
             `;
-            participantFieldInner.insertAdjacentHTML('beforeend',participantsHTML);
+            participantFieldInner.insertAdjacentHTML('beforeend', participantsHTML);
+        })
+
+        const addVideoMeetingBtn = document.querySelector('.calendar-create-event__add-link');
+        const videoMeetingClose = document.querySelector('.calendar-create-event__video-meeting-close');
+
+        if (addVideoMeetingBtn) {
+            addVideoMeetingBtn.addEventListener('click', function () {
+                this.setAttribute('hidden', '');
+                const resultHTML = `
+                <div class="calendar-create-event__video-meeting-result">
+                    <span>Ссылка на встречу будет в описании.</span>
+                    <button type="button" class="btn btn-reset calendar-create-event__video-meeting-close" title="Закрыть">
+                        <svg>
+                          <use xlink:href="./img/sprite.svg#x"></use>
+                        </svg>
+                    </button>
+                </div>
+            `;
+                this.insertAdjacentHTML('beforebegin', resultHTML);
+            })
+        }
+        document.addEventListener('click', (e) => {
+            const target = e.target;
+            const videoMeetingClose = target.closest('.calendar-create-event__video-meeting-close');
+            if (!videoMeetingClose) return;
+            addVideoMeetingBtn.removeAttribute('hidden');
+            const result = document.querySelector('.calendar-create-event__video-meeting-result');
+            if (result) result.remove();
         })
 
     </script>

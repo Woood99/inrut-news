@@ -48,19 +48,19 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    function blockHidden(form,btnSelector,sectionSelector) {
+    function blockHidden(form, btnSelector, sectionSelector) {
         const blockBtn = form.querySelector(btnSelector);
         const section = form.querySelector(sectionSelector);
         if (!(blockBtn && section)) return;
         const btn = blockBtn.querySelector('.calendar-create-event__add');
-        const field = section.querySelector('textarea') || section.querySelector('input'); 
+        const field = section.querySelector('textarea') || section.querySelector('input');
 
         const addressSection = sectionSelector === '[data-address-section]';
         btn.addEventListener('click', () => {
             section.removeAttribute('hidden');
             blockBtn.setAttribute('hidden', '');
 
-            if (addressSection){
+            if (addressSection) {
                 form.querySelector('[data-create-event-object]').classList.add('_disabled-opacity');
             }
         })
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 blockBtn.removeAttribute('hidden');
                 if (field) field.value = '';
 
-                if (addressSection){
+                if (addressSection) {
                     form.querySelector('[data-create-event-object]').classList.remove('_disabled-opacity');
                 }
             })
@@ -87,15 +87,14 @@ document.addEventListener('DOMContentLoaded', () => {
         object.addEventListener('change', function () {
             setTimeout(() => {
                 if (this.classList.contains('_selected')) {
-                    addressSection.setAttribute('hidden','');
-                    addressBtn.setAttribute('hidden','');
+                    addressSection.setAttribute('hidden', '');
+                    addressBtn.setAttribute('hidden', '');
                     objectAddress.removeAttribute('hidden');
                     participantSection.removeAttribute('hidden');
                 } else {
-                    addressSection.removeAttribute('hidden');
                     addressBtn.removeAttribute('hidden');
                     objectAddress.setAttribute('hidden', '');
-                    participantSection.setAttribute('hidden','');
+                    participantSection.setAttribute('hidden', '');
                 }
             }, 50);
         })
@@ -103,20 +102,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function videoMeetingToggle(form) {
         const target = form.querySelector('[data-video-meeting-target]');
-        const block = form.querySelector('[data-video-meeting-block]');
-        if (!(target && block)) return;
+        const blocks = form.querySelectorAll('[data-video-meeting-block]');
+        if (!(target && blocks.length > 0)) return;
         body();
+        console.log('da');
         target.addEventListener('change', body);
-
         function body() {
             setTimeout(() => {
                 const value = target.querySelector('.choices__item.choices__item--selectable').dataset.value;
                 if (value === 'video-meeting') {
-                    block.removeAttribute('hidden');
+                    itemToggleHidden(blocks, 'remove');
                 } else {
-                    block.setAttribute('hidden', '');
+                    itemToggleHidden(blocks, 'set');
                 }
             }, 1);
+        }
+
+        function itemToggleHidden(items, status) {
+            if (status === 'remove') {
+                items.forEach(item => item.removeAttribute('hidden'));
+            }
+            if (status === 'set') {
+                items.forEach(item => item.setAttribute('hidden', ''));
+            }
         }
     }
 })

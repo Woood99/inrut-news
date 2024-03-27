@@ -242,55 +242,37 @@ const additionally = () => {
     function sendingToPopup(card) {
         const recordViewingTarget = document.querySelector('.record-viewing__present');
         const bookObjectTarget = document.querySelector('.book-object__present');
+        const bookConsultationTarget = document.querySelector('.book-consultation__present');
+        const cardMap = {
+            index: card.dataset.cardAdditionallyIndex,
+            title: card.querySelector('.user-info__name').textContent.trim(),
+            tooltip: card.querySelector('.secondary-tooltip').outerHTML,
+            link: card.querySelector('.user-info__link') ? card.querySelector('.user-info__link').outerHTML : '',
+            avatar: card.querySelector('.user-info__avatar').outerHTML,
+        };
+        const cardHTML = `
+        <li class="card-checkbox card-checkbox--second" data-card-popup-index="${cardMap.index}">
+            <div class="user-info card-checkbox__info">
+                ${cardMap.avatar}
+                <span class="user-info__name">
+                    ${cardMap.title}
+                </span>
+                ${cardMap.link}
+            </div>
+            <div class="card-checkbox__present">
+                <img src="./img/present.png" width="25" height="25" alt="">
+            </div>
+            ${cardMap.tooltip}
+        </li>
+        `;
         if (recordViewingTarget) {
-            const cardMap = {
-                index: card.dataset.cardAdditionallyIndex,
-                title: card.querySelector('.user-info__name').textContent.trim(),
-                tooltip: card.querySelector('.secondary-tooltip').outerHTML,
-                link: card.querySelector('.user-info__link') ? card.querySelector('.user-info__link').outerHTML : '',
-                avatar: card.querySelector('.user-info__avatar').outerHTML,
-            };
-            const cardHTML = `
-            <li class="card-checkbox card-checkbox--second" data-card-popup-index="${cardMap.index}">
-                <div class="user-info card-checkbox__info">
-                    ${cardMap.avatar}
-                    <span class="user-info__name">
-                        ${cardMap.title}
-                    </span>
-                    ${cardMap.link}
-                </div>
-                <div class="card-checkbox__present">
-                    <img src="./img/present.png" width="25" height="25" alt="">
-                </div>
-                ${cardMap.tooltip}
-            </li>
-            `;
             recordViewingTarget.insertAdjacentHTML('beforeend', cardHTML);
         }
         if (bookObjectTarget) {
-            const cardMap = {
-                index: card.dataset.cardAdditionallyIndex,
-                title: card.querySelector('.user-info__name').textContent.trim(),
-                tooltip: card.querySelector('.secondary-tooltip').outerHTML,
-                link: card.querySelector('.user-info__link') ? card.querySelector('.user-info__link').outerHTML : '',
-                avatar: card.querySelector('.user-info__avatar').outerHTML,
-            };
-            const cardHTML = `
-            <li class="card-checkbox card-checkbox--second" data-card-popup-index="${cardMap.index}">
-                <div class="user-info card-checkbox__info">
-                    ${cardMap.avatar}
-                    <span class="user-info__name">
-                        ${cardMap.title}
-                    </span>
-                    ${cardMap.link}
-                </div>
-                <div class="card-checkbox__present">
-                    <img src="./img/present.png" width="25" height="25" alt="">
-                </div>
-                ${cardMap.tooltip}
-            </li>
-            `;
             bookObjectTarget.insertAdjacentHTML('beforeend', cardHTML);
+        }
+        if (bookConsultationTarget) {
+            bookConsultationTarget.insertAdjacentHTML('beforeend', cardHTML);
         }
     }
 
@@ -311,8 +293,10 @@ const additionally = () => {
     function checkLengthPresent() {
         const recordViewingTarget = document.querySelector('.book-object__present');
         const bookObjectTarget = document.querySelector('.record-viewing__present');
+        const bookConsultationTarget = document.querySelector('.book-consultation__present');
         body(recordViewingTarget);
         body(bookObjectTarget);
+        body(bookConsultationTarget);
 
         function body(container) {
             if (!container) return;

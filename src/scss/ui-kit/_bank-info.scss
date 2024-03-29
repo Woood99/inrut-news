@@ -57,15 +57,24 @@
     }
     &__cashback{
         display: flex;
-        flex-direction: column;
-        align-items: start;
-        gap: 4px;
-        span{
-            &:nth-child(2){
-                color: var(--primaryTwo);
-                font-size: var(--small-fz);
+        align-items: center;
+        gap: 72px;
+        >div.col{
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 4px;
+            span{
+                margin: 0;
+                &:nth-child(2){
+                    font-size: var(--default-fz);
+                    font-weight: 400;
+                }
             }
         }
+    }
+    &__apply-discount{
+        color: var(--blue);
     }
     >span {
 
@@ -146,7 +155,7 @@
         }
     }
     &--three{
-        grid-template-columns: percent(200, 1132) percent(180, 1132) percent(220, 1132) max-content 1fr;
+        grid-template-columns: percent(200, 1132) percent(180, 1132) percent(300, 1132) max-content 1fr;
         .bank-info__price{
             font-size: var(--little-big-fz);
             line-height: var(--little-big-lh);

@@ -64,20 +64,28 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-    }
-    &__checkbox{
-        +.checkbox-secondary__label{
-            a{
-                color: var(--blue);
-                @media (min-width:$desktop-min){
-                    transition: color $transitionSpeed $transitionFunction;
-                     &:hover{
-                        color: var(--blue-dark);
-                        text-decoration: underline;
-                     } 
+        gap: 24px;
+        .col{
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 12px;
+            .checkbox-secondary__label{
+                a{
+                    color: var(--blue);
+                    @media (min-width:$desktop-min){
+                        transition: color $transitionSpeed $transitionFunction;
+                         &:hover{
+                            color: var(--blue-dark);
+                            text-decoration: underline;
+                         } 
+                    }
                 }
             }
         }
+    }
+    &__checkbox{
+
     }
     &__btn{
         min-width: 250px;

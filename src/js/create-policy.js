@@ -189,5 +189,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 behavior: 'smooth'
             })
         }
+
+        const creditNumberField = form.querySelector('[data-credit-number-field]');
+        const creditNumberToggle = form.querySelector('[data-credit-number-toggle]');
+        creditNumberToggle.addEventListener('change',() => {
+            if (creditNumberToggle.checked) {
+                creditNumberField.setAttribute('hidden','');
+            } else {
+                creditNumberField.removeAttribute('hidden');
+            }
+        })
     }
 })

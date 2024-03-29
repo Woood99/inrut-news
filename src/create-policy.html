@@ -217,8 +217,14 @@
                                 </div>
                                 <div class="input-text input-text--no-exp input-text--only-number">
                                     <label class="input-text__label">
-                                        <span>Этажность дома</span>
+                                        <span>Этажей в доме</span>
                                         <input type="text" name="Этажность дома" class="input-reset input-text__input" placeholder="">
+                                    </label>
+                                </div>
+                                <div class="input-text input-text--no-exp input-text--only-number">
+                                    <label class="input-text__label">
+                                        <span>Этаж объекта</span>
+                                        <input type="text" name="Этаж объекта" class="input-reset input-text__input" placeholder="">
                                     </label>
                                 </div>
                                 <div class="input-text input-text--only-number">
@@ -226,6 +232,13 @@
                                         <span>Общая площадь</span>
                                         <input type="text" name="Этажность дома" class="input-reset input-text__input" placeholder="">
                                         <span>м2</span>
+                                    </label>
+                                </div>
+                                <div class="input-text input-text--only-number">
+                                    <label class="input-text__label">
+                                        <span>Стоимость объекта</span>
+                                        <input type="text" maxlength="12" name="Стоимость объекта" class="input-reset input-text__input" placeholder="">
+                                        <span>₽</span>
                                     </label>
                                 </div>
                             </div>
@@ -282,12 +295,29 @@
                                         <input type="text" name="Имя" class="input-reset input-text__input" value="16.02.2024" disabled placeholder="">
                                     </label>
                                 </div>
-                                <div class="input-text input-text--no-exp input-text--only-number">
+                                <div class="input-text input-text--no-exp input-text--only-number" data-credit-number-field>
                                     <label class="input-text__label">
                                         <span>Номер кредитного договора</span>
                                         <input type="text" name="Вес" maxlength="20" class="input-reset input-text__input" placeholder="">
                                     </label>
                                 </div>
+                                <div class="input-text input-text--no-exp date-picker">
+                                    <label class="input-text__label">
+                                        <span>Начало действия кредитного договора</span>
+                                        <input type="text" name="Имя" class="input-reset input-text__input date-picker__input" value="" placeholder="">
+                                    </label>
+                                </div>
+                                <div class="input-text input-text--no-exp date-picker">
+                                    <label class="input-text__label">
+                                        <span>Окончания действия кредитного договора</span>
+                                        <input type="text" name="Имя" class="input-reset input-text__input date-picker__input" value="" placeholder="">
+                                    </label>
+                                </div>
+                                <label class="toggle-checkbox" style="grid-column: 1/-1;">
+                                    <input type="checkbox" name="toggle-2" data-credit-number-toggle>
+                                    <div aria-hidden="true"></div>
+                                    <span>Нет номера кредитного договора</span>
+                                </label>
                             </div>
                         </div>
                         <div class="create-policy__row">
@@ -332,14 +362,33 @@
                             </div>
                         </div>
                         <div class="create-policy__bottom">
-                            <div class="checkbox-secondary">
-                                <input id="personal-info" name="personal-info" class="checkbox-secondary__input create-policy__checkbox" type="checkbox" value="true">
-                                <label for="personal-info" class="checkbox-secondary__label">
-                                    <span class="checkbox-secondary__text">
-                                        <span>Я соглашаюсь на обработку</span>
-                                        <a href="#">персональных данных</a>
-                                    </span>
-                                </label>
+                            <div class="col">
+                                <div class="checkbox-secondary">
+                                    <input id="personal-info_1" name="personal-info" class="checkbox-secondary__input create-policy__checkbox" type="checkbox" value="true">
+                                    <label for="personal-info_1" class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            <span>Я соглашаюсь на обработку</span>
+                                            <a href="#">персональных данных</a>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="checkbox-secondary">
+                                    <input id="personal-info_2" name="personal-info" class="checkbox-secondary__input create-policy__checkbox" type="checkbox" value="true">
+                                    <label for="personal-info_2" class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            <span>Согласен с</span>
+                                            <a href="#">условиями страхования</a>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="checkbox-secondary">
+                                    <input id="personal-info_3" name="personal-info" class="checkbox-secondary__input create-policy__checkbox" type="checkbox" value="true">
+                                    <label for="personal-info_3" class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Подтверждаю полноту и достоверность предоставленных данных в договоре страхования
+                                        </span>
+                                    </label>
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-reset btn-primary create-policy__btn" disabled>Оформить</button>
                         </div>

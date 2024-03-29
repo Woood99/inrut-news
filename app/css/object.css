@@ -21133,6 +21133,46 @@ textarea.input-reset {
   order: 3;
 }
 
+.card-info {
+  background-color: var(--primary600);
+  border-radius: 13px;
+  position: relative;
+  overflow: hidden;
+}
+.card-info__title {
+  position: relative;
+  z-index: 2;
+  padding: 26px 20px 92px;
+  color: var(--white);
+  font-size: var(--big-small-fz);
+  line-height: var(--big-small-lh);
+  display: block;
+  max-width: 245px;
+}
+.card-info__image {
+  background-position: bottom right;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  width: 100%;
+  height: 90%;
+}
+.card-info::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url(../img/banner-blur.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .filter {
   position: relative;
 }
@@ -27964,7 +28004,7 @@ textarea.input-reset {
 
 .header:not(.header--test) {
   position: relative;
-  z-index: 99;
+  z-index: 100;
 }
 .header:not(.header--test) .header__main {
   position: relative;

@@ -81,21 +81,38 @@ export const recordViewing = () => {
             for (let i = 0; i < 14; i++) {
                 const date = new Date(newDate.setDate(newDate.getDate() + (i === 0 ? 0 : 1)));
                 const stringDate = `${date.getFullYear()}-${date.getMonth() < 10 ? '0' : ''}${date.getMonth() + 1}-${date.getDate() < 10 ? '0' : ''}${date.getDate()}`;
-                let item = '';
                 // создать другой item если продавец занят в какой-то день
+                let item = '';
+                // if (stringDate === '2024-04-01') {
+                //     item = `
+                //     <li class="record-day__item ${i === 0 ? '_active' : ''} _busy">
+                //         <div class="record-day__check" aria-hidden="true">
+                //             <svg>
+                //                 <use xlink:href="./img/sprite.svg#verif"></use>
+                //             </svg>
+                //         </div>
+                //         <input type="radio" name="record-day" value=${stringDate} ${i === 0 ? 'checked' : ''} class="record-day__input input-reset">
+                //         <span class="record-day__day-week">${maps.daysOfWeek[date.getDay()]}</span>
+                //         <span class="record-day__day-month">${date.getDate()}</span>
+                //         <span class="record-day__month">${maps.months[date.getMonth()]}</span>
+                //     </li>
+                //     `;
+                // } else {
+
+                // }
                 item = `
-            <li class="record-day__item ${i === 0 ? '_active' : ''}">
-                <div class="record-day__check" aria-hidden="true">
-                    <svg>
-                        <use xlink:href="./img/sprite.svg#verif"></use>
-                    </svg>
-                </div>
-                <input type="radio" name="record-day" value=${stringDate} ${i === 0 ? 'checked' : ''} class="record-day__input input-reset">
-                <span class="record-day__day-week">${maps.daysOfWeek[date.getDay()]}</span>
-                <span class="record-day__day-month">${date.getDate()}</span>
-                <span class="record-day__month">${maps.months[date.getMonth()]}</span>
-            </li>
-            `;
+                <li class="record-day__item ${i === 0 ? '_active' : ''}">
+                    <div class="record-day__check" aria-hidden="true">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#verif"></use>
+                        </svg>
+                    </div>
+                    <input type="radio" name="record-day" value=${stringDate} ${i === 0 ? 'checked' : ''} class="record-day__input input-reset">
+                    <span class="record-day__day-week">${maps.daysOfWeek[date.getDay()]}</span>
+                    <span class="record-day__day-month">${date.getDate()}</span>
+                    <span class="record-day__month">${maps.months[date.getMonth()]}</span>
+                </li>
+                `;
                 listDays.insertAdjacentHTML('beforeend', item);
             }
             if (window.innerWidth <= 1212) {
@@ -251,7 +268,7 @@ export const recordViewing = () => {
             const bottomTime = container.querySelector('.record-viewing__bottom-time');
             const dateItem = listDays.querySelector('.record-day__item._active');
             const timeItem = time.querySelector('.record-time__item._active');
-
+            console.log(bottomDate);
             bottomDate.textContent = '-';
             bottomTime.textContent = '-';
             if (dateItem) {

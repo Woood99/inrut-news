@@ -1,13 +1,18 @@
 import scrollDrag from './scrollDrag';
 import modal from '../modules/modal';
 import {
-    inputMaskValidate,validateCreateErrorMask,   validateRemoveError
+    inputMaskValidate,
+    validateCreateErrorMask,
+    validateRemoveError
 } from './formValidate';
-import { validateTextMap } from '../modules/validateTextMap';
+import {
+    validateTextMap
+} from '../modules/validateTextMap';
 export const recordViewing = () => {
     const containers = document.querySelectorAll('.record-viewing');
     if (containers.length === 0) return;
     containers.forEach(container => {
+        const inputDate = container.querySelector('[data-busy-days]');
         const containerForm = container.classList.contains('record-viewing--form');
         let status = false;
         const newDate = new Date();
@@ -31,7 +36,7 @@ export const recordViewing = () => {
         const bottom = container.querySelector('.record-viewing__bottom');
         createDays();
         createTime(true);
-        if (bottom)  updateBottom();
+        if (bottom) updateBottom();
         setTimeout(() => {
             checkNavBtn(time.querySelector('.record-time__list'), time.querySelector('.record-time__prev'), time.querySelector('.record-time__next'));
         }, 3000);
@@ -53,7 +58,7 @@ export const recordViewing = () => {
                 const currentDay = new Date().getDate();
                 const itemDay = new Date(rightTarget.value).getDate();
                 createTime(currentDay === itemDay ? true : false);
-                if (bottom)  updateBottom();
+                if (bottom) updateBottom();
                 checkNavBtn(time.querySelector('.record-time__list'), time.querySelector('.record-time__prev'), time.querySelector('.record-time__next'));
             }
         })
@@ -73,46 +78,47 @@ export const recordViewing = () => {
                 }
 
                 validate(true);
-                if (bottom)  updateBottom();
+                if (bottom) updateBottom();
             }
         })
 
         function createDays() {
+            const inputDateValue = getBusyDays(inputDate);
             for (let i = 0; i < 14; i++) {
                 const date = new Date(newDate.setDate(newDate.getDate() + (i === 0 ? 0 : 1)));
                 const stringDate = `${date.getFullYear()}-${date.getMonth() < 10 ? '0' : ''}${date.getMonth() + 1}-${date.getDate() < 10 ? '0' : ''}${date.getDate()}`;
                 // создать другой item если продавец занят в какой-то день
+                let inputCurrentDay = checkCurrentDay(inputDateValue,stringDate);
                 let item = '';
-                // if (stringDate === '2024-04-01') {
-                //     item = `
-                //     <li class="record-day__item ${i === 0 ? '_active' : ''} _busy">
-                //         <div class="record-day__check" aria-hidden="true">
-                //             <svg>
-                //                 <use xlink:href="./img/sprite.svg#verif"></use>
-                //             </svg>
-                //         </div>
-                //         <input type="radio" name="record-day" value=${stringDate} ${i === 0 ? 'checked' : ''} class="record-day__input input-reset">
-                //         <span class="record-day__day-week">${maps.daysOfWeek[date.getDay()]}</span>
-                //         <span class="record-day__day-month">${date.getDate()}</span>
-                //         <span class="record-day__month">${maps.months[date.getMonth()]}</span>
-                //     </li>
-                //     `;
-                // } else {
-
-                // }
-                item = `
-                <li class="record-day__item ${i === 0 ? '_active' : ''}">
-                    <div class="record-day__check" aria-hidden="true">
-                        <svg>
-                            <use xlink:href="./img/sprite.svg#verif"></use>
-                        </svg>
-                    </div>
-                    <input type="radio" name="record-day" value=${stringDate} ${i === 0 ? 'checked' : ''} class="record-day__input input-reset">
-                    <span class="record-day__day-week">${maps.daysOfWeek[date.getDay()]}</span>
-                    <span class="record-day__day-month">${date.getDate()}</span>
-                    <span class="record-day__month">${maps.months[date.getMonth()]}</span>
-                </li>
-                `;
+                if (inputCurrentDay && inputCurrentDay.date === stringDate && !inputCurrentDay.time) {
+                    item = `
+                    <li class="record-day__item _disabled-opacity">
+                        <div class="record-day__check" aria-hidden="true">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#verif"></use>
+                            </svg>
+                        </div>
+                        <input type="radio" name="record-day" value=${stringDate} ${i === 0 ? 'checked' : ''} class="record-day__input input-reset">
+                        <span class="record-day__day-week">${maps.daysOfWeek[date.getDay()]}</span>
+                        <span class="record-day__day-month">${date.getDate()}</span>
+                        <span class="record-day__month">${maps.months[date.getMonth()]}</span>
+                    </li>
+                    `;
+                } else {
+                    item = `
+                    <li class="record-day__item ${i === 0 ? '_active' : ''}">
+                        <div class="record-day__check" aria-hidden="true">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#verif"></use>
+                            </svg>
+                        </div>
+                        <input type="radio" name="record-day" value=${stringDate} ${i === 0 ? 'checked' : ''} class="record-day__input input-reset">
+                        <span class="record-day__day-week">${maps.daysOfWeek[date.getDay()]}</span>
+                        <span class="record-day__day-month">${date.getDate()}</span>
+                        <span class="record-day__month">${maps.months[date.getMonth()]}</span>
+                    </li>
+                    `;
+                }
                 listDays.insertAdjacentHTML('beforeend', item);
             }
             if (window.innerWidth <= 1212) {
@@ -121,7 +127,28 @@ export const recordViewing = () => {
             slider(listDays, listDays.querySelector('.record-day__item'), container.querySelector('.record-day__prev'), container.querySelector('.record-day__next'));
         }
 
+        function getBusyDays(inputDate) {
+            if (inputDate) {
+                return JSON.parse(inputDate.value);
+            }
+        }
+
+        function checkCurrentDay(data,date) {
+            if (date){
+                for (let i = 0; i < data.length; i++) {
+                    const element = data[i];
+                    if (element.date === date) {
+                       return element;
+                    }
+                }
+            }
+        }
+
         function createTime(currentDay) {
+            const day = listDays.querySelector('.record-day__item._active');
+            if (!day) return;
+            const dayValue = day ? day.querySelector('.record-day__input').value : null;
+            const currentDayValue = checkCurrentDay(getBusyDays(inputDate), dayValue);
             time.innerHTML = `
         <h3 class="record-time__title title-3">
             Выберите время
@@ -133,21 +160,21 @@ export const recordViewing = () => {
                 </svg>
             </div>
             <ul class="record-time__list list-reset">
-                ${generateItemTime(8,currentDay)}
-                ${generateItemTime(9,currentDay)}
-                ${generateItemTime(10,currentDay)}
-                ${generateItemTime(11,currentDay)}
-                ${generateItemTime(12,currentDay)}
-                ${generateItemTime(13,currentDay)}
-                ${generateItemTime(14,currentDay)}
-                ${generateItemTime(15,currentDay)}
-                ${generateItemTime(16,currentDay)}
-                ${generateItemTime(17,currentDay)}
-                ${generateItemTime(18,currentDay)}
-                ${generateItemTime(19,currentDay)}
-                ${generateItemTime(20,currentDay)}
-                ${generateItemTime(21,currentDay)}
-                ${generateItemTime(22,currentDay)}
+                ${generateItemTime(8,currentDay,currentDayValue)}
+                ${generateItemTime(9,currentDay,currentDayValue)}
+                ${generateItemTime(10,currentDay,currentDayValue)}
+                ${generateItemTime(11,currentDay,currentDayValue)}
+                ${generateItemTime(12,currentDay,currentDayValue)}
+                ${generateItemTime(13,currentDay,currentDayValue)}
+                ${generateItemTime(14,currentDay,currentDayValue)}
+                ${generateItemTime(15,currentDay,currentDayValue)}
+                ${generateItemTime(16,currentDay,currentDayValue)}
+                ${generateItemTime(17,currentDay,currentDayValue)}
+                ${generateItemTime(18,currentDay,currentDayValue)}
+                ${generateItemTime(19,currentDay,currentDayValue)}
+                ${generateItemTime(20,currentDay,currentDayValue)}
+                ${generateItemTime(21,currentDay,currentDayValue)}
+                ${generateItemTime(22,currentDay,currentDayValue)}
             </ul>
             <div class="nav-arrow-secondary nav-arrow-secondary--next record-time__next">
                 <svg>
@@ -182,13 +209,14 @@ export const recordViewing = () => {
             })
         }
 
-        function generateItemTime(hour, currentDay) {
+        function generateItemTime(hour, currentDay,currentDayValue) {
+            const timeArr = currentDayValue ? currentDayValue.time.replace(/[\[\]']/g, '').replace(/\,\s/g, ',').split(',') : null;
             const currentHour = new Date().getHours();
             const convertHour = hour < 10 ? `0${hour}:00` : `${hour}:00`;
             let result = '';
             if (currentHour < hour && currentDay === true) {
                 result = `
-            <li class="record-time__item">
+            <li class="record-time__item ${timeArr && timeArr.includes(convertHour) ? '_disabled-opacity' : ''}">
                 <div class="record-time__check" aria-hidden="true">
                     <svg>
                         <use xlink:href="./img/sprite.svg#verif"></use>
@@ -201,7 +229,7 @@ export const recordViewing = () => {
             }
             if (currentDay === false) {
                 result = `
-            <li class="record-time__item">
+            <li class="record-time__item ${timeArr && timeArr.includes(convertHour) ? '_disabled-opacity' : ''}">
                 <div class="record-time__check" aria-hidden="true">
                     <svg>
                         <use xlink:href="./img/sprite.svg#verif"></use>
@@ -242,23 +270,23 @@ export const recordViewing = () => {
             } else {
                 const phone = container.querySelector('.record-viewing__form--tel');
                 const phoneInput = phone.querySelector('input');
-                if (listDays.querySelector('.record-day__input:checked') && container.querySelector('.record-time__container') && container.querySelector('.record-time__input:checked') 
-                && inputMaskValidate(phone, phoneInput, 10)) {
-                   btn.classList.remove('_disabled-popup');
+                if (listDays.querySelector('.record-day__input:checked') && container.querySelector('.record-time__container') && container.querySelector('.record-time__input:checked') &&
+                    inputMaskValidate(phone, phoneInput, 10)) {
+                    btn.classList.remove('_disabled-popup');
                 } else {
                     btn.classList.add('_disabled-popup');
                 }
-                if (errors && status){
+                if (errors && status) {
                     validateRemoveError(phone);
                     validateCreateErrorMask(phone, phoneInput, validateTextMap.tel, 10);
                     const timeItems = container.querySelectorAll('.record-time__item');
                     const activeItem = Array.from(timeItems).find(item => item.classList.contains('_active'));
-                    if (!activeItem){
+                    if (!activeItem) {
                         timeItems.forEach(item => item.classList.add('_error'))
                     } else {
                         timeItems.forEach(item => item.classList.remove('_error'))
                     }
-        
+
                 }
             }
         }
@@ -268,7 +296,6 @@ export const recordViewing = () => {
             const bottomTime = container.querySelector('.record-viewing__bottom-time');
             const dateItem = listDays.querySelector('.record-day__item._active');
             const timeItem = time.querySelector('.record-time__item._active');
-            console.log(bottomDate);
             bottomDate.textContent = '-';
             bottomTime.textContent = '-';
             if (dateItem) {
@@ -311,7 +338,7 @@ export const recordViewing = () => {
             const phone = container.querySelector('.record-viewing__form--tel');
             const phoneInput = phone.querySelector('input');
 
-            phoneInput.addEventListener('input',() => {
+            phoneInput.addEventListener('input', () => {
                 validate(true);
             })
 
@@ -320,7 +347,7 @@ export const recordViewing = () => {
                 btn.classList.add('_moving');
 
                 const popup = form.closest('.popup-primary--record-viewing');
-                if (popup){
+                if (popup) {
                     const topGap = btn.offsetTop;
                     popup.scrollTo({
                         top: topGap - 16,
@@ -328,12 +355,12 @@ export const recordViewing = () => {
                     })
                 }
             }
-        
+
             function movingButtonDefault() {
                 form.querySelector('.record-viewing__field').insertAdjacentElement('afterend', btn);
                 btn.classList.remove('_moving');
             }
-            btn.addEventListener('click',() => {
+            btn.addEventListener('click', () => {
                 status = true;
                 validate(true);
             })

@@ -190,13 +190,13 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         }
 
-        const creditNumberField = form.querySelector('[data-credit-number-field]');
+        const creditNumberFields = form.querySelectorAll('[data-credit-number-field]');
         const creditNumberToggle = form.querySelector('[data-credit-number-toggle]');
         creditNumberToggle.addEventListener('change',() => {
             if (creditNumberToggle.checked) {
-                creditNumberField.setAttribute('hidden','');
+                creditNumberFields.forEach(field => field.setAttribute('hidden',''));
             } else {
-                creditNumberField.removeAttribute('hidden');
+                creditNumberFields.forEach(field => field.removeAttribute('hidden'));
             }
         })
     }

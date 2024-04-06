@@ -145,7 +145,6 @@ export const tabs = () => {
                                 if (cardActive) cardActive.classList.remove('_active');
                                 content.setAttribute('hidden', '');
                             })
-                            console.log(contentLayout);
                         } else if (tabsTitles[index] === tabsTitles[0]) {
                             if (!headerFixed.classList.contains('_active')) headerFixed.classList.add('_active');
                         }

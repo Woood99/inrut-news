@@ -7,6 +7,5 @@ const decreasingTime = () => {
 
     function init(container) {
         const start = container.dataset.decreasingTimeStart;
-        console.log(start);
     }
 };

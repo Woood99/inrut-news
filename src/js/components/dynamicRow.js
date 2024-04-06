@@ -8,8 +8,6 @@ const dynamicRow = () => {
         elements.forEach(element => {
             const currentValue = element.querySelector('.dynamic-row__value').textContent.replace('млн.','').replace('шт.','').trim();
             const elementValue = maxValueElement.querySelector('.dynamic-row__value').textContent.replace('млн.','').replace('шт.','').trim();
-            console.log(Number(currentValue));
-            console.log(Number(elementValue));
             if (Number(currentValue) >= Number(elementValue)) {
                 maxValueElement = element;
             }

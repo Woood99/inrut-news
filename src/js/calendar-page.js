@@ -105,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const blocks = form.querySelectorAll('[data-video-meeting-block]');
         if (!(target && blocks.length > 0)) return;
         body();
-        console.log('da');
         target.addEventListener('change', body);
         function body() {
             setTimeout(() => {

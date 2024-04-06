@@ -207,7 +207,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = e.target;
             const summ = target.closest('.place-present-checkbox-summ');
             const quantity = target.closest('.place-present-checkbox-quantity');
-            console.log(summBlock);
             if (summ){
                 summBlock.removeAttribute('hidden');
                 quantityBlock.setAttribute('hidden','');

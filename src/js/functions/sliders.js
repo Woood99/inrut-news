@@ -257,8 +257,8 @@ function initSliders() {
                 },
             },
             navigation: {
-                prevEl: slider.closest('.home-spec').querySelector('.nav-arrow-secondary--prev'),
-                nextEl: slider.closest('.home-spec').querySelector('.nav-arrow-secondary--next'),
+                prevEl: slider.closest('.home-spec').querySelector('.nav-arrow-primary--prev'),
+                nextEl: slider.closest('.home-spec').querySelector('.nav-arrow-primary--next'),
             },
         });
     }

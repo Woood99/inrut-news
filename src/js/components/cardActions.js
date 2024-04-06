@@ -399,7 +399,6 @@ export const cardPrimaryMetro = () => {
     if (cards.length === 0) return;
     cards.forEach(card => {
         const container = card.querySelector('.card-primary__metro');
-        console.log(container);
         metroItems(container)
     })
 

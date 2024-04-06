@@ -226,6 +226,10 @@ function initSliders() {
                         spaceBetween: 24,
                     },
                 },
+                navigation: {
+                    prevEl: slider.closest('.home-price').querySelector('.nav-arrow-primary--prev') || slider.closest('.tabs__body').querySelector('.nav-arrow-primary--prev'),
+                    nextEl: slider.closest('.home-price').querySelector('.nav-arrow-primary--next') || slider.closest('.tabs__body').querySelector('.nav-arrow-primary--next'),
+                },
             });
         })
     }

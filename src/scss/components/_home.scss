@@ -94,33 +94,16 @@
     }
 
     &__nav {
-        position: relative;
-        top: -29px;
-        margin-top: -28px;
-        margin-right: 24px;
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+left: 0;
+right: 0;
         z-index: 1;
         display: flex;
         align-items: center;
         justify-content: end;
-        pointer-events: none;
-
-        .nav-arrow-secondary {
-            border: 1px solid var(--blue);
-            pointer-events: all;
-
-            svg {
-                fill: var(--blue);
-            }
-
-            &--next {
-                margin-left: 10px;
-            }
-
-            &.swiper-button-disabled {
-                opacity: 0.4;
-            }
-        }
-
+        
         @media (max-width:$smallTablet-max) {
             display: none;
         }
@@ -132,7 +115,7 @@
     }
     &__wrapper{
         display: grid;
-        grid-template-columns: 1fr 450px;
+        grid-template-columns: 1fr 383px;
         grid-column-gap: 12px;
         grid-row-gap: 16px;
     }
@@ -140,8 +123,8 @@
         height: 100%;
 
         .swiper-wrapper {
-            min-height: 375px;
-            height: 375px;
+            min-height: 338px;
+            height: 338px;
         }
 
         @media (max-width:$smallTablet-max) {
@@ -152,7 +135,8 @@
 
     .main-banner {
         border-radius: 16px;
-        background-color: rgb(181 187 237 / 1);
+        background-color: rgb(181 187 237);
+        padding: 48px 40px;
         &__image {
             background-position: bottom right 20%;
         }
@@ -235,8 +219,7 @@
 
     &__login {
         border-radius: 16px;
-        background-color: var(--white);
-        box-shadow: var(--shadow-primary);
+        background-color: rgb(176 198 255 / 1);
         padding: 32px;
         display: flex;
         flex-direction: column;
@@ -545,7 +528,6 @@
         background: var(--primary600);
         border-radius: 16px;
         position: relative;
-
         &::before {
             content: '';
             position: absolute;
@@ -568,8 +550,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 48px 56px;
-
+        padding: 48px 40px;
+        min-height: 338px;
         @media (max-width:$desktop) {
             align-items: stretch;
             padding: 24px 16px;

@@ -198,8 +198,8 @@ function initSliders() {
             },
             speed: 800,
             navigation: {
-                prevEl: slider.closest('.home-banners').querySelector('.nav-arrow-secondary--prev'),
-                nextEl: slider.closest('.home-banners').querySelector('.nav-arrow-secondary--next'),
+                prevEl: slider.closest('.home-banners').querySelector('.nav-arrow-primary--prev'),
+                nextEl: slider.closest('.home-banners').querySelector('.nav-arrow-primary--next'),
             },
         });
     }

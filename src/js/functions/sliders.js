@@ -213,33 +213,35 @@ function initSliders() {
         });
     }
     if (document.querySelector('.home-price__items')) {
-        const slider = document.querySelector('.home-price__items');
-        new Swiper(slider, {
-            observer: true,
-            observeParents: true,
-            slidesPerView: 1.07,
-            spaceBetween: 16,
-            autoHeight: true,
-            speed: 800,
-            breakpoints: {
-                576: {
-                    slidesPerView: 1.6,
-                    spaceBetween: 16,
+        const sliders = document.querySelectorAll('.home-price__items');
+        sliders.forEach(slider => {
+            new Swiper(slider, {
+                observer: true,
+                observeParents: true,
+                slidesPerView: 1.07,
+                spaceBetween: 16,
+                speed: 800,
+                breakpoints: {
+                    576: {
+                        slidesPerView: 1.6,
+                        spaceBetween: 16,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 16,
+                    },
+                    1212: {
+                        slidesPerView: 3,
+                        spaceBetween: 24,
+                    },
                 },
-                768: {
-                    slidesPerView: 2,
-                    spaceBetween: 16,
+                navigation: {
+                    prevEl: slider.closest('.home-price').querySelector('.nav-arrow-secondary--prev') || slider.closest('.tabs__body').querySelector('.nav-arrow-secondary--prev'),
+                    nextEl: slider.closest('.home-price').querySelector('.nav-arrow-secondary--next') || slider.closest('.tabs__body').querySelector('.nav-arrow-secondary--next'),
                 },
-                1212: {
-                    slidesPerView: 3,
-                    spaceBetween: 24,
-                },
-            },
-            navigation: {
-                prevEl: slider.closest('.home-price').querySelector('.nav-arrow-secondary--prev'),
-                nextEl: slider.closest('.home-price').querySelector('.nav-arrow-secondary--next'),
-            },
-        });
+            });
+            console.log(slider.swiper);
+        })
     }
     if (document.querySelector('.home-spec__items')) {
         const slider = document.querySelector('.home-spec__items');

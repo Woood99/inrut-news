@@ -2,6 +2,7 @@
     margin-top: 0;
     background-color: var(--stand-bg);
     padding-bottom: 24px;
+    padding-top: 24px;
     @media (max-width:$desktop) {
         padding-top: 50px;
     }
@@ -11,13 +12,8 @@
         align-items: center;
 
         svg {
-            width: 25px;
-            height: 25px;
-
-            @media (max-width:$smallTablet-max) {
-                width: 20px;
-                height: 20px;
-            }
+            width: 24px;
+            height: 24px;
         }
 
         span {
@@ -28,8 +24,19 @@
             padding: 0 16px;
         }
     }
+    &__title-icon{
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-    &__banners {}
+        background: rgba(255, 227, 66, 0.2);
+        border-radius: 12px;
+        width: 42px;
+        height: 42px;
+    }
+    &__banners {
+        
+    }
 
     &__sale {
         margin-top: 48px;
@@ -71,7 +78,7 @@
         }
     }
     &__dynamic{
-        margin-top: 32px;
+        margin-top: 48px;
     }
     &__services {
         margin-top: 32px;
@@ -79,6 +86,7 @@
 }
 
 .home-banners {
+    
     &.container {
         @media (max-width:$smallTablet-max) {
             padding: 0;
@@ -89,6 +97,7 @@
         position: relative;
         top: -29px;
         margin-top: -28px;
+        margin-right: 24px;
         z-index: 1;
         display: flex;
         align-items: center;
@@ -136,7 +145,7 @@
     }
 
     .main-banner {
-        border-radius: 0;
+        border-radius: 16px;
 
         &__image {
             background-position: bottom right 20%;
@@ -145,6 +154,7 @@
 
     &__item {
         height: 100% !important; // Hack! need to be redefined swiper
+        border-radius: 16px;
     }
 }
 
@@ -164,10 +174,10 @@
 
             .swiper-slide {
                 height: auto;
-                border-radius: 12px;
+                border-radius: 16px;
 
                 img {
-                    border-radius: 12px;
+                    border-radius: 16px;
                     width: 100%;
                     max-height: 100%;
                     object-position: center;
@@ -191,7 +201,7 @@
     &__container {
         display: grid;
         grid-template-columns: 1fr 450px;
-        grid-column-gap: 24px;
+        grid-column-gap: 12px;
         grid-row-gap: 16px;
         @media (max-width:$desktop){
              grid-template-columns: 1fr; 
@@ -224,7 +234,7 @@
     }
 
     &__login {
-        border-radius: 12px;
+        border-radius: 16px;
         background-color: var(--white);
         box-shadow: var(--shadow-primary);
         padding: 32px;
@@ -270,7 +280,7 @@
     }
 
     &__calendar {
-        border-radius: 12px;
+        border-radius: 16px;
         background-color: var(--white);
         box-shadow: var(--shadow-primary);
         padding: 24px;
@@ -323,7 +333,7 @@
 
 .service-card {
     background-color: var(--white);
-    border-radius: 12px;
+    border-radius: 16px;
     box-shadow: var(--shadow-primary);
     padding: 24px;
     transition: transform $transitionSpeed $transitionFunction,
@@ -388,7 +398,7 @@
     &__content {
         @media (min-width:$desktop-min) {
             padding: 32px 24px;
-            border-radius: 12px;
+            border-radius: 16px;
             position: relative;
             filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.1));
 
@@ -404,7 +414,7 @@
                 background-image: url('../img/home-sale-bg.svg');
                 background-repeat: no-repeat;
                 background-size: cover;
-                border-radius: 12px;
+                border-radius: 16px;
             }
         }
     }
@@ -524,15 +534,16 @@
 
 .home-purchase {
 
-    &__titie {}
+    &__titie {
 
+    }
     .container {
     }
 
     &__container {
         margin-top: 24px;
         background: var(--primary600);
-        border-radius: 12px;
+        border-radius: 16px;
         position: relative;
 
         &::before {
@@ -542,7 +553,7 @@
             background-image: url('../img/blur.png');
             background-repeat: no-repeat;
             background-size: cover;
-            border-radius: 12px;
+            border-radius: 16px;
         }
 
         @media (max-width:$smallTablet-max) {
@@ -684,12 +695,16 @@
         width: 100%;
         }
     }
-
+    .tabs-primary{
+        &__container{
+            padding: 0;
+        }
+    }
     &__nav {
-        margin-left: 24px;
+        margin-bottom: 16px;
         display: flex;
         align-items: center;
-
+        justify-content: end;
         .nav-arrow-secondary {
             border: 1px solid var(--blue);
 
@@ -730,7 +745,16 @@
         .card-primary {
             height: 100%;
         }
-
+        .card-secondary{
+            &__bottom{
+                border-top: 1px solid var(--primary100);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: auto;
+                padding-top: 16px;
+            }
+        }
         @media (max-width:$smallTablet-max) {
             margin: -16px;
             padding: 16px;
@@ -857,11 +881,13 @@
 }   
 
 .home-dynamic{
+  
     &__descr{
         margin-top: 8px;
         color: var(--primaryTwo);
     }
     &__wrapper{
+        margin-top: 24px;
         display: grid;
         grid-template-columns: repeat(2,1fr);
         grid-column-gap: 12px;
@@ -869,7 +895,7 @@
     }
     &__col{
         background-color: var(--white);
-        border-radius: 12px;
+        border-radius: 16px;
         box-shadow: var(--shadow-primary);
         padding: 32px;
     }
@@ -949,7 +975,7 @@
 
 
         box-shadow: var(--shadow-primary);
-        border-radius: 12px;
+        border-radius: 16px;
         background-color: var(--white);
     }
 
@@ -1011,7 +1037,7 @@
         background-color: transparent;
         border: 1px solid var(--primary200);
         padding: 0 16px;
-        border-radius: 12px;
+        border-radius: 16px;
         height: 48px;
         transition: border $transitionSpeed $transitionFunction;
 

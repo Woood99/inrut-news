@@ -192,18 +192,9 @@ function initSliders() {
             observer: true,
             observeParents: true,
             slidesPerView: 1,
-            effect: 'creative',
+            spaceBetween: 16,
             autoplay: {
                 delay: 6000,
-            },
-            creativeEffect: {
-                prev: {
-                    shadow: true,
-                    translate: ["-20%", 0, -1],
-                },
-                next: {
-                    translate: ["100%", 0, 0],
-                }
             },
             speed: 800,
             navigation: {
@@ -235,12 +226,7 @@ function initSliders() {
                         spaceBetween: 24,
                     },
                 },
-                navigation: {
-                    prevEl: slider.closest('.home-price').querySelector('.nav-arrow-secondary--prev') || slider.closest('.tabs__body').querySelector('.nav-arrow-secondary--prev'),
-                    nextEl: slider.closest('.home-price').querySelector('.nav-arrow-secondary--next') || slider.closest('.tabs__body').querySelector('.nav-arrow-secondary--next'),
-                },
             });
-            console.log(slider.swiper);
         })
     }
     if (document.querySelector('.home-spec__items')) {

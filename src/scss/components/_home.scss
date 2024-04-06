@@ -128,8 +128,14 @@
 
     &__container {
         position: relative;
+        min-width: 0;
     }
-
+    &__wrapper{
+        display: grid;
+        grid-template-columns: 1fr 450px;
+        grid-column-gap: 12px;
+        grid-row-gap: 16px;
+    }
     &__items {
         height: 100%;
 
@@ -146,7 +152,7 @@
 
     .main-banner {
         border-radius: 16px;
-
+        background-color: rgb(181 187 237 / 1);
         &__image {
             background-position: bottom right 20%;
         }
@@ -199,19 +205,13 @@
  
 
     &__container {
-        display: grid;
-        grid-template-columns: 1fr 450px;
-        grid-column-gap: 12px;
-        grid-row-gap: 16px;
-        @media (max-width:$desktop){
-             grid-template-columns: 1fr; 
-        }
+      
     }
 
     &__list {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
-        grid-column-gap: 24px;
+  grid-template-columns: repeat(6,1fr);
+        grid-column-gap: 16px;
         grid-row-gap: 24px;
         @media (max-width:$desktop){
            display: flex;
@@ -775,9 +775,6 @@
     }
 
     &__title {
-        svg {
-            fill: var(--yellow);
-        }
         @media (max-width:$smallTablet-max){
              padding: 0; 
         }
@@ -881,7 +878,9 @@
 }   
 
 .home-dynamic{
-  
+    &__subtitle{
+        margin-top: 16px;
+    }
     &__descr{
         margin-top: 8px;
         color: var(--primaryTwo);

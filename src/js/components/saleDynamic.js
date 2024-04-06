@@ -31,6 +31,7 @@ const saleDynamic = () => {
                 items.forEach(item => {
                     if (item === currentContent) {
                         item.removeAttribute('hidden');
+                        setWidthDynamicLine(item);
                     } else {
                         item.setAttribute('hidden', '');
                     }
@@ -51,7 +52,7 @@ const saleDynamic = () => {
                 item.classList.add('_active');
                 if (content) {
                     popper = createPopper(item, content, {
-                        placement: 'top-start',
+                        placement: 'auto-start',
                         modifiers: [{
                             name: 'offset',
                             options: {
@@ -63,7 +64,7 @@ const saleDynamic = () => {
             });
             item.addEventListener('mouseleave', () => {
                 item.classList.remove('_active');
-                popper.destroy();
+                if (popper) popper.destroy();
             });
         });
     }
@@ -90,15 +91,17 @@ const saleDynamic = () => {
             })
         });
     }
-    function chartLine(container){
+
+    function chartLine(container) {
         const items = container.querySelectorAll('.dynamic-section__svg');
         items.forEach(item => {
+            setWidthDynamicLine(item.closest('.sale-dynamic__content'));
             const data = item.dataset.values.split('-');
             const canvas = item.querySelector('.dynamic-section__canvas');
             new Chart(canvas, {
                 type: 'line',
                 data: {
-                    labels: data.map(item => ''),
+                    labels: data.map(() => ''),
                     datasets: [{
                         data,
                         borderColor: "#2a6be4",
@@ -110,10 +113,10 @@ const saleDynamic = () => {
                 options: {
                     layout: {
                         padding: {
-                            left:48,
-                            right:48,
-                            bottom:0,
-                            top:32,
+                            left: 32,
+                            right: 32,
+                            bottom: 0,
+                            top: 32,
                         }
                     },
                     scales: {
@@ -146,6 +149,9 @@ const saleDynamic = () => {
                         datalabels: {
                             align: "top",
                             anchor: "auto",
+                            font: {
+                                size: 11
+                            },
                             formatter: function (value, context) {
                                 return convertSum(value);
                             },
@@ -153,10 +159,17 @@ const saleDynamic = () => {
                     },
                 },
             });
-        
         })
     }
 
+    function setWidthDynamicLine(container) {
+        if (!container) return;
+        const svg = container.querySelector('.dynamic-section__svg');
+        const list = container.querySelector('.dynamic-section__items');
+        if (svg && list) {
+            svg.style.width = `${list.scrollWidth}px`;
+        }
+    }
 };
 
 export default saleDynamic;

@@ -27600,18 +27600,16 @@ textarea.input-reset {
   grid-row-gap: 12px;
 }
 .sale-dynamic__form {
-  grid-column: 1/-1;
   display: grid;
   grid-template-columns: 300px;
   grid-column-gap: 12px;
+  margin-bottom: 24px;
 }
 .sale-dynamic__form .select-secondary__wrapper {
   background-color: var(--white);
 }
 .sale-dynamic__info {
-  grid-column: 1/-1;
   margin-top: 24px;
-  margin-bottom: 32px;
   display: grid;
   align-items: center;
   grid-template-columns: max-content max-content;
@@ -27639,10 +27637,6 @@ textarea.input-reset {
 .sale-dynamic__value-info span {
   font-weight: 500;
 }
-.sale-dynamic__content {
-  display: grid;
-  grid-template-columns: 1fr 240px;
-}
 
 .dynamic-section {
   display: flex;
@@ -27652,21 +27646,28 @@ textarea.input-reset {
   height: 400px;
   position: relative;
   display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 .dynamic-section__svg {
-  width: 100%;
-  height: 182px;
-  position: absolute;
-  overflow: hidden;
   pointer-events: none;
+  position: absolute;
+  top: 0;
 }
 .dynamic-section__canvas {
-  max-height: 182px;
+  max-height: 120px;
   width: 100% !important;
 }
 .dynamic-section__info {
   margin-top: 24px;
   color: var(--primaryTwo);
+}
+.dynamic-section__items {
+  display: flex;
+  flex-grow: 1;
+  width: max-content;
 }
 .dynamic-section__item {
   width: 100%;
@@ -27679,8 +27680,8 @@ textarea.input-reset {
   display: flex;
   flex-direction: column;
   justify-content: end;
-  max-width: 80px;
-  min-width: 80px;
+  max-width: 70px;
+  min-width: 70px;
 }
 .dynamic-section-item__tooltip {
   display: none;
@@ -27939,19 +27940,31 @@ textarea.input-reset {
   margin-top: 32px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   width: 100%;
 }
 .floor-table__more {
-  color: var(--dark);
   display: flex;
   align-items: center;
-  gap: 16px;
+  color: var(--blue);
+  font-size: var(--default-fz);
+  line-height: 1;
+  font-weight: 500;
 }
 .floor-table__more svg {
-  width: 16px;
-  height: 16px;
+  margin-left: 5px;
+  width: 20px;
+  height: 20px;
   fill: currentColor;
+  transition: transform 0.16s ease-in-out;
+}
+.floor-table__more._active svg {
+  transform: rotate(-180deg);
+}
+@media (max-width: 1212px) {
+  .floor-table__more {
+    margin-top: 12px;
+  }
 }
 
 .logo {

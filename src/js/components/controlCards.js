@@ -161,9 +161,9 @@ export const controlCardsCardSecondary = (content, btn) => {
             }
             if (checkHorizontal(btn)) {
                 bottom.classList.remove('_vertical-active');
-                const addInfo = card.querySelector('.card-secondary__add-info');
-                if (addInfo && quantity){
-                    addInfo.insertAdjacentElement('afterbegin',quantity);
+                const to = card.querySelector('.card-secondary__prices');
+                if (to && quantity){
+                    to.insertAdjacentElement('beforebegin',quantity);
                 }
             }
         })

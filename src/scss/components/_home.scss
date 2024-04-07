@@ -83,6 +83,13 @@
     &__services {
         margin-top: 32px;
     }
+
+    &__row{
+        background-color: var(--white);
+        padding: 32px;
+        box-shadow: var(--shadow-primary);
+        border-radius: 16px;
+    }
 }
 
 .home-banners {
@@ -526,19 +533,9 @@ right: 0;
 
     &__container {
         margin-top: 24px;
-        background: var(--primary600);
+        background-color: rgb(160, 186, 252);
         border-radius: 24px;
         position: relative;
-        &::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url('../img/blur.png');
-            background-repeat: no-repeat;
-            background-size: cover;
-            border-radius: 16px;
-        }
-
         @media (max-width:$smallTablet-max) {
             margin-top: 16px;
         }
@@ -649,6 +646,9 @@ right: 0;
             width: 100%;
         }
     }
+    &__banner{
+        margin-top: 24px;
+    }
 }
 
 .home-price {
@@ -692,12 +692,13 @@ right: 0;
         }
     }
     .nav-arrow-primary{
-        top: 138px;
+       top: calc(16px + 12px + 100px)
         
     }
 
     &__container {
         margin-top: 16px;
+        position: relative;
     }
 
     &__items {

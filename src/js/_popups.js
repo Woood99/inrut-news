@@ -293,3 +293,4 @@ popup(null, 'furniture-calc');
 popup(null, 'technique-calc');
 popup(null, 'expenses-calc');
 popup(null, 'authorization-recovery');
+popup(null, 'cashback-faq');

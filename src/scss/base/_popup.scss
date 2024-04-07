@@ -167,6 +167,7 @@
             }
         }
     }
+
     &--calc-popup {
         .popup-primary {
             &__container {
@@ -1214,12 +1215,14 @@
                 min-height: var(--vh);
                 vertical-align: bottom;
                 position: relative;
+
                 @media (max-width:$desktop) {
                     min-height: 100%;
                     border-radius: 0;
                     margin-top: 0;
                 }
             }
+
             &__close {
                 transform: translateX(16px);
 
@@ -2956,6 +2959,22 @@
         }
     }
 
+    &--cashback-faq {
+        .popup-secondary {
+            &__container {
+                border-radius: 12px 0 0 12px;
+                width: 500px;
+                padding: 65px 48px 48px;
+
+                @media (max-width:$desktop) {
+                    border-radius: 0;
+                    padding: 60px 10px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+
     &--authorization {
 
         .popup-secondary {
@@ -2973,6 +2992,7 @@
             }
         }
     }
+
     &--authorization-recovery {
 
         .popup-secondary {
@@ -6933,31 +6953,35 @@
     &__title {
         margin-bottom: 12px;
     }
-    &__descr{
+
+    &__descr {
         margin-bottom: 24px;
         display: block;
     }
-    &__container{
+
+    &__container {
         display: flex;
         align-items: start;
         gap: 24px;
     }
-    &__form {
-        
-    }
-    &__label{
-        .input-text__label{
+
+    &__form {}
+
+    &__label {
+        .input-text__label {
             background-color: var(--white);
             height: 50px;
         }
     }
-    &__field{
+
+    &__field {
         display: grid;
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(2, 1fr);
         grid-column-gap: 8px;
         grid-row-gap: 16px;
     }
-    &__btn{
+
+    &__btn {
         margin-top: 16px;
         width: 100%;
     }
@@ -7097,19 +7121,23 @@
             grid-template-columns: 1fr;
         }
     }
-    .record-viewing__object{
+
+    .record-viewing__object {
         grid-column: 1/-1;
         margin-bottom: 0;
+
         .spollers__item._active {
             margin-bottom: 0px;
         }
     }
-    &__present{
+
+    &__present {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-column-gap: 12px;
         grid-row-gap: 12px;
     }
+
     &__btn {
         margin-top: 16px;
         grid-column: 1/-1;
@@ -7335,7 +7363,8 @@
         }
     }
 }
-.book-object{
+
+.book-object {
     .container {
         padding: 0;
         max-width: 1072px;
@@ -7425,6 +7454,7 @@
         }
     }
 }
+
 .record-viewing {
     .container {
         padding: 0;
@@ -8629,75 +8659,88 @@
 }
 
 
-.calc-popup{
-     min-height: calc(var(--vh) - 65px - 24px);
-     display: flex;
-     flex-direction: column;
-     &__title{
+.calc-popup {
+    min-height: calc(var(--vh) - 65px - 24px);
+    display: flex;
+    flex-direction: column;
+
+    &__title {
         margin-bottom: 24px;
-     }
-     &__form{
+    }
+
+    &__form {
         display: flex;
         flex-direction: column;
         flex-grow: 1;
-     }
-    &__fields{
+    }
+
+    &__fields {
         display: flex;
         flex-direction: column;
         gap: 16px;
         margin-bottom: 32px;
     }
-    &__create{
+
+    &__create {
         display: flex;
         align-items: center;
         gap: 12px;
         color: var(--blue);
         width: max-content;
-        svg{
+
+        svg {
             width: 16px;
             height: 16px;
             fill: currentColor;
         }
     }
-    &__field{
-       display: grid;
-       align-items: center;
-       grid-column-gap: 8px;
-       grid-row-gap: 16px;
-       &._one{
-        grid-template-columns: 1fr 0.8fr max-content;
-       }
-       &._two{
-        grid-template-columns: 300px 1fr 165px max-content;
-       }
-       &:not(:last-child){
-        margin-bottom: 16px;
-    }
-    }
-    &__block{
-        &:not(:last-child){
+
+    &__field {
+        display: grid;
+        align-items: center;
+        grid-column-gap: 8px;
+        grid-row-gap: 16px;
+
+        &._one {
+            grid-template-columns: 1fr 0.8fr max-content;
+        }
+
+        &._two {
+            grid-template-columns: 300px 1fr 165px max-content;
+        }
+
+        &:not(:last-child) {
             margin-bottom: 16px;
         }
     }
-    &__bottom{
+
+    &__block {
+        &:not(:last-child) {
+            margin-bottom: 16px;
+        }
+    }
+
+    &__bottom {
         margin-top: auto;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 16px;
     }
-    &__result{
+
+    &__result {
         display: flex;
         align-items: center;
         gap: 6px;
         font-size: var(--little-big-fz);
         line-height: var(--little-big-lh);
-        span{
+
+        span {
             font-weight: 500;
         }
     }
-    &__block {
-    }
+
+    &__block {}
 
     &__subtitle {
         margin-bottom: 8px;
@@ -8711,10 +8754,63 @@
     grid-column-gap: 8px;
     grid-row-gap: 16px;
     grid-template-columns: 300px 1fr 165px;
+
     &__name {
-       color: var(--primaryTwo);
+        color: var(--primaryTwo);
     }
-    &:not(:last-child){
+
+    &:not(:last-child) {
         margin-bottom: 16px;
+    }
+}
+
+
+
+.cashback-faq {
+
+    &__title {}
+
+    &__list {
+        margin-top: 24px;
+    }
+
+    &__item {
+        position: relative;
+        counter-increment: inst;
+        margin: 0 0 0 15px;
+        &:not(:last-child){
+            margin-bottom: 16px;
+        }
+        &::before {
+            content: counter(inst) ". ";
+            position: absolute;
+          top: 0;
+            left: -15px;
+            font-weight: 500;
+        }
+    }
+
+    &__subtitle {
+        font-weight: 500;
+    }
+
+    &__elements {
+        margin-top: 12px;
+    }
+
+    &__element {
+        margin: 0 0 12px 15px;
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 7px;
+            left: -15px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--blue);
+        }
     }
 }

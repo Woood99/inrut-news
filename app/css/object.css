@@ -24338,10 +24338,10 @@ textarea.input-reset {
   }
 }
 .bid-user__badges {
-  margin-top: 16px;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin-bottom: 16px;
 }
 .bid-user__descr {
   color: var(--primaryTwo);
@@ -27811,8 +27811,14 @@ textarea.input-reset {
   overflow-x: auto;
   overflow-y: hidden;
 }
-.dynamic-section__wrapper._height-300 {
-  height: 300px;
+.dynamic-section__wrapper::before {
+  content: "";
+  position: absolute;
+  bottom: 27px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px dashed var(--primaryTwo);
 }
 .dynamic-section__svg {
   pointer-events: none;
@@ -27831,19 +27837,12 @@ textarea.input-reset {
   display: flex;
   flex-grow: 1;
   width: max-content;
-  position: relative;
-}
-.dynamic-section__items::before {
-  content: "";
-  position: absolute;
-  bottom: 26px;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  border-bottom: 1px dashed var(--primaryTwo);
 }
 .dynamic-section__item {
   width: 100%;
+}
+.dynamic-section--small .dynamic-section__wrapper {
+  height: 175px;
 }
 
 .dynamic-section-item {
@@ -27882,7 +27881,7 @@ textarea.input-reset {
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  width: calc(100% - 32px);
+  width: calc(100% - 24px);
   opacity: 0.65;
   background-color: var(--blue);
   border-radius: 12px 12px 0 0;

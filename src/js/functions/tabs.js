@@ -150,7 +150,7 @@ export const tabs = () => {
                         }
                     }
                     if (tabsBlock.closest('.home-price')) {
-                        const slider = tabsBlock.querySelector('.home-price__items');
+                        const slider = tabsBlock.querySelector('.swiper.home-price__items');
                         slider.swiper.update();
                     }
                 } else {

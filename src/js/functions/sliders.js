@@ -203,8 +203,8 @@ function initSliders() {
             },
         });
     }
-    if (document.querySelector('.home-price__items')) {
-        const sliders = document.querySelectorAll('.home-price__items');
+    if (document.querySelector('.swiper.home-price__items')) {
+        const sliders = document.querySelectorAll('.swiper.home-price__items');
         sliders.forEach(slider => {
             new Swiper(slider, {
                 observer: true,

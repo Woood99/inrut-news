@@ -40,6 +40,10 @@ import suggestObject from './components/suggestObject';
 import metroInfo from './components/metroInfo';
 import rating from './modules/rating';
 import { galleryPrimary } from './components/gallery';
+
+import saleDynamic from './components/saleDynamic';
+import dynamicCircle from './components/dynamicCircle';
+
 document.addEventListener('DOMContentLoaded', () => {
     linkCopy('.share-app-popup__btn');
     cardSecondaryActions();
@@ -64,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     metroInfo();
     rating();
     galleryPrimary();
+    saleDynamic(false)
     // ==== maps ====
     // mapPrimary();
     // bidMap();

@@ -1,16 +1,17 @@
 import {
     createPopper
 } from '@popperjs/core';
-import numberReplace from '../modules/numberReplace';
 import convertSum from '../modules/convertSum';
-const saleDynamic = () => {
+const saleDynamic = (chartBlock = true) => {
     const container = document.querySelector('.sale-dynamic');
     if (!container) return;
     tabs(container);
     popper(container)
     diagramSetHeight(container);
-    Chart.register(ChartDataLabels);
-    chartLine(container);
+    if (chartBlock){
+        Chart.register(ChartDataLabels);
+        chartLine(container);
+    }
 
     function tabs(container) {
         const btns = container.querySelectorAll('[data-sale-dynamic-tab]');

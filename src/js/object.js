@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     genplan();
     moveToFromBlock('[data-move-block-to="bid-user"]', '[data-move-block-from="bid-user"]', 99999, 1212, `${window.innerWidth >= 1920 ? 1.35 : 1}`);
     additionally();
-    saleDynamic();
+    saleDynamic(true);
     dynamicCircle();
     floorTable();
     // ==============================================

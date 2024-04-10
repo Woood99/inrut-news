@@ -2648,6 +2648,38 @@ textarea.input-reset {
     background-color: rgba(34, 41, 102, 0.4);
   }
 }
+.popup-primary--review-error {
+  text-align: center;
+}
+.popup-primary--review-error .popup-primary__container {
+  min-height: auto;
+  margin: 50px auto;
+  text-align: left;
+  border-radius: 24px;
+  padding: 65px 48px 48px;
+  max-width: 650px;
+}
+@media (max-width: 768px) {
+  .popup-primary--review-error .popup-primary__container {
+    max-width: 100%;
+    width: calc(100% - 4px);
+    margin: 50px auto 0;
+    vertical-align: bottom;
+    padding: 75px 16px 32px;
+    border-radius: 16px 16px 0 0;
+  }
+}
+.popup-primary--review-error::before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+@media (max-width: 1212px) {
+  .popup-primary--review-error {
+    background-color: rgba(34, 41, 102, 0.4);
+  }
+}
 .popup-primary--warning-remove5 .warning-remove__btns {
   flex-direction: row;
 }
@@ -8781,6 +8813,20 @@ textarea.input-reset {
   background-color: var(--blue);
 }
 
+.review-error {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.review-error__descr {
+  margin-top: 12px;
+  color: var(--primaryTwo);
+}
+.review-error__btn {
+  margin-top: 24px;
+}
+
 .burger {
   --burger-width: 20px;
   --burger-height: 14px;
@@ -13781,6 +13827,33 @@ textarea.input-reset {
 }
 .flashing-dots__dots span:nth-child(3) {
   animation-delay: 0.6s;
+}
+
+.badge-conf {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  --icon-color: gray;
+  --bg: white;
+  --color: black;
+  background-color: var(--bg);
+  color: var(--color);
+  min-height: 24px;
+  padding: 0 12px;
+  border-radius: 12px;
+}
+.badge-conf__icon {
+  width: 16px;
+  height: 16px;
+  color: var(--icon-color);
+}
+.badge-conf__text {
+  font-size: var(--very-small-fz);
+}
+.badge-conf._sber {
+  --icon-color: #009e36;
+  --bg: #e5f8ec;
+  --color: #009532;
 }
 
 .tags__list {
@@ -21080,7 +21153,7 @@ textarea.input-reset {
 .bid-user__quantity {
   display: flex;
   align-items: center;
-  color: var(--primary600);
+  color: var(--dark);
 }
 .bid-user__quantity svg {
   width: 10px;
@@ -21089,14 +21162,18 @@ textarea.input-reset {
   margin-right: 5px;
 }
 .bid-user__quantity span {
-  color: var(--primaryTwo);
   font-size: var(--default-fz);
-  font-weight: 500;
 }
 @media (max-width: 1212px) {
   .bid-user__quantity span {
     font-weight: 400;
   }
+}
+.bid-user__badges {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 .bid-user__descr {
   color: var(--primaryTwo);

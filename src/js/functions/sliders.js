@@ -234,33 +234,34 @@ function initSliders() {
         })
     }
     if (document.querySelector('.home-spec__items')) {
-        const slider = document.querySelector('.home-spec__items');
-        new Swiper(slider, {
-            observer: true,
-            observeParents: true,
-            slidesPerView: 1.1,
-            spaceBetween: 10,
-            autoHeight: true,
-            speed: 800,
-            breakpoints: {
-                576: {
-                    slidesPerView: 2,
-                    spaceBetween: 24,
+        const sliders = document.querySelectorAll('.home-spec__items');
+        sliders.forEach(slider => {
+            new Swiper(slider, {
+                observer: true,
+                observeParents: true,
+                slidesPerView: 1.1,
+                spaceBetween: 10,
+                speed: 800,
+                breakpoints: {
+                    576: {
+                        slidesPerView: 2,
+                        spaceBetween: 24,
+                    },
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 24,
+                    },
+                    1212: {
+                        slidesPerView: 4,
+                        spaceBetween: 16,
+                    },
                 },
-                768: {
-                    slidesPerView: 3,
-                    spaceBetween: 24,
+                navigation: {
+                    prevEl: slider.closest('.home-spec').querySelector('.nav-arrow-primary--prev') || slider.closest('.tabs__body').querySelector('.nav-arrow-primary--prev'),
+                    nextEl: slider.closest('.home-spec').querySelector('.nav-arrow-primary--next') || slider.closest('.tabs__body').querySelector('.nav-arrow-primary--next'),
                 },
-                1212: {
-                    slidesPerView: 4,
-                    spaceBetween: 16,
-                },
-            },
-            navigation: {
-                prevEl: slider.closest('.home-spec').querySelector('.nav-arrow-primary--prev'),
-                nextEl: slider.closest('.home-spec').querySelector('.nav-arrow-primary--next'),
-            },
-        });
+            });
+        })
     }
 
     objectSlider();

@@ -18826,13 +18826,13 @@ textarea.input-reset {
 
 .card-secondary {
   box-sizing: border-box;
+  background-color: var(--white);
+  box-shadow: var(--shadow-primary);
+  border-radius: 12px;
 }
 .card-secondary__container {
   position: relative;
   z-index: 1;
-  background-color: var(--white);
-  border-radius: 12px;
-  box-shadow: var(--shadow-primary);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -19521,6 +19521,82 @@ textarea.input-reset {
 @media (max-width: 1212px) {
   .card-secondary__bottom {
     grid-column: 1/3;
+  }
+}
+.card-secondary__copies-btn {
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  transition: color 0.32s ease-in-out;
+}
+.card-secondary__copies-btn svg {
+  width: 28px;
+  height: 22px;
+  fill: currentColor;
+  margin-left: 5px;
+  transition: transform 0.32s ease-in-out;
+}
+.card-secondary__copies-btn._active svg {
+  transform: rotate(-180deg);
+}
+@media (min-width: 1213px) {
+  .card-secondary__copies-btn:hover {
+    color: var(--blue-dark);
+  }
+}
+.card-secondary__copies {
+  background-color: var(--white);
+  padding: 16px;
+}
+.card-secondary__copies .main-table {
+  border-radius: 0;
+  padding: 0;
+}
+.card-secondary__copies .main-table__type {
+  margin: 0;
+  display: grid;
+  grid-column-gap: 15px;
+  grid-template-columns: 21.186440678% 25.4237288136% 32.6271186441% 16.9491525424%;
+}
+.card-secondary__copies .main-table__type span:first-child {
+  margin: 0;
+}
+.card-secondary__copies .main-table__item {
+  padding: 24px 0;
+  grid-column-gap: 15px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 21.186440678% 25.4237288136% 32.6271186441% 16.9491525424%;
+  justify-content: space-between;
+}
+.card-secondary__copies .main-table__item:not(:last-child) {
+  border-bottom: 1px solid var(--primary100);
+}
+.card-secondary__copies .main-table__item span:nth-child(4) {
+  font-weight: 500;
+}
+.card-secondary__copies-title {
+  margin-bottom: 24px;
+}
+.card-secondary__copies-close {
+  padding: 8px 0;
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  transition: color 0.32s ease-in-out;
+}
+.card-secondary__copies-close svg {
+  width: 28px;
+  height: 22px;
+  fill: currentColor;
+  margin-left: 5px;
+  transform: rotate(-180deg);
+}
+@media (min-width: 1213px) {
+  .card-secondary__copies-close:hover {
+    color: var(--blue-dark);
   }
 }
 .card-secondary .user-info__name {
@@ -24555,16 +24631,13 @@ textarea.input-reset {
   height: 100%;
 }
 .main-banner__title {
-  font-size: var(--big-fz);
-  line-height: var(--big-lh);
-  color: var(--gray);
   max-width: 220px;
 }
 .main-banner__descr {
-  margin-top: 10px;
-  color: var(--primaryTwo);
+  margin-top: 24px;
+  color: var(--dark);
   font-size: var(--default-fz);
-  line-height: var(--little-small-lh);
+  line-height: var(--default-lh);
   font-weight: 400;
   max-width: 300px;
   flex-grow: 1;
@@ -26076,8 +26149,6 @@ textarea.input-reset {
     width: 100%;
     animation-name: fadeTransformX;
     animation-duration: 0.5s;
-    min-height: 355px;
-    max-height: 355px;
   }
   .control-cards__content--vertical .card-secondary:nth-child(1), .control-cards__content--horizontal-map .card-secondary:nth-child(1) {
     animation-duration: 0.5s;
@@ -26091,6 +26162,8 @@ textarea.input-reset {
   .control-cards__content--vertical .card-secondary__container, .control-cards__content--horizontal-map .card-secondary__container {
     display: grid;
     grid-template-columns: 30.487804878% 1fr;
+    min-height: 355px;
+    max-height: 355px;
   }
   .control-cards__content--vertical .card-secondary__top, .control-cards__content--horizontal-map .card-secondary__top {
     max-height: 350px;
@@ -26343,6 +26416,12 @@ textarea.input-reset {
     display: none;
   }
   .control-cards__content--horizontal .card-primary__copies {
+    display: none;
+  }
+  .control-cards__content--horizontal .card-secondary__copies-btn {
+    display: none;
+  }
+  .control-cards__content--horizontal .card-secondary__copies {
     display: none;
   }
   .control-cards__content--horizontal .card-secondary__add-info span:nth-child(1) {
@@ -31858,7 +31937,7 @@ textarea.input-reset {
 .home-banners .main-banner {
   border-radius: 24px;
   background-color: rgb(181, 187, 237);
-  padding: 48px 40px;
+  padding: 32px 40px;
 }
 .home-banners .main-banner__image {
   background-position: bottom right 20%;

@@ -1,12 +1,11 @@
 .card-secondary {
     box-sizing: border-box;
-
+    background-color: var(--white);
+    box-shadow: var(--shadow-primary);
+    border-radius: 12px;
     &__container {
         position: relative;
         z-index: 1;
-        background-color: var(--white);
-        border-radius: 12px;
-        box-shadow: var(--shadow-primary);
         height: 100%;
 
         display: flex;
@@ -829,7 +828,88 @@
             grid-column: 1/3;
         }
     }
-
+    &__copies-btn{
+        color: var(--blue);
+        display: flex;
+        align-items: center;
+        transition: color $transitionSpeed $transitionFunction;
+        svg{
+            width: 28px;
+            height: 22px;
+            fill: currentColor;
+            margin-left: 5px;
+            transition: transform $transitionSpeed $transitionFunction;
+        }
+        &._active{
+            svg{
+                transform: rotate(-180deg);
+            }
+        }
+        @media (min-width:$desktop-min){
+             &:hover{
+                color: var(--blue-dark);
+             } 
+        }
+    }
+    &__copies{
+        background-color: var(--white);
+        padding: 16px;
+        .main-table{
+            border-radius: 0;
+            padding: 0;
+            &__type{
+                margin: 0;
+                display: grid;
+                grid-column-gap: 15px;
+                grid-template-columns: percent(250, 1180) percent(300, 1180) percent(385, 1180) percent(200, 1180);
+                span {
+                    &:first-child {
+                        margin: 0;
+                    }
+                }
+            }
+            &__item{
+                padding: 24px 0;
+                grid-column-gap: 15px;
+                display: grid;
+                align-items: center;
+                grid-template-columns: percent(250, 1180) percent(300, 1180) percent(385, 1180) percent(200, 1180);
+                justify-content: space-between;
+                &:not(:last-child){
+                    border-bottom: 1px solid var(--primary100);
+                }
+                span{
+                    &:nth-child(4){
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+    }
+    &__copies-title{
+        margin-bottom: 24px;
+    }
+    &__copies-close{
+        padding: 8px 0;
+        color: var(--blue);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        transition: color $transitionSpeed $transitionFunction;
+        svg{
+            width: 28px;
+            height: 22px;
+            fill: currentColor;
+            margin-left: 5px;
+            transform: rotate(-180deg);
+        }
+        @media (min-width:$desktop-min){
+            &:hover{
+               color: var(--blue-dark);
+            } 
+       }
+    }
     .user-info {
         &__name {
             font-size: var(--default-fz);

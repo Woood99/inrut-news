@@ -90,6 +90,13 @@ export const cardSecondaryActions = () => {
                 const tooltipModal = document.querySelector('.tooltip-modal');
                 tooltipModal.classList.add('_card-tooltip-options');
             }
+
+            const copiesBtn = e.target.closest('.card-secondary__copies-btn');
+            const copiesClose = e.target.closest('.card-secondary__copies-close');
+            if (copiesBtn || copiesClose) {
+                e.preventDefault();
+                copiesBlock(card, card.querySelector('.card-secondary__copies-btn'), card.querySelector('.card-secondary__copies'));
+            }
         })
 
     })
@@ -352,19 +359,6 @@ export const cardPrimaryActions = () => {
         })
     }
 
-    function copiesBlock(card, target, block) {
-        if (!block) return;
-        if (!card.classList.contains('_copies-visible')) {
-            card.classList.add('_copies-visible');
-            target.classList.add('_active');
-            _slideDown(block);
-        } else {
-            card.classList.remove('_copies-visible');
-            target.classList.remove('_active');
-            _slideUp(block);
-        }
-    }
-
 
     function infoMobile() {
         cards.forEach(card => {
@@ -384,6 +378,19 @@ export const cardPrimaryActions = () => {
         })
     }
 };
+
+function copiesBlock(card, target, block) {
+    if (!block) return;
+    if (!card.classList.contains('_copies-visible')) {
+        card.classList.add('_copies-visible');
+        target.classList.add('_active');
+        _slideDown(block);
+    } else {
+        card.classList.remove('_copies-visible');
+        target.classList.remove('_active');
+        _slideUp(block);
+    }
+}
 
 export const cardSecondaryMetro = () => {
     const cards = document.querySelectorAll('.card-secondary');

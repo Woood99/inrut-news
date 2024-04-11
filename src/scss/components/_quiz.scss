@@ -1,0 +1,90 @@
+.quiz {
+    &__title{
+        margin-bottom: 24px;
+    }
+    &__container{
+        background-color: var(--white);
+        padding: 32px;
+        box-shadow: var(--shadow-primary);
+        border-radius: 12px;
+    }
+    &__form {
+      max-width: 700px;
+    }
+
+    &__question {
+        display: none;
+        &:not(:last-child){
+            margin-bottom: 16px;
+        }
+    }
+}
+
+.question {
+    &__title {
+        padding: 12px 24px;
+        background-color: var(--primary100);
+        border-radius: 12px;
+        font-weight: 500;
+    }
+
+    &__content {
+        margin-top: 12px;
+        .radio-primary{
+            &__item{
+                width: 100%;
+            }
+            &__label{
+                padding: 8px 16px;
+                width: 100%;
+                border-radius: 12px;
+                transition: background-color $transitionSpeed $transitionFunction;
+                &::after{
+                    left: calc(4px + 16px);
+                    top: calc(4px + 8px);
+                }
+                @media (min-width:$desktop-min){
+                     &:hover{
+                        background-color: #effaff;
+                     } 
+                }
+            }
+        }
+        .checkbox-secondary{
+            &__label{
+                padding: 8px 16px;
+                border-radius: 12px;
+                justify-content: start;
+                transition: background-color $transitionSpeed $transitionFunction;
+                &::after{
+                    left: 16px;
+                    top: 8px;
+                }
+                @media (min-width:$desktop-min){
+                    &:hover{
+                       background-color: #effaff;
+                    } 
+               }
+            }
+        }
+    }
+    &__btns{
+        margin-top: 16px;
+
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+    }
+  &__go{
+    margin-left: auto;
+  }
+    &._answered{
+        display: block;
+        .question__content{
+            display: none;
+        }
+    }
+    &._current{
+        display: block;
+    }
+}

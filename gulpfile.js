@@ -139,6 +139,7 @@ const scripts = () => {
                 'comparison': './src/js/comparison.js',
                 'investments': './src/js/investments.js',
                 'program': './src/js/program.js',
+                'quiz': './src/js/quiz.js',
             },
             output: {
                 filename: '[name].js',

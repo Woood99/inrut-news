@@ -5,6 +5,8 @@ import './functions/fix-fullheight';
 import './_popups';
 import './_main-scripts';
 
+import dataQuiz from './data/dataQuiz';
+
 // ==============================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!quiz) return;
     init();
 
-    let prevQuestionID = null;
+    const chat = document.querySelector('.quiz__chat');
 
     function init() {
         const questions = quiz.querySelectorAll('[data-question-id]');
@@ -51,6 +53,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 prevQuestion(id);
             }
         });
+        quiz.addEventListener('change', (e) => {
+            const target = e.target;
+            if (!(chat && target.hasAttribute('data-question-name') && !target.classList.contains('_processed'))) return;
+            const name = target.dataset.questionName.trim();
+            const text = dataQuiz[name] ? dataQuiz[name].answer : undefined;
+            if (!text) return;
+            target.classList.add('_processed')
+            const html = `
+                <div>
+                    <p>
+                        <strong>
+                           ${name}
+                        </strong>
+                    </p>
+                    ${text}
+                </div>
+            `;
+
+            chat.insertAdjacentHTML('beforeend',html);
+        })
     }
 
     function nextQuestion(currentQuestion) {
@@ -92,14 +114,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function questionToggle(currentQuestion, id) {
         const question = quiz.querySelector(`[data-question-id='${id}']`);
         if (!(currentQuestion && question)) return;
-        // prevQuestionID = currentQuestion;
         currentQuestion.classList.remove('_current');
         currentQuestion.classList.add('_answered');
         question.classList.add('_current');
 
         const buttonBack = question.querySelector('.question__back');
-        if (buttonBack){
-            buttonBack.setAttribute('data-question-back',`${currentQuestion.dataset.questionId}`);
+        if (buttonBack) {
+            buttonBack.setAttribute('data-question-back', `${currentQuestion.dataset.questionId}`);
         }
 
     }

@@ -2,15 +2,54 @@
     &__title{
         margin-bottom: 24px;
     }
-    &__container{
+    &__wrapper{
+        display: grid;
+        grid-template-columns: 1fr 400px;
+        grid-column-gap: 12px;
+    }
+
+    &__form{
         background-color: var(--white);
-        padding: 32px;
         box-shadow: var(--shadow-primary);
         border-radius: 12px;
+        padding: 32px;
+
+        align-self: start;
+
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
     }
-    &__form {
-      max-width: 700px;
+    &__chat{
+        background-color: var(--white);
+        box-shadow: var(--shadow-primary);
+        border-radius: 12px;
+        padding: 24px;
+        align-self: start;
+        >div{
+            &:not(:last-child){
+                margin-bottom: 24px;
+            }
+                display: flex;
+                flex-direction: column;
+        }
+        p{
+            border: 1px solid var(--primary200);
+            border-radius: 2px 12px 12px 12px;
+            color: var(--dark);
+          padding: 8px 16px;
+
+            background: var(--white);
+            position: relative;
+            &:first-child{
+                margin-left: auto;
+            }
+            &:not(:last-child){
+                margin-bottom: 16px;
+            }
+        }
     }
+
 
     &__question {
         display: none;
@@ -22,10 +61,15 @@
 
 .question {
     &__title {
-        padding: 12px 24px;
-        background-color: var(--primary100);
-        border-radius: 12px;
+        // padding: 12px 24px;
+        // background-color: var(--primary100);
+        // border-radius: 12px;
+        // font-weight: 500;
+
         font-weight: 500;
+        font-size: var(--big-fz);
+        line-height: var(--big-lh);
+        color: var(--dark);
     }
 
     &__content {
@@ -33,15 +77,20 @@
         .radio-primary{
             &__item{
                 width: 100%;
+                max-width: max-content;
+                &:not(:last-child){
+                    margin-bottom: 12px;
+                }
             }
             &__label{
+                border: 1px solid var(--primary200);
                 padding: 8px 16px;
                 width: 100%;
                 border-radius: 12px;
                 transition: background-color $transitionSpeed $transitionFunction;
                 &::after{
-                    left: calc(4px + 16px);
-                    top: calc(4px + 8px);
+                    left: calc(4px + 16px + 1px);
+                    top: calc(4px + 8px + 1px);
                 }
                 @media (min-width:$desktop-min){
                      &:hover{
@@ -74,9 +123,11 @@
         display: flex;
         justify-content: space-between;
         gap: 16px;
+
     }
   &__go{
     margin-left: auto;
+    
   }
     &._answered{
         display: block;

@@ -76,5 +76,27 @@ document.addEventListener('DOMContentLoaded', () => {
     // bidMap();
     // mapDraw();
     agentMap();
+
+    baseAgentSpecChange();
+
+    function baseAgentSpecChange() {
+        const selects = document.querySelectorAll('[data-spec-select-name]');
+        const select = document.querySelector('.base-agent-spec');
+        if (selects.length > 0 && select) {
+            select.addEventListener('change',(e) => {
+               change(e.target.value);
+            })
+        }
+
+        function change(value) {
+            selects.forEach(select => {
+                if (select.dataset.specSelectName === value) {
+                    select.removeAttribute('hidden');
+                } else {
+                    select.setAttribute('hidden','');
+                }
+            })
+        }
+    }
 })
 

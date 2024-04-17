@@ -22,6 +22,9 @@ import tag from './components/tag';
 import chat from './components/chat';
 import submitApp from './components/submitApp';
 import submitAppOffers from './components/submitAppOffers';
+
+import dataQuiz from './data/dataQuiz';
+import quiz from './components/quiz';
 document.addEventListener('DOMContentLoaded', () => {
     mapMetro();
     tag();
@@ -34,5 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==== maps ====
     //  mapPrimary();
     //  mapDraw();
+
+    quiz(dataQuiz);
 })
 

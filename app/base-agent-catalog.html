@@ -87,7 +87,7 @@
                 <button type="button" class="btn btn-reset header-main__close">Закрыть</button>
                 <div class="header-main__title">Меню</div>
                 <ul class="nav__list list-reset" data-spollers="1212,max" data-one-spoller>
-                    <li class="nav__item nav-dropdown nav-dropdown--2">
+                    <li class="nav__item nav-dropdown">
                         <span class="nav__link" data-spoller>
                             Новостройки
                             <svg class="nav__link-arrow">
@@ -98,20 +98,18 @@
                             <div class="nav-dropdown-content">
                                 <div class="nav-dropdown-content__body">
                                     <a href="#" class="nav-dropdown-content__item">
-                                        <img loading="lazy" src="./img/flat.svg" alt="Вторичка">
                                         <span>Жилые комплексы</span>
                                         <span>36 990 предложений</span>
                                     </a>
                                     <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
-                                        <img loading="lazy" src="./img/flat.svg" alt="Вторичка">
                                         <span>Старт продаж</span>
+                                        <span>16 предложений</span>
                                     </a>
                                     <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
-                                        <img loading="lazy" src="./img/flat.svg" alt="Вторичка">
                                         <span>Каталог застройщиков</span>
+                                        <span>15 застройщиков</span>
                                     </a>
                                     <a href="./stock-developer-2.html" class="nav-dropdown-content__item nav-dropdown-content__item--one">
-                                        <img loading="lazy" src="./img/flat.svg" alt="Вторичка">
                                         <span>Каталог акций и скидок</span>
                                     </a>
                                 </div>
@@ -136,7 +134,7 @@
                             Лента
                         </a>
                     </li>
-                    <li class="nav__item nav-dropdown nav-dropdown--2">
+                    <li class="nav__item nav-dropdown">
                         <span class="nav__link" data-spoller>
                             Продажа
                             <svg class="nav__link-arrow">
@@ -147,12 +145,10 @@
                             <div class="nav-dropdown-content">
                                 <div class="nav-dropdown-content__body">
                                     <a href="./buy-apartment-building-moscow.html" class="nav-dropdown-content__item">
-                                        <img loading="lazy" src="./img/flat.svg" alt="Вторичка">
                                         <span>Вторичка</span>
                                         <span>36 990 предложений</span>
                                     </a>
                                     <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
-                                        <img loading="lazy" src="./img/flat.svg" alt="Вторичка">
                                         <span>Дома, коттеджи, дачи</span>
                                     </a>
                                 </div>
@@ -217,16 +213,16 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="filter__item select-secondary">
+                                <div class="filter__item select-secondary base-agent-spec">
                                     <div class="select-secondary__wrapper">
                                         <span class="select-secondary__placeholder">
                                             Специалисты
                                         </span>
                                         <select class="select-secondary__body" hidden name="complex">
                                             <option value="none" placeholder>Не выбрано</option>
-                                            <option value="apartments2">О.П застройщика</option>
-                                            <option value="apartments">Ипотечный брокер</option>
-                                            <option value="apartments3">Риэтор</option>
+                                            <option value="developers">О.П застройщика</option>
+                                            <option value="mortgage-broker">Ипотечный брокер</option>
+                                            <option value="realtor">Риэлтор</option>
                                         </select>
                                     </div>
                                 </div>
@@ -237,7 +233,7 @@
                             </div>
                             <div class="filter__row base-agent-catalog-filter__row--2" hidden>
                                 <div class="container">
-                                    <div class="filter__item field-dropdown" data-field-dropdown-name="developer">
+                                    <div class="filter__item field-dropdown" data-spec-select-name="developers" hidden data-field-dropdown-name="developer">
                                         <div class="field-dropdown__name">
                                             Застройщик
                                         </div>
@@ -252,21 +248,63 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="filter__item field-dropdown" data-field-dropdown-name="apartments">
+                                    <div class="filter__item field-dropdown" data-spec-select-name="realtor" hidden data-field-dropdown-name="developer">
                                         <div class="field-dropdown__name">
-                                            Новостройки
+                                            Тип недвижимости
+                                        </div>
+                                        <div class="search-select field-dropdown__wrapper" data-search-select-subtitle="Не выбрано">
+                                            <button type="button" class="btn btn-reset search-select__button">
+                                                <div class="search-select__button-wrapper">
+                                                    <div></div>
+                                                    <div>Не выбрано</div>
+                                                </div>
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#check"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="search-select__dropdown">
+                                                <button type="button" class="btn btn-reset search-select__close">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#x"></use>
+                                                    </svg>
+                                                </button>
+                                                <div class="search-select__wrapper simplebar-third">
+                                                    <div class="search-select__item checkbox-secondary">
+                                                        <input id="unique-offers_1" name="unique-offers-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                        <label for="unique-offers_1" class="checkbox-secondary__label">
+                                                            <span class="checkbox-secondary__text">
+                                                                <span>Новостройки</span>
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="search-select__item checkbox-secondary">
+                                                        <input id="unique-offers_8" name="unique-offers-name_8" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                        <label for="unique-offers_8" class="checkbox-secondary__label">
+                                                            <span class="checkbox-secondary__text">
+                                                                <span>Вторичка</span>
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="filter__item field-dropdown" data-field-dropdown-name="developer">
+                                        <div class="field-dropdown__name">
+                                            Сортировка
                                         </div>
                                         <div class="select-secondary field-dropdown__wrapper">
                                             <div class="select-secondary__wrapper">
                                                 <select class="select-secondary__body" hidden name="complex">
-                                                    <option value="none" placeholder>Не выбрано</option>
-                                                    <option value="apartments">Новостройки</option>
-                                                    <option value="apartments2">Новостройки1</option>
-                                                    <option value="apartments3">Новостройки2</option>
+                                                    <option value="apartments1">Лучший рейтинг</option>
+                                                    <option value="apartments2">Больше всего отзывов</option>
+                                                    <option value="apartments3">Больше всего сделок</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
+                                 
                                     <button type="button" class="btn btn-reset filter__btn-control filter__btn-hidden">
                                         <span>Скрыть фильтры</span>
                                         <svg>

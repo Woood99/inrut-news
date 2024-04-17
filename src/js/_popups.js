@@ -2,6 +2,7 @@ import popup from './functions/popup';
 import inputResize from './modules/inputResize';
 import videoBlock from './components/videoBlock';
 popup(null, 'city');
+popup(null, 'quiz');
 popup(null, 'add');
 popup(null, 'kitchen-design');
 popup(null, 'personal-area');

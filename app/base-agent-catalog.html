@@ -181,7 +181,7 @@
         <main class="main main-page-gap base-agent-catalog">
             <div class="base-agent-catalog__body">
                 <h1 class="base-agent-catalog__title title-2 container">
-                    В базе 1 567 агентов
+                    В базе 1 567 специалистов
                 </h1>
 
                 <form class="base-agent-catalog__filter base-agent-catalog-filter filter filter--more filter--new-style" data-da=".header,1212,last">
@@ -197,7 +197,7 @@
                             <button type="button" class="btn btn-reset filter__close">Закрыть</button>
                         </div>
                         <div class="filter__inner">
-                            <div class="filter__row base-agent-catalog-filter__row--1 container" data-da=".filter--new-style,1212,1">
+                            <div class="filter__row base-agent-catalog-filter__row--1 container" data-da=".filter--new-style,1212,1" style="grid-template-columns: 125px 25% 25% 1fr max-content;">
                                 <div class="btn btn-reset filter__item filter-more-btn filter__btn-control">
                                     <svg>
                                         <use xlink:href="./img/sprite.svg#filter"></use>
@@ -217,10 +217,23 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="filter__item select-secondary">
+                                    <div class="select-secondary__wrapper">
+                                        <span class="select-secondary__placeholder">
+                                            Специалисты
+                                        </span>
+                                        <select class="select-secondary__body" hidden name="complex">
+                                            <option value="none" placeholder>Не выбрано</option>
+                                            <option value="apartments2">О.П застройщика</option>
+                                            <option value="apartments">Ипотечный брокер</option>
+                                            <option value="apartments3">Риэтор</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <label class="filter__item filter__item--input input-primary">
-                                    <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="ФИО агента">
+                                    <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="ФИО специалиста">
                                 </label>
-                                <button type="reset" class="btn btn-reset btn-secondary filter__clear">Очистить</button>
+                                <button type="reset" class="btn btn-reset underline-hover filter__clear">Очистить</button>
                             </div>
                             <div class="filter__row base-agent-catalog-filter__row--2" hidden>
                                 <div class="container">
@@ -272,8 +285,9 @@
                         <div class="main-table__table">
                             <div class="main-table__type">
                                 <span>Рейтинг</span>
-                                <span>В портфеле</span>
                                 <span>Имя</span>
+                                <span>Сделки</span>
+                                <span>Объекты</span>
                             </div>
                             <div class="main-table__list">
                                 <a href="./agent.html" class="main-table__item object-info-grade">
@@ -287,12 +301,11 @@
                                         <div class="rating-item__quantity">
                                             (523 отзыва)
                                         </div>
+                                        <div class="rating-item__time">
+                                            Последний отзыв 03 марта 2024
+                                        </div>
                                     </div>
-                                    <div class="object-info-grade__quantity">
-                                        <span>100 объектов,</span>
-                                        <span>880 сделок</span>
-                                    </div>
-                                    <div class="object-info-grade__from user-info">
+                                    <div class="object-info-grade__from user-info user-info--big">
                                         <div class="user-info__avatar avatar online">
                                             <img loading="lazy" src="./img/avatar-1.jpg" width="45" height="45" alt="Абдурахманраджи Г.">
                                         </div>
@@ -302,6 +315,12 @@
                                         <span class="user-info__pos">
                                             Агент
                                         </span>
+                                    </div>
+                                    <div class="object-info-grade__quantity">
+                                        <span>880</span>
+                                    </div>
+                                    <div class="object-info-grade__quantity">
+                                        <span>100</span>
                                     </div>
                                 </a>
                             </div>

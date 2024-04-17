@@ -6,11 +6,10 @@ const videoBlock = (currentVideoBlock) => {
         return;
     }
 
-
     const videos = document.querySelectorAll('.video-block');
     if (!videos) return;
     videos.forEach(video => {
-        if (!video.classList.contains('video-block--auto')) {
+        if (!video.classList.contains('video-block--auto') && video.hasAttribute('data-src')) {
             const btn = video.querySelector('.video-block__button');
             const content = video.querySelector('.video-block__video');
             btn.addEventListener('click', (e) => {

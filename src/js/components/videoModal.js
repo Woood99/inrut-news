@@ -2,6 +2,7 @@ import modal from "../modules/modal";
 import videoBlock from "./videoBlock";
 const videoModal = () => {
     const targets = document.querySelectorAll('[data-video-modal]');
+    console.log(targets);
     if (targets.length === 0) return;
     targets.forEach(target => {
         target.addEventListener('click',(e) => {
@@ -19,6 +20,7 @@ const videoModal = () => {
                      <div class="video-block video-block--auto">
                      <button type="button" class="btn btn-reset video-block__button" data-src="${target.dataset.videoModal}">
                          ${target.querySelector('.video-card__image') ? target.querySelector('.video-card__image').innerHTML : ''}
+                         ${target.querySelector('picture') ? target.querySelector('picture').innerHTML : ''}
                          ${target.querySelector('.card-short__link picture') ? target.querySelector('.card-short__link picture').innerHTML : ''}
                          <div class="video-block__video">
      

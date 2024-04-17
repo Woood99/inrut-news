@@ -43,7 +43,7 @@ import { galleryPrimary } from './components/gallery';
 
 import saleDynamic from './components/saleDynamic';
 import dynamicCircle from './components/dynamicCircle';
-
+import videoModal from './components/videoModal';
 document.addEventListener('DOMContentLoaded', () => {
     linkCopy('.share-app-popup__btn');
     cardSecondaryActions();
@@ -68,7 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
     metroInfo();
     rating();
     galleryPrimary();
-    saleDynamic(false)
+    saleDynamic(false);
+    videoModal();
     // ==== maps ====
     // mapPrimary();
     // bidMap();

@@ -36,17 +36,17 @@
                         Агент Алексей Гаврилов
                     </h1>
                     <div class="purchase-request__btns top-page-inner-title__btns">
-                        <button type="button" class="btn btn-reset top-page-inner__btn delete-btn" data-popup-path="warning-remove" title="Удалить">
+                        <button type="button" class="btn btn-reset top-page-inner__btn share-btn" data-popup-path="share-user" title="Поделиться">
                             <svg>
-                                <use xlink:href="./img/sprite.svg#trash"></use>
+                                <use xlink:href="./img/sprite.svg#share"></use>
                             </svg>
-                            <span>Удалить</span>
+                            <span>Поделиться</span>
                         </button>
-                        <button type="button" class="btn btn-reset top-page-inner__btn edit-btn" title="Редактировать">
+                        <button type="button" class="btn btn-reset top-page-inner__btn complain-btn" data-popup-path="complaint-user">
                             <svg>
-                                <use xlink:href="./img/sprite.svg#pencil"></use>
+                                <use xlink:href="./img/sprite.svg#complain"></use>
                             </svg>
-                            <span>Редактировать</span>
+                            <span>Пожаловаться</span>
                         </button>
                     </div>
                 </div>
@@ -105,7 +105,8 @@
                         </p>
 
                         <div class="bid__video video-block">
-                            <button type="button" class="btn btn-reset video-block__button" data-src="https://www.youtube.com/embed/OaFmmd2Ium8">
+                            <h3 class="video-block__title title-3">Видео</h3>
+                            <button type="button" class="btn btn-reset video-block__button" data-video-modal="https://www.youtube.com/embed/OaFmmd2Ium8">
                                 <picture>
                                     <source srcset="./img/poster-1.webp" type="image/webp">
                                     <img loading="lazy" src="./img/poster-1.jpg" class="video-block__poster" alt="">
@@ -119,6 +120,29 @@
                                     </svg>
                                 </div>
                             </button>
+                        </div>
+                        <div class="bid__photos bid-photos">
+                            <h3 class="bid-photos__title title-3">
+                                Фото
+                            </h3>
+                            <ul class="bid-photos__list list-reset default-gallery">
+                                <li class="bid-photos__item">
+                                    <a href="./img/card-1.webp" class="bid-photos__item-link default-gallery__item">
+                                        <picture>
+                                            <source srcset="./img/card-1.webp" type="image/webp">
+                                            <img loading="lazy" src="./img/card-1.jpg" alt="">
+                                        </picture>
+                                    </a>
+                                </li>
+                                <li class="bid-photos__item">
+                                    <a href="./img/card-2.webp" class="bid-photos__item-link default-gallery__item">
+                                        <picture>
+                                            <source srcset="./img/card-2.webp" type="image/webp">
+                                            <img loading="lazy" src="./img/card-2.jpg" alt="">
+                                        </picture>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <div class="agent__reviews agent__row agent-reviews">
@@ -563,7 +587,7 @@
                                                     <h3 class="title-4">Март 2023</h3>
                                                     <div class="info-price-block _minus _row">
                                                         <p class="info-price-block__name">
-                                                            Всего проданных квартир
+                                                            Всего проданно за март
                                                         </p>
                                                         <div class="info-price-block__wrapper">
                                                             <span class="title-4">
@@ -613,7 +637,7 @@
                                                     <h3 class="title-4">Апрель 2023</h3>
                                                     <div class="info-price-block _minus _row">
                                                         <p class="info-price-block__name">
-                                                            Всего проданных квартир
+                                                            Всего проданно за апрель
                                                         </p>
                                                         <div class="info-price-block__wrapper">
                                                             <span class="title-4">
@@ -663,7 +687,7 @@
                                                     <h3 class="title-4">Май 2023</h3>
                                                     <div class="info-price-block _minus _row">
                                                         <p class="info-price-block__name">
-                                                            Всего проданных квартир
+                                                            Всего проданно за май
                                                         </p>
                                                         <div class="info-price-block__wrapper">
                                                             <span class="title-4">
@@ -713,7 +737,7 @@
                                                     <h3 class="title-4">Июнь 2023</h3>
                                                     <div class="info-price-block _minus _row">
                                                         <p class="info-price-block__name">
-                                                            Всего проданных квартир
+                                                            Всего проданно за июнь
                                                         </p>
                                                         <div class="info-price-block__wrapper">
                                                             <span class="title-4">
@@ -1503,7 +1527,7 @@
         
         
                     </div>
-                    <div class="bid__sidebar">
+                    <div class="bid__sidebar" style='grid-row: 1/4;'>
                         <div class="_sticky">
                             <div class="bid__user bid-user" data-da=".bid__container,1212,2">
                                 <div class="bid-user__avatar avatar">
@@ -1534,10 +1558,7 @@
                                 </div>
                                 <div class="bid-user__btns">
                                     <button type="button" class="btn btn-reset btn-primary bid-user__btn bid-user__btn--call">
-                                        <svg>
-                                            <use xlink:href="./img/sprite.svg#phone"></use>
-                                        </svg>
-                                        Позвонить
+                                        Написать
                                     </button>
                                 </div>
                             </div>
@@ -1561,6 +1582,8 @@
     @include('popups/sber-tied.html')
     @include('popups/review-error.html')
     <!-- popups -->
+    @include('popups/share-user.html')
+    @include('popups/complaint-user.html')
 </body>
 
 

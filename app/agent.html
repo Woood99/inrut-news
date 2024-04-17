@@ -196,17 +196,17 @@
                         Агент Алексей Гаврилов
                     </h1>
                     <div class="purchase-request__btns top-page-inner-title__btns">
-                        <button type="button" class="btn btn-reset top-page-inner__btn delete-btn" data-popup-path="warning-remove" title="Удалить">
+                        <button type="button" class="btn btn-reset top-page-inner__btn share-btn" data-popup-path="share-user" title="Поделиться">
                             <svg>
-                                <use xlink:href="./img/sprite.svg#trash"></use>
+                                <use xlink:href="./img/sprite.svg#share"></use>
                             </svg>
-                            <span>Удалить</span>
+                            <span>Поделиться</span>
                         </button>
-                        <button type="button" class="btn btn-reset top-page-inner__btn edit-btn" title="Редактировать">
+                        <button type="button" class="btn btn-reset top-page-inner__btn complain-btn" data-popup-path="complaint-user">
                             <svg>
-                                <use xlink:href="./img/sprite.svg#pencil"></use>
+                                <use xlink:href="./img/sprite.svg#complain"></use>
                             </svg>
-                            <span>Редактировать</span>
+                            <span>Пожаловаться</span>
                         </button>
                     </div>
                 </div>
@@ -265,7 +265,8 @@
                         </p>
 
                         <div class="bid__video video-block">
-                            <button type="button" class="btn btn-reset video-block__button" data-src="https://www.youtube.com/embed/OaFmmd2Ium8">
+                            <h3 class="video-block__title title-3">Видео</h3>
+                            <button type="button" class="btn btn-reset video-block__button" data-video-modal="https://www.youtube.com/embed/OaFmmd2Ium8">
                                 <picture>
                                     <source srcset="./img/poster-1.webp" type="image/webp">
                                     <img loading="lazy" src="./img/poster-1.jpg" class="video-block__poster" alt="">
@@ -279,6 +280,29 @@
                                     </svg>
                                 </div>
                             </button>
+                        </div>
+                        <div class="bid__photos bid-photos">
+                            <h3 class="bid-photos__title title-3">
+                                Фото
+                            </h3>
+                            <ul class="bid-photos__list list-reset default-gallery">
+                                <li class="bid-photos__item">
+                                    <a href="./img/card-1.webp" class="bid-photos__item-link default-gallery__item">
+                                        <picture>
+                                            <source srcset="./img/card-1.webp" type="image/webp">
+                                            <img loading="lazy" src="./img/card-1.jpg" alt="">
+                                        </picture>
+                                    </a>
+                                </li>
+                                <li class="bid-photos__item">
+                                    <a href="./img/card-2.webp" class="bid-photos__item-link default-gallery__item">
+                                        <picture>
+                                            <source srcset="./img/card-2.webp" type="image/webp">
+                                            <img loading="lazy" src="./img/card-2.jpg" alt="">
+                                        </picture>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <div class="agent__reviews agent__row agent-reviews">
@@ -723,7 +747,7 @@
                                                     <h3 class="title-4">Март 2023</h3>
                                                     <div class="info-price-block _minus _row">
                                                         <p class="info-price-block__name">
-                                                            Всего проданных квартир
+                                                            Всего проданно за март
                                                         </p>
                                                         <div class="info-price-block__wrapper">
                                                             <span class="title-4">
@@ -773,7 +797,7 @@
                                                     <h3 class="title-4">Апрель 2023</h3>
                                                     <div class="info-price-block _minus _row">
                                                         <p class="info-price-block__name">
-                                                            Всего проданных квартир
+                                                            Всего проданно за апрель
                                                         </p>
                                                         <div class="info-price-block__wrapper">
                                                             <span class="title-4">
@@ -823,7 +847,7 @@
                                                     <h3 class="title-4">Май 2023</h3>
                                                     <div class="info-price-block _minus _row">
                                                         <p class="info-price-block__name">
-                                                            Всего проданных квартир
+                                                            Всего проданно за май
                                                         </p>
                                                         <div class="info-price-block__wrapper">
                                                             <span class="title-4">
@@ -873,7 +897,7 @@
                                                     <h3 class="title-4">Июнь 2023</h3>
                                                     <div class="info-price-block _minus _row">
                                                         <p class="info-price-block__name">
-                                                            Всего проданных квартир
+                                                            Всего проданно за июнь
                                                         </p>
                                                         <div class="info-price-block__wrapper">
                                                             <span class="title-4">
@@ -1663,7 +1687,7 @@
         
         
                     </div>
-                    <div class="bid__sidebar">
+                    <div class="bid__sidebar" style='grid-row: 1/4;'>
                         <div class="_sticky">
                             <div class="bid__user bid-user" data-da=".bid__container,1212,2">
                                 <div class="bid-user__avatar avatar">
@@ -1694,10 +1718,7 @@
                                 </div>
                                 <div class="bid-user__btns">
                                     <button type="button" class="btn btn-reset btn-primary bid-user__btn bid-user__btn--call">
-                                        <svg>
-                                            <use xlink:href="./img/sprite.svg#phone"></use>
-                                        </svg>
-                                        Позвонить
+                                        Написать
                                     </button>
                                 </div>
                             </div>
@@ -2117,6 +2138,141 @@
     </div>
 </div>
     <!-- popups -->
+    <div class="popup popup-primary popup-primary--right popup-primary--share-app">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="share-user">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content share-app-popup">
+            <div class="user-info-review">
+                <div class="user-info-review__avatar avatar online">
+                    <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                </div>
+                <span class="user-info-review__name">
+                    Алексей Г.
+                </span>
+                <div class="user-info-review__rating">
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#star"></use>
+                    </svg>
+                    <span>2.2</span>
+                    <span>(2 отзыва)</span>
+                </div>
+            </div>
+            <h2 class="share-app-popup__title title-3">
+                Поделиться агентом
+            </h2>
+            <ul class="share-app-popup__list list-reset">
+                <li class="share-app-popup__item">
+                    <a href="#">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#wh"></use>
+                        </svg>
+                        WhatsApp
+                    </a>
+                </li>
+                <li class="share-app-popup__item">
+                    <a href="#">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#tg-2"></use>
+                        </svg>
+                        Telegram
+                    </a>
+                </li>
+                <li class="share-app-popup__item">
+                    <a href="#">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#vk"></use>
+                        </svg>
+                        Вконтакте
+                    </a>
+                </li>
+            </ul>
+            <button type="button" class="btn btn-reset btn-secondary share-app-popup__btn" data-href="liiiink.com">
+                Или скопировать ссылку
+            </button>
+        </div>
+    </div>
+</div>
+    <div class="popup popup-primary popup-primary--right popup-primary--complaint-user">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="complaint-user">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content complaint-user-popup">
+            <div class="complaint-user-popup__user user-info-review">
+                <div class="user-info-review__avatar avatar online">
+                    <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                </div>
+                <span class="user-info-review__name">
+                    Алексей Г.
+                </span>
+                <div class="user-info-review__rating">
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#star"></use>
+                    </svg>
+                    <span>2.2</span>
+                    <span>(2 отзыва)</span>
+                </div>
+            </div>
+            <h2 class="complaint-user-popup__title title-3">
+                На что жалуетесь ?
+            </h2>
+            <form action="#" class="complaint-user-popup__form">
+                <div class="complaint-user-popup__radio radio-primary">
+                    <div class="radio-primary__item">
+                        <input hidden id="complaint-user_1" class="radio-primary__input" type="radio" value="Спам" name="complaint-user-radio">
+                        <label for="complaint-user_1" class="radio-primary__label">
+                            <span class="radio-primary__text">Спам</span>
+                        </label>
+                    </div>
+                    <div class="radio-primary__item">
+                        <input hidden id="complaint-user_2" class="radio-primary__input" type="radio" value="Мошенничество" name="complaint-user-radio">
+                        <label for="complaint-user_2" class="radio-primary__label">
+                            <span class="radio-primary__text">Мошенничество</span>
+                        </label>
+                    </div>
+                    <div class="radio-primary__item">
+                        <input hidden id="complaint-user_3" class="radio-primary__input" type="radio" value="Оскорбление" name="complaint-user-radio">
+                        <label for="complaint-user_3" class="radio-primary__label">
+                            <span class="radio-primary__text">Оскорбление</span>
+                        </label>
+                    </div>
+                    <div class="radio-primary__item">
+                        <input hidden id="complaint-user_4" class="radio-primary__input" type="radio" value="Чужое фото" name="complaint-user-radio">
+                        <label for="complaint-user_4" class="radio-primary__label">
+                            <span class="radio-primary__text">Чужое фото</span>
+                        </label>
+                    </div>
+                    <div class="radio-primary__item">
+                        <input hidden id="complaint-user_5" class="radio-primary__input" type="radio" value="Работает под чужим профилем" name="complaint-user-radio">
+                        <label for="complaint-user_5" class="radio-primary__label">
+                            <span class="radio-primary__text">Работает под чужим профилем</span>
+                        </label>
+                    </div>
+                    <div class="radio-primary__item">
+                        <input hidden id="complaint-user_6" class="radio-primary__input" type="radio" value="Другое" name="complaint-user-radio">
+                        <label for="complaint-user_6" class="radio-primary__label">
+                            <span class="radio-primary__text">Другое</span>
+                        </label>
+                    </div>
+                </div>
+                <label class="complaint-user-popup__textarea textarea-primary">
+                    <textarea class="input-reset textarea-primary__input" placeholder="Расскажите подробнее на что жалуетесь"></textarea>
+                </label>
+                <button type="submit" class="btn btn-reset btn-primary complaint-user-popup__btn js-popup-close" disabled data-popup-path="thanks">
+                    Отправить
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 
 

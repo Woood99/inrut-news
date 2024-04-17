@@ -669,3 +669,42 @@ export const objectMaps = () => {
         }
     }
 };
+
+export const agentMap = () => {
+    if (document.querySelector('#agent-map')) {
+        if (checkYmapsApiBlock()) {
+            let interval = setInterval(() => {
+                if (itsReadyMap()) {
+                    clearInterval(interval);
+                    app();
+                }
+            }, 500);
+        } else {
+            app();
+        }
+
+        function app() {
+            document.querySelectorAll('#agent-map').forEach(item => {
+                console.log(item);
+                function init() {
+                    let map = new ymaps.Map(item, {
+                        center: [55.77171185651524, 37.62811179984117],
+                        zoom: 10,
+                    });
+                    positionElement(map);
+                    removeControlsPrimary(map);
+                        map.behaviors.enable(['scrollZoom']);
+                        map.controls.remove('fullscreenControl');
+                        map.controls.get('zoomControl').options.set({
+                            position: {
+                                top: 20,
+                                right: 20
+                            },
+                            maxWidth: '44'
+                        })
+                }
+                ymaps.ready(init);
+            });
+        }
+    }
+};

@@ -10,6 +10,7 @@ import {
     mapPrimary,
     bidMap,
     mapDraw,
+    agentMap
 } from './components/maps';
 import linkCopy from './modules/linkCopy';
 import {
@@ -71,8 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
     saleDynamic(false);
     videoModal();
     // ==== maps ====
-    // mapPrimary();
+     mapPrimary();
     // bidMap();
     // mapDraw();
+    agentMap();
 })
 

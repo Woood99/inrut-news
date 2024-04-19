@@ -609,9 +609,10 @@
           display: flex;
           flex-direction: column;
             gap: 8px;
-            border: 1px solid #d3d4d4;
+            border: 1px solid var(--primary200);
             padding: 24px;
             border-radius: 12px;
+            transition: border $transitionSpeed $transitionFunction;
             span {
                 color: var(--dark);
                 font-size: var(--default-fz);
@@ -647,11 +648,7 @@
     
             @media (min-width:$desktop-min) {
                 &:hover {
-                    >span {
-                        &:nth-child(2) {
-                            color: var(--blue);
-                        }
-                    }
+                    border-color: var(--blue);
                 }
             }
         }

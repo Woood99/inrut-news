@@ -4,7 +4,7 @@ const quiz = (dataQuiz) => {
     const form = container.querySelector('.quiz__form');
     init();
 
-    const chat = document.querySelector('.quiz__chat');
+    const chat = container.querySelector('.quiz__chat');
     const title = container.querySelector('[data-quiz-title]');
     const step = container.querySelector('[data-quiz-step]');
     const maxStep = container.querySelector('[data-quiz-step-max]');

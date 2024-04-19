@@ -166,6 +166,7 @@ export const selectSecondaryCreate = (el) => {
         placeholder: true,
         allowHTML: true,
     })
+    wrapper.select = choices;
     el.addEventListener('change', () => {
         checkCloseSelected();
     });

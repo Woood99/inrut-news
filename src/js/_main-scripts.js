@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     header();
     getHeightBlock('.header', '--header-height');
-    window.addEventListener('scroll',() => {
+    window.addEventListener('scroll', () => {
         getHeightBlock('.header', '--header-height');
     })
     filterControl();
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         if (metroInfoActive.length > 0) {
-            if (!target.closest('.metro-info') && window.innerWidth > 1212){
+            if (!target.closest('.metro-info') && window.innerWidth > 1212) {
                 metroInfoActive.forEach(item => item.classList.remove('_active'));
             }
         }
@@ -187,4 +187,35 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     })
+
+    // employee =============================
+    const employeeRole = document.querySelector('[data-employee-role]');
+    const selects = document.querySelectorAll('[data-employee-select-name]');
+    if (employeeRole && selects.length > 0) {
+        employeeRole.addEventListener('change', (e) => {
+            const value = e.target.value;
+            if (value === 'developers') {
+                body({
+                    set: ['developers', 'complex'],
+                    hidden: ['direction']
+                });
+            } else {
+                body({
+                    set: ['direction'],
+                    hidden: ['developers', 'complex']
+                });
+            }
+        })
+
+        function body(values) {
+            const setItems = Array.from(selects).filter(item => values.set.includes(item.dataset.employeeSelectName));
+            const hiddenItems = Array.from(selects).filter(item => values.hidden.includes(item.dataset.employeeSelectName));
+            if (setItems.length > 0) {
+                setItems.forEach(item => item.removeAttribute('hidden'));
+            }
+            if (hiddenItems.length > 0) {
+                hiddenItems.forEach(item => item.setAttribute('hidden', ''));
+            }
+        }
+    }
 });

@@ -196,15 +196,26 @@ document.addEventListener('DOMContentLoaded', () => {
             const value = e.target.value;
             if (value === 'developers') {
                 body({
-                    set: ['developers', 'complex'],
-                    hidden: ['direction']
+                    set: ['developers', 'complex', 'city', 'experience'],
+                    hidden: ['direction', 'agency']
                 });
-            } else {
-                body({
-                    set: ['direction'],
-                    hidden: ['developers', 'complex']
-                });
+
+                return;
             }
+
+            if (value === 'agent') {
+                body({
+                    set: ['direction', 'experience', 'city', 'agency'],
+                    hidden: ['complex', 'developers']
+                });
+
+                return;
+            }
+
+            body({
+                set: [],
+                hidden: ['developers', 'complex', 'direction', 'city', 'experience', 'agency']
+            });
         })
 
         function body(values) {

@@ -1,12 +1,13 @@
 const quiz = (dataQuiz) => {
-    const form = document.querySelector('.quiz__form');
-    if (!form) return;
+    const container = document.querySelector('.quiz');
+    if (!container) return;
+    const form = container.querySelector('.quiz__form');
     init();
 
     const chat = document.querySelector('.quiz__chat');
-    const title = form.querySelector('[data-quiz-title]');
-    const step = form.querySelector('[data-quiz-step]');
-    const maxStep = form.querySelector('[data-quiz-step-max]');
+    const title = container.querySelector('[data-quiz-title]');
+    const step = container.querySelector('[data-quiz-step]');
+    const maxStep = container.querySelector('[data-quiz-step-max]');
     let stepCount = 1;
 
     function init() {

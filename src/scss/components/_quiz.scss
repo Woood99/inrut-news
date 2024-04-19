@@ -5,9 +5,12 @@
 
     &__form {
         display: grid;
-        grid-template-columns: 40% 1fr;
+        grid-template-columns: 50% 1fr;
         grid-column-gap: 32px;
         grid-row-gap: 24px;
+
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
     &__step {
@@ -24,53 +27,58 @@
         background-color: var(--primary100);
         border-radius: 12px;
         padding: 32px;
-        .simplebar-third{
+
+        .simplebar-third {
             max-height: 350px;
-            .simplebar-track.simplebar-vertical{
+
+            .simplebar-track.simplebar-vertical {
                 margin-right: -20px;
             }
         }
-        .simplebar-content{
+
+        .simplebar-content {
             >div {
                 &:not(:last-child) {
                     margin-bottom: 24px;
                 }
-    
+
                 display: flex;
                 flex-direction: column;
             }
-    
+
             p {
                 border: 1px solid var(--primary200);
                 border-radius: 2px 12px 12px 12px;
                 color: var(--dark);
                 padding: 8px 16px;
-    
+
                 background: var(--white);
                 position: relative;
-    
+
                 &:first-child {
                     margin-left: auto;
                 }
-    
+
                 &:not(:last-child) {
                     margin-bottom: 16px;
                 }
             }
         }
     }
-    &__chat-wrapper{
 
-    }
-    &__list{
+    &__chat-wrapper {}
+
+    &__list {
         grid-column: 2/3;
         grid-row: 1/3;
     }
-    &__item{
+
+    &__item {
         height: 100%;
         flex-direction: column;
         align-items: start;
     }
+
     &__question {
         display: none;
     }
@@ -87,43 +95,75 @@
             }
         }
 
-        &__label {
-            border: 1px solid var(--primary200);
-            padding: 8px 16px;
-            width: 100%;
-            border-radius: 12px;
-            transition: background-color $transitionSpeed $transitionFunction;
-
-            &::after {
-                left: calc(4px + 16px + 1px);
-                top: calc(4px + 8px + 1px);
-            }
-
-            @media (min-width:$desktop-min) {
-                &:hover {
-                    background-color: #effaff;
+        &__input {
+            &:checked+ {
+                .radio-primary__label {
+                    background-color: var(--blue);
+                    color: var(--white);
                 }
             }
+        }
+
+        &__label {
+            transition: background-color $transitionSpeed $transitionFunction,
+                color $transitionSpeed $transitionFunction;
+            position: relative;
+            border: 1px solid transparent;
+            height: 40px;
+            padding: 0 16px;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            border-radius: 18px;
+            color: var(--dark);
+            background-color: var(--primary100);
+            max-width: 100%;
+
+            &::before,
+            &::after {
+                content: none;
+            }
+        }
+
+        &__text {
+            color: inherit;
         }
     }
 
     .checkbox-secondary {
-        &__label {
-            padding: 8px 16px;
-            border-radius: 12px;
-            justify-content: start;
-            transition: background-color $transitionSpeed $transitionFunction;
-
-            &::after {
-                left: 16px;
-                top: 8px;
-            }
-
-            @media (min-width:$desktop-min) {
-                &:hover {
-                    background-color: #effaff;
+        &:not(:last-child){
+            margin-bottom: 4px;
+        }
+        &__input {
+            &:checked+ {
+                .checkbox-secondary__label {
+                    background-color: var(--blue);
+                    color: var(--white);
                 }
             }
+        }
+        &__label {
+            transition: background-color $transitionSpeed $transitionFunction,
+                color $transitionSpeed $transitionFunction;
+            position: relative;
+            border: 1px solid transparent;
+            height: 40px;
+            padding: 0 16px;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            border-radius: 18px;
+            color: var(--dark);
+            background-color: var(--primary100);
+            max-width: 100%;
+
+            &::before,
+            &::after {
+                content: none;
+            }
+        }
+        &__text{
+            color: inherit;
         }
     }
 
@@ -133,14 +173,11 @@
         width: 100%;
 
         display: flex;
-        justify-content: space-between;
         gap: 16px;
 
     }
 
-    &__go {
-        margin-left: auto;
-    }
+    &__go {}
 
     &._current {
         display: flex;

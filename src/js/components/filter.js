@@ -456,7 +456,7 @@ export const searchSelect = () => {
             const input = search.querySelector('input');
             input.addEventListener('input', () => {
                 const items = Array.from(body.querySelectorAll('.search-select__item'));
-                const validateItems = searchFilterItems(input.value,items);
+                const validateItems = searchFilterItems(input.value, items);
                 if (body.querySelector(`.${selectorErrorText}`)) {
                     body.querySelector(`.${selectorErrorText}`).remove();
                 }
@@ -536,7 +536,7 @@ export const searchSelect = () => {
             }
         }
 
-        function searchFilterItems(value,items) {
+        function searchFilterItems(value, items) {
             return items.filter(item => {
                 const text = item.querySelector('.checkbox-secondary__text span').textContent;
                 const regex = new RegExp(value, 'gi')
@@ -1126,13 +1126,23 @@ export const fieldSelect = () => {
                             }
                         }
                     }
+
                     if (container.hasAttribute('data-place-sale-type')) {
-                        const currentItem = item.hasAttribute('data-submit-filter-object-type-item');
-                        const secondaryItem = item.hasAttribute('data-submit-filter-object-type-secondary');
-                        const houseItem = item.hasAttribute('data-submit-filter-object-type-house');
-                        if (currentItem || secondaryItem || houseItem) {
-                            const itemsHidden = document.querySelectorAll('[data-submit-app-block-hidden]');
-                            itemsHidden.forEach(item => item.removeAttribute('hidden'));
+                        const targetItems = document.querySelectorAll('[data-place-sale-target]');
+                        if (targetItems.length > 0 && item.hasAttribute('data-place-sale-path')) {
+                            const index = item.dataset.placeSalePath;
+                            targetItems.forEach(item => {
+                                if (item.dataset.placeSaleTarget == index) {
+                                    item.removeAttribute('hidden');
+                                    const topGap =  window.pageYOffset + item.getBoundingClientRect().top;
+                                    window.scrollTo({
+                                        top: topGap - 15,
+                                        behavior:'smooth'
+                                    })
+                                } else {
+                                    item.setAttribute('hidden', '');
+                                }
+                            })
                         }
                     }
 
@@ -1191,6 +1201,8 @@ export const fieldSelect = () => {
             input.value = result.join(", ");
             if (change) {
                 input.dispatchEvent(new Event('change'));
+                const form = container.closest('form');
+                if (form) form.dispatchEvent(new Event('change'));
             }
         }
     }
@@ -1499,9 +1511,9 @@ export const searchSelectOneBody = (container) => {
             setTimeout(() => {
                 container.classList.remove('_active');
             }, 1);
-            if (item.classList.contains('search-select-one__placeholder')){
+            if (item.classList.contains('search-select-one__placeholder')) {
                 container.classList.remove('_selected');
-               return;
+                return;
             }
 
             container.classList.add('_selected');
@@ -1598,7 +1610,7 @@ export const searchSelectOneBody = (container) => {
             }
         })
         const itemPlaceholder = Array.from(list).find(item => item.classList.contains('search-select-one__placeholder'));
-        if (!container.classList.contains('_selected') && itemPlaceholder){
+        if (!container.classList.contains('_selected') && itemPlaceholder) {
             itemPlaceholder.classList.add('_active');
         }
     }

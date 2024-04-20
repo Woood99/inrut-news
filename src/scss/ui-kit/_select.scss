@@ -116,7 +116,6 @@
     }
 }
 
-
 .select-sort {
     position: relative;
     z-index: 9;
@@ -243,8 +242,6 @@
         color: var(--blue);
     }
 }
-
-
 
 .select-multiple {
     position: relative;
@@ -468,7 +465,6 @@
         }
     }
 }
-
 
 .select-secondary {
     cursor: pointer;
@@ -711,8 +707,6 @@
     }
 }
 
-
-
 .field-select {
     display: flex;
     align-items: start;
@@ -930,6 +924,11 @@
         }
     }
 
+    >.checkbox-secondary {
+        margin-left: 8px;
+        margin-top: 10px;
+    }
+
     @media (max-width:$desktop) {
         flex-direction: column;
     }
@@ -970,13 +969,18 @@
 
     &__wrapper {
         display: flex;
+        align-items: center;
+        gap: 8px;
         flex-wrap: wrap;
         max-width: 100%;
 
         .input-text {
-            &:not(.input-text--only-number) {
+            .input-text__label {
+                grid-template-columns: 1fr max-content;
+              }
+            &._width-100{
                 .input-text__label {
-                    grid-template-columns: 100%;
+                  grid-template-columns: 100%;
                 }
             }
         }
@@ -986,11 +990,13 @@
             align-items: center;
             gap: 16px;
         }
-        &:not(:last-child){
+
+        &:not(:last-child) {
             margin-bottom: 16px;
         }
     }
-    &__remove{
+
+    &__remove {
         margin-top: 8px;
         width: 30px;
         height: 100%;
@@ -1007,6 +1013,7 @@
             height: 18px;
         }
     }
+
     &--col {
         flex-direction: column;
 
@@ -1015,6 +1022,24 @@
             margin: 0 0 12px 0;
             --width: auto;
         }
+    }
+
+    >.checkbox-secondary {
+        margin-left: 8px;
+        margin-top: 10px;
+    }
+
+    .secondary-tooltip {
+        margin-left: 8px;
+
+        &__content {
+            width: max-content;
+            max-width: 250px;
+        }
+    }
+
+    >.secondary-tooltip {
+        margin-top: 4px;
     }
 
     @media (max-width:$desktop) {
@@ -1639,8 +1664,8 @@
         z-index: 99;
         transform: translateY(10px);
         transition: opacity $transitionSpeed $transitionFunction,
-        visibility $transitionSpeed $transitionFunction,
-        transform $transitionSpeed $transitionFunction;
+            visibility $transitionSpeed $transitionFunction,
+            transform $transitionSpeed $transitionFunction;
     }
 
     &__list {
@@ -1659,7 +1684,8 @@
                 background-color: var(--primary100);
             }
         }
-        &[selected]{
+
+        &[selected] {
             background-color: var(--primary100);
         }
     }
@@ -1681,6 +1707,7 @@
         .select-third__check {
             transform: rotate(-180deg);
         }
+
         .select-third__dropdown {
             opacity: 1;
             visibility: visible;

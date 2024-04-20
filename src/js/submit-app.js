@@ -22,9 +22,17 @@ import tag from './components/tag';
 import chat from './components/chat';
 import submitApp from './components/submitApp';
 import submitAppOffers from './components/submitAppOffers';
+import {
+    dropImage
+} from './components/dropImage';
 
 import dataQuiz from './data/dataQuiz';
 import quiz from './components/quiz';
+
+import {
+    recordViewing
+} from './components/recordViewing';
+
 document.addEventListener('DOMContentLoaded', () => {
     mapMetro();
     tag();
@@ -34,6 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
     submitAppValidate();
     emergingBlockScroll('.submit-app .submit-app__btn', '.footer-fixed.submit-app-fixed', 99999999, true);
     emergingBlockScroll('.place-sale .place-sale__btn', '.footer-fixed.submit-app-fixed', 99999999, true);
+    dropImage();
+    recordViewing();
     // ==== maps ====
     //  mapPrimary();
     //  mapDraw();

@@ -1095,8 +1095,9 @@ export const fieldSelect = () => {
                     if (container.hasAttribute('data-submit-filter-object-type')) {
                         const developer = document.querySelector('[data-submit-filter-developer]');
                         const currentItem = item.hasAttribute('data-submit-filter-object-type-item');
-                        currentItem && item.classList.contains('_active') && developer ? developer.removeAttribute('hidden') : developer.setAttribute('hidden', '');
-
+                        if (developer) {
+                            currentItem && item.classList.contains('_active') ? developer.removeAttribute('hidden') : developer.setAttribute('hidden', '');
+                        }
                         const secondaryItem = item.hasAttribute('data-submit-filter-object-type-secondary');
                         const houseItem = item.hasAttribute('data-submit-filter-object-type-house');
 
@@ -1125,6 +1126,16 @@ export const fieldSelect = () => {
                             }
                         }
                     }
+                    if (container.hasAttribute('data-place-sale-type')) {
+                        const currentItem = item.hasAttribute('data-submit-filter-object-type-item');
+                        const secondaryItem = item.hasAttribute('data-submit-filter-object-type-secondary');
+                        const houseItem = item.hasAttribute('data-submit-filter-object-type-house');
+                        if (currentItem || secondaryItem || houseItem) {
+                            const itemsHidden = document.querySelectorAll('[data-submit-app-block-hidden]');
+                            itemsHidden.forEach(item => item.removeAttribute('hidden'));
+                        }
+                    }
+
                 }
 
                 updateInput(container, true);
@@ -1133,8 +1144,9 @@ export const fieldSelect = () => {
             if (container.hasAttribute('data-submit-filter-object-type')) {
                 const developer = document.querySelector('[data-submit-filter-developer]');
                 const currentItem = document.querySelector('[data-submit-filter-object-type-item]._active');
-                currentItem && developer ? developer.removeAttribute('hidden') : developer.setAttribute('hidden', '');
-
+                if (developer) {
+                    currentItem ? developer.removeAttribute('hidden') : developer.setAttribute('hidden', '');
+                }
                 const secondaryItem = document.querySelector('data-submit-filter-object-type-secondary');
                 const houseItem = document.querySelector('data-submit-filter-object-type-house');
 

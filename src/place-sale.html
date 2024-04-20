@@ -6,13 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#111111">
-    <title>Разместить заявку на покупку</title>
+    <title>Разместить объявление о продаже</title>
     <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-    <script defer src="js/main.js"></script>
+    <link rel="stylesheet" href="css/submit-app.css">
+    <script defer src="js/submit-app.js"></script>
 </head>
 
 <body class="page__body">
@@ -33,8 +32,48 @@
                 </div>
             </div>
             <div class="place-sale__body">
-                <form action="#" class="place-sale__container container">
-                    <div class="place-sale__row place-sale-address">
+                <form action="post-sale" class="place-sale__container container">
+                    <div class="place-sale__row submit-app-options">
+                        <h2 class="submit-app-options__title submit-app__row-title title-2">
+                            Что ищете?
+                        </h2>
+                        <div class="submit-app-options__choice">
+                            <div class="submit-app-options__item field-select field-select--necessarily field-select--img field-select--col" data-place-sale-type
+                                data-field-select-name="object-type">
+                                <div class="field-select__wrapper">
+                                    <button type="button" class="btn btn-reset tag field-select__item" data-field-value="asd1" data-submit-filter-object-type-item>
+                                        <img loading="lazy" src="./img/new-buildings.svg" alt="Новостройку">
+                                        <span>Новостройку</span>
+                                        <div class="field-select__check" aria-hidden="true">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#verif"></use>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item" data-field-value="asd2" data-submit-filter-object-type-secondary>
+                                        <img loading="lazy" src="./img/secondary-house.svg" alt="Вторичку">
+                                        <span>Вторичку</span>
+                                        <div class="field-select__check" aria-hidden="true">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#verif"></use>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item" data-field-value="asd3" data-submit-filter-object-type-house>
+                                        <img loading="lazy" src="./img/house2.svg" alt="Дом, коттеджи, дачи">
+                                        <span>Дом, коттеджи, дачи</span>
+                                        <div class="field-select__check" aria-hidden="true">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#verif"></use>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                </div>
+                                <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="place-sale__row place-sale-address" data-submit-app-block-hidden hidden>
                         <h2 class="place-sale__row-title place-sale-address__title title-2">
                             Адрес
                         </h2>
@@ -126,7 +165,7 @@
                             </label>
                         </div>
                     </div>
-                    <div class="place-sale__row place-sale-options">
+                    <div class="place-sale__row place-sale-options" data-submit-app-block-hidden hidden>
                         <h2 class="place-sale__row-title place-sale-options__title title-2">
                             Параметры
                         </h2>
@@ -428,7 +467,7 @@
                             </svg>
                         </button>
                     </div>
-                    <div class="place-sale__row place-sale-descr">
+                    <div class="place-sale__row place-sale-descr" data-submit-app-block-hidden hidden>
                         <h2 class="place-sale__row-title place-sale-descr__title title-2">
                             Описание
                         </h2>
@@ -451,7 +490,7 @@
                                 placeholder="Расскажите о недвижимости, собственниках, соседях, транспортной доступности и инфраструктуре"></textarea>
                         </label>
                     </div>
-                    <div class="place-sale__row place-sale-photo">
+                    <div class="place-sale__row place-sale-photo" data-submit-app-block-hidden hidden>
                         <h2 class="place-sale-photo__title title-2">
                             Фото
                         </h2>
@@ -494,7 +533,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="place-sale__row place-sale-video">
+                    <div class="place-sale__row place-sale-video" data-submit-app-block-hidden hidden>
                         <h2 class="place-sale__row-title place-sale-video__title title-2">
                             Видео
                         </h2>
@@ -505,13 +544,13 @@
                             <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Ссылка на видео с YouTube">
                         </label>
                     </div>
-                    <div class="place-sale__row place-sale-viewing">
+                    <div class="place-sale__row place-sale-viewing" data-submit-app-block-hidden hidden>
                         <h2 class="place-sale__row-title place-sale-viewing__title title-2">
                             Укажите даты удобные для показа
                         </h2>
                         <button type="button" class="btn btn-reset btn-primary" data-popup-path="record-viewing">Поставить дату</button>
                     </div>
-                    <div class="submit-app__row place-sale-price">
+                    <div class="submit-app__row place-sale-price" data-submit-app-block-hidden hidden>
                         <div class="place-sale-price__top">
                             <h2 class="place-sale__row-title place-sale-price__title title-2">
                                 Цена и тип сделки
@@ -549,7 +588,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="submit-app__row place-sale-videoshow">
+                    <div class="submit-app__row place-sale-videoshow" data-submit-app-block-hidden hidden>
                         <div class="place-sale-videoshow__top">
                             <h2 class="place-sale__row-title place-sale-videoshow__title title-2">
                                 Видеопоказ
@@ -573,7 +612,7 @@
                             </label>
                         </div>
                     </div>
-                    <div class="place-sale__row communic-method-radios radio-primary">
+                    <div class="place-sale__row communic-method-radios radio-primary" data-submit-app-block-hidden hidden>
                         <h2 class="communic-method-radios__title place-sale__row-title title-2">
                             Способ связи
                         </h2>
@@ -592,7 +631,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="place-sale__row your-contacts-field">
+                    <div class="place-sale__row your-contacts-field" data-submit-app-block-hidden hidden>
                         <h2 class="your-contacts-field__title place-sale__row-title title-2">
                             Ваши контакты
                         </h2>
@@ -611,7 +650,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="place-sale__row place-sale-layouts">
+                    <div class="place-sale__row place-sale-layouts" data-submit-app-block-hidden hidden>
                         <div class="row">
                             <h2 class="place-sale__row-title title-2">
                              1000 квартир.
@@ -1402,15 +1441,29 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-reset btn-primary place-sale__btn">
+                    <button type="submit" class="btn btn-reset btn-primary place-sale__btn" data-submit-app-block-hidden hidden>
                         Разместить
                     </button>
                 </form>
             </div>
         </main>
+        <div class="footer-fixed submit-app-fixed fix-block" data-submit-app-block-hidden hidden>
+            <div class="footer-fixed__container">
+                <button type="submit" class="btn btn-reset btn-primary" form="post-sale" style="width: 100%;">
+                    Разместить
+                </button>
+            </div>
+        </div>
         @include('partials/footer.html')
     </div>
-    @include('partials/popup.html')
+      <!-- popups -->
+      @include('popups/city.html')
+      @include('popups/add.html')
+      @include('popups/personal-area2.html')
+      @include('popups/edit-profile.html')
+      <!-- ==== -->
+      @include('popups/record-viewing.html')
+      <!-- popups -->
 </body>
 
 

@@ -989,23 +989,24 @@ textarea.input-reset {
   cursor: pointer;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .checkbox-secondary__label::before {
   content: "";
-  width: 16px;
-  height: 16px;
-  flex: 0 0 16px;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
   background-color: var(--white);
   border: 2px solid #b3bcc5;
-  border-radius: 4px;
+  border-radius: 6px;
   transition: background-color 0.32s ease-in-out, border 0.32s ease-in-out;
   position: relative;
   top: 0;
 }
 .checkbox-secondary__label::after {
   content: "";
-  width: 16px;
-  height: 16px;
+  width: 24px;
+  height: 24px;
   opacity: 0;
   visibility: hidden;
   position: absolute;
@@ -1014,7 +1015,7 @@ textarea.input-reset {
   transition: opacity 0.32s ease-in-out, visibility 0.32s ease-in-out, filter 0.32s ease-in-out;
   background-image: url("../img/check-mark.svg");
   background-repeat: no-repeat;
-  background-size: 10px 7px;
+  background-size: 12px 9px;
   background-position: center;
 }
 .checkbox-secondary__text {
@@ -1022,7 +1023,7 @@ textarea.input-reset {
   color: var(--gray);
   font-size: var(--default-fz);
   line-height: 1;
-  font-weight: 400;
+  font-weight: 500;
 }
 .checkbox-secondary.agent-reviews__checkbox .checkbox-secondary__content {
   display: flex;
@@ -9108,6 +9109,10 @@ textarea.input-reset {
   margin-top: 16px !important;
 }
 
+.mt-24 {
+  margin-top: 24px !important;
+}
+
 .mb-24 {
   margin-bottom: 24px !important;
 }
@@ -9866,6 +9871,9 @@ textarea.input-reset {
 }
 .photo-load:not(.photo-load--not-decor) .photo-load__wrapper > input {
   height: 96px;
+}
+.photo-load:not(.photo-load--not-decor) .photo-load__wrapper._error {
+  border-color: var(--red);
 }
 @media (max-width: 1212px) {
   .photo-load:not(.photo-load--not-decor) .photo-load__wrapper {
@@ -17205,7 +17213,6 @@ textarea.input-reset {
 }
 .field-input__wrapper {
   display: flex;
-  align-items: center;
   gap: 12px;
   flex-wrap: wrap;
   max-width: 100%;
@@ -17213,8 +17220,17 @@ textarea.input-reset {
 .field-input__wrapper .input-text .input-text__label {
   grid-template-columns: 1fr max-content;
 }
-.field-input__wrapper .input-text._width-100 .input-text__label {
+.field-input__wrapper .input-text._width-100-prc .input-text__label {
   grid-template-columns: 100%;
+}
+.field-input__wrapper .input-text._max-w-130 {
+  max-width: 130px;
+}
+.field-input__wrapper .input-text--disabled .input-text__input {
+  text-align: left;
+}
+.field-input__wrapper > span {
+  margin-top: 10px;
 }
 .field-input__wrapper._not-wrap {
   flex-wrap: nowrap;
@@ -17248,7 +17264,7 @@ textarea.input-reset {
   --width: auto;
 }
 .field-input > .checkbox-secondary {
-  margin-left: 16px;
+  margin-left: 20px;
   margin-top: 12px;
 }
 .field-input .secondary-tooltip {
@@ -17259,7 +17275,7 @@ textarea.input-reset {
   max-width: 250px;
 }
 .field-input > .secondary-tooltip {
-  margin-top: 8px;
+  margin-top: 12px;
 }
 @media (max-width: 1212px) {
   .field-input {
@@ -21700,6 +21716,9 @@ textarea.input-reset {
   opacity: 1;
   visibility: visible;
 }
+.offer-room._error .offer-room__image {
+  border: 1px solid var(--red);
+}
 .offer-room--border {
   border: 1px solid var(--primary200);
   border-radius: 12px;
@@ -22711,7 +22730,7 @@ textarea.input-reset {
   }
 }
 .filter-dropdown__checkbox {
-  flex: 0 0 16px;
+  flex: 0 0 24px;
 }
 @media (max-width: 1212px) {
   .filter-dropdown__checkbox {
@@ -22906,7 +22925,7 @@ textarea.input-reset {
   line-height: var(--default-lh);
 }
 .select-dropdown-checkbox__dropdown .checkbox-secondary__label::before, .select-dropdown-checkbox__dropdown .checkbox-secondary__label::after {
-  flex: 0 0 16px;
+  flex: 0 0 24px;
 }
 .select-dropdown-checkbox__dropdown .checkbox-secondary .secondary-tooltip {
   margin-left: 6px;
@@ -37007,7 +37026,7 @@ textarea.input-reset {
 }
 .place-sale-descr__textarea {
   margin-top: 16px;
-  --height: 96px;
+  --height: 144px;
 }
 @media (max-width: 1212px) {
   .place-sale-descr__textarea {

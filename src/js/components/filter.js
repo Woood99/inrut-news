@@ -1134,6 +1134,7 @@ export const fieldSelect = () => {
                             targetItems.forEach(item => {
                                 if (item.dataset.placeSaleTarget == index) {
                                     item.removeAttribute('hidden');
+                                    item.classList.add('_active')
                                     const topGap =  window.pageYOffset + item.getBoundingClientRect().top;
                                     window.scrollTo({
                                         top: topGap - 15,
@@ -1141,8 +1142,16 @@ export const fieldSelect = () => {
                                     })
                                 } else {
                                     item.setAttribute('hidden', '');
+                                    item.classList.remove('_active');
                                 }
                             })
+
+                            const btn = document.querySelector('[data-place-sale-btn]')
+                            const footerFixed = document.querySelector('[data-place-sale-footer-fixed]');
+                            if (btn && footerFixed) {
+                                footerFixed.removeAttribute('hidden');
+                                btn.removeAttribute('hidden');
+                            }
                         }
                     }
 

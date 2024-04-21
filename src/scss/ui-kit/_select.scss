@@ -965,7 +965,6 @@
 
     &__wrapper {
         display: flex;
-        align-items: center;
         gap: 12px;
         flex-wrap: wrap;
         max-width: 100%;
@@ -974,13 +973,23 @@
             .input-text__label {
                 grid-template-columns: 1fr max-content;
               }
-            &._width-100{
+            &._width-100-prc{
                 .input-text__label {
                   grid-template-columns: 100%;
                 }
             }
+            &._max-w-130{
+                max-width: 130px;
+            }
+            &--disabled{
+                .input-text__input{
+                    text-align: left;
+                }
+            }
         }
-
+        >span{
+           margin-top: 10px;
+        }
         &._not-wrap {
             flex-wrap: nowrap;
             align-items: center;
@@ -1021,7 +1030,7 @@
     }
 
     >.checkbox-secondary {
-        margin-left: 16px;
+        margin-left: 20px;
         margin-top: 12px;
     }
 
@@ -1035,7 +1044,7 @@
     }
 
     >.secondary-tooltip {
-        margin-top: 8px;
+        margin-top: 12px;
     }
 
     @media (max-width:$desktop) {

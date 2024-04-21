@@ -188,7 +188,7 @@
                 </div>
             </div>
             <div class="place-sale__body">
-                <form action="post-sale" class="place-sale__container container">
+                <form action="#" id='post-sale-form' class="place-sale__container container">
                     <div class="place-sale__row submit-app-options">
                         <h2 class="submit-app-options__title submit-app__row-title title-2">
                             Выберите тип недвижимости
@@ -243,9 +243,9 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="place-sale-address__field input-text input-text--no-exp">
+                                        <div class="place-sale-address__field input-text input-text--no-exp" data-place-sale-field="address">
                                             <label class="input-text__label">
-                                                <span>Город, улица, дом, корпус</span>
+                                                <span>Улица, дом, корпус</span>
                                                 <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
                                             </label>
                                         </div>
@@ -367,7 +367,7 @@
                             <h2 class="place-sale__row-title place-sale-options__title title-2">
                                 О квартире
                             </h2>
-                            <div class="filter__item field-select field-select--rooms">
+                            <div class="filter__item field-select field-select--rooms" data-place-sale-field="rooms">
                                 <div class="field-select__name">
                                     Количество комнат
                                 </div>
@@ -395,19 +395,19 @@
                                     Площадь, м²
                                 </div>
                                 <div class="field-input__wrapper">
-                                    <div class="input-text input-text--only-number">
+                                    <div class="input-text input-text--only-number _max-w-130" data-place-sale-field="square-general">
                                         <label class="input-text__label">
                                             <input type="text" name="Имя" class="input-reset input-text__input" maxlength="4" placeholder="">
                                             <span>общая</span>
                                         </label>
                                     </div>
-                                    <div class="input-text input-text--only-number">
+                                    <div class="input-text input-text--only-number _max-w-130" data-place-sale-field="square-residential">
                                         <label class="input-text__label">
                                             <input type="text" name="Имя" class="input-reset input-text__input" maxlength="4" placeholder="">
                                             <span>жилая</span>
                                         </label>
                                     </div>
-                                    <div class="input-text input-text--only-number">
+                                    <div class="input-text input-text--only-number _max-w-130">
                                         <label class="input-text__label">
                                             <input type="text" name="Имя" class="input-reset input-text__input" maxlength="4" placeholder="">
                                             <span>кухня</span>
@@ -420,20 +420,20 @@
                                     Этаж
                                 </div>
                                 <div class="field-input__wrapper">
-                                    <div class="input-text input-text--no-exp input-text--only-number _width-100">
+                                    <div class="input-text input-text--no-exp input-text--only-number _width-100-prc _max-w-130" data-place-sale-field="floor-from">
                                         <label class="input-text__label">
                                             <input type="text" name="Имя" class="input-reset input-text__input" maxlength="4" placeholder="">
                                         </label>
                                     </div>
                                     <span>из</span>
-                                    <div class="input-text input-text--no-exp input-text--only-number _width-100">
+                                    <div class="input-text input-text--no-exp input-text--only-number _width-100-prc _max-w-130" data-place-sale-field="floor-to">
                                         <label class="input-text__label">
                                             <input type="text" name="Имя" class="input-reset input-text__input" maxlength="4" placeholder="">
                                         </label>
                                     </div>
                                 </div>
                             </div>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="type-housing">
                                 <div class="field-select__name">
                                     Тип жилья
                                 </div>
@@ -484,7 +484,7 @@
                                 </div>
                                 <input type="text" name="rooms-house" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="filter__item field-select field-select--multiple">
+                            <div class="filter__item field-select field-select--multiple" data-place-sale-field="view-window">
                                 <div class="field-select__name">
                                     Вид из окна
                                 </div>
@@ -516,7 +516,7 @@
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="type-window">
                                 <div class="field-select__name">
                                     Тип окон
                                 </div>
@@ -570,7 +570,7 @@
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="filter__item field-select field-select--multiple">
+                            <div class="filter__item field-select field-select--multiple" data-place-sale-field="sunny-side">
                                 <div class="field-select__name">
                                     Солнечная сторона
                                 </div>
@@ -590,7 +590,7 @@
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="plate">
                                 <div class="field-select__name">
                                     Плита
                                 </div>
@@ -607,7 +607,7 @@
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="heating">
                                 <div class="field-select__name">
                                     Отопление
                                 </div>
@@ -645,7 +645,7 @@
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
 
-                            <div class="submit-app-options__offers submit-app-offers submit-app-offers--advant _only-one">
+                            <div class="submit-app-options__offers submit-app-offers submit-app-offers--advant _only-one" data-place-sale-field="repair">
                                 <h3 class="submit-app-offers__title submit-app__row-title title-2">
                                     Какой у вас ремонт?
                                 </h3>
@@ -884,7 +884,7 @@
                                     Год постройки
                                 </div>
                                 <div class="field-input__wrapper">
-                                    <div class="input-text input-text--only-number">
+                                    <div class="input-text input-text--only-number _max-w-130">
                                         <label class="input-text__label">
                                             <input type="text" maxlength="3" class="input-reset input-text__input service-area-repair-input" placeholder="">
                                             <span>г</span>
@@ -943,7 +943,7 @@
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="elevator">
                                 <div class="field-select__name">
                                     Лифт
                                 </div>
@@ -981,6 +981,43 @@
                                     </button>
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
+                            </div>
+                        </div>
+                        <div class="place-sale__row place-sale-photo" data-place-sale-field="images">
+                            <h2 class="place-sale__row-title place-sale-photo__title title-2">
+                                Фотографии и планировка
+                            </h2>
+                            <div class="place-sale-photo__descr">
+                                <p>
+                                    Сфотографируйте все комнаты, кухню, санузел, коридор, балкон, вид из окна, фасад здания, подъезд. На фото не должно быть людей, животных, алкоголя.
+                                </p>
+                                <p>
+                                    Загрузите изображение вашей планировки. Объявления с планировкой квартиры более привлекательны для покупателей
+                                </p>
+                            </div>
+                            <div class="photo-load">
+                                <div class="place-sale-photo__images drag-drop photo-load__images">
+                              
+                                </div>
+                                <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                    <button type="button" class="btn btn-reset">
+                                        <p>
+                                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                        </p>
+                                    </button>
+                                    <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                </div>
+                            </div>
+                            <div class="place-sale-video mt-24">
+                                <h2 class="place-sale__row-title place-sale-video__title title-2">
+                                    Видео на YouTube
+                                </h2>
+                                <p class="place-sale-video__descr">
+                                    Добавьте видео вашей недвижимости
+                                </p>
+                                <label class="place-sale-video__field input-primary">
+                                    <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Ссылка на видео с YouTube">
+                                </label>
                             </div>
                         </div>
                         <div class="place-sale__row place-sale-options">
@@ -1070,7 +1107,7 @@
                             <h2 class="place-sale__row-title place-sale-options__title title-2">
                                 Особенности сделки
                             </h2>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="years-owned">
                                 <div class="field-select__name">
                                     Лет в собственности
                                 </div>
@@ -1087,7 +1124,7 @@
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="owner">
                                 <div class="field-select__name">
                                     Собственник
                                 </div>
@@ -1112,7 +1149,7 @@
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="registered">
                                 <div class="field-select__name">
                                     Прописано
                                 </div>
@@ -1136,6 +1173,28 @@
                                     </label>
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
+                            </div>
+                        </div>
+                        <div class="place-sale__row place-sale-descr">
+                            <h2 class="place-sale__row-title place-sale-descr__title title-2">
+                                Описание
+                            </h2>
+                            <div class="place-sale-descr__btns">
+                                <button type="button" class="btn btn-reset place-sale-descr__btn">
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#plus"></use>
+                                    </svg>
+                                    <span>Сгенерировать описание</span>
+                                </button>
+                                <button type="button" class="btn btn-reset place-sale-descr__btn">
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#plus"></use>
+                                    </svg>
+                                    <span>Визуальный редактор</span>
+                                </button>
+                            </div>
+                            <div class="place-sale-descr__textarea textarea-secondary textarea-secondary--default" data-place-sale-field="descr" data-textarea-secondary-min-height="144">
+                                <textarea class="input-reset textarea-secondary__input" maxlength="2000" placeholder="Расскажите о недвижимости, транспортной доступности и инфраструктуре"></textarea>
                             </div>
                         </div>
                         <div class="place-sale__row place-sale-options">
@@ -1199,9 +1258,9 @@
                                     Цена, ₽
                                 </div>
                                 <div class="field-input__wrapper">
-                                    <div class="input-text input-text--only-number">
+                                    <div class="input-text input-text--only-number" data-place-sale-field="price">
                                         <label class="input-text__label">
-                                            <input type="text" name="Имя" class="input-reset input-text__input" maxlength="4" placeholder="">
+                                            <input type="text" name="Имя" class="input-reset input-text__input" maxlength="15" placeholder="">
                                             <span>₽</span>
                                         </label>
                                     </div>
@@ -1255,90 +1314,6 @@
                                         </label>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="place-sale__row place-sale-photo">
-                            <h2 class="place-sale__row-title place-sale-photo__title title-2">
-                                Фотографии и планировка
-                            </h2>
-                            <div class="place-sale-photo__descr">
-                                <p>
-                                    Сфотографируйте все комнаты, кухню, санузел, коридор, балкон, вид из окна, фасад здания, подъезд. На фото не должно быть людей, животных, алкоголя.
-                                </p>
-                                <p>
-                                    Загрузите изображение вашей планировки. Объявления с планировкой квартиры более привлекательны для покупателей
-                                </p>
-                            </div>
-                            <div class="photo-load">
-                                <div class="place-sale-photo__images drag-drop photo-load__images">
-                                    <div class="place-sale-photo__image ibg drag-drop__item" draggable="true">
-                                        <picture>
-                                            <source srcset="./img/card-12.webp" type="image/webp">
-                                            <img loading="lazy" src="./img/card-12.jpg" width="271" height="190" alt="">
-                                        </picture>
-                                        <div class="place-sale-photo__icon">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#right-left"></use>
-                                            </svg>
-                                        </div>
-                                        <button type="button" class="btn btn-reset place-sale-photo__remove" title="Удалить фото">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#trash"></use>
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--1">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#rotate-1"></use>
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--2">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#rotate-2"></use>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="place-sale-photo__wrapper photo-load__wrapper">
-                                    <button type="button" class="btn btn-reset">
-                                        <p>
-                                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
-                                        </p>
-                                    </button>
-                                    <input type="file" data-upload-drop name="upload" accept=".jpg, .png, .jpeg, .heic" class="input-reset">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="place-sale__row place-sale-video">
-                            <h2 class="place-sale__row-title place-sale-video__title title-2">
-                                Видео на YouTube
-                            </h2>
-                            <p class="place-sale-video__descr">
-                                Добавьте видео вашей недвижимости
-                            </p>
-                            <label class="place-sale-video__field input-primary">
-                                <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Ссылка на видео с YouTube">
-                            </label>
-                        </div>
-                        <div class="place-sale__row place-sale-descr">
-                            <h2 class="place-sale__row-title place-sale-descr__title title-2">
-                                Описание
-                            </h2>
-                            <div class="place-sale-descr__btns">
-                                <button type="button" class="btn btn-reset place-sale-descr__btn">
-                                    <svg>
-                                        <use xlink:href="./img/sprite.svg#plus"></use>
-                                    </svg>
-                                    <span>Сгенерировать описание</span>
-                                </button>
-                                <button type="button" class="btn btn-reset place-sale-descr__btn">
-                                    <svg>
-                                        <use xlink:href="./img/sprite.svg#plus"></use>
-                                    </svg>
-                                    <span>Визуальный редактор</span>
-                                </button>
-                            </div>
-                            <div class="place-sale-descr__textarea textarea-secondary textarea-secondary--default" data-textarea-secondary-min-height="96">
-                                <textarea class="input-reset textarea-secondary__input" maxlength="2000" placeholder="Расскажите о недвижимости, транспортной доступности и инфраструктуре"></textarea>
                             </div>
                         </div>
                         <div class="place-sale__row additionally" data-additionally-type="summ">
@@ -1772,16 +1747,10 @@
                             <button type="button" class="btn btn-reset btn-primary" data-popup-path="record-viewing">Поставить дату</button>
                         </div>
                         <div class="place-sale__row place-sale-options">
-                            <h2 class="place-sale__row-title place-sale-options__title title-2 flex justify-sb">
+                            <h2 class="place-sale__row-title place-sale-options__title title-2">
                                 Контакты
-                                <a href="./edit-profile.html" class="btn btn-reset top-page-inner-title__btn edit-btn" title="Редактировать">
-                                    <svg>
-                                        <use xlink:href="img/sprite.svg#pencil"></use>
-                                    </svg>
-                                    <span>Редактировать</span>
-                                </a>
                             </h2>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="communic-method">
                                 <div class="field-select__name">
                                     Способ связи
                                 </div>
@@ -1795,31 +1764,7 @@
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="filter__item field-input">
-                                <div class="field-input__name">
-                                    Номер телефона
-                                </div>
-                                <div class="field-input__wrapper">
-                                    <div class="input-text input-text--no-exp input-text--only-number _width-100">
-                                        <label class="input-text__label">
-                                            <input type="text" name="Имя" class="input-reset input-text__input" value="8 921 645 45 45" maxlength="11" placeholder="">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="filter__item field-input">
-                                <div class="field-input__name">
-                                    Ваше имя
-                                </div>
-                                <div class="field-input__wrapper">
-                                    <div class="input-text input-text--no-exp _width-100">
-                                        <label class="input-text__label">
-                                            <input type="text" name="Имя" class="input-reset input-text__input" value="Алексей Г." maxlength="15" placeholder="">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="online-show">
                                 <div class="field-select__name">
                                     Онлайн показ
                                 </div>
@@ -1832,6 +1777,36 @@
                                     </button>
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
+                            </div>
+                            <div class="filter__item field-input">
+                                <div class="field-input__name">
+                                    Номер телефона
+                                </div>
+                                <div class="field-input__wrapper">
+                                    <div class="input-text input-text--disabled input-text--no-exp input-text--only-number _width-100-prc">
+                                        <label class="input-text__label">
+                                            <input type="text" name="Имя" class="input-reset input-text__input" value="8 921 645 45 45" disabled maxlength="11" placeholder="">
+                                        </label>
+                                    </div>
+                                    <a href="./edit-profile.html" class="btn btn-reset edit-btn" title="Редактировать">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#pencil"></use>
+                                        </svg>
+                                        <span>Редактировать</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="filter__item field-input">
+                                <div class="field-input__name">
+                                    Ваше имя
+                                </div>
+                                <div class="field-input__wrapper">
+                                    <div class="input-text input-text--disabled input-text--no-exp _width-100-prc">
+                                        <label class="input-text__label">
+                                            <input type="text" name="Имя" class="input-reset input-text__input" value="Алексей Г." disabled maxlength="15" placeholder="">
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1859,9 +1834,9 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="place-sale-address__field input-text input-text--no-exp">
+                                    <div class="place-sale-address__field input-text input-text--no-exp" data-place-sale-field="address">
                                         <label class="input-text__label">
-                                            <span>Город, улица, дом, корпус</span>
+                                            <span>Улица, дом, корпус</span>
                                             <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
                                         </label>
                                     </div>
@@ -1982,7 +1957,7 @@
                             <h2 class="place-sale__row-title place-sale-options__title title-2">
                                 Об участке
                             </h2>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="type-plot">
                                 <div class="field-select__name">
                                     Тип участка
                                 </div>
@@ -2004,7 +1979,7 @@
                                     Площадь
                                 </div>
                                 <div class="field-input__wrapper">
-                                    <div class="input-text input-text--only-number">
+                                    <div class="input-text input-text--only-number _max-w-130" data-place-sale-field="square-plot">
                                         <label class="input-text__label">
                                             <input type="text" name="Имя" class="input-reset input-text__input" maxlength="5" placeholder="">
                                             <span>сот.</span>
@@ -2012,7 +1987,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="decorated">
                                 <div class="field-select__name">
                                     Оформлен
                                 </div>
@@ -2034,7 +2009,7 @@
                             <h2 class="place-sale__row-title place-sale-options__title title-2">
                                 О доме
                             </h2>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="type-house">
                                 <div class="field-select__name">
                                     Тип дома
                                 </div>
@@ -2091,7 +2066,7 @@
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="house-property">
                                 <div class="field-select__name">
                                     Дом собственности
                                 </div>
@@ -2110,7 +2085,7 @@
                                     Год постройки
                                 </div>
                                 <div class="field-input__wrapper">
-                                    <div class="input-text input-text--only-number">
+                                    <div class="input-text input-text--only-number _max-w-130">
                                         <label class="input-text__label">
                                             <input type="text" maxlength="4" class="input-reset input-text__input service-area-repair-input" placeholder="">
                                             <span>г</span>
@@ -2118,7 +2093,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="floors-house">
                                 <div class="field-select__name">
                                     Этажей в доме
                                 </div>
@@ -2143,13 +2118,13 @@
                                     Площадь, м²
                                 </div>
                                 <div class="field-input__wrapper">
-                                    <div class="input-text input-text--only-number">
+                                    <div class="input-text input-text--only-number _max-w-130" data-place-sale-field="square-general">
                                         <label class="input-text__label">
                                             <input type="text" name="Имя" class="input-reset input-text__input" maxlength="4" placeholder="">
                                             <span>общая</span>
                                         </label>
                                     </div>
-                                    <div class="input-text input-text--only-number">
+                                    <div class="input-text input-text--only-number _max-w-130" data-place-sale-field="square-residential">
                                         <label class="input-text__label">
                                             <input type="text" name="Имя" class="input-reset input-text__input" maxlength="4" placeholder="">
                                             <span>жилая</span>
@@ -2157,7 +2132,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="rooms">
                                 <div class="field-select__name">
                                     Количество комнат
                                 </div>
@@ -2180,7 +2155,7 @@
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="bedrooms">
                                 <div class="field-select__name">
                                     Количество спален
                                 </div>
@@ -2203,7 +2178,7 @@
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="electricity">
                                 <div class="field-select__name">
                                     Электричество
                                 </div>
@@ -2217,7 +2192,7 @@
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="gas">
                                 <div class="field-select__name">
                                     Газ
                                 </div>
@@ -2237,7 +2212,7 @@
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="heating">
                                 <div class="field-select__name">
                                     Отопление
                                 </div>
@@ -2263,7 +2238,7 @@
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="water-supply">
                                 <div class="field-select__name">
                                     Водоснабжение
                                 </div>
@@ -2283,7 +2258,7 @@
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="sewerage">
                                 <div class="field-select__name">
                                     Канализация
                                 </div>
@@ -2300,21 +2275,7 @@
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="filter__item field-select">
-                                <div class="field-select__name">
-                                    Санузел
-                                </div>
-                                <div class="field-select__wrapper">
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>На улице</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>В доме</span>
-                                    </button>
-                                </div>
-                                <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
-                            </div>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="driveway">
                                 <div class="field-select__name">
                                     Подъездная дорога
                                 </div>
@@ -2412,7 +2373,7 @@
                                     <input type="text" name="rooms-house" class="input-reset field-select__input" hidden placeholder="">
                                 </div>
                             </div>
-                            <div class="submit-app-options__offers submit-app-offers submit-app-offers--advant _only-one">
+                            <div class="submit-app-options__offers submit-app-offers submit-app-offers--advant _only-one" data-place-sale-field="repair">
                                 <h3 class="submit-app-offers__title submit-app__row-title title-2">
                                     Какой у вас ремонт?
                                 </h3>
@@ -2642,11 +2603,48 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="place-sale__row place-sale-photo" data-place-sale-field="images">
+                            <h2 class="place-sale__row-title place-sale-photo__title title-2">
+                                Фотографии и планировка
+                            </h2>
+                            <div class="place-sale-photo__descr">
+                                <p>
+                                    Сфотографируйте все комнаты, кухню, санузел, коридор, балкон, вид из окна, фасад здания, подъезд. На фото не должно быть людей, животных, алкоголя.
+                                </p>
+                                <p>
+                                    Загрузите изображение вашей планировки. Объявления с планировкой квартиры более привлекательны для покупателей
+                                </p>
+                            </div>
+                            <div class="photo-load">
+                                <div class="place-sale-photo__images drag-drop photo-load__images">
+                                 
+                                </div>
+                                <div class="place-sale-photo__wrapper photo-load__wrapper">
+                                    <button type="button" class="btn btn-reset">
+                                        <p>
+                                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
+                                        </p>
+                                    </button>
+                                    <input type="file" data-upload-drop name="upload" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                </div>
+                            </div>
+                            <div class="place-sale-video mt-24">
+                                <h2 class="place-sale__row-title place-sale-video__title title-2">
+                                    Видео на YouTube
+                                </h2>
+                                <p class="place-sale-video__descr">
+                                    Добавьте видео вашей недвижимости
+                                </p>
+                                <label class="place-sale-video__field input-primary">
+                                    <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Ссылка на видео с YouTube">
+                                </label>
+                            </div>
+                        </div>
                         <div class="place-sale__row place-sale-options">
                             <h2 class="place-sale__row-title place-sale-options__title title-2">
                                 Особенности сделки
                             </h2>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="years-owned">
                                 <div class="field-select__name">
                                     Лет в собственности
                                 </div>
@@ -2663,7 +2661,7 @@
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="owner">
                                 <div class="field-select__name">
                                     Собственник
                                 </div>
@@ -2688,7 +2686,7 @@
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="registered">
                                 <div class="field-select__name">
                                     Прописано
                                 </div>
@@ -2712,6 +2710,28 @@
                                     </label>
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
+                            </div>
+                        </div>
+                        <div class="place-sale__row place-sale-descr">
+                            <h2 class="place-sale__row-title place-sale-descr__title title-2">
+                                Описание
+                            </h2>
+                            <div class="place-sale-descr__btns">
+                                <button type="button" class="btn btn-reset place-sale-descr__btn">
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#plus"></use>
+                                    </svg>
+                                    <span>Сгенерировать описание</span>
+                                </button>
+                                <button type="button" class="btn btn-reset place-sale-descr__btn">
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#plus"></use>
+                                    </svg>
+                                    <span>Визуальный редактор</span>
+                                </button>
+                            </div>
+                            <div class="place-sale-descr__textarea textarea-secondary textarea-secondary--default" data-place-sale-field="descr" data-textarea-secondary-min-height="144">
+                                <textarea class="input-reset textarea-secondary__input" maxlength="2000" placeholder="Расскажите о недвижимости, транспортной доступности и инфраструктуре"></textarea>
                             </div>
                         </div>
                         <div class="place-sale__row place-sale-options">
@@ -2775,9 +2795,9 @@
                                     Цена, ₽
                                 </div>
                                 <div class="field-input__wrapper">
-                                    <div class="input-text input-text--only-number">
+                                    <div class="input-text input-text--only-number" data-place-sale-field="price">
                                         <label class="input-text__label">
-                                            <input type="text" name="Имя" class="input-reset input-text__input" maxlength="4" placeholder="">
+                                            <input type="text" name="Имя" class="input-reset input-text__input" maxlength="15" placeholder="">
                                             <span>₽</span>
                                         </label>
                                     </div>
@@ -2833,145 +2853,23 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="place-sale__row place-sale-photo">
-                            <h2 class="place-sale__row-title place-sale-photo__title title-2">
-                                Фотографии и планировка
-                            </h2>
-                            <div class="place-sale-photo__descr">
-                                <p>
-                                    Сфотографируйте все комнаты, кухню, санузел, коридор, балкон, вид из окна, фасад здания, подъезд. На фото не должно быть людей, животных, алкоголя.
-                                </p>
-                                <p>
-                                    Загрузите изображение вашей планировки. Объявления с планировкой квартиры более привлекательны для покупателей
-                                </p>
-                            </div>
-                            <div class="photo-load">
-                                <div class="place-sale-photo__images drag-drop photo-load__images">
-                                    <div class="place-sale-photo__image ibg drag-drop__item" draggable="true">
-                                        <picture>
-                                            <source srcset="./img/card-12.webp" type="image/webp">
-                                            <img loading="lazy" src="./img/card-12.jpg" width="271" height="190" alt="">
-                                        </picture>
-                                        <div class="place-sale-photo__icon">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#right-left"></use>
-                                            </svg>
-                                        </div>
-                                        <button type="button" class="btn btn-reset place-sale-photo__remove" title="Удалить фото">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#trash"></use>
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--1">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#rotate-1"></use>
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--2">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#rotate-2"></use>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="place-sale-photo__wrapper photo-load__wrapper">
-                                    <button type="button" class="btn btn-reset">
-                                        <p>
-                                            <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
-                                        </p>
-                                    </button>
-                                    <input type="file" data-upload-drop name="upload" accept=".jpg, .png, .jpeg, .heic" class="input-reset">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="place-sale__row place-sale-video">
-                            <h2 class="place-sale__row-title place-sale-video__title title-2">
-                                Видео на YouTube
-                            </h2>
-                            <p class="place-sale-video__descr">
-                                Добавьте видео вашей недвижимости
-                            </p>
-                            <label class="place-sale-video__field input-primary">
-                                <input type="text" name="Имя" class="input-reset input-primary__input" placeholder="Ссылка на видео с YouTube">
-                            </label>
-                        </div>
-                        <div class="place-sale__row place-sale-descr">
-                            <h2 class="place-sale__row-title place-sale-descr__title title-2">
-                                Описание
-                            </h2>
-                            <div class="place-sale-descr__btns">
-                                <button type="button" class="btn btn-reset place-sale-descr__btn">
-                                    <svg>
-                                        <use xlink:href="./img/sprite.svg#plus"></use>
-                                    </svg>
-                                    <span>Сгенерировать описание</span>
-                                </button>
-                                <button type="button" class="btn btn-reset place-sale-descr__btn">
-                                    <svg>
-                                        <use xlink:href="./img/sprite.svg#plus"></use>
-                                    </svg>
-                                    <span>Визуальный редактор</span>
-                                </button>
-                            </div>
-                            <div class="place-sale-descr__textarea textarea-secondary textarea-secondary--default" data-textarea-secondary-min-height="96">
-                                <textarea class="input-reset textarea-secondary__input" maxlength="2000" placeholder="Расскажите о недвижимости, транспортной доступности и инфраструктуре"></textarea>
-                            </div>
-                        </div>
-                        <div class="place-sale__row additionally" data-additionally-type="summ">
+                        <div class="place-sale__row additionally" data-additionally-type="quantity" data-total-quantity-max="4" data-total-summ-max="50 000">
+                            <input type="text" name="Имя" class="input-reset" data-total-summ-current hidden placeholder="Имя">
                             <h2 class="additionally__title title-2">
                                 Подарки
-                            </h2>
-                            <div class="place-present mt-16">
-                                <h3 class="place-sale-sale__title title-3 mb-16">
-                                    Выберите тип
-                                </h3>
-                                <div class="place-present__wrapper mb-24">
-                                    <div class="place-present__checkboxes">
-                                        <div class="checkbox-secondary place-present-checkbox-summ">
-                                            <input id="present-checkbox-3" name="type-present" class="checkbox-secondary__input" type="radio" value="summ">
-                                            <label for="present-checkbox-3" class="checkbox-secondary__label">
-                                                <span class="checkbox-secondary__text">
-                                                    По сумме
-                                                </span>
-                                            </label>
-                                        </div>
-                                        <div class="checkbox-secondary place-present-checkbox-quantity">
-                                            <input id="present-checkbox-4" name="type-present" class="checkbox-secondary__input" type="radio" value="quantity">
-                                            <label for="present-checkbox-4" class="checkbox-secondary__label">
-                                                <span class="checkbox-secondary__text">
-                                                    По Количеству
-                                                </span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="place-present__summ" hidden="">
-                                        <div class="input-text input-text--no-exp input-text--only-number">
-                                            <label class="input-text__label">
-                                                <span>Введите сумму</span>
-                                                <input type="text" name="Название" class="input-reset input-text__input" placeholder="">
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="place-present__quantity" hidden="">
-                                        <div class="input-text input-text--only-number">
-                                            <label class="input-text__label">
-                                                <span>Введите количество</span>
-                                                <input type="text" name="Название" class="input-reset input-text__input" placeholder="">
-                                                <span>шт</span>
-                                            </label>
-                                        </div>
-                                        <div class="input-text input-text--only-number">
-                                            <label class="input-text__label">
-                                                <span>Введите максимальную сумму</span>
-                                                <input type="text" name="Название" class="input-reset input-text__input" placeholder="">
-                                                <span>₽</span>
-                                            </label>
-                                        </div>
+                                <div class="secondary-tooltip secondary-tooltip--bottom-center">
+                                    <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#info"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="secondary-tooltip__content">
+                                        Подарки и кэшбек начислятся после приобретения объекта
                                     </div>
                                 </div>
-                            </div>
+                            </h2>
                             <p class="additionally__descr">
-                                Выберите подарки на сумму <span data-total-summ>100 000 ₽</span>
+                                Выберите 4 подарка
                             </p>
                             <div class="additionally__items">
                                 <div class="card-checkbox card-checkbox--second" data-additionally-card-calc>
@@ -2991,7 +2889,7 @@
                                         </a>
                                     </div>
                                     <div class="card-checkbox__price">
-                                        <span data-card-summ>10 000 ₽</span>
+                                        <span data-card-summ>1 000 ₽</span>
                                         <span>0 ₽</span>
                                     </div>
                                     <div class="secondary-tooltip secondary-tooltip--top-center">
@@ -3053,7 +2951,7 @@
                                         </span>
                                     </div>
                                     <div class="card-checkbox__price">
-                                        <span data-card-summ>19 999 ₽</span>
+                                        <span data-card-summ>4 000 ₽</span>
                                         <span>0 ₽</span>
                                     </div>
                                     <div class="secondary-tooltip secondary-tooltip--top-center">
@@ -3093,7 +2991,7 @@
                                             </span>
                                         </div>
                                         <div class="card-checkbox__price">
-                                            <span data-card-summ>22 500 ₽</span>
+                                            <span data-card-summ>50 000 ₽</span>
                                             <span>0 ₽</span>
                                         </div>
                                         <div class="secondary-tooltip secondary-tooltip--top-center">
@@ -3276,7 +3174,7 @@
                                                 <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
                                             </div>
                                             <span class="user-info__name">
-                                                Скидка 50% на парковку
+                                               Скидка 50% на парковку
                                             </span>
                                             <span class="user-info__pos">
                                                 Создаст идеальный микроклимат в вашей новой квартире
@@ -3348,16 +3246,10 @@
                             <button type="button" class="btn btn-reset btn-primary" data-popup-path="record-viewing">Поставить дату</button>
                         </div>
                         <div class="place-sale__row place-sale-options">
-                            <h2 class="place-sale__row-title place-sale-options__title title-2 flex justify-sb">
+                            <h2 class="place-sale__row-title place-sale-options__title title-2">
                                 Контакты
-                                <a href="./edit-profile.html" class="btn btn-reset top-page-inner-title__btn edit-btn" title="Редактировать">
-                                    <svg>
-                                        <use xlink:href="img/sprite.svg#pencil"></use>
-                                    </svg>
-                                    <span>Редактировать</span>
-                                </a>
                             </h2>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="communic-method">
                                 <div class="field-select__name">
                                     Способ связи
                                 </div>
@@ -3371,31 +3263,7 @@
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="filter__item field-input">
-                                <div class="field-input__name">
-                                    Номер телефона
-                                </div>
-                                <div class="field-input__wrapper">
-                                    <div class="input-text input-text--no-exp input-text--only-number _width-100">
-                                        <label class="input-text__label">
-                                            <input type="text" name="Имя" class="input-reset input-text__input" value="8 921 645 45 45" maxlength="11" placeholder="">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="filter__item field-input">
-                                <div class="field-input__name">
-                                    Ваше имя
-                                </div>
-                                <div class="field-input__wrapper">
-                                    <div class="input-text input-text--no-exp _width-100">
-                                        <label class="input-text__label">
-                                            <input type="text" name="Имя" class="input-reset input-text__input" value="Алексей Г." maxlength="15" placeholder="">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="filter__item field-select">
+                            <div class="filter__item field-select" data-place-sale-field="online-show">
                                 <div class="field-select__name">
                                     Онлайн показ
                                 </div>
@@ -3409,18 +3277,48 @@
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
+                            <div class="filter__item field-input">
+                                <div class="field-input__name">
+                                    Номер телефона
+                                </div>
+                                <div class="field-input__wrapper">
+                                    <div class="input-text input-text--disabled input-text--no-exp input-text--only-number _width-100-prc">
+                                        <label class="input-text__label">
+                                            <input type="text" name="Имя" class="input-reset input-text__input" value="8 921 645 45 45" disabled maxlength="11" placeholder="">
+                                        </label>
+                                    </div>
+                                    <a href="./edit-profile.html" class="btn btn-reset edit-btn" title="Редактировать">
+                                        <svg>
+                                            <use xlink:href="img/sprite.svg#pencil"></use>
+                                        </svg>
+                                        <span>Редактировать</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="filter__item field-input">
+                                <div class="field-input__name">
+                                    Ваше имя
+                                </div>
+                                <div class="field-input__wrapper">
+                                    <div class="input-text input-text--disabled input-text--no-exp _width-100-prc">
+                                        <label class="input-text__label">
+                                            <input type="text" name="Имя" class="input-reset input-text__input" value="Алексей Г." disabled maxlength="15" placeholder="">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-reset btn-primary place-sale__btn" hidden>
+                    <button type="submit" class="btn btn-reset btn-primary place-sale__btn" data-place-sale-btn hidden>
                         Разместить
                     </button>
                 </form>
             </div>
         </main>
-        <div class="footer-fixed submit-app-fixed fix-block" hidden>
+        <div class="footer-fixed submit-app-fixed fix-block" data-place-sale-footer-fixed hidden>
             <div class="footer-fixed__container">
-                <button type="submit" class="btn btn-reset btn-primary" form="post-sale" style="width: 100%;">
+                <button type="submit" class="btn btn-reset btn-primary" form="post-sale-form" style="width: 100%;">
                     Разместить
                 </button>
             </div>

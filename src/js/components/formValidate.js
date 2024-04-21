@@ -739,9 +739,9 @@ export const inputMaskCardValidity = (input) => {
     })
 }
 
-export const validateCreateErrorSelect = (container) => {
+export const validateCreateErrorSelect = (container,selectorItem = null) => {
     if (!container) return;
-    const items = container.querySelectorAll('.field-select__item');
+    const items = selectorItem ? container.querySelectorAll(selectorItem) : container.querySelectorAll('.field-select__item');
     if (!items.length === 0) return;
     let value = false;
     for (let i = 0; i < items.length; i++) {
@@ -757,10 +757,10 @@ export const validateCreateErrorSelect = (container) => {
     }
     return value;
 }
-export const validatRemoveErrorSelect = (container) => {
+export const validatRemoveErrorSelect = (container,selectorItem = null) => {
     if (!container.classList.contains('_error')) return;
     container.classList.remove('_error');
-    const items = container.querySelectorAll('.field-select__item');
+    const items = selectorItem ? container.querySelectorAll(selectorItem) : container.querySelectorAll('.field-select__item');
     if (items.length > 0) {
         items.forEach(item => item.classList.remove('_error'));
     }

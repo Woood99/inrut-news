@@ -157,7 +157,6 @@
             &__container {
                 border-radius: 12px 0 0 12px;
                 padding: 65px 48px 48px;
-                width: 400px;
 
                 @media (max-width:$desktop) {
                     border-radius: 0;
@@ -279,6 +278,31 @@
     }
 
     &--share-app {
+        .popup-primary {
+            &__container {
+                border-radius: 12px 0 0 12px;
+                padding: 65px 48px 48px;
+                width: 450px;
+
+                @media (max-width:$desktop) {
+                    border-radius: 0;
+                    padding: 75px 16px 32px;
+                    width: 100%;
+                }
+            }
+
+            &__close {
+                position: absolute;
+                margin: 0;
+                transform: translate(0);
+            }
+        }
+
+        @media (max-width:$desktop) {
+            background-color: rgba(34, 41, 102, 0.4);
+        }
+    }
+    &--sell-faster {
         .popup-primary {
             &__container {
                 border-radius: 12px 0 0 12px;
@@ -5919,36 +5943,30 @@
 
     &__item {
         &:not(:last-child) {
-            margin-bottom: 8px;
+            margin-bottom: 16px;
         }
+
     }
 
     &__link {
-        display: flex;
-        align-items: center;
-        color: var(--dark);
-        font-size: var(--default-fz);
-        line-height: var(--default-lh);
-        font-weight: 400;
-        transition: background-color $transitionSpeed $transitionFunction;
-        padding: 12px 48px 12px 16px;
+        width: 100%;
+        border: 1px solid var(--primary200);
+        padding: 24px;
         border-radius: 12px;
-
-        img {
-            width: 50px;
-            height: 50px;
-            margin-right: 16px;
-        }
-
+        transition: border $transitionSpeed $transitionFunction;
         span {
-            transition: color $transitionSpeed $transitionFunction;
-        }
+            color: var(--dark);
+            font-size: var(--default-fz);
+            line-height: var(--default-lh);
 
+            &:nth-child(1) {
+                transition: color $transitionSpeed $transitionFunction;
+                font-weight: 500;
+            }
+        }
         @media (min-width:$desktop-min) {
             &:hover {
-                span {
-                    color: var(--blue);
-                }
+                border-color: var(--blue);
             }
         }
     }

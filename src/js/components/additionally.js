@@ -291,12 +291,12 @@ export const additionally = () => {
     }
 }
 
-export const additionallyDefault = (mainContainer) => {
+export const additionallyDefault = () => {
     const containers = document.querySelectorAll('.additionally--auto');
     if (containers.length === 0) return;
     containers.forEach(container => {
         init(container.querySelectorAll('[data-additionally-card-calc]'));
-        moreBtn(container, mainContainer);
+        moreBtn(container, container.parentNode);
 
         const additionallyCalc = document.querySelector('.additionally-calc');
         const additionallyCalcPrice = additionallyCalc.querySelector('[data-additionally-price]');

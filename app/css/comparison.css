@@ -722,6 +722,9 @@ textarea.input-reset {
 .input-text__label span {
   transition: color 0.32s ease-in-out;
 }
+.input-text__label span:last-child {
+  font-weight: 500;
+}
 .input-text__input {
   border: none;
   background-color: transparent;
@@ -1496,7 +1499,6 @@ textarea.input-reset {
 .popup-primary--add .popup-primary__container {
   border-radius: 12px 0 0 12px;
   padding: 65px 48px 48px;
-  width: 400px;
 }
 @media (max-width: 1212px) {
   .popup-primary--add .popup-primary__container {
@@ -1614,6 +1616,28 @@ textarea.input-reset {
 }
 @media (max-width: 1212px) {
   .popup-primary--share-app {
+    background-color: rgba(34, 41, 102, 0.4);
+  }
+}
+.popup-primary--sell-faster .popup-primary__container {
+  border-radius: 12px 0 0 12px;
+  padding: 65px 48px 48px;
+  width: 450px;
+}
+@media (max-width: 1212px) {
+  .popup-primary--sell-faster .popup-primary__container {
+    border-radius: 0;
+    padding: 75px 16px 32px;
+    width: 100%;
+  }
+}
+.popup-primary--sell-faster .popup-primary__close {
+  position: absolute;
+  margin: 0;
+  transform: translate(0);
+}
+@media (max-width: 1212px) {
+  .popup-primary--sell-faster {
     background-color: rgba(34, 41, 102, 0.4);
   }
 }
@@ -6429,30 +6453,27 @@ textarea.input-reset {
   margin-top: 32px;
 }
 .add-popup__item:not(:last-child) {
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 }
 .add-popup__link {
-  display: flex;
-  align-items: center;
+  width: 100%;
+  border: 1px solid var(--primary200);
+  padding: 24px;
+  border-radius: 12px;
+  transition: border 0.32s ease-in-out;
+}
+.add-popup__link span {
   color: var(--dark);
   font-size: var(--default-fz);
   line-height: var(--default-lh);
-  font-weight: 400;
-  transition: background-color 0.32s ease-in-out;
-  padding: 12px 48px 12px 16px;
-  border-radius: 12px;
 }
-.add-popup__link img {
-  width: 50px;
-  height: 50px;
-  margin-right: 16px;
-}
-.add-popup__link span {
+.add-popup__link span:nth-child(1) {
   transition: color 0.32s ease-in-out;
+  font-weight: 500;
 }
 @media (min-width: 1213px) {
-  .add-popup__link:hover span {
-    color: var(--blue);
+  .add-popup__link:hover {
+    border-color: var(--blue);
   }
 }
 
@@ -9081,6 +9102,10 @@ textarea.input-reset {
   gap: 8px !important;
 }
 
+.gap-12 {
+  gap: 12px !important;
+}
+
 .gap-32 {
   gap: 32px !important;
 }
@@ -9135,6 +9160,10 @@ textarea.input-reset {
 
 .mb-16 {
   margin-bottom: 16px !important;
+}
+
+.ml-auto {
+  margin-left: auto;
 }
 
 .back-link {
@@ -9304,6 +9333,21 @@ textarea.input-reset {
 }
 .favorite-btn._active svg {
   fill: var(--blue);
+}
+
+.favorite {
+  background-color: rgb(233, 214, 214);
+  padding: 7px 15px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.favorite svg {
+  width: 14px;
+  height: 14px;
+  fill: var(--red);
+  stroke: none;
 }
 
 .delete-btn {
@@ -13984,7 +14028,7 @@ textarea.input-reset {
 .tag {
   height: 40px;
   padding: 0 16px;
-  font-weight: 400;
+  font-weight: 500;
   display: flex;
   align-items: center;
   border-radius: 18px;
@@ -20763,6 +20807,15 @@ textarea.input-reset {
   width: 14px;
   height: 14px;
 }
+.tabs-primary._clear .tabs-primary__container {
+  margin-top: 0;
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+.tabs-primary._clear .tabs-primary__inner {
+  margin-top: 0;
+}
 @media (max-width: 1212px) {
   .tabs-primary {
     padding: 16px 0;
@@ -23627,7 +23680,7 @@ textarea.input-reset {
     border-radius: 24px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: max-content max-content;
+    grid-template-rows: max-content max-content max-content;
     grid-gap: 16px;
   }
 }

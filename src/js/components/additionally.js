@@ -291,14 +291,15 @@ export const additionally = () => {
     }
 }
 
-export const additionallyDefault = () => {
+export const additionallyDefault = (mainContainerSelector) => {
     const containers = document.querySelectorAll('.additionally--auto');
     if (containers.length === 0) return;
     containers.forEach(container => {
         init(container.querySelectorAll('[data-additionally-card-calc]'));
-        moreBtn(container, container.parentNode);
+        const mainContainer = container.closest(mainContainerSelector);
+        moreBtn(container, mainContainer);
 
-        const additionallyCalc = document.querySelector('.additionally-calc');
+        const additionallyCalc = mainContainer.querySelector('.additionally-calc');
         const additionallyCalcPrice = additionallyCalc.querySelector('[data-additionally-price]');
 
         container.addEventListener('input', (e) => {

@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     emergingBlockScroll('.place-sale .place-sale__btn', '.footer-fixed.submit-app-fixed', 99999999, true);
     dropImage();
     recordViewing();
-    additionallyDefault();
+    additionallyDefault('.place-sale-additionally');
     // ==== maps ====
     //  mapPrimary();
     //  mapDraw();

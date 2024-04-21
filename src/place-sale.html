@@ -41,8 +41,8 @@
                             <div class="submit-app-options__item field-select field-select--necessarily field-select--img field-select--col" data-place-sale-type>
                                 <div class="field-select__wrapper">
                                     <button type="button" class="btn btn-reset tag field-select__item" data-field-value="asd2" data-place-sale-path="1">
-                                        <img loading="lazy" src="./img/secondary-house.svg" alt="Вторичку">
-                                        <span>Вторичку</span>
+                                        <img loading="lazy" src="./img/secondary-house.svg" alt="Квартиры">
+                                        <span>Квартиры</span>
                                         <div class="field-select__check" aria-hidden="true">
                                             <svg>
                                                 <use xlink:href="./img/sprite.svg#verif"></use>
@@ -68,31 +68,79 @@
                             <h2 class="place-sale__row-title place-sale-address__title title-2">
                                 Адрес
                             </h2>
-                            <div class="place-sale-address__city">
-                                <div class="place-sale-address__text">
-                                    <p>
-                                        Введите адрес вручную или передвиньте метку на карте
-                                    </p>
-                                </div>
-                                <div class="place-sale-address__select select-secondary select-secondary--city _selected">
-                                    <div class="select-secondary__wrapper">
-                                        <span class="select-secondary__placeholder">
-                                            Город
-                                        </span>
-                                        <select class="select-secondary__body" hidden name="city">
-                                            <option value="apartments">Санкт-Петербург</option>
-                                            <option value="apartments2">Волгоград</option>
-                                            <option value="apartments3">Москва</option>
-                                        </select>
+                                <div class="place-sale-address__city">
+                                    <div class="place-sale-address__text">
+                                        <p>
+                                            Введите адрес вручную или передвиньте метку на карте
+                                        </p>
+                                    </div>
+                                    <div class="row" style='grid-template-columns: 280px 550px'>
+                                        <div class="place-sale-address__select select-secondary select-secondary--city _selected">
+                                            <div class="select-secondary__wrapper">
+                                                <span class="select-secondary__placeholder">
+                                                    Город
+                                                </span>
+                                                <select class="select-secondary__body" hidden name="city">
+                                                    <option value="apartments">Санкт-Петербург</option>
+                                                    <option value="apartments2">Волгоград</option>
+                                                    <option value="apartments3">Москва</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="place-sale-address__field input-text input-text--no-exp">
+                                            <label class="input-text__label">
+                                                <span>Город, улица, дом, корпус</span>
+                                                <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                            </label>
+                                        </div>
+                                        <div class="search-select-one search-select-one--img-right">
+                                            <button type="button" class="btn btn-reset search-select-one__button">
+                                                <div class="search-select-one__button-wrapper">
+                                                    <div>Комплекс (если есть)</div>
+                                                    <div>
+                                                        <span>Не выбрано</span>
+                                                    </div>
+                                                </div>
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#check"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="search-select-one__dropdown">
+                                                <button type="button" class="btn btn-reset search-select-one__close">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#x"></use>
+                                                    </svg>
+                                                </button>
+                                                <label class="input-primary search-select-one__input">
+                                                    <input type="search" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по имени">
+                                                </label>
+                                                <div class="search-select-one__wrapper simplebar-third">
+                                                    <div class="search-select-one__item" data-value="object-1">
+                                                        <span>ПИК</span>
+                                                        <img loading="lazy" src="./img/pic.png" alt="ПИК">
+                                                    </div>
+                                                    <div class="search-select-one__item" data-value="object-2">
+                                                        <span>ГК Самолёт</span>
+                                                        <img loading="lazy" src="./img/pic.png" alt="ПИК">
+                                                    </div>
+                                                    <div class="search-select-one__item" data-value="object-3">
+                                                        <span>ГК "А101"</span>
+                                                        <img loading="lazy" src="./img/pic.png" alt="ПИК">
+                                                    </div>
+                                                    <div class="search-select-one__item" data-value="object-1">
+                                                        <span>ГК МИЦ</span>
+                                                        <img loading="lazy" src="./img/pic.png" alt="ПИК">
+                                                    </div>
+                                                    <div class="search-select-one__item" data-value="object-2">
+                                                        <span>MR GROUP</span>
+                                                        <img loading="lazy" src="./img/pic.png" alt="ПИК">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input type="text" name="object" value="Волгоград" class="search-select-one__input-hidden" hidden>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="place-sale-address__field input-text input-text--no-exp">
-                                <label class="input-text__label">
-                                    <span>Город, улица, дом, корпус</span>
-                                    <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
-                                </label>
-                            </div>
                             <div id="place-sale-address-map" class="place-sale-address__map map-primary remove-copyrights-pane">
                             </div>
 
@@ -163,7 +211,7 @@
                             <h2 class="place-sale__row-title place-sale-options__title title-2">
                                 О квартире
                             </h2>
-                            <div class="filter__item field-select field-select--multiple field-select--rooms">
+                            <div class="filter__item field-select field-select--rooms">
                                 <div class="field-select__name">
                                     Количество комнат
                                 </div>
@@ -260,7 +308,7 @@
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="filter__item field-select field-select--multiple field-select--rooms">
+                            <div class="filter__item field-select field-select--rooms">
                                 <div class="field-select__name">
                                     Балкон/Лоджия
                                 </div>
@@ -312,16 +360,16 @@
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="filter__item field-select field-select--multiple">
+                            <div class="filter__item field-select">
                                 <div class="field-select__name">
                                     Тип окон
                                 </div>
                                 <div class="field-select__wrapper">
                                     <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Обычная</span>
+                                        <span>Обычные</span>
                                     </button>
                                     <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Панорамная</span>
+                                        <span>Панорамные</span>
                                     </button>
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
@@ -358,13 +406,10 @@
                                         <span>Кухня</span>
                                     </button>
                                     <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Мебель на кухне</span>
+                                        <span>Частично меблированно</span>
                                     </button>
                                     <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Холодильник</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Кондиционер</span>
+                                        <span>Полностью меблированно</span>
                                     </button>
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
@@ -378,12 +423,18 @@
                                         <span>Все окна</span>
                                     </button>
                                     <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Не 1 окна</span>
+                                        <span>Гостиная</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Кухня</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Спальня</span>
                                     </button>
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="filter__item field-select field-select--multiple">
+                            <div class="filter__item field-select">
                                 <div class="field-select__name">
                                     Плита
                                 </div>
@@ -396,6 +447,20 @@
                                     </button>
                                     <button type="button" class="btn btn-reset tag field-select__item">
                                         <span>Конвекционная</span>
+                                    </button>
+                                </div>
+                                <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
+                            </div>
+                            <div class="filter__item field-select">
+                                <div class="field-select__name">
+                                    Отопление
+                                </div>
+                                <div class="field-select__wrapper">
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Центральное</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Индивидуальное</span>
                                     </button>
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
@@ -424,9 +489,9 @@
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
 
-                            <div class="submit-app-options__offers submit-app-offers submit-app-offers--advant">
+                            <div class="submit-app-options__offers submit-app-offers submit-app-offers--advant _only-one">
                                 <h3 class="submit-app-offers__title submit-app__row-title title-2">
-                                    Какой ремонт
+                                    Какой у вас ремонт?
                                 </h3>
                                 <div class="submit-app-offers__list">
                                     <article class="submit-app-offers__item offer-room">
@@ -644,12 +709,14 @@
                                         </div>
                                     </article>
                                 </div>
-                                <button type="button" class="btn btn-reset submit-app-offers__btn">
-                                    <span>Ещё квартиры</span>
-                                    <svg>
-                                        <use xlink:href="./img/sprite.svg#check"></use>
-                                    </svg>
-                                </button>
+                                <div class="checkbox-secondary">
+                                    <input id="developer_10" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                    <label for="developer_10" class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Есть перепланировка
+                                        </span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <div class="place-sale__row place-sale-options">
@@ -781,10 +848,13 @@
                                     <button type="button" class="btn btn-reset tag field-select__item">
                                         <span>Кодовая дверь</span>
                                     </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Охрана</span>
+                                    </button>
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="filter__item field-select field-select--multiple">
+                            <div class="filter__item field-select">
                                 <div class="field-select__name">
                                     Парковка
                                 </div>
@@ -825,7 +895,7 @@
                                         <span>Спортивная площадка</span>
                                     </button>
                                     <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Пандус</span>
+                                        <span>Пандус для инвалидов</span>
                                     </button>
                                     <button type="button" class="btn btn-reset tag field-select__item">
                                         <span>Колясочная</span>
@@ -839,28 +909,196 @@
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="filter__item field-select field-select--multiple">
+                        </div>
+                        <div class="place-sale__row place-sale-options">
+                            <h2 class="place-sale__row-title place-sale-options__title title-2">
+                                Особенности сделки
+                            </h2>
+                            <div class="filter__item field-select">
                                 <div class="field-select__name">
-                                    Инфраструктура
+                                    Лет в собственности
                                 </div>
                                 <div class="field-select__wrapper">
                                     <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Школа</span>
+                                        <span>Меньше трёх</span>
                                     </button>
                                     <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Детский сад</span>
+                                        <span>От трех до пяти</span>
                                     </button>
                                     <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Торговый центр</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Парк</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Фитнес</span>
+                                        <span>Больше пяти</span>
                                     </button>
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
+                            </div>
+                            <div class="filter__item field-select">
+                                <div class="field-select__name">
+                                    Собственник
+                                </div>
+                                <div class="field-select__wrapper">
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>1</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>2</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>3</span>
+                                    </button>
+                                </div>
+                                <div class="checkbox-secondary">
+                                    <input id="minors_1" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                    <label for="minors_1" class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Есть несовершеннолетние
+                                        </span>
+                                    </label>
+                                </div>
+                                <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
+                            </div>
+                            <div class="filter__item field-select">
+                                <div class="field-select__name">
+                                    Прописано
+                                </div>
+                                <div class="field-select__wrapper">
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>1</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>2</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>3</span>
+                                    </button>
+                                </div>
+                                <div class="checkbox-secondary">
+                                    <input id="minors_2" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                    <label for="minors_2" class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Есть несовершеннолетние
+                                        </span>
+                                    </label>
+                                </div>
+                                <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
+                            </div>
+                        </div>
+                        <div class="place-sale__row place-sale-options">
+                            <h2 class="place-sale__row-title place-sale-options__title title-2">
+                                Цена и условие продажи
+                            </h2>
+                            <div class="filter__item field-select">
+                                <div class="field-select__name">
+                                    Тип сделки
+                                    <div class="secondary-tooltip secondary-tooltip--top-center">
+                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#info"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="secondary-tooltip__content">
+                                            <div class="flex gap-8">
+                                                <span>1.</span>
+                                                <p>
+                                                    Прямая или свободная — сделка между одним продавцом и одним покупателем
+                                                </p>
+                                            </div>
+                                            <div class="flex gap-8">
+                                                <span>2.</span>
+                                                <p>
+                                                    Альтернативная — сделка, при которой продавец одновременно продаёт своё жильё и покупает новое
+                                                </p>
+                                            </div>
+                                            <div class="flex gap-8">
+                                                <span>3.</span>
+                                                <p>
+                                                    Переуступка — передача покупателю имущественного права на квартиру в строящемся здании и обязанностей по договору
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field-select__wrapper">
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Прямая</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Альтернативная</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Переуступка</span>
+                                    </button>
+                                </div>
+                                <div class="checkbox-secondary">
+                                    <input id="minors_3" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                    <label for="minors_3" class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Есть несовершеннолетние
+                                        </span>
+                                    </label>
+                                </div>
+                                <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
+                            </div>
+                            <div class="filter__item field-input">
+                                <div class="field-input__name">
+                                    Цена, ₽
+                                </div>
+                                <div class="field-input__wrapper">
+                                    <div class="input-text input-text--only-number">
+                                        <label class="input-text__label">
+                                            <input type="text" name="Имя" class="input-reset input-text__input" maxlength="4" placeholder="">
+                                            <span>₽</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="checkbox-secondary">
+                                    <input id="developer_1" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                    <label for="developer_1" class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Торг уместен
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="checkbox-secondary">
+                                    <input id="developer_5" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                    <label for="developer_5" class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Недвижимость в обременении
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="secondary-tooltip secondary-tooltip--top-center">
+                                    <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#info"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="secondary-tooltip__content">
+                                        Недвижимость может находиться в обремении, если вы покупали её в ипотеку
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filter__item field-input">
+                                <div class="field-input__name">
+                                    Кешбэк покупателю
+                                    <div class="secondary-tooltip secondary-tooltip--top-center">
+                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#info"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="secondary-tooltip__content">
+                                            Укажите сколько вы готовы заплатить покупателю если он купит объект.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field-input__wrapper">
+                                    <div class="input-text input-text--only-number">
+                                        <label class="input-text__label">
+                                            <input type="text" name="Имя" class="input-reset input-text__input" maxlength="4" placeholder="">
+                                            <span>₽</span>
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="place-sale__row place-sale-photo">
@@ -947,306 +1185,15 @@
                                 <textarea class="input-reset textarea-secondary__input" maxlength="2000" placeholder="Расскажите о недвижимости, транспортной доступности и инфраструктуре"></textarea>
                             </div>
                         </div>
-                        <div class="place-sale__row place-sale-options">
-                            <h2 class="place-sale__row-title place-sale-options__title title-2">
-                                Особенности сделки
-                            </h2>
-                            <div class="filter__item field-select">
-                                <div class="field-select__name">
-                                    Лет в собственности
-                                </div>
-                                <div class="field-select__wrapper">
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Меньше трёх</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>От трех до пяти</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Больше пяти</span>
-                                    </button>
-                                </div>
-                                <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
-                            </div>
-                            <div class="filter__item field-select">
-                                <div class="field-select__name">
-                                    Собственник
-                                </div>
-                                <div class="field-select__wrapper">
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>1</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>2</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>3</span>
-                                    </button>
-                                </div>
-                                <div class="checkbox-secondary">
-                                    <input id="minors_1" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
-                                    <label for="minors_1" class="checkbox-secondary__label">
-                                        <span class="checkbox-secondary__text">
-                                            Есть несовершеннолетние
-                                        </span>
-                                    </label>
-                                </div>
-                                <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
-                            </div>
-                            <div class="filter__item field-select">
-                                <div class="field-select__name">
-                                    Прописано
-                                </div>
-                                <div class="field-select__wrapper">
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>1</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>2</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>3</span>
-                                    </button>
-                                </div>
-                                <div class="checkbox-secondary">
-                                    <input id="minors_2" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
-                                    <label for="minors_2" class="checkbox-secondary__label">
-                                        <span class="checkbox-secondary__text">
-                                            Есть несовершеннолетние
-                                        </span>
-                                    </label>
-                                </div>
-                                <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
-                            </div>
-                        </div>
-                        <div class="place-sale__row place-sale-options">
-                            <h2 class="place-sale__row-title place-sale-options__title title-2">
-                                Особенности сделки
-                            </h2>
-                            <div class="filter__item field-select">
-                                <div class="field-select__name">
-                                    Тип сделки
-                                    <div class="secondary-tooltip secondary-tooltip--top-center">
-                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#info"></use>
-                                            </svg>
-                                        </button>
-                                        <div class="secondary-tooltip__content">
-                                            <div class="flex gap-8">
-                                                <span>1.</span>
-                                                <p>
-                                                    Прямая или свободная — сделка между одним продавцом и одним покупателем
-                                                </p>
-                                            </div>
-                                            <div class="flex gap-8">
-                                                <span>2.</span>
-                                                <p>
-                                                    Альтернативная — сделка, при которой продавец одновременно продаёт своё жильё и покупает новое
-                                                </p>
-                                            </div>
-                                            <div class="flex gap-8">
-                                                <span>3.</span>
-                                                <p>
-                                                    Переуступка — передача покупателю имущественного права на квартиру в строящемся здании и обязанностей по договору
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="field-select__wrapper">
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Прямая</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Альтернативная</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Переуступка</span>
-                                    </button>
-                                </div>
-                                <div class="checkbox-secondary">
-                                    <input id="minors_3" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
-                                    <label for="minors_3" class="checkbox-secondary__label">
-                                        <span class="checkbox-secondary__text">
-                                            Есть несовершеннолетние
-                                        </span>
-                                    </label>
-                                </div>
-                                <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
-                            </div>
-                            <div class="filter__item field-input">
-                                <div class="field-input__name">
-                                    Цена, ₽
-                                </div>
-                                <div class="field-input__wrapper">
-                                    <div class="input-text input-text--only-number">
-                                        <label class="input-text__label">
-                                            <input type="text" name="Имя" class="input-reset input-text__input" maxlength="4" placeholder="">
-                                            <span>₽</span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="checkbox-secondary">
-                                    <input id="developer_1" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
-                                    <label for="developer_1" class="checkbox-secondary__label">
-                                        <span class="checkbox-secondary__text">
-                                            Торг уместен
-                                        </span>
-                                    </label>
-                                </div>
-                                <div class="secondary-tooltip secondary-tooltip--top-center">
-                                    <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                                        <svg>
-                                            <use xlink:href="./img/sprite.svg#info"></use>
-                                        </svg>
-                                    </button>
-                                    <div class="secondary-tooltip__content">
-                                        Недвижимость может находиться в обремении, если вы покупали её в ипотеку
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="filter__item field-input">
-                                <div class="field-input__name">
-                                    Кешбэк покупателю
-                                    <div class="secondary-tooltip secondary-tooltip--top-center">
-                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#info"></use>
-                                            </svg>
-                                        </button>
-                                        <div class="secondary-tooltip__content">
-                                            Укажите сколько вы готовы заплатить покупателю если он купит объект.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="field-input__wrapper">
-                                    <div class="input-text input-text--only-number">
-                                        <label class="input-text__label">
-                                            <input type="text" name="Имя" class="input-reset input-text__input" maxlength="4" placeholder="">
-                                            <span>₽</span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="place-sale__row place-sale-sale place-present">
-                            <h2 class="place-sale__row-title place-sale-sale__title title-2">
+                        <div class="place-sale__row additionally" data-additionally-type="summ">
+                            <h2 class="additionally__title title-2">
                                 Подарки
                             </h2>
-                            <div class="place-sale-create">
-                                <div class="place-sale-sale__cards">
-                                    <div class="swiper">
-                                        <div class="swiper-wrapper">
-                                            <a href="./detailed-flat.html" class="swiper-slide card-checkbox card-checkbox--second">
-                                                <div class="user-info card-checkbox__info">
-                                                    <div class="user-info__avatar avatar">
-                                                        <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
-                                                    </div>
-                                                    <span class="user-info__name">
-                                                        Кондиционер в подарок
-                                                    </span>
-                                                    <span class="user-info__pos">
-                                                        Создаст идеальный микроклимат в вашей новой квартире
-                                                    </span>
-                                                </div>
-                                                <div class="card-checkbox__price">
-                                                    <span>10 000 ₽</span>
-                                                    <span>0 ₽</span>
-                                                </div>
-                                                <button type="button" class="btn btn-reset card-checkbox__remove">
-                                                    <svg>
-                                                        <use xlink:href="./img/sprite.svg#trash"></use>
-                                                    </svg>
-                                                </button>
-                                            </a>
-                                            <a href="./detailed-flat.html" class="swiper-slide card-checkbox card-checkbox--second">
-                                                <div class="user-info card-checkbox__info">
-                                                    <div class="user-info__avatar avatar">
-                                                        <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
-                                                    </div>
-                                                    <span class="user-info__name">
-                                                        Кондиционер в подарок
-                                                    </span>
-                                                    <span class="user-info__pos">
-                                                        Создаст идеальный микроклимат в вашей новой квартире
-                                                    </span>
-                                                </div>
-                                                <div class="card-checkbox__price">
-                                                    <span>10 000 ₽</span>
-                                                    <span>0 ₽</span>
-                                                </div>
-                                                <button type="button" class="btn btn-reset card-checkbox__remove">
-                                                    <svg>
-                                                        <use xlink:href="./img/sprite.svg#trash"></use>
-                                                    </svg>
-                                                </button>
-                                            </a>
-                                            <a href="./detailed-flat.html" class="swiper-slide card-checkbox card-checkbox--second">
-                                                <div class="user-info card-checkbox__info">
-                                                    <div class="user-info__avatar avatar">
-                                                        <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
-                                                    </div>
-                                                    <span class="user-info__name">
-                                                        Кондиционер в подарок
-                                                    </span>
-                                                    <span class="user-info__pos">
-                                                        Создаст идеальный микроклимат в вашей новой квартире
-                                                    </span>
-                                                </div>
-                                                <div class="card-checkbox__price">
-                                                    <span>10 000 ₽</span>
-                                                    <span>0 ₽</span>
-                                                </div>
-                                                <button type="button" class="btn btn-reset card-checkbox__remove">
-                                                    <svg>
-                                                        <use xlink:href="./img/sprite.svg#trash"></use>
-                                                    </svg>
-                                                </button>
-                                            </a>
-                                            <a href="./detailed-flat.html" class="swiper-slide card-checkbox card-checkbox--second">
-                                                <div class="user-info card-checkbox__info">
-                                                    <div class="user-info__avatar avatar">
-                                                        <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
-                                                    </div>
-                                                    <span class="user-info__name">
-                                                        Кондиционер в подарок
-                                                    </span>
-                                                    <span class="user-info__pos">
-                                                        Создаст идеальный микроклимат в вашей новой квартире
-                                                    </span>
-                                                </div>
-                                                <div class="card-checkbox__price">
-                                                    <span>10 000 ₽</span>
-                                                    <span>0 ₽</span>
-                                                </div>
-                                                <button type="button" class="btn btn-reset card-checkbox__remove">
-                                                    <svg>
-                                                        <use xlink:href="./img/sprite.svg#trash"></use>
-                                                    </svg>
-                                                </button>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <button type="button" class="btn btn-reset place-sale-sale__navigation nav-arrow-primary nav-arrow-primary--prev" disabled>
-                                        <div class="nav-arrow-primary__wrapper">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#arrow-right"></use>
-                                            </svg>
-                                        </div>
-                                    </button>
-                                    <button type="button" class="btn btn-reset place-sale-sale__navigation nav-arrow-primary nav-arrow-primary--next">
-                                        <div class="nav-arrow-primary__wrapper">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#arrow-right"></use>
-                                            </svg>
-                                        </div>
-                                    </button>
-                                </div>
-                                <h3 class="place-sale-sale__title title-3" style="margin-bottom: 24px;">
+                            <div class="place-present mt-16">
+                                <h3 class="place-sale-sale__title title-3 mb-16">
                                     Выберите тип
                                 </h3>
-                                <div class="place-present__wrapper" style="margin-bottom: 24px;">
+                                <div class="place-present__wrapper mb-24">
                                     <div class="place-present__checkboxes">
                                         <div class="checkbox-secondary place-present-checkbox-summ">
                                             <input id="present-checkbox-1" name="type-present" class="checkbox-secondary__input" type="radio" value="summ">
@@ -1265,7 +1212,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="place-present__summ" hidden>
+                                    <div class="place-present__summ" hidden="">
                                         <div class="input-text input-text--no-exp input-text--only-number">
                                             <label class="input-text__label">
                                                 <span>Введите сумму</span>
@@ -1273,139 +1220,394 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="place-present__quantity" hidden>
-                                        <div class="input-text input-text--no-exp input-text--only-number">
+                                    <div class="place-present__quantity" hidden="">
+                                        <div class="input-text input-text--only-number">
                                             <label class="input-text__label">
                                                 <span>Введите количество</span>
                                                 <input type="text" name="Название" class="input-reset input-text__input" placeholder="">
+                                                <span>шт</span>
                                             </label>
                                         </div>
-                                        <div class="input-text input-text--no-exp input-text--only-number">
+                                        <div class="input-text input-text--only-number">
                                             <label class="input-text__label">
                                                 <span>Введите максимальную сумму</span>
                                                 <input type="text" name="Название" class="input-reset input-text__input" placeholder="">
+                                                <span>₽</span>
                                             </label>
                                         </div>
                                     </div>
                                 </div>
-                                <h3 class="place-sale-sale__title title-3" style="margin-bottom: 24px;">
-                                    Создать подарок
-                                </h3>
-                                <div class="place-sale-sale__wrapper">
-                                    <div class="input-text input-text--no-exp place-sale-sale__field--name">
-                                        <label class="input-text__label">
-                                            <span>Название</span>
-                                            <input type="text" name="Название" class="input-reset input-text__input" placeholder="">
-                                        </label>
+                            </div>
+                            <p class="additionally__descr">
+                                Выберите подарки на сумму <span data-total-summ>100 000 ₽</span>
+                            </p>
+                            <div class="additionally__items">
+                                <div class="card-checkbox card-checkbox--second" data-additionally-card-calc>
+                                    <div class="user-info card-checkbox__info">
+                                        <div class="user-info__avatar avatar">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                        </div>
+                                        <span class="user-info__name">
+                                            Кондиционер в подарок
+                                        </span>
+                                        <span class="user-info__pos">
+                                            Создаст идеальный микроклимат в вашей новой квартире
+                                        </span>
+                                        <a class="user-info__link underline-hover"
+                                            href="https://hoff.ru/Files/%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80_%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B0_%D0%A1%D0%B0%D0%BC%D0%BE%D0%B5_%D0%BD%D0%B5%D0%BE%D0%B1%D1%85%D0%BE%D0%B4%D0%B8%D0%BC%D0%BE%D0%B5.pdf">
+                                            Посмотреть спецификацию
+                                        </a>
                                     </div>
-                                    <div class="search-select-one search-select-one--img-left">
-                                        <button type="button" class="btn btn-reset search-select-one__button">
-                                            <div class="search-select-one__button-wrapper">
-                                                <div>Автор</div>
-                                                <div>Не выбрано</div>
-                                            </div>
+                                    <div class="card-checkbox__price">
+                                        <span data-card-summ>10 000 ₽</span>
+                                        <span>0 ₽</span>
+                                    </div>
+                                    <div class="secondary-tooltip secondary-tooltip--top-center">
+                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
                                             <svg>
-                                                <use xlink:href="./img/sprite.svg#check"></use>
+                                                <use xlink:href="./img/sprite.svg#info"></use>
                                             </svg>
                                         </button>
-                                        <div class="search-select-one__dropdown">
-                                            <button type="button" class="btn btn-reset search-select-one__close">
+                                        <div class="secondary-tooltip__content">
+                                            Стоиомость комплекта меблировки
+                                        </div>
+                                    </div>
+                                    <label class="toggle-checkbox">
+                                        <input type="checkbox" name="toggle-1">
+                                        <div aria-hidden="true"></div>
+                                    </label>
+                                </div>
+                                <div class="card-checkbox card-checkbox--second" data-additionally-card-calc>
+                                    <div class="user-info card-checkbox__info">
+                                        <div class="user-info__avatar avatar">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                        </div>
+                                        <span class="user-info__name">
+                                            Авторский дизайн
+                                        </span>
+                                        <span class="user-info__pos">
+                                            Создаст идеальный микроклимат в вашей новой квартире
+                                        </span>
+                                    </div>
+                                    <div class="card-checkbox__price">
+                                        <span data-card-summ>5 000 ₽</span>
+                                        <span>0 ₽</span>
+                                    </div>
+                                    <div class="secondary-tooltip secondary-tooltip--top-center">
+                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#info"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="secondary-tooltip__content">
+                                            Стоиомость комплекта меблировки
+                                        </div>
+                                    </div>
+                                    <label class="toggle-checkbox">
+                                        <input type="checkbox" name="toggle-1">
+                                        <div aria-hidden="true"></div>
+                                    </label>
+                                </div>
+                                <div class="card-checkbox card-checkbox--second" data-additionally-card-calc>
+                                    <div class="user-info card-checkbox__info">
+                                        <div class="user-info__avatar avatar">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                        </div>
+                                        <span class="user-info__name">
+                                            Авторский дизайн интерьерный
+                                        </span>
+                                        <span class="user-info__pos">
+                                            Создаст идеальный микроклимат в вашей новой квартире
+                                        </span>
+                                    </div>
+                                    <div class="card-checkbox__price">
+                                        <span data-card-summ>19 999 ₽</span>
+                                        <span>0 ₽</span>
+                                    </div>
+                                    <div class="secondary-tooltip secondary-tooltip--top-center">
+                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#info"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="secondary-tooltip__content">
+                                            ДИЗАЙН-ПРОЕКТ <br>
+                                            "ИНТЕРЬЕРНЫЙ" <br>
+                                            3 варианта планировочного решения; <br>
+                                            2 варианта 3D концепции или коллажа; <br>
+                                            товарная ведомость (шопинг- лист) без расчета количества; <br>
+                                            товары со скидкой; <br>
+                                            проект мебели на заказ <br>
+                                        </div>
+                                    </div>
+                                    <label class="toggle-checkbox">
+                                        <input type="checkbox" name="toggle-1">
+                                        <div aria-hidden="true"></div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="additionally__more-items" data-additionally-more-items hidden>
+                                <div class="additionally__items">
+                                    <div class="card-checkbox card-checkbox--second" data-additionally-card-calc>
+                                        <div class="user-info card-checkbox__info">
+                                            <div class="user-info__avatar avatar">
+                                                <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                            </div>
+                                            <span class="user-info__name">
+                                                Авторский дизайн для ремонта
+                                            </span>
+                                            <span class="user-info__pos">
+                                                Создаст идеальный микроклимат в вашей новой квартире
+                                            </span>
+                                        </div>
+                                        <div class="card-checkbox__price">
+                                            <span data-card-summ>22 500 ₽</span>
+                                            <span>0 ₽</span>
+                                        </div>
+                                        <div class="secondary-tooltip secondary-tooltip--top-center">
+                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
                                                 <svg>
-                                                    <use xlink:href="./img/sprite.svg#x"></use>
+                                                    <use xlink:href="./img/sprite.svg#info"></use>
                                                 </svg>
                                             </button>
-                                            <label class="input-primary search-select-one__input">
-                                                <input type="search" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по имени">
-                                            </label>
-                                            <div class="search-select-one__wrapper simplebar-third">
-                                                <div class="search-select-one__item" data-value="object-1">
-                                                    <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
-                                                    <span>Владимир А.</span>
-                                                </div>
-                                                <div class="search-select-one__item" data-value="object-2">
-                                                    <img loading="lazy" src="./img/avatar-2.jpg" alt="ПИК">
-                                                    <span>Сергей С.</span>
-                                                </div>
-                                                <div class="search-select-one__item" data-value="object-3">
-                                                    <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
-                                                    <span>Анастасия Г.</span>
-                                                </div>
-                                                <div class="search-select-one__item" data-value="object-1">
-                                                    <img loading="lazy" src="./img/avatar-2.jpg" alt="ПИК">
-                                                    <span>Иван В.</span>
-                                                </div>
-                                                <div class="search-select-one__item" data-value="object-2">
-                                                    <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
-                                                    <span>Алексей Г.</span>
-                                                </div>
+                                            <div class="secondary-tooltip__content">
+                                                ДИЗАЙН-ПРОЕКТ ик <br>
+                                                "ДЛЯ РЕМОНТА" <br>
+                                                3 варианта планировочного решения; <br>
+                                                2 варианта чертежей (рабочая документация); <br>
+                                                подробная смета на ремонт*; <br>
+                                                товары со скидкой; <br>
+                                                проект мебели на заказ <br>
                                             </div>
                                         </div>
-                                        <input type="text" name="object" value="Волгоград" class="search-select-one__input-hidden" hidden>
-                                    </div>
-                                    <div class="input-text input-text--no-exp date-picker place-sale-sale__field--start">
-                                        <label class="input-text__label">
-                                            <span>Начало</span>
-                                            <input type="text" name="Имя" class="input-reset input-text__input date-picker__input" value="" placeholder="">
+                                        <label class="toggle-checkbox">
+                                            <input type="checkbox" name="toggle-1">
+                                            <div aria-hidden="true"></div>
                                         </label>
                                     </div>
-                                    <div class="input-text input-text--no-exp date-picker place-sale-sale__field--ending">
-                                        <label class="input-text__label">
-                                            <span>Окончание</span>
-                                            <input type="text" name="Имя" class="input-reset input-text__input date-picker__input" value="" placeholder="">
+                                    <div class="card-checkbox card-checkbox--second" data-additionally-card-calc>
+                                        <div class="user-info card-checkbox__info">
+                                            <div class="user-info__avatar avatar">
+                                                <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                            </div>
+                                            <span class="user-info__name">
+                                                Мебельные сеты
+                                            </span>
+                                            <span class="user-info__pos">
+                                                Стильный интерьер с решениями на любой вкус. Заезжайте на все готовое
+                                            </span>
+                                        </div>
+                                        <div class="card-checkbox__price">
+                                            <span data-card-summ>22 500 ₽</span>
+                                            <span>0 ₽</span>
+                                        </div>
+                                        <div class="secondary-tooltip secondary-tooltip--top-center">
+                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#info"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="secondary-tooltip__content">
+                                                ДИЗАЙН-ПРОЕКТ ик <br>
+                                                "ДЛЯ РЕМОНТА" <br>
+                                                3 варианта планировочного решения; <br>
+                                                2 варианта чертежей (рабочая документация); <br>
+                                                подробная смета на ремонт*; <br>
+                                                товары со скидкой; <br>
+                                                проект мебели на заказ <br>
+                                            </div>
+                                        </div>
+                                        <label class="toggle-checkbox">
+                                            <input type="checkbox" name="toggle-1">
+                                            <div aria-hidden="true"></div>
                                         </label>
                                     </div>
-                                    <div class="input-text input-text--no-exp input-text--only-number">
-                                        <label class="input-text__label">
-                                            <span>Старая цена</span>
-                                            <input type="text" name="Старая цена" class="input-reset input-text__input" placeholder="">
+                                    <div class="card-checkbox card-checkbox--second" data-additionally-card-calc>
+                                        <div class="user-info card-checkbox__info">
+                                            <div class="user-info__avatar avatar">
+                                                <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                            </div>
+                                            <span class="user-info__name">
+                                                Переезд без забот
+                                            </span>
+                                            <span class="user-info__pos">
+                                                Перевезем ваши вещи быстро и бережно
+                                            </span>
+                                        </div>
+                                        <div class="card-checkbox__price">
+                                            <span data-card-summ>22 500 ₽</span>
+                                            <span>0 ₽</span>
+                                        </div>
+                                        <div class="secondary-tooltip secondary-tooltip--top-center">
+                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#info"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="secondary-tooltip__content">
+                                                ДИЗАЙН-ПРОЕКТ ик <br>
+                                                "ДЛЯ РЕМОНТА" <br>
+                                                3 варианта планировочного решения; <br>
+                                                2 варианта чертежей (рабочая документация); <br>
+                                                подробная смета на ремонт*; <br>
+                                                товары со скидкой; <br>
+                                                проект мебели на заказ <br>
+                                            </div>
+                                        </div>
+                                        <label class="toggle-checkbox">
+                                            <input type="checkbox" name="toggle-1">
+                                            <div aria-hidden="true"></div>
                                         </label>
                                     </div>
-                                    <div class="input-text input-text--no-exp input-text--only-number">
-                                        <label class="input-text__label">
-                                            <span>Новая цена</span>
-                                            <input type="text" name="Новая цена" class="input-reset input-text__input" placeholder="">
+                                    <div class="card-checkbox card-checkbox--second" data-additionally-card-calc>
+                                        <div class="user-info card-checkbox__info">
+                                            <div class="user-info__avatar avatar">
+                                                <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                            </div>
+                                            <span class="user-info__name">
+                                                Шторы и декор для вашего дома
+                                            </span>
+                                            <span class="user-info__pos">
+                                                Добавьте акценты в интерьер вашей будущей квартиры
+                                            </span>
+                                        </div>
+                                        <div class="card-checkbox__price">
+                                            <span data-card-summ>22 500 ₽</span>
+                                            <span>0 ₽</span>
+                                        </div>
+                                        <div class="secondary-tooltip secondary-tooltip--top-center">
+                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#info"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="secondary-tooltip__content">
+                                                ДИЗАЙН-ПРОЕКТ ик <br>
+                                                "ДЛЯ РЕМОНТА" <br>
+                                                3 варианта планировочного решения; <br>
+                                                2 варианта чертежей (рабочая документация); <br>
+                                                подробная смета на ремонт*; <br>
+                                                товары со скидкой; <br>
+                                                проект мебели на заказ <br>
+                                            </div>
+                                        </div>
+                                        <label class="toggle-checkbox">
+                                            <input type="checkbox" name="toggle-1">
+                                            <div aria-hidden="true"></div>
+                                        </label>
+                                    </div>
+                                    <div class="card-checkbox card-checkbox--second" data-additionally-card-calc>
+                                        <div class="user-info card-checkbox__info">
+                                            <div class="user-info__avatar avatar">
+                                                <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                            </div>
+                                            <span class="user-info__name">
+                                                Сертификаты на мебель
+                                            </span>
+                                            <span class="user-info__pos">
+                                                Выбирайте стильную и современную мебель, приобретая сертификат в ипотеку
+                                            </span>
+                                        </div>
+                                        <div class="card-checkbox__price">
+                                            <span data-card-summ>22 500 ₽</span>
+                                            <span>0 ₽</span>
+                                        </div>
+                                        <div class="secondary-tooltip secondary-tooltip--top-center">
+                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#info"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="secondary-tooltip__content">
+                                                ДИЗАЙН-ПРОЕКТ ик <br>
+                                                "ДЛЯ РЕМОНТА" <br>
+                                                3 варианта планировочного решения; <br>
+                                                2 варианта чертежей (рабочая документация); <br>
+                                                подробная смета на ремонт*; <br>
+                                                товары со скидкой; <br>
+                                                проект мебели на заказ <br>
+                                            </div>
+                                        </div>
+                                        <label class="toggle-checkbox">
+                                            <input type="checkbox" name="toggle-1">
+                                            <div aria-hidden="true"></div>
                                         </label>
                                     </div>
                                 </div>
-                                <h3 class="title-3" style="margin: 24px 0;">Описание</h3>
-                                <label class="textarea-primary place-sale-sale__field--descr">
-                                    <textarea class="input-reset textarea-primary__input" placeholder="Расскажите об акциях и спецпредложениях"></textarea>
-                                </label>
-                                <h3 class="title-3" style="margin: 24px 0;">Дополнительная информация</h3>
-                                <label class="textarea-primary place-sale-sale__field--descr">
-                                    <textarea class="input-reset textarea-primary__input" placeholder="Введите дополнительную информацию"></textarea>
-                                </label>
-                                <h3 class="title-3" style="margin: 24px 0;">Изображение</h3>
-                                <div class="photo-load">
-                                    <div class="place-sale-photo__images drag-drop photo-load__images">
+                                <h2 class="additionally__title title-2">
+                                    Дополнительно
+                                </h2>
+                                <div class="additionally__items">
+                                    <div class="card-checkbox card-checkbox--second">
+                                        <div class="user-info card-checkbox__info">
+                                            <div class="user-info__avatar avatar">
+                                                <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                            </div>
+                                            <span class="user-info__name">
+                                                Скидка 50% на парковку
+                                            </span>
+                                            <span class="user-info__pos">
+                                                Создаст идеальный микроклимат в вашей новой квартире
+                                            </span>
+                                        </div>
+                                        <div class="card-checkbox__price">
+                                            <span>1 500 000 ₽</span>
+                                            <span>750 000 ₽</span>
+                                        </div>
+                                        <div class="secondary-tooltip secondary-tooltip--top-center">
+                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#info"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="secondary-tooltip__content">
+                                                Стоиомость комплекта меблировки
+                                            </div>
+                                        </div>
+                                        <label class="toggle-checkbox">
+                                            <input type="checkbox" name="toggle-1">
+                                            <div aria-hidden="true"></div>
+                                        </label>
                                     </div>
-                                    <div class="place-sale-photo__wrapper photo-load__wrapper">
-                                        <button type="button" class="btn btn-reset">
-                                            <p>
-                                                <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
-                                            </p>
-                                        </button>
-                                        <input type="file" data-upload-drop name="upload" accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                    <div class="card-checkbox card-checkbox--second">
+                                        <div class="user-info card-checkbox__info">
+                                            <div class="user-info__avatar avatar">
+                                                <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                            </div>
+                                            <span class="user-info__name">
+                                                Скидка 5% на квартиру
+                                            </span>
+                                            <span class="user-info__pos">
+                                                Создаст идеальный микроклимат в вашей новой квартире
+                                            </span>
+                                        </div>
+                                        <div class="card-checkbox__price">
+                                            <span>5 000 000 ₽</span>
+                                            <span>4 900 000 ₽</span>
+                                        </div>
+                                        <div class="secondary-tooltip secondary-tooltip--top-center">
+                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#info"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="secondary-tooltip__content">
+                                                Стоиомость комплекта меблировки
+                                            </div>
+                                        </div>
+                                        <label class="toggle-checkbox">
+                                            <input type="checkbox" name="toggle-1">
+                                            <div aria-hidden="true"></div>
+                                        </label>
                                     </div>
                                 </div>
-                                <h3 class="title-3" style="margin: 24px 0;">Добавить спецификацию</h3>
-                                <div class="photo-load pdf-load">
-                                    <div class="place-sale-photo__images drag-drop photo-load__images">
-                                    </div>
-                                    <div class="place-sale-photo__wrapper photo-load__wrapper">
-                                        <button type="button" class="btn btn-reset">
-                                            <p>
-                                                <span class="btn btn-reset btn-primary">Добавьте PDF спецификации</span> <span>или перетащите в
-                                                    эту область</span>
-                                            </p>
-                                        </button>
-                                        <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
-                                    </div>
-                                </div>
-                                <button type="button" class="btn btn-reset btn-secondary place-sale-sale__save">
-                                    Добавить
-                                </button>
                             </div>
+                            <button type="button" class="btn btn-reset additionally__more">
+                                <span>Показать полностью</span>
+                                <svg>
+                                    <use xlink:href="./img/sprite.svg#check"></use>
+                                </svg>
+                            </button>
                         </div>
                         <div class="place-sale__row place-sale-viewing">
                             <h2 class="place-sale__row-title place-sale-viewing__title title-2">
@@ -1414,8 +1616,14 @@
                             <button type="button" class="btn btn-reset btn-primary" data-popup-path="record-viewing">Поставить дату</button>
                         </div>
                         <div class="place-sale__row place-sale-options">
-                            <h2 class="place-sale__row-title place-sale-options__title title-2">
+                            <h2 class="place-sale__row-title place-sale-options__title title-2 flex justify-sb">
                                 Контакты
+                                <a href="./edit-profile.html" class="btn btn-reset top-page-inner-title__btn edit-btn" title="Редактировать">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#pencil"></use>
+                                    </svg>
+                                    <span>Редактировать</span>
+                                </a>
                             </h2>
                             <div class="filter__item field-select">
                                 <div class="field-select__name">
@@ -1482,24 +1690,72 @@
                                         Введите адрес вручную или передвиньте метку на карте
                                     </p>
                                 </div>
-                                <div class="place-sale-address__select select-secondary select-secondary--city _selected">
-                                    <div class="select-secondary__wrapper">
-                                        <span class="select-secondary__placeholder">
-                                            Город
-                                        </span>
-                                        <select class="select-secondary__body" hidden name="city">
-                                            <option value="apartments">Санкт-Петербург</option>
-                                            <option value="apartments2">Волгоград</option>
-                                            <option value="apartments3">Москва</option>
-                                        </select>
+                                <div class="row" style='grid-template-columns: 280px 1fr 400px;'>
+                                    <div class="place-sale-address__select select-secondary select-secondary--city _selected">
+                                        <div class="select-secondary__wrapper">
+                                            <span class="select-secondary__placeholder">
+                                                Город
+                                            </span>
+                                            <select class="select-secondary__body" hidden name="city">
+                                                <option value="apartments">Санкт-Петербург</option>
+                                                <option value="apartments2">Волгоград</option>
+                                                <option value="apartments3">Москва</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="place-sale-address__field input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Город, улица, дом, корпус</span>
+                                            <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="search-select-one search-select-one--img-right">
+                                        <button type="button" class="btn btn-reset search-select-one__button">
+                                            <div class="search-select-one__button-wrapper">
+                                                <div>Коттеджный посёлок (если есть)</div>
+                                                <div>
+                                                    <span>Не выбрано</span>
+                                                </div>
+                                            </div>
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#check"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="search-select-one__dropdown">
+                                            <button type="button" class="btn btn-reset search-select-one__close">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#x"></use>
+                                                </svg>
+                                            </button>
+                                            <label class="input-primary search-select-one__input">
+                                                <input type="search" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по имени">
+                                            </label>
+                                            <div class="search-select-one__wrapper simplebar-third">
+                                                <div class="search-select-one__item" data-value="object-1">
+                                                    <span>ПИК</span>
+                                                    <img loading="lazy" src="./img/pic.png" alt="ПИК">
+                                                </div>
+                                                <div class="search-select-one__item" data-value="object-2">
+                                                    <span>ГК Самолёт</span>
+                                                    <img loading="lazy" src="./img/pic.png" alt="ПИК">
+                                                </div>
+                                                <div class="search-select-one__item" data-value="object-3">
+                                                    <span>ГК "А101"</span>
+                                                    <img loading="lazy" src="./img/pic.png" alt="ПИК">
+                                                </div>
+                                                <div class="search-select-one__item" data-value="object-1">
+                                                    <span>ГК МИЦ</span>
+                                                    <img loading="lazy" src="./img/pic.png" alt="ПИК">
+                                                </div>
+                                                <div class="search-select-one__item" data-value="object-2">
+                                                    <span>MR GROUP</span>
+                                                    <img loading="lazy" src="./img/pic.png" alt="ПИК">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="text" name="object" value="Волгоград" class="search-select-one__input-hidden" hidden>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="place-sale-address__field input-text input-text--no-exp">
-                                <label class="input-text__label">
-                                    <span>Город, улица, дом, корпус</span>
-                                    <input type="text" name="Цена" maxlength="12" class="input-reset input-text__input" placeholder="">
-                                </label>
                             </div>
                             <div id="place-sale-address-map" class="place-sale-address__map map-primary remove-copyrights-pane">
                             </div>
@@ -1564,52 +1820,6 @@
                                         </svg>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="search-select-one search-select-one--img-right mt-16">
-                                <button type="button" class="btn btn-reset search-select-one__button">
-                                    <div class="search-select-one__button-wrapper">
-                                        <div>Коттеджный посёлок</div>
-                                        <div>
-                                            <span>Не выбрано</span>
-                                        </div>
-                                    </div>
-                                    <svg>
-                                        <use xlink:href="./img/sprite.svg#check"></use>
-                                    </svg>
-                                </button>
-                                <div class="search-select-one__dropdown">
-                                    <button type="button" class="btn btn-reset search-select-one__close">
-                                        <svg>
-                                            <use xlink:href="./img/sprite.svg#x"></use>
-                                        </svg>
-                                    </button>
-                                    <label class="input-primary search-select-one__input">
-                                        <input type="search" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по имени">
-                                    </label>
-                                    <div class="search-select-one__wrapper simplebar-third">
-                                        <div class="search-select-one__item" data-value="object-1">
-                                            <span>ПИК</span>
-                                            <img loading="lazy" src="./img/pic.png" alt="ПИК">
-                                        </div>
-                                        <div class="search-select-one__item" data-value="object-2">
-                                            <span>ГК Самолёт</span>
-                                            <img loading="lazy" src="./img/pic.png" alt="ПИК">
-                                        </div>
-                                        <div class="search-select-one__item" data-value="object-3">
-                                            <span>ГК "А101"</span>
-                                            <img loading="lazy" src="./img/pic.png" alt="ПИК">
-                                        </div>
-                                        <div class="search-select-one__item" data-value="object-1">
-                                            <span>ГК МИЦ</span>
-                                            <img loading="lazy" src="./img/pic.png" alt="ПИК">
-                                        </div>
-                                        <div class="search-select-one__item" data-value="object-2">
-                                            <span>MR GROUP</span>
-                                            <img loading="lazy" src="./img/pic.png" alt="ПИК">
-                                        </div>
-                                    </div>
-                                </div>
-                                <input type="text" name="object" value="Волгоград" class="search-select-one__input-hidden" hidden>
                             </div>
                         </div>
                         <div class="place-sale__row place-sale-options">
@@ -2012,9 +2222,43 @@
                                 </div>
                                 <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-                            <div class="submit-app-options__offers submit-app-offers submit-app-offers--advant">
+                            <div class="filter__item">
+                                <h2 class="place-sale__row-title place-sale-options__title title-2">
+                                    Дополнительные постройки
+                                </h2>
+                                <div class="field-select field-select--multiple">
+                                    <div class="field-select__wrapper">
+                                        <button type="button" class="btn btn-reset tag field-select__item">
+                                            <span>Гараж</span>
+                                        </button>
+                                        <button type="button" class="btn btn-reset tag field-select__item">
+                                            <span>Бассейн</span>
+                                        </button>
+                                        <button type="button" class="btn btn-reset tag field-select__item">
+                                            <span>Баня</span>
+                                        </button>
+                                        <button type="button" class="btn btn-reset tag field-select__item">
+                                            <span>Теплица</span>
+                                        </button>
+                                        <button type="button" class="btn btn-reset tag field-select__item">
+                                            <span>Хоз. постройки</span>
+                                        </button>
+                                        <button type="button" class="btn btn-reset tag field-select__item">
+                                            <span>Беседка</span>
+                                        </button>
+                                        <button type="button" class="btn btn-reset tag field-select__item">
+                                            <span>Терраса</span>
+                                        </button>
+                                        <button type="button" class="btn btn-reset tag field-select__item">
+                                            <span>Баня-сауна</span>
+                                        </button>
+                                    </div>
+                                    <input type="text" name="rooms-house" class="input-reset field-select__input" hidden placeholder="">
+                                </div>
+                            </div>
+                            <div class="submit-app-options__offers submit-app-offers submit-app-offers--advant _only-one">
                                 <h3 class="submit-app-offers__title submit-app__row-title title-2">
-                                    Какой ремонт
+                                    Какой у вас ремонт?
                                 </h3>
                                 <div class="submit-app-offers__list">
                                     <article class="submit-app-offers__item offer-room">
@@ -2232,48 +2476,206 @@
                                         </div>
                                     </article>
                                 </div>
-                                <button type="button" class="btn btn-reset submit-app-offers__btn">
-                                    <span>Ещё квартиры</span>
-                                    <svg>
-                                        <use xlink:href="./img/sprite.svg#check"></use>
-                                    </svg>
-                                </button>
+                                <div class="checkbox-secondary">
+                                    <input id="developer_11" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                    <label for="developer_11" class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Есть перепланировка
+                                        </span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <div class="place-sale__row place-sale-options">
                             <h2 class="place-sale__row-title place-sale-options__title title-2">
-                                Дополнительные постройки
+                                Особенности сделки
                             </h2>
-                            <div class="field-select">
+                            <div class="filter__item field-select">
+                                <div class="field-select__name">
+                                    Лет в собственности
+                                </div>
                                 <div class="field-select__wrapper">
                                     <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Гараж</span>
+                                        <span>Меньше трёх</span>
                                     </button>
                                     <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Бассейн</span>
+                                        <span>От трех до пяти</span>
                                     </button>
                                     <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Баня</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Теплица</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Хоз. постройки</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Беседка</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Терраса</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Баня-сауна</span>
+                                        <span>Больше пяти</span>
                                     </button>
                                 </div>
-                                <input type="text" name="rooms-house" class="input-reset field-select__input" hidden placeholder="">
+                                <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
                             </div>
-
+                            <div class="filter__item field-select">
+                                <div class="field-select__name">
+                                    Собственник
+                                </div>
+                                <div class="field-select__wrapper">
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>1</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>2</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>3</span>
+                                    </button>
+                                </div>
+                                <div class="checkbox-secondary">
+                                    <input id="minors_1" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                    <label for="minors_1" class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Есть несовершеннолетние
+                                        </span>
+                                    </label>
+                                </div>
+                                <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
+                            </div>
+                            <div class="filter__item field-select">
+                                <div class="field-select__name">
+                                    Прописано
+                                </div>
+                                <div class="field-select__wrapper">
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>1</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>2</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>3</span>
+                                    </button>
+                                </div>
+                                <div class="checkbox-secondary">
+                                    <input id="minors_2" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                    <label for="minors_2" class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Есть несовершеннолетние
+                                        </span>
+                                    </label>
+                                </div>
+                                <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
+                            </div>
+                        </div>
+                        <div class="place-sale__row place-sale-options">
+                            <h2 class="place-sale__row-title place-sale-options__title title-2">
+                                Цена и условие продажи
+                            </h2>
+                            <div class="filter__item field-select">
+                                <div class="field-select__name">
+                                    Тип сделки
+                                    <div class="secondary-tooltip secondary-tooltip--top-center">
+                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#info"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="secondary-tooltip__content">
+                                            <div class="flex gap-8">
+                                                <span>1.</span>
+                                                <p>
+                                                    Прямая или свободная — сделка между одним продавцом и одним покупателем
+                                                </p>
+                                            </div>
+                                            <div class="flex gap-8">
+                                                <span>2.</span>
+                                                <p>
+                                                    Альтернативная — сделка, при которой продавец одновременно продаёт своё жильё и покупает новое
+                                                </p>
+                                            </div>
+                                            <div class="flex gap-8">
+                                                <span>3.</span>
+                                                <p>
+                                                    Переуступка — передача покупателю имущественного права на квартиру в строящемся здании и обязанностей по договору
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field-select__wrapper">
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Прямая</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Альтернативная</span>
+                                    </button>
+                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                        <span>Переуступка</span>
+                                    </button>
+                                </div>
+                                <div class="checkbox-secondary">
+                                    <input id="minors_3" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                    <label for="minors_3" class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Есть несовершеннолетние
+                                        </span>
+                                    </label>
+                                </div>
+                                <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
+                            </div>
+                            <div class="filter__item field-input">
+                                <div class="field-input__name">
+                                    Цена, ₽
+                                </div>
+                                <div class="field-input__wrapper">
+                                    <div class="input-text input-text--only-number">
+                                        <label class="input-text__label">
+                                            <input type="text" name="Имя" class="input-reset input-text__input" maxlength="4" placeholder="">
+                                            <span>₽</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="checkbox-secondary">
+                                    <input id="developer_1" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                    <label for="developer_1" class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Торг уместен
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="checkbox-secondary">
+                                    <input id="developer_5" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
+                                    <label for="developer_5" class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Недвижимость в обременении
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="secondary-tooltip secondary-tooltip--top-center">
+                                    <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#info"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="secondary-tooltip__content">
+                                        Недвижимость может находиться в обремении, если вы покупали её в ипотеку
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filter__item field-input">
+                                <div class="field-input__name">
+                                    Кешбэк покупателю
+                                    <div class="secondary-tooltip secondary-tooltip--top-center">
+                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#info"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="secondary-tooltip__content">
+                                            Укажите сколько вы готовы заплатить покупателю если он купит объект.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field-input__wrapper">
+                                    <div class="input-text input-text--only-number">
+                                        <label class="input-text__label">
+                                            <input type="text" name="Имя" class="input-reset input-text__input" maxlength="4" placeholder="">
+                                            <span>₽</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="place-sale__row place-sale-photo">
                             <h2 class="place-sale__row-title place-sale-photo__title title-2">
@@ -2359,306 +2761,15 @@
                                 <textarea class="input-reset textarea-secondary__input" maxlength="2000" placeholder="Расскажите о недвижимости, транспортной доступности и инфраструктуре"></textarea>
                             </div>
                         </div>
-                        <div class="place-sale__row place-sale-options">
-                            <h2 class="place-sale__row-title place-sale-options__title title-2">
-                                Особенности сделки
-                            </h2>
-                            <div class="filter__item field-select">
-                                <div class="field-select__name">
-                                    Лет в собственности
-                                </div>
-                                <div class="field-select__wrapper">
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Меньше трёх</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>От трех до пяти</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Больше пяти</span>
-                                    </button>
-                                </div>
-                                <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
-                            </div>
-                            <div class="filter__item field-select">
-                                <div class="field-select__name">
-                                    Собственник
-                                </div>
-                                <div class="field-select__wrapper">
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>1</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>2</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>3</span>
-                                    </button>
-                                </div>
-                                <div class="checkbox-secondary">
-                                    <input id="minors_5" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
-                                    <label for="minors_5" class="checkbox-secondary__label">
-                                        <span class="checkbox-secondary__text">
-                                            Есть несовершеннолетние
-                                        </span>
-                                    </label>
-                                </div>
-                                <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
-                            </div>
-                            <div class="filter__item field-select">
-                                <div class="field-select__name">
-                                    Прописано
-                                </div>
-                                <div class="field-select__wrapper">
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>1</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>2</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>3</span>
-                                    </button>
-                                </div>
-                                <div class="checkbox-secondary">
-                                    <input id="minors_6" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
-                                    <label for="minors_6" class="checkbox-secondary__label">
-                                        <span class="checkbox-secondary__text">
-                                            Есть несовершеннолетние
-                                        </span>
-                                    </label>
-                                </div>
-                                <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
-                            </div>
-                        </div>
-                        <div class="place-sale__row place-sale-options">
-                            <h2 class="place-sale__row-title place-sale-options__title title-2">
-                                Особенности сделки
-                            </h2>
-                            <div class="filter__item field-select">
-                                <div class="field-select__name">
-                                    Тип сделки
-                                    <div class="secondary-tooltip secondary-tooltip--top-center">
-                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#info"></use>
-                                            </svg>
-                                        </button>
-                                        <div class="secondary-tooltip__content">
-                                            <div class="flex gap-8">
-                                                <span>1.</span>
-                                                <p>
-                                                    Прямая или свободная — сделка между одним продавцом и одним покупателем
-                                                </p>
-                                            </div>
-                                            <div class="flex gap-8">
-                                                <span>2.</span>
-                                                <p>
-                                                    Альтернативная — сделка, при которой продавец одновременно продаёт своё жильё и покупает новое
-                                                </p>
-                                            </div>
-                                            <div class="flex gap-8">
-                                                <span>3.</span>
-                                                <p>
-                                                    Переуступка — передача покупателю имущественного права на квартиру в строящемся здании и обязанностей по договору
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="field-select__wrapper">
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Прямая</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Альтернативная</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset tag field-select__item">
-                                        <span>Переуступка</span>
-                                    </button>
-                                </div>
-                                <div class="checkbox-secondary">
-                                    <input id="developer_1" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
-                                    <label for="developer_1" class="checkbox-secondary__label">
-                                        <span class="checkbox-secondary__text">
-                                            Есть несовершеннолетние
-                                        </span>
-                                    </label>
-                                </div>
-                                <input type="text" name="object-type" class="input-reset field-select__input" hidden placeholder="">
-                            </div>
-                            <div class="filter__item field-input">
-                                <div class="field-input__name">
-                                    Цена, ₽
-                                </div>
-                                <div class="field-input__wrapper">
-                                    <div class="input-text input-text--only-number">
-                                        <label class="input-text__label">
-                                            <input type="text" name="Имя" class="input-reset input-text__input" maxlength="4" placeholder="">
-                                            <span>₽</span>
-                                        </label>
-                                    </div>
-                                    <div class="checkbox-secondary">
-                                        <input id="developer_1" name="developer-name_1" class="checkbox-secondary__input" type="checkbox" value="true">
-                                        <label for="developer_1" class="checkbox-secondary__label">
-                                            <span class="checkbox-secondary__text">
-                                                Торг уместен
-                                            </span>
-                                        </label>
-                                    </div>
-                                    <div class="secondary-tooltip secondary-tooltip--top-center">
-                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#info"></use>
-                                            </svg>
-                                        </button>
-                                        <div class="secondary-tooltip__content">
-                                            Недвижимость может находиться в обремении, если вы покупали её в ипотеку
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="filter__item field-input">
-                                <div class="field-input__name">
-                                    Кешбэк покупателю
-                                    <div class="secondary-tooltip secondary-tooltip--top-center">
-                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#info"></use>
-                                            </svg>
-                                        </button>
-                                        <div class="secondary-tooltip__content">
-                                            Укажите сколько вы готовы заплатить покупателю если он купит объект.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="field-input__wrapper">
-                                    <div class="input-text input-text--only-number">
-                                        <label class="input-text__label">
-                                            <input type="text" name="Имя" class="input-reset input-text__input" maxlength="4" placeholder="">
-                                            <span>₽</span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="place-sale__row place-sale-sale place-present">
-                            <h2 class="place-sale__row-title place-sale-sale__title title-2">
+                        <div class="place-sale__row additionally" data-additionally-type="summ">
+                            <h2 class="additionally__title title-2">
                                 Подарки
                             </h2>
-                            <div class="place-sale-create">
-                                <div class="place-sale-sale__cards">
-                                    <div class="swiper">
-                                        <div class="swiper-wrapper">
-                                            <a href="./detailed-flat.html" class="swiper-slide card-checkbox card-checkbox--second">
-                                                <div class="user-info card-checkbox__info">
-                                                    <div class="user-info__avatar avatar">
-                                                        <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
-                                                    </div>
-                                                    <span class="user-info__name">
-                                                        Кондиционер в подарок
-                                                    </span>
-                                                    <span class="user-info__pos">
-                                                        Создаст идеальный микроклимат в вашей новой квартире
-                                                    </span>
-                                                </div>
-                                                <div class="card-checkbox__price">
-                                                    <span>10 000 ₽</span>
-                                                    <span>0 ₽</span>
-                                                </div>
-                                                <button type="button" class="btn btn-reset card-checkbox__remove">
-                                                    <svg>
-                                                        <use xlink:href="./img/sprite.svg#trash"></use>
-                                                    </svg>
-                                                </button>
-                                            </a>
-                                            <a href="./detailed-flat.html" class="swiper-slide card-checkbox card-checkbox--second">
-                                                <div class="user-info card-checkbox__info">
-                                                    <div class="user-info__avatar avatar">
-                                                        <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
-                                                    </div>
-                                                    <span class="user-info__name">
-                                                        Кондиционер в подарок
-                                                    </span>
-                                                    <span class="user-info__pos">
-                                                        Создаст идеальный микроклимат в вашей новой квартире
-                                                    </span>
-                                                </div>
-                                                <div class="card-checkbox__price">
-                                                    <span>10 000 ₽</span>
-                                                    <span>0 ₽</span>
-                                                </div>
-                                                <button type="button" class="btn btn-reset card-checkbox__remove">
-                                                    <svg>
-                                                        <use xlink:href="./img/sprite.svg#trash"></use>
-                                                    </svg>
-                                                </button>
-                                            </a>
-                                            <a href="./detailed-flat.html" class="swiper-slide card-checkbox card-checkbox--second">
-                                                <div class="user-info card-checkbox__info">
-                                                    <div class="user-info__avatar avatar">
-                                                        <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
-                                                    </div>
-                                                    <span class="user-info__name">
-                                                        Кондиционер в подарок
-                                                    </span>
-                                                    <span class="user-info__pos">
-                                                        Создаст идеальный микроклимат в вашей новой квартире
-                                                    </span>
-                                                </div>
-                                                <div class="card-checkbox__price">
-                                                    <span>10 000 ₽</span>
-                                                    <span>0 ₽</span>
-                                                </div>
-                                                <button type="button" class="btn btn-reset card-checkbox__remove">
-                                                    <svg>
-                                                        <use xlink:href="./img/sprite.svg#trash"></use>
-                                                    </svg>
-                                                </button>
-                                            </a>
-                                            <a href="./detailed-flat.html" class="swiper-slide card-checkbox card-checkbox--second">
-                                                <div class="user-info card-checkbox__info">
-                                                    <div class="user-info__avatar avatar">
-                                                        <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
-                                                    </div>
-                                                    <span class="user-info__name">
-                                                        Кондиционер в подарок
-                                                    </span>
-                                                    <span class="user-info__pos">
-                                                        Создаст идеальный микроклимат в вашей новой квартире
-                                                    </span>
-                                                </div>
-                                                <div class="card-checkbox__price">
-                                                    <span>10 000 ₽</span>
-                                                    <span>0 ₽</span>
-                                                </div>
-                                                <button type="button" class="btn btn-reset card-checkbox__remove">
-                                                    <svg>
-                                                        <use xlink:href="./img/sprite.svg#trash"></use>
-                                                    </svg>
-                                                </button>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <button type="button" class="btn btn-reset place-sale-sale__navigation nav-arrow-primary nav-arrow-primary--prev" disabled>
-                                        <div class="nav-arrow-primary__wrapper">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#arrow-right"></use>
-                                            </svg>
-                                        </div>
-                                    </button>
-                                    <button type="button" class="btn btn-reset place-sale-sale__navigation nav-arrow-primary nav-arrow-primary--next">
-                                        <div class="nav-arrow-primary__wrapper">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#arrow-right"></use>
-                                            </svg>
-                                        </div>
-                                    </button>
-                                </div>
-                                <h3 class="place-sale-sale__title title-3" style="margin-bottom: 24px;">
+                            <div class="place-present mt-16">
+                                <h3 class="place-sale-sale__title title-3 mb-16">
                                     Выберите тип
                                 </h3>
-                                <div class="place-present__wrapper" style="margin-bottom: 24px;">
+                                <div class="place-present__wrapper mb-24">
                                     <div class="place-present__checkboxes">
                                         <div class="checkbox-secondary place-present-checkbox-summ">
                                             <input id="present-checkbox-1" name="type-present" class="checkbox-secondary__input" type="radio" value="summ">
@@ -2677,7 +2788,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="place-present__summ" hidden>
+                                    <div class="place-present__summ" hidden="">
                                         <div class="input-text input-text--no-exp input-text--only-number">
                                             <label class="input-text__label">
                                                 <span>Введите сумму</span>
@@ -2685,139 +2796,394 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="place-present__quantity" hidden>
-                                        <div class="input-text input-text--no-exp input-text--only-number">
+                                    <div class="place-present__quantity" hidden="">
+                                        <div class="input-text input-text--only-number">
                                             <label class="input-text__label">
                                                 <span>Введите количество</span>
                                                 <input type="text" name="Название" class="input-reset input-text__input" placeholder="">
+                                                <span>шт</span>
                                             </label>
                                         </div>
-                                        <div class="input-text input-text--no-exp input-text--only-number">
+                                        <div class="input-text input-text--only-number">
                                             <label class="input-text__label">
                                                 <span>Введите максимальную сумму</span>
                                                 <input type="text" name="Название" class="input-reset input-text__input" placeholder="">
+                                                <span>₽</span>
                                             </label>
                                         </div>
                                     </div>
                                 </div>
-                                <h3 class="place-sale-sale__title title-3" style="margin-bottom: 24px;">
-                                    Создать подарок
-                                </h3>
-                                <div class="place-sale-sale__wrapper">
-                                    <div class="input-text input-text--no-exp place-sale-sale__field--name">
-                                        <label class="input-text__label">
-                                            <span>Название</span>
-                                            <input type="text" name="Название" class="input-reset input-text__input" placeholder="">
-                                        </label>
+                            </div>
+                            <p class="additionally__descr">
+                                Выберите подарки на сумму <span data-total-summ>100 000 ₽</span>
+                            </p>
+                            <div class="additionally__items">
+                                <div class="card-checkbox card-checkbox--second" data-additionally-card-calc>
+                                    <div class="user-info card-checkbox__info">
+                                        <div class="user-info__avatar avatar">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                        </div>
+                                        <span class="user-info__name">
+                                            Кондиционер в подарок
+                                        </span>
+                                        <span class="user-info__pos">
+                                            Создаст идеальный микроклимат в вашей новой квартире
+                                        </span>
+                                        <a class="user-info__link underline-hover"
+                                            href="https://hoff.ru/Files/%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80_%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B0_%D0%A1%D0%B0%D0%BC%D0%BE%D0%B5_%D0%BD%D0%B5%D0%BE%D0%B1%D1%85%D0%BE%D0%B4%D0%B8%D0%BC%D0%BE%D0%B5.pdf">
+                                            Посмотреть спецификацию
+                                        </a>
                                     </div>
-                                    <div class="search-select-one search-select-one--img-left">
-                                        <button type="button" class="btn btn-reset search-select-one__button">
-                                            <div class="search-select-one__button-wrapper">
-                                                <div>Автор</div>
-                                                <div>Не выбрано</div>
-                                            </div>
+                                    <div class="card-checkbox__price">
+                                        <span data-card-summ>10 000 ₽</span>
+                                        <span>0 ₽</span>
+                                    </div>
+                                    <div class="secondary-tooltip secondary-tooltip--top-center">
+                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
                                             <svg>
-                                                <use xlink:href="./img/sprite.svg#check"></use>
+                                                <use xlink:href="./img/sprite.svg#info"></use>
                                             </svg>
                                         </button>
-                                        <div class="search-select-one__dropdown">
-                                            <button type="button" class="btn btn-reset search-select-one__close">
+                                        <div class="secondary-tooltip__content">
+                                            Стоиомость комплекта меблировки
+                                        </div>
+                                    </div>
+                                    <label class="toggle-checkbox">
+                                        <input type="checkbox" name="toggle-1">
+                                        <div aria-hidden="true"></div>
+                                    </label>
+                                </div>
+                                <div class="card-checkbox card-checkbox--second" data-additionally-card-calc>
+                                    <div class="user-info card-checkbox__info">
+                                        <div class="user-info__avatar avatar">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                        </div>
+                                        <span class="user-info__name">
+                                            Авторский дизайн
+                                        </span>
+                                        <span class="user-info__pos">
+                                            Создаст идеальный микроклимат в вашей новой квартире
+                                        </span>
+                                    </div>
+                                    <div class="card-checkbox__price">
+                                        <span data-card-summ>5 000 ₽</span>
+                                        <span>0 ₽</span>
+                                    </div>
+                                    <div class="secondary-tooltip secondary-tooltip--top-center">
+                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#info"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="secondary-tooltip__content">
+                                            Стоиомость комплекта меблировки
+                                        </div>
+                                    </div>
+                                    <label class="toggle-checkbox">
+                                        <input type="checkbox" name="toggle-1">
+                                        <div aria-hidden="true"></div>
+                                    </label>
+                                </div>
+                                <div class="card-checkbox card-checkbox--second" data-additionally-card-calc>
+                                    <div class="user-info card-checkbox__info">
+                                        <div class="user-info__avatar avatar">
+                                            <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                        </div>
+                                        <span class="user-info__name">
+                                            Авторский дизайн интерьерный
+                                        </span>
+                                        <span class="user-info__pos">
+                                            Создаст идеальный микроклимат в вашей новой квартире
+                                        </span>
+                                    </div>
+                                    <div class="card-checkbox__price">
+                                        <span data-card-summ>19 999 ₽</span>
+                                        <span>0 ₽</span>
+                                    </div>
+                                    <div class="secondary-tooltip secondary-tooltip--top-center">
+                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#info"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="secondary-tooltip__content">
+                                            ДИЗАЙН-ПРОЕКТ <br>
+                                            "ИНТЕРЬЕРНЫЙ" <br>
+                                            3 варианта планировочного решения; <br>
+                                            2 варианта 3D концепции или коллажа; <br>
+                                            товарная ведомость (шопинг- лист) без расчета количества; <br>
+                                            товары со скидкой; <br>
+                                            проект мебели на заказ <br>
+                                        </div>
+                                    </div>
+                                    <label class="toggle-checkbox">
+                                        <input type="checkbox" name="toggle-1">
+                                        <div aria-hidden="true"></div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="additionally__more-items" data-additionally-more-items hidden>
+                                <div class="additionally__items">
+                                    <div class="card-checkbox card-checkbox--second" data-additionally-card-calc>
+                                        <div class="user-info card-checkbox__info">
+                                            <div class="user-info__avatar avatar">
+                                                <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                            </div>
+                                            <span class="user-info__name">
+                                                Авторский дизайн для ремонта
+                                            </span>
+                                            <span class="user-info__pos">
+                                                Создаст идеальный микроклимат в вашей новой квартире
+                                            </span>
+                                        </div>
+                                        <div class="card-checkbox__price">
+                                            <span data-card-summ>22 500 ₽</span>
+                                            <span>0 ₽</span>
+                                        </div>
+                                        <div class="secondary-tooltip secondary-tooltip--top-center">
+                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
                                                 <svg>
-                                                    <use xlink:href="./img/sprite.svg#x"></use>
+                                                    <use xlink:href="./img/sprite.svg#info"></use>
                                                 </svg>
                                             </button>
-                                            <label class="input-primary search-select-one__input">
-                                                <input type="search" name="Имя" class="input-reset input-primary__input" placeholder="Поиск по имени">
-                                            </label>
-                                            <div class="search-select-one__wrapper simplebar-third">
-                                                <div class="search-select-one__item" data-value="object-1">
-                                                    <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
-                                                    <span>Владимир А.</span>
-                                                </div>
-                                                <div class="search-select-one__item" data-value="object-2">
-                                                    <img loading="lazy" src="./img/avatar-2.jpg" alt="ПИК">
-                                                    <span>Сергей С.</span>
-                                                </div>
-                                                <div class="search-select-one__item" data-value="object-3">
-                                                    <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
-                                                    <span>Анастасия Г.</span>
-                                                </div>
-                                                <div class="search-select-one__item" data-value="object-1">
-                                                    <img loading="lazy" src="./img/avatar-2.jpg" alt="ПИК">
-                                                    <span>Иван В.</span>
-                                                </div>
-                                                <div class="search-select-one__item" data-value="object-2">
-                                                    <img loading="lazy" src="./img/avatar-1.jpg" alt="ПИК">
-                                                    <span>Алексей Г.</span>
-                                                </div>
+                                            <div class="secondary-tooltip__content">
+                                                ДИЗАЙН-ПРОЕКТ ик <br>
+                                                "ДЛЯ РЕМОНТА" <br>
+                                                3 варианта планировочного решения; <br>
+                                                2 варианта чертежей (рабочая документация); <br>
+                                                подробная смета на ремонт*; <br>
+                                                товары со скидкой; <br>
+                                                проект мебели на заказ <br>
                                             </div>
                                         </div>
-                                        <input type="text" name="object" value="Волгоград" class="search-select-one__input-hidden" hidden>
-                                    </div>
-                                    <div class="input-text input-text--no-exp date-picker place-sale-sale__field--start">
-                                        <label class="input-text__label">
-                                            <span>Начало</span>
-                                            <input type="text" name="Имя" class="input-reset input-text__input date-picker__input" value="" placeholder="">
+                                        <label class="toggle-checkbox">
+                                            <input type="checkbox" name="toggle-1">
+                                            <div aria-hidden="true"></div>
                                         </label>
                                     </div>
-                                    <div class="input-text input-text--no-exp date-picker place-sale-sale__field--ending">
-                                        <label class="input-text__label">
-                                            <span>Окончание</span>
-                                            <input type="text" name="Имя" class="input-reset input-text__input date-picker__input" value="" placeholder="">
+                                    <div class="card-checkbox card-checkbox--second" data-additionally-card-calc>
+                                        <div class="user-info card-checkbox__info">
+                                            <div class="user-info__avatar avatar">
+                                                <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                            </div>
+                                            <span class="user-info__name">
+                                                Мебельные сеты
+                                            </span>
+                                            <span class="user-info__pos">
+                                                Стильный интерьер с решениями на любой вкус. Заезжайте на все готовое
+                                            </span>
+                                        </div>
+                                        <div class="card-checkbox__price">
+                                            <span data-card-summ>22 500 ₽</span>
+                                            <span>0 ₽</span>
+                                        </div>
+                                        <div class="secondary-tooltip secondary-tooltip--top-center">
+                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#info"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="secondary-tooltip__content">
+                                                ДИЗАЙН-ПРОЕКТ ик <br>
+                                                "ДЛЯ РЕМОНТА" <br>
+                                                3 варианта планировочного решения; <br>
+                                                2 варианта чертежей (рабочая документация); <br>
+                                                подробная смета на ремонт*; <br>
+                                                товары со скидкой; <br>
+                                                проект мебели на заказ <br>
+                                            </div>
+                                        </div>
+                                        <label class="toggle-checkbox">
+                                            <input type="checkbox" name="toggle-1">
+                                            <div aria-hidden="true"></div>
                                         </label>
                                     </div>
-                                    <div class="input-text input-text--no-exp input-text--only-number">
-                                        <label class="input-text__label">
-                                            <span>Старая цена</span>
-                                            <input type="text" name="Старая цена" class="input-reset input-text__input" placeholder="">
+                                    <div class="card-checkbox card-checkbox--second" data-additionally-card-calc>
+                                        <div class="user-info card-checkbox__info">
+                                            <div class="user-info__avatar avatar">
+                                                <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                            </div>
+                                            <span class="user-info__name">
+                                                Переезд без забот
+                                            </span>
+                                            <span class="user-info__pos">
+                                                Перевезем ваши вещи быстро и бережно
+                                            </span>
+                                        </div>
+                                        <div class="card-checkbox__price">
+                                            <span data-card-summ>22 500 ₽</span>
+                                            <span>0 ₽</span>
+                                        </div>
+                                        <div class="secondary-tooltip secondary-tooltip--top-center">
+                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#info"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="secondary-tooltip__content">
+                                                ДИЗАЙН-ПРОЕКТ ик <br>
+                                                "ДЛЯ РЕМОНТА" <br>
+                                                3 варианта планировочного решения; <br>
+                                                2 варианта чертежей (рабочая документация); <br>
+                                                подробная смета на ремонт*; <br>
+                                                товары со скидкой; <br>
+                                                проект мебели на заказ <br>
+                                            </div>
+                                        </div>
+                                        <label class="toggle-checkbox">
+                                            <input type="checkbox" name="toggle-1">
+                                            <div aria-hidden="true"></div>
                                         </label>
                                     </div>
-                                    <div class="input-text input-text--no-exp input-text--only-number">
-                                        <label class="input-text__label">
-                                            <span>Новая цена</span>
-                                            <input type="text" name="Новая цена" class="input-reset input-text__input" placeholder="">
+                                    <div class="card-checkbox card-checkbox--second" data-additionally-card-calc>
+                                        <div class="user-info card-checkbox__info">
+                                            <div class="user-info__avatar avatar">
+                                                <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                            </div>
+                                            <span class="user-info__name">
+                                                Шторы и декор для вашего дома
+                                            </span>
+                                            <span class="user-info__pos">
+                                                Добавьте акценты в интерьер вашей будущей квартиры
+                                            </span>
+                                        </div>
+                                        <div class="card-checkbox__price">
+                                            <span data-card-summ>22 500 ₽</span>
+                                            <span>0 ₽</span>
+                                        </div>
+                                        <div class="secondary-tooltip secondary-tooltip--top-center">
+                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#info"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="secondary-tooltip__content">
+                                                ДИЗАЙН-ПРОЕКТ ик <br>
+                                                "ДЛЯ РЕМОНТА" <br>
+                                                3 варианта планировочного решения; <br>
+                                                2 варианта чертежей (рабочая документация); <br>
+                                                подробная смета на ремонт*; <br>
+                                                товары со скидкой; <br>
+                                                проект мебели на заказ <br>
+                                            </div>
+                                        </div>
+                                        <label class="toggle-checkbox">
+                                            <input type="checkbox" name="toggle-1">
+                                            <div aria-hidden="true"></div>
+                                        </label>
+                                    </div>
+                                    <div class="card-checkbox card-checkbox--second" data-additionally-card-calc>
+                                        <div class="user-info card-checkbox__info">
+                                            <div class="user-info__avatar avatar">
+                                                <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                            </div>
+                                            <span class="user-info__name">
+                                                Сертификаты на мебель
+                                            </span>
+                                            <span class="user-info__pos">
+                                                Выбирайте стильную и современную мебель, приобретая сертификат в ипотеку
+                                            </span>
+                                        </div>
+                                        <div class="card-checkbox__price">
+                                            <span data-card-summ>22 500 ₽</span>
+                                            <span>0 ₽</span>
+                                        </div>
+                                        <div class="secondary-tooltip secondary-tooltip--top-center">
+                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#info"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="secondary-tooltip__content">
+                                                ДИЗАЙН-ПРОЕКТ ик <br>
+                                                "ДЛЯ РЕМОНТА" <br>
+                                                3 варианта планировочного решения; <br>
+                                                2 варианта чертежей (рабочая документация); <br>
+                                                подробная смета на ремонт*; <br>
+                                                товары со скидкой; <br>
+                                                проект мебели на заказ <br>
+                                            </div>
+                                        </div>
+                                        <label class="toggle-checkbox">
+                                            <input type="checkbox" name="toggle-1">
+                                            <div aria-hidden="true"></div>
                                         </label>
                                     </div>
                                 </div>
-                                <h3 class="title-3" style="margin: 24px 0;">Описание</h3>
-                                <label class="textarea-primary place-sale-sale__field--descr">
-                                    <textarea class="input-reset textarea-primary__input" placeholder="Расскажите об акциях и спецпредложениях"></textarea>
-                                </label>
-                                <h3 class="title-3" style="margin: 24px 0;">Дополнительная информация</h3>
-                                <label class="textarea-primary place-sale-sale__field--descr">
-                                    <textarea class="input-reset textarea-primary__input" placeholder="Введите дополнительную информацию"></textarea>
-                                </label>
-                                <h3 class="title-3" style="margin: 24px 0;">Изображение</h3>
-                                <div class="photo-load">
-                                    <div class="place-sale-photo__images drag-drop photo-load__images">
+                                <h2 class="additionally__title title-2">
+                                    Дополнительно
+                                </h2>
+                                <div class="additionally__items">
+                                    <div class="card-checkbox card-checkbox--second">
+                                        <div class="user-info card-checkbox__info">
+                                            <div class="user-info__avatar avatar">
+                                                <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                            </div>
+                                            <span class="user-info__name">
+                                                Скидка 50% на парковку
+                                            </span>
+                                            <span class="user-info__pos">
+                                                Создаст идеальный микроклимат в вашей новой квартире
+                                            </span>
+                                        </div>
+                                        <div class="card-checkbox__price">
+                                            <span>1 500 000 ₽</span>
+                                            <span>750 000 ₽</span>
+                                        </div>
+                                        <div class="secondary-tooltip secondary-tooltip--top-center">
+                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#info"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="secondary-tooltip__content">
+                                                Стоиомость комплекта меблировки
+                                            </div>
+                                        </div>
+                                        <label class="toggle-checkbox">
+                                            <input type="checkbox" name="toggle-1">
+                                            <div aria-hidden="true"></div>
+                                        </label>
                                     </div>
-                                    <div class="place-sale-photo__wrapper photo-load__wrapper">
-                                        <button type="button" class="btn btn-reset">
-                                            <p>
-                                                <span class="btn btn-reset btn-primary">Выберите фото</span> <span>или перетащите в эту область</span>
-                                            </p>
-                                        </button>
-                                        <input type="file" data-upload-drop name="upload" accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                                    <div class="card-checkbox card-checkbox--second">
+                                        <div class="user-info card-checkbox__info">
+                                            <div class="user-info__avatar avatar">
+                                                <img loading="lazy" src="./img/avatar-1.jpg" width="40" height="40" alt="Алексей Г.">
+                                            </div>
+                                            <span class="user-info__name">
+                                                Скидка 5% на квартиру
+                                            </span>
+                                            <span class="user-info__pos">
+                                                Создаст идеальный микроклимат в вашей новой квартире
+                                            </span>
+                                        </div>
+                                        <div class="card-checkbox__price">
+                                            <span>5 000 000 ₽</span>
+                                            <span>4 900 000 ₽</span>
+                                        </div>
+                                        <div class="secondary-tooltip secondary-tooltip--top-center">
+                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#info"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="secondary-tooltip__content">
+                                                Стоиомость комплекта меблировки
+                                            </div>
+                                        </div>
+                                        <label class="toggle-checkbox">
+                                            <input type="checkbox" name="toggle-1">
+                                            <div aria-hidden="true"></div>
+                                        </label>
                                     </div>
                                 </div>
-                                <h3 class="title-3" style="margin: 24px 0;">Добавить спецификацию</h3>
-                                <div class="photo-load pdf-load">
-                                    <div class="place-sale-photo__images drag-drop photo-load__images">
-                                    </div>
-                                    <div class="place-sale-photo__wrapper photo-load__wrapper">
-                                        <button type="button" class="btn btn-reset">
-                                            <p>
-                                                <span class="btn btn-reset btn-primary">Добавьте PDF спецификации</span> <span>или перетащите в
-                                                    эту область</span>
-                                            </p>
-                                        </button>
-                                        <input type="file" data-upload-drop data-upload-drop-pdf name="upload" accept="application/pdf" class="input-reset">
-                                    </div>
-                                </div>
-                                <button type="button" class="btn btn-reset btn-secondary place-sale-sale__save">
-                                    Добавить
-                                </button>
                             </div>
+                            <button type="button" class="btn btn-reset additionally__more">
+                                <span>Показать полностью</span>
+                                <svg>
+                                    <use xlink:href="./img/sprite.svg#check"></use>
+                                </svg>
+                            </button>
                         </div>
                         <div class="place-sale__row place-sale-viewing">
                             <h2 class="place-sale__row-title place-sale-viewing__title title-2">
@@ -2826,8 +3192,14 @@
                             <button type="button" class="btn btn-reset btn-primary" data-popup-path="record-viewing">Поставить дату</button>
                         </div>
                         <div class="place-sale__row place-sale-options">
-                            <h2 class="place-sale__row-title place-sale-options__title title-2">
+                            <h2 class="place-sale__row-title place-sale-options__title title-2 flex justify-sb">
                                 Контакты
+                                <a href="./edit-profile.html" class="btn btn-reset top-page-inner-title__btn edit-btn" title="Редактировать">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#pencil"></use>
+                                    </svg>
+                                    <span>Редактировать</span>
+                                </a>
                             </h2>
                             <div class="filter__item field-select">
                                 <div class="field-select__name">

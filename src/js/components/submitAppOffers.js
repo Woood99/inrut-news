@@ -6,8 +6,8 @@ const submitAppOffers = () => {
         const btn = container.querySelector('.submit-app-offers__btn');
         const price = document.querySelector('.submit-app-options__item--price');
         let minItem = 4;
-        hiddenItems(items);
         if (btn) {
+            hiddenItems(items);
             if (items.length <= minItem) {
                 btn.remove();
                 return;
@@ -27,30 +27,43 @@ const submitAppOffers = () => {
                     container.classList.add('_active');
                 }
             });
+
+            updateMinItem();
+            window.addEventListener('resize', () => {
+                updateMinItem();
+            });
         }
         items.forEach(item => {
             item.addEventListener('input', () => {
-                const currentPrice = +price.dataset.filterDropdownPriceTo;
+                if (price){
+                    const currentPrice = +price.dataset.filterDropdownPriceTo;
 
-                const priceCardFrom = +item.dataset.offerRoomPriceFrom;
-                const priceCardTo = +item.dataset.offerRoomPriceTo;
-                if (!priceCardFrom && priceCardTo && currentPrice && currentPrice > priceCardTo) {
-                    item.classList.add('_clue');
-                    return;
-                } 
-                if (priceCardTo && currentPrice && priceCardTo <= currentPrice) {
-                    item.classList.add('_clue');
-                    return;
+                    const priceCardFrom = +item.dataset.offerRoomPriceFrom;
+                    const priceCardTo = +item.dataset.offerRoomPriceTo;
+                    if (!priceCardFrom && priceCardTo && currentPrice && currentPrice > priceCardTo) {
+                        item.classList.add('_clue');
+                        return;
+                    } 
+                    if (priceCardTo && currentPrice && priceCardTo <= currentPrice) {
+                        item.classList.add('_clue');
+                        return;
+                    }
+                    if (priceCardFrom && currentPrice && currentPrice <= priceCardFrom) {
+                        item.classList.add('_clue');
+                        return;
+                    }
+                    if (priceCardFrom && priceCardTo && currentPrice && !(priceCardTo >= currentPrice && priceCardFrom < currentPrice)) {
+                        item.classList.add('_clue');
+                        return;
+                    }
                 }
-                if (priceCardFrom && currentPrice && currentPrice <= priceCardFrom) {
-                    item.classList.add('_clue');
-                    return;
+                if (container.classList.contains('_only-one')) {
+                    items.forEach(currentItem => {
+                        if (currentItem !== item) {
+                            currentItem.classList.remove('_active')
+                        }
+                    });
                 }
-                if (priceCardFrom && priceCardTo && currentPrice && !(priceCardTo >= currentPrice && priceCardFrom < currentPrice)) {
-                    item.classList.add('_clue');
-                    return;
-                }
-
                 item.classList.toggle('_active')
             })
         })
@@ -70,10 +83,6 @@ const submitAppOffers = () => {
                 item.removeAttribute('hidden');
             })
         }
-        updateMinItem();
-        window.addEventListener('resize', () => {
-            updateMinItem();
-        });
 
         function updateMinItem() {
             if (window.innerWidth > 1212) {

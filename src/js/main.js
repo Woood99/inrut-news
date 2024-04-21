@@ -202,26 +202,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const createPresent = document.querySelector('.place-present');
-    if (createPresent) {
-        const checkboxes = createPresent.querySelector('.place-present__checkboxes');
-        const summBlock = createPresent.querySelector('.place-present__summ');
-        const quantityBlock = createPresent.querySelector('.place-present__quantity');
-        checkboxes.addEventListener('change', (e) => {
-            const target = e.target;
-            const summ = target.closest('.place-present-checkbox-summ');
-            const quantity = target.closest('.place-present-checkbox-quantity');
-            if (summ){
-                summBlock.removeAttribute('hidden');
-                quantityBlock.setAttribute('hidden','');
-            }
-            if (quantity){
-                quantityBlock.removeAttribute('hidden');
-                summBlock.setAttribute('hidden','');
-            }
-        })
-    }
-
     // ==============================================
 
     // ==== maps ====

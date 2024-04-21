@@ -60,7 +60,7 @@ import metroInfo from './components/metroInfo';
 import apartKitchen from './components/apartKitchen';
 import moveToFromBlock from './modules/moveToFromBlock';
 import genplan from './components/genplan';
-import additionally from './components/additionally';
+import {additionally} from './components/additionally';
 import saleDynamic from './components/saleDynamic';
 import dynamicCircle from './components/dynamicCircle';
 import floorTable from './components/floorTable';

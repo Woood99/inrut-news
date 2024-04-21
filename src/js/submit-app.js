@@ -28,7 +28,7 @@ import {
 
 import dataQuiz from './data/dataQuiz';
 import quiz from './components/quiz';
-import additionally from './components/additionally';
+import {additionallyDefault} from './components/additionally';
 
 import {
     recordViewing
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     emergingBlockScroll('.place-sale .place-sale__btn', '.footer-fixed.submit-app-fixed', 99999999, true);
     dropImage();
     recordViewing();
-    additionally();
+    additionallyDefault(document.querySelector('.place-sale-additionally'));
     // ==== maps ====
     //  mapPrimary();
     //  mapDraw();

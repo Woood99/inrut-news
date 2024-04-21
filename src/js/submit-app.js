@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
               return result;
             }
-            if (currentBlock.dataset.placeSaleTarget == 2) {
+            if (currentBlock.dataset.placeSaleTarget == 3) {
                 input(currentBlock.querySelector('[data-place-sale-field="address"]'),'Укажите улицу, дом, корпус');
                 selects(currentBlock.querySelector('[data-place-sale-field="type-plot"]'));
                 input(currentBlock.querySelector('[data-place-sale-field="square-plot"]'),'От 1 до 100 000');

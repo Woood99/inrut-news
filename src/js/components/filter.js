@@ -1129,28 +1129,61 @@ export const fieldSelect = () => {
 
                     if (container.hasAttribute('data-place-sale-type')) {
                         const targetItems = document.querySelectorAll('[data-place-sale-target]');
+                        const btn = document.querySelector('[data-place-sale-btn]')
+                        const footerFixed = document.querySelector('[data-place-sale-footer-fixed]');
                         if (targetItems.length > 0 && item.hasAttribute('data-place-sale-path')) {
                             const index = item.dataset.placeSalePath;
-                            targetItems.forEach(item => {
-                                if (item.dataset.placeSaleTarget == index) {
-                                    item.removeAttribute('hidden');
-                                    item.classList.add('_active')
-                                    const topGap =  window.pageYOffset + item.getBoundingClientRect().top;
-                                    window.scrollTo({
-                                        top: topGap - 15,
-                                        behavior:'smooth'
-                                    })
-                                } else {
-                                    item.setAttribute('hidden', '');
-                                    item.classList.remove('_active');
-                                }
-                            })
-
-                            const btn = document.querySelector('[data-place-sale-btn]')
-                            const footerFixed = document.querySelector('[data-place-sale-footer-fixed]');
-                            if (btn && footerFixed) {
+                            if (index == 1) {
+                                targetItems.forEach(item => {
+                                    if (item.dataset.placeSaleTarget == 1) {
+                                        item.removeAttribute('hidden');
+                                        item.classList.add('_active')
+                                        const topGap = window.pageYOffset + item.getBoundingClientRect().top;
+                                        window.scrollTo({
+                                            top: topGap - 15,
+                                            behavior: 'smooth'
+                                        })
+                                    }
+                                    if (item.dataset.placeSaleTarget == 2) {
+                                        item.setAttribute('hidden','');
+                                        item.classList.remove('_active')
+                                    }
+                                    if (item.dataset.placeSaleTarget == 3) {
+                                        item.setAttribute('hidden','');
+                                        item.classList.remove('_active')
+                                    }
+                                })
+                            }
+                            if (index == 1 || index == 3 && (btn && footerFixed)) {
                                 footerFixed.removeAttribute('hidden');
                                 btn.removeAttribute('hidden');
+                            }
+                            if (index == 2) {
+                                targetItems.forEach(item => {
+                                    if (item.dataset.placeSaleTarget == 1) {
+                                        item.setAttribute('hidden', '');
+                                    }
+                                    if (item.dataset.placeSaleTarget == 2) {
+                                        item.removeAttribute('hidden');
+                                    }
+                                    if (item.dataset.placeSaleTarget == 3) {
+                                        item.setAttribute('hidden', '');
+                                        footerFixed.setAttribute('hidden','');
+                                        btn.setAttribute('hidden','');
+                                    }
+                                })
+                            }
+                            if (index == 3) {
+                                targetItems.forEach(item => {
+                                    if (item.dataset.placeSaleTarget == 3) {
+                                        item.removeAttribute('hidden');
+                                        const topGap = window.pageYOffset + item.getBoundingClientRect().top;
+                                        window.scrollTo({
+                                            top: topGap - 15,
+                                            behavior: 'smooth'
+                                        })
+                                    }
+                                })
                             }
                         }
                     }

@@ -322,10 +322,11 @@ function initSliders() {
                         slidesPerView: 2.4,
                     },
                     1213: {
-                        slidesPerView: 2,
+                        slidesPerView: 3
                     }
                 },
             }
+            // 2  fasfsafsasfafsaafsfsafsa
             let slider = new Swiper(sliderEl, bodySlider);
             sliderMoreItem();
 
@@ -433,6 +434,7 @@ function initSliders() {
     if (document.querySelector('.block-stock__video-slider')) {
         const sliders = document.querySelectorAll('.block-stock__video-slider');
         sliders.forEach(el => {
+            const count = el.closest('.home__ribbon') ? 3 : 2;
             const slider = new Swiper(el, {
                 observer: true,
                 observeParents: true,
@@ -451,7 +453,7 @@ function initSliders() {
                         slidesPerView: 2.4,
                     },
                     1213: {
-                        slidesPerView: 2,
+                        slidesPerView: count
                     }
                 },
             });

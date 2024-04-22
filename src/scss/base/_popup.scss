@@ -327,6 +327,32 @@
             background-color: rgba(34, 41, 102, 0.4);
         }
     }
+    &--special-offers {
+        z-index: 100;
+        .popup-primary {
+            &__container {
+                border-radius: 12px 0 0 12px;
+                padding: 65px 48px 48px;
+                width: 1000px;
+
+                @media (max-width:$desktop) {
+                    border-radius: 0;
+                    padding: 75px 16px 32px;
+                    width: 100%;
+                }
+            }
+
+            &__close {
+                position: absolute;
+                margin: 0;
+                transform: translate(0);
+            }
+        }
+
+        @media (max-width:$desktop) {
+            background-color: rgba(34, 41, 102, 0.4);
+        }
+    }
 
     &--complaint {
         .popup-primary {
@@ -8919,3 +8945,93 @@
     }
 }
 
+
+
+.special-offers{
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    grid-gap: 32px;
+    &__title{
+        margin-bottom: 16px;
+    }
+    &__descr{
+        margin-bottom: 16px;
+        p{
+            &:not(:last-child){
+                margin-bottom: 12px;
+            }
+        }
+    }
+    &__fields{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: 12px;
+        &:not(:last-child){
+            margin-bottom: 16px;
+        }
+
+    }
+    &__field{
+        &:not(:last-child){
+            margin-bottom: 16px;
+        }
+    }
+    &__badge{
+        margin-top: 16px;
+        font-size: var(--small-fz);
+        line-height: var(--small-lh);
+
+        padding: 8px 16px;
+        border-radius: 8px;
+        background-color: var(--primary200);
+    }
+    &__btn{
+        margin-top: 24px;
+    }
+    
+    &__block{
+        margin-top: 24px;
+        padding: 24px;
+        box-shadow: var(--shadow-primary);
+        background-color: var(--white);
+        border-radius: 12px;
+    }
+}
+
+.sell-faster{
+    &__title{
+        margin-bottom: 16px;
+    }
+    &__descr{
+        margin-bottom: 24px;
+        p{
+            &:not(:last-child){
+                margin-bottom: 12px;
+            }
+        }
+    }
+    &__list{
+
+    }
+    &__item{
+        position: relative;
+        counter-increment: inst;
+        margin: 0 0 16px 22px;
+
+        &::before {
+            content: counter(inst) ". ";
+            position: absolute;
+        top: 0;
+            left: -22px;
+            font-weight: 500;
+            font-size: 17px;
+            line-height: 1;
+        }
+        span{
+            font-weight: 500;
+        }
+        p{
+            display: inline;
+        }
+    }
+}

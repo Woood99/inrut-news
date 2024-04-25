@@ -332,7 +332,7 @@ function initSliders() {
 
             function sliderMoreItem() {
                 const btn = el.querySelector('.block-stock__btn');
-                if (!btn.hasAttribute('data-popup-path') && !btn.hasAttribute('href')) {
+                if (btn && !btn.hasAttribute('data-popup-path') && !btn.hasAttribute('href')) {
                     btn.addEventListener('click', () => {
                         el.classList.toggle('_active');
                         if (el.classList.contains('_active')) {

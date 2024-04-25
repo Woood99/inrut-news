@@ -18,146 +18,71 @@
 <body class="page__body">
     <div class="site-container">
         @include('partials/header.html')
-        <main class="main main-page-gap edit-profile">
+        <main class="main main-page-gap edit-profile create-profile">
             <h1 class="title-2 container">
-                Создание профиля
+                Зарегистрироваться
             </h1>
             <div class="edit-profile__body">
                 <div class="edit-profile__content container">
                     <div class="edit-profile__row">
-                        <div class="edit-profile__user">
-                            <div class="edit-profile__avatar avatar">
-                                <img loading="lazy" src="./img/avatar.png" width="90" height="90" alt="Иван Петров">
-                                <div>
-                                    <input type="file" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
-                                    <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M13.02 5.714h5.96c.868 0 1.376.253 1.874.838.026.03.446.552.903 1.116.457.565 1.388.903 2.243.903h.572c2.285 0 4 1.715 4 4.572v8.571c0 2.286-2.286 4.572-5.143 4.572H8.572c-2.858 0-5.143-2.286-5.143-4.572v-8.571c0-2.857 1.714-4.572 4-4.572H8c.855 0 1.786-.338 2.243-.903.457-.564.877-1.086.903-1.116.498-.585 1.006-.838 1.873-.838zM9.885 16.857A6.116 6.116 0 0016 22.971a6.117 6.117 0 006.114-6.114A6.117 6.117 0 0016 10.743a6.116 6.116 0 00-6.114 6.114zm1.828 0a4.285 4.285 0 118.571 0 4.285 4.285 0 01-8.57 0z"
-                                            fill="currentColor"></path>
-                                    </svg>
-                                </div>
+                        <div class="edit-profile__fields">
+                            <div class="input-text input-text--no-exp _big">
+                                <label class="input-text__label">
+                                    <span>Email</span>
+                                    <input type="text" name="Email" class="input-reset input-text__input" placeholder="">
+                                </label>
                             </div>
-                        </div>
-                        <div class="edit-profile__item">
-                            <h3 class="edit-profile__subtitle title-3">
-                                Личные данные
-                            </h3>
-                            <div class="edit-profile__field">
-                                <div class="input-text input-text--no-exp">
-                                    <label class="input-text__label">
-                                        <span>Фамилия</span>
-                                        <input type="text" name="Фамилия" class="input-reset input-text__input" placeholder="">
-                                    </label>
-                                </div>
-                                <div class="input-text input-text--no-exp">
-                                    <label class="input-text__label">
-                                        <span>Имя</span>
-                                        <input type="text" name="Фамилия" class="input-reset input-text__input" placeholder="">
-                                    </label>
-                                </div>
-                                <div class="input-text input-text--no-exp">
-                                    <label class="input-text__label">
-                                        <span>Отчество</span>
-                                        <input type="text" name="Отчество" class="input-reset input-text__input" placeholder="">
-                                    </label>
-                                </div>
-                                <div class="input-text input-text--no-exp date-picker">
-                                    <label class="input-text__label">
-                                        <span>Дата рождения</span>
-                                        <input type="text" name="Дата рождения" class="input-reset input-text__input date-picker__input" placeholder="">
-                                    </label>
-                                </div>
+                            <div class="input-text input-text--no-exp _big">
+                                <label class="input-text__label">
+                                    <span>Пароль</span>
+                                    <input type="password" name="Пароль" autocapitalize="off" autocomplete="current-password" autocorrect="off" class="input-reset input-text__input">
+                                </label>
                             </div>
-                        </div>
-                        <div class="edit-profile__item">
-                            <h3 class="edit-profile__subtitle title-3">
-                                Контактные данные
-                            </h3>
-                            <div class="edit-profile__field">
-                                <div class="input-text input-text--no-exp">
-                                    <label class="input-text__label">
-                                        <span>Номер телефона</span>
-                                        <input type="text" name="Номер телефона" class="input-reset input-text__input input-phone-mask" placeholder="">
-                                    </label>
-                                </div>
-                                <div class="input-text input-text--no-exp">
-                                    <label class="input-text__label">
-                                        <span>Email</span>
-                                        <input type="text" name="Email" class="input-reset input-text__input" placeholder="">
-                                    </label>
-                                </div>
+                            <div class="input-text input-text--no-exp _big">
+                                <label class="input-text__label">
+                                    <span>Телефон</span>
+                                    <input type="text" name="Номер телефона" class="input-reset input-text__input input-phone-mask" placeholder="">
+                                </label>
                             </div>
+                            <button type="button" class="btn btn-reset btn-primary _big mt-16">Зарегистрироваться</button>
                         </div>
-                        <div class="edit-profile__item">
-                            <h3 class="edit-profile__subtitle title-3">
-                                Привязка карты
-                            </h3>
-                            <div class="edit-profile__field">
-                                <div class="input-text input-text--no-exp">
-                                    <label class="input-text__label">
-                                        <span>Номер карты</span>
-                                        <input type="text" name="Имя" class="input-reset input-text__input input-card-mask" maxlength="23" placeholder="">
-                                    </label>
-                                </div>
-                                <div class="input-text input-text--no-exp">
-                                    <label class="input-text__label">
-                                        <span>Срок действия</span>
-                                        <input type="text" name="Имя" class="input-reset input-text__input input-card-validity-mask" maxlength="5" placeholder="">
-                                    </label>
-                                </div>
-                                <div class="input-text">
-                                    <label class="input-text__label">
-                                        <span>CVC</span>
-                                        <input type="password" name="CVC" class="input-reset input-text__input input-cvc" maxlength="5" placeholder="">
-                                        <div class="secondary-tooltip secondary-tooltip--bottom-center">
-                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
-                                                <svg>
-                                                    <use xlink:href="./img/sprite.svg#info"></use>
-                                                </svg>
-                                            </button>
-                                            <div class="secondary-tooltip__content">
-                                                Код на обратной стороне карты
-                                            </div>
-                                        </div>
-                                    </label>
-                                </div>
-                            </div>
+                        <div class="edit-profile__or">
+                            <span aria-hidden="true"></span>
+                            Или
+                            <span aria-hidden="true"></span>
                         </div>
-                        <div class="edit-profile__item">
+                        <div class="edit-profile__fields">
                             <div class="log-in-sber">
-                                <h2 class="log-in-sber__title title-3">
-                                    Войдите по Сбер ID
-                                </h2>
-                                <div class="log-in-sber__descr">
-                                   <p>
-                                    Сможете дальше получать и списывать бонусы.
-                                   </p>
-                                   <p>
-                                    Быть клиентом СберБанка необязательно
-                                   </p>
-                                </div>
                                 <div class="log-in-sber__btns">
-                                    <button type="button" class="btn btn-reset btn-third btn_logo log-in-sber__btn">
-                                        <img loading="lazy" src="img/sber.png" width="30" height="30" class="authorization-popup__item-icon" alt="Сбербанк ID">
+                                    <button type="button" class="btn btn-reset btn-tinkoff">
+                                        <div>
+                                            <span>Tinkoff</span>
+                                            <img loading="lazy" src="img/tinkoff-logo.svg" width="46" height="25" class="authorization-popup__item-icon" alt="Tinkoff ID">
+                                        </div>
+                                    </button>
+                                    <button type="button" class="btn btn-reset btn-alfa">
+                                        <div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="authorization-popup__item-icon" width="24" height="24" viewBox="0 0 30 47" fill="none">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0 46.5841V40.2234H30V46.5841H0ZM10.7144 19.7755H19.052L15.0778 7.01459H14.9219L10.7144 19.7755ZM20.4531 4.659L29.2988 31.5821H22.753L20.7659 25.1819H8.92216L6.77913 31.5821H0.623515L9.90605 4.659C10.8064 2.0479 11.8554 0 15.2337 0C18.6117 0 19.5977 2.05617 20.4531 4.659Z" fill="#fff"></path>
+                                                </svg>
+                                            <span>Войти по Alfa ID</span>
+                                        </div>
+                                    </button>
+
+                                    <button type="button" class="btn btn-reset btn-third btn-sber">
+                                        <div>
+                                            <img loading="lazy" src="img/sber.png" width="30" height="30" class="authorization-popup__item-icon" alt="Сбербанк ID">
                                             <span>Войти по сбер ID</span>
+                                        </div>
                                     </button>
-                                    <button type="button" class="btn btn-reset btn-third btn_logo log-in-sber__btn">
-                                        <img loading="lazy" src="img/gosusligi.svg" width="30" height="30" class="authorization-popup__item-icon" alt="Tinkoff ID">
-                                        <span>Через «Госуслуги»</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset btn-third btn_logo log-in-sber__btn">
-                                        <img loading="lazy" src="img/tinkoff.svg" width="30" height="30" class="authorization-popup__item-icon" alt="Tinkoff ID">
-                                        <span>Войти с Tinkoff ID</span>
-                                    </button>
-                                    <button type="button" class="btn btn-reset btn-third btn_logo log-in-sber__btn">
-                                        <img loading="lazy" src="img/tinkoff.svg" width="30" height="30" class="authorization-popup__item-icon" alt="Tinkoff ID">
-                                        <span>Войти с Alfa ID</span>
+                                    <button type="button" class="btn btn-reset btn-third btn-gos">
+                                        <div>
+                                            <img loading="lazy" src="img/gosusligi.svg" width="30" height="30" class="authorization-popup__item-icon" alt="Tinkoff ID">
+                                            <span>Через «Госуслуги»</span>
+                                        </div>
                                     </button>
                                 </div>
                             </div>
-                        </div>
-                        <div class="edit-profile__item edit-profile__bottom">
-                            <button type="button" class="btn btn-reset btn-primary">Сохранить</button>
                         </div>
                     </div>
                 </div>

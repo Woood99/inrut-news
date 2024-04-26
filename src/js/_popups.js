@@ -300,3 +300,6 @@ popup(null, 'expenses-calc');
 popup(null, 'authorization-recovery');
 popup(null, 'cashback-faq');
 popup(null, 'review-error');
+popup(null, 'register-book-consultation');
+popup(null, 'register-viewing');
+popup(null, 'register-book');

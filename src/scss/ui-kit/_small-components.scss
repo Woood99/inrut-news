@@ -6338,6 +6338,17 @@
             margin-top: 12px;
         }
     }
+
+    &._column{
+        grid-template-columns: calc(85px + 8px) max-content 1fr;
+        padding: 16px 0;
+    }
+    &__column{
+        grid-column: 1/-1;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+    }
     @media (min-width:$desktop-min) {
         &:hover {
             .room-info-card__title {
@@ -6358,5 +6369,30 @@
 
     @media (max-width:$mobile-max) {
         padding: 16px;
+    }
+}
+
+
+.register-section{
+    background-color: var(--primary100);
+    padding: 24px;
+    border-radius: 12px;
+    &__title{
+        margin-bottom: 12px;
+    }
+    &__subtitle{
+        margin-bottom: 12px;
+    }
+    &__item{
+        display: flex;
+        gap: 8px;
+        svg{
+            fill: var(--blue);
+            width: 20px;
+            height: 20px;
+        }
+        &:not(:last-child){
+            margin-bottom: 12px;
+        }
     }
 }

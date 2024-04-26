@@ -1039,8 +1039,6 @@ function mainSlider() {
                 //                 value = false;
                 //                 return;
                 //             }
-                //             console.log(swiperIndex);
-                //             console.log(countAllSlides);
                 //             value = true;
                 //         } else {
                 //             value = true;

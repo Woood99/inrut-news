@@ -685,7 +685,6 @@ export const agentMap = () => {
 
         function app() {
             document.querySelectorAll('#agent-map').forEach(item => {
-                console.log(item);
                 function init() {
                     let map = new ymaps.Map(item, {
                         center: [55.77171185651524, 37.62811179984117],

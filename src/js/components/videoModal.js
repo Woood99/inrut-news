@@ -2,7 +2,6 @@ import modal from "../modules/modal";
 import videoBlock from "./videoBlock";
 const videoModal = () => {
     const targets = document.querySelectorAll('[data-video-modal]');
-    console.log(targets);
     if (targets.length === 0) return;
     targets.forEach(target => {
         target.addEventListener('click',(e) => {

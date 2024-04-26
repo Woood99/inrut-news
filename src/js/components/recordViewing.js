@@ -134,7 +134,7 @@ export const recordViewing = () => {
         }
 
         function checkCurrentDay(data,date) {
-            if (date){
+            if (date && data){
                 for (let i = 0; i < data.length; i++) {
                     const element = data[i];
                     if (element.date === date) {

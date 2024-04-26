@@ -24,6 +24,9 @@ const webpackStream = require('webpack-stream');
 const plumber = require('gulp-plumber');
 const changed = require('gulp-changed');
 
+const mapSources = require('gulp-sourcemaps');
+const mediaQueries = require('gulp-group-css-media-queries')
+
 // paths
 const srcFolder = './src';
 const buildFolder = './app';
@@ -82,27 +85,35 @@ const svgSprites = () => {
 }
 
 // scss styles
-const styles = () => {
-    return src(paths.srcScss, {
-            sourcemaps: !isProd
-        })
+const stylesDev = () => {
+    return src(paths.srcScss)
         .pipe(plumber(
             notify.onError({
                 title: "SCSS",
                 message: "Error: <%= error.message %>"
             })
         ))
-        .pipe(mainSass({
-            overrideBrowserslist: ["last 5 versions"]
-        }))
-
-        .pipe(gulpif(isProd, cleanCSS({
-            level: 2
-        })))
-        .pipe(dest(paths.buildCssFolder, {
-            sourcemaps: '.'
-        }))
+        .pipe(mapSources.init())
+        .pipe(mainSass())
+        .pipe(mapSources.write())
+        .pipe(dest(paths.buildCssFolder))
         .pipe(browserSync.stream());
+};
+
+const stylesProd = () => {
+    return src(paths.srcScss)
+        .pipe(plumber(
+            notify.onError({
+                title: "SCSS",
+                message: "Error: <%= error.message %>"
+            })
+        ))
+        .pipe(mainSass())
+        .pipe(mediaQueries())
+        .pipe(cleanCSS({
+            level: 2
+        }))
+        .pipe(dest(paths.buildCssFolder))
 };
 
 
@@ -212,7 +223,7 @@ const watchFiles = () => {
         },
     });
 
-    watch(paths.srcScss, styles);
+    watch(paths.srcScss, stylesDev);
     watch(paths.srcFullJs, scripts);
     watch(`${paths.srcPartialsFolder}/*.html`, htmlInclude);
     watch(`${paths.srcPopupsFolder}/*.html`, htmlInclude);
@@ -232,8 +243,8 @@ const toProd = (done) => {
 exports.default = series(
     clean,
     resources,
-    parallel(htmlInclude, styles, scripts, images),
+    parallel(htmlInclude, stylesDev, scripts, images),
     parallel(webpImages,svgSprites),
     watchFiles
 );
-exports.build = series(toProd, clean, htmlInclude, scripts, styles, resources, images, webpImages, svgSprites);
+exports.build = series(toProd, clean, htmlInclude, scripts, stylesProd, resources, images, webpImages, svgSprites);

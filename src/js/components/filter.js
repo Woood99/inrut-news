@@ -1677,26 +1677,46 @@ export const filterActions = () => {
     const mapBtn = filter.querySelector('.filter-actions__map');
     const metroBtn = filter.querySelector('.filter-actions__metro');
     const currentFilterContainer = filter.closest('.filter');
-    const searchAreaBtn = currentFilterContainer.querySelector('[data-search-area-btn]');
-    const controlCards = document.querySelector('.control-cards');
-    if (controlCards) {
-        const controlCardsContent = controlCards.querySelector('.control-cards__content');
-        listBtn.addEventListener('click', () => {
-            actions(controlCardsContent, listBtn);
-            actionForCards(controlCards, controlCardsContent, listBtn);
-            if (searchAreaBtn) searchAreaBtn.removeAttribute('hidden');
-        })
-        mapBtn.addEventListener('click', () => {
-            actions(controlCardsContent, mapBtn);
-            actionForCards(controlCards, controlCardsContent, mapBtn);
-            if (searchAreaBtn) searchAreaBtn.setAttribute('hidden', '');
-        });
+    if (currentFilterContainer) {
+        const searchAreaBtn = currentFilterContainer.querySelector('[data-search-area-btn]');
+        const controlCards = document.querySelector('.control-cards');
+        if (controlCards) {
+            const controlCardsContent = controlCards.querySelector('.control-cards__content');
+            listBtn.addEventListener('click', () => {
+                actions(controlCardsContent, listBtn);
+                actionForCards(controlCards, controlCardsContent, listBtn);
+                if (searchAreaBtn) searchAreaBtn.removeAttribute('hidden');
+            })
+            mapBtn.addEventListener('click', () => {
+                actions(controlCardsContent, mapBtn);
+                actionForCards(controlCards, controlCardsContent, mapBtn);
+                if (searchAreaBtn) searchAreaBtn.setAttribute('hidden', '');
+            });
+            function actions(content, currentBtn) {
+                content.classList.remove('control-cards__content--horizontal', 'control-cards__content--vertical', 'control-cards__content--horizontal-map');
+                btns.forEach(btn => btn.classList.remove('_active'));
+                currentBtn.classList.add('_active');
+            }
+        }
     }
+    const favoriteContacts = document.querySelector('.favorite-contacts__list');
+    if (favoriteContacts) {
+        favoriteContacts.addEventListener('click',actions);
+        const items = favoriteContacts.querySelectorAll('[data-favorite-target]');
+        const btns = favoriteContacts.querySelectorAll('[data-favorite-id]')
+        function actions(e) {
+            console.log(e.target);
+            const btn = e.target.closest('[data-favorite-id]');
+            if (!btn) return;
+            const currentID = btn.dataset.favoriteId;
+            const currentItem = Array.from(items).find(item => item.dataset.favoriteTarget == currentID);
+           
+            items.forEach(item => item.setAttribute('hidden',''));
+            btns.forEach(item => item.classList.remove('_active'));
 
-    function actions(content, currentBtn) {
-        content.classList.remove('control-cards__content--horizontal', 'control-cards__content--vertical', 'control-cards__content--horizontal-map');
-        btns.forEach(btn => btn.classList.remove('_active'));
-        currentBtn.classList.add('_active');
+            currentItem.removeAttribute('hidden');
+            btn.classList.add('_active');
+        }
     }
 };
 

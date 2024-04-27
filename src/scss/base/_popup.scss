@@ -172,13 +172,19 @@
             &__container {
                 border-radius: 12px 0 0 12px;
                 padding: 65px 48px 48px;
-                width: 925px;
-
+                width: 1120px;
+                flex-direction: column;
+                &.popup-open{
+                    display: inline-flex !important;
+                }
                 @media (max-width:$desktop) {
                     border-radius: 0;
                     padding: 64px 16px;
                     width: 100%;
                 }
+            }
+            &__content{
+                flex-grow: 1;
             }
         }
     }
@@ -9064,12 +9070,14 @@
 
 
 .favorite-contacts {
+    display: flex;
+    flex-direction: column;
     &__wrapper {
-        margin-top: 24px;
-        margin-left: -48px;
-        margin-right: -48px;
-        padding: 16px 48px;
+        margin: 24px -48px -48px -48px;
+        padding: 16px 48px 48px 48px !important;
         background-color: var(--stand-bg);
+        width: auto !important;
+        flex-grow: 1;
     }
 
     .main-table {
@@ -9188,9 +9196,7 @@
     }
 
     &__field {
-        &:not(:last-child) {
-            margin-bottom: 24px;
-        }
+       margin-top: 24px;
     }
 
     &__subtitle {
@@ -9201,9 +9207,9 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
-        &.col-3{
+        &.col-4{
             display: grid;
-            grid-template-columns: repeat(3,1fr);
+            grid-template-columns: repeat(4,calc(25% - 12px));
             grid-column-gap: 16px;
         }
         &._border{
@@ -9216,9 +9222,43 @@
             }
         }
     }
-    .card-secondary__bottom{
-        display: block;
-        margin-top: 16px;
+    .main-table{
+        padding: 0;
+    }
+    .card-secondary{
+        &__top{
+            overflow:visible;
+        }
+        .secondary-tooltip__content{
+            background-color: var(--white) !important;
+            transform: translateX(0) !important;
+            width: 330px;
+            text-align: left;
+            align-items: start !important;
+            .info-price-block._row{
+                width: 100%;
+            }
+        }
+        &__bottom{
+            display: block;
+            margin-top: 16px;
+        }
+    }
+    .card-primary{
+        .secondary-tooltip__content{
+            background-color: var(--white) !important;
+            transform: translateX(0) !important;
+            width: 330px;
+            text-align: left;
+            align-items: start !important;
+            .info-price-block._row{
+                width: 100%;
+            }
+        }
+        &__price{
+            font-size: var(--little-big-fz);
+            line-height: var(--little-big-lh);
+        }
     }
     .object-small-card._info {
         grid-template-columns: var(--size-image) 1fr max-content;

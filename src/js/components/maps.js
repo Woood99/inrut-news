@@ -168,12 +168,14 @@ export const complaintObjectMap = () => {
                 });
                 positionElement(map);
                 removeControlsPrimary(map);
-
+                console.log(map.controls.get('fullscreenControl'));
                 const fullScreenControl = map.controls.get('fullscreenControl');
-                fullScreenControls.add('fullscreenenter', function () {
-                    const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
-                    fullscreenElement.parentNode.style.position = 'fixed';
-                });
+                if (fullScreenControl) {
+                    fullScreenControls.add('fullscreenenter', function () {
+                        const fullscreenElement = fullScreenControl.getMap().container._fullscreenManager._element;
+                        fullscreenElement.parentNode.style.position = 'fixed';
+                    });
+                }
             }
             ymaps.ready(init);
         }

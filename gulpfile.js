@@ -117,8 +117,7 @@ const stylesProd = () => {
 };
 
 
-// scripts
-const scripts = () => {
+const scriptsDev = () => {
     return src(paths.srcJs)
         .pipe(plumber(
             notify.onError({
@@ -128,6 +127,68 @@ const scripts = () => {
         ))
         .pipe(webpackStream({
             mode: 'development',
+            entry: {
+                main: './src/js/main.js',
+                'buy-apartment': './src/js/buy-apartment.js',
+                'submit-app': './src/js/submit-app.js',
+                object: './src/js/object.js',
+                request: './src/js/request.js',
+                'admin-script': './src/js/admin-script.js',
+                ribbon: './src/js/ribbon.js',
+                'chat-page': './src/js/chat-page.js',
+                'service-moving': './src/js/service-moving.js',
+                'service-repair': './src/js/service-repair.js',
+                'app-verif': './src/js/app-verif.js',
+                'mortgage-insur': './src/js/mortgage-insur.js',
+                'create-policy': './src/js/create-policy.js',
+                'calendar-page': './src/js/calendar-page.js',
+                'profile': './src/js/profile.js',
+                'faq': './src/js/faq.js',
+                'mortgage-supp': './src/js/mortgage-supp.js',
+                'documents': './src/js/documents.js',
+                'comparison': './src/js/comparison.js',
+                'investments': './src/js/investments.js',
+                'program': './src/js/program.js',
+                'quiz': './src/js/quiz.js',
+            },
+            output: {
+                filename: '[name].js',
+            },
+            module: {
+                rules: [{
+                    test: /\.m?js$/,
+                    exclude: /node_modules/,
+                    use: {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: [
+                                ['@babel/preset-env', {
+                                    targets: "defaults"
+                                }]
+                            ]
+                        }
+                    }
+                }]
+            },
+        }))
+        .on('error', function (err) {
+            console.error('WEBPACK ERROR', err);
+            this.emit('end');
+        })
+        .pipe(dest(paths.buildJsFolder))
+        .pipe(browserSync.stream());
+}
+
+const scriptsProd = () => {
+    return src(paths.srcJs)
+        .pipe(plumber(
+            notify.onError({
+                title: "JS",
+                message: "Error: <%= error.message %>"
+            })
+        ))
+        .pipe(webpackStream({
+            mode: 'production',
             entry: {
                 main: './src/js/main.js',
                 'buy-apartment': './src/js/buy-apartment.js',
@@ -224,7 +285,7 @@ const watchFiles = () => {
     });
 
     watch(paths.srcScss, stylesDev);
-    watch(paths.srcFullJs, scripts);
+    watch(paths.srcFullJs, scriptsDev);
     watch(`${paths.srcPartialsFolder}/*.html`, htmlInclude);
     watch(`${paths.srcPopupsFolder}/*.html`, htmlInclude);
     watch(`${srcFolder}/*.html`, htmlInclude);
@@ -243,8 +304,8 @@ const toProd = (done) => {
 exports.default = series(
     clean,
     resources,
-    parallel(htmlInclude, stylesDev, scripts, images),
+    parallel(htmlInclude, stylesDev, scriptsDev, images),
     parallel(webpImages,svgSprites),
     watchFiles
 );
-exports.build = series(toProd, clean, htmlInclude, scripts, stylesProd, resources, images, webpImages, svgSprites);
+exports.build = series(toProd, clean, htmlInclude, scriptsProd, stylesProd, resources, images, webpImages, svgSprites);

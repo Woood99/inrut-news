@@ -58,7 +58,23 @@ import {
     tooltipSecondary,
     tooltipMain
 } from './components/tooltips';
+
+import Tooltip from './functions/tooltip';
 document.addEventListener('DOMContentLoaded', () => {
+
+    const tooltipHtml = new Tooltip({
+        mode: 'html',
+        gap: 10,
+        targetSelector: '[data-tooltip-html]',
+        elementSelector: 'tooltip-html',
+        positionX: 'left',
+        positionY: 'bottom',
+        animation: {
+            type: 'fade-up',
+            speed: 300,
+            transformGap: '10px'
+        },
+    });
 
     header();
     getHeightBlock('.header', '--header-height');
@@ -163,7 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
     tooltipSecondary();
     tooltipMain();
 
-
     document.addEventListener('click', (e) => {
         const target = e.target;
         const searchSelectOne = document.querySelectorAll('.search-select-one');
@@ -252,4 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         })
     }
+
+
+
 });

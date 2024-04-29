@@ -477,3 +477,63 @@
     }
 }
 
+.tooltip-target{
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg{
+        pointer-events: none;
+       width: 16px;
+       height: 16px;
+        stroke: var(--primaryTwo);
+    fill: none;
+    }
+}
+
+.tooltip-html {
+    position: fixed;
+    padding: 20px;
+    background-color: var(--white);
+    box-shadow: 0 10px 32px rgba(40,45,60,.02), 0 2px 24px rgba(40,45,60,.02), 0 0 16px rgba(40,45,60,.04);
+    border-radius: 10px;
+    color: var(--dark);
+
+    max-width: 350px;
+    width: max-content;
+
+    font-size: var(--small-fz);
+    line-height: var(--small-lh);
+
+    z-index: 1000;
+    .verif-list{
+        li{
+            svg{
+                width: 16px;
+                height: 16px;
+                fill: none;
+                stroke: var(--green);
+                stroke-width: 1.5px;
+                margin-right: 8px;
+                transform: translateY(2px);
+            }
+            &:not(:last-child){
+                margin-bottom: 10px;
+            }
+        }
+    }
+    p{
+        &:not(:last-child){
+            margin-bottom: 24px;
+            @media (max-width:$desktop){
+                 margin-bottom: 16px; 
+            }
+        }
+    }
+    @media (max-width:$desktop) {
+        max-width: calc(100vw - 35px);
+    }
+}

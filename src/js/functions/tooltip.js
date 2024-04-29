@@ -16,7 +16,12 @@ export default class Tooltip {
             this.targetSelector = '[data-tooltip-path]';
             this.elementSelector = '[data-tooltip-target]';
         }
-        this.position = options.position ? options.position : 'top';
+        this.positionY = options.positionY ? options.positionY : 'top';
+        this.positionX = options.positionX ? options.positionX : 'center';
+
+        if (window.innerWidth <= 1024) {
+            this.event = 'click';
+        }
         this.init();
     }
 
@@ -227,6 +232,8 @@ export default class Tooltip {
 
     setCoordsElement(target, el) {
         const coords = target.getBoundingClientRect();
+        const targetPositionX = target.dataset.tooltipPositionX || this.positionX;
+        const targetPositionY = target.dataset.tooltipPositionY || this.positionY;
         const mapCoords = {
             top() {
                 let top = coords.top - el.offsetHeight - this.gap;
@@ -240,19 +247,20 @@ export default class Tooltip {
             },
 
             left() {
+                let left = coords.left;
+                if (window.innerWidth - coords.left - el.offsetWidth - this.gap < 0) left = this.gap;
+                return left;
+            },
+
+            center() {
                 let left = coords.left + (target.offsetWidth - el.offsetWidth) / 2;
                 if (left < 0) left = this.gap;
                 return left;
             }
         };
 
-        el.style.left = `${mapCoords.left.call(this)}px`;
-        if (this.position === 'top') {
-            el.style.top = `${mapCoords.top.call(this)}px`;
-        }
-        if (this.position === 'bottom') {
-            el.style.top = `${mapCoords.bottom.call(this)}px`;
-        }
+        el.style.left = `${mapCoords[targetPositionX].call(this)}px`;
+        el.style.top = `${mapCoords[targetPositionY].call(this)}px`;
     }
 
     getCurrentTarget(e) {

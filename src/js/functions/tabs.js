@@ -261,6 +261,19 @@ export const tabs = () => {
                     }
                 }
 
+                const comparisonHeaders = document.querySelectorAll('[data-comparison-header]');
+
+                if (comparisonHeaders.length > 1) {
+                    const currentID = tabActiveTitle.dataset.comparisonHeaderId;
+                    comparisonHeaders.forEach(header => {
+                      if (header.dataset.comparisonHeader == currentID) {
+                        header.removeAttribute('hidden');
+                      } else {
+                        header.setAttribute('hidden','');
+                      }
+                    })
+                }
+
                 const nav = tabTitle.closest('.tabs__navigation');
                 if (nav.querySelector('._edit')) {
                     const tabs = nav.querySelectorAll('.tabs__title--edit._edit');

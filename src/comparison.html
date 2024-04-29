@@ -19,7 +19,7 @@
 <body class="page__body">
     <div class="site-container">
         @include('partials/header.html')
-        <div class="comparison-header">
+        <div class="comparison-header" data-comparison-header="1">
             <div class="comparison-header__container">
                 <div class="comparison-header__list">
                     <div class="comparison-header__left">
@@ -81,7 +81,7 @@
                         </div>
                     </div>
                     <div class="comparison-header__item">
-                      
+
                     </div>
                 </div>
                 <button type="button" class="btn btn-reset nav-arrow-primary nav-arrow-primary--prev comparison-header__nav comparison-header__prev">
@@ -100,6 +100,9 @@
                 </button>
             </div>
         </div>
+        <div class="comparison-header" data-comparison-header="2" hidden>
+
+        </div>
         <main class="main main-page-gap default-page comparison">
             <h1 class="title-2 container">
                 Сравнение новостроек
@@ -111,10 +114,10 @@
                         <div class="tabs-primary _clear">
                             <div data-tabs class="tabs-primary__inner">
                                 <nav data-tabs-titles class="tabs-primary__btns tabs__navigation">
-                                    <button type="button" class="btn btn-reset tabs__title _tab-active">
+                                    <button type="button" class="btn btn-reset tabs__title _tab-active" data-comparison-header-id="1">
                                         ЖК
                                     </button>
-                                    <button type="button" class="btn btn-reset tabs__title">
+                                    <button type="button" class="btn btn-reset tabs__title" data-comparison-header-id="2">
                                         Объекты ЖК
                                     </button>
                                 </nav>
@@ -150,12 +153,15 @@
                                                             <span class="comparison-card__number">
                                                                 1/3
                                                             </span>
-                                                            <h3 class="comparison-card__name title-4">
-                                                                д. Начапкино, литера 28.5
+                                                            <h3 class="comparison-card__title title-4">
+                                                                ЖК “Элит цветочные поляны экопарк”
                                                             </h3>
-                                                            <span class="comparison-card__id">
-                                                                ID дома: 56817
-                                                            </span>
+                                                            <div class="comparison-card__info">
+                                                                <span>Срок сдачи: 1 кв. 2024; &nbsp; есть сданные</span>
+                                                            </div>
+                                                            <h3 class="comparison-card__address">
+                                                                Краснодар, ул.Карла-Маркса., 234
+                                                            </h3>
                                                             <button type="button" class="btn btn-reset btn-secondary btn-secondary--small comparison-card__btn">Выбрать квартиру</button>
                                                         </article>
                                                     </div>
@@ -170,12 +176,15 @@
                                                             <span class="comparison-card__number">
                                                                 1/3
                                                             </span>
-                                                            <h3 class="comparison-card__name title-4">
-                                                                д. Начапкино, литера 28.5
+                                                            <h3 class="comparison-card__title title-4">
+                                                                ЖК “Элит цветочные поляны экопарк”
                                                             </h3>
-                                                            <span class="comparison-card__id">
-                                                                ID дома: 56817
-                                                            </span>
+                                                            <div class="comparison-card__info">
+                                                                <span>Срок сдачи: 1 кв. 2024; &nbsp; есть сданные</span>
+                                                            </div>
+                                                            <h3 class="comparison-card__address">
+                                                                Краснодар, ул.Карла-Маркса., 234
+                                                            </h3>
                                                             <button type="button" class="btn btn-reset btn-secondary btn-secondary--small comparison-card__btn">Выбрать квартиру</button>
                                                         </article>
                                                     </div>
@@ -190,12 +199,15 @@
                                                             <span class="comparison-card__number">
                                                                 1/3
                                                             </span>
-                                                            <h3 class="comparison-card__name title-4">
-                                                                д. Начапкино, литера 28.5
+                                                            <h3 class="comparison-card__title title-4">
+                                                                ЖК “Элит цветочные поляны экопарк”
                                                             </h3>
-                                                            <span class="comparison-card__id">
-                                                                ID дома: 56817
-                                                            </span>
+                                                            <div class="comparison-card__info">
+                                                                <span>Срок сдачи: 1 кв. 2024; &nbsp; есть сданные</span>
+                                                            </div>
+                                                            <h3 class="comparison-card__address">
+                                                                Краснодар, ул.Карла-Маркса., 234
+                                                            </h3>
                                                             <button type="button" class="btn btn-reset btn-secondary btn-secondary--small comparison-card__btn">Выбрать квартиру</button>
                                                         </article>
                                                     </div>
@@ -256,28 +268,88 @@
                                                                     Застройщик
                                                                 </div>
                                                                 <div class="comparison-block__col">
-                                                                    ООО СЗ НАЧАПКИНО
+                                                                    <div class="developer-card">
+                                                                        <div class="developer-card__image avatar">
+                                                                            <img loading="lazy" src="./img/avatar-1.jpg" width="45" height="45" alt="Иван П.">
+                                                                        </div>
+                                                                        <div class="developer-card__name">
+                                                                            ООО СЗ НАЧАПКИНО
+                                                                        </div>
+                                                                        <div class="developer-card__info">
+                                                                            <div class="developer-card__info-item">
+                                                                                <span class="developer-card__key">
+                                                                                    Сдано
+                                                                                </span>
+                                                                                <span class="developer-card__value">
+                                                                                    23 дома 9 ЖК
+                                                                                </span>
+                                                                            </div>
+                                                                            <div class="developer-card__info-item">
+                                                                                <span class="developer-card__key">
+                                                                                    Строится
+                                                                                </span>
+                                                                                <span class="developer-card__value">
+                                                                                    23 дома 9 ЖК
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                                 <div class="comparison-block__col">
-                                                                    ООО СЗ СЕВЕРНАЯ ВЕНЕЦИЯ
+                                                                    <div class="developer-card">
+                                                                        <div class="developer-card__image avatar">
+                                                                            <img loading="lazy" src="./img/avatar-1.jpg" width="45" height="45" alt="Иван П.">
+                                                                        </div>
+                                                                        <div class="developer-card__name">
+                                                                            ООО СЗ НАЧАПКИНО
+                                                                        </div>
+                                                                        <div class="developer-card__info">
+                                                                            <div class="developer-card__info-item">
+                                                                                <span class="developer-card__key">
+                                                                                    Сдано
+                                                                                </span>
+                                                                                <span class="developer-card__value">
+                                                                                    23 дома 9 ЖК
+                                                                                </span>
+                                                                            </div>
+                                                                            <div class="developer-card__info-item">
+                                                                                <span class="developer-card__key">
+                                                                                    Строится
+                                                                                </span>
+                                                                                <span class="developer-card__value">
+                                                                                    23 дома 9 ЖК
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                                 <div class="comparison-block__col">
-                                                                    ООО СЗ СК МПС
-                                                                </div>
-                                                                <div class="comparison-block__col"></div>
-                                                            </div>
-                                                            <div class="comparison-block__option">
-                                                                <div class="comparison-block__left-col comparison-block__subtitle">
-                                                                    Группа компаний
-                                                                </div>
-                                                                <div class="comparison-block__col">
-                                                                    —
-                                                                </div>
-                                                                <div class="comparison-block__col">
-                                                                    Садовое кольцо
-                                                                </div>
-                                                                <div class="comparison-block__col">
-                                                                    ПСК
+                                                                    <div class="developer-card">
+                                                                        <div class="developer-card__image avatar">
+                                                                            <img loading="lazy" src="./img/avatar-1.jpg" width="45" height="45" alt="Иван П.">
+                                                                        </div>
+                                                                        <div class="developer-card__name">
+                                                                            ООО СЗ НАЧАПКИНО
+                                                                        </div>
+                                                                        <div class="developer-card__info">
+                                                                            <div class="developer-card__info-item">
+                                                                                <span class="developer-card__key">
+                                                                                    Сдано
+                                                                                </span>
+                                                                                <span class="developer-card__value">
+                                                                                    23 дома 9 ЖК
+                                                                                </span>
+                                                                            </div>
+                                                                            <div class="developer-card__info-item">
+                                                                                <span class="developer-card__key">
+                                                                                    Строится
+                                                                                </span>
+                                                                                <span class="developer-card__value">
+                                                                                    23 дома 9 ЖК
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                                 <div class="comparison-block__col"></div>
                                                             </div>
@@ -326,6 +398,20 @@
                                                                 </div>
                                                                 <div class="comparison-block__col"></div>
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="spollers__item _active">
+                                                    <button type="button" data-spoller class="btn btn-reset spollers__title _spoller-active">
+                                                        <h3 class="title-3">
+                                                            Адрес
+                                                        </h3>
+                                                        <svg>
+                                                            <use xlink:href="./img/sprite.svg#check"></use>
+                                                        </svg>
+                                                    </button>
+                                                    <div class="spollers__body">
+                                                        <div class="comparison-block__options">
                                                             <div class="comparison-block__option">
                                                                 <div class="comparison-block__left-col comparison-block__subtitle">
                                                                     Регион
@@ -343,16 +429,16 @@
                                                             </div>
                                                             <div class="comparison-block__option">
                                                                 <div class="comparison-block__left-col comparison-block__subtitle">
-                                                                    Адрес
+                                                                    Город, улица
                                                                 </div>
                                                                 <div class="comparison-block__col">
-                                                                    д. Начапкино, литера 28.5
+                                                                    г. Начапкино, ул. мира 28/5
                                                                 </div>
                                                                 <div class="comparison-block__col">
-                                                                    г. Красногорск
+                                                                    г. Красногорск ул. мира 28/5
                                                                 </div>
                                                                 <div class="comparison-block__col">
-                                                                    г. Санкт-Петербург, ш Пулковское
+                                                                    г. Санкт-Петербург ул. мира 28/5
                                                                 </div>
                                                                 <div class="comparison-block__col"></div>
                                                             </div>
@@ -481,27 +567,6 @@
                                                                 </div>
                                                                 <div class="comparison-block__col"></div>
                                                             </div>
-                                                            <div class="comparison-block__option">
-                                                                <div class="comparison-block__left-col comparison-block__subtitle">
-                                                                    Результат проверки
-                                                                </div>
-                                                                <div class="comparison-block__col">
-                                                                    <a href="#" class="underline-hover">
-                                                                        Пройдена
-                                                                    </a>
-                                                                </div>
-                                                                <div class="comparison-block__col">
-                                                                    <a href="#" class="underline-hover">
-                                                                        Пройдена
-                                                                    </a>
-                                                                </div>
-                                                                <div class="comparison-block__col">
-                                                                    <a href="#" class="underline-hover">
-                                                                        Пройдена
-                                                                    </a>
-                                                                </div>
-                                                                <div class="comparison-block__col"></div>
-                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -518,25 +583,10 @@
                                                         <div class="comparison-block__options">
                                                             <div class="comparison-block__option">
                                                                 <div class="comparison-block__left-col comparison-block__subtitle">
-                                                                    <span>Назначение помещения</span>
-                                                                </div>
-                                                                <div class="comparison-block__col">
-                                                                    <span>Жилое</span>
-                                                                </div>
-                                                                <div class="comparison-block__col">
-                                                                    <span>Жилое</span>
-                                                                </div>
-                                                                <div class="comparison-block__col">
-                                                                    <span>Жилое</span>
-                                                                </div>
-                                                                <div class="comparison-block__col"></div>
-                                                            </div>
-                                                            <div class="comparison-block__option">
-                                                                <div class="comparison-block__left-col comparison-block__subtitle">
                                                                     <span>Класс недвижимости</span>
                                                                 </div>
-                                                                <div class="comparison-block__col">
-                                                                    <span>Типовой</span>
+                                                                <div class="comparison-block__col _none">
+                                                                    <span>Не указано</span>
                                                                 </div>
                                                                 <div class="comparison-block__col">
                                                                     <span>Комфорт</span>
@@ -596,13 +646,28 @@
                                                                     <span>Зелёный дом</span>
                                                                 </div>
                                                                 <div class="comparison-block__col">
-                                                                    <span>Нет</span>
+                                                                    <span class='flex gap-8 align-center'>
+                                                                        <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M15 10C15 13.866 11.866 17 8 17C4.13401 17 1 13.866 1 10C1 6.13401 4.13401 3 8 3C11.866 3 15 6.13401 15 10ZM11 7C10.6095 6.60948 9.97633 6.60948 9.5858 7L8.00002 8.58578L6.41424 7C6.02372 6.60948 5.39055 6.60948 5.00003 7C4.60951 7.39052 4.60951 8.02369 5.00003 8.41421L6.58581 9.99999L5.00002 11.5858C4.60949 11.9763 4.60949 12.6095 5.00002 13C5.39054 13.3905 6.02371 13.3905 6.41423 13L8.00002 11.4142L9.58582 13C9.97634 13.3905 10.6095 13.3905 11 13C11.3906 12.6095 11.3906 11.9763 11 11.5858L9.41424 9.99999L11 8.41421C11.3905 8.02369 11.3905 7.39052 11 7Z" fill="#F6A623"></path>
+                                                                        </svg>
+                                                                        Нет
+                                                                    </span>
                                                                 </div>
                                                                 <div class="comparison-block__col">
-                                                                    <span>Нет</span>
+                                                                    <span class='flex gap-8 align-center'>
+                                                                        <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M15 10C15 13.866 11.866 17 8 17C4.13401 17 1 13.866 1 10C1 6.13401 4.13401 3 8 3C11.866 3 15 6.13401 15 10ZM11 7C10.6095 6.60948 9.97633 6.60948 9.5858 7L8.00002 8.58578L6.41424 7C6.02372 6.60948 5.39055 6.60948 5.00003 7C4.60951 7.39052 4.60951 8.02369 5.00003 8.41421L6.58581 9.99999L5.00002 11.5858C4.60949 11.9763 4.60949 12.6095 5.00002 13C5.39054 13.3905 6.02371 13.3905 6.41423 13L8.00002 11.4142L9.58582 13C9.97634 13.3905 10.6095 13.3905 11 13C11.3906 12.6095 11.3906 11.9763 11 11.5858L9.41424 9.99999L11 8.41421C11.3905 8.02369 11.3905 7.39052 11 7Z" fill="#F6A623"></path>
+                                                                        </svg>
+                                                                        Нет
+                                                                    </span>
                                                                 </div>
                                                                 <div class="comparison-block__col">
-                                                                    <span>Да</span>
+                                                                    <span class='flex gap-8 align-center'>
+                                                                        <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8 17C11.866 17 15 13.866 15 10C15 6.13401 11.866 3 8 3C4.13401 3 1 6.13401 1 10C1 13.866 4.13401 17 8 17ZM11.7929 8.70712C12.1834 8.31659 12.1834 7.68343 11.7929 7.2929C11.4024 6.90238 10.7692 6.90238 10.3787 7.2929L7.2 10.4716C7.08954 10.582 6.91046 10.582 6.8 10.4716L5.70711 9.37868C5.31658 8.98816 4.68342 8.98816 4.29289 9.37869C3.90237 9.76921 3.90237 10.4024 4.29289 10.7929L6.37923 12.8792C6.72207 13.2221 7.27792 13.2221 7.62076 12.8792L11.7929 8.70712Z" fill="#53B374"></path>
+                                                                        </svg>
+                                                                        Да
+                                                                    </span>
                                                                 </div>
                                                                 <div class="comparison-block__col"></div>
                                                             </div>
@@ -659,7 +724,12 @@
                                                                     <span>Нет</span>
                                                                 </div>
                                                                 <div class="comparison-block__col">
-                                                                    <span>Да</span>
+                                                                    <span class='flex gap-8 align-center'>
+                                                                        <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8 17C11.866 17 15 13.866 15 10C15 6.13401 11.866 3 8 3C4.13401 3 1 6.13401 1 10C1 13.866 4.13401 17 8 17ZM11.7929 8.70712C12.1834 8.31659 12.1834 7.68343 11.7929 7.2929C11.4024 6.90238 10.7692 6.90238 10.3787 7.2929L7.2 10.4716C7.08954 10.582 6.91046 10.582 6.8 10.4716L5.70711 9.37868C5.31658 8.98816 4.68342 8.98816 4.29289 9.37869C3.90237 9.76921 3.90237 10.4024 4.29289 10.7929L6.37923 12.8792C6.72207 13.2221 7.27792 13.2221 7.62076 12.8792L11.7929 8.70712Z" fill="#53B374"></path>
+                                                                        </svg>
+                                                                        Да
+                                                                    </span>
                                                                 </div>
                                                                 <div class="comparison-block__col">
                                                                     <span>Нет</span>

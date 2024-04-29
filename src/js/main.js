@@ -15,7 +15,6 @@ import getHeightBlock from './modules/getHeightBlock'
 import {
     mapPrimary,
     bidMap,
-    complaintObjectMap,
     mapDraw2,
     popupMap,
     controlCardsMap,
@@ -206,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ==== maps ====
     mapPrimary();
-    complaintObjectMap();
+    // complaintObjectMap();
     mapDraw2();
     popupMap();
     controlCardsMap();

@@ -168,7 +168,6 @@ export const complaintObjectMap = () => {
                 });
                 positionElement(map);
                 removeControlsPrimary(map);
-                console.log(map.controls.get('fullscreenControl'));
                 const fullScreenControl = map.controls.get('fullscreenControl');
                 if (fullScreenControl) {
                     fullScreenControls.add('fullscreenenter', function () {

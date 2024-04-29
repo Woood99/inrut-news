@@ -9,21 +9,18 @@ import { _slideDown } from './support-modules/slide';
 document.addEventListener('DOMContentLoaded', () => {
     const comparison = document.querySelector('.comparison-block');
     if (!comparison) return;
+    const header = document.querySelector('.comparison-header');
     updateNumberCard();
     nav();
     comparison.addEventListener('click', updateNumberCard);
     const top = comparison.querySelector('.comparison-block__top');
     const topContainer = comparison.querySelector('.comparison-block__top-container');
-    window.addEventListener('scroll', comparisonTopScrollToggle);
-
-    function comparisonTopScrollToggle() {
-        const posTop = top.getBoundingClientRect().top;
-        if (posTop <= 0){
-            comparison.classList.add('_header-visible');
-        } else {
-            comparison.classList.remove('_header-visible');
-        }
+    if (header) {
+        comparisonHeaderToggle();
+        window.addEventListener('scroll', comparisonHeaderToggle);
     }
+
+
 
     function updateNumberCard() {
         const cards = comparison.querySelectorAll('.comparison-block__card');
@@ -49,6 +46,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const formula = top.scrollLeft - width;
             body(formula);
         });
+        
+
+        if (header) {
+            const prev = header.querySelector('.comparison-header__prev');
+            const next = header.querySelector('.comparison-header__next');
+            next.addEventListener('click', () => {
+                const formula = top.scrollLeft + width;
+                body(formula);
+            });
+            prev.addEventListener('click', () => {
+                const formula = top.scrollLeft - width;
+                body(formula);
+            });
+        }
 
         function body(formula) {
             const spollers = comparison.querySelectorAll('.comparison-block__body .spollers__item');
@@ -71,7 +82,24 @@ document.addEventListener('DOMContentLoaded', () => {
                         behavior: 'smooth'
                     })
                 })
+
+                const headerList = header ? header.querySelector('.comparison-header__list') : null;
+                if (headerList) {
+                    headerList.scrollTo({
+                        left: formula,
+                        behavior: 'smooth',
+                    })
+                }
             }, speed);
+        }
+    }
+
+    function comparisonHeaderToggle() {
+        const posTop = top.getBoundingClientRect().top;
+        if (posTop + topContainer.clientHeight <= 0){
+            header.classList.add('_active');
+        } else {
+            header.classList.remove('_active');
         }
     }
 })

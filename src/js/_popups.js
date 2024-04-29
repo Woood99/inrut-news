@@ -1,6 +1,7 @@
 import popup from './functions/popup';
 import inputResize from './modules/inputResize';
 import videoBlock from './components/videoBlock';
+import countdownDate from './modules/countdownDate';
 popup(null, 'city');
 popup(null, 'quiz');
 popup(null, 'add');
@@ -242,6 +243,16 @@ popup({
         }
     }
 }, 'warning-remove5');
+popup({
+    isOpen: (settingsModal) => {
+        const container = settingsModal.container;
+        const input = document.querySelector('[data-confirm-phone-code-input]');
+        const field = container.querySelector('[data-current-phone]');
+        if (input && field) {
+            field.textContent = input.value;
+        }
+    },
+}, 'confirm-phone-code');
 popup(null, 'order-report');
 popup(null, 'select-bank');
 popup(null, 'metro-map');

@@ -6473,12 +6473,22 @@
 
 
 .developer-card {
-
+    &__user{
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
     &__image {
         width: 46px;
         height: 46px;
     }
-
+    &__place{
+       color: #24CA8E;
+        padding: 6px 12px;
+        border-radius: 8px;
+        background-color: rgba(36, 202, 142, 0.2);
+        font-weight: 500;
+    }
     &__name {
         font-weight: 500;
         margin-top: 10px;
@@ -6497,5 +6507,63 @@
 
     &__value {
         color: var(--blue);
+    }
+}
+
+
+.class-energy{
+    &__item{
+        display: flex;
+        &:not(:last-child){
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--primary100);
+        }
+    }
+    &__type{
+        width: 120px;
+        flex: 0 0 120px;
+        >span{
+            position: relative;
+            background-color: currentColor;
+            color: gray;
+            font-weight: 500;
+           padding-left: 6px;
+            width: 36px;
+            height: 24px;
+            
+            display: flex;
+            align-items: center;
+            >span{
+                color: var(--white);
+            }
+            &::after{
+                content: "";
+                position: absolute;
+                top: 0;
+                height: 24px;
+                right: -11px;
+                border-top: 12px solid transparent;
+                border-left: 12px solid currentColor;
+                border-bottom: 12px solid transparent;
+                display: block;
+            }
+        }
+    }
+    &__status{
+        width: 120px;
+        flex: 0 0 120px;
+    }
+    &__descr{
+        margin-left: 24px;
+    }
+}
+
+.hover-blue{
+    transition: color $transitionSpeed $transitionFunction;
+    @media (min-width:$desktop-min){
+         &:hover{
+            color: var(--blue);
+         } 
     }
 }

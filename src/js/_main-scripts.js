@@ -75,6 +75,13 @@ document.addEventListener('DOMContentLoaded', () => {
             transformGap: '10px'
         },
     });
+    const tooltip = new Tooltip({
+        mode: 'default',
+        gap: 10,
+        positionX: 'left',
+        positionY: 'bottom',
+    });
+    
 
     header();
     getHeightBlock('.header', '--header-height');

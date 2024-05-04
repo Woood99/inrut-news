@@ -1829,7 +1829,7 @@
                 padding: 8px 0;
 
                 &::after {
-                    top: 8px;
+                    top: 12px;
                 }
 
                 @media (max-width:$desktop) {
@@ -1932,7 +1932,6 @@
 
         .search-select__button-wrapper {
             >div:nth-child(2) {
-                display: flex;
                 align-items: center;
 
                 >span {
@@ -1953,6 +1952,11 @@
                     flex: 0 0 24px;
                 }
             }
+            &._active{
+                >div:nth-child(2){
+                    display: flex;
+                }
+            }
         }
 
         &._selected {
@@ -1965,6 +1969,24 @@
                         overflow: hidden;
                         text-overflow: ellipsis;
                     }
+                }
+            }
+        }
+    }
+    &--img-left--no-circle {
+        .search-select__item {
+            img {
+                border-radius: 8px;
+            }
+        }
+
+        .search-select__button-wrapper {
+            >div:nth-child(2) {
+                img {
+                    border-radius: 8px;
+                    width: 28px;
+                    height: 28px;
+                    flex: 0 0 28px;
                 }
             }
         }

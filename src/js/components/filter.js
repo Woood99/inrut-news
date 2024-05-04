@@ -490,7 +490,9 @@ export const searchSelect = () => {
 
         function selectAll() {
             itemsInput.forEach(input => {
-                const currentElem = input.closest('.search-select__item').querySelector('.checkbox-secondary__text span:nth-child(1)').textContent.trim();
+                const currentElem = imgLeft ?
+                input.closest('.search-select__item').querySelector('.checkbox-secondary__text').innerHTML.trim() :
+                input.closest('.search-select__item').querySelector('.checkbox-secondary__text span:nth-child(1)').textContent.trim();
                 if (arrSelected.indexOf(currentElem) === -1) {
                     arrSelected.push(currentElem);
                     input.checked = true;
@@ -538,7 +540,12 @@ export const searchSelect = () => {
 
         function searchFilterItems(value, items) {
             return items.filter(item => {
-                const text = item.querySelector('.checkbox-secondary__text span').textContent;
+                let text;
+                if (item.querySelector('.checkbox-secondary__text span')) {
+                    text = item.querySelector('.checkbox-secondary__text span').textContent;
+                } else {
+                    text = item.querySelector('span').textContent;
+                }
                 const regex = new RegExp(value, 'gi')
                 return text.match(regex);
             })

@@ -276,5 +276,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    const createPresentsField = document.querySelector('[data-create-present]');
+    if (createPresentsField) {
+        const input = createPresentsField.querySelector('[data-create-present-input]');
+        const apartments = createPresentsField.querySelector('[data-create-present-apartments]');
+        const select = createPresentsField.querySelector('[data-create-present-select]');
+        if (!(input && apartments && select)) {
+            return
+        }
+        const apartmentsItems = apartments.querySelectorAll('.checkbox');
+        input.addEventListener('change',() => {
+            select.setAttribute('hidden','');
+            apartmentsItems.forEach(item => item.querySelector('input').checked = false);
+            if (input.checked) {
+                apartmentsItems.forEach(item => item.classList.add('_disabled'));
+            } else {
+                apartmentsItems.forEach(item => item.classList.remove('_disabled'));
+            }
+        })
+        apartments.addEventListener('change',(e) => {
+            const isActive = Array.from(apartmentsItems).find(item => item.querySelector('input').checked);
+            if (isActive) {
+                select.removeAttribute('hidden');
+            } else {
+                select.setAttribute('hidden','');
+            }
+        })
+    }
+
 
 });

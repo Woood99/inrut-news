@@ -658,8 +658,22 @@ export const submitAppValidate = () => {
 
 
 export const inputMaskPhone = (input) => {
-    const inputMask = new Inputmask('+7 999 999-99-99');
+    let inputMask = new Inputmask('+7 999 999-99-99');
     inputMask.mask(input);
+    let test = true;
+    input.addEventListener('input',() => {
+        const value = input.value;
+        if (value[3] == 8) {
+            if (test){
+                input.value = '';
+                Inputmask(["8 999 999-99-99"]).mask(input);
+                test = false;
+            }
+        } else {
+            Inputmask(["+7 999 999-99-99"]).mask(input);
+            test = true;
+        }
+    })
 }
 export const inputMaskSeriesNumber = (input) => {
     const inputMask = new Inputmask('99 99 999999');
@@ -723,23 +737,23 @@ export const inputMaskCardValidity = (input) => {
         if (firstLetterMonth > 1 && firstLetterMonth < 10 && input.value.substring(3, 5) === '__') {
             input.value = `0${firstLetterMonth}/${input.value.substring(3, 5)}`;
             input.focus();
-            input.setSelectionRange(3,3);
+            input.setSelectionRange(3, 3);
         }
         if (input.value.substring(0, 2) > 12) {
             input.value = `12/${input.value.substring(3, 5)}`;
             input.focus();
-            input.setSelectionRange(3,3);
+            input.setSelectionRange(3, 3);
         }
         if (firstLetterDay > 3) {
             input.value = `${input.value.substring(0,2)}:31`;
         }
-        if (input.value.substring(3,5) > 31) {
+        if (input.value.substring(3, 5) > 31) {
             input.value = `${input.value.substring(0,2)}:31`;
         }
     })
 }
 
-export const validateCreateErrorSelect = (container,selectorItem = null) => {
+export const validateCreateErrorSelect = (container, selectorItem = null) => {
     if (!container) return;
     const items = selectorItem ? container.querySelectorAll(selectorItem) : container.querySelectorAll('.field-select__item');
     if (!items.length === 0) return;
@@ -757,7 +771,7 @@ export const validateCreateErrorSelect = (container,selectorItem = null) => {
     }
     return value;
 }
-export const validatRemoveErrorSelect = (container,selectorItem = null) => {
+export const validatRemoveErrorSelect = (container, selectorItem = null) => {
     if (!container.classList.contains('_error')) return;
     container.classList.remove('_error');
     const items = selectorItem ? container.querySelectorAll(selectorItem) : container.querySelectorAll('.field-select__item');
@@ -880,8 +894,43 @@ export const changeDate = (date) => {
 
 export const validateEmail = (email) => {
     return String(email)
-    .toLowerCase()
-    .match(
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    );
+        .toLowerCase()
+        .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+}
+
+
+export const confirmPhoneCodeValidate = () => {
+    const button = document.querySelector('[data-confirm-phone-code-button]');
+    const input = document.querySelector('[data-confirm-phone-code-input]');
+    if (!(button && input)) return;
+    const inputLabel = input.closest('.input-text');
+    let result = true;
+    let formEventInput = false;
+
+    button.addEventListener('click', () => {
+        formEventInput = true;
+        validate();
+    });
+    input.addEventListener('input', () => {
+        if (!formEventInput) return;
+        validate();
+    });
+
+
+    function validate() {
+        result = true;
+        validateRemoveError(inputLabel);
+        if (!validateCreateErrorMask(inputLabel, input, validateTextMap.tel, 10)) {
+            result = false;
+        }
+
+
+        if (result) {
+            button.classList.remove('_disabled-popup');
+        } else {
+            button.classList.add('_disabled-popup');
+        }
+    }
 }

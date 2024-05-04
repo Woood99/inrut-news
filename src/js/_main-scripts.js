@@ -42,7 +42,8 @@ import {
     inputMaskInn,
     inputMaskTime,
     inputMaskCard,
-    inputMaskCardValidity
+    inputMaskCardValidity,
+    confirmPhoneCodeValidate
 } from './components/formValidate';
 import dropdown from './modules/dropdown';
 import dropdownItems from './modules/dropdownItems';
@@ -185,6 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
     spollers();
     tooltipSecondary();
     tooltipMain();
+    confirmPhoneCodeValidate();
 
     document.addEventListener('click', (e) => {
         const target = e.target;

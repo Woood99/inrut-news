@@ -248,8 +248,15 @@ popup({
         const container = settingsModal.container;
         const input = document.querySelector('[data-confirm-phone-code-input]');
         const field = container.querySelector('[data-current-phone]');
+        const popupInputCode = container.querySelector('[data-input-code]');
         if (input && field) {
             field.textContent = input.value;
+        }
+        if (popupInputCode) {
+            popupInputCode.value = '';
+            setTimeout(() => {
+                popupInputCode.focus();
+            }, 300);
         }
     },
 }, 'confirm-phone-code');

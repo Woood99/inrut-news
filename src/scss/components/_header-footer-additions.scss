@@ -4,12 +4,19 @@
 
 
 .city {
-
+    height: 100%;
     &__title {
-        color: var(--dark);
         display: flex;
         align-items: center;
+        height: 100%;
+        transition: background-color $transitionSpeed $transitionFunction,
+        color $transitionSpeed $transitionFunction;
+        padding: 0 16px;
 
+        color: var(--primaryTwo);
+        font-size: var(--default-fz);
+        line-height: var(--default-lh);
+        font-weight: 500;
         svg {
             width: 14px;
             height: 16px;
@@ -19,6 +26,7 @@
 
         @media (min-width:$desktop-min) {
             &:hover {
+                background-color: var(--primary100);
                 color: var(--blue);
             }
         }
@@ -26,20 +34,6 @@
         @media (max-width:$desktop) {
             -webkit-tap-highlight-color: transparent;
             width: 100%;
-        }
-    }
-
-    &__name {
-        color: var(--primaryTwo);
-        font-size: var(--default-fz);
-        line-height: var(--default-lh);
-        font-weight: 500;
-        transition: color $transitionSpeed $transitionFunction;
-
-        @media (min-width:$desktop-min) {
-            &:hover {
-                color: var(--blue);
-            }
         }
     }
 

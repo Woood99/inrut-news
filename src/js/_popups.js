@@ -45,6 +45,19 @@ popup({
             if (btn) btn.removeAttribute('data-suggestion-id');
         }, 750);
     }
+}, 'object-not3');
+popup({
+    isOpen: (settingsModal) => {
+        const currentID = settingsModal.currentBtn.hasAttribute('data-suggestion-id') ? settingsModal.currentBtn.dataset.suggestionId : false;
+        const btn = settingsModal.container.querySelector('.object-not-popup__btn');
+        if (currentID && btn) btn.setAttribute('data-suggestion-id', currentID);
+    },
+    isClose: (settingsModal) => {
+        setTimeout(() => {
+            const btn = settingsModal.container.querySelector('.object-not-popup__btn');
+            if (btn) btn.removeAttribute('data-suggestion-id');
+        }, 750);
+    }
 }, 'object-not-two');
 popup(null, 'interest-rate-modal');
 popup({

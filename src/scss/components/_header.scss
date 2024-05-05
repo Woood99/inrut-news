@@ -41,7 +41,7 @@
     &.header--new{
         .header-top{
             &__city{
-                margin-left: 0;
+                margin-left: -16px;
             }
             &__actions{
                 margin-right: 32px;
@@ -109,9 +109,13 @@
             display: flex;
             align-items: center;
             margin-left: 16px;
+            height: 100%;
         }
     
         &__action {
+            display: flex;
+            align-items: center;
+            height: 100%;
             &:not(:last-child) {
                 margin-right: 24px;
     
@@ -190,30 +194,31 @@
             display: flex;
             align-items: center;
             position: relative;
-            transition: color $transitionSpeed $transitionFunction;
-    
+            transition: color $transitionSpeed $transitionFunction,
+            background-color $transitionSpeed $transitionFunction;
+            height: 100%;
+            padding: 0 16px;
+            width: max-content;
+            font-size: var(--default-fz);
+            line-height: var(--little-small-lh);
+            font-weight: 500;
             svg {
                 width: 16px;
                 height: 16px;
                 fill: var(--primaryTwo);
                 stroke: none;
             }
+            @media (min-width:$desktop-min){
+                 &:hover{
+                    background-color: var(--primary100);
+                    color: var(--blue);
+                 } 
+            }
         }
     
         &__name {
             margin-left: 10px;
-            font-size: var(--default-fz);
-            line-height: var(--little-small-lh);
-            color: var(--primaryTwo);
-            font-weight: 500;
-            transition: color $transitionSpeed $transitionFunction;
-    
-            @media (min-width:$desktop-min) {
-                &:hover {
-                    color: var(--blue);
-                }
-            }
-    
+         
             @media (max-width:$desktop) {
                 display: none;
             }
@@ -245,12 +250,20 @@
     }
     
     .header-personal {
+        display: flex;
+        align-items: center;
+        height: 100%;
         &__title {
             display: flex;
             align-items: center;
             color: var(--dark);
-            transition: color $transitionSpeed $transitionFunction;
-    
+            transition: color $transitionSpeed $transitionFunction,
+            background-color $transitionSpeed $transitionFunction;
+            padding: 0 16px;
+            height: 100%;
+            color: var(--primaryTwo);
+            font-size: var(--default-fz);
+            line-height: var(--little-small-lh);
             svg {
                 width: 16px;
                 height: 16px;
@@ -259,6 +272,7 @@
     
             @media (min-width:$desktop-min) {
                 &:hover {
+                    background-color: var(--primary100);
                     color: var(--blue);
                 }
             }
@@ -266,18 +280,9 @@
     
         &__name {
             white-space: nowrap;
-            color: var(--primaryTwo);
             margin-left: 10px;
-            font-size: var(--default-fz);
-            line-height: var(--little-small-lh);
-            transition: color $transitionSpeed $transitionFunction;
+     
             font-weight: 500;
-    
-            @media (min-width:$desktop-min) {
-                &:hover {
-                    color: var(--blue);
-                }
-            }
     
             @media (max-width:$desktop) {
                 display: none;

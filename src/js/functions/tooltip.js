@@ -186,6 +186,7 @@ export default class Tooltip {
         config.el = document.createElement('div');
         config.el.classList.add(this.elementSelector);
         config.el.innerHTML = html;
+        config.el.classList.add(target.dataset.tooltipAddSelector);
         document.body.append(config.el);
 
 

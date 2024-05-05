@@ -71,9 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
         positionX: 'left',
         positionY: 'bottom',
         animation: {
-            type: 'fade-up',
+            type: 'fade',
             speed: 300,
-            transformGap: '10px'
         },
     });
     const tooltip = new Tooltip({

@@ -1108,6 +1108,77 @@
     }
 }
 
+.small-card {
+    display: flex;
+    gap: 12px;
+    --size-image: 60px;
+    &__image {
+        width: var(--size-image);
+        height: var(--size-image);
+        border-radius: 8px;
+        overflow: hidden;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__info {
+    }
+
+    &__title {
+        margin-bottom: 2px;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+      transition: color $transitionSpeed $transitionFunction;
+    }
+
+    &__price {
+       margin-bottom: 2px;
+
+       overflow: hidden;
+       text-overflow: ellipsis;
+       white-space: nowrap;
+    }
+
+    &__address {
+        color: var(--primaryTwo);
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    @media (min-width:$desktop-min){
+         &:hover{
+            .small-card__title{
+                color: var(--blue);
+            }
+         } 
+    }
+}
+
+.card-third {
+    border-radius: 8px;
+    border: 1px solid var(--primary100);
+    padding: 24px;
+    &__time {
+        font-weight: 500;
+        display: block;
+    }
+    &__status{
+        svg{
+            width: 16px;
+            height: 16px;
+        }
+    }
+}
+
+
+
+
 .cards-list {
     background-color: var(--stand-bg);
     padding: 24px 0;

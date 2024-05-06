@@ -11,6 +11,7 @@ popup(null, 'edit-profile');
 popup(null, 'edit-profile_agent');
 popup(null, 'share-app');
 popup(null, 'share-user');
+popup(null, 'share-comparison');
 popup(null, 'sell-faster');
 popup(null, 'favorite-contacts');
 popup(null, 'special-offers');

@@ -1706,26 +1706,29 @@ export const filterActions = () => {
             }
         }
     }
-    const favoriteContacts = document.querySelector('.favorite-contacts__list');
-    if (favoriteContacts) {
-        favoriteContacts.addEventListener('click',actions);
-        const items = favoriteContacts.querySelectorAll('[data-favorite-target]');
-        const btns = favoriteContacts.querySelectorAll('[data-favorite-id]')
-        function actions(e) {
-            console.log(e.target);
-            const btn = e.target.closest('[data-favorite-id]');
-            if (!btn) return;
-            const currentID = btn.dataset.favoriteId;
-            const currentItem = Array.from(items).find(item => item.dataset.favoriteTarget == currentID);
-           
-            items.forEach(item => item.setAttribute('hidden',''));
-            btns.forEach(item => item.classList.remove('_active'));
-
-            currentItem.removeAttribute('hidden');
-            btn.classList.add('_active');
-        }
-    }
 };
+
+export const tabsNav = () => {
+        const favoriteContacts = document.querySelector('[data-favorite-body]');
+        if (favoriteContacts) {
+            favoriteContacts.addEventListener('click',actions);
+            const items = favoriteContacts.querySelectorAll('[data-favorite-target]');
+            const btns = favoriteContacts.querySelectorAll('[data-favorite-id]')
+            function actions(e) {
+                console.log(e.target);
+                const btn = e.target.closest('[data-favorite-id]');
+                if (!btn) return;
+                const currentID = btn.dataset.favoriteId;
+                const currentItem = Array.from(items).find(item => item.dataset.favoriteTarget == currentID);
+               
+                items.forEach(item => item.setAttribute('hidden',''));
+                btns.forEach(item => item.classList.remove('_active'));
+    
+                currentItem.removeAttribute('hidden');
+                btn.classList.add('_active');
+            }
+        }
+}
 
 export const selectThird = () => {
     const selects = document.querySelectorAll('.select-third');

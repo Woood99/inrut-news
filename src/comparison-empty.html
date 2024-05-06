@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Сравнение новостроек</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/comparison.css">
+    <script id="ymaps-id"></script>
+    <script defer src="js/comparison.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container">
+        @include('partials/header.html')
+        <div class="comparison-header" data-comparison-header="1">
+
+        </div>
+        <div class="comparison-header" data-comparison-header="2" hidden>
+
+        </div>
+        <main class="main main-page-gap default-page comparison">
+            <h1 class="title-2 container">
+                Сравнение новостроек
+            </h1>
+            <div class="default-page__body">
+                <div class="container">
+                    <section class="comparison-block">
+
+                        <div class="tabs-primary _clear">
+                            <div data-tabs class="tabs-primary__inner">
+                                <nav data-tabs-titles class="tabs-primary__btns tabs__navigation">
+                                    <button type="button" class="btn btn-reset tabs__title _tab-active" data-comparison-header-id="1">
+                                        ЖК
+                                    </button>
+                                    <button type="button" class="btn btn-reset tabs__title" data-comparison-header-id="2">
+                                        Квартиры ЖК
+                                    </button>
+                                </nav>
+                                <div class="tabs-primary__container white-block">
+                                    <div data-tabs-body class="tabs__content tabs-primary__content">
+                                        <div class="tabs__body">
+                                            <div class="comparison-block__top">
+                                                <div class="comparison-block__top-container">
+                                                    <div class="comparison-block__left-col comparison-block__actions">
+                                                        <div class="comparison-block__map-info">
+                                                            <span class='font-w-500'>В сравнении 0 ЖК</span>
+                                                            <button type='button' class='btn btn-reset btn-blue underline-hover _disabled-opacity'>Показать на карте</button>
+                                                        </div>
+                                                        <div class="checkbox-secondary _disabled-opacity">
+                                                            <input id="personal-info" name="personal-info" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                            <label for="personal-info" class="checkbox-secondary__label">
+                                                                <span class="checkbox-secondary__text">
+                                                                    Показывать только различия
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                        <button type="button" class="btn btn-reset share-btn _disabled-opacity" data-popup-path="share-comparison" title="Поделиться">
+                                                            <svg class='w-16 h-16 mr-12'>
+                                                                <use xlink:href="./img/sprite.svg#share"></use>
+                                                            </svg>
+                                                            <span class='fw-500 text-gray'>Поделиться списком</span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-reset delete-btn _disabled-opacity" title="Удалить" data-popup-path="warning-remove">
+                                                            <svg class='w-20 h-20 mr-12'>
+                                                                <use xlink:href="./img/sprite.svg#trash"></use>
+                                                            </svg>
+                                                            <span class='fw-500 text-gray'>Удалить весь список</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="comparison-block__col comparison-block__col-top _empty">
+                                                        <h3 class='title-3'>
+                                                            Поможем сравнить 
+                                                            <br> и выбрать 
+                                                            <br> лучший вариант
+                                                        </h3>
+                                                        <div class="comparison-empty">
+                                                            <div class="comparison-empty__image">
+                                                                <picture>
+                                                                    <source srcset="./img/apartment-photo.webp" type="image/webp">
+                                                                    <img loading="lazy" src="./img/apartment-photo.png" width="" height="" alt="">
+                                                                </picture>
+                                                            </div>
+                                                            <div class="comparison-empty__content">
+                                                                <p class="comparison-empty__text">
+                                                                    Добавьте объект, чтобы сравнить
+                                                                </p>
+                                                                <button type='button' class='btn btn-reset btn-primary btn-primary--small w-full'>К объектам</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tabs__body" hidden>
+                                            <div class="comparison-block__top">
+                                                <div class="comparison-block__top-container">
+                                                    <div class="comparison-block__left-col comparison-block__actions">
+                                                        <div class="comparison-block__map-info">
+                                                            <span class='font-w-500'>В сравнении 0 квартир</span>
+                                                            <button type='button' class='btn btn-reset btn-blue underline-hover _disabled-opacity'>Показать на карте</button>
+                                                        </div>
+                                                        <div class="checkbox-secondary _disabled-opacity">
+                                                            <input id="personal-info" name="personal-info" class="checkbox-secondary__input" type="checkbox" value="true">
+                                                            <label for="personal-info" class="checkbox-secondary__label">
+                                                                <span class="checkbox-secondary__text">
+                                                                    Показывать только различия
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                        <button type="button" class="btn btn-reset share-btn _disabled-opacity" data-popup-path="share-comparison" title="Поделиться">
+                                                            <svg class='w-16 h-16 mr-12'>
+                                                                <use xlink:href="./img/sprite.svg#share"></use>
+                                                            </svg>
+                                                            <span class='fw-500 text-gray'>Поделиться списком</span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-reset delete-btn _disabled-opacity" title="Удалить" data-popup-path="warning-remove">
+                                                            <svg class='w-20 h-20 mr-12'>
+                                                                <use xlink:href="./img/sprite.svg#trash"></use>
+                                                            </svg>
+                                                            <span class='fw-500 text-gray'>Удалить весь список</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="comparison-block__col comparison-block__col-top _empty">
+                                                        <h3 class='title-3'>
+                                                            Поможем сравнить 
+                                                            <br> и выбрать 
+                                                            <br> лучший вариант
+                                                        </h3>
+                                                        <div class="comparison-empty">
+                                                            <div class="comparison-empty__image">
+                                                                <picture>
+                                                                    <source srcset="./img/apartment-photo.webp" type="image/webp">
+                                                                    <img loading="lazy" src="./img/apartment-photo.png" width="" height="" alt="">
+                                                                </picture>
+                                                            </div>
+                                                            <div class="comparison-empty__content">
+                                                                <p class="comparison-empty__text">
+                                                                    Добавьте объект, чтобы сравнить
+                                                                </p>
+                                                                <button type='button' class='btn btn-reset btn-primary btn-primary--small w-full'>К объектам</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <div class="tooltip-content" data-tooltip-target="tooltip-class-energy">
+            <p class='title-4'>
+                Класс. Что значит Отклонение от нормы удельного расхода тепла на отопление, горячую воду и вентиляцию, %
+            </p>
+            <ul class='list-reset class-energy'>
+                <li class='class-energy__item'>
+                    <div class='class-energy__type'>
+                        <span style='color: rgb(64, 123, 55);'><span>A++</span></span>
+                    </div>
+                    <div class='class-energy__status'>Высочайший</div>
+                    <div class='class-energy__descr'>-60 включительно и менее</div>
+                </li>
+                <li class='class-energy__item'>
+                    <div class='class-energy__type'>
+                        <span style='color: rgb(64, 123, 55);'><span>A+</span></span>
+                    </div>
+                    <div class='class-energy__status'>Высочайший</div>
+                    <div class='class-energy__descr'>От −50 включительно до −60</div>
+                </li>
+                <li class='class-energy__item'>
+                    <div class='class-energy__type'>
+                        <span style='color: rgb(64, 123, 55);'><span>A</span></span>
+                    </div>
+                    <div class='class-energy__status'>Очень высокий</div>
+                    <div class='class-energy__descr'> От −40 включительно до −50</div>
+                </li>
+                <li class='class-energy__item'>
+                    <div class='class-energy__type'>
+                        <span style='color: rgb(64, 123, 55);'><span>B</span></span>
+                    </div>
+                    <div class='class-energy__status'>Высокий</div>
+                    <div class='class-energy__descr'>От −30 включительно до −40</div>
+                </li>
+                <li class='class-energy__item'>
+                    <div class='class-energy__type'>
+                        <span style='color: rgb(64, 123, 55);'><span>C</span></span>
+                    </div>
+                    <div class='class-energy__status'>Повышенный</div>
+                    <div class='class-energy__descr'>От −15 включительно до −30</div>
+                </li>
+                <li class='class-energy__item'>
+                    <div class='class-energy__type'>
+                        <span style='color: rgb(64, 123, 55);'><span>D</span></span>
+                    </div>
+                    <div class='class-energy__status'>Нормальный</div>
+                    <div class='class-energy__descr'>От 0 включительно до −15</div>
+                </li>
+                <li class='class-energy__item'>
+                    <div class='class-energy__type'>
+                        <span style='color: rgb(64, 123, 55);'><span>E</span></span>
+                    </div>
+                    <div class='class-energy__status'>Пониженный</div>
+                    <div class='class-energy__descr'>От +25 включительно до 0</div>
+                </li>
+                <li class='class-energy__item'>
+                    <div class='class-energy__type'>
+                        <span style='color: rgb(64, 123, 55);'><span>F</span></span>
+                    </div>
+                    <div class='class-energy__status'>Низкий</div>
+                    <div class='class-energy__descr'>От +50 включительно до +25</div>
+                </li>
+                <li class='class-energy__item'>
+                    <div class='class-energy__type'>
+                        <span style='color: rgb(64, 123, 55);'><span>G</span></span>
+                    </div>
+                    <div class='class-energy__status'>Очень низкий</div>
+                    <div class='class-energy__descr'>Более +50</div>
+                </li>
+            </ul>
+        </div>
+        @include('partials/footer.html')
+    </div>
+    <!-- popups -->
+    @include('popups/city.html')
+    @include('popups/add.html')
+    @include('popups/personal-area2.html')
+    @include('popups/sber-tied.html')
+    <!-- ==== -->
+    @include('popups/warning-remove.html')
+    @include('popups/share-comparison.html')
+    <!-- popups -->
+</body>
+
+
+</html>

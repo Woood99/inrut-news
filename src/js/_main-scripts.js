@@ -14,7 +14,8 @@ import {
     tooltipSelect,
     fieldNotif,
     filterActions,
-    selectThird
+    selectThird,
+    tabsNav
 } from './components/filter';
 import {
     choicesSelect
@@ -103,6 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     tooltipSelect();
     fieldNotif();
     filterActions();
+    tabsNav();
     simplebar('.simplebar-primary');
     simplebar('.simplebar-secondary');
     simplebar('.simplebar-third');

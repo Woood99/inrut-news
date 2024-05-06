@@ -57,6 +57,7 @@
         font-size: var(--default-fz);
         line-height: var(--little-small-lh);
         font-weight: 400;
+        transition: color $transitionSpeed $transitionFunction;
     }
 
     @media (min-width:$desktop-min) {
@@ -229,11 +230,12 @@
         font-size: var(--default-fz);
         line-height: var(--little-small-lh);
         font-weight: 400;
+        transition: color $transitionSpeed $transitionFunction;
     }
 
     @media (min-width:$desktop-min) {
         &:hover {
-            color: var(--red-dark);
+            color: var(--red);
         }
     }
 
@@ -1087,11 +1089,13 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
-    &__button{
+
+    &__button {
         margin-top: 5px;
         grid-column: 2/3;
         grid-row: 2/3;
     }
+
     &--title {
         .object-small-card__title {
             align-self: center;
@@ -1101,6 +1105,9 @@
 
     &--small {
         --size-image: 36px;
+    }
+    &--big{
+        --size-image: 60px;
     }
 
     @media (max-width:$smallTablet-max) {
@@ -1112,19 +1119,20 @@
     display: flex;
     gap: 12px;
     --size-image: 60px;
+
     &__image {
         width: var(--size-image);
         height: var(--size-image);
         border-radius: 8px;
         overflow: hidden;
-        img{
+
+        img {
             width: 100%;
             height: 100%;
         }
     }
 
-    &__info {
-    }
+    &__info {}
 
     &__title {
         margin-bottom: 2px;
@@ -1133,15 +1141,15 @@
         text-overflow: ellipsis;
         white-space: nowrap;
 
-      transition: color $transitionSpeed $transitionFunction;
+        transition: color $transitionSpeed $transitionFunction;
     }
 
     &__price {
-       margin-bottom: 2px;
+        margin-bottom: 2px;
 
-       overflow: hidden;
-       text-overflow: ellipsis;
-       white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     &__address {
@@ -1151,12 +1159,13 @@
         text-overflow: ellipsis;
         white-space: nowrap;
     }
-    @media (min-width:$desktop-min){
-         &:hover{
-            .small-card__title{
+
+    @media (min-width:$desktop-min) {
+        &:hover {
+            .small-card__title {
                 color: var(--blue);
             }
-         } 
+        }
     }
 }
 
@@ -1164,12 +1173,14 @@
     border-radius: 8px;
     border: 1px solid var(--primary100);
     padding: 24px;
+
     &__time {
         font-weight: 500;
         display: block;
     }
-    &__status{
-        svg{
+
+    &__status {
+        svg {
             width: 16px;
             height: 16px;
         }
@@ -6193,13 +6204,17 @@
             height: 14px;
             flex: 0 0 14px;
         }
-        >div{
+
+        >div {
             text-align: left;
-            span{
+            display: flex;
+            span {
+                flex: 0 0 35px;
                 width: 35px;
                 display: inline-block;
             }
         }
+
         &:nth-child(3) {
             svg {
                 fill: var(--red);
@@ -6544,37 +6559,41 @@
 
 
 .developer-card {
-    &__user{
+    &__user {
         display: flex;
         align-items: center;
         gap: 12px;
     }
+
     &__image {
         width: 46px;
         height: 46px;
     }
-    &__place{
-       color: #24CA8E;
+
+    &__place {
+        color: #24CA8E;
         padding: 6px 12px;
         border-radius: 8px;
         background-color: rgba(36, 202, 142, 0.2);
         font-weight: 500;
     }
+
     &__name {
         font-weight: 500;
         margin-top: 10px;
     }
 
     &__info {
-      margin-top: 8px;
+        margin-top: 8px;
     }
-    &__info-item{
-        &:not(:last-child){
+
+    &__info-item {
+        &:not(:last-child) {
             margin-bottom: 8px;
         }
     }
-    &__key {
-    }
+
+    &__key {}
 
     &__value {
         color: var(--blue);
@@ -6582,33 +6601,38 @@
 }
 
 
-.class-energy{
-    &__item{
+.class-energy {
+    &__item {
         display: flex;
-        &:not(:last-child){
+
+        &:not(:last-child) {
             margin-bottom: 12px;
             padding-bottom: 12px;
             border-bottom: 1px solid var(--primary100);
         }
     }
-    &__type{
+
+    &__type {
         width: 120px;
         flex: 0 0 120px;
-        >span{
+
+        >span {
             position: relative;
             background-color: currentColor;
             color: gray;
             font-weight: 500;
-           padding-left: 6px;
+            padding-left: 6px;
             width: 36px;
             height: 24px;
-            
+
             display: flex;
             align-items: center;
-            >span{
+
+            >span {
                 color: var(--white);
             }
-            &::after{
+
+            &::after {
                 content: "";
                 position: absolute;
                 top: 0;
@@ -6621,20 +6645,43 @@
             }
         }
     }
-    &__status{
+
+    &__status {
         width: 120px;
         flex: 0 0 120px;
     }
-    &__descr{
+
+    &__descr {
         margin-left: 24px;
     }
 }
 
-.hover-blue{
+.hover-blue {
     transition: color $transitionSpeed $transitionFunction;
-    @media (min-width:$desktop-min){
-         &:hover{
+
+    @media (min-width:$desktop-min) {
+        &:hover {
             color: var(--blue);
-         } 
+        }
+    }
+}
+
+
+
+.tabs-nav {
+padding: 4px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    background-color: var(--primary100);
+    border-radius: 12px;
+
+    &__item {
+        height: 100%;
+        flex-grow: 1;
+        border-radius: 8px;
+        &._active{
+            background-color: var(--white);
+        }
     }
 }

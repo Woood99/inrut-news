@@ -264,12 +264,13 @@ export const tabs = () => {
                 const comparisonHeaders = document.querySelectorAll('[data-comparison-header]');
 
                 if (comparisonHeaders.length > 1) {
-                    const currentID = tabActiveTitle.dataset.comparisonHeaderId;
+                    const currentID = tabTitle.dataset.comparisonHeaderId;
                     comparisonHeaders.forEach(header => {
                       if (header.dataset.comparisonHeader == currentID) {
                         header.removeAttribute('hidden');
                       } else {
                         header.setAttribute('hidden','');
+                        header.classList.remove('_active');
                       }
                     })
                 }

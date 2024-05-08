@@ -88,17 +88,19 @@ export const tabs = () => {
         }
         if (tabsContent.length) {
             tabsContent = Array.from(tabsContent).filter(item => item.closest('[data-tabs]') === tabsBlock);
-            tabsTitles = Array.from(tabsTitles).filter(item => item.closest('[data-tabs]') === tabsBlock);
+            tabsTitles = Array.from(tabsTitles).filter(item => item.closest('[data-tabs]') === tabsBlock);      
             tabsContent.forEach((tabsContentItem, index) => {
                 tabsTitles[index].setAttribute('data-tabs-title', '');
                 tabsContentItem.setAttribute('data-tabs-item', '');
-
                 if (tabsActiveHashBlock && index == tabsActiveHash[1]) {
                     tabsTitles[index].classList.add('_tab-active');
                 }
                 tabsContentItem.hidden = !tabsTitles[index].classList.contains('_tab-active');
             });
         }
+
+        tabsBlock.activeTitle =  Array.from(tabsTitles).find(item => item.classList.contains('_tab-active'));
+        tabsBlock.activeBody =  Array.from(tabsContent).find(item => !item.hasAttribute('hidden'));
 
         updateTitleEdit(tabsBlock);
     }
@@ -128,6 +130,7 @@ export const tabs = () => {
             tabsContent.forEach((tabsContentItem, index) => {
                 if (tabsTitles[index].classList.contains('_tab-active')) {
                     tabsContentItem.hidden = false;
+                    tabsBlock.activeBody = tabsContentItem;
                     if (tabsBlock.closest('.object-filter__tabs')) {
                         const filter = tabsBlock.closest('.object-filter').querySelector('.filter');
                         const headerFixed = document.querySelector('.header-fixed');
@@ -293,6 +296,8 @@ export const tabs = () => {
                 }
             }
             e.preventDefault();
+            tabsBlock.activeTitle = tabTitle;
+            tabsBlock.dispatchEvent(new Event('tabChange'));
         }
     }
     document.addEventListener('click', (e) => {

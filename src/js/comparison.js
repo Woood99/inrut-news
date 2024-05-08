@@ -9,21 +9,25 @@ import { _slideDown } from './support-modules/slide';
 document.addEventListener('DOMContentLoaded', () => {
     const comparison = document.querySelector('.comparison-block');
     if (!comparison) return;
+
     const headers = Array.from(document.querySelectorAll('.comparison-header'));
     const blocks = Array.from(comparison.querySelectorAll('[data-comparison-block]'));
-
-    comparison.addEventListener('click', updateNumberCard);
-    updateNumberCard();
+    const tabsBlock = comparison.querySelector('[data-tabs]');
+    setNumberCards();
+    setBestField();
     headers.forEach(header => nav(header));
 
-    if (document.querySelector('.comparison-header')) {
+    if (tabsBlock) {
+        setWidthOptions.call(tabsBlock);
+        tabsBlock.addEventListener('tabChange', setWidthOptions.bind(tabsBlock));
+    }
+
+    if (document.querySelector('.comparison-header') && document.querySelector('.comparison-header').innerHTML.trim() !== '') {
         comparisonHeaderToggle();
         window.addEventListener('scroll', comparisonHeaderToggle);
     }
 
-
-
-    function updateNumberCard() {
+    function setNumberCards() {
         blocks.forEach(item => body(item));
 
         function body(comparison) {
@@ -39,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function nav(header) {
         const comparison = blocks.find(item => item.dataset.comparisonBlock == header.dataset.comparisonHeader);
-
+        if (!comparison) return;
         const blockPrev = comparison.querySelector('.comparison-block__prev');
         const blockNext = comparison.querySelector('.comparison-block__next');
 
@@ -80,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     _slideDown(item.querySelector('.spollers__body'));
                 }
             })
-            
+
             interimDisabledNavBtn();
             setTimeout(() => {
                 topContainer.scrollTo({
@@ -101,9 +105,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         behavior: 'smooth',
                     })
                 }
-               setTimeout(() => {
-                checkNavBtn();
-               }, 300);
+                setTimeout(() => {
+                    checkNavBtn();
+                }, 300);
             }, speed);
         }
 
@@ -131,9 +135,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 blockPrev.classList.remove('_disabled-hidden');
                 headerPrev.classList.remove('_disabled-hidden');
             }
-            if (Math.round(wrapper.offsetWidth + wrapper.scrollLeft) === wrapper.scrollWidth || 
-            Math.round(wrapper.offsetWidth + wrapper.scrollLeft + 1) === wrapper.scrollWidth ||
-            Math.round(wrapper.offsetWidth + wrapper.scrollLeft + 4) === wrapper.scrollWidth) {
+            if (Math.round(wrapper.offsetWidth + wrapper.scrollLeft) === wrapper.scrollWidth ||
+                Math.round(wrapper.offsetWidth + wrapper.scrollLeft + 1) === wrapper.scrollWidth ||
+                Math.round(wrapper.offsetWidth + wrapper.scrollLeft + 4) === wrapper.scrollWidth) {
                 blockNext.classList.add('_disabled-hidden');
                 headerNext.classList.add('_disabled-hidden');
             } else {
@@ -167,4 +171,69 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
     }
+
+    function setBestField() {
+        const fields = comparison.querySelectorAll('[data-comparison-field]');
+        fields.forEach(field => {
+            if (field.dataset.comparisonField === 'down') {
+                body(field, 'down');
+            }
+            if (field.dataset.comparisonField === 'up') {
+                body(field, 'up');
+            }
+        })
+
+
+        function body(field, action) {
+            const items = Array.from(field.querySelectorAll('.comparison-block__col'));
+            if (items.length == 0) return;
+
+            let currentItem = items[0];
+            for (let i = 1; i < items.length; i++) {
+                const elem = items[i];
+                const currentSpan = getSpan(elem);
+
+                const prevSpan = getSpan(currentItem);
+                if (currentSpan && currentSpan.textContent.length > 0 && currentItem && prevSpan.textContent.length > 0) {
+
+                    if (action === 'down') {
+                        if (currentSpan.textContent.replace(/\D/g, '') < prevSpan.textContent.replace(/\D/g, '')) {
+                            currentItem = elem;
+                        }
+                    }
+
+                    if (action === 'up') {
+                        if (currentSpan.textContent.replace(/\D/g, '') > prevSpan.textContent.replace(/\D/g, '')) {
+                            currentItem = elem;
+                        }
+                    }
+
+                }
+            }
+
+
+            function getSpan(el) {
+                return el.querySelector('span');
+            }
+
+
+            if (getSpan(currentItem)) {
+                getSpan(currentItem).classList.add('_active');
+            }
+
+
+        }
+
+    }
+
+    function setWidthOptions() {
+        const activeBody = this.activeBody;
+        if (activeBody.classList.contains('_init')) return;
+        activeBody.classList.add('_init');
+
+        const top = activeBody.querySelector('.comparison-block__top-container');
+        if (!top) return;
+        activeBody.style.setProperty('--width-option', `${Math.ceil((top.scrollWidth / 100) * 110)}px`);
+    }
+
 })

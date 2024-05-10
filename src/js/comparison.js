@@ -233,7 +233,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const top = activeBody.querySelector('.comparison-block__top-container');
         if (!top) return;
-        activeBody.style.setProperty('--width-option', `${Math.ceil((top.scrollWidth / 100) * 110)}px`);
+        activeBody.style.setProperty('--width-option', `${Math.ceil((top.scrollWidth / 100) * 120)}px`);
+        activeBody.style.setProperty('--width-option-line', `${Math.ceil(top.scrollWidth)}px`);
     }
 
 })

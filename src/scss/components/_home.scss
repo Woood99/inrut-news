@@ -657,17 +657,38 @@
     .object-info {
         grid-template-columns: 155px 305px max-content 1fr 220px;
         margin-bottom: 0;
+        z-index: 1;
+        &__link{
+            width: calc(100% + (32px * 2));
+            left: -32px;
+        }
+    }
+    .home-object-info{
+        position: relative;
+        margin: 0;
         &:not(:last-child) {
             border-bottom: 1px solid var(--primary100);
         }
-        
+        &::after{
+            content: '';
+            background-color: var(--primary100);
+            opacity: 0;
+            width: calc(100% + (32px * 2));
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: -32px;
+            right: 0;
+            z-index: 0;
+        }
         @media (min-width:$desktop-min){
              &:hover{
-                background-color: var(--primary100);
+              &::after{
+                opacity: 1;
+              } 
              } 
         }
     }
-
     .tabs-primary {
         &__container {
             padding: 0;

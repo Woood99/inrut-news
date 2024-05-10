@@ -62,8 +62,29 @@
     }
     &__all{
         @media (max-width:$desktop){
-             margin-top: 16px;
-             margin-left: auto; 
+             margin-top: 32px;
+
+             height: 50px;
+             @include fontCofo;
+             border-radius: 12px;
+         
+             color: var(--blue);
+             border: 1px solid transparent;
+             background-color: rgba(0,150,255,.08);
+             font-size: var(--default-fz);
+             line-height: var(--little-small-lh);
+             font-weight: 500;
+         
+             padding: 0px 40px;
+         
+             display: flex;
+             align-items: center;
+             justify-content: center;
+         
+             white-space: nowrap;
+             &::before{
+                content: none;
+             }
         }
     }
 }
@@ -660,9 +681,7 @@
         justify-content: space-between;
         margin-bottom: 24px;
         @media (max-width:$desktop){
-             flex-direction: column;
-             justify-content: start;
-             align-items: start; 
+          
         }
         @media (max-width:$smallTablet-max) {
             margin-bottom: 16px;

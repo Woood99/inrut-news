@@ -24,6 +24,7 @@ DynamicAdapt.prototype.init = function () {
         оbject.breakpoint = dataArray[1] ? dataArray[1].trim() : "767";
         оbject.place = dataArray[2] ? dataArray[2].trim() : "last";
         оbject.index = this.indexInParent(оbject.parent, оbject.element);
+        оbject.addClass = dataArray[3] ? dataArray[3].trim() : null;
         this.оbjects.push(оbject);
     }
     this.arraySort(this.оbjects);
@@ -56,22 +57,25 @@ DynamicAdapt.prototype.mediaHandler = function (matchMedia, оbjects) {
         for (let i = 0; i < оbjects.length; i++) {
             const оbject = оbjects[i];
             оbject.index = this.indexInParent(оbject.parent, оbject.element);
-            this.moveTo(оbject.place, оbject.element, оbject.destination);
+            this.moveTo(оbject.place, оbject.element, оbject.destination,оbject.addClass);
         }
     } else {
         //for (let i = 0; i < оbjects.length; i++) {
         for (let i = оbjects.length - 1; i >= 0; i--) {
             const оbject = оbjects[i];
             if (оbject.element.classList.contains(this.daClassname)) {
-                this.moveBack(оbject.parent, оbject.element, оbject.index);
+                this.moveBack(оbject.parent, оbject.element, оbject.index,оbject.addClass);
             }
         }
     }
 };
 // Функция перемещения
-DynamicAdapt.prototype.moveTo = function (place, element, destination) {
+DynamicAdapt.prototype.moveTo = function (place, element, destination,addClass) {
     element.classList.add(this.daClassname);
-    element.classList.add('_dynamic-moved')
+    element.classList.add('_dynamic-moved');
+    if (addClass) {
+        element.classList.add(addClass);
+    }
     if (place === 'last' || place >= destination.children.length) {
         destination.insertAdjacentElement('beforeend', element);
         return;
@@ -83,8 +87,11 @@ DynamicAdapt.prototype.moveTo = function (place, element, destination) {
     destination.children[place].insertAdjacentElement('beforebegin', element);
 }
 // Функция возврата
-DynamicAdapt.prototype.moveBack = function (parent, element, index) {
+DynamicAdapt.prototype.moveBack = function (parent, element, index,addClass) {
     element.classList.remove(this.daClassname);
+    if (addClass) {
+        element.classList.remove(addClass);
+    }
     if (parent.children[index] !== undefined) {
         parent.children[index].insertAdjacentElement('beforebegin', element);
     } else {

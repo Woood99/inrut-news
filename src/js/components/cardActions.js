@@ -414,12 +414,18 @@ export const cardPrimaryMetro = () => {
 
 function cardSliderMobile(cardImageWrapper, imagesBody, cardItems) {
     let slider;
+    let perView = 1.12;
     body();
     window.addEventListener('resize', body);
-
     function body() {
         if (window.innerWidth <= 1212) {
             if (!cardImageWrapper.classList.contains('swiper-initialized')) {
+                if (cardImageWrapper.closest('.card-primary') && cardImageWrapper.closest('.card-primary').classList.contains('_no-slide')) {
+                    perView = 1;
+                }
+                if (cardImageWrapper.closest('.card-secondary') && cardImageWrapper.closest('.card-secondary').classList.contains('_no-slide')) {
+                    perView = 1;
+                }
                 cardImageWrapper.classList.add('swiper');
                 imagesBody.classList.add('swiper-wrapper');
                 cardItems.forEach(item => item.classList.add('swiper-slide'));
@@ -427,7 +433,7 @@ function cardSliderMobile(cardImageWrapper, imagesBody, cardItems) {
                 slider = new Swiper(cardImageWrapper, {
                     observer: true,
                     observeParents: true,
-                    slidesPerView: 1.12,
+                    slidesPerView: perView,
                     spaceBetween: 8,
                     speed: 800,
                     breakpoints: {

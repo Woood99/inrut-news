@@ -209,14 +209,10 @@ function initSliders() {
             new Swiper(slider, {
                 observer: true,
                 observeParents: true,
-                slidesPerView: 1.07,
+                slidesPerView: 1,
                 spaceBetween: 16,
                 speed: 800,
                 breakpoints: {
-                    576: {
-                        slidesPerView: 1.6,
-                        spaceBetween: 16,
-                    },
                     768: {
                         slidesPerView: 2,
                         spaceBetween: 16,

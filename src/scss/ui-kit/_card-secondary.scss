@@ -32,7 +32,6 @@
         position: relative;
         display: block;
         padding-bottom: percent(207, 323);
-        // z-index: 20;
 
         @media (max-width:$desktop) {
             width: 100%;
@@ -59,11 +58,14 @@
 
         @media (max-width:$desktop) {
             min-width: 100%;
-            min-height: 100%;
-
+            min-height: 275px;
             &.swiper-wrapper {
                 align-items: stretch;
             }
+        }
+
+        @media (max-width:$mobile-max) {
+            min-height: 240px;
         }
     }
 
@@ -610,16 +612,6 @@
         flex-direction: column;
         height: 100%;
         overflow: hidden;
-
-        @media (max-width:$desktop) {
-            display: grid;
-            grid-template-columns: 1fr 30px;
-            grid-column-gap: 16px;
-        }
-
-        @media (max-width:$smallTablet-max) {
-            padding: 16px;
-        }
     }
 
     &__name {

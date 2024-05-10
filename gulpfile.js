@@ -27,6 +27,12 @@ const changed = require('gulp-changed');
 const mapSources = require('gulp-sourcemaps');
 const mediaQueries = require('gulp-group-css-media-queries')
 
+const postCss = require('gulp-postcss');
+const tailwindcss = require('tailwindcss');
+
+const uglify = require('gulp-uglify');
+
+
 // paths
 const srcFolder = './src';
 const buildFolder = './app';
@@ -63,7 +69,7 @@ const svgSprites = () => {
         )
         .pipe(
             cheerio({
-                run: function ($) {
+                run: function($) {
                     $('[fill]').removeAttr('fill');
                     $('[stroke]').removeAttr('stroke');
                     $('[style]').removeAttr('style');
@@ -95,6 +101,9 @@ const stylesDev = () => {
         ))
         .pipe(mapSources.init())
         .pipe(mainSass())
+        .pipe(postCss([
+            tailwindcss('./tailwind.config.js')
+        ]))
         .pipe(mapSources.write())
         .pipe(dest(paths.buildCssFolder))
         .pipe(browserSync.stream());
@@ -109,6 +118,9 @@ const stylesProd = () => {
             })
         ))
         .pipe(mainSass())
+        .pipe(postCss([
+            tailwindcss('./tailwind.config.js')
+        ]))
         .pipe(mediaQueries())
         .pipe(cleanCSS({
             level: 2
@@ -171,7 +183,7 @@ const scriptsDev = () => {
                 }]
             },
         }))
-        .on('error', function (err) {
+        .on('error', function(err) {
             console.error('WEBPACK ERROR', err);
             this.emit('end');
         })
@@ -233,7 +245,7 @@ const scriptsProd = () => {
                 }]
             },
         }))
-        .on('error', function (err) {
+        .on('error', function(err) {
             console.error('WEBPACK ERROR', err);
             this.emit('end');
         })
@@ -267,7 +279,28 @@ const webpImages = () => {
         .pipe(dest(paths.buildImgFolder))
 };
 
-const htmlInclude = () => {
+
+const HTMLIgnoreFile = [
+    `access-rights`, 'agent-develop', 'agent-develop2', 'agent-rating',
+    'app-verif-edit', 'app-verif', 'appraisers', 'bank', 'banks',
+    'view-types-objects','view-employee-groups',
+    'detailed-flat-consideration','detailed-flat-consideration','detailed-flat-consideration-two',
+    'detailed-flat-consideration-two2','detailed-flat-consideration-two3', 'detailed-flat-rejected-two','detailed-flat-rejected-two2','object-consideration',
+    'my-requestss7','my-requestss2','my-requestss3','my-requestss4','my-requestss5','edit-value-2','edit-value-3','edit-value-4','edit-value-5','edit-value',
+    'cities','create-tag', 'create-types-objects', 'create-value','my-requestss-all', 'my-requestss6','object-2', 'object-3', 'object-4', 'object-consideration2', 'object-flat-rejected', 'object-flat-rejected2', 'present', 'program', 'promotion', 'prop-val', 'repair-apart', 'selection-estate-inner-2','tags-stickers', 'types-objects', 'view-employee-groups-develop',
+    'edit-tag', 'edit-types-objects-2', 'edit-types-objects-3', 'edit-types-objects-4', 'edit-types-objects', 'employees-and-groups', 
+    'employees','edit-parament-types-objects','create-char-layouts'];
+
+const htmlIncludeDev = () => {
+    return src([`${srcFolder}/*.html`, ...HTMLIgnoreFile.map(item => `!./src/${item}.html`)])
+        .pipe(fileInclude({
+            prefix: '@',
+            basepath: '@file'
+        }))
+        .pipe(dest(buildFolder))
+        .pipe(browserSync.stream());
+}
+const htmlIncludeProd = () => {
     return src([`${srcFolder}/*.html`])
         .pipe(fileInclude({
             prefix: '@',
@@ -286,9 +319,7 @@ const watchFiles = () => {
 
     watch(paths.srcScss, stylesDev);
     watch(paths.srcFullJs, scriptsDev);
-    watch(`${paths.srcPartialsFolder}/*.html`, htmlInclude);
-    watch(`${paths.srcPopupsFolder}/*.html`, htmlInclude);
-    watch(`${srcFolder}/*.html`, htmlInclude);
+    watch(`${srcFolder}/**/*.html`, series(parallel(htmlIncludeDev, stylesDev)));
     watch(`${paths.resourcesFolder}/**`, resources);
     watch(`${paths.srcImgFolder}/**/**.{jpg,jpeg,png,svg}`, images);
     watch(`${paths.srcImgFolder}/**/**.{jpg,jpeg,png}`, webpImages);
@@ -304,8 +335,8 @@ const toProd = (done) => {
 exports.default = series(
     clean,
     resources,
-    parallel(htmlInclude, stylesDev, scriptsDev, images),
-    parallel(webpImages,svgSprites),
+    parallel(htmlIncludeDev, stylesDev, scriptsDev, images),
+    parallel(webpImages, svgSprites),
     watchFiles
 );
-exports.build = series(toProd, clean, htmlInclude, scriptsProd, stylesProd, resources, images, webpImages, svgSprites);
+exports.build = series(toProd, clean, htmlIncludeProd, scriptsProd, stylesProd, resources, images, webpImages, svgSprites);

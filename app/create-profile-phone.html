@@ -203,7 +203,7 @@
     </div>
 </header>
         <main class="main main-page-gap edit-profile create-profile">
-            <div class="edit-profile__body">
+            <div class="edit-profile__body md1:tw-mt-0 md1:tw-pt-[66px]">
                 <div class="edit-profile__content container-desktop">
                     <div class="edit-profile__row">
                         <form action="#" class="edit-profile__fields">
@@ -216,7 +216,7 @@
                             <div class="input-text input-text--no-exp _big">
                                 <label class="input-text__label">
                                     <span>Телефон</span>
-                                    <input type="text" name="Номер телефона" class="input-reset input-text__input input-phone-mask" autofocus data-confirm-phone-code-input placeholder="">
+                                    <input type="text" name="Номер телефона" class="input-reset input-text__input input-phone-mask" data-confirm-phone-code-input placeholder="">
                                 </label>
                             </div>
                             <button type="button" class="btn btn-reset btn-primary _big mt-16 _disabled-popup" data-confirm-phone-code-button data-popup-path="confirm-phone-code">Войти</button>
@@ -712,6 +712,17 @@
     </div>
 </div>
     <!-- popups -->
+
+
+    <script defer>
+        focusInput();
+
+        function focusInput() {
+            const input = document.querySelector('[data-confirm-phone-code-input]');
+        if (!input) return;
+        input.focus();
+        }
+    </script>
 </body>
 
 

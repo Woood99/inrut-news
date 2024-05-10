@@ -269,7 +269,9 @@
                 height: 16px;
                 fill: var(--primaryTwo);
             }
-    
+            @media (max-width:$desktop){
+                 padding: 0; 
+            }
             @media (min-width:$desktop-min) {
                 &:hover {
                     background-color: var(--primary100);
@@ -372,6 +374,7 @@
                     flex-direction: column;
                     align-items: start;
                     padding: 0 16px;
+                    margin-left: 0 !important; 
                 }
     
                 .nav__item {
@@ -626,9 +629,6 @@
                 &:nth-child(1) {
                     transition: color $transitionSpeed $transitionFunction;
                     font-weight: 500;
-                 @media (max-width:$desktop){
-                    text-decoration: underline; 
-                 }
                 }
     
                 &:nth-child(2) {
@@ -644,10 +644,10 @@
                 }
             }
             @media (max-width:$desktop) {
-                padding: 16px 0;
+                padding: 16px;
                 grid-template-columns: 100%;
                 &:not(:last-child) {
-                    margin: 0;
+                   margin-bottom: 12px;
                 }
             }
     
@@ -661,7 +661,6 @@
         @media (max-width:$desktop) {
             flex-direction: column;
             margin: 0;
-            padding: 0 16px 0;
             max-width: none;
         }
     }

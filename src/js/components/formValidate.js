@@ -661,18 +661,24 @@ export const inputMaskPhone = (input) => {
     let inputMask = new Inputmask('+7 999 999-99-99');
     inputMask.mask(input);
     let test = true;
-    input.addEventListener('input',() => {
-        const value = input.value;
-        if (value[3] == 8) {
-            if (test){
-                input.value = '';
-                Inputmask(["8 999 999-99-99"]).mask(input);
-                test = false;
+    input.addEventListener('keydown', () => {
+        setTimeout(() => {
+            const value = input.value;
+            const valueTest = input.inputmask.unmaskedvalue();
+            if (value.startsWith('+7') && valueTest[0] == 8 && valueTest.length == 1) {
+                if (test) {
+                    input.value = input.value.slice(0, 1);
+                    input.setSelectionRange(1, 1);
+                    Inputmask(["8 999 999-99-99"]).mask(input);
+                    test = false;
+                }
+            } else {
+                if (!test) {
+                    Inputmask(["+7 999 999-99-99"]).mask(input);
+                    test = true;
+                }
             }
-        } else {
-            Inputmask(["+7 999 999-99-99"]).mask(input);
-            test = true;
-        }
+        }, 1);
     })
 }
 export const inputMaskSeriesNumber = (input) => {

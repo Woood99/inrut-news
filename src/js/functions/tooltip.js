@@ -1,3 +1,5 @@
+import modal from '../modules/modal';
+
 export default class Tooltip {
     constructor(options) {
         this.mode = options.mode ? options.mode : 'default';
@@ -54,7 +56,7 @@ export default class Tooltip {
             if (this.elements.length < 1) return;
 
             this.elements.forEach(element => {
-                if (element.isOpen) {
+                if (element.isOpen && !element.target.hasAttribute('data-tooltip-mobile-popup')) {
                     this.setCoordsElement(element.target, element.el);
                 }
             })
@@ -64,6 +66,7 @@ export default class Tooltip {
     }
 
     clicked(e) {
+        e.preventDefault();
         if (!this.isClick) return;
         this.isClick = false;
         setTimeout(() => {
@@ -111,7 +114,11 @@ export default class Tooltip {
                 isOpen: true
             };
             this.elements.push(config);
-            this.createHTML(target);
+            if (config.target.hasAttribute('data-tooltip-mobile-popup') && window.innerWidth <= 1212) {
+                this.createPopup(target);
+            } else {
+                this.createHTML(target);
+            }
             return;
         }
         if (this.mode === 'default') {
@@ -157,17 +164,18 @@ export default class Tooltip {
     closeAll(element = null) {
         if (this.mode === 'html') {
             this.elements.forEach(config => {
-                if (this.animation) {
-                    config.el.style.opacity = 0;
-                    config.isOpen = false;
-                    setTimeout(() => {
-                        this.clear(config, config.target);
-                    }, this.animation.speed);
-
-                    return;
-                }
-
-                this.clear(config, config.target);
+                // if (!config.target.hasAttribute('data-tooltip-mobile-popup')) {
+                    if (this.animation && !config.target.hasAttribute('data-tooltip-mobile-popup')) {
+                        config.el.style.opacity = 0;
+                        config.isOpen = false;
+                        setTimeout(() => {
+                            this.clear(config, config.target);
+                        }, this.animation.speed);
+    
+                        return;
+                    }
+    
+                    this.clear(config, config.target);
             })
         }
         if (this.mode === 'default') {
@@ -196,10 +204,34 @@ export default class Tooltip {
         this.animations(target);
     }
 
+    createPopup(target) {
+        const html = target.getAttribute(this.targetSelector.replace(/[\[\]']+/g, ''));
+        const config = this.getCurrentConfigFromTarget(target, false);
+
+        const modalHTML = `
+            <div class="tooltip-modal">
+                <div class="tooltip-modal__container">
+                    <button class="btn-reset tooltip-modal__close" aria-label="Закрыть модальное окно">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#x"></use>
+                        </svg>
+                        <span>Закрыть</span>
+                    </button>
+                    <div class="tooltip-modal__content">
+                        ${html}
+                    </div>
+                </div>
+            </div>
+        `;
+        modal(modalHTML, '.tooltip-modal', 300);
+    }
+
     clear(config, target) {
         if (!config) return;
         const index = this.getCurrentConfigIndexFromTarget(target);
-        config.el.remove();
+        if (config.el) {
+            config.el.remove();
+        }
         this.elements.splice(index, 1);
     }
 

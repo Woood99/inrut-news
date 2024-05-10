@@ -3,6 +3,10 @@
         margin-top: 24px;
         background-color: var(--stand-bg);
         padding: 24px 0;
+        @media (max-width:$desktop){
+            margin-top: 0;
+             padding-top: calc(var(--header-height,50px) + 16px); 
+        }
     }
 
     &__row {
@@ -13,6 +17,9 @@
 
         &:not(:last-child) {
             margin-bottom: 12px;
+        }
+        @media (max-width:$desktop){
+             padding: 24px 16px; 
         }
     }
 
@@ -48,15 +55,19 @@
         align-items: center;
         gap: 32px;
         margin-bottom: 32px;
+        @media (max-width:$desktop){
+             gap: 20px; 
+        }
     }
 
     &__avatar {
         position: relative;
         overflow: hidden;
         cursor: pointer;
-        width: 110px;
-        height: 110px;
-
+        --size: 110px;
+        width: var(--size);
+        height: var(--size);
+        flex: 0 0 var(--size);
         >div {
             position: absolute;
             z-index: 10;
@@ -90,6 +101,10 @@
                     transform: translateY(0);
                 }
             }
+        }
+
+        @media (max-width:$desktop){
+              --size: 80px;
         }
     }
 
@@ -128,6 +143,9 @@
                 }
             }
         }
+        @media (max-width:$desktop){
+             grid-template-columns: 100%;
+        }
     }
 
     &__edit {
@@ -156,6 +174,14 @@
         align-items: center;
         justify-content: end;
         gap: 16px;
+        @media (max-width:$smallTablet-max){
+             flex-direction: column; 
+             align-items: start;
+             justify-content: start;
+            .btn{
+                width: 100%;
+            }
+        }
     }
     &__or{
         margin: 16px auto;
@@ -171,6 +197,11 @@
             flex-grow: 1;
             background-color: var(--primary200);
             height: 1px;
+        }
+    }
+    .edit-profile-email{
+        @media (max-width:$desktop){
+             order: -1; 
         }
     }
 }

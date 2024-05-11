@@ -10,6 +10,9 @@ import {
     _slideToggle
 } from '../support-modules/slide'
 import modal from '../modules/modal';
+import {
+    inputClueBody
+} from './inputs';
 export const cardSecondaryActions = () => {
     const cards = document.querySelectorAll('.card-secondary');
     if (cards.length === 0) return;
@@ -99,11 +102,47 @@ export const cardSecondaryActions = () => {
                 copiesBlock(card, card.querySelector('.card-secondary__copies-btn'), card.querySelector('.card-secondary__copies'));
             }
 
-            const quantity = card.querySelector('.card-secondary__quantity');
+            const quantity = e.target.closest('.card-secondary__quantity');
             if (quantity) {
                 const block = card.querySelector('.card-secondary__prices--1');
                 e.preventDefault();
                 _slideToggle(block);
+            }
+
+            const comparison = e.target.closest('.card-secondary__comparison');
+            if (comparison) {
+                e.preventDefault();
+                if (!comparison.classList.contains('_active')) {
+                    comparison.classList.add('_active');
+                    comparison.innerHTML = `
+                        <svg class="tw-fill-[#005bff]">
+                            <use xlink:href="./img/sprite.svg#comparison-active"></use>
+                        </svg>
+                    `;
+                    inputClueBody('.card-secondary__comparison', 'clue-primary', `
+                    <div class="clue-primary">
+                    <div class="clue-primary__close">
+                        <svg>
+                          <use xlink:href="./img/sprite.svg#x"></use>
+                        </svg>
+                    </div>
+                    <picture class="clue-primary__img">
+                        <source srcset="./img/lora_face.webp" type="image/webp">
+                        <img loading="lazy" src="./img/lora_face.png" width="48" height="48" alt="lora">
+                    </picture>
+                    <h4 class="clue-primary__title title-3">
+                        Этот объект не подходит под выбранную цену
+                    </h4>
+                    </div>
+                `, 'offer-room-clue', true);
+                } else {
+                    comparison.classList.remove('_active');
+                    comparison.innerHTML = `
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#comparison"></use>
+                        </svg>
+                    `;
+                }
             }
         })
 

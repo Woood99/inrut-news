@@ -5,6 +5,7 @@ import countdownDate from './modules/countdownDate';
 popup(null, 'city');
 popup(null, 'quiz');
 popup(null, 'add');
+popup(null, 'notif-popup');
 popup(null, 'kitchen-design');
 popup(null, 'personal-area');
 popup(null, 'edit-profile');

@@ -14,188 +14,132 @@ export const cardSecondaryActions = () => {
     const cards = document.querySelectorAll('.card-secondary');
     if (cards.length === 0) return;
     cards.forEach(card => {
+        cardSecondaryActionsBody(card);
+    })
+};
 
-        const imageSwitchItems = card.querySelectorAll('.card-secondary__item');
-        const imagePagination = card.querySelector('.card-secondary__pagination');
 
 
-        if (window.innerWidth > 1212 && imageSwitchItems.length > 1) {
-            imageSwitchItems.forEach((el, index) => {
-                el.setAttribute('data-index', index);
-                if (card.querySelector('.card-secondary__item--limit')) {
-                    if (index !== imageSwitchItems.length - 1) {
-                        imagePagination.innerHTML += `<li class="image-pagination__item ${index == 0 ? 'image-pagination__item--active' : ''}" data-index="${index}"></li>`;
-                    }
-                } else {
+
+export const cardSecondaryActionsBody = (card) => {
+    cardSecondaryMetro(card);
+    const imageSwitchItems = card.querySelectorAll('.card-secondary__item');
+    const imagePagination = card.querySelector('.card-secondary__pagination');
+
+    if (window.innerWidth > 1212 && imageSwitchItems.length > 1) {
+        imageSwitchItems.forEach((el, index) => {
+            el.setAttribute('data-index', index);
+            if (card.querySelector('.card-secondary__item--limit')) {
+                if (index !== imageSwitchItems.length - 1) {
                     imagePagination.innerHTML += `<li class="image-pagination__item ${index == 0 ? 'image-pagination__item--active' : ''}" data-index="${index}"></li>`;
                 }
-                el.addEventListener('mouseenter', (e) => {
-                    if (window.innerWidth > 1212) {
-                        card.querySelectorAll('.image-pagination__item').forEach(el => el.classList.remove('image-pagination__item--active'));
-                        if (el.classList.contains('card-secondary__item--limit')) {
-                            card.querySelector(`.image-pagination__item[data-index="${e.currentTarget.dataset.index - 1}"]`).classList.add('image-pagination__item--active');
-                        } else {
-                            card.querySelector(`.image-pagination__item[data-index="${e.currentTarget.dataset.index}"]`).classList.add('image-pagination__item--active');
-                        }
+            } else {
+                imagePagination.innerHTML += `<li class="image-pagination__item ${index == 0 ? 'image-pagination__item--active' : ''}" data-index="${index}"></li>`;
+            }
+            el.addEventListener('mouseenter', (e) => {
+                if (window.innerWidth > 1212) {
+                    card.querySelectorAll('.image-pagination__item').forEach(el => el.classList.remove('image-pagination__item--active'));
+                    if (el.classList.contains('card-secondary__item--limit')) {
+                        card.querySelector(`.image-pagination__item[data-index="${e.currentTarget.dataset.index - 1}"]`).classList.add('image-pagination__item--active');
+                    } else {
+                        card.querySelector(`.image-pagination__item[data-index="${e.currentTarget.dataset.index}"]`).classList.add('image-pagination__item--active');
                     }
-                });
+                }
+            });
 
-                el.addEventListener('mouseleave', (e) => {
-                    if (window.innerWidth > 1212) {
-                        card.querySelectorAll('.image-pagination__item').forEach(el => {
-                            el.classList.remove('image-pagination__item--active')
-                        });
-                        card.querySelector(`.image-pagination__item[data-index="0"]`).classList.add('image-pagination__item--active');
-                    }
-                });
+            el.addEventListener('mouseleave', (e) => {
+                if (window.innerWidth > 1212) {
+                    card.querySelectorAll('.image-pagination__item').forEach(el => {
+                        el.classList.remove('image-pagination__item--active')
+                    });
+                    card.querySelector(`.image-pagination__item[data-index="0"]`).classList.add('image-pagination__item--active');
+                }
+            });
 
+        });
+    }
+    cardSliderMobile(card.querySelector('.card-secondary__top'), card.querySelector('.card-secondary__images'), card.querySelectorAll('.card-secondary__item'));
+    card.addEventListener('click', (e) => {
+        const favorite = e.target.closest('.card-secondary__info--favorite');
+        if (favorite && !(favorite.dataset.popupPath && favorite.dataset.popupPath === 'favorite-two')) {
+            e.preventDefault();
+            card.querySelectorAll('.card-secondary__info--favorite').forEach(el => {
+                if (!el.classList.contains('_active')) {
+                    el.classList.add('_active');
+                    el.setAttribute('title', 'Удалить с избранного');
+                    el.querySelector('svg use').setAttribute('xlink:href', 'img/sprite.svg#favorite');
+                } else {
+                    el.classList.remove('_active');
+                    el.setAttribute('title', 'Добавить в избранное');
+                    el.querySelector('svg use').setAttribute('xlink:href', 'img/sprite.svg#favorite-stroke');
+                }
             });
         }
-        cardSliderMobile(card.querySelector('.card-secondary__top'), card.querySelector('.card-secondary__images'), card.querySelectorAll('.card-secondary__item'));
-        card.addEventListener('click', (e) => {
-            const favorite = e.target.closest('.card-secondary__info--favorite');
-            if (favorite && !(favorite.dataset.popupPath && favorite.dataset.popupPath === 'favorite-two')) {
-                e.preventDefault();
-                card.querySelectorAll('.card-secondary__info--favorite').forEach(el => {
-                    if (!el.classList.contains('_active')) {
-                        el.classList.add('_active');
-                        el.setAttribute('title', 'Удалить с избранного');
-                        el.querySelector('svg use').setAttribute('xlink:href', 'img/sprite.svg#favorite');
-                    } else {
-                        el.classList.remove('_active');
-                        el.setAttribute('title', 'Добавить в избранное');
-                        el.querySelector('svg use').setAttribute('xlink:href', 'img/sprite.svg#favorite-stroke');
-                    }
-                });
-            }
-            const tooltip = e.target.closest('.secondary-tooltip');
-            if (tooltip && window.innerWidth <= 1212) {
-                e.preventDefault();
-                const content = tooltip.querySelector('.secondary-tooltip__content');
-                const modalHTML = `
-                <div class="tooltip-modal">
-                    <div class="tooltip-modal__container">
-                        <button class="btn-reset tooltip-modal__close" aria-label="Закрыть модальное окно">
-                            <svg>
-                                <use xlink:href="./img/sprite.svg#x"></use>
-                            </svg>
-                            <span>Закрыть</span>
-                        </button>
-                        <div class="tooltip-modal__content">
-                            ${content.innerHTML}
-                        </div>
+        const tooltip = e.target.closest('.secondary-tooltip');
+        if (tooltip && window.innerWidth <= 1212) {
+            e.preventDefault();
+            const content = tooltip.querySelector('.secondary-tooltip__content');
+            const modalHTML = `
+            <div class="tooltip-modal">
+                <div class="tooltip-modal__container">
+                    <button class="btn-reset tooltip-modal__close" aria-label="Закрыть модальное окно">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#x"></use>
+                        </svg>
+                        <span>Закрыть</span>
+                    </button>
+                    <div class="tooltip-modal__content">
+                        ${content.innerHTML}
                     </div>
                 </div>
-                `;
-                modal(modalHTML, '.tooltip-modal', 300);
-                const tooltipModal = document.querySelector('.tooltip-modal');
-                tooltipModal.classList.add('_card-tooltip-options');
-            }
+            </div>
+            `;
+            modal(modalHTML, '.tooltip-modal', 300);
+            const tooltipModal = document.querySelector('.tooltip-modal');
+            tooltipModal.classList.add('_card-tooltip-options');
+        }
 
-            const copiesBtn = e.target.closest('.card-secondary__copies-btn');
-            const copiesClose = e.target.closest('.card-secondary__copies-close');
-            if (copiesBtn || copiesClose) {
-                e.preventDefault();
-                copiesBlock(card, card.querySelector('.card-secondary__copies-btn'), card.querySelector('.card-secondary__copies'));
-            }
+        const copiesBtn = e.target.closest('.card-secondary__copies-btn');
+        const copiesClose = e.target.closest('.card-secondary__copies-close');
+        if (copiesBtn || copiesClose) {
+            e.preventDefault();
+            copiesBlock(card, card.querySelector('.card-secondary__copies-btn'), card.querySelector('.card-secondary__copies'));
+        }
 
-            const quantity = e.target.closest('.card-secondary__quantity');
-            if (quantity) {
-                const block = card.querySelector('.card-secondary__prices--1');
-                e.preventDefault();
-                _slideToggle(block);
-            }
+        const quantity = e.target.closest('.card-secondary__quantity');
+        if (quantity) {
+            const block = card.querySelector('.card-secondary__prices--1');
+            e.preventDefault();
+            _slideToggle(block);
+        }
 
-            const comparison = e.target.closest('.card-secondary__comparison');
-            if (comparison) {
-                e.preventDefault();
-                if (!comparison.classList.contains('_prevent')) {
-                   setTimeout(() => {
+        const comparison = e.target.closest('.card-secondary__comparison');
+        if (comparison) {
+            e.preventDefault();
+            if (!comparison.classList.contains('_prevent')) {
+                setTimeout(() => {
                     comparison.classList.add('_prevent');
-                   }, 1);
-                    comparison.innerHTML = `
-                        <svg class="tw-fill-[#005bff]">
-                            <use xlink:href="./img/sprite.svg#comparison-active"></use>
-                        </svg>
-                    `;
-                } else {
-                   setTimeout(() => {
+                }, 1);
+                comparison.innerHTML = `
+                    <svg class="tw-fill-[#005bff]">
+                        <use xlink:href="./img/sprite.svg#comparison-active"></use>
+                    </svg>
+                `;
+            } else {
+                setTimeout(() => {
                     comparison.classList.remove('_prevent');
-                   }, 1);
-                    comparison.innerHTML = `
-                        <svg>
-                            <use xlink:href="./img/sprite.svg#comparison"></use>
-                        </svg>
-                    `;
-                }
+                }, 1);
+                comparison.innerHTML = `
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#comparison"></use>
+                    </svg>
+                `;
             }
-        })
-
+        }
     })
-    favoriteMobile();
-    tagsMobile();
-    tagsTwoMobile();
-    cardSecondaryMetro();
-    window.addEventListener('resize', () => {
-        favoriteMobile();
-        tagsMobile();
-        tagsTwoMobile();
-    });
+}
 
-    function favoriteMobile() {
-        cards.forEach(card => {
-            if (window.innerWidth <= 1212) {
-                const favorite = card.querySelector('.card-secondary__info--favorite');
-                const path = card.querySelector('.card-secondary__content');
-                if (favorite && path) {
-                    path.insertAdjacentElement('afterbegin', favorite);
-                }
-            } else {
-                const favorite = card.querySelector('.card-secondary__info--favorite');
-                const path = card.querySelector('.card-secondary__info--btns-right');
-                if (favorite && path) {
-                    path.insertAdjacentElement('afterbegin', favorite);
-                }
-            }
-        })
-    }
 
-    function tagsMobile() {
-        cards.forEach(card => {
-            if (window.innerWidth <= 1212) {
-                const tags = card.querySelector('.card-secondary__info--tags');
-                const path = card.querySelector('.card-secondary__item');
-                if (tags && path) {
-                    path.insertAdjacentElement('afterbegin', tags);
-                }
-            } else {
-                const tags = card.querySelector('.card-secondary__info--tags');
-                const path = card.querySelector('.card-secondary__info');
-                if (tags && path) {
-                    path.insertAdjacentElement('afterbegin', tags);
-                }
-            }
-        })
-    }
-
-    function tagsTwoMobile() {
-        cards.forEach(card => {
-            // if (window.innerWidth <= 1212) {
-            //     const options = card.querySelector('.card-secondary__options');
-            //     const path = card.querySelector('.card-secondary__item');
-            //     if (options && path) {
-            //         path.insertAdjacentElement('afterbegin', options);
-            //     }
-            // } else {
-            //     const options = card.querySelector('.card-secondary__options');
-            //     const path = card.querySelector('.card-secondary__top');
-            //     if (options && path) {
-            //         path.insertAdjacentElement('beforeend', options);
-            //     }
-            // }
-        })
-    }
-};
 export const cardPrimaryActions = () => {
     const cards = document.querySelectorAll('.card-primary');
     if (cards.length === 0) return;
@@ -411,28 +355,12 @@ export const cardPrimaryActions = () => {
     }
 };
 
-function copiesBlock(card, target, block) {
-    if (!block) return;
-    if (!card.classList.contains('_copies-visible')) {
-        card.classList.add('_copies-visible');
-        target.classList.add('_active');
-        _slideDown(block);
-    } else {
-        card.classList.remove('_copies-visible');
-        target.classList.remove('_active');
-        _slideUp(block);
-    }
+export const cardSecondaryMetro = (card) => {
+    if (!card) return;
+    const container = card.querySelector('.card-secondary__metro');
+    metroItems(container)
 }
 
-export const cardSecondaryMetro = () => {
-    const cards = document.querySelectorAll('.card-secondary');
-    if (cards.length === 0) return;
-    cards.forEach(card => {
-        const container = card.querySelector('.card-secondary__metro');
-        metroItems(container)
-    })
-
-}
 export const cardPrimaryMetro = () => {
     const cards = document.querySelectorAll('.card-primary');
     if (cards.length === 0) return;
@@ -449,6 +377,7 @@ function cardSliderMobile(cardImageWrapper, imagesBody, cardItems) {
     let perView = 1.12;
     body();
     window.addEventListener('resize', body);
+
     function body() {
         if (window.innerWidth <= 1212) {
             if (!cardImageWrapper.classList.contains('swiper-initialized')) {
@@ -483,5 +412,18 @@ function cardSliderMobile(cardImageWrapper, imagesBody, cardItems) {
                 cardItems.forEach(item => item.classList.remove('swiper-slide'));
             }
         }
+    }
+}
+
+function copiesBlock(card, target, block) {
+    if (!block) return;
+    if (!card.classList.contains('_copies-visible')) {
+        card.classList.add('_copies-visible');
+        target.classList.add('_active');
+        _slideDown(block);
+    } else {
+        card.classList.remove('_copies-visible');
+        target.classList.remove('_active');
+        _slideUp(block);
     }
 }

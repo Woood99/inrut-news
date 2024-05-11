@@ -24,12 +24,13 @@ import mapMetro from './components/mapMetro';
 import {
     cardPrimaryActions,
     cardSecondaryActions,
+    cardSecondaryActionsBody
 } from './components/cardActions';
 
 import scrollUp from './components/scrollUp';
 import scrollTarget from './components/scrollTarget';
 import metroInfo from './components/metroInfo';
-import {galleryPrimary} from './components/gallery'
+import { galleryPrimary } from './components/gallery'
 document.addEventListener('DOMContentLoaded', () => {
     cardSecondaryActions();
     cardPrimaryActions();
@@ -43,9 +44,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     galleryPrimary();
     // ==============================================
-    
+
     // ==== maps ====
 
     // mapPrimary();
     // mapDraw();
+
+
+    document.addEventListener('listingUpdate', () => {
+        const cards = document.querySelectorAll('.cards-list__items .card-secondary');
+        if (cards.length > 0) {
+            cards.forEach(card => cardSecondaryActionsBody(card));
+        }
+    })
 })

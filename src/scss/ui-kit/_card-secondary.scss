@@ -35,7 +35,7 @@
         padding-bottom: percent(207, 323);
         overflow: hidden;
         border-radius: 12px;
-
+        max-height: 204px;
         @media (max-width:$desktop) {
             width: 100%;
             min-height: 275px;
@@ -611,8 +611,19 @@
     }
 
     &__quantity {
-        margin-top: 8px;
+        margin-top: 16px;
+        margin-bottom: 12px;
         color: var(--blue);
+        
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        svg{
+            margin-left: 6px;
+            width: 12px;
+            height: 12px;
+            fill: currentColor;
+        }
     }
 
     &__prices--1,
@@ -652,7 +663,6 @@
     }
 
     &__prices--1 {
-        margin-top: 8px;
         margin-bottom: 16px;
 
         >div {
@@ -681,7 +691,7 @@
 
     &__prices--2 {
         margin-top: auto;
-
+        display: none;
         span {
             &:nth-child(2) {
                 color: var(--blue);
@@ -690,7 +700,7 @@
     }
 
     &__options {
-        margin-top: 12px;
+        margin-top: 16px;
         z-index: 3;
 
         width: 100%;

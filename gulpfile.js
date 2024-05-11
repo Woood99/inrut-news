@@ -319,7 +319,8 @@ const watchFiles = () => {
 
     watch(paths.srcScss, stylesDev);
     watch(paths.srcFullJs, scriptsDev);
-    watch(`${srcFolder}/**/*.html`, series(parallel(htmlIncludeDev, stylesDev)));
+    // watch(`${srcFolder}/**/*.html`, series(parallel(htmlIncludeDev, stylesDev)));
+    watch(`${srcFolder}/**/*.html`, htmlIncludeDev);
     watch(`${paths.resourcesFolder}/**`, resources);
     watch(`${paths.srcImgFolder}/**/**.{jpg,jpeg,png,svg}`, images);
     watch(`${paths.srcImgFolder}/**/**.{jpg,jpeg,png}`, webpImages);

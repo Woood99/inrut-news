@@ -377,7 +377,7 @@
 
                 &__content {
                     display: grid;
-                    grid-template-columns: 61% 1fr;
+                    grid-template-columns: 61% 1fr 32px;
                     grid-column-gap: 40px;
                     width: 100%;
                   padding: 0 0 0 16px;
@@ -510,7 +510,31 @@
                     grid-column: 2/3;
                     grid-row: 2/3;
 
-                    color: var(--blue)
+                    color: var(--blue);
+                    >span{
+                        display: none;
+                    }
+                }
+                &__comparison{
+                    grid-row: 1 / 2;
+                    grid-column: 3 / 4;
+                }
+                &__info--tags{
+                    margin-top: 16px;
+                    margin-bottom: 16px;
+                    flex-wrap: wrap;
+                    .tag{
+                        background-color: var(--primary100) !important;
+                    }
+                }
+                &__options{
+                    margin-top: 8px !important;
+                    position: static;
+                    flex-wrap: wrap;
+                    max-width: none;
+                    .tag{
+                        background-color: var(--primary100) !important;
+                    }
                 }
                 &__name {
                     margin-top: 0;
@@ -542,6 +566,7 @@
                     margin-top: 0;
                     grid-row: 3/4;
                     grid-column: 2/3;
+                    margin-top: -23px !important;
                 }
 
                 &__bottom {

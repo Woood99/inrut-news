@@ -6,7 +6,8 @@ Swiper.use([Navigation, Pagination]);
 import metroItems from './metroItems';
 import {
     _slideDown,
-    _slideUp
+    _slideUp,
+    _slideToggle
 } from '../support-modules/slide'
 import modal from '../modules/modal';
 export const cardSecondaryActions = () => {
@@ -97,6 +98,13 @@ export const cardSecondaryActions = () => {
                 e.preventDefault();
                 copiesBlock(card, card.querySelector('.card-secondary__copies-btn'), card.querySelector('.card-secondary__copies'));
             }
+
+            const quantity = card.querySelector('.card-secondary__quantity');
+            if (quantity) {
+                const block = card.querySelector('.card-secondary__prices--1');
+                e.preventDefault();
+                _slideToggle(block);
+            }
         })
 
     })
@@ -148,19 +156,19 @@ export const cardSecondaryActions = () => {
 
     function tagsTwoMobile() {
         cards.forEach(card => {
-            if (window.innerWidth <= 1212) {
-                const options = card.querySelector('.card-secondary__options');
-                const path = card.querySelector('.card-secondary__item');
-                if (options && path) {
-                    path.insertAdjacentElement('afterbegin', options);
-                }
-            } else {
-                const options = card.querySelector('.card-secondary__options');
-                const path = card.querySelector('.card-secondary__top');
-                if (options && path) {
-                    path.insertAdjacentElement('beforeend', options);
-                }
-            }
+            // if (window.innerWidth <= 1212) {
+            //     const options = card.querySelector('.card-secondary__options');
+            //     const path = card.querySelector('.card-secondary__item');
+            //     if (options && path) {
+            //         path.insertAdjacentElement('afterbegin', options);
+            //     }
+            // } else {
+            //     const options = card.querySelector('.card-secondary__options');
+            //     const path = card.querySelector('.card-secondary__top');
+            //     if (options && path) {
+            //         path.insertAdjacentElement('beforeend', options);
+            //     }
+            // }
         })
     }
 };

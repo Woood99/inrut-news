@@ -132,6 +132,14 @@ export const controlCardsCardSecondary = (content, btn) => {
             const bottom = card.querySelector('.card-secondary__bottom');
             const bottomMobile = bottom.querySelector('.card-secondary__info--mobile');
             const quantity = card.querySelector('.card-secondary__quantity');
+            const comparison = card.querySelector('.card-secondary__comparison');
+
+            const content = card.querySelector('.card-secondary__content');
+            const tags = card.querySelector('.card-secondary__info--tags');
+            const options = card.querySelector('.card-secondary__options');
+
+
+            const pricesMain = card.querySelector('.card-secondary__prices--1');
             if (favorite && bottomMobile) {
                 if (checkVertical(btn)) {
                     if (!bottomMobile.querySelector('.card-secondary__info--favorite')) {
@@ -155,15 +163,61 @@ export const controlCardsCardSecondary = (content, btn) => {
 
             if (checkVertical(btn)) {
                 bottom.classList.add('_vertical-active');
+                // if (tags) {
+                //     const to = card.querySelector('.card-secondary__prices--2');
+                //     if (to) {
+                //         to.insertAdjacentElement('beforeend', tags);
+                //     }
+                // }
+         
                 if (quantity){
-                    bottom.insertAdjacentElement('beforebegin',quantity);
+                    const to = card.querySelector('.card-secondary__prices--2');
+                    if (to) {
+                        to.insertAdjacentElement('beforeend',quantity);
+                    }
+                }
+                if (pricesMain) {
+                    pricesMain.removeAttribute('hidden');
+                }
+                // if (options) {
+                //     const to = card.querySelector('.card-secondary__prices--2');
+                //     if (to) {
+                //         to.insertAdjacentElement('beforeend', options);
+                //     }
+                // }
+                if (comparison) {
+                    content.insertAdjacentElement('beforeend', comparison);
                 }
             }
             if (checkHorizontal(btn)) {
                 bottom.classList.remove('_vertical-active');
-                const to = card.querySelector('.card-secondary__prices');
-                if (to && quantity){
-                    to.insertAdjacentElement('beforebegin',quantity);
+                // if (tags) {
+                //     const to = card.querySelector('.card-secondary__info');
+                //     if (to) {
+                //         to.insertAdjacentElement('beforeend',tags);
+                //     }
+                // }
+                if (quantity){
+                    const to = card.querySelector('.card-secondary__prices');
+                    if (to) {
+                        to.setAttribute('hidden','');
+                        to.insertAdjacentElement('beforebegin',quantity);
+                    }
+                }
+                if (pricesMain) {
+                    pricesMain.setAttribute('hidden','');
+                }
+                // if (options) {
+                //     const to = card.querySelector('.card-secondary__info');
+                //     if (to) {
+                //         to.insertAdjacentElement('afterend',options);
+                //     }
+                // }
+                if (comparison) {
+                    const to = card.querySelector('[data-top-content]');
+                    if (to) {
+                        to.insertAdjacentElement('beforeend',comparison);
+                    }
                 }
             }
         })

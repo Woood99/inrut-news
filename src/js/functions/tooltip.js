@@ -18,8 +18,12 @@ export default class Tooltip {
             this.targetSelector = '[data-tooltip-path]';
             this.elementSelector = '[data-tooltip-target]';
         }
-        this.positionY = options.positionY ? options.positionY : 'top';
-        this.positionX = options.positionX ? options.positionX : 'center';
+        if (options.positionDocument) {
+            this.positionDocument = true;
+        } else {
+            this.positionY = options.positionY || 'top';
+            this.positionX = options.positionX || 'center';
+        }
 
         if (window.innerWidth <= 1024) {
             this.event = 'click';
@@ -38,8 +42,10 @@ export default class Tooltip {
             document.addEventListener('click', this.clicked.bind(this));
         }
 
-        window.addEventListener('resize', this.updateTooltipsCoords.bind(this));
-        window.addEventListener('scroll', this.updateTooltipsCoords.bind(this));
+        if (!this.positionDocument) {
+            window.addEventListener('resize', this.updateTooltipsCoords.bind(this));
+            window.addEventListener('scroll', this.updateTooltipsCoords.bind(this));
+        }
     }
 
     updateTooltipsCoords() {
@@ -66,6 +72,9 @@ export default class Tooltip {
     }
 
     clicked(e) {
+          if (e.target.closest(`.${this.elementSelector}`)) {
+            return;
+        }
         e.preventDefault();
         if (!this.isClick) return;
         this.isClick = false;
@@ -107,6 +116,7 @@ export default class Tooltip {
     open(e) {
         const target = this.getCurrentTarget(e);
         if (!target) return;
+        if (target.classList.contains('_prevent')) return;
         if (this.mode === 'html') {
             const config = {
                 target,
@@ -118,6 +128,11 @@ export default class Tooltip {
                 this.createPopup(target);
             } else {
                 this.createHTML(target);
+            }
+            if (this.positionDocument) {
+                setTimeout(() => {
+                    this.close(e);
+                }, 3000);
             }
             return;
         }
@@ -164,18 +179,17 @@ export default class Tooltip {
     closeAll(element = null) {
         if (this.mode === 'html') {
             this.elements.forEach(config => {
-                // if (!config.target.hasAttribute('data-tooltip-mobile-popup')) {
-                    if (this.animation && !config.target.hasAttribute('data-tooltip-mobile-popup')) {
-                        config.el.style.opacity = 0;
-                        config.isOpen = false;
-                        setTimeout(() => {
-                            this.clear(config, config.target);
-                        }, this.animation.speed);
-    
-                        return;
-                    }
-    
-                    this.clear(config, config.target);
+                if (this.animation && !config.target.hasAttribute('data-tooltip-mobile-popup')) {
+                    config.el.style.opacity = 0;
+                    config.isOpen = false;
+                    setTimeout(() => {
+                        this.clear(config, config.target);
+                    }, this.animation.speed);
+
+                    return;
+                }
+
+                this.clear(config, config.target);
             })
         }
         if (this.mode === 'default') {
@@ -292,8 +306,10 @@ export default class Tooltip {
             }
         };
 
-        el.style.left = `${mapCoords[targetPositionX].call(this)}px`;
-        el.style.top = `${mapCoords[targetPositionY].call(this)}px`;
+        if (!this.positionDocument) {
+            el.style.left = `${mapCoords[targetPositionX].call(this)}px`;
+            el.style.top = `${mapCoords[targetPositionY].call(this)}px`;
+        }
     }
 
     getCurrentTarget(e) {

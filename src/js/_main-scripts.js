@@ -76,6 +76,19 @@ document.addEventListener('DOMContentLoaded', () => {
             speed: 300,
         },
     });
+
+    const comparisonNotif = new Tooltip({
+        mode: 'html',
+        targetSelector: '[data-tooltip-notif]',
+        elementSelector: 'tooltip-notif',
+        event:'click',
+        positionDocument: true,
+        animation: {
+            type: 'fade',
+            speed: 300,
+        },
+    });
+
     const tooltip = new Tooltip({
         mode: 'default',
         gap: 10,

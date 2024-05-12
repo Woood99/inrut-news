@@ -72,10 +72,9 @@ export default class Tooltip {
     }
 
     clicked(e) {
-          if (e.target.closest(`.${this.elementSelector}`)) {
+        if (e.target.closest(`.${this.elementSelector}`)) {
             return;
         }
-        e.preventDefault();
         if (!this.isClick) return;
         this.isClick = false;
         setTimeout(() => {

@@ -110,7 +110,13 @@ export const cardSecondaryActionsBody = (card) => {
         if (quantity) {
             const block = card.querySelector('.card-secondary__prices--1');
             e.preventDefault();
-            _slideToggle(block);
+            if (!quantity.classList.contains('_active')){
+                _slideDown(block);
+                quantity.classList.add('_active');
+            } else {
+                _slideUp(block);
+                quantity.classList.remove('_active');
+            }
         }
 
         const comparison = e.target.closest('.card-secondary__comparison');
@@ -285,6 +291,30 @@ export const cardPrimaryActions = () => {
                 </div>
                 `;
                 modal(modalHTML, '.point-system-popup', 300);
+            }
+
+            const comparison = e.target.closest('.card-primary__comparison');
+            if (comparison) {
+                e.preventDefault();
+                if (!comparison.classList.contains('_prevent')) {
+                    setTimeout(() => {
+                        comparison.classList.add('_prevent');
+                    }, 1);
+                    comparison.innerHTML = `
+                        <svg class="tw-fill-[#005bff]">
+                            <use xlink:href="./img/sprite.svg#comparison-active"></use>
+                        </svg>
+                    `;
+                } else {
+                    setTimeout(() => {
+                        comparison.classList.remove('_prevent');
+                    }, 1);
+                    comparison.innerHTML = `
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#comparison"></use>
+                        </svg>
+                    `;
+                }
             }
         })
     })

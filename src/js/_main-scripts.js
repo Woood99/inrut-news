@@ -60,6 +60,7 @@ import {
     tooltipSecondary,
     tooltipMain
 } from './components/tooltips';
+import Notifications from './modules/notifications';
 
 import Tooltip from './functions/tooltip';
 document.addEventListener('DOMContentLoaded', () => {
@@ -201,6 +202,9 @@ document.addEventListener('DOMContentLoaded', () => {
     tooltipSecondary();
     tooltipMain();
     confirmPhoneCodeValidate();
+
+
+    new Notifications();
 
     document.addEventListener('click', (e) => {
         const target = e.target;

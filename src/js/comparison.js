@@ -50,8 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const headerPrev = header.querySelector('.comparison-header__prev');
         const headerNext = header.querySelector('.comparison-header__next');
 
-        const options = comparison.querySelectorAll('.comparison-block__options');
-
         blockPrev.addEventListener('click', () => {
             const formula = getScrollLeft() - getWidth();
             body(formula);
@@ -74,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function body(formula) {
-            const topContainer = comparison.querySelector('.comparison-block__top-container');
             const spollers = comparison.querySelectorAll('.comparison-block__body .spollers__item');
             let speed = 0;
             spollers.forEach(item => {
@@ -87,15 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             interimDisabledNavBtn();
             setTimeout(() => {
-                topContainer.scrollTo({
+                comparison.scrollTo({
                     left: formula,
                     behavior: 'smooth',
-                })
-                options.forEach(option => {
-                    option.scrollTo({
-                        left: formula,
-                        behavior: 'smooth'
-                    })
                 })
 
                 const headerList = header ? header.querySelector('.comparison-header__list') : null;
@@ -120,24 +111,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function checkNavBtn() {
-            const wrapper = comparison.querySelector('.comparison-block__top-container');
-
             blockPrev.classList.remove('_disabled');
             blockNext.classList.remove('_disabled');
 
             headerPrev.classList.remove('_disabled');
             headerNext.classList.remove('_disabled');
 
-            if (wrapper.scrollLeft === 0) {
+
+            if (comparison.scrollLeft === 0) {
                 blockPrev.classList.add('_disabled-hidden');
                 headerPrev.classList.add('_disabled-hidden');
             } else {
                 blockPrev.classList.remove('_disabled-hidden');
                 headerPrev.classList.remove('_disabled-hidden');
             }
-            if (Math.round(wrapper.offsetWidth + wrapper.scrollLeft) === wrapper.scrollWidth ||
-                Math.round(wrapper.offsetWidth + wrapper.scrollLeft + 1) === wrapper.scrollWidth ||
-                Math.round(wrapper.offsetWidth + wrapper.scrollLeft + 4) === wrapper.scrollWidth) {
+            if (Math.round(comparison.offsetWidth + comparison.scrollLeft) === comparison.scrollWidth ||
+                Math.round(comparison.offsetWidth + comparison.scrollLeft + 1) === comparison.scrollWidth ||
+                Math.round(comparison.offsetWidth + comparison.scrollLeft + 4) === comparison.scrollWidth) {
                 blockNext.classList.add('_disabled-hidden');
                 headerNext.classList.add('_disabled-hidden');
             } else {

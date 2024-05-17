@@ -109,7 +109,7 @@
                 <button type="button" class="btn btn-reset header-main__close">Закрыть</button>
                 <div class="header-main__title">Меню</div>
                 <ul class="nav__list list-reset" data-spollers="1212,max" data-one-spoller>
-                    <li class="nav__item nav-dropdown nav-dropdown--2">
+                    <li class="nav__item nav-dropdown">
                         <span class="nav__link" data-spoller>
                             Новостройки
                             <svg class="nav__link-arrow">
@@ -120,21 +120,75 @@
                             <div class="nav-dropdown-content">
                                 <div class="nav-dropdown-content__body">
                                     <a href="#" class="nav-dropdown-content__item">
-                                        <img loading="lazy" src="./img/flat.svg" alt="Вторичка">
                                         <span>Жилые комплексы</span>
-                                        <span>36 990 предложений</span>
+                                        <span>36 990 <span>предложений</span></span>
                                     </a>
                                     <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
-                                        <img loading="lazy" src="./img/flat.svg" alt="Вторичка">
                                         <span>Старт продаж</span>
+                                        <span>16 <span>предложений</span></span>
                                     </a>
                                     <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
-                                        <img loading="lazy" src="./img/flat.svg" alt="Вторичка">
                                         <span>Каталог застройщиков</span>
+                                        <span>15 <span>застройщиков</span></span>
                                     </a>
-                                    <a href="./stock-developer-2.html" class="nav-dropdown-content__item nav-dropdown-content__item--one">
-                                        <img loading="lazy" src="./img/flat.svg" alt="Вторичка">
-                                        <span>Каталог акций и скидок</span>
+                                    <a href="./stock.html" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Скидки и акции</span>
+                                    </a>
+                                    <a href="./stock-developer.html" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Shorts, видео</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one col-span-2">
+                                        <span>Добавить заявку на покупку квартиры в новостройке</span>
+                                    </a>
+                                </div>
+                                <a href="#" class="nav-dropdown-content__card-info card-info" data-da=".header-main__banners-slide--1,1212,2">
+                                    <span class="card-info__title">
+                                        Успейте взять ипотеку
+                                        по выгодной ставке
+                                    </span>
+                                    <div class="card-info__image" style="background-image: url('./img/banner-photo-4.png')">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">
+                            Вторичка
+                        </a>
+                    </li>
+                    <li class="nav__item nav-dropdown">
+                        <span class="nav__link" data-spoller>
+                            Дома и участки
+                            <svg class="nav__link-arrow">
+                                <use xlink:href="img/sprite.svg#arrow-small"></use>
+                            </svg>
+                        </span>
+                        <div class="nav-dropdown__container container">
+                            <div class="nav-dropdown-content">
+                                <div class="nav-dropdown-content__body">
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Дома, коттеджи, дачи</span>
+                                        <span>20 <span>предложений</span></span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Участки</span>
+                                        <span>20 <span>предложений</span></span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Коттеджные поселки</span>
+                                        <span>20 <span>предложений</span></span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Дома от застройщика</span>
+                                        <span>20 <span>предложений</span></span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Построить дом</span>
+                                        <span>20 <span>предложений</span></span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one col-span-2">
+                                        <span>Добавить заявку на покупку</span>
                                     </a>
                                 </div>
                                 <a href="#" class="nav-dropdown-content__card-info card-info" data-da=".header-main__banners-slide--2,1212,2">
@@ -154,8 +208,8 @@
                         </a>
                     </li>
                     <li class="nav__item">
-                        <a href="stock-developer.html" class="nav__link">
-                            Лента
+                        <a href="./registry.html" class="nav__link">
+                            Реестр проблемных объектов
                         </a>
                     </li>
                 </ul>
@@ -180,6 +234,7 @@
                             <use xlink:href="./img/sprite.svg#filter"></use>
                         </svg>
                         <span>Фильтры</span>
+                        <span class='filter-counter' data-filter-counter hidden></span>
                     </button>
                     <div class="filter__container">
                         <div class="filter__top">
@@ -187,12 +242,13 @@
                             <button type="button" class="btn btn-reset filter__close">Закрыть</button>
                         </div>
                         <div class="filter__inner">
-                            <div class="filter__row buy-apartment-filter__row--1 container" data-da=".filter--new-style,1212,1" style="grid-template-columns: 125px 278px 1fr 1fr max-content;">
+                            <div class="filter__row buy-apartment-filter__row--1 container" data-da=".filter--new-style,1212,1" style="grid-template-columns: 145px 278px 1fr 1fr max-content;">
                                 <div class="btn btn-reset filter__item filter-more-btn filter__btn-control">
                                     <svg>
                                         <use xlink:href="./img/sprite.svg#filter"></use>
                                     </svg>
                                     <span>Фильтры</span>
+                                    <span class='filter-counter' data-filter-counter hidden></span>
                                 </div>
                                 <div class="filter__item filter__item--quantity-selection quantity-selection">
                                     <div class="quantity-selection__inner">
@@ -671,14 +727,14 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="tw-flex">
+                                    <div class="tw-flex" data-filter-controls>
                                         <button type="button" class="btn btn-reset filter__btn-control filter__btn-hidden tw-w-[179px] tw-mr-[24px]">
                                             <span>Скрыть фильтры</span>
                                             <svg>
                                                 <use xlink:href="img/sprite.svg#check"></use>
                                             </svg>
                                         </button>
-                                        <button type="reset" class="btn btn-reset underline-hover filter__clear">Очистить - <span>3</span></button>
+                                        <button type="reset" class="btn btn-reset underline-hover filter__clear">Очистить <span class='before-dash' data-filter-counter hidden></span></button>
                                         <span class='tw-ml-6 font-medium'>Найдено 10 000 новостроек</span>
                                     </div>
                                 </div>

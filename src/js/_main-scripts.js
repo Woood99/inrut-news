@@ -15,6 +15,9 @@ import {
     fieldNotif,
     filterActions,
     selectThird,
+    filterCounter,
+    quantitySelection,
+    filterClear,
     tabsNav
 } from './components/filter';
 import {
@@ -165,6 +168,10 @@ document.addEventListener('DOMContentLoaded', () => {
     navDropdown();
     city();
 
+
+    document.querySelectorAll('.filter').forEach(filter => filterCounter(filter));
+    document.querySelectorAll('.filter').forEach(filter => filterClear(filter));
+    document.querySelectorAll('.quantity-selection').forEach(container => quantitySelection(container));
 
 
     const inputsMaskPhone = document.querySelectorAll('.input-phone-mask');

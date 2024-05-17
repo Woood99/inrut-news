@@ -138,11 +138,29 @@
 
     &__list {
         .room-info-card {
+            grid-template-columns: 93px max-content 1fr;
             &:first-child {
                 border-top: 1px solid var(--primary100);
             }
+            .tags-block{
+              display: flex;
+              align-items: center;
+              gap: 16px;
+              @media (max-width:$desktop){
+                 grid-column: 1/-1; 
+                 flex-wrap: wrap;
+              }
+            }
+            @media (min-width:$desktop-min){
+                .room-info-card__add-tags{
+                    margin-right: auto;
+                 } 
+            }
 
             border-bottom: 1px solid var(--primary100);
+            @media (max-width:$desktop){
+                grid-template-columns: 93px 1fr;
+            }
         }
     }
 
@@ -323,7 +341,6 @@
         align-items: center;
         gap: 12px;
         @media (max-width:$desktop){
-            flex-direction: column;
                 align-items: start;
                 gap: 6px; 
         }
@@ -418,7 +435,13 @@
             color: var(--primaryTwo);
         }
     }
-
+    >.room-info-card__col{
+        .room-info-card__row{
+            @media (max-width:$desktop){
+                flex-direction: column; 
+           }
+        }
+    }
     @media (min-width:$desktop-min) {
         &:hover {
             .room-info-card__title {

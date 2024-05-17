@@ -9,10 +9,10 @@ class Notifications {
         if (this.blockValue === 'mobile' && window.innerWidth > 1212) return;
 
         this.items = this.block.querySelectorAll('[data-notifications-item]');
-        this.startTime = 500;
+        this.startTime = 350;
 
-        this.interval = 1000;
-        this.hideTime = 5000;
+        this.interval = 500;
+        this.hideTime = 4000;
 
         this.init();
 

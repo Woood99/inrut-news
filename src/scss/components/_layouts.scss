@@ -240,7 +240,7 @@
         @media (max-width:$desktop) {
             width: 80px;
             height: 80px;
-            grid-row: 1/3;
+            grid-row: 1/2;
             align-self: start;
         }
     }
@@ -275,7 +275,6 @@
         flex-direction: column;
         transition: color $transitionSpeed $transitionFunction;
         @media (max-width:$desktop) {
-            margin-top: 8px;
             grid-column: 2/3;
         }
     }
@@ -323,10 +322,18 @@
         display: flex;
         align-items: center;
         gap: 12px;
+        @media (max-width:$desktop){
+            flex-direction: column;
+                align-items: start;
+                gap: 6px; 
+        }
     }
 
     &__add-tags {
-        justify-self: end;
+       @media (max-width:$desktop){
+          grid-column: 1/-1;
+          flex-direction: row;
+       }
     }
 
     &__tags {
@@ -382,6 +389,9 @@
                 gap: 8px;
             }
         }
+        @media (max-width:$desktop){
+             grid-column: 1/-1; 
+        }
     }
 
     &__present {
@@ -425,9 +435,10 @@
         padding: 24px 16px;
         grid-template-columns: calc(80px + 8px) 1fr;
         grid-column-gap: 8px;
+        grid-row-gap: 16px;
     }
 
     @media (max-width:$mobile-max) {
-        padding: 16px;
+        padding: 16px 0;
     }
 }

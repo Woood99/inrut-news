@@ -2807,22 +2807,26 @@
     box-shadow: var(--shadow-primary);
     padding: 32px;
     border-radius: 12px;
-
-    display: flex;
-    align-items: start;
-    justify-content: space-between;
-    gap: 32px;
+    .col{
+        &:nth-child(2){
+           @media (max-width:$desktop){
+            flex: 0 0 55px; 
+           }
+        }
+    }
     &__title {
         margin-bottom: 8px;
     }
     &__descr{
         color: var(--primaryTwo);
-        margin-bottom: 20px;
     }
     &__row {
         display: flex;
         gap: 16px;
         margin-bottom: 12px;
+        @media (max-width:$desktop){
+             flex-direction: column; 
+        }
     }
 
     &__info {
@@ -2863,15 +2867,27 @@
         grid-template-columns: max-content max-content;
         gap: 24px;
         align-items: center;
+        @media (max-width:$desktop){
+            margin-top: 16px;
+             grid-template-columns: 100%; 
+             gap: 12px;
+        }
     }
     &__more{
         color: var(--blue);
+        @media (max-width:$desktop){
+             text-align: center; 
+        }
+    }
+    @media (max-width:$desktop){
+        padding: 24px 16px;
+        gap: 16px;
     }
 }
 
 
 .object-personal-discount{
-    >.col:first-child{
+    .col:first-child{
         .title-2 {
             margin-bottom: 8px;
         }

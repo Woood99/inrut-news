@@ -540,7 +540,8 @@ export const searchSelect = () => {
         const imgLeft = container.classList.contains("search-select--img-left");
         const filterItem = container.closest('.filter__item');
         init();
-        container.addEventListener("change", (e) => {
+
+        function changeBody(e) {
             const item = e.target.closest(".search-select__item");
             if (!item) return;
             const input = item.querySelector(".checkbox-secondary__input");
@@ -548,16 +549,8 @@ export const searchSelect = () => {
 
 
 
-            const currentElem = imgLeft ? input
-                .closest(".search-select__item")
-                .querySelector(".checkbox-secondary__text")
-                .innerHTML.trim() :
-                input
-                .closest(".search-select__item")
-                .querySelector(
-                    ".checkbox-secondary__text span:nth-child(1)"
-                )
-                .textContent.trim();
+            const currentElem = imgLeft ? input.closest(".search-select__item").querySelector(".checkbox-secondary__text").innerHTML.trim() :
+                input.closest(".search-select__item").querySelector(".checkbox-secondary__text span:nth-child(1)").textContent.trim();
             if (container.hasAttribute("data-search-select-single")) {
                 itemsInput.forEach((currentInput) => {
                     if (currentInput !== input) currentInput.checked = false;
@@ -588,7 +581,13 @@ export const searchSelect = () => {
                 }
             }
             updatePlaceholder();
-        });
+
+                container.dispatchEvent(new Event("change"));
+                const form = container.closest("form");
+                if (form) form.dispatchEvent(new Event("change"));
+        }
+
+        container.addEventListener("change",changeBody);
         const controls = container.querySelector(".search-select__control");
         const btnAll = container.querySelector(".search-select__all");
         const btnClear = container.querySelector(".search-select__clear");
@@ -599,10 +598,7 @@ export const searchSelect = () => {
                 if (el !== container) el.classList.remove("_active");
             });
             container.classList.toggle("_active");
-            if (
-                filterModalScreenWidthCheck() &&
-                container.classList.contains("_active")
-            ) {
+            if (filterModalScreenWidthCheck() && container.classList.contains("_active")) {
                 const modalHTML = `
                 <div class="filter-modal">
                     <div class="filter-modal__container">
@@ -612,25 +608,15 @@ export const searchSelect = () => {
                             </svg>
                             <span>Закрыть</span>
                         </button>
-                        <div class="filter-modal__content">
+                        <div class="filter-modal__content search-select">
                         </div>
                     </div>
                 </div>
                 `;
-                modal(
-                    modalHTML,
-                    ".filter-modal",
-                    300,
-                    container,
-                    container.dataset.modalScroll
-                );
+                modal(modalHTML, ".filter-modal", 300, container, container.dataset.modalScroll);
                 const filterModal = document.querySelector(".filter-modal");
-                filterModal
-                    .querySelector(".filter-modal__content")
-                    .insertAdjacentElement(
-                        "beforeend",
-                        container.querySelector(".search-select__dropdown")
-                    );
+                filterModal.querySelector(".filter-modal__content").insertAdjacentElement("beforeend", container.querySelector(".search-select__dropdown"));
+                filterModal.addEventListener('change', changeBody);
             }
         });
         document.addEventListener("click", (e) => {
@@ -946,49 +932,41 @@ export const filterMobile = () => {
         const filterRowMain = btn.nextElementSibling;
         const filterControls = filter.querySelector("[data-filter-controls]");
         const inner = container.querySelector(".filter__inner");
-        btn.addEventListener("click", () => {
-            mask
-                ?
-                mask.classList.add("active") :
-                container.classList.add("active");
-            if (filterRowMain.classList.contains("filter__row")) {
-                inner.insertAdjacentElement("afterbegin", filterRowMain);
-                inner.insertAdjacentElement("afterend", filterControls);
-            }
-            disableScroll();
-        });
+        btn.addEventListener("click", handleBtnClick);
         close.addEventListener("click", () => {
             if (container.classList.contains("active")) {
                 container.classList.remove("active");
                 btn.insertAdjacentElement("afterend", filterRowMain);
-                filterRowMain.insertAdjacentElement(
-                    "beforeend",
-                    filterControls
-                );
             }
             if (mask && mask.classList.contains("active"))
                 mask.classList.remove("active");
             if (!exceptionEnableScroll()) enableScroll();
-            if (document.querySelector(".filter-modal-map")) {
-                document
-                    .querySelector(".filter-modal-map")
-                    .classList.remove("_small-index");
+
+            const mapContainer = document.querySelector(".filter-modal-map");
+            if (mapContainer) {
+                mapContainer.classList.remove('_small-index');
             }
         });
         filter.addEventListener("click", (e) => {
             const target = e.target;
-            if (
-                target.classList.contains("filter__mask") &&
-                target.classList.contains("active")
-            ) {
+            if (target.classList.contains("filter__mask") && target.classList.contains("active")) {
                 mask.classList.remove("active");
                 if (!exceptionEnableScroll()) enableScroll();
             }
         });
         const filterMap = filter.querySelector(".filter__map");
+        const filterActionsMap = filter.querySelector('.filter-actions__map');
         const map = document.querySelector(".control-cards__maps");
-        if (filterMap && map) {
-            filterMap.addEventListener("click", () => {
+        if (map) {
+            if (filterMap) {
+                filterMap.addEventListener("click", body);
+            }
+            if (filterActionsMap) {
+                filterActionsMap.addEventListener("click", body);
+            }
+
+            function body() {
+                if (window.innerWidth > 1212) return;
                 const modalHTML = `
                 <div class="filter-modal-map">
                     <div class="filter-modal-map__container">
@@ -1009,11 +987,8 @@ export const filterMobile = () => {
                 </div>
                 `;
                 modal(modalHTML, ".filter-modal-map", 300);
-                const mapContainer =
-                    document.querySelector(".filter-modal-map");
-                const filterBtn = mapContainer.querySelector(
-                    ".filter-modal-map__filter"
-                );
+                const mapContainer = document.querySelector(".filter-modal-map");
+                const filterBtn = mapContainer.querySelector(".filter-modal-map__filter");
                 mapPrimary();
                 let interval = setInterval(() => {
                     if (itsReadyMap()) {
@@ -1047,17 +1022,8 @@ export const filterMobile = () => {
                     ymaps.ready(init);
                 }
 
-                filterBtn.addEventListener("click", () => {
-                    mask
-                        ?
-                        mask.classList.add("active") :
-                        container.classList.add("active");
-                    setTimeout(() => {
-                        mapContainer.classList.add("_small-index");
-                    }, 150);
-                    disableScroll();
-                });
-            });
+                filterBtn.addEventListener("click", handleBtnClick);
+            }
         }
 
         function exceptionEnableScroll() {
@@ -1065,6 +1031,20 @@ export const filterMobile = () => {
                 filter.closest(".checkboard-cst-popup") ||
                 filter.closest(".popup-primary")
             );
+        }
+
+        function handleBtnClick() {
+            mask ? mask.classList.add("active") : container.classList.add("active");
+            if (filterRowMain.classList.contains("filter__row")) {
+                inner.insertAdjacentElement("afterbegin", filterRowMain);
+                inner.insertAdjacentElement("afterend", filterControls);
+            }
+            disableScroll();
+
+            const mapContainer = document.querySelector(".filter-modal-map");
+            if (mapContainer) {
+                mapContainer.classList.add('_small-index');
+            }
         }
     });
 };
@@ -2193,11 +2173,13 @@ export const filterActions = () => {
                 ".control-cards__content"
             );
             listBtn.addEventListener("click", () => {
+                if (window.innerWidth <= 1212) return;
                 actions(controlCardsContent, listBtn);
                 actionForCards(controlCards, controlCardsContent, listBtn);
                 if (searchAreaBtn) searchAreaBtn.removeAttribute("hidden");
             });
             mapBtn.addEventListener("click", () => {
+                if (window.innerWidth <= 1212) return;
                 actions(controlCardsContent, mapBtn);
                 actionForCards(controlCards, controlCardsContent, mapBtn);
                 if (searchAreaBtn) searchAreaBtn.setAttribute("hidden", "");
@@ -2211,6 +2193,14 @@ export const filterActions = () => {
                 );
                 btns.forEach((btn) => btn.classList.remove("_active"));
                 currentBtn.classList.add("_active");
+            }
+
+
+            if (window.innerWidth > 1212) {
+
+            } else {
+                btns.forEach(btn => btn.classList.remove('_active'));
+                listBtn.classList.add('_active');
             }
         }
     }

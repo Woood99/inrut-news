@@ -30,7 +30,7 @@ export const actionForCards = (container, content, btn) => {
             container.classList.add('_map-active');
             if (containerWrapper){
                 containerWrapper.classList.remove('container');
-                containerWrapper.classList.add('container-right');
+                containerWrapper.classList.add('container-right--no-padding-mobile');
             }
         }
     }
@@ -42,7 +42,7 @@ export const actionForCards = (container, content, btn) => {
             container.classList.remove('_map-active');
             if (containerWrapper){
                 containerWrapper.classList.add('container');
-                containerWrapper.classList.remove('container-right');
+                containerWrapper.classList.remove('container-right--no-padding-mobile');
             }
         }
     }
@@ -147,7 +147,6 @@ export const controlCardsCardSecondary = (content, btn) => {
             const tags = card.querySelector('.card-secondary__info--tags');
             const options = card.querySelector('.card-secondary__options');
 
-
             const pricesMain = card.querySelector('.card-secondary__prices--1');
             if (favorite && bottomMobile) {
                 if (checkVertical(btn)) {
@@ -172,12 +171,6 @@ export const controlCardsCardSecondary = (content, btn) => {
 
             if (checkVertical(btn)) {
                 bottom.classList.add('_vertical-active');
-                // if (tags) {
-                //     const to = card.querySelector('.card-secondary__prices--2');
-                //     if (to) {
-                //         to.insertAdjacentElement('beforeend', tags);
-                //     }
-                // }
          
                 if (quantity){
                     const to = card.querySelector('.card-secondary__prices--2');
@@ -188,24 +181,18 @@ export const controlCardsCardSecondary = (content, btn) => {
                 if (pricesMain) {
                     pricesMain.removeAttribute('hidden');
                 }
-                // if (options) {
-                //     const to = card.querySelector('.card-secondary__prices--2');
-                //     if (to) {
-                //         to.insertAdjacentElement('beforeend', options);
-                //     }
-                // }
+                if (options) {
+                    const to = card.querySelector('.card-secondary__prices--2');
+                    if (to) {
+                        to.insertAdjacentElement('beforeend', options);
+                    }
+                }
                 if (comparison) {
                     content.insertAdjacentElement('beforeend', comparison);
                 }
             }
             if (checkHorizontal(btn)) {
                 bottom.classList.remove('_vertical-active');
-                // if (tags) {
-                //     const to = card.querySelector('.card-secondary__info');
-                //     if (to) {
-                //         to.insertAdjacentElement('beforeend',tags);
-                //     }
-                // }
                 if (quantity){
                     const to = card.querySelector('.card-secondary__prices');
                     if (to) {
@@ -216,12 +203,12 @@ export const controlCardsCardSecondary = (content, btn) => {
                 if (pricesMain) {
                     pricesMain.setAttribute('hidden','');
                 }
-                // if (options) {
-                //     const to = card.querySelector('.card-secondary__info');
-                //     if (to) {
-                //         to.insertAdjacentElement('afterend',options);
-                //     }
-                // }
+                if (options) {
+                    const to = card.querySelector('[data-top-content] .col');
+                    if (to) {
+                        to.insertAdjacentElement('afterbegin',options);
+                    }
+                }
                 if (comparison) {
                     const to = card.querySelector('[data-top-content]');
                     if (to) {

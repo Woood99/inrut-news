@@ -211,7 +211,9 @@ document.addEventListener('DOMContentLoaded', () => {
     confirmPhoneCodeValidate();
 
 
-    new Notifications();
+    document.querySelectorAll('[data-notifications]').forEach(item => {
+        new Notifications(item);
+    })
 
     document.addEventListener('click', (e) => {
         const target = e.target;

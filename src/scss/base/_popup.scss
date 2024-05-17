@@ -1677,6 +1677,44 @@
             background-color: rgba(34, 41, 102, 0.4);
         }
     }
+    &--developer-response {
+        text-align: center;
+
+        .popup-primary {
+            &__container {
+                min-height: auto;
+                margin: 50px auto;
+                text-align: left;
+                border-radius: 24px;
+                padding: 65px 48px 48px;
+                max-width: 650px;
+
+                @media (max-width:$smallTablet-max) {
+                    max-width: 100%;
+                    width: calc(100% - 4px);
+                    margin: 50px auto 0;
+                    vertical-align: bottom;
+
+                    padding: 75px 16px 32px;
+
+                    border-radius: 16px 16px 0 0;
+                }
+            }
+        }
+
+
+        &::before {
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            height: 100%
+        }
+
+
+        @media (max-width:$desktop) {
+            background-color: rgba(34, 41, 102, 0.4);
+        }
+    }
 
     &--confirm-phone-code {
         text-align: center;
@@ -3181,12 +3219,12 @@
         .popup-secondary {
             &__container {
                 border-radius: 12px 0 0 12px;
-                padding: 65px 48px 48px;
+                padding: 80px 48px 48px;
                 width: 475px;
 
                 @media (max-width:$desktop) {
                     border-radius: 0;
-                    padding: 60px 10px;
+                    padding: 80px 10px 32px;
                     width: 100%;
                 }
             }
@@ -7805,6 +7843,10 @@
         grid-template-columns: repeat(2, 1fr);
         grid-column-gap: 16px;
         margin-bottom: 32px;
+        @media (max-width:$desktop){
+             grid-template-columns: 100%;
+             grid-row-gap: 8px; 
+        }
     }
 
     &__agents {

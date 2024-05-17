@@ -1,7 +1,12 @@
 class Notifications {
-    constructor() {
-        this.block = document.querySelector('[data-notifications]');
+    constructor(container) {
+        this.block = container;
         if (!this.block) return;
+
+        this.blockValue = this.block.dataset.notifications;
+        
+        if (this.blockValue === 'desktop' && window.innerWidth <= 1212) return;
+        if (this.blockValue === 'mobile' && window.innerWidth > 1212) return;
 
         this.items = this.block.querySelectorAll('[data-notifications-item]');
         this.startTime = 500;

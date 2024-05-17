@@ -95,12 +95,17 @@ function initSliders() {
             observer: true,
             observeParents: true,
             autoHeight: true,
-            slidesPerView: 3,
+            slidesPerView: 2,
             spaceBetween: 16,
             speed: 800,
             navigation: {
                 prevEl: slider.closest('.record-viewing__choices').querySelector('.nav-arrow-secondary--prev'),
                 nextEl: slider.closest('.record-viewing__choices').querySelector('.nav-arrow-secondary--next'),
+            },
+            breakpoints: {
+                1112: {
+                    slidesPerView: 3,
+                },
             },
         });
     }

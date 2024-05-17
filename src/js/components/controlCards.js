@@ -20,6 +20,7 @@ export const controlCards = () => {
 }
 
 export const actionForCards = (container, content, btn) => {
+    const containerWrapper = container.querySelector('.control-cards__container');
     if (checkHorizontal(btn)) {
         content.classList.add('control-cards__content--horizontal');
         container.querySelectorAll('.control-cards__btn--horizontal').forEach(el => el.classList.add('_active'));
@@ -27,6 +28,10 @@ export const actionForCards = (container, content, btn) => {
         // maps
         if (container.classList.contains('control-cards--maps')) {
             container.classList.add('_map-active');
+            if (containerWrapper){
+                containerWrapper.classList.remove('container');
+                containerWrapper.classList.add('container-right');
+            }
         }
     }
     if (checkVertical(btn)) {
@@ -35,6 +40,10 @@ export const actionForCards = (container, content, btn) => {
         // maps
         if (container.classList.contains('control-cards--maps')) {
             container.classList.remove('_map-active');
+            if (containerWrapper){
+                containerWrapper.classList.add('container');
+                containerWrapper.classList.remove('container-right');
+            }
         }
     }
 

@@ -28,21 +28,21 @@ p {
     -webkit-text-size-adjust: 100%;
 
     &.page--scrollY {
-        &::-webkit-scrollbar{
+        &::-webkit-scrollbar {
             height: 4px;
             width: 4px;
             background: gray;
         }
-        
+
         &::-webkit-scrollbar-track {
-          background: #f1f1f1; 
+            background: #f1f1f1;
         }
-         
+
         &::-webkit-scrollbar-thumb {
-          background: var(--primaryTwo); 
+            background: var(--primaryTwo);
         }
-        
-        &::-webkit-scrollbar-thumb:vertical{
+
+        &::-webkit-scrollbar-thumb:vertical {
             background-color: #d1d1d1;
             border-radius: 10px;
         }
@@ -59,7 +59,7 @@ p {
     color: $mainColor;
 
     &::after {
-        content: '';
+        content: "";
         position: fixed;
         width: 100%;
         height: 100%;
@@ -97,22 +97,11 @@ a {
     display: inline-block;
 }
 
-
-
-
-
-
-
-
-
-
 // =============== Other ===============
 
 .site-container {
-
-
     &.site-container--agent {
-        @media (max-width:$desktop) {
+        @media (max-width: $desktop) {
             .header {
                 display: none;
             }
@@ -120,7 +109,7 @@ a {
     }
 
     &.site-container--agent-develop {
-        @media (max-width:$desktop) {
+        @media (max-width: $desktop) {
             .header {
                 display: none;
             }
@@ -142,26 +131,26 @@ a {
     }
 
     &.site-container--client {
-        @media (max-width:$desktop) {
+        @media (max-width: $desktop) {
             .header {
                 display: none;
             }
         }
     }
-    &.site-container--header-filter{
-        .header{
+    &.site-container--header-filter {
+        .header {
             background-color: var(--white);
         }
-        .header-top{
+        .header-top {
             border-bottom: 1px solid var(--primary100);
         }
     }
-    &.site-container--shorts{
-       width: 100%;
-       height: 100%;
-       min-height: var(--vh,100vh);
+    &.site-container--shorts {
+        width: 100%;
+        height: 100%;
+        min-height: var(--vh, 100vh);
     }
-    @media (max-width:$desktop) {
+    @media (max-width: $desktop) {
         overflow: hidden;
     }
 }
@@ -200,16 +189,26 @@ a {
     max-width: $containerWidth + px;
 }
 .container-desktop {
-   @media (min-width:$desktop-min){
-    margin: 0 auto;
-    padding: 0 ($containerOffset + px);
-    max-width: $containerWidth + px; 
-   }
+    @media (min-width: $desktop-min) {
+        margin: 0 auto;
+        padding: 0 ($containerOffset + px);
+        max-width: $containerWidth + px;
+    }
 }
 
 .container--no-padding {
     margin: 0 auto;
     max-width: $contentWidth + px;
+}
+
+.container-right {
+    padding-left: calc(
+        (100% - #{$containerWidth+px}) / 2 + #{$containerOffset+px}
+    );
+    padding-right: ($containerOffset + px);
+    @media (max-width: $desktop) {
+        padding: 0 ($containerOffset + px);
+    }
 }
 
 .list-reset {

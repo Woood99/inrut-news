@@ -286,7 +286,7 @@ const HTMLIgnoreFile = [
     'view-types-objects','view-employee-groups',
     'detailed-flat-consideration','detailed-flat-consideration','detailed-flat-consideration-two',
     'detailed-flat-consideration-two2','detailed-flat-consideration-two3', 'detailed-flat-rejected-two','detailed-flat-rejected-two2','object-consideration',
-    'my-requestss7','my-requestss2','my-requestss3','my-requestss4','my-requestss5','edit-value-2','edit-value-3','edit-value-4','edit-value-5','edit-value',
+    'my-requestss7','edit-value-2','edit-value-3','edit-value-4','edit-value-5','edit-value',
     'cities','create-tag', 'create-types-objects', 'create-value','my-requestss-all', 'my-requestss6','object-2', 'object-3', 'object-4', 'object-consideration2', 'object-flat-rejected', 'object-flat-rejected2', 'present', 'program', 'promotion', 'prop-val', 'repair-apart', 'selection-estate-inner-2','tags-stickers', 'types-objects', 'view-employee-groups-develop',
     'edit-tag', 'edit-types-objects-2', 'edit-types-objects-3', 'edit-types-objects-4', 'edit-types-objects', 'employees-and-groups', 
     'employees','edit-parament-types-objects','create-char-layouts'];

@@ -36,7 +36,7 @@
                 </button>
             </div>
             <div class="header-top__actions">
-                <div class="header-top__action header-action header-action--calendar secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                <div class="header-top__action header-action header-action--notif secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
                     <button type='button' data-popup-path="notif-popup" class="btn btn-reset header-action__title secondary-tooltip__btn">
                         <svg class='tw-w-4 tw-h-4'>
                             <use xlink:href="./img/sprite.svg#notification"></use>
@@ -47,7 +47,7 @@
                         Уведомления
                     </div>
                 </div>
-                <div class="header-top__action header-action header-action--calendar secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                <div class="header-top__action header-action header-action--comp secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
                     <a href="./comparison.html" class="btn btn-reset header-action__title secondary-tooltip__btn">
                         <svg class='w-16 h-16'>
                             <use xlink:href="./img/sprite.svg#comparison"></use>
@@ -57,7 +57,7 @@
                         Сравнение
                     </div>
                 </div>
-                <div class="header-top__action header-action header-action--calendar secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                <div class="header-top__action header-action header-action--cashback secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
                     <a href="./present.html" class="btn btn-reset header-action__title secondary-tooltip__btn">
                         <svg>
                             <use xlink:href="img/sprite.svg#bonus"></use>
@@ -290,7 +290,7 @@
                             </div>
                             <div class="filter__row buy-apartment-filter__row--2" hidden>
                                 <div class="container">
-                                    <div class="filter__item tw-grid tw-grid-cols-2 tw-gap-4">
+                                    <div class="filter__item tw-grid tw-grid-cols-2 tw-gap-4 md1:tw-grid-cols-1">
                                         <div class="field-info">
                                             <div class="field-info__content">
                                                 <h3 class="field-info__title title-4">
@@ -671,12 +671,16 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-reset filter__btn-control filter__btn-hidden">
-                                        <span>Скрыть фильтры</span>
-                                        <svg>
-                                            <use xlink:href="img/sprite.svg#check"></use>
-                                        </svg>
-                                    </button>
+                                    <div class="tw-flex">
+                                        <button type="button" class="btn btn-reset filter__btn-control filter__btn-hidden tw-w-[179px] tw-mr-[24px]">
+                                            <span>Скрыть фильтры</span>
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#check"></use>
+                                            </svg>
+                                        </button>
+                                        <button type="reset" class="btn btn-reset underline-hover filter__clear">Очистить - <span>3</span></button>
+                                        <span class='tw-ml-6 font-medium'>Найдено 10 000 новостроек</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -691,7 +695,7 @@
                     </div>
                 </form>
                 <div class="buy-apartment__cards-list cards-list control-cards control-cards--maps _map-active">
-                    <div class="container control-cards__container">
+                    <div class="container-right control-cards__container">
                         <div class="control-cards__wrapper">
                             <div class="cards-list__items control-cards__content control-cards__content--horizontal">
                                 <div class="card-secondary-skeleton">
@@ -1496,27 +1500,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="chat-lora-btn secondary-tooltip secondary-tooltip--click secondary-tooltip--link _active">
-                <a href="./chat.html" class="btn btn-reset secondary-tooltip__btn">
-                    <picture>
-                        <source srcset="./img/lora_face.webp" type="image/webp">
-                        <img loading="lazy" src="./img/lora_face.webp" width="32" height="32" alt="Lora">
-                    </picture>
-                </a>
-                <div class="secondary-tooltip__content">
-                    <button class="btn btn-reset secondary-tooltip__close">
-                        <svg>
-                            <use xlink:href="./img/sprite.svg#x"></use>
-                        </svg>
-                    </button>
-                    <div>
-                        <h3 class="chat-lora-btn__title">Подбор с YaGPT</h3>
-                        <p>Подберём вам ЖК?</p>
-                    </div>
-                </div>
-            </div>
-
             <button type="button" class="btn btn-reset scroll-up">
                 <svg>
                     <use xlink:href="./img/sprite.svg#check"></use>
@@ -1779,18 +1762,18 @@
                                 </svg>
                             </button>
                             <div class="personal-area-dropdown__body">
-                                <button type="button" class="btn btn-reset personal-area__btn">
-                                    <svg>
-                                        <use xlink:href="img/sprite.svg#house"></use>
-                                    </svg>
-                                    <span>Объявление на продажу</span>
-                                </button>
-                                <button type="button" class="btn btn-reset personal-area__btn">
+                                <a href="#" class="btn btn-reset personal-area__btn">
                                     <svg>
                                         <use xlink:href="img/sprite.svg#tg"></use>
                                     </svg>
-                                    <span>Заявка на покупку</span>
-                                </button>
+                                    <span>Заявка на покупку недвижимости</span>
+                                </a>
+                                <a href='#' class="btn btn-reset personal-area__btn">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#house"></use>
+                                    </svg>
+                                    <span>Объект на продажу</span>
+                                </a>
                             </div>
                         </li>
                     </ul>
@@ -1828,7 +1811,7 @@
                                 <svg>
                                     <use xlink:href="img/sprite.svg#cart-1"></use>
                                 </svg>
-                                <span>Мои заявки на покупку</span>
+                                <span>Мои заявки на покупку недвижимости</span>
                             </button>
                         </li>
                         <li class="personal-area__item">
@@ -1847,7 +1830,7 @@
                                 <svg>
                                     <use xlink:href="img/sprite.svg#calendar"></use>
                                 </svg>
-                                <span>Календарь просмотров</span>
+                                <span>Календарь, запись на просмотры</span>
                             </button>
                         </li>
                     </ul>

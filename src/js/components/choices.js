@@ -169,6 +169,9 @@ export const selectSecondaryCreate = (el) => {
     wrapper.select = choices;
     el.addEventListener('change', () => {
         checkCloseSelected();
+        if (el.closest('.filter__item')) {
+            el.closest('.filter__item').selectedItems = el.value;
+        }
     });
     el.addEventListener('showDropdown', () => {
         wrapper.classList.add('_show');

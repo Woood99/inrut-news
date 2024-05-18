@@ -146,7 +146,7 @@ export const tabs = () => {
                                 itemBtn.classList.remove('_spoller-active');
                                 itemContent.setAttribute('hidden', '')
                                 if (cardActive) cardActive.classList.remove('_active');
-                                content.setAttribute('hidden', '');
+                                if (content) content.setAttribute('hidden', '');
                             })
                         } else if (tabsTitles[index] === tabsTitles[0]) {
                             if (!headerFixed.classList.contains('_active')) headerFixed.classList.add('_active');

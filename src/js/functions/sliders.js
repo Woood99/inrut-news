@@ -721,6 +721,7 @@ function initSliders() {
         })
 
         function createSlider(body, el) {
+            if (!(body && body.closest('.room-body'))) return;
             const slider = new Swiper(body, {
                 observer: true,
                 observeParents: true,

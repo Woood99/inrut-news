@@ -279,13 +279,10 @@ export const additionally = () => {
         function body(container) {
             if (!container) return;
             const items = container.querySelectorAll('.card-checkbox');
-            const popup = container.closest('.popup');
-            const subtitle = popup.querySelector('[data-additionally-subtitle]');
-            if (!subtitle) return;
             if (items.length === 0) {
-                subtitle.textContent = 'Объект';
+                container.setAttribute('hidden','');
             } else {
-                subtitle.textContent = 'Объект и подарки';
+                container.removeAttribute('hidden');
             }
         }
     }

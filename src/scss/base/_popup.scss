@@ -1332,7 +1332,7 @@
         .popup-primary {
             &__container {
                 border-radius: 0;
-                padding: 32px 16px 24px;
+                padding: 32px 48px 24px;
                 margin: 0;
                 width: 100%;
             }
@@ -7474,12 +7474,15 @@
 
     &__agents {
         --gap: 48px;
-        margin-top: 16px;
         background-color: var(--stand-bg);
-        padding: 32px 65px;
+        padding: 32px 48px;
+
         width: calc(100% + (var(--gap)*2));
         margin-left: calc(-1*var(--gap));
-        margin-bottom: calc(-1*var(--gap));
+        margin-top: 32px;
+        margin-bottom: 0;
+
+
         border-radius: 12px 12px 0 12px;
 
         .card-agent {
@@ -7569,6 +7572,37 @@
     }
 }
 
+.popup-header-fixed{
+    position: sticky;
+    top: 0;
+    right: 0;
+    left: 0;
+    transform: translateX(48px);
+    margin-top: -65px;
+    pointer-events: none;
+    .popup-primary__close{
+        position: relative;
+        margin-top: 0;
+        transform: translateX(0);
+        pointer-events: all;
+        @media (max-width:$desktop){
+             right: 0;
+             top: 0; 
+        }
+    }
+    @media (max-width:$desktop){
+        padding: 16px;
+        height: 50px;
+        z-index: 99;
+         background-color: var(--white); 
+         transform: translateX(-16px);
+         margin-top: -75px;
+         width: calc(100% + 32px);
+
+         display: flex;
+         justify-content: end;
+    }
+}
 
 .screen-demonstation {
 

@@ -80,12 +80,22 @@ function initSliders() {
             observer: true,
             observeParents: true,
             autoHeight: true,
-            slidesPerView: 3,
+            slidesPerView: 1,
             spaceBetween: 16,
             speed: 800,
             navigation: {
                 prevEl: slider.closest('.book-consultation').querySelector('.nav-arrow-secondary--prev'),
                 nextEl: slider.closest('.book-consultation').querySelector('.nav-arrow-secondary--next'),
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+            },
+            breakpoints: {
+                1112: {
+                    slidesPerView: 3,
+                },
             },
         });
     }
@@ -95,12 +105,17 @@ function initSliders() {
             observer: true,
             observeParents: true,
             autoHeight: true,
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 16,
             speed: 800,
             navigation: {
                 prevEl: slider.closest('.record-viewing__choices').querySelector('.nav-arrow-secondary--prev'),
                 nextEl: slider.closest('.record-viewing__choices').querySelector('.nav-arrow-secondary--next'),
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
             },
             breakpoints: {
                 1112: {

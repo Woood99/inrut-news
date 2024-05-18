@@ -6387,6 +6387,7 @@
         align-items: center;
         gap: 12px;
     }
+    
 
     &__add-tags {
         justify-self: end;
@@ -6474,6 +6475,13 @@
         > span {
             color: var(--primaryTwo);
         }
+        >.room-info-card-second__row:not(.card-price){
+            @media (max-width:$desktop){
+                flex-direction: column;
+                align-items: start !important;
+                gap: 6px; 
+           }
+        }
     }
 
     &__actions {
@@ -6519,7 +6527,11 @@
         grid-column: 1/-1;
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
         gap: 24px;
+        @media (max-width:$desktop){
+             gap: 12px; 
+        }
     }
 
     @media (min-width: $desktop-min) {
@@ -6730,7 +6742,11 @@
 
     &__date {
     }
-
+    &__offer{
+        &:not(:first-child){
+            margin-top: 8px;
+        }
+    }
     &__status {
         margin-top: 4px;
         display: flex;
@@ -6746,7 +6762,7 @@
     }
 
     &__chars{
-        margin-top: 12px;
+        margin-top: 4px;
     }
 }
 

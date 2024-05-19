@@ -6743,6 +6743,7 @@
     &__date {
     }
     &__offer{
+        font-weight: 500;
         &:not(:first-child){
             margin-top: 8px;
         }
@@ -6911,12 +6912,26 @@
         span {
             &:nth-child(1) {
                 white-space: nowrap;
+                color: var(--primaryTwo);
             }
 
             &:nth-child(2) {
                 order: 3;
                 text-align: right;
                 max-width: 40%;
+                color: var(--dark);
+            }
+        }
+
+        &._blue{
+            span{
+                &:nth-child(1) {
+                    color: var(--blue);
+                }
+    
+                &:nth-child(2) {
+                    color: var(--blue);
+                } 
             }
         }
 
@@ -6932,4 +6947,27 @@
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
+}
+
+.row-dot{
+    display: flex;
+    gap: 6px;
+    span{
+        position: relative;
+        padding-left: 12px;
+        &:not(:first-child){
+            &::before{
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 6px;
+                
+                background-color: var(--dark);
+                border-radius: 50%;
+        
+                width: 5px;
+                height: 5px;
+            }
+        }
+    }
 }

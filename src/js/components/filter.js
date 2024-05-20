@@ -2333,13 +2333,17 @@ export const filterClear = (filter) => {
 
 export function filterClearBody(filter) {
     const fields = filter.querySelectorAll('.filter__item');
-    fields.selectedItem = [];
     fields.forEach(field => {
-        field.querySelectorAll('.field-select__item').forEach(item => item.classList.remove('_active'));
-        field.querySelectorAll('.input-text').forEach(item => item.classList.remove('_active'));
         if (field.selectedItems) {
             field.selectedItems = [];
         }
+    })
+
+    filter.querySelectorAll('.field-select__item').forEach(item => item.classList.remove('_active'));
+    filter.querySelectorAll('.input-text').forEach(item => item.classList.remove('_active'));
+    filter.querySelectorAll('.select-secondary').forEach(item => {
+        item.select.destroy();
+        item.select.init();
     })
 }
 

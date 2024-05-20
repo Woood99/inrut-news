@@ -1,5 +1,30 @@
 import modal from '../modules/modal';
 
+const mapCoords = {
+    top(coords, el, target) {
+        let top = coords.top - el.offsetHeight - this.gap;
+        if (top < 0) top = coords.top + target.offsetHeight + this.gap;
+        return top;
+    },
+    bottom(coords, el, target) {
+        let bottom = coords.top + target.offsetHeight + this.gap;
+        if (window.innerHeight - coords.bottom - el.offsetHeight - this.gap < 0) bottom = coords.top - el.offsetHeight - this.gap;
+        return bottom;
+    },
+
+    left(coords, el, target) {
+        let left = coords.left;
+        if (window.innerWidth - coords.left - el.offsetWidth - this.gap < 0) left = this.gap;
+        return left;
+    },
+
+    center(coords, el, target) {
+        let left = coords.left + (target.offsetWidth - el.offsetWidth) / 2;
+        if (left < 0) left = this.gap;
+        return left;
+    }
+};
+
 export class Tooltip {
     constructor(options) {
         this.mode = options.mode ? options.mode : 'default';
@@ -280,34 +305,10 @@ export class Tooltip {
         const coords = target.getBoundingClientRect();
         const targetPositionX = target.dataset.tooltipPositionX || this.positionX;
         const targetPositionY = target.dataset.tooltipPositionY || this.positionY;
-        const mapCoords = {
-            top() {
-                let top = coords.top - el.offsetHeight - this.gap;
-                if (top < 0) top = coords.top + target.offsetHeight + this.gap;
-                return top;
-            },
-            bottom() {
-                let bottom = coords.top + target.offsetHeight + this.gap;
-                if (window.innerHeight - coords.bottom - el.offsetHeight - this.gap < 0) bottom = coords.top - el.offsetHeight - this.gap;
-                return bottom;
-            },
-
-            left() {
-                let left = coords.left;
-                if (window.innerWidth - coords.left - el.offsetWidth - this.gap < 0) left = this.gap;
-                return left;
-            },
-
-            center() {
-                let left = coords.left + (target.offsetWidth - el.offsetWidth) / 2;
-                if (left < 0) left = this.gap;
-                return left;
-            }
-        };
 
         if (!this.positionDocument) {
-            el.style.left = `${mapCoords[targetPositionX].call(this)}px`;
-            el.style.top = `${mapCoords[targetPositionY].call(this)}px`;
+            el.style.left = `${mapCoords[targetPositionX].call(this,coords,el,target)}px`;
+            el.style.top = `${mapCoords[targetPositionY].call(this,coords,el,target)}px`;
         }
     }
 
@@ -337,7 +338,7 @@ export class Tooltip {
 export class TooltipText {
     constructor(options) {
         if (window.innerWidth <= 1024) {
-          return
+            return
         }
         this.positionX = options.positionX || 'center';
         this.positionY = options.positionY || 'top';
@@ -374,10 +375,12 @@ export class TooltipText {
                 ${map.html}
             </div>
         `;
-        document.body.insertAdjacentHTML('beforeend',html);
+        document.body.insertAdjacentHTML('beforeend', html);
         map.el = this.getEl(map.id);
+        map.target = target;
         this.elements.push(map);
-        this.setCoordsElement(target,map);
+        this.setCoordsElement(map);
+        this.animationFade(map);
     }
 
     close(e) {
@@ -390,39 +393,15 @@ export class TooltipText {
         this.elements = [];
     }
 
-    setCoordsElement(target,map) {
+    setCoordsElement(map) {
         const el = this.getEl(map.id);
-       
-         const coords = target.getBoundingClientRect();
+        const target = map.target;
+
+        const coords = target.getBoundingClientRect();
         const targetPositionX = this.positionX;
         const targetPositionY = this.positionY;
-        const mapCoords = {
-            top() {
-                let top = coords.top - el.offsetHeight - this.gap;
-                if (top < 0) top = coords.top + target.offsetHeight + this.gap;
-                return top;
-            },
-            bottom() {
-                let bottom = coords.top + target.offsetHeight + this.gap;
-                if (window.innerHeight - coords.bottom - el.offsetHeight - this.gap < 0) bottom = coords.top - el.offsetHeight - this.gap;
-                console.log(bottom);
-                return bottom;
-            },
-
-            left() {
-                let left = coords.left;
-                if (window.innerWidth - coords.left - el.offsetWidth - this.gap < 0) left = this.gap;
-                return left;
-            },
-
-            center() {
-                let left = coords.left + (target.offsetWidth - el.offsetWidth) / 2;
-                if (left < 0) left = this.gap;
-                return left;
-            }
-        };
-        el.style.left = `${mapCoords[targetPositionX].call(this)}px`;
-        el.style.top = `${mapCoords[targetPositionY].call(this)}px`;
+        el.style.left = `${mapCoords[targetPositionX].call(this,coords,el,target)}px`;
+        el.style.top = `${mapCoords[targetPositionY].call(this,coords,el,target)}px`;
     }
 
     getEl(id) {
@@ -432,7 +411,18 @@ export class TooltipText {
     getMap(target) {
         return this.elements.findLast(item => item.target === target);
     }
+
+    animationFade(map) {
+        map.el.style.opacity = 0;
+        setTimeout(() => {
+            map.el.style.transition = `opacity 0.25s ease-in-out`;
+            map.el.style.opacity = 1;
+        }, 15);
+    }
 }
+
+
+
 
 
 // const tooltipHtml = new Tooltip({

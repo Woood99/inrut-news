@@ -317,23 +317,28 @@ export const recordViewing = () => {
             const toggle = container.querySelector('.toggle-checkbox input');
             const agents = container.querySelector('.record-viewing__agents');
 
+            if (agents && toggle) {
+                toggle.addEventListener('change', () => {
+                    if (toggle.checked) {
+                        agents.classList.add('_active');
+                        movingButton();
+                    } else {
+                        agents.classList.remove('_active')
+                        movingButtonDefault();
+                    }
+                })
 
-            toggle.addEventListener('change', () => {
-                if (toggle.checked) {
-                    agents.classList.add('_active');
-                    movingButton();
-                } else {
-                    agents.classList.remove('_active')
-                    movingButtonDefault();
+                if (!agents && toggle) {
+                    toggle.setAttribute('hidden','');
                 }
-            })
-            const cards = agents.querySelectorAll('.card-agent');
-            cards.forEach(card => {
-                card.addEventListener('input', () => {
-                    cards.forEach(card => card.classList.remove('_active'));
-                    card.classList.add('_active');
-                });
-            })
+                const cards = agents.querySelectorAll('.card-agent');
+                cards.forEach(card => {
+                    card.addEventListener('input', () => {
+                        cards.forEach(card => card.classList.remove('_active'));
+                        card.classList.add('_active');
+                    });
+                })
+            }
 
             const phone = container.querySelector('.record-viewing__form--tel');
             const phoneInput = phone.querySelector('input');

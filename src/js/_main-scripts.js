@@ -65,7 +65,7 @@ import {
 } from './components/tooltips';
 import Notifications from './modules/notifications';
 
-import Tooltip from './functions/tooltip';
+import { Tooltip,TooltipText } from './functions/tooltip';
 document.addEventListener('DOMContentLoaded', () => {
 
     const tooltipHtml = new Tooltip({
@@ -99,6 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
         positionX: 'left',
         positionY: 'bottom',
     });
+
+    const tooltipText = new TooltipText({
+        positionX: 'center',
+        positionY: 'bottom',
+    })
     
 
     header();

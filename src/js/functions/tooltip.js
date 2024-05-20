@@ -1,6 +1,6 @@
 import modal from '../modules/modal';
 
-export default class Tooltip {
+export class Tooltip {
     constructor(options) {
         this.mode = options.mode ? options.mode : 'default';
         this.gap = options.gap ? options.gap : 0;
@@ -330,6 +330,107 @@ export default class Tooltip {
     getTargetEl(target) {
         const pathAttr = target.dataset.tooltipPath;
         return document.querySelector(`[data-tooltip-target=${pathAttr}]`);
+    }
+}
+
+
+export class TooltipText {
+    constructor(options) {
+        if (window.innerWidth <= 1024) {
+          return
+        }
+        this.positionX = options.positionX || 'center';
+        this.positionY = options.positionY || 'top';
+        this.gap = 10;
+        this.elements = [];
+        this.init();
+    }
+
+    init() {
+        document.addEventListener('mouseover', this.openInit.bind(this));
+        document.addEventListener('mouseout', this.close.bind(this));
+    }
+
+    openInit(e) {
+        const target = e.target.closest('[data-tooltip-text]');
+        if (!target) return;
+        if (target.classList.contains('_tooltip-text-active')) return;
+
+        const arr = target.dataset.tooltipText.split(',');
+
+        const map = {
+            target,
+            html: arr[0],
+            class: arr[1],
+            id: Date.now()
+        };
+        this.open(target, map);
+    }
+
+    open(target, map) {
+        target.classList.add('_tooltip-text-active');
+        const html = `
+            <div class="${map.class}" data-tooltip-text-id="${map.id}">
+                ${map.html}
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend',html);
+        map.el = this.getEl(map.id);
+        this.elements.push(map);
+        this.setCoordsElement(target,map);
+    }
+
+    close(e) {
+        const target = e.target.closest('[data-tooltip-text]');
+        if (!target) return;
+        if (!target.classList.contains('_tooltip-text-active')) return;
+        const map = this.getMap(target);
+        target.classList.remove('_tooltip-text-active');
+        map.el.remove();
+        this.elements = [];
+    }
+
+    setCoordsElement(target,map) {
+        const el = this.getEl(map.id);
+       
+         const coords = target.getBoundingClientRect();
+        const targetPositionX = this.positionX;
+        const targetPositionY = this.positionY;
+        const mapCoords = {
+            top() {
+                let top = coords.top - el.offsetHeight - this.gap;
+                if (top < 0) top = coords.top + target.offsetHeight + this.gap;
+                return top;
+            },
+            bottom() {
+                let bottom = coords.top + target.offsetHeight + this.gap;
+                if (window.innerHeight - coords.bottom - el.offsetHeight - this.gap < 0) bottom = coords.top - el.offsetHeight - this.gap;
+                console.log(bottom);
+                return bottom;
+            },
+
+            left() {
+                let left = coords.left;
+                if (window.innerWidth - coords.left - el.offsetWidth - this.gap < 0) left = this.gap;
+                return left;
+            },
+
+            center() {
+                let left = coords.left + (target.offsetWidth - el.offsetWidth) / 2;
+                if (left < 0) left = this.gap;
+                return left;
+            }
+        };
+        el.style.left = `${mapCoords[targetPositionX].call(this)}px`;
+        el.style.top = `${mapCoords[targetPositionY].call(this)}px`;
+    }
+
+    getEl(id) {
+        return document.querySelector(`[data-tooltip-text-id="${id}"]`)
+    }
+
+    getMap(target) {
+        return this.elements.findLast(item => item.target === target);
     }
 }
 

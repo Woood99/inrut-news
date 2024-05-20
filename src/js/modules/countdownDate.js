@@ -1,6 +1,5 @@
 const countdownDate = (item) => {
     const start = new Date(new Date().getTime() + +item.dataset.countdownDate)
-    console.log(start);
     if (updateCounter(item, start) === false) {
         setResultText(item);
     } else {
@@ -45,7 +44,6 @@ const countdownDate = (item) => {
     }
 
     function setValues(item, daysLeft, hoursLeft, minutesLeft, secondsLeft) {
-        console.log();
         const mapElement = getMapElements(item);
         if (mapElement.days) {
             mapElement.days.textContent = daysLeft < 10 ? `0${daysLeft}` : daysLeft;

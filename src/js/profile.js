@@ -108,11 +108,4 @@ document.addEventListener('DOMContentLoaded', () => {
             return currentContainer.querySelectorAll('.input-text');
         }
     }
-
-
-    const arr = ['asd2','asd3'];
-
-    const newArr = arr.map(item => `./src/${item}.html`)
-
-    console.log(['asd',...newArr]);
 })

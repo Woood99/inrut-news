@@ -199,6 +199,20 @@ popup({
         }, 750);
     }
 }, 'record-viewing5');
+popup(null, 'record-viewing7');
+popup({
+    isOpen: (settingsModal) => {
+        const currentID = settingsModal.currentBtn.hasAttribute('data-suggestion-id') ? settingsModal.currentBtn.dataset.suggestionId : false;
+        const btn = settingsModal.container.querySelector('.record-viewing-two__cancel');
+        if (currentID && btn) btn.setAttribute('data-suggestion-id', currentID);
+    },
+    isClose: (settingsModal) => {
+        setTimeout(() => {
+            const btn = settingsModal.container.querySelector('.record-viewing-two__cancel');
+            if (btn) btn.removeAttribute('data-suggestion-id');
+        }, 750);
+    }
+}, 'record-viewing8');
 popup(null, 'record-viewing-two2');
 popup(null, 'personal-area-two');
 popup(null, 'client-fixed');

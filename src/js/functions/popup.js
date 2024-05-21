@@ -152,10 +152,12 @@ const popup = (options, modalName) => {
             settingsModal.container.classList.remove('popup-open');
             popupLastString(modalName, 'delete');
             if (modalActiveList.length === 0) {
-                if (!document.querySelector('[data-menu]').classList.contains('menu--active')) {
+                if (document.querySelector('[data-menu]') && !document.querySelector('[data-menu]').classList.contains('menu--active')) {
                     if (!document.querySelector('.lg-container.gallery-primary-container.lg-show')) {
                         enableScroll();
                     }
+                } else {
+                    enableScroll();
                 }
     
             }

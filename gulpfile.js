@@ -128,6 +128,31 @@ const stylesProd = () => {
         .pipe(dest(paths.buildCssFolder))
 };
 
+const entries = {
+    main: './src/js/main.js',
+    'buy-apartment': './src/js/buy-apartment.js',
+    'submit-app': './src/js/submit-app.js',
+    object: './src/js/object.js',
+    request: './src/js/request.js',
+    'admin-script': './src/js/admin-script.js',
+    ribbon: './src/js/ribbon.js',
+    'chat-page': './src/js/chat-page.js',
+    'service-moving': './src/js/service-moving.js',
+    'service-repair': './src/js/service-repair.js',
+    'app-verif': './src/js/app-verif.js',
+    'mortgage-insur': './src/js/mortgage-insur.js',
+    'create-policy': './src/js/create-policy.js',
+    'calendar-page': './src/js/calendar-page.js',
+    'profile': './src/js/profile.js',
+    'faq': './src/js/faq.js',
+    'mortgage-supp': './src/js/mortgage-supp.js',
+    'documents': './src/js/documents.js',
+    'comparison': './src/js/comparison.js',
+    'investments': './src/js/investments.js',
+    'program': './src/js/program.js',
+    'quiz': './src/js/quiz.js',
+    'promo': './src/js/promo.js'
+}
 
 const scriptsDev = () => {
     return src(paths.srcJs)
@@ -139,31 +164,7 @@ const scriptsDev = () => {
         ))
         .pipe(webpackStream({
             mode: 'development',
-            entry: {
-                main: './src/js/main.js',
-                'buy-apartment': './src/js/buy-apartment.js',
-                'submit-app': './src/js/submit-app.js',
-                object: './src/js/object.js',
-                request: './src/js/request.js',
-                'admin-script': './src/js/admin-script.js',
-                ribbon: './src/js/ribbon.js',
-                'chat-page': './src/js/chat-page.js',
-                'service-moving': './src/js/service-moving.js',
-                'service-repair': './src/js/service-repair.js',
-                'app-verif': './src/js/app-verif.js',
-                'mortgage-insur': './src/js/mortgage-insur.js',
-                'create-policy': './src/js/create-policy.js',
-                'calendar-page': './src/js/calendar-page.js',
-                'profile': './src/js/profile.js',
-                'faq': './src/js/faq.js',
-                'mortgage-supp': './src/js/mortgage-supp.js',
-                'documents': './src/js/documents.js',
-                'comparison': './src/js/comparison.js',
-                'investments': './src/js/investments.js',
-                'program': './src/js/program.js',
-                'quiz': './src/js/quiz.js',
-                'promo': './src/js/promo.js',
-            },
+            entry: entries,
             output: {
                 filename: '[name].js',
             },
@@ -202,30 +203,7 @@ const scriptsProd = () => {
         ))
         .pipe(webpackStream({
             mode: 'production',
-            entry: {
-                main: './src/js/main.js',
-                'buy-apartment': './src/js/buy-apartment.js',
-                'submit-app': './src/js/submit-app.js',
-                object: './src/js/object.js',
-                request: './src/js/request.js',
-                'admin-script': './src/js/admin-script.js',
-                ribbon: './src/js/ribbon.js',
-                'chat-page': './src/js/chat-page.js',
-                'service-moving': './src/js/service-moving.js',
-                'service-repair': './src/js/service-repair.js',
-                'app-verif': './src/js/app-verif.js',
-                'mortgage-insur': './src/js/mortgage-insur.js',
-                'create-policy': './src/js/create-policy.js',
-                'calendar-page': './src/js/calendar-page.js',
-                'profile': './src/js/profile.js',
-                'faq': './src/js/faq.js',
-                'mortgage-supp': './src/js/mortgage-supp.js',
-                'documents': './src/js/documents.js',
-                'comparison': './src/js/comparison.js',
-                'investments': './src/js/investments.js',
-                'program': './src/js/program.js',
-                'quiz': './src/js/quiz.js',
-            },
+            entry: entries,
             output: {
                 filename: '[name].js',
             },

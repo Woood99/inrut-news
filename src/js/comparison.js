@@ -76,7 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const spollers = comparison.querySelectorAll('.comparison-block__body .spollers__item');
 
             const bodyTop = comparison.querySelector('.comparison-block__top-container');
-            const options = comparison.querySelectorAll('.comparison-block__option');
+            const bodyMain = comparison.querySelector('.comparison-block__body');
+
             let speed = 0;
             spollers.forEach(item => {
                 if (!item.classList.contains('_active')) {
@@ -86,16 +87,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             })
             interimDisabledNavBtn();
+
             setTimeout(() => {
                 bodyTop.scrollTo({
                     left: formula,
                     behavior: 'smooth',
                 })
-                options.forEach(item => {
-                    item.scrollTo({
-                        left: formula,
-                        behavior: 'smooth',
-                    })
+                bodyMain.scrollTo({
+                    left: formula,
+                    behavior: 'smooth',
                 })
 
                 const headerList = header ? header.querySelector('.comparison-header__list') : null;
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 setTimeout(() => {
                     checkNavBtn();
-                }, 300);
+                }, 500);
             }, speed);
         }
 
@@ -131,14 +131,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (bodyTop.scrollLeft === 0) {
                 blockPrev.classList.add('_disabled-hidden');
                 headerPrev.classList.add('_disabled-hidden');
+
+                comparison.classList.remove('_scroll');
             } else {
                 blockPrev.classList.remove('_disabled-hidden');
                 headerPrev.classList.remove('_disabled-hidden');
+
+                comparison.classList.add('_scroll');
             }
 
-            console.log(bodyTop.offsetWidth + bodyTop.scrollLeft - 1);
-            console.log(bodyTop.scrollWidth);
-            if (Math.ceil(bodyTop.offsetWidth + bodyTop.scrollLeft) + 2 === bodyTop.scrollWidth) {
+            if (bodyTop.scrollLeft >= (bodyTop.scrollWidth - bodyTop.clientWidth - 20)) {
                 blockNext.classList.add('_disabled-hidden');
                 headerNext.classList.add('_disabled-hidden');
             } else {
@@ -239,4 +241,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 })
-  

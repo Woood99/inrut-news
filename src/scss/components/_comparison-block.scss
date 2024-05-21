@@ -1,36 +1,49 @@
 .comparison-block {
+    width: 1180px;
     --width-actions: 335px;
+    --width-col: 267.33px;
     position: relative;
 
     .tabs-primary {
         &__container {
             box-shadow: none !important;
         }
-        &__content{
 
-        }
-        .tabs__body{
+        &__content {}
+
+        .tabs__body {
             background-color: var(--white) !important;
             box-shadow: var(--shadow-primary) !important;
-            padding: 32px !important;
+            padding: 32px 0 !important;
             border-radius: 12px !important;
+            
+            &._scroll{
+                .comparison-block__subtitle {
+                    min-width: calc(var(--width-actions) + 44px);
+                    width: calc(var(--width-actions) + 44px);
+                }
+            }
         }
     }
 
     &__nav {
-        top: 178px;
+        top: 181px;
         z-index: 10;
     }
-    &__prev,&__next{
+
+    &__prev,
+    &__next {
         transform: translate(0);
-       position: absolute;
+        position: absolute;
     }
-    &__prev{
-        left: calc(var(--width-actions) + 16px);
+
+    &__prev {
+        left: calc(var(--width-actions) + 32px);
         transform: translateX(100%);
     }
-    &__next{
-        right: 16px;
+
+    &__next {
+        right: 0;
         transform: translateX(-100%);
     }
 
@@ -44,6 +57,8 @@
 
         transition: padding-top $transitionSpeed $transitionFunction,
             padding-bottom $transitionSpeed $transitionFunction;
+
+            padding: 0 0 0 32px;
     }
 
     &__top-container {
@@ -51,7 +66,7 @@
         width: 100%;
 
         overflow-x: auto;
-        scrollbar-width: none;
+         scrollbar-width: none;
     }
 
     &__left-col {
@@ -111,14 +126,18 @@
     }
 
     &__col {
-        min-width: calc((100% - var(--width-actions)) / 3);
-        width: calc((100% - var(--width-actions)) / 3);
+        min-width: var(--width-col);
+        width: var(--width-col);
+        flex: 0 0 var(--width-col);
         padding: 0 12px;
 
         &._none {
             color: var(--primaryTwo);
         }
 
+        &:last-child{
+            padding-right: 32px;
+        }
     }
 
     &__col-top {
@@ -132,10 +151,12 @@
 
             .comparison-empty {
                 width: 244px;
-                &__image{
+
+                &__image {
                     height: 140px;
                 }
-                &__content{
+
+                &__content {
                     padding: 50px 16px;
                 }
             }
@@ -146,6 +167,8 @@
 
     &__body {
         margin-top: 16px;
+        overflow-x: auto;
+        scrollbar-width: none;
         .spollers {
             &__item {
                 &:not(:last-child) {
@@ -161,8 +184,11 @@
                 align-items: center;
                 gap: 16px;
                 text-align: left;
-                width: 100%;
-                padding: 16px 0;
+              position: sticky;
+              left: 0;
+              z-index: 2;
+                padding: 16px 32px;
+
 
                 svg {
                     width: 30px;
@@ -183,7 +209,7 @@
     }
 
     &__options {
-     
+        transition: padding $transitionSpeed $transitionFunction;
     }
 
     &__option {
@@ -191,21 +217,20 @@
         position: relative;
 
         padding: 24px 0;
-        overflow-x: auto;
-        scrollbar-width: none;
+     
 
-            &::before {
-                content: '';
-                min-width: 1100px;
-                width: var(--width-option-line);
-                height: 1px;
-                background-color: var(--primary100);
-                position: absolute;
-                bottom: 0;
-                right: 0;
-                left: 32px;
-            }
-        &::after{
+        &::before {
+            content: '';
+            width: var(--width-option-line);
+            height: 1px;
+            background-color: var(--primary100);
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 32px;
+        }
+
+        &::after {
             content: '';
             min-width: 1300px;
             width: var(--width-option);
@@ -215,7 +240,7 @@
             bottom: 0;
             right: 0;
             left: 0;
-            opacity: 0;
+             opacity: 0;
         }
 
 
@@ -238,6 +263,7 @@
         .comparison-block__col {
             z-index: 1;
             position: relative;
+
             >span {
                 &._active {
                     border-radius: 12px;
@@ -255,9 +281,9 @@
 
         @media (min-width:$desktop-min) {
             &:hover {
-               &::after{
-                opacity: 1;
-               }
+                &::after {
+                    opacity: 1;
+                }
 
                 .comparison-block__subtitle {
                     background-color: #f0f0f0;
@@ -269,12 +295,18 @@
     &__subtitle {
         position: sticky;
         z-index: 2;
-        left: 0;
+       left: 0;
+       padding: 0 16px 0 32px;
         background-color: var(--white);
-
         display: flex;
         align-items: center;
         gap: 8px;
+
+        min-width: calc(var(--width-actions) + 32px);
+        width: calc(var(--width-actions) + 32px);
+
+        transition:  min-width $transitionSpeed $transitionFunction,
+        width $transitionSpeed $transitionFunction;
 
         .secondary-tooltip {
             &__content {
@@ -286,6 +318,7 @@
         }
     }
 }
+
 
 .comparison-card {
     position: relative;
@@ -389,6 +422,7 @@
 
 .comparison-header {
     --width-actions: 335px;
+    --width-col: 267.33px;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -442,8 +476,9 @@
     }
 
     &__item {
-        min-width: calc((100% - var(--width-actions)) / 3);
-        width: calc((100% - var(--width-actions)) / 3);
+        min-width: var(--width-col);
+        width: var(--width-col);
+        flex: 0 0 var(--width-col);
         padding: 0 12px;
     }
 
@@ -493,7 +528,8 @@
     height: 100%;
 
     &__image {
-      height: 125px;
+        height: 125px;
+
         img {
             height: 100%;
             width: 100%;

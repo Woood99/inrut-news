@@ -1,0 +1,1802 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Подбор недвижимости внутренняя</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/request.css">
+    <script id="ymaps-id"></script>
+    <script defer src="js/request.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container site-container--your-app">
+        <header class="header header--new">
+    <div class="header__top header-top">
+        <div class="header-top__container container">
+            <button class="header-top__burger burger" aria-label="Открыть меню" aria-expanded="false" data-burger>
+                <span class="burger__line"></span>
+            </button>
+            <div class="header-top__city city" data-da=".header-main__nav,1212,3">
+                <button type="button" class="btn btn-reset city__title" data-popup-path="city">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#location-fill"></use>
+                    </svg>
+                    <span class="city__name">Краснодар</span>
+                    <p class="city__descr">
+                        Изменить
+                    </p>
+                </button>
+            </div>
+            <div class="header-top__actions">
+                <div class="header-top__action header-action header-action--notif secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                    <button type='button' data-popup-path="notif-popup" class="btn btn-reset header-action__title secondary-tooltip__btn">
+                        <svg class='tw-w-4 tw-h-4'>
+                            <use xlink:href="./img/sprite.svg#notification"></use>
+                        </svg>
+                        <div class="notif-counter tw-absolute tw-top-[12px] tw-right-[10px]">4</div>
+                    </button>
+                    <div class="secondary-tooltip__content">
+                        Уведомления
+                    </div>
+                </div>
+                <div class="header-top__action header-action header-action--comp secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                    <a href="./comparison.html" class="btn btn-reset header-action__title secondary-tooltip__btn">
+                        <svg class='w-16 h-16'>
+                            <use xlink:href="./img/sprite.svg#comparison"></use>
+                          </svg>
+                    </a>
+                    <div class="secondary-tooltip__content">
+                        Сравнение
+                    </div>
+                </div>
+                <div class="header-top__action header-action header-action--cashback secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                    <a href="./present.html" class="btn btn-reset header-action__title secondary-tooltip__btn">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#bonus"></use>
+                        </svg>
+                    </a>
+                    <div class="secondary-tooltip__content">
+                        Кешбэк и подарки
+                    </div>
+                </div>
+                <div class="header-top__action header-action header-action--calendar secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                    <a href="./calendar.html" class="btn btn-reset header-action__title secondary-tooltip__btn">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#calendar"></use>
+                        </svg>
+                    </a>
+                    <div class="secondary-tooltip__content">
+                        Календарь
+                    </div>
+                </div>
+                <div class="header-top__action header-action header-action--add">
+                    <button type="button" data-popup-path="add" class="btn btn-reset header-action__title">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#add"></use>
+                        </svg>
+                        <span class="header-action__name">
+                            Добавить
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="header-top__personal header-personal">
+                <button type="button" class="btn btn-reset header-personal__title" data-popup-path="personal-area-two">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#door-open"></use>
+                    </svg>
+                    <span class="header-personal__name">
+                        Кабинет
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="header__main header-main">
+        <div class="header-main__container container">
+            <a href="#" class="header-main__logo logo" data-da=".header-top__container,1212,1">
+                <img loading="lazy" src="./img/logo.svg" width="238" height="32" class="logo__img" alt="Продам.Онлайн">
+            </a>
+            <nav class="header-main__nav nav" data-menu>
+                <button type="button" class="btn btn-reset header-main__close">Закрыть</button>
+                <div class="header-main__title">Меню</div>
+                <ul class="nav__list list-reset" data-spollers="1212,max" data-one-spoller>
+                    <li class="nav__item nav-dropdown">
+                        <span class="nav__link" data-spoller>
+                            Новостройки
+                            <svg class="nav__link-arrow">
+                                <use xlink:href="img/sprite.svg#arrow-small"></use>
+                            </svg>
+                        </span>
+                        <div class="nav-dropdown__container container">
+                            <div class="nav-dropdown-content">
+                                <div class="nav-dropdown-content__body">
+                                    <a href="#" class="nav-dropdown-content__item">
+                                        <span>Жилые комплексы</span>
+                                        <span>36 990 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Старт продаж</span>
+                                        <span>16 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Каталог застройщиков</span>
+                                        <span>15 застройщиков</span>
+                                    </a>
+                                    <a href="./stock.html" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Скидки и акции</span>
+                                    </a>
+                                    <a href="./stock-developer.html" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Shorts, видео</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one col-span-2">
+                                        <span>Добавить заявку на покупку квартиры в новостройке</span>
+                                    </a>
+                                </div>
+                                <a href="#" class="nav-dropdown-content__card-info card-info" data-da=".header-main__banners-slide--1,1212,2">
+                                    <span class="card-info__title">
+                                        Успейте взять ипотеку
+                                        по выгодной ставке
+                                    </span>
+                                    <div class="card-info__image" style="background-image: url('./img/banner-photo-4.png')">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">
+                            Вторичка
+                        </a>
+                    </li>
+                    <li class="nav__item nav-dropdown">
+                        <span class="nav__link" data-spoller>
+                            Дома и участки
+                            <svg class="nav__link-arrow">
+                                <use xlink:href="img/sprite.svg#arrow-small"></use>
+                            </svg>
+                        </span>
+                        <div class="nav-dropdown__container container">
+                            <div class="nav-dropdown-content">
+                                <div class="nav-dropdown-content__body">
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Дома, коттеджи, дачи</span>
+                                        <span>20 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Участки</span>
+                                        <span>20 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Коттеджные поселки</span>
+                                        <span>20 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Дома от застройщика</span>
+                                        <span>20 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Построить дом</span>
+                                        <span>20 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one col-span-2">
+                                        <span>Добавить заявку на покупку</span>
+                                    </a>
+                                </div>
+                                <a href="#" class="nav-dropdown-content__card-info card-info" data-da=".header-main__banners-slide--2,1212,2">
+                                    <span class="card-info__title">
+                                        Успейте взять ипотеку
+                                        по выгодной ставке
+                                    </span>
+                                    <div class="card-info__image" style="background-image: url('./img/banner-photo-4.png')">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">
+                            Покупка
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="./registry.html" class="nav__link">
+                            Реестр проблемных объектов
+                        </a>
+                    </li>
+                </ul>
+                <div class="swiper header-main__banners">
+                    <div class="swiper-wrapper header-main__banners-container">
+                        <div class="swiper-slide header-main__banners-slide header-main__banners-slide--1"></div>
+                        <div class="swiper-slide header-main__banners-slide header-main__banners-slide--2"></div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+        <main class="main main-page-gap your-app your-app-my purchase-request">
+            <div class="container your-app__container">
+                <h1 class="your-app__title title-2" data-da=".mobile-top,1212,first">
+                    Моя заявка
+                </h1>
+                <div class="top-page-inner">
+                    <div class="top-page-inner__btns">
+                        <a href="edit-app.html" class="btn btn-reset top-page-inner__btn edit-btn">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#pencil"></use>
+                            </svg>
+                            <span>Редактировать</span>
+                        </a>
+                        <button type="button" class="btn btn-reset top-page-inner__btn delete-btn" title="Закрыть" data-popup-path="warning-remove2">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#trash"></use>
+                            </svg>
+                            <span>Закрыть</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="purchase-request__body bid" style="margin-top: 32px;">
+                <div class="mobile-top">
+                    <button type="button" class="btn btn-reset mobile-top__btn">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#dots-vertical">
+                            </use>
+                        </svg>
+                    </button>
+                </div>
+                <div class="bid__container container--no-padding" style="padding-top: 16px;">
+                    <div class="bid__body">
+                        <div class="bid__maps bid-maps">
+                            <h2 class="bid__title title-2">
+                                Расположение поиска
+                            </h2>
+                            <div class="bid-maps__container map-primary remove-copyrights-pane" id="bid-maps"></div>
+                            <li class="bid-maps__item bid__item">
+                                <span>Можно предлагать соседние районы</span>
+                                <span>Да</span>
+                            </li>
+                        </div>
+                        <div class="bid__start">
+                            <h2 class="bid__title title-2">
+                               Параметры заявки
+                            </h2>
+                        </div>
+                        <ul class="bid__list list-reset">
+                            <li class="bid__item">
+                                <span>Создано</span>
+                                <span>09:40   25.12.2022</span>
+                            </li>
+                            <li class="bid__item">
+                                <span>Планирую смотреть</span>
+                                <span>В течении месяца</span>
+                            </li>
+                            <li class="bid__item">
+                                <span>Город</span>
+                                <span>Краснодар</span>
+                            </li>
+                            <li class="bid__item">
+                                <span>Станция метро</span>
+                                <span>
+                                    <span>Европейский квартал, &nbsp;</span>
+                                    <span>Добродом, &nbsp;</span>
+                                    <span>Сказкагрда, &nbsp;</span>
+                                    <span>Плаза</span>
+                                </span>
+                            </li>
+                            <li class="bid__item">
+                                <span>Застройщик</span>
+                                <span>
+                                    <span>ПИК, &nbsp;</span>
+                                    <span>ГК Самолет, &nbsp;</span>
+                                    <span>ГК "А101", &nbsp;</span>
+                                    <span>ГК МИЦ</span>
+                                </span>
+                            </li>
+                            <li class="bid__item">
+                                <span>Комплекс</span>
+                                <span>
+                                    <span>Европейский квартал, &nbsp;</span>
+                                    <span>Добродом, &nbsp;</span>
+                                    <span>Сказкагрда, &nbsp;</span>
+                                    <span>Плаза</span>
+                                </span>
+                            </li>
+                            <li class="bid__item bid__item--price">
+                                <span>Сумма</span>
+                                <div>
+                                    <span>3 500 000 ₽</span>
+                                    <div class="bid__item-tooltips main-tooltips" data-max-tooltip="3">
+                                        <div class="main-tooltip main-tooltip--mobile-visible main-tooltip--budget">
+                                            <div class="main-tooltip__target">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#budget"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="main-tooltip__content">
+                                                Наличные
+                                            </div>
+                                        </div>
+                                        <div class="main-tooltip main-tooltip--mobile-visible main-tooltip--dollar">
+                                            <div class="main-tooltip__target">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#dollar"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="main-tooltip__content">
+                                                Используется сертификат
+                                            </div>
+                                        </div>
+                                        <div class="main-tooltip main-tooltip--mobile-visible main-tooltip--bolt">
+                                            <div class="main-tooltip__target">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#bolt"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="main-tooltip__content">
+                                                Срочная заявка
+                                            </div>
+                                        </div>
+                                        <div class="main-tooltip main-tooltip--mobile-visible main-tooltip--bolt">
+                                            <div class="main-tooltip__target">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#bolt"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="main-tooltip__content">
+                                                Срочная заявка
+                                            </div>
+                                        </div>
+                                        <div class="main-tooltip main-tooltip--mobile-visible main-tooltip--budget">
+                                            <div class="main-tooltip__target">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#budget"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="main-tooltip__content">
+                                                Наличные
+                                            </div>
+                                        </div>
+                                        <div class="main-tooltip main-tooltip--mobile-visible main-tooltip--dollar">
+                                            <div class="main-tooltip__target">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#dollar"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="main-tooltip__content">
+                                                Используется сертификат
+                                            </div>
+                                        </div>
+                                        <div class="main-tooltip main-tooltip--mobile-visible main-tooltip--bolt">
+                                            <div class="main-tooltip__target">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#bolt"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="main-tooltip__content">
+                                                Срочная заявка
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-reset main-tooltip-more" hidden>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="bid__item bid__item--calc-prop">
+                                <span>Свойства рассчёта</span>
+                                <span>
+                                    <span>Наличные, &nbsp;</span>
+                                    <span>Ипотека, &nbsp;</span>
+                                </span>
+                            </li>
+                            <li class="bid__item">
+                                <span>Ипотечная программа</span>
+                                <span>Семейная ипотека</span>
+                            </li>
+                            <li class="bid__item">
+                                <span>Тип объекта</span>
+                                <span>Квартира</span>
+                            </li>
+                            <li class="bid__item">
+                                <span>Кол-во комнат</span>
+                                <span>3</span>
+                            </li>
+                            <li class="bid__item">
+                                <span>Площадь общая от</span>
+                                <span>54 м²</span>
+                            </li>
+                            <li class="bid__item">
+                                <span>Площадь кухни от</span>
+                                <span>54 м²</span>
+                            </li>
+                            <li class="bid__item">
+                                <span>Этаж до</span>
+                                <span>12</span>
+                            </li>
+                            <li class="bid__item">
+                                <span>Класс</span>
+                                <span>
+                                    <span>Комфорт, &nbsp;</span>
+                                    <span>Бизнес &nbsp;</span>
+                                </span>
+                            </li>
+                            <li class="bid__item">
+                                <span>Год сдачи</span>
+                                <span>
+                                    <span>Сдан, &nbsp;</span>
+                                    <span>2023, &nbsp;</span>
+                                    <span>2024 &nbsp;</span>
+                                </span>
+                            </li>
+                            <li class="bid__item">
+                                <span>Отделка</span>
+                                <span>
+                                    <span>С отделкой, &nbsp;</span>
+                                    <span>Отделка как опция, &nbsp;</span>
+                                    <span>Отделка white box, &nbsp;</span>
+                                    <span>Без отделки &nbsp;</span>
+                                </span>
+                            </li>
+                            <li class="bid__item">
+                                <span>Балкон</span>
+                                <span>Без балкона</span>
+                            </li>
+                            <li class="bid__item">
+                                <span>Санузел</span>
+                                <span>Совмещённый</span>
+                            </li>
+                            <li class="bid__item">
+                                <span>Особенности комплекса</span>
+                                <span>
+                                    <span>Видеонаблюдение, &nbsp;</span>
+                                    <span>Видовые квартиры, &nbsp;</span>
+                                    <span>Закрытый двор, &nbsp;</span>
+                                    <span>Крытый наземный паркинг, &nbsp;</span>
+                                    <span>Малоэтажный ЖК, &nbsp;</span>
+                                    <span>Мастер спальня, &nbsp;</span>
+                                    <span>Подземный паркинг, &nbsp;</span>
+                                </span>
+                            </li>
+                            <li class="bid__item">
+                                <span>Инфраструктура</span>
+                                <span>
+                                    <span>Школа рядом, &nbsp;</span>
+                                    <span>В детский сад пешком, &nbsp;</span>
+                                    <span>Детские площадки в шаговой доступности, &nbsp;</span>
+                                    <span>Рядом вузы и ссузы, &nbsp;</span>
+                                    <span>Магазин у дома, &nbsp;</span>
+                                    <span>Рядом медучереждения и аптеки , &nbsp;</span>
+                                    <span>Рядом кафе и рестораны &nbsp;</span>
+                                </span>
+                            </li>
+                            <li class="bid__item">
+                                <span>Окружение</span>
+                                <span>
+                                    <span>Рядом водоём, &nbsp;</span>
+                                    <span>Рядом лес, &nbsp;</span>
+                                    <span>Рядом набережная, &nbsp;</span>
+                                    <span>Рядом парк &nbsp;</span>
+                                </span>
+                            </li>
+                            <li class="bid__item">
+                                <span>Скидки и акции</span>
+                                <span>
+                                    <span>Рассрочка, кешмбек и мат.капитал &nbsp;</span>
+                                    <span>Трансфер/такси, &nbsp;</span>
+                                </span>
+                            </li>
+                            <li class="bid__item">
+                                <span>Популярные запросы</span>
+                                <span>
+                                    <span>Ипотека 0.1% &nbsp;</span>
+                                    <span>Ипотека без первоначального взноса, &nbsp;</span>
+                                </span>
+                            </li>
+                            <li class="bid__item">
+                                <span data-replace-text="Преимущества объекта,1212">Уникальные преимущества объекта</span>
+                                <span>
+                                    <span>Мастер-спальня &nbsp;</span>
+                                    <span>Камин, &nbsp;</span>
+                                    <span>Зимний сад, &nbsp;</span>
+                                </span>
+                            </li>
+
+                        </ul>
+                        <div class="bid__descr bid-descr">
+                            <div class="bid-descr__title title-2">
+                                Описание
+                            </div>
+                            <div class="bid-descr__content">
+                                <p>
+                                    Семья из 3 человек ищет квартиру до 3,5 млн рублей, в ипотеку, в сделке используется
+                                    материнский
+                                    капитал. Ипотека без первоначальный взноса.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="bid__import bid-import">
+                            <h2 class="bid-import__title title-2">
+                                Важные детали в поиске объекта
+                            </h2>
+                            <p class="bid__descr bid__descr--border">
+                                Близость метро
+                            </p>
+                        </div>
+                    </div>
+                    <div class="submit-app">
+                    <div class="submit-app__row communic-method-radios radio-primary">
+                        <h2 class="communic-method-radios__title submit-app__row-title title-2">
+                            Способ связи
+                        </h2>
+                        <div class="communic-method-radios__wrapper">
+                            <div class="radio-primary__item">
+                                <input hidden id="communic-method_1" class="radio-primary__input" type="radio" value="По телефону и в сообщениях" name="communic-method">
+                                <label for="communic-method_1" class="radio-primary__label">
+                                    <span class="radio-primary__text">По телефону и в сообщениях</span>
+                                </label>
+                            </div>
+                            <div class="radio-primary__item">
+                                <input hidden id="communic-method_2" class="radio-primary__input" type="radio" value="Только переписка в сообщениях" name="communic-method">
+                                <label for="communic-method_2" class="radio-primary__label">
+                                    <span class="radio-primary__text">Только переписка в сообщениях</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="submit-app__row your-contacts-field">
+                        <h2 class="your-contacts-field__title submit-app__row-title title-2">
+                            Ваши контакты
+                        </h2>
+                        <div class="your-contacts-field__wrapper">
+                            <div class="input-text input-text--no-exp input-text--disabled">
+                                <label class="input-text__label">
+                                    <span>Номер телефона</span>
+                                    <input type="text" name="Застройщик" class="input-reset input-text__input" value="8 921 645 45 45" disabled placeholder="Номер телефона">
+                                </label>
+                            </div>
+                            <div class="input-text input-text--no-exp input-text--disabled">
+                                <label class="input-text__label">
+                                    <span>Имя, фамилия</span>
+                                    <input type="text" name="Имя, фамилия" class="input-reset input-text__input" value="Алексей Г." disabled placeholder="Имя, фамилия">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <div class="bid__sidebar">
+                        <div class="_sticky">
+                            <div class="purchase-request__history" data-da=".purchase-request,1212,2">
+                                <h2 class="title-3 purchase-request__history-title">История изменения заявки</h2>
+                                <button type="button" class="btn btn-reset btn-primary" data-popup-path="history-changes">Смотреть</button>
+                                <button type="button" class="btn btn-reset btn-primary" data-popup-path="history-changes" disabled="">Смотреть</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="plate-bottom purchase-request-plate-bottom">
+                        <button type="button" class="btn btn-reset btn-primary purchase-request-plate-bottom__btn">
+                            Предложить объект
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="your-app__banners container main-banners">
+                <div class="swiper main-banners__container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide main-banners__item main-banner main-banner--one">
+                            <div class="main-banner__content">
+                                <h2 class="main-banner__title title-2">
+                                    Семейная ипотека от 2,99%
+                                </h2>
+                                <p class="main-banner__descr">
+                                    Купите квартиру в ипотеку
+                                    по специальной программе для семей с детьми
+                                </p>
+                                <a href="#" class="btn btn-reset btn-primary main-banner__btn">
+                                    Смотреть предложения
+                                </a>
+                            </div>
+                            <div class="main-banner__image" style="background-image: url('./img/banner-photo-1.png')" ;>
+                            </div>
+                        </div>
+                        <div class="swiper-slide main-banners__item main-banner main-banner--two">
+                            <div class="main-banner__content">
+                                <h2 class="main-banner__title title-2">
+                                    Успейте взять ипотеку
+                                    по выгодной ставке
+                                </h2>
+                                <p class="main-banner__descr">
+                                    Специальные предложения
+                                    этой весны от 11% на новостройки
+                                </p>
+                                <a href="#" class="btn btn-reset btn-primary main-banner__btn">
+                                    Смотреть предложения
+                                </a>
+                            </div>
+                            <div class="main-banner__image" style="background-image: url('./img/banner-photo-2.png')" ;>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer__container container">
+        <div class="footer__top">
+            <a href="#" class="footer__logo logo">
+                <img loading="lazy" src="./img/logo.svg" width="83" height="25" class="logo__img"
+                    alt="Продам.Онлайн">
+            </a>
+            <nav class="footer__nav nav">
+                <ul class="nav__list list-reset">
+                    <li class="nav__item"><a href="#" class="nav__link">Продажа</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Новостройки</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Покупка</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Услуги</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer__write">
+            <p>
+                Есть предложения, напишите нам.
+            </p>
+            <button type="button" class="btn btn-reset btn-secondary footer__btn">Написать</button>
+        </div>
+        <p class="footer__descr">
+            © 2021-2022 ООО «Продам онлайн», официальный сайт использует куки-файлы и другие технологии, чтобы помочь
+            вам в навигации, а также предоставить лучший пользовательский опыт, анализировать использование наших
+            продуктов и услуг, повысить качество рекламных и маркетинговых активностей. Если Вы не хотите, чтобы Ваши
+            пользовательские данные обрабатывались, пожалуйста, ограничьте их использование в своём браузере.
+        </p>
+    </div>
+</footer>
+
+    </div>
+    <!-- popups -->
+    <div class="popup popup-primary popup-primary--left popup-primary--city" data-popup-mobile-fast>
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="city">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content city-popup">
+            <h2 class="city-popup__title title-2">
+                Выбор города
+            </h2>
+            <div class="city-popup__input">
+                <button type="button" class="btn btn-reset">
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#search"></use>
+                    </svg>
+                </button>
+                <input type="search" name="Название города" class="input-reset" placeholder="Введите название города">
+                <button type="button" class="btn btn-reset city-popup__clear" hidden>
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#x"></use>
+                    </svg>
+                </button>
+            </div>
+            <div class="city-popup__list">
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Москва</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Калининград</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Санкт-Петербург</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Казань</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Краснодар</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Екатеринбург</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Нижний-Новгород</button>
+            </div>
+            <div class="checkbox-secondary city-popup__auto">
+                <input id="city-auto" name="city-auto" class="checkbox-secondary__input" type="checkbox" value="true">
+                <label for="city-auto" class="checkbox-secondary__label">
+                    <span class="checkbox-secondary__text">
+                        Определить автоматически
+                    </span>
+                </label>
+            </div>
+            <button type="button" class="btn btn-reset btn-primary js-popup-close city-popup__save" disabled>Сохранить</button>
+        </div>
+    </div>
+</div>
+    <div class="popup popup-primary popup-primary--right popup-primary--add">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="add">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content add-popup">
+            <h2 class="add-popup__title title-2">
+                Добавить
+            </h2>
+            <ul class="add-popup__list list-reset">
+                <li class="add-popup__item">
+                    <a href="#" class="add-popup__link">
+                        <span>Заявка на покупку недвижимости</span>
+                    </a>
+                </li>
+                <li class="add-popup__item">
+                    <a href="#" class="add-popup__link">
+                        <span>Объект на продажу</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+    <div class="popup popup-secondary popup-secondary--right popup-secondary--personal">
+    <div class="popup__container popup-secondary__container" role="dialog" aria-modal="true" data-popup-target="personal-area-two">
+        <button class="btn-reset js-popup-close popup__close popup-secondary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-secondary__content personal-area">
+            <div class="personal-area__container">
+                <h2 class="personal-area__title title-2">
+                    Личный кабинет
+                </h2>
+                <div class="personal-area__info">
+                    <div class="personal-area__avatar avatar">
+                        <img loading="lazy" src="./img/avatar-1.jpg" width="45" height="45" alt="Иван П.">
+                    </div>
+                    <span class=" personal-area__name">
+                        Иван П.
+                    </span>
+                    <a href="./edit-profile.html" class="btn btn-reset personal-area__edit">Редактировать профиль</a>
+                </div>
+                <nav class="personal-area__nav">
+                    <ul data-spollers class="personal-area__list list-reset">
+                        <li class="personal-area__item personal-area-dropdown">
+                            <button type="button" data-spoller class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#add"></use>
+                                </svg>
+                                <span>Добавить</span>
+                                <svg class="personal-area-dropdown__arrow">
+                                    <use xlink:href="img/sprite.svg#arrow-small"></use>
+                                </svg>
+                            </button>
+                            <div class="personal-area-dropdown__body">
+                                <a href="#" class="btn btn-reset personal-area__btn">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#tg"></use>
+                                    </svg>
+                                    <span>Заявка на покупку недвижимости</span>
+                                </a>
+                                <a href='#' class="btn btn-reset personal-area__btn">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#house"></use>
+                                    </svg>
+                                    <span>Объект на продажу</span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#chat"></use>
+                                </svg>
+                                <span>Чат</span>
+                                <span class="personal-area__quantity">
+                                    +6
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <a href="./present.html" type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#bonus"></use>
+                                </svg>
+                                <span>
+                                    Кешбэк и подарки
+                                </span>
+                                <span class="personal-area__quantity">
+                                    +6
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#cart-1"></use>
+                                </svg>
+                                <span>Мои заявки на покупку недвижимости</span>
+                            </button>
+                        </li>
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#cart-3"></use>
+                                </svg>
+                                <span>Предложения по заявкам</span>
+                                <span class="personal-area__quantity">
+                                    +6
+                                </span>
+                            </button>
+                        </li>
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#calendar"></use>
+                                </svg>
+                                <span>Календарь, запись на просмотры</span>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#house-laptop2"></use>
+                                </svg>
+                                <span>Мои объекты</span>
+                                <span class="personal-area__quantity">
+                                    6
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#sign-in"></use>
+                                </svg>
+                                <span>Выйти</span>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="popup popup-primary popup-primary--right popup-primary--edit-profile">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="edit-profile">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <form action="#" class="popup__content popup-primary__content edit-profile container">
+            <h2 class="edit-profile__title title-2">
+                Настройки личного кабинета
+            </h2>
+            <div class="col">
+                <div class="edit-profile__user">
+                    <div class="edit-profile__avatar avatar">
+                        <img loading="lazy" src="./img/avatar.png" width="90" height="90" alt="Иван Петров">
+                        <div>
+                            <input type="file" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                            <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.02 5.714h5.96c.868 0 1.376.253 1.874.838.026.03.446.552.903 1.116.457.565 1.388.903 2.243.903h.572c2.285 0 4 1.715 4 4.572v8.571c0 2.286-2.286 4.572-5.143 4.572H8.572c-2.858 0-5.143-2.286-5.143-4.572v-8.571c0-2.857 1.714-4.572 4-4.572H8c.855 0 1.786-.338 2.243-.903.457-.564.877-1.086.903-1.116.498-.585 1.006-.838 1.873-.838zM9.885 16.857A6.116 6.116 0 0016 22.971a6.117 6.117 0 006.114-6.114A6.117 6.117 0 0016 10.743a6.116 6.116 0 00-6.114 6.114zm1.828 0a4.285 4.285 0 118.571 0 4.285 4.285 0 01-8.57 0z"
+                                    fill="currentColor"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="edit-profile__subtitle">
+                        Фамилия, имя, отчество
+                    </div>
+                    <div class="edit-profile__name title-2">
+                        Иван Петров Сергеевич
+                    </div>
+                </div>
+                <div class="edit-profile__tied">
+                    <div class="secondary-tooltip secondary-tooltip--dark">
+                        <button type="button" class="btn btn-reset edit-profile__tied-btn secondary-tooltip__btn" data-popup-path="sber-tied">
+                            <img loading="lazy" src="./img/sber.png" width="34" height="34" alt="Сбербанк ID">
+                        </button>
+                        <div class="secondary-tooltip__content">
+                            Привязанные аккаунты
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="edit-profile__wrapper">
+                <h4 class="edit-profile__wrapper-subtitle title-3">Личные данные</h4>
+                <label class="input-primary input-primary--disabled">
+                    <input type="text" name="Фамилия" class="input-reset input-primary__input" disabled value="Петров" placeholder="Фамилия">
+                    <div class="secondary-tooltip secondary-tooltip--dark secondary-tooltip--top-center">
+                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#info"></use>
+                            </svg>
+                        </button>
+                        <div class="secondary-tooltip__content">
+                            Для вашего профиля редактирование данных недоступно.
+                        </div>
+                    </div>
+                </label>
+                <label class="input-primary input-primary--disabled">
+                    <input type="text" name="Имя" class="input-reset input-primary__input" disabled value="Иван" placeholder="Имя">
+                    <div class="secondary-tooltip secondary-tooltip--dark">
+                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#info"></use>
+                            </svg>
+                        </button>
+                        <div class="secondary-tooltip__content">
+                            Для вашего профиля редактирование данных недоступно.
+                        </div>
+                    </div>
+                </label>
+                <label class="input-primary input-primary--disabled">
+                    <input type="text" name="Отчество" class="input-reset input-primary__input" disabled value="Сергеевич" placeholder="Отчество">
+                    <div class="secondary-tooltip secondary-tooltip--dark secondary-tooltip--top-center">
+                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#info"></use>
+                            </svg>
+                        </button>
+                        <div class="secondary-tooltip__content">
+                            Для вашего профиля редактирование данных недоступно.
+                        </div>
+                    </div>
+                </label>
+                <label class="input-primary input-primary--disabled">
+                    <input type="text" name="Дата рождения" class="input-reset input-primary__input" disabled value="16.02.1982" placeholder="Телефон">
+                    <div class="secondary-tooltip secondary-tooltip--dark">
+                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#info"></use>
+                            </svg>
+                        </button>
+                        <div class="secondary-tooltip__content">
+                            Для вашего профиля редактирование данных недоступно.
+                        </div>
+                    </div>
+                </label>
+                <div class="input-text input-text--no-exp _active">
+                    <label class="input-text__label">
+                        <span>Номер телефона</span>
+                        <input type="tel" name="Телефон" class="input-reset input-text__input input-phone-mask" value="89876543210" placeholder="">
+                    </label>
+                </div>
+                <div class="input-text input-text--no-exp _active">
+                    <label class="input-text__label">
+                        <span>Эл.почта</span>
+                        <input type="text" name="Эл.почта" class="input-reset input-text__input" value="address@gmail.com" placeholder="">
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-reset btn-primary edit-profile__save">Сохранить</button>
+        </form>
+    </div>
+</div>
+    <div class="popup popup-primary popup-primary--right popup-primary--sber-tied">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="sber-tied">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content popup-tied">
+            <h2 class="popup-tied__title title-2">
+                Привязанный аккаунт
+            </h2>
+            <p class="popup-tied__descr">
+                Привязанный аккаунт позволит входить без СМС и пароля, размещать заявки на покупку, получать индивидуальные предложения, 
+                кешбэк и подарки от застройщика
+            </p>
+            <div class="popup-tied__card">
+                <img loading="lazy" src="./img/sber.png" width="32" height="32" class="popup-tied__icon" alt="Сбербанк">
+                <div>
+                    <span>Сбер ID</span>
+                    <span>Вход 21.06.2023</span>
+                    <button type="button" class="btn btn-reset">Отвязать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- ==== -->
+    <div class="popup popup-primary popup-primary--warning-remove">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="warning-remove2">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content warning-remove">
+            <h2 class="warning-remove__title title-2">
+                Вы действительно хотите закрыть заявку?
+            </h2>
+            <div class="warning-remove__btns">
+                <button type="button" class="btn btn-reset btn-primary warning-remove__btn js-popup-close">Да</button>
+                <button type="button" class="btn btn-reset btn-secondary warning-remove__btn js-popup-close">Нет</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="popup popup-primary popup-primary--right popup-primary--history-changes">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="history-changes">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content history-changes">
+            <h2 class="history-changes__title title-2 container">История изменений</h2>
+            <div class="history-changes__content container">
+                <button type="button" class="btn btn-reset history-changes__nav nav-arrow-primary nav-arrow-primary--prev nav-arrow-primary--two">
+                    <div class="nav-arrow-primary__wrapper">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#arrow-right"></use>
+                        </svg>
+                    </div>
+                </button>
+                <div class="swiper history-changes__items">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="bid">
+                                <div class="bid__body">
+                                    <time datetime="2022-12-25T09:40" class="bid__time">
+                                        <span>Создано</span>
+                                        <span>09:40 &nbsp; 25.12.2022</span>
+                                    </time>
+                                    <div class="bid__maps bid-maps">
+                                        <h2 class="bid__title title-3">
+                                            Расположение поиска
+                                        </h2>
+                                        <div class="bid-maps__container map-primary remove-copyrights-pane" id="bid-maps"></div>
+                                    </div>
+                                    <div class="bid__start">
+                                        <h2 class="bid__title title-3">
+                                            Описание заявки
+                                        </h2>
+                                    </div>
+                                    <ul class="bid__list list-reset">
+                                        <li class="bid__item">
+                                            <span>Планирую смотреть</span>
+                                            <span>В течении месяца</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Город</span>
+                                            <span>Краснодар</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Станция метро</span>
+                                            <span>
+                                                <span>Европейский квартал, &nbsp;</span>
+                                                <span>Добродом, &nbsp;</span>
+                                                <span>Сказкагрда, &nbsp;</span>
+                                                <span>Плаза</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Застройщик</span>
+                                            <span>
+                                                <span>ПИК, &nbsp;</span>
+                                                <span>ГК Самолет, &nbsp;</span>
+                                                <span>ГК "А101", &nbsp;</span>
+                                                <span>ГК МИЦ</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Комплекс</span>
+                                            <span>
+                                                <span>Европейский квартал, &nbsp;</span>
+                                                <span>Добродом, &nbsp;</span>
+                                                <span>Сказкагрда, &nbsp;</span>
+                                                <span>Плаза</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item bid__item--price">
+                                            <span>Сумма</span>
+                                            <div>
+                                                <span>3 500 000 ₽</span>
+                                                <div class="bid__item-tooltips main-tooltips" data-max-tooltip="3">
+                                                    <div class="main-tooltip main-tooltip--mobile-visible main-tooltip--budget">
+                                                        <div class="main-tooltip__target">
+                                                            <svg>
+                                                                <use xlink:href="./img/sprite.svg#budget"></use>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="main-tooltip__content">
+                                                            Наличные
+                                                        </div>
+                                                    </div>
+                                                    <div class="main-tooltip main-tooltip--mobile-visible main-tooltip--dollar">
+                                                        <div class="main-tooltip__target">
+                                                            <svg>
+                                                                <use xlink:href="./img/sprite.svg#dollar"></use>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="main-tooltip__content">
+                                                            Используется сертификат
+                                                        </div>
+                                                    </div>
+                                                    <div class="main-tooltip main-tooltip--mobile-visible main-tooltip--dollar">
+                                                        <div class="main-tooltip__target">
+                                                            <svg>
+                                                                <use xlink:href="./img/sprite.svg#dollar"></use>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="main-tooltip__content">
+                                                            Используется сертификат
+                                                        </div>
+                                                    </div>
+                                                    <div class="main-tooltip main-tooltip--mobile-visible main-tooltip--bolt">
+                                                        <div class="main-tooltip__target">
+                                                            <svg>
+                                                                <use xlink:href="./img/sprite.svg#bolt"></use>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="main-tooltip__content">
+                                                            Срочная заявка
+                                                        </div>
+                                                    </div>
+                                                    <div class="main-tooltip main-tooltip--mobile-visible main-tooltip--budget">
+                                                        <div class="main-tooltip__target">
+                                                            <svg>
+                                                                <use xlink:href="./img/sprite.svg#budget"></use>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="main-tooltip__content">
+                                                            Наличные
+                                                        </div>
+                                                    </div>
+                                                    <div class="main-tooltip main-tooltip--mobile-visible main-tooltip--dollar">
+                                                        <div class="main-tooltip__target">
+                                                            <svg>
+                                                                <use xlink:href="./img/sprite.svg#dollar"></use>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="main-tooltip__content">
+                                                            Используется сертификат
+                                                        </div>
+                                                    </div>
+                                                    <button type="button" class="btn btn-reset main-tooltip-more" hidden>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="bid__item bid__item--calc-prop">
+                                            <span>Свойства рассчёта</span>
+                                            <span>
+                                                <span>Наличные, &nbsp;</span>
+                                                <span>Ипотека, &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Ипотечная программа</span>
+                                            <span>Семейная ипотека</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Тип объекта</span>
+                                            <span>Квартира</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Кол-во комнат</span>
+                                            <span>3</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Площадь общая от</span>
+                                            <span>54 м²</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Площадь кухни от</span>
+                                            <span>54 м²</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Этаж до</span>
+                                            <span>12</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Класс</span>
+                                            <span>
+                                                <span>Комфорт, &nbsp;</span>
+                                                <span>Бизнес &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Год сдачи</span>
+                                            <span>
+                                                <span>Сдан, &nbsp;</span>
+                                                <span>2023, &nbsp;</span>
+                                                <span>2024 &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Отделка</span>
+                                            <span>
+                                                <span>С отделкой, &nbsp;</span>
+                                                <span>Отделка как опция, &nbsp;</span>
+                                                <span>Отделка white box, &nbsp;</span>
+                                                <span>Без отделки &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Балкон</span>
+                                            <span>Без балкона</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Санузел</span>
+                                            <span>Совмещённый</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Особенности комплекса</span>
+                                            <span>
+                                                <span>Видеонаблюдение, &nbsp;</span>
+                                                <span>Видовые квартиры, &nbsp;</span>
+                                                <span>Закрытый двор, &nbsp;</span>
+                                                <span>Крытый наземный паркинг, &nbsp;</span>
+                                                <span>Малоэтажный ЖК, &nbsp;</span>
+                                                <span>Мастер спальня, &nbsp;</span>
+                                                <span>Подземный паркинг, &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Инфраструктура</span>
+                                            <span>
+                                                <span>Школа рядом, &nbsp;</span>
+                                                <span>В детский сад пешком, &nbsp;</span>
+                                                <span>Детские площадки в шаговой доступности, &nbsp;</span>
+                                                <span>Рядом вузы и ссузы, &nbsp;</span>
+                                                <span>Магазин у дома, &nbsp;</span>
+                                                <span>Рядом медучереждения и аптеки , &nbsp;</span>
+                                                <span>Рядом кафе и рестораны &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Окружение</span>
+                                            <span>
+                                                <span>Рядом водоём, &nbsp;</span>
+                                                <span>Рядом лес, &nbsp;</span>
+                                                <span>Рядом набережная, &nbsp;</span>
+                                                <span>Рядом парк &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Скидки и акции</span>
+                                            <span>
+                                                <span>Рассрочка, кешмбек и мат.капитал &nbsp;</span>
+                                                <span>Трансфер/такси, &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Популярные запросы</span>
+                                            <span>
+                                                <span>Ипотека 0.1% &nbsp;</span>
+                                                <span>Ипотека без первоначального взноса, &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span data-replace-text="Преимущества объекта,1212">Уникальные преимущества объекта</span>
+                                            <span>
+                                                <span>Мастер-спальня &nbsp;</span>
+                                                <span>Камин, &nbsp;</span>
+                                                <span>Зимний сад, &nbsp;</span>
+                                            </span>
+                                        </li>
+
+                                    </ul>
+                                    <p class="bid__descr">
+                                        Семья из 3 человек ищет квартиру до 3,5 млн рублей, в ипотеку, в сделке используется
+                                        материнский
+                                        капитал. Ипотека без первоначальный взноса.
+                                    </p>
+                                    <div class="bid__import bid-import">
+                                        <h2 class="bid-import__title title-3">
+                                            Важные детали в поиске объекта
+                                        </h2>
+                                        <p class="bid__descr bid__descr--border">
+                                            Близость метро
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="bid">
+                                <div class="bid__body">
+                                    <time datetime="2023-01-25T15:20" class="bid__time">
+                                        <span>Изменено</span>
+                                        <span>15:20 &nbsp; 25.01.2023</span>
+                                    </time>
+                                    <div class="bid__maps bid-maps">
+                                        <h2 class="bid__title title-3">
+                                            Расположение поиска <span>(Были измненеия: <span>без изменения</span>)</span>
+                                        </h2>
+                                        <div class="bid-maps__container map-primary remove-copyrights-pane" id="bid-maps"></div>
+                                    </div>
+                                    <div class="bid__start">
+                                        <h2 class="bid__title title-3">
+                                            Описание заявки
+                                            <span>(Были изменения: <span>тип объекта, площадь общая, инфраструктура, описание</span>)</span>
+                                        </h2>
+                                    </div>
+                                    <ul class="bid__list list-reset">
+                                        <li class="bid__item">
+                                            <span>Планирую смотреть</span>
+                                            <span>В течении месяца</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Город</span>
+                                            <span>Краснодар</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Станция метро</span>
+                                            <span>
+                                                <span>Европейский квартал, &nbsp;</span>
+                                                <span>Добродом, &nbsp;</span>
+                                                <span>Сказкагрда, &nbsp;</span>
+                                                <span>Плаза</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Застройщик</span>
+                                            <span>
+                                                <span>ПИК, &nbsp;</span>
+                                                <span>ГК Самолет, &nbsp;</span>
+                                                <span>ГК "А101", &nbsp;</span>
+                                                <span>ГК МИЦ</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Комплекс</span>
+                                            <span>
+                                                <span>Европейский квартал, &nbsp;</span>
+                                                <span>Добродом, &nbsp;</span>
+                                                <span>Сказкагрда, &nbsp;</span>
+                                                <span>Плаза</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item bid__item--price">
+                                            <span>Сумма</span>
+                                            <div>
+                                                <span>3 500 000 ₽</span>
+                                                <div class="bid__item-tooltips main-tooltips" data-max-tooltip="3">
+                                                    <div class="main-tooltip main-tooltip--mobile-visible main-tooltip--budget">
+                                                        <div class="main-tooltip__target">
+                                                            <svg>
+                                                                <use xlink:href="./img/sprite.svg#budget"></use>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="main-tooltip__content">
+                                                            Наличные
+                                                        </div>
+                                                    </div>
+                                                    <div class="main-tooltip main-tooltip--mobile-visible main-tooltip--dollar">
+                                                        <div class="main-tooltip__target">
+                                                            <svg>
+                                                                <use xlink:href="./img/sprite.svg#dollar"></use>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="main-tooltip__content">
+                                                            Используется сертификат
+                                                        </div>
+                                                    </div>
+                                                    <div class="main-tooltip main-tooltip--mobile-visible main-tooltip--bolt">
+                                                        <div class="main-tooltip__target">
+                                                            <svg>
+                                                                <use xlink:href="./img/sprite.svg#bolt"></use>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="main-tooltip__content">
+                                                            Срочная заявка
+                                                        </div>
+                                                    </div>
+                                                    <button type="button" class="btn btn-reset main-tooltip-more" hidden>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="bid__item bid__item--calc-prop">
+                                            <span>Свойства рассчёта</span>
+                                            <span>
+                                                <span>Наличные, &nbsp;</span>
+                                                <span>Ипотека, &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Ипотечная программа</span>
+                                            <span>Семейная ипотека</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Тип объекта</span>
+                                            <span class="bid--changed">Квартира</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Кол-во комнат</span>
+                                            <span>3</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Площадь общая от</span>
+                                            <span class="bid--changed">54 м²</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Площадь кухни от</span>
+                                            <span>54 м²</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Этаж до</span>
+                                            <span>12</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Класс</span>
+                                            <span>
+                                                <span>Комфорт, &nbsp;</span>
+                                                <span>Бизнес &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Год сдачи</span>
+                                            <span>
+                                                <span>Сдан, &nbsp;</span>
+                                                <span>2023, &nbsp;</span>
+                                                <span>2024 &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Отделка</span>
+                                            <span>
+                                                <span>С отделкой, &nbsp;</span>
+                                                <span>Отделка как опция, &nbsp;</span>
+                                                <span>Отделка white box, &nbsp;</span>
+                                                <span>Без отделки &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Балкон</span>
+                                            <span>Без балкона</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Санузел</span>
+                                            <span>Совмещённый</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Особенности комплекса</span>
+                                            <span>
+                                                <span>Видеонаблюдение, &nbsp;</span>
+                                                <span>Видовые квартиры, &nbsp;</span>
+                                                <span>Закрытый двор, &nbsp;</span>
+                                                <span>Крытый наземный паркинг, &nbsp;</span>
+                                                <span>Малоэтажный ЖК, &nbsp;</span>
+                                                <span>Мастер спальня, &nbsp;</span>
+                                                <span>Подземный паркинг, &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Инфраструктура</span>
+                                            <span>
+                                                <span>Школа рядом, &nbsp;</span>
+                                                <span>В детский сад пешком, &nbsp;</span>
+                                                <span class="bid--changed">Детские площадки в шаговой доступности, &nbsp;</span>
+                                                <span>Рядом вузы и ссузы, &nbsp;</span>
+                                                <span>Магазин у дома, &nbsp;</span>
+                                                <span>Рядом медучереждения и аптеки , &nbsp;</span>
+                                                <span>Рядом кафе и рестораны &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Окружение</span>
+                                            <span>
+                                                <span>Рядом водоём, &nbsp;</span>
+                                                <span>Рядом лес, &nbsp;</span>
+                                                <span>Рядом набережная, &nbsp;</span>
+                                                <span>Рядом парк &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Скидки и акции</span>
+                                            <span>
+                                                <span>Рассрочка, кешмбек и мат.капитал &nbsp;</span>
+                                                <span>Трансфер/такси, &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Популярные запросы</span>
+                                            <span>
+                                                <span>Ипотека 0.1% &nbsp;</span>
+                                                <span>Ипотека без первоначального взноса, &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span data-replace-text="Преимущества объекта,1212">Уникальные преимущества объекта</span>
+                                            <span>
+                                                <span>Мастер-спальня &nbsp;</span>
+                                                <span>Камин, &nbsp;</span>
+                                                <span>Зимний сад, &nbsp;</span>
+                                            </span>
+                                        </li>
+
+                                    </ul>
+                                    <p class="bid__descr bid--changed">
+                                        Семья из 3 человек ищет квартиру до 3,5 млн рублей, в ипотеку, в сделке используется
+                                        материнский
+                                        капитал. Ипотека без первоначальный взноса.
+                                    </p>
+                                    <div class="bid__import bid-import">
+                                        <h2 class="bid-import__title title-3">
+                                            Важные детали в поиске объекта <span>(Были измненеия: <span>без изменения</span>)</span>
+                                        </h2>
+                                        <p class="bid__descr bid__descr--border">
+                                            Близость метро
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="bid">
+                                <div class="bid__body">
+                                    <time datetime="2023-01-25T15:20" class="bid__time">
+                                        <span>Изменено</span>
+                                        <span>15:20 &nbsp; 25.01.2023</span>
+                                    </time>
+                                    <div class="bid__maps bid-maps">
+                                        <h2 class="bid__title title-3">
+                                            Расположение поиска <span>(Были измненеия: <span>без изменения</span>)</span>
+                                        </h2>
+                                        <div class="bid-maps__container map-primary remove-copyrights-pane" id="bid-maps"></div>
+                                    </div>
+                                    <div class="bid__start">
+                                        <h2 class="bid__title title-3">
+                                            Описание заявки
+                                            <span>(Были изменения: <span>тип объекта, этаж</span>)</span>
+                                        </h2>
+                                    </div>
+                                    <ul class="bid__list list-reset">
+                                        <li class="bid__item">
+                                            <span>Планирую смотреть</span>
+                                            <span>В течении месяца</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Город</span>
+                                            <span>Краснодар</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Станция метро</span>
+                                            <span>
+                                                <span>Европейский квартал, &nbsp;</span>
+                                                <span>Добродом, &nbsp;</span>
+                                                <span>Сказкагрда, &nbsp;</span>
+                                                <span>Плаза</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Застройщик</span>
+                                            <span>
+                                                <span>ПИК, &nbsp;</span>
+                                                <span>ГК Самолет, &nbsp;</span>
+                                                <span>ГК "А101", &nbsp;</span>
+                                                <span>ГК МИЦ</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Комплекс</span>
+                                            <span>
+                                                <span>Европейский квартал, &nbsp;</span>
+                                                <span>Добродом, &nbsp;</span>
+                                                <span>Сказкагрда, &nbsp;</span>
+                                                <span>Плаза</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item bid__item--price">
+                                            <span>Сумма</span>
+                                            <div>
+                                                <span>3 500 000 ₽</span>
+                                                <div class="bid__item-tooltips main-tooltips" data-max-tooltip="3">
+                                                    <div class="main-tooltip main-tooltip--mobile-visible main-tooltip--budget">
+                                                        <div class="main-tooltip__target">
+                                                            <svg>
+                                                                <use xlink:href="./img/sprite.svg#budget"></use>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="main-tooltip__content">
+                                                            Наличные
+                                                        </div>
+                                                    </div>
+                                                    <div class="main-tooltip main-tooltip--mobile-visible main-tooltip--dollar">
+                                                        <div class="main-tooltip__target">
+                                                            <svg>
+                                                                <use xlink:href="./img/sprite.svg#dollar"></use>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="main-tooltip__content">
+                                                            Используется сертификат
+                                                        </div>
+                                                    </div>
+                                                    <div class="main-tooltip main-tooltip--mobile-visible main-tooltip--bolt">
+                                                        <div class="main-tooltip__target">
+                                                            <svg>
+                                                                <use xlink:href="./img/sprite.svg#bolt"></use>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="main-tooltip__content">
+                                                            Срочная заявка
+                                                        </div>
+                                                    </div>
+                                                    <div class="main-tooltip main-tooltip--mobile-visible main-tooltip--bolt">
+                                                        <div class="main-tooltip__target">
+                                                            <svg>
+                                                                <use xlink:href="./img/sprite.svg#bolt"></use>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="main-tooltip__content">
+                                                            Срочная заявка
+                                                        </div>
+                                                    </div>
+                                                    <button type="button" class="btn btn-reset main-tooltip-more" hidden>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="bid__item bid__item--calc-prop">
+                                            <span>Свойства рассчёта</span>
+                                            <span>
+                                                <span>Наличные, &nbsp;</span>
+                                                <span>Ипотека, &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Ипотечная программа</span>
+                                            <span>Семейная ипотека</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Тип объекта</span>
+                                            <span class="bid--changed">Квартира</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Кол-во комнат</span>
+                                            <span>3</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Площадь общая от</span>
+                                            <span>54 м²</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Площадь кухни от</span>
+                                            <span>54 м²</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Этаж до</span>
+                                            <span class="bid--changed">12</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Класс</span>
+                                            <span>
+                                                <span>Комфорт, &nbsp;</span>
+                                                <span>Бизнес &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Год сдачи</span>
+                                            <span>
+                                                <span>Сдан, &nbsp;</span>
+                                                <span>2023, &nbsp;</span>
+                                                <span>2024 &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Отделка</span>
+                                            <span>
+                                                <span>С отделкой, &nbsp;</span>
+                                                <span>Отделка как опция, &nbsp;</span>
+                                                <span>Отделка white box, &nbsp;</span>
+                                                <span>Без отделки &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Балкон</span>
+                                            <span>Без балкона</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Санузел</span>
+                                            <span>Совмещённый</span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Особенности комплекса</span>
+                                            <span>
+                                                <span>Видеонаблюдение, &nbsp;</span>
+                                                <span>Видовые квартиры, &nbsp;</span>
+                                                <span>Закрытый двор, &nbsp;</span>
+                                                <span>Крытый наземный паркинг, &nbsp;</span>
+                                                <span>Малоэтажный ЖК, &nbsp;</span>
+                                                <span>Мастер спальня, &nbsp;</span>
+                                                <span>Подземный паркинг, &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Инфраструктура</span>
+                                            <span>
+                                                <span>Школа рядом, &nbsp;</span>
+                                                <span>В детский сад пешком, &nbsp;</span>
+                                                <span>Детские площадки в шаговой доступности, &nbsp;</span>
+                                                <span>Рядом вузы и ссузы, &nbsp;</span>
+                                                <span>Магазин у дома, &nbsp;</span>
+                                                <span>Рядом медучереждения и аптеки , &nbsp;</span>
+                                                <span>Рядом кафе и рестораны &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Окружение</span>
+                                            <span>
+                                                <span>Рядом водоём, &nbsp;</span>
+                                                <span>Рядом лес, &nbsp;</span>
+                                                <span>Рядом набережная, &nbsp;</span>
+                                                <span>Рядом парк &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Скидки и акции</span>
+                                            <span>
+                                                <span>Рассрочка, кешмбек и мат.капитал &nbsp;</span>
+                                                <span>Трансфер/такси, &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span>Популярные запросы</span>
+                                            <span>
+                                                <span>Ипотека 0.1% &nbsp;</span>
+                                                <span>Ипотека без первоначального взноса, &nbsp;</span>
+                                            </span>
+                                        </li>
+                                        <li class="bid__item">
+                                            <span data-replace-text="Преимущества объекта,1212">Уникальные преимущества объекта</span>
+                                            <span>
+                                                <span>Мастер-спальня &nbsp;</span>
+                                                <span>Камин, &nbsp;</span>
+                                                <span>Зимний сад, &nbsp;</span>
+                                            </span>
+                                        </li>
+
+                                    </ul>
+                                    <p class="bid__descr">
+                                        Семья из 3 человек ищет квартиру до 3,5 млн рублей, в ипотеку, в сделке используется
+                                        материнский
+                                        капитал. Ипотека без первоначальный взноса.
+                                    </p>
+                                    <div class="bid__import bid-import">
+                                        <h2 class="bid-import__title title-3">
+                                            Важные детали в поиске объекта <span>(Были измненеия: <span>без изменения</span>)</span>
+                                        </h2>
+                                        <p class="bid__descr bid__descr--border">
+                                            Близость метро
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-reset history-changes__nav nav-arrow-primary nav-arrow-primary--next nav-arrow-primary--two">
+                    <div class="nav-arrow-primary__wrapper">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#arrow-right"></use>
+                        </svg>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- popups -->
+</body>
+
+
+</html>

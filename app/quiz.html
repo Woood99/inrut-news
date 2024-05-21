@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Объект</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/quiz.css">
+    <script id="ymaps-id"></script>
+    <script defer src="js/quiz.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container">
+        <header class="header header--new">
+    <div class="header__top header-top">
+        <div class="header-top__container container">
+            <button class="header-top__burger burger" aria-label="Открыть меню" aria-expanded="false" data-burger>
+                <span class="burger__line"></span>
+            </button>
+            <div class="header-top__city city" data-da=".header-main__nav,1212,3">
+                <button type="button" class="btn btn-reset city__title" data-popup-path="city">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#location-fill"></use>
+                    </svg>
+                    <span class="city__name">Краснодар</span>
+                    <p class="city__descr">
+                        Изменить
+                    </p>
+                </button>
+            </div>
+            <div class="header-top__actions">
+                <div class="header-top__action header-action header-action--notif secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                    <button type='button' data-popup-path="notif-popup" class="btn btn-reset header-action__title secondary-tooltip__btn">
+                        <svg class='tw-w-4 tw-h-4'>
+                            <use xlink:href="./img/sprite.svg#notification"></use>
+                        </svg>
+                        <div class="notif-counter tw-absolute tw-top-[12px] tw-right-[10px]">4</div>
+                    </button>
+                    <div class="secondary-tooltip__content">
+                        Уведомления
+                    </div>
+                </div>
+                <div class="header-top__action header-action header-action--comp secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                    <a href="./comparison.html" class="btn btn-reset header-action__title secondary-tooltip__btn">
+                        <svg class='w-16 h-16'>
+                            <use xlink:href="./img/sprite.svg#comparison"></use>
+                          </svg>
+                    </a>
+                    <div class="secondary-tooltip__content">
+                        Сравнение
+                    </div>
+                </div>
+                <div class="header-top__action header-action header-action--cashback secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                    <a href="./present.html" class="btn btn-reset header-action__title secondary-tooltip__btn">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#bonus"></use>
+                        </svg>
+                    </a>
+                    <div class="secondary-tooltip__content">
+                        Кешбэк и подарки
+                    </div>
+                </div>
+                <div class="header-top__action header-action header-action--calendar secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                    <a href="./calendar.html" class="btn btn-reset header-action__title secondary-tooltip__btn">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#calendar"></use>
+                        </svg>
+                    </a>
+                    <div class="secondary-tooltip__content">
+                        Календарь
+                    </div>
+                </div>
+                <div class="header-top__action header-action header-action--add">
+                    <button type="button" data-popup-path="add" class="btn btn-reset header-action__title">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#add"></use>
+                        </svg>
+                        <span class="header-action__name">
+                            Добавить
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="header-top__personal header-personal">
+                <button type="button" class="btn btn-reset header-personal__title" data-popup-path="personal-area-two">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#door-open"></use>
+                    </svg>
+                    <span class="header-personal__name">
+                        Кабинет
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="header__main header-main">
+        <div class="header-main__container container">
+            <a href="#" class="header-main__logo logo" data-da=".header-top__container,1212,1">
+                <img loading="lazy" src="./img/logo.svg" width="238" height="32" class="logo__img" alt="Продам.Онлайн">
+            </a>
+            <nav class="header-main__nav nav" data-menu>
+                <button type="button" class="btn btn-reset header-main__close">Закрыть</button>
+                <div class="header-main__title">Меню</div>
+                <ul class="nav__list list-reset" data-spollers="1212,max" data-one-spoller>
+                    <li class="nav__item nav-dropdown">
+                        <span class="nav__link" data-spoller>
+                            Новостройки
+                            <svg class="nav__link-arrow">
+                                <use xlink:href="img/sprite.svg#arrow-small"></use>
+                            </svg>
+                        </span>
+                        <div class="nav-dropdown__container container">
+                            <div class="nav-dropdown-content">
+                                <div class="nav-dropdown-content__body">
+                                    <a href="#" class="nav-dropdown-content__item">
+                                        <span>Жилые комплексы</span>
+                                        <span>36 990 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Старт продаж</span>
+                                        <span>16 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Каталог застройщиков</span>
+                                        <span>15 застройщиков</span>
+                                    </a>
+                                    <a href="./stock.html" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Скидки и акции</span>
+                                    </a>
+                                    <a href="./stock-developer.html" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Shorts, видео</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one col-span-2">
+                                        <span>Добавить заявку на покупку квартиры в новостройке</span>
+                                    </a>
+                                </div>
+                                <a href="#" class="nav-dropdown-content__card-info card-info" data-da=".header-main__banners-slide--1,1212,2">
+                                    <span class="card-info__title">
+                                        Успейте взять ипотеку
+                                        по выгодной ставке
+                                    </span>
+                                    <div class="card-info__image" style="background-image: url('./img/banner-photo-4.png')">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">
+                            Вторичка
+                        </a>
+                    </li>
+                    <li class="nav__item nav-dropdown">
+                        <span class="nav__link" data-spoller>
+                            Дома и участки
+                            <svg class="nav__link-arrow">
+                                <use xlink:href="img/sprite.svg#arrow-small"></use>
+                            </svg>
+                        </span>
+                        <div class="nav-dropdown__container container">
+                            <div class="nav-dropdown-content">
+                                <div class="nav-dropdown-content__body">
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Дома, коттеджи, дачи</span>
+                                        <span>20 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Участки</span>
+                                        <span>20 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Коттеджные поселки</span>
+                                        <span>20 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Дома от застройщика</span>
+                                        <span>20 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Построить дом</span>
+                                        <span>20 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one col-span-2">
+                                        <span>Добавить заявку на покупку</span>
+                                    </a>
+                                </div>
+                                <a href="#" class="nav-dropdown-content__card-info card-info" data-da=".header-main__banners-slide--2,1212,2">
+                                    <span class="card-info__title">
+                                        Успейте взять ипотеку
+                                        по выгодной ставке
+                                    </span>
+                                    <div class="card-info__image" style="background-image: url('./img/banner-photo-4.png')">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">
+                            Покупка
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="./registry.html" class="nav__link">
+                            Реестр проблемных объектов
+                        </a>
+                    </li>
+                </ul>
+                <div class="swiper header-main__banners">
+                    <div class="swiper-wrapper header-main__banners-container">
+                        <div class="swiper-slide header-main__banners-slide header-main__banners-slide--1"></div>
+                        <div class="swiper-slide header-main__banners-slide header-main__banners-slide--2"></div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+        <main class="main main-page-gap default-page quiz">
+            <h1 class="title-2 container">
+                Анкета
+            </h1>
+            <div class="default-page__body">
+                <div class="container quiz__wrapper">
+                    <form action="#" class="quiz__form">
+                        <div class="quiz__question question _current" data-question-id="173669">
+                            <p class="question__title">
+                                Цель покупки квартиры
+                            </p>
+                            <div class="question__content">
+                                <div class="radio-primary">
+                                    <div class="radio-primary__item">
+                                        <input hidden class="radio-primary__input" data-question-r-show="173670" type="radio" name="purchase">
+                                        <label class="radio-primary__label">
+                                            <span class="radio-primary__text">
+                                                Проживание семьи
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-primary__item">
+                                        <input hidden class="radio-primary__input" data-question-r-show="173671" type="radio" name="purchase">
+                                        <label class="radio-primary__label">
+                                            <span class="radio-primary__text">
+                                                Инвестиция для сбережения
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="question__btns">
+                                    <button type="button" class="btn btn-reset btn-primary question__go">
+                                        Далее
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quiz__question question" data-question-id="173670">
+                            <p class="question__title">
+                                Кто будет проживать?
+                            </p>
+                            <div class="question__content">
+                                <div class="radio-primary">
+                                    <div class="radio-primary__item">
+                                        <input hidden class="radio-primary__input" data-question-r-show="173674" type="radio" name="purchase">
+                                        <label class="radio-primary__label">
+                                            <span class="radio-primary__text">
+                                                Я и моя семья
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-primary__item">
+                                        <input hidden class="radio-primary__input" data-question-r-show="173675" type="radio" name="purchase">
+                                        <label class="radio-primary__label">
+                                            <span class="radio-primary__text">
+                                                Мои взрослые дети
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="question__btns">
+                                    <button type="button" class="btn btn-reset btn-secondary question__back">
+                                        Назад
+                                    </button>
+                                    <button type="button" class="btn btn-reset btn-primary question__go">
+                                        Далее
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="quiz__question question" data-question-id="173671">
+                            <p class="question__title">
+                                Какой вы видите инвестицию?
+                            </p>
+                            <div class="question__content">
+                                <div class="radio-primary">
+                                    <div class="radio-primary__item">
+                                        <input hidden class="radio-primary__input" data-question-r-show="173689" data-question-name="На 1-2 года с целью перепродажи" type="radio" name="purchase">
+                                        <label class="radio-primary__label">
+                                            <span class="radio-primary__text">
+                                                На 1-2 года с целью перепродажи
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-primary__item">
+                                        <input hidden class="radio-primary__input" data-question-name="На 5-7 лет для сдачи в аренду" data-question-r-show="173689" type="radio" name="purchase">
+                                        <label class="radio-primary__label">
+                                            <span class="radio-primary__text">
+                                                На 5-7 лет для сдачи в аренду
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="question__btns">
+                                    <button type="button" class="btn btn-reset btn-secondary question__back">
+                                        Назад
+                                    </button>
+                                    <button type="button" class="btn btn-reset btn-primary question__go">
+                                        Далее
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quiz__question question" data-question-id="173674">
+                            <p class="question__title">
+                                Какой состав семьи?
+                            </p>
+                            <div class="question__content">
+                                <div class="input-text input-text--no-exp input-text--only-number">
+                                    <label class="input-text__label">
+                                        <input type="text" name="Имя" maxlength="20" data-question-i-show="173689" class="input-reset input-text__input" placeholder="">
+                                    </label>
+                                </div>
+                                <div class="question__btns">
+                                    <button type="button" class="btn btn-reset btn-secondary question__back">
+                                        Назад
+                                    </button>
+                                    <button type="button" class="btn btn-reset btn-primary question__go">
+                                        Далее
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quiz__question question" data-question-id="173675">
+                            <p class="question__title">
+                                Какой состав семьи у детей?
+                            </p>
+                            <div class="question__content">
+                                <div class="input-text input-text--no-exp input-text--only-number">
+                                    <label class="input-text__label">
+                                        <input type="text" name="Имя" maxlength="20" data-question-i-show="173689" class="input-reset input-text__input" placeholder="">
+                                    </label>
+                                </div>
+                                <div class="question__btns">
+                                    <button type="button" class="btn btn-reset btn-secondary question__back">
+                                        Назад
+                                    </button>
+                                    <button type="button" class="btn btn-reset btn-primary question__go">
+                                        Далее
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="quiz__question question" data-question-id="173689">
+                            <p class="question__title">
+                                Источник финансирования покупки
+                            </p>
+                            <div class="question__content">
+                                <div class="checkbox-secondary">
+                                    <input name="developer-name_1" class="checkbox-secondary__input" data-question-name="Накопления" data-question-c-show="173690" type="checkbox" value="true">
+                                    <label class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Накопления
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="checkbox-secondary">
+                                    <input name="developer-name_1" class="checkbox-secondary__input" data-question-name="Продажа недвижимости" data-question-c-show="173690" type="checkbox" value="true">
+                                    <label class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Продажа недвижимости
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="checkbox-secondary">
+                                    <input name="developer-name_1" class="checkbox-secondary__input" data-question-name="Ипотечный займ" data-question-c-show="173690" type="checkbox" value="true">
+                                    <label class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Ипотечный займ
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="question__btns">
+                                    <button type="button" class="btn btn-reset btn-secondary question__back">
+                                        Назад
+                                    </button>
+                                    <button type="button" class="btn btn-reset btn-primary question__go">
+                                        Далее
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="quiz__question question" data-question-id="173690">
+                            <p class="question__title">
+                                Если бюджет не позволяет купить идеальное решение, есть дополнительные средства?
+                            </p>
+                            <div class="question__content">
+                                <div class="radio-primary">
+                                    <div class="radio-primary__item">
+                                        <input hidden class="radio-primary__input" data-question-r-show="173691" type="radio" name="purchase">
+                                        <label class="radio-primary__label">
+                                            <span class="radio-primary__text">
+                                                Да
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-primary__item">
+                                        <input hidden class="radio-primary__input" data-question-r-show="173691" type="radio" name="purchase">
+                                        <label class="radio-primary__label">
+                                            <span class="radio-primary__text">
+                                                Нет
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="question__btns">
+                                    <button type="button" class="btn btn-reset btn-secondary question__back">
+                                        Назад
+                                    </button>
+                                    <button type="button" class="btn btn-reset btn-primary question__go">
+                                        Далее
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="quiz__question question" data-question-id="173691">
+                            <p class="question__title">
+                                Если не хватает бюджета, что вы готовы снизить
+                            </p>
+                            <div class="question__content">
+                                <div class="checkbox-secondary">
+                                    <input name="developer-name_1" class="checkbox-secondary__input" data-question-c-show="173692" type="checkbox" value="true">
+                                    <label class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Требования к возрасту здания
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="checkbox-secondary">
+                                    <input name="developer-name_1" class="checkbox-secondary__input" data-question-c-show="173692" type="checkbox" value="true">
+                                    <label class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Требования к классу жилого дома
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="checkbox-secondary">
+                                    <input name="developer-name_1" class="checkbox-secondary__input" data-question-c-show="173692" type="checkbox" value="true">
+                                    <label class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Требования к размеру квартиры
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="checkbox-secondary">
+                                    <input name="developer-name_1" class="checkbox-secondary__input" data-question-c-show="173692" type="checkbox" value="true">
+                                    <label class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Требования к расстоянию до общественного транспорта
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="checkbox-secondary">
+                                    <input name="developer-name_1" class="checkbox-secondary__input" data-question-c-show="173692" type="checkbox" value="true">
+                                    <label class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Требования к наличию садов и школ
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="checkbox-secondary">
+                                    <input name="developer-name_1" class="checkbox-secondary__input" data-question-c-show="173692" type="checkbox" value="true">
+                                    <label class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Требования к району
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="question__btns">
+                                    <button type="button" class="btn btn-reset btn-secondary question__back">
+                                        Назад
+                                    </button>
+                                    <button type="button" class="btn btn-reset btn-primary question__go">
+                                        Далее
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="quiz__question question" data-question-id="173692">
+                            <p class="question__title">
+                                Почему приступили к покупке именно сейчас
+                            </p>
+                            <div class="question__content">
+                                <div class="radio-primary">
+                                    <div class="radio-primary__item">
+                                        <input hidden class="radio-primary__input" data-question-r-show="173693" type="radio" name="purchase">
+                                        <label class="radio-primary__label">
+                                            <span class="radio-primary__text">
+                                                Нужно решить бытовой вопрос
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-primary__item">
+                                        <input hidden class="radio-primary__input" data-question-r-show="173693" type="radio" name="purchase">
+                                        <label class="radio-primary__label">
+                                            <span class="radio-primary__text">
+                                                Нужно вложить деньги
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-primary__item">
+                                        <input hidden class="radio-primary__input" data-question-r-show="173693" type="radio" name="purchase">
+                                        <label class="radio-primary__label">
+                                            <span class="radio-primary__text">
+                                                Не знаю
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="question__btns">
+                                    <button type="button" class="btn btn-reset btn-secondary question__back">
+                                        Назад
+                                    </button>
+                                    <button type="button" class="btn btn-reset btn-primary question__go">
+                                        Далее
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quiz__question question" data-question-id="173693">
+                            <p class="question__title">
+                                Готовы отложить покупку на более поздний срок, если не найдете сейчас?
+                            </p>
+                            <div class="question__content">
+                                <div class="radio-primary">
+                                    <div class="radio-primary__item">
+                                        <input hidden class="radio-primary__input" data-question-r-show="173694" type="radio" name="purchase">
+                                        <label class="radio-primary__label">
+                                            <span class="radio-primary__text">
+                                                Не готов, настроен на сделку
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-primary__item">
+                                        <input hidden class="radio-primary__input" data-question-r-show="173694" type="radio" name="purchase">
+                                        <label class="radio-primary__label">
+                                            <span class="radio-primary__text">
+                                                Готов, не спешу
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-primary__item">
+                                        <input hidden class="radio-primary__input" data-question-r-show="173694" type="radio" name="purchase">
+                                        <label class="radio-primary__label">
+                                            <span class="radio-primary__text">
+                                                Не знаю
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="question__btns">
+                                    <button type="button" class="btn btn-reset btn-secondary question__back">
+                                        Назад
+                                    </button>
+                                    <button type="button" class="btn btn-reset btn-primary question__go">
+                                        Далее
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="quiz__question question" data-question-id="173694">
+                            <p class="question__title">
+                                Как Вы оценивали свои финансовые возможности?
+                            </p>
+                            <div class="question__content">
+                                <div class="checkbox-secondary">
+                                    <input name="developer-name_1" class="checkbox-secondary__input" data-question-c-show="173695" type="checkbox" value="true">
+                                    <label class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Пока посмотрел рекламные объявления в интернете
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="checkbox-secondary">
+                                    <input name="developer-name_1" class="checkbox-secondary__input" data-question-c-show="173695" type="checkbox" value="true">
+                                    <label class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Побывал у нескольких застройщиков
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="checkbox-secondary">
+                                    <input name="developer-name_1" class="checkbox-secondary__input" data-question-c-show="173695" type="checkbox" value="true">
+                                    <label class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Побывал в банке и уже определился с займом
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="checkbox-secondary">
+                                    <input name="developer-name_1" class="checkbox-secondary__input" data-question-c-show="173695" type="checkbox" value="true">
+                                    <label class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Выставил свой объект в продажу и пока жду покупателей, никуда не ходил
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="checkbox-secondary">
+                                    <input name="developer-name_1" class="checkbox-secondary__input" data-question-c-show="173695" type="checkbox" value="true">
+                                    <label class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Сходил на просмотры 5-10 объектов на вторичном рынке
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="checkbox-secondary">
+                                    <input name="developer-name_1" class="checkbox-secondary__input" data-question-c-show="173695" type="checkbox" value="true">
+                                    <label class="checkbox-secondary__label">
+                                        <span class="checkbox-secondary__text">
+                                            Сходил на просмотры 10-15 объектов на вторичном рынке
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="question__btns">
+                                    <button type="button" class="btn btn-reset btn-secondary question__back">
+                                        Назад
+                                    </button>
+                                    <button type="button" class="btn btn-reset btn-primary question__go">
+                                        Далее
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="quiz__question question" data-question-id="173695">
+                            <p class="question__title">
+                                Готовы отложить покупку на более поздний срок, если не найдете сейчас?
+                            </p>
+                            <div class="question__content">
+                                <div class="radio-primary">
+                                    <div class="radio-primary__item">
+                                        <input hidden class="radio-primary__input" type="radio" name="purchase">
+                                        <label class="radio-primary__label">
+                                            <span class="radio-primary__text">
+                                                Потому что я только начал смотреть
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-primary__item">
+                                        <input hidden class="radio-primary__input" type="radio" name="purchase">
+                                        <label class="radio-primary__label">
+                                            <span class="radio-primary__text">
+                                                Потому что не могу найти качественный жилой дом по моему бюджету
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-primary__item">
+                                        <input hidden class="radio-primary__input" type="radio" name="purchase">
+                                        <label class="radio-primary__label">
+                                            <span class="radio-primary__text">
+                                                Потому что не могу найти качественную квартиру по моему бюджету
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-primary__item">
+                                        <input hidden class="radio-primary__input" type="radio" name="purchase">
+                                        <label class="radio-primary__label">
+                                            <span class="radio-primary__text">
+                                                Не могу ответить, что не так
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="question__btns">
+                                    <button type="button" class="btn btn-reset btn-secondary question__back">
+                                        Назад
+                                    </button>
+                                    <button type="button" class="btn btn-reset btn-primary question__go">
+                                        Завершить
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="quiz__chat">
+                        <h2 class='quiz__title title-2'>Комментарий к ответу</h2>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer__container container">
+        <div class="footer__top">
+            <a href="#" class="footer__logo logo">
+                <img loading="lazy" src="./img/logo.svg" width="83" height="25" class="logo__img"
+                    alt="Продам.Онлайн">
+            </a>
+            <nav class="footer__nav nav">
+                <ul class="nav__list list-reset">
+                    <li class="nav__item"><a href="#" class="nav__link">Продажа</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Новостройки</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Покупка</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Услуги</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer__write">
+            <p>
+                Есть предложения, напишите нам.
+            </p>
+            <button type="button" class="btn btn-reset btn-secondary footer__btn">Написать</button>
+        </div>
+        <p class="footer__descr">
+            © 2021-2022 ООО «Продам онлайн», официальный сайт использует куки-файлы и другие технологии, чтобы помочь
+            вам в навигации, а также предоставить лучший пользовательский опыт, анализировать использование наших
+            продуктов и услуг, повысить качество рекламных и маркетинговых активностей. Если Вы не хотите, чтобы Ваши
+            пользовательские данные обрабатывались, пожалуйста, ограничьте их использование в своём браузере.
+        </p>
+    </div>
+</footer>
+
+    </div>
+    <!-- popups -->
+    <div class="popup popup-primary popup-primary--left popup-primary--city" data-popup-mobile-fast>
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="city">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content city-popup">
+            <h2 class="city-popup__title title-2">
+                Выбор города
+            </h2>
+            <div class="city-popup__input">
+                <button type="button" class="btn btn-reset">
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#search"></use>
+                    </svg>
+                </button>
+                <input type="search" name="Название города" class="input-reset" placeholder="Введите название города">
+                <button type="button" class="btn btn-reset city-popup__clear" hidden>
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#x"></use>
+                    </svg>
+                </button>
+            </div>
+            <div class="city-popup__list">
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Москва</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Калининград</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Санкт-Петербург</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Казань</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Краснодар</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Екатеринбург</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Нижний-Новгород</button>
+            </div>
+            <div class="checkbox-secondary city-popup__auto">
+                <input id="city-auto" name="city-auto" class="checkbox-secondary__input" type="checkbox" value="true">
+                <label for="city-auto" class="checkbox-secondary__label">
+                    <span class="checkbox-secondary__text">
+                        Определить автоматически
+                    </span>
+                </label>
+            </div>
+            <button type="button" class="btn btn-reset btn-primary js-popup-close city-popup__save" disabled>Сохранить</button>
+        </div>
+    </div>
+</div>
+    <div class="popup popup-primary popup-primary--right popup-primary--add">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="add">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content add-popup">
+            <h2 class="add-popup__title title-2">
+                Добавить
+            </h2>
+            <ul class="add-popup__list list-reset">
+                <li class="add-popup__item">
+                    <a href="#" class="add-popup__link">
+                        <span>Заявка на покупку недвижимости</span>
+                    </a>
+                </li>
+                <li class="add-popup__item">
+                    <a href="#" class="add-popup__link">
+                        <span>Объект на продажу</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+    <div class="popup popup-secondary popup-secondary--right popup-secondary--personal">
+    <div class="popup__container popup-secondary__container" role="dialog" aria-modal="true" data-popup-target="personal-area-two">
+        <button class="btn-reset js-popup-close popup__close popup-secondary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-secondary__content personal-area">
+            <div class="personal-area__container">
+                <h2 class="personal-area__title title-2">
+                    Личный кабинет
+                </h2>
+                <div class="personal-area__info">
+                    <div class="personal-area__avatar avatar">
+                        <img loading="lazy" src="./img/avatar-1.jpg" width="45" height="45" alt="Иван П.">
+                    </div>
+                    <span class=" personal-area__name">
+                        Иван П.
+                    </span>
+                    <a href="./edit-profile.html" class="btn btn-reset personal-area__edit">Редактировать профиль</a>
+                </div>
+                <nav class="personal-area__nav">
+                    <ul data-spollers class="personal-area__list list-reset">
+                        <li class="personal-area__item personal-area-dropdown">
+                            <button type="button" data-spoller class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#add"></use>
+                                </svg>
+                                <span>Добавить</span>
+                                <svg class="personal-area-dropdown__arrow">
+                                    <use xlink:href="img/sprite.svg#arrow-small"></use>
+                                </svg>
+                            </button>
+                            <div class="personal-area-dropdown__body">
+                                <a href="#" class="btn btn-reset personal-area__btn">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#tg"></use>
+                                    </svg>
+                                    <span>Заявка на покупку недвижимости</span>
+                                </a>
+                                <a href='#' class="btn btn-reset personal-area__btn">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#house"></use>
+                                    </svg>
+                                    <span>Объект на продажу</span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#chat"></use>
+                                </svg>
+                                <span>Чат</span>
+                                <span class="personal-area__quantity">
+                                    +6
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <a href="./present.html" type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#bonus"></use>
+                                </svg>
+                                <span>
+                                    Кешбэк и подарки
+                                </span>
+                                <span class="personal-area__quantity">
+                                    +6
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#cart-1"></use>
+                                </svg>
+                                <span>Мои заявки на покупку недвижимости</span>
+                            </button>
+                        </li>
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#cart-3"></use>
+                                </svg>
+                                <span>Предложения по заявкам</span>
+                                <span class="personal-area__quantity">
+                                    +6
+                                </span>
+                            </button>
+                        </li>
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#calendar"></use>
+                                </svg>
+                                <span>Календарь, запись на просмотры</span>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#house-laptop2"></use>
+                                </svg>
+                                <span>Мои объекты</span>
+                                <span class="personal-area__quantity">
+                                    6
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#sign-in"></use>
+                                </svg>
+                                <span>Выйти</span>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="popup popup-primary popup-primary--right popup-primary--sber-tied">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="sber-tied">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content popup-tied">
+            <h2 class="popup-tied__title title-2">
+                Привязанный аккаунт
+            </h2>
+            <p class="popup-tied__descr">
+                Привязанный аккаунт позволит входить без СМС и пароля, размещать заявки на покупку, получать индивидуальные предложения, 
+                кешбэк и подарки от застройщика
+            </p>
+            <div class="popup-tied__card">
+                <img loading="lazy" src="./img/sber.png" width="32" height="32" class="popup-tied__icon" alt="Сбербанк">
+                <div>
+                    <span>Сбер ID</span>
+                    <span>Вход 21.06.2023</span>
+                    <button type="button" class="btn btn-reset">Отвязать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- ==== -->
+
+    <!-- popups -->
+</body>
+
+
+</html>
+
+
+<!-- <div>
+    <p>
+        <strong>
+            На 1-2 года с целью перепродажи
+        </strong>
+    </p>
+    <p>
+        Сомнительная спекулятивная операция, с возможностью не заработать, а потерять деньги, если ошибиться с проектом.
+    </p>
+</div>
+<div>
+    <p>
+        <strong>
+            Накопления
+        </strong>
+    </p>
+    <p>
+        Покупка недвижимости за собственные средства упрощает сделку и дает более широкие возможности выбора недвижимости. Важно просчитать бюджет покупки с экспертом по недвижимости и помнить, что цены в рекламе порталов завышены на 7-10% от реальных цен сделок.
+    </p>
+</div>
+<div>
+    <p>
+        <strong>
+            Продажа недвижимости 
+        </strong>
+    </p>
+    <p>
+        Ваша схема сделки усложняется одновременной продажей недвижимости и покупкой. 90% потребителей самостоятельно не могут провести такую сделку. Вам нужна консультация эксперта по недвижимости.
+    </p>
+</div>
+<div>
+    <p>
+        <strong>
+            Ипотечный займ 
+        </strong>
+    </p>
+    <p>
+        Покупка недвижимости с участием ипотечных средств требует наличия накоплений на первоначальный взнос. Оптимальный размер первоначального взноса - 30% от стоимости приобретаемого объекта. Одобрение состоит из двух этапов: 1) одобрение вас как заемщика банком и выделение банком лимита на покупку недвижимости; 2) одобрение объекта покупки отделом риска банков, после оценки и подачи документов по объекту в банк. Важно понимать, что после одобрения вас как заемщика, нельзя брать дополнительные кредиты и открывать кредитные карты. При одобрении объекта, банк снова проверит вас как заемщика. Схемы с завышением стоимости недвижимости, с целью уменьшения первоначального взноса - уголовно наказуемое преступление по статье мошенничество.
+    </p>
+</div> -->

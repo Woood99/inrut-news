@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Сервис «Переезд»</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/service-moving.css">
+    <script id="ymaps-id"></script>
+    <script defer src="js/service-moving.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container">
+        <header class="header header--new">
+    <div class="header__top header-top">
+        <div class="header-top__container container">
+            <button class="header-top__burger burger" aria-label="Открыть меню" aria-expanded="false" data-burger>
+                <span class="burger__line"></span>
+            </button>
+            <div class="header-top__city city" data-da=".header-main__nav,1212,3">
+                <button type="button" class="btn btn-reset city__title" data-popup-path="city">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#location-fill"></use>
+                    </svg>
+                    <span class="city__name">Краснодар</span>
+                    <p class="city__descr">
+                        Изменить
+                    </p>
+                </button>
+            </div>
+            <div class="header-top__actions">
+                <div class="header-top__action header-action header-action--notif secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                    <button type='button' data-popup-path="notif-popup" class="btn btn-reset header-action__title secondary-tooltip__btn">
+                        <svg class='tw-w-4 tw-h-4'>
+                            <use xlink:href="./img/sprite.svg#notification"></use>
+                        </svg>
+                        <div class="notif-counter tw-absolute tw-top-[12px] tw-right-[10px]">4</div>
+                    </button>
+                    <div class="secondary-tooltip__content">
+                        Уведомления
+                    </div>
+                </div>
+                <div class="header-top__action header-action header-action--comp secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                    <a href="./comparison.html" class="btn btn-reset header-action__title secondary-tooltip__btn">
+                        <svg class='w-16 h-16'>
+                            <use xlink:href="./img/sprite.svg#comparison"></use>
+                          </svg>
+                    </a>
+                    <div class="secondary-tooltip__content">
+                        Сравнение
+                    </div>
+                </div>
+                <div class="header-top__action header-action header-action--cashback secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                    <a href="./present.html" class="btn btn-reset header-action__title secondary-tooltip__btn">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#bonus"></use>
+                        </svg>
+                    </a>
+                    <div class="secondary-tooltip__content">
+                        Кешбэк и подарки
+                    </div>
+                </div>
+                <div class="header-top__action header-action header-action--calendar secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                    <a href="./calendar.html" class="btn btn-reset header-action__title secondary-tooltip__btn">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#calendar"></use>
+                        </svg>
+                    </a>
+                    <div class="secondary-tooltip__content">
+                        Календарь
+                    </div>
+                </div>
+                <div class="header-top__action header-action header-action--add">
+                    <button type="button" data-popup-path="add" class="btn btn-reset header-action__title">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#add"></use>
+                        </svg>
+                        <span class="header-action__name">
+                            Добавить
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="header-top__personal header-personal">
+                <button type="button" class="btn btn-reset header-personal__title" data-popup-path="personal-area-two">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#door-open"></use>
+                    </svg>
+                    <span class="header-personal__name">
+                        Кабинет
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="header__main header-main">
+        <div class="header-main__container container">
+            <a href="#" class="header-main__logo logo" data-da=".header-top__container,1212,1">
+                <img loading="lazy" src="./img/logo.svg" width="238" height="32" class="logo__img" alt="Продам.Онлайн">
+            </a>
+            <nav class="header-main__nav nav" data-menu>
+                <button type="button" class="btn btn-reset header-main__close">Закрыть</button>
+                <div class="header-main__title">Меню</div>
+                <ul class="nav__list list-reset" data-spollers="1212,max" data-one-spoller>
+                    <li class="nav__item nav-dropdown">
+                        <span class="nav__link" data-spoller>
+                            Новостройки
+                            <svg class="nav__link-arrow">
+                                <use xlink:href="img/sprite.svg#arrow-small"></use>
+                            </svg>
+                        </span>
+                        <div class="nav-dropdown__container container">
+                            <div class="nav-dropdown-content">
+                                <div class="nav-dropdown-content__body">
+                                    <a href="#" class="nav-dropdown-content__item">
+                                        <span>Жилые комплексы</span>
+                                        <span>36 990 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Старт продаж</span>
+                                        <span>16 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Каталог застройщиков</span>
+                                        <span>15 застройщиков</span>
+                                    </a>
+                                    <a href="./stock.html" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Скидки и акции</span>
+                                    </a>
+                                    <a href="./stock-developer.html" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Shorts, видео</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one col-span-2">
+                                        <span>Добавить заявку на покупку квартиры в новостройке</span>
+                                    </a>
+                                </div>
+                                <a href="#" class="nav-dropdown-content__card-info card-info" data-da=".header-main__banners-slide--1,1212,2">
+                                    <span class="card-info__title">
+                                        Успейте взять ипотеку
+                                        по выгодной ставке
+                                    </span>
+                                    <div class="card-info__image" style="background-image: url('./img/banner-photo-4.png')">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">
+                            Вторичка
+                        </a>
+                    </li>
+                    <li class="nav__item nav-dropdown">
+                        <span class="nav__link" data-spoller>
+                            Дома и участки
+                            <svg class="nav__link-arrow">
+                                <use xlink:href="img/sprite.svg#arrow-small"></use>
+                            </svg>
+                        </span>
+                        <div class="nav-dropdown__container container">
+                            <div class="nav-dropdown-content">
+                                <div class="nav-dropdown-content__body">
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Дома, коттеджи, дачи</span>
+                                        <span>20 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Участки</span>
+                                        <span>20 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Коттеджные поселки</span>
+                                        <span>20 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Дома от застройщика</span>
+                                        <span>20 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Построить дом</span>
+                                        <span>20 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one col-span-2">
+                                        <span>Добавить заявку на покупку</span>
+                                    </a>
+                                </div>
+                                <a href="#" class="nav-dropdown-content__card-info card-info" data-da=".header-main__banners-slide--2,1212,2">
+                                    <span class="card-info__title">
+                                        Успейте взять ипотеку
+                                        по выгодной ставке
+                                    </span>
+                                    <div class="card-info__image" style="background-image: url('./img/banner-photo-4.png')">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">
+                            Покупка
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="./registry.html" class="nav__link">
+                            Реестр проблемных объектов
+                        </a>
+                    </li>
+                </ul>
+                <div class="swiper header-main__banners">
+                    <div class="swiper-wrapper header-main__banners-container">
+                        <div class="swiper-slide header-main__banners-slide header-main__banners-slide--1"></div>
+                        <div class="swiper-slide header-main__banners-slide header-main__banners-slide--2"></div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+        <main class="main main-page-gap service-moving">
+            <div class="service-sample__top top-page-inner-title">
+                <div class="top-page-inner-title__container container">
+                    <a href="#" class="top-page-inner-title__back back-link">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#arrow-left"></use>
+                        </svg>
+                        <span>Назад</span>
+                    </a>
+                    <h1 class="service-sample__title top-page-inner-title__title title-2">
+                        Сервис «Переезд»
+                    </h1>
+                </div>
+            </div>
+            <div class="service-sample__body">
+                <form action="#" id="service-moving-form" class="service-sample__container container">
+                    <div class="col">
+                        <div class="service-sample__row service-moving-main">
+                            <h2 class="service-sample__subtitle title-2">
+                                Переезд
+                            </h2>
+                            <div class="tabs-primary">
+                                <div data-tabs class="tabs-primary__inner _image-popper">
+                                    <nav data-tabs-titles class="tabs-primary__btns tabs__navigation">
+                                        <button type="button" class="btn btn-reset tabs__title _tab-active">
+                                            По городу
+                                        </button>
+                                        <button type="button" class="btn btn-reset tabs__title">
+                                            Межгород
+                                        </button>
+                                    </nav>
+                                    <div class="tabs-primary__container">
+                                        <div data-tabs-body class="tabs__content tabs-primary__content">
+
+                                            <div class="tabs__body">
+                                                <div class="service-sample__options service-moving-options">
+                                                    <div class="service-moving-options__list">
+                                                        <article class="offer-room _active">
+                                                            <div class="offer-room__check" aria-hidden="true">
+                                                                <svg>
+                                                                    <use xlink:href="img/sprite.svg#verif"></use>
+                                                                </svg>
+                                                            </div>
+                                                            <input type="checkbox" name="submit-app-offers-2" value="Камин" class="input-reset" placeholder="">
+                                                            <div class="offer-room__container">
+                                                                <div class="offer-room__image ibg">
+                                                                    <picture>
+                                                                        <source srcset="./img/card-55.webp" type="image/webp">
+                                                                        <img loading="lazy" src="./img/card-55.jpg" width="366" height="248" alt="Камин">
+                                                                    </picture>
+                                                                    <div class="offer-room__title title-3">
+                                                                        Квартирный
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </article>
+                                                        <article class="offer-room">
+                                                            <div class="offer-room__check" aria-hidden="true">
+                                                                <svg>
+                                                                    <use xlink:href="img/sprite.svg#verif"></use>
+                                                                </svg>
+                                                            </div>
+                                                            <input type="checkbox" name="submit-app-offers-2" value="Камин" class="input-reset" placeholder="">
+                                                            <div class="offer-room__container">
+                                                                <div class="offer-room__image ibg">
+                                                                    <picture>
+                                                                        <source srcset="./img/card-56.webp" type="image/webp">
+                                                                        <img loading="lazy" src="./img/card-56.jpg" width="366" height="248" alt="Камин">
+                                                                    </picture>
+                                                                    <div class="offer-room__title title-3">
+                                                                        Офисный
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </article>
+                                                        <article class="offer-room">
+                                                            <div class="offer-room__check" aria-hidden="true">
+                                                                <svg>
+                                                                    <use xlink:href="img/sprite.svg#verif"></use>
+                                                                </svg>
+                                                            </div>
+                                                            <input type="checkbox" name="submit-app-offers-2" value="Камин" class="input-reset" placeholder="">
+                                                            <div class="offer-room__container">
+                                                                <div class="offer-room__image ibg">
+                                                                    <picture>
+                                                                        <source srcset="./img/card-57.webp" type="image/webp">
+                                                                        <img loading="lazy" src="./img/card-57.jpg" width="366" height="248" alt="Камин">
+                                                                    </picture>
+                                                                    <div class="offer-room__title title-3">
+                                                                        Дачный
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </article>
+                                                        <article class="offer-room" data-hidden-furniture>
+                                                            <div class="offer-room__check" aria-hidden="true">
+                                                                <svg>
+                                                                    <use xlink:href="img/sprite.svg#verif"></use>
+                                                                </svg>
+                                                            </div>
+                                                            <input type="checkbox" name="submit-app-offers-2" value="Камин" class="input-reset" placeholder="">
+                                                            <div class="offer-room__container">
+                                                                <div class="offer-room__image ibg">
+                                                                    <picture>
+                                                                        <source srcset="./img/card-58.webp" type="image/webp">
+                                                                        <img loading="lazy" src="./img/card-58.jpg" width="366" height="248" alt="Камин">
+                                                                    </picture>
+                                                                    <div class="offer-room__title title-3">
+                                                                        Вывов строит. мусора
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </article>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="documentation app-verif-documents service-sample__quantity service-moving-quantity">
+                                                    <div data-spollers class="spollers">
+                                                        <div class="spollers__item">
+                                                            <button type="button" data-spoller class="btn btn-reset spollers__title">
+                                                                <div>
+                                                                    <span class="title-4">
+                                                                        Вещи, мебель и техника
+                                                                    </span>
+                                                                </div>
+                                                                <svg>
+                                                                    <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                                                </svg>
+                                                            </button>
+                                                            <div class="spollers__body" hidden>
+                                                                <div class="service-moving-quantity__list">
+                                                                    <div class="service-moving-quantity__item">
+                                                                        <div class="service-moving-quantity__icon">
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#box"></use>
+                                                                            </svg>
+                                                                        </div>
+                                                                        <div class="service-moving-quantity__text">
+                                                                            Коробка с вещами
+                                                                        </div>
+                                                                        <div class="service-moving-quantity__quantity quantity" data-value="0">
+                                                                            <div class="quantity__button quantity__button_minus">
+                                                                                <svg>
+                                                                                    <use xlink:href="./img/sprite.svg#minus"></use>
+                                                                                </svg>
+                                                                            </div>
+                                                                            <div class="quantity__input">
+                                                                                <input type="text" maxlength="2" disabled value="0">
+                                                                            </div>
+                                                                            <div class="quantity__button quantity__button_plus">
+                                                                                <svg>
+                                                                                    <use xlink:href="./img/sprite.svg#plus"></use>
+                                                                                </svg>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="service-moving-quantity__item">
+                                                                        <div class="service-moving-quantity__icon">
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#box"></use>
+                                                                            </svg>
+                                                                        </div>
+                                                                        <div class="service-moving-quantity__text">
+                                                                            Кровать
+                                                                        </div>
+                                                                        <div class="service-moving-quantity__quantity quantity" data-value="0">
+                                                                            <div class="quantity__button quantity__button_minus">
+                                                                                <svg>
+                                                                                    <use xlink:href="./img/sprite.svg#minus"></use>
+                                                                                </svg>
+                                                                            </div>
+                                                                            <div class="quantity__input">
+                                                                                <input type="text" maxlength="2" disabled value="0">
+                                                                            </div>
+                                                                            <div class="quantity__button quantity__button_plus">
+                                                                                <svg>
+                                                                                    <use xlink:href="./img/sprite.svg#plus"></use>
+                                                                                </svg>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="service-moving-quantity__item">
+                                                                        <div class="service-moving-quantity__icon">
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#box"></use>
+                                                                            </svg>
+                                                                        </div>
+                                                                        <div class="service-moving-quantity__text">
+                                                                            Плита
+                                                                        </div>
+                                                                        <div class="service-moving-quantity__quantity quantity" data-value="0">
+                                                                            <div class="quantity__button quantity__button_minus">
+                                                                                <svg>
+                                                                                    <use xlink:href="./img/sprite.svg#minus"></use>
+                                                                                </svg>
+                                                                            </div>
+                                                                            <div class="quantity__input">
+                                                                                <input type="text" maxlength="2" disabled value="0">
+                                                                            </div>
+                                                                            <div class="quantity__button quantity__button_plus">
+                                                                                <svg>
+                                                                                    <use xlink:href="./img/sprite.svg#plus"></use>
+                                                                                </svg>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="service-moving-quantity__item">
+                                                                        <div class="service-moving-quantity__icon">
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#box"></use>
+                                                                            </svg>
+                                                                        </div>
+                                                                        <div class="service-moving-quantity__text">
+                                                                            Стиральная машина
+                                                                        </div>
+                                                                        <div class="service-moving-quantity__quantity quantity" data-value="0">
+                                                                            <div class="quantity__button quantity__button_minus">
+                                                                                <svg>
+                                                                                    <use xlink:href="./img/sprite.svg#minus"></use>
+                                                                                </svg>
+                                                                            </div>
+                                                                            <div class="quantity__input">
+                                                                                <input type="text" maxlength="2" disabled value="0">
+                                                                            </div>
+                                                                            <div class="quantity__button quantity__button_plus">
+                                                                                <svg>
+                                                                                    <use xlink:href="./img/sprite.svg#plus"></use>
+                                                                                </svg>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="service-moving-quantity__item">
+                                                                        <div class="service-moving-quantity__icon">
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#box"></use>
+                                                                            </svg>
+                                                                        </div>
+                                                                        <div class="service-moving-quantity__text">
+                                                                            Шкаф
+                                                                        </div>
+                                                                        <div class="service-moving-quantity__quantity quantity" data-value="0">
+                                                                            <div class="quantity__button quantity__button_minus">
+                                                                                <svg>
+                                                                                    <use xlink:href="./img/sprite.svg#minus"></use>
+                                                                                </svg>
+                                                                            </div>
+                                                                            <div class="quantity__input">
+                                                                                <input type="text" maxlength="2" disabled value="0">
+                                                                            </div>
+                                                                            <div class="quantity__button quantity__button_plus">
+                                                                                <svg>
+                                                                                    <use xlink:href="./img/sprite.svg#plus"></use>
+                                                                                </svg>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="service-moving-quantity__item">
+                                                                        <div class="service-moving-quantity__icon">
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#box"></use>
+                                                                            </svg>
+                                                                        </div>
+                                                                        <div class="service-moving-quantity__text">
+                                                                            Холодильник
+                                                                        </div>
+                                                                        <div class="service-moving-quantity__quantity quantity" data-value="0">
+                                                                            <div class="quantity__button quantity__button_minus">
+                                                                                <svg>
+                                                                                    <use xlink:href="./img/sprite.svg#minus"></use>
+                                                                                </svg>
+                                                                            </div>
+                                                                            <div class="quantity__input">
+                                                                                <input type="text" maxlength="2" disabled value="0">
+                                                                            </div>
+                                                                            <div class="quantity__button quantity__button_plus">
+                                                                                <svg>
+                                                                                    <use xlink:href="./img/sprite.svg#plus"></use>
+                                                                                </svg>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="service-moving-quantity__item">
+                                                                        <div class="service-moving-quantity__icon">
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#box"></use>
+                                                                            </svg>
+                                                                        </div>
+                                                                        <div class="service-moving-quantity__text">
+                                                                            Стул
+                                                                        </div>
+                                                                        <div class="service-moving-quantity__quantity quantity" data-value="0">
+                                                                            <div class="quantity__button quantity__button_minus">
+                                                                                <svg>
+                                                                                    <use xlink:href="./img/sprite.svg#minus"></use>
+                                                                                </svg>
+                                                                            </div>
+                                                                            <div class="quantity__input">
+                                                                                <input type="text" maxlength="2" disabled value="0">
+                                                                            </div>
+                                                                            <div class="quantity__button quantity__button_plus">
+                                                                                <svg>
+                                                                                    <use xlink:href="./img/sprite.svg#plus"></use>
+                                                                                </svg>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="service-moving-quantity__item">
+                                                                        <div class="service-moving-quantity__icon">
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#box"></use>
+                                                                            </svg>
+                                                                        </div>
+                                                                        <div class="service-moving-quantity__text">
+                                                                            Телевизор
+                                                                        </div>
+                                                                        <div class="service-moving-quantity__quantity quantity" data-value="0">
+                                                                            <div class="quantity__button quantity__button_minus">
+                                                                                <svg>
+                                                                                    <use xlink:href="./img/sprite.svg#minus"></use>
+                                                                                </svg>
+                                                                            </div>
+                                                                            <div class="quantity__input">
+                                                                                <input type="text" maxlength="2" disabled value="0">
+                                                                            </div>
+                                                                            <div class="quantity__button quantity__button_plus">
+                                                                                <svg>
+                                                                                    <use xlink:href="./img/sprite.svg#plus"></use>
+                                                                                </svg>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="service-moving-quantity__item">
+                                                                        <div class="service-moving-quantity__icon">
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#box"></use>
+                                                                            </svg>
+                                                                        </div>
+                                                                        <div class="service-moving-quantity__text">
+                                                                            Стол
+                                                                        </div>
+                                                                        <div class="service-moving-quantity__quantity quantity" data-value="0">
+                                                                            <div class="quantity__button quantity__button_minus">
+                                                                                <svg>
+                                                                                    <use xlink:href="./img/sprite.svg#minus"></use>
+                                                                                </svg>
+                                                                            </div>
+                                                                            <div class="quantity__input">
+                                                                                <input type="text" maxlength="2" disabled value="0">
+                                                                            </div>
+                                                                            <div class="quantity__button quantity__button_plus">
+                                                                                <svg>
+                                                                                    <use xlink:href="./img/sprite.svg#plus"></use>
+                                                                                </svg>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="service-moving-quantity__item">
+                                                                        <div class="service-moving-quantity__icon">
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#box"></use>
+                                                                            </svg>
+                                                                        </div>
+                                                                        <div class="service-moving-quantity__text">
+                                                                            Диван
+                                                                        </div>
+                                                                        <div class="service-moving-quantity__quantity quantity" data-value="0">
+                                                                            <div class="quantity__button quantity__button_minus">
+                                                                                <svg>
+                                                                                    <use xlink:href="./img/sprite.svg#minus"></use>
+                                                                                </svg>
+                                                                            </div>
+                                                                            <div class="quantity__input">
+                                                                                <input type="text" maxlength="2" disabled value="0">
+                                                                            </div>
+                                                                            <div class="quantity__button quantity__button_plus">
+                                                                                <svg>
+                                                                                    <use xlink:href="./img/sprite.svg#plus"></use>
+                                                                                </svg>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="service-moving-quantity__item">
+                                                                        <div class="service-moving-quantity__icon">
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#box"></use>
+                                                                            </svg>
+                                                                        </div>
+                                                                        <div class="service-moving-quantity__text">
+                                                                            Пианино
+                                                                        </div>
+                                                                        <div class="service-moving-quantity__quantity quantity" data-value="0">
+                                                                            <div class="quantity__button quantity__button_minus">
+                                                                                <svg>
+                                                                                    <use xlink:href="./img/sprite.svg#minus"></use>
+                                                                                </svg>
+                                                                            </div>
+                                                                            <div class="quantity__input">
+                                                                                <input type="text" maxlength="2" disabled value="0">
+                                                                            </div>
+                                                                            <div class="quantity__button quantity__button_plus">
+                                                                                <svg>
+                                                                                    <use xlink:href="./img/sprite.svg#plus"></use>
+                                                                                </svg>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tabs__body" hidden></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h2 class="service-sample__subtitle title-2">
+                                Комментарий к переезду
+                            </h2>
+                            <div class="service-sample__comment">
+                                <div class="textarea-secondary textarea-secondary--default" data-textarea-secondary-min-height="96" style="min-height: 96px;">
+                                    <textarea name="type-value" class="input-reset textarea-secondary__input" maxlength="2500" placeholder="Напишите комментарий"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-sample__row">
+                            <h2 class="service-sample__subtitle title-2">
+                                Адрес
+                            </h2>
+                            <div class="service-sample__address service-moving-address">
+                                <div class="service-moving-address__block service-moving-address__from">
+                                    <h4 class="service-moving-address__title title-4">Откуда</h4>
+                                    <div class="row">
+                                        <div class="input-text input-text--no-exp">
+                                            <label class="input-text__label">
+                                                <span>Адрес</span>
+                                                <input type="text" name="Адрес" class="input-reset input-text__input" value="Краснодар, Тополиная улица, 40/1к1"
+                                                    placeholder="">
+                                            </label>
+                                        </div>
+                                        <div class="input-text input-text--no-exp input-text--only-number">
+                                            <label class="input-text__label">
+                                                <span>Номер квартиры</span>
+                                                <input type="text" name="Имя" class="input-reset input-text__input" value="11" maxlength="4" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="service-moving-address__block service-moving-address__to">
+                                    <h4 class="service-moving-address__title title-4">Куда</h4>
+                                    <div class="row">
+                                        <div class="input-text input-text--no-exp">
+                                            <label class="input-text__label">
+                                                <span>Адрес</span>
+                                                <input type="text" name="Адрес" class="input-reset input-text__input" placeholder="">
+                                            </label>
+                                        </div>
+                                        <div class="input-text input-text--no-exp input-text--only-number">
+                                            <label class="input-text__label">
+                                                <span>Номер квартиры</span>
+                                                <input type="text" name="Имя" class="input-reset input-text__input" maxlength="4" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-reset service-moving-address__add">
+                                    Добавить промежуточный адрес
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#plus"></use>
+                                      </svg>
+                                </button>
+                            </div>
+                            <div class="service-sample__time service-moving-time">
+                                <h2 class="service-sample__subtitle title-2">
+                                    Дата и время
+                                </h2>
+                                <p class="service-sample__descr">
+                                    Если вы хотите сделать заказ на завтра, его нужно сделать до 18:00
+                                </p>
+                                <div class="row">
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Дата</span>
+                                            <input type="text" name="Дата" class="input-reset input-text__input service-moving-time__date" value="" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Время</span>
+                                            <input type="text" name="Время" class="input-reset input-text__input input-time" value="" placeholder="">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-sample__row">
+                            <h2 class="service-sample__subtitle title-2">
+                                Время аренды и грузчики
+                            </h2>
+                            <div class="service-sample__time service-moving-rent">
+                                <div class="row">
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Время аренды</span>
+                                            <div class="secondary-tooltip secondary-tooltip--bottom-center">
+                                                <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#info"></use>
+                                                    </svg>
+                                                </button>
+                                                <div class="secondary-tooltip__content">
+                                                    <div>
+                                                        <span>Стоимость поездки часа</span>
+                                                        <span>850 ₽</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="quantity quantity--small" data-value="0" data-max-value="24" data-hour-format>
+                                                <div class="quantity__button quantity__button_minus">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#minus"></use>
+                                                    </svg>
+                                                </div>
+                                                <div class="quantity__input">
+                                                    <input type="text" class="service-sample__rent-time _width-auto" data-option-block-name="rent-time" data-price-rent="850" maxlength="2" disabled="" value="0">
+                                                </div>
+                                                <div class="quantity__button quantity__button_plus">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#plus"></use>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Грузчики</span>
+                                            <div class="secondary-tooltip secondary-tooltip--bottom-center">
+                                                <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#info"></use>
+                                                    </svg>
+                                                </button>
+                                                <div class="secondary-tooltip__content">
+                                                    Стоиомость комплекта меблировки
+                                                </div>
+                                            </div>
+                                            <div class="quantity quantity--small" data-value="0" data-max-value="5">
+                                                <div class="quantity__button quantity__button_minus">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#minus"></use>
+                                                    </svg>
+                                                </div>
+                                                <div class="quantity__input">
+                                                    <input type="text" class="service-sample__movers" data-price-movers="2000" data-option-block-name="movers" maxlength="1" disabled="" value="0">
+                                                </div>
+                                                <div class="quantity__button quantity__button_plus">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#plus"></use>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-sample__row">
+                            <h2 class="service-sample__subtitle title-2">
+                                Дополнительные опции
+                            </h2>
+                            <div class="service-sample__options-order service-moving-options-order">
+                                <h3 class="title-3">Опции к заказу</h3>
+                                <div class="service-moving-options-order__list">
+                                    <div class="service-moving-options-order__item small-card-select" data-option-price="199">
+                                        <div class="secondary-tooltip secondary-tooltip--top-center">
+                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#info"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="secondary-tooltip__content">
+                                                Стоиомость комплекта меблировки
+                                            </div>
+                                        </div>
+                                        <input type="checkbox" name="Имя" class="input-reset small-card-select__input" placeholder="Имя">
+                                        <div class="small-card-select__icon">
+                                            <img loading="lazy" src="./img/all_video_not-active.png" width="65" height="65" alt="">
+                                            <img loading="lazy" src="./img/all_video_active.png" width="65" height="65" class="small-card-select__icon_active" alt="">
+                                        </div>
+                                        <div class="small-card-select__price">
+                                            199 ₽
+                                        </div>
+                                        <div class="small-card-select__title">
+                                            Страховка груза
+                                        </div>
+                                    </div>
+                                    <div class="service-moving-options-order__item small-card-select" data-option-price="999">
+                                        <div class="secondary-tooltip secondary-tooltip--top-center">
+                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#info"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="secondary-tooltip__content">
+                                                Стоиомость комплекта меблировки
+                                            </div>
+                                        </div>
+                                        <input type="checkbox" name="Имя" class="input-reset small-card-select__input" placeholder="Имя">
+                                        <div class="small-card-select__icon">
+                                            <img loading="lazy" src="./img/all_video_not-active.png" width="65" height="65" alt="">
+                                            <img loading="lazy" src="./img/all_video_active.png" width="65" height="65" class="small-card-select__icon_active" alt="">
+                                        </div>
+                                        <div class="small-card-select__price">
+                                            999 ₽
+                                        </div>
+                                        <div class="small-card-select__title">
+                                            Страховка груза 2
+                                        </div>
+                                    </div>
+                                    <div class="service-moving-options-order__item small-card-select">
+                                        <div class="secondary-tooltip secondary-tooltip--top-center">
+                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#info"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="secondary-tooltip__content">
+                                                Стоиомость комплекта меблировки
+                                            </div>
+                                        </div>
+                                        <input type="checkbox" name="Имя" class="input-reset small-card-select__input" placeholder="Имя">
+                                        <div class="small-card-select__icon">
+                                            <img loading="lazy" src="./img/messenger_not-active.png" width="65" height="65" alt="">
+                                            <img loading="lazy" src="./img/messenger_active.png" width="65" height="65" class="small-card-select__icon_active" alt="">
+                                        </div>
+                                        <div class="small-card-select__price">
+                                            0 ₽
+                                        </div>
+                                        <div class="small-card-select__title">
+                                            Квитанция об оплате
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3 class="title-3">Услуги</h3>
+                                <div class="service-moving-options-order__list">
+                                    <div class="service-moving-options-order__item small-card-select">
+                                        <div class="secondary-tooltip secondary-tooltip--top-center">
+                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#info"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="secondary-tooltip__content">
+                                                Стоиомость комплекта меблировки
+                                            </div>
+                                        </div>
+                                        <input type="checkbox" name="Имя" class="input-reset small-card-select__input" placeholder="Имя">
+                                        <div class="small-card-select__icon">
+                                            <img loading="lazy" src="./img/apple_music_not-active.png" width="65" height="65" alt="">
+                                            <img loading="lazy" src="./img/apple_music_active.png" width="65" height="65" class="small-card-select__icon_active" alt="">
+                                        </div>
+                                        <div class="small-card-select__price">
+                                            от 129 ₽
+                                        </div>
+                                        <div class="small-card-select__title">
+                                            Сборка/разработка мебели
+                                        </div>
+                                    </div>
+                                    <div class="service-moving-options-order__item small-card-select">
+                                        <div class="secondary-tooltip secondary-tooltip--top-center">
+                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#info"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="secondary-tooltip__content">
+                                                Стоиомость комплекта меблировки
+                                            </div>
+                                        </div>
+                                        <input type="checkbox" name="Имя" class="input-reset small-card-select__input" placeholder="Имя">
+                                        <div class="small-card-select__icon">
+                                            <img loading="lazy" src="./img/all_video_not-active.png" width="65" height="65" alt="">
+                                            <img loading="lazy" src="./img/all_video_active.png" width="65" height="65" class="small-card-select__icon_active" alt="">
+                                        </div>
+                                        <div class="small-card-select__price">
+                                            от 129 ₽
+                                        </div>
+                                        <div class="small-card-select__title">
+                                            Сборка кровати
+                                        </div>
+                                    </div>
+                                    <div class="service-moving-options-order__item small-card-select">
+                                        <div class="secondary-tooltip secondary-tooltip--top-center">
+                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#info"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="secondary-tooltip__content">
+                                                Стоиомость комплекта меблировки
+                                            </div>
+                                        </div>
+                                        <input type="checkbox" name="Имя" class="input-reset small-card-select__input" placeholder="Имя">
+                                        <div class="small-card-select__icon">
+                                            <img loading="lazy" src="./img/all_video_not-active.png" width="65" height="65" alt="">
+                                            <img loading="lazy" src="./img/all_video_active.png" width="65" height="65" class="small-card-select__icon_active" alt="">
+                                        </div>
+                                        <div class="small-card-select__price">
+                                            от 129 ₽
+                                        </div>
+                                        <div class="small-card-select__title">
+                                            Сборка шкафа
+                                        </div>
+                                    </div>
+                                    <div class="service-moving-options-order__item small-card-select">
+                                        <div class="secondary-tooltip secondary-tooltip--top-center">
+                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#info"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="secondary-tooltip__content">
+                                                Стоиомость комплекта меблировки
+                                            </div>
+                                        </div>
+                                        <input type="checkbox" name="Имя" class="input-reset small-card-select__input" placeholder="Имя">
+                                        <div class="small-card-select__icon">
+                                            <img loading="lazy" src="./img/all_video_not-active.png" width="65" height="65" alt="">
+                                            <img loading="lazy" src="./img/all_video_active.png" width="65" height="65" class="small-card-select__icon_active" alt="">
+                                        </div>
+                                        <div class="small-card-select__price">
+                                            от 129 ₽
+                                        </div>
+                                        <div class="small-card-select__title">
+                                            Сборка кухни
+                                        </div>
+                                    </div>
+                                    <div class="service-moving-options-order__item small-card-select">
+                                        <div class="secondary-tooltip secondary-tooltip--top-center">
+                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#info"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="secondary-tooltip__content">
+                                                Стоиомость комплекта меблировки
+                                            </div>
+                                        </div>
+                                        <input type="checkbox" name="Имя" class="input-reset small-card-select__input" placeholder="Имя">
+                                        <div class="small-card-select__icon">
+                                            <img loading="lazy" src="./img/all_video_not-active.png" width="65" height="65" alt="">
+                                            <img loading="lazy" src="./img/all_video_active.png" width="65" height="65" class="small-card-select__icon_active" alt="">
+                                        </div>
+                                        <div class="small-card-select__price">
+                                            от 129 ₽
+                                        </div>
+                                        <div class="small-card-select__title">
+                                            Сборка стола
+                                        </div>
+                                    </div>
+                                    <div class="service-moving-options-order__item small-card-select">
+                                        <div class="secondary-tooltip secondary-tooltip--top-center">
+                                            <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#info"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="secondary-tooltip__content">
+                                                Стоиомость комплекта меблировки
+                                            </div>
+                                        </div>
+                                        <input type="checkbox" name="Имя" class="input-reset small-card-select__input" placeholder="Имя">
+                                        <div class="small-card-select__icon">
+                                            <img loading="lazy" src="./img/all_video_not-active.png" width="65" height="65" alt="">
+                                            <img loading="lazy" src="./img/all_video_active.png" width="65" height="65" class="small-card-select__icon_active" alt="">
+                                        </div>
+                                        <div class="small-card-select__price">
+                                            от 129 ₽
+                                        </div>
+                                        <div class="small-card-select__title">
+                                            Упаковка вещей
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="service-sample__subtitle title-3">
+                                Что можно добавить к заказу
+                            </h3>
+                            <div class="service-sample__features service-moving-features">
+                                <div class="service-moving-features__list">
+                                    <div class="service-moving-features__item features-item" data-option-feature-block="carton-box">
+                                        <div class="col">
+                                            <div class="features-item__title">
+                                                Картонная коробка
+                                            </div>
+                                            <div class="features-item__price" data-price="63">
+                                                От <span>63</span> ₽/шт.
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-reset tag features-item__btn">
+                                            Добавить
+                                        </button>
+                                    </div>
+                                    <div class="service-moving-features__item features-item" data-option-feature-block="bubble-wrap">
+                                        <div class="col">
+                                            <div class="features-item__title">
+                                                Пузырчатая плёнка
+                                            </div>
+                                            <div class="features-item__price" data-price="30">
+                                                От <span>30</span> ₽/м
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-reset tag features-item__btn">
+                                            Добавить
+                                        </button>
+                                    </div>
+                                    <div class="service-moving-features__item features-item" data-option-feature-block="scotch">
+                                        <div class="col">
+                                            <div class="features-item__title">
+                                                Скотч
+                                            </div>
+                                            <div class="features-item__price" data-price="48">
+                                                От <span>48</span> ₽/шт.
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-reset tag features-item__btn">
+                                            Добавить
+                                        </button>
+                                    </div>
+                                    <div class="service-moving-features__item features-item" data-option-feature-block="stretch-film">
+                                        <div class="col">
+                                            <div class="features-item__title">
+                                                Стретч-плёнка
+                                            </div>
+                                            <div class="features-item__price" data-price="220">
+                                                От <span>220</span> ₽/рулон
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-reset tag features-item__btn">
+                                            Добавить
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <h3 class="service-sample__subtitle title-3">
+                                Что можно добавить к заказу
+                            </h3>
+                            <div style="display: grid;grid-template-columns: 1fr 1fr;grid-column-gap: 12px;">
+                                <div class="card-checkbox">
+                                    <div class="card-checkbox__info">
+                                        <span class="card-checkbox__name">
+                                            Страховка груза
+                                        </span>
+                                        <span class="card-checkbox__time">
+                                            199 ₽
+                                        </span>
+                                    </div>
+                                    <div class="secondary-tooltip secondary-tooltip--top-center">
+                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#info"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="secondary-tooltip__content">
+                                            Стоиомость комплекта меблировки
+                                        </div>
+                                    </div>
+                                    <label class="toggle-checkbox">
+                                        <input type="checkbox" name="toggle-1">
+                                        <div aria-hidden="true"></div>
+                                    </label>
+                                </div>
+                                <div class="card-checkbox">
+                                    <div class="card-checkbox__info">
+                                        <span class="card-checkbox__name">
+                                            Авторский дизайн
+                                        </span>
+                                        <span class="card-checkbox__time">
+                                            2 500 ₽
+                                        </span>
+                                    </div>
+                                    <div class="secondary-tooltip secondary-tooltip--top-center">
+                                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#info"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="secondary-tooltip__content">
+                                            Стоиомость комплекта меблировки
+                                        </div>
+                                    </div>
+                                    <label class="toggle-checkbox">
+                                        <input type="checkbox" name="toggle-1">
+                                        <div aria-hidden="true"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-sample__row">
+                            <h2 class="service-sample__subtitle title-2">
+                                Комментарий к заказу
+                            </h2>
+                            <p class="service-sample__descr">
+                                Укажите код домофона, есть ли препятствия для проезда и другую важную информацию
+                            </p>
+                            <div class="service-sample__comment service-moving-comment">
+                                <div class="textarea-secondary textarea-secondary--default" data-textarea-secondary-min-height="96" style="min-height: 96px;">
+                                    <textarea name="type-value" class="input-reset textarea-secondary__input" maxlength="2500" placeholder="Напишите комментарий"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-sample__row">
+                            <h2 class="service-sample__subtitle title-2">
+                                Заказчик
+                            </h2>
+                            <div class="service-sample__client service-moving-client service-moving-client--customer">
+                                <div class="row">
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Имя</span>
+                                            <input type="text" name="Имя" class="input-reset input-text__input" value="Алексей" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Фамилия</span>
+                                            <input type="text" name="Фамилия" class="input-reset input-text__input" value="Гаврилов" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Номер телефона</span>
+                                            <input type="text" name="Застройщик" class="input-reset input-text__input input-phone-mask" value="8 921 645 45 45" placeholder="">
+                                        </label>
+                                    </div>
+                                </div>
+                                <label class="toggle-checkbox service-moving-client__toggle">
+                                    <input type="checkbox" name="toggle-1">
+                                    <div aria-hidden="true"></div>
+                                    <span>Груз получит другой человек</span>
+                                </label>
+                            </div>
+                            <div class="service-sample__client service-moving-client service-moving-client--recipient" data-service-moving-recipient hidden>
+                                <h2 class="service-sample__subtitle title-2">
+                                    Получатель
+                                </h2>
+                                <div class="row">
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Имя</span>
+                                            <input type="text" name="Имя" class="input-reset input-text__input" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Фамилия</span>
+                                            <input type="text" name="Фамилия" class="input-reset input-text__input" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Номер телефона</span>
+                                            <input type="text" name="Застройщик" class="input-reset input-text__input input-phone-mask" placeholder="">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-sample__row">
+                            <h2 class="service-sample__subtitle title-2">
+                                Способы оплаты
+                            </h2>
+                            <div class="service-sample__pay-method service-pay-method radio-primary">
+                                <div class="radio-primary__item">
+                                    <input hidden id="SberPay" class="radio-primary__input" type="radio" value="SberPay" name="pay-method" data-pay-method-tab="1">
+                                    <label for="SberPay" class="radio-primary__label">
+                                        <span class="radio-primary__text radio-primary__text--icon" style="top: -8px;">
+                                            <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="icon"><path d="M0 8.05C0 6.92.9 6 2 6h28c1.1 0 2 .92 2 2.05v16.38c0 1.13-.9 2.05-2 2.05H2c-1.1 0-2-.92-2-2.05V8.05z" fill="url(#sberpay_svg__a)"></path><path d="M16.2 17.44v1.86h-1.07v-5.96h1.99c1.88 0 2.68.67 2.68 2.02 0 1.39-.93 2.08-2.68 2.08h-.92zm0-3.12v2.14h1c.99 0 1.5-.32 1.5-1.13 0-.73-.44-1.01-1.48-1.01H16.2zm4.17 1.02c.28-.21.79-.38 1.52-.38 1.25 0 1.86.42 1.86 1.53v2.81h-.94v-.76c-.2.49-.72.83-1.4.83-.86 0-1.37-.48-1.37-1.32 0-.97.7-1.24 1.75-1.24h.96v-.2c0-.6-.29-.78-.86-.78-.78 0-1.23.3-1.52.75v-1.24zm2.38 2.46v-.35h-.84c-.59 0-.87.12-.87.5 0 .32.24.53.68.53.67 0 .99-.39 1.03-.68zm1.49-2.76h1.12l1.16 2.92.96-2.92h1.05l-1.7 4.71c-.38 1.03-.76 1.26-1.32 1.26-.27 0-.56-.08-.68-.19v-.93c.13.13.32.21.5.21.31 0 .54-.2.7-.77l-1.79-4.29zm-17.41.3v1.31l1.73 1.1 4.15-3.07a4.56 4.56 0 00-.54-.9l-3.61 2.65-1.73-1.09z" fill="#fff"></path><path d="M12.06 16.46v.1a3.51 3.51 0 11-1.52-2.9l.89-.65a4.56 4.56 0 101.62 2.73l-.99.72z" fill="#fff"></path><defs><linearGradient id="sberpay_svg__a" x1="17.25" y1="41.51" x2="40.68" y2="20.74" gradientUnits="userSpaceOnUse"><stop stop-color="#C7E701"></stop><stop offset="0.24" stop-color="#0ADA01"></stop><stop offset="0.44" stop-color="#21DE58"></stop><stop offset="0.63" stop-color="#3EE3A9"></stop><stop offset="0.81" stop-color="#37DABE"></stop><stop offset="1" stop-color="#15CAE0"></stop></linearGradient></defs></svg>
+                                            SberPay
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="radio-primary__item">
+                                    <input hidden id="Card" class="radio-primary__input" type="radio" value="Картой на сайте" name="pay-method" data-pay-method-tab="2">
+                                    <label for="Card" class="radio-primary__label">
+                                        <span class="radio-primary__text radio-primary__text--icon" style="top: -6px;">
+                                            <svg width="32" height="24" viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.544 15.745a1 1 0 01.812-1.159l1.97-.347a1 1 0 01.347 1.97l-1.97.347a1 1 0 01-1.159-.812z" fill="#000"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M19.28 3.298L9.942 4.945c-.793.14-1.447.255-1.973.392-.545.143-1.037.33-1.472.658A4 4 0 005.079 8.02c-.16.52-.167 1.047-.114 1.608.05.541.166 1.195.305 1.988l.779 4.415c.14.792.255 1.447.392 1.972.143.545.33 1.037.658 1.472a4 4 0 002.025 1.418c.52.16 1.047.167 1.608.114.54-.05 1.195-.165 1.988-.305l9.338-1.647c.793-.14 1.448-.255 1.973-.392.545-.143 1.037-.33 1.472-.658a4 4 0 001.418-2.025c.16-.52.167-1.047.114-1.608-.05-.541-.166-1.195-.305-1.988l-.779-4.415c-.14-.792-.255-1.447-.392-1.972-.143-.545-.33-1.037-.658-1.472a4 4 0 00-2.025-1.418c-.52-.16-1.047-.167-1.608-.114-.54.05-1.195.165-1.988.305zM7.7 7.592c.14-.105.35-.208.776-.32.437-.114 1.01-.216 1.853-.365l9.258-1.632c.843-.149 1.417-.25 1.866-.291.439-.04.67-.016.838.035a2 2 0 011.013.71c.106.14.208.35.32.775.074.285.144.628.224 1.066L7.11 10.52c-.074-.439-.127-.785-.154-1.078-.04-.438-.016-.67.036-.838A2 2 0 017.7 7.592zm-.245 4.9l.556 3.15c.149.844.25 1.418.365 1.854.112.426.214.635.32.776a2 2 0 001.013.709c.167.05.4.076.838.035.45-.042 1.023-.142 1.866-.291l9.258-1.632c.843-.15 1.416-.25 1.853-.365.426-.112.635-.215.775-.32a2 2 0 00.71-1.013c.05-.168.076-.4.035-.838-.042-.45-.142-1.023-.291-1.866l-.556-3.152-16.742 2.952z" fill="#000"></path></svg>
+                                            Картой на сайте
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="service-sample__pay-method-tab service-sample__pay-card" data-pay-method-content="2" hidden>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Номер карты</span>
+                                            <input type="text" name="Имя" class="input-reset input-text__input input-card-mask" maxlength="23" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp">
+                                        <label class="input-text__label">
+                                            <span>Срок действия</span>
+                                            <input type="text" name="Имя" class="input-reset input-text__input input-card-validity-mask" maxlength="5" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text">
+                                        <label class="input-text__label">
+                                            <span>CVC</span>
+                                            <input type="password" name="CVC" class="input-reset input-text__input input-cvc" maxlength="5" placeholder="">
+                                            <div class="secondary-tooltip secondary-tooltip--bottom-center">
+                                                <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#info"></use>
+                                                    </svg>
+                                                </button>
+                                                <div class="secondary-tooltip__content">
+                                                    Код на обратной стороне карты
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="radio-primary__item">
+                                    <input hidden id="Cash" class="radio-primary__input" type="radio" value="Наличными" name="pay-method" data-pay-method-tab="3">
+                                    <label for="Cash" class="radio-primary__label">
+                                        <span class="radio-primary__text">Наличными</span>
+                                    </label>
+                                </div>
+                                <div class="service-sample__pay-method-tab service-sample__pay-cash" data-pay-method-content="3" hidden>
+                                    <div class="input-text input-text--only-number">
+                                        <label class="input-text__label">
+                                            <span>С какой суммы подготовить сдачу?</span>
+                                            <input type="text" name="Имя" class="input-reset input-text__input pay-cash-input" maxlength="12" placeholder="">
+                                            <span>₽</span>
+                                        </label>
+                                    </div>
+                                    <div class="checkbox-secondary">
+                                        <input id="no-change" name="no-change" class="checkbox-secondary__input pay-cash-no-change" type="checkbox" value="no-change">
+                                        <label for="no-change" class="checkbox-secondary__label">
+                                            <span class="checkbox-secondary__text">
+                                                <span>Без сдачи</span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-sample__sidebar col">
+                        <div class="_sticky">
+                            <div class="service-sample__result service-moving-result">
+                                <div class="service-moving-result__main">
+                                    <h2 class="service-moving-result__main-title title-3">
+                                        <span>Общая стоимость</span>
+                                        <span>0 ₽</span>
+                                    </h2>
+                                    <div class="service-moving-result__options">
+                                        <div class="service-moving-result__option" data-option-name="rent-time">
+                                            <span>Время аренды</span>
+                                            <span>0 ₽</span>
+                                            <span>0 ₽</span>
+                                            <div class="quantity quantity--small" data-value="0" data-max-value="24">
+                                                <div class="quantity__button quantity__button_minus">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#minus"></use>
+                                                    </svg>
+                                                </div>
+                                                <div class="quantity__input">
+                                                    <input type="text" maxlength="2" disabled="" value="0">
+                                                </div>
+                                                <div class="quantity__button quantity__button_plus">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#plus"></use>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="service-moving-result__option" data-option-name="movers">
+                                            <span>Грузчики</span>
+                                            <span>0 ₽</span>
+                                            <span>0 ₽</span>
+                                            <div class="quantity quantity--small" data-value="0">
+                                                <div class="quantity__button quantity__button_minus">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#minus"></use>
+                                                    </svg>
+                                                </div>
+                                                <div class="quantity__input">
+                                                    <input type="text" maxlength="2" disabled="" value="0">
+                                                </div>
+                                                <div class="quantity__button quantity__button_plus">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#plus"></use>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="service-moving-result__checkbox checkbox-secondary">
+                                        <input id="personal-info" name="personal-info" class="checkbox-secondary__input" type="checkbox" value="true">
+                                        <label for="personal-info" class="checkbox-secondary__label">
+                                            <span class="checkbox-secondary__text">
+                                                <span>Я соглашаюсь на обработку</span>
+                                                <a href="#">персональных данных</a>
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <button type="button" class="btn btn-reset btn-primary service-moving-result__btn" data-popup-path="service-moving-confirm">Заказать услугу</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer__container container">
+        <div class="footer__top">
+            <a href="#" class="footer__logo logo">
+                <img loading="lazy" src="./img/logo.svg" width="83" height="25" class="logo__img"
+                    alt="Продам.Онлайн">
+            </a>
+            <nav class="footer__nav nav">
+                <ul class="nav__list list-reset">
+                    <li class="nav__item"><a href="#" class="nav__link">Продажа</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Новостройки</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Покупка</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Услуги</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer__write">
+            <p>
+                Есть предложения, напишите нам.
+            </p>
+            <button type="button" class="btn btn-reset btn-secondary footer__btn">Написать</button>
+        </div>
+        <p class="footer__descr">
+            © 2021-2022 ООО «Продам онлайн», официальный сайт использует куки-файлы и другие технологии, чтобы помочь
+            вам в навигации, а также предоставить лучший пользовательский опыт, анализировать использование наших
+            продуктов и услуг, повысить качество рекламных и маркетинговых активностей. Если Вы не хотите, чтобы Ваши
+            пользовательские данные обрабатывались, пожалуйста, ограничьте их использование в своём браузере.
+        </p>
+    </div>
+</footer>
+
+    </div>
+    <!-- popups -->
+    <div class="popup popup-primary popup-primary--left popup-primary--city" data-popup-mobile-fast>
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="city">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content city-popup">
+            <h2 class="city-popup__title title-2">
+                Выбор города
+            </h2>
+            <div class="city-popup__input">
+                <button type="button" class="btn btn-reset">
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#search"></use>
+                    </svg>
+                </button>
+                <input type="search" name="Название города" class="input-reset" placeholder="Введите название города">
+                <button type="button" class="btn btn-reset city-popup__clear" hidden>
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#x"></use>
+                    </svg>
+                </button>
+            </div>
+            <div class="city-popup__list">
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Москва</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Калининград</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Санкт-Петербург</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Казань</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Краснодар</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Екатеринбург</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Нижний-Новгород</button>
+            </div>
+            <div class="checkbox-secondary city-popup__auto">
+                <input id="city-auto" name="city-auto" class="checkbox-secondary__input" type="checkbox" value="true">
+                <label for="city-auto" class="checkbox-secondary__label">
+                    <span class="checkbox-secondary__text">
+                        Определить автоматически
+                    </span>
+                </label>
+            </div>
+            <button type="button" class="btn btn-reset btn-primary js-popup-close city-popup__save" disabled>Сохранить</button>
+        </div>
+    </div>
+</div>
+    <div class="popup popup-primary popup-primary--right popup-primary--add">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="add">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content add-popup">
+            <h2 class="add-popup__title title-2">
+                Добавить
+            </h2>
+            <ul class="add-popup__list list-reset">
+                <li class="add-popup__item">
+                    <a href="#" class="add-popup__link">
+                        <span>Заявка на покупку недвижимости</span>
+                    </a>
+                </li>
+                <li class="add-popup__item">
+                    <a href="#" class="add-popup__link">
+                        <span>Объект на продажу</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+    <div class="popup popup-secondary popup-secondary--right popup-secondary--personal">
+    <div class="popup__container popup-secondary__container" role="dialog" aria-modal="true" data-popup-target="personal-area-two">
+        <button class="btn-reset js-popup-close popup__close popup-secondary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-secondary__content personal-area">
+            <div class="personal-area__container">
+                <h2 class="personal-area__title title-2">
+                    Личный кабинет
+                </h2>
+                <div class="personal-area__info">
+                    <div class="personal-area__avatar avatar">
+                        <img loading="lazy" src="./img/avatar-1.jpg" width="45" height="45" alt="Иван П.">
+                    </div>
+                    <span class=" personal-area__name">
+                        Иван П.
+                    </span>
+                    <a href="./edit-profile.html" class="btn btn-reset personal-area__edit">Редактировать профиль</a>
+                </div>
+                <nav class="personal-area__nav">
+                    <ul data-spollers class="personal-area__list list-reset">
+                        <li class="personal-area__item personal-area-dropdown">
+                            <button type="button" data-spoller class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#add"></use>
+                                </svg>
+                                <span>Добавить</span>
+                                <svg class="personal-area-dropdown__arrow">
+                                    <use xlink:href="img/sprite.svg#arrow-small"></use>
+                                </svg>
+                            </button>
+                            <div class="personal-area-dropdown__body">
+                                <a href="#" class="btn btn-reset personal-area__btn">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#tg"></use>
+                                    </svg>
+                                    <span>Заявка на покупку недвижимости</span>
+                                </a>
+                                <a href='#' class="btn btn-reset personal-area__btn">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#house"></use>
+                                    </svg>
+                                    <span>Объект на продажу</span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#chat"></use>
+                                </svg>
+                                <span>Чат</span>
+                                <span class="personal-area__quantity">
+                                    +6
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <a href="./present.html" type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#bonus"></use>
+                                </svg>
+                                <span>
+                                    Кешбэк и подарки
+                                </span>
+                                <span class="personal-area__quantity">
+                                    +6
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#cart-1"></use>
+                                </svg>
+                                <span>Мои заявки на покупку недвижимости</span>
+                            </button>
+                        </li>
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#cart-3"></use>
+                                </svg>
+                                <span>Предложения по заявкам</span>
+                                <span class="personal-area__quantity">
+                                    +6
+                                </span>
+                            </button>
+                        </li>
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#calendar"></use>
+                                </svg>
+                                <span>Календарь, запись на просмотры</span>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#house-laptop2"></use>
+                                </svg>
+                                <span>Мои объекты</span>
+                                <span class="personal-area__quantity">
+                                    6
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#sign-in"></use>
+                                </svg>
+                                <span>Выйти</span>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="popup popup-primary popup-primary--right popup-primary--edit-profile">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="edit-profile">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <form action="#" class="popup__content popup-primary__content edit-profile container">
+            <h2 class="edit-profile__title title-2">
+                Настройки личного кабинета
+            </h2>
+            <div class="col">
+                <div class="edit-profile__user">
+                    <div class="edit-profile__avatar avatar">
+                        <img loading="lazy" src="./img/avatar.png" width="90" height="90" alt="Иван Петров">
+                        <div>
+                            <input type="file" multiple accept=".jpg, .png, .jpeg, .heic" class="input-reset">
+                            <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.02 5.714h5.96c.868 0 1.376.253 1.874.838.026.03.446.552.903 1.116.457.565 1.388.903 2.243.903h.572c2.285 0 4 1.715 4 4.572v8.571c0 2.286-2.286 4.572-5.143 4.572H8.572c-2.858 0-5.143-2.286-5.143-4.572v-8.571c0-2.857 1.714-4.572 4-4.572H8c.855 0 1.786-.338 2.243-.903.457-.564.877-1.086.903-1.116.498-.585 1.006-.838 1.873-.838zM9.885 16.857A6.116 6.116 0 0016 22.971a6.117 6.117 0 006.114-6.114A6.117 6.117 0 0016 10.743a6.116 6.116 0 00-6.114 6.114zm1.828 0a4.285 4.285 0 118.571 0 4.285 4.285 0 01-8.57 0z"
+                                    fill="currentColor"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="edit-profile__subtitle">
+                        Фамилия, имя, отчество
+                    </div>
+                    <div class="edit-profile__name title-2">
+                        Иван Петров Сергеевич
+                    </div>
+                </div>
+                <div class="edit-profile__tied">
+                    <div class="secondary-tooltip secondary-tooltip--dark">
+                        <button type="button" class="btn btn-reset edit-profile__tied-btn secondary-tooltip__btn" data-popup-path="sber-tied">
+                            <img loading="lazy" src="./img/sber.png" width="34" height="34" alt="Сбербанк ID">
+                        </button>
+                        <div class="secondary-tooltip__content">
+                            Привязанные аккаунты
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="edit-profile__wrapper">
+                <h4 class="edit-profile__wrapper-subtitle title-3">Личные данные</h4>
+                <label class="input-primary input-primary--disabled">
+                    <input type="text" name="Фамилия" class="input-reset input-primary__input" disabled value="Петров" placeholder="Фамилия">
+                    <div class="secondary-tooltip secondary-tooltip--dark secondary-tooltip--top-center">
+                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#info"></use>
+                            </svg>
+                        </button>
+                        <div class="secondary-tooltip__content">
+                            Для вашего профиля редактирование данных недоступно.
+                        </div>
+                    </div>
+                </label>
+                <label class="input-primary input-primary--disabled">
+                    <input type="text" name="Имя" class="input-reset input-primary__input" disabled value="Иван" placeholder="Имя">
+                    <div class="secondary-tooltip secondary-tooltip--dark">
+                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#info"></use>
+                            </svg>
+                        </button>
+                        <div class="secondary-tooltip__content">
+                            Для вашего профиля редактирование данных недоступно.
+                        </div>
+                    </div>
+                </label>
+                <label class="input-primary input-primary--disabled">
+                    <input type="text" name="Отчество" class="input-reset input-primary__input" disabled value="Сергеевич" placeholder="Отчество">
+                    <div class="secondary-tooltip secondary-tooltip--dark secondary-tooltip--top-center">
+                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#info"></use>
+                            </svg>
+                        </button>
+                        <div class="secondary-tooltip__content">
+                            Для вашего профиля редактирование данных недоступно.
+                        </div>
+                    </div>
+                </label>
+                <label class="input-primary input-primary--disabled">
+                    <input type="text" name="Дата рождения" class="input-reset input-primary__input" disabled value="16.02.1982" placeholder="Телефон">
+                    <div class="secondary-tooltip secondary-tooltip--dark">
+                        <button type="button" class="btn btn-reset secondary-tooltip__btn">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#info"></use>
+                            </svg>
+                        </button>
+                        <div class="secondary-tooltip__content">
+                            Для вашего профиля редактирование данных недоступно.
+                        </div>
+                    </div>
+                </label>
+                <div class="input-text input-text--no-exp _active">
+                    <label class="input-text__label">
+                        <span>Номер телефона</span>
+                        <input type="tel" name="Телефон" class="input-reset input-text__input input-phone-mask" value="89876543210" placeholder="">
+                    </label>
+                </div>
+                <div class="input-text input-text--no-exp _active">
+                    <label class="input-text__label">
+                        <span>Эл.почта</span>
+                        <input type="text" name="Эл.почта" class="input-reset input-text__input" value="address@gmail.com" placeholder="">
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-reset btn-primary edit-profile__save">Сохранить</button>
+        </form>
+    </div>
+</div>
+    <div class="popup popup-primary popup-primary--right popup-primary--sber-tied">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="sber-tied">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content popup-tied">
+            <h2 class="popup-tied__title title-2">
+                Привязанный аккаунт
+            </h2>
+            <p class="popup-tied__descr">
+                Привязанный аккаунт позволит входить без СМС и пароля, размещать заявки на покупку, получать индивидуальные предложения, 
+                кешбэк и подарки от застройщика
+            </p>
+            <div class="popup-tied__card">
+                <img loading="lazy" src="./img/sber.png" width="32" height="32" class="popup-tied__icon" alt="Сбербанк">
+                <div>
+                    <span>Сбер ID</span>
+                    <span>Вход 21.06.2023</span>
+                    <button type="button" class="btn btn-reset">Отвязать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="popup popup-primary popup-primary--service-moving-confirm">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="service-moving-confirm">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content service-moving-confirm">
+            <h2 class="service-moving-confirm__title title-2">
+                Услуга заказана
+            </h2>
+            <div class="service-moving-confirm__text">
+                <p>
+                    Транспортная компания свяжется с вами в день перевозки.
+                </p>
+            </div>
+            <button type="button" class="btn btn-reset btn-primary service-moving-confirm__button js-popup-close">
+                Готово
+            </button>
+        </div>
+    </div>
+</div>
+    <!-- popups -->
+</body>
+
+
+</html>

@@ -1,0 +1,2304 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Инвестиции</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/investments.css">
+    <script id="ymaps-id"></script>
+    <script defer src="js/investments.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container">
+        <header class="header header--new">
+    <div class="header__top header-top">
+        <div class="header-top__container container">
+            <button class="header-top__burger burger" aria-label="Открыть меню" aria-expanded="false" data-burger>
+                <span class="burger__line"></span>
+            </button>
+            <div class="header-top__city city" data-da=".header-main__nav,1212,3">
+                <button type="button" class="btn btn-reset city__title" data-popup-path="city">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#location-fill"></use>
+                    </svg>
+                    <span class="city__name">Краснодар</span>
+                    <p class="city__descr">
+                        Изменить
+                    </p>
+                </button>
+            </div>
+            <div class="header-top__actions">
+                <div class="header-top__action header-action header-action--notif secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                    <button type='button' data-popup-path="notif-popup" class="btn btn-reset header-action__title secondary-tooltip__btn">
+                        <svg class='tw-w-4 tw-h-4'>
+                            <use xlink:href="./img/sprite.svg#notification"></use>
+                        </svg>
+                        <div class="notif-counter tw-absolute tw-top-[12px] tw-right-[10px]">4</div>
+                    </button>
+                    <div class="secondary-tooltip__content">
+                        Уведомления
+                    </div>
+                </div>
+                <div class="header-top__action header-action header-action--comp secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                    <a href="./comparison.html" class="btn btn-reset header-action__title secondary-tooltip__btn">
+                        <svg class='w-16 h-16'>
+                            <use xlink:href="./img/sprite.svg#comparison"></use>
+                          </svg>
+                    </a>
+                    <div class="secondary-tooltip__content">
+                        Сравнение
+                    </div>
+                </div>
+                <div class="header-top__action header-action header-action--cashback secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                    <a href="./present.html" class="btn btn-reset header-action__title secondary-tooltip__btn">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#bonus"></use>
+                        </svg>
+                    </a>
+                    <div class="secondary-tooltip__content">
+                        Кешбэк и подарки
+                    </div>
+                </div>
+                <div class="header-top__action header-action header-action--calendar secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                    <a href="./calendar.html" class="btn btn-reset header-action__title secondary-tooltip__btn">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#calendar"></use>
+                        </svg>
+                    </a>
+                    <div class="secondary-tooltip__content">
+                        Календарь
+                    </div>
+                </div>
+                <div class="header-top__action header-action header-action--add">
+                    <button type="button" data-popup-path="add" class="btn btn-reset header-action__title">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#add"></use>
+                        </svg>
+                        <span class="header-action__name">
+                            Добавить
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="header-top__personal header-personal">
+                <button type="button" class="btn btn-reset header-personal__title" data-popup-path="personal-area-two">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#door-open"></use>
+                    </svg>
+                    <span class="header-personal__name">
+                        Кабинет
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="header__main header-main">
+        <div class="header-main__container container">
+            <a href="#" class="header-main__logo logo" data-da=".header-top__container,1212,1">
+                <img loading="lazy" src="./img/logo.svg" width="238" height="32" class="logo__img" alt="Продам.Онлайн">
+            </a>
+            <nav class="header-main__nav nav" data-menu>
+                <button type="button" class="btn btn-reset header-main__close">Закрыть</button>
+                <div class="header-main__title">Меню</div>
+                <ul class="nav__list list-reset" data-spollers="1212,max" data-one-spoller>
+                    <li class="nav__item nav-dropdown">
+                        <span class="nav__link" data-spoller>
+                            Новостройки
+                            <svg class="nav__link-arrow">
+                                <use xlink:href="img/sprite.svg#arrow-small"></use>
+                            </svg>
+                        </span>
+                        <div class="nav-dropdown__container container">
+                            <div class="nav-dropdown-content">
+                                <div class="nav-dropdown-content__body">
+                                    <a href="#" class="nav-dropdown-content__item">
+                                        <span>Жилые комплексы</span>
+                                        <span>36 990 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Старт продаж</span>
+                                        <span>16 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Каталог застройщиков</span>
+                                        <span>15 застройщиков</span>
+                                    </a>
+                                    <a href="./stock.html" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Скидки и акции</span>
+                                    </a>
+                                    <a href="./stock-developer.html" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Shorts, видео</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one col-span-2">
+                                        <span>Добавить заявку на покупку квартиры в новостройке</span>
+                                    </a>
+                                </div>
+                                <a href="#" class="nav-dropdown-content__card-info card-info" data-da=".header-main__banners-slide--1,1212,2">
+                                    <span class="card-info__title">
+                                        Успейте взять ипотеку
+                                        по выгодной ставке
+                                    </span>
+                                    <div class="card-info__image" style="background-image: url('./img/banner-photo-4.png')">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">
+                            Вторичка
+                        </a>
+                    </li>
+                    <li class="nav__item nav-dropdown">
+                        <span class="nav__link" data-spoller>
+                            Дома и участки
+                            <svg class="nav__link-arrow">
+                                <use xlink:href="img/sprite.svg#arrow-small"></use>
+                            </svg>
+                        </span>
+                        <div class="nav-dropdown__container container">
+                            <div class="nav-dropdown-content">
+                                <div class="nav-dropdown-content__body">
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Дома, коттеджи, дачи</span>
+                                        <span>20 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Участки</span>
+                                        <span>20 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Коттеджные поселки</span>
+                                        <span>20 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Дома от застройщика</span>
+                                        <span>20 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Построить дом</span>
+                                        <span>20 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one col-span-2">
+                                        <span>Добавить заявку на покупку</span>
+                                    </a>
+                                </div>
+                                <a href="#" class="nav-dropdown-content__card-info card-info" data-da=".header-main__banners-slide--2,1212,2">
+                                    <span class="card-info__title">
+                                        Успейте взять ипотеку
+                                        по выгодной ставке
+                                    </span>
+                                    <div class="card-info__image" style="background-image: url('./img/banner-photo-4.png')">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">
+                            Покупка
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="./registry.html" class="nav__link">
+                            Реестр проблемных объектов
+                        </a>
+                    </li>
+                </ul>
+                <div class="swiper header-main__banners">
+                    <div class="swiper-wrapper header-main__banners-container">
+                        <div class="swiper-slide header-main__banners-slide header-main__banners-slide--1"></div>
+                        <div class="swiper-slide header-main__banners-slide header-main__banners-slide--2"></div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+        <main class="main main-page-gap default-page investments">
+            <h1 class="title-2 container">
+                Инвестиции
+            </h1>
+            <div class="default-page__body">
+                <div class="container">
+                    <div class="investments__container">
+                        <div class="investments-result-block">
+                            <div class="investments-result-block__item col-1 investments-info">
+                                <div class="investments-info__item">
+                                    <h4 class="investments-info__subtitle">
+                                        Горизонт инвестирования
+                                    </h4>
+                                    <span class="investments-info__value">1 год</span>
+                                </div>
+                                <div class="investments-info__item">
+                                    <h4 class="investments-info__subtitle">
+                                        Первоначальные инвестиции
+                                    </h4>
+                                    <span class="investments-info__value">
+                                        2 417 201 ₽
+                                    </span>
+                                </div>
+                                <div class="investments-info__item">
+                                    <h4 class="investments-info__subtitle">
+                                        Сценарий
+                                    </h4>
+                                    <span class="investments-info__value">
+                                        Продажа после сдачи дома
+                                    </span>
+                                </div>
+                                <div class="investments-info__item">
+                                    <h4 class="investments-info__subtitle">
+                                        Комментарий
+                                    </h4>
+                                    <span class="investments-info__value">
+                                        —
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="investments-result-block__item investments-info-second">
+                                <div class="investments-info-second__top">
+                                    <h2 class="investments-info-second__title title-3">
+                                        Расходы
+                                    </h2>
+                                    <button type="button" class="btn btn-reset investments__link underline-hover" data-popup-path="expenses-calc">Смотреть расходы</button>
+                                </div>
+                                <div class="investments-info-second__items">
+                                    <div class="investments-info-second__item">
+                                        <h4 class="investments-info-second__subtitle">
+                                            Разовые
+                                        </h4>
+                                        <span class="investments-info-second__value">
+                                            7 202 077 ₽
+                                        </span>
+                                    </div>
+                                    <div class="investments-info-second__item">
+                                        <h4 class="investments-info-second__subtitle">
+                                            Переодические
+                                        </h4>
+                                        <span class="investments-info-second__value">
+                                            703 497 ₽
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="investments-result-block__item investments-info-second">
+                                <div class="investments-info-second__top">
+                                    <h2 class="investments-info-second__title title-3">
+                                        Доходы
+                                    </h2>
+                                    <button type="button" class="btn btn-reset investments__link underline-hover" data-popup-path="expenses-calc">Смотреть расходы</button>
+                                </div>
+                                <div class="investments-info-second__items">
+                                    <div class="investments-info-second__item">
+                                        <h4 class="investments-info-second__subtitle">
+                                            Ставка доходности
+                                        </h4>
+                                        <span class="investments-info-second__value _green">
+                                            + 1,22 %
+                                        </span>
+                                    </div>
+                                    <div class="investments-info-second__item">
+                                        <h4 class="investments-info-second__subtitle">
+                                            Чистый доход
+                                        </h4>
+                                        <span class="investments-info-second__value _green">
+                                            +90 119 ₽
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="investments-result-block__item investments-table col-1">
+                                <h2 class="investments-table__title title-3">
+                                    По годам инвестирования
+                                </h2>
+                                <div class="investments-table__header">
+                                    <span class="investments-table__field">
+                                        Год
+                                    </span>
+                                    <span class="investments-table__field">
+                                        Оценочная стоимость недвижимости
+                                    </span>
+                                    <span class="investments-table__field">
+                                        Расход разовый
+                                    </span>
+                                    <span class="investments-table__field">
+                                        Расход переодический
+                                    </span>
+                                    <span class="investments-table__field">
+                                        Доход за вычетом расхода
+                                    </span>
+                                    <span class="investments-table__field">
+                                        Доходность инвестиций, % годовых
+                                    </span>
+                                </div>
+                                <ul class="investments-table__list list-reset">
+                                    <li class="investments-table__item">
+                                        <div class="investments-table__item-field">
+                                            1
+                                        </div>
+                                        <div class="investments-table__item-field">
+                                            7 654 900 ₽
+                                        </div>
+                                        <div class="investments-table__item-field">
+                                            7 254 900 ₽
+                                        </div>
+                                        <div class="investments-table__item-field">
+                                            954 900 ₽
+                                        </div>
+                                        <div class="investments-table__item-field">
+                                            94 900 ₽
+                                        </div>
+                                        <div class="investments-table__item-field">
+                                            + 1.22 %
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <form action="#" class="investments__form">
+                            <div data-spollers class="spollers">
+                                <div class="spollers__item investments__spoller" data-spoller-item="Недвижимость">
+                                    <button type="button" data-spoller class="btn btn-reset spollers__title _spoller-active">
+                                        <h3 class="title-3">
+                                            Недвижимость
+                                        </h3>
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="spollers__body investments__content">
+                                        <div class="investments-fields col-1">
+                                            <div class="input-text input-text--no-exp">
+                                                <label class="input-text__label">
+                                                    <span>Адрес</span>
+                                                    <input type="text" name="Заголовок" class="input-reset input-text__input" value="Краснодар, ул.Карла-Маркса., 234"
+                                                        placeholder="">
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="investments-fields col-2">
+                                            <div class="select-secondary">
+                                                <div class="select-secondary__wrapper">
+                                                    <span class="select-secondary__placeholder">
+                                                        Количество комнат
+                                                    </span>
+                                                    <select class="select-secondary__body" hidden name="rooms">
+                                                        <option value="room-1" selected>1 комната</option>
+                                                        <option value="room-2">2 комнаты</option>
+                                                        <option value="room-2">3 комнаты</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="select-secondary">
+                                                <div class="select-secondary__wrapper">
+                                                    <span class="select-secondary__placeholder">
+                                                        Статус дома
+                                                    </span>
+                                                    <select class="select-secondary__body" hidden name="status-home">
+                                                        <option value="room-1" selected>Строящийся</option>
+                                                        <option value="room-1">Строящийся</option>
+                                                        <option value="room-1">Строящийся</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="input-text input-text--only-number">
+                                                <label class="input-text__label">
+                                                    <span>Метраж</span>
+                                                    <input type="text" name="Цена покупки" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                                    <span>м²</span>
+                                                </label>
+                                            </div>
+                                            <div class="input-text input-text--only-number">
+                                                <label class="input-text__label">
+                                                    <span>Рыночная стоимость</span>
+                                                    <input type="text" name="Рыночная стоимость" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                    <span>₽</span>
+                                                </label>
+                                            </div>
+                                            <div class="input-text input-text--no-exp date-picker">
+                                                <label class="input-text__label">
+                                                    <span>Дата передачи ключей</span>
+                                                    <input type="text" name="Имя" class="input-reset input-text__input date-picker__input" value="18.03.2024" placeholder="">
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="investments-result">
+                                            <svg class="investments-result__icon">
+                                                <use xlink:href="./img/sprite.svg#info"></use>
+                                            </svg>
+                                            <div class="investments-result__content">
+                                                <div class="investments-result__item">
+                                                    <span>
+                                                        Налог на имущество в первый год горизонта инвестирования:
+                                                    </span>
+                                                    <span>
+                                                        6 300 ₽
+                                                    </span>
+                                                </div>
+                                                <p class="investments-result__descr">
+                                                    При проведении расчёта сумма будет обновлена с учётом изменения ставок и кадастровой стоимости
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="investments-clue">
+                                            Подсказка что нужно сделать что бы удешевить покупку
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="spollers__item investments__spoller" data-spoller-item="Покупка">
+                                    <button type="button" data-spoller class="btn btn-reset spollers__title _spoller-active">
+                                        <h3 class="title-3">
+                                            Покупка
+                                        </h3>
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="spollers__body investments__content">
+                                        <div class="investments-fields col-1">
+                                            <div class="radio-primary">
+                                                <div class="radio-primary__item">
+                                                    <input hidden id="purchase_1" class="radio-primary__input" checked type="radio" name="purchase" data-purchase-toggle="1">
+                                                    <label for="purchase_1" class="radio-primary__label">
+                                                        <span class="radio-primary__text">Кредит</span>
+                                                    </label>
+                                                </div>
+                                                <div class="radio-primary__item">
+                                                    <input hidden id="purchase_2" class="radio-primary__input" type="radio" name="purchase" data-purchase-toggle="2">
+                                                    <label for="purchase_2" class="radio-primary__label">
+                                                        <span class="radio-primary__text">Собственные средства</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="investments-fields col-2">
+                                            <div class="input-text input-text--only-number">
+                                                <label class="input-text__label">
+                                                    <span>Цена покупки</span>
+                                                    <input type="text" name="Цена покупки" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                    <span>₽</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="investments-fields col-1">
+                                            <div class="checkbox-secondary _start">
+                                                <input id="tax" name="tax" class="checkbox-secondary__input" type="checkbox">
+                                                <label for="tax" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        Налоговый вычет применялся
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="investments-fields col-1">
+                                            <label class="toggle-checkbox">
+                                                <input type="checkbox" name="toggle-1" data-investments-toggle="2">
+                                                <div aria-hidden="true"></div>
+                                                <span>Буду привлекать риэлтора</span>
+                                            </label>
+                                        </div>
+                                        <div class="investments-item-toggle" data-investments-item-toggle="2" hidden>
+                                            <div class="investments-fields col-2">
+                                                <div class="input-text input-text--only-number">
+                                                    <label class="input-text__label">
+                                                        <span>Цена услуг риэлтора</span>
+                                                        <input type="text" name="Цена покупки" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                        <span>₽</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="investments-result">
+                                            <svg class="investments-result__icon">
+                                                <use xlink:href="./img/sprite.svg#info"></use>
+                                            </svg>
+                                            <div class="investments-result__content">
+                                                <div class="investments-result__item">
+                                                    <span>
+                                                        Госпошлина за покупку:
+                                                    </span>
+                                                    <span>
+                                                        —
+                                                    </span>
+                                                </div>
+                                                <div class="investments-result__item">
+                                                    <span>
+                                                        Сумма налогового вычета:
+                                                    </span>
+                                                    <span>
+                                                        —
+                                                    </span>
+                                                </div>
+                                                <p class="investments-result__descr">
+                                                    При проведении расчёта сумма будет обновлена с учётом изменения ставок и кадастровой стоимости
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="investments-clue">
+                                            Подсказка что нужно сделать что бы удешевить покупку
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="spollers__item investments__spoller" data-spoller-item="Кредит">
+                                    <button type="button" data-spoller class="btn btn-reset spollers__title _spoller-active">
+                                        <h3 class="title-3">
+                                            Кредит
+                                        </h3>
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="spollers__body investments__content">
+                                        <div class="investments-fields col-1">
+                                            <div class="radio-primary">
+                                                <div class="radio-primary__item">
+                                                    <input hidden id="credit_1" class="radio-primary__input" checked type="radio" name="credit" data-mortgage-program-toggle="1">
+                                                    <label for="credit_1" class="radio-primary__label">
+                                                        <span class="radio-primary__text">Ипотека</span>
+                                                    </label>
+                                                </div>
+                                                <div class="radio-primary__item">
+                                                    <input hidden id="credit_2" class="radio-primary__input" type="radio" name="credit" data-mortgage-program-toggle="2">
+                                                    <label for="credit_2" class="radio-primary__label">
+                                                        <span class="radio-primary__text">Иной-кредит</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="investments-fields col-1" data-mortgage-program>
+                                            <div class="field-select field-select--col">
+                                                <div class="field-select__name">
+                                                    Выберите ипотечную программу
+                                                </div>
+                                                <div class="field-select__wrapper">
+                                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                                        <span>Базовая</span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                                        <span>Гос. поддержка</span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                                        <span>Семейная ипотека</span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                                        <span>Ипотека для IT</span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                                        <span>Военная ипотека</span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                                        <span>Сельская ипотека</span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-reset tag field-select__item">
+                                                        <span>Затрудняюсь ответить, нужна помощь</span>
+                                                    </button>
+                                                </div>
+                                                <input type="text" name="mortgage" class="input-reset field-select__input" hidden placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="investments-fields col-2">
+                                            <div class="input-text input-text--only-number">
+                                                <label class="input-text__label">
+                                                    <span>Сумма первоначального взноса</span>
+                                                    <input type="text" name="Цена покупки" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                    <span>₽</span>
+                                                </label>
+                                            </div>
+                                            <div class="input-text input-text--only-number">
+                                                <label class="input-text__label">
+                                                    <span>Срок погашения ипотеки</span>
+                                                    <input type="text" name="Цена покупки" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                                    <span>лет</span>
+                                                </label>
+                                            </div>
+                                            <div class="input-text input-text--only-number">
+                                                <label class="input-text__label">
+                                                    <span>Ставка</span>
+                                                    <input type="text" name="Цена покупки" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                                    <span>%</span>
+                                                </label>
+                                            </div>
+                                            <div class="checkbox-secondary _start">
+                                                <input id="tax_2" name="tax_2" class="checkbox-secondary__input" type="checkbox">
+                                                <label for="tax_2" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        Налоговый вычет применялся
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="investments-fields col-1">
+                                            <div class="checkbox-secondary _start">
+                                                <input id="bid-auto" name="bid-auto" class="checkbox-secondary__input" type="checkbox">
+                                                <label for="bid-auto" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        Рассчитать процентную ставку вручную
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="investments-result">
+                                            <svg class="investments-result__icon">
+                                                <use xlink:href="./img/sprite.svg#info"></use>
+                                            </svg>
+                                            <div class="investments-result__content">
+                                                <div class="investments-result__item">
+                                                    <span>
+                                                        Сумма ипотеки:
+                                                    </span>
+                                                    <span>
+                                                        —
+                                                    </span>
+                                                </div>
+                                                <div class="investments-result__item">
+                                                    <span>
+                                                        Сумма ежемесячного платежа:
+                                                    </span>
+                                                    <span>
+                                                        —
+                                                    </span>
+                                                </div>
+                                                <div class="investments-result__item">
+                                                    <span>
+                                                        Сумма налогового вычета до:
+                                                    </span>
+                                                    <span>
+                                                        —
+                                                    </span>
+                                                </div>
+                                                <p class="investments-result__descr">
+                                                    При проведении расчёта сумма будет обновлена с учётом изменения ставок и кадастровой стоимости
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="investments-clue">
+                                            Подсказка что нужно сделать что бы удешевить покупку
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="spollers__item investments__spoller" data-spoller-item="Страхование">
+                                    <button type="button" data-spoller="" class="btn btn-reset spollers__title _spoller-active">
+                                        <h3 class="title-3">
+                                            Страхование
+                                        </h3>
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="spollers__body investments__content">
+                                        <div class="investments-fields col-1">
+                                            <label class="toggle-checkbox">
+                                                <input type="checkbox" name="toggle-1" checked data-investments-toggle="3">
+                                                <div aria-hidden="true"></div>
+                                                <span>Страхование недвижимости</span>
+                                            </label>
+                                        </div>
+                                        <div class="investments-item-toggle" data-investments-item-toggle="3">
+                                            <div class="investments-fields col-2">
+                                                <div class="input-text input-text--only-number">
+                                                    <label class="input-text__label">
+                                                        <span>Срок страхования</span>
+                                                        <input type="text" name="Цена покупки" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                                        <span>лет</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="investments-result">
+                                                <svg class="investments-result__icon">
+                                                    <use xlink:href="./img/sprite.svg#info"></use>
+                                                </svg>
+                                                <div class="investments-result__content">
+                                                    <div class="investments-result__item">
+                                                        <span>
+                                                            Страховая сумма:
+                                                        </span>
+                                                        <span>
+                                                            —
+                                                        </span>
+                                                    </div>
+                                                    <div class="investments-result__item">
+                                                        <span>
+                                                            Платёж за первый год:
+                                                        </span>
+                                                        <span>
+                                                            —
+                                                        </span>
+                                                    </div>
+                                                    <p class="investments-result__descr">
+                                                        При проведении расчёта сумма будет обновлена с учётом роста цен
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="investments-fields col-1">
+                                            <label class="toggle-checkbox">
+                                                <input type="checkbox" name="toggle-1" data-investments-toggle="1">
+                                                <div aria-hidden="true"></div>
+                                                <span>Страхование жизни и здоровья</span>
+                                            </label>
+                                        </div>
+                                        <div class="investments-item-toggle" data-investments-item-toggle="1" hidden>
+                                            <div class="investments-fields col-2">
+                                                <div class="input-text input-text--only-number">
+                                                    <label class="input-text__label">
+                                                        <span>Срок страхования</span>
+                                                        <input type="text" name="Цена покупки" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                                        <span>лет</span>
+                                                    </label>
+                                                </div>
+                                                <div class="input-text input-text--only-number">
+                                                    <label class="input-text__label">
+                                                        <span>Ваш возраст</span>
+                                                        <input type="text" name="Цена покупки" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                                        <span>лет</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="investments-fields col-1">
+                                                <div class="radio-primary">
+                                                    <span class="radio-primary__subtitle">
+                                                        Пол
+                                                    </span>
+                                                    <div class="radio-primary__item">
+                                                        <input hidden id="man" class="radio-primary__input" checked type="radio" name="gender">
+                                                        <label for="man" class="radio-primary__label">
+                                                            <span class="radio-primary__text">Мужчина</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio-primary__item">
+                                                        <input hidden id="woman" class="radio-primary__input" type="radio" name="gender">
+                                                        <label for="woman" class="radio-primary__label">
+                                                            <span class="radio-primary__text">Женщина</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="investments-result">
+                                                <svg class="investments-result__icon">
+                                                    <use xlink:href="./img/sprite.svg#info"></use>
+                                                </svg>
+                                                <div class="investments-result__content">
+                                                    <div class="investments-result__item">
+                                                        <span>
+                                                            Страховая сумма:
+                                                        </span>
+                                                        <span>
+                                                            —
+                                                        </span>
+                                                    </div>
+                                                    <div class="investments-result__item">
+                                                        <span>
+                                                            Платёж за первый год:
+                                                        </span>
+                                                        <span>
+                                                            —
+                                                        </span>
+                                                    </div>
+                                                    <p class="investments-result__descr">
+                                                        При проведении расчёта сумма будет обновлена с учётом роста цен
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="investments-clue">
+                                            Подсказка что нужно сделать что бы удешевить покупку
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="spollers__item investments__spoller" data-spoller-item="Ремонт">
+                                    <button type="button" data-spoller class="btn btn-reset spollers__title _spoller-active">
+                                        <h3 class="title-3">
+                                            Ремонт
+                                        </h3>
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="spollers__body investments__content">
+                                        <div class="investments-fields col-1">
+                                            <div class="radio-primary">
+                                                <div class="radio-primary__item">
+                                                    <input hidden id="repair_1" class="radio-primary__input" checked type="radio" name="repair" data-repair-toggle="true">
+                                                    <label for="repair_1" class="radio-primary__label">
+                                                        <span class="radio-primary__text">Буду делать</span>
+                                                    </label>
+                                                </div>
+                                                <div class="radio-primary__item">
+                                                    <input hidden id="repair_2" class="radio-primary__input" type="radio" name="repair" data-repair-toggle="false">
+                                                    <label for="repair_2" class="radio-primary__label">
+                                                        <span class="radio-primary__text">Не буду делать</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="investments-item-toggle" data-investments-item-toggle="repair">
+                                            <div class="investments-fields col-1">
+                                                <div class="checkbox-secondary _start">
+                                                    <input id="calc-auto" name="calc-auto" class="checkbox-secondary__input" type="checkbox">
+                                                    <label for="calc-auto" class="checkbox-secondary__label">
+                                                        <span class="checkbox-secondary__text">
+                                                            Рассчитать стоимость вручную
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="investments-fields col-2">
+                                                <div class="select-secondary">
+                                                    <div class="select-secondary__wrapper">
+                                                        <span class="select-secondary__placeholder">
+                                                            Тип ремонта
+                                                        </span>
+                                                        <select class="select-secondary__body" hidden name="type-repair">
+                                                            <option placeholder>Не выбрано</option>
+                                                            <option value="room-1">Косметический</option>
+                                                            <option value="room-2">Капитальный</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="select-secondary">
+                                                    <div class="select-secondary__wrapper">
+                                                        <span class="select-secondary__placeholder">
+                                                            Класс ремонта
+                                                        </span>
+                                                        <select class="select-secondary__body" hidden name="class-repair">
+                                                            <option placeholder>Не выбрано</option>
+                                                            <option value="room-1">Эконом</option>
+                                                            <option value="room-2">Стандарт</option>
+                                                            <option value="room-2">Дизайнерский</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="input-text input-text--only-number">
+                                                    <label class="input-text__label">
+                                                        <span>Срок простоя при ремонте</span>
+                                                        <input type="text" name="Цена покупки" maxlength="2" value="1" class="input-reset input-text__input" placeholder="">
+                                                        <span>мес</span>
+                                                    </label>
+                                                </div>
+                                                <div class="input-text input-text--no-exp input-text--only-number">
+                                                    <label class="input-text__label">
+                                                        <span>Период проведения ремонта</span>
+                                                        <input type="text" name="Цена покупки" maxlength="4" value="2024" class="input-reset input-text__input" placeholder="">
+                                                    </label>
+                                                </div>
+                                                <div class="input-text input-text--only-number">
+                                                    <label class="input-text__label">
+                                                        <span>Стоимость ремонта</span>
+                                                        <input type="text" name="Цена покупки" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                        <span>₽</span>
+                                                    </label>
+                                                </div>
+                                                <button type="button" class="btn btn-reset investments__repair-btn" data-popup-path="repair-calc">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#calc"></use>
+                                                    </svg>
+                                                    Детальный расчёт ремонта
+                                                </button>
+                                                <a href="https://hoff.ru/Files/%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80_%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B0_%D0%A1%D0%B0%D0%BC%D0%BE%D0%B5_%D0%BD%D0%B5%D0%BE%D0%B1%D1%85%D0%BE%D0%B4%D0%B8%D0%BC%D0%BE%D0%B5.pdf"
+                                                    class="investments__link underline-hover">Посмотреть спецификацию ремонта</a>
+                                            </div>
+                                        </div>
+                                        <div class="investments-clue">
+                                            Подсказка что нужно сделать что бы удешевить покупку
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="spollers__item investments__spoller" data-spoller-item="Мебель и техника">
+                                    <button type="button" data-spoller class="btn btn-reset spollers__title _spoller-active">
+                                        <h3 class="title-3">
+                                            Мебель и техника
+                                        </h3>
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="spollers__body investments__content">
+                                        <div class="investments-fields col-1">
+                                            <label class="toggle-checkbox">
+                                                <input type="checkbox" name="toggle-1" checked data-investments-toggle="4">
+                                                <div aria-hidden="true"></div>
+                                                <span>Куплю мебель</span>
+                                            </label>
+                                        </div>
+                                        <div class="investments-item-toggle" data-investments-item-toggle="4">
+                                            <div class="investments-fields col-1">
+                                                <div class="checkbox-secondary _start">
+                                                    <input id="calc-auto_2" name="calc-auto_2" class="checkbox-secondary__input" type="checkbox">
+                                                    <label for="calc-auto_2" class="checkbox-secondary__label">
+                                                        <span class="checkbox-secondary__text">
+                                                            Рассчитать стоимость вручную
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="investments-fields col-2">
+                                                <div class="input-text input-text--only-number">
+                                                    <label class="input-text__label">
+                                                        <span>Стоимость мебели</span>
+                                                        <input type="text" name="Цена покупки" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                                        <span>₽</span>
+                                                    </label>
+                                                </div>
+                                                <button type="button" class="btn btn-reset investments__repair-btn" data-popup-path="furniture-calc">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#calc"></use>
+                                                    </svg>
+                                                    Детальный расчёт мебели
+                                                </button>
+                                                <div class="input-text input-text--no-exp input-text--only-number">
+                                                    <label class="input-text__label">
+                                                        <span>Период покупки мебели</span>
+                                                        <input type="text" name="Период покупки мебели" maxlength="4" value="2024" class="input-reset input-text__input"
+                                                            placeholder="">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="investments-fields col-1">
+                                                <a href="https://hoff.ru/Files/%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80_%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B0_%D0%A1%D0%B0%D0%BC%D0%BE%D0%B5_%D0%BD%D0%B5%D0%BE%D0%B1%D1%85%D0%BE%D0%B4%D0%B8%D0%BC%D0%BE%D0%B5.pdf"
+                                                    class="investments__link underline-hover">Посмотреть спецификацию ремонта</a>
+                                            </div>
+                                        </div>
+                                        <div class="investments-fields col-1">
+                                            <label class="toggle-checkbox">
+                                                <input type="checkbox" name="toggle-1" data-investments-toggle="5">
+                                                <div aria-hidden="true"></div>
+                                                <span>Куплю технику</span>
+                                            </label>
+                                        </div>
+                                        <div class="investments-item-toggle" data-investments-item-toggle="5" hidden>
+                                            <div class="investments-fields col-1">
+                                                <div class="checkbox-secondary _start">
+                                                    <input id="calc-auto_2" name="calc-auto_2" class="checkbox-secondary__input" type="checkbox">
+                                                    <label for="calc-auto_2" class="checkbox-secondary__label">
+                                                        <span class="checkbox-secondary__text">
+                                                            Рассчитать стоимость вручную
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="investments-fields col-2">
+                                                <div class="input-text input-text--only-number">
+                                                    <label class="input-text__label">
+                                                        <span>Стоимость техники</span>
+                                                        <input type="text" name="Цена покупки" maxlength="3" class="input-reset input-text__input" placeholder="">
+                                                        <span>₽</span>
+                                                    </label>
+                                                </div>
+                                                <button type="button" class="btn btn-reset investments__repair-btn" data-popup-path="technique-calc">
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#calc"></use>
+                                                    </svg>
+                                                    Детальный расчёт техники
+                                                </button>
+                                                <div class="input-text input-text--no-exp input-text--only-number">
+                                                    <label class="input-text__label">
+                                                        <span>Период покупки техники</span>
+                                                        <input type="text" name="Период покупки техники" maxlength="4" value="2024" class="input-reset input-text__input"
+                                                            placeholder="">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="investments-fields col-1">
+                                                <a href="https://hoff.ru/Files/%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80_%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B0_%D0%A1%D0%B0%D0%BC%D0%BE%D0%B5_%D0%BD%D0%B5%D0%BE%D0%B1%D1%85%D0%BE%D0%B4%D0%B8%D0%BC%D0%BE%D0%B5.pdf"
+                                                    class="investments__link underline-hover">Посмотреть спецификацию ремонта</a>
+                                            </div>
+                                        </div>
+                                        <div class="investments-clue">
+                                            Подсказка что нужно сделать что бы удешевить покупку
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="spollers__item investments__spoller" data-spoller-item="Другие расходы">
+                                    <button type="button" data-spoller class="btn btn-reset spollers__title _spoller-active">
+                                        <h3 class="title-3">
+                                            Другие расходы
+                                        </h3>
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="spollers__body investments__content">
+                                        <div class="investments-fields col-1">
+                                            <button type="button" class="btn btn-reset btn-primary _width-content" data-add-exp-btn>
+                                                Добавить расход
+                                            </button>
+                                        </div>
+                                        <div class="investments-clue">
+                                            Подсказка что нужно сделать что бы удешевить покупку
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="spollers__item investments__spoller" data-spoller-item="Продажа">
+                                    <button type="button" data-spoller class="btn btn-reset spollers__title _spoller-active">
+                                        <h3 class="title-3">
+                                            Продажа
+                                        </h3>
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#arrow-small"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="spollers__body investments__content">
+                                        <div class="investments-fields col-1">
+                                            <div class="checkbox-secondary _start">
+                                                <input id="sale-auto" name="sale-auto" class="checkbox-secondary__input" type="checkbox">
+                                                <label for="sale-auto" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        Рассчитать цену продажи вручную
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="checkbox-secondary _start">
+                                                <input id="tax-residency" name="tax-residency" class="checkbox-secondary__input" type="checkbox">
+                                                <label for="tax-residency" class="checkbox-secondary__label">
+                                                    <span class="checkbox-secondary__text">
+                                                        Налоговое резидентство
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="investments-fields col-2">
+                                            <div class="select-secondary">
+                                                <div class="select-secondary__wrapper">
+                                                    <span class="select-secondary__placeholder">
+                                                        Способ приобритения
+                                                    </span>
+                                                    <select class="select-secondary__body" hidden name="type-repair">
+                                                        <option placeholder>Не выбрано</option>
+                                                        <option value="Покупка" selected>Покупка</option>
+                                                        <option value="room-1">Покупка2</option>
+                                                        <option value="room-2">Покупка3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="input-text input-text--only-number">
+                                                <label class="input-text__label">
+                                                    <span>Цена продажи</span>
+                                                    <input type="text" name="Цена продажи" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                    <span>₽</span>
+                                                </label>
+                                            </div>
+                                            <div class="input-text input-text--only-number">
+                                                <label class="input-text__label">
+                                                    <span>Срок простоя перед продажей</span>
+                                                    <input type="text" name="Срок простоя перед продажей" maxlength="2" value="1" class="input-reset input-text__input"
+                                                        placeholder="">
+                                                    <span>мес</span>
+                                                </label>
+                                            </div>
+                                            <div class="input-text input-text--only-number">
+                                                <label class="input-text__label">
+                                                    <span>Срок владения на момент продажи</span>
+                                                    <input type="text" name="Срок владения на момент продажи" maxlength="2" class="input-reset input-text__input" placeholder="">
+                                                    <span>лет</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="investments-fields col-1">
+                                            <label class="toggle-checkbox">
+                                                <input type="checkbox" name="toggle-1" data-investments-toggle="6">
+                                                <div aria-hidden="true"></div>
+                                                <span>Буду привлекать риэлтора</span>
+                                            </label>
+                                        </div>
+                                        <div class="investments-item-toggle" data-investments-item-toggle="6" hidden>
+                                            <div class="investments-fields col-2">
+                                                <div class="input-text input-text--only-number">
+                                                    <label class="input-text__label">
+                                                        <span>Цена услуг риэлтора</span>
+                                                        <input type="text" name="Цена покупки" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                                        <span>₽</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="investments-result">
+                                            <svg class="investments-result__icon">
+                                                <use xlink:href="./img/sprite.svg#info"></use>
+                                            </svg>
+                                            <div class="investments-result__content">
+                                                <div class="investments-result__item">
+                                                    <span>
+                                                        Налог на доход с продажи:
+                                                    </span>
+                                                    <span>
+                                                        —
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="investments-clue">
+                                            Подсказка что нужно сделать что бы удешевить покупку
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="investments__comment investments-clue">
+                                <p>
+                                    Цены на новостройки в 2024 году стабилизируются, в 2025–2026 годах их рост, как предполается, не будет обгонять инфляцию, ожидаемую на уровне
+                                    4%. На вторичном рынке жилья в 2024 году цены могут снизиться, а в 2025–2026 годах будут расти на уровне инфляции. Такие данные содержатся в
+                                    предоставленном «РБК-Недвижимости» отчете «Дом.РФ», посвященном итогам в жилищной сфере в 2023 году и прогнозам на 2024–2026 годы.
+                                </p>
+                                <p>
+                                    Согласно прогнозам «Дом.РФ», стоимость жилья на вторичном рынке в этом году будет стагнировать из-за высоких процентных ставок по ипотеке. При
+                                    этом после завершения программы льготной ипотеки на новостройки цены на первичном и вторичном рынках станут постепенно сближаться, считают
+                                    аналитики.
+                                </p>
+                                <img src="https://s0.rbk.ru/v6_top_pics/media/img/0/72/347078976131720.png" alt="Фото: «Дом.РФ»" loading="lazy">
+                                <p>
+                                    Давление на цены будет оказывать спрос на жилье, который заметно сократится в 2024 году из-за высоких процентных ставок, а также ужесточения
+                                    условий программы льготной ипотеки на новостройки и ее ожидаемой отмены в середине года, поясняют в «Дом.РФ». Ипотечные выдачи снизятся даже с
+                                    учетом продления программы семейной ипотеки после 1 июля, отметили там.
+                                </p>
+                                <div>
+                                    <h3>Как росли цены на жилье</h3>
+
+                                    <p>Первичный рынок в последние годы опережал вторичный по темпам роста цен. По данным института жилищного развития, номинальные цены на
+                                        новостройки&nbsp;выросли:</p>
+
+                                    <ul>
+                                        <li>в 2020 году — на 12%;</li>
+                                        <li>в 2021&nbsp;— на 26%;</li>
+                                        <li>в 2022 году&nbsp;— на 21%;</li>
+                                        <li>в 2023 году&nbsp;— на 10%.</li>
+                                    </ul>
+
+                                    <p>В то время готовое жилье&nbsp;подорожало:</p>
+
+                                    <ul>
+                                        <li>в 2020 году — на 10%;</li>
+                                        <li>в 2021 году&nbsp;— на 17%;</li>
+                                        <li>в 2022 году&nbsp;— на 12%;</li>
+                                        <li>и в 2023 году&nbsp;— на 9%.</li>
+                                    </ul>
+
+                                    <p>Отмечается, что рост цен в прошлом году был обеспечен за счет высоких продаж второго полугодия.</p>
+                                </div>
+                                <h3 class="title-3">Прогноз по рынку ипотеки</h3>
+                                <p>
+                                    Объем ипотечного кредитования в 2024 году сократится до 1,1–1,4 млн кредитов на общую сумму 3,9–5,0 трлн руб., прогнозируют в «Дом.РФ». Для
+                                    сравнения, в 2023 году банки выдали 2 млн ипотечных кредитов на 7,8 трлн руб. Таким образом, падение будет почти двукратным. В 2025–2026 годах,
+                                    согласно прогнозу, объемы выдачи ипотеки начнут расти. Уже в 2025-м может быть выдано 1,7 млн жилищных кредитов на 5,7 трлн руб., а в 2026-м эти
+                                    показатели могут вырасти до 1,8 млн кредитов и 6 трлн руб.
+                                </p>
+                                <img src="https://s0.rbk.ru/v6_top_pics/media/img/3/11/347078975514113.png" alt="Фото: «Дом.РФ»" loading="lazy">
+                                <p>
+                                    В условиях низкого спроса застройщики будут сокращать запуски новых проектов жилья&nbsp;— их объем сократится с 49 млн кв. м в 2023-м до 39 млн
+                                    кв. м в 2024 году. Как следствие, увеличится риск падения объемов ввода жилья в эксплуатацию, указали в «Дом.РФ». После 2024 года объем запусков
+                                    новых проектов начнет расти, но не превысит показатель 2023 года. Ожидается увеличение запуска новых проектов до 44 млн кв. м в 2025 году и до
+                                    46 млн кв. м&nbsp;в 2026 году.
+                                </p>
+                            </div>
+                        </form>
+                        <div class="investments__sidebar">
+                            <div class="_sticky">
+                                <div class="investments-sidebar">
+                                    <div class="investments-sidebar__address">
+                                        Краснодар, ул.Карла-Маркса., 234
+                                    </div>
+                                    <ul class="investments-sidebar__list list-reset">
+                                        <li class="investments-sidebar__item">
+                                            <span class="investments-sidebar__circle">
+                                                1
+                                            </span>
+                                            <span class="investments-sidebar__name">
+                                                Недвижимость
+                                            </span>
+                                            <span class="_necessarily">*</span>
+                                        </li>
+                                        <li class="investments-sidebar__item">
+                                            <span class="investments-sidebar__circle">
+                                                2
+                                            </span>
+                                            <span class="investments-sidebar__name">
+                                                Покупка
+                                            </span>
+                                            <span class="_necessarily">*</span>
+                                        </li>
+                                        <li class="investments-sidebar__item">
+                                            <span class="investments-sidebar__circle">
+                                                3
+                                            </span>
+                                            <span class="investments-sidebar__name">
+                                                Кредит
+                                            </span>
+                                            <span class="_necessarily">*</span>
+                                        </li>
+                                        <li class="investments-sidebar__item">
+                                            <span class="investments-sidebar__circle">
+                                                4
+                                            </span>
+                                            <span class="investments-sidebar__name">
+                                                Страхование
+                                            </span>
+                                            <span class="_necessarily">*</span>
+                                        </li>
+                                        <li class="investments-sidebar__item">
+                                            <span class="investments-sidebar__circle">
+                                                5
+                                            </span>
+                                            <span class="investments-sidebar__name">
+                                                Ремонт
+                                            </span>
+                                            <span class="_necessarily">*</span>
+                                        </li>
+                                        <li class="investments-sidebar__item">
+                                            <span class="investments-sidebar__circle">
+                                                6
+                                            </span>
+                                            <span class="investments-sidebar__name">
+                                                Мебель и техника
+                                            </span>
+                                            <span class="_necessarily">*</span>
+                                        </li>
+                                        <li class="investments-sidebar__item">
+                                            <span class="investments-sidebar__circle">
+                                                7
+                                            </span>
+                                            <span class="investments-sidebar__name">
+                                                Другие расходы
+                                            </span>
+                                            <span class="_necessarily">*</span>
+                                        </li>
+                                        <li class="investments-sidebar__item">
+                                            <span class="investments-sidebar__circle">
+                                                8
+                                            </span>
+                                            <span class="investments-sidebar__name">
+                                                Продажа
+                                            </span>
+                                            <span class="_necessarily">*</span>
+                                        </li>
+                                    </ul>
+                                    <button type="button" class="btn btn-reset btn-primary investments-sidebar__button">
+                                        Рассчитать доходность
+                                    </button>
+                                    <div class="investments-sidebar__clue">
+                                        <span class="_necessarily">*</span>
+                                        Обязательные разделы
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer__container container">
+        <div class="footer__top">
+            <a href="#" class="footer__logo logo">
+                <img loading="lazy" src="./img/logo.svg" width="83" height="25" class="logo__img"
+                    alt="Продам.Онлайн">
+            </a>
+            <nav class="footer__nav nav">
+                <ul class="nav__list list-reset">
+                    <li class="nav__item"><a href="#" class="nav__link">Продажа</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Новостройки</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Покупка</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Услуги</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer__write">
+            <p>
+                Есть предложения, напишите нам.
+            </p>
+            <button type="button" class="btn btn-reset btn-secondary footer__btn">Написать</button>
+        </div>
+        <p class="footer__descr">
+            © 2021-2022 ООО «Продам онлайн», официальный сайт использует куки-файлы и другие технологии, чтобы помочь
+            вам в навигации, а также предоставить лучший пользовательский опыт, анализировать использование наших
+            продуктов и услуг, повысить качество рекламных и маркетинговых активностей. Если Вы не хотите, чтобы Ваши
+            пользовательские данные обрабатывались, пожалуйста, ограничьте их использование в своём браузере.
+        </p>
+    </div>
+</footer>
+
+    </div>
+    <!-- popups -->
+    <div class="popup popup-primary popup-primary--left popup-primary--city" data-popup-mobile-fast>
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="city">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content city-popup">
+            <h2 class="city-popup__title title-2">
+                Выбор города
+            </h2>
+            <div class="city-popup__input">
+                <button type="button" class="btn btn-reset">
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#search"></use>
+                    </svg>
+                </button>
+                <input type="search" name="Название города" class="input-reset" placeholder="Введите название города">
+                <button type="button" class="btn btn-reset city-popup__clear" hidden>
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#x"></use>
+                    </svg>
+                </button>
+            </div>
+            <div class="city-popup__list">
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Москва</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Калининград</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Санкт-Петербург</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Казань</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Краснодар</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Екатеринбург</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Нижний-Новгород</button>
+            </div>
+            <div class="checkbox-secondary city-popup__auto">
+                <input id="city-auto" name="city-auto" class="checkbox-secondary__input" type="checkbox" value="true">
+                <label for="city-auto" class="checkbox-secondary__label">
+                    <span class="checkbox-secondary__text">
+                        Определить автоматически
+                    </span>
+                </label>
+            </div>
+            <button type="button" class="btn btn-reset btn-primary js-popup-close city-popup__save" disabled>Сохранить</button>
+        </div>
+    </div>
+</div>
+    <div class="popup popup-primary popup-primary--right popup-primary--add">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="add">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content add-popup">
+            <h2 class="add-popup__title title-2">
+                Добавить
+            </h2>
+            <ul class="add-popup__list list-reset">
+                <li class="add-popup__item">
+                    <a href="#" class="add-popup__link">
+                        <span>Заявка на покупку недвижимости</span>
+                    </a>
+                </li>
+                <li class="add-popup__item">
+                    <a href="#" class="add-popup__link">
+                        <span>Объект на продажу</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+    <div class="popup popup-secondary popup-secondary--right popup-secondary--personal">
+    <div class="popup__container popup-secondary__container" role="dialog" aria-modal="true" data-popup-target="personal-area-two">
+        <button class="btn-reset js-popup-close popup__close popup-secondary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-secondary__content personal-area">
+            <div class="personal-area__container">
+                <h2 class="personal-area__title title-2">
+                    Личный кабинет
+                </h2>
+                <div class="personal-area__info">
+                    <div class="personal-area__avatar avatar">
+                        <img loading="lazy" src="./img/avatar-1.jpg" width="45" height="45" alt="Иван П.">
+                    </div>
+                    <span class=" personal-area__name">
+                        Иван П.
+                    </span>
+                    <a href="./edit-profile.html" class="btn btn-reset personal-area__edit">Редактировать профиль</a>
+                </div>
+                <nav class="personal-area__nav">
+                    <ul data-spollers class="personal-area__list list-reset">
+                        <li class="personal-area__item personal-area-dropdown">
+                            <button type="button" data-spoller class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#add"></use>
+                                </svg>
+                                <span>Добавить</span>
+                                <svg class="personal-area-dropdown__arrow">
+                                    <use xlink:href="img/sprite.svg#arrow-small"></use>
+                                </svg>
+                            </button>
+                            <div class="personal-area-dropdown__body">
+                                <a href="#" class="btn btn-reset personal-area__btn">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#tg"></use>
+                                    </svg>
+                                    <span>Заявка на покупку недвижимости</span>
+                                </a>
+                                <a href='#' class="btn btn-reset personal-area__btn">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#house"></use>
+                                    </svg>
+                                    <span>Объект на продажу</span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#chat"></use>
+                                </svg>
+                                <span>Чат</span>
+                                <span class="personal-area__quantity">
+                                    +6
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <a href="./present.html" type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#bonus"></use>
+                                </svg>
+                                <span>
+                                    Кешбэк и подарки
+                                </span>
+                                <span class="personal-area__quantity">
+                                    +6
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#cart-1"></use>
+                                </svg>
+                                <span>Мои заявки на покупку недвижимости</span>
+                            </button>
+                        </li>
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#cart-3"></use>
+                                </svg>
+                                <span>Предложения по заявкам</span>
+                                <span class="personal-area__quantity">
+                                    +6
+                                </span>
+                            </button>
+                        </li>
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#calendar"></use>
+                                </svg>
+                                <span>Календарь, запись на просмотры</span>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#house-laptop2"></use>
+                                </svg>
+                                <span>Мои объекты</span>
+                                <span class="personal-area__quantity">
+                                    6
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#sign-in"></use>
+                                </svg>
+                                <span>Выйти</span>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="popup popup-primary popup-primary--right popup-primary--sber-tied">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="sber-tied">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content popup-tied">
+            <h2 class="popup-tied__title title-2">
+                Привязанный аккаунт
+            </h2>
+            <p class="popup-tied__descr">
+                Привязанный аккаунт позволит входить без СМС и пароля, размещать заявки на покупку, получать индивидуальные предложения, 
+                кешбэк и подарки от застройщика
+            </p>
+            <div class="popup-tied__card">
+                <img loading="lazy" src="./img/sber.png" width="32" height="32" class="popup-tied__icon" alt="Сбербанк">
+                <div>
+                    <span>Сбер ID</span>
+                    <span>Вход 21.06.2023</span>
+                    <button type="button" class="btn btn-reset">Отвязать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- ==== -->
+    <div class="popup popup-primary popup-primary--right popup-primary--calc-popup">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="repair-calc">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content calc-popup">
+            <h2 class="calc-popup__title title-2">
+                Расчёт стоимости ремонта
+            </h2>
+            <form action="#" class="calc-popup__form">
+                <div class="calc-popup__fields">
+                    <div class="input-second _number-format">
+                        <label class="input-second__wrapper">
+                            <input type="text" name="Имя" maxlength="12" class="input-reset input-second__input" placeholder="">
+                            <span class="input-second__text">Стоимость дизайн-проекта, ₽</span>
+                        </label>
+                    </div>
+                    <div class="input-second _number-format">
+                        <label class="input-second__wrapper">
+                            <input type="text" name="Имя" maxlength="12" class="input-reset input-second__input" placeholder="">
+                            <span class="input-second__text">Стоимость работ, ₽</span>
+                        </label>
+                    </div>
+                    <div class="input-second _number-format">
+                        <label class="input-second__wrapper">
+                            <input type="text" name="Имя" maxlength="12" class="input-reset input-second__input" placeholder="">
+                            <span class="input-second__text">Стоимость стройматериалов, ₽</span>
+                        </label>
+                    </div>
+                    <div class="input-second _number-format">
+                        <label class="input-second__wrapper">
+                            <input type="text" name="Имя" maxlength="12" class="input-reset input-second__input" placeholder="">
+                            <span class="input-second__text">Стоимость интерьера и отделки, ₽</span>
+                        </label>
+                    </div>
+                    <div class="input-second _number-format">
+                        <label class="input-second__wrapper">
+                            <input type="text" name="Имя" maxlength="12" class="input-reset input-second__input" placeholder="">
+                            <span class="input-second__text">Стоимость электрики, ₽</span>
+                        </label>
+                    </div>
+                    <div class="input-second _number-format">
+                        <label class="input-second__wrapper">
+                            <input type="text" name="Имя" maxlength="12" class="input-reset input-second__input" placeholder="">
+                            <span class="input-second__text">Стоимость сантехники, ₽</span>
+                        </label>
+                    </div>
+                    <button type="button" class="btn btn-reset calc-popup__create" data-calc-create-field="1">
+                        <svg>
+                          <use xlink:href="./img/sprite.svg#plus"></use>
+                        </svg>
+                        Добавить расход
+                    </button>
+                </div>
+                <div class="calc-popup__bottom">
+                    <div class="calc-popup__result">
+                        Итого: <span>0 ₽</span>
+                    </div>
+                    <button type="button" class="btn btn-reset btn-primary calc-popup__btn js-popup-close">Сохранить</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+    <div class="popup popup-primary popup-primary--right popup-primary--calc-popup">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="furniture-calc">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content calc-popup">
+            <h2 class="calc-popup__title title-2">
+                Расчёт стоимости мебели
+            </h2>
+            <form action="#" class="calc-popup__form">
+                <div class="calc-popup__fields">
+                    <div class="select-third">
+                        <button type="button" class="btn btn-reset select-third__button">
+                            <span class="select-third__name">
+                                Класс мебели
+                            </span>
+                            <span class="select-third__value">
+                                Стандарт
+                            </span>
+                            <svg class="select-third__check">
+                                <use xlink:href="./img/sprite.svg#check"></use>
+                            </svg>
+                        </button>
+                        <div class="select-third__dropdown">
+                            <ul class="select-third__list list-reset">
+                                <li class="select-third__item" selected data-value="value1">
+                                    Стандарт
+                                </li>
+                                <li class="select-third__item" data-value="value2">
+                                    Стандарт2
+                                </li>
+                                <li class="select-third__item" data-value="value3">
+                                    Стандарт3
+                                </li>
+                            </ul>
+                        </div>
+                        <input type="text" name="object" value="" class="select-third__input-hidden" hidden="">
+                    </div>
+                    <div class="calc-popup__block">
+                        <h3 class="calc-popup__subtitle title-4">
+                            Коридор
+                        </h3>
+                        <div class="calc-popup-field">
+                            <h4 class="calc-popup-field__name">
+                                Шкаф
+                            </h4>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="12" value="1000000" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Стоимость, ₽</span>
+                                </label>
+                            </div>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="3" value="1" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Кол-во, шт</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="calc-popup-field">
+                            <h4 class="calc-popup-field__name">
+                                Банкетка
+                            </h4>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="12" value="1000000" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Стоимость, ₽</span>
+                                </label>
+                            </div>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="3" value="1" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Кол-во, шт</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="calc-popup-field">
+                            <h4 class="calc-popup-field__name">
+                                Зеркало
+                            </h4>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="12" value="1000000" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Стоимость, ₽</span>
+                                </label>
+                            </div>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="3" value="1" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Кол-во, шт</span>
+                                </label>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-reset calc-popup__create" data-calc-create-field="2">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#plus"></use>
+                            </svg>
+                            Добавить позицию
+                        </button>
+                    </div>
+                    <div class="calc-popup__block">
+                        <h3 class="calc-popup__subtitle title-4">
+                            Гостиная
+                        </h3>
+                        <div class="calc-popup-field">
+                            <h4 class="calc-popup-field__name">
+                                Диван
+                            </h4>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="12" value="1000000" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Стоимость, ₽</span>
+                                </label>
+                            </div>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="3" value="1" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Кол-во, шт</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="calc-popup-field">
+                            <h4 class="calc-popup-field__name">
+                                Кресло
+                            </h4>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="12" value="1000000" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Стоимость, ₽</span>
+                                </label>
+                            </div>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="3" value="1" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Кол-во, шт</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="calc-popup-field">
+                            <h4 class="calc-popup-field__name">
+                                Стол компьютерный
+                            </h4>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="12" value="1000000" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Стоимость, ₽</span>
+                                </label>
+                            </div>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="3" value="1" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Кол-во, шт</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="calc-popup-field">
+                            <h4 class="calc-popup-field__name">
+                                Стол журнальный
+                            </h4>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="12" value="1000000" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Стоимость, ₽</span>
+                                </label>
+                            </div>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="3" value="1" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Кол-во, шт</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="calc-popup-field">
+                            <h4 class="calc-popup-field__name">
+                                Шкаф
+                            </h4>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="12" value="1000000" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Стоимость, ₽</span>
+                                </label>
+                            </div>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="3" value="1" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Кол-во, шт</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="calc-popup-field">
+                            <h4 class="calc-popup-field__name">
+                                Стенка
+                            </h4>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="12" value="1000000" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Стоимость, ₽</span>
+                                </label>
+                            </div>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="3" value="1" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Кол-во, шт</span>
+                                </label>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-reset calc-popup__create" data-calc-create-field="2">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#plus"></use>
+                            </svg>
+                            Добавить позицию
+                        </button>
+                    </div>
+                    <div class="calc-popup__block">
+                        <h3 class="calc-popup__subtitle title-4">
+                            Санузел
+                        </h3>
+                        <div class="calc-popup-field">
+                            <h4 class="calc-popup-field__name">
+                                Навесной шкаф
+                            </h4>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="12" value="1000000" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Стоимость, ₽</span>
+                                </label>
+                            </div>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="3" value="1" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Кол-во, шт</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="calc-popup-field">
+                            <h4 class="calc-popup-field__name">
+                                Тумба
+                            </h4>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="12" value="1000000" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Стоимость, ₽</span>
+                                </label>
+                            </div>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="3" value="1" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Кол-во, шт</span>
+                                </label>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-reset calc-popup__create" data-calc-create-field="2">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#plus"></use>
+                            </svg>
+                            Добавить позицию
+                        </button>
+                    </div>
+                    <div class="calc-popup__block">
+                        <h3 class="calc-popup__subtitle title-4">
+                            Кухня
+                        </h3>
+                        <div class="calc-popup-field">
+                            <h4 class="calc-popup-field__name">
+                                Кухонный гарнитур (шкаф)
+                            </h4>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="12" value="1000000" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Стоимость, ₽</span>
+                                </label>
+                            </div>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="3" value="1" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Кол-во, шт</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="calc-popup-field">
+                            <h4 class="calc-popup-field__name">
+                                Стол обеденный
+                            </h4>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="12" value="1000000" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Стоимость, ₽</span>
+                                </label>
+                            </div>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="3" value="1" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Кол-во, шт</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="calc-popup-field">
+                            <h4 class="calc-popup-field__name">
+                                Стул
+                            </h4>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="12" value="1000000" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Стоимость, ₽</span>
+                                </label>
+                            </div>
+                            <div class="input-second _number-format">
+                                <label class="input-second__wrapper">
+                                    <input type="text" name="Имя" maxlength="3" value="1" class="input-reset input-second__input" placeholder="">
+                                    <span class="input-second__text">Кол-во, шт</span>
+                                </label>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-reset calc-popup__create" data-calc-create-field="2">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#plus"></use>
+                            </svg>
+                            Добавить позицию
+                        </button>
+                    </div>
+                </div>
+                <div class="calc-popup__bottom">
+                    <div class="calc-popup__result">
+                        Итого: <span>0 ₽</span>
+                    </div>
+                    <button type="button" class="btn btn-reset btn-primary calc-popup__btn js-popup-close">Сохранить</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+    <div class="popup popup-primary popup-primary--right popup-primary--calc-popup">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="technique-calc">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content calc-popup">
+            <h2 class="calc-popup__title title-2">
+                Расчёт стоимости техники
+            </h2>
+            <form action="#" class="calc-popup__form">
+                <div class="calc-popup__fields">
+                    <div class="select-secondary">
+                        <div class="select-secondary__wrapper">
+                            <span class="select-secondary__placeholder">
+                                Класс техники
+                            </span>
+                            <select class="select-secondary__body" hidden name="type-repair">
+                                <option placeholder>Не выбрано</option>
+                                <option value="Стандарт" selected>Стандарт</option>
+                                <option value="Стандарт">Стандарт2</option>
+                                <option value="Стандарт">Стандарт3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="calc-popup__block">
+                        <h3 class="calc-popup__subtitle title-4">
+                            Гостиная
+                        </h3>
+                        <div class="calc-popup-field">
+                            <h4 class="calc-popup-field__name">
+                                Телевизор
+                            </h4>
+                            <div class="input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Стоимость</span>
+                                    <input type="text" name="Стоимость" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                    <span>₽</span>
+                                </label>
+                            </div>
+                            <div class="input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Кол-во</span>
+                                    <input type="text" name="Стоимость" maxlength="4" value="1" class="input-reset input-text__input" placeholder="">
+                                    <span>шт</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="calc-popup-field">
+                            <h4 class="calc-popup-field__name">
+                                Кондиционер
+                            </h4>
+                            <div class="input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Стоимость</span>
+                                    <input type="text" name="Стоимость" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                    <span>₽</span>
+                                </label>
+                            </div>
+                            <div class="input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Кол-во</span>
+                                    <input type="text" name="Стоимость" maxlength="4" value="1" class="input-reset input-text__input" placeholder="">
+                                    <span>шт</span>
+                                </label>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-reset calc-popup__create" data-calc-create-field="2">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#plus"></use>
+                            </svg>
+                            Добавить позицию
+                        </button>
+                    </div>
+                    <div class="calc-popup__block">
+                        <h3 class="calc-popup__subtitle title-4">
+                            Санузел
+                        </h3>
+                        <div class="calc-popup-field">
+                            <h4 class="calc-popup-field__name">
+                              Стиральная машина
+                            </h4>
+                            <div class="input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Стоимость</span>
+                                    <input type="text" name="Стоимость" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                    <span>₽</span>
+                                </label>
+                            </div>
+                            <div class="input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Кол-во</span>
+                                    <input type="text" name="Стоимость" maxlength="4" value="1" class="input-reset input-text__input" placeholder="">
+                                    <span>шт</span>
+                                </label>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-reset calc-popup__create" data-calc-create-field="2">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#plus"></use>
+                            </svg>
+                            Добавить позицию
+                        </button>
+                    </div>
+                    <div class="calc-popup__block">
+                        <h3 class="calc-popup__subtitle title-4">
+                            Кухня
+                        </h3>
+                        <div class="calc-popup-field">
+                            <h4 class="calc-popup-field__name">
+                             Холодильник
+                            </h4>
+                            <div class="input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Стоимость</span>
+                                    <input type="text" name="Стоимость" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                    <span>₽</span>
+                                </label>
+                            </div>
+                            <div class="input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Кол-во</span>
+                                    <input type="text" name="Стоимость" maxlength="4" value="1" class="input-reset input-text__input" placeholder="">
+                                    <span>шт</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="calc-popup-field">
+                            <h4 class="calc-popup-field__name">
+                                Варочная поверхность
+                            </h4>
+                            <div class="input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Стоимость</span>
+                                    <input type="text" name="Стоимость" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                    <span>₽</span>
+                                </label>
+                            </div>
+                            <div class="input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Кол-во</span>
+                                    <input type="text" name="Стоимость" maxlength="4" value="1" class="input-reset input-text__input" placeholder="">
+                                    <span>шт</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="calc-popup-field">
+                            <h4 class="calc-popup-field__name">
+                                Встраиваемая духовка
+                            </h4>
+                            <div class="input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Стоимость</span>
+                                    <input type="text" name="Стоимость" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                    <span>₽</span>
+                                </label>
+                            </div>
+                            <div class="input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Кол-во</span>
+                                    <input type="text" name="Стоимость" maxlength="4" value="1" class="input-reset input-text__input" placeholder="">
+                                    <span>шт</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="calc-popup-field">
+                            <h4 class="calc-popup-field__name">
+                               Вытяжка
+                            </h4>
+                            <div class="input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Стоимость</span>
+                                    <input type="text" name="Стоимость" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                    <span>₽</span>
+                                </label>
+                            </div>
+                            <div class="input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Кол-во</span>
+                                    <input type="text" name="Стоимость" maxlength="4" value="1" class="input-reset input-text__input" placeholder="">
+                                    <span>шт</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="calc-popup-field">
+                            <h4 class="calc-popup-field__name">
+                               Посудомоечная машина
+                            </h4>
+                            <div class="input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Стоимость</span>
+                                    <input type="text" name="Стоимость" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                    <span>₽</span>
+                                </label>
+                            </div>
+                            <div class="input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Кол-во</span>
+                                    <input type="text" name="Стоимость" maxlength="4" value="1" class="input-reset input-text__input" placeholder="">
+                                    <span>шт</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="calc-popup-field">
+                            <h4 class="calc-popup-field__name">
+                               Телевизор
+                            </h4>
+                            <div class="input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Стоимость</span>
+                                    <input type="text" name="Стоимость" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                    <span>₽</span>
+                                </label>
+                            </div>
+                            <div class="input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Кол-во</span>
+                                    <input type="text" name="Стоимость" maxlength="4" value="1" class="input-reset input-text__input" placeholder="">
+                                    <span>шт</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="calc-popup-field">
+                            <h4 class="calc-popup-field__name">
+                               Кондиционер
+                            </h4>
+                            <div class="input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Стоимость</span>
+                                    <input type="text" name="Стоимость" maxlength="12" class="input-reset input-text__input" placeholder="">
+                                    <span>₽</span>
+                                </label>
+                            </div>
+                            <div class="input-text input-text--only-number">
+                                <label class="input-text__label">
+                                    <span>Кол-во</span>
+                                    <input type="text" name="Стоимость" maxlength="4" value="1" class="input-reset input-text__input" placeholder="">
+                                    <span>шт</span>
+                                </label>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-reset calc-popup__create" data-calc-create-field="2">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#plus"></use>
+                            </svg>
+                            Добавить позицию
+                        </button>
+                    </div>
+                </div>
+                <div class="calc-popup__bottom">
+                    <div class="calc-popup__result">
+                        Итого: <span>0 ₽</span>
+                    </div>
+                    <button type="button" class="btn btn-reset btn-primary calc-popup__btn js-popup-close">Сохранить</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+    <div class="popup popup-primary popup-primary--right popup-primary--calc-popup">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="expenses-calc">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content calc-popup">
+            <h2 class="calc-popup__title title-2">
+                Расходы
+            </h2>
+            <form action="#" class="calc-popup__form">
+                <div class="calc-popup__fields">
+                    <div class="input-second _number-format">
+                        <label class="input-second__wrapper">
+                            <input type="text" name="Имя" maxlength="12" value="6300" class="input-reset input-second__input" placeholder="">
+                            <span class="input-second__text">Налог на имущество в первый год горизонта инвестирования, ₽</span>
+                        </label>
+                    </div>
+                    <div class="input-second _number-format">
+                        <label class="input-second__wrapper">
+                            <input type="text" name="Имя" maxlength="12" value="2350" class="input-reset input-second__input" placeholder="">
+                            <span class="input-second__text">Госпошлина за покупку, ₽</span>
+                        </label>
+                    </div>
+                    <div class="input-second _number-format">
+                        <label class="input-second__wrapper">
+                            <input type="text" name="Имя" maxlength="12" value="2350" class="input-reset input-second__input" placeholder="">
+                            <span class="input-second__text">Госпошлина за покупку на одного собственника , ₽</span>
+                        </label>
+                    </div>
+                    <div class="input-second _number-format">
+                        <label class="input-second__wrapper">
+                            <input type="text" name="Имя" maxlength="12" value="56563" class="input-reset input-second__input" placeholder="">
+                            <span class="input-second__text">Сумма ежемесячного платежа , ₽</span>
+                        </label>
+                    </div>
+                    <div class="input-second _number-format">
+                        <label class="input-second__wrapper">
+                            <input type="text" name="Имя" maxlength="12" value="4800" class="input-reset input-second__input" placeholder="">
+                            <span class="input-second__text">Страховая сумма Платёж за первый год , ₽</span>
+                        </label>
+                    </div>
+                    <div class="input-second _number-format">
+                        <label class="input-second__wrapper">
+                            <input type="text" name="Имя" maxlength="12" value="417201" class="input-reset input-second__input" placeholder="">
+                            <span class="input-second__text">Стоимость ремонта , ₽</span>
+                        </label>
+                    </div>
+                    <div class="input-second _number-format">
+                        <label class="input-second__wrapper">
+                            <input type="text" name="Имя" maxlength="12" value="85145" class="input-reset input-second__input" placeholder="">
+                            <span class="input-second__text">Налог на доход с продажи , ₽</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="calc-popup__bottom">
+                    <div class="calc-popup__result">
+                        Итого: <span>0 ₽</span>
+                    </div>
+                    <button type="button" class="btn btn-reset btn-primary calc-popup__btn js-popup-close">Сохранить</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+    <!-- popups -->
+</body>
+
+
+</html>

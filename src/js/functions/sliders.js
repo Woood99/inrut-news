@@ -887,6 +887,17 @@ function initSliders() {
             }
         })
     }
+
+    if (document.querySelector('.promo-slider__slider')) {
+        const slider = document.querySelector('.promo-slider__slider');
+        new Swiper(slider, {
+            observer: true,
+            observeParents: true,
+            slidesPerView: 1.2,
+            spaceBetween: 16,
+            speed: 800,
+        });
+    }
 }
 
 

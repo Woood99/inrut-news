@@ -5,6 +5,7 @@ import './functions/fix-fullheight';
 import './_popups';
 import './_main-scripts';
 import { _slideDown } from './support-modules/slide';
+import getRemainingScrollToBottom from './modules/getRemainingScrollToBottom';
 // ==============================
 document.addEventListener('DOMContentLoaded', () => {
     const comparison = document.querySelector('.comparison-block');
@@ -73,6 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function body(formula) {
             const spollers = comparison.querySelectorAll('.comparison-block__body .spollers__item');
+
+            const bodyTop = comparison.querySelector('.comparison-block__top-container');
+            const options = comparison.querySelectorAll('.comparison-block__option');
             let speed = 0;
             spollers.forEach(item => {
                 if (!item.classList.contains('_active')) {
@@ -81,12 +85,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     _slideDown(item.querySelector('.spollers__body'));
                 }
             })
-
             interimDisabledNavBtn();
             setTimeout(() => {
-                comparison.scrollTo({
+                bodyTop.scrollTo({
                     left: formula,
                     behavior: 'smooth',
+                })
+                options.forEach(item => {
+                    item.scrollTo({
+                        left: formula,
+                        behavior: 'smooth',
+                    })
                 })
 
                 const headerList = header ? header.querySelector('.comparison-header__list') : null;
@@ -117,17 +126,19 @@ document.addEventListener('DOMContentLoaded', () => {
             headerPrev.classList.remove('_disabled');
             headerNext.classList.remove('_disabled');
 
+            const bodyTop = comparison.querySelector('.comparison-block__top-container');
 
-            if (comparison.scrollLeft === 0) {
+            if (bodyTop.scrollLeft === 0) {
                 blockPrev.classList.add('_disabled-hidden');
                 headerPrev.classList.add('_disabled-hidden');
             } else {
                 blockPrev.classList.remove('_disabled-hidden');
                 headerPrev.classList.remove('_disabled-hidden');
             }
-            if (Math.round(comparison.offsetWidth + comparison.scrollLeft) === comparison.scrollWidth ||
-                Math.round(comparison.offsetWidth + comparison.scrollLeft + 1) === comparison.scrollWidth ||
-                Math.round(comparison.offsetWidth + comparison.scrollLeft + 4) === comparison.scrollWidth) {
+
+            console.log(bodyTop.offsetWidth + bodyTop.scrollLeft - 1);
+            console.log(bodyTop.scrollWidth);
+            if (Math.ceil(bodyTop.offsetWidth + bodyTop.scrollLeft) + 2 === bodyTop.scrollWidth) {
                 blockNext.classList.add('_disabled-hidden');
                 headerNext.classList.add('_disabled-hidden');
             } else {
@@ -154,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const topContainer = currentBlock.querySelector('.comparison-block__top-container');
 
         const posTop = top.getBoundingClientRect().top;
-        if (posTop + topContainer.clientHeight <= 0) {
+        if (posTop + topContainer.clientHeight <= 0 && getRemainingScrollToBottom() > 250) {
             currentHeader.classList.add('_active');
         } else {
             currentHeader.classList.remove('_active');
@@ -228,3 +239,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 })
+  

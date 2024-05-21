@@ -1,0 +1,59 @@
+@use "sass:math";
+
+@import './$settings';
+
+
+// =============================================================================================================
+
+
+// ui components
+@import "./ui-kit/card-stock";
+
+// small components
+@import "./components/video-block";
+@import "./components/object";
+
+// pages
+@import "./components/home";
+
+
+
+// code
+
+.promo-slider{
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    grid-column-gap: 32px;
+    &__slider{
+        width: 100%;
+        min-height: 420px;
+    }
+    &__image{
+        max-height: 500px;
+    }
+    &__list{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+    &__icon{
+        background-color: #5639FF1e;
+        --size: 50px;
+
+        width: var(--size);
+        height: var(--size);
+        flex: 0 0 var(--size);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+
+        svg{
+            width: 24px;
+            height: 24px;
+            fill: var(--blue);
+        }
+    }
+}

@@ -162,6 +162,7 @@ const scriptsDev = () => {
                 'investments': './src/js/investments.js',
                 'program': './src/js/program.js',
                 'quiz': './src/js/quiz.js',
+                'promo': './src/js/promo.js',
             },
             output: {
                 filename: '[name].js',

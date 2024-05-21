@@ -4,26 +4,34 @@
 
     .tabs-primary {
         &__container {
-            background-color: var(--white) !important;
-            box-shadow: var(--shadow-primary) !important;
-            padding: 32px !important;
-            border-radius: 12px !important;
+            box-shadow: none !important;
         }
         &__content{
 
         }
         .tabs__body{
-            overflow-x: auto;
+            background-color: var(--white) !important;
+            box-shadow: var(--shadow-primary) !important;
+            padding: 32px !important;
+            border-radius: 12px !important;
         }
     }
 
     &__nav {
-        top: calc((160px / 2) + 17px + 8px);
+        top: 178px;
         z-index: 10;
     }
     &__prev,&__next{
         transform: translate(0);
-       position: sticky;
+       position: absolute;
+    }
+    &__prev{
+        left: calc(var(--width-actions) + 16px);
+        transform: translateX(100%);
+    }
+    &__next{
+        right: 16px;
+        transform: translateX(-100%);
     }
 
     &__top {
@@ -35,16 +43,15 @@
         z-index: 9;
 
         transition: padding-top $transitionSpeed $transitionFunction,
-            padding-bottom $transitionSpeed $transitionFunction,
+            padding-bottom $transitionSpeed $transitionFunction;
     }
 
     &__top-container {
         display: flex;
-
         width: 100%;
 
-        // overflow-x: scroll;
-        // scrollbar-width: none;
+        overflow-x: auto;
+        scrollbar-width: none;
     }
 
     &__left-col {
@@ -139,7 +146,6 @@
 
     &__body {
         margin-top: 16px;
-
         .spollers {
             &__item {
                 &:not(:last-child) {
@@ -177,23 +183,16 @@
     }
 
     &__options {
-        // overflow-x: scroll;
-        // scrollbar-width: none;
-
-        margin-left: -32px;
-        margin-right: -32px;
-        padding-left: 32px;
-        padding-right: 32px;
+     
     }
 
     &__option {
         display: flex;
         position: relative;
 
-        margin-left: -32px;
-        margin-right: -32px;
-        padding: 24px 32px;
-
+        padding: 24px 0;
+        overflow-x: auto;
+        scrollbar-width: none;
 
             &::before {
                 content: '';

@@ -260,7 +260,7 @@ const webpImages = () => {
 
 
 const HTMLIgnoreFile = [
-    `access-rights`, 'agent-develop', 'agent-develop2', 'agent-rating',
+    `access-rights`, 'agent-develop2', 'agent-rating',
     'app-verif-edit', 'app-verif', 'appraisers', 'bank', 'banks',
     'view-types-objects','view-employee-groups',
     'detailed-flat-consideration','detailed-flat-consideration','detailed-flat-consideration-two',

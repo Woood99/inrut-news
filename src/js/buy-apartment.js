@@ -30,7 +30,8 @@ import {
 import scrollUp from './components/scrollUp';
 import scrollTarget from './components/scrollTarget';
 import metroInfo from './components/metroInfo';
-import { galleryPrimary } from './components/gallery'
+import { galleryPrimary } from './components/gallery';
+import { controlCardsCardSecondary } from './components/controlCards';
 document.addEventListener('DOMContentLoaded', () => {
     cardSecondaryActions();
     cardPrimaryActions();
@@ -50,11 +51,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // mapPrimary();
     // mapDraw();
 
-
     document.addEventListener('listingUpdate', () => {
         const cards = document.querySelectorAll('.cards-list__items .card-secondary');
         if (cards.length > 0) {
             cards.forEach(card => cardSecondaryActionsBody(card));
+            const content = document.querySelector(".control-cards__content");
+            controlCardsCardSecondary(content,document.querySelector(".filter-actions__btn._active"));
         }
     })
+
 })

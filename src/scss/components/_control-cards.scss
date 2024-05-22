@@ -401,17 +401,12 @@
                     &--1 {
                      margin-top: 16px;
                         display: grid;
-                        grid-template-columns: repeat(2, minmax(215px, max-content));
+                        grid-template-columns: repeat(2,1fr);
                         grid-column: 1/2;
                         grid-column-gap: 32px;
 
-                        @media (min-width:$desktop-min) {
-                            >div {
-                                margin-bottom: 0;
-                            }
-                        }
-
-                        .card-secondary__price {}
+                        grid-auto-flow: column;
+                        grid-template-rows: repeat(3,1fr);
 
                         @media (max-width:$desktop) {
                             width: 100%;

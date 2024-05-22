@@ -28,7 +28,7 @@ export const actionForCards = (container, content, btn) => {
         // maps
         if (container.classList.contains('control-cards--maps')) {
             container.classList.add('_map-active');
-            if (containerWrapper){
+            if (containerWrapper) {
                 containerWrapper.classList.remove('container');
                 containerWrapper.classList.add('container-right--no-padding-mobile');
             }
@@ -40,13 +40,12 @@ export const actionForCards = (container, content, btn) => {
         // maps
         if (container.classList.contains('control-cards--maps')) {
             container.classList.remove('_map-active');
-            if (containerWrapper){
+            if (containerWrapper) {
                 containerWrapper.classList.add('container');
                 containerWrapper.classList.remove('container-right--no-padding-mobile');
             }
         }
     }
-
 
 
     controlCardsCardSecondary(content, btn);
@@ -133,91 +132,89 @@ export const actionForCards = (container, content, btn) => {
 
 
 export const controlCardsCardSecondary = (content, btn) => {
-    if (content.querySelectorAll('.card-secondary').length >= 1) {
-        const cardsSecondary = content.querySelectorAll('.card-secondary');
+    const cardsSecondary = content.querySelectorAll('.card-secondary');
+    if (cardsSecondary.length === 0) return;
+    cardsSecondary.forEach(card => {
+        const favorite = card.querySelector('.card-secondary__info--favorite');
+        const bottom = card.querySelector('.card-secondary__bottom');
+        const bottomMobile = bottom.querySelector('.card-secondary__info--mobile');
+        const quantity = card.querySelector('.card-secondary__quantity');
+        const comparison = card.querySelector('.card-secondary__comparison');
 
-        cardsSecondary.forEach(card => {
-            const favorite = card.querySelector('.card-secondary__info--favorite');
-            const bottom = card.querySelector('.card-secondary__bottom');
-            const bottomMobile = bottom.querySelector('.card-secondary__info--mobile');
-            const quantity = card.querySelector('.card-secondary__quantity');
-            const comparison = card.querySelector('.card-secondary__comparison');
+        const content = card.querySelector('.card-secondary__content');
+        const tags = card.querySelector('.card-secondary__info--tags');
+        const options = card.querySelector('.card-secondary__options');
 
-            const content = card.querySelector('.card-secondary__content');
-            const tags = card.querySelector('.card-secondary__info--tags');
-            const options = card.querySelector('.card-secondary__options');
-
-            const pricesMain = card.querySelector('.card-secondary__prices--1');
-            if (favorite && bottomMobile) {
-                if (checkVertical(btn)) {
-                    if (!bottomMobile.querySelector('.card-secondary__info--favorite')) {
-                        if (!favorite.hasAttribute('data-popup-path')) {
-                            const clone = favorite.cloneNode(true);
-                            bottomMobile.appendChild(clone);
-                        } else {
-                            bottomMobile.insertAdjacentElement('afterbegin', favorite);
-                        }
-                    }
-                    bottomMobile.querySelector('.card-secondary__info--favorite').removeAttribute('hidden');
-                }
-                if (checkHorizontal(btn) && bottomMobile.querySelector('.card-secondary__info--favorite')) {
-                    bottomMobile.querySelector('.card-secondary__info--favorite').setAttribute('hidden', '');
-                    if (favorite.hasAttribute('data-popup-path')) {
-                        card.querySelector('.card-secondary__info--btns-right').insertAdjacentElement('afterbegin', favorite);
-                        favorite.removeAttribute('hidden');
-                    }
-                }
-            }
-
+        const pricesMain = card.querySelector('.card-secondary__prices--1');
+        if (favorite && bottomMobile) {
             if (checkVertical(btn)) {
-                bottom.classList.add('_vertical-active');
-         
-                if (quantity){
-                    const to = card.querySelector('.card-secondary__prices--2');
-                    if (to) {
-                        to.insertAdjacentElement('beforeend',quantity);
+                if (!bottomMobile.querySelector('.card-secondary__info--favorite')) {
+                    if (!favorite.hasAttribute('data-popup-path')) {
+                        const clone = favorite.cloneNode(true);
+                        bottomMobile.appendChild(clone);
+                    } else {
+                        bottomMobile.insertAdjacentElement('afterbegin', favorite);
                     }
                 }
-                if (pricesMain) {
-                    pricesMain.removeAttribute('hidden');
-                }
-                if (options) {
-                    const to = card.querySelector('.card-secondary__prices--2');
-                    if (to) {
-                        to.insertAdjacentElement('beforeend', options);
-                    }
-                }
-                if (comparison) {
-                    content.insertAdjacentElement('beforeend', comparison);
+                bottomMobile.querySelector('.card-secondary__info--favorite').removeAttribute('hidden');
+            }
+            if (checkHorizontal(btn) && bottomMobile.querySelector('.card-secondary__info--favorite')) {
+                bottomMobile.querySelector('.card-secondary__info--favorite').setAttribute('hidden', '');
+                if (favorite.hasAttribute('data-popup-path')) {
+                    card.querySelector('.card-secondary__info--btns-right').insertAdjacentElement('afterbegin', favorite);
+                    favorite.removeAttribute('hidden');
                 }
             }
-            if (checkHorizontal(btn)) {
-                bottom.classList.remove('_vertical-active');
-                if (quantity){
-                    const to = card.querySelector('.card-secondary__prices');
-                    if (to) {
-                        to.setAttribute('hidden','');
-                        to.insertAdjacentElement('beforebegin',quantity);
-                    }
-                }
-                if (pricesMain) {
-                    pricesMain.setAttribute('hidden','');
-                }
-                if (options) {
-                    const to = card.querySelector('[data-top-content] .col');
-                    if (to) {
-                        to.insertAdjacentElement('afterbegin',options);
-                    }
-                }
-                if (comparison) {
-                    const to = card.querySelector('[data-top-content]');
-                    if (to) {
-                        to.insertAdjacentElement('beforeend',comparison);
-                    }
+        }
+
+        if (checkVertical(btn)) {
+            bottom.classList.add('_vertical-active');
+
+            if (quantity) {
+                const to = card.querySelector('.card-secondary__prices--2');
+                if (to) {
+                    to.insertAdjacentElement('beforeend', quantity);
                 }
             }
-        })
-    }
+            if (pricesMain) {
+                pricesMain.removeAttribute('hidden');
+            }
+            if (options) {
+                const to = card.querySelector('.card-secondary__prices--2');
+                if (to) {
+                    to.insertAdjacentElement('beforeend', options);
+                }
+            }
+            if (comparison) {
+                content.insertAdjacentElement('beforeend', comparison);
+            }
+        }
+        if (checkHorizontal(btn)) {
+            bottom.classList.remove('_vertical-active');
+            if (quantity) {
+                const to = card.querySelector('.card-secondary__prices');
+                if (to) {
+                    to.setAttribute('hidden', '');
+                    to.insertAdjacentElement('beforebegin', quantity);
+                }
+            }
+            if (pricesMain) {
+                pricesMain.setAttribute('hidden', '');
+            }
+            if (options) {
+                const to = card.querySelector('[data-top-content] .col');
+                if (to) {
+                    to.insertAdjacentElement('afterbegin', options);
+                }
+            }
+            if (comparison) {
+                const to = card.querySelector('[data-top-content]');
+                if (to) {
+                    to.insertAdjacentElement('beforeend', comparison);
+                }
+            }
+        }
+    })
 }
 
 function checkHorizontal(target) {
@@ -225,7 +222,7 @@ function checkHorizontal(target) {
 }
 
 function checkVertical(target) {
-    if (target) return target.classList.contains('control-cards__btn--vertical') || target.classList.contains('filter-actions__list'); 
+    if (target) return target.classList.contains('control-cards__btn--vertical') || target.classList.contains('filter-actions__list');
 }
 
 export const cardSchemeTag = (container) => {
@@ -265,7 +262,7 @@ export const cardSchemeTag = (container) => {
                 }
                 if (tooltipAvav === true) {
                     const tooltip = tagsContainer.querySelector('.secondary-tooltip__content');
-                    const count = card.querySelector('.secondary-tooltip__btn > span'); 
+                    const count = card.querySelector('.secondary-tooltip__btn > span');
                     const tooltipItemLength = tooltip.querySelectorAll('.secondary-tooltip__content > span').length;
                     count.textContent = tooltipItemLength;
                 }

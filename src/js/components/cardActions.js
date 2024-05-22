@@ -110,7 +110,7 @@ export const cardSecondaryActionsBody = (card) => {
         if (quantity) {
             const block = card.querySelector('.card-secondary__prices--1');
             e.preventDefault();
-            if (!quantity.classList.contains('_active')){
+            if (!quantity.classList.contains('_active')) {
                 _slideDown(block);
                 quantity.classList.add('_active');
             } else {
@@ -143,6 +143,29 @@ export const cardSecondaryActionsBody = (card) => {
             }
         }
     })
+
+    const prices = card.querySelector('[data-card-prices]');
+    if (prices) {
+        pricesSetRows(prices);
+    }
+
+    function pricesSetRows(container) {
+        const items = container.querySelectorAll('[data-card-price]');
+        const length = items.length;
+        if (length === 0) return;
+        if (length <= 3) {
+            container.style.gridTemplateRows = `repeat(${length},1fr)`;
+            return;
+        }
+        if (length === 4) {
+            container.style.gridTemplateRows = `repeat(2,1fr)`;
+            return;
+        }
+        if (length > 4) {
+            container.style.gridTemplateRows = `repeat(3,1fr)`;
+            return;
+        }
+    }
 }
 
 

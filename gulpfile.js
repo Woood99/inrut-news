@@ -123,7 +123,7 @@ const stylesProd = () => {
         ]))
         .pipe(mediaQueries())
         .pipe(cleanCSS({
-            level: 2
+            level: 1
         }))
         .pipe(dest(paths.buildCssFolder))
 };

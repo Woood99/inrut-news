@@ -45,6 +45,7 @@ import { galleryPrimary } from './components/gallery';
 import saleDynamic from './components/saleDynamic';
 import dynamicCircle from './components/dynamicCircle';
 import videoModal from './components/videoModal';
+import dropdownItems from './modules/dropdownItems';
 document.addEventListener('DOMContentLoaded', () => {
     linkCopy('.share-app-popup__btn');
     cardSecondaryActions();
@@ -78,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
     agentMap();
 
     baseAgentSpecChange();
+    bidMore(); 
 
     function baseAgentSpecChange() {
         const selects = document.querySelectorAll('[data-spec-select-name]');
@@ -97,6 +99,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             })
         }
+    }
+
+
+
+    function bidMore() {
+        if (!document.querySelector('[data-bid-more]')) return;
+        dropdownItems('[data-bid-more]', '[data-bid-more-btn]', 'Скрыть');
     }
 })
 

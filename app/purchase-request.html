@@ -271,13 +271,13 @@
                             <span>Да</span>
                         </li>
                     </div>
-                    <div class="bid__body">
+                    <div class="bid__body" data-bid-more>
                         <div class="bid__start">
                             <h2 class="bid__title title-2">
                                 Параметры заявки
                             </h2>
                         </div>
-                        <ul class="bid__list list-reset">
+                        <ul class="bid__list list-reset tw-mb-4">
                             <li class="bid__item">
                                 <span>Создано</span>
                                 <span>09:40 25.12.2022</span>
@@ -374,6 +374,8 @@
                                 <span>Кол-во комнат</span>
                                 <span>3</span>
                             </li>
+                        </ul>
+                        <ul class='bid__list list-reset tw-mt-0' data-dropdown-items hidden>
                             <li class="bid__item">
                                 <span>Площадь общая от</span>
                                 <span>54 м²</span>
@@ -473,8 +475,13 @@
                                     <span>Зимний сад, &nbsp;</span>
                                 </span>
                             </li>
-
                         </ul>
+                        <button type="button" class="btn btn-reset bid__more md1:tw-px-4" data-bid-more-btn>
+                            <span>Показать полностью</span>
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#check"></use>
+                            </svg>
+                        </button>
                         <div class="bid__descr bid-descr">
                             <div class="bid-descr__title title-2">
                                 Описание
@@ -3195,13 +3202,36 @@
                 <div class="record-viewing-two__wrapper">
                     <div class="record-viewing-two__info">
                         <div class="record-viewing-two__sent">
-                            <h3 class="title-3">Ваше предложение отправлено. Ждёт подтверждения от покупателя.</h3>
+                            <h3 class="title-3">Ваше предложение отправлено.</h3>
                             <p>
-                                Мы отправим вам уведомление с подтверждением и записью на просмотр.
+                                Мы отправим вам уведомление с подтверждением записи.
                             </p>
                         </div>
+                        <div class="record-viewing-two__card object-small-card">
+                            <div class="object-small-card__image">
+                                <picture>
+                                    <source srcset="./img/card-1.webp" type="image/webp">
+                                    <img loading="lazy" src="./img/card-1.jpg" width="45" height="45" alt="1-комн. квартира, 54 м², 12/12 эт.">
+                                </picture>
+                            </div>
+                            <h4 class="object-small-card__title">
+                                1-комн. квартира, 53 м², 4/12 эт.
+                            </h4>
+                            <p class="object-small-card__descr">
+                                Краснодар, ул.Карла-Маркса., 234
+                            </p>
+                        </div>
+                        <div class="record-viewing-two__status">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#time-2"></use>
+                            </svg>
+                            <span>Ждём подтверждения от покупателя</span>
+                        </div>
                         <div class="record-viewing-two__btns">
-                            <button type="button" class="btn btn-reset btn-secondary record-viewing-two__cancel">Отменить предложение</button>
+                            <button type="button" class="btn btn-reset btn-secondary" data-popup-path="warning-remove4">Отменить предложение</button>
+                            <a href="./calendar.html" class="btn btn-reset underline-hover tw-font-medium text-blue tw-w-max">
+                                Смотреть все записи
+                            </a>
                         </div>
                     </div>
                 </div>

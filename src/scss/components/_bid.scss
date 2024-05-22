@@ -87,6 +87,33 @@
             padding: 0 16px;
         }
     }
+    &__more {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        color: var(--blue);
+        font-size: var(--default-fz);
+        line-height: 1;
+        font-weight: 500;
+
+        svg {
+            margin-left: 5px;
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            transition: transform $transitionSpeedFast $transitionFunction;
+        }
+
+        &._active {
+            svg {
+                transform: rotate(-180deg);
+            }
+        }
+
+        @media (max-width:$desktop) {
+            margin-top: 12px;
+        }
+    }
 
     &__item {
         display: flex;

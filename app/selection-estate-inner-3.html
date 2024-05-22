@@ -224,12 +224,18 @@
     </div>
 </header>
         <main class="main main-page-gap your-app your-app-my purchase-request">
-            <div class="container your-app__container">
-                <h1 class="your-app__title title-2" data-da=".mobile-top,1212,first">
-                    Моя заявка
-                </h1>
-                <div class="top-page-inner">
-                    <div class="top-page-inner__btns">
+            <div class="purchase-request__top top-page-inner-title container">
+                <div class="top-page-inner-title__container">
+                    <a href="#" class="purchase-request__back top-page-inner-title__back back-link">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#arrow-left"></use>
+                        </svg>
+                        <span>Назад</span>
+                    </a>
+                    <h1 class="purchase-request__title top-page-inner-title__title title-2" data-da=".mobile-top,1212,first">
+                        Моя заявка
+                    </h1>
+                    <div class="purchase-request__btns top-page-inner-title__btns">
                         <a href="edit-app.html" class="btn btn-reset top-page-inner__btn edit-btn">
                             <svg>
                                 <use xlink:href="./img/sprite.svg#pencil"></use>
@@ -245,7 +251,7 @@
                     </div>
                 </div>
             </div>
-            <div class="purchase-request__body bid" style="margin-top: 32px;">
+            <div class="purchase-request__body bid">
                 <div class="mobile-top">
                     <button type="button" class="btn btn-reset mobile-top__btn">
                         <svg>
@@ -254,27 +260,27 @@
                         </svg>
                     </button>
                 </div>
-                <div class="bid__container container--no-padding" style="padding-top: 16px;">
-                    <div class="bid__body">
-                        <div class="bid__maps bid-maps">
-                            <h2 class="bid__title title-2">
-                                Расположение поиска
-                            </h2>
-                            <div class="bid-maps__container map-primary remove-copyrights-pane" id="bid-maps"></div>
-                            <li class="bid-maps__item bid__item">
-                                <span>Можно предлагать соседние районы</span>
-                                <span>Да</span>
-                            </li>
-                        </div>
+                <div class="bid__container container--no-padding">
+                    <div class="bid__body bid__maps bid-maps">
+                        <h2 class="bid__title title-2">
+                            Расположение поиска
+                        </h2>
+                        <div class="bid-maps__container map-primary remove-copyrights-pane" id="bid-maps"></div>
+                        <li class="bid-maps__item bid__item">
+                            <span>Можно предлагать соседние районы</span>
+                            <span>Да</span>
+                        </li>
+                    </div>
+                    <div class="bid__body" data-bid-more>
                         <div class="bid__start">
                             <h2 class="bid__title title-2">
-                               Параметры заявки
+                                Параметры заявки
                             </h2>
                         </div>
-                        <ul class="bid__list list-reset">
+                        <ul class="bid__list list-reset tw-mb-4">
                             <li class="bid__item">
                                 <span>Создано</span>
-                                <span>09:40   25.12.2022</span>
+                                <span>09:40 25.12.2022</span>
                             </li>
                             <li class="bid__item">
                                 <span>Планирую смотреть</span>
@@ -315,7 +321,7 @@
                                 <span>Сумма</span>
                                 <div>
                                     <span>3 500 000 ₽</span>
-                                    <div class="bid__item-tooltips main-tooltips" data-max-tooltip="3">
+                                    <div class="bid__item-tooltips">
                                         <div class="main-tooltip main-tooltip--mobile-visible main-tooltip--budget">
                                             <div class="main-tooltip__target">
                                                 <svg>
@@ -346,48 +352,6 @@
                                                 Срочная заявка
                                             </div>
                                         </div>
-                                        <div class="main-tooltip main-tooltip--mobile-visible main-tooltip--bolt">
-                                            <div class="main-tooltip__target">
-                                                <svg>
-                                                    <use xlink:href="./img/sprite.svg#bolt"></use>
-                                                </svg>
-                                            </div>
-                                            <div class="main-tooltip__content">
-                                                Срочная заявка
-                                            </div>
-                                        </div>
-                                        <div class="main-tooltip main-tooltip--mobile-visible main-tooltip--budget">
-                                            <div class="main-tooltip__target">
-                                                <svg>
-                                                    <use xlink:href="./img/sprite.svg#budget"></use>
-                                                </svg>
-                                            </div>
-                                            <div class="main-tooltip__content">
-                                                Наличные
-                                            </div>
-                                        </div>
-                                        <div class="main-tooltip main-tooltip--mobile-visible main-tooltip--dollar">
-                                            <div class="main-tooltip__target">
-                                                <svg>
-                                                    <use xlink:href="./img/sprite.svg#dollar"></use>
-                                                </svg>
-                                            </div>
-                                            <div class="main-tooltip__content">
-                                                Используется сертификат
-                                            </div>
-                                        </div>
-                                        <div class="main-tooltip main-tooltip--mobile-visible main-tooltip--bolt">
-                                            <div class="main-tooltip__target">
-                                                <svg>
-                                                    <use xlink:href="./img/sprite.svg#bolt"></use>
-                                                </svg>
-                                            </div>
-                                            <div class="main-tooltip__content">
-                                                Срочная заявка
-                                            </div>
-                                        </div>
-                                        <button type="button" class="btn btn-reset main-tooltip-more" hidden>
-                                        </button>
                                     </div>
                                 </div>
                             </li>
@@ -410,6 +374,8 @@
                                 <span>Кол-во комнат</span>
                                 <span>3</span>
                             </li>
+                        </ul>
+                        <ul class='bid__list list-reset tw-mt-0' data-dropdown-items hidden>
                             <li class="bid__item">
                                 <span>Площадь общая от</span>
                                 <span>54 м²</span>
@@ -509,8 +475,13 @@
                                     <span>Зимний сад, &nbsp;</span>
                                 </span>
                             </li>
-
                         </ul>
+                        <button type="button" class="btn btn-reset bid__more md1:tw-px-4" data-bid-more-btn>
+                            <span>Показать полностью</span>
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#check"></use>
+                            </svg>
+                        </button>
                         <div class="bid__descr bid-descr">
                             <div class="bid-descr__title title-2">
                                 Описание
@@ -533,46 +504,46 @@
                         </div>
                     </div>
                     <div class="submit-app">
-                    <div class="submit-app__row communic-method-radios radio-primary">
-                        <h2 class="communic-method-radios__title submit-app__row-title title-2">
-                            Способ связи
-                        </h2>
-                        <div class="communic-method-radios__wrapper">
-                            <div class="radio-primary__item">
-                                <input hidden id="communic-method_1" class="radio-primary__input" type="radio" value="По телефону и в сообщениях" name="communic-method">
-                                <label for="communic-method_1" class="radio-primary__label">
-                                    <span class="radio-primary__text">По телефону и в сообщениях</span>
-                                </label>
+                        <div class="submit-app__row communic-method-radios radio-primary">
+                            <h2 class="communic-method-radios__title submit-app__row-title title-2">
+                                Способ связи
+                            </h2>
+                            <div class="communic-method-radios__wrapper">
+                                <div class="radio-primary__item">
+                                    <input hidden id="communic-method_1" class="radio-primary__input" type="radio" value="По телефону и в сообщениях" name="communic-method">
+                                    <label for="communic-method_1" class="radio-primary__label">
+                                        <span class="radio-primary__text">По телефону и в сообщениях</span>
+                                    </label>
+                                </div>
+                                <div class="radio-primary__item">
+                                    <input hidden id="communic-method_2" class="radio-primary__input" type="radio" value="Только переписка в сообщениях" name="communic-method">
+                                    <label for="communic-method_2" class="radio-primary__label">
+                                        <span class="radio-primary__text">Только переписка в сообщениях</span>
+                                    </label>
+                                </div>
                             </div>
-                            <div class="radio-primary__item">
-                                <input hidden id="communic-method_2" class="radio-primary__input" type="radio" value="Только переписка в сообщениях" name="communic-method">
-                                <label for="communic-method_2" class="radio-primary__label">
-                                    <span class="radio-primary__text">Только переписка в сообщениях</span>
-                                </label>
+                        </div>
+                        <div class="submit-app__row your-contacts-field">
+                            <h2 class="your-contacts-field__title submit-app__row-title title-2">
+                                Ваши контакты
+                            </h2>
+                            <div class="your-contacts-field__wrapper">
+                                <div class="input-text input-text--no-exp input-text--disabled">
+                                    <label class="input-text__label">
+                                        <span>Номер телефона</span>
+                                        <input type="text" name="Застройщик" class="input-reset input-text__input" value="8 921 645 45 45" disabled placeholder="Номер телефона">
+                                    </label>
+                                </div>
+                                <div class="input-text input-text--no-exp input-text--disabled">
+                                    <label class="input-text__label">
+                                        <span>Имя, фамилия</span>
+                                        <input type="text" name="Имя, фамилия" class="input-reset input-text__input" value="Алексей Г." disabled placeholder="Имя, фамилия">
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="submit-app__row your-contacts-field">
-                        <h2 class="your-contacts-field__title submit-app__row-title title-2">
-                            Ваши контакты
-                        </h2>
-                        <div class="your-contacts-field__wrapper">
-                            <div class="input-text input-text--no-exp input-text--disabled">
-                                <label class="input-text__label">
-                                    <span>Номер телефона</span>
-                                    <input type="text" name="Застройщик" class="input-reset input-text__input" value="8 921 645 45 45" disabled placeholder="Номер телефона">
-                                </label>
-                            </div>
-                            <div class="input-text input-text--no-exp input-text--disabled">
-                                <label class="input-text__label">
-                                    <span>Имя, фамилия</span>
-                                    <input type="text" name="Имя, фамилия" class="input-reset input-text__input" value="Алексей Г." disabled placeholder="Имя, фамилия">
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    <div class="bid__sidebar">
+                    <div class="bid__sidebar tw-row-[1/4]">
                         <div class="_sticky">
                             <div class="purchase-request__history" data-da=".purchase-request,1212,2">
                                 <h2 class="title-3 purchase-request__history-title">История изменения заявки</h2>

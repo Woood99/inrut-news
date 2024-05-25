@@ -66,7 +66,17 @@ import {
 import Notifications from './modules/notifications';
 
 import { Tooltip,TooltipText } from './functions/tooltip';
+import {tagsInHeight,tagsInCount} from './components/tagsIn';
+
 document.addEventListener('DOMContentLoaded', () => {
+
+    document.querySelectorAll('[data-tags-in-height]').forEach(item => {
+        new tagsInHeight(item);
+    })
+
+    document.querySelectorAll('[data-tags-in-count]').forEach(item => {
+        new tagsInCount(item);
+    })
 
     const tooltipHtml = new Tooltip({
         mode: 'html',

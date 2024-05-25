@@ -16,6 +16,7 @@ popup(null, 'share-comparison');
 popup(null, 'sell-faster');
 popup(null, 'favorite-contacts');
 popup(null, 'special-offers');
+popup(null, 'special-offers2');
 popup(null, 'complaint');
 popup(null, 'complaint-user');
 popup(null, 'complaint-object');
@@ -273,23 +274,6 @@ popup({
         }
     }
 }, 'warning-remove5');
-popup({
-    isOpen: (settingsModal) => {
-        const container = settingsModal.container;
-        const input = document.querySelector('[data-confirm-phone-code-input]');
-        const field = container.querySelector('[data-current-phone]');
-        const popupInputCode = container.querySelector('[data-input-code]');
-        if (input && field) {
-            field.textContent = input.value;
-        }
-        if (popupInputCode) {
-            popupInputCode.value = '';
-            setTimeout(() => {
-                popupInputCode.focus();
-            }, 300);
-        }
-    },
-}, 'confirm-phone-code');
 popup(null, 'order-report');
 popup(null, 'select-bank');
 popup(null, 'metro-map');

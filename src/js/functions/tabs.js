@@ -156,6 +156,12 @@ export const tabs = () => {
                         const slider = tabsBlock.querySelector('.swiper.home-price__items');
                         slider.swiper.update();
                     }
+
+                    tabsContentItem.querySelectorAll('[data-tags-in-height]').forEach(item => {
+                        setTimeout(() => {
+                            item.tagsInHeight.body();
+                        }, 20);
+                    })
                 } else {
                     tabsContentItem.hidden = true;
                 }
@@ -177,6 +183,7 @@ export const tabs = () => {
                 }
 
             });
+
         }
     }
 

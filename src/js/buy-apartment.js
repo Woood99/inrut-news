@@ -60,8 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 new tagsInHeight(card.querySelector('[data-tags-in-height]'));
                 new tagsInCount(card.querySelector('[data-tags-in-count]'));
             });
-            const content = document.querySelector(".control-cards__content");
-            controlCardsCardSecondary(content,document.querySelector(".filter-actions__btn._active"));
+            if (window.innerWidth > 1212) {
+                const content = document.querySelector(".control-cards__content");
+                controlCardsCardSecondary(content,document.querySelector(".filter-actions__btn._active"));
+            }
         }
     })
 

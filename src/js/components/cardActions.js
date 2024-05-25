@@ -60,21 +60,6 @@ export const cardSecondaryActionsBody = (card) => {
     }
     cardSliderMobile(card.querySelector('.card-secondary__top'), card.querySelector('.card-secondary__images'), card.querySelectorAll('.card-secondary__item'));
     card.addEventListener('click', (e) => {
-        const favorite = e.target.closest('.card-secondary__info--favorite');
-        if (favorite && !(favorite.dataset.popupPath && favorite.dataset.popupPath === 'favorite-two')) {
-            e.preventDefault();
-            card.querySelectorAll('.card-secondary__info--favorite').forEach(el => {
-                if (!el.classList.contains('_active')) {
-                    el.classList.add('_active');
-                    el.setAttribute('title', 'Удалить с избранного');
-                    el.querySelector('svg use').setAttribute('xlink:href', 'img/sprite.svg#favorite');
-                } else {
-                    el.classList.remove('_active');
-                    el.setAttribute('title', 'Добавить в избранное');
-                    el.querySelector('svg use').setAttribute('xlink:href', 'img/sprite.svg#favorite-stroke');
-                }
-            });
-        }
         const tooltip = e.target.closest('.secondary-tooltip');
         if (tooltip && window.innerWidth <= 1212) {
             e.preventDefault();
@@ -342,52 +327,11 @@ export const cardPrimaryActions = () => {
         })
     })
 
-    favoriteMobile();
-    tagsMobile();
     infoMobile();
     cardPrimaryMetro();
     window.addEventListener('resize', () => {
-        favoriteMobile();
-        tagsMobile();
         infoMobile();
     });
-
-    function favoriteMobile() {
-        cards.forEach(card => {
-            if (window.innerWidth <= 1212) {
-                const favorite = card.querySelector('.card-primary__info--favorite');
-                const path = card.querySelector('.card-primary__content');
-                if (favorite && path) {
-                    path.insertAdjacentElement('afterbegin', favorite);
-                }
-            } else {
-                const favorite = card.querySelector('.card-primary__info--favorite');
-                const path = card.querySelector('.card-primary__info--btns-right');
-                if (favorite && path) {
-                    path.insertAdjacentElement('afterbegin', favorite);
-                }
-            }
-        })
-    }
-
-    function tagsMobile() {
-        cards.forEach(card => {
-            if (window.innerWidth <= 1212) {
-                const tags = card.querySelector('.card-primary__info--tags');
-                const path = card.querySelector('.card-primary__item');
-                if (tags && path) {
-                    path.insertAdjacentElement('afterbegin', tags);
-                }
-            } else {
-                const tags = card.querySelector('.card-primary__info--tags');
-                const path = card.querySelector('.card-primary__info');
-                if (tags && path) {
-                    path.insertAdjacentElement('afterbegin', tags);
-                }
-            }
-        })
-    }
-
 
     function infoMobile() {
         cards.forEach(card => {

@@ -142,7 +142,6 @@ export const controlCardsCardSecondary = (content, btn) => {
         const comparison = card.querySelector('.card-secondary__comparison');
 
         const content = card.querySelector('.card-secondary__content');
-        const tags = card.querySelector('.card-secondary__info--tags');
         const options = card.querySelector('.card-secondary__options');
 
         const pricesMain = card.querySelector('.card-secondary__prices--1');

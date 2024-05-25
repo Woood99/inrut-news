@@ -50,7 +50,7 @@ export class Tooltip {
             this.positionX = options.positionX || 'center';
         }
 
-        if (window.innerWidth <= 1024) {
+        if (window.innerWidth <= 1212) {
             this.event = 'click';
         }
         this.init();
@@ -102,6 +102,7 @@ export class Tooltip {
         }
         if (!this.isClick) return;
         this.isClick = false;
+        e.preventDefault();
         setTimeout(() => {
             this.isClick = true;
         }, this.animation ? this.animation.speed + 1 : 0);

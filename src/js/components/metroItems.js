@@ -3,6 +3,7 @@ const metroItems = (container,maxItem = 1) => {
         let move = false;
         const items = container.querySelectorAll('.metro-info__item');
         const other = container.querySelector('.metro-info__other');
+        if (!other) return;
         const otherCount = container.querySelector('.metro-info__count span');
         if (items.length > maxItem) {
             other.removeAttribute('hidden');

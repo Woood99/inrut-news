@@ -242,6 +242,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 selectThird.forEach(container => container.classList.remove('_show'));
             }
         }
+
+        if (target.closest('.comparison-btn')) {
+            e.preventDefault();
+        }
     })
 
     // employee =============================

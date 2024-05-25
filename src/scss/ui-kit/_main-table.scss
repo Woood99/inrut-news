@@ -2,37 +2,40 @@
     width: 100%;
     border-radius: 16px;
     padding: 20px 0;
-    &__inner{
-        max-width: $contentWidth+px;
+    &__inner {
+        max-width: $contentWidth + px;
         padding: 0;
     }
-    &__table {}
+    &__table {
+    }
 
     &__type {
         display: grid;
-        grid-template-columns:
-            percent(150, 1180) percent(304, 1180) percent(328, 1180) percent(174, 1180);
+        grid-template-columns: percent(150, 1180) percent(304, 1180) percent(
+                328,
+                1180
+            ) percent(174, 1180);
         grid-column-gap: 15px;
         justify-content: space-between;
 
-        >span {
+        > span {
             margin-left: 20px;
             color: var(--primaryTwo);
             font-size: var(--default-fz);
             line-height: var(--default-small-lh);
             font-weight: 400;
         }
-        &._bg{
+        &._bg {
             background-color: var(--primary100);
             border-radius: 12px;
             padding: 16px 24px;
             color: var(--gray);
             grid-column-gap: 20px;
-            >span{
+            > span {
                 margin: 0;
             }
         }
-        @media (max-width:$desktop) {
+        @media (max-width: $desktop) {
             display: none !important; // need hack
         }
     }
@@ -45,7 +48,7 @@
         &:not(:last-child) {
             margin-bottom: 12px;
 
-            @media (max-width:$desktop) {
+            @media (max-width: $desktop) {
                 margin-bottom: 8px;
             }
         }
@@ -59,9 +62,9 @@
             width: 100%;
         }
 
-        @media (max-width:$desktop) {
+        @media (max-width: $desktop) {
             margin-top: 24px;
-            padding: 0 $containerOffset+px;
+            padding: 0 $containerOffset + px;
         }
     }
 
@@ -71,19 +74,31 @@
         justify-content: center;
         align-items: center;
 
-        @media (max-width:$desktop) {
+        @media (max-width: $desktop) {
             margin-top: 16px;
-            padding: 0 $containerOffset+px;
+            padding: 0 $containerOffset + px;
         }
     }
-    &._clear{
+    &._clear {
         border-radius: 0;
         padding: 0;
-        .main-table__inner{
+        .main-table__inner {
             max-width: none;
         }
     }
-    @media (max-width:$desktop) {
+    @media (max-width: $desktop) {
         padding: 0;
+    }
+}
+
+._main-table-type-clear {
+    padding: 0 24px;
+    grid-column-gap: 32px;
+    span {
+        &:first-child {
+            margin: 0;
+        }
+        text-align: left;
+        margin-left: 20px;
     }
 }

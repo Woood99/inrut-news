@@ -2230,6 +2230,29 @@ export const tabsNav = () => {
             btn.classList.add("_active");
         }
     }
+
+    const tabsMain = document.querySelectorAll('[data-tabs-main]');
+    if (tabsMain.length > 0) {
+        tabsMain.forEach(tabs => {
+            const targets = tabs.querySelectorAll('[data-tabs-main-target]');
+            const paths = tabs.querySelectorAll('[data-tabs-main-path]');
+            tabs.addEventListener('click',(e) => {
+                const target = e.target;
+                const path = target.closest('[data-tabs-main-path]');
+                if (!path) return;
+                const currentID = path.dataset.tabsMainPath;
+                const currentTarget = Array.from(targets).find(item => item.dataset.tabsMainTarget == currentID);
+                targets.forEach(item => {
+                    item.setAttribute('hidden','');
+                    currentTarget.removeAttribute('hidden');
+                })
+                paths.forEach(item => {
+                    item.classList.remove('_active');
+                    path.classList.add('_active');
+                })
+            })
+        })
+    }
 };
 
 export const selectThird = () => {

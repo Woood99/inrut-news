@@ -536,8 +536,72 @@
     &.max-w-320{
         max-width: 320px;
     }
+    &.info-comment{
+        max-width: 288px;
+        .checkbox-secondary {
+            &__label {
+                justify-content: start;
+
+                &::before {
+                    width: 12px;
+                    height: 12px;
+                    flex: 0 0 12px;
+                    background-color: var(--white) !important;
+                    border: 1px solid var(--white) !important;
+                    border-radius: 3px;
+                }
+
+                &::after {
+                    width: 12px;
+                    height: 12px;
+                    background-size: 8px 6px;
+                    background-image: url('../img/check-mark--blue.svg');
+                }
+            }
+
+            &__text {
+                font-size: var(--small-fz);
+
+            }
+
+            margin-bottom: 4px;
+
+            &:last-child {
+                margin-bottom: 16px;
+            }
+        }
+
+        >span {
+            margin-bottom: 8px;
+            font-weight: 500;
+            display: block;
+        }
+
+        >div {
+            >div {
+                &:not(:last-child) {
+                    margin-bottom: 8px;
+                }
+
+                span {
+                    display: block;
+                }
+            }
+        }
+
+        >p {
+            margin-top: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 15;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    }
     &.max-w-400{
         max-width: 400px;
+    }
+    &.max-w-500{
+        max-width: 500px;
     }
     p,h1,h2,h3,h4,h5{
         color: var(--white);

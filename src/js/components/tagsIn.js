@@ -3,6 +3,7 @@ import debounce from "../functions/debounce";
 export class tagsInHeight {
     constructor(el) {
         this.container = el;
+        if (!this.container) return;
         this.maxHeight = el.dataset.tagsInHeight;
         this.itemsAdd = [];
         this.itemsHTML = [];
@@ -16,10 +17,6 @@ export class tagsInHeight {
 
         this.body();
         this.container.tagsInHeight = this;
-        setTimeout(() => {
-            this.body();
-        }, 250);
-
 
         window.addEventListener('resize', debounce(this.body.bind(this), 500));
     }
@@ -50,7 +47,7 @@ export class tagsInHeight {
         }
         if (this.itemsAdd.length === 0) return;
         const itemsAddHTML = this.itemsAdd.map(item => {
-            return `<div class="tag tag--white tag--very-small _no-hover"><span>${item}</span></div>`;
+            return `<div class="tag tag--white tag--very-small _no-hover tw-gap-2">${item}</div>`;
         });
 
         const html = `
@@ -76,6 +73,7 @@ export class tagsInHeight {
 export class tagsInCount {
     constructor(el) {
         this.container = el;
+        if (!this.container) return;
         this.maxCount = el.dataset.tagsInCount;
 
         this.itemsAdd = [];
@@ -100,9 +98,10 @@ export class tagsInCount {
             return acc;
         }, [])
 
+        if (this.itemsAdd.length === 0) return;
 
         const itemsAddHTML = this.itemsAdd.map(item => {
-            return `<div class="tag tag--white tag--very-small _no-hover"><span>${item.innerHTML}</span></div>`;
+            return `<div class="tag tag--white tag--very-small _no-hover tw-gap-2">${item.innerHTML}</div>`;
         });
 
         const html = `

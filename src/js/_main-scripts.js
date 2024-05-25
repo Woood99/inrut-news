@@ -65,8 +65,8 @@ import {
 } from './components/tooltips';
 import Notifications from './modules/notifications';
 
-import { Tooltip,TooltipText } from './functions/tooltip';
-import {tagsInHeight,tagsInCount} from './components/tagsIn';
+import { Tooltip, TooltipText } from './functions/tooltip';
+import { tagsInHeight, tagsInCount } from './components/tagsIn';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mode: 'html',
         targetSelector: '[data-tooltip-notif]',
         elementSelector: 'tooltip-notif',
-        event:'click',
+        event: 'click',
         positionDocument: true,
         animation: {
             type: 'fade',
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
         positionX: 'center',
         positionY: 'bottom',
     })
-    
+
 
     header();
     getHeightBlock('.header', '--header-height');
@@ -311,13 +311,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const target = e.target;
                 const summ = target.closest('.place-present-checkbox-summ');
                 const quantity = target.closest('.place-present-checkbox-quantity');
-                if (summ){
+                if (summ) {
                     summBlock.removeAttribute('hidden');
-                    quantityBlock.setAttribute('hidden','');
+                    quantityBlock.setAttribute('hidden', '');
                 }
-                if (quantity){
+                if (quantity) {
                     quantityBlock.removeAttribute('hidden');
-                    summBlock.setAttribute('hidden','');
+                    summBlock.setAttribute('hidden', '');
                 }
             })
         })
@@ -333,8 +333,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return
         }
         const apartmentsItems = apartments.querySelectorAll('.checkbox');
-        input.addEventListener('change',() => {
-            select.setAttribute('hidden','');
+        input.addEventListener('change', () => {
+            select.setAttribute('hidden', '');
             apartmentsItems.forEach(item => item.querySelector('input').checked = false);
             if (input.checked) {
                 apartmentsItems.forEach(item => item.classList.add('_disabled'));
@@ -342,12 +342,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 apartmentsItems.forEach(item => item.classList.remove('_disabled'));
             }
         })
-        apartments.addEventListener('change',(e) => {
+        apartments.addEventListener('change', (e) => {
             const isActive = Array.from(apartmentsItems).find(item => item.querySelector('input').checked);
             if (isActive) {
                 select.removeAttribute('hidden');
             } else {
-                select.setAttribute('hidden','');
+                select.setAttribute('hidden', '');
             }
         })
     }

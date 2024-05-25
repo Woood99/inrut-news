@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#111111">
-    <title>Редактирование профиля</title>
+    <title>Заявка на юридическую проверку</title>
     <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/app-verif.css">
     <script id="ymaps-id"></script>
-    <script defer src="js/profile.js"></script>
+    <script defer src="js/app-verif.js"></script>
 </head>
 
 <body class="page__body">
@@ -223,65 +223,169 @@
         </div>
     </div>
 </header>
-        <main class="main main-page-gap edit-profile create-profile">
-            <div class="edit-profile__body md1:tw-mt-0 md1:tw-pt-[66px]">
-                <div class="edit-profile__content container-desktop">
-                    <div class="edit-profile__row">
-                        <form action="#" class="edit-profile__fields">
-                            <h3 class="edit-profile__subtitle title-2 mb-4">
-                                Введите номер телефона
-                            </h3>
-                            <p class="edit-profile__descr mb-16 text-16">
-                               Мы позвоним вам. Отвечать на звонок не нужно.
-                            </p>
-                            <div class="input-text input-text--no-exp _big">
-                                <label class="input-text__label">
-                                    <span>Телефон</span>
-                                    <input type="text" name="Номер телефона" class="input-reset input-text__input input-phone-mask" data-confirm-phone-code-input placeholder="">
+        <main class="main main-page-gap service-moving app-verif">
+            <div class="service-sample__top top-page-inner-title">
+                <div class="top-page-inner-title__container container">
+                    <a href="#" class="top-page-inner-title__back back-link">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#arrow-left"></use>
+                        </svg>
+                        <span>Назад</span>
+                    </a>
+                    <h1 class="service-sample__title top-page-inner-title__title title-2">
+                        Заявка на юридическую проверку
+                    </h1>
+                </div>
+            </div>
+            <div class="service-sample__body">
+                <form action="#" id="app-verif-form" class="service-sample__container container">
+                    <div class="col">
+                        <div class="service-sample__row">
+                            <h2 class="service-sample__subtitle title-2">
+                                Информация о недвижимости
+                            </h2>
+                            <div class="service-sample__address service-moving-address">
+                                <div class="service-moving-address__block">
+                                    <div class="row">
+                                        <div class="input-text input-text--no-exp input-text--disabled">
+                                            <label class="input-text__label">
+                                                <span>Адрес</span>
+                                                <input type="text" name="Адрес" class="input-reset input-text__input" disabled value="Краснодар, Тополиная улица, 40/1к1" placeholder="">
+                                            </label>
+                                        </div>
+                                        <div class="input-text input-text--no-exp input-text--only-number input-text--disabled">
+                                            <label class="input-text__label">
+                                                <span>Номер квартиры</span>
+                                                <input type="text" name="Имя" class="input-reset input-text__input" disabled value="11" maxlength="4" placeholder="">
+                                            </label>
+                                        </div>
+                                        <div class="select-secondary _disabled">
+                                            <div class="select-secondary__wrapper">
+                                                <span class="select-secondary__placeholder">
+                                                    Тип недвижимости
+                                                </span>
+                                                <select class="select-secondary__body" hidden name="complex">
+                                                    <option value="complex">Квартира</option>
+                                                    <option value="complex2">Комната/доля</option>
+                                                    <option value="complex3">Земельный участок</option>
+                                                    <option value="complex3">Земельный участок + дом</option>
+                                                    <option value="complex3">Апартаменты</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-sample__row">
+                            <h2 class="service-sample__subtitle title-2">
+                                Данные заказчика услуги
+                            </h2>
+                            <div class="service-sample__client service-moving-client service-moving-client--customer">
+                                <div class="row">
+                                    <div class="input-text input-text--no-exp input-text--disabled">
+                                        <label class="input-text__label">
+                                            <span>Имя</span>
+                                            <input type="text" name="Имя" class="input-reset input-text__input" disabled value="Алексей" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp input-text--disabled">
+                                        <label class="input-text__label">
+                                            <span>Фамилия</span>
+                                            <input type="text" name="Фамилия" class="input-reset input-text__input" disabled value="Гаврилов" placeholder="">
+                                        </label>
+                                    </div>
+                                    <div class="input-text input-text--no-exp input-text--disabled">
+                                        <label class="input-text__label">
+                                            <span>Номер телефона</span>
+                                            <input type="text" name="Застройщик" class="input-reset input-text__input input-phone-mask" disabled value="8 921 645 45 45" placeholder="">
+                                        </label>
+                                    </div>
+                                </div>
+                                <label class="toggle-checkbox service-moving-client__toggle">
+                                    <input type="checkbox" name="toggle-1" disabled>
+                                    <div aria-hidden="true"></div>
+                                    <span>Заказчик услуги и покупатель недвижимости одно и то же лицо</span>
                                 </label>
                             </div>
-                            <a href='./confirm-phone-code.html' type="button" class="btn btn-reset btn-primary _big mt-16" data-confirm-phone-code-button>Войти</a>
-                        </form>
-                        <div class="edit-profile__or">
-                            <span aria-hidden="true"></span>
-                            Или
-                            <span aria-hidden="true"></span>
                         </div>
-                        <div class="edit-profile__fields">
-                            <div class="log-in-sber">
-                                <div class="log-in-sber__btns">
-                                    <button type="button" class="btn btn-reset btn-tinkoff btn-tinkoff_white">
-                                        <div>
-                                            <span>Tinkoff</span>
-                                            <img loading="lazy" src="img/tinkoff-logo.svg" width="46" height="25" class="authorization-popup__item-icon" alt="Tinkoff ID">
+                        <div class="service-sample__row">
+                            <h2 class="service-sample__subtitle title-2">
+                                Загружанные документы
+                            </h2>
+                            <div class="photo-load">
+                                <div class="place-sale-photo__images drag-drop photo-load__images">
+                                    <div class="place-sale-photo__image ibg drag-drop__item" draggable="true" title="card-54.jpg">
+                                        <picture>
+                                            <source srcset="./img/card-54.webp" type="image/webp">
+                                            <img loading="lazy" src="./img/card-54.jpg" width="271" height="190" alt="">
+                                        </picture>
+                                        <div class="place-sale-photo__icon">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#right-left"></use>
+                                            </svg>
                                         </div>
+                                        <button type="button" class="btn btn-reset place-sale-photo__remove" title="Удалить фото">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#trash"></use>
+                                            </svg>
+                                        </button>
+                                        <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--1">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#rotate-1"></use>
+                                            </svg>
+                                        </button>
+                                        <button type="button" class="btn btn-reset place-sale-photo__rotate place-sale-photo__rotate--2">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#rotate-2"></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-sample__sidebar col">
+                        <div class="_sticky">
+                            <div class="service-sample__result service-moving-result">
+                                <div class="service-moving-result__main">
+                                    <h2 class="service-moving-result__main-title title-3">
+                                        <span>Ваша заявка</span>
+                                    </h2>
+                                    <div class="service-moving-result__main-descr">
+                                        <p>
+                                            Юридическая проверка недвижимости
+                                        </p>
+                                        <p>
+                                            Срок изготовления: 3 рабочих дня (не считая день подачи)
+                                        </p>
+                                    </div>
+                                    <div class="service-moving-result__options">
+                                        <div class="service-moving-result__option">
+                                            <span>К оплате</span>
+                                            <span>15 900 ₽</span>
+                                        </div>
+                                    </div>
+                                    <div class="service-moving-result__checkbox checkbox-secondary">
+                                        <input id="personal-info" name="personal-info" class="checkbox-secondary__input" type="checkbox" value="true">
+                                        <label for="personal-info" class="checkbox-secondary__label">
+                                            <span class="checkbox-secondary__text">
+                                                <span>Я соглашаюсь на обработку</span>
+                                                <a href="#">персональных данных</a>
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <button type="button" class="btn btn-reset btn-primary service-moving-result__btn">
+                                        Оплачено
                                     </button>
-                                    <button type="button" class="btn btn-reset btn-alfa btn-alfa_white">
-                                        <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="authorization-popup__item-icon" width="24" height="24" viewBox="0 0 30 47" fill="none">
-                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0 46.5841V40.2234H30V46.5841H0ZM10.7144 19.7755H19.052L15.0778 7.01459H14.9219L10.7144 19.7755ZM20.4531 4.659L29.2988 31.5821H22.753L20.7659 25.1819H8.92216L6.77913 31.5821H0.623515L9.90605 4.659C10.8064 2.0479 11.8554 0 15.2337 0C18.6117 0 19.5977 2.05617 20.4531 4.659Z" fill="#EF3124"></path>
-                                                </svg>
-                                            <span>Войти по Alfa ID</span>
-                                        </div>
-                                    </button>
-
-                                    <button type="button" class="btn btn-reset btn-third btn-sber">
-                                        <div>
-                                            <img loading="lazy" src="img/sber.png" width="30" height="30" class="authorization-popup__item-icon" alt="Сбербанк ID">
-                                            <span>Войти по сбер ID</span>
-                                        </div>
-                                    </button>
-                                    <button type="button" class="btn btn-reset btn-third btn-gos">
-                                        <div>
-                                            <img loading="lazy" src="img/gosusligi.svg" width="30" height="30" class="authorization-popup__item-icon" alt="Tinkoff ID">
-                                            <span>Через «Госуслуги»</span>
-                                        </div>
+                                    <button type="button" class="btn btn-reset btn-primary service-moving-result__btn">
+                                        Ждёт оплаты
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </main>
         <footer class="footer">
@@ -666,41 +770,30 @@
         </div>
     </div>
 </div>
-    <!-- ==== -->
-    <div class="popup popup-primary popup-primary--warning-remove popup-primary--warning-remove5">
-    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="warning-remove5">
+    <div class="popup popup-primary popup-primary--service-moving-confirm">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="service-moving-confirm">
         <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
             <svg>
                 <use xlink:href="./img/sprite.svg#x"></use>
             </svg>
             <span>Закрыть</span>
         </button>
-        <div class="popup__content popup-primary__content warning-remove">
-            <h2 class="warning-remove__title title-2">
-                Вы уверены, что хотите отвязать аккаунт?
+        <div class="popup__content popup-primary__content service-moving-confirm">
+            <h2 class="service-moving-confirm__title title-2">
+                Услуга заказана
             </h2>
-            <p class="warning-remove__descr">
-                ФИО и данные останутся. Вы можете привязать новый аккаунт, чтобы их обновить
-            </p>
-            <div class="warning-remove__btns">
-                <button type="button" class="btn btn-reset btn-primary warning-remove__btn js-popup-close">Отмена</button>
-                <button type="button" class="btn btn-reset btn-secondary warning-remove__btn js-popup-close" data-linked-account-id>Отвязать</button>
+            <div class="service-moving-confirm__text">
+                <p>
+                    Транспортная компания свяжется с вами в день перевозки.
+                </p>
             </div>
+            <button type="button" class="btn btn-reset btn-primary service-moving-confirm__button js-popup-close">
+                Готово
+            </button>
         </div>
     </div>
 </div>
     <!-- popups -->
-
-
-    <script defer>
-        focusInput();
-
-        function focusInput() {
-            const input = document.querySelector('[data-confirm-phone-code-input]');
-        if (!input) return;
-        input.focus();
-        }
-    </script>
 </body>
 
 

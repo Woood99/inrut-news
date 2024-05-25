@@ -246,6 +246,14 @@ function initSliders() {
                     prevEl: slider.closest('.home-price').querySelector('.nav-arrow-primary--prev') || slider.closest('.tabs__body').querySelector('.nav-arrow-primary--prev'),
                     nextEl: slider.closest('.home-price').querySelector('.nav-arrow-primary--next') || slider.closest('.tabs__body').querySelector('.nav-arrow-primary--next'),
                 },
+                on: {
+                    init: function() {
+                        const tags = slider.querySelectorAll('[data-tags-in-height]');
+                        tags.forEach(item => {
+                            item.tagsInHeight.body();
+                        })
+                    }
+                }
             });
         })
     }
@@ -493,7 +501,7 @@ function initSliders() {
                     el: el.closest('.furnishing-sets__tab') ?
                         el.closest('.furnishing-sets__tab').querySelector('.pagination-primary') : el.closest('.object-apart-renov__item').querySelector('.pagination-primary'),
                     type: 'fraction',
-                    renderFraction: function (currentClass, totalClass) {
+                    renderFraction: function(currentClass, totalClass) {
                         return `
                             <span class="${currentClass}"></span>
                             <span class="swiper-pagination-word">из</span>
@@ -612,7 +620,7 @@ function initSliders() {
                 pagination: {
                     el: el.querySelector('.pagination-primary'),
                     type: 'fraction',
-                    renderFraction: function (currentClass, totalClass) {
+                    renderFraction: function(currentClass, totalClass) {
                         return `
                             <span class="${currentClass}"></span>
                             <span class="swiper-pagination-word">из</span>
@@ -804,7 +812,7 @@ function initSliders() {
         }
 
 
-        const observerCallback = function (mutationsList, observer) {
+        const observerCallback = function(mutationsList, observer) {
             for (var mutation of mutationsList) {
                 if (mutation.type == 'childList') {
                     const items = layoutsItems.querySelectorAll('.layouts__item');
@@ -844,7 +852,7 @@ function initSliders() {
                 pagination: {
                     el: el.querySelector('.pagination-primary'),
                     type: 'fraction',
-                    renderFraction: function (currentClass, totalClass) {
+                    renderFraction: function(currentClass, totalClass) {
                         return `
                             <span class="${currentClass}"></span>
                             <span class="swiper-pagination-word">из</span>
@@ -876,7 +884,7 @@ function initSliders() {
                     </div>
                     </div>
                     `;
-        
+
                     modal(modalHTML, '.nav-btns-popup', 300);
                     const container = document.querySelector('.nav-btns-popup');
                     const content = container.querySelector('.nav-btns-popup__content');
@@ -931,7 +939,7 @@ function objectSlider() {
         pagination: {
             el: container.querySelector('.pagination-primary'),
             type: 'fraction',
-            renderFraction: function (currentClass, totalClass) {
+            renderFraction: function(currentClass, totalClass) {
                 return `
                     <span class="${currentClass}"></span>
                     <span class="swiper-pagination-word">из</span>
@@ -1031,7 +1039,7 @@ function mainSlider() {
                 pagination: {
                     el: '.pagination-primary',
                     type: 'fraction',
-                    renderFraction: function (currentClass, totalClass) {
+                    renderFraction: function(currentClass, totalClass) {
                         return `
                             <span class="${currentClass}"></span>
                             <span class="swiper-pagination-word">из</span>
@@ -1161,7 +1169,7 @@ function mainSlider() {
 
 
 
-window.addEventListener("load", function (e) {
+window.addEventListener("load", function(e) {
     initSliders();
 });
 

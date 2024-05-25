@@ -32,6 +32,7 @@ import scrollTarget from './components/scrollTarget';
 import metroInfo from './components/metroInfo';
 import { galleryPrimary } from './components/gallery';
 import { controlCardsCardSecondary } from './components/controlCards';
+import { tagsInHeight, tagsInCount } from './components/tagsIn';
 document.addEventListener('DOMContentLoaded', () => {
     cardSecondaryActions();
     cardPrimaryActions();
@@ -54,7 +55,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('listingUpdate', () => {
         const cards = document.querySelectorAll('.cards-list__items .card-secondary');
         if (cards.length > 0) {
-            cards.forEach(card => cardSecondaryActionsBody(card));
+            cards.forEach(card => {
+                cardSecondaryActionsBody(card);
+                new tagsInHeight(card.querySelector('[data-tags-in-height]'));
+                new tagsInCount(card.querySelector('[data-tags-in-count]'));
+            });
             const content = document.querySelector(".control-cards__content");
             controlCardsCardSecondary(content,document.querySelector(".filter-actions__btn._active"));
         }

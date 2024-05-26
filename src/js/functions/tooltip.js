@@ -97,12 +97,13 @@ export class Tooltip {
     }
 
     clicked(e) {
+        // e.preventDefault();
         if (e.target.closest(`.${this.elementSelector}`)) {
             return;
         }
+     
         if (!this.isClick) return;
         this.isClick = false;
-        e.preventDefault();
         setTimeout(() => {
             this.isClick = true;
         }, this.animation ? this.animation.speed + 1 : 0);

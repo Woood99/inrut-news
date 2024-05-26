@@ -159,7 +159,9 @@ export const tabs = () => {
 
                     tabsContentItem.querySelectorAll('[data-tags-in-height]').forEach(item => {
                         setTimeout(() => {
-                            item.tagsInHeight.body();
+                            if (item.tagsInHeight) {
+                                item.tagsInHeight.body();
+                            }
                         }, 20);
                     })
                 } else {

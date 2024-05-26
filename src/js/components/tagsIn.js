@@ -22,6 +22,8 @@ export class tagsInHeight {
     }
 
     body() {
+        if (this.items.length === 0) return;
+
         this.items.forEach(item => item.removeAttribute('hidden'));
         this.itemsAdd = [];
         this.deleteMorebtn();
@@ -91,6 +93,8 @@ export class tagsInCount {
     }
 
     body() {
+        if (this.items.length === 0) return;
+
         this.itemsAdd = this.items.reduce((acc, item,index) => {
             if (index + 1 > this.maxCount) {
                 acc.push(item);

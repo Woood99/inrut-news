@@ -250,7 +250,9 @@ function initSliders() {
                     init: function() {
                         const tags = slider.querySelectorAll('[data-tags-in-height]');
                         tags.forEach(item => {
-                            item.tagsInHeight.body();
+                            if (item.tagsInHeight) {
+                                item.tagsInHeight.body();
+                            }
                         })
                     }
                 }

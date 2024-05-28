@@ -3166,6 +3166,17 @@
 
     cursor: pointer;
 
+    &._no-border{
+        border: 1px solid transparent;
+        &:active{
+            border: 1px solid transparent;
+        }
+        @media (min-width:$desktop-min){
+            &:hover{
+                border: 1px solid var(--blue); 
+            }
+        }
+    }
     &.swiper-button-disabled {
         pointer-events: none;
         opacity: 0.4;
@@ -7040,7 +7051,6 @@
     display: flex;
     align-items: center;
     gap: 2px;
-    font-size: 16px;
     &._dark{
         color: var(--dark);
     }
@@ -7050,11 +7060,11 @@
 }
 
 .slider-line{
-    background-color: var(--primary200);
+    background-color: #FCFCFC3d;
     width: 80px;
     height: 1px;
     span{
-        background-color: var(--blue);
+        background-color: var(--white);
         display: block;
         height: 1px;
         transition: width $transitionSpeed $transitionFunction;

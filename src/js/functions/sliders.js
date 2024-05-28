@@ -220,8 +220,8 @@ function initSliders() {
             speed: 800,
             init: false,
             navigation: {
-                prevEl: sliderEl.closest('.home-banners').querySelector('.nav-arrow-primary--prev'),
-                nextEl: sliderEl.closest('.home-banners').querySelector('.nav-arrow-primary--next'),
+                prevEl: sliderEl.closest('.home-banners').querySelector('.nav-arrow-primary--prev') || sliderEl.closest('.home-banners').querySelector('.nav-arrow-secondary--prev'),
+                nextEl: sliderEl.closest('.home-banners').querySelector('.nav-arrow-primary--next') || sliderEl.closest('.home-banners').querySelector('.nav-arrow-secondary--next'),
             },
         });
         slider.on("slideChange afterInit init", function() {
@@ -1057,56 +1057,30 @@ function mainSlider() {
                 spaceBetween: 15,
                 observer: true,
                 observeParents: true,
+                init: false,
                 navigation: {
-                    prevEl: '.nav-arrow-primary--prev',
-                    nextEl: '.nav-arrow-primary--next',
+                    prevEl: '.nav-arrow-secondary--prev',
+                    nextEl: '.nav-arrow-secondary--next',
                 },
-                pagination: {
-                    el: '.pagination-primary',
-                    type: 'fraction',
-                    renderFraction: function(currentClass, totalClass) {
-                        return `
-                            <span class="${currentClass}"></span>
-                            <span class="swiper-pagination-word">из</span>
-                            <span class="${totalClass}"></span>
-                            `;
-                    }
-                },
-                // on: {
-                //     beforeTransitionStart(slider) {
-                // const countAllSlides = slider.slides.length
-                // const swiperIndex = slider.realIndex
-                //         if (swiperIndex + 1 === countAllSlides) {
-                //             if (nextTab) {
-                //                 if (!value) {
-                //                     value = true;
-                //                     return;
-                //                 }
-
-                //                 item.setAttribute('hidden', '');
-                //                 nextTab.removeAttribute('hidden');
-
-                //                 currentPreview.classList.remove('_active');
-                //                 nextPreview.classList.add('_active');
-                //                 value = false;
-                //             }
-                //         }  else {
-                //             value = false;
-                //         }
-
-
-                //         if (swiperIndex === 0) {
-                //             if (value) {
-                //                 value = false;
-                //                 return;
-                //             }
-                //             value = true;
-                //         } else {
-                //             value = true;
-                //         }
+                // pagination: {
+                //     el: '.pagination-primary',
+                //     type: 'fraction',
+                //     renderFraction: function(currentClass, totalClass) {
+                //         return `
+                //             <span class="${currentClass}"></span>
+                //             <span class="swiper-pagination-word">из</span>
+                //             <span class="${totalClass}"></span>
+                //             `;
                 //     }
-                // }
+                // },
             })
+            slider.on("slideChange afterInit init", function() {
+                const counterEl = item.querySelector('.main-slider__counter');
+                const lineEl = item.querySelector('.main-slider__line');
+                sliderCounter(slider, counterEl);
+                sliderLine(slider,lineEl);
+            });
+            slider.init();
             setTimeout(() => {
                 slider.navigation.update();
             }, 1);

@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>Программа</title>
+    <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/CoFoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/program.css">
+    <script id="ymaps-id"></script>
+    <script defer src="js/program.js"></script>
+</head>
+
+<body class="page__body">
+    <div class="site-container">
+        <header class="header header--new">
+    <div class="header__top header-top">
+        <div class="header-top__container container">
+            <button class="header-top__burger burger" aria-label="Открыть меню" aria-expanded="false" data-burger>
+                <span class="burger__line"></span>
+            </button>
+            <div class="header-top__city city" data-da=".header-main__nav,1212,3">
+                <button type="button" class="btn btn-reset city__title" data-popup-path="city">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#location-fill"></use>
+                    </svg>
+                    <span class="city__name">Краснодар</span>
+                    <p class="city__descr">
+                        Изменить
+                    </p>
+                </button>
+            </div>
+            <div class="header-top__actions">
+                <div class="header-top__action header-action header-action--notif secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                    <button type='button' data-popup-path="notif-popup" class="btn btn-reset header-action__title secondary-tooltip__btn">
+                        <svg class='tw-w-4 tw-h-4'>
+                            <use xlink:href="./img/sprite.svg#notification"></use>
+                        </svg>
+                        <div class="notif-counter tw-absolute tw-top-[12px] tw-right-[10px]">4</div>
+                    </button>
+                    <div class="secondary-tooltip__content">
+                        Уведомления
+                    </div>
+                </div>
+                <div class="header-top__action header-action header-action--comp secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                    <a href="./comparison.html" class="btn btn-reset header-action__title secondary-tooltip__btn">
+                        <svg class='w-16 h-16'>
+                            <use xlink:href="./img/sprite.svg#comparison"></use>
+                          </svg>
+                    </a>
+                    <div class="secondary-tooltip__content">
+                        Сравнение
+                    </div>
+                </div>
+                <div class="header-top__action header-action header-action--cashback secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                    <a href="./present.html" class="btn btn-reset header-action__title secondary-tooltip__btn">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#bonus"></use>
+                        </svg>
+                    </a>
+                    <div class="secondary-tooltip__content">
+                        Кешбэк и подарки
+                    </div>
+                </div>
+                <div class="header-top__action header-action header-action--calendar secondary-tooltip secondary-tooltip--dark secondary-tooltip--bottom-center">
+                    <a href="./calendar.html" class="btn btn-reset header-action__title secondary-tooltip__btn">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#calendar"></use>
+                        </svg>
+                    </a>
+                    <div class="secondary-tooltip__content">
+                        Календарь
+                    </div>
+                </div>
+                <div class="header-top__action header-action header-action--add">
+                    <button type="button" data-popup-path="add" class="btn btn-reset header-action__title">
+                        <svg>
+                            <use xlink:href="img/sprite.svg#add"></use>
+                        </svg>
+                        <span class="header-action__name">
+                            Добавить
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="header-top__personal header-personal">
+                <button type="button" class="btn btn-reset header-personal__title" data-popup-path="personal-area-two">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#door-open"></use>
+                    </svg>
+                    <span class="header-personal__name">
+                        Кабинет
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="header__main header-main">
+        <div class="header-main__container container">
+            <a href="#" class="header-main__logo logo" data-da=".header-top__container,1212,1">
+                <img loading="lazy" src="./img/logo.svg" width="238" height="32" class="logo__img" alt="Продам.Онлайн">
+            </a>
+            <nav class="header-main__nav nav" data-menu>
+                <button type="button" class="btn btn-reset header-main__close">Закрыть</button>
+                <div class="header-main__title">Меню</div>
+                <ul class="nav__list list-reset" data-spollers="1212,max" data-one-spoller>
+                    <li class="nav__item nav-dropdown">
+                        <span class="nav__link" data-spoller>
+                            Новостройки
+                            <svg class="nav__link-arrow">
+                                <use xlink:href="img/sprite.svg#arrow-small"></use>
+                            </svg>
+                        </span>
+                        <div class="nav-dropdown__container container">
+                            <div class="nav-dropdown-content">
+                                <div class="nav-dropdown-content__body">
+                                    <a href="#" class="nav-dropdown-content__item">
+                                        <span>Жилые комплексы</span>
+                                        <span>36 990 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Старт продаж</span>
+                                        <span>16 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Каталог застройщиков</span>
+                                        <span>15 застройщиков</span>
+                                    </a>
+                                    <a href="./stock.html" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Скидки и акции</span>
+                                    </a>
+                                    <a href="./stock-developer.html" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Shorts, видео</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one col-span-2">
+                                        <span>Добавить заявку на покупку квартиры в новостройке</span>
+                                    </a>
+                                </div>
+                                <a href="#" class="nav-dropdown-content__card-info card-info" data-da=".header-main__banners-slide--1,1212,2">
+                                    <span class="card-info__title">
+                                        Успейте взять ипотеку
+                                        по выгодной ставке
+                                    </span>
+                                    <div class="card-info__image" style="background-image: url('./img/banner-photo-4.png')">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">
+                            Вторичка
+                        </a>
+                    </li>
+                    <li class="nav__item nav-dropdown">
+                        <span class="nav__link" data-spoller>
+                            Дома и участки
+                            <svg class="nav__link-arrow">
+                                <use xlink:href="img/sprite.svg#arrow-small"></use>
+                            </svg>
+                        </span>
+                        <div class="nav-dropdown__container container">
+                            <div class="nav-dropdown-content">
+                                <div class="nav-dropdown-content__body">
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Дома, коттеджи, дачи</span>
+                                        <span>20 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Участки</span>
+                                        <span>20 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Коттеджные поселки</span>
+                                        <span>20 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Дома от застройщика</span>
+                                        <span>20 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one">
+                                        <span>Построить дом</span>
+                                        <span>20 предложений</span>
+                                    </a>
+                                    <a href="#" class="nav-dropdown-content__item nav-dropdown-content__item--one col-span-2">
+                                        <span>Добавить заявку на покупку</span>
+                                    </a>
+                                </div>
+                                <a href="#" class="nav-dropdown-content__card-info card-info" data-da=".header-main__banners-slide--2,1212,2">
+                                    <span class="card-info__title">
+                                        Успейте взять ипотеку
+                                        по выгодной ставке
+                                    </span>
+                                    <div class="card-info__image" style="background-image: url('./img/banner-photo-4.png')">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">
+                            Покупка
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="./registry.html" class="nav__link">
+                            Реестр проблемных объектов
+                        </a>
+                    </li>
+                </ul>
+                <div class="swiper header-main__banners">
+                    <div class="swiper-wrapper header-main__banners-container">
+                        <div class="swiper-slide header-main__banners-slide header-main__banners-slide--1"></div>
+                        <div class="swiper-slide header-main__banners-slide header-main__banners-slide--2"></div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+        <main class="main main-page-gap program default-page">
+            <h1 class="title-2 container">
+                Программа
+            </h1>
+            <div class="default-page__body">
+                <div class="container">
+                    <section class="program__hero program-hero">
+                        <div class="program-hero__status">
+                            Действующая программа
+                        </div>
+                        <div class="program-hero__image">
+                            <img loading="lazy" src="https://xn--h1alcedd.xn--d1aqf.xn--p1ai/upload/iblock/171/yzw1d3v1djczxywec516agokp36p93c2/novostroyka.png"
+                                alt="Субсидия на приобретение или строительство жилья для жителей города Москвы">
+                        </div>
+                        <div class="program-hero__content">
+                            <h2 class="program-hero__title title-2">
+                                Субсидия на приобретение или строительство жилья для жителей города Москвы
+                            </h2>
+                            <div class="program-hero__text">
+                                <p>
+                                    Предоставление субсидии для приобретения или строительства жилых помещений жителям Москвы, нуждающимся в улучшении жилищных условий
+                                </p>
+                            </div>
+                        </div>
+                        <div class="program-hero__right">
+                            <ul class="program-hero__list list-reset">
+                                <li class="program-hero__item">
+                                    <span class="program-hero__item-title title-3">
+                                        Москва
+                                    </span>
+                                </li>
+                                <li class="program-hero__item">
+                                    <span class="program-hero__item-title title-3">
+                                        Начало программы
+                                    </span>
+                                    <time class="program-hero__item-time">
+                                        27.09.2011
+                                    </time>
+                                </li>
+                                <li class="program-hero__item">
+                                    <span class="program-hero__item-title title-3">
+                                        Подача документов до
+                                    </span>
+                                    <time class="program-hero__item-time">
+                                        Бессрочно
+                                    </time>
+                                </li>
+                                <li class="program-hero__item">
+                                    <span class="program-hero__item-title title-3">
+                                        Программа действует до
+                                    </span>
+                                    <time class="program-hero__item-time">
+                                        Бессрочно
+                                    </time>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-reset program-hero__btn btn-primary">
+                                Получить консультацию
+                            </button>
+                        </div>
+                    </section>
+                    <section class="program__content program-content">
+                        <div class="program-content__wrapper">
+                            <div class="tabs-primary">
+                                <div data-tabs class="tabs-primary__inner">
+                                    <nav data-tabs-titles class="tabs-primary__btns tabs__navigation">
+                                        <button type="button" class="btn btn-reset tabs__title _tab-active">
+                                            Описание
+                                        </button>
+                                        <button type="button" class="btn btn-reset tabs__title">
+                                            Требования к участникам
+                                        </button>
+                                        <button type="button" class="btn btn-reset tabs__title">
+                                            Требования к недвижимости
+                                        </button>
+                                        <button type="button" class="btn btn-reset tabs__title">
+                                            Как подать заявку
+                                        </button>
+                                    </nav>
+                                    <div class="tabs-primary__container">
+                                        <div data-tabs-body class="tabs__content tabs-primary__content">
+                                            <div class="tabs__body program-content-descr">
+                                                <p>
+                                                    Выплату получают семьи Архангельской области при рождении трех и более детей одновременно. Ее можно использовать на приобретение
+                                                    или строительство жилья.
+                                                </p>
+                                                <p>
+                                                    С 01 января 2023 года размер выплаты составляет 2 282 176 рублей.
+                                                </p>
+                                            </div>
+                                            <div class="tabs__body program-content-descr" hidden>
+                                                <p>
+                                                    <b>Выплата предоставляется многодетной семье:</b>
+                                                </p>
+                                                <ul>
+                                                    <li>проживающей на территории Архангельской области </li>
+                                                    <li>зарегистрированной государственным учреждением по месту жительства в качестве многодетной семьи </li>
+                                                    <li>при рождении одновременно трех и более детей начиная с 1 января 2020 года.</li>
+                                                </ul>
+                                                <p> Право на субсидию возникает не ранее чем по истечении двух месяцев со дня рождения детей.</p>
+                                            </div>
+                                            <div class="tabs__body program-content-descr" hidden>
+                                                <p>
+                                                    <b>Субсидию можно потратить на:</b>
+                                                </p>
+                                                <ul>
+                                                    <li>приобретение готового жилого помещения (квартира, комната, индивидуальный жилой дом и их части) </li>
+                                                    <li>строительство жилого помещения </li>
+                                                    <li>приобретение жилья в строящемся доме по договору участия в долевом строительстве</li>
+                                                </ul>
+                                                <p> При строительстве объекта индивидуального жилищного строительства степень готовности должна быть не менее 50%.</p>
+                                                <p>При приобретении объекта индивидуального жилищного строительства степень готовности должна быть не менее 85%.</p>
+                                            </div>
+                                            <div class="tabs__body program-content-steps" hidden>
+                                                <div class="program-content-steps__item">
+                                                    <span class="program-content-steps__number">
+                                                        1 шаг
+                                                    </span>
+                                                    <div class="program-content-steps__body">
+                                                        <h3 class="program-content-steps__title title-3">
+                                                            Соберите необходимые документы
+                                                        </h3>
+                                                        <div class="program-content-steps__content program-content-descr">
+                                                            <p> Для участия в программе понадобятся:</p>
+                                                            <ul>
+                                                                <li>паспорт </li>
+                                                                <li>копии свидетельств о рождении трех и более одновременно рожденных детей, в связи с рождением которых возникло
+                                                                    право на предоставление субсидии </li>
+                                                                <li>копия свидетельства о перемене имени - если в свидетельстве о рождении ребенка указана другая фамилия родителя
+                                                                </li>
+                                                            </ul>
+                                                            <p> Заявитель вправе по собственной инициативе представить:</p>
+                                                            <ul>
+                                                                <li>копию удостоверения многодетной семьи </li>
+                                                                <li>СНИЛС</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="program-content-steps__item">
+                                                    <span class="program-content-steps__number">
+                                                        2 шаг
+                                                    </span>
+                                                    <div class="program-content-steps__body">
+                                                        <h3 class="program-content-steps__title title-3">
+                                                            Подайте заявление и документы
+                                                        </h3>
+                                                        <div class="program-content-steps__content program-content-descr">
+                                                            <p> Заявление и документы представляются заявителями в государственное учреждение следующими способами:</p>
+                                                            <ul>
+                                                                <li>лично или через представителя в обособленное подразделение государственного учреждения по месту жительства
+                                                                    или месту пребывания заявителя </li>
+                                                                <li>в электронной форме через Архангельский региональный портал государственных и муниципальных услуг или
+                                                                    Госуслуги </li>
+                                                                <li>заказным почтовым отправлением </li>
+                                                                <li>через МФЦ или привлекаемые им организации</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="program-content-steps__item">
+                                                    <span class="program-content-steps__number">
+                                                        3 шаг
+                                                    </span>
+                                                    <div class="program-content-steps__body">
+                                                        <h3 class="program-content-steps__title title-3">
+                                                            Дождитесь предоставления субсидии
+                                                        </h3>
+                                                        <div class="program-content-steps__content program-content-descr">
+                                                            <p> Срок проверки документов не должен превышать 20 календарных дней со дня их поступления в государственное учреждение.
+                                                            </p>
+                                                            <p>Государственное учреждение по результатам рассмотрения документов принимает решение о назначении (или отказе в
+                                                                назначении) меры социальной поддержки и уведомляет о нем гражданина.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="program-content__sidebar">
+                            <div class="_sticky">
+                                <div data-spollers class="spollers">
+                                    <div class="spollers__item">
+                                        <button type="button" data-spoller class="btn btn-reset spollers__title title-3">
+                                            <span>Чем регулируется программа</span>
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#check"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="spollers__body program-content-descr" hidden>
+                                            <p> Статья 22.2 <a href="https://docs.cntd.ru/document/462629574" target="_blank">Закона Архангельской области от 05.12.2016 N
+                                                    496-30-ОЗ</a> <br> Требования для участия в программе</p>
+                                            <p> X.1. - <a href="https://docs.cntd.ru/document/462630275" target="_blank">Постановление Правительства Архангельской области от
+                                                    30.12.2016 N 575-пп</a> <br> Порядок предоставления субсидии
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="program__lora home-top">
+                        <div class="home-top__container">
+                            <div class="home-top__wrapper">
+                                <div class="home-top__image">
+                                    <picture>
+                                        <source srcset="./img/lora_face.webp" type="image/webp">
+                                        <img loading="lazy" src="./img/lora_face.png" width="48" height="48" alt="lora">
+                                    </picture>
+                                </div>
+                                <div class="home-top__content">
+                                    <div class="home-top__descr">
+                                        <p>
+                                            Я Lola, буду вашим персональным помощником.
+                                        </p>
+                                        <p>
+                                            Я расскажу как легко купить или продать недвижимость. Сделать ремонт и заказать кухню.
+                                        </p>
+                                    </div>
+                                    <div class="home-top__search">
+                                        <input type="search" name="Сообщение" class="input-reset" placeholder="Введите сообщение">
+                                        <button type="button" class="btn btn-reset" title="Отправить">
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#send"></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="home-top__tags">
+                                        <button type="button" class="btn btn-reset tag tag--message">
+                                            <span>
+                                                Подбери подходящий ЖК
+                                            </span>
+                                        </button>
+                                        <button type="button" class="btn btn-reset tag tag--message">
+                                            <span>
+                                                Найди покупателя на мой объект
+                                            </span>
+                                        </button>
+                                        <button type="button" class="btn btn-reset tag tag--message">
+                                            <span>
+                                                Закажи юридическую проверку недвижимости
+                                            </span>
+                                        </button>
+                                        <button type="button" class="btn btn-reset tag tag--message">
+                                            <span>
+                                                Сделай оценку недвижимости для ипотеки
+                                            </span>
+                                        </button>
+                                        <button type="button" class="btn btn-reset tag tag--message">
+                                            <span>
+                                                Найди хорошего риелтора
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer__container container">
+        <div class="footer__top">
+            <a href="#" class="footer__logo logo">
+                <img loading="lazy" src="./img/logo.svg" width="83" height="25" class="logo__img"
+                    alt="Продам.Онлайн">
+            </a>
+            <nav class="footer__nav nav">
+                <ul class="nav__list list-reset">
+                    <li class="nav__item"><a href="#" class="nav__link">Продажа</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Новостройки</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Покупка</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Услуги</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer__write">
+            <p>
+                Есть предложения, напишите нам.
+            </p>
+            <button type="button" class="btn btn-reset btn-secondary footer__btn">Написать</button>
+        </div>
+        <p class="footer__descr">
+            © 2021-2022 ООО «Продам онлайн», официальный сайт использует куки-файлы и другие технологии, чтобы помочь
+            вам в навигации, а также предоставить лучший пользовательский опыт, анализировать использование наших
+            продуктов и услуг, повысить качество рекламных и маркетинговых активностей. Если Вы не хотите, чтобы Ваши
+            пользовательские данные обрабатывались, пожалуйста, ограничьте их использование в своём браузере.
+        </p>
+    </div>
+</footer>
+
+    </div>
+    <!-- popups -->
+    <div class="popup popup-primary popup-primary--left popup-primary--city" data-popup-mobile-fast>
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="city">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content city-popup">
+            <h2 class="city-popup__title title-2">
+                Выбор города
+            </h2>
+            <div class="city-popup__input">
+                <button type="button" class="btn btn-reset">
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#search"></use>
+                    </svg>
+                </button>
+                <input type="search" name="Название города" class="input-reset" placeholder="Введите название города">
+                <button type="button" class="btn btn-reset city-popup__clear" hidden>
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#x"></use>
+                    </svg>
+                </button>
+            </div>
+            <div class="city-popup__list">
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Москва</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Калининград</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Санкт-Петербург</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Казань</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Краснодар</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Екатеринбург</button>
+                <button type="button" class="btn btn-reset btn-secondary city-popup__item">Нижний-Новгород</button>
+            </div>
+            <div class="checkbox-secondary city-popup__auto">
+                <input id="city-auto" name="city-auto" class="checkbox-secondary__input" type="checkbox" value="true">
+                <label for="city-auto" class="checkbox-secondary__label">
+                    <span class="checkbox-secondary__text">
+                        Определить автоматически
+                    </span>
+                </label>
+            </div>
+            <button type="button" class="btn btn-reset btn-primary js-popup-close city-popup__save" disabled>Сохранить</button>
+        </div>
+    </div>
+</div>
+    <div class="popup popup-primary popup-primary--right popup-primary--add">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="add">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content add-popup">
+            <h2 class="add-popup__title title-2">
+                Добавить
+            </h2>
+            <ul class="add-popup__list list-reset">
+                <li class="add-popup__item">
+                    <a href="#" class="add-popup__link">
+                        <span>Заявка на покупку недвижимости</span>
+                    </a>
+                </li>
+                <li class="add-popup__item">
+                    <a href="#" class="add-popup__link">
+                        <span>Объект на продажу</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+    <div class="popup popup-secondary popup-secondary--right popup-secondary--personal">
+    <div class="popup__container popup-secondary__container" role="dialog" aria-modal="true" data-popup-target="personal-area-two">
+        <button class="btn-reset js-popup-close popup__close popup-secondary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-secondary__content personal-area">
+            <div class="personal-area__container">
+                <h2 class="personal-area__title title-2">
+                    Личный кабинет
+                </h2>
+                <div class="personal-area__info">
+                    <div class="personal-area__avatar avatar">
+                        <img loading="lazy" src="./img/avatar-1.jpg" width="45" height="45" alt="Иван П.">
+                    </div>
+                    <span class=" personal-area__name">
+                        Иван П.
+                    </span>
+                    <a href="./edit-profile.html" class="btn btn-reset personal-area__edit">Редактировать профиль</a>
+                </div>
+                <nav class="personal-area__nav">
+                    <ul data-spollers class="personal-area__list list-reset">
+                        <li class="personal-area__item personal-area-dropdown">
+                            <button type="button" data-spoller class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#add"></use>
+                                </svg>
+                                <span>Добавить</span>
+                                <svg class="personal-area-dropdown__arrow">
+                                    <use xlink:href="img/sprite.svg#arrow-small"></use>
+                                </svg>
+                            </button>
+                            <div class="personal-area-dropdown__body">
+                                <a href="#" class="btn btn-reset personal-area__btn">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#tg"></use>
+                                    </svg>
+                                    <span>Заявка на покупку недвижимости</span>
+                                </a>
+                                <a href='#' class="btn btn-reset personal-area__btn">
+                                    <svg>
+                                        <use xlink:href="img/sprite.svg#house"></use>
+                                    </svg>
+                                    <span>Объект на продажу</span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#chat"></use>
+                                </svg>
+                                <span>Чат</span>
+                                <span class="personal-area__quantity">
+                                    +6
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <a href="./present.html" type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#bonus"></use>
+                                </svg>
+                                <span>
+                                    Кешбэк и подарки
+                                </span>
+                                <span class="personal-area__quantity">
+                                    +6
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#cart-1"></use>
+                                </svg>
+                                <span>Мои заявки на покупку недвижимости</span>
+                            </button>
+                        </li>
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#cart-3"></use>
+                                </svg>
+                                <span>Предложения по заявкам</span>
+                                <span class="personal-area__quantity">
+                                    +6
+                                </span>
+                            </button>
+                        </li>
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#calendar"></use>
+                                </svg>
+                                <span>Календарь, запись на просмотры</span>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#house-laptop2"></use>
+                                </svg>
+                                <span>Мои объекты</span>
+                                <span class="personal-area__quantity">
+                                    6
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="personal-area__list list-reset">
+                        <li class="personal-area__item">
+                            <button type="button" class="btn btn-reset personal-area__btn">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#sign-in"></use>
+                                </svg>
+                                <span>Выйти</span>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="popup popup-primary popup-primary--right popup-primary--sber-tied">
+    <div class="popup__container popup-primary__container" role="dialog" aria-modal="true" data-popup-target="sber-tied">
+        <button class="btn-reset js-popup-close popup__close popup-primary__close" aria-label="Закрыть модальное окно">
+            <svg>
+                <use xlink:href="./img/sprite.svg#x"></use>
+            </svg>
+            <span>Закрыть</span>
+        </button>
+        <div class="popup__content popup-primary__content popup-tied">
+            <h2 class="popup-tied__title title-2">
+                Привязанный аккаунт
+            </h2>
+            <p class="popup-tied__descr">
+                Привязанный аккаунт позволит входить без СМС и пароля, размещать заявки на покупку, получать индивидуальные предложения, 
+                кешбэк и подарки от застройщика
+            </p>
+            <div class="popup-tied__card">
+                <img loading="lazy" src="./img/sber.png" width="32" height="32" class="popup-tied__icon" alt="Сбербанк">
+                <div>
+                    <span>Сбер ID</span>
+                    <span>Вход 21.06.2023</span>
+                    <button type="button" class="btn btn-reset">Отвязать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- ==== -->
+
+    <!-- popups -->
+</body>
+
+
+</html>

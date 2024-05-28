@@ -137,12 +137,13 @@ export const cardSecondaryActionsBody = (card) => {
     function pricesSetRows(container) {
         const items = container.querySelectorAll('[data-card-price]');
         const length = items.length;
+        console.log(length);
         if (length === 0) return;
-        if (length <= 3) {
-            container.style.gridTemplateRows = `repeat(${length},1fr)`;
+        if (length <= 2) {
+            container.style.gridTemplateRows = `repeat(1, 1fr)`;
             return;
         }
-        if (length === 4) {
+        if (length <= 4) {
             container.style.gridTemplateRows = `repeat(2,1fr)`;
             return;
         }

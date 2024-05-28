@@ -240,15 +240,15 @@ const resources = () => {
 const images = () => {
     return src([`${paths.srcImgFolder}/**/**.{jpg,jpeg,png,svg}`])
         .pipe(changed(paths.buildImgFolder))
-        .pipe(gulpif(isProd, image([
-            image.mozjpeg({
-                quality: 80,
-                progressive: true
-            }),
-            image.optipng({
-                optimizationLevel: 2
-            }),
-        ])))
+        // .pipe(gulpif(isProd, image([
+        //     image.mozjpeg({
+        //         quality: 80,
+        //         progressive: true
+        //     }),
+        //     image.optipng({
+        //         optimizationLevel: 2
+        //     }),
+        // ])))
         .pipe(dest(paths.buildImgFolder))
 };
 
@@ -266,7 +266,7 @@ const HTMLIgnoreFile = [
     'detailed-flat-consideration','detailed-flat-consideration','detailed-flat-consideration-two',
     'detailed-flat-consideration-two2','detailed-flat-consideration-two3', 'detailed-flat-rejected-two','detailed-flat-rejected-two2','object-consideration',
     'my-requestss7','edit-value-2','edit-value-3','edit-value-4','edit-value-5','edit-value',
-    'cities','create-tag', 'create-types-objects', 'create-value','my-requestss-all', 'my-requestss6','object-2', 'object-3', 'object-4', 'object-consideration2', 'object-flat-rejected', 'object-flat-rejected2', 'present', 'program', 'prop-val', 'repair-apart', 'selection-estate-inner-2','tags-stickers', 'types-objects', 'view-employee-groups-develop',
+    'cities','create-tag', 'create-types-objects', 'create-value','my-requestss-all', 'my-requestss6','object-2', 'object-3', 'object-4', 'object-consideration2', 'object-flat-rejected', 'object-flat-rejected2', 'present', 'program', 'prop-val', 'repair-apart', 'selection-estate-inner-2', 'types-objects', 'view-employee-groups-develop',
     'edit-tag', 'edit-types-objects-2', 'edit-types-objects-3', 'edit-types-objects-4', 'edit-types-objects', 'employees-and-groups', 
     'employees','edit-parament-types-objects','create-char-layouts'];
 

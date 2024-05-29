@@ -244,8 +244,8 @@ function initSliders() {
             speed: 800,
             init:false,
             navigation: {
-                prevEl: sliderEl.querySelector('.nav-arrow-primary--prev'),
-                nextEl: sliderEl.querySelector('.nav-arrow-primary--next')
+                prevEl: sliderEl.querySelector('.nav-arrow-secondary--prev'),
+                nextEl: sliderEl.querySelector('.nav-arrow-secondary--next')
             },
         });
         slider.on("slideChange afterInit init", function() {
@@ -933,7 +933,7 @@ function initSliders() {
     if (document.querySelector('.promo-slider__slider')) {
         const sliders = document.querySelectorAll('.promo-slider__slider');
         sliders.forEach(sliderEl => {
-            const perView = +sliderEl.dataset.slideLength || 1.2;
+            const perView = +sliderEl.dataset.slideLength || 1.5;
             const slider = new Swiper(sliderEl, {
                 observer: true,
                 observeParents: true,

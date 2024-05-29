@@ -7,7 +7,9 @@ import './_main-scripts';
 
 // ==============================
 import videoModal from './components/videoModal';
+import { galleryPrimary } from './components/gallery';
 
 document.addEventListener('DOMContentLoaded', () => {
     videoModal();
+    galleryPrimary();
 })

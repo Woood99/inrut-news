@@ -233,6 +233,17 @@ function initSliders() {
         });
         slider.init();
     }
+    if (document.querySelector('.promo-planning-solutions')) {
+        const sliderEl = document.querySelector('.promo-planning-solutions');
+        if (!sliderEl) return;
+        const slider = new Swiper(sliderEl, {
+            observer: true,
+            observeParents: true,
+            slidesPerView: 3.5,
+            spaceBetween: 16,
+            speed: 800,
+        });
+    }
     if (document.querySelector('.swiper.home-price__items')) {
         const sliders = document.querySelectorAll('.swiper.home-price__items');
         sliders.forEach(slider => {

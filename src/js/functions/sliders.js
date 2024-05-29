@@ -236,13 +236,24 @@ function initSliders() {
     if (document.querySelector('.promo-planning-solutions')) {
         const sliderEl = document.querySelector('.promo-planning-solutions');
         if (!sliderEl) return;
-        const slider = new Swiper(sliderEl, {
+        const slider = new Swiper(sliderEl.querySelector('.swiper'), {
             observer: true,
             observeParents: true,
             slidesPerView: 3.5,
             spaceBetween: 16,
             speed: 800,
+            init:false,
+            navigation: {
+                prevEl: sliderEl.querySelector('.nav-arrow-primary--prev'),
+                nextEl: sliderEl.querySelector('.nav-arrow-primary--next')
+            },
         });
+        slider.on("slideChange afterInit init", function() {
+            const counterEl = sliderEl.querySelector('.promo-slider__counter');
+
+            sliderCounter(slider, counterEl);
+        });
+        slider.init();
     }
     if (document.querySelector('.swiper.home-price__items')) {
         const sliders = document.querySelectorAll('.swiper.home-price__items');

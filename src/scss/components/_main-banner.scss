@@ -317,8 +317,11 @@
     }
 
     &__icon {
-        width: 70px;
-        height: 70px;
+        --size: 70px;
+        --size-icon: 30px;
+        width: var(--size);
+        height: var(--size);
+        flex: 0 0 var(--size);
 
         display: flex;
         align-items: center;
@@ -330,13 +333,19 @@
 
         svg {
             fill: var(--white);
-            width: 30px;
-            height: 30px;
+            width: var(--size-icon);
+            height: var(--size-icon);
+        }
+        @media (max-width:$desktop){
+              --size: 55px;
+              --size-icon: 25px;
         }
     }
 
     &--promo {
-        padding: 42px 50px;
+        @media (min-width:$desktop-min){
+            padding: 42px 50px; 
+        }
     }
 
     @media (max-width:$desktop) {
@@ -366,21 +375,28 @@
         height: 100%;
         background-size: cover;
         background-position: center;
-
-        // &::after {
-        //     content: '';
-        //     position: absolute;
-        //     bottom: 0;
-        //     left: 0;
-        //     right: 0;
-        //     height: 42%;
-        //     z-index: 2;
-        //     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.78) 100%);
-        // }
+        &._shadow{
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 42%;
+                z-index: 2;
+                background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.78) 100%);
+            }
+        }
 
         &._contain{
             background-size: contain;
             background-repeat: no-repeat;
         }
+    }
+    @media (max-width:$desktop){
+         border-radius: 24px; 
+    }
+    @media (max-width:$smallTablet-max){
+         border-radius: 16px; 
     }
 }

@@ -239,13 +239,21 @@ function initSliders() {
         const slider = new Swiper(sliderEl.querySelector('.swiper'), {
             observer: true,
             observeParents: true,
-            slidesPerView: 3.5,
+            slidesPerView: 1,
             spaceBetween: 16,
             speed: 800,
             init:false,
             navigation: {
                 prevEl: sliderEl.querySelector('.nav-arrow-secondary--prev'),
                 nextEl: sliderEl.querySelector('.nav-arrow-secondary--next')
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                1212: {
+                    slidesPerView: 3.5,
+                },
             },
         });
         slider.on("slideChange afterInit init", function() {
@@ -938,12 +946,17 @@ function initSliders() {
                 observer: true,
                 observeParents: true,
                 init: false,
-                slidesPerView: perView,
+                slidesPerView: 1.07,
                 spaceBetween: 16,
                 speed: 800,
                 navigation: {
                     prevEl: sliderEl.closest('.promo-slider').querySelector('.nav-arrow-secondary--prev'),
                     nextEl: sliderEl.closest('.promo-slider').querySelector('.nav-arrow-secondary--next'),
+                },
+                breakpoints: {
+                    769: {
+                        slidesPerView:perView,
+                    },
                 },
             });
     

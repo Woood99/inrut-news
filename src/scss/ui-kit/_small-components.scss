@@ -7022,6 +7022,8 @@
 
     transition: transform $transitionSpeed $transitionFunction;
     box-sizing: border-box;
+
+    position: relative;
     &__image {
         margin: 0 auto 16px auto;
 
@@ -7038,8 +7040,15 @@
     }
 
     &__text {
+        text-align: center;
     }
-
+    &__btn{
+       position: absolute;
+       bottom: -30px;
+       left: 16px;
+       width: calc(100% - 32px);
+       padding: 0 16px;
+    }
     @media (min-width:$desktop-min) {
         &:hover {
             transform: translateY(-5px);
@@ -7055,6 +7064,7 @@
     gap: 2px;
     &__total{
         color: var(--primaryTwo);
+        font-size: 13px;
     }
     &._dark{
         color: var(--dark);

@@ -150,6 +150,7 @@ popup(null, 'authorization');
 popup(null, 'sber-tied');
 popup(null, 'kit-composition');
 popup(null, 'book-consultation');
+popup(null, 'book-consultation-promo');
 popup(null, 'record-viewing-three');
 popup({
     isOpen: (settingsModal) => {

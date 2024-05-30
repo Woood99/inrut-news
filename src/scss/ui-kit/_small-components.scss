@@ -139,58 +139,20 @@
 }
 
 .favorite-btn {
-    display: inline-flex;
+    --size: 32px;
+    width: var(--size);
+    height: var(--size);
+    flex: 0 0 var(--size);
+    border-radius: 6px;
+    border: 1px solid var(--primary100);
+
+    display: flex;
     align-items: center;
-    transition: color $transitionSpeed $transitionFunction;
-    padding: 5px 12px;
-    color: var(--blue);
-
+    justify-content: center;
     svg {
-        margin-right: 10px;
-        width: 14px;
-        height: 14px;
-        fill: var(--blue);
-        stroke: none;
-    }
-
-    span {
-        color: inherit;
-        font-size: var(--default-fz);
-        line-height: var(--default-lh);
-        font-weight: 400;
-    }
-
-    @media (min-width: $desktop-min) {
-        &:hover {
-            .secondary-tooltip__btn {
-                color: var(--primary500);
-            }
-        }
-    }
-
-    @media (max-width: $desktop) {
-        padding: 0;
-        width: 26px;
-        height: 26px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        svg {
-            margin-right: 0;
-            width: 18px;
-            height: 18px;
-        }
-
-        span {
-            display: none;
-        }
-    }
-
-    &._active {
-        svg {
-            fill: var(--blue);
-        }
+        pointer-events: none;
+        width: 16px;
+        height: 16px;
     }
 }
 

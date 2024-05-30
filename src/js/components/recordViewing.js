@@ -368,6 +368,30 @@ export const recordViewing = () => {
             btn.addEventListener('click', () => {
                 status = true;
                 validate(true);
+
+                if (!btn.classList.contains('_disabled-popup')) {
+
+                    const currentDay = form.querySelector('.record-day__item._active');
+                    const currentTime = form.querySelector('.record-time__item._active');
+    
+                    const data = {
+                        dayWeek: currentDay.querySelector('.record-day__day-week').textContent.trim(),
+                        day: currentDay.querySelector('.record-day__day-month').textContent.trim(),
+                        month: maps.months2[maps.months.indexOf(currentDay.querySelector('.record-day__month').textContent.trim())],
+                        time: currentTime.querySelector('.record-time__input').value,
+                        
+                        name: document.querySelector('[data-object-name]'),
+                        address: document.querySelector('[data-object-address]'),
+                    };
+                    
+                    const dateString = `${data.dayWeek}, ${data.day} ${data.month}, ${data.time}`;
+                    const addressString = `${data.name && data.name.textContent.trim()} &nbsp; ${data.address && data.address.textContent.trim()}`;
+
+                    const dates = document.querySelectorAll('[data-app-date]');
+                    const address = document.querySelectorAll('[data-app-address]');
+                    dates.forEach(date => date.innerHTML = dateString);
+                    address.forEach(item => item.innerHTML = addressString);
+                }
             })
         }
     })

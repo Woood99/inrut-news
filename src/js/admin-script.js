@@ -69,7 +69,6 @@ import {
     clientPage
 } from './components/clientPage';
 import videoModal from './components/videoModal';
-import favoriteBtn from './components/favoriteBtn';
 import submitApp from './components/submitApp';
 import wantDiscount from './components/wantDiscount';
 import onlineDisplay from './components/onlineDisplay';
@@ -127,7 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
     recordViewingTwo();
     clientPage();
     videoModal();
-    favoriteBtn();
     submitApp();
     wantDiscount();
     onlineDisplay();

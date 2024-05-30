@@ -105,6 +105,7 @@ export const cardSecondaryActionsBody = (card) => {
         }
 
         const comparison = e.target.closest('.card-secondary__comparison');
+        const favorite = e.target.closest('.card-secondary__favorite');
         if (comparison) {
             e.preventDefault();
             if (!comparison.classList.contains('_prevent')) {
@@ -124,6 +125,28 @@ export const cardSecondaryActionsBody = (card) => {
                     <svg>
                         <use xlink:href="./img/sprite.svg#comparison"></use>
                     </svg>
+                `;
+            }
+        }
+        if (favorite) {
+            e.preventDefault();
+            if (!favorite.classList.contains('_prevent')) {
+                setTimeout(() => {
+                    favorite.classList.add('_prevent');
+                }, 1);
+                favorite.innerHTML = `
+                <svg class='tw-fill-[#ff4848]'>
+                    <use xlink:href="./img/sprite.svg#favorite"></use>
+                </svg>
+                `;
+            } else {
+                setTimeout(() => {
+                    favorite.classList.remove('_prevent');
+                }, 1);
+                favorite.innerHTML = `
+                <svg>
+                    <use xlink:href="./img/sprite.svg#favorite-stroke"></use>
+                </svg>
                 `;
             }
         }

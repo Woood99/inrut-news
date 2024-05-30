@@ -134,12 +134,13 @@ export const actionForCards = (container, content, btn) => {
 export const controlCardsCardSecondary = (content, btn) => {
     const cardsSecondary = content.querySelectorAll('.card-secondary');
     if (cardsSecondary.length === 0) return;
+    if (!btn) return;
     cardsSecondary.forEach(card => {
         const favorite = card.querySelector('.card-secondary__info--favorite');
         const bottom = card.querySelector('.card-secondary__bottom');
         const bottomMobile = bottom.querySelector('.card-secondary__info--mobile');
         const quantity = card.querySelector('.card-secondary__quantity');
-        const comparison = card.querySelector('.card-secondary__comparison');
+        const actions = card.querySelector('.card-secondary__actions');
 
         const content = card.querySelector('.card-secondary__content');
         const options = card.querySelector('.card-secondary__options');
@@ -165,8 +166,7 @@ export const controlCardsCardSecondary = (content, btn) => {
                 }
             }
         }
-
-        if (checkVertical(btn)) {
+        if (btn === 'list' || checkVertical(btn)) {
             bottom.classList.add('_vertical-active');
 
             if (quantity) {
@@ -184,11 +184,11 @@ export const controlCardsCardSecondary = (content, btn) => {
                     to.insertAdjacentElement('beforeend', options);
                 }
             }
-            if (comparison) {
-                content.insertAdjacentElement('beforeend', comparison);
+            if (actions) {
+                content.insertAdjacentElement('beforeend', actions);
             }
         }
-        if (checkHorizontal(btn)) {
+        if (btn !== 'list' && checkHorizontal(btn)) {
             bottom.classList.remove('_vertical-active');
             if (quantity) {
                 const to = card.querySelector('.card-secondary__prices');
@@ -206,10 +206,10 @@ export const controlCardsCardSecondary = (content, btn) => {
                     to.insertAdjacentElement('afterbegin', options);
                 }
             }
-            if (comparison) {
+            if (actions) {
                 const to = card.querySelector('[data-top-content]');
                 if (to) {
-                    to.insertAdjacentElement('beforeend', comparison);
+                    to.insertAdjacentElement('beforeend', actions);
                 }
             }
         }

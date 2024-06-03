@@ -1,6 +1,6 @@
 import modal from '../modules/modal';
 
-const mapCoords = {
+export const mapCoords = {
     top(coords, el, target) {
         let top = coords.top - el.offsetHeight - this.gap;
         if (top < 0) top = coords.top + target.offsetHeight + this.gap;

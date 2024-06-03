@@ -4,7 +4,7 @@ export const controlCards = () => {
     containers.forEach(container => {
         const btns = container.querySelectorAll('.control-cards__btn');
         const content = container.querySelector('.control-cards__content');
-        const currentBtn = container.querySelector('.control-cards__btn._active');
+        const currentBtn = document.querySelector('.filter-actions__btn._active');
         if (container && content && currentBtn) actionForCards(container, content, currentBtn);
         btns.forEach(btn => {
             if (btn) {
@@ -15,7 +15,6 @@ export const controlCards = () => {
                 });
             }
         })
-
     })
 }
 
@@ -28,9 +27,10 @@ export const actionForCards = (container, content, btn) => {
         // maps
         if (container.classList.contains('control-cards--maps')) {
             container.classList.add('_map-active');
+            document.body.classList.add('_vertical');
+            document.body.classList.remove('_horizontal');
             if (containerWrapper) {
                 containerWrapper.classList.remove('container');
-                containerWrapper.classList.add('container-right--no-padding-mobile');
             }
         }
     }
@@ -40,9 +40,12 @@ export const actionForCards = (container, content, btn) => {
         // maps
         if (container.classList.contains('control-cards--maps')) {
             container.classList.remove('_map-active');
+
+            document.body.classList.remove('_vertical');
+            document.body.classList.add('_horizontal');
+
             if (containerWrapper) {
                 containerWrapper.classList.add('container');
-                containerWrapper.classList.remove('container-right--no-padding-mobile');
             }
         }
     }

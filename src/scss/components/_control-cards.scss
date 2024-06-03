@@ -1,11 +1,7 @@
 .control-cards {
-    &__btns {}
+    --height-map: calc(var(--vh,100vh) - 165px - 32px);
 
     &__btn {
-        &--vertical {}
-
-        &--horizontal {}
-
         &._active {
             background-color: var(--blue);
             color: var(--white);
@@ -27,9 +23,9 @@
         .skeleton {
             position: absolute;
             top: 0;
-            left: 16px;
+            left: 0;
             right: 0;
-         width: calc(100% - 16px);
+         width: 100%;
             height: 100%;
             z-index: -1;
             border-radius: 12px;
@@ -38,8 +34,8 @@
         &._sticky {
             position: sticky;
             top: 0;
-            max-height: var(--vh);
-            min-height: var(--vh);
+            max-height: var(--height-map);
+            min-height: var(--height-map);
             overflow: hidden;
         }
 
@@ -98,8 +94,12 @@
         @media (min-width:$desktop-min){
             .control-cards__container {
                 display: block;
-                grid-template-columns: 350px 1fr;
+                grid-template-columns: 358px 1fr;
                 grid-column-gap: 12px;
+
+                min-height: var(--height-map);
+                max-height: var(--height-map);
+                height: 100%;
                 &._map-full{
                     .cards-list__items{
                         grid-template-columns: 100%;
@@ -108,8 +108,13 @@
             }
             .cards-list__items{
                 margin-top: 0;
+                padding-right: 8px;
                 display: grid;
                 grid-template-columns: 100%;
+            }
+            .control-cards__wrapper{
+                max-height: var(--height-map);
+                overflow-y: auto;
             }
             .control-cards__maps {
                 display: none;

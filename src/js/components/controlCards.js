@@ -31,6 +31,7 @@ export const actionForCards = (container, content, btn) => {
             document.body.classList.remove('_horizontal');
             if (containerWrapper) {
                 containerWrapper.classList.remove('container');
+                containerWrapper.classList.remove('_map-full');
             }
         }
     }
@@ -46,6 +47,7 @@ export const actionForCards = (container, content, btn) => {
 
             if (containerWrapper) {
                 containerWrapper.classList.add('container');
+                containerWrapper.classList.add('_map-full');
             }
         }
     }

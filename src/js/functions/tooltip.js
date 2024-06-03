@@ -6,16 +6,28 @@ export const mapCoords = {
         if (top < 0) top = coords.top + target.offsetHeight + this.gap;
         return top;
     },
+
     bottom(coords, el, target) {
         let bottom = coords.top + target.offsetHeight + this.gap;
         if (window.innerHeight - coords.bottom - el.offsetHeight - this.gap < 0) bottom = coords.top - el.offsetHeight - this.gap;
         return bottom;
     },
 
+    centerY(coords,el,target) {
+        console.log(coords);
+        let pos = coords.top + (target.offsetHeight / 2) + this.gap;
+        return pos;
+    },
+
     left(coords, el, target) {
         let left = coords.left;
         if (window.innerWidth - coords.left - el.offsetWidth - this.gap < 0) left = this.gap;
         return left;
+    },
+
+    right(coords, el, target) {
+        let right = coords.right - el.offsetWidth - target.offsetWidth - this.gap;
+        return right;
     },
 
     center(coords, el, target) {

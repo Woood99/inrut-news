@@ -92,6 +92,13 @@
 
     &--maps {
         @media (min-width:$desktop-min){
+            .cards-list__items{
+                margin-top: 0;
+                padding-right: 8px;
+                display: grid;
+                grid-template-columns: 100%;
+            }
+
             .control-cards__container {
                 display: block;
                 grid-template-columns: 358px 1fr;
@@ -101,16 +108,16 @@
                 max-height: var(--height-map);
                 height: 100%;
                 &._map-full{
+                    min-height: auto;
+                    max-height: none;
                     .cards-list__items{
                         grid-template-columns: 100%;
                     }
+                    .control-cards__wrapper{
+                        max-height: none;
+                        overflow-y:visible;
+                    }
                 }
-            }
-            .cards-list__items{
-                margin-top: 0;
-                padding-right: 8px;
-                display: grid;
-                grid-template-columns: 100%;
             }
             .control-cards__wrapper{
                 max-height: var(--height-map);

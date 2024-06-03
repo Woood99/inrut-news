@@ -6,9 +6,10 @@ class Notifications {
         if (!this.block) return;
 
         this.blockValue = this.block.dataset.notifications;
-
-        if (this.blockValue === 'desktop' && window.innerWidth <= 1212) return;
-        if (this.blockValue === 'mobile' && window.innerWidth > 1212) return;
+        if (this.blockValue !== '') {
+            if (this.blockValue === 'desktop' && window.innerWidth <= 1212) return;
+            if (this.blockValue === 'mobile' && window.innerWidth > 1212) return;
+        }
 
         this.items = this.block.querySelectorAll('[data-notifications-item]');
         this.startTime = 350;
@@ -26,6 +27,13 @@ class Notifications {
             const item = itemClose.closest('[data-notifications-item]');
             if (!item) return;
             this.hide(item, 0);
+        })
+        
+        document.addEventListener('click',(e) => {
+            const target = e.target;
+            if (target.closest('button')) {
+              this.block.setAttribute('hidden','');
+            }
         })
     }
 
@@ -63,8 +71,9 @@ class Notifications {
 
     setCoordsElement(target, el) {
         const coords = target.getBoundingClientRect();
-        const targetPositionX = 'left';
-        const targetPositionY = 'top';
+        // const targetPositionX = 'left';
+        const targetPositionX = 'right';
+        const targetPositionY = 'centerY';
 
         this.block.style.left = `${mapCoords[targetPositionX].call(this,coords,this.block,target)}px`;
         this.block.style.top = `${mapCoords[targetPositionY].call(this,coords,this.block,target)}px`;

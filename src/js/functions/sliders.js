@@ -1096,8 +1096,8 @@ function mainSlider() {
                 observeParents: true,
                 init: false,
                 navigation: {
-                    prevEl: '.nav-arrow-secondary--prev',
-                    nextEl: '.nav-arrow-secondary--next',
+                    prevEl: '.nav-arrow-primary--prev',
+                    nextEl: '.nav-arrow-primary--next',
                 },
                 // pagination: {
                 //     el: '.pagination-primary',

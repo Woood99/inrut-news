@@ -7,18 +7,19 @@
     &__top {
         display: flex;
         align-items: center;
-        justify-content: space-between;
         margin-bottom: 32px;
     }
 
     &__name {
+        width: 200px;
+    }
+
+    &__info {
+        flex-grow: 1;
+
         display: flex;
         align-items: center;
-        >span {
-            margin-left: 16px;
-            font-size: var(--big-fz);
-            line-height: var(--big-fz);
-        }
+        gap: 40px;
     }
 
     &__icon {
@@ -29,11 +30,40 @@
         align-items: center;
         justify-content: center;
 
-        width: 60px;
-            height: 60px;
+        width: 45px;
+        height: 45px;
     }
 
-    &__check {
+    &__spoller {
+        border-radius: 12px;
+        box-shadow: var(--shadow-primary);
+
+        &._active {
+            padding: 16px 16px 24px;
+
+            .bank-offer__spoller-btn {
+                background-color: var(--stand-bg);
+                box-shadow: var(--shadow-primary);
+            }
+
+            .bank-offer__spoller-check {
+                svg {
+                    transform: rotate(-180deg);
+                }
+            }
+        }
+    }
+
+    &__spoller-btn {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 16px 24px;
+        width: 100%;
+    }
+
+    &__spoller-check {
         margin-left: 32px;
         width: 30px;
         height: 25px;
@@ -41,8 +71,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-
-        justify-self: end;
 
         svg {
             width: 30px;
@@ -53,39 +81,14 @@
         }
     }
 
-    &__price {
-        margin-left: auto;
-        margin-right: 24px;
-
-        display: flex;
-        align-items: center;
-
-        >span {}
-
-        .secondary-tooltip__content {
-            min-width: 200px;
-        }
+    &__spoller-content {
+        margin: 32px 8px 0;
     }
 
+
     &__btn {
-        min-width: 100px;
+        margin-top: 32px;
         width: 100%;
-        svg {
-            width: 20px;
-            height: 20px;
-
-            &:nth-child(1) {
-                stroke-width: 1.5px;
-                stroke: var(--white);
-                fill: none;
-                display: block;
-            }
-
-            &:nth-child(2) {
-                fill: var(--white);
-                display: none;
-            }
-        }
 
         &._active {
             background-color: var(--blue);
@@ -94,18 +97,6 @@
             @media (min-width:$desktop-min) {
                 &:hover {
                     background-color: var(--blue-dark);
-
-                    svg {
-                        &:nth-child(1) {
-                            display: none;
-                            stroke: var(--white) !important;
-                        }
-
-                        &:nth-child(2) {
-                            display: block;
-                            fill: var(--white) !important;
-                        }
-                    }
                 }
             }
         }
@@ -116,205 +107,6 @@
         }
     }
 
-    &__info {
-        display: grid;
-        grid-auto-columns: min-content;
-        grid-auto-flow: column;
-        grid-column-gap: 40px;
-    }
-    .bank-offer__additional-item__title {
-        font-size: var(--small-fz);
-        line-height: var(--small-lh);
-    }
-    &__info-item {
-        white-space: nowrap;
-
-        >span {
-            opacity: 0.65;
-
-            font-size: var(--small-fz);
-            line-height: var(--small-lh);
-        }
-
-        >div {
-            margin-top: 4px;
-            display: flex;
-            align-items: center;
-            >span{
-                font-weight: 500;
-                font-size: var(--default-fz);
-                line-height: var(--default-lh);
-            }
-            >div {
-                display: flex;
-                align-items: center;
-
-                >span {
-                    font-weight: 500;
-                    &:nth-child(1) {
-                        color: var(--blue);
-                        font-size: var(--default-fz);
-                        line-height: var(--default-lh);
-                    }
-
-                    &:nth-child(2) {
-                        font-weight: 500;
-                        &._old{
-                            text-decoration: line-through;
-                            margin-left: 4px;
-                            font-weight: 400;
-                            color: var(--primaryTwo);
-                            font-size: var(--small-fz);
-                            line-height: var(--small-lh);
-                        }
-                    }
-                }
-            }
-
-            .secondary-tooltip__content {
-                min-width: 200px;
-                white-space: normal;
-            }
-        }
-    }
-
-    &__selector {
-        border-radius: 12px;
-        box-shadow: var(--shadow-primary);
-        &._active{
-            padding: 16px 16px 24px;
-            .bank-offer__selector-top {
-                background-color: var(--stand-bg);
-                box-shadow: var(--shadow-primary);
-            }
-            .bank-offer__additional{
-                margin: 32px 8px 0;   
-            }
-            .bank-offer__check{
-               svg{
-                transform: rotate(-180deg);
-               }
-            }
-        }
-    }
-
-    &__selector-title {}
-
-    &__selector-content {
-        margin: 32px 8px 0;
-        display: flex;
-        >div:nth-child(1) {
-            padding-top: 13px;
-            white-space: nowrap;
-
-            p {
-                &:not(:last-child) {
-                    margin-bottom: 4px;
-                }
-            }
-        }
-    }
-
-    &__selector-top {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-  
-        cursor: pointer;
-        padding: 16px 24px;
-    }
-
-    &__selector-btn {
-        margin-top: 8px;
-
-
-        display: flex;
-        align-items: center;
-        color: var(--blue);
-        font-size: var(--small-fz);
-        line-height: 1;
-
-
-        svg {
-            margin-left: 5px;
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-            transition: transform $transitionSpeedFast $transitionFunction;
-        }
-
-        &._active {
-            svg {
-                transform: rotate(-180deg);
-            }
-        }
-    }
-
-    &__choice {
-        margin-left: 24px;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-gap: 8px;
-        width: 100%;
-    }
-
-    &__choice-item {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        border: 1px solid var(--primary200);
-        border-radius: 12px;
-        padding: 12px;
-        opacity: 0.7;
-        min-width: 140px;
-        position: relative;
-        cursor: pointer;
-        transition: opacity $transitionSpeed $transitionFunction,
-            background-color $transitionSpeed $transitionFunction,
-            border $transitionSpeed $transitionFunction;
-
-        &._active {
-            opacity: 1;
-            background-color: rgba(0, 150, 255, 0.08);
-            border: 1px solid transparent;
-        }
-
-        .radio-primary__item {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-        }
-
-        span {
-            font-size: var(--little-big-fz);
-            line-height: var(--little-big-lh);
-
-            &:not(:last-child) {
-                margin-bottom: 4px;
-            }
-        }
-    }
-
-    &__choice-btn {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        border: 1px solid var(--primary200);
-        border-radius: 12px;
-        padding: 12px;
-        opacity: 0.7;
-        min-width: 140px;
-        height: 100%;
-        position: relative;
-        cursor: pointer;
-        font-size: var(--little-big-fz);
-        line-height: var(--little-big-lh);
-    }
-
-    &__additional {
-  
-    }
 
     &__additional-item {
         display: flex;
@@ -323,6 +115,7 @@
         border-bottom: 1px dotted var(--primary200);
         margin-bottom: 24px;
         padding-bottom: 24px;
+
         &__title {}
 
         &__descr {
@@ -367,12 +160,13 @@
                 >span {
                     margin-right: 24px;
                     transition: color $transitionSpeed $transitionFunction,
-                    opacity $transitionSpeed $transitionFunction;
+                        opacity $transitionSpeed $transitionFunction;
                     opacity: 0.65;
 
                     font-weight: 500;
                     font-size: var(--small-fz);
                     line-height: var(--small-lh);
+
                     &._active {
                         opacity: 1;
                         color: var(--blue);
@@ -380,31 +174,36 @@
                 }
             }
         }
-        
+
     }
-    &__add-info{
+
+    &__add-info {
         box-shadow: var(--shadow-primary);
         margin-top: 8px;
         border-radius: 12px;
-        &._active{
+
+        &._active {
             padding: 16px 16px 24px;
+
             .bank-offer__add-info-top {
                 background-color: var(--stand-bg);
                 box-shadow: var(--shadow-primary);
             }
-            .bank-offer__add-info-content{
-                margin: 24px 8px 0;   
+
+            .bank-offer__add-info-content {
+                margin: 24px 8px 0;
             }
-            .bank-offer__check{
-               svg{
-                transform: rotate(-180deg);
-               }
+
+            .bank-offer__check {
+                svg {
+                    transform: rotate(-180deg);
+                }
             }
         }
 
     }
 
-    &__add-info-top{
+    &__add-info-top {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -412,13 +211,15 @@
         cursor: pointer;
         padding: 16px 24px;
     }
-    &__add-info-content{
+
+    &__add-info-content {
         margin-top: 8px;
-       display: grid;
-       grid-template-columns: repeat(2,1fr);
-       grid-gap: 16px;
-       padding: 0;
-        >div{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 16px;
+        padding: 0;
+
+        >div {
             background-color: var(--primary100);
             color: var(--dark);
             padding: 24px;
@@ -430,47 +231,31 @@
 
 
 
-
-    &__bottom{
-        padding-top: 16px;
-        margin-top: 8px;
-    }
-    &__close-item{
-        grid-column: 1/-1;
+    &__close {
         margin-left: auto;
         margin-top: 16px;
         color: var(--blue);
+
         display: flex;
         align-items: center;
-        justify-content: end;
+
         font-size: var(--small-fz);
         line-height: var(--small-lh);
-        font-weight: 400;
+
         svg {
             width: 20px;
             height: 17px;
             fill: currentColor;
             margin-left: 8px;
-         transform: rotate(-180deg);
+            transform: rotate(-180deg);
         }
 
     }
-    // &--rosbankdom {
-    //     background-color: #8a0820;
-    // }
-
-    // &--alfabank {
-    //     background-color: #941313;
-    // }
-
-    // &--absolutbank {
-    //     background-color: #ad5215;
-    // }
-
-    // &--sberbank {
-    //     background-color: #106d15;
-    // }
 }
+
+
+
+
 
 .bank-offer-bid-tooltip {
     bottom: auto;
@@ -530,6 +315,7 @@
             opacity: 0.65;
             padding: 0 24px;
             gap: 24px;
+
             >div,
             span {
                 width: 140px;
@@ -537,9 +323,10 @@
                 line-height: var(--small-lh);
             }
         }
+
         &:not(:first-child) {
             font-weight: 500;
-        border-radius: 12px;
+            border-radius: 12px;
         }
     }
 
@@ -552,7 +339,7 @@
         align-items: center;
 
         height: 42px;
-width: 100%;
+        width: 100%;
         border-radius: 12px;
         background-color: var(--white);
         border: 1px solid var(--primary200);
@@ -565,8 +352,9 @@ width: 100%;
 
 
         transition: background-color $transitionSpeed $transitionFunction,
-    color $transitionSpeed $transitionFunction,
-        border $transitionSpeed $transitionFunction;
+            color $transitionSpeed $transitionFunction,
+            border $transitionSpeed $transitionFunction;
+
         >div,
         span {
             width: 140px;
@@ -618,6 +406,7 @@ width: 100%;
                 border: 1px solid var(--blue);
                 background-color: var(--blue);
                 color: var(--white);
+
                 div {
                     opacity: 1;
                     visibility: visible;
@@ -630,6 +419,7 @@ width: 100%;
             border: 1px solid var(--blue);
             background-color: var(--blue);
             color: var(--white);
+
             div {
                 opacity: 1;
                 visibility: visible;

@@ -582,12 +582,12 @@ export const searchSelect = () => {
             }
             updatePlaceholder();
 
-                container.dispatchEvent(new Event("change"));
-                const form = container.closest("form");
-                if (form) form.dispatchEvent(new Event("change"));
+            container.dispatchEvent(new Event("change"));
+            const form = container.closest("form");
+            if (form) form.dispatchEvent(new Event("change"));
         }
 
-        container.addEventListener("change",changeBody);
+        container.addEventListener("change", changeBody);
         const controls = container.querySelector(".search-select__control");
         const btnAll = container.querySelector(".search-select__all");
         const btnClear = container.querySelector(".search-select__clear");
@@ -823,8 +823,8 @@ export const searchSelectOne = () => {
     });
 };
 export const uiSliderOne = () => {
-    const items = document.querySelectorAll(".filter-range-one__inner");
-    if (!items.length >= 1) return;
+    const items = document.querySelectorAll('.filter-range-one__inner:not(._not-default)');
+    if (items.length === 0) return;
     items.forEach((el) => {
         const container = el.closest(".filter-range-one");
         const minValue = el.dataset.min;
@@ -2236,14 +2236,14 @@ export const tabsNav = () => {
         tabsMain.forEach(tabs => {
             const targets = tabs.querySelectorAll('[data-tabs-main-target]');
             const paths = tabs.querySelectorAll('[data-tabs-main-path]');
-            tabs.addEventListener('click',(e) => {
+            tabs.addEventListener('click', (e) => {
                 const target = e.target;
                 const path = target.closest('[data-tabs-main-path]');
                 if (!path) return;
                 const currentID = path.dataset.tabsMainPath;
                 const currentTarget = Array.from(targets).find(item => item.dataset.tabsMainTarget == currentID);
                 targets.forEach(item => {
-                    item.setAttribute('hidden','');
+                    item.setAttribute('hidden', '');
                     currentTarget.removeAttribute('hidden');
                 })
                 paths.forEach(item => {

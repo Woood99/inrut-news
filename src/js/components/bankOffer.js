@@ -1,17 +1,14 @@
 import numberToAnim from "../modules/numberToAnim";
-const bankOffer = () => {
+export const bankOffer2 = () => {
     const items = document.querySelectorAll('.bank-offer');
     if (items.length >= 1) {
         items.forEach(container => {
-            const choiceContainer = container.querySelector('.bank-offer__choice');
             const additional = container.querySelector('.bank-offer__additional');
             const additionalItems = container.querySelectorAll('.bank-offer__additional-item');
 
             const infoItems = container.querySelectorAll('.bank-offer__info-item');
             const bid = infoItems[0].querySelector('[data-bank-offer-default-prc]');
             const monthPaymentTop = infoItems[1].querySelector('div > span');
-            const term = infoItems[2].querySelector('div > span');
-            const sum = infoItems[3].querySelector('div > span');
 
             const selector = container.querySelector('.bank-offer__selector');
             if (selector) {
@@ -182,6 +179,42 @@ const bankOffer = () => {
     }
 };
 
+
+export const bankOffer = (item) => {
+    item.addEventListener('click', handleClickSpollerBtn);
+
+
+    function handleClickSpollerBtn(e) {
+        const target = e.target;
+        const btn = target.closest('.bank-offer__spoller-btn');
+        const close = target.closest('.bank-offer__close');
+        if (btn) {
+            toggle(btn.closest('.bank-offer__spoller'));
+        }
+        if (close) {
+            toggle(close.closest('.bank-offer__spoller'));
+        }
+        
+
+
+
+        function toggle(spoller) {
+            const content = spoller.querySelector('.bank-offer__spoller-content');
+            if (!spoller.classList.contains('_active')) {
+                spoller.classList.add('_active');
+                content.removeAttribute('hidden');
+            } else {
+                spoller.classList.remove('_active');
+                content.setAttribute('hidden', '');
+            }
+        }
+
+
+    }
+}
+
+
+
 function numberToNumberPrc(number) {
     number = number.replace('.', ',');
     return `${number}%`;
@@ -191,5 +224,3 @@ function numberPrcToNumber(number) {
     const result = +Number(number.replace('%', '').replace(',', '.'));
     return result;
 }
-
-export default bankOffer;

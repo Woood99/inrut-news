@@ -151,7 +151,8 @@ const entries = {
     'investments': './src/js/investments.js',
     'program': './src/js/program.js',
     'quiz': './src/js/quiz.js',
-    'promo': './src/js/promo.js'
+    'mortgage': './src/js/mortgage.js',
+    'promo': './src/js/promo.js',
 }
 
 const scriptsDev = () => {

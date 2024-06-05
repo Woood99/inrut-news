@@ -398,7 +398,6 @@ function cardSliderMobile(cardImageWrapper, imagesBody, cardItems) {
     let perView = 1.12;
     body();
     window.addEventListener('resize', body);
-
     function body() {
         if (window.innerWidth <= 1212) {
             if (!cardImageWrapper.classList.contains('swiper-initialized')) {
@@ -411,10 +410,9 @@ function cardSliderMobile(cardImageWrapper, imagesBody, cardItems) {
                 cardImageWrapper.classList.add('swiper');
                 imagesBody.classList.add('swiper-wrapper');
                 cardItems.forEach(item => item.classList.add('swiper-slide'));
-
+                console.log('da');
                 slider = new Swiper(cardImageWrapper, {
                     observer: true,
-                    observeParents: true,
                     slidesPerView: perView,
                     spaceBetween: 8,
                     speed: 800,

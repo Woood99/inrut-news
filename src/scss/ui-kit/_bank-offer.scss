@@ -21,6 +21,23 @@
         align-items: center;
         gap: 40px;
     }
+    &__item{
+        &._discount{
+            >span{
+                &:nth-child(1){
+                    color: var(--blue);
+                    font-weight: 500;
+                }
+                &:nth-child(2){
+                    text-decoration: line-through;
+                    margin-left: 4px;
+                    color: var(--primaryTwo);
+                    font-size: var(--small-fz);
+                    line-height: var(--small-lh);
+                }
+            }
+        }
+    }
 
     &__icon {
         background-color: var(--white);
@@ -115,121 +132,54 @@
         border-bottom: 1px dotted var(--primary200);
         margin-bottom: 24px;
         padding-bottom: 24px;
-
-        &__title {}
-
-        &__descr {
-            margin-top: 8px;
-            font-size: var(--small-fz);
-            line-height: var(--small-lh);
-        }
-
-        &__btn {
-            margin-top: 8px;
-
-
+        .col {
+            margin-left: 24px;
             display: flex;
             align-items: center;
-            color: var(--blue);
-            font-size: var(--small-fz);
-            line-height: 1;
 
+            >span {
+                margin-right: 24px;
+                transition: color $transitionSpeed $transitionFunction,
+                    opacity $transitionSpeed $transitionFunction;
+                opacity: 0.65;
 
-            svg {
-                margin-left: 5px;
-                width: 20px;
-                height: 20px;
-                fill: currentColor;
-                transition: transform $transitionSpeedFast $transitionFunction;
-            }
+                font-weight: 500;
+                font-size: var(--small-fz);
+                line-height: var(--small-lh);
 
-            &._active {
-                svg {
-                    transform: rotate(-180deg);
-                }
-            }
-
-        }
-
-        .col {
-            &:nth-child(2) {
-                margin-left: 24px;
-                display: flex;
-                align-items: center;
-
-                >span {
-                    margin-right: 24px;
-                    transition: color $transitionSpeed $transitionFunction,
-                        opacity $transitionSpeed $transitionFunction;
-                    opacity: 0.65;
-
-                    font-weight: 500;
-                    font-size: var(--small-fz);
-                    line-height: var(--small-lh);
-
-                    &._active {
-                        opacity: 1;
-                        color: var(--blue);
-                    }
+                &._active {
+                    opacity: 1;
+                    color: var(--blue);
                 }
             }
         }
-
     }
 
-    &__add-info {
-        box-shadow: var(--shadow-primary);
+    &__more-btn{
         margin-top: 8px;
-        border-radius: 12px;
 
-        &._active {
-            padding: 16px 16px 24px;
 
-            .bank-offer__add-info-top {
-                background-color: var(--stand-bg);
-                box-shadow: var(--shadow-primary);
-            }
-
-            .bank-offer__add-info-content {
-                margin: 24px 8px 0;
-            }
-
-            .bank-offer__check {
-                svg {
-                    transform: rotate(-180deg);
-                }
-            }
-        }
-
-    }
-
-    &__add-info-top {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        color: var(--blue);
+        font-size: var(--small-fz);
+        line-height: 1;
 
-        cursor: pointer;
-        padding: 16px 24px;
-    }
 
-    &__add-info-content {
-        margin-top: 8px;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 16px;
-        padding: 0;
+        svg {
+            margin-left: 5px;
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            transition: transform $transitionSpeedFast $transitionFunction;
+        }
 
-        >div {
-            background-color: var(--primary100);
-            color: var(--dark);
-            padding: 24px;
-            border-radius: 12px;
-            font-size: var(--small-fz);
-            line-height: var(--small-lh);
+        &._active {
+            svg {
+                transform: rotate(-180deg);
+            }
         }
     }
-
-
 
     &__close {
         margin-left: auto;

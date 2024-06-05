@@ -3,6 +3,11 @@ import {
     validateCreateError
 } from './formValidate';
 import numberReplace from "../modules/numberReplace";
+import debounce from '../functions/debounce';
+
+import noUiSlider from "nouislider";
+import Cleave from 'cleave.js';
+
 
 export const mortgageCalc = (container) => {
     if (!container) return;
@@ -11,12 +16,25 @@ export const mortgageCalc = (container) => {
 
     class MortgageCalc {
         constructor() {
-            this.data = new Data();
-            this.programs(this.data.getData());
+            this.dataClass = new Data();
+            this.data = this.dataClass.getData();
+            this.dataClass.setData({});
+
+            this.programs(this.data);
+            this.maternalCapital();
+            this.updateResultsView();
+
+            this.initFields();
+
             document.addEventListener('mortgageCalcFormUpdate', (e) => {
-                this.data.setData(e.detail);
-                console.log(this.data);
+                this.dataClass.setData(e.detail);
+                this.data = this.dataClass.getData();
+
+                this.updateFormAndSliders(this.data);
+                this.updateResultsView();
+                // console.log(this.data);
             })
+
         }
 
         programs() {
@@ -25,14 +43,99 @@ export const mortgageCalc = (container) => {
                 const btn = target.closest('[data-mortgage-btn]');
                 if (!btn) return;
 
-               this.data.btns.forEach(btn => btn.classList.remove('_active'));
-               btn.classList.add('_active');
+                this.dataClass.btns.forEach(btn => btn.classList.remove('_active'));
+                btn.classList.add('_active');
 
                 updateForm(btn, {
                     onUpdate: 'changeProgram',
-                    selectedProgram: btn.dataset.mortgageBtn.trim()
+                    selectedProgram: {
+                        name: btn.dataset.mortgageBtn.split(',')[0].trim(),
+                        value: +btn.dataset.mortgageBtn.split(',')[1].trim()
+                    }
                 });
             })
+        }
+
+        initFields() {
+            const costInputEl = container.querySelector('[data-mortgage="cost-input"]');
+            const costRangeEl = container.querySelector('[data-mortgage="cost-range"]');
+            this.costInput = costInput(this.data, costInputEl);
+            this.costRange = costRange(this.data, costRangeEl);
+
+
+            const termInputEl = container.querySelector('[data-mortgage="term-input"]');
+            const termRangeEl = container.querySelector('[data-mortgage="term-range"]');
+            this.termInput = termInput(this.data, termInputEl);
+            this.termRange = termRange(this.data, termRangeEl);
+
+            const paymentInputEl = container.querySelector('[data-mortgage="payment-input"]');
+            const paymentRangeEl = container.querySelector('[data-mortgage="payment-range"]');
+            this.paymentInput = paymentInput(this.dataClass, paymentInputEl);
+            this.paymentRange = paymentRange(this.dataClass, paymentRangeEl);
+        }
+
+        updateFormAndSliders(data) {
+            if (this.data.onUpdate !== 'costInput') {
+                this.costInput.setRawValue(data.cost);
+            }
+
+            if (this.data.onUpdate !== 'costRange') {
+                this.costRange.noUiSlider.set(data.cost);
+            }
+
+            if (this.data.onUpdate !== 'termInput') {
+                this.termInput.setRawValue(data.time);
+            }
+
+            if (this.data.onUpdate !== 'termRange') {
+                this.termRange.noUiSlider.set(data.time);
+            }
+
+
+
+            if (this.data.onUpdate !== 'paymentInput') {
+                this.paymentInput.setRawValue(Math.round(data.payment));
+            }
+
+            if (this.data.onUpdate !== 'paymentRange') {
+                this.paymentRange.noUiSlider.set(data.paymentPrc * 100);
+            }
+
+
+        }
+
+        updateResultsView() {
+            const programPrc = container.querySelector('[data-mortgage="program-prc"]');
+            if (programPrc) {
+                programPrc.textContent = `${this.data.selectedProgram.value * 100}%`;
+            }
+
+            const paymentPrc = container.querySelector('[data-mortgage="payment-prc"]');
+            if (paymentPrc) {
+                paymentPrc.textContent = `${Math.round(this.data.paymentPrc * 100)}%`;
+            }
+
+
+        }
+
+
+        maternalCapital() {
+            const checkbox = container.querySelector('[data-mortgage="maternal-capital-checkbox"]');
+            const input = container.querySelector('[data-mortgage="maternal-capital-input"]');
+            if (!(checkbox && input)) return;
+            checkbox.addEventListener('change', handlerToggleInput.bind(this));
+
+            function handlerToggleInput() {
+                if (checkbox.checked) {
+                    input.removeAttribute('hidden');
+                } else {
+                    input.setAttribute('hidden', '');
+                }
+                updateForm(checkbox, {
+                    maternalCapitalStatus: !this.data.maternalCapitalStatus,
+                    onUpdate: 'maternalCapital'
+                });
+            }
         }
     }
 
@@ -41,13 +144,13 @@ export const mortgageCalc = (container) => {
         constructor() {
             this.data = {
                 selectedProgram: null,
-                cost: 12000000,
+                cost: 10000000,
                 minPrice: 375000,
                 maxPrice: 100000000,
                 paymentPrc: 0.5,
                 minPaymentPrc: 0.15,
                 maxPaymentPrc: 0.9,
-                payment: 6000000,
+                payment: 0,
                 getMinPayment: function() {
                     return this.cost * this.minPaymentPrc;
                 },
@@ -58,7 +161,13 @@ export const mortgageCalc = (container) => {
                 minYear: 1,
                 maxYear: 30,
                 time: 10,
+
+                setDefaultPayment() {
+                    this.payment = this.cost * this.paymentPrc;
+                },
+                maternalCapitalStatus: false,
             };
+            this.data.setDefaultPayment();
 
             this.btns = Array.from(container.querySelectorAll('[data-mortgage-btn]'));
             this.data.programs = this.btns.reduce((acc, item) => {
@@ -69,34 +178,318 @@ export const mortgageCalc = (container) => {
                 }
             }, {})
 
+            const activeBtn = this.btns.find(btn => btn.classList.contains('_active'));
 
-           this.data.selectedProgram = this.btns.find(btn => btn.classList.contains('_active')).dataset.mortgageBtn.trim();
+            this.data.selectedProgram = {
+                name: activeBtn.dataset.mortgageBtn.split(',')[0].trim(),
+                value: +activeBtn.dataset.mortgageBtn.split(',')[1].trim()
+            };
         }
 
         getData() {
             return { ...this.data };
         }
+
         setData(newData) {
+            if (newData.onUpdate === 'costInput' || newData.onUpdate === 'costRange') {
+
+                if (newData.cost < this.data.minPrice) {
+                    newData.cost = this.data.minPrice;
+                }
+
+                if (newData.cost > this.data.maxPrice) {
+                    newData.cost = this.data.maxPrice;
+                }
+
+                if (this.data.payment > this.data.maxPaymentPrc * newData.cost) {
+                    this.data.payment = this.data.maxPaymentPrc * newData.cost;
+                }
+
+                if (this.data.payment < this.data.minPaymentPrc * newData.cost) {
+                    this.data.payment = this.data.minPaymentPrc * newData.cost;
+                }
+
+                this.data.paymentPrc = (this.data.payment * 100) / newData.cost / 100; 
+
+                if (this.getData().paymentPrc > this.getData().maxPaymentPrc) {
+                    this.data.paymentPrc = this.getData().maxPaymentPrc;
+                }
+                
+                if (this.getData().paymentPrc < this.getData().minPaymentPrc) {
+                    this.data.paymentPrc = this.getData().minPaymentPrc;
+                }
+
+                // if (this.getData().payment > this.getData().getMaxPayment()) {
+                //     this.data.payment = this.getData().getMaxPayment();
+                // }
+
+                // if (this.getData().payment < this.getData().getMinPayment()) {
+                //     this.data.payment = this.getData().getMinPayment();
+                // }
+
+                // this.data.paymentPrc = (this.getData().payment * 100) / newData.cost / 100;
+
+
+            
+
+              
+
+            }
+
+            if (newData.onUpdate === 'termInput') {
+                if (newData.time > this.data.maxYear) {
+                    newData.time = this.data.maxYear;
+                }
+                if (newData.time < this.data.minYear) {
+                    newData.time = this.data.minYear;
+                }
+            }
+
+
+
+            if (newData.onUpdate === 'paymentInput') {
+                newData.paymentPrc = (newData.payment * 100) / this.data.cost / 100;
+
+                if (newData.paymentPrc > this.data.maxPaymentPrc) {
+                    newData.paymentPrc = this.data.maxPaymentPrc;
+                    newData.payment = this.data.cost * this.data.maxPaymentPrc;
+                }
+                if (newData.paymentPrc < this.data.minPaymentPrc) {
+                    newData.paymentPrc = this.data.minPaymentPrc;
+                    newData.payment = this.data.cost * this.data.minPaymentPrc;
+                }
+            }
+
+            if (newData.onUpdate === 'paymentRange') {
+                newData.paymentPrc = newData.paymentPrc / 100;
+                this.data.payment = this.data.cost * newData.paymentPrc;
+            }
+
+
+
             this.data = {
                 ...this.data,
                 ...newData
             }
         }
-    }
 
-
-    
-    function updateForm(element, data) {
-        element.dispatchEvent(new CustomEvent('mortgageCalcFormUpdate', {
-            bubbles: true,
-            detail: {
-                ...data
-            },
-        }))
     }
 
     return new MortgageCalc();
 };
+
+
+function costInput(data, el) {
+    if (!el) return;
+
+    const cleaveInput = new Cleave(el, settingsCleaveInput);
+    cleaveInput.setRawValue(data.cost);
+
+    el.addEventListener('input', inputUpdateModel);
+    el.addEventListener('change', handleInputChange);
+
+    function handleInputChange() {
+        const value = +cleaveInput.getRawValue();
+
+        if (value > data.maxPrice) {
+            cleaveInput.setRawValue(data.maxPrice);
+        }
+
+        if (value < data.minPrice) {
+            cleaveInput.setRawValue(data.minPrice);
+        }
+
+        inputUpdateModel();
+    }
+
+    function inputUpdateModel() {
+        updateForm(el, {
+            cost: +cleaveInput.getRawValue(),
+            onUpdate: 'costInput'
+        });
+    }
+
+    return cleaveInput;
+}
+
+function costRange(data, el) {
+    if (!el) return;
+
+    noUiSlider.create(el, {
+        start: data.cost,
+        connect: 'lower',
+        step: 100000,
+        range: {
+            min: data.minPrice,
+            '1%': [400000, 100000],
+            '50%': [10000000, 500000],
+            max: data.maxPrice
+        },
+    });
+
+    el.noUiSlider.on('slide', function() {
+        const sliderValue = parseInt(String(this.get().split('.')[0].replace(/ /g, '')));
+        updateForm(el, {
+            cost: sliderValue,
+            onUpdate: 'costRange',
+        });
+    })
+
+    return el;
+}
+
+
+function termInput(data, el) {
+    if (!el) return;
+
+    const cleaveInput = new Cleave(el, settingsCleaveInput);
+    cleaveInput.setRawValue(data.time);
+
+    el.addEventListener('input', inputUpdateModel);
+    el.addEventListener('change', handleInputChange);
+
+    function handleInputChange() {
+        const value = +cleaveInput.getRawValue();
+
+        if (value > data.maxYear) {
+            cleaveInput.setRawValue(data.maxYear);
+        }
+
+        if (value < data.minYear) {
+            cleaveInput.setRawValue(data.minYear);
+        }
+
+        inputUpdateModel();
+    }
+
+    function inputUpdateModel() {
+        updateForm(el, {
+            time: +cleaveInput.getRawValue(),
+            onUpdate: 'termInput'
+        });
+    }
+
+    return cleaveInput;
+}
+
+function termRange(data, el) {
+    if (!el) return;
+
+    noUiSlider.create(el, {
+        start: data.time,
+        connect: 'lower',
+        step: 1,
+        range: {
+            min: data.minYear,
+            max: data.maxYear
+        },
+    });
+
+    el.noUiSlider.on('slide', function() {
+        const sliderValue = parseInt(String(this.get().split('.')[0].replace(/ /g, '')));
+
+        updateForm(el, {
+            time: sliderValue,
+            onUpdate: 'termRange',
+        });
+
+    })
+
+    return el;
+}
+
+function paymentInput(data, el) {
+    if (!el) return;
+
+    const cleaveInput = new Cleave(el, settingsCleaveInput);
+    cleaveInput.setRawValue(data.getData().payment);
+
+    el.addEventListener('input', inputUpdateModel);
+    el.addEventListener('change', handleInputChange);
+
+    function handleInputChange() {
+        const value = +cleaveInput.getRawValue();
+
+        if (value > data.getData().getMaxPayment()) {
+            cleaveInput.setRawValue(data.getData().getMaxPayment());
+        }
+
+        if (value < data.getData().getMaxPayment()) {
+            cleaveInput.setRawValue(data.getData().getMinPayment());
+        }
+
+        inputUpdateModel();
+    }
+
+    function inputUpdateModel() {
+        updateForm(el, {
+            payment: +cleaveInput.getRawValue(),
+            onUpdate: 'paymentInput'
+        });
+    }
+
+    return cleaveInput;
+
+}
+
+function paymentRange(data, el) {
+    if (!el) return;
+
+    noUiSlider.create(el, {
+        start: data.getData().paymentPrc * 100,
+        connect: 'lower',
+        step: 1,
+        range: {
+            min: data.getData().minPaymentPrc * 100,
+            max: data.getData().maxPaymentPrc * 100,
+        },
+    });
+
+    el.noUiSlider.on('slide', function() {
+        const sliderValue = parseInt(String(this.get().split('.')[0].replace(/ /g, '')));
+
+        updateForm(el, {
+            paymentPrc: sliderValue,
+            onUpdate: 'paymentRange',
+        });
+
+    })
+
+    return el;
+}
+
+
+
+
+function updateForm(element, data) {
+    element.dispatchEvent(new CustomEvent('mortgageCalcFormUpdate', {
+        bubbles: true,
+        detail: {
+            ...data
+        },
+    }))
+}
+
+
+
+
+
+
+const settingsCleaveInput = {
+    numeral: true,
+    numeralThousandsGroupStyle: 'thousand',
+    delimiter: ' '
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -503,9 +503,8 @@ function initSliders() {
             const count = el.closest('.home__ribbon') ? 3 : 2;
             const slider = new Swiper(el, {
                 observer: true,
-                observeParents: true,
                 slidesPerView: 1.1,
-                spaceBetween: 16,
+                spaceBetween: 24,
                 speed: 800,
                 navigation: {
                     prevEl: el.querySelector('.nav-arrow-primary--prev'),
@@ -531,7 +530,6 @@ function initSliders() {
             const slider = new Swiper(el, {
                 observer: true,
                 lazy: true,
-                observeParents: true,
                 slidesPerView: 1,
                 spaceBetween: 0,
                 speed: 800,
@@ -1093,23 +1091,11 @@ function mainSlider() {
                 slidesPerView: 1,
                 spaceBetween: 15,
                 observer: true,
-                observeParents: true,
                 init: false,
                 navigation: {
                     prevEl: '.nav-arrow-primary--prev',
                     nextEl: '.nav-arrow-primary--next',
                 },
-                // pagination: {
-                //     el: '.pagination-primary',
-                //     type: 'fraction',
-                //     renderFraction: function(currentClass, totalClass) {
-                //         return `
-                //             <span class="${currentClass}"></span>
-                //             <span class="swiper-pagination-word">из</span>
-                //             <span class="${totalClass}"></span>
-                //             `;
-                //     }
-                // },
             })
             slider.on("slideChange afterInit init", function() {
                 const counterEl = item.querySelector('.main-slider__counter');
@@ -1132,7 +1118,6 @@ function mainSlider() {
             slidesPerView: slidesPerView,
             spaceBetween: 5,
             observer: true,
-            observeParents: true,
             freeMode: true,
             watchSlidesVisibility: true,
             watchSlidesProgress: true,

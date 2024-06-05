@@ -181,18 +181,41 @@ export const bankOffer2 = () => {
 
 
 export const bankOffer = (item) => {
+    if (!item) return;
+
+    const newPrcEl = item.querySelector('[data-bank-offer-new-prc]');
+    const defaultPrcEl = item.querySelector('[data-bank-offer-default-prc]');
+    const defaultPrc = fixedNumber(defaultPrcEl.textContent);
+
+    let discount = 0;
+
+    updateTopInfo();
     item.addEventListener('click', handleClickSpollerBtn);
+    item.addEventListener('change', updateTopInfo);
 
 
     function handleClickSpollerBtn(e) {
         const target = e.target;
         const btn = target.closest('.bank-offer__spoller-btn');
         const close = target.closest('.bank-offer__close');
+        const moreBtn = target.closest('.bank-offer__more-btn');
         if (btn) {
             toggle(btn.closest('.bank-offer__spoller'));
         }
+
         if (close) {
             toggle(close.closest('.bank-offer__spoller'));
+        }
+
+        if (moreBtn) {
+            const content = moreBtn.parentNode.querySelector('.bank-offer__more');
+            if (!moreBtn.classList.contains('_active')) {
+                moreBtn.classList.add('_active');
+                content.removeAttribute('hidden');
+            } else {
+                moreBtn.classList.remove('_active');
+                content.setAttribute('hidden','');
+            }
         }
         
 
@@ -208,8 +231,36 @@ export const bankOffer = (item) => {
                 content.setAttribute('hidden', '');
             }
         }
+    }
 
 
+    function updateTopInfo() {
+        discount = 0;
+        newPrcEl.textContent = '';
+        defaultPrcEl.textContent = `${defaultPrc}%`;
+
+        const inputsDown = item.querySelectorAll('[data-bank-offer-input-down]');
+
+        inputsDown.forEach(input => {
+            if (input.checked) {
+                const value = input.dataset.bankOfferInputDown;
+                discount+= +Number(value).toFixed(1);
+            }
+        })
+
+        if (discount != 0) {
+            newPrcEl.removeAttribute('hidden');
+            newPrcEl.textContent = `${(defaultPrc - discount).toFixed(1)}%`;
+            newPrcEl.parentNode.classList.add('_discount');
+        } else {
+            newPrcEl.setAttribute('hidden','');
+            newPrcEl.parentNode.classList.remove('_discount');
+        }
+
+    }
+
+    function fixedNumber(number) {
+        return Number(number.replace('%', '').replace(',', '.')).toFixed(1);
     }
 }
 

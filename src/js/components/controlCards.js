@@ -151,6 +151,7 @@ export const controlCardsCardSecondary = (content, btn) => {
         const options = card.querySelector('.card-secondary__options');
 
         const pricesMain = card.querySelector('.card-secondary__prices--1');
+        if (window.innerWidth <= 1212) return;
         if (favorite && bottomMobile) {
             if (checkVertical(btn)) {
                 if (!bottomMobile.querySelector('.card-secondary__info--favorite')) {

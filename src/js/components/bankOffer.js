@@ -257,14 +257,16 @@ export const bankOffer = (item) => {
             newPrcEl.parentNode.classList.remove('_discount');
         }
 
-    }
-
-    function fixedNumber(number) {
-        return Number(number.replace('%', '').replace(',', '.')).toFixed(1);
+        item.dispatchEvent(new CustomEvent('mortgageCalcFormUpdate', {
+                bubbles: true,
+                detail: {},
+            }))
     }
 }
 
-
+export function fixedNumber(number) {
+    return Number(number.replace('%', '').replace(',', '.')).toFixed(1);
+}
 
 function numberToNumberPrc(number) {
     number = number.replace('.', ',');

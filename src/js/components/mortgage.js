@@ -3,7 +3,7 @@ import {
     validateCreateError
 } from './formValidate';
 import numberReplace from "../modules/numberReplace";
-import debounce from '../functions/debounce';
+import { fixedNumber } from './bankOffer';
 
 import noUiSlider from "nouislider";
 import Cleave from 'cleave.js';
@@ -20,19 +20,24 @@ export const mortgageCalc = (container) => {
             this.data = this.dataClass.getData();
             this.dataClass.setData({});
 
+            this.results = this.dataClass.getResults();
+
             this.programs(this.data);
             this.maternalCapital();
             this.updateResultsView();
+            this.updateBanks();
 
             this.initFields();
 
             document.addEventListener('mortgageCalcFormUpdate', (e) => {
                 this.dataClass.setData(e.detail);
                 this.data = this.dataClass.getData();
+                this.results = this.dataClass.getResults();
 
                 this.updateFormAndSliders(this.data);
                 this.updateResultsView();
-                // console.log(this.data);
+                this.updateBanks();
+                console.log(this.data);
             })
 
         }
@@ -118,7 +123,6 @@ export const mortgageCalc = (container) => {
 
         }
 
-
         maternalCapital() {
             const checkbox = container.querySelector('[data-mortgage="maternal-capital-checkbox"]');
             const input = container.querySelector('[data-mortgage="maternal-capital-input"]');
@@ -135,6 +139,40 @@ export const mortgageCalc = (container) => {
                     maternalCapitalStatus: !this.data.maternalCapitalStatus,
                     onUpdate: 'maternalCapital'
                 });
+            }
+        }
+
+        updateBanks() {
+            const banks = container.querySelectorAll('.bank-offer');
+            banks.forEach(bank => {
+                updateBank.call(this,bank);
+            })
+
+            function updateBank(bank) {
+           
+
+                const termEl = bank.querySelector('[data-bank-offer="term"]');
+                const sumEl = bank.querySelector('[data-bank-offer="sum"]');
+
+                const paymentEl = bank.querySelector('[data-bank-offer="payment"]');
+                let programPrc = bank.querySelector('[data-bank-offer-new-prc]').textContent || bank.querySelector('[data-bank-offer-default-prc]').textContent;
+                programPrc = fixedNumber(programPrc);
+
+                const results = {...this.dataClass.getResults(),...getResultsOnBank(this.dataClass.getResults(),programPrc)};
+                sumEl.textContent = `${numberReplace(results.totalAmount)} ₽`;
+                termEl.textContent = `${results.term} лет`;
+                paymentEl.textContent = `${numberReplace(results.monthPayment)} ₽`;
+            }
+
+            function getResultsOnBank({term,totalAmount},programPrc) {
+                const months = term * 12;
+                 const monthRate = (programPrc / 100) / 12;
+                 const generalRate = (1 + monthRate) ** months;
+                const monthPayment = (totalAmount * monthRate * generalRate) / (generalRate - 1);
+
+                return {
+                     monthPayment
+                }
             }
         }
     }
@@ -167,6 +205,9 @@ export const mortgageCalc = (container) => {
                 },
                 maternalCapitalStatus: false,
             };
+            this.results = {};
+
+
             this.data.setDefaultPayment();
 
             this.btns = Array.from(container.querySelectorAll('[data-mortgage-btn]'));
@@ -184,6 +225,11 @@ export const mortgageCalc = (container) => {
                 name: activeBtn.dataset.mortgageBtn.split(',')[0].trim(),
                 value: +activeBtn.dataset.mortgageBtn.split(',')[1].trim()
             };
+        }
+
+        
+        getResults() {
+            return { ...this.results }
         }
 
         getData() {
@@ -218,22 +264,6 @@ export const mortgageCalc = (container) => {
                 if (this.getData().paymentPrc < this.getData().minPaymentPrc) {
                     this.data.paymentPrc = this.getData().minPaymentPrc;
                 }
-
-                // if (this.getData().payment > this.getData().getMaxPayment()) {
-                //     this.data.payment = this.getData().getMaxPayment();
-                // }
-
-                // if (this.getData().payment < this.getData().getMinPayment()) {
-                //     this.data.payment = this.getData().getMinPayment();
-                // }
-
-                // this.data.paymentPrc = (this.getData().payment * 100) / newData.cost / 100;
-
-
-            
-
-              
-
             }
 
             if (newData.onUpdate === 'termInput') {
@@ -265,11 +295,16 @@ export const mortgageCalc = (container) => {
                 this.data.payment = this.data.cost * newData.paymentPrc;
             }
 
-
-
             this.data = {
                 ...this.data,
                 ...newData
+            }
+
+
+            this.results = {
+                cost: this.data.cost,
+                totalAmount: this.data.cost - this.data.payment,
+                term: this.data.time,
             }
         }
 
@@ -414,7 +449,7 @@ function paymentInput(data, el) {
             cleaveInput.setRawValue(data.getData().getMaxPayment());
         }
 
-        if (value < data.getData().getMaxPayment()) {
+        if (value < data.getData().getMinPayment()) {
             cleaveInput.setRawValue(data.getData().getMinPayment());
         }
 

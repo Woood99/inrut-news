@@ -1,7 +1,3 @@
-import {
-    validateRemoveError,
-    validateCreateError
-} from './formValidate';
 import numberReplace from "../modules/numberReplace";
 import { fixedNumber } from './bankOffer';
 
@@ -12,7 +8,32 @@ import Cleave from 'cleave.js';
 export const mortgageCalc = (container) => {
     if (!container) return;
 
-    // изменение цель кредита меняет программы
+    const targetCreditMap = {
+        'default': [
+            ['base', 'gov', 'it', 'military', 'family', 'rural'],
+            'base'
+        ],
+        'buildings': [
+            ['base', 'gov', 'it', 'military', 'family'],
+            'base'
+        ],
+        'secondary': [
+            ['base', 'military'],
+            'base'
+        ],
+        'house': [
+            ['base', 'gov', 'it', 'military', 'family', 'rural'],
+            ['family']
+        ],
+        'plots': [
+            ['base', 'gov', 'it', 'family', 'rural'],
+            'base'
+        ],
+        'commercial': [
+            ['base'],
+            'base'
+        ],
+    };
 
     class MortgageCalc {
         constructor() {
@@ -23,6 +44,7 @@ export const mortgageCalc = (container) => {
             this.results = this.dataClass.getResults();
 
             this.programs(this.data);
+            this.targetCreditChange(this.data);
             this.maternalCapital();
             this.updateResultsView();
             this.updateBanks();
@@ -37,7 +59,7 @@ export const mortgageCalc = (container) => {
                 this.updateFormAndSliders(this.data);
                 this.updateResultsView();
                 this.updateBanks();
-                console.log(this.data);
+                // console.log(this.data);
             })
 
         }
@@ -61,6 +83,38 @@ export const mortgageCalc = (container) => {
             })
         }
 
+        targetCreditChange() {
+            const targetCredit = container.querySelector('[data-mortgage-target-credit]');
+            targetCredit.addEventListener('change', (e) => {
+                let btnActive = null;
+                const value = e.detail.value;
+                this.dataClass.btns.forEach(btn => btn.setAttribute('hidden', ''));
+                this.dataClass.btns.forEach(btn => btn.classList.remove('_active'));
+                for (let key in targetCreditMap) {
+                    if (key === value) {
+                        const currentKey = targetCreditMap[key];
+                        this.dataClass.btns.forEach(btn => {
+                            const btnValue = btn.dataset.mortgageBtn.split(',')[0].trim();
+                            if (currentKey[0].includes(btnValue)) {
+                                btn.removeAttribute('hidden');
+                            }
+                            if (currentKey[1].includes(btnValue)) {
+                                btnActive = btn;
+                                btn.classList.add('_active');
+                            }
+                        });
+                    }
+                }
+                updateForm(btnActive, {
+                    onUpdate: 'changeProgram',
+                    selectedProgram: {
+                        name: btnActive.dataset.mortgageBtn.split(',')[0].trim(),
+                        value: +btnActive.dataset.mortgageBtn.split(',')[1].trim()
+                    }
+                });
+            })
+        }
+
         initFields() {
             const costInputEl = container.querySelector('[data-mortgage="cost-input"]');
             const costRangeEl = container.querySelector('[data-mortgage="cost-range"]');
@@ -77,6 +131,9 @@ export const mortgageCalc = (container) => {
             const paymentRangeEl = container.querySelector('[data-mortgage="payment-range"]');
             this.paymentInput = paymentInput(this.dataClass, paymentInputEl);
             this.paymentRange = paymentRange(this.dataClass, paymentRangeEl);
+
+            const matercalCapitalEl = container.querySelector('[data-mortgage="matercal-capital-input"]');
+            this.maternalCapitalInput = maternalCapitalInput(this.dataClass, matercalCapitalEl);
         }
 
         updateFormAndSliders(data) {
@@ -96,23 +153,53 @@ export const mortgageCalc = (container) => {
                 this.termRange.noUiSlider.set(data.time);
             }
 
-
-
             if (this.data.onUpdate !== 'paymentInput') {
                 this.paymentInput.setRawValue(Math.round(data.payment));
+            }
+
+            if (this.data.onUpdate === 'maternalCapitalCheckbox' && !this.data.maternalCapitalStatus) {
+                mortgageClass.paymentRange.noUiSlider.updateOptions({
+                    start: this.paymentRange.noUiSlider.set(0),
+                    range: {
+                        min: this.data.minPaymentPrc * 100,
+                        max: this.data.maxPaymentPrc * 100,
+                    }
+                })
+         
+                this.paymentInput.setRawValue(Math.round(data.payment));
+            }
+
+            if (this.data.onUpdate === 'maternalCapitalCheckbox' && this.data.maternalCapitalStatus) {
+                mortgageClass.paymentRange.noUiSlider.updateOptions({
+                    start: this.data.paymentPrc * 100,
+                    range: {
+                        min: this.data.maternalCapital / this.data.cost * 100,
+                        max: this.data.maxPaymentPrc * 100,
+                    }
+                })
+                this.maternalCapitalInput.setRawValue(this.data.maternalCapital);
+                this.maternalCapitalInput.element.closest('.input-text').classList.add('_active');
             }
 
             if (this.data.onUpdate !== 'paymentRange') {
                 this.paymentRange.noUiSlider.set(data.paymentPrc * 100);
             }
 
-
+            if (this.data.onUpdate === 'maternalCapitalInput') {
+                this.paymentRange.noUiSlider.updateOptions({
+                    start: this.data.paymentPrc * 100,
+                    range: {
+                        min: this.data.maternalCapital / this.data.cost * 100,
+                        max: this.data.maxPaymentPrc * 100,
+                    }
+                })
+            }    
         }
 
         updateResultsView() {
             const programPrc = container.querySelector('[data-mortgage="program-prc"]');
             if (programPrc) {
-                programPrc.textContent = `${this.data.selectedProgram.value * 100}%`;
+                programPrc.textContent = `${(this.data.selectedProgram.value * 100).toFixed(1)}%`;
             }
 
             const paymentPrc = container.querySelector('[data-mortgage="payment-prc"]');
@@ -120,63 +207,90 @@ export const mortgageCalc = (container) => {
                 paymentPrc.textContent = `${Math.round(this.data.paymentPrc * 100)}%`;
             }
 
+            const resultPrc = container.querySelector('[data-mortgage-result="prc"]');
+            if (resultPrc) {
+                resultPrc.textContent = `от ${(this.data.selectedProgram.value * 100).toFixed(1)}%`;
+            }
 
+            const resultPayment = container.querySelector('[data-mortgage-result="payment"]');
+            if (resultPayment) {
+                const months = this.results.term * 12;
+                const monthRate = this.data.selectedProgram.value / 12;
+                const generalRate = (1 + monthRate) ** months;
+                const monthPayment = (this.results.totalAmount * monthRate * generalRate) / (generalRate - 1);
+                resultPayment.textContent = `${numberReplace(Math.round(monthPayment))} ₽`;
+            }
+
+            const resultSum = container.querySelector('[data-mortgage-result="sum"]');
+            if (resultSum) {
+                resultSum.textContent = `${numberReplace(Math.round(this.results.totalAmount))} ₽`;
+            }
         }
 
         maternalCapital() {
             const checkbox = container.querySelector('[data-mortgage="maternal-capital-checkbox"]');
-            const input = container.querySelector('[data-mortgage="maternal-capital-input"]');
-            if (!(checkbox && input)) return;
+            const field = container.querySelector('[data-mortgage="maternal-capital-field"]');
+            if (!(checkbox && field)) return;
             checkbox.addEventListener('change', handlerToggleInput.bind(this));
 
             function handlerToggleInput() {
                 if (checkbox.checked) {
-                    input.removeAttribute('hidden');
+                    field.removeAttribute('hidden');
+                    updateForm(checkbox, {
+                        maternalCapitalStatus: true,
+                        maternalCapital: this.data.maternalCapitalMax,
+                        payment: this.data.maternalCapitalMax,
+                        paymentPrc: this.data.maternalCapitalMax / this.data.cost,
+                        onUpdate: 'maternalCapitalCheckbox'
+                    });
                 } else {
-                    input.setAttribute('hidden', '');
+                    field.setAttribute('hidden', '');
+                    updateForm(checkbox, {
+                        maternalCapitalStatus: false,
+                        payment: 0,
+                        paymentPrc: 0,
+                        onUpdate: 'maternalCapitalCheckbox'
+                    });
                 }
-                updateForm(checkbox, {
-                    maternalCapitalStatus: !this.data.maternalCapitalStatus,
-                    onUpdate: 'maternalCapital'
-                });
             }
         }
 
         updateBanks() {
             const banks = container.querySelectorAll('.bank-offer');
             banks.forEach(bank => {
-                updateBank.call(this,bank);
+                updateBank.call(this, bank);
             })
 
             function updateBank(bank) {
-           
+                const cashback = bank.querySelector('[data-bank-offer="cashback"]');
+                const currentCashback = bank.dataset.bankOfferCashback || 1;
 
                 const termEl = bank.querySelector('[data-bank-offer="term"]');
                 const sumEl = bank.querySelector('[data-bank-offer="sum"]');
-
                 const paymentEl = bank.querySelector('[data-bank-offer="payment"]');
                 let programPrc = bank.querySelector('[data-bank-offer-new-prc]').textContent || bank.querySelector('[data-bank-offer-default-prc]').textContent;
                 programPrc = fixedNumber(programPrc);
 
-                const results = {...this.dataClass.getResults(),...getResultsOnBank(this.dataClass.getResults(),programPrc)};
+                const results = { ...this.dataClass.getResults(), ...getResultsOnBank(this.dataClass.getResults(), programPrc) };
+
                 sumEl.textContent = `${numberReplace(results.totalAmount)} ₽`;
                 termEl.textContent = `${results.term} лет`;
                 paymentEl.textContent = `${numberReplace(results.monthPayment)} ₽`;
+                cashback.textContent = `${numberReplace(Math.round(results.totalAmount / 100 * currentCashback))} ₽`;
             }
 
-            function getResultsOnBank({term,totalAmount},programPrc) {
+            function getResultsOnBank({ term, totalAmount }, programPrc) {
                 const months = term * 12;
-                 const monthRate = (programPrc / 100) / 12;
-                 const generalRate = (1 + monthRate) ** months;
+                const monthRate = (programPrc / 100) / 12;
+                const generalRate = (1 + monthRate) ** months;
                 const monthPayment = (totalAmount * monthRate * generalRate) / (generalRate - 1);
 
                 return {
-                     monthPayment
+                    monthPayment
                 }
             }
         }
     }
-
 
     class Data {
         constructor() {
@@ -186,7 +300,7 @@ export const mortgageCalc = (container) => {
                 minPrice: 375000,
                 maxPrice: 100000000,
                 paymentPrc: 0.5,
-                minPaymentPrc: 0.15,
+                minPaymentPrc: 0,
                 maxPaymentPrc: 0.9,
                 payment: 0,
                 getMinPayment: function() {
@@ -204,6 +318,9 @@ export const mortgageCalc = (container) => {
                     this.payment = this.cost * this.paymentPrc;
                 },
                 maternalCapitalStatus: false,
+                maternalCapitalMin: 0,
+                maternalCapitalMax: 833024,
+                maternalCapital: 833024,
             };
             this.results = {};
 
@@ -227,7 +344,7 @@ export const mortgageCalc = (container) => {
             };
         }
 
-        
+
         getResults() {
             return { ...this.results }
         }
@@ -254,13 +371,12 @@ export const mortgageCalc = (container) => {
                 if (this.data.payment < this.data.minPaymentPrc * newData.cost) {
                     this.data.payment = this.data.minPaymentPrc * newData.cost;
                 }
-
-                this.data.paymentPrc = (this.data.payment * 100) / newData.cost / 100; 
+                this.data.paymentPrc = (this.data.payment * 100) / newData.cost / 100;
 
                 if (this.getData().paymentPrc > this.getData().maxPaymentPrc) {
                     this.data.paymentPrc = this.getData().maxPaymentPrc;
                 }
-                
+
                 if (this.getData().paymentPrc < this.getData().minPaymentPrc) {
                     this.data.paymentPrc = this.getData().minPaymentPrc;
                 }
@@ -274,8 +390,6 @@ export const mortgageCalc = (container) => {
                     newData.time = this.data.minYear;
                 }
             }
-
-
 
             if (newData.onUpdate === 'paymentInput') {
                 newData.paymentPrc = (newData.payment * 100) / this.data.cost / 100;
@@ -295,6 +409,37 @@ export const mortgageCalc = (container) => {
                 this.data.payment = this.data.cost * newData.paymentPrc;
             }
 
+            if (newData.onUpdate !== 'maternalCapitalInput') {
+                if (newData.maternalCapitalStatus || this.data.maternalCapitalStatus) {
+
+              
+                    if (newData.maternalCapital > this.data.maternalCapitalMax) {
+                        newData.maternalCapital = this.data.maternalCapitalMax;
+                     
+                    }
+                    if (newData.maternalCapital < this.data.maternalCapitalMin) {
+                        newData.maternalCapital = this.data.maternalCapitalMin;
+                    }
+
+                }
+            }
+
+            if ((newData.onUpdate === 'paymentRange' || newData.onUpdate === 'paymentInput') && this.data.maternalCapitalStatus) {
+                if (this.data.payment < this.data.maternalCapital) {
+                    this.data.payment = this.data.maternalCapital;
+                }
+            }
+
+            if (newData.onUpdate === 'maternalCapitalInput') {
+                newData.payment = newData.maternalCapital;
+                newData.paymentPrc = newData.maternalCapital / this.data.cost;
+
+                if (newData.payment > this.data.maternalCapitalMax) {
+                    newData.payment = this.data.maternalCapitalMax;
+                    newData.paymentPrc = this.data.maternalCapitalMax / this.data.cost;
+                }
+            }
+
             this.data = {
                 ...this.data,
                 ...newData
@@ -310,648 +455,237 @@ export const mortgageCalc = (container) => {
 
     }
 
-    return new MortgageCalc();
+
+    function costInput(data, el) {
+        if (!el) return;
+    
+        const cleaveInput = new Cleave(el, settingsCleaveInput);
+        cleaveInput.setRawValue(data.cost);
+    
+        el.addEventListener('input', inputUpdateModel);
+        el.addEventListener('change', handleInputChange);
+    
+        function handleInputChange() {
+            const value = +cleaveInput.getRawValue();
+    
+            if (value > data.maxPrice) {
+                cleaveInput.setRawValue(data.maxPrice);
+            }
+    
+            if (value < data.minPrice) {
+                cleaveInput.setRawValue(data.minPrice);
+            }
+    
+            inputUpdateModel();
+        }
+    
+        function inputUpdateModel() {
+            updateForm(el, {
+                cost: +cleaveInput.getRawValue(),
+                onUpdate: 'costInput'
+            });
+        }
+    
+        return cleaveInput;
+    }
+    
+    function costRange(data, el) {
+        if (!el) return;
+    
+        noUiSlider.create(el, {
+            start: data.cost,
+            connect: 'lower',
+            step: 100000,
+            range: {
+                min: data.minPrice,
+                '1%': [400000, 100000],
+                '50%': [10000000, 500000],
+                max: data.maxPrice
+            },
+        });
+    
+        el.noUiSlider.on('slide', function() {
+            const sliderValue = parseInt(String(this.get().split('.')[0].replace(/ /g, '')));
+            updateForm(el, {
+                cost: sliderValue,
+                onUpdate: 'costRange',
+            });
+        })
+    
+        return el;
+    }
+    
+    function termInput(data, el) {
+        if (!el) return;
+    
+        const cleaveInput = new Cleave(el, settingsCleaveInput);
+        cleaveInput.setRawValue(data.time);
+    
+        el.addEventListener('input', inputUpdateModel);
+        el.addEventListener('change', handleInputChange);
+    
+        function handleInputChange() {
+            const value = +cleaveInput.getRawValue();
+    
+            if (value > data.maxYear) {
+                cleaveInput.setRawValue(data.maxYear);
+            }
+    
+            if (value < data.minYear) {
+                cleaveInput.setRawValue(data.minYear);
+            }
+    
+            inputUpdateModel();
+        }
+    
+        function inputUpdateModel() {
+            updateForm(el, {
+                time: +cleaveInput.getRawValue(),
+                onUpdate: 'termInput'
+            });
+        }
+    
+        return cleaveInput;
+    }
+    
+    function termRange(data, el) {
+        if (!el) return;
+    
+        noUiSlider.create(el, {
+            start: data.time,
+            connect: 'lower',
+            step: 1,
+            range: {
+                min: data.minYear,
+                max: data.maxYear
+            },
+        });
+    
+        el.noUiSlider.on('slide', function() {
+            const sliderValue = parseInt(String(this.get().split('.')[0].replace(/ /g, '')));
+    
+            updateForm(el, {
+                time: sliderValue,
+                onUpdate: 'termRange',
+            });
+    
+        })
+    
+        return el;
+    }
+    
+    function paymentInput(data, el) {
+        if (!el) return;
+    
+        const cleaveInput = new Cleave(el, settingsCleaveInput);
+        cleaveInput.setRawValue(data.getData().payment);
+    
+        el.addEventListener('input', inputUpdateModel);
+        el.addEventListener('change', handleInputChange);
+    
+        function handleInputChange() {
+            const value = +cleaveInput.getRawValue();
+    
+            if (value > data.getData().getMaxPayment()) {
+                cleaveInput.setRawValue(data.getData().getMaxPayment());
+            }
+    
+            if (value < data.getData().getMinPayment()) {
+                cleaveInput.setRawValue(data.getData().getMinPayment());
+            }
+    
+            if (value < data.getData().maternalCapital && data.getData().maternalCapitalStatus) {
+                cleaveInput.setRawValue(data.getData().maternalCapital);
+            }
+    
+            inputUpdateModel();
+        }
+    
+        function inputUpdateModel() {
+            updateForm(el, {
+                payment: +cleaveInput.getRawValue(),
+                onUpdate: 'paymentInput'
+            });
+        }
+    
+        return cleaveInput;
+    }
+    
+    function paymentRange(data, el) {
+        if (!el) return;
+        noUiSlider.create(el, {
+            start: data.getData().paymentPrc * 100,
+            connect: 'lower',
+            step: 1,
+            range: {
+                min: data.getData().minPaymentPrc * 100,
+                max: data.getData().maxPaymentPrc * 100,
+            },
+        });
+    
+        el.noUiSlider.on('slide', function() {
+            const sliderValue = parseInt(String(this.get().split('.')[0].replace(/ /g, '')));
+    
+            updateForm(el, {
+                paymentPrc: sliderValue,
+                onUpdate: 'paymentRange',
+            });
+    
+        })
+    
+        return el;
+    }
+    
+    function maternalCapitalInput(data, el) {
+        if (!el) return;
+    
+        const cleaveInput = new Cleave(el, settingsCleaveInput);
+        cleaveInput.setRawValue(data.getData().maternalCapital);
+    
+        el.addEventListener('input', inputUpdateModel);
+        el.addEventListener('change', handleInputChange);
+        function handleInputChange() {
+            const value = +cleaveInput.getRawValue();
+    
+            if (value > data.getData().maternalCapitalMax) {
+                cleaveInput.setRawValue(data.getData().maternalCapitalMax);
+            }
+            if (value < data.getData().maternalCapitalMin) {
+                cleaveInput.setRawValue(data.getData().maternalCapitalMin);
+            }
+    
+            inputUpdateModel();
+        }
+    
+        function inputUpdateModel() {
+            updateForm(el, {
+                maternalCapital: +cleaveInput.getRawValue(),
+                onUpdate: 'maternalCapitalInput'
+            });
+        }
+    
+        return cleaveInput;
+    }
+    
+    function updateForm(element, data) {
+        element.dispatchEvent(new CustomEvent('mortgageCalcFormUpdate', {
+            bubbles: true,
+            detail: {
+                ...data
+            },
+        }))
+    }
+    
+    
+    const settingsCleaveInput = {
+        numeral: true,
+        numeralThousandsGroupStyle: 'thousand',
+        delimiter: ' '
+    }
+
+    const mortgageClass = new MortgageCalc();
+
+    return mortgageClass;
 };
 
 
-function costInput(data, el) {
-    if (!el) return;
-
-    const cleaveInput = new Cleave(el, settingsCleaveInput);
-    cleaveInput.setRawValue(data.cost);
-
-    el.addEventListener('input', inputUpdateModel);
-    el.addEventListener('change', handleInputChange);
-
-    function handleInputChange() {
-        const value = +cleaveInput.getRawValue();
-
-        if (value > data.maxPrice) {
-            cleaveInput.setRawValue(data.maxPrice);
-        }
-
-        if (value < data.minPrice) {
-            cleaveInput.setRawValue(data.minPrice);
-        }
-
-        inputUpdateModel();
-    }
-
-    function inputUpdateModel() {
-        updateForm(el, {
-            cost: +cleaveInput.getRawValue(),
-            onUpdate: 'costInput'
-        });
-    }
-
-    return cleaveInput;
-}
-
-function costRange(data, el) {
-    if (!el) return;
-
-    noUiSlider.create(el, {
-        start: data.cost,
-        connect: 'lower',
-        step: 100000,
-        range: {
-            min: data.minPrice,
-            '1%': [400000, 100000],
-            '50%': [10000000, 500000],
-            max: data.maxPrice
-        },
-    });
-
-    el.noUiSlider.on('slide', function() {
-        const sliderValue = parseInt(String(this.get().split('.')[0].replace(/ /g, '')));
-        updateForm(el, {
-            cost: sliderValue,
-            onUpdate: 'costRange',
-        });
-    })
-
-    return el;
-}
-
-
-function termInput(data, el) {
-    if (!el) return;
-
-    const cleaveInput = new Cleave(el, settingsCleaveInput);
-    cleaveInput.setRawValue(data.time);
-
-    el.addEventListener('input', inputUpdateModel);
-    el.addEventListener('change', handleInputChange);
-
-    function handleInputChange() {
-        const value = +cleaveInput.getRawValue();
-
-        if (value > data.maxYear) {
-            cleaveInput.setRawValue(data.maxYear);
-        }
-
-        if (value < data.minYear) {
-            cleaveInput.setRawValue(data.minYear);
-        }
-
-        inputUpdateModel();
-    }
-
-    function inputUpdateModel() {
-        updateForm(el, {
-            time: +cleaveInput.getRawValue(),
-            onUpdate: 'termInput'
-        });
-    }
-
-    return cleaveInput;
-}
-
-function termRange(data, el) {
-    if (!el) return;
-
-    noUiSlider.create(el, {
-        start: data.time,
-        connect: 'lower',
-        step: 1,
-        range: {
-            min: data.minYear,
-            max: data.maxYear
-        },
-    });
-
-    el.noUiSlider.on('slide', function() {
-        const sliderValue = parseInt(String(this.get().split('.')[0].replace(/ /g, '')));
-
-        updateForm(el, {
-            time: sliderValue,
-            onUpdate: 'termRange',
-        });
-
-    })
-
-    return el;
-}
-
-function paymentInput(data, el) {
-    if (!el) return;
-
-    const cleaveInput = new Cleave(el, settingsCleaveInput);
-    cleaveInput.setRawValue(data.getData().payment);
-
-    el.addEventListener('input', inputUpdateModel);
-    el.addEventListener('change', handleInputChange);
-
-    function handleInputChange() {
-        const value = +cleaveInput.getRawValue();
-
-        if (value > data.getData().getMaxPayment()) {
-            cleaveInput.setRawValue(data.getData().getMaxPayment());
-        }
-
-        if (value < data.getData().getMinPayment()) {
-            cleaveInput.setRawValue(data.getData().getMinPayment());
-        }
-
-        inputUpdateModel();
-    }
-
-    function inputUpdateModel() {
-        updateForm(el, {
-            payment: +cleaveInput.getRawValue(),
-            onUpdate: 'paymentInput'
-        });
-    }
-
-    return cleaveInput;
-
-}
-
-function paymentRange(data, el) {
-    if (!el) return;
-
-    noUiSlider.create(el, {
-        start: data.getData().paymentPrc * 100,
-        connect: 'lower',
-        step: 1,
-        range: {
-            min: data.getData().minPaymentPrc * 100,
-            max: data.getData().maxPaymentPrc * 100,
-        },
-    });
-
-    el.noUiSlider.on('slide', function() {
-        const sliderValue = parseInt(String(this.get().split('.')[0].replace(/ /g, '')));
-
-        updateForm(el, {
-            paymentPrc: sliderValue,
-            onUpdate: 'paymentRange',
-        });
-
-    })
-
-    return el;
-}
-
-
-
-
-function updateForm(element, data) {
-    element.dispatchEvent(new CustomEvent('mortgageCalcFormUpdate', {
-        bubbles: true,
-        detail: {
-            ...data
-        },
-    }))
-}
-
-
-
-
-
-
-const settingsCleaveInput = {
-    numeral: true,
-    numeralThousandsGroupStyle: 'thousand',
-    delimiter: ' '
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-// export const mortgage = () => {
-//     const containerOne = document.querySelector('.object-calc-mort--one');
-//     const popupContainerOne = document.querySelector('.popup-primary--interest-rate-1 .interest-rate');
-
-//     const containerAdd = document.querySelector('.object-calc-mort--add');
-//     const popupContainerAdd = document.querySelector('.popup-primary--interest-rate-2 .interest-rate--add');
-
-//     const siteContainer = document.querySelector('.site-container--mortgage');
-//     const selectBank = document.querySelector('.select-bank');
-
-//     if (containerAdd && popupContainerAdd) {
-//         const list = containerAdd.querySelector('.object-calc-mort__list');
-//         const listPopup = popupContainerAdd.querySelector('.interest-rate__wrapper');
-//         const items = list.querySelectorAll('[data-mortgage-card]');
-//         const itemsPopup = listPopup.querySelectorAll('[data-mortgage-card]');
-//         const textPrc = containerAdd.querySelector('.field-static__text');
-
-//         list.addEventListener('click', (e) => {
-//             toggleClass(e, items, itemsPopup, items);
-//         })
-
-//         listPopup.addEventListener('click', (e) => {
-//             toggleClass(e, itemsPopup, items, items);
-//         })
-
-//         function toggleClass(e, containerOne, containerTwo, container) {
-//             const target = e.target ? e.target : e;
-//             const item = target.closest('[data-mortgage-card]');
-//             if (!item) return;
-//             containerOne.forEach(item => item.classList.remove('_active'));
-//             item.classList.add('_active');
-//             containerTwo.forEach(el => {
-//                 +item.dataset.mortgageCard === +el.dataset.mortgageCard ? el.classList.add('_active') : el.classList.remove('_active');
-//             });
-//             container.forEach(el => {
-//                 if (+item.dataset.mortgageCard === +el.dataset.mortgageCard) {
-//                     const prc = el.querySelector('span:nth-child(2)').textContent;
-//                     textPrc.textContent = prc;
-//                 }
-//             })
-
-//             // ПРИМЕР
-//             if (siteContainer) {
-//                 const mortgageSuitable = siteContainer.querySelector('.mortgage-suitable');
-//                 const mortgageSuitableYes = siteContainer.querySelector('[data-mortgage-suitable="yes"]');
-//                 const mortgageSuitableNo = siteContainer.querySelector('[data-mortgage-suitable="no"]');
-//                 if (item.dataset.mortgageCard == 4) {
-//                     mortgageSuitableYes.querySelectorAll('.mortgage-suitable__item').forEach((item, index) => {
-//                         if (index !== 0) item.setAttribute('hidden', '');
-//                     })
-//                     mortgageSuitableNo.removeAttribute('hidden');
-//                     mortgageSuitableNo.querySelectorAll('.mortgage-suitable__item').forEach(item => {
-//                         item.removeAttribute('hidden');
-//                     })
-//                 } else {
-//                     mortgageSuitableNo.setAttribute('hidden', '');
-//                     mortgageSuitableYes.querySelectorAll('.mortgage-suitable__item').forEach(item => {
-//                         item.removeAttribute('hidden');
-//                     })
-//                 }
-//                 // mortgageSuitable.classList.add('_load');
-//                 // setTimeout(() => {
-//                 //         mortgageSuitable.classList.remove('_load');
-//                 // }, 2000);
-//             }
-//         }
-//     }
-//     if (containerOne && popupContainerOne) {
-//         const items = popupContainerOne.querySelectorAll('.interest-rate-card');
-//         items.forEach(item => {
-//             item.addEventListener('click', () => {
-
-//                 items.forEach(item => item.classList.remove('_active'));
-//                 item.classList.add('_active');
-
-//                 const prc = item.querySelector('.interest-rate-card__prc--new').textContent;
-//                 const textPrc = containerOne.querySelector('.field-static__text');
-//                 textPrc.textContent = prc;
-//             });
-//         })
-//     }
-//     if (containerAdd) {
-//         const meternalCapital = containerAdd.querySelector('.object-calc-mort__contribution');
-//         if (meternalCapital) {
-
-//             const contributionInput = meternalCapital.querySelector('input');
-//             const checkbox = meternalCapital.querySelector('.toggle-checkbox input');
-//             const capital = containerAdd.querySelector('.object-calc-mort__capital');
-//             const facilities = containerAdd.querySelector('.object-calc-mort__facilities');
-
-//             const capitalInput = capital.querySelector('.input-text__input');
-//             const facilitiesInput = facilities.querySelector('.input-text__input');
-
-//             const maxCapital = Number(capital.dataset.capitalMax);
-//             const minCapital = Number(capital.dataset.capitalMin);
-//             const priceObject = containerAdd.querySelector('.filter-dropdown--mortgage-calc');
-//             const meternalCapitalSlider = meternalCapital.querySelector('.filter-range-one__inner').noUiSlider;
-
-//             const capitalPrc = meternalCapital.querySelector('.filter-range-one__nav > span');
-//             const priceObjectSlider = priceObject.querySelector('.filter-range-one__inner');
-//             priceObjectSlider.noUiSlider.on('update', (values) => {
-//                 const value = parseInt(values[0]);
-//                 const valueMax = value * 90 / 100;
-//                 meternalCapitalSlider.updateOptions({
-//                     start: 0,
-//                     range: {
-//                         min: 0,
-//                         max: valueMax
-//                     }
-//                 })
-//                 priceObject.setAttribute('data-value', value);
-//                 updateMatCapital();
-//                 if (checkbox.checked) {
-//                     updateFee();
-//                 }
-//                 validateObjectPrice();
-//             });
-
-//             priceObject.querySelectorAll('.filter-dropdown__checkbox').forEach(item => {
-//                 item.addEventListener('click', () => {
-//                     labelClearBtnUpdate(capitalInput.closest('.input-text'));
-//                     labelClearBtnUpdate(facilitiesInput.closest('.input-text'));
-//                     priceObject.setAttribute('data-value', item.closest('.filter-dropdown__item').querySelector('input').value.replace(/\s/g, ''));
-//                     validate();
-//                 })
-//             })
-
-
-//             meternalCapitalSlider.on('update', (value) => {
-//                 if (!validateObjectPrice()) {
-//                     return;
-//                 };
-//                 const valueMax = meternalCapitalSlider.options.range.max;
-//                 const result = parseInt(value[0]) * 90 / valueMax;
-//                 capitalPrc.textContent = `${Math.floor(result)}%`;
-//                 labelClearBtnUpdate(capitalInput.closest('.input-text'));
-//                 labelClearBtnUpdate(facilitiesInput.closest('.input-text'));
-//             })
-
-//             checkbox.addEventListener('change', () => {
-//                 if (!validateObjectPrice()) {
-//                     checkbox.checked = false;
-//                     return;
-//                 }
-//                 if (checkbox.checked) {
-//                     capital.removeAttribute('hidden');
-//                     facilities.removeAttribute('hidden');
-//                     meternalCapital.querySelector('.filter-range-one').classList.add('_disabled');
-//                 } else {
-//                     capital.setAttribute('hidden', '');
-//                     facilities.setAttribute('hidden', '');
-//                     meternalCapital.querySelector('.filter-range-one').classList.remove('_disabled');
-//                 }
-
-//                 labelClearBtnUpdate(capitalInput.closest('.input-text'));
-//                 labelClearBtnUpdate(facilitiesInput.closest('.input-text'));
-//                 updateMatCapital();
-//                 if (checkbox.checked) {
-//                     updateFee();
-//                 } else {
-//                     meternalCapital.querySelector('.filter-range-one__inner').noUiSlider.set(0);
-//                 }
-//                 validate();
-//             });
-
-//             [capitalInput, facilitiesInput].forEach(input => {
-//                 input.addEventListener('input', () => {
-//                     if (!validateObjectPrice()) return;
-//                     labelClearBtnUpdate(input.closest('.input-text'));
-//                     updateFee();
-//                     validate();
-//                 })
-
-//                 const clearBtn = input.closest('.input-text__label').querySelector('.input-text__clear')
-//                 if (clearBtn) {
-//                     clearBtn.addEventListener('click', () => {
-//                         if (!clearBtn.hasAttribute('hidden')) {
-//                             clearBtn.setAttribute('hidden', '');
-//                             input.value = '';
-//                             labelClearBtnUpdate(input.closest('.input-text'));
-//                             updateFee();
-//                             validate();
-//                         }
-//                     })
-//                 }
-//             });
-
-//             function labelClearBtnUpdate(label) {
-//                 const input = label.querySelector('.input-text__input');
-//                 const btn = label.querySelector('.input-text__clear');
-//                 if (input.value === '') {
-//                     btn.setAttribute('hidden', '');
-//                     label.classList.remove('_clear-btn');
-
-//                     label.classList.remove('_active');
-//                 } else {
-//                     btn.removeAttribute('hidden');
-//                     label.classList.add('_clear-btn');
-//                 }
-//             }
-
-//             function updateMatCapital() {
-//                 validateRemoveError(capital);
-//                 validateRemoveError(facilities);
-//                 let contributionValue = Number(contributionInput.value.replace(/\s/g, ''));
-//                 capitalInput.value = 0;
-//                 facilitiesInput.value = 0;
-//                 capital.classList.remove('_active');
-//                 facilities.classList.remove('_active');
-//                 if (contributionValue > 0) {
-//                     capitalInput.value = numberReplace(String(minCapital));
-//                     facilitiesInput.value = numberReplace(String(contributionValue))
-//                     capital.classList.add('_active');
-//                     facilities.classList.add('_active');
-//                     return;
-//                 } else {
-//                     capitalInput.value = numberReplace(String(minCapital));
-//                     capital.classList.add('_active');
-//                 }
-//             }
-
-//             function updateFee() {
-//                 setTimeout(() => {
-//                     const capitalValue = capitalInput.value.replace(/\s/g, '');
-//                     const facilitiesValue = facilitiesInput.value.replace(/\s/g, '');
-//                     meternalCapitalSlider.set(+capitalValue + +facilitiesValue);
-//                 }, 100);
-//             }
-
-//             function validate() {
-//                 let result = true;
-
-//                 validateRemoveError(capital);
-//                 validateRemoveError(facilities);
-
-//                 if (Number(capitalInput.value.replace(/\s/g, '')) > maxCapital) {
-//                     validateCreateError(capital, `${capital.dataset.errorCapitalMax}`);
-//                 }
-//                 if (Number(capitalInput.value.replace(/\s/g, '')) < minCapital) {
-//                     validateCreateError(capital, `${capital.dataset.errorCapitalMin}`);
-//                 }
-
-//                 const sum = Number(capitalInput.value.replace(/\s/g, '')) + Number(facilitiesInput.value.replace(/\s/g, ''));
-//                 if (sum > Number(priceObject.dataset.value) * 90 / 100) {
-//                     validateCreateError(facilities, 'Первоначальный взнос не может быть больше 90% от стоимости недвижимости');
-//                     result = false;
-//                 }
-
-//                 return result;
-//             }
-
-//             function validateObjectPrice() {
-//                 validateRemoveError(priceObject);
-//                 if (priceObject.dataset.value < 200000) {
-//                     validateCreateError(priceObject, 'Стоимость не может быть меньше 200 000 ₽');
-//                     return false;
-//                 } else {
-//                     return true;
-//                 }
-//             }
-//             const targetCredit = containerAdd.querySelector('.object-calc-mort__target-credit');
-//             const targetCreditMap = {
-//                 'Не выбрано': [
-//                     [1, 2, 3, 4, 5, 6],
-//                     [1]
-//                 ],
-//                 'Новостройки': [
-//                     [1, 2, 3, 4, 5],
-//                     [1]
-//                 ],
-//                 'Вторичка': [
-//                     [1, 4],
-//                     [1]
-//                 ],
-//                 'Дом, коттеджи, дачи': [
-//                     [1, 2, 3, 4, 5, 6],
-//                     [5]
-//                 ],
-//                 'Земельные участки': [
-//                     [1, 2, 3, 5, 6],
-//                     [1]
-//                 ],
-//                 'Коммерческая недвижимость': [
-//                     [1],
-//                     [1]
-//                 ],
-//             };
-//             targetCredit.addEventListener('change', () => {
-//                 const name = targetCredit.querySelector('.choices__item.choices__item--selectable').textContent.trim();
-//                 const list = containerAdd.querySelector('.object-calc-mort__list')
-//                 const cards = containerAdd.querySelectorAll('.object-calc-mort__btn');
-//                 cards.forEach(card => card.setAttribute('hidden', ''));
-//                 cards.forEach(card => card.classList.remove('_active'));
-//                 for (let key in targetCreditMap) {
-//                     if (key === name) {
-//                         const currentKey = targetCreditMap[key];
-//                         cards.forEach(card => {
-//                             const id = card.dataset.mortgageCard;
-//                             if (currentKey[0].includes(+id)) {
-//                                 card.removeAttribute('hidden');
-//                             }
-//                             if (currentKey[1].includes(+id)) {
-//                                 card.classList.add('_active');
-//                             }
-//                         });
-//                     }
-//                 }
-
-//                 let listValue = true;
-//                 for (let key of cards) {
-//                     if (key.classList.contains('_active')) {
-//                         listValue = false;
-//                         break;
-//                     }
-//                 }
-//                 listValue ? list.setAttribute('hidden', '') : list.removeAttribute('hidden');
-
-//                 cards.forEach(card => {
-//                     if (!card.hasAttribute('hidden') && card.classList.contains('_active')) {
-//                         const textPrc = containerAdd.querySelector('.field-static__text');
-//                         textPrc.textContent = card.querySelector('span:nth-child(2)').textContent.trim();
-//                     }
-//                 })
-//             })
-
-//             const term = containerAdd.querySelector('.object-calc-mort__term');
-//             term.querySelector('.filter-range-one__inner').noUiSlider.on('update', (value) => {
-//                 if (!priceObject.classList.contains('_init')) {
-//                     return;
-//                 }
-//             })
-
-//             bankSelect('containerAdd');
-
-//         }
-//     }
-//     if (selectBank) {
-//         bankSelect('select-bank');
-//     }
-
-//     function bankSelect(mode) {
-//         let container;
-//         if (mode === 'containerAdd') container = document.querySelector('.mortgage-suitable__list');
-//         if (mode === 'select-bank') container = selectBank;
-//         if (!container) return;
-//         const items = container.querySelectorAll('.bank-offer');
-//         items.forEach(item => {
-//             const btn = item.querySelector('.bank-offer__btn');
-//             btn.addEventListener('click', () => {
-//                 if (!btn.classList.contains('_disabled')) {
-//                     if (!item.classList.contains('_active')) {
-//                         item.classList.add('_active');
-//                         btn.classList.add('_active');
-//                         btn.setAttribute('title', 'Удалить');
-//                         btn.innerHTML = `
-//                         <svg>
-//                             <use xlink:href="./img/sprite.svg#verif"></use>
-//                         </svg>
-//                         <svg>
-//                             <use xlink:href="./img/sprite.svg#trash"></use>
-//                         </svg>
-//                         `
-//                     } else {
-//                         item.classList.remove('_active');
-//                         btn.innerHTML = 'Выбрать';
-//                         btn.removeAttribute('title');
-//                         btn.classList.remove('_active');
-//                     }
-//                     const maxActiveItems = 4;
-//                     const itemsActive = container.querySelectorAll('.bank-offer._active');
-
-//                     const currentContainer = siteContainer || selectBank;
-//                     const mortgageBottom = currentContainer.querySelector('.mortgage-bottom');
-//                     currentContainer.style.paddingBottom = 'none'
-//                     if (mortgageBottom) mortgageBottom.remove();
-//                     if (itemsActive.length >= 1) {
-//                         bankUpdate(items, itemsActive, maxActiveItems, currentContainer);
-//                         currentContainer.style.paddingBottom = `${currentContainer.querySelector('.mortgage-bottom').offsetHeight}px`;
-//                     } else {
-//                         currentContainer.style.paddingBottom = null;
-//                     }
-//                     items.forEach(item => {
-//                         const btn = item.querySelector('.bank-offer__btn');
-//                         if (btn.classList.contains('_disabled')) {
-//                             btn.classList.remove('_disabled');
-//                             btn.removeAttribute('title');
-//                         }
-//                     })
-//                 }
-
-//             })
-//         })
-//     }
-
-//     function bankUpdate(items, activeItems, maxBanks, siteContainer) {
-//         let htmlImage = '';
-//         activeItems.forEach(item => {
-//             htmlImage += item.querySelector('.bank-offer__icon').innerHTML;
-//         })
-//         const htmlBottom = `
-//         <div class="mortgage__bottom mortgage-bottom">
-//             <div class="mortgage-bottom__container container">
-//                 <div class="mortgage-bottom__info">
-//                     <div class="mortgage-bottom__images">
-//                         ${htmlImage}
-//                     </div>
-//                     <span>
-//                         Вы выбрали ${activeItems.length} из ${maxBanks} возможных банков
-//                     </span>
-//                 </div>
-//                 <button type="button" class="btn btn-reset btn-primary mortgage-bottom__btn">
-//                     Создать заявку
-//                 </button>
-//             </div>
-//         </div>
-//         `;
-//         if (activeItems.length === maxBanks) {
-//             const notActiveItems = Array.prototype.slice.call(items, 0).filter(item => !item.classList.contains('_active'));
-//             notActiveItems.forEach(item => {
-//                 const btn = item.querySelector('.bank-offer__btn');
-//                 btn.setAttribute('title', `Можно выбрать не больше ${maxBanks}`);
-//                 btn.classList.add('_disabled');
-//             })
-//         }
-//         siteContainer.insertAdjacentHTML('beforeend', htmlBottom);
-//     }
-// };

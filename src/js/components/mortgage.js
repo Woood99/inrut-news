@@ -303,9 +303,11 @@ export const mortgageCalc = (container) => {
                 if (!btn) return;
                 if (!btn.classList.contains('_active')) {
                     btn.classList.add('_active');
+                    btn.textContent = 'Удалить';
                     selectBank.call(this,btn.closest('.bank-offer'));
                 } else {
                     btn.classList.remove('_active');
+                    btn.textContent = 'Выбрать';
                     deleteBank.call(this,btn.closest('.bank-offer'));
                 }
 

@@ -32,40 +32,40 @@
                 <div class="container">
                     <section class="mortgage" data-mortgage-calc>
                         <div>
-                            <div class="white-block tw-grid tw-grid-cols-2 tw-gap-2">
-                                <div class="select-secondary select-secondary--city">
-                                    <div class="select-secondary__wrapper">
-                                        <span class="select-secondary__placeholder">
-                                            Город
-                                        </span>
-                                        <select class="select-secondary__body" hidden name="city">
-                                            <option value="apartments">Санкт-Петербург</option>
-                                            <option value="apartments2">Волгоград</option>
-                                            <option value="apartments3">Москва</option>
-                                        </select>
+                            <div class="white-block">
+                                <div class="tw-grid tw-grid-cols-2 tw-gap-2 tw-mb-6">
+                                    <div class="select-secondary select-secondary--city">
+                                        <div class="select-secondary__wrapper">
+                                            <span class="select-secondary__placeholder">
+                                                Город
+                                            </span>
+                                            <select class="select-secondary__body" hidden name="city">
+                                                <option value="apartments">Санкт-Петербург</option>
+                                                <option value="apartments2">Волгоград</option>
+                                                <option value="apartments3">Москва</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="select-secondary" data-mortgage-target-credit>
+                                        <div class="select-secondary__wrapper">
+                                            <span class="select-secondary__placeholder">
+                                                Цель кредита
+                                            </span>
+                                            <select class="select-secondary__body" hidden name="complex">
+                                                <option placeholder value="default">Не выбрано</option>
+                                                <option value="buildings">Новостройки</option>
+                                                <option value="secondary">Вторичка</option>
+                                                <option value="house">Дом, коттеджи, дачи</option>
+                                                <option value="plots">Земельные участки</option>
+                                                <option value="commercial">Коммерческая недвижимость</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="select-secondary" data-mortgage-target-credit>
-                                    <div class="select-secondary__wrapper">
-                                        <span class="select-secondary__placeholder">
-                                            Цель кредита
-                                        </span>
-                                        <select class="select-secondary__body" hidden name="complex">
-                                            <option placeholder value="default">Не выбрано</option>
-                                            <option value="buildings">Новостройки</option>
-                                            <option value="secondary">Вторичка</option>
-                                            <option value="house">Дом, коттеджи, дачи</option>
-                                            <option value="plots">Земельные участки</option>
-                                            <option value="commercial">Коммерческая недвижимость</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="white-block tw-mt-4">
                                 <h3 class='title-4'>Выберите ипотечные программы для расчета</h3>
-                                <div class="tw-mt-6 mortgage__programs">
+                                <div class="tw-mt-4 mortgage__programs">
                                     <button type="button" class="btn btn-reset object-calc-mort__btn _active" data-mortgage-btn="base,0.109">
-                                        <span>Базовая программа</span>
+                                        <span>Базовая</span>
                                         <span>от 10,9%</span>
                                         <div aria-hidden="true">
                                             <svg>
@@ -183,15 +183,27 @@
                             <div class="mortgage__suitable mortgage-suitable">
                                 <div class="mortgage-suitable__container" data-mortgage-suitable="yes">
                                     <h2 class="mortgage-suitable__title title-2">Самые подходящие предложения</h2>
+                                    <p class='tw-mt-2'>
+                                        Выберите один или несколько банков, в которые вы хотите подать заявку.
+                                    </p>
                                     <div class="mortgage-suitable__list list-reset main-table">
                                         <div class="main-table__table">
-                                            <div class="main-table__type _main-table-type-clear" style='grid-template-columns: 200px 80px 55px 95px 110px max-content; justify-content: start;'>
+                                            <div class="main-table__type _main-table-type-clear" style='grid-template-columns: 220px 80px 55px 95px 110px max-content; justify-content: start;'>
                                                 <span>Банк</span>
                                                 <span>Ставка</span>
                                                 <span>Срок</span>
                                                 <span>Платёж</span>
                                                 <span>Сумма</span>
-                                                <span>Кешбэк</span>
+                                                <button type='button' class='btn btn-reset tw-flex tw-items-center tw-gap-2' data-tooltip-add-selector="max-w-320" data-tooltip-mobile-popup data-tooltip-html='
+                                                Это примерная сумма вашего бонуса. Когда сделка будет заключена, вы увидите итоговую сумму
+                                                '>
+                                                    <span class='text-lightgray tw-pointer-events-none'>Кешбэк</span>
+                                                    <svg class='tw-w-6 tw-h-6 tw-pointer-events-none' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M15.1755 13.9011C14.4714 13.9011 13.8983 14.474 13.8983 15.1782C13.8983 15.8825 14.4714 16.4555 15.1755 16.4555C15.8799 16.4555 16.4526 15.8825 16.4526 15.1782C16.4524 14.474 15.8797 13.9011 15.1755 13.9011Z" fill="currentColor"></path>
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.81032 7.53625C8.10597 7.53625 7.53294 8.10929 7.53294 8.81363C7.53312 9.51763 8.10615 10.0905 8.81032 10.0905C9.51449 10.0905 10.0872 9.51763 10.0872 8.81363C10.0872 8.10929 9.51449 7.53625 8.81032 7.53625Z" fill="currentColor"></path>
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0005 1C5.93485 1 1.00049 5.93436 1.00049 12C1.00049 18.0653 5.93485 23 12.0005 23C18.0654 23 22.9995 18.0653 22.9995 12C22.9995 5.93436 18.0654 1 12.0005 1ZM8.81032 6.1602C10.273 6.1602 11.4634 7.35027 11.4634 8.81361C11.4634 10.2763 10.273 11.4667 8.81032 11.4667C7.34714 11.4667 6.15691 10.2763 6.15691 8.81361C6.15691 7.35027 7.34732 6.1602 8.81032 6.1602ZM8.00371 16.9692C7.86964 17.1037 7.69313 17.171 7.5173 17.171C7.3413 17.171 7.16513 17.1037 7.03072 16.9692C6.76208 16.7006 6.76208 16.2647 7.03072 15.9964L15.9962 7.03058C16.2647 6.76194 16.7004 6.76194 16.9692 7.03058C17.2379 7.29922 17.2379 7.73509 16.9692 8.00356L8.00371 16.9692ZM15.1755 17.8314C13.7125 17.8314 12.5221 16.6411 12.5221 15.178C12.5221 13.7153 13.7125 12.5249 15.1755 12.5249C16.6384 12.5249 17.8286 13.7153 17.8286 15.178C17.8284 16.6411 16.6382 17.8314 15.1755 17.8314Z" fill="currentColor"></path>
+                                                    </svg>
+                                                </button>
                                             </div>
                                             <div class="main-table__list">
                                                 <li class='mortgage-suitable__item bank-offer' data-bank-offer-cashback="0.5">
@@ -216,19 +228,12 @@
                                                                 XX XXX ₽
                                                             </div>
                                                             <div class="bank-offer__item" data-bank-offer="sum">
-                                                               X XXX XXX ₽
+                                                                X XXX XXX ₽
                                                             </div>
                                                         </ul>
-                                                        <button type='button' class='btn btn-reset tw-flex tw-items-center tw-gap-2' data-tooltip-add-selector="max-w-320" data-tooltip-mobile-popup data-tooltip-html='
-                                                        Это примерная сумма вашего бонуса. Когда сделка будет заключена, вы увидите итоговую сумму
-                                                        '>
-                                                            <span class='title-4 tw-pointer-events-none' data-bank-offer="cashback">XX XXX ₽</span>
-                                                            <svg class='tw-w-6 tw-h-6 tw-pointer-events-none' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M15.1755 13.9011C14.4714 13.9011 13.8983 14.474 13.8983 15.1782C13.8983 15.8825 14.4714 16.4555 15.1755 16.4555C15.8799 16.4555 16.4526 15.8825 16.4526 15.1782C16.4524 14.474 15.8797 13.9011 15.1755 13.9011Z" fill="currentColor"></path>
-                                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.81032 7.53625C8.10597 7.53625 7.53294 8.10929 7.53294 8.81363C7.53312 9.51763 8.10615 10.0905 8.81032 10.0905C9.51449 10.0905 10.0872 9.51763 10.0872 8.81363C10.0872 8.10929 9.51449 7.53625 8.81032 7.53625Z" fill="currentColor"></path>
-                                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0005 1C5.93485 1 1.00049 5.93436 1.00049 12C1.00049 18.0653 5.93485 23 12.0005 23C18.0654 23 22.9995 18.0653 22.9995 12C22.9995 5.93436 18.0654 1 12.0005 1ZM8.81032 6.1602C10.273 6.1602 11.4634 7.35027 11.4634 8.81361C11.4634 10.2763 10.273 11.4667 8.81032 11.4667C7.34714 11.4667 6.15691 10.2763 6.15691 8.81361C6.15691 7.35027 7.34732 6.1602 8.81032 6.1602ZM8.00371 16.9692C7.86964 17.1037 7.69313 17.171 7.5173 17.171C7.3413 17.171 7.16513 17.1037 7.03072 16.9692C6.76208 16.7006 6.76208 16.2647 7.03072 15.9964L15.9962 7.03058C16.2647 6.76194 16.7004 6.76194 16.9692 7.03058C17.2379 7.29922 17.2379 7.73509 16.9692 8.00356L8.00371 16.9692ZM15.1755 17.8314C13.7125 17.8314 12.5221 16.6411 12.5221 15.178C12.5221 13.7153 13.7125 12.5249 15.1755 12.5249C16.6384 12.5249 17.8286 13.7153 17.8286 15.178C17.8284 16.6411 16.6382 17.8314 15.1755 17.8314Z" fill="currentColor"></path>
-                                                            </svg>
-                                                        </button>
+                                                        <span class='title-4' data-bank-offer="cashback">
+                                                            XX XXX ₽
+                                                        </span>
                                                     </div>
                                                     <div class="bank-offer__spollers">
                                                         <div class="bank-offer__spoller">
@@ -243,13 +248,7 @@
                                                                 </div>
                                                             </button>
                                                             <div class="bank-offer__spoller-content" hidden>
-                                                                <div>
-                                                                    <h3 class='title-4'>Своя ставка</h3>
-                                                                    <p class='tw-mt-2'>
-                                                                        Выгода от снижения ставки <span class='text-blue'>— 2 400 318 ₽</span>
-                                                                    </p>
-                                                                </div>
-                                                                <div class="bank-offer__additional tw-mt-8">
+                                                                <div class="bank-offer__additional">
                                                                     <div class="bank-offer__additional-item">
                                                                         <div>
                                                                             <h3 class="title-4">
@@ -365,7 +364,7 @@
                                                                 XX XXX ₽
                                                             </div>
                                                             <div class="bank-offer__item" data-bank-offer="sum">
-                                                               X XXX XXX ₽
+                                                                X XXX XXX ₽
                                                             </div>
                                                         </ul>
                                                         <button type='button' class='btn btn-reset tw-flex tw-items-center tw-gap-2' data-tooltip-add-selector="max-w-320" data-tooltip-mobile-popup data-tooltip-html='
@@ -392,13 +391,7 @@
                                                                 </div>
                                                             </button>
                                                             <div class="bank-offer__spoller-content" hidden>
-                                                                <div>
-                                                                    <h3 class='title-4'>Своя ставка</h3>
-                                                                    <p class='tw-mt-2'>
-                                                                        Выгода от снижения ставки <span class='text-blue'>— 2 400 318 ₽</span>
-                                                                    </p>
-                                                                </div>
-                                                                <div class="bank-offer__additional tw-mt-8">
+                                                                <div class="bank-offer__additional">
                                                                     <div class="bank-offer__additional-item">
                                                                         <div>
                                                                             <h3 class="title-4">
@@ -503,26 +496,36 @@
                                 <div class="mortgage-result white-block tw-p-6 tw-mb-2">
                                     <ul class="mortgage-result__list list-reset">
                                         <li class="mortgage-result__item">
-                                            <span class='text-lightgray'>                       
+                                            <span class='text-lightgray'>
                                                 Процентная ставка
                                             </span>
                                             <span class='title-3 text-blue' data-mortgage-result="prc">
                                                 XX
                                             </span>
                                         </li>
+                                        <div class='tw-flex tw-justify-between'>
+                                            <li class="mortgage-result__item">
+                                                <span class='text-lightgray'>
+                                                    Платёж
+                                                </span>
+                                                <span class='title-3' data-mortgage-result="payment">
+                                                    XX
+                                                </span>
+                                            </li>
+                                            <li class="mortgage-result__item">
+                                                <span class='text-lightgray'>
+                                                    Сумма кредита
+                                                </span>
+                                                <span class='title-3' data-mortgage-result="sum">
+                                                    XX
+                                                </span>
+                                            </li>
+                                        </div>
                                         <li class="mortgage-result__item">
-                                            <span class='text-lightgray'>                       
-                                                Ежемесячный платёж
+                                            <span class='text-lightgray'>
+                                                Кешбэк
                                             </span>
-                                            <span class='title-3' data-mortgage-result="payment">
-                                                XX
-                                            </span>
-                                        </li>
-                                        <li class="mortgage-result__item">
-                                            <span class='text-lightgray'>                       
-                                                Сумма кредита
-                                            </span>
-                                            <span class='title-3' data-mortgage-result="sum">
+                                            <span class='title-3' data-mortgage-result="cashback">
                                                 XX
                                             </span>
                                         </li>
@@ -552,15 +555,15 @@
         </main>
         @include('partials/footer.html')
     </div>
-      <!-- popups -->
-      @include('popups/city.html')
-      @include('popups/add.html')
-      @include('popups/personal-area2.html')
-      @include('popups/edit-profile.html')
-      @include('popups/sber-tied.html')
-      <!-- ==== -->
-     
-      <!-- popups -->
+    <!-- popups -->
+    @include('popups/city.html')
+    @include('popups/add.html')
+    @include('popups/personal-area2.html')
+    @include('popups/edit-profile.html')
+    @include('popups/sber-tied.html')
+    <!-- ==== -->
+
+    <!-- popups -->
 </body>
 
 

@@ -50,6 +50,7 @@ export const mortgageCalc = (container) => {
             this.updateBanks();
 
             this.initFields();
+            this.selectBanks();
 
             document.addEventListener('mortgageCalcFormUpdate', (e) => {
                 this.dataClass.setData(e.detail);
@@ -221,9 +222,11 @@ export const mortgageCalc = (container) => {
                 resultPayment.textContent = `${numberReplace(Math.round(monthPayment))} ₽`;
             }
 
-            const resultSum = container.querySelector('[data-mortgage-result="sum"]');
-            if (resultSum) {
-                resultSum.textContent = `${numberReplace(Math.round(this.results.totalAmount))} ₽`;
+            const resultCashback = container.querySelector('[data-mortgage-result="cashback"]');
+            if (resultCashback) {
+                const cashbackArr = Array.from(container.querySelectorAll('[data-bank-offer-cashback]')).map(item => item.dataset.bankOfferCashback);
+                const maxCashback = Math.max(...cashbackArr);
+                resultCashback.textContent = `до ${numberReplace(Math.round(this.results.totalAmount / 100 * maxCashback))} ₽`;
             }
         }
 
@@ -290,6 +293,78 @@ export const mortgageCalc = (container) => {
                 }
             }
         }
+
+        selectBanks() {
+            const banks = container.querySelectorAll('.bank-offer');
+            banks.forEach((bank,index) => bank.setAttribute('data-bank-offer-id',index));
+            container.addEventListener('click',(e) => {
+                const target = e.target;
+                const btn = target.closest('[data-bank-offer-btn]');
+                if (!btn) return;
+                if (!btn.classList.contains('_active')) {
+                    btn.classList.add('_active');
+                    selectBank.call(this,btn.closest('.bank-offer'));
+                } else {
+                    btn.classList.remove('_active');
+                    deleteBank.call(this,btn.closest('.bank-offer'));
+                }
+
+                updateBanks.call(this);
+            })
+
+
+            function selectBank(bank) {
+                const currentData = {
+                    id: bank.dataset.bankOfferId,
+                    logoURL: bank.querySelector('[data-bank-offer-logo]').getAttribute('src'),
+                };
+
+                this.data.selectedBanks.push(currentData);
+            }
+
+            function deleteBank(bank) {
+                const currentID = bank.dataset.bankOfferId;
+                this.data.selectedBanks = this.data.selectedBanks.filter(bank => bank.id !== currentID);
+            }
+
+
+            function updateBanks() {
+                const bottom = document.querySelector('.mortgage-bottom');
+                if (bottom) bottom.remove();
+                const banks = container.querySelectorAll('.bank-offer');
+
+                const selectedBanks = this.data.selectedBanks;
+                if (selectedBanks.length > 0) {
+                    const htmlImages = 
+                        selectedBanks.map((item,index) => {
+                            if (index < 4) {
+                                return  `<img loading="lazy" src="${item.logoURL}" alt="" width="110" height="25">`;
+                            }
+                        })
+                    ;
+                    const html = `
+                    <div class="mortgage__bottom mortgage-bottom">
+                        <div class="mortgage-bottom__container container">
+                            <div class="mortgage-bottom__info">
+                                <div class="mortgage-bottom__images">
+                                    ${htmlImages.join('')}
+                                    ${selectedBanks.length > 4 ? `+${selectedBanks.length - 4}` : ''}
+                                </div>
+                                <span>
+                                    Вы выбрали ${selectedBanks.length} из ${banks.length} возможных банков
+                                </span>
+                            </div>
+                            <button type="button" class="btn btn-reset btn-primary mortgage-bottom__btn" data-popup-path="add">
+                                Создать заявку
+                            </button>
+                        </div>
+                    </div>
+                    `;
+                    document.querySelector('.site-container').insertAdjacentHTML('beforeend',html);
+                }
+            }
+
+        }
     }
 
     class Data {
@@ -299,7 +374,7 @@ export const mortgageCalc = (container) => {
                 cost: 10000000,
                 minPrice: 375000,
                 maxPrice: 100000000,
-                paymentPrc: 0.5,
+                paymentPrc: 0,
                 minPaymentPrc: 0,
                 maxPaymentPrc: 0.9,
                 payment: 0,
@@ -321,6 +396,7 @@ export const mortgageCalc = (container) => {
                 maternalCapitalMin: 0,
                 maternalCapitalMax: 833024,
                 maternalCapital: 833024,
+                selectedBanks: [],
             };
             this.results = {};
 

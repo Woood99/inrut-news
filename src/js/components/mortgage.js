@@ -51,7 +51,7 @@ export const mortgageCalc = (container) => {
 
             this.initFields();
             this.selectBanks();
-
+            console.log(this.data);
             document.addEventListener('mortgageCalcFormUpdate', (e) => {
                 this.dataClass.setData(e.detail);
                 this.data = this.dataClass.getData();
@@ -60,7 +60,7 @@ export const mortgageCalc = (container) => {
                 this.updateFormAndSliders(this.data);
                 this.updateResultsView();
                 this.updateBanks();
-                // console.log(this.data);
+                 console.log(this.data);
             })
 
         }
@@ -78,7 +78,8 @@ export const mortgageCalc = (container) => {
                     onUpdate: 'changeProgram',
                     selectedProgram: {
                         name: btn.dataset.mortgageBtn.split(',')[0].trim(),
-                        value: +btn.dataset.mortgageBtn.split(',')[1].trim()
+                        value: +btn.dataset.mortgageBtn.split(',')[1].trim(),
+                        nameText: btn.dataset.mortgageBtn.split(',')[2].trim(),
                     }
                 });
             })
@@ -110,7 +111,8 @@ export const mortgageCalc = (container) => {
                     onUpdate: 'changeProgram',
                     selectedProgram: {
                         name: btnActive.dataset.mortgageBtn.split(',')[0].trim(),
-                        value: +btnActive.dataset.mortgageBtn.split(',')[1].trim()
+                        value: +btnActive.dataset.mortgageBtn.split(',')[1].trim(),
+                        nameText: btnActive.dataset.mortgageBtn.split(',')[2].trim()
                     }
                 });
             })
@@ -210,7 +212,10 @@ export const mortgageCalc = (container) => {
 
             const resultPrc = container.querySelector('[data-mortgage-result="prc"]');
             if (resultPrc) {
-                resultPrc.textContent = `от ${(this.data.selectedProgram.value * 100).toFixed(1)}%`;
+                resultPrc.innerHTML = `
+                ${this.data.selectedProgram.nameText} &nbsp
+                <span class="text-blue">от ${(this.data.selectedProgram.value * 100).toFixed(1)}%</span>
+                `;
             }
 
             const resultPayment = container.querySelector('[data-mortgage-result="payment"]');
@@ -358,7 +363,7 @@ export const mortgageCalc = (container) => {
                                     Вы выбрали ${selectedBanks.length} из ${banks.length} возможных банков
                                 </span>
                             </div>
-                            <button type="button" class="btn btn-reset btn-primary mortgage-bottom__btn" data-popup-path="add">
+                            <button type="button" class="btn btn-reset btn-primary mortgage-bottom__btn" data-popup-path="mortgage-app-popup">
                                 Создать заявку
                             </button>
                         </div>
@@ -420,7 +425,8 @@ export const mortgageCalc = (container) => {
 
             this.data.selectedProgram = {
                 name: activeBtn.dataset.mortgageBtn.split(',')[0].trim(),
-                value: +activeBtn.dataset.mortgageBtn.split(',')[1].trim()
+                value: +activeBtn.dataset.mortgageBtn.split(',')[1].trim(),
+                nameText: activeBtn.dataset.mortgageBtn.split(',')[2].trim()
             };
         }
 

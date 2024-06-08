@@ -31,884 +31,763 @@
             <div class="default-page__body">
                 <div class="container">
                     <section class="mortgage" data-mortgage-calc>
-                        <div>
-                            <div class="white-block">
-                                <div class="tw-grid tw-grid-cols-2 tw-gap-2 tw-mb-6">
-                                    <div class="select-secondary select-secondary--city">
-                                        <div class="select-secondary__wrapper">
-                                            <span class="select-secondary__placeholder">
-                                                Город
-                                            </span>
-                                            <select class="select-secondary__body" hidden name="city">
-                                                <option value="apartments">Санкт-Петербург</option>
-                                                <option value="apartments2">Волгоград</option>
-                                                <option value="apartments3">Москва</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="select-secondary" data-mortgage-target-credit>
-                                        <div class="select-secondary__wrapper">
-                                            <span class="select-secondary__placeholder">
-                                                Цель кредита
-                                            </span>
-                                            <select class="select-secondary__body" hidden name="complex">
-                                                <option placeholder value="default">Не выбрано</option>
-                                                <option value="buildings">Новостройки</option>
-                                                <option value="secondary">Вторичка</option>
-                                                <option value="house">Дом, коттеджи, дачи</option>
-                                                <option value="plots">Земельные участки</option>
-                                                <option value="commercial">Коммерческая недвижимость</option>
-                                            </select>
-                                        </div>
+                        <div class="white-block">
+                            <div class="tw-grid tw-grid-cols-2 tw-gap-2 tw-mb-6">
+                                <div class="select-secondary select-secondary--city">
+                                    <div class="select-secondary__wrapper">
+                                        <span class="select-secondary__placeholder">
+                                            Город
+                                        </span>
+                                        <select class="select-secondary__body" hidden name="city">
+                                            <option value="apartments">Санкт-Петербург</option>
+                                            <option value="apartments2">Волгоград</option>
+                                            <option value="apartments3">Москва</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="tw-mt-4 mortgage__programs">
-                                    <button type="button" class="btn btn-reset object-calc-mort__btn _active" data-mortgage-btn="base,0.109">
-                                        <span>Базовая</span>
-                                        <span>от 10,9%</span>
-                                        <div aria-hidden="true">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#verif"></use>
-                                            </svg>
-                                        </div>
-                                    </button>
-                                    <button type="button" class="btn btn-reset object-calc-mort__btn" data-mortgage-btn="gov,0.077">
-                                        <span>Господдержка</span>
-                                        <span>от 7,7%</span>
-                                        <div aria-hidden="true">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#verif"></use>
-                                            </svg>
-                                        </div>
-                                    </button>
-                                    <button type="button" class="btn btn-reset object-calc-mort__btn" data-mortgage-btn="it,0.047">
-                                        <span>Ипотека для IT</span>
-                                        <span>от 4,7%</span>
-                                        <div aria-hidden="true">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#verif"></use>
-                                            </svg>
-                                        </div>
-                                    </button>
-                                    <button type="button" class="btn btn-reset object-calc-mort__btn" data-mortgage-btn="military,0.176">
-                                        <span>Военная</span>
-                                        <span>от 17,6%</span>
-                                        <div aria-hidden="true">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#verif"></use>
-                                            </svg>
-                                        </div>
-                                    </button>
-                                    <button type="button" class="btn btn-reset object-calc-mort__btn" data-mortgage-btn="family,0.057" data-tooltip-add-selector="max-w-320" data-tooltip-mobile-popup data-tooltip-html='
-                                    Это примерная сумма вашего бонуса. Когда сделка будет заключена, вы увидите итоговую сумму
-                                    '>
-                                        <span class='tw-pointer-events-none'>Семейная</span>
-                                        <span class='tw-pointer-events-none'>от 5,7%</span>
-                                        <div aria-hidden="true" class='tw-pointer-events-none'>
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#verif"></use>
-                                            </svg>
-                                        </div>
-                                    </button>
-                                    <button type="button" class="btn btn-reset object-calc-mort__btn" data-mortgage-btn="rural,0.048">
-                                        <span>Сельская</span>
-                                        <span>от 4,8%</span>
-                                        <div aria-hidden="true">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#verif"></use>
-                                            </svg>
-                                        </div>
-                                    </button>
-                                </div>
-                                <div class='mortgage__fields tw-grid tw-grid-cols-2 tw-gap-x-2 tw-gap-y-4'>
-                                    <div class="filter-range-one tw-col-span-full">
-                                        <span class="filter-range-one__subtitle">Стоимость объекта</span>
-                                        <div class="filter-range-one__nav">
-                                            <div>
-                                                <input maxlength="12" type="text" name="Имя" class="input-reset" data-mortgage="cost-input">
-                                            </div>
-                                        </div>
-                                        <div class="filter-range-one__inner _not-default" data-mortgage="cost-range">
-                                        </div>
-                                    </div>
-                                    <div class="filter-range-one">
-                                        <span class="filter-range-one__subtitle">Срок кредита</span>
-                                        <div class="filter-range-one__nav">
-                                            <div data-default="30">
-                                                <input type="text" maxlength="3" name="Имя" class="input-reset _width-auto" data-mortgage="term-input">
-                                                лет
-                                            </div>
-                                        </div>
-                                        <div class="filter-range-one__inner _not-default" data-mortgage="term-range"></div>
-                                    </div>
-                                    <div class="field-static">
-                                        <span class="field-static__subtitle">
-                                            Процентная ставка
+                                <div class="select-secondary" data-mortgage-target-credit>
+                                    <div class="select-secondary__wrapper">
+                                        <span class="select-secondary__placeholder">
+                                            Цель кредита
                                         </span>
-                                        <span class="field-static__text">
-                                            от <span data-mortgage="program-prc">X</span>
-                                        </span>
-                                    </div>
-                                    <label class="toggle-checkbox tw-col-span-full tw-mt-4">
-                                        <input type="checkbox" name="toggle-1" data-mortgage="maternal-capital-checkbox">
-                                        <div aria-hidden="true"></div>
-                                        <span>Использовать мат. капитал в первоначальном взносе</span>
-                                    </label>
-                                    <div class="input-text input-text--big tw-col-span-full _input-not-event" hidden data-mortgage="maternal-capital-field" data-capital-min="524527" data-capital-max="775628" data-error-capital-max="Укажите материнский капитал не более 775 628 ₽" data-error-capital-min="Укажите материнский капитал не меньше 524 527 ₽">
-                                        <label class="input-text__label">
-                                            <span>Материнский капитал</span>
-                                            <input type="text" name="Материнский капитал" maxlength="12" class="input-reset input-text__input" data-mortgage="matercal-capital-input" placeholder="">
-                                            <span class="input-text__name">₽</span>
-                                            <button type="button" class="btn btn-reset input-text__clear" hidden>
-                                                <svg>
-                                                    <use xlink:href="./img/sprite.svg#x"></use>
-                                                </svg>
-                                            </button>
-                                        </label>
-                                        <span class="_clue-span">Обычно материнский капитал составляет 833 024 ₽</span>
-                                    </div>
-                                    <div class="filter-range-one tw-col-span-full">
-                                        <span class="filter-range-one__subtitle">Первоначальный взнос</span>
-                                        <div class="filter-range-one__nav">
-                                            <div>
-                                                <input type="text" maxlength="12" name="Имя" class="input-reset" data-mortgage="payment-input">
-                                            </div>
-                                            <span data-mortgage="payment-prc">X</span>
-                                        </div>
-                                        <div class="filter-range-one__inner _not-default" data-mortgage="payment-range"></div>
+                                        <select class="select-secondary__body" hidden name="complex">
+                                            <option placeholder value="default">Не выбрано</option>
+                                            <option value="buildings">Новостройки</option>
+                                            <option value="secondary">Вторичка</option>
+                                            <option value="house">Дом, коттеджи, дачи</option>
+                                            <option value="plots">Земельные участки</option>
+                                            <option value="commercial">Коммерческая недвижимость</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="mortgage__suitable mortgage-suitable">
-                                <div class="mortgage-suitable__container" data-mortgage-suitable="yes">
-                                    <h2 class="mortgage-suitable__title title-2">Выберите один или несколько банков, в которые вы хотите подать заявку.</h2>
-                                    <div class="mortgage-suitable__list list-reset main-table">
-                                        <div class="main-table__table">
-                                            <div class="main-table__type _main-table-type-clear" style='grid-template-columns: 90px 92px 67px 67px max-content; justify-content: start;'>
-                                                <span>Банк</span>
-                                                <span>Ставка</span>
-                                                <span>Срок</span>
-                                                <span>Платёж</span>
-                                                <button type='button' class='btn btn-reset tw-flex tw-items-center tw-gap-2' data-tooltip-add-selector="max-w-320" data-tooltip-mobile-popup data-tooltip-html='
+                            <div class="tw-mt-4 mortgage__programs">
+                                <button type="button" class="btn btn-reset object-calc-mort__btn _active" data-mortgage-btn="base,0.109,Базовая">
+                                    <span>Базовая</span>
+                                    <span>от 10,9%</span>
+                                    <div aria-hidden="true">
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#verif"></use>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <button type="button" class="btn btn-reset object-calc-mort__btn" data-mortgage-btn="gov,0.077,Господдержка">
+                                    <span>Господдержка</span>
+                                    <span>от 7,7%</span>
+                                    <div aria-hidden="true">
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#verif"></use>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <button type="button" class="btn btn-reset object-calc-mort__btn" data-mortgage-btn="it,0.047,Ипотека для IT">
+                                    <span>Ипотека для IT</span>
+                                    <span>от 4,7%</span>
+                                    <div aria-hidden="true">
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#verif"></use>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <button type="button" class="btn btn-reset object-calc-mort__btn" data-mortgage-btn="military,0.176,Военная">
+                                    <span>Военная</span>
+                                    <span>от 17,6%</span>
+                                    <div aria-hidden="true">
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#verif"></use>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <button type="button" class="btn btn-reset object-calc-mort__btn" data-mortgage-btn="family,0.057,Семейная" data-tooltip-add-selector="max-w-320" data-tooltip-mobile-popup data-tooltip-html='
+                                    Это примерная сумма вашего бонуса. Когда сделка будет заключена, вы увидите итоговую сумму
+                                    '>
+                                    <span class='tw-pointer-events-none'>Семейная</span>
+                                    <span class='tw-pointer-events-none'>от 5,7%</span>
+                                    <div aria-hidden="true" class='tw-pointer-events-none'>
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#verif"></use>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <button type="button" class="btn btn-reset object-calc-mort__btn" data-mortgage-btn="rural,0.048,Сельская">
+                                    <span>Сельская</span>
+                                    <span>от 4,8%</span>
+                                    <div aria-hidden="true">
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#verif"></use>
+                                        </svg>
+                                    </div>
+                                </button>
+                            </div>
+                            <div class='mortgage__fields tw-grid tw-grid-cols-2 tw-gap-x-2 tw-gap-y-4'>
+                                <div class="filter-range-one tw-col-span-full">
+                                    <span class="filter-range-one__subtitle">Стоимость объекта</span>
+                                    <div class="filter-range-one__nav">
+                                        <div>
+                                            <input maxlength="12" type="text" name="Имя" class="input-reset" data-mortgage="cost-input">
+                                        </div>
+                                    </div>
+                                    <div class="filter-range-one__inner _not-default" data-mortgage="cost-range">
+                                    </div>
+                                </div>
+                                <div class="filter-range-one">
+                                    <span class="filter-range-one__subtitle">Срок кредита</span>
+                                    <div class="filter-range-one__nav">
+                                        <div data-default="30">
+                                            <input type="text" maxlength="3" name="Имя" class="input-reset _width-auto" data-mortgage="term-input">
+                                            лет
+                                        </div>
+                                    </div>
+                                    <div class="filter-range-one__inner _not-default" data-mortgage="term-range"></div>
+                                </div>
+                                <div class="field-static">
+                                    <span class="field-static__subtitle">
+                                        Процентная ставка
+                                    </span>
+                                    <span class="field-static__text">
+                                        от <span data-mortgage="program-prc">X</span>
+                                    </span>
+                                </div>
+                                <label class="toggle-checkbox tw-col-span-full tw-mt-4">
+                                    <input type="checkbox" name="toggle-1" data-mortgage="maternal-capital-checkbox">
+                                    <div aria-hidden="true"></div>
+                                    <span>Использовать мат. капитал в первоначальном взносе</span>
+                                </label>
+                                <div class="input-text input-text--big tw-col-span-full _input-not-event" hidden data-mortgage="maternal-capital-field" data-capital-min="524527" data-capital-max="775628" data-error-capital-max="Укажите материнский капитал не более 775 628 ₽" data-error-capital-min="Укажите материнский капитал не меньше 524 527 ₽">
+                                    <label class="input-text__label">
+                                        <span>Материнский капитал</span>
+                                        <input type="text" name="Материнский капитал" maxlength="12" class="input-reset input-text__input" data-mortgage="matercal-capital-input" placeholder="">
+                                        <span class="input-text__name">₽</span>
+                                        <button type="button" class="btn btn-reset input-text__clear" hidden>
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#x"></use>
+                                            </svg>
+                                        </button>
+                                    </label>
+                                    <span class="_clue-span">Обычно материнский капитал составляет 833 024 ₽</span>
+                                </div>
+                                <div class="filter-range-one tw-col-span-full">
+                                    <span class="filter-range-one__subtitle">Первоначальный взнос</span>
+                                    <div class="filter-range-one__nav">
+                                        <div>
+                                            <input type="text" maxlength="12" name="Имя" class="input-reset" data-mortgage="payment-input">
+                                        </div>
+                                        <span data-mortgage="payment-prc">X</span>
+                                    </div>
+                                    <div class="filter-range-one__inner _not-default" data-mortgage="payment-range"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mortgage__suitable mortgage-suitable tw-mt-8">
+                            <div class="mortgage-suitable__container" data-mortgage-suitable="yes">
+                                <h2 class="mortgage-suitable__title title-2">Выберите один или несколько банков, в которые вы хотите подать заявку.</h2>
+                                <div class="mortgage-suitable__list list-reset main-table">
+                                    <div class="main-table__table">
+                                        <div class="main-table__type _main-table-type-clear tw-justify-start tw-gap-x-6" style='grid-template-columns: 101px 95px 55px 125px max-content;'>
+                                            <span>Банк</span>
+                                            <span>Ставка</span>
+                                            <span>Срок</span>
+                                            <span>Платёж</span>
+                                            <button type='button' class='btn btn-reset tw-flex tw-items-center tw-gap-2' data-tooltip-add-selector="max-w-320" data-tooltip-mobile-popup data-tooltip-html='
                                                 Это примерная сумма вашего бонуса. Когда сделка будет заключена, вы увидите итоговую сумму
                                                 '>
-                                                    <span class='text-lightgray tw-pointer-events-none'>Кешбэк</span>
-                                                    <svg class='tw-w-6 tw-h-6 tw-pointer-events-none' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M15.1755 13.9011C14.4714 13.9011 13.8983 14.474 13.8983 15.1782C13.8983 15.8825 14.4714 16.4555 15.1755 16.4555C15.8799 16.4555 16.4526 15.8825 16.4526 15.1782C16.4524 14.474 15.8797 13.9011 15.1755 13.9011Z" fill="currentColor"></path>
-                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.81032 7.53625C8.10597 7.53625 7.53294 8.10929 7.53294 8.81363C7.53312 9.51763 8.10615 10.0905 8.81032 10.0905C9.51449 10.0905 10.0872 9.51763 10.0872 8.81363C10.0872 8.10929 9.51449 7.53625 8.81032 7.53625Z" fill="currentColor"></path>
-                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0005 1C5.93485 1 1.00049 5.93436 1.00049 12C1.00049 18.0653 5.93485 23 12.0005 23C18.0654 23 22.9995 18.0653 22.9995 12C22.9995 5.93436 18.0654 1 12.0005 1ZM8.81032 6.1602C10.273 6.1602 11.4634 7.35027 11.4634 8.81361C11.4634 10.2763 10.273 11.4667 8.81032 11.4667C7.34714 11.4667 6.15691 10.2763 6.15691 8.81361C6.15691 7.35027 7.34732 6.1602 8.81032 6.1602ZM8.00371 16.9692C7.86964 17.1037 7.69313 17.171 7.5173 17.171C7.3413 17.171 7.16513 17.1037 7.03072 16.9692C6.76208 16.7006 6.76208 16.2647 7.03072 15.9964L15.9962 7.03058C16.2647 6.76194 16.7004 6.76194 16.9692 7.03058C17.2379 7.29922 17.2379 7.73509 16.9692 8.00356L8.00371 16.9692ZM15.1755 17.8314C13.7125 17.8314 12.5221 16.6411 12.5221 15.178C12.5221 13.7153 13.7125 12.5249 15.1755 12.5249C16.6384 12.5249 17.8286 13.7153 17.8286 15.178C17.8284 16.6411 16.6382 17.8314 15.1755 17.8314Z" fill="currentColor"></path>
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                            <div class="main-table__list">
-                                                <li class='mortgage-suitable__item bank-offer' data-bank-offer-cashback="0.5">
-                                                    <div class="bank-offer__top">
-                                                        <div class="bank-offer__logo tw-flex tw-items-center tw-gap-4">
-                                                            <img loading="lazy" src="./img/banks/atb.png" alt="АТБ" width="45" height="45" data-bank-offer-logo>
+                                                <span class='text-lightgray tw-pointer-events-none'>Кешбэк</span>
+                                                <svg class='tw-w-6 tw-h-6 tw-pointer-events-none' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M15.1755 13.9011C14.4714 13.9011 13.8983 14.474 13.8983 15.1782C13.8983 15.8825 14.4714 16.4555 15.1755 16.4555C15.8799 16.4555 16.4526 15.8825 16.4526 15.1782C16.4524 14.474 15.8797 13.9011 15.1755 13.9011Z" fill="currentColor"></path>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.81032 7.53625C8.10597 7.53625 7.53294 8.10929 7.53294 8.81363C7.53312 9.51763 8.10615 10.0905 8.81032 10.0905C9.51449 10.0905 10.0872 9.51763 10.0872 8.81363C10.0872 8.10929 9.51449 7.53625 8.81032 7.53625Z" fill="currentColor"></path>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0005 1C5.93485 1 1.00049 5.93436 1.00049 12C1.00049 18.0653 5.93485 23 12.0005 23C18.0654 23 22.9995 18.0653 22.9995 12C22.9995 5.93436 18.0654 1 12.0005 1ZM8.81032 6.1602C10.273 6.1602 11.4634 7.35027 11.4634 8.81361C11.4634 10.2763 10.273 11.4667 8.81032 11.4667C7.34714 11.4667 6.15691 10.2763 6.15691 8.81361C6.15691 7.35027 7.34732 6.1602 8.81032 6.1602ZM8.00371 16.9692C7.86964 17.1037 7.69313 17.171 7.5173 17.171C7.3413 17.171 7.16513 17.1037 7.03072 16.9692C6.76208 16.7006 6.76208 16.2647 7.03072 15.9964L15.9962 7.03058C16.2647 6.76194 16.7004 6.76194 16.9692 7.03058C17.2379 7.29922 17.2379 7.73509 16.9692 8.00356L8.00371 16.9692ZM15.1755 17.8314C13.7125 17.8314 12.5221 16.6411 12.5221 15.178C12.5221 13.7153 13.7125 12.5249 15.1755 12.5249C16.6384 12.5249 17.8286 13.7153 17.8286 15.178C17.8284 16.6411 16.6382 17.8314 15.1755 17.8314Z" fill="currentColor"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <div class="main-table__list">
+                                            <li class='mortgage-suitable__item bank-offer' data-bank-offer-cashback="0.5">
+                                                <div class="bank-offer__top">
+                                                    <div class="bank-offer__logo">
+                                                        <img loading="lazy" src="./img/banks/atb.png" alt="АТБ" width="45" height="45" data-bank-offer-logo>
+                                                    </div>
+                                                    <ul class="bank-offer__info list-reset">
+                                                        <div class="bank-offer__item">
+                                                            <span data-bank-offer-new-prc hidden></span>
+                                                            <span data-bank-offer-default-prc>14%</span>
                                                         </div>
-                                                        <ul class="bank-offer__info list-reset">
-                                                            <div class="bank-offer__item">
-                                                                <span data-bank-offer-new-prc hidden></span>
-                                                                <span data-bank-offer-default-prc>6%</span>
+                                                        <div class="bank-offer__item" data-bank-offer="term">
+                                                            X лет
+                                                        </div>
+                                                        <div class="bank-offer__item" data-bank-offer="payment">
+                                                            XX XXX ₽
+                                                        </div>
+                                                        <div class="bank-offer__item btn btn-reset tag tag--green _no-hover tw-max-h-[24px]" data-bank-offer="cashback">
+                                                            XX XXX ₽
+                                                        </div>
+                                                    </ul>
+                                                    <button type="button" class="btn btn-reset btn-secondary btn-secondary--small bank-offer__btn" data-bank-offer-btn>
+                                                        Выбрать
+                                                    </button>
+                                                </div>
+                                                <div class="bank-offer__spollers">
+                                                    <div class="bank-offer__spoller">
+                                                        <button type='button' class='btn btn-reset bank-offer__spoller-btn'>
+                                                            <h3 class="title-4">
+                                                                Снизить ставку
+                                                            </h3>
+                                                            <div class="bank-offer__spoller-check">
+                                                                <svg>
+                                                                    <use xlink:href="./img/sprite.svg#check"></use>
+                                                                </svg>
                                                             </div>
-                                                            <div class="bank-offer__item" data-bank-offer="term">
-                                                                X лет
-                                                            </div>
-                                                            <div class="bank-offer__item" data-bank-offer="payment">
-                                                                XX XXX ₽
-                                                            </div>
-                                                            <div class="bank-offer__item btn btn-reset tag tag--green _no-hover tw-max-h-[24px]" data-bank-offer="cashback">
-                                                                XX XXX ₽
-                                                            </div>
-                                                        </ul>
-                                                        <button type="button" class="btn btn-reset btn-secondary btn-secondary--small bank-offer__btn" data-bank-offer-btn>
-                                                            Выбрать
                                                         </button>
-                                                    </div>
-                                                    <div class="bank-offer__spollers">
-                                                        <div class="bank-offer__spoller">
-                                                            <button type='button' class='btn btn-reset bank-offer__spoller-btn'>
-                                                                <h3 class="title-4">
-                                                                    Снизить ставку
-                                                                </h3>
-                                                                <div class="bank-offer__spoller-check">
-                                                                    <svg>
-                                                                        <use xlink:href="./img/sprite.svg#check"></use>
-                                                                    </svg>
+                                                        <div class="bank-offer__spoller-content" hidden>
+                                                            <div class="bank-offer__additional">
+                                                                <div class="bank-offer__additional-item">
+                                                                    <div>
+                                                                        <h3 class="title-4">
+                                                                            Регистрация и рассчёты
+                                                                        </h3>
+                                                                        <div class="tw-mt-2 title-5 bank-offer__more" hidden>
+                                                                            <p>
+                                                                                Услуга позволяет зарегистрировать переход права собственности за один визит в банк, провести денежные расчёты онлайн, а
+                                                                                также
+                                                                                получить скидку на ставку на весь срок кредита. Стоимость — до 15 300 руб.
+                                                                            </p>
+                                                                        </div>
+                                                                        <button type="button" class="btn btn-reset bank-offer__more-btn">
+                                                                            <span>Подробнее</span>
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#check"></use>
+                                                                            </svg>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <span>-0,3%</span>
+                                                                        <label class="toggle-checkbox">
+                                                                            <input type="checkbox" name="toggle-2" checked data-bank-offer-input-down="0.3">
+                                                                            <div aria-hidden="true"></div>
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
+                                                                <div class="bank-offer__additional-item">
+                                                                    <div>
+                                                                        <h3 class="title-4">
+                                                                            ДомкликПлюс
+                                                                        </h3>
+                                                                        <div class="tw-mt-2 title-5 bank-offer__more" hidden>
+                                                                            <p>
+                                                                                Услуга позволяет зарегистрировать переход права собственности за один визит в банк, провести денежные расчёты онлайн, а
+                                                                                также
+                                                                                получить скидку на ставку на весь срок кредита. Стоимость — до 15 300 руб.
+                                                                            </p>
+                                                                        </div>
+                                                                        <button type="button" class="btn btn-reset bank-offer__more-btn">
+                                                                            <span>Подробнее</span>
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#check"></use>
+                                                                            </svg>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <span>-0,3%</span>
+                                                                        <label class="toggle-checkbox">
+                                                                            <input type="checkbox" name="toggle-2" data-bank-offer-input-down="0.3">
+                                                                            <div aria-hidden="true"></div>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bank-offer__additional-item">
+                                                                    <div>
+                                                                        <h3 class="title-4">
+                                                                            Текущий зарплатник
+                                                                        </h3>
+                                                                        <div class="tw-mt-2 title-5 bank-offer__more" hidden>
+                                                                            <p>
+                                                                                Скидка 1% при наличии зарплатной карты у клиента
+                                                                            </p>
+                                                                        </div>
+                                                                        <button type="button" class="btn btn-reset bank-offer__more-btn">
+                                                                            <span>Подробнее</span>
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#check"></use>
+                                                                            </svg>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <span>-0,3%</span>
+                                                                        <label class="toggle-checkbox">
+                                                                            <input type="checkbox" name="toggle-2" checked data-bank-offer-input-down="0.3">
+                                                                            <div aria-hidden="true"></div>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <button type="button" class="btn btn-reset bank-offer__close">
+                                                                Свернуть
+                                                                <svg>
+                                                                    <use xlink:href="./img/sprite.svg#check"></use>
+                                                                </svg>
                                                             </button>
-                                                            <div class="bank-offer__spoller-content" hidden>
-                                                                <div class="bank-offer__additional">
-                                                                    <div class="bank-offer__additional-item">
-                                                                        <div>
-                                                                            <h3 class="title-4">
-                                                                                Регистрация и рассчёты
-                                                                            </h3>
-                                                                            <div class="tw-mt-2 title-5 bank-offer__more" hidden>
-                                                                                <p>
-                                                                                    Услуга позволяет зарегистрировать переход права собственности за один визит в банк, провести денежные расчёты онлайн, а
-                                                                                    также
-                                                                                    получить скидку на ставку на весь срок кредита. Стоимость — до 15 300 руб.
-                                                                                </p>
-                                                                            </div>
-                                                                            <button type="button" class="btn btn-reset bank-offer__more-btn">
-                                                                                <span>Подробнее</span>
-                                                                                <svg>
-                                                                                    <use xlink:href="./img/sprite.svg#check"></use>
-                                                                                </svg>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span>-0,3%</span>
-                                                                            <label class="toggle-checkbox">
-                                                                                <input type="checkbox" name="toggle-2" checked data-bank-offer-input-down="0.3">
-                                                                                <div aria-hidden="true"></div>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="bank-offer__additional-item">
-                                                                        <div>
-                                                                            <h3 class="title-4">
-                                                                                ДомкликПлюс
-                                                                            </h3>
-                                                                            <div class="tw-mt-2 title-5 bank-offer__more" hidden>
-                                                                                <p>
-                                                                                    Услуга позволяет зарегистрировать переход права собственности за один визит в банк, провести денежные расчёты онлайн, а
-                                                                                    также
-                                                                                    получить скидку на ставку на весь срок кредита. Стоимость — до 15 300 руб.
-                                                                                </p>
-                                                                            </div>
-                                                                            <button type="button" class="btn btn-reset bank-offer__more-btn">
-                                                                                <span>Подробнее</span>
-                                                                                <svg>
-                                                                                    <use xlink:href="./img/sprite.svg#check"></use>
-                                                                                </svg>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span>-0,3%</span>
-                                                                            <label class="toggle-checkbox">
-                                                                                <input type="checkbox" name="toggle-2" data-bank-offer-input-down="0.3">
-                                                                                <div aria-hidden="true"></div>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="bank-offer__additional-item">
-                                                                        <div>
-                                                                            <h3 class="title-4">
-                                                                                Текущий зарплатник
-                                                                            </h3>
-                                                                            <div class="tw-mt-2 title-5 bank-offer__more" hidden>
-                                                                                <p>
-                                                                                    Скидка 1% при наличии зарплатной карты у клиента
-                                                                                </p>
-                                                                            </div>
-                                                                            <button type="button" class="btn btn-reset bank-offer__more-btn">
-                                                                                <span>Подробнее</span>
-                                                                                <svg>
-                                                                                    <use xlink:href="./img/sprite.svg#check"></use>
-                                                                                </svg>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span>-0,3%</span>
-                                                                            <label class="toggle-checkbox">
-                                                                                <input type="checkbox" name="toggle-2" checked data-bank-offer-input-down="0.3">
-                                                                                <div aria-hidden="true"></div>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <button type="button" class="btn btn-reset bank-offer__close">
-                                                                    Свернуть
-                                                                    <svg>
-                                                                        <use xlink:href="./img/sprite.svg#check"></use>
-                                                                    </svg>
-                                                                </button>
-                                                            </div>
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class='mortgage-suitable__item bank-offer' data-bank-offer-cashback="0.2">
-                                                    <div class="bank-offer__top">
-                                                        <div class="bank-offer__logo tw-flex tw-items-center tw-gap-4">
-                                                            <img loading="lazy" src="./img/banks/alfa.png" alt="АТБ" width="45" height="45" data-bank-offer-logo>
+                                                </div>
+                                            </li>
+                                            <li class='mortgage-suitable__item bank-offer' data-bank-offer-cashback="1">
+                                                <div class="bank-offer__top">
+                                                    <div class="bank-offer__logo">
+                                                        <img loading="lazy" src="./img/banks/alfa.png" alt="АТБ" width="45" height="45" data-bank-offer-logo>
+                                                    </div>
+                                                    <ul class="bank-offer__info list-reset">
+                                                        <div class="bank-offer__item">
+                                                            <span data-bank-offer-new-prc hidden></span>
+                                                            <span data-bank-offer-default-prc>7%</span>
                                                         </div>
-                                                        <ul class="bank-offer__info list-reset">
-                                                            <div class="bank-offer__item">
-                                                                <span data-bank-offer-new-prc hidden></span>
-                                                                <span data-bank-offer-default-prc>6%</span>
-                                                            </div>
-                                                            <div class="bank-offer__item" data-bank-offer="term">
-                                                                X лет
-                                                            </div>
-                                                            <div class="bank-offer__item" data-bank-offer="payment">
-                                                                XX XXX ₽
-                                                            </div>
-                                                            <div class="bank-offer__item" data-bank-offer="sum">
-                                                                X XXX XXX ₽
-                                                            </div>
-                                                        </ul>
-                                                        <span class='title-4' data-bank-offer="cashback">
+                                                        <div class="bank-offer__item" data-bank-offer="term">
+                                                            X лет
+                                                        </div>
+                                                        <div class="bank-offer__item" data-bank-offer="payment">
                                                             XX XXX ₽
-                                                        </span>
-                                                    </div>
-                                                    <div class="bank-offer__spollers">
-                                                        <div class="bank-offer__spoller">
-                                                            <button type='button' class='btn btn-reset bank-offer__spoller-btn'>
-                                                                <h3 class="title-4">
-                                                                    Снизить ставку
-                                                                </h3>
-                                                                <div class="bank-offer__spoller-check">
-                                                                    <svg>
-                                                                        <use xlink:href="./img/sprite.svg#check"></use>
-                                                                    </svg>
-                                                                </div>
-                                                            </button>
-                                                            <div class="bank-offer__spoller-content" hidden>
-                                                                <div class="bank-offer__additional">
-                                                                    <div class="bank-offer__additional-item">
-                                                                        <div>
-                                                                            <h3 class="title-4">
-                                                                                Регистрация и рассчёты
-                                                                            </h3>
-                                                                            <div class="tw-mt-2 title-5 bank-offer__more" hidden>
-                                                                                <p>
-                                                                                    Услуга позволяет зарегистрировать переход права собственности за один визит в банк, провести денежные расчёты онлайн, а
-                                                                                    также
-                                                                                    получить скидку на ставку на весь срок кредита. Стоимость — до 15 300 руб.
-                                                                                </p>
-                                                                            </div>
-                                                                            <button type="button" class="btn btn-reset bank-offer__more-btn">
-                                                                                <span>Подробнее</span>
-                                                                                <svg>
-                                                                                    <use xlink:href="./img/sprite.svg#check"></use>
-                                                                                </svg>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span>-0,3%</span>
-                                                                            <label class="toggle-checkbox">
-                                                                                <input type="checkbox" name="toggle-2" checked data-bank-offer-input-down="0.3">
-                                                                                <div aria-hidden="true"></div>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="bank-offer__additional-item">
-                                                                        <div>
-                                                                            <h3 class="title-4">
-                                                                                ДомкликПлюс
-                                                                            </h3>
-                                                                            <div class="tw-mt-2 title-5 bank-offer__more" hidden>
-                                                                                <p>
-                                                                                    Услуга позволяет зарегистрировать переход права собственности за один визит в банк, провести денежные расчёты онлайн, а
-                                                                                    также
-                                                                                    получить скидку на ставку на весь срок кредита. Стоимость — до 15 300 руб.
-                                                                                </p>
-                                                                            </div>
-                                                                            <button type="button" class="btn btn-reset bank-offer__more-btn">
-                                                                                <span>Подробнее</span>
-                                                                                <svg>
-                                                                                    <use xlink:href="./img/sprite.svg#check"></use>
-                                                                                </svg>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span>-0,3%</span>
-                                                                            <label class="toggle-checkbox">
-                                                                                <input type="checkbox" name="toggle-2" data-bank-offer-input-down="0.3">
-                                                                                <div aria-hidden="true"></div>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="bank-offer__additional-item">
-                                                                        <div>
-                                                                            <h3 class="title-4">
-                                                                                Текущий зарплатник
-                                                                            </h3>
-                                                                            <div class="tw-mt-2 title-5 bank-offer__more" hidden>
-                                                                                <p>
-                                                                                    Скидка 1% при наличии зарплатной карты у клиента
-                                                                                </p>
-                                                                            </div>
-                                                                            <button type="button" class="btn btn-reset bank-offer__more-btn">
-                                                                                <span>Подробнее</span>
-                                                                                <svg>
-                                                                                    <use xlink:href="./img/sprite.svg#check"></use>
-                                                                                </svg>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span>-0,3%</span>
-                                                                            <label class="toggle-checkbox">
-                                                                                <input type="checkbox" name="toggle-2" checked data-bank-offer-input-down="0.3">
-                                                                                <div aria-hidden="true"></div>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <button type="button" class="btn btn-reset bank-offer__close">
-                                                                    Свернуть
-                                                                    <svg>
-                                                                        <use xlink:href="./img/sprite.svg#check"></use>
-                                                                    </svg>
-                                                                </button>
-                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <button type="button" class="btn btn-reset btn-secondary bank-offer__btn" data-bank-offer-btn>
+                                                        <div class="bank-offer__item btn btn-reset tag tag--green _no-hover tw-max-h-[24px]" data-bank-offer="cashback">
+                                                            XX XXX ₽
+                                                        </div>
+                                                    </ul>
+                                                    <button type="button" class="btn btn-reset btn-secondary btn-secondary--small bank-offer__btn" data-bank-offer-btn>
                                                         Выбрать
                                                     </button>
-                                                </li>
-                                                <li class='mortgage-suitable__item bank-offer' data-bank-offer-cashback="0.9">
-                                                    <div class="bank-offer__top">
-                                                        <div class="bank-offer__logo tw-flex tw-items-center tw-gap-4">
-                                                            <img loading="lazy" src="./img/banks/bars.png" alt="АТБ" width="45" height="45" data-bank-offer-logo>
-                                                        </div>
-                                                        <ul class="bank-offer__info list-reset">
-                                                            <div class="bank-offer__item">
-                                                                <span data-bank-offer-new-prc hidden></span>
-                                                                <span data-bank-offer-default-prc>6%</span>
+                                                </div>
+                                                <div class="bank-offer__spollers">
+                                                    <div class="bank-offer__spoller">
+                                                        <button type='button' class='btn btn-reset bank-offer__spoller-btn'>
+                                                            <h3 class="title-4">
+                                                                Снизить ставку
+                                                            </h3>
+                                                            <div class="bank-offer__spoller-check">
+                                                                <svg>
+                                                                    <use xlink:href="./img/sprite.svg#check"></use>
+                                                                </svg>
                                                             </div>
-                                                            <div class="bank-offer__item" data-bank-offer="term">
-                                                                X лет
-                                                            </div>
-                                                            <div class="bank-offer__item" data-bank-offer="payment">
-                                                                XX XXX ₽
-                                                            </div>
-                                                            <div class="bank-offer__item" data-bank-offer="sum">
-                                                                X XXX XXX ₽
-                                                            </div>
-                                                        </ul>
-                                                        <span class='title-4' data-bank-offer="cashback">
-                                                            XX XXX ₽
-                                                        </span>
-                                                    </div>
-                                                    <div class="bank-offer__spollers">
-                                                        <div class="bank-offer__spoller">
-                                                            <button type='button' class='btn btn-reset bank-offer__spoller-btn'>
-                                                                <h3 class="title-4">
-                                                                    Снизить ставку
-                                                                </h3>
-                                                                <div class="bank-offer__spoller-check">
-                                                                    <svg>
-                                                                        <use xlink:href="./img/sprite.svg#check"></use>
-                                                                    </svg>
+                                                        </button>
+                                                        <div class="bank-offer__spoller-content" hidden>
+                                                            <div class="bank-offer__additional">
+                                                                <div class="bank-offer__additional-item">
+                                                                    <div>
+                                                                        <h3 class="title-4">
+                                                                            Регистрация и рассчёты
+                                                                        </h3>
+                                                                        <div class="tw-mt-2 title-5 bank-offer__more" hidden>
+                                                                            <p>
+                                                                                Услуга позволяет зарегистрировать переход права собственности за один визит в банк, провести денежные расчёты онлайн, а
+                                                                                также
+                                                                                получить скидку на ставку на весь срок кредита. Стоимость — до 15 300 руб.
+                                                                            </p>
+                                                                        </div>
+                                                                        <button type="button" class="btn btn-reset bank-offer__more-btn">
+                                                                            <span>Подробнее</span>
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#check"></use>
+                                                                            </svg>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <span>-0,3%</span>
+                                                                        <label class="toggle-checkbox">
+                                                                            <input type="checkbox" name="toggle-2" checked data-bank-offer-input-down="0.3">
+                                                                            <div aria-hidden="true"></div>
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
+                                                                <div class="bank-offer__additional-item">
+                                                                    <div>
+                                                                        <h3 class="title-4">
+                                                                            ДомкликПлюс
+                                                                        </h3>
+                                                                        <div class="tw-mt-2 title-5 bank-offer__more" hidden>
+                                                                            <p>
+                                                                                Услуга позволяет зарегистрировать переход права собственности за один визит в банк, провести денежные расчёты онлайн, а
+                                                                                также
+                                                                                получить скидку на ставку на весь срок кредита. Стоимость — до 15 300 руб.
+                                                                            </p>
+                                                                        </div>
+                                                                        <button type="button" class="btn btn-reset bank-offer__more-btn">
+                                                                            <span>Подробнее</span>
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#check"></use>
+                                                                            </svg>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <span>-0,3%</span>
+                                                                        <label class="toggle-checkbox">
+                                                                            <input type="checkbox" name="toggle-2" data-bank-offer-input-down="0.3">
+                                                                            <div aria-hidden="true"></div>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bank-offer__additional-item">
+                                                                    <div>
+                                                                        <h3 class="title-4">
+                                                                            Текущий зарплатник
+                                                                        </h3>
+                                                                        <div class="tw-mt-2 title-5 bank-offer__more" hidden>
+                                                                            <p>
+                                                                                Скидка 1% при наличии зарплатной карты у клиента
+                                                                            </p>
+                                                                        </div>
+                                                                        <button type="button" class="btn btn-reset bank-offer__more-btn">
+                                                                            <span>Подробнее</span>
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#check"></use>
+                                                                            </svg>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <span>-0,3%</span>
+                                                                        <label class="toggle-checkbox">
+                                                                            <input type="checkbox" name="toggle-2" checked data-bank-offer-input-down="0.3">
+                                                                            <div aria-hidden="true"></div>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <button type="button" class="btn btn-reset bank-offer__close">
+                                                                Свернуть
+                                                                <svg>
+                                                                    <use xlink:href="./img/sprite.svg#check"></use>
+                                                                </svg>
                                                             </button>
-                                                            <div class="bank-offer__spoller-content" hidden>
-                                                                <div class="bank-offer__additional">
-                                                                    <div class="bank-offer__additional-item">
-                                                                        <div>
-                                                                            <h3 class="title-4">
-                                                                                Регистрация и рассчёты
-                                                                            </h3>
-                                                                            <div class="tw-mt-2 title-5 bank-offer__more" hidden>
-                                                                                <p>
-                                                                                    Услуга позволяет зарегистрировать переход права собственности за один визит в банк, провести денежные расчёты онлайн, а
-                                                                                    также
-                                                                                    получить скидку на ставку на весь срок кредита. Стоимость — до 15 300 руб.
-                                                                                </p>
-                                                                            </div>
-                                                                            <button type="button" class="btn btn-reset bank-offer__more-btn">
-                                                                                <span>Подробнее</span>
-                                                                                <svg>
-                                                                                    <use xlink:href="./img/sprite.svg#check"></use>
-                                                                                </svg>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span>-0,3%</span>
-                                                                            <label class="toggle-checkbox">
-                                                                                <input type="checkbox" name="toggle-2" checked data-bank-offer-input-down="0.3">
-                                                                                <div aria-hidden="true"></div>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="bank-offer__additional-item">
-                                                                        <div>
-                                                                            <h3 class="title-4">
-                                                                                ДомкликПлюс
-                                                                            </h3>
-                                                                            <div class="tw-mt-2 title-5 bank-offer__more" hidden>
-                                                                                <p>
-                                                                                    Услуга позволяет зарегистрировать переход права собственности за один визит в банк, провести денежные расчёты онлайн, а
-                                                                                    также
-                                                                                    получить скидку на ставку на весь срок кредита. Стоимость — до 15 300 руб.
-                                                                                </p>
-                                                                            </div>
-                                                                            <button type="button" class="btn btn-reset bank-offer__more-btn">
-                                                                                <span>Подробнее</span>
-                                                                                <svg>
-                                                                                    <use xlink:href="./img/sprite.svg#check"></use>
-                                                                                </svg>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span>-0,3%</span>
-                                                                            <label class="toggle-checkbox">
-                                                                                <input type="checkbox" name="toggle-2" data-bank-offer-input-down="0.3">
-                                                                                <div aria-hidden="true"></div>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="bank-offer__additional-item">
-                                                                        <div>
-                                                                            <h3 class="title-4">
-                                                                                Текущий зарплатник
-                                                                            </h3>
-                                                                            <div class="tw-mt-2 title-5 bank-offer__more" hidden>
-                                                                                <p>
-                                                                                    Скидка 1% при наличии зарплатной карты у клиента
-                                                                                </p>
-                                                                            </div>
-                                                                            <button type="button" class="btn btn-reset bank-offer__more-btn">
-                                                                                <span>Подробнее</span>
-                                                                                <svg>
-                                                                                    <use xlink:href="./img/sprite.svg#check"></use>
-                                                                                </svg>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span>-0,3%</span>
-                                                                            <label class="toggle-checkbox">
-                                                                                <input type="checkbox" name="toggle-2" checked data-bank-offer-input-down="0.3">
-                                                                                <div aria-hidden="true"></div>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <button type="button" class="btn btn-reset bank-offer__close">
-                                                                    Свернуть
-                                                                    <svg>
-                                                                        <use xlink:href="./img/sprite.svg#check"></use>
-                                                                    </svg>
-                                                                </button>
-                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <button type="button" class="btn btn-reset btn-secondary bank-offer__btn" data-bank-offer-btn>
+                                                </div>
+                                            </li>
+                                            <li class='mortgage-suitable__item bank-offer' data-bank-offer-cashback="0.15">
+                                                <div class="bank-offer__top">
+                                                    <div class="bank-offer__logo">
+                                                        <img loading="lazy" src="./img/banks/bars.png" alt="АТБ" width="45" height="45" data-bank-offer-logo>
+                                                    </div>
+                                                    <ul class="bank-offer__info list-reset">
+                                                        <div class="bank-offer__item">
+                                                            <span data-bank-offer-new-prc hidden></span>
+                                                            <span data-bank-offer-default-prc>7%</span>
+                                                        </div>
+                                                        <div class="bank-offer__item" data-bank-offer="term">
+                                                            X лет
+                                                        </div>
+                                                        <div class="bank-offer__item" data-bank-offer="payment">
+                                                            XX XXX ₽
+                                                        </div>
+                                                        <div class="bank-offer__item btn btn-reset tag tag--green _no-hover tw-max-h-[24px]" data-bank-offer="cashback">
+                                                            XX XXX ₽
+                                                        </div>
+                                                    </ul>
+                                                    <button type="button" class="btn btn-reset btn-secondary btn-secondary--small bank-offer__btn" data-bank-offer-btn>
                                                         Выбрать
                                                     </button>
-                                                </li>
-
-                                                <li class='mortgage-suitable__item bank-offer' data-bank-offer-cashback="0.1">
-                                                    <div class="bank-offer__top">
-                                                        <div class="bank-offer__logo tw-flex tw-items-center tw-gap-4">
-                                                            <img loading="lazy" src="./img/banks/vbrr.png" alt="АТБ" width="45" height="45" data-bank-offer-logo>
+                                                </div>
+                                            </li>
+                                            <li class='mortgage-suitable__item bank-offer' data-bank-offer-cashback="0.15">
+                                                <div class="bank-offer__top">
+                                                    <div class="bank-offer__logo">
+                                                        <img loading="lazy" src="./img/banks/vbrr.png" alt="АТБ" width="45" height="45" data-bank-offer-logo>
+                                                    </div>
+                                                    <ul class="bank-offer__info list-reset">
+                                                        <div class="bank-offer__item">
+                                                            <span data-bank-offer-new-prc hidden></span>
+                                                            <span data-bank-offer-default-prc>7%</span>
                                                         </div>
-                                                        <ul class="bank-offer__info list-reset">
-                                                            <div class="bank-offer__item">
-                                                                <span data-bank-offer-new-prc hidden></span>
-                                                                <span data-bank-offer-default-prc>6%</span>
-                                                            </div>
-                                                            <div class="bank-offer__item" data-bank-offer="term">
-                                                                X лет
-                                                            </div>
-                                                            <div class="bank-offer__item" data-bank-offer="payment">
-                                                                XX XXX ₽
-                                                            </div>
-                                                            <div class="bank-offer__item" data-bank-offer="sum">
-                                                                X XXX XXX ₽
-                                                            </div>
-                                                        </ul>
-                                                        <span class='title-4' data-bank-offer="cashback">
+                                                        <div class="bank-offer__item" data-bank-offer="term">
+                                                            X лет
+                                                        </div>
+                                                        <div class="bank-offer__item" data-bank-offer="payment">
                                                             XX XXX ₽
-                                                        </span>
-                                                    </div>
-                                                    <div class="bank-offer__spollers">
-                                                        <div class="bank-offer__spoller">
-                                                            <button type='button' class='btn btn-reset bank-offer__spoller-btn'>
-                                                                <h3 class="title-4">
-                                                                    Снизить ставку
-                                                                </h3>
-                                                                <div class="bank-offer__spoller-check">
-                                                                    <svg>
-                                                                        <use xlink:href="./img/sprite.svg#check"></use>
-                                                                    </svg>
-                                                                </div>
-                                                            </button>
-                                                            <div class="bank-offer__spoller-content" hidden>
-                                                                <div class="bank-offer__additional">
-                                                                    <div class="bank-offer__additional-item">
-                                                                        <div>
-                                                                            <h3 class="title-4">
-                                                                                Регистрация и рассчёты
-                                                                            </h3>
-                                                                            <div class="tw-mt-2 title-5 bank-offer__more" hidden>
-                                                                                <p>
-                                                                                    Услуга позволяет зарегистрировать переход права собственности за один визит в банк, провести денежные расчёты онлайн, а
-                                                                                    также
-                                                                                    получить скидку на ставку на весь срок кредита. Стоимость — до 15 300 руб.
-                                                                                </p>
-                                                                            </div>
-                                                                            <button type="button" class="btn btn-reset bank-offer__more-btn">
-                                                                                <span>Подробнее</span>
-                                                                                <svg>
-                                                                                    <use xlink:href="./img/sprite.svg#check"></use>
-                                                                                </svg>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span>-0,3%</span>
-                                                                            <label class="toggle-checkbox">
-                                                                                <input type="checkbox" name="toggle-2" checked data-bank-offer-input-down="0.3">
-                                                                                <div aria-hidden="true"></div>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="bank-offer__additional-item">
-                                                                        <div>
-                                                                            <h3 class="title-4">
-                                                                                ДомкликПлюс
-                                                                            </h3>
-                                                                            <div class="tw-mt-2 title-5 bank-offer__more" hidden>
-                                                                                <p>
-                                                                                    Услуга позволяет зарегистрировать переход права собственности за один визит в банк, провести денежные расчёты онлайн, а
-                                                                                    также
-                                                                                    получить скидку на ставку на весь срок кредита. Стоимость — до 15 300 руб.
-                                                                                </p>
-                                                                            </div>
-                                                                            <button type="button" class="btn btn-reset bank-offer__more-btn">
-                                                                                <span>Подробнее</span>
-                                                                                <svg>
-                                                                                    <use xlink:href="./img/sprite.svg#check"></use>
-                                                                                </svg>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span>-0,3%</span>
-                                                                            <label class="toggle-checkbox">
-                                                                                <input type="checkbox" name="toggle-2" data-bank-offer-input-down="0.3">
-                                                                                <div aria-hidden="true"></div>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="bank-offer__additional-item">
-                                                                        <div>
-                                                                            <h3 class="title-4">
-                                                                                Текущий зарплатник
-                                                                            </h3>
-                                                                            <div class="tw-mt-2 title-5 bank-offer__more" hidden>
-                                                                                <p>
-                                                                                    Скидка 1% при наличии зарплатной карты у клиента
-                                                                                </p>
-                                                                            </div>
-                                                                            <button type="button" class="btn btn-reset bank-offer__more-btn">
-                                                                                <span>Подробнее</span>
-                                                                                <svg>
-                                                                                    <use xlink:href="./img/sprite.svg#check"></use>
-                                                                                </svg>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span>-0,3%</span>
-                                                                            <label class="toggle-checkbox">
-                                                                                <input type="checkbox" name="toggle-2" checked data-bank-offer-input-down="0.3">
-                                                                                <div aria-hidden="true"></div>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <button type="button" class="btn btn-reset bank-offer__close">
-                                                                    Свернуть
-                                                                    <svg>
-                                                                        <use xlink:href="./img/sprite.svg#check"></use>
-                                                                    </svg>
-                                                                </button>
-                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <button type="button" class="btn btn-reset btn-secondary bank-offer__btn" data-bank-offer-btn>
+                                                        <div class="bank-offer__item btn btn-reset tag tag--green _no-hover tw-max-h-[24px]" data-bank-offer="cashback">
+                                                            XX XXX ₽
+                                                        </div>
+                                                    </ul>
+                                                    <button type="button" class="btn btn-reset btn-secondary btn-secondary--small bank-offer__btn" data-bank-offer-btn>
                                                         Выбрать
                                                     </button>
-                                                </li>
-                                                <li class='mortgage-suitable__item bank-offer' data-bank-offer-cashback="0.1">
-                                                    <div class="bank-offer__top">
-                                                        <div class="bank-offer__logo tw-flex tw-items-center tw-gap-4">
-                                                            <img loading="lazy" src="./img/banks/zenit.png" alt="АТБ" width="45" height="45" data-bank-offer-logo>
-                                                        </div>
-                                                        <ul class="bank-offer__info list-reset">
-                                                            <div class="bank-offer__item">
-                                                                <span data-bank-offer-new-prc hidden></span>
-                                                                <span data-bank-offer-default-prc>6%</span>
+                                                </div>
+                                                <div class="bank-offer__spollers">
+                                                    <div class="bank-offer__spoller">
+                                                        <button type='button' class='btn btn-reset bank-offer__spoller-btn'>
+                                                            <h3 class="title-4">
+                                                                Снизить ставку
+                                                            </h3>
+                                                            <div class="bank-offer__spoller-check">
+                                                                <svg>
+                                                                    <use xlink:href="./img/sprite.svg#check"></use>
+                                                                </svg>
                                                             </div>
-                                                            <div class="bank-offer__item" data-bank-offer="term">
-                                                                X лет
-                                                            </div>
-                                                            <div class="bank-offer__item" data-bank-offer="payment">
-                                                                XX XXX ₽
-                                                            </div>
-                                                            <div class="bank-offer__item" data-bank-offer="sum">
-                                                                X XXX XXX ₽
-                                                            </div>
-                                                        </ul>
-                                                        <span class='title-4' data-bank-offer="cashback">
-                                                            XX XXX ₽
-                                                        </span>
-                                                    </div>
-                                                    <div class="bank-offer__spollers">
-                                                        <div class="bank-offer__spoller">
-                                                            <button type='button' class='btn btn-reset bank-offer__spoller-btn'>
-                                                                <h3 class="title-4">
-                                                                    Снизить ставку
-                                                                </h3>
-                                                                <div class="bank-offer__spoller-check">
-                                                                    <svg>
-                                                                        <use xlink:href="./img/sprite.svg#check"></use>
-                                                                    </svg>
+                                                        </button>
+                                                        <div class="bank-offer__spoller-content" hidden>
+                                                            <div class="bank-offer__additional">
+                                                                <div class="bank-offer__additional-item">
+                                                                    <div>
+                                                                        <h3 class="title-4">
+                                                                            Регистрация и рассчёты
+                                                                        </h3>
+                                                                        <div class="tw-mt-2 title-5 bank-offer__more" hidden>
+                                                                            <p>
+                                                                                Услуга позволяет зарегистрировать переход права собственности за один визит в банк, провести денежные расчёты онлайн, а
+                                                                                также
+                                                                                получить скидку на ставку на весь срок кредита. Стоимость — до 15 300 руб.
+                                                                            </p>
+                                                                        </div>
+                                                                        <button type="button" class="btn btn-reset bank-offer__more-btn">
+                                                                            <span>Подробнее</span>
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#check"></use>
+                                                                            </svg>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <span>-0,3%</span>
+                                                                        <label class="toggle-checkbox">
+                                                                            <input type="checkbox" name="toggle-2" checked data-bank-offer-input-down="0.3">
+                                                                            <div aria-hidden="true"></div>
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
+                                                                <div class="bank-offer__additional-item">
+                                                                    <div>
+                                                                        <h3 class="title-4">
+                                                                            ДомкликПлюс
+                                                                        </h3>
+                                                                        <div class="tw-mt-2 title-5 bank-offer__more" hidden>
+                                                                            <p>
+                                                                                Услуга позволяет зарегистрировать переход права собственности за один визит в банк, провести денежные расчёты онлайн, а
+                                                                                также
+                                                                                получить скидку на ставку на весь срок кредита. Стоимость — до 15 300 руб.
+                                                                            </p>
+                                                                        </div>
+                                                                        <button type="button" class="btn btn-reset bank-offer__more-btn">
+                                                                            <span>Подробнее</span>
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#check"></use>
+                                                                            </svg>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <span>-0,3%</span>
+                                                                        <label class="toggle-checkbox">
+                                                                            <input type="checkbox" name="toggle-2" data-bank-offer-input-down="0.3">
+                                                                            <div aria-hidden="true"></div>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bank-offer__additional-item">
+                                                                    <div>
+                                                                        <h3 class="title-4">
+                                                                            Текущий зарплатник
+                                                                        </h3>
+                                                                        <div class="tw-mt-2 title-5 bank-offer__more" hidden>
+                                                                            <p>
+                                                                                Скидка 1% при наличии зарплатной карты у клиента
+                                                                            </p>
+                                                                        </div>
+                                                                        <button type="button" class="btn btn-reset bank-offer__more-btn">
+                                                                            <span>Подробнее</span>
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#check"></use>
+                                                                            </svg>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <span>-0,3%</span>
+                                                                        <label class="toggle-checkbox">
+                                                                            <input type="checkbox" name="toggle-2" checked data-bank-offer-input-down="0.3">
+                                                                            <div aria-hidden="true"></div>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <button type="button" class="btn btn-reset bank-offer__close">
+                                                                Свернуть
+                                                                <svg>
+                                                                    <use xlink:href="./img/sprite.svg#check"></use>
+                                                                </svg>
                                                             </button>
-                                                            <div class="bank-offer__spoller-content" hidden>
-                                                                <div class="bank-offer__additional">
-                                                                    <div class="bank-offer__additional-item">
-                                                                        <div>
-                                                                            <h3 class="title-4">
-                                                                                Регистрация и рассчёты
-                                                                            </h3>
-                                                                            <div class="tw-mt-2 title-5 bank-offer__more" hidden>
-                                                                                <p>
-                                                                                    Услуга позволяет зарегистрировать переход права собственности за один визит в банк, провести денежные расчёты онлайн, а
-                                                                                    также
-                                                                                    получить скидку на ставку на весь срок кредита. Стоимость — до 15 300 руб.
-                                                                                </p>
-                                                                            </div>
-                                                                            <button type="button" class="btn btn-reset bank-offer__more-btn">
-                                                                                <span>Подробнее</span>
-                                                                                <svg>
-                                                                                    <use xlink:href="./img/sprite.svg#check"></use>
-                                                                                </svg>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span>-0,3%</span>
-                                                                            <label class="toggle-checkbox">
-                                                                                <input type="checkbox" name="toggle-2" checked data-bank-offer-input-down="0.3">
-                                                                                <div aria-hidden="true"></div>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="bank-offer__additional-item">
-                                                                        <div>
-                                                                            <h3 class="title-4">
-                                                                                ДомкликПлюс
-                                                                            </h3>
-                                                                            <div class="tw-mt-2 title-5 bank-offer__more" hidden>
-                                                                                <p>
-                                                                                    Услуга позволяет зарегистрировать переход права собственности за один визит в банк, провести денежные расчёты онлайн, а
-                                                                                    также
-                                                                                    получить скидку на ставку на весь срок кредита. Стоимость — до 15 300 руб.
-                                                                                </p>
-                                                                            </div>
-                                                                            <button type="button" class="btn btn-reset bank-offer__more-btn">
-                                                                                <span>Подробнее</span>
-                                                                                <svg>
-                                                                                    <use xlink:href="./img/sprite.svg#check"></use>
-                                                                                </svg>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span>-0,3%</span>
-                                                                            <label class="toggle-checkbox">
-                                                                                <input type="checkbox" name="toggle-2" data-bank-offer-input-down="0.3">
-                                                                                <div aria-hidden="true"></div>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="bank-offer__additional-item">
-                                                                        <div>
-                                                                            <h3 class="title-4">
-                                                                                Текущий зарплатник
-                                                                            </h3>
-                                                                            <div class="tw-mt-2 title-5 bank-offer__more" hidden>
-                                                                                <p>
-                                                                                    Скидка 1% при наличии зарплатной карты у клиента
-                                                                                </p>
-                                                                            </div>
-                                                                            <button type="button" class="btn btn-reset bank-offer__more-btn">
-                                                                                <span>Подробнее</span>
-                                                                                <svg>
-                                                                                    <use xlink:href="./img/sprite.svg#check"></use>
-                                                                                </svg>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span>-0,3%</span>
-                                                                            <label class="toggle-checkbox">
-                                                                                <input type="checkbox" name="toggle-2" checked data-bank-offer-input-down="0.3">
-                                                                                <div aria-hidden="true"></div>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <button type="button" class="btn btn-reset bank-offer__close">
-                                                                    Свернуть
-                                                                    <svg>
-                                                                        <use xlink:href="./img/sprite.svg#check"></use>
-                                                                    </svg>
-                                                                </button>
-                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <button type="button" class="btn btn-reset btn-secondary bank-offer__btn" data-bank-offer-btn>
+                                                </div>
+                                            </li>
+                                            <li class='mortgage-suitable__item bank-offer' data-bank-offer-cashback="0.15">
+                                                <div class="bank-offer__top">
+                                                    <div class="bank-offer__logo">
+                                                        <img loading="lazy" src="./img/banks/zenit.png" alt="АТБ" width="45" height="45" data-bank-offer-logo>
+                                                    </div>
+                                                    <ul class="bank-offer__info list-reset">
+                                                        <div class="bank-offer__item">
+                                                            <span data-bank-offer-new-prc hidden></span>
+                                                            <span data-bank-offer-default-prc>7%</span>
+                                                        </div>
+                                                        <div class="bank-offer__item" data-bank-offer="term">
+                                                            X лет
+                                                        </div>
+                                                        <div class="bank-offer__item" data-bank-offer="payment">
+                                                            XX XXX ₽
+                                                        </div>
+                                                        <div class="bank-offer__item btn btn-reset tag tag--green _no-hover tw-max-h-[24px]" data-bank-offer="cashback">
+                                                            XX XXX ₽
+                                                        </div>
+                                                    </ul>
+                                                    <button type="button" class="btn btn-reset btn-secondary btn-secondary--small bank-offer__btn" data-bank-offer-btn>
                                                         Выбрать
                                                     </button>
-                                                </li>
-                                            </div>
+                                                </div>
+                                                <div class="bank-offer__spollers">
+                                                    <div class="bank-offer__spoller">
+                                                        <button type='button' class='btn btn-reset bank-offer__spoller-btn'>
+                                                            <h3 class="title-4">
+                                                                Снизить ставку
+                                                            </h3>
+                                                            <div class="bank-offer__spoller-check">
+                                                                <svg>
+                                                                    <use xlink:href="./img/sprite.svg#check"></use>
+                                                                </svg>
+                                                            </div>
+                                                        </button>
+                                                        <div class="bank-offer__spoller-content" hidden>
+                                                            <div class="bank-offer__additional">
+                                                                <div class="bank-offer__additional-item">
+                                                                    <div>
+                                                                        <h3 class="title-4">
+                                                                            Регистрация и рассчёты
+                                                                        </h3>
+                                                                        <div class="tw-mt-2 title-5 bank-offer__more" hidden>
+                                                                            <p>
+                                                                                Услуга позволяет зарегистрировать переход права собственности за один визит в банк, провести денежные расчёты онлайн, а
+                                                                                также
+                                                                                получить скидку на ставку на весь срок кредита. Стоимость — до 15 300 руб.
+                                                                            </p>
+                                                                        </div>
+                                                                        <button type="button" class="btn btn-reset bank-offer__more-btn">
+                                                                            <span>Подробнее</span>
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#check"></use>
+                                                                            </svg>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <span>-0,3%</span>
+                                                                        <label class="toggle-checkbox">
+                                                                            <input type="checkbox" name="toggle-2" checked data-bank-offer-input-down="0.3">
+                                                                            <div aria-hidden="true"></div>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bank-offer__additional-item">
+                                                                    <div>
+                                                                        <h3 class="title-4">
+                                                                            ДомкликПлюс
+                                                                        </h3>
+                                                                        <div class="tw-mt-2 title-5 bank-offer__more" hidden>
+                                                                            <p>
+                                                                                Услуга позволяет зарегистрировать переход права собственности за один визит в банк, провести денежные расчёты онлайн, а
+                                                                                также
+                                                                                получить скидку на ставку на весь срок кредита. Стоимость — до 15 300 руб.
+                                                                            </p>
+                                                                        </div>
+                                                                        <button type="button" class="btn btn-reset bank-offer__more-btn">
+                                                                            <span>Подробнее</span>
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#check"></use>
+                                                                            </svg>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <span>-0,3%</span>
+                                                                        <label class="toggle-checkbox">
+                                                                            <input type="checkbox" name="toggle-2" data-bank-offer-input-down="0.3">
+                                                                            <div aria-hidden="true"></div>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bank-offer__additional-item">
+                                                                    <div>
+                                                                        <h3 class="title-4">
+                                                                            Текущий зарплатник
+                                                                        </h3>
+                                                                        <div class="tw-mt-2 title-5 bank-offer__more" hidden>
+                                                                            <p>
+                                                                                Скидка 1% при наличии зарплатной карты у клиента
+                                                                            </p>
+                                                                        </div>
+                                                                        <button type="button" class="btn btn-reset bank-offer__more-btn">
+                                                                            <span>Подробнее</span>
+                                                                            <svg>
+                                                                                <use xlink:href="./img/sprite.svg#check"></use>
+                                                                            </svg>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <span>-0,3%</span>
+                                                                        <label class="toggle-checkbox">
+                                                                            <input type="checkbox" name="toggle-2" checked data-bank-offer-input-down="0.3">
+                                                                            <div aria-hidden="true"></div>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <button type="button" class="btn btn-reset bank-offer__close">
+                                                                Свернуть
+                                                                <svg>
+                                                                    <use xlink:href="./img/sprite.svg#check"></use>
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="bid__sidebar">
-                            <div class="_sticky">
-                                <div class="mortgage-result white-block tw-p-6 tw-mb-2">
-                                    <ul class="mortgage-result__list list-reset">
-                                        <li class="mortgage-result__item tw-mb-6">
+                        <div class="mortgage__sidebar">
+                            <div class="mortgage-result white-block tw-p-6 tw-mb-2">
+                                <ul class="mortgage-result__list list-reset">
+                                    <li class="mortgage-result__item tw-mb-6">
+                                        <span class='text-lightgray'>
+                                            Процентная ставка
+                                        </span>
+                                        <span class='title-3' data-mortgage-result="prc">
+                                            XX
+                                        </span>
+                                    </li>
+                                    <li class='tw-flex tw-justify-between'>
+                                        <div class="mortgage-result__item">
                                             <span class='text-lightgray'>
-                                                Процентная ставка
+                                                Платёж
                                             </span>
-                                            <span class='title-3 text-blue' data-mortgage-result="prc">
+                                            <span class='title-3' data-mortgage-result="payment">
                                                 XX
                                             </span>
-                                        </li>
-                                        <li class='tw-flex tw-justify-between'>
-                                            <div class="mortgage-result__item">
-                                                <span class='text-lightgray'>
-                                                    Платёж
-                                                </span>
-                                                <span class='title-3' data-mortgage-result="payment">
-                                                    XX
-                                                </span>
-                                            </div>
-                                            <div class="mortgage-result__item">
-                                                <span class='text-lightgray'>
-                                                    Кешбэк
-                                                </span>
-                                                <span class="btn btn-reset tag tag--green _no-hover tw-max-h-[24px]" data-mortgage-result="cashback">
-                                                    XX
-                                                </span>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                        </div>
+                                        <div class="mortgage-result__item">
+                                            <span class='text-lightgray'>
+                                                Кешбэк
+                                            </span>
+                                            <span class="btn btn-reset tag tag--green _no-hover tw-max-h-[24px]" data-mortgage-result="cashback">
+                                                XX
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="bid__user bid-user">
+                                <div class="bid-user__avatar avatar">
+                                    <img loading="lazy" src="./img/avatar-1.jpg" width="129" height="129" alt="Алексей Г.">
                                 </div>
-                                <div class="bid__user bid-user">
-                                    <div class="bid-user__avatar avatar">
-                                        <img loading="lazy" src="./img/avatar-1.jpg" width="129" height="129" alt="Алексей Г.">
-                                    </div>
-                                    <div class="bid-user__content">
-                                        <a href="#" class="bid-user__name">
-                                            Алексей Г.
-                                        </a>
-                                        <time class="bid-user__time" datetime="2022-12-12">
-                                            Ипотечный брокер был в сети 12.12.2022
-                                        </time>
-                                    </div>
-                                    <button type="button" class="btn btn-reset btn-secondary bid-user__btn tw-mt-3" data-popup-path="chat">
-                                        Задать вопрос
-                                    </button>
+                                <div class="bid-user__content">
+                                    <a href="#" class="bid-user__name">
+                                        Алексей Г.
+                                    </a>
+                                    <time class="bid-user__time" datetime="2022-12-12">
+                                        Ипотечный брокер был в сети 12.12.2022
+                                    </time>
                                 </div>
+                                <button type="button" class="btn btn-reset btn-secondary bid-user__btn tw-mt-3" data-popup-path="chat">
+                                    Задать вопрос
+                                </button>
                             </div>
                         </div>
                     </section>
@@ -924,7 +803,7 @@
     @include('popups/edit-profile.html')
     @include('popups/sber-tied.html')
     <!-- ==== -->
-
+    @include('popups/mortgage-app.html')
     <!-- popups -->
 </body>
 

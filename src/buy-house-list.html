@@ -30,6 +30,7 @@
                             <use xlink:href="./img/sprite.svg#filter"></use>
                         </svg>
                         <span>Фильтры</span>
+                        <span class='filter-counter' data-filter-counter hidden></span>
                     </button>
                     <div class="filter__container">
                         <div class="filter__top">
@@ -37,13 +38,13 @@
                             <button type="button" class="btn btn-reset filter__close">Закрыть</button>
                         </div>
                         <div class="filter__inner">
-                            <div class="filter__row buy-apartment-filter__row--1 container" data-da=".filter--new-style,1212,1"
-                                style="grid-template-columns: 125px 278px 1fr 18% 200px;">
+                            <div class="filter__row buy-apartment-filter__row--1 container" data-da=".filter--new-style,1212,1" style="grid-template-columns: 145px 278px 385px max-content;">
                                 <div class="btn btn-reset filter__item filter-more-btn filter__btn-control">
                                     <svg>
                                         <use xlink:href="./img/sprite.svg#filter"></use>
                                     </svg>
                                     <span>Фильтры</span>
+                                    <span class='filter-counter' data-filter-counter hidden></span>
                                 </div>
                                 <div class="filter__item filter__item--quantity-selection quantity-selection">
                                     <div class="quantity-selection__inner">
@@ -79,68 +80,57 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="filter__item filter-dropdown" data-filter-dropdown-name="Сумма" data-filter-dropdown-subtitle="Любая">
-                                    <button type="button" class="btn btn-reset filter-dropdown__button">
-                                        <div class="filter-dropdown__button-wrapper">
-                                            <div>
-                                                Сумма
-                                            </div>
-                                            <div>
-                                                Любая
-                                            </div>
+                                <div class="filter__item field-range">
+                                    <div class="field-range__wrapper">
+                                        <div class="input-text input-text--no-exp input-text--only-number">
+                                            <label class="input-text__label">
+                                                <span>Цена от</span>
+                                                <input type="text" maxlength="12" class="input-reset input-text__input" placeholder="От">
+                                            </label>
                                         </div>
-                                        <svg>
-                                            <use xlink:href="./img/sprite.svg#check"></use>
-                                        </svg>
-                                    </button>
-                                    <div class="filter-dropdown__dropdown filter-dropdown__dropdown--left">
-                                        <button type="button" class="btn btn-reset filter-dropdown__close">
-                                            <svg>
-                                                <use xlink:href="./img/sprite.svg#x"></use>
-                                            </svg>
-                                        </button>
-                                        <label class="filter-dropdown__item active">
-                                            <span class="filter-dropdown__subtitle">
-                                                Цена объекта
-                                            </span>
-                                            <div class="filter-dropdown__checkbox checkbox-secondary">
-                                                <input id="buy-apart-buld-1" name="request-catalog_sum" checked class="checkbox-secondary__input" type="checkbox">
-                                                <label for="buy-apart-buld-1" class="checkbox-secondary__label">
-                                                </label>
-                                            </div>
-                                            <div class="filter-dropdown__range filter-range">
-                                                <div class="filter-range__nav">
-                                                    <div class="input-text input-text--only-number">
-                                                        <label class="input-text__label">
-                                                            <span>Цена от</span>
-                                                            <input type="text" maxlength="11" class="input-reset input-text__input" placeholder="Цена от">
-                                                        </label>
-                                                    </div>
-                                                    <div>–</div>
-                                                    <div class="input-text input-text--only-number">
-                                                        <label class="input-text__label">
-                                                            <span>До</span>
-                                                            <input type="text" maxlength="11" class="input-reset input-text__input" placeholder="До">
-                                                        </label>
-                                                    </div>
-                                                    <div>
-                                                        ₽
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </label>
+                                        <div class="input-text input-text--only-number">
+                                            <label class="input-text__label">
+                                                <span>До</span>
+                                                <input type="text" maxlength="12" class="input-reset input-text__input" placeholder="До">
+                                                <span>₽</span>
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-reset filter__item select-map-btn" data-popup-path="search-area">
-                                    <span>Район поиска</span>
-                                    <svg>
-                                        <use xlink:href="./img/sprite.svg#location-two"></use>
-                                    </svg>
-                                </button>
-                                <button type="reset" class="btn btn-reset filter__clear">Очистить</button>
+                                <button type="reset" class="btn btn-reset underline-hover filter__clear">Очистить</button>
                             </div>
                             <div class="filter__row buy-apartment-filter__row--2" hidden>
                                 <div class="container">
+                                    <div class="filter__item tw-grid tw-grid-cols-2 tw-gap-4 md1:tw-grid-cols-1">
+                                        <div class="field-info">
+                                            <div class="field-info__content">
+                                                <h3 class="field-info__title title-4">
+                                                    Кэшбэк за покупку
+                                                </h3>
+                                                <p class="field-info__descr">
+                                                    Кэшбэк до 5% за покупку квартиры
+                                                </p>
+                                            </div>
+                                            <label class="field-info__checkbox toggle-checkbox">
+                                                <input type="checkbox" name="toggle-2421">
+                                                <div aria-hidden="true"></div>
+                                            </label>
+                                        </div>
+                                        <div class="field-info">
+                                            <div class="field-info__content">
+                                                <h3 class="field-info__title title-4">
+                                                    Есть подарок
+                                                </h3>
+                                                <p class="field-info__descr">
+                                                    Подарки от застройщика на выбор при покупке квартиры
+                                                </p>
+                                            </div>
+                                            <label class="field-info__checkbox toggle-checkbox">
+                                                <input type="checkbox" name="toggle-2422">
+                                                <div aria-hidden="true"></div>
+                                            </label>
+                                        </div>
+                                    </div>
                                     <div class="filter__item field-select" data-field-select-name="apartments">
                                         <div class="field-select__name">
                                             Тип жилья
@@ -376,6 +366,19 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="filter__item field-select _not-choice" data-search-area-btn hidden>
+                                        <div class="field-select__name">
+                                            Расположение
+                                        </div>
+                                        <div class="field-select__wrapper">
+                                            <button type="button" class="btn btn-reset field-select__item select-map-btn" data-popup-path="search-area">
+                                                <span>Укажите область на карте</span>
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#finger"></use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
                                     <div class="filter__item field-select field-select--multiple" data-field-select-name="class">
                                         <div class="field-select__name">
                                             Класс
@@ -420,7 +423,7 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="filter__item field-select field-select--multiple" data-field-select-name="finishing">
+                                    <div class="filter__item field-select field-select--multiple _border-bottom" data-field-select-name="finishing">
                                         <div class="field-select__name">
                                             Отделка
                                         </div>
@@ -479,12 +482,19 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-reset filter__btn-control filter__btn-hidden">
-                                        <span>Скрыть фильтры</span>
-                                        <svg>
-                                            <use xlink:href="img/sprite.svg#check"></use>
-                                        </svg>
-                                    </button>
+                                    <div class="tw-flex tw-mt-[32px] md1:tw-mt-[16px] md1:tw-mr-16 md1:tw-justify-end" data-filter-controls>
+                                        <button type="button" class="btn btn-reset filter__btn-control filter__btn-hidden">
+                                            <span>Скрыть фильтры</span>
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#check"></use>
+                                            </svg>
+                                        </button>
+                                        <span class='tw-ml-auto tw-font-medium'>Найдено 10 000 новостроек</span>
+                                        <button type="reset" class="btn btn-reset underline-hover filter__clear tw-ml-7">
+                                            Очистить
+                                            <span class='before-dash' data-filter-counter hidden></span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -492,15 +502,20 @@
                     <button type="button" class="btn btn-reset filter__map">
                         На карте
                     </button>
+                    <div class="filter__loading loading _blue">
+                        <div class="loading__ball"></div>
+                        <div class="loading__ball"></div>
+                        <div class="loading__ball"></div>
+                    </div>
                 </form>
                 <div class="buy-apartment__cards-list cards-list">
                     <div class="container">
                         <div class="cards-list__items cards-list__items--no-gap">
                             <article class="card-primary card-primary--kit">
                                 <div class="card-primary__container">
-                                    <a href="./develop-inner-kitchen.html" class="card-primary__link"></a>
+                                    <a href="./house.html" class="card-primary__link"></a>
                                     <div class="card-primary__top">
-                                        <a href="./develop-inner-kitchen.html" class="card-primary__images">
+                                        <a href="./house.html" class="card-primary__images">
                                             <div class="card-primary__item">
                                                 <div class="card-primary__image">
                                                     <picture>
@@ -527,137 +542,140 @@
                                             </div>
                                         </a>
                                         <ul class="card-primary__pagination list-reset" aria-hidden="true"></ul>
-                                        <div class="card-primary__info">
-                                            <div class="row card-primary__info--tags">
-                                                <div class='tag tag--white tag--very-small _no-hover'>
-                                                    <span>Есть фото построенных домов</span>
-                                                </div>
-                                                <button type="button" class="btn btn-reset tag tag--white tag--very-small _no-hover" data-tooltip-add-selector="max-w-320" data-tooltip-mobile-popup data-tooltip-html='
-                                                <div class="tw-flex tw-items-center tw-flex-wrap tw-gap-[6px]">
-                                                    <div class="tag tag--very-small _no-hover"><span>Подарок 50 000 руб</span></div>
-                                                    <div class="tag tag--very-small _no-hover"><span>вознаграждение за рекомендацию</span></div>
-                                                </div>
-                                                '>
-                                                <span>ещё +2</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="card-secondary__options">
-                                            <div class='tag tag--white tag--very-small _no-hover'>
-                                                <span>ипотека 3.5% для семей с детьми</span>
-                                            </div>
-                                            <button type="button" class="btn btn-reset tag tag--white tag--very-small _no-hover" data-tooltip-position-y="top" data-tooltip-add-selector="max-w-320" data-tooltip-mobile-popup data-tooltip-html='
-                                            <div class="tw-flex tw-items-center tw-flex-wrap tw-gap-[6px]">
-                                                <div class="tag tag--very-small _no-hover"><span>Подарок 50 000 руб</span></div>
-                                                <div class="tag tag--very-small _no-hover"><span>вознаграждение за рекомендацию</span></div>
-                                            </div>
-                                            '>
-                                            <span>ещё +2</span>
-                                            </button>
-                                        </div>
                                     </div>
                                     <div class="card-primary__content">
-                                        <h3 class="card-primary__name title-4">
-                                            Кухонный гарнитур «Изида»
-                                        </h3>
-                                        <div class="card-primary__rating rating-small">
-                                            <svg>
-                                                <use xlink:href="img/sprite.svg#star"></use>
-                                            </svg>
-                                            <span class="rating-small__number">5.0</span>
-                                            <span class="rating-small__quantity">(523 отзыва)</span>
-                                        </div>
-                                        <div class="card-primary__meter">
-                                            Прямой, 120–240 см
-                                        </div>
-                                        <div class="card-primary__point-system point-system">
-                                            <button type="button" class="btn btn-reset point-system__target" title="Балльная система">
-                                                <svg>
-                                                    <use xlink:href="./img/sprite.svg#info"></use>
-                                                </svg>
-                                                <span>Рейтинг 5.2 от ИИ</span>
-                                            </button>
-                                            <div class="point-system__container" hidden>
-                                                <div class="point-system__content">
-                                                    <h2 class="point-system__title title-2">
-                                                        Балльная система
-                                                    </h2>
-                                                    <div class="point-system__descr">
-                                                        <p>
-                                                            Экспертная система оценки качества изделий.
-                                                        </p>
-                                                        <p>
-                                                            Рейтинг в категории кухни зависит от параметров ниже:
-                                                        </p>
-                                                    </div>
-                                                    <ul class="point-system__items list-reset">
-                                                        <li class="point-system__item infographics-small">
-                                                            <span class="infographics-small__name">
-                                                                Фасад
-                                                            </span>
-                                                            <div class="infographics-small__block">
-                                                                <span class="infographics-small__number">
-                                                                    5.2
-                                                                </span>
-                                                                <span class="infographics-small__line">
-                                                                    <span style="width: 52%;"></span>
-                                                                </span>
+                                        <div class="tw-flex tw-gap-3 tw-justify-between">
+                                            <div class="col">
+                                                <div class="card-primary__options" data-tags-in-height="54">
+                                                    <button type="button" class="btn btn-reset tag tag--green tag--very-small _no-hover" data-tags-in-height-item hidden>
+                                                        Кэшбэк от 29 000 ₽
+                                                    </button>
+                                                    <button type="button" class="btn btn-reset tag tag--purple tag--very-small _no-hover tw-gap-2" data-tags-in-height-item hidden>
+                                                        Подарок
+                                                        <img src="./img/present.png" width="15" height="15" alt="">
+                                                    </button>
+                                                    <button type="button" class="btn btn-reset tag tag--dark-green tag--very-small _no-hover" data-tags-in-height-item hidden>
+                                                        Топ 5
+                                                    </button>
+                                                </div>
+                                                <h3 class="card-primary__name title-4">
+                                                    D178-1
+                                                </h3>
+                                                <div class="card-primary__rating rating-small">
+                                                    <svg>
+                                                        <use xlink:href="img/sprite.svg#star"></use>
+                                                    </svg>
+                                                    <span class="rating-small__number">5.0</span>
+                                                    <span class="rating-small__quantity">(523 отзыва)</span>
+                                                </div>
+                                                <div class="card-primary__meter">
+                                                    128 м², каркасный дом, 3 спальни, 3 спальни
+                                                </div>
+                                                <div class="card-primary__point-system point-system">
+                                                    <button type="button" class="btn btn-reset point-system__target" title="Балльная система">
+                                                        <svg>
+                                                            <use xlink:href="./img/sprite.svg#info"></use>
+                                                        </svg>
+                                                        <span>Рейтинг 5.2 от ИИ</span>
+                                                    </button>
+                                                    <div class="point-system__container" hidden>
+                                                        <div class="point-system__content">
+                                                            <h2 class="point-system__title title-2">
+                                                                Балльная система
+                                                            </h2>
+                                                            <div class="point-system__descr">
+                                                                <p>
+                                                                    Экспертная система оценки качества изделий.
+                                                                </p>
+                                                                <p>
+                                                                    Рейтинг в категории кухни зависит от параметров ниже:
+                                                                </p>
                                                             </div>
-                                                        </li>
-                                                        <li class="point-system__item infographics-small">
-                                                            <span class="infographics-small__name">
-                                                                Корпус
-                                                            </span>
-                                                            <div class="infographics-small__block">
-                                                                <span class="infographics-small__number">
-                                                                    8
-                                                                </span>
-                                                                <span class="infographics-small__line">
-                                                                    <span style="width: 80%;"></span>
-                                                                </span>
+                                                            <ul class="point-system__items list-reset">
+                                                                <li class="point-system__item infographics-small">
+                                                                    <span class="infographics-small__name">
+                                                                        Фасад
+                                                                    </span>
+                                                                    <div class="infographics-small__block">
+                                                                        <span class="infographics-small__number">
+                                                                            5.2
+                                                                        </span>
+                                                                        <span class="infographics-small__line">
+                                                                            <span style="width: 52%;"></span>
+                                                                        </span>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="point-system__item infographics-small">
+                                                                    <span class="infographics-small__name">
+                                                                        Корпус
+                                                                    </span>
+                                                                    <div class="infographics-small__block">
+                                                                        <span class="infographics-small__number">
+                                                                            8
+                                                                        </span>
+                                                                        <span class="infographics-small__line">
+                                                                            <span style="width: 80%;"></span>
+                                                                        </span>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="point-system__item infographics-small">
+                                                                    <span class="infographics-small__name">
+                                                                        Форнитура
+                                                                    </span>
+                                                                    <div class="infographics-small__block">
+                                                                        <span class="infographics-small__number">
+                                                                            4
+                                                                        </span>
+                                                                        <span class="infographics-small__line">
+                                                                            <span style="width: 40%;"></span>
+                                                                        </span>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="point-system__item infographics-small">
+                                                                    <span class="infographics-small__name">
+                                                                        Столешница
+                                                                    </span>
+                                                                    <div class="infographics-small__block">
+                                                                        <span class="infographics-small__number">
+                                                                            5.9
+                                                                        </span>
+                                                                        <span class="infographics-small__line">
+                                                                            <span style="width: 59%;"></span>
+                                                                        </span>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                            <div class="point-system__result">
+                                                                Исходя из рейтинга формируется итоговый балл <span>5.2 от ИИ</span>
                                                             </div>
-                                                        </li>
-                                                        <li class="point-system__item infographics-small">
-                                                            <span class="infographics-small__name">
-                                                                Форнитура
-                                                            </span>
-                                                            <div class="infographics-small__block">
-                                                                <span class="infographics-small__number">
-                                                                    4
-                                                                </span>
-                                                                <span class="infographics-small__line">
-                                                                    <span style="width: 40%;"></span>
-                                                                </span>
-                                                            </div>
-                                                        </li>
-                                                        <li class="point-system__item infographics-small">
-                                                            <span class="infographics-small__name">
-                                                                Столешница
-                                                            </span>
-                                                            <div class="infographics-small__block">
-                                                                <span class="infographics-small__number">
-                                                                    5.9
-                                                                </span>
-                                                                <span class="infographics-small__line">
-                                                                    <span style="width: 59%;"></span>
-                                                                </span>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="point-system__result">
-                                                        Исходя из рейтинга формируется итоговый балл <span>5.2 от ИИ</span>
+                                                        </div>
+                                                        <div class="point-system__image">
+                                                            <picture>
+                                                                <source srcset="./img/kitchens.webp" type="image/webp">
+                                                                <img loading="lazy" src="./img/kitchens.png" width="300" height="300" alt="asd">
+                                                            </picture>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="point-system__image">
-                                                    <picture>
-                                                        <source srcset="./img/kitchens.webp" type="image/webp">
-                                                        <img loading="lazy" src="./img/kitchens.png" width="300" height="300" alt="asd">
-                                                    </picture>
+                                                <div class="card-price card-price--system">
+                                                    <span class="card-price__price">от 6 200 000 ₽</span>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="card-price card-price--system">
-                                            <span class="card-price__price">от 14 000 ₽</span>
+                                            <button type='button' class='btn btn-reset comparison-btn card-primary__comparison' data-tooltip-mobile-popup data-tooltip-notif='
+                                            <div class="tw-flex tw-gap-4">
+                                                <svg class="tw-w-4 tw-h-4" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm3.8-8.3a1 1 0 0 0-1.42-1.4L7.2 8.46a.28.28 0 0 1-.4 0l-1.1-1.1A1 1 0 0 0 4.3 8.8l2.08 2.09c.34.34.9.34 1.24 0L11.8 6.7z"></path>
+                                                </svg>
+                                                <div class="tw-flex tw-flex-col tw-gap-2">
+                                                    <span>Добавлено в сравнение</span>
+                                                    <a href="./comparison.html" class="btn-blue underline-hover">Перейти к сравнению</a>
+                                                </div>
+                                            </div>
+                                            '>
+                                                <svg>
+                                                    <use xlink:href="./img/sprite.svg#comparison"></use>
+                                                </svg>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

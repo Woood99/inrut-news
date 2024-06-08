@@ -301,14 +301,15 @@ export const mortgageCalc = (container) => {
                 const target = e.target;
                 const btn = target.closest('[data-bank-offer-btn]');
                 if (!btn) return;
+                const bank = btn.closest('.bank-offer');
                 if (!btn.classList.contains('_active')) {
                     btn.classList.add('_active');
                     btn.textContent = 'Удалить';
-                    selectBank.call(this,btn.closest('.bank-offer'));
+                    selectBank.call(this,bank);
                 } else {
                     btn.classList.remove('_active');
                     btn.textContent = 'Выбрать';
-                    deleteBank.call(this,btn.closest('.bank-offer'));
+                    deleteBank.call(this,bank);
                 }
 
                 updateBanks.call(this);

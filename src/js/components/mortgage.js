@@ -275,11 +275,12 @@ export const mortgageCalc = (container) => {
                 programPrc = fixedNumber(programPrc);
 
                 const results = { ...this.dataClass.getResults(), ...getResultsOnBank(this.dataClass.getResults(), programPrc) };
-
-                sumEl.textContent = `${numberReplace(results.totalAmount)} ₽`;
+                if (sumEl) {
+                    sumEl.textContent = `${numberReplace(results.totalAmount)} ₽`;
+                }
                 termEl.textContent = `${results.term} лет`;
-                paymentEl.textContent = `${numberReplace(results.monthPayment)} ₽`;
-                cashback.textContent = `${numberReplace(Math.round(results.totalAmount / 100 * currentCashback))} ₽`;
+                paymentEl.textContent = `${numberReplace(results.monthPayment)} ₽/мес`;
+                cashback.textContent = `Кешбэк ${numberReplace(Math.round(results.totalAmount / 100 * currentCashback))} ₽`;
             }
 
             function getResultsOnBank({ term, totalAmount }, programPrc) {

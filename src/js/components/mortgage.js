@@ -51,7 +51,7 @@ export const mortgageCalc = (container) => {
 
             this.initFields();
             this.selectBanks();
-            console.log(this.data);
+            this.stickyBlock();
             document.addEventListener('mortgageCalcFormUpdate', (e) => {
                 this.dataClass.setData(e.detail);
                 this.data = this.dataClass.getData();
@@ -373,6 +373,45 @@ export const mortgageCalc = (container) => {
                 }
             }
 
+        }
+
+        stickyBlock() {
+            const result = container.querySelector('.mortgage-result');
+            const bid = container.querySelector('[data-mortgage-bid]');
+            const calcBlock = container.querySelector('[data-mortgage-calc-block]');
+
+            const sidebar = container.querySelector('[data-mortgage-sidebar]');
+            const sidebarAdd = container.querySelector('[data-mortgage-sidebar-add]');
+            handleScroll();
+            document.addEventListener('scroll',handleScroll);
+
+            function handleScroll() {
+                const posTop = calcBlock.getBoundingClientRect().top;
+                if (posTop + calcBlock.clientHeight - result.clientHeight - 16  <= 0) {
+                    sidebarAdd.removeAttribute('hidden');
+                    sidebarAdd.insertAdjacentElement('beforeend',bid);
+
+                    result.classList.add('_active');
+                    sidebar.classList.add('_active');
+                    bid.classList.add('_active');
+
+                    const distance = result.offsetTop - window.scrollY + result.clientHeight;
+                    if (distance > 0){
+                        bid.style.top = `${distance + 16}px`;
+                    } else {
+                        bid.style.top = `16px`;
+                    }
+                } else {
+                    if (sidebar.classList.contains('_active')) {
+                        sidebarAdd.setAttribute('hidden','');
+                        sidebar.insertAdjacentElement('beforeend',bid);
+
+                        sidebar.classList.remove('_active');
+                        bid.classList.remove('_active');
+                        result.classList.remove('_active');
+                    }
+                }
+            }
         }
     }
 

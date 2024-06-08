@@ -30,6 +30,20 @@
     &__sidebar{
         grid-column: 2/3;
         grid-row: 1/3;
+        >._sticky{
+            position: sticky;
+            top: 16px;
+        }
+        &[data-mortgage-sidebar]{
+            &._active{
+                grid-row: 1/2;
+            }
+        }
+    }
+    &__bid{
+       &:not(._active) {
+        top: 200px !important;
+       }
     }
 }
 
@@ -113,5 +127,9 @@
         display: flex;
         flex-direction: column;
         gap: 4px;
+    }
+
+    &:not(._active){
+        margin-bottom: 16px;
     }
 }

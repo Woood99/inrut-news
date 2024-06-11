@@ -9,10 +9,6 @@ export const mortgageCalc = (container) => {
     if (!container) return;
 
     const targetCreditMap = {
-        'default': [
-            ['base', 'gov', 'it', 'military', 'family', 'rural'],
-            'base'
-        ],
         'buildings': [
             ['base', 'gov', 'it', 'military', 'family'],
             'base'

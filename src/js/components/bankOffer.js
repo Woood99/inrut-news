@@ -222,11 +222,14 @@ export const bankOffer = (item) => {
 
 
         function toggle(spoller) {
+            const btn = spoller.querySelector('.bank-offer__spoller-btn');
             const content = spoller.querySelector('.bank-offer__spoller-content');
             if (!spoller.classList.contains('_active')) {
+                btn.setAttribute('hidden','');
                 spoller.classList.add('_active');
                 content.removeAttribute('hidden');
             } else {
+                btn.removeAttribute('hidden');
                 spoller.classList.remove('_active');
                 content.setAttribute('hidden', '');
             }

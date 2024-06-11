@@ -4,7 +4,6 @@ import { fixedNumber } from './bankOffer';
 import noUiSlider from "nouislider";
 import Cleave from 'cleave.js';
 
-
 export const mortgageCalc = (container) => {
     if (!container) return;
 
@@ -48,6 +47,7 @@ export const mortgageCalc = (container) => {
             this.initFields();
             this.selectBanks();
             this.stickyBlock();
+
             document.addEventListener('mortgageCalcFormUpdate', (e) => {
                 this.dataClass.setData(e.detail);
                 this.data = this.dataClass.getData();
@@ -128,8 +128,10 @@ export const mortgageCalc = (container) => {
 
             const paymentInputEl = container.querySelector('[data-mortgage="payment-input"]');
             const paymentRangeEl = container.querySelector('[data-mortgage="payment-range"]');
+            const paymentTagsEl = container.querySelector('[data-mortgage="payment-tags"]');
             this.paymentInput = paymentInput(this.dataClass, paymentInputEl);
             this.paymentRange = paymentRange(this.dataClass, paymentRangeEl);
+            paymentTags.call(this,paymentTagsEl);
 
             const matercalCapitalEl = container.querySelector('[data-mortgage="matercal-capital-input"]');
             this.maternalCapitalInput = maternalCapitalInput(this.dataClass, matercalCapitalEl);
@@ -755,6 +757,27 @@ export const mortgageCalc = (container) => {
         })
     
         return el;
+    }
+
+    function paymentTags(el) {
+        if (!el) return;
+
+        const clickHandler = (e) => {
+           const target =e.target;
+           const btn = target.closest('[data-mortgage-tag]');
+           if (!btn) return;
+           const prc = Number(fixedNumber(btn.textContent));
+
+           this.paymentInput.setRawValue(this.data.cost / 100 * prc);
+           
+           updateForm(btn, {
+            payment: +this.paymentInput.getRawValue(),
+            onUpdate: 'paymentInput'
+        });
+        }
+
+
+        el.addEventListener('click',clickHandler);
     }
     
     function maternalCapitalInput(data, el) {

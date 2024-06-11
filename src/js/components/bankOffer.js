@@ -1,282 +1,353 @@
 import numberToAnim from "../modules/numberToAnim";
 export const bankOffer2 = () => {
-    const items = document.querySelectorAll('.bank-offer');
+    const items = document.querySelectorAll(".bank-offer");
     if (items.length >= 1) {
-        items.forEach(container => {
-            const additional = container.querySelector('.bank-offer__additional');
-            const additionalItems = container.querySelectorAll('.bank-offer__additional-item');
+        items.forEach((container) => {
+            const additional = container.querySelector(
+                ".bank-offer__additional"
+            );
+            const additionalItems = container.querySelectorAll(
+                ".bank-offer__additional-item"
+            );
 
-            const infoItems = container.querySelectorAll('.bank-offer__info-item');
-            const bid = infoItems[0].querySelector('[data-bank-offer-default-prc]');
-            const monthPaymentTop = infoItems[1].querySelector('div > span');
+            const infoItems = container.querySelectorAll(
+                ".bank-offer__info-item"
+            );
+            const bid = infoItems[0].querySelector(
+                "[data-bank-offer-default-prc]"
+            );
+            const monthPaymentTop = infoItems[1].querySelector("div > span");
 
-            const selector = container.querySelector('.bank-offer__selector');
+            const selector = container.querySelector(".bank-offer__selector");
             if (selector) {
-                const btn = selector.querySelector('.bank-offer__selector-top');
-                const selectorContent = selector.querySelector('.bank-offer__selector-content');
-                const closeBtn = selector.querySelector('.bank-offer__close-item');
-                btn.addEventListener('click', () => {
-                    if (!selector.classList.contains('_active')) {
-                        selector.classList.add('_active');
-                        selectorContent.removeAttribute('hidden');
-                        if (additional) additional.removeAttribute('hidden');
+                const btn = selector.querySelector(".bank-offer__selector-top");
+                const selectorContent = selector.querySelector(
+                    ".bank-offer__selector-content"
+                );
+                const closeBtn = selector.querySelector(
+                    ".bank-offer__close-item"
+                );
+                btn.addEventListener("click", () => {
+                    if (!selector.classList.contains("_active")) {
+                        selector.classList.add("_active");
+                        selectorContent.removeAttribute("hidden");
+                        if (additional) additional.removeAttribute("hidden");
                     } else {
-                        selector.classList.remove('_active');
-                        selectorContent.setAttribute('hidden', '');
-                        if (additional) additional.setAttribute('hidden', '');
+                        selector.classList.remove("_active");
+                        selectorContent.setAttribute("hidden", "");
+                        if (additional) additional.setAttribute("hidden", "");
                     }
                 });
                 if (closeBtn) {
-                    closeBtn.addEventListener('click', () => {
-                        selector.classList.remove('_active');
-                        selectorContent.setAttribute('hidden', '');
-                        if (additional) additional.setAttribute('hidden', '');
+                    closeBtn.addEventListener("click", () => {
+                        selector.classList.remove("_active");
+                        selectorContent.setAttribute("hidden", "");
+                        if (additional) additional.setAttribute("hidden", "");
 
-                        const popup = container.closest('.popup-primary__container');
-                        const topGap = popup ? popup.scrollTop + container.getBoundingClientRect().top : window.pageYOffset + container.getBoundingClientRect().top;
+                        const popup = container.closest(
+                            ".popup-primary__container"
+                        );
+                        const topGap = popup
+                            ? popup.scrollTop +
+                              container.getBoundingClientRect().top
+                            : window.pageYOffset +
+                              container.getBoundingClientRect().top;
                         if (popup) {
                             popup.scrollTo({
-                                top: topGap - 32 - 15
-                            })
+                                top: topGap - 32 - 15,
+                            });
                         } else {
                             window.scrollTo({
-                                top: topGap - 15
-                            })
+                                top: topGap - 15,
+                            });
                         }
-
-
-                    })
+                    });
                 }
-
             }
 
-            const selectorList = container.querySelector('.bank-offer-selector-list');
+            const selectorList = container.querySelector(
+                ".bank-offer-selector-list"
+            );
             if (selectorList && additionalItems.length > 0) {
-                const items = selectorList.querySelectorAll('.bank-offer-selector-list__item');
+                const items = selectorList.querySelectorAll(
+                    ".bank-offer-selector-list__item"
+                );
                 let newPrc;
                 let defaultPrc;
                 let defaultPrcNumber;
                 let currentPrc;
                 updateTopInfo();
-                items.forEach(item => {
-                    const btn = item.querySelector('.bank-offer-selector-list__btn');
-                    const monthPayment = item.querySelector('[data-bank-offer-item-m-payment]');
-                    const priceBid = item.querySelector('[data-bank-offer-item-b-price]');
-                    const benefit = item.querySelector('[data-bank-offer-item-benefit]');
+                items.forEach((item) => {
+                    const btn = item.querySelector(
+                        ".bank-offer-selector-list__btn"
+                    );
+                    const monthPayment = item.querySelector(
+                        "[data-bank-offer-item-m-payment]"
+                    );
+                    const priceBid = item.querySelector(
+                        "[data-bank-offer-item-b-price]"
+                    );
+                    const benefit = item.querySelector(
+                        "[data-bank-offer-item-benefit]"
+                    );
                     if (btn) {
-                        btn.addEventListener('click', () => {
-                            selectorList.querySelectorAll('.bank-offer-selector-list__btn').forEach(btn => btn.classList.remove('_active'));
-                            btn.classList.add('_active');
-                            bid.textContent = btn.querySelector('[data-bank-offer-item-m-prc]').textContent;
-                            numberToAnim(monthPaymentTop, 0, Number(monthPayment.dataset.bankOfferItemMPayment), '₽');
+                        btn.addEventListener("click", () => {
+                            selectorList
+                                .querySelectorAll(
+                                    ".bank-offer-selector-list__btn"
+                                )
+                                .forEach((btn) =>
+                                    btn.classList.remove("_active")
+                                );
+                            btn.classList.add("_active");
+                            bid.textContent = btn.querySelector(
+                                "[data-bank-offer-item-m-prc]"
+                            ).textContent;
+                            numberToAnim(
+                                monthPaymentTop,
+                                0,
+                                Number(
+                                    monthPayment.dataset.bankOfferItemMPayment
+                                ),
+                                "₽"
+                            );
                             updateTopInfo();
-                        })
+                        });
                     }
-                })
+                });
 
-                additionalItems.forEach(item => {
-                    const btn = item.querySelector('.bank-offer__additional-item__btn');
-                    const descr = item.querySelector('.bank-offer__additional-item__descr');
+                additionalItems.forEach((item) => {
+                    const btn = item.querySelector(
+                        ".bank-offer__additional-item__btn"
+                    );
+                    const descr = item.querySelector(
+                        ".bank-offer__additional-item__descr"
+                    );
                     moreDescr(btn, descr);
-                    const toggle = item.querySelector('.toggle-checkbox');
-                    const toggleInput = toggle.querySelector('input');
+                    const toggle = item.querySelector(".toggle-checkbox");
+                    const toggleInput = toggle.querySelector("input");
                     const span = toggle.previousElementSibling;
 
-                    toggleInput.addEventListener('change', () => {
+                    toggleInput.addEventListener("change", () => {
                         const elPrc = +numberPrcToNumber(span.textContent);
                         currentPrc = Number(currentPrc);
                         if (toggleInput.checked) {
-                            span.classList.add('_active');
+                            span.classList.add("_active");
                             currentPrc = currentPrc + elPrc;
                         } else {
-                            span.classList.remove('_active');
+                            span.classList.remove("_active");
                             currentPrc = currentPrc - elPrc;
                         }
                         currentPrc = currentPrc.toFixed(1);
                         if (defaultPrcNumber != currentPrc) {
-                            newPrc.removeAttribute('hidden');
-                            defaultPrc.classList.add('_old');
+                            newPrc.removeAttribute("hidden");
+                            defaultPrc.classList.add("_old");
                             newPrc.textContent = numberToNumberPrc(currentPrc);
                         } else {
                             newPrc.textContent = numberToNumberPrc(currentPrc);
-                            newPrc.setAttribute('hidden', '');
-                            defaultPrc.classList.remove('_old');
+                            newPrc.setAttribute("hidden", "");
+                            defaultPrc.classList.remove("_old");
                         }
-                    })
-                })
+                    });
+                });
 
                 function updateTopInfo() {
-                    newPrc = container.querySelector('[data-bank-offer-new-prc]');
-                    defaultPrc = container.querySelector('[data-bank-offer-default-prc]');
-                    defaultPrcNumber = +Number(defaultPrc.textContent.replace('%', '').replace(',', '.')).toFixed(1);
-                    currentPrc = +Number(defaultPrc.textContent.replace('%', '').replace(',', '.')).toFixed(1);
-                    additionalItems.forEach(item => {
-                        const activeEl = item.querySelectorAll('._active');
-                        activeEl.forEach(active => {
+                    newPrc = container.querySelector(
+                        "[data-bank-offer-new-prc]"
+                    );
+                    defaultPrc = container.querySelector(
+                        "[data-bank-offer-default-prc]"
+                    );
+                    defaultPrcNumber = +Number(
+                        defaultPrc.textContent
+                            .replace("%", "")
+                            .replace(",", ".")
+                    ).toFixed(1);
+                    currentPrc = +Number(
+                        defaultPrc.textContent
+                            .replace("%", "")
+                            .replace(",", ".")
+                    ).toFixed(1);
+                    additionalItems.forEach((item) => {
+                        const activeEl = item.querySelectorAll("._active");
+                        activeEl.forEach((active) => {
                             const elPrc = numberPrcToNumber(active.textContent);
-                            currentPrc = (Number(currentPrc) + elPrc).toFixed(1);
+                            currentPrc = (Number(currentPrc) + elPrc).toFixed(
+                                1
+                            );
                             if (defaultPrcNumber != currentPrc) {
-                                newPrc.removeAttribute('hidden');
-                                defaultPrc.classList.add('_old');
-                                newPrc.textContent = numberToNumberPrc(currentPrc);
+                                newPrc.removeAttribute("hidden");
+                                defaultPrc.classList.add("_old");
+                                newPrc.textContent =
+                                    numberToNumberPrc(currentPrc);
                             }
-                        })
+                        });
                     });
                 }
             }
 
-            const addInfo = container.querySelector('.bank-offer__add-info');
+            const addInfo = container.querySelector(".bank-offer__add-info");
             if (addInfo) {
-                const btn = addInfo.querySelector('.bank-offer__add-info-top');
-                const selectorContent = addInfo.querySelector('.bank-offer__add-info-content');
-                const closeBtn = addInfo.querySelector('.bank-offer__close-item');
-                btn.addEventListener('click', () => {
-                    if (!addInfo.classList.contains('_active')) {
-                        addInfo.classList.add('_active');
-                        selectorContent.removeAttribute('hidden');
+                const btn = addInfo.querySelector(".bank-offer__add-info-top");
+                const selectorContent = addInfo.querySelector(
+                    ".bank-offer__add-info-content"
+                );
+                const closeBtn = addInfo.querySelector(
+                    ".bank-offer__close-item"
+                );
+                btn.addEventListener("click", () => {
+                    if (!addInfo.classList.contains("_active")) {
+                        addInfo.classList.add("_active");
+                        selectorContent.removeAttribute("hidden");
                     } else {
-                        addInfo.classList.remove('_active');
-                        selectorContent.setAttribute('hidden', '');
+                        addInfo.classList.remove("_active");
+                        selectorContent.setAttribute("hidden", "");
                     }
-                })
+                });
                 if (closeBtn) {
-                    closeBtn.addEventListener('click', () => {
-                        addInfo.classList.remove('_active');
-                        selectorContent.setAttribute('hidden', '');
+                    closeBtn.addEventListener("click", () => {
+                        addInfo.classList.remove("_active");
+                        selectorContent.setAttribute("hidden", "");
 
-                        const popup = container.closest('.popup-primary__container');
-                        const topGap = popup ? popup.scrollTop + container.getBoundingClientRect().top : window.pageYOffset + container.getBoundingClientRect().top;
+                        const popup = container.closest(
+                            ".popup-primary__container"
+                        );
+                        const topGap = popup
+                            ? popup.scrollTop +
+                              container.getBoundingClientRect().top
+                            : window.pageYOffset +
+                              container.getBoundingClientRect().top;
                         if (popup) {
                             popup.scrollTo({
-                                top: topGap - 32 - 15
-                            })
+                                top: topGap - 32 - 15,
+                            });
                         } else {
                             window.scrollTo({
-                                top: topGap - 15
-                            })
+                                top: topGap - 15,
+                            });
                         }
-                    })
+                    });
                 }
             }
 
             function moreDescr(btn, descr) {
-                btn.addEventListener('click', () => {
-                    if (!btn.classList.contains('_active')) {
-                        btn.classList.add('_active');
-                        btn.querySelector('span').textContent = 'Скрыть';
+                btn.addEventListener("click", () => {
+                    if (!btn.classList.contains("_active")) {
+                        btn.classList.add("_active");
+                        btn.querySelector("span").textContent = "Скрыть";
 
-                        descr.removeAttribute('hidden');
+                        descr.removeAttribute("hidden");
                     } else {
-                        btn.classList.remove('_active');
-                        btn.querySelector('span').textContent = 'Подробнее';
+                        btn.classList.remove("_active");
+                        btn.querySelector("span").textContent = "Подробнее";
 
-                        descr.setAttribute('hidden', '');
+                        descr.setAttribute("hidden", "");
                     }
-                })
+                });
             }
-
-        })
+        });
     }
 };
-
 
 export const bankOffer = (item) => {
     if (!item) return;
 
-    const newPrcEl = item.querySelector('[data-bank-offer-new-prc]');
-    const defaultPrcEl = item.querySelector('[data-bank-offer-default-prc]');
+    const newPrcEl = item.querySelector("[data-bank-offer-new-prc]");
+    const defaultPrcEl = item.querySelector("[data-bank-offer-default-prc]");
     const defaultPrc = fixedNumber(defaultPrcEl.textContent);
 
     let discount = 0;
 
     updateTopInfo();
-    item.addEventListener('click', handleClickSpollerBtn);
-    item.addEventListener('change', updateTopInfo);
-
+    item.addEventListener("click", handleClickSpollerBtn);
+    item.addEventListener("change", updateTopInfo);
 
     function handleClickSpollerBtn(e) {
         const target = e.target;
-        const btn = target.closest('.bank-offer__spoller-btn');
-        const close = target.closest('.bank-offer__close');
-        const moreBtn = target.closest('.bank-offer__more-btn');
+        const btn = target.closest(".bank-offer__spoller-btn");
+        const close = target.closest(".bank-offer__close");
+        const moreBtn = target.closest(".bank-offer__more-btn");
         if (btn) {
-            toggle(btn.closest('.bank-offer__spoller'));
+            toggle(btn.closest(".bank-offer__spoller"));
         }
 
         if (close) {
-            toggle(close.closest('.bank-offer__spoller'));
+            toggle(close.closest(".bank-offer__spoller"));
         }
 
         if (moreBtn) {
-            const content = moreBtn.parentNode.querySelector('.bank-offer__more');
-            if (!moreBtn.classList.contains('_active')) {
-                moreBtn.classList.add('_active');
-                content.removeAttribute('hidden');
+            const content =
+                moreBtn.parentNode.querySelector(".bank-offer__more");
+            if (!moreBtn.classList.contains("_active")) {
+                moreBtn.classList.add("_active");
+                content.removeAttribute("hidden");
             } else {
-                moreBtn.classList.remove('_active');
-                content.setAttribute('hidden','');
+                moreBtn.classList.remove("_active");
+                content.setAttribute("hidden", "");
             }
         }
-        
-
-
 
         function toggle(spoller) {
-            const btn = spoller.querySelector('.bank-offer__spoller-btn');
-            const content = spoller.querySelector('.bank-offer__spoller-content');
-            if (!spoller.classList.contains('_active')) {
-                btn.setAttribute('hidden','');
-                spoller.classList.add('_active');
-                content.removeAttribute('hidden');
+            const btn = spoller.querySelector(".bank-offer__spoller-btn");
+            const content = spoller.querySelector(
+                ".bank-offer__spoller-content"
+            );
+            if (!spoller.classList.contains("_active")) {
+                btn.setAttribute("hidden", "");
+                spoller.classList.add("_active");
+                content.removeAttribute("hidden");
             } else {
-                btn.removeAttribute('hidden');
-                spoller.classList.remove('_active');
-                content.setAttribute('hidden', '');
+                btn.removeAttribute("hidden");
+                spoller.classList.remove("_active");
+                content.setAttribute("hidden", "");
             }
         }
     }
-
 
     function updateTopInfo() {
         discount = 0;
-        newPrcEl.textContent = '';
+        newPrcEl.textContent = "";
         defaultPrcEl.textContent = `${defaultPrc}%`;
 
-        const inputsDown = item.querySelectorAll('[data-bank-offer-input-down]');
+        const inputsDown = item.querySelectorAll(
+            "[data-bank-offer-input-down]"
+        );
 
-        inputsDown.forEach(input => {
+        inputsDown.forEach((input) => {
             if (input.checked) {
                 const value = input.dataset.bankOfferInputDown;
-                discount+= +Number(value).toFixed(1);
+                discount += +Number(value).toFixed(1);
             }
-        })
+        });
 
         if (discount != 0) {
-            newPrcEl.removeAttribute('hidden');
+            newPrcEl.removeAttribute("hidden");
             newPrcEl.textContent = `${(defaultPrc - discount).toFixed(1)}%`;
-            newPrcEl.parentNode.classList.add('_discount');
+            newPrcEl.parentNode.classList.add("_discount");
         } else {
-            newPrcEl.setAttribute('hidden','');
-            newPrcEl.parentNode.classList.remove('_discount');
+            newPrcEl.setAttribute("hidden", "");
+            newPrcEl.parentNode.classList.remove("_discount");
         }
 
-        item.dispatchEvent(new CustomEvent('mortgageCalcFormUpdate', {
+        item.dispatchEvent(
+            new CustomEvent("mortgageCalcFormUpdate", {
                 bubbles: true,
                 detail: {},
-            }))
+            })
+        );
     }
-}
+};
 
 export function fixedNumber(number) {
-    return Number(number.replace('%', '').replace(',', '.')).toFixed(1);
+    return Number(number.replace("%", "").replace(",", ".")).toFixed(1);
 }
 
 function numberToNumberPrc(number) {
-    number = number.replace('.', ',');
+    number = number.replace(".", ",");
     return `${number}%`;
 }
 
 function numberPrcToNumber(number) {
-    const result = +Number(number.replace('%', '').replace(',', '.'));
+    const result = +Number(number.replace("%", "").replace(",", "."));
     return result;
 }

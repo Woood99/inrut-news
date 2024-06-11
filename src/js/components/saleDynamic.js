@@ -8,10 +8,12 @@ const saleDynamic = (chartBlock = true) => {
     tabs(container);
     popper(container)
     diagramSetHeight(container);
-    if (chartBlock){
-        Chart.register(ChartDataLabels);
-        chartLine(container);
-    }
+    try {
+        if (chartBlock) {
+            Chart.register(ChartDataLabels);
+            chartLine(container);
+        }
+    } catch (err) {}
 
     function tabs(container) {
         const btns = container.querySelectorAll('[data-sale-dynamic-tab]');
@@ -153,7 +155,7 @@ const saleDynamic = (chartBlock = true) => {
                             font: {
                                 size: 11
                             },
-                            formatter: function (value, context) {
+                            formatter: function(value, context) {
                                 return convertSum(value);
                             },
                         },

@@ -4,7 +4,10 @@ import { fixedNumber } from './bankOffer';
 import noUiSlider from "nouislider";
 import Cleave from 'cleave.js';
 
-export const mortgageCalc = (container) => {
+import numberToAnim from "../modules/numberToAnim";
+import debounce from "../functions/debounce";
+
+export const mortgageCalc = (container, banksArr = []) => {
     if (!container) return;
 
     const targetCreditMap = {
@@ -41,6 +44,8 @@ export const mortgageCalc = (container) => {
             this.programs(this.data);
             this.targetCreditChange(this.data);
             this.maternalCapital();
+
+            this.updateResultsViewCalc();
             this.updateResultsView();
             this.updateBanks();
 
@@ -52,12 +57,17 @@ export const mortgageCalc = (container) => {
                 this.dataClass.setData(e.detail);
                 this.data = this.dataClass.getData();
                 this.results = this.dataClass.getResults();
-
-                this.updateFormAndSliders(this.data);
                 this.updateResultsView();
-                this.updateBanks();
-                 console.log(this.data);
+                this.updateFormAndSliders(this.data);
             })
+
+            document.addEventListener('mortgageCalcFormUpdate', debounce(updateView.bind(this), 500));
+
+
+            function updateView() {
+                this.updateResultsViewCalc();
+                this.updateBanks();
+            }
 
         }
 
@@ -83,6 +93,7 @@ export const mortgageCalc = (container) => {
 
         targetCreditChange() {
             const targetCredit = container.querySelector('[data-mortgage-target-credit]');
+            if (!targetCredit) return;
             targetCredit.addEventListener('change', (e) => {
                 let btnActive = null;
                 const value = e.detail.value;
@@ -131,7 +142,7 @@ export const mortgageCalc = (container) => {
             const paymentTagsEl = container.querySelector('[data-mortgage="payment-tags"]');
             this.paymentInput = paymentInput(this.dataClass, paymentInputEl);
             this.paymentRange = paymentRange(this.dataClass, paymentRangeEl);
-            paymentTags.call(this,paymentTagsEl);
+            paymentTags.call(this, paymentTagsEl);
 
             const matercalCapitalEl = container.querySelector('[data-mortgage="matercal-capital-input"]');
             this.maternalCapitalInput = maternalCapitalInput(this.dataClass, matercalCapitalEl);
@@ -166,7 +177,7 @@ export const mortgageCalc = (container) => {
                         max: this.data.maxPaymentPrc * 100,
                     }
                 })
-         
+
                 this.paymentInput.setRawValue(Math.round(data.payment));
             }
 
@@ -194,7 +205,7 @@ export const mortgageCalc = (container) => {
                         max: this.data.maxPaymentPrc * 100,
                     }
                 })
-            }    
+            }
         }
 
         updateResultsView() {
@@ -215,21 +226,23 @@ export const mortgageCalc = (container) => {
                 <span class="text-blue">от ${(this.data.selectedProgram.value * 100).toFixed(1)}%</span>
                 `;
             }
+        }
 
+        updateResultsViewCalc() {
             const resultPayment = container.querySelector('[data-mortgage-result="payment"]');
             if (resultPayment) {
                 const months = this.results.term * 12;
                 const monthRate = this.data.selectedProgram.value / 12;
                 const generalRate = (1 + monthRate) ** months;
                 const monthPayment = (this.results.totalAmount * monthRate * generalRate) / (generalRate - 1);
-                resultPayment.textContent = `${numberReplace(Math.round(monthPayment))} ₽`;
+                numberToAnim(resultPayment, 0, numberReplace(Math.round(monthPayment)));
             }
 
             const resultCashback = container.querySelector('[data-mortgage-result="cashback"]');
             if (resultCashback) {
-                const cashbackArr = Array.from(container.querySelectorAll('[data-bank-offer-cashback]')).map(item => item.dataset.bankOfferCashback);
+                const cashbackArr = Array.from(banksArr).map(item => item.dataset.bankOfferCashback);
                 const maxCashback = Math.max(...cashbackArr);
-                resultCashback.textContent = `до ${numberReplace(Math.round(this.results.totalAmount / 100 * maxCashback))} ₽`;
+                numberToAnim(resultCashback,  0, numberReplace(Math.round(this.results.totalAmount / 100 * maxCashback)));
             }
         }
 
@@ -262,8 +275,7 @@ export const mortgageCalc = (container) => {
         }
 
         updateBanks() {
-            const banks = container.querySelectorAll('.bank-offer');
-            banks.forEach(bank => {
+            banksArr.forEach(bank => {
                 updateBank.call(this, bank);
             })
 
@@ -281,9 +293,10 @@ export const mortgageCalc = (container) => {
                 if (sumEl) {
                     sumEl.textContent = `${numberReplace(results.totalAmount)} ₽`;
                 }
-                termEl.textContent = `${results.term} лет`;
-                paymentEl.textContent = `${numberReplace(results.monthPayment)} ₽/мес`;
-                cashback.textContent = `Кешбэк ${numberReplace(Math.round(results.totalAmount / 100 * currentCashback))} ₽`;
+
+                numberToAnim(termEl, 0, String(results.term));
+                numberToAnim(paymentEl, 0, numberReplace(results.monthPayment));
+                numberToAnim(cashback, 0, numberReplace(Math.round(results.totalAmount / 100 * currentCashback)));
             }
 
             function getResultsOnBank({ term, totalAmount }, programPrc) {
@@ -299,9 +312,8 @@ export const mortgageCalc = (container) => {
         }
 
         selectBanks() {
-            const banks = container.querySelectorAll('.bank-offer');
-            banks.forEach((bank,index) => bank.setAttribute('data-bank-offer-id',index));
-            container.addEventListener('click',(e) => {
+            banksArr.forEach((bank, index) => bank.setAttribute('data-bank-offer-id', index));
+            document.addEventListener('click', (e) => {
                 const target = e.target;
                 const btn = target.closest('[data-bank-offer-btn]');
                 if (!btn) return;
@@ -309,11 +321,11 @@ export const mortgageCalc = (container) => {
                 if (!btn.classList.contains('_active')) {
                     btn.classList.add('_active');
                     btn.textContent = 'Удалить';
-                    selectBank.call(this,bank);
+                    selectBank.call(this, bank);
                 } else {
                     btn.classList.remove('_active');
                     btn.textContent = 'Выбрать';
-                    deleteBank.call(this,bank);
+                    deleteBank.call(this, bank);
                 }
 
                 updateBanks.call(this);
@@ -338,17 +350,15 @@ export const mortgageCalc = (container) => {
             function updateBanks() {
                 const bottom = document.querySelector('.mortgage-bottom');
                 if (bottom) bottom.remove();
-                const banks = container.querySelectorAll('.bank-offer');
 
                 const selectedBanks = this.data.selectedBanks;
                 if (selectedBanks.length > 0) {
-                    const htmlImages = 
-                        selectedBanks.map((item,index) => {
+                    const htmlImages =
+                        selectedBanks.map((item, index) => {
                             if (index < 4) {
-                                return  `<img loading="lazy" src="${item.logoURL}" alt="" width="110" height="25">`;
+                                return `<img loading="lazy" src="${item.logoURL}" alt="" width="110" height="25">`;
                             }
-                        })
-                    ;
+                        });
                     const html = `
                     <div class="mortgage__bottom mortgage-bottom">
                         <div class="mortgage-bottom__container container">
@@ -358,7 +368,7 @@ export const mortgageCalc = (container) => {
                                     ${selectedBanks.length > 4 ? `+${selectedBanks.length - 4}` : ''}
                                 </div>
                                 <span>
-                                    Вы выбрали ${selectedBanks.length} из ${banks.length} возможных банков
+                                    Вы выбрали ${selectedBanks.length} из ${banksArr.length} возможных банков
                                 </span>
                             </div>
                             <button type="button" class="btn btn-reset btn-primary mortgage-bottom__btn" data-popup-path="mortgage-app-popup">
@@ -367,7 +377,7 @@ export const mortgageCalc = (container) => {
                         </div>
                     </div>
                     `;
-                    document.querySelector('.site-container').insertAdjacentHTML('beforeend',html);
+                    document.querySelector('.site-container').insertAdjacentHTML('beforeend', html);
                 }
             }
 
@@ -378,31 +388,33 @@ export const mortgageCalc = (container) => {
             const bid = container.querySelector('[data-mortgage-bid]');
             const calcBlock = container.querySelector('[data-mortgage-calc-block]');
 
+            if (!(bid && calcBlock)) return;
+
             const sidebar = container.querySelector('[data-mortgage-sidebar]');
             const sidebarAdd = container.querySelector('[data-mortgage-sidebar-add]');
             handleScroll();
-            document.addEventListener('scroll',handleScroll);
+            document.addEventListener('scroll', handleScroll);
 
             function handleScroll() {
                 const posTop = calcBlock.getBoundingClientRect().top;
-                if (posTop + calcBlock.clientHeight - result.clientHeight - 16  <= 0) {
+                if (posTop + calcBlock.clientHeight - result.clientHeight - 16 <= 0) {
                     sidebarAdd.removeAttribute('hidden');
-                    sidebarAdd.insertAdjacentElement('beforeend',bid);
+                    sidebarAdd.insertAdjacentElement('beforeend', bid);
 
                     result.classList.add('_active');
                     sidebar.classList.add('_active');
                     bid.classList.add('_active');
 
                     const distance = result.offsetTop - window.scrollY + result.clientHeight;
-                    if (distance > 0){
+                    if (distance > 0) {
                         bid.style.top = `${distance + 16}px`;
                     } else {
                         bid.style.top = `16px`;
                     }
                 } else {
                     if (sidebar.classList.contains('_active')) {
-                        sidebarAdd.setAttribute('hidden','');
-                        sidebar.insertAdjacentElement('beforeend',bid);
+                        sidebarAdd.setAttribute('hidden', '');
+                        sidebar.insertAdjacentElement('beforeend', bid);
 
                         sidebar.classList.remove('_active');
                         bid.classList.remove('_active');
@@ -535,10 +547,10 @@ export const mortgageCalc = (container) => {
             if (newData.onUpdate !== 'maternalCapitalInput') {
                 if (newData.maternalCapitalStatus || this.data.maternalCapitalStatus) {
 
-              
+
                     if (newData.maternalCapital > this.data.maternalCapitalMax) {
                         newData.maternalCapital = this.data.maternalCapitalMax;
-                     
+
                     }
                     if (newData.maternalCapital < this.data.maternalCapitalMin) {
                         newData.maternalCapital = this.data.maternalCapitalMin;
@@ -581,40 +593,40 @@ export const mortgageCalc = (container) => {
 
     function costInput(data, el) {
         if (!el) return;
-    
+
         const cleaveInput = new Cleave(el, settingsCleaveInput);
         cleaveInput.setRawValue(data.cost);
-    
+
         el.addEventListener('input', inputUpdateModel);
         el.addEventListener('change', handleInputChange);
-    
+
         function handleInputChange() {
             const value = +cleaveInput.getRawValue();
-    
+
             if (value > data.maxPrice) {
                 cleaveInput.setRawValue(data.maxPrice);
             }
-    
+
             if (value < data.minPrice) {
                 cleaveInput.setRawValue(data.minPrice);
             }
-    
+
             inputUpdateModel();
         }
-    
+
         function inputUpdateModel() {
             updateForm(el, {
                 cost: +cleaveInput.getRawValue(),
                 onUpdate: 'costInput'
             });
         }
-    
+
         return cleaveInput;
     }
-    
+
     function costRange(data, el) {
         if (!el) return;
-    
+
         noUiSlider.create(el, {
             start: data.cost,
             connect: 'lower',
@@ -626,7 +638,7 @@ export const mortgageCalc = (container) => {
                 max: data.maxPrice
             },
         });
-    
+
         el.noUiSlider.on('slide', function() {
             const sliderValue = parseInt(String(this.get().split('.')[0].replace(/ /g, '')));
             updateForm(el, {
@@ -634,46 +646,46 @@ export const mortgageCalc = (container) => {
                 onUpdate: 'costRange',
             });
         })
-    
+
         return el;
     }
-    
+
     function termInput(data, el) {
         if (!el) return;
-    
+
         const cleaveInput = new Cleave(el, settingsCleaveInput);
         cleaveInput.setRawValue(data.time);
-    
+
         el.addEventListener('input', inputUpdateModel);
         el.addEventListener('change', handleInputChange);
-    
+
         function handleInputChange() {
             const value = +cleaveInput.getRawValue();
-    
+
             if (value > data.maxYear) {
                 cleaveInput.setRawValue(data.maxYear);
             }
-    
+
             if (value < data.minYear) {
                 cleaveInput.setRawValue(data.minYear);
             }
-    
+
             inputUpdateModel();
         }
-    
+
         function inputUpdateModel() {
             updateForm(el, {
                 time: +cleaveInput.getRawValue(),
                 onUpdate: 'termInput'
             });
         }
-    
+
         return cleaveInput;
     }
-    
+
     function termRange(data, el) {
         if (!el) return;
-    
+
         noUiSlider.create(el, {
             start: data.time,
             connect: 'lower',
@@ -683,57 +695,57 @@ export const mortgageCalc = (container) => {
                 max: data.maxYear
             },
         });
-    
+
         el.noUiSlider.on('slide', function() {
             const sliderValue = parseInt(String(this.get().split('.')[0].replace(/ /g, '')));
-    
+
             updateForm(el, {
                 time: sliderValue,
                 onUpdate: 'termRange',
             });
-    
+
         })
-    
+
         return el;
     }
-    
+
     function paymentInput(data, el) {
         if (!el) return;
-    
+
         const cleaveInput = new Cleave(el, settingsCleaveInput);
         cleaveInput.setRawValue(data.getData().payment);
-    
+
         el.addEventListener('input', inputUpdateModel);
         el.addEventListener('change', handleInputChange);
-    
+
         function handleInputChange() {
             const value = +cleaveInput.getRawValue();
-    
+
             if (value > data.getData().getMaxPayment()) {
                 cleaveInput.setRawValue(data.getData().getMaxPayment());
             }
-    
+
             if (value < data.getData().getMinPayment()) {
                 cleaveInput.setRawValue(data.getData().getMinPayment());
             }
-    
+
             if (value < data.getData().maternalCapital && data.getData().maternalCapitalStatus) {
                 cleaveInput.setRawValue(data.getData().maternalCapital);
             }
-    
+
             inputUpdateModel();
         }
-    
+
         function inputUpdateModel() {
             updateForm(el, {
                 payment: +cleaveInput.getRawValue(),
                 onUpdate: 'paymentInput'
             });
         }
-    
+
         return cleaveInput;
     }
-    
+
     function paymentRange(data, el) {
         if (!el) return;
         noUiSlider.create(el, {
@@ -745,17 +757,17 @@ export const mortgageCalc = (container) => {
                 max: data.getData().maxPaymentPrc * 100,
             },
         });
-    
+
         el.noUiSlider.on('slide', function() {
             const sliderValue = parseInt(String(this.get().split('.')[0].replace(/ /g, '')));
-    
+
             updateForm(el, {
                 paymentPrc: sliderValue,
                 onUpdate: 'paymentRange',
             });
-    
+
         })
-    
+
         return el;
     }
 
@@ -763,54 +775,55 @@ export const mortgageCalc = (container) => {
         if (!el) return;
 
         const clickHandler = (e) => {
-           const target =e.target;
-           const btn = target.closest('[data-mortgage-tag]');
-           if (!btn) return;
-           const prc = Number(fixedNumber(btn.textContent));
+            const target = e.target;
+            const btn = target.closest('[data-mortgage-tag]');
+            if (!btn) return;
+            const prc = Number(fixedNumber(btn.textContent));
 
-           this.paymentInput.setRawValue(this.data.cost / 100 * prc);
-           
-           updateForm(btn, {
-            payment: +this.paymentInput.getRawValue(),
-            onUpdate: 'paymentInput'
-        });
+            this.paymentInput.setRawValue(this.data.cost / 100 * prc);
+
+            updateForm(btn, {
+                payment: +this.paymentInput.getRawValue(),
+                onUpdate: 'paymentInput'
+            });
         }
 
 
-        el.addEventListener('click',clickHandler);
+        el.addEventListener('click', clickHandler);
     }
-    
+
     function maternalCapitalInput(data, el) {
         if (!el) return;
-    
+
         const cleaveInput = new Cleave(el, settingsCleaveInput);
         cleaveInput.setRawValue(data.getData().maternalCapital);
-    
+
         el.addEventListener('input', inputUpdateModel);
         el.addEventListener('change', handleInputChange);
+
         function handleInputChange() {
             const value = +cleaveInput.getRawValue();
-    
+
             if (value > data.getData().maternalCapitalMax) {
                 cleaveInput.setRawValue(data.getData().maternalCapitalMax);
             }
             if (value < data.getData().maternalCapitalMin) {
                 cleaveInput.setRawValue(data.getData().maternalCapitalMin);
             }
-    
+
             inputUpdateModel();
         }
-    
+
         function inputUpdateModel() {
             updateForm(el, {
                 maternalCapital: +cleaveInput.getRawValue(),
                 onUpdate: 'maternalCapitalInput'
             });
         }
-    
+
         return cleaveInput;
     }
-    
+
     function updateForm(element, data) {
         element.dispatchEvent(new CustomEvent('mortgageCalcFormUpdate', {
             bubbles: true,
@@ -819,8 +832,8 @@ export const mortgageCalc = (container) => {
             },
         }))
     }
-    
-    
+
+
     const settingsCleaveInput = {
         numeral: true,
         numeralThousandsGroupStyle: 'thousand',
@@ -831,5 +844,3 @@ export const mortgageCalc = (container) => {
 
     return mortgageClass;
 };
-
-

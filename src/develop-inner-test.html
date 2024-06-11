@@ -9583,13 +9583,13 @@
                                     </div>
                                 </div>
                             </section>
-                            <div class="object-calc-mort object-calc-mort--add section-observ" id="section-calc-mort">
-                                <h2 class="object-calc-mort__title title-2">
+                            <section class="mortgage-calc section-observ white-block" data-mortgage-calc id="section-calc-mort">
+                                <h2 class="title-2">
                                     Рассчитайте ипотеку
                                 </h2>
-                                <div class="object-calc-mort__list">
-                                    <button type="button" class="btn btn-reset btn-secondary object-calc-mort__btn _active" data-mortgage-card="1">
-                                        <span>Базовая программа</span>
+                                <div class="tw-mt-4 mortgage-calc__programs">
+                                    <button type="button" class="btn btn-reset object-calc-mort__btn _active" data-mortgage-btn="base,0.109,Базовая">
+                                        <span>Базовая</span>
                                         <span>от 10,9%</span>
                                         <div aria-hidden="true">
                                             <svg>
@@ -9597,7 +9597,7 @@
                                             </svg>
                                         </div>
                                     </button>
-                                    <button type="button" class="btn btn-reset btn-secondary object-calc-mort__btn" data-mortgage-card="2">
+                                    <button type="button" class="btn btn-reset object-calc-mort__btn" data-mortgage-btn="gov,0.077,Господдержка">
                                         <span>Господдержка</span>
                                         <span>от 7,7%</span>
                                         <div aria-hidden="true">
@@ -9606,7 +9606,7 @@
                                             </svg>
                                         </div>
                                     </button>
-                                    <button type="button" class="btn btn-reset btn-secondary object-calc-mort__btn" data-mortgage-card="3">
+                                    <button type="button" class="btn btn-reset object-calc-mort__btn" data-mortgage-btn="it,0.047,Ипотека для IT">
                                         <span>Ипотека для IT</span>
                                         <span>от 4,7%</span>
                                         <div aria-hidden="true">
@@ -9615,18 +9615,29 @@
                                             </svg>
                                         </div>
                                     </button>
-                                    <button type="button" class="btn btn-reset btn-secondary object-calc-mort__btn" data-mortgage-card="4">
+                                    <button type="button" class="btn btn-reset object-calc-mort__btn" data-mortgage-btn="military,0.176,Военная">
                                         <span>Военная</span>
-                                        <span>от 4,7%</span>
+                                        <span>от 17,6%</span>
                                         <div aria-hidden="true">
                                             <svg>
                                                 <use xlink:href="./img/sprite.svg#verif"></use>
                                             </svg>
                                         </div>
                                     </button>
-                                    <button type="button" class="btn btn-reset btn-secondary object-calc-mort__btn" data-mortgage-card="5">
-                                        <span>Семейная</span>
-                                        <span>от 5,7%</span>
+                                    <button type="button" class="btn btn-reset object-calc-mort__btn" data-mortgage-btn="family,0.057,Семейная" data-tooltip-add-selector="max-w-320" data-tooltip-mobile-popup data-tooltip-html='
+                                        Это примерная сумма вашего бонуса. Когда сделка будет заключена, вы увидите итоговую сумму
+                                        '>
+                                        <span class='tw-pointer-events-none'>Семейная</span>
+                                        <span class='tw-pointer-events-none'>от 5,7%</span>
+                                        <div aria-hidden="true" class='tw-pointer-events-none'>
+                                            <svg>
+                                                <use xlink:href="./img/sprite.svg#verif"></use>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                    <button type="button" class="btn btn-reset object-calc-mort__btn" data-mortgage-btn="rural,0.048,Сельская">
+                                        <span>Сельская</span>
+                                        <span>от 4,8%</span>
                                         <div aria-hidden="true">
                                             <svg>
                                                 <use xlink:href="./img/sprite.svg#verif"></use>
@@ -9634,51 +9645,86 @@
                                         </div>
                                     </button>
                                 </div>
-                                <div class="object-calc-mort__wrapper">
-                                    <div class="col">
-                                        <div class="filter-range-one">
+                                <div class="mortgage-calc__wrapper">
+                                    <div class='tw-grid tw-grid-cols-2 tw-gap-x-2 tw-gap-y-4'>
+                                        <div class="filter-range-one tw-col-span-full">
                                             <span class="filter-range-one__subtitle">Стоимость объекта</span>
                                             <div class="filter-range-one__nav">
-                                                <div data-default="2897000">
-                                                    <input maxlength="12" type="text" name="Имя" class="input-reset">
+                                                <div>
+                                                    <input maxlength="12" type="text" name="Имя" class="input-reset" data-mortgage="cost-input">
                                                 </div>
                                             </div>
-                                            <div class="filter-range-one__inner" data-min="1800000" data-max="6000000">
+                                            <div class="filter-range-one__inner _not-default" data-mortgage="cost-range">
                                             </div>
                                         </div>
-                                        <div class="filter-range-one filter-range-one--contribution">
-                                            <span class="filter-range-one__subtitle">Первоначальный взнос</span>
-                                            <div class="filter-range-one__nav">
-                                                <div data-default="400000">
-                                                    <input type="text" maxlength="12" name="Имя" class="input-reset">
-                                                </div>
-                                                <span>15%</span>
-                                            </div>
-                                            <div class="filter-range-one__inner" data-min="50000" data-max="2000000"></div>
-                                        </div>
-                                        <div class="filter-range-one filter-range-one--term">
+                                        <div class="filter-range-one">
                                             <span class="filter-range-one__subtitle">Срок кредита</span>
                                             <div class="filter-range-one__nav">
-                                                <div data-default="5">
-                                                    <input type="text" maxlength="3" name="Имя" class="input-reset _width-auto">
+                                                <div data-default="30">
+                                                    <input type="text" maxlength="3" name="Имя" class="input-reset _width-auto" data-mortgage="term-input">
                                                     лет
                                                 </div>
                                             </div>
-                                            <div class="filter-range-one__inner" data-min="0" data-max="30"></div>
+                                            <div class="filter-range-one__inner _not-default" data-mortgage="term-range"></div>
                                         </div>
                                         <div class="field-static">
                                             <span class="field-static__subtitle">
                                                 Процентная ставка
                                             </span>
                                             <span class="field-static__text">
-                                                от 10,9%
+                                                от <span data-mortgage="program-prc">X</span>
                                             </span>
+                                        </div>
+                                        <label class="toggle-checkbox tw-col-span-full tw-mt-4">
+                                            <input type="checkbox" name="toggle-1" data-mortgage="maternal-capital-checkbox">
+                                            <div aria-hidden="true"></div>
+                                            <span>Использовать мат. капитал в первоначальном взносе</span>
+                                        </label>
+                                        <div class="input-text input-text--big tw-col-span-full _input-not-event" hidden data-mortgage="maternal-capital-field">
+                                            <label class="input-text__label">
+                                                <span>Материнский капитал</span>
+                                                <input type="text" name="Материнский капитал" maxlength="12" class="input-reset input-text__input" data-mortgage="matercal-capital-input" placeholder="">
+                                                <span class="input-text__name">₽</span>
+                                                <button type="button" class="btn btn-reset input-text__clear" hidden>
+                                                    <svg>
+                                                        <use xlink:href="./img/sprite.svg#x"></use>
+                                                    </svg>
+                                                </button>
+                                            </label>
+                                            <span class="_clue-span">Обычно материнский капитал составляет 833 024 ₽</span>
+                                        </div>
+                                        <div class="tw-col-span-full">
+                                            <div class="filter-range-one">
+                                                <span class="filter-range-one__subtitle">Первоначальный взнос</span>
+                                                <div class="filter-range-one__nav">
+                                                    <div>
+                                                        <input type="text" maxlength="12" name="Имя" class="input-reset" data-mortgage="payment-input">
+                                                    </div>
+                                                    <span data-mortgage="payment-prc">X</span>
+                                                </div>
+                                                <div class="filter-range-one__inner _not-default" data-mortgage="payment-range"></div>
+                                            </div>
+                                            <div class="tw-flex tw-flex-wrap tw-mt-4 tw-gap-2" data-mortgage="payment-tags">
+                                                <button type='button' class='btn btn-reset tag tag--small' data-mortgage-tag>15%</button>
+                                                <button type='button' class='btn btn-reset tag tag--small' data-mortgage-tag>20%</button>
+                                                <button type='button' class='btn btn-reset tag tag--small' data-mortgage-tag>30%</button>
+                                                <button type='button' class='btn btn-reset tag tag--small' data-mortgage-tag>40%</button>
+                                                <button type='button' class='btn btn-reset tag tag--small' data-mortgage-tag>50%</button>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <div class="object-calc-mort__info">
-                                            <span>194 000 ₽</span>
-                                            Ежемесячный платеж
+                                        <div class='tw-flex tw-items-center tw-justify-between tw-mt-4'>
+                                            <span>Ежемесячный платеж</span>
+                                            <span class='title-3'>
+                                                <span data-mortgage-result="payment">XX</span> &nbsp;₽
+                                            </span>
+                                        </div>
+                                        <div class='tw-flex tw-items-center tw-justify-between tw-mt-4'>
+                                            <span>Кэшбэк</span>
+                                            <span class='title-3'>
+                                                до&nbsp; <span data-mortgage-result="cashback">XX</span> &nbsp;₽
+                                            </span>
                                         </div>
                                         <div class="object-calc-mort__btns">
                                             <button type="button" class="btn btn-reset btn-primary object-calc-mort__app" data-popup-path="book-consultation">
@@ -9690,7 +9736,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </section>
                             <div class="object-apart-renov section-observ" id="section-apart-renov">
                                 <h2 class="object-apart-renov__title title-2">
                                     Отделка квартир
@@ -12063,6 +12109,7 @@
     @include('popups/genplan.html')
     @include('popups/client-fixed.html')
     @include('popups/developer-response.html')
+    @include('popups/mortgage-app.html')
     <!-- popups -->
 </body>
 

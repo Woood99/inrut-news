@@ -278,7 +278,18 @@ popup({
     }
 }, 'warning-remove5');
 popup(null, 'order-report');
-popup(null, 'select-bank');
+popup({
+    isOpen: () => {
+        const mortgageBottom = document.querySelector('.mortgage-bottom');
+        if (!mortgageBottom) return;
+        mortgageBottom.removeAttribute('hidden');
+    },
+    isClose: () => {
+        const mortgageBottom = document.querySelector('.mortgage-bottom');
+        if (!mortgageBottom) return;
+        mortgageBottom.setAttribute('hidden', '');
+    }
+}, 'select-bank');
 popup(null, 'metro-map');
 popup(null, 'im-buying');
 popup(null, 'book-object');

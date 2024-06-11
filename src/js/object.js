@@ -7,17 +7,12 @@ import './_main-scripts';
 
 // ==============================
 import getHeightBlock from './modules/getHeightBlock'
-import {
-    mapPrimary,
-    objectMaps
-} from './components/maps';
 import bookConsultation from './components/bookConsultation';
 import linkCopy from './modules/linkCopy';
 import {
     validateRadioPrimary,
     validateCheckboxPrimary,
     bookConsultationValidate,
-    clientFixedValidate,
     createAgreeValidate,
     addContactValidate,
     createDealValidate,
@@ -62,6 +57,10 @@ import {additionally} from './components/additionally';
 import saleDynamic from './components/saleDynamic';
 import dynamicCircle from './components/dynamicCircle';
 import floorTable from './components/floorTable';
+
+import { bankOffer } from './components/bankOffer';
+import { mortgageCalc } from './components/mortgage';
+
 document.addEventListener('DOMContentLoaded', () => {
     getHeightBlock('.header-fixed', '--header-fixed-height');
     linkCopy('.share-app-popup__btn');
@@ -110,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     floorTable();
     // ==============================================
 
-    // ==== maps ====
-    //   mapPrimary();
-    //  objectMaps();
+    document.querySelectorAll('.bank-offer').forEach(item => bankOffer(item));
+    
+    const mortgageCalcEl = mortgageCalc(document.querySelector('[data-mortgage-calc]'), document.querySelectorAll('.select-bank__item'));
 })

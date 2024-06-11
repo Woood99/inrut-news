@@ -1,23 +1,29 @@
 import numberReplace from './numberReplace';
 
-const numberToAnim = (element, from, to, prefix = undefined) => {
-    let result = from;
-    let stap = (to - from) / 80;
-    if (to) {
-        let interval = setInterval(() => {
-            if (result >= to) {
-                result = to;
-                element.textContent = finalReturn(result);
-                clearInterval(interval);
-            } else {
-                result += stap;
-                element.textContent = finalReturn(result);
-            }
-        }, 3);
+const numberToAnim = (element, from, to) => {
 
-        function finalReturn(result) {
-            return prefix ? `${numberReplace(String(result))} ${prefix}` : numberReplace(String(result));
+    if (isNaN(Number(from))) {
+        console.log(from);
+        from = 0;
+    }
+    let result = +from;
+    to = to.replace(/\s/g, '');
+    let stap = (to - from) / 80;
+    if (!to) return;
+
+    let interval = setInterval(() => {
+        if (result >= to) {
+            result = to;
+            element.textContent = finalReturn(result);
+            clearInterval(interval);
+        } else {
+            result += stap;
+            element.textContent = finalReturn(result);
         }
+    }, 3);
+
+    function finalReturn(result) {
+        return numberReplace(String(result));
     }
 
 }

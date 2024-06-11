@@ -103,14 +103,7 @@ export const bankOffer2 = () => {
                             bid.textContent = btn.querySelector(
                                 "[data-bank-offer-item-m-prc]"
                             ).textContent;
-                            numberToAnim(
-                                monthPaymentTop,
-                                0,
-                                Number(
-                                    monthPayment.dataset.bankOfferItemMPayment
-                                ),
-                                "₽"
-                            );
+                            numberToAnim(monthPaymentTop,0, Number( monthPayment.dataset.bankOfferItemMPayment), "₽");
                             updateTopInfo();
                         });
                     }

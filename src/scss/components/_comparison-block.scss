@@ -1,9 +1,12 @@
 .comparison-block {
     width: 1180px;
     --width-actions: 335px;
-    --width-col: 267.33px;
+    --width-col: calc((1180px - var(--width-actions) - 64px) / 3);
     position: relative;
-
+    &__wrapper{
+        min-width: fit-content;
+        width: 100%;
+    }
     .tabs-primary {
         &__container {
             box-shadow: none !important;
@@ -14,9 +17,10 @@
         .tabs__body {
             background-color: var(--white) !important;
             box-shadow: var(--shadow-primary) !important;
-            padding: 32px 0 !important;
+            padding: 32px !important;
             border-radius: 12px !important;
-            
+            overflow-x: auto;
+            scrollbar-width: none;
             &._scroll{
                 .comparison-block__subtitle {
                     min-width: calc(var(--width-actions) + 44px);
@@ -38,12 +42,12 @@
     }
 
     &__prev {
-        left: calc(var(--width-actions) + 32px);
+        left: calc(var(--width-actions) + 24px);
         transform: translateX(100%);
     }
 
     &__next {
-        right: 0;
+        right: 24px;
         transform: translateX(-100%);
     }
 
@@ -57,16 +61,11 @@
 
         transition: padding-top $transitionSpeed $transitionFunction,
             padding-bottom $transitionSpeed $transitionFunction;
-
-            padding: 0 0 0 32px;
     }
 
     &__top-container {
         display: flex;
         width: 100%;
-
-        overflow-x: auto;
-         scrollbar-width: none;
     }
 
     &__left-col {
@@ -80,7 +79,6 @@
         z-index: 2;
         left: 0;
         background-color: var(--white);
-
 
 
         .checkbox-secondary {
@@ -134,10 +132,6 @@
         &._none {
             color: var(--primaryTwo);
         }
-
-        &:last-child{
-            padding-right: 32px;
-        }
     }
 
     &__col-top {
@@ -167,8 +161,6 @@
 
     &__body {
         margin-top: 16px;
-        overflow-x: auto;
-        scrollbar-width: none;
         .spollers {
             &__item {
                 &:not(:last-child) {
@@ -187,7 +179,7 @@
               position: sticky;
               left: 0;
               z-index: 2;
-                padding: 16px 32px;
+                padding: 16px 0;
 
 
                 svg {
@@ -227,7 +219,7 @@
             position: absolute;
             bottom: 0;
             right: 0;
-            left: 32px;
+            left: 0;
         }
 
         &::after {
@@ -239,7 +231,7 @@
             position: absolute;
             bottom: 0;
             right: 0;
-            left: 0;
+            left: -32px;
              opacity: 0;
         }
 
@@ -296,14 +288,14 @@
         position: sticky;
         z-index: 2;
        left: 0;
-       padding: 0 16px 0 32px;
+       padding: 0 16px 0 0;
         background-color: var(--white);
         display: flex;
         align-items: center;
         gap: 8px;
 
-        min-width: calc(var(--width-actions) + 32px);
-        width: calc(var(--width-actions) + 32px);
+        min-width: var(--width-actions);
+        width: var(--width-actions);
 
         transition:  min-width $transitionSpeed $transitionFunction,
         width $transitionSpeed $transitionFunction;
@@ -551,3 +543,5 @@
         margin-bottom: 16px;
     }
 }
+
+

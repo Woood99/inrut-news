@@ -77,3 +77,51 @@ export const _slideToggle = (target, duration = 500) => {
         return _slideUp(target, duration);
     }
 }
+
+
+
+export const _displayFadeUp = (target, duration = 500, showmore = 0) => {
+    if (!target.classList.contains('_slide')) {
+        target.classList.add('_slide');
+        target.style.transitionProperty = 'opacity';
+        target.style.transitionDuration = duration + 'ms';
+        target.style.opacity = 1;
+        setTimeout(() => {
+            target.style.opacity = 0;
+        }, 0);
+        setTimeout(() => {
+            target.hidden = !showmore ? true : false;
+            target.style.removeProperty('transition-duration');
+            target.style.removeProperty('transition-property');
+            target.style.removeProperty('opacity');
+            target.classList.remove('_slide');
+        }, duration);
+    }
+};
+
+export const _displayFadeDown = (target, duration = 500, showmore = 0) => {
+    if (!target.classList.contains('_slide')) {
+        target.classList.add('_slide');
+        target.hidden = target.hidden ? false : null;
+        target.style.transitionProperty = 'opacity';
+        target.style.transitionDuration = duration + 'ms';
+        target.style.opacity = 0;
+        setTimeout(() => {
+            target.style.opacity = 1;
+        }, 0);
+        setTimeout(() => {
+            target.style.removeProperty('transition-duration');
+            target.style.removeProperty('transition-property');
+            target.style.removeProperty('opacity');
+            target.classList.remove('_slide');
+        }, duration);
+    }
+};
+
+export const _displayFadeToggle = (target, duration = 500) => {
+    if (target.hidden) {
+        return _displayFadeDown(target, duration);
+    } else {
+        return _displayFadeUp(target, duration);
+    }
+}

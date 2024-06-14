@@ -4,7 +4,6 @@ import disableScroll from '../modules/disableScroll';
 import enableScroll from '../modules/enableScroll';
 export const galleryPrimary = () => {
     const defaultGalleryItems = document.querySelectorAll('.default-gallery');
-    console.log(defaultGalleryItems);
     if (defaultGalleryItems.length >= 1) {
         defaultGalleryItems.forEach((gallery, index) => galleryPrimaryBody(gallery, `gallery-primary-container--default-${index+1}`,'default-gallery__item'));
     }

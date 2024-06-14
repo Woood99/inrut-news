@@ -2076,6 +2076,8 @@ export const searchSelectOneBody = (container) => {
                 tel.classList.add("_active");
                 tel.querySelector("input").value = "+7 999 999-99-99";
             }
+
+            input.dispatchEvent(new Event("change"));
         });
     });
 

@@ -2,7 +2,8 @@ import dataMediaQueries from '../support-modules/dataMediaQueries';
 import {
     _slideUp,
     _slideDown,
-    _slideToggle
+    _slideToggle,
+    _displayFadeToggle
 } from '../support-modules/slide';
 import {
     cardSchemeTag
@@ -82,7 +83,11 @@ const spollers = () => {
                     }
                     if (el.closest('.layouts__item-btn')) speed = 0;
 
-                    _slideToggle(spollerTitle.nextElementSibling, speed);
+                    if (spollersBlock.hasAttribute('data-spollers-fade')) {
+                        _displayFadeToggle(spollerTitle.nextElementSibling, 300);
+                    } else {
+                        _slideToggle(spollerTitle.nextElementSibling, speed);
+                    }
 
                     if (spollerTitle.classList.contains('_spoller-active') && el.closest('.layouts__item-btn')) {
                         setTimeout(() => {

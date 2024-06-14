@@ -134,20 +134,10 @@ export const cardSecondaryActionsBody = (card) => {
                 setTimeout(() => {
                     favorite.classList.add('_prevent');
                 }, 1);
-                favorite.innerHTML = `
-                <svg class='tw-fill-[#ff4848]'>
-                    <use xlink:href="./img/sprite.svg#favorite"></use>
-                </svg>
-                `;
             } else {
                 setTimeout(() => {
                     favorite.classList.remove('_prevent');
                 }, 1);
-                favorite.innerHTML = `
-                <svg>
-                    <use xlink:href="./img/sprite.svg#favorite-stroke"></use>
-                </svg>
-                `;
             }
         }
     })
@@ -160,7 +150,6 @@ export const cardSecondaryActionsBody = (card) => {
     function pricesSetRows(container) {
         const items = container.querySelectorAll('[data-card-price]');
         const length = items.length;
-        console.log(length);
         if (length === 0) return;
         if (length <= 2) {
             container.style.gridTemplateRows = `repeat(1, 1fr)`;
@@ -410,7 +399,6 @@ function cardSliderMobile(cardImageWrapper, imagesBody, cardItems) {
                 cardImageWrapper.classList.add('swiper');
                 imagesBody.classList.add('swiper-wrapper');
                 cardItems.forEach(item => item.classList.add('swiper-slide'));
-                console.log('da');
                 slider = new Swiper(cardImageWrapper, {
                     observer: true,
                     slidesPerView: perView,

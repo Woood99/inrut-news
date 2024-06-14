@@ -12,7 +12,6 @@ import {
     mapDraw,
     agentMap
 } from './components/maps';
-import linkCopy from './modules/linkCopy';
 import {
     validateRadioPrimary,
     validateCheckboxPrimary,
@@ -46,7 +45,6 @@ import dynamicCircle from './components/dynamicCircle';
 import videoModal from './components/videoModal';
 import dropdownItems from './modules/dropdownItems';
 document.addEventListener('DOMContentLoaded', () => {
-    linkCopy('.share-app-popup__btn');
     cardSecondaryActions();
     cardPrimaryActions();
     videoBlock();

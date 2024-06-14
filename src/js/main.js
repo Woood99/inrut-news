@@ -22,7 +22,6 @@ import {
     placeSaleAddressMap,
     objectMaps
 } from './components/maps';
-import linkCopy from './modules/linkCopy';
 import {
     validateRadioPrimary,
     validateCheckboxPrimary,
@@ -95,10 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
     galleryStories();
     getHeightBlock('.header-fixed', '--header-fixed-height');
 
-
-    // ==================================================
-
-    linkCopy('.share-app-popup__btn');
 
     // ==================================================
 

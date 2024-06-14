@@ -1,5 +1,5 @@
 import numberReplace from "../modules/numberReplace";
-import { fixedNumber } from './bankOffer';
+import {fixedNumberPrc} from './bankOffer';
 
 import noUiSlider from "nouislider";
 import Cleave from 'cleave.js';
@@ -45,6 +45,7 @@ export const mortgageCalc = (container, banksArr = []) => {
             this.targetCreditChange(this.data);
             this.maternalCapital();
 
+            this.updateBanksOnProgram();
             this.updateResultsViewCalc();
             this.updateResultsView();
             this.updateBanks();
@@ -57,6 +58,7 @@ export const mortgageCalc = (container, banksArr = []) => {
                 this.dataClass.setData(e.detail);
                 this.data = this.dataClass.getData();
                 this.results = this.dataClass.getResults();
+                this.updateBanksOnProgram();
                 this.updateResultsView();
                 this.updateFormAndSliders(this.data);
             })
@@ -242,7 +244,7 @@ export const mortgageCalc = (container, banksArr = []) => {
             if (resultCashback) {
                 const cashbackArr = Array.from(banksArr).map(item => item.dataset.bankOfferCashback);
                 const maxCashback = Math.max(...cashbackArr);
-                numberToAnim(resultCashback,  0, numberReplace(Math.round(this.results.totalAmount / 100 * maxCashback)));
+                numberToAnim(resultCashback, 0, numberReplace(Math.round(this.results.totalAmount / 100 * maxCashback)));
             }
         }
 
@@ -276,7 +278,9 @@ export const mortgageCalc = (container, banksArr = []) => {
 
         updateBanks() {
             banksArr.forEach(bank => {
-                updateBank.call(this, bank);
+                setTimeout(() => {
+                    updateBank.call(this, bank);
+                }, 1);
             })
 
             function updateBank(bank) {
@@ -287,8 +291,7 @@ export const mortgageCalc = (container, banksArr = []) => {
                 const sumEl = bank.querySelector('[data-bank-offer="sum"]');
                 const paymentEl = bank.querySelector('[data-bank-offer="payment"]');
                 let programPrc = bank.querySelector('[data-bank-offer-new-prc]').textContent || bank.querySelector('[data-bank-offer-default-prc]').textContent;
-                programPrc = fixedNumber(programPrc);
-
+                programPrc = fixedNumberPrc(programPrc);
                 const results = { ...this.dataClass.getResults(), ...getResultsOnBank(this.dataClass.getResults(), programPrc) };
                 if (sumEl) {
                     sumEl.textContent = `${numberReplace(results.totalAmount)} ₽`;
@@ -423,6 +426,20 @@ export const mortgageCalc = (container, banksArr = []) => {
                 }
             }
         }
+
+        updateBanksOnProgram() {
+            const currentProgram = this.data.banksData[this.data.selectedProgram.name];
+            banksArr.forEach(bank => {
+                const currentName = bank.dataset.bankOfferName;
+                if (currentProgram[currentName]) {
+                    bank.setAttribute('data-bank-offer-prc',currentProgram[currentName].prc);
+                    bank.setAttribute('data-bank-offer-cashback',currentProgram[currentName].cashback);
+                    bank.dispatchEvent(new CustomEvent('change', {
+                        bubbles: true,
+                    }))
+                }
+            })
+        }
     }
 
     class Data {
@@ -455,12 +472,121 @@ export const mortgageCalc = (container, banksArr = []) => {
                 maternalCapitalMax: 833024,
                 maternalCapital: 833024,
                 selectedBanks: [],
+                banksData: {
+                    base: {
+                        atb: {
+                            prc: 14.49,
+                            cashback: 1,
+                            logo: './img/banks/atb.png',
+                            bidFields: [
+                                {
+                                    title: 'Регистрация и рассчёты',
+                                    prc: '-0.3',
+                                    value: true,
+                                }
+                            ]
+                        },
+                        alfa: {
+                            prc: 5,
+                            cashback: 0.5
+                        },
+                        bars: {
+                            prc: 6,
+                            cashback: 0.75
+                        },
+                        vbrr: {
+                            prc: 7,
+                            cashback: 0.5
+                        },
+                        zenit: {
+                            prc: 8,
+                            cashback: 0.5
+                        },
+                        gasprom: {
+                            prc: 9,
+                            cashback: 0.5
+                        },
+                        domrf: {
+                            prc: 10,
+                            cashback: 0.5
+                        },
+                        kuban: {
+                            prc: 11,
+                            cashback: 0.5
+                        },
+                        mts: {
+                            prc: 12,
+                            cashback: 0.5
+                        },
+                        novik: {
+                            prc: 13,
+                            cashback: 0.5
+                        },
+                        prom: {
+                            prc: 14,
+                            cashback: 0.5
+                        },
+                        rnkb: {
+                            prc: 15,
+                            cashback: 0.5
+                        },
+                        rossel: {
+                            prc: 16,
+                            cashback: 0.5
+                        },
+                        ['sankt-peterburg']: {
+                            prc: 17,
+                            cashback: 0.5
+                        },
+                        sber: {
+                            prc: 18,
+                            cashback: 0.5
+                        },
+                        sovkom: {
+                            prc: 19,
+                            cashback: 0.5
+                        },
+                        tinkoff: {
+                            prc: 20,
+                            cashback: 0.5
+                        },
+                        ural: {
+                            prc: 21,
+                            cashback: 0.5
+                        },
+                        uralsib: {
+                            prc: 22,
+                            cashback: 0.5
+                        },
+                    },
+                    gov: {
+                        atb: {
+                            prc: 16,
+                            cashback: 1,
+                        },
+                        alfa: {
+                            prc: 17,
+                            cashback: 2
+                        },
+                    },
+                    it: {
+                       
+                    },
+                    military: {
+                       
+                    },
+                    family: {
+                       
+                    },
+                    rural: {
+                       
+                    },
+                }
             };
             this.results = {};
 
 
             this.data.setDefaultPayment();
-
             this.btns = Array.from(container.querySelectorAll('[data-mortgage-btn]'));
             this.data.programs = this.btns.reduce((acc, item) => {
                 const map = item.dataset.mortgageBtn.split(',');
@@ -778,7 +904,7 @@ export const mortgageCalc = (container, banksArr = []) => {
             const target = e.target;
             const btn = target.closest('[data-mortgage-tag]');
             if (!btn) return;
-            const prc = Number(fixedNumber(btn.textContent));
+            const prc = Number(fixedNumberPrc(btn.textContent));
 
             this.paymentInput.setRawValue(this.data.cost / 100 * prc);
 

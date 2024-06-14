@@ -8,7 +8,6 @@ import './_main-scripts';
 // ==============================
 import getHeightBlock from './modules/getHeightBlock'
 import bookConsultation from './components/bookConsultation';
-import linkCopy from './modules/linkCopy';
 import {
     validateRadioPrimary,
     validateCheckboxPrimary,
@@ -63,7 +62,6 @@ import { mortgageCalc } from './components/mortgage';
 
 document.addEventListener('DOMContentLoaded', () => {
     getHeightBlock('.header-fixed', '--header-fixed-height');
-    linkCopy('.share-app-popup__btn');
     cardSecondaryActions();
     cardPrimaryActions();
     videoBlock();

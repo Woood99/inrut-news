@@ -14,7 +14,6 @@ export const mapCoords = {
     },
 
     centerY(coords,el,target) {
-        console.log(coords);
         let pos = coords.top + (target.offsetHeight / 2) + this.gap;
         return pos;
     },

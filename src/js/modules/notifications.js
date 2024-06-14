@@ -1,6 +1,6 @@
 import { mapCoords } from "../functions/tooltip";
 
-class Notifications {
+export class Notifications {
     constructor(container) {
         this.block = container;
         if (!this.block) return;

@@ -3,7 +3,6 @@ import numberReplace from './numberReplace';
 const numberToAnim = (element, from, to) => {
 
     if (isNaN(Number(from))) {
-        console.log(from);
         from = 0;
     }
     let result = +from;

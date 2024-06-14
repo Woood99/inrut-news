@@ -959,7 +959,6 @@ function initSliders() {
             });
     
             slider.on("slideChange afterInit init", function() {
-             console.log(slider.activeIndex + 1);
                 const counterEl = sliderEl.closest('.promo-slider').querySelector('.promo-slider__counter');
                 sliderCounter(slider, counterEl);
             });

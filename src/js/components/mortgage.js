@@ -192,8 +192,7 @@ export const mortgageCalc = (container, banksArr = []) => {
             const resultPrc = container.querySelector('[data-mortgage-result="prc"]');
             if (resultPrc) {
                 resultPrc.innerHTML = `
-                ${this.data.selectedProgram.nameText} &nbsp
-                <span class="text-blue">от ${(this.data.selectedProgram.value * 100).toFixed(1)}%</span>
+                <span class="text-blue">${this.data.selectedProgram.nameText} &nbsp от ${(this.data.selectedProgram.value * 100).toFixed(1)}%</span>
                 `;
             }
         }
@@ -410,7 +409,7 @@ export const mortgageCalc = (container, banksArr = []) => {
                         }
                     }))
                 } else {
-                    bank.setAttribute('hidden','');
+                    bank.setAttribute('hidden', '');
                 }
             })
         }
@@ -553,10 +552,6 @@ export const mortgageCalc = (container, banksArr = []) => {
                             prc: 8,
                             cashback: 0.4
                         },
-                        domrf: {
-                            prc: 8,
-                            cashback: 0
-                        },
                     },
                     it: {
                         alfa: {
@@ -595,31 +590,41 @@ export const mortgageCalc = (container, banksArr = []) => {
                             nameText: 'Базовая',
                             prc: 0.109,
                             banksData: {
-                                atb: {
-                                    prc: 50,
-                                    cashback: 1,
-                                    bidFields: [
-                                    {
-                                        name: '1',
-                                        moreText: `
-                                            Услуга позволяет зарегистрировать переход права собственности за один визит в банк, провести денежные расчёты онлайн, 
-                                            а также получить скидку на ставку на весь срок кредита. Стоимость — до 15 300 руб.`,
-                                        prc: '1',
-                                        defaultValue: true
-                                    },
-                                    {
-                                        name: '2',
-                                        moreText: `
-                                            Услуга позволяет зарегистрировать переход права собственности за один визит в банк, провести денежные расчёты онлайн, 
-                                            а также получить скидку на ставку на весь срок кредита. Стоимость — до 15 300 руб.`,
-                                        prc: '35',
-                                        defaultValue: true
-                                    }
-                                ]
-                                },
                                 alfa: {
-                                    prc: 99.2,
-                                    cashback: 0.4
+                                    prc: 19.47,
+                                    cashback: 0.4,
+                                    bidFields: [
+                                        {
+                                            name: 'Зарплатный клиент Альфа-Банка',
+                                            prc: 0.5,
+                                            defaultValue: true
+                                        }
+                                    ]
+                                },
+                                domrf: {
+                                    prc: 18,
+                                    cashback: 0.3
+                                },
+                                prom: {
+                                    prc: 19.7,
+                                    cashback: 0.6,
+                                    bidFields: [
+                                        {
+                                            name: 'Страхование',
+                                            prc: 2,
+                                            defaultValue: true
+                                        },
+                                        {
+                                            name: 'Работники ОПК, зарплатные клиенты, клиенты премиального пакета Orange Premium Club',
+                                            prc: 0.6,
+                                            defaultValue: true
+                                        },
+                                        {
+                                            name: 'Партнёры сегмента "Platinum SPB"',
+                                            prc: 0.5,
+                                            defaultValue: true
+                                        }
+                                    ]
                                 },
                             }
                         },
@@ -627,22 +632,78 @@ export const mortgageCalc = (container, banksArr = []) => {
                             name: 'gov',
                             nameText: 'Господдержка',
                             prc: 0.077,
+                            banksData: {
+                                alfa: {
+                                    prc: 8,
+                                    cashback: 0.4
+                                },
+                                domrf: {
+                                    prc: 8,
+                                    cashback: 0
+                                },
+                                prom: {
+                                    prc: 9,
+                                    cashback: 0.6,
+                                    bidFields: [{
+                                            name: 'Страхование',
+                                            prc: '1',
+                                            defaultValue: true
+                                        }
+                                    ]
+                                },
+                            }
                         },
                         family: {
                             name: 'family',
                             nameText: 'Семейная',
                             prc: 0.057,
+                            banksData: {
+                                alfa: {
+                                    prc: 6,
+                                    cashback: 0.4
+                                },
+                                domrf: {
+                                    prc: 6,
+                                    cashback: 0
+                                },
+                                prom: {
+                                    prc: 6,
+                                    cashback: 0.6,
+                                    bidFields: [{
+                                            name: 'Работники ОПК, Гос или бюджетных организаций являющийся зарплатными клиентами',
+                                            prc: '1',
+                                            defaultValue: true
+                                        }
+                                    ]
+                                },
+                            }
                         },
+
                         it: {
                             name: 'it',
                             nameText: 'Ипотека для IT',
                             prc: 0.047,
+                            banksData: {
+                                alfa: {
+                                    prc: 5,
+                                    cashback: 0.4
+                                },
+                                domrf: {
+                                    prc: 5,
+                                    cashback: 0
+                                },
+                                prom: {
+                                    prc: 5,
+                                    cashback: 0.6
+                                },
+                            }
                         },
                         military: {
                             name: 'military',
                             nameText: 'Военная',
                             prc: 0.176,
                         },
+
                     },
                     secondary: {
                         base: {
@@ -1035,7 +1096,7 @@ export const mortgageCalc = (container, banksArr = []) => {
             const prc = Number(fixedNumberPrc(btn.textContent));
 
             this.paymentInput.setRawValue(this.data.cost / 100 * prc);
-
+            btn.classList.add('_active');
             updateForm(btn, {
                 payment: +this.paymentInput.getRawValue(),
                 onUpdate: 'paymentInput'

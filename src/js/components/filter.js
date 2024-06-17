@@ -1493,19 +1493,12 @@ export const fieldSelect = () => {
                     }
 
                     if (container.hasAttribute("data-place-sale-type")) {
-                        const targetItems = document.querySelectorAll(
-                            "[data-place-sale-target]"
-                        );
-                        const btn = document.querySelector(
-                            "[data-place-sale-btn]"
-                        );
-                        const footerFixed = document.querySelector(
-                            "[data-place-sale-footer-fixed]"
-                        );
-                        if (
-                            targetItems.length > 0 &&
-                            item.hasAttribute("data-place-sale-path")
-                        ) {
+                        const formSidebars = Array.from(document.querySelectorAll('[data-form-sidebar]'));
+                        const targetItems = document.querySelectorAll("[data-place-sale-target]");
+                        const btn = document.querySelector("[data-place-sale-btn]");
+                        const footerFixed = document.querySelector("[data-place-sale-footer-fixed]");
+
+                        if (targetItems.length > 0 && item.hasAttribute("data-place-sale-path")) {
                             const index = item.dataset.placeSalePath;
                             if (index == 1) {
                                 targetItems.forEach((item) => {
@@ -1535,6 +1528,7 @@ export const fieldSelect = () => {
                                         item.classList.remove("_active");
                                     }
                                 });
+                                formSidebar(1);
                             }
                             if (index == 2) {
                                 targetItems.forEach((item) => {
@@ -1553,6 +1547,7 @@ export const fieldSelect = () => {
                                         btn.setAttribute("hidden", "");
                                     }
                                 });
+                                formSidebar(3)
                             }
                             if (index == 3) {
                                 targetItems.forEach((item) => {
@@ -1573,13 +1568,19 @@ export const fieldSelect = () => {
                                 });
                             }
 
-                            if (
-                                index == 1 ||
-                                (index == 3 && btn && footerFixed)
-                            ) {
+                            if (index == 1 || (index == 3 && btn && footerFixed)) {
                                 footerFixed.removeAttribute("hidden");
                                 btn.removeAttribute("hidden");
                             }
+
+                        
+
+                            function formSidebar(currentIndex) {
+                                const currentSidebar = formSidebars.find(sidebar => sidebar.dataset.formSidebar == currentIndex);
+                                formSidebars.forEach(sidebar => sidebar.setAttribute('hidden',''));
+                                currentSidebar.removeAttribute('hidden');
+                            }
+                         
                         }
                     }
                 }

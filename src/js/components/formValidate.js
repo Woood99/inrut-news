@@ -549,6 +549,7 @@ export const requisitesValidate = () => {
 }
 export const submitAppValidate = () => {
     const form = document.querySelector('.submit-app__container');
+    const formSidebarEl = document.querySelector('[data-form-sidebar]');
     if (!form) return;
     let formEventInput = false;
 
@@ -639,6 +640,7 @@ export const submitAppValidate = () => {
         if (result === false && controls === true) {
             scrollToError(errorItems);
         }
+        formSidebar(errorItems);
         return result;
     }
 
@@ -654,6 +656,95 @@ export const submitAppValidate = () => {
             behavior: 'smooth'
         })
     }
+
+    function formSidebar(errors) {
+        const svgDefault = `
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm3.8-8.3a1 1 0 0 0-1.42-1.4L7.2 8.46a.28.28 0 0 1-.4 0l-1.1-1.1A1 1 0 0 0 4.3 8.8l2.08 2.09c.34.34.9.34 1.24 0L11.8 6.7z"></path></svg>
+        `;
+
+        const svgError = `
+         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M15 8A7 7 0 1 1 1 8a7 7 0 0 1 14 0zM7 5a1 1 0 0 1 2 0v3a1 1 0 0 1-2 0V5zm1 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path></svg>
+        `;
+
+        if (!formSidebarEl) return;
+        formSidebarEl.classList.remove(...['_suggested', '_error']);
+
+        let errorSections = errors.map(error => error.closest('[data-form-sidebar-target]')).filter(section => section);
+        errorSections = [...new Set(errorSections)]
+        const sidebarFields = Array.from(formSidebarEl.querySelectorAll('[data-form-sidebar-path]'));
+        sidebarFields.forEach(field => {
+            field.classList.remove(...['_suggested', '_error']);
+
+            const name = field.dataset.formSidebarPath;
+            const currentEl = errorSections.find(item => item.dataset.formSidebarTarget === name);
+            if (currentEl) {
+                field.classList.add('_error');
+
+                field.querySelector('svg').remove();
+                field.insertAdjacentHTML('afterbegin',svgError)
+            } else {
+                field.classList.add('_suggested');
+                field.querySelector('svg').remove();
+                field.insertAdjacentHTML('afterbegin',svgDefault)
+            }
+        })
+
+
+        if (errorSections.length === 0) {
+            formSidebarEl.classList.add('_suggested');
+        }
+    }
+
+    if (formSidebarEl) {
+        formSidebarEl.addEventListener('click',sidebarClickElementHandler);
+        toggleActiveClass(window.scrollY);
+        window.addEventListener('scroll', () => {
+            if (window.innerWidth <= 1212) return;
+            let scrollDistance = window.scrollY;
+            toggleActiveClass(scrollDistance);
+        })
+    }
+
+    function sidebarClickElementHandler(e) {
+        const target = e.target;
+        const element = target.closest('[data-form-sidebar-path]');
+        if (!element) return;
+        window.scrollTo({
+            top: document.querySelector(`[data-form-sidebar-target="${element.dataset.formSidebarPath}"]`).offsetTop - 16,
+            behavior: 'smooth',
+        })
+    }
+
+    function toggleActiveClass(scrollDistance) {
+        const gap = 16;
+        const sections = document.querySelectorAll('[data-form-sidebar-target]');
+        const sidebarItems = document.querySelectorAll('[data-form-sidebar-path]');
+
+        sections.forEach((section, index) => {
+            if (section.offsetTop - gap <= scrollDistance) {
+                sidebarItems.forEach(item => {
+                    if (item.classList.contains('_active')) {
+                        item.classList.remove('_active');
+                    }
+                })
+                if (sidebarItems[index]) sidebarItems[index].classList.add('_active');
+            }
+
+            if (sections[0].offsetTop - gap >= scrollDistance) {
+                sidebarItems.forEach(item => {
+                    if (item.classList.contains('_active')) item.classList.remove('_active');
+                })
+            }
+            
+            if (sections[sections.length - 1].offsetTop + sections[sections.length - 1].offsetHeight - gap <= scrollDistance) {
+                sidebarItems.forEach(item => {
+                    if (item.classList.contains('_active')) item.classList.remove('_active');
+                })
+            }
+        });
+        
+    }
+
 }
 
 

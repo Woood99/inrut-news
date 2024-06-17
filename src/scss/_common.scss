@@ -691,6 +691,42 @@
     width: 16px;
     height: 16px;
 }
+.form-sidebar{
+    &__nav{
+      
+    }
+    &__item{
+        display: flex;
+        gap: 10px;
+        text-align: left;
+        color: var(--primaryTwo);
+        svg{
+            flex: 0 0 17px;
+            width: 17px;
+            height: 17px;
+            color: var(--primaryTwo);
+        }
+        &:not(:last-child){
+            margin-bottom: 16px;
+        }
+        &._error{
+            color: var(--dark);
+           svg{
+            color: var(--red);
+           }
+        }
+        &._suggested{
+            color: var(--dark);
+            svg{
+                color: var(--green);
+            }
+        }
+        &._active{
+            font-weight: 500;
+            color: var(--dark);
+        }
+    }
+}
 
 @tailwind components;
 @tailwind utilities;

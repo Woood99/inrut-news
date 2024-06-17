@@ -83,11 +83,11 @@ export const bankOffer = (item) => {
         additional.innerHTML = '';
         const currentProgram = e.detail.currentProgram;
         let html = '';
+        console.log(detail);
         for (const key in currentProgram) {
             const el = currentProgram[key];
             const bidFields = el.bidFields;
-            if (key !== item.dataset.bankOfferName) break;
-            if (bidFields) {
+            if (key === item.dataset.bankOfferName && bidFields) {
                 html = bidFields.map(item => {
                     return `
                      <div class="bank-offer__additional-item">
@@ -114,7 +114,7 @@ export const bankOffer = (item) => {
                         <div class="col">
                             <span>-${item.prc}%</span>
                             <label class="toggle-checkbox">
-                                <input type="checkbox" name="toggle-2" checked data-bank-offer-input-down="${item.prc}">
+                                <input type="checkbox" name="toggle-2" ${item.defaultValue === true ? 'checked' : ''} data-bank-offer-input-down="${item.prc}">
                                 <div aria-hidden="true"></div>
                             </label>
                         </div>

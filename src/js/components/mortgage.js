@@ -37,6 +37,8 @@ export const mortgageCalc = (container, banksArr = []) => {
                 this.updateBanksOnProgram();
                 this.updateResultsView();
                 this.updateFormAndSliders(this.data);
+
+                console.log(this.data);
             })
 
             document.addEventListener('mortgageCalcFormUpdate', debounce(updateView.bind(this), 500));
@@ -58,13 +60,13 @@ export const mortgageCalc = (container, banksArr = []) => {
 
                 this.dataClass.btns.forEach(btn => btn.classList.remove('_active'));
                 btn.classList.add('_active');
-
                 updateForm(btn, {
                     onUpdate: 'changeProgram',
                     selectedProgram: {
                         name: btn.dataset.mortgageBtn.split(',')[0].trim(),
                         value: +btn.dataset.mortgageBtn.split(',')[1].trim(),
                         nameText: btn.dataset.mortgageBtn.split(',')[2].trim(),
+                        banksData: this.data.programs[this.data.targetCredit][btn.dataset.mortgageBtn.split(',')[0].trim()].banksData
                     }
                 });
             })
@@ -81,6 +83,7 @@ export const mortgageCalc = (container, banksArr = []) => {
             function body(value) {
                 this.dataClass.btns = this.generateButtons(this.data.programs[value]);
                 const btnActive = this.dataClass.btns.find(item => item.classList.contains('_active'));
+                this.data.targetCredit = value;
                 this.data.selectedProgram = {
                     name: btnActive.dataset.mortgageBtn.split(',')[0].trim(),
                     value: +btnActive.dataset.mortgageBtn.split(',')[1].trim(),
@@ -597,7 +600,7 @@ export const mortgageCalc = (container, banksArr = []) => {
                                         {
                                             name: 'Зарплатный клиент Альфа-Банка',
                                             prc: 0.5,
-                                            defaultValue: true
+                                            defaultValue: false
                                         }
                                     ]
                                 },
@@ -612,17 +615,17 @@ export const mortgageCalc = (container, banksArr = []) => {
                                         {
                                             name: 'Страхование',
                                             prc: 2,
-                                            defaultValue: true
+                                            defaultValue: false
                                         },
                                         {
                                             name: 'Работники ОПК, зарплатные клиенты, клиенты премиального пакета Orange Premium Club',
                                             prc: 0.6,
-                                            defaultValue: true
+                                            defaultValue: false
                                         },
                                         {
                                             name: 'Партнёры сегмента "Platinum SPB"',
                                             prc: 0.5,
-                                            defaultValue: true
+                                            defaultValue: false
                                         }
                                     ]
                                 },
@@ -647,7 +650,7 @@ export const mortgageCalc = (container, banksArr = []) => {
                                     bidFields: [{
                                             name: 'Страхование',
                                             prc: '1',
-                                            defaultValue: true
+                                            defaultValue: false
                                         }
                                     ]
                                 },

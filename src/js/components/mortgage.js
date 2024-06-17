@@ -30,11 +30,14 @@ export const mortgageCalc = (container, banksArr = []) => {
             this.selectBanks();
             this.stickyBlock();
 
+            setTimeout(() => {
+                this.dataClass.btns.find(item => item.classList.contains('_active')).click();
+            }, 50);
+
             document.addEventListener('mortgageCalcFormUpdate', (e) => {
                 this.dataClass.setData(e.detail);
                 this.data = this.dataClass.getData();
                 this.results = this.dataClass.getResults();
-                this.updateBanksOnProgram();
                 this.updateResultsView();
                 this.updateFormAndSliders(this.data);
             })
@@ -43,6 +46,7 @@ export const mortgageCalc = (container, banksArr = []) => {
 
 
             function updateView() {
+                this.updateBanksOnProgram();
                 this.updateResultsViewCalc();
                 this.updateBanks();
             }
@@ -93,18 +97,18 @@ export const mortgageCalc = (container, banksArr = []) => {
             function body(value) {
                 this.dataClass.btns = this.generateButtons(this.data.programs[value]);
                 const btnActive = this.dataClass.btns.find(item => item.classList.contains('_active'));
-                this.data.targetCredit = value;
-                this.data.selectedProgram = {
+                const map = {
                     name: btnActive.dataset.mortgageBtn.split(',')[0].trim(),
                     value: +btnActive.dataset.mortgageBtn.split(',')[1].trim(),
                     nameText: btnActive.dataset.mortgageBtn.split(',')[2].trim(),
                     banksData: this.data.programs[value][btnActive.dataset.mortgageBtn.split(',')[0].trim()].banksData
                 }
-
+                this.data.targetCredit = value;
+                this.data.selectedProgram = map;
                 updateForm(targetCredit, {
-                    onUpdate: 'generatePrograms',
+                    onUpdate: 'targetCreditChange',
                     targetCredit: value,
-                    selectedProgram: this.data.selectedProgram,
+                    selectedProgram: map
                 });
             }
         }
@@ -302,7 +306,6 @@ export const mortgageCalc = (container, banksArr = []) => {
                 const monthRate = (programPrc / 100) / 12;
                 const generalRate = (1 + monthRate) ** months;
                 const monthPayment = (totalAmount * monthRate * generalRate) / (generalRate - 1);
-
                 return {
                     monthPayment
                 }
@@ -496,122 +499,7 @@ export const mortgageCalc = (container, banksArr = []) => {
                 maternalCapitalMax: 833024,
                 maternalCapital: 833024,
                 selectedBanks: [],
-                targetCredit: null,
-                banksData: {
-                    base: {
-                        atb: {
-                            prc: 14.49,
-                            cashback: 1,
-                        },
-                        alfa: {
-                            prc: 19.49,
-                            cashback: 0.4
-                        },
-                        bars: {
-                            prc: 6,
-                            cashback: 0.75
-                        },
-                        vbrr: {
-                            prc: 7,
-                            cashback: 0.5
-                        },
-                        zenit: {
-                            prc: 8,
-                            cashback: 0.5
-                        },
-                        gasprom: {
-                            prc: 9,
-                            cashback: 0.5
-                        },
-                        domrf: {
-                            prc: 18,
-                            cashback: 0.3
-                        },
-                        kuban: {
-                            prc: 11,
-                            cashback: 0.5
-                        },
-                        mts: {
-                            prc: 12,
-                            cashback: 0.5
-                        },
-                        novik: {
-                            prc: 13,
-                            cashback: 0.5
-                        },
-                        prom: {
-                            prc: 18.99,
-                            cashback: 0.5
-                        },
-                        rnkb: {
-                            prc: 15,
-                            cashback: 0.5
-                        },
-                        rossel: {
-                            prc: 16,
-                            cashback: 0.5
-                        },
-                        ['sankt-peterburg']: {
-                            prc: 17,
-                            cashback: 0.5
-                        },
-                        sber: {
-                            prc: 18,
-                            cashback: 0.5
-                        },
-                        sovkom: {
-                            prc: 19,
-                            cashback: 0.5
-                        },
-                        tinkoff: {
-                            prc: 20,
-                            cashback: 0.5
-                        },
-                        ural: {
-                            prc: 21,
-                            cashback: 0.5
-                        },
-                        uralsib: {
-                            prc: 22,
-                            cashback: 0.5
-                        },
-                    },
-                    gov: {
-                        alfa: {
-                            prc: 8,
-                            cashback: 0.4
-                        },
-                    },
-                    it: {
-                        alfa: {
-                            prc: 5,
-                            cashback: 0.4
-                        },
-                        domrf: {
-                            prc: 5,
-                            cashback: 0
-                        },
-                    },
-                    military: {
-
-                    },
-                    family: {
-                        alfa: {
-                            prc: 6,
-                            cashback: 0.4
-                        },
-                        prom: {
-                            prc: 6,
-                            cashback: 0.5
-                        },
-                    },
-                    rural: {
-                        domrf: {
-                            prc: 6,
-                            cashback: 0
-                        },
-                    },
-                },
+                targetCredit: container.querySelector('[data-mortgage-target-credit] .select-secondary__body').value,
                 programs: {
                     buildings: {
                         base: {
@@ -632,22 +520,16 @@ export const mortgageCalc = (container, banksArr = []) => {
                                     prc: 18,
                                     cashback: 0.3
                                 },
+                                mts: {
+                                    prc: 18,
+                                    cashback: 0.3
+                                },
                                 prom: {
-                                    prc: 19.7,
+                                    prc: 8,
                                     cashback: 0.6,
                                     bidFields: [{
                                             name: 'Страхование',
                                             prc: 2,
-                                            defaultValue: false
-                                        },
-                                        {
-                                            name: 'Работники ОПК, зарплатные клиенты, клиенты премиального пакета Orange Premium Club',
-                                            prc: 0.6,
-                                            defaultValue: false
-                                        },
-                                        {
-                                            name: 'Партнёры сегмента "Platinum SPB"',
-                                            prc: 0.5,
                                             defaultValue: false
                                         }
                                     ]
@@ -702,7 +584,6 @@ export const mortgageCalc = (container, banksArr = []) => {
                                 },
                             }
                         },
-
                         it: {
                             name: 'it',
                             nameText: 'Ипотека для IT',
@@ -727,18 +608,34 @@ export const mortgageCalc = (container, banksArr = []) => {
                             nameText: 'Военная',
                             prc: 0.176,
                         },
-
                     },
                     secondary: {
                         base: {
                             name: 'base',
                             nameText: 'Базовая',
-                            prc: 0.2,
-                        },
-                        military: {
-                            name: 'military',
-                            nameText: 'Военная',
-                            prc: 0.5,
+                            prc: 0.109,
+                            banksData: {
+                                mts: {
+                                    prc: 19.7,
+                                    cashback: 0.6,
+                                    bidFields: [{
+                                            name: 'Страхование',
+                                            prc: 2,
+                                            defaultValue: false
+                                        },
+                                        {
+                                            name: 'Работники ОПК, зарплатные клиенты, клиенты премиального пакета Orange Premium Club',
+                                            prc: 0.6,
+                                            defaultValue: false
+                                        },
+                                        {
+                                            name: 'Партнёры сегмента "Platinum SPB"',
+                                            prc: 0.5,
+                                            defaultValue: false
+                                        }
+                                    ]
+                                },
+                            }
                         },
                     },
                     house: {
@@ -796,10 +693,16 @@ export const mortgageCalc = (container, banksArr = []) => {
                         },
                     },
                     commercial: {
-                        base: {
-                            name: 'base',
-                            nameText: 'Базовая',
-                            prc: 0.55,
+                        military: {
+                            name: 'military',
+                            nameText: 'Военная',
+                            prc: 0.176,
+                            banksData: {
+                                sber: {
+                                    prc: 12.7,
+                                    cashback: 0.4,
+                                },
+                            }
                         },
                     },
                 }

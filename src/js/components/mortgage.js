@@ -1,5 +1,5 @@
 import numberReplace from "../modules/numberReplace";
-import {fixedNumberPrc} from './bankOffer';
+import { fixedNumberPrc } from './bankOffer';
 
 import noUiSlider from "nouislider";
 import Cleave from 'cleave.js';
@@ -10,29 +10,6 @@ import debounce from "../functions/debounce";
 export const mortgageCalc = (container, banksArr = []) => {
     if (!container) return;
 
-    const targetCreditMap = {
-        'buildings': [
-            ['base', 'gov', 'it', 'military', 'family'],
-            'base'
-        ],
-        'secondary': [
-            ['base', 'military'],
-            'base'
-        ],
-        'house': [
-            ['base', 'gov', 'it', 'military', 'family', 'rural'],
-            ['family']
-        ],
-        'plots': [
-            ['base', 'gov', 'it', 'family', 'rural'],
-            'base'
-        ],
-        'commercial': [
-            ['base'],
-            'base'
-        ],
-    };
-
     class MortgageCalc {
         constructor() {
             this.dataClass = new Data();
@@ -40,9 +17,8 @@ export const mortgageCalc = (container, banksArr = []) => {
             this.dataClass.setData({});
 
             this.results = this.dataClass.getResults();
-
-            this.programs(this.data);
             this.targetCreditChange(this.data);
+            this.programs(this.data);
             this.maternalCapital();
 
             this.updateBanksOnProgram();
@@ -71,6 +47,7 @@ export const mortgageCalc = (container, banksArr = []) => {
                 this.updateBanks();
             }
 
+            console.log(this.data);
         }
 
         programs() {
@@ -96,35 +73,26 @@ export const mortgageCalc = (container, banksArr = []) => {
         targetCreditChange() {
             const targetCredit = container.querySelector('[data-mortgage-target-credit]');
             if (!targetCredit) return;
+            body.call(this, targetCredit.querySelector('.select-secondary__body').value);
             targetCredit.addEventListener('change', (e) => {
-                let btnActive = null;
-                const value = e.detail.value;
-                this.dataClass.btns.forEach(btn => btn.setAttribute('hidden', ''));
-                this.dataClass.btns.forEach(btn => btn.classList.remove('_active'));
-                for (let key in targetCreditMap) {
-                    if (key === value) {
-                        const currentKey = targetCreditMap[key];
-                        this.dataClass.btns.forEach(btn => {
-                            const btnValue = btn.dataset.mortgageBtn.split(',')[0].trim();
-                            if (currentKey[0].includes(btnValue)) {
-                                btn.removeAttribute('hidden');
-                            }
-                            if (currentKey[1].includes(btnValue)) {
-                                btnActive = btn;
-                                btn.classList.add('_active');
-                            }
-                        });
-                    }
-                }
-                updateForm(btnActive, {
-                    onUpdate: 'changeProgram',
-                    selectedProgram: {
-                        name: btnActive.dataset.mortgageBtn.split(',')[0].trim(),
-                        value: +btnActive.dataset.mortgageBtn.split(',')[1].trim(),
-                        nameText: btnActive.dataset.mortgageBtn.split(',')[2].trim()
-                    }
-                });
+                body.call(this, e.detail.value);
             })
+
+            function body(value) {
+                this.dataClass.btns = this.generateButtons(this.data.programs[value]);
+                const btnActive = this.dataClass.btns.find(item => item.classList.contains('_active'));
+                this.data.selectedProgram = {
+                    name: btnActive.dataset.mortgageBtn.split(',')[0].trim(),
+                    value: +btnActive.dataset.mortgageBtn.split(',')[1].trim(),
+                    nameText: btnActive.dataset.mortgageBtn.split(',')[2].trim(),
+                    banksData: this.data.programs[value][btnActive.dataset.mortgageBtn.split(',')[0].trim()].banksData
+                }
+
+                updateForm(targetCredit, {
+                    onUpdate: 'generatePrograms',
+                    selectedProgram: this.data.selectedProgram,
+                });
+            }
         }
 
         initFields() {
@@ -428,17 +396,46 @@ export const mortgageCalc = (container, banksArr = []) => {
         }
 
         updateBanksOnProgram() {
-            const currentProgram = this.data.banksData[this.data.selectedProgram.name];
+            const currentProgram = this.data.selectedProgram.banksData;
             banksArr.forEach(bank => {
                 const currentName = bank.dataset.bankOfferName;
-                if (currentProgram[currentName]) {
-                    bank.setAttribute('data-bank-offer-prc',currentProgram[currentName].prc);
-                    bank.setAttribute('data-bank-offer-cashback',currentProgram[currentName].cashback);
+                if (currentProgram && currentName && currentProgram[currentName]) {
+                    bank.removeAttribute('hidden');
+                    bank.setAttribute('data-bank-offer-prc', currentProgram[currentName].prc);
+                    bank.setAttribute('data-bank-offer-cashback', currentProgram[currentName].cashback);
                     bank.dispatchEvent(new CustomEvent('change', {
                         bubbles: true,
+                        detail: {
+                            currentProgram
+                        }
                     }))
+                } else {
+                    bank.setAttribute('hidden','');
                 }
             })
+        }
+
+        generateButtons(obj) {
+            const containerPrograms = container.querySelector('.mortgage__programs');
+            containerPrograms.innerHTML = '';
+            for (let key in obj) {
+                const map = obj[key];
+                const html = `
+                     <button type="button" class="btn btn-reset object-calc-mort__btn" data-mortgage-btn="${map.name},${map.prc},${map.nameText}">
+                        <span>${map.nameText}</span>
+                        <span>от ${(map.prc * 100).toFixed(1)}%</span>
+                        <div aria-hidden="true">
+                            <svg>
+                                <use xlink:href="./img/sprite.svg#verif"></use>
+                            </svg>
+                        </div>
+                     </button>
+                `;
+                containerPrograms.insertAdjacentHTML('beforeend', html.trim());
+            }
+            const programs = Array.from(containerPrograms.querySelectorAll('[data-mortgage-btn]'));
+            programs[0].classList.add('_active');
+            return programs;
         }
     }
 
@@ -477,18 +474,10 @@ export const mortgageCalc = (container, banksArr = []) => {
                         atb: {
                             prc: 14.49,
                             cashback: 1,
-                            logo: './img/banks/atb.png',
-                            bidFields: [
-                                {
-                                    title: 'Регистрация и рассчёты',
-                                    prc: '-0.3',
-                                    value: true,
-                                }
-                            ]
                         },
                         alfa: {
-                            prc: 5,
-                            cashback: 0.5
+                            prc: 19.49,
+                            cashback: 0.4
                         },
                         bars: {
                             prc: 6,
@@ -507,8 +496,8 @@ export const mortgageCalc = (container, banksArr = []) => {
                             cashback: 0.5
                         },
                         domrf: {
-                            prc: 10,
-                            cashback: 0.5
+                            prc: 18,
+                            cashback: 0.3
                         },
                         kuban: {
                             prc: 11,
@@ -523,7 +512,7 @@ export const mortgageCalc = (container, banksArr = []) => {
                             cashback: 0.5
                         },
                         prom: {
-                            prc: 14,
+                            prc: 18.99,
                             cashback: 0.5
                         },
                         rnkb: {
@@ -560,26 +549,173 @@ export const mortgageCalc = (container, banksArr = []) => {
                         },
                     },
                     gov: {
-                        atb: {
-                            prc: 16,
-                            cashback: 1,
-                        },
                         alfa: {
-                            prc: 17,
-                            cashback: 2
+                            prc: 8,
+                            cashback: 0.4
+                        },
+                        domrf: {
+                            prc: 8,
+                            cashback: 0
                         },
                     },
                     it: {
-                       
+                        alfa: {
+                            prc: 5,
+                            cashback: 0.4
+                        },
+                        domrf: {
+                            prc: 5,
+                            cashback: 0
+                        },
                     },
                     military: {
-                       
+
                     },
                     family: {
-                       
+                        alfa: {
+                            prc: 6,
+                            cashback: 0.4
+                        },
+                        prom: {
+                            prc: 6,
+                            cashback: 0.5
+                        },
                     },
                     rural: {
-                       
+                        domrf: {
+                            prc: 6,
+                            cashback: 0
+                        },
+                    },
+                },
+                programs: {
+                    buildings: {
+                        base: {
+                            name: 'base',
+                            nameText: 'Базовая',
+                            prc: 0.109,
+                            banksData: {
+                                atb: {
+                                    prc: 50,
+                                    cashback: 1,
+                                    bidFields: [
+                                    {
+                                        name: '1',
+                                        moreText: `
+                                            Услуга позволяет зарегистрировать переход права собственности за один визит в банк, провести денежные расчёты онлайн, 
+                                            а также получить скидку на ставку на весь срок кредита. Стоимость — до 15 300 руб.`,
+                                        prc: '1',
+                                        defaultValue: true
+                                    },
+                                    {
+                                        name: '2',
+                                        moreText: `
+                                            Услуга позволяет зарегистрировать переход права собственности за один визит в банк, провести денежные расчёты онлайн, 
+                                            а также получить скидку на ставку на весь срок кредита. Стоимость — до 15 300 руб.`,
+                                        prc: '35',
+                                        defaultValue: true
+                                    }
+                                ]
+                                },
+                                alfa: {
+                                    prc: 99.2,
+                                    cashback: 0.4
+                                },
+                            }
+                        },
+                        gov: {
+                            name: 'gov',
+                            nameText: 'Господдержка',
+                            prc: 0.077,
+                        },
+                        family: {
+                            name: 'family',
+                            nameText: 'Семейная',
+                            prc: 0.057,
+                        },
+                        it: {
+                            name: 'it',
+                            nameText: 'Ипотека для IT',
+                            prc: 0.047,
+                        },
+                        military: {
+                            name: 'military',
+                            nameText: 'Военная',
+                            prc: 0.176,
+                        },
+                    },
+                    secondary: {
+                        base: {
+                            name: 'base',
+                            nameText: 'Базовая',
+                            prc: 0.2,
+                        },
+                        military: {
+                            name: 'military',
+                            nameText: 'Военная',
+                            prc: 0.5,
+                        },
+                    },
+                    house: {
+                        base: {
+                            name: 'base',
+                            nameText: 'Базовая',
+                            prc: 0.109,
+                        },
+                        gov: {
+                            name: 'gov',
+                            nameText: 'Господдержка',
+                            prc: 0.077,
+                        },
+                        family: {
+                            name: 'family',
+                            nameText: 'Семейная',
+                            prc: 0.057,
+                        },
+                        it: {
+                            name: 'it',
+                            nameText: 'Ипотека для IT',
+                            prc: 0.047,
+                        },
+                        military: {
+                            name: 'military',
+                            nameText: 'Военная',
+                            prc: 0.176,
+                        },
+                    },
+                    plots: {
+                        base: {
+                            name: 'base',
+                            nameText: 'Базовая',
+                            prc: 0.109,
+                        },
+                        gov: {
+                            name: 'gov',
+                            nameText: 'Господдержка',
+                            prc: 0.077,
+                        },
+                        family: {
+                            name: 'family',
+                            nameText: 'Семейная',
+                            prc: 0.057,
+                        },
+                        it: {
+                            name: 'it',
+                            nameText: 'Ипотека для IT',
+                            prc: 0.047,
+                        },
+                        military: {
+                            name: 'military',
+                            nameText: 'Военная',
+                            prc: 0.176,
+                        },
+                    },
+                    commercial: {
+                        base: {
+                            name: 'base',
+                            nameText: 'Базовая',
+                            prc: 0.55,
+                        },
                     },
                 }
             };
@@ -588,21 +724,14 @@ export const mortgageCalc = (container, banksArr = []) => {
 
             this.data.setDefaultPayment();
             this.btns = Array.from(container.querySelectorAll('[data-mortgage-btn]'));
-            this.data.programs = this.btns.reduce((acc, item) => {
-                const map = item.dataset.mortgageBtn.split(',');
-                return {
-                    ...acc,
-                    [map[0].trim()]: +map[1].trim()
-                }
-            }, {})
-
             const activeBtn = this.btns.find(btn => btn.classList.contains('_active'));
-
-            this.data.selectedProgram = {
-                name: activeBtn.dataset.mortgageBtn.split(',')[0].trim(),
-                value: +activeBtn.dataset.mortgageBtn.split(',')[1].trim(),
-                nameText: activeBtn.dataset.mortgageBtn.split(',')[2].trim()
-            };
+            if (this.data.selectedProgram) {
+                this.data.selectedProgram = {
+                    name: activeBtn.dataset.mortgageBtn.split(',')[0].trim(),
+                    value: +activeBtn.dataset.mortgageBtn.split(',')[1].trim(),
+                    nameText: activeBtn.dataset.mortgageBtn.split(',')[2].trim()
+                };
+            }
         }
 
 
@@ -713,7 +842,6 @@ export const mortgageCalc = (container, banksArr = []) => {
                 term: this.data.time,
             }
         }
-
     }
 
 

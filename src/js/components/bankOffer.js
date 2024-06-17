@@ -9,6 +9,7 @@ export const bankOffer = (item) => {
     updateTopInfo();
     item.addEventListener("click", handleClickSpollerBtn);
     item.addEventListener("change", updateTopInfo);
+    item.addEventListener("change", updateBid);
 
     function handleClickSpollerBtn(e) {
         const target = e.target;
@@ -50,6 +51,7 @@ export const bankOffer = (item) => {
     }
 
     function updateTopInfo() {
+
         defaultPrc = fixedNumberPrc(item.dataset.bankOfferPrc);
         discount = 0;
         newPrcEl.textContent = "";
@@ -72,13 +74,58 @@ export const bankOffer = (item) => {
             newPrcEl.setAttribute("hidden", "");
             newPrcEl.parentNode.classList.remove("_discount");
         }
+    }
 
-        // item.dispatchEvent(
-        //     new CustomEvent("mortgageCalcFormUpdate", {
-        //         bubbles: true,
-        //         detail: {},
-        //     })
-        // );
+    function updateBid(e) {
+        const detail = e.detail;
+        if (!detail) return;
+        const additional = item.querySelector('.bank-offer__additional');
+        additional.innerHTML = '';
+        const currentProgram = e.detail.currentProgram;
+        let html = '';
+        for (const key in currentProgram) {
+            const el = currentProgram[key];
+            const bidFields = el.bidFields;
+            if (key !== item.dataset.bankOfferName) break;
+            if (bidFields) {
+                html = bidFields.map(item => {
+                    return `
+                     <div class="bank-offer__additional-item">
+                        <div>
+                            <h3 class="title-4">
+                                ${item.name}
+                            </h3>
+                            ${item.moreText ? `
+                                <div class="tw-mt-2 title-5 bank-offer__more" hidden>
+                                <p>
+                                   ${item.moreText}
+                                </p>
+                            </div>
+                                ` : ''}
+                            ${item.moreText ? `
+                            <button type="button" class="btn btn-reset bank-offer__more-btn">
+                                <span>Подробнее</span>
+                                <svg>
+                                    <use xlink:href="./img/sprite.svg#check"></use>
+                                </svg>
+                            </button>
+                                ` : ''}
+                        </div>
+                        <div class="col">
+                            <span>-${item.prc}%</span>
+                            <label class="toggle-checkbox">
+                                <input type="checkbox" name="toggle-2" checked data-bank-offer-input-down="${item.prc}">
+                                <div aria-hidden="true"></div>
+                            </label>
+                        </div>
+                    </div>
+                `;
+                })
+                   
+                additional.innerHTML = html.join('');
+            }
+        }
+        updateTopInfo();
     }
 };
 

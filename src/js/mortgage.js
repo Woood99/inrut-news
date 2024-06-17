@@ -12,7 +12,7 @@ import { mortgageCalc } from './components/mortgage';
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    const mortgageCalcEl = mortgageCalc(document.querySelector('[data-mortgage-calc]'), document.querySelectorAll('.mortgage-suitable__item'));
-
     document.querySelectorAll('.bank-offer').forEach(item => bankOffer(item));
+
+    const mortgageCalcEl = mortgageCalc(document.querySelector('[data-mortgage-calc]'), document.querySelectorAll('.mortgage-suitable__item'));
 })

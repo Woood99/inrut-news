@@ -79,51 +79,57 @@ export const bankOffer = (item) => {
     function updateBid(e) {
         const detail = e.detail;
         if (!detail) return;
+        const spoller = item.querySelector('.bank-offer__spollers');
         const additional = item.querySelector('.bank-offer__additional');
         additional.innerHTML = '';
         const currentProgram = e.detail.currentProgram;
         let html = '';
-        console.log(detail);
         for (const key in currentProgram) {
             const el = currentProgram[key];
             const bidFields = el.bidFields;
-            if (key === item.dataset.bankOfferName && bidFields) {
-                html = bidFields.map(item => {
-                    return `
-                     <div class="bank-offer__additional-item">
-                        <div>
-                            <h3 class="title-4">
-                                ${item.name}
-                            </h3>
-                            ${item.moreText ? `
-                                <div class="tw-mt-2 title-5 bank-offer__more" hidden>
-                                <p>
-                                   ${item.moreText}
-                                </p>
+            if (key === item.dataset.bankOfferName) {
+                if (bidFields) {
+                    spoller.removeAttribute('hidden');
+                    html = bidFields.map(item => {
+                        return `
+                         <div class="bank-offer__additional-item">
+                            <div>
+                                <h3 class="title-4">
+                                    ${item.name}
+                                </h3>
+                                ${item.moreText ? `
+                                    <div class="tw-mt-2 title-5 bank-offer__more" hidden>
+                                    <p>
+                                       ${item.moreText}
+                                    </p>
+                                </div>
+                                    ` : ''}
+                                ${item.moreText ? `
+                                <button type="button" class="btn btn-reset bank-offer__more-btn">
+                                    <span>Подробнее</span>
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#check"></use>
+                                    </svg>
+                                </button>
+                                    ` : ''}
                             </div>
-                                ` : ''}
-                            ${item.moreText ? `
-                            <button type="button" class="btn btn-reset bank-offer__more-btn">
-                                <span>Подробнее</span>
-                                <svg>
-                                    <use xlink:href="./img/sprite.svg#check"></use>
-                                </svg>
-                            </button>
-                                ` : ''}
+                            <div class="col">
+                                <span>-${item.prc}%</span>
+                                <label class="toggle-checkbox">
+                                    <input type="checkbox" name="toggle-2" ${item.defaultValue === true ? 'checked' : ''} data-bank-offer-input-down="${item.prc}">
+                                    <div aria-hidden="true"></div>
+                                </label>
+                            </div>
                         </div>
-                        <div class="col">
-                            <span>-${item.prc}%</span>
-                            <label class="toggle-checkbox">
-                                <input type="checkbox" name="toggle-2" ${item.defaultValue === true ? 'checked' : ''} data-bank-offer-input-down="${item.prc}">
-                                <div aria-hidden="true"></div>
-                            </label>
-                        </div>
-                    </div>
-                `;
-                })
-                   
-                additional.innerHTML = html.join('');
+                    `;
+                    })
+                       
+                    additional.innerHTML = html.join('');
+                } else {
+                    spoller.setAttribute('hidden','');
+                }
             }
+          
         }
         updateTopInfo();
     }

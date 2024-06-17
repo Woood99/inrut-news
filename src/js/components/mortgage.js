@@ -34,11 +34,10 @@ export const mortgageCalc = (container, banksArr = []) => {
                 this.dataClass.setData(e.detail);
                 this.data = this.dataClass.getData();
                 this.results = this.dataClass.getResults();
+                console.log(this.data);
                 this.updateBanksOnProgram();
                 this.updateResultsView();
                 this.updateFormAndSliders(this.data);
-
-                console.log(this.data);
             })
 
             document.addEventListener('mortgageCalcFormUpdate', debounce(updateView.bind(this), 500));
@@ -49,11 +48,26 @@ export const mortgageCalc = (container, banksArr = []) => {
                 this.updateBanks();
             }
 
-            console.log(this.data);
+            setTimeout(() => {
+                console.log(this.data);
+            }, 500);
         }
 
         programs() {
-            container.addEventListener('click', (e) => {
+            container.addEventListener('click', body.bind(this));
+            const activeBtn = this.dataClass.btns.find(item => item.classList.contains('_active'));
+            updateForm(activeBtn, {
+                onUpdate: 'changeProgram',
+                targetCredit: container.querySelector('[data-mortgage-target-credit] .select-secondary__body').value,
+                selectedProgram: {
+                    name: activeBtn.dataset.mortgageBtn.split(',')[0].trim(),
+                    value: +activeBtn.dataset.mortgageBtn.split(',')[1].trim(),
+                    nameText: activeBtn.dataset.mortgageBtn.split(',')[2].trim(),
+                    banksData: this.data.programs[this.data.targetCredit][activeBtn.dataset.mortgageBtn.split(',')[0].trim()].banksData
+                }
+            });
+
+            function body(e) {
                 const target = e.target;
                 const btn = target.closest('[data-mortgage-btn]');
                 if (!btn) return;
@@ -62,6 +76,7 @@ export const mortgageCalc = (container, banksArr = []) => {
                 btn.classList.add('_active');
                 updateForm(btn, {
                     onUpdate: 'changeProgram',
+                    targetCredit: container.querySelector('[data-mortgage-target-credit] .select-secondary__body').value,
                     selectedProgram: {
                         name: btn.dataset.mortgageBtn.split(',')[0].trim(),
                         value: +btn.dataset.mortgageBtn.split(',')[1].trim(),
@@ -69,7 +84,7 @@ export const mortgageCalc = (container, banksArr = []) => {
                         banksData: this.data.programs[this.data.targetCredit][btn.dataset.mortgageBtn.split(',')[0].trim()].banksData
                     }
                 });
-            })
+            }
         }
 
         targetCreditChange() {
@@ -93,6 +108,7 @@ export const mortgageCalc = (container, banksArr = []) => {
 
                 updateForm(targetCredit, {
                     onUpdate: 'generatePrograms',
+                    targetCredit: value,
                     selectedProgram: this.data.selectedProgram,
                 });
             }
@@ -269,7 +285,14 @@ export const mortgageCalc = (container, banksArr = []) => {
 
                 numberToAnim(termEl, 0, String(results.term));
                 numberToAnim(paymentEl, 0, numberReplace(results.monthPayment));
-                numberToAnim(cashback, 0, numberReplace(Math.round(results.totalAmount / 100 * currentCashback)));
+
+                const resultCashback = numberReplace(Math.round(results.totalAmount / 100 * currentCashback));
+                if (resultCashback == 0) {
+                    cashback.parentNode.setAttribute('hidden', '');
+                } else {
+                    cashback.parentNode.removeAttribute('hidden');
+                    numberToAnim(cashback, 0, resultCashback);
+                }
             }
 
             function getResultsOnBank({ term, totalAmount }, programPrc) {
@@ -471,6 +494,7 @@ export const mortgageCalc = (container, banksArr = []) => {
                 maternalCapitalMax: 833024,
                 maternalCapital: 833024,
                 selectedBanks: [],
+                targetCredit: null,
                 banksData: {
                     base: {
                         atb: {
@@ -596,13 +620,11 @@ export const mortgageCalc = (container, banksArr = []) => {
                                 alfa: {
                                     prc: 19.47,
                                     cashback: 0.4,
-                                    bidFields: [
-                                        {
-                                            name: 'Зарплатный клиент Альфа-Банка',
-                                            prc: 0.5,
-                                            defaultValue: false
-                                        }
-                                    ]
+                                    bidFields: [{
+                                        name: 'Зарплатный клиент Альфа-Банка',
+                                        prc: 0.5,
+                                        defaultValue: false
+                                    }]
                                 },
                                 domrf: {
                                     prc: 18,
@@ -611,8 +633,7 @@ export const mortgageCalc = (container, banksArr = []) => {
                                 prom: {
                                     prc: 19.7,
                                     cashback: 0.6,
-                                    bidFields: [
-                                        {
+                                    bidFields: [{
                                             name: 'Страхование',
                                             prc: 2,
                                             defaultValue: false
@@ -648,11 +669,10 @@ export const mortgageCalc = (container, banksArr = []) => {
                                     prc: 9,
                                     cashback: 0.6,
                                     bidFields: [{
-                                            name: 'Страхование',
-                                            prc: '1',
-                                            defaultValue: false
-                                        }
-                                    ]
+                                        name: 'Страхование',
+                                        prc: '1',
+                                        defaultValue: false
+                                    }]
                                 },
                             }
                         },
@@ -673,11 +693,10 @@ export const mortgageCalc = (container, banksArr = []) => {
                                     prc: 6,
                                     cashback: 0.6,
                                     bidFields: [{
-                                            name: 'Работники ОПК, Гос или бюджетных организаций являющийся зарплатными клиентами',
-                                            prc: '1',
-                                            defaultValue: true
-                                        }
-                                    ]
+                                        name: 'Работники ОПК, Гос или бюджетных организаций являющийся зарплатными клиентами',
+                                        prc: '1',
+                                        defaultValue: true
+                                    }]
                                 },
                             }
                         },
@@ -787,15 +806,6 @@ export const mortgageCalc = (container, banksArr = []) => {
 
 
             this.data.setDefaultPayment();
-            this.btns = Array.from(container.querySelectorAll('[data-mortgage-btn]'));
-            const activeBtn = this.btns.find(btn => btn.classList.contains('_active'));
-            if (this.data.selectedProgram) {
-                this.data.selectedProgram = {
-                    name: activeBtn.dataset.mortgageBtn.split(',')[0].trim(),
-                    value: +activeBtn.dataset.mortgageBtn.split(',')[1].trim(),
-                    nameText: activeBtn.dataset.mortgageBtn.split(',')[2].trim()
-                };
-            }
         }
 
 
@@ -1099,6 +1109,8 @@ export const mortgageCalc = (container, banksArr = []) => {
             const prc = Number(fixedNumberPrc(btn.textContent));
 
             this.paymentInput.setRawValue(this.data.cost / 100 * prc);
+
+            el.querySelectorAll('[data-mortgage-tag]').forEach(tag => tag.classList.remove('_active'));
             btn.classList.add('_active');
             updateForm(btn, {
                 payment: +this.paymentInput.getRawValue(),

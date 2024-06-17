@@ -34,7 +34,6 @@ export const mortgageCalc = (container, banksArr = []) => {
                 this.dataClass.setData(e.detail);
                 this.data = this.dataClass.getData();
                 this.results = this.dataClass.getResults();
-                console.log(this.data);
                 this.updateBanksOnProgram();
                 this.updateResultsView();
                 this.updateFormAndSliders(this.data);
@@ -47,10 +46,6 @@ export const mortgageCalc = (container, banksArr = []) => {
                 this.updateResultsViewCalc();
                 this.updateBanks();
             }
-
-            setTimeout(() => {
-                console.log(this.data);
-            }, 500);
         }
 
         programs() {
@@ -195,6 +190,10 @@ export const mortgageCalc = (container, banksArr = []) => {
                     }
                 })
             }
+
+            container.querySelectorAll('[data-mortgage="payment-tags"] [data-mortgage-tag]').forEach(item => {
+                item.classList.remove('_active');
+            })
         }
 
         updateResultsView() {
@@ -267,6 +266,9 @@ export const mortgageCalc = (container, banksArr = []) => {
                 setTimeout(() => {
                     updateBank.call(this, bank);
                 }, 1);
+                bank.addEventListener('change',() => {
+                    updateBank.call(this,bank);
+                })
             })
 
             function updateBank(bank) {
@@ -1111,7 +1113,9 @@ export const mortgageCalc = (container, banksArr = []) => {
             this.paymentInput.setRawValue(this.data.cost / 100 * prc);
 
             el.querySelectorAll('[data-mortgage-tag]').forEach(tag => tag.classList.remove('_active'));
-            btn.classList.add('_active');
+            setTimeout(() => {
+                btn.classList.add('_active');
+            }, 10);
             updateForm(btn, {
                 payment: +this.paymentInput.getRawValue(),
                 onUpdate: 'paymentInput'

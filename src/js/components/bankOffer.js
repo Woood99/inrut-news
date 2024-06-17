@@ -51,7 +51,6 @@ export const bankOffer = (item) => {
     }
 
     function updateTopInfo() {
-
         defaultPrc = fixedNumberPrc(item.dataset.bankOfferPrc);
         discount = 0;
         newPrcEl.textContent = "";
@@ -59,10 +58,13 @@ export const bankOffer = (item) => {
 
         const inputsDown = item.querySelectorAll("[data-bank-offer-input-down]");
 
-        inputsDown.forEach((input) => {
+        inputsDown.forEach(input => {
             if (input.checked) {
                 const value = input.dataset.bankOfferInputDown;
                 discount += fixedNumberPrc(value);
+                input.closest('.col').classList.add('text-blue');
+            } else {
+                input.closest('.col').classList.remove('text-blue');
             }
         });
 

@@ -62,9 +62,9 @@ export const bankOffer = (item) => {
             if (input.checked) {
                 const value = input.dataset.bankOfferInputDown;
                 discount += fixedNumberPrc(value);
-                input.closest('.col').classList.add('text-blue');
+                input.closest('.col').classList.add('_active');
             } else {
-                input.closest('.col').classList.remove('text-blue');
+                input.closest('.col').classList.remove('_active');
             }
         });
 

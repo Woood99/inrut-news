@@ -133,10 +133,20 @@ export const cardSecondaryActionsBody = (card) => {
             if (!favorite.classList.contains('_prevent')) {
                 setTimeout(() => {
                     favorite.classList.add('_prevent');
+                    favorite.innerHTML = `
+                        <svg class="tw-w-4 tw-h-4">
+                             <use xlink:href="./img/sprite.svg#favorite"></use>
+                        </svg>
+                    `;
                 }, 1);
             } else {
                 setTimeout(() => {
                     favorite.classList.remove('_prevent');
+                    favorite.innerHTML = `
+                        <svg class="tw-w-4 tw-h-4">
+                            <use xlink:href="./img/sprite.svg#favorite-stroke"></use>
+                        </svg>
+                    `
                 }, 1);
             }
         }

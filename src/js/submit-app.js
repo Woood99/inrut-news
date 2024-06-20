@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const form = document.querySelector('#post-sale-form');
         if (!form) return;
         let formEventInput = false;
+        let visibleError = false;
         const sidebars = document.querySelectorAll('[data-form-sidebar]');
 
         form.addEventListener('input', () => {
@@ -81,7 +82,16 @@ document.addEventListener('DOMContentLoaded', () => {
         })
 
         form.addEventListener('submit', (e) => {
+            visibleError = true;
             if (!validate()) e.preventDefault();
+        })
+
+        const mainFilter = form.querySelector('[data-place-sale-type]');
+        console.log(mainFilter);
+        mainFilter.addEventListener('change', () => {
+            setTimeout(() => {
+                validate(true);
+            }, 1);
         })
 
         function validate(controls = true) {
@@ -163,6 +173,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     validateCreateError(el, text);
                     errorItems.push(el);
                 }
+                if (visibleError === false) {
+                    validateRemoveError(el);
+                }
             }
 
             function selects(el, selector = null) {
@@ -171,6 +184,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!validateCreateErrorSelect(el, selector)) {
                     result = false;
                     errorItems.push(el);
+                }
+
+                if (visibleError === false) {
+                    validatRemoveErrorSelect(el, selector);
                 }
             }
 
@@ -183,6 +200,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     btn.classList.add('_error');
                     result = false;
                     errorItems.push(el);
+                }
+                if (visibleError) {
+                    btn.classList.remove('_error');
                 }
             }
         }
@@ -216,10 +236,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const name = field.dataset.formSidebarPath;
                 const currentEl = errorSections.find(item => item.dataset.formSidebarTarget === name);
                 if (currentEl) {
-                    field.classList.add('_error');
-
-                    field.querySelector('svg').remove();
-                    field.insertAdjacentHTML('afterbegin', svgError)
+                    if (visibleError) {
+                        field.classList.add('_error');
+                        field.querySelector('svg').remove();
+                        field.insertAdjacentHTML('afterbegin', svgError);
+                    }
                 } else {
                     field.classList.add('_suggested');
                     field.querySelector('svg').remove();

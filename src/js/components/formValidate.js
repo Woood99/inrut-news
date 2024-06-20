@@ -552,6 +552,7 @@ export const submitAppValidate = () => {
     const formSidebarEl = document.querySelector('[data-form-sidebar]');
     if (!form) return;
     let formEventInput = false;
+    let visibleError = false;
 
     const price = form.querySelector('.submit-app-options__item--price');
     const priceInputs = price.querySelectorAll('.input-text__input');
@@ -566,6 +567,14 @@ export const submitAppValidate = () => {
 
     const descr = form.querySelector('[data-field-descr]');
     const descrInput = descr.querySelector('textarea');
+
+    const mainFilter = form.querySelector('[data-submit-filter-object-type]');
+    mainFilter.addEventListener('change', () => {
+        setTimeout(() => {
+            validate(true);
+        }, 1);
+    })
+
     if (type) {
         const typeItems = type.querySelectorAll('.field-select__item');
         typeItems.forEach(item => {
@@ -617,7 +626,7 @@ export const submitAppValidate = () => {
         validateRemoveError(descr);
         validateRemoveError(price);
         validateRemoveError(calcProper);
-        validatRemoveErrorSelect(type)
+        validatRemoveErrorSelect(type);
         if (!validateCreateErrorSelect(type)) {
             result = false;
             errorItems.push(type);
@@ -640,11 +649,18 @@ export const submitAppValidate = () => {
         if (result === false && controls === true) {
             scrollToError(errorItems);
         }
+        if (visibleError === false) {
+            validateRemoveError(descr);
+            validateRemoveError(price);
+            validateRemoveError(calcProper);
+            validatRemoveErrorSelect(type);
+        }
         formSidebar(errorItems);
         return result;
     }
 
     form.addEventListener('submit', (e) => {
+        visibleError = true;
         if (!validate()) e.preventDefault();
     })
 
@@ -678,14 +694,16 @@ export const submitAppValidate = () => {
             const name = field.dataset.formSidebarPath;
             const currentEl = errorSections.find(item => item.dataset.formSidebarTarget === name);
             if (currentEl) {
-                field.classList.add('_error');
+                if (visibleError) {
+                    field.classList.add('_error');
 
-                field.querySelector('svg').remove();
-                field.insertAdjacentHTML('afterbegin',svgError)
+                    field.querySelector('svg').remove();
+                    field.insertAdjacentHTML('afterbegin', svgError)
+                }
             } else {
                 field.classList.add('_suggested');
                 field.querySelector('svg').remove();
-                field.insertAdjacentHTML('afterbegin',svgDefault)
+                field.insertAdjacentHTML('afterbegin', svgDefault)
             }
         })
 
@@ -696,7 +714,7 @@ export const submitAppValidate = () => {
     }
 
     if (formSidebarEl) {
-        formSidebarEl.addEventListener('click',sidebarClickElementHandler);
+        formSidebarEl.addEventListener('click', sidebarClickElementHandler);
         toggleActiveClass(window.scrollY);
         window.addEventListener('scroll', () => {
             if (window.innerWidth <= 1212) return;
@@ -735,15 +753,17 @@ export const submitAppValidate = () => {
                     if (item.classList.contains('_active')) item.classList.remove('_active');
                 })
             }
-            
+
             if (sections[sections.length - 1].offsetTop + sections[sections.length - 1].offsetHeight - gap <= scrollDistance) {
                 sidebarItems.forEach(item => {
                     if (item.classList.contains('_active')) item.classList.remove('_active');
                 })
             }
         });
-        
+
     }
+
+
 
 }
 

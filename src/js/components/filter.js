@@ -1573,14 +1573,14 @@ export const fieldSelect = () => {
                                 btn.removeAttribute("hidden");
                             }
 
-                        
+
 
                             function formSidebar(currentIndex) {
                                 const currentSidebar = formSidebars.find(sidebar => sidebar.dataset.formSidebar == currentIndex);
-                                formSidebars.forEach(sidebar => sidebar.setAttribute('hidden',''));
+                                formSidebars.forEach(sidebar => sidebar.setAttribute('hidden', ''));
                                 currentSidebar.removeAttribute('hidden');
                             }
-                         
+
                         }
                     }
                 }
@@ -1722,27 +1722,14 @@ export const fieldRange = () => {
                 const two = container.querySelector(
                     '[data-range-floor-index="2"]'
                 );
-                const three = container.querySelector(
-                    '[data-range-floor-index="3"]'
-                );
 
                 one.addEventListener("click", () => {
                     one.classList.toggle("_active");
                 });
                 two.addEventListener("click", () => {
                     two.classList.toggle("_active");
-                    if (checkContains(three)) {
-                        three.classList.remove("_active");
-                    }
                 });
-                three.addEventListener("click", () => {
-                    three.classList.toggle("_active");
-                    if (checkContains(two)) {
-                        two.classList.remove("_active");
-                    }
-                });
-
-                for (const element of [one, two, three]) {
+                for (const element of [one, two]) {
                     element.addEventListener("click", () => {
                         updateInput(container);
                     });
@@ -2189,11 +2176,7 @@ export const filterActions = () => {
             });
 
             function actions(content, currentBtn) {
-                content.classList.remove(
-                    "control-cards__content--horizontal",
-                    "control-cards__content--vertical",
-                    "control-cards__content--horizontal-map"
-                );
+                content.classList.remove("control-cards__content--horizontal", "control-cards__content--vertical", "control-cards__content--horizontal-map");
                 btns.forEach((btn) => btn.classList.remove("_active"));
                 currentBtn.classList.add("_active");
             }

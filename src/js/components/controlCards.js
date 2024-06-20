@@ -144,7 +144,6 @@ export const controlCardsCardSecondary = (content, btn) => {
         const favorite = card.querySelector('.card-secondary__info--favorite');
         const bottom = card.querySelector('.card-secondary__bottom');
         const bottomMobile = bottom.querySelector('.card-secondary__info--mobile');
-        const quantity = card.querySelector('.card-secondary__quantity');
         const actions = card.querySelector('.card-secondary__actions');
 
         const content = card.querySelector('.card-secondary__content');
@@ -175,12 +174,6 @@ export const controlCardsCardSecondary = (content, btn) => {
         if (btn === 'list' || checkVertical(btn)) {
             bottom.classList.add('_vertical-active');
 
-            if (quantity) {
-                const to = card.querySelector('.card-secondary__prices--2');
-                if (to) {
-                    to.insertAdjacentElement('beforeend', quantity);
-                }
-            }
             if (pricesMain) {
                 pricesMain.removeAttribute('hidden');
             }
@@ -196,13 +189,6 @@ export const controlCardsCardSecondary = (content, btn) => {
         }
         if (btn !== 'list' && checkHorizontal(btn)) {
             bottom.classList.remove('_vertical-active');
-            if (quantity) {
-                const to = card.querySelector('.card-secondary__prices');
-                if (to) {
-                    to.setAttribute('hidden', '');
-                    to.insertAdjacentElement('beforebegin', quantity);
-                }
-            }
             if (pricesMain) {
                 pricesMain.setAttribute('hidden', '');
             }

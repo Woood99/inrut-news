@@ -7,7 +7,7 @@ import Cleave from 'cleave.js';
 import numberToAnim from "../modules/numberToAnim";
 import debounce from "../functions/debounce";
 
-export const mortgageCalc = (container, banksArr = []) => {
+export const mortgageCalc = (container, banksArr = [],mortgageData = {}, targetCreditActive = false) => {
     if (!container) return;
 
     class MortgageCalc {
@@ -57,12 +57,13 @@ export const mortgageCalc = (container, banksArr = []) => {
             const activeBtn = this.dataClass.btns.find(item => item.classList.contains('_active'));
             updateForm(activeBtn, {
                 onUpdate: 'changeProgram',
-                targetCredit: container.querySelector('[data-mortgage-target-credit] .select-secondary__body').value,
+                targetCredit: targetCreditActive ? container.querySelector('[data-mortgage-target-credit] .select-secondary__body').value : null,
                 selectedProgram: {
                     name: activeBtn.dataset.mortgageBtn.split(',')[0].trim(),
                     value: +activeBtn.dataset.mortgageBtn.split(',')[1].trim(),
                     nameText: activeBtn.dataset.mortgageBtn.split(',')[2].trim(),
-                    banksData: this.data.programs[this.data.targetCredit][activeBtn.dataset.mortgageBtn.split(',')[0].trim()].banksData
+                    banksData: targetCreditActive ? this.data.programs[this.data.targetCredit][activeBtn.dataset.mortgageBtn.split(',')[0].trim()].banksData : 
+                    this.data.programs[activeBtn.dataset.mortgageBtn.split(',')[0].trim()].banksData
                 }
             });
 
@@ -75,12 +76,13 @@ export const mortgageCalc = (container, banksArr = []) => {
                 btn.classList.add('_active');
                 updateForm(btn, {
                     onUpdate: 'changeProgram',
-                    targetCredit: container.querySelector('[data-mortgage-target-credit] .select-secondary__body').value,
+                    targetCredit: targetCreditActive ? container.querySelector('[data-mortgage-target-credit] .select-secondary__body').value : null,
                     selectedProgram: {
                         name: btn.dataset.mortgageBtn.split(',')[0].trim(),
                         value: +btn.dataset.mortgageBtn.split(',')[1].trim(),
                         nameText: btn.dataset.mortgageBtn.split(',')[2].trim(),
-                        banksData: this.data.programs[this.data.targetCredit][btn.dataset.mortgageBtn.split(',')[0].trim()].banksData
+                        banksData: targetCreditActive ? this.data.programs[this.data.targetCredit][btn.dataset.mortgageBtn.split(',')[0].trim()].banksData : 
+                    this.data.programs[btn.dataset.mortgageBtn.split(',')[0].trim()].banksData
                     }
                 });
             }
@@ -88,11 +90,27 @@ export const mortgageCalc = (container, banksArr = []) => {
 
         targetCreditChange() {
             const targetCredit = container.querySelector('[data-mortgage-target-credit]');
-            if (!targetCredit) return;
-            body.call(this, targetCredit.querySelector('.select-secondary__body').value);
-            targetCredit.addEventListener('change', (e) => {
-                body.call(this, e.detail.value);
-            })
+            if (targetCredit) {
+                body.call(this, targetCredit.querySelector('.select-secondary__body').value);
+                targetCredit.addEventListener('change', (e) => {
+                    body.call(this, e.detail.value);
+                })
+            } else {
+                this.dataClass.btns = this.generateButtons(this.data.programs);
+                const btnActive = this.dataClass.btns.find(item => item.classList.contains('_active'));
+                const map = {
+                    name: btnActive.dataset.mortgageBtn.split(',')[0].trim(),
+                    value: +btnActive.dataset.mortgageBtn.split(',')[1].trim(),
+                    nameText: btnActive.dataset.mortgageBtn.split(',')[2].trim(),
+                    banksData: this.data.programs[btnActive.dataset.mortgageBtn.split(',')[0].trim()].banksData
+                }
+                this.data.selectedProgram = map;
+                updateForm(btnActive, {
+                    onUpdate: 'targetCreditChange',
+                    selectedProgram: map
+                });
+            }
+
 
             function body(value) {
                 this.dataClass.btns = this.generateButtons(this.data.programs[value]);
@@ -446,7 +464,7 @@ export const mortgageCalc = (container, banksArr = []) => {
         }
 
         generateButtons(obj) {
-            const containerPrograms = container.querySelector('.mortgage__programs');
+            const containerPrograms = container.querySelector('[data-mortgage-calc-programs]');
             containerPrograms.innerHTML = '';
             for (let key in obj) {
                 const map = obj[key];
@@ -471,244 +489,16 @@ export const mortgageCalc = (container, banksArr = []) => {
 
     class Data {
         constructor() {
-            this.data = {
-                selectedProgram: null,
-                cost: 10000000,
-                minPrice: 375000,
-                maxPrice: 100000000,
-                paymentPrc: 0,
-                minPaymentPrc: 0,
-                maxPaymentPrc: 0.9,
-                payment: 0,
-                getMinPayment: function() {
-                    return this.cost * this.minPaymentPrc;
-                },
-                getMaxPayment: function() {
-                    return this.cost * this.maxPaymentPrc;
-                },
-                programs: {},
-                minYear: 1,
-                maxYear: 30,
-                time: 10,
+            this.data = mortgageData;
 
-                setDefaultPayment() {
-                    this.payment = this.cost * this.paymentPrc;
-                },
-                maternalCapitalStatus: false,
-                maternalCapitalMin: 0,
-                maternalCapitalMax: 833024,
-                maternalCapital: 833024,
-                selectedBanks: [],
-                targetCredit: container.querySelector('[data-mortgage-target-credit] .select-secondary__body').value,
-                programs: {
-                    buildings: {
-                        base: {
-                            name: 'base',
-                            nameText: 'Базовая',
-                            prc: 0.109,
-                            banksData: {
-                                alfa: {
-                                    prc: 19.47,
-                                    cashback: 0.4,
-                                    bidFields: [{
-                                        name: 'Зарплатный клиент Альфа-Банка',
-                                        prc: 0.5,
-                                        defaultValue: false
-                                    }]
-                                },
-                                domrf: {
-                                    prc: 18,
-                                    cashback: 0.3
-                                },
-                                mts: {
-                                    prc: 18,
-                                    cashback: 0.3
-                                },
-                                prom: {
-                                    prc: 8,
-                                    cashback: 0.6,
-                                    bidFields: [{
-                                            name: 'Страхование',
-                                            prc: 2,
-                                            defaultValue: false
-                                        }
-                                    ]
-                                },
-                            }
-                        },
-                        gov: {
-                            name: 'gov',
-                            nameText: 'Господдержка',
-                            prc: 0.077,
-                            banksData: {
-                                alfa: {
-                                    prc: 8,
-                                    cashback: 0.4
-                                },
-                                domrf: {
-                                    prc: 8,
-                                    cashback: 0
-                                },
-                                prom: {
-                                    prc: 9,
-                                    cashback: 0.6,
-                                    bidFields: [{
-                                        name: 'Страхование',
-                                        prc: '1',
-                                        defaultValue: false
-                                    }]
-                                },
-                            }
-                        },
-                        family: {
-                            name: 'family',
-                            nameText: 'Семейная',
-                            prc: 0.057,
-                            banksData: {
-                                alfa: {
-                                    prc: 6,
-                                    cashback: 0.4
-                                },
-                                domrf: {
-                                    prc: 6,
-                                    cashback: 0
-                                },
-                                prom: {
-                                    prc: 6,
-                                    cashback: 0.6,
-                                    bidFields: [{
-                                        name: 'Работники ОПК, Гос или бюджетных организаций являющийся зарплатными клиентами',
-                                        prc: '1',
-                                        defaultValue: true
-                                    }]
-                                },
-                            }
-                        },
-                        it: {
-                            name: 'it',
-                            nameText: 'Ипотека для IT',
-                            prc: 0.047,
-                            banksData: {
-                                alfa: {
-                                    prc: 5,
-                                    cashback: 0.4
-                                },
-                                domrf: {
-                                    prc: 5,
-                                    cashback: 0
-                                },
-                                prom: {
-                                    prc: 5,
-                                    cashback: 0.6
-                                },
-                            }
-                        },
-                        military: {
-                            name: 'military',
-                            nameText: 'Военная',
-                            prc: 0.176,
-                        },
-                    },
-                    secondary: {
-                        base: {
-                            name: 'base',
-                            nameText: 'Базовая',
-                            prc: 0.109,
-                            banksData: {
-                                mts: {
-                                    prc: 19.7,
-                                    cashback: 0.6,
-                                    bidFields: [{
-                                            name: 'Страхование',
-                                            prc: 2,
-                                            defaultValue: false
-                                        },
-                                        {
-                                            name: 'Работники ОПК, зарплатные клиенты, клиенты премиального пакета Orange Premium Club',
-                                            prc: 0.6,
-                                            defaultValue: false
-                                        },
-                                        {
-                                            name: 'Партнёры сегмента "Platinum SPB"',
-                                            prc: 0.5,
-                                            defaultValue: false
-                                        }
-                                    ]
-                                },
-                            }
-                        },
-                    },
-                    house: {
-                        base: {
-                            name: 'base',
-                            nameText: 'Базовая',
-                            prc: 0.109,
-                        },
-                        gov: {
-                            name: 'gov',
-                            nameText: 'Господдержка',
-                            prc: 0.077,
-                        },
-                        family: {
-                            name: 'family',
-                            nameText: 'Семейная',
-                            prc: 0.057,
-                        },
-                        it: {
-                            name: 'it',
-                            nameText: 'Ипотека для IT',
-                            prc: 0.047,
-                        },
-                        military: {
-                            name: 'military',
-                            nameText: 'Военная',
-                            prc: 0.176,
-                        },
-                    },
-                    plots: {
-                        base: {
-                            name: 'base',
-                            nameText: 'Базовая',
-                            prc: 0.109,
-                        },
-                        gov: {
-                            name: 'gov',
-                            nameText: 'Господдержка',
-                            prc: 0.077,
-                        },
-                        family: {
-                            name: 'family',
-                            nameText: 'Семейная',
-                            prc: 0.057,
-                        },
-                        it: {
-                            name: 'it',
-                            nameText: 'Ипотека для IT',
-                            prc: 0.047,
-                        },
-                        military: {
-                            name: 'military',
-                            nameText: 'Военная',
-                            prc: 0.176,
-                        },
-                    },
-                    commercial: {
-                        military: {
-                            name: 'military',
-                            nameText: 'Военная',
-                            prc: 0.176,
-                            banksData: {
-                                sber: {
-                                    prc: 12.7,
-                                    cashback: 0.4,
-                                },
-                            }
-                        },
-                    },
+            if (targetCreditActive) {
+                this.data = {
+                    ...this.data,
+                    targetCredit: container.querySelector('[data-mortgage-target-credit] .select-secondary__body').value,
                 }
-            };
-            this.results = {};
+            }
 
+            this.results = {};
 
             this.data.setDefaultPayment();
         }

@@ -87,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
         })
 
         const mainFilter = form.querySelector('[data-place-sale-type]');
-        console.log(mainFilter);
         mainFilter.addEventListener('change', () => {
             setTimeout(() => {
                 validate(true);
@@ -269,7 +268,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         function sidebarClickElementHandler(e, currentBlock) {
-            console.log(currentBlock);
             const target = e.target;
             const element = target.closest('[data-form-sidebar-path]');
             if (!element) return;

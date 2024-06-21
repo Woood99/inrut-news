@@ -489,7 +489,35 @@ export const mortgageCalc = (container, banksArr = [],mortgageData = {}, targetC
 
     class Data {
         constructor() {
-            this.data = mortgageData;
+            this.data = {
+                selectedProgram: null,
+                cost: 10000000,
+                minPrice: 375000,
+                maxPrice: 100000000,
+                paymentPrc: 0,
+                minPaymentPrc: 0,
+                maxPaymentPrc: 0.9,
+                payment: 0,
+                programs: {},
+                minYear: 1,
+                maxYear: 30,
+                time: 10,
+                maternalCapitalStatus: false,
+                maternalCapitalMin: 0,
+                maternalCapitalMax: 833024,
+                maternalCapital: 833024,
+                selectedBanks: [],
+                ...mortgageData,
+                setDefaultPayment() {
+                    this.payment = this.cost * this.paymentPrc;
+                },
+                getMinPayment: function() {
+                    return this.cost * this.minPaymentPrc;
+                },
+                getMaxPayment: function() {
+                    return this.cost * this.maxPaymentPrc;
+                },
+            };
 
             if (targetCreditActive) {
                 this.data = {

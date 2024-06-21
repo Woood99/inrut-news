@@ -1,6 +1,5 @@
 const bookConsultation = (container) => {
     if (!container) return;
-    console.log(container);
     const modal = container.closest('.popup-primary--book-consultation');
     const form = container.querySelector('.book-consultation__form');
     const agentToggle = container.querySelector('.toggle-checkbox input');

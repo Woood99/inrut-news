@@ -15,33 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.bank-offer').forEach(item => bankOffer(item));
 
     const mortgageData = {
-        selectedProgram: null,
-        cost: 10000000,
-        minPrice: 375000,
-        maxPrice: 100000000,
-        paymentPrc: 0,
-        minPaymentPrc: 0,
-        maxPaymentPrc: 0.9,
-        payment: 0,
-        getMinPayment: function() {
-            return this.cost * this.minPaymentPrc;
-        },
-        getMaxPayment: function() {
-            return this.cost * this.maxPaymentPrc;
-        },
-        programs: {},
-        minYear: 1,
-        maxYear: 30,
-        time: 10,
-
-        setDefaultPayment() {
-            this.payment = this.cost * this.paymentPrc;
-        },
-        maternalCapitalStatus: false,
-        maternalCapitalMin: 0,
-        maternalCapitalMax: 833024,
-        maternalCapital: 833024,
-        selectedBanks: [],
         programs: {
             buildings: {
                 base: {

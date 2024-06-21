@@ -98,9 +98,11 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollTarget();
     metroInfo();
     apartKitchen();
+
     document.querySelectorAll('.book-consultation').forEach(el => {
         bookConsultation(el);
     })
+
     genplan();
     moveToFromBlock('[data-move-block-to="bid-user"]', '[data-move-block-from="bid-user"]', 99999, 1212, `${window.innerWidth >= 1920 ? 1.35 : 1}`);
     additionally();
@@ -112,23 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.bank-offer').forEach(item => bankOffer(item));
 
     const mortgageData = {
-        selectedProgram: null,
-        cost: 10000000,
-        minPrice: 375000,
-        maxPrice: 100000000,
-        paymentPrc: 0,
-        minPaymentPrc: 0,
-        maxPaymentPrc: 0.9,
-        payment: 0,
-        programs: {},
-        minYear: 1,
-        maxYear: 30,
-        time: 10,
-        maternalCapitalStatus: false,
-        maternalCapitalMin: 0,
-        maternalCapitalMax: 833024,
-        maternalCapital: 833024,
-        selectedBanks: [],
         programs: {
             base: {
                 name: 'base',
@@ -235,16 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 nameText: 'Военная',
                 prc: 0.176,
             },
-        },
-
-        setDefaultPayment() {
-            this.payment = this.cost * this.paymentPrc;
-        },
-        getMinPayment: function() {
-            return this.cost * this.minPaymentPrc;
-        },
-        getMaxPayment: function() {
-            return this.cost * this.maxPaymentPrc;
         },
     };
     

@@ -288,31 +288,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-        const comparisonBtn = target.closest('.comparison-btn-default');
-        if (comparisonBtn) {
-            e.preventDefault();
-            if (!comparisonBtn.classList.contains('_prevent')) {
-                setTimeout(() => {
-                    comparisonBtn.classList.add('_prevent');
-                }, 1);
-                comparisonBtn.innerHTML = `
-                    <svg class="tw-fill-[#005bff]">
-                        <use xlink:href="./img/sprite.svg#comparison-active"></use>
-                    </svg>
-                    <span>Удалить ЖК из сравнения</span>
-                `;
-            } else {
-                setTimeout(() => {
-                    comparisonBtn.classList.remove('_prevent');
-                }, 1);
-                comparisonBtn.innerHTML = `
-                    <svg>
-                        <use xlink:href="./img/sprite.svg#comparison"></use>
-                    </svg>
-                    <span>Добавить ЖК к сравнению</span>
-                `;
-            }
-        }
+        // const comparisonBtn = target.closest('.comparison-btn-default');
+        // if (comparisonBtn) {
+        //     e.preventDefault();
+        //     if (!comparisonBtn.classList.contains('_prevent')) {
+        //         setTimeout(() => {
+        //             comparisonBtn.classList.add('_prevent');
+        //         }, 1);
+        //         comparisonBtn.innerHTML = `
+        //             <svg class="tw-fill-[#005bff]">
+        //                 <use xlink:href="./img/sprite.svg#comparison-active"></use>
+        //             </svg>
+        //             <span>Удалить ЖК из сравнения</span>
+        //         `;
+        //     } else {
+        //         setTimeout(() => {
+        //             comparisonBtn.classList.remove('_prevent');
+        //         }, 1);
+        //         comparisonBtn.innerHTML = `
+                    // <svg>
+                    //     <use xlink:href="./img/sprite.svg#comparison"></use>
+                    // </svg>
+                    // <span>Добавить ЖК к сравнению</span>
+        //         `;
+        //     }
+        // }
     })
 
 

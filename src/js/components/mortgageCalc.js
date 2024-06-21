@@ -251,7 +251,10 @@ export const mortgageCalc = (container, banksArr = [],mortgageData = {}, targetC
             if (resultCashback) {
                 const cashbackArr = Array.from(banksArr).map(item => item.dataset.bankOfferCashback);
                 const maxCashback = Math.max(...cashbackArr);
-                numberToAnim(resultCashback, 0, numberReplace(Math.round(this.results.totalAmount / 100 * maxCashback)));
+                const result = numberReplace(Math.round(this.results.totalAmount / 100 * maxCashback));
+                if (resultCashback.textContent != result) {
+                    numberToAnim(resultCashback, 0, result);
+                }
             }
         }
 
@@ -307,15 +310,21 @@ export const mortgageCalc = (container, banksArr = [],mortgageData = {}, targetC
                     sumEl.textContent = `${numberReplace(results.totalAmount)} ₽`;
                 }
 
-                numberToAnim(termEl, 0, String(results.term));
-                numberToAnim(paymentEl, 0, numberReplace(results.monthPayment));
+                if (termEl.textContent != results.term) {
+                    numberToAnim(termEl, 0, String(results.term));
+                }
+                if (paymentEl.textContent != numberReplace(results.monthPayment)) {
+                    numberToAnim(paymentEl, 0, numberReplace(results.monthPayment));
+                }
 
                 const resultCashback = numberReplace(Math.round(results.totalAmount / 100 * currentCashback));
                 if (resultCashback == 0) {
                     cashback.parentNode.setAttribute('hidden', '');
                 } else {
                     cashback.parentNode.removeAttribute('hidden');
-                    numberToAnim(cashback, 0, resultCashback);
+                    if (cashback.textContent != resultCashback) {
+                        numberToAnim(cashback, 0, resultCashback);
+                    }
                 }
             }
 

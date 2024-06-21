@@ -75,29 +75,31 @@ function initSliders() {
         })
     }
     if (document.querySelector('.book-consultation__agents')) {
-        const slider = document.querySelector('.book-consultation__agents');
-        new Swiper(slider, {
-            observer: true,
-            observeParents: true,
-            autoHeight: true,
-            slidesPerView: 1,
-            spaceBetween: 16,
-            speed: 800,
-            navigation: {
-                prevEl: slider.closest('.book-consultation').querySelector('.nav-arrow-secondary--prev'),
-                nextEl: slider.closest('.book-consultation').querySelector('.nav-arrow-secondary--next'),
-            },
-            breakpoints: {
-                768: {
-                    slidesPerView: 2,
+        const sliders = document.querySelectorAll('.book-consultation__agents');
+        sliders.forEach(slider => {
+            new Swiper(slider, {
+                observer: true,
+                observeParents: true,
+                autoHeight: true,
+                slidesPerView: 1,
+                spaceBetween: 16,
+                speed: 800,
+                navigation: {
+                    prevEl: slider.closest('.book-consultation').querySelector('.nav-arrow-secondary--prev'),
+                    nextEl: slider.closest('.book-consultation').querySelector('.nav-arrow-secondary--next'),
                 },
-            },
-            breakpoints: {
-                1112: {
-                    slidesPerView: 3,
+                breakpoints: {
+                    768: {
+                        slidesPerView: 2,
+                    },
                 },
-            },
-        });
+                breakpoints: {
+                    1112: {
+                        slidesPerView: 3,
+                    },
+                },
+            });
+        })
     }
     if (document.querySelector('.record-viewing__agents')) {
         const slider = document.querySelector('.record-viewing__agents');

@@ -256,7 +256,65 @@ document.addEventListener('DOMContentLoaded', () => {
         if (target.closest('.comparison-btn')) {
             e.preventDefault();
         }
+
+        const favoriteBtn = target.closest('.favorite-btn-default');
+        
+        if (favoriteBtn) {
+
+            e.preventDefault();
+            if (!favoriteBtn.classList.contains('_prevent')) {
+                setTimeout(() => {
+                    favoriteBtn.classList.add('_prevent');
+                    favoriteBtn.innerHTML = `
+                        <svg class="tw-w-4 tw-h-4">
+                             <use xlink:href="./img/sprite.svg#favorite"></use>
+                        </svg>
+                        <span>Удалить ЖК из избранного</span>
+                    `;
+                }, 1);
+            } else {
+                setTimeout(() => {
+                    favoriteBtn.classList.remove('_prevent');
+                    favoriteBtn.innerHTML = `
+                        <svg class="tw-w-4 tw-h-4">
+                            <use xlink:href="./img/sprite.svg#favorite-stroke"></use>
+                        </svg>
+                        <span>Добавить ЖК в избранное</span>
+                    `
+                }, 1);
+            }
+
+        }
+
+
+
+        const comparisonBtn = target.closest('.comparison-btn-default');
+        if (comparisonBtn) {
+            e.preventDefault();
+            if (!comparisonBtn.classList.contains('_prevent')) {
+                setTimeout(() => {
+                    comparisonBtn.classList.add('_prevent');
+                }, 1);
+                comparisonBtn.innerHTML = `
+                    <svg class="tw-fill-[#005bff]">
+                        <use xlink:href="./img/sprite.svg#comparison-active"></use>
+                    </svg>
+                    <span>Удалить ЖК из сравнения</span>
+                `;
+            } else {
+                setTimeout(() => {
+                    comparisonBtn.classList.remove('_prevent');
+                }, 1);
+                comparisonBtn.innerHTML = `
+                    <svg>
+                        <use xlink:href="./img/sprite.svg#comparison"></use>
+                    </svg>
+                    <span>Добавить ЖК к сравнению</span>
+                `;
+            }
+        }
     })
+
 
     // employee =============================
     const employeeRole = document.querySelector('[data-employee-role]');
@@ -351,6 +409,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })
     }
+
+
+
 
 
 });

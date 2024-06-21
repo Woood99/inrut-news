@@ -151,6 +151,7 @@ popup(null, 'authorization');
 popup(null, 'sber-tied');
 popup(null, 'kit-composition');
 popup(null, 'book-consultation');
+popup(null, 'book-consultation3');
 popup(null, 'book-consultation-promo');
 popup(null, 'record-viewing-three');
 popup({

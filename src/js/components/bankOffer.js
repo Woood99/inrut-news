@@ -95,6 +95,12 @@ export const bankOffer = (item) => {
                     html = bidFields.map(item => {
                         return `
                          <div class="bank-offer__additional-item">
+                            <div class="col">
+                                <label class="toggle-checkbox">
+                                    <input type="checkbox" name="toggle-2" ${item.defaultValue === true ? 'checked' : ''} data-bank-offer-input-down="${item.prc}">
+                                    <div aria-hidden="true"></div>
+                                </label>
+                            </div>
                             <div>
                                 <h3 class="title-4">
                                     ${item.name}
@@ -115,13 +121,7 @@ export const bankOffer = (item) => {
                                 </button>
                                     ` : ''}
                             </div>
-                            <div class="col">
-                                <span>-${item.prc}%</span>
-                                <label class="toggle-checkbox">
-                                    <input type="checkbox" name="toggle-2" ${item.defaultValue === true ? 'checked' : ''} data-bank-offer-input-down="${item.prc}">
-                                    <div aria-hidden="true"></div>
-                                </label>
-                            </div>
+                           <span>-${item.prc}%</span>
                         </div>
                     `;
                     })

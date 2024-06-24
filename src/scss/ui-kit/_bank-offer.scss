@@ -11,7 +11,8 @@
 
     &__logo {
         width: 125px;
-        img{
+
+        img {
             height: 25px;
             max-height: 100%;
             max-width: 110px;
@@ -21,18 +22,24 @@
     }
 
     &__info {
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid var(--primary200);
+
         display: grid;
-        grid-template-columns: 115px 55px 135px max-content;
+        grid-template-columns: 115px 115px 150px 1fr;
         grid-column-gap: 24px;
     }
-    &__item{
-        &._discount{
-            >span{
-                &:nth-child(1){
+
+    &__item {
+        &._discount {
+            >span {
+                &:nth-child(1) {
                     color: var(--blue);
                     font-weight: 500;
                 }
-                &:nth-child(2){
+
+                &:nth-child(2) {
                     text-decoration: line-through;
                     margin-left: 4px;
                     color: var(--primaryTwo);
@@ -41,17 +48,20 @@
                 }
             }
         }
-        &:not(._discount){
+
+        &:not(._discount) {
             font-weight: 500;
         }
     }
-    &__spollers{
-        margin-top: 32px;
+
+    &__spollers {
+        margin-top: 24px;
     }
+
     &__spoller {
         display: flex;
         flex-direction: column;
-        align-items: end;
+
         &._active {
             .bank-offer__spoller-check {
                 svg {
@@ -76,23 +86,23 @@
         justify-content: center;
 
         svg {
-        width: 100%;
-        height: 100%;
+            width: 100%;
+            height: 100%;
             fill: var(--blue);
             transition: transform $transitionSpeedFast $transitionFunction;
         }
     }
 
     &__spoller-content {
-       width: 100%;
-       display: flex;
-       flex-direction: column;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
     }
 
 
     &__btn {
         width: 115px;
-        margin-left: auto;
+
         &._active {
             background-color: var(--blue);
             color: var(--white);
@@ -109,19 +119,30 @@
             cursor: default;
         }
     }
+    &__field{
+   
 
-
+    }
+    &__field-name{
+        color: var(--primaryTwo);
+    }
+    &__field-value{
+        font-weight: 500;
+        &._big{
+            font-size: var(--little-big-fz);
+        }
+    }
     &__additional-item {
         display: flex;
-        align-items: start;
-        justify-content: space-between;
-     &:not(:last-child){
-        border-bottom: 1px dotted var(--primary200);
-        margin-bottom: 24px;
-        padding-bottom: 24px;
-     }
+        align-items: center;
+        gap: 16px;
+        &:not(:last-child) {
+            border-bottom: 1px dotted var(--primary200);
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+        }
+
         .col {
-            margin-left: 24px;
             display: flex;
             align-items: center;
 
@@ -135,16 +156,18 @@
                 font-size: var(--small-fz);
                 line-height: var(--small-lh);
             }
-            &._active{
+
+            &._active {
                 color: var(--blue);
-                span{
+
+                span {
                     opacity: 1;
                 }
             }
         }
     }
 
-    &__more-btn{
+    &__more-btn {
         margin-top: 8px;
 
 
@@ -175,11 +198,10 @@
 
         display: flex;
         align-items: center;
-        margin-left: auto;
 
         svg {
             margin-left: 8px;
-             width: 20px;
+            width: 20px;
             height: 20px;
             fill: currentColor;
             transform: rotate(-180deg);

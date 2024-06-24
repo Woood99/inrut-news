@@ -881,8 +881,7 @@ function initSliders() {
     if (document.querySelector('.object-slider-two')) {
         const sliders = document.querySelectorAll('.object-slider-two');
         sliders.forEach(el => {
-            const slider = el.querySelector('.object-slider-body__wrapper');
-            new Swiper(slider, {
+            const slider = new Swiper(el.querySelector('.object-slider-body__wrapper'), {
                 observer: true,
                 observeParents: true,
                 slidesPerView: 1,
@@ -891,18 +890,17 @@ function initSliders() {
                     prevEl: el.querySelector('.nav-arrow-primary--prev'),
                     nextEl: el.querySelector('.nav-arrow-primary--next'),
                 },
-                pagination: {
-                    el: el.querySelector('.pagination-primary'),
-                    type: 'fraction',
-                    renderFraction: function(currentClass, totalClass) {
-                        return `
-                            <span class="${currentClass}"></span>
-                            <span class="swiper-pagination-word">из</span>
-                            <span class="${totalClass}"></span>
-                            `;
-                    }
-                },
             });
+            slider.on("slideChange afterInit init", function() {
+                const counterEl = el.querySelector('.main-slider__counter');
+                const lineEl = el.querySelector('.main-slider__line');
+                sliderCounter(slider, counterEl);
+                sliderLine(slider,lineEl);
+            });
+            slider.init();
+            setTimeout(() => {
+                slider.navigation.update();
+            }, 1);
 
             const moreBtn = el.querySelector('.object-slider-body__more');
             const topBtns = document.querySelectorAll('.top-page-inner__btn');

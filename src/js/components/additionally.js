@@ -179,12 +179,6 @@ export const additionally = () => {
                 <span>${cardMap.oldPrice}</span>
                 <span>${cardMap.newPrice}</span>
             </div>
-            <button type="button" class="btn btn-reset btn-remove btn-remove--gray card-checkbox__remove" title="Удалить">
-                <svg>
-                    <use xlink:href="./img/sprite.svg#trash">
-                    </use>
-                </svg>
-            </button>
         </li>
         `;
         basket.insertAdjacentHTML('beforeend', cardHTML);

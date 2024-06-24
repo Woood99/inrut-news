@@ -263,7 +263,14 @@ popup({
         })
     },
 }, 'object-gallery');
-popup(null, 'object-gallery--two');
+popup({
+    isOpen: (settingsModal) => {
+        const sliders = settingsModal.container.querySelectorAll('.object-slider-body__wrapper');
+        sliders.forEach(slider => {
+            slider.updateNav();
+        })
+    }
+}, 'object-gallery--two');
 popup(null, 'warning-remove');
 popup(null, 'warning-remove2');
 popup(null, 'warning-remove3');

@@ -8,6 +8,7 @@ export class tagsInHeight {
         this.itemsAdd = [];
         this.itemsHTML = [];
         this.init();
+        this.container.tagsInHeight = this;
     }
 
     init() {
@@ -65,10 +66,13 @@ export class tagsInHeight {
         this.container.insertAdjacentHTML('beforeend', html);
     }
 
-
     deleteMorebtn() {
         const moreBtn = this.container.querySelector('[data-tags-in-height-more]');
         if (moreBtn) moreBtn.remove();
+    }
+
+    update() {
+        this.body();
     }
 }
 

@@ -820,6 +820,11 @@ function initSliders() {
                     if (currentContainer) {
                         if (btn.classList.contains('_active')) {
                             _slideDown(currentContainer, 300);
+                            const tagsHeightItems = currentContainer.querySelectorAll('[data-tags-in-height]');
+                            tagsHeightItems.forEach(item => {
+                             item.tagsInHeight.update()
+                            })
+                            
                             const topGap = window.pageYOffset + currentContainer.getBoundingClientRect().top;
                             if (window.innerWidth >= 1212) {
                                 window.scrollTo({
@@ -881,11 +886,13 @@ function initSliders() {
     if (document.querySelector('.object-slider-two')) {
         const sliders = document.querySelectorAll('.object-slider-two');
         sliders.forEach(el => {
-            const slider = new Swiper(el.querySelector('.object-slider-body__wrapper'), {
+            const sliderEl = el.querySelector('.object-slider-body__wrapper');
+            const slider = new Swiper(sliderEl, {
                 observer: true,
                 observeParents: true,
                 slidesPerView: 1,
                 spaceBetween: 16,
+                init:false,
                 navigation: {
                     prevEl: el.querySelector('.nav-arrow-primary--prev'),
                     nextEl: el.querySelector('.nav-arrow-primary--next'),
@@ -897,6 +904,12 @@ function initSliders() {
                 sliderCounter(slider, counterEl);
                 sliderLine(slider,lineEl);
             });
+            sliderEl.updateNav = () => {
+                const counterEl = el.querySelector('.main-slider__counter');
+                const lineEl = el.querySelector('.main-slider__line');
+                sliderCounter(slider, counterEl);
+                sliderLine(slider,lineEl);
+            } 
             slider.init();
             setTimeout(() => {
                 slider.navigation.update();

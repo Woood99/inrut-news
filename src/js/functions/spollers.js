@@ -112,6 +112,7 @@ const spollers = () => {
                         }, speed);
                     }
                 }
+
                 if (el.closest('.layouts__item-btn')) {
                     const activeBodyBlock = spollersBlock.querySelector('.room-body__container:not([hidden])');
                     const activeCard = spollersBlock.querySelector('.room-body__items .card-scheme._active');
@@ -120,6 +121,10 @@ const spollers = () => {
                         activeBodyBlock.setAttribute('hidden', '');
                     }
                 }
+               const tagsHeightItems = spollerTitle.nextElementSibling.querySelectorAll('[data-tags-in-height]');
+               tagsHeightItems.forEach(item => {
+                item.tagsInHeight.update()
+               })
                 e.preventDefault();
             }
         }

@@ -29,6 +29,9 @@ function inputTextBody(el) {
     input.value.length >= 1 ? el.classList.add('_active') : el.classList.remove('_active');
     input.addEventListener('input', () => {
         if (!el.classList.contains('_input-not-event')) {
+            if (el.classList.contains('input-text--only-small-number')) {
+                input.value = input.value.replace(/[^\d\.]/g, '');
+            }
             if (el.classList.contains('input-text--only-number')) {
                 input.value = input.value.replace(/\D/g, '');
                 input.value = numberReplace(input.value);

@@ -689,20 +689,16 @@ export const searchSelect = () => {
 
         function selectAll() {
             itemsInput.forEach((input) => {
-                const currentElem = imgLeft ?
-                    input
-                    .closest(".search-select__item")
-                    .querySelector(".checkbox-secondary__text")
-                    .innerHTML.trim() :
-                    input
-                    .closest(".search-select__item")
-                    .querySelector(
-                        ".checkbox-secondary__text span:nth-child(1)"
-                    )
-                    .textContent.trim();
-                if (arrSelected.indexOf(currentElem) === -1) {
-                    arrSelected.push(currentElem);
-                    input.checked = true;
+                const currentElem = input.closest(".search-select__item");
+
+                const currentElemText = imgLeft ?
+                    input.closest(".search-select__item").querySelector(".checkbox-secondary__text").innerHTML.trim() :
+                    input.closest(".search-select__item").querySelector(".checkbox-secondary__text span:nth-child(1)").textContent.trim();
+                if (arrSelected.indexOf(currentElemText) === -1) {
+                    if (!currentElem.hasAttribute('hidden')) {
+                        arrSelected.push(currentElemText);
+                        input.checked = true;
+                    }
                 }
             });
             updateItems();
@@ -710,13 +706,8 @@ export const searchSelect = () => {
         }
 
         function updateItems() {
-            items.forEach((item) => item.removeAttribute("hidden"));
             if (body.querySelector(`.${selectorErrorText}`)) {
                 body.querySelector(`.${selectorErrorText}`).remove();
-            }
-            if (search) {
-                const searchInput = search.querySelector("input");
-                searchInput.value = "";
             }
         }
 

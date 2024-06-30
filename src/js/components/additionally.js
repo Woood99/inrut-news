@@ -2,6 +2,7 @@ import {
     _slideToggle
 } from '../support-modules/slide'
 import numberReplace from '../modules/numberReplace';
+import numberToAnim from '../modules/numberToAnim';
 export const additionally = () => {
     const containers = document.querySelectorAll('.additionally');
     if (containers.length === 0) return;
@@ -10,11 +11,14 @@ export const additionally = () => {
         if (!container.classList.contains('additionally--auto')) {
             init(container.querySelectorAll('[data-additionally-card-calc]'));
             moreBtn(container);
-
             const typeSumm = container.dataset.additionallyType === 'summ';
             const typeQuantity = container.dataset.additionallyType === 'quantity';
+
+            const totalSummBenefit = document.querySelector('[data-total-sum-benefit]');
+            const totalSummPresent = document.querySelector('[data-total-sum-present]');
             if (typeSumm) {
                 const totalSummElement = container.querySelector('[data-total-summ]');
+
                 let totalSumm = Number(replaceValue(totalSummElement.textContent));
                 container.addEventListener('change', (e) => {
                     const target = e.target;
@@ -24,13 +28,41 @@ export const additionally = () => {
                         if (target.checked) {
                             card.classList.add('_active');
                             totalSumm -= currentSumm;
+
+                            if (totalSummBenefit) {
+                                numberToAnim(totalSummBenefit, 0, String(Number(replaceValue(totalSummBenefit.textContent)) + currentSumm));
+                            }
+                            if (totalSummPresent) {
+                                numberToAnim(totalSummPresent, 0, String(Number(replaceValue(totalSummPresent.textContent)) + currentSumm));
+                            }
+
                             sendingToBasket(card);
                             sendingToPopup(card);
+
+                            container.classList.add('_disabled-opacity');
+                            
+                            setTimeout(() => {
+                                container.classList.remove('_disabled-opacity');
+                            }, 300);
                         } else {
                             card.classList.remove('_active');
                             totalSumm += currentSumm;
+
+                            if (totalSummBenefit) {
+                                numberToAnim(totalSummBenefit, 0, String(Number(replaceValue(totalSummBenefit.textContent)) - currentSumm));
+                            }
+                            if (totalSummPresent) {
+                                numberToAnim(totalSummPresent, 0, String(Number(replaceValue(totalSummPresent.textContent)) - currentSumm));
+                            }
+
                             removeBasketFromCard(card);
                             removePopupFromCard(card);
+
+                            container.classList.add('_disabled-opacity');
+                            
+                            setTimeout(() => {
+                                container.classList.remove('_disabled-opacity');
+                            }, 300);
                         }
                         updateDescr();
                         checkErrorCardsSumm(container, totalSumm);
@@ -218,7 +250,6 @@ export const additionally = () => {
         const cardMap = {
             index: card.dataset.cardAdditionallyIndex,
             title: card.querySelector('.user-info__name').textContent.trim(),
-            tooltip: card.querySelector('.secondary-tooltip').outerHTML,
             link: card.querySelector('.user-info__link') ? card.querySelector('.user-info__link').outerHTML : '',
             avatar: card.querySelector('.user-info__avatar').outerHTML,
         };

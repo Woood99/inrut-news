@@ -68,6 +68,8 @@ import Notifications from './modules/notifications';
 import { Tooltip, TooltipText } from './functions/tooltip';
 import { tagsInHeight, tagsInCount } from './components/tagsIn';
 
+import { _slideToggle } from './support-modules/slide';
+
 document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('[data-tags-in-height]').forEach(item => {
@@ -411,6 +413,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    const bidUserMoreBtn = document.querySelector('[data-bid-user-more-btn]');
+    const bidUserMore = document.querySelector('[data-bid-user-more]');
+    if (bidUserMoreBtn && bidUserMore) {
+        bidUserMoreBtn.addEventListener('click',() => {
+            bidUserMoreBtn.classList.toggle('_active');
+             _slideToggle(bidUserMore);
+        })
+    }
 
 
 

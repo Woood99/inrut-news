@@ -8,13 +8,13 @@ export const mapCoords = {
     },
 
     bottom(coords, el, target) {
-        let bottom = coords.top + target.offsetHeight + this.gap;
-        if (window.innerHeight - coords.bottom - el.offsetHeight - this.gap < 0) bottom = coords.top - el.offsetHeight - this.gap;
+        let bottom = coords.top + target.offsetHeight;
+        if (window.innerHeight - coords.bottom - el.offsetHeight - this.gap < 0) bottom = coords.top - el.offsetHeight;
         return bottom;
     },
 
     centerY(coords,el,target) {
-        let pos = coords.top + (target.offsetHeight / 2) + this.gap;
+        let pos = coords.top + target.offsetHeight - el.clientHeight;
         return pos;
     },
 

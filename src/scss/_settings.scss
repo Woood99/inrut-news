@@ -8,7 +8,7 @@ html {
 *::before,
 *::after {
     box-sizing: inherit;
-    @media (max-width:$desktop){
+    @media (max-width: $desktop) {
         -webkit-tap-highlight-color: transparent;
     }
 }
@@ -86,17 +86,17 @@ p {
         }
     }
 
-    &._vertical{
-        .header-top__container{
+    &._vertical {
+        .header-top__container {
             max-width: none;
         }
-        .header-main__container{
+        .header-main__container {
             max-width: none;
         }
-        .buy-apartment__title{
+        .buy-apartment__title {
             display: none;
         }
-        .footer{
+        .footer {
             display: none;
         }
         .buy-apartment-filter__row--1 {
@@ -104,13 +104,21 @@ p {
         }
     }
 
-    &._horizontal{
-       @media (min-width:$desktop-min){
-        .buy-apartment__title{
-            margin-top: 16px;
-            display: block;
-        } 
-       }
+    &._horizontal {
+        [data-notifications-position="[data-draw-btn]"] {
+            display: none;
+        }
+        .control-cards__container._map-full {
+            .simplebar-track.simplebar-vertical {
+                visibility: hidden !important;
+            }
+        }
+        @media (min-width: $desktop-min) {
+            .buy-apartment__title {
+                margin-top: 16px;
+                display: block;
+            }
+        }
     }
 }
 
@@ -251,7 +259,7 @@ a {
     );
     padding-right: ($containerOffset + px);
     @media (max-width: $desktop) {
-       padding: 0;
+        padding: 0;
     }
 }
 

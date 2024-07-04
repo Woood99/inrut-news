@@ -5,6 +5,7 @@ const videoModal = () => {
     if (targets.length === 0) return;
     targets.forEach(target => {
         target.addEventListener('click',(e) => {
+            if (e.target.closest('[data-video-modal-remove]')) return;
             if (!e.target.closest('.dots-dropdown')) {
                 const modalHTML = `
                 <div class="video-modal">

@@ -16,6 +16,7 @@ export class Notifications {
 
         this.interval = 500;
         this.hideTime = this.block.dataset.notificationsHideTime || 4000;
+        this.initial = false;
 
         this.positionTarget = this.block.hasAttribute('data-notifications-position') ? document.querySelector(this.block.dataset.notificationsPosition) : null;
 
@@ -31,7 +32,7 @@ export class Notifications {
         
         document.addEventListener('click',(e) => {
             const target = e.target;
-            if (target.closest('button')) {
+            if (target.closest('button') && this.initial) {
               this.block.setAttribute('hidden','');
             }
         })
@@ -39,9 +40,18 @@ export class Notifications {
 
     init() {
         setTimeout(() => {
+            this.initial = true;
             for (let count = 0; count < this.items.length; count++) {
                 setTimeout(() => {
                     this.show(this.items[count]);
+                    let status = false;
+                    window.addEventListener('scroll',() => {
+                        if (status === false) {
+                            status = true;
+                            this.items[count].classList.remove('_visible');
+                            this.items[count].setAttribute('hidden', '');
+                        }
+                    })
                 }, this.interval * count);
             }
 
@@ -53,8 +63,8 @@ export class Notifications {
         setTimeout(() => {
             item.classList.add('_visible');
             if (this.positionTarget) {
-                // this.gap = 16;
-                // this.setCoordsElement(this.positionTarget, item);
+                this.gap = 16;
+                this.setCoordsElement(this.positionTarget, item);
             }
             this.hide(item);
         }, 300);
@@ -71,9 +81,8 @@ export class Notifications {
 
     setCoordsElement(target, el) {
         const coords = target.getBoundingClientRect();
-        // const targetPositionX = 'left';
-        const targetPositionX = 'right';
-        const targetPositionY = 'centerY';
+        const targetPositionX = this.block.dataset.tooltipPositionX || 'right';
+        const targetPositionY = this.block.dataset.tooltipPositionY || 'centerY';
 
         this.block.style.left = `${mapCoords[targetPositionX].call(this,coords,this.block,target)}px`;
         this.block.style.top = `${mapCoords[targetPositionY].call(this,coords,this.block,target)}px`;

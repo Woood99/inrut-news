@@ -126,7 +126,7 @@
                             <a href="./comparison.html" class="btn-blue underline-hover">Перейти к сравнению</a>
                         </div>
                     </div>
-                    '>
+                    ' data-tooltip-text="Добавить в сравнение,tooltip-html">
                         <svg>
                             <use xlink:href="./img/sprite.svg#comparison"></use>
                         </svg>
@@ -11887,8 +11887,29 @@
                 </div>
             </div>
         </main>
+
         @include('partials/footer.html')
     </div>
+
+    <div class="notif-block tw-fixed tw-z-[998]" data-notifications-hide-time="5000" data-notifications="desktop" 
+    data-notifications-position=".favorite-btn-default" data-tooltip-position-x="left" data-tooltip-position-y="bottom">
+        <div class="notif-block__item notif-block__item--black tw-w-max notif-card tw-py-4 tw-pr-10 tw-pl-4" data-notifications-item>
+            <button type='button' class='btn btn-reset notif-block__close' data-notifications-close>
+                <svg>
+                    <use xlink:href="./img/sprite.svg#x"></use>
+                </svg>
+            </button>
+            <div class='tw-flex tw-flex-col gap-2'>
+                <span>
+                    Добавьте ЖК в избранное
+                </span>
+                <span>
+                    Вы сможете получать персональные скидки от застройщика
+                </span>
+            </div>
+        </div>
+    </div>
+
     <!-- popups -->
     @include('popups/city.html')
     @include('popups/add.html')

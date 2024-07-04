@@ -147,7 +147,7 @@ export const controlCardsCardSecondary = (content, btn) => {
         const actions = card.querySelector('.card-secondary__actions');
 
         const content = card.querySelector('.card-secondary__content');
-        const options = card.querySelector('.card-secondary__options');
+        const options = card.querySelector('[data-card-tags]');
 
         const pricesMain = card.querySelector('.card-secondary__prices--1');
         if (window.innerWidth <= 1212) return;

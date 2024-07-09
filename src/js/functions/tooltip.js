@@ -108,7 +108,7 @@ export class Tooltip {
     }
 
     clicked(e) {
-        // e.preventDefault();
+
         if (e.target.closest(`.${this.elementSelector}`)) {
             return;
         }
@@ -153,35 +153,37 @@ export class Tooltip {
     open(e) {
         const target = this.getCurrentTarget(e);
         if (!target) return;
-        if (target.classList.contains('_prevent')) return;
-        if (this.mode === 'html') {
-            const config = {
-                target,
-                el: null,
-                isOpen: true
-            };
-            this.elements.push(config);
-            if (config.target.hasAttribute('data-tooltip-mobile-popup') && window.innerWidth <= 1212) {
-                this.createPopup(target);
-            } else {
-                this.createHTML(target);
+            console.log('click');
+            if (target.classList.contains('_prevent')) {
+                if (this.mode === 'html') {
+                    const config = {
+                        target,
+                        el: null,
+                        isOpen: true
+                    };
+                    this.elements.push(config);
+                    if (config.target.hasAttribute('data-tooltip-mobile-popup') && window.innerWidth <= 1212) {
+                        this.createPopup(target);
+                    } else {
+                        this.createHTML(target);
+                    }
+                    if (this.positionDocument) {
+                        setTimeout(() => {
+                            this.close(e);
+                        }, 3000);
+                    }
+                    return;
+                }
+                if (this.mode === 'default') {
+                    const targetEl = this.getTargetEl(target);
+                    if (!targetEl) return;
+        
+                    targetEl.classList.add('_visible');
+        
+                    this.setCoordsElement(target, targetEl);
+                    return;
+                }
             }
-            if (this.positionDocument) {
-                setTimeout(() => {
-                    this.close(e);
-                }, 3000);
-            }
-            return;
-        }
-        if (this.mode === 'default') {
-            const targetEl = this.getTargetEl(target);
-            if (!targetEl) return;
-
-            targetEl.classList.add('_visible');
-
-            this.setCoordsElement(target, targetEl);
-            return;
-        }
     }
 
     close(e) {

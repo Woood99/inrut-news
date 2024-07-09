@@ -106,50 +106,50 @@ export const cardSecondaryActionsBody = (card) => {
 
         const comparison = e.target.closest('.card-secondary__comparison');
         const favorite = e.target.closest('.card-secondary__favorite');
-        if (comparison) {
-            e.preventDefault();
-            if (!comparison.classList.contains('_prevent')) {
-                setTimeout(() => {
-                    comparison.classList.add('_prevent');
-                }, 1);
-                comparison.innerHTML = `
-                    <svg class="tw-fill-[#005bff]">
-                        <use xlink:href="./img/sprite.svg#comparison-active"></use>
-                    </svg>
-                `;
-            } else {
-                setTimeout(() => {
-                    comparison.classList.remove('_prevent');
-                }, 1);
-                comparison.innerHTML = `
-                    <svg>
-                        <use xlink:href="./img/sprite.svg#comparison"></use>
-                    </svg>
-                `;
-            }
-        }
-        if (favorite) {
-            e.preventDefault();
-            if (!favorite.classList.contains('_prevent')) {
-                setTimeout(() => {
-                    favorite.classList.add('_prevent');
-                    favorite.innerHTML = `
-                        <svg class="tw-w-4 tw-h-4">
-                             <use xlink:href="./img/sprite.svg#favorite"></use>
-                        </svg>
-                    `;
-                }, 1);
-            } else {
-                setTimeout(() => {
-                    favorite.classList.remove('_prevent');
-                    favorite.innerHTML = `
-                        <svg class="tw-w-4 tw-h-4">
-                            <use xlink:href="./img/sprite.svg#favorite-stroke"></use>
-                        </svg>
-                    `
-                }, 1);
-            }
-        }
+        // if (comparison) {
+        //     e.preventDefault();
+        //     if (!comparison.classList.contains('_prevent')) {
+        //         setTimeout(() => {
+        //             comparison.classList.add('_prevent');
+        //         }, 1);
+        //         comparison.innerHTML = `
+        //             <svg class="tw-fill-[#005bff]">
+        //                 <use xlink:href="./img/sprite.svg#comparison-active"></use>
+        //             </svg>
+        //         `;
+        //     } else {
+        //         setTimeout(() => {
+        //             comparison.classList.remove('_prevent');
+        //         }, 1);
+        //         comparison.innerHTML = `
+        //             <svg>
+        //                 <use xlink:href="./img/sprite.svg#comparison"></use>
+        //             </svg>
+        //         `;
+        //     }
+        // }
+        // if (favorite) {
+        //     e.preventDefault();
+        //     if (!favorite.classList.contains('_prevent')) {
+        //         setTimeout(() => {
+        //             favorite.classList.add('_prevent');
+        //             favorite.innerHTML = `
+        //                 <svg class="tw-w-4 tw-h-4">
+        //                      <use xlink:href="./img/sprite.svg#favorite"></use>
+        //                 </svg>
+        //             `;
+        //         }, 1);
+        //     } else {
+        //         setTimeout(() => {
+        //             favorite.classList.remove('_prevent');
+        //             favorite.innerHTML = `
+        //                 <svg class="tw-w-4 tw-h-4">
+        //                     <use xlink:href="./img/sprite.svg#favorite-stroke"></use>
+        //                 </svg>
+        //             `
+        //         }, 1);
+        //     }
+        // }
     })
 
     const prices = card.querySelector('[data-card-prices]');

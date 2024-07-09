@@ -2000,11 +2000,6 @@ export const searchSelectOneBody = (container) => {
     }
     list.forEach((item) => {
         item.addEventListener("click", () => {
-            if (!container.classList.contains("_only-search")) {
-                container.dispatchEvent(new Event("change"));
-                const form = container.closest("form");
-                if (form) form.dispatchEvent(new Event("change"));
-            }
             list.forEach((item) => item.classList.remove("_active"));
             input.value = item.dataset.value;
             item.classList.add("_active");
@@ -2029,11 +2024,7 @@ export const searchSelectOneBody = (container) => {
                 }, 200);
             }
 
-            if (
-                container.classList.contains(
-                    "create-meeting-show__form--object"
-                )
-            ) {
+            if (container.classList.contains("create-meeting-show__form--object")) {
                 if (container.classList.contains("_error")) {
                     container.querySelector("._error-span").remove();
                     container.classList.remove("_error");
@@ -2057,6 +2048,11 @@ export const searchSelectOneBody = (container) => {
             }
 
             input.dispatchEvent(new Event("change"));
+            if (!container.classList.contains("_only-search")) {
+                container.dispatchEvent(new Event("change"));
+                const form = container.closest("form");
+                if (form) form.dispatchEvent(new Event("change"));
+            }
         });
     });
 

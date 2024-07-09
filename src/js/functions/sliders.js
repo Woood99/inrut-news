@@ -229,9 +229,18 @@ function initSliders() {
         slider.on("slideChange afterInit init", function() {
             const counterEl = sliderEl.closest('.home-banners').querySelector('.home-banners__counter');
             const lineEl = sliderEl.closest('.home-banners').querySelector('.home-banners__line');
-
-            sliderCounter(slider, counterEl);
-            sliderLine(slider, lineEl);
+            const nav = sliderEl.parentNode.querySelector('.home-banners__nav');
+            if (slider.slides.length > 1) {
+                sliderCounter(slider, counterEl);
+                sliderLine(slider, lineEl);
+                if (nav) {
+                    nav.removeAttribute('hidden');
+               }
+            } else {
+               if (nav) {
+                    nav.setAttribute('hidden','');
+               }
+            }
         });
         slider.init();
     }
@@ -268,9 +277,8 @@ function initSliders() {
     if (document.querySelector('.swiper.home-price__items')) {
         const sliders = document.querySelectorAll('.swiper.home-price__items');
         sliders.forEach(slider => {
-            new Swiper(slider, {
+            const swiper = new Swiper(slider, {
                 observer: true,
-                observeParents: true,
                 slidesPerView: 1.1,
                 spaceBetween: 16,
                 speed: 800,
@@ -285,8 +293,8 @@ function initSliders() {
                     },
                 },
                 navigation: {
-                    prevEl: slider.closest('.home-price').querySelector('.nav-arrow-primary--prev') || slider.closest('.tabs__body').querySelector('.nav-arrow-primary--prev'),
-                    nextEl: slider.closest('.home-price').querySelector('.nav-arrow-primary--next') || slider.closest('.tabs__body').querySelector('.nav-arrow-primary--next'),
+                    prevEl: slider.querySelector('.nav-arrow-primary--prev'),
+                    nextEl: slider.querySelector('.nav-arrow-primary--next'),
                 },
                 on: {
                     init: function() {

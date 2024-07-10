@@ -113,18 +113,18 @@ export const cardSecondaryActionsBody = (card) => {
         //             comparison.classList.add('_prevent');
         //         }, 1);
         //         comparison.innerHTML = `
-        //             <svg class="tw-fill-[#005bff]">
-        //                 <use xlink:href="./img/sprite.svg#comparison-active"></use>
-        //             </svg>
+                    // <svg class="tw-fill-[#005bff]">
+                    //     <use xlink:href="./img/sprite.svg#comparison-active"></use>
+                    // </svg>
         //         `;
         //     } else {
         //         setTimeout(() => {
         //             comparison.classList.remove('_prevent');
         //         }, 1);
         //         comparison.innerHTML = `
-        //             <svg>
-        //                 <use xlink:href="./img/sprite.svg#comparison"></use>
-        //             </svg>
+                    // <svg>
+                    //     <use xlink:href="./img/sprite.svg#comparison"></use>
+                    // </svg>
         //         `;
         //     }
         // }

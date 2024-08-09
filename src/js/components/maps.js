@@ -504,7 +504,7 @@ export const placeSaleAddressMap = () => {
 export const objectMaps = () => {
     if (document.querySelector('#object-maps')) {
         if (checkYmapsApiBlock()) {
-            let interval = setInterval(() => {
+            let interval = setInterval(() => {                
                 if (itsReadyMap()) {
                     clearInterval(interval);
                     app();

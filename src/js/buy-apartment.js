@@ -36,6 +36,7 @@ import { tagsInHeight, tagsInCount } from './components/tagsIn';
 document.addEventListener('DOMContentLoaded', () => {
     cardSecondaryActions();
     cardPrimaryActions();
+    mapPrimary();
     controlCardsMap();
     controlCards();
     mapMetro();

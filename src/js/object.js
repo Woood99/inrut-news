@@ -8,6 +8,7 @@ import './_main-scripts';
 // ==============================
 import getHeightBlock from './modules/getHeightBlock'
 import bookConsultation from './components/bookConsultation';
+import { mapPrimary, objectMaps } from './components/maps';
 import {
     validateRadioPrimary,
     validateCheckboxPrimary,
@@ -102,7 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.book-consultation').forEach(el => {
         bookConsultation(el);
     })
-
+    mapPrimary();
+    objectMaps();
     genplan();
     moveToFromBlock('[data-move-block-to="bid-user"]', '[data-move-block-from="bid-user"]', 99999, 1212, `${window.innerWidth >= 1920 ? 1.35 : 1}`);
     additionally();
